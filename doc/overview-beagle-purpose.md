@@ -1,4 +1,5 @@
-# What does Beagle?
+# Beagle's purpose
+### The tools and interactions around Beagle
 
 _**Disclaimer**: The following information is a personal understanding at a very early point. It may be outdated, misleading, incomplete or plain wrong._
 
