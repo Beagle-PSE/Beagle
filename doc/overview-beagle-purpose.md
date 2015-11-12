@@ -9,6 +9,8 @@ In a discussion about what Beagle actually does, the following chart has been cr
 
 Despite being German, it serves as a brief overview about what Beagle is trying to achieve. It speaks for itself. However, some additional information shall be provided:
 
+**Correction**: In the chart above, the PCM instance is drawn with an UML `<<is a>>` relation towards PCM. This was a mistake. The author meant to use an `<<instance of>>` relation.
+
 #### Palladio
 [Palladio](https://sdqweb.ipd.kit.edu/wiki/Palladio_Component_Model) is a software developed at the [Chair for Software Design and Quality (SDQ)](http://sdq.ipd.kit.edu/) at the KIT. It models and analyzes component based software. At its core, Palladio focuses on performance analysis and prediction of a modeled system, although it was extended to work with other characteristics, too.
 
