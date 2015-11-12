@@ -7,7 +7,7 @@ In a discussion about what Beagle actually does, the following chart has been cr
 
 ![A chart describing the tools around Beagle](./overview-beagle-chart.jpg)
 
-Despite being German, it serves as a brief overview about what Beagle is trying to achieve. It speaks for itself. Hwever, some additional information shall be provided:
+Despite being German, it serves as a brief overview about what Beagle is trying to achieve. It speaks for itself. However, some additional information shall be provided:
 
 #### Palladio
 [Palladio](https://sdqweb.ipd.kit.edu/wiki/Palladio_Component_Model) is a software developed at the [Chair for Software Design and Quality (SDQ)](http://sdq.ipd.kit.edu/) at the KIT. It models and analyzes component based software. At its core, Palladio focuses on performance analysis and prediction of a modeled system, although it was extended to work with other characteristics, too.
