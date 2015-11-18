@@ -30,4 +30,4 @@ SoMoX is a tool for static code analysis. It takes Java code and tries to find i
 
 #### Beagle
 SoMoX cannot provide performance annotations as it's limited to static code analysis. Beagle shall now step in after SoMoX finished its analysis and extract such performance features. To achieve that, it actually executes the provided code.
-As described above, performance annotations are crucial for Palladio.
+As described above, performance annotations are crucial for Palladio. To provide performance information, Beagle will annotate _resourse demands_ (like CPU and HDD usage) on _internal actions_ ("coarse–grained blocks of instructions within a compenent") in the PCM instance. Preferably, resource demands will be parameterized by interface arguments.
