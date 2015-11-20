@@ -6,3 +6,4 @@
 
 # Unofficial Part
 * Voting system (time requirements)
+* Adding points to the agenda.
