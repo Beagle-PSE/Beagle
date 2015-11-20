@@ -70,4 +70,4 @@ _Make sure to always reference defined terms!_
 ## Building
 Please note that the LyX preview builds will not contain the glossary. There seems to be no way to achieve that. To make a build containing the glossary, use the provided shell scripts:
  * For Linux: `render.sh`. You’ll need to install `xindy` (`sudo apt-get install xindy` on Debian).
- * For Windows: `render.bat`
+ * For Windows: `render.bat`. You’ll need to install Perl: [ActivePerl](http://www.activestate.com/activeperl/downloads). Make sure the checkbox "Add Perl to PATH", which appeares during the installation process, is checked.
