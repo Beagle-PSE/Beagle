@@ -115,7 +115,7 @@ ary#Defining_terms
 
 
 \backslash
-newglossaryentry{naiive} {
+newglossaryentry{naiive}{
 \end_layout
 
 \begin_layout Plain Layout
@@ -151,6 +151,214 @@ i}ve,
 \begin_layout Plain Layout
 
 } 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a component of 
+\backslash
+gls{component based software}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{add a short but precise definition of component based software by a
+ renowned source}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component based software}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component base sotware},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{resource demand}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={resource demand},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		foobar
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{internal action}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={internal action},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		sequence of commands a 
+\backslash
+gls{component} executes without leaving its scope (e.g.
+ without calling other 
+\backslash
+glspl{component})
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{PCM}{PCM}{Palladio Component Model}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{add a short but precise definition of Palladio Component Model by a
+ renowned source}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Palladio Component Model}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio Component Model},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

@@ -156,6 +156,83 @@ Reference notation is /C#/
 
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C10/"
+
+\end_inset
+
+/C10/ Beagle shall enable the user to analyze given source code for its
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{internal action}
+\end_layout
+
+\end_inset
+
+' 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+
+\lang british
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C20/"
+
+\end_inset
+
+/C20/ Beagle shall automatically annotate its 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{resource demand}
+\end_layout
+
+\end_inset
+
+ findings in a given instance of the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance.
+\end_layout
+
 \begin_layout Section
 Nice to Have Criteria
 \end_layout
@@ -214,6 +291,28 @@ Reference notation is /B#/
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/B10/"
+
+\end_inset
+
+/B10/ Beagle does not perform actual measurements on source code.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/B20/"
+
+\end_inset
+
+/B20/ Beagle does not reconstruct a model of the software's architecture.
 \end_layout
 
 \end_body

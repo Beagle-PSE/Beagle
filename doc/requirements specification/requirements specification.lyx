@@ -17,7 +17,7 @@
 % Include the terms and definitions file if presents (e.g. only when acutally building the glossary).
 \InputIfFileExists{\string"parts/terms and definitions.tex\string"}
 \end_preamble
-\options english,final
+\options english,draft
 \use_default_options true
 \maintain_unincluded_children false
 \language british
@@ -94,7 +94,7 @@
 \begin_body
 
 \begin_layout Title
-[Project Name]
+Beagle
 \end_layout
 
 \begin_layout Subtitle
@@ -113,6 +113,43 @@ Christoph Michelbach, Ansgar Spiegler, Michael Vogt
 \begin_inset CommandInset include
 LatexCommand input
 filename "parts/terms and definitions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Please define any technical or ambiguous terms as well as abbreviations.
+ See parts/terms and definitions.lyx for details.
+\end_layout
+
+\begin_layout Plain Layout
+To reference defined terms hit Ctrl+L to open a LaTeX environment.
+ Use gls (lowercase), Gls (uppercase), glspl (lowercase plural), Glspl (uppercas
+e plural).
+ Refer to README.md for further details.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{naiive}
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -203,13 +240,34 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Liste der ToDos (wird niemals in der finalen Version angezeigt werden):
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+listoftodos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Reference notation
 \end_layout
 
 \begin_layout Standard
 This document uses a fixed notation for all of its contents, making them
- referenceable:
+ referenceable: 
 \end_layout
 
 \begin_layout Labeling
@@ -229,6 +287,16 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+/A#/ application attribute
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/G#/ target group
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 /E#/ software environment attribute
 \end_layout
 
@@ -244,25 +312,56 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/NF#/ mandatory non functional requirement
+/Q#/ mandatory non functional requirement
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/ONF#/ optional non functional requirement
+/OQ#/ optional non functional requirement
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/T#/ test case 
-\begin_inset ERT
+/T#/ test case
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/M#/ model
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
+When listing anything with a reference notation, please do it in a List
+ environment and add a label with the reference.
+ For example:
+\end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F10/"
 
-\backslash
-gls{naiive}
+\end_inset
+
+/F10/ Foobar
+\end_layout
+
+\begin_layout Plain Layout
+Whenever referencing something with a reference notation, use a cross reference:
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F10/"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -305,6 +404,16 @@ filename "parts/purpose.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
+filename "parts/application.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
 filename "parts/environment.lyx"
 
 \end_inset
@@ -337,6 +446,16 @@ filename "parts/non functional requirements.lyx"
 LatexCommand input
 preview true
 filename "parts/test cases.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "parts/models.lyx"
 
 \end_inset
 
