@@ -94,11 +94,16 @@ They shall be grouped by topics using sections and subsections.
 \end_layout
 
 \begin_layout Plain Layout
-Reference notation for mandatory requirements is /NF#/
+Please make sure to apply the same logic as in the purpose section to split
+ between mandatory and optional.
 \end_layout
 
 \begin_layout Plain Layout
-Reference notation for nice to have requirements is /ONF#/
+Reference notation for mandatory requirements is /Q#/
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation for nice to have requirements is /OQ#/
 \end_layout
 
 \end_inset
