@@ -13,10 +13,13 @@ The specification is written in [LyX](http://www.lyx.org/). So obviously you'll 
        sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis`)
        ```
       * run `sudo texhash`
-	* On Windows (with MiKTeX):
-	  * copy the unzipped folder’s _contents_ to `C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\sdqthesis`.
-	  * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
+      
+    * On Windows (with MiKTeX):
+      * copy the unzipped folder’s _contents_ to `C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\sdqthesis`.
+      * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
+      
     * You may remove the files `thesis.tex` and `thesis.bib` as well as the subfolder `sections`.
+    
     
   * Install the LyX layout file from [doc/dependencies/sqthesis.layout](../dependencies/sdqthesis.layout).
       * copy the file to your personal layout folder (Ubuntu: `~/.lyx/layouts`, Windows: `C:\Users\[User]\AppData\Roaming\LyX2.1\layouts`
