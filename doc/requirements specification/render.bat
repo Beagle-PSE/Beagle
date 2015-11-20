@@ -8,7 +8,9 @@ call :GETTEMPNAME
 mkdir %TMPDIR%
 xcopy . %TMPDIR% /e /i
 
+set drive=%cd:~0,2%
 set OLDPWD=%cd%
+C:
 cd %TMPDIR%
 
 :: generate .tex
@@ -24,6 +26,7 @@ pdflatex %FILENAME%.tex
 pdflatex %FILENAME%.tex
 
 :: Go back
+%drive%
 cd %OLDPWD%
 
 

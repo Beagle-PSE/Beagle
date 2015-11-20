@@ -16,6 +16,7 @@ hs_err_pid*
 
 # LyX save files
 **/\#*\#
+**/*.lyx~
 
 # Markdown HTML renderings created by the GitHub Flavored Markdown Viewer plugin for Eclipse
 **/.*.md.html
