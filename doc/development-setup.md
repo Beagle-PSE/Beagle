@@ -14,6 +14,11 @@ Required Eclipse plugins are:
   
 ## Documentation
 
+### LyX
 Parts of the documentation are written in LaTeX using [LyX](http://www.lyx.org/). Some documents require special classes or layout files, like the [System Requirements Specification](requirements specification/README.md).
 
+#### Spell checking
+You may need to set the language in `Tools -> Settings -> Language Settings -> Language` to `en` to get English spell checking.
+
+### Markdown
 Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). The Eclipse [GitHub Flavored Markdown viewer plugin for Eclipse](https://marketplace.eclipse.org/content/github-flavored-markdown-viewer-plugin-eclipse) helps writing it. (_Hint:_ Don’t give the plugin your GitHub credentials. [Create a personal access token](https://github.com/settings/tokens) and change the API URL in the plugin’s settings: `https://api.github.com/?access_token=PERSONAL_ACCESS_TOKEN`)
