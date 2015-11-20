@@ -41,9 +41,9 @@ A (small!) subset of the required LaTeX packages are:
   
 If you care for the full list, look it up yourself in `sdqthesis.cls`.
   
-On Ubuntu, all required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra` and `texlive-fonts-extra` packages (you'll likely have them installed already):
+On Ubuntu, all required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-extra` and `texlive-lang-german` packages (you'll likely have them installed already):
 ```
-sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra
+sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german
 ```
 
 On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically.
