@@ -95,6 +95,11 @@ They shall be grouped by topics using sections and subsections.
 \end_layout
 
 \begin_layout Plain Layout
+Please make sure to apply the same logic as in the purpose section to split
+ between mandatory and optional.
+\end_layout
+
+\begin_layout Plain Layout
 Reference notation for mandatory functionality is /F#/
 \end_layout
 

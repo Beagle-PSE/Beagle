@@ -71,7 +71,11 @@
 \begin_body
 
 \begin_layout Chapter
-Test Cases
+Application
+\end_layout
+
+\begin_layout Section
+Application Field
 \end_layout
 
 \begin_layout Standard
@@ -79,27 +83,55 @@ Test Cases
 status open
 
 \begin_layout Plain Layout
-Global test cases.
- This chapter specifies the acceptance criteria.
- As it was preceded by the requirements specification chapters, this part
- should define ways to assert the requirements stated above.
- 
+Describes where the software is going to be used.
+ This include typical use cases.
 \end_layout
 
 \begin_layout Plain Layout
-This chapter is an essential part in making the requirements verifiable.
- It will serve as a base for product acceptance and will be useful to track
- progress in the implementation phase.
+Reference notation is /A#/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Target Group
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Defines the software’s target groups.
+ They will typically be logically derived from the above part.
 \end_layout
 
 \begin_layout Plain Layout
-Make sure to stay at the level of acceptance testing.
- This chapter should never define unit or integration tests.
- (Which don’t make sense anyway, as we don’t have a design yet).
+Reference notation is /G#/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Operation Conditions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Conditions under which the software will run.
 \end_layout
 
 \begin_layout Plain Layout
-Reference notation is /T#/
+Reference notation is /A#/
 \end_layout
 
 \end_inset

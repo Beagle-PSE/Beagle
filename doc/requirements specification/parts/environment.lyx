@@ -74,5 +74,32 @@
 Environment
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This part describes the software’s environment.
+ This are all components (hardware & software) the software interacts with
+ or depends on.
+ This includes standards and APIs.
+\end_layout
+
+\begin_layout Plain Layout
+Naturally, this only includes components that affect development.
+ Components shall be described together with the interfaces they offer to
+ our software.
+ Limitations they enforce, if any, shall be named.
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation is /E#/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
