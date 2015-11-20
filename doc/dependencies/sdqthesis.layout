@@ -1,0 +1,37 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[sdqthesis,scrbook]{SDQ Thesis}
+#  \DeclareCategory{Books}
+# SDQ Thesis textclass definition file.
+# Joshua Gleitze
+
+Format 49
+Input scrclass.inc
+Input numreport.inc
+
+Sides			2
+PageStyle		Headings
+
+NoStyle Abstract
+
+
+Style Chapter
+	LabelString	"\thechapter"
+	TocLevel 0
+End
+
+
+# Equations are numbered by chapter
+Counter equation
+	Within chapter
+	LabelString "\thechapter.\arabic{equation}"
+End
+
+
+Style Bibliography
+	TopSep		4
+	LabelString	"Bibliography"
+	LabelFont
+	  Series	Bold
+	  Size		Largest
+	EndFont
+End
