@@ -9,3 +9,9 @@
 # Unofficial Part
 * Voting system (time requirements)
 * Adding points to the agenda.
+
+## SRS
+* Weekend meeting(s) to write the SRS
+* Technical setup (Please bring your machines, so we can assure we’re all set up!)
+* Assignment of easier parts of the SRS to be written alone
+* content discussion
