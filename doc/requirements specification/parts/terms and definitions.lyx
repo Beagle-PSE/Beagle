@@ -434,7 +434,12 @@ glspl{component})
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={internal actions'}
 \end_layout
 
 \begin_layout Plain Layout
@@ -471,6 +476,84 @@ newglossaryentry{Palladio Component Model}{
 \begin_layout Plain Layout
 
 	name={Palladio Component Model},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{software architect}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={sotware architect},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{system deployer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={system deployer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component developer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component developer},
 \end_layout
 
 \begin_layout Plain Layout
