@@ -76,7 +76,7 @@ Functionality
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 The main chapter of this document.
@@ -110,6 +110,10 @@ Reference notation for nice to have functionality is /OF#/
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Must Have Functional Requirements
 \end_layout
 
 \begin_layout Labeling
@@ -160,6 +164,10 @@ name "/F30/"
 /F30/ Parameterisation of results
 \end_layout
 
+\begin_layout Section
+Nice to Have Functional Requirements
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -170,7 +178,33 @@ name "/OF10/"
 
 /OF10/ Analyse source code for its architecture and performance in one turn
  (e.g.
- with SoMoX & Kieker).
+ with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+& 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \end_body
