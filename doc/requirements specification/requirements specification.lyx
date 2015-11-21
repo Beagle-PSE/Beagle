@@ -267,6 +267,66 @@ Reference notation
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Renew the label command to get labels as we want them
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+label}[1]{%
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+protected@write 
+\backslash
+@auxout {}{
+\backslash
+string 
+\backslash
+newlabel {#1}{{#1}{
+\backslash
+thepage}{#1}{#1}{}} }%
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+hypertarget{#1}{#1}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatother 
+\end_layout
+
+\end_inset
+
 This document uses a fixed notation for all of its contents, making them
  referenceable: 
 \end_layout
@@ -350,7 +410,7 @@ name "/F10/"
 
 \end_inset
 
-/F10/ Foobar
+ Foobar
 \end_layout
 
 \begin_layout Plain Layout

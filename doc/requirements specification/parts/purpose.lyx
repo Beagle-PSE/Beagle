@@ -164,8 +164,7 @@ name "/C10/"
 
 \end_inset
 
-/C10/ Beagle shall enable the user to analyze given source code for its
- 
+ Beagle shall enable the user to analyze given source code for its 
 \begin_inset ERT
 status open
 
@@ -202,7 +201,7 @@ name "/C20/"
 
 \end_inset
 
-/C20/ Beagle shall automatically annotate its 
+ Beagle shall automatically annotate its 
 \begin_inset ERT
 status open
 
@@ -270,7 +269,7 @@ name "/OC10/"
 
 \end_inset
 
-/OC10/ Beagle should determine the aproximate probability in 
+ Beagle should determine the aproximate probability in 
 \begin_inset ERT
 status open
 
@@ -309,8 +308,8 @@ name "/OC20/"
 
 \end_inset
 
-/OC20/ The branch prohabilitys as a function of the input parameters should
- be annotated in the 
+ The branch prohabilitys as a function of the input parameters should be
+ annotated in the 
 \begin_inset ERT
 status open
 
@@ -334,7 +333,7 @@ name "/OC30/"
 
 \end_inset
 
-/OC30/ Beagle should determine in 
+ Beagle should determine in 
 \begin_inset ERT
 status open
 
@@ -371,8 +370,8 @@ name "/OC40/"
 
 \end_inset
 
-/OC40/ The number of loop executions as a function of the input parameters
- should be annotated in the 
+ The number of loop executions as a function of the input parameters should
+ be annotated in the 
 \begin_inset ERT
 status open
 
@@ -425,7 +424,7 @@ name "/B10/"
 
 \end_inset
 
-/B10/ Beagle does not perform actual measurements on source code.
+ Beagle does not perform actual measurements on source code.
 \end_layout
 
 \begin_layout Labeling
@@ -436,7 +435,7 @@ name "/B20/"
 
 \end_inset
 
-/B20/ Beagle does not reconstruct a model of the software's architecture.
+ Beagle does not reconstruct a model of the software's architecture.
 \end_layout
 
 \end_body
