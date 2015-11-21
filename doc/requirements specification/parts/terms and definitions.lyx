@@ -573,6 +573,80 @@ newglossaryentry{component developer}{
 
 \begin_layout Plain Layout
 
+
+\backslash
+newglossaryentry{Palladio}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		foobar
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{CTA}{CTA}{
+\backslash
+gls{Common Trace API}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Common Trace API}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Common Trace API},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is an API developed by NovaTec GmbH for measuring the time specific code
+ sections needs to be executed.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \begin_layout Plain Layout
