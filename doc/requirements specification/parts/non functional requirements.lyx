@@ -149,7 +149,7 @@ name "/Q20/"
 
 \end_inset
 
-/Q20/ The plugin must be controllable via context menu in Eclipse.
+/Q20/ The plugin must be controllable via context menus in Eclipse.
  
 \begin_inset Note Note
 status open
@@ -199,8 +199,8 @@ name "/Q40/"
 
 \end_inset
 
-/OQ20/ The software for the code measurements should be exchangeable by
- another software which supports the 
+/OQ20/ The code measurement software should be exchangeable with another
+ software which supports the 
 \begin_inset ERT
 status open
 
