@@ -109,7 +109,7 @@ name "/E10/"
 
 \end_inset
 
-/E10/ Beagle requires Java and Eclipse to run.
+ Beagle requires Java and Eclipse to run.
 \end_layout
 
 \begin_layout Labeling
@@ -120,7 +120,7 @@ name "/E20/"
 
 \end_inset
 
-/E20/ Beagle requires a 
+ Beagle requires a 
 \begin_inset ERT
 status open
 
@@ -158,7 +158,7 @@ name "/E30/"
 
 \end_inset
 
-/E30/ Beagle requires the 
+ Beagle requires the 
 \begin_inset ERT
 status open
 
