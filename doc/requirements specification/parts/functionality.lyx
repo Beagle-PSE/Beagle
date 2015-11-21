@@ -76,7 +76,7 @@ Functionality
 
 \begin_layout Standard
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 The main chapter of this document.
@@ -113,7 +113,7 @@ Reference notation for nice to have functionality is /OF#/
 \end_layout
 
 \begin_layout Section
-Must Have Functional Requirements
+Functional Requirements
 \end_layout
 
 \begin_layout Labeling
@@ -165,7 +165,7 @@ name "/F30/"
 \end_layout
 
 \begin_layout Section
-Nice to Have Functional Requirements
+Functional Requirements
 \end_layout
 
 \begin_layout Labeling
