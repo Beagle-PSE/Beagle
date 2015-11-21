@@ -123,7 +123,7 @@ name "/Q10/"
 
 \end_inset
 
-/Q10/ Beagle must be an eclipse plugin.
+/Q10/ Beagle must be an Eclipse plugin.
  As all 
 \begin_inset ERT
 status open
@@ -137,7 +137,7 @@ gls{Palladio}
 
 \end_inset
 
- and its plugins are eclipse plugins, too, this ensures good usability for
+ and its plugins are Eclipse plugins, too, this ensures good usability for
  the users.
 \end_layout
 
