@@ -109,8 +109,8 @@ It can be regarded as the document’s abstract.
 \end_layout
 
 \begin_layout Standard
-Palladio is a software, that enables the user to analyse performance and
- other metrics for 
+Palladio is a software enabling the user to analyse performance and other
+ metrics for 
 \begin_inset ERT
 status open
 
@@ -139,8 +139,7 @@ gls{PCM}
 
 .
  When all this is done before any code is written, the models must, of course,
- be created manual, but in many scenarios, you already have existing source
- code.
+ be created manually, but in many scenarios, source code already exists.
  In this case, a software called 
 \begin_inset ERT
 status open
@@ -529,7 +528,7 @@ name "/B20/"
 \end_inset
 
 /B20/ Beagle does not reconstruct a model of the software's architecture
- form existing source code.
+ from existing source code.
 \end_layout
 
 \begin_layout Labeling

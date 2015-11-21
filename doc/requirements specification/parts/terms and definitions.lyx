@@ -176,8 +176,8 @@ newglossaryentry{branch}{
 
 \begin_layout Plain Layout
 
-		a construct in the source code, that only executes none or one of one
- or multiple cases.
+		a construct in the source code only executing none or one of one or multiple
+ cases.
  In Java the 
 \backslash
 lstinline{if}, 
@@ -224,8 +224,8 @@ newglossaryentry{loop construct}{
 
 \begin_layout Plain Layout
 
-		a construct in the source code, that executes a specific part none, one
- or multiple times.
+		a construct in the source code executing a specific part none, one or
+ multiple times.
  In Java the 
 \backslash
 lstinline{for} loop, the 
@@ -347,7 +347,7 @@ newglossaryentry{component based software}{
 
 \begin_layout Plain Layout
 
-	name={component base sotware},
+	name={component base software},
 \end_layout
 
 \begin_layout Plain Layout
@@ -515,10 +515,10 @@ newglossaryentry{SoMoX}{
 
 \begin_layout Plain Layout
 
-		is a plugin for palladio, that does static code analysis to reengineer
+		is a plugin for palladio, which does static code analysis to reengineer
  the architecture as a 
 \backslash
-gls{PCM} and reconstructs the internal structure of a software component
+gls{PCM} and reconstructs the internal structure of software components
  and calls to other components (SEFF).
 \end_layout
 
