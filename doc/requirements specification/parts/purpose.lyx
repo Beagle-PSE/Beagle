@@ -90,7 +90,7 @@ The reader should be introduced in the general conditions that make this
 
 \begin_layout Plain Layout
 It should explain the starting point (i.e.
- analysis of component based software & reverse engineering of the model
+ analysis of component-based software & reverse engineering of the model
  from source code), the shortcomings and challenge (i.e.
  no resource demand annotations), and how our software will try to solve
  that.
@@ -118,7 +118,7 @@ status open
 
 
 \backslash
-gls{component based software}
+gls{component-based software}
 \end_layout
 
 \end_inset
@@ -255,8 +255,7 @@ name "/C10/"
 
 \end_inset
 
- Beagle shall enable the user to analyse given source code for its
- 
+ Beagle shall enable the user to analyse given source code for its 
 \begin_inset ERT
 status open
 
@@ -282,8 +281,6 @@ glspl{resource demand}
 
 \end_inset
 
-
-\lang british
 .
 \end_layout
 
@@ -402,8 +399,8 @@ name "/OC20/"
 
 \end_inset
 
- The branch probability as a function of the input parameters should
- be annotated in the 
+ The branch probability as a function of the input parameters should be
+ annotated in the 
 \begin_inset ERT
 status open
 
@@ -464,8 +461,8 @@ name "/OC40/"
 
 \end_inset
 
- The number of loop executions as a function of the input parameters
- should be annotated in the 
+ The number of loop executions as a function of the input parameters should
+ be annotated in the 
 \begin_inset ERT
 status open
 
@@ -529,8 +526,8 @@ name "/B20/"
 
 \end_inset
 
- Beagle does not reconstruct a model of the software's architecture
- from existing source code.
+ Beagle does not reconstruct a model of the software's architecture from
+ existing source code.
 \end_layout
 
 \begin_layout Labeling
