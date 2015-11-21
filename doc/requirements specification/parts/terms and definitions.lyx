@@ -651,6 +651,40 @@ newglossaryentry{Common Trace API}{
 
 \begin_layout Plain Layout
 
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SEFF}{SEFF}{service effect specification}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{service effect specification}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={service effect specification},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
