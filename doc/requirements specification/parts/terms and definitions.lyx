@@ -161,6 +161,102 @@ i}ve,
 
 
 \backslash
+newglossaryentry{branch}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={branch construct},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={a construct in the source code, that only executes none or
+ one of one or multiple cases.
+ In Java the 
+\backslash
+lstinline{if}, 
+\backslash
+lstinline{if}-
+\backslash
+lstinline{else} and 
+\backslash
+lstinline{switch}-lstinline{case} constructs are branch constructs.}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{loop construct}
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={loop construct}
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={a construct in the source code, that executes a specific part
+ none, one or multiple times.
+ In Java the 
+\backslash
+lstinline{for} loop, the 
+\backslash
+lstinline{while} loop and the 
+\backslash
+lstinline{do}-
+\backslash
+lstinline{while} construct are loops.}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{loop action}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={
+\backslash
+lstinline{<<LoopAction>>}},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 newglossaryentry{component}{
 \end_layout
 
@@ -360,6 +456,7 @@ newglossaryentry{Palladio Component Model}{
 \begin_layout Plain Layout
 
 \end_layout
+
 
 \end_inset
 
