@@ -96,6 +96,50 @@ Reference notation is /A#/
 
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A10/"
+
+\end_inset
+
+/A10/ Reengineering of existing software
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A20/"
+
+\end_inset
+
+/A20/ Prototyping
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A30/"
+
+\end_inset
+
+/A30/ Development of Software (compare implementations)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A40/"
+
+\end_inset
+
+/A40/ Verifying of design and implementation
+\end_layout
+
 \begin_layout Section
 Target Group
 \end_layout
@@ -118,6 +162,44 @@ Reference notation is /G#/
 
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/G10/"
+
+\end_inset
+
+/G10/ Component Architects (as in definition of lecture by Reussner)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "/G20/"
+
+\end_inset
+
+
+\emph default
+/G20/ Component Deployers (as in definition of lecture by Reussner)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/G30/"
+
+\end_inset
+
+/G30/ Developers of component based software (as in definition of lecture
+ by Reussner)
+\end_layout
+
 \begin_layout Section
 Operation Conditions
 \end_layout
@@ -137,6 +219,29 @@ Reference notation is /A#/
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A50/"
+
+\end_inset
+
+/A50/ Desktop System (with Eclipse) with JRE
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A60/"
+
+\end_inset
+
+/A60/ Server (optional), add possibility to run on Server as additional
+ function
 \end_layout
 
 \end_body
