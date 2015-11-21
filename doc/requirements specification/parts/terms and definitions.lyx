@@ -3,29 +3,11 @@
 \begin_document
 \begin_header
 \textclass sdqthesis
-\begin_preamble
-% Build the SDQ Thesis title
-\settitle
-
-% Use the superior glossaries package to replace nomencl
-\usepackage[acronym,toc,xindy,nomain]{glossaries}
-\makeglossaries
-\usepackage[xindy]{imakeidx}
-\makeindex
-
-% Listings package is required by terms and definitions
-\usepackage{listings}
-% Include the terms and definitions file if presents (e.g. only when acutally building the glossary).
-\InputIfFileExists{\string"parts/terms and definitions.tex\string"}
-\end_preamble
-\options english,draft
 \use_default_options true
-\begin_modules
-enumitem
-\end_modules
+\master ../requirements specification.lyx
 \maintain_unincluded_children false
 \language british
-\language_package auto
+\language_package default
 \inputencoding utf8
 \fontencoding global
 \font_roman default
@@ -46,15 +28,6 @@ enumitem
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
-\pdf_bookmarksopenlevel 1
-\pdf_breaklinks true
-\pdf_pdfborder true
-\pdf_colorlinks false
-\pdf_backref false
-\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_package amsmath 2
@@ -73,7 +46,7 @@ enumitem
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date true
+\suppress_date false
 \justification true
 \use_refstyle 1
 \index Index
@@ -86,9 +59,8 @@ enumitem
 \paragraph_indentation default
 \quotes_language english
 \papercolumns 1
-\papersides 2
+\papersides 1
 \paperpagestyle default
-\listings_params "basicstyle={\ttfamily}"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -98,62 +70,21 @@ enumitem
 
 \begin_body
 
-\begin_layout Title
-Beagle
-\end_layout
-
-\begin_layout Subtitle
-Software Requirements Specification
-\end_layout
-
-\begin_layout Author
-Annika Berger, Joshua Gleitze, Roman Langrehr,
-\begin_inset Newline newline
-\end_inset
-
-Christoph Michelbach, Ansgar Spiegler, Michael Vogt
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "parts/terms and definitions.lyx"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Please define any technical or ambiguous terms as well as abbreviations.
- See parts/terms and definitions.lyx for details.
+This file contains definitions of all terms and abbreviations.
+ Note that defining a term here does not automatically include it in the
+ document’s glossary.
+ It has to actually be referenced somewhere to be included there.
 \end_layout
 
 \begin_layout Plain Layout
-To reference defined terms hit Ctrl+L to open a LaTeX environment.
- Use gls (lowercase), Gls (uppercase), glspl (lowercase plural), Glspl (uppercas
-e plural).
- Refer to README.md for further details.
-\end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{naiive}
-\end_layout
-
-\end_inset
-
-
+\emph on
+Make sure to define any abbreviation, technical or ambiguous term!
 \end_layout
 
 \end_inset
@@ -167,151 +98,102 @@ status open
 
 \begin_layout Plain Layout
 
-% Set the PDF metadata
+% For glossaries documentation, refer to https://en.wikibooks.org/wiki/LaTeX/Gloss
+ary#Defining_terms
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Example definitions, using most features:
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-setpdf
+newglossaryentry{naiive}{
 \end_layout
 
 \begin_layout Plain Layout
 
+	name=na
+\backslash
+"{
+\backslash
+i}ve,
 \end_layout
 
 \begin_layout Plain Layout
 
-% Start the page numbering in roman numbers
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a French loanword (adjective, form of naïf) indicating having or showing
+ a lack of experience, understanding or sophistication
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	sort=naive
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-setcounter{page}{1}
+newglossaryentry{branch}{
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-pagenumbering{roman}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-% If ever needed, describe separation hints here.
+	name={branch construct},
 \end_layout
 
 \begin_layout Plain Layout
 
-% For more details, see  http://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphen
-ation
+	description={
 \end_layout
 
 \begin_layout Plain Layout
 
-
+		a construct in the source code only executing none or one of one or multiple
+ cases.
+ In Java the 
 \backslash
-hyphenation{me-ta-mo-del} 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%Liste der ToDos (wird niemals in der finalen Version angezeigt werden):
-\end_layout
-
-\begin_layout Plain Layout
-
-
+lstinline{if}, 
 \backslash
-listoftodos
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
-
-
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section*
-Reference notation
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%Renew the label command to get labels as we want them
+lstinline{if}-
+\backslash
+lstinline{else} and 
+\backslash
+lstinline{switch}-
+\backslash
+lstinline{case} constructs are branch constructs.
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-makeatletter
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-label}[1]{%
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-protected@write 
-\backslash
-@auxout {}{
-\backslash
-string 
-\backslash
-newlabel {#1}{{#1}{
-\backslash
-thepage}{#1}{#1}{}} }%
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-hypertarget{#1}{#1}
+	}
 \end_layout
 
 \begin_layout Plain Layout
@@ -321,223 +203,1146 @@ hypertarget{#1}{#1}
 
 \begin_layout Plain Layout
 
-
-\backslash
-makeatother 
-\end_layout
-
-\end_inset
-
-This document uses a fixed notation for all of its contents, making them
- referenceable: 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/C#/ mandatory criterion
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/OC#/ optional criterion
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/B#/ purpose boundary
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/A#/ application attribute
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/G#/ target group
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/E#/ software environment attribute
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/F#/ mandatory functional requirement
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/OF#/ optional functional requirement
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/Q#/ mandatory non functional requirement
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/OQ#/ optional non functional requirement
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/T#/ test case
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/M#/ model
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-When listing anything with a reference notation, please do it in a List
- environment and add a label with the reference.
- For example:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/F10/"
-
-\end_inset
-
- Foobar
-\end_layout
-
-\begin_layout Plain Layout
-Whenever referencing something with a reference notation, use a cross reference:
- 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F10/"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-% Start the main document (includes new numbering in arabic numbers)
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-mainmatter
+newglossaryentry{loop construct}{
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "parts/purpose.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "parts/application.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "parts/environment.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "parts/functionality.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "parts/non functional requirements.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "parts/test cases.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "parts/models.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
 
 \begin_layout Plain Layout
 
-% Include the glossary
+	name={loop construct},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a construct in the source code executing a specific part none, one or
+ multiple times.
+ In Java the 
+\backslash
+lstinline{for} loop, the 
+\backslash
+lstinline{while} loop and the 
+\backslash
+lstinline{do}-
+\backslash
+lstinline{while} construct are loops.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-printglossary[title=Terms and Definitions]
+newglossaryentry{loop action}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={
+\backslash
+lstinline{LoopAction}},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={},
+\end_layout
+
+\begin_layout Plain Layout
+
+	sort={LoopAction}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		 is an artifact of the software development process with a description
+ of its application.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component-based software}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component-based software},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a software which is constituted of 
+\backslash
+glspl{component}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+todo{add def.
+ component-based software architecture}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component-based software architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component-based software architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a 
+\backslash
+gls{software architecture} ...
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+todo{add def.
+ resource demand}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{resource demand}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={resource demand},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		foobar
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{internal action}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={internal action},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		sequence of commands a 
+\backslash
+gls{component} executes without leaving its scope (e.g.
+ without calling other 
+\backslash
+glspl{component})
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={internal actions'}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{PCM}{PCM}{Palladio Component Model}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Palladio Component Model}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio Component Model},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a domain-specific modeling language (DSL) designed to enable early
+ performance predictions for 
+\backslash
+glspl{software architecture}.
+ It predicts the performance of 
+\backslash
+glspl{component-based software architecture}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Palladio}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is an approach for the definition of 
+\backslash
+glspl{software architecture} with a special focus on performance properties.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{SoMoX}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={SoMoX},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a plugin for palladio, which does static code analysis to reengineer
+ the architecture as a 
+\backslash
+gls{PCM} and reconstructs the internal structure of software components
+ and calls to other components (SEFF).
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{software architect}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={software architect},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a person who specifies an architecture from existing components and
+ interfaces.
+ They use architectural styles and architectural patterns, analyze architectural
+ specifications, and make design decisions.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{software architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={software architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		todo
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{logical architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={logical architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		describes a 
+\backslash
+glsuseri{system} logical partitioning into 
+\backslash
+glspl{layer}, 
+\backslash
+glspl{subsystem}, and package, and their communication with each other.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{deployment architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={deployment architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		describes in which hardware node each 
+\backslash
+gls{component} of a 
+\backslash
+gls{system} is deployed.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{system}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={system},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={system's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		(usually) reflects the organizational structure that built it.
+ (Conway's law)
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{CTA}{CTA}{
+\backslash
+gls{Common Trace API}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Common Trace API}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Common Trace API},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is an API developed by NovaTec GmbH for measuring the time specific code
+ sections needs to be executed.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{subsystem}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={subsystem},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a self-contained 
+\backslash
+gls{system} within a larger 
+\backslash
+gls{system}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{layer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={layer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		describes conceptual separation in software.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{tier}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={tier},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		consists of a server or group of servers.
+ Tiers are physically separated from each other.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component developer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component developer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		builds composite 
+\backslash
+glspl{component}, specifies 
+\backslash
+glspl{component}, interfaces, and data types, and specifies data types.
+ It creates service effect specifications, stores modelling and implementation
+ artecfacts in repositories, and implements, tests, and maintains 
+\backslash
+glspl{component}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SEFF}{SEFF}{Service Effect Specification}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Service Effect Specification}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio Component Model},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		describes the inner-component behaviour of a component operation on a
+ highly abstract level by specifying the relationship between provided and
+ required services of a component.
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{system deployer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={system deployer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		models the resource environments and allocations of components to resources.
+ It also sets up the resource environments, deploys components onto resources,
+ and maintains the running system.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
