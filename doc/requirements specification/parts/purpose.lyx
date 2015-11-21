@@ -108,6 +108,98 @@ It can be regarded as the document’s abstract.
 
 \end_layout
 
+\begin_layout Standard
+Palladio is a software, that enables the user to analyse performance and
+ other metrics for 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component based software}
+\end_layout
+
+\end_inset
+
+.
+ Therefore the software must be meta-modelled as a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ When all this is done before any code is written, the models must, of course,
+ be created manual, but in many scenarios, you already have existing source
+ code.
+ In this case, a software called 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ does static code analysis to reengineer the architecture as a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ Unfortunaly 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ doesn't analyze 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+, which are essential for performance analysis.
+ The purpose of Beagle is, to analyse the software dynamically by initiating
+ performance measurments on the source code and to determine the resource
+ demands, a component needs to perform a specfic operation.
+\end_layout
+
 \begin_layout Section
 Must Have Criteria
 \end_layout
@@ -191,8 +283,6 @@ glspl{resource demand}
 
 \end_inset
 
-
-\lang british
 .
 \end_layout
 
@@ -427,7 +517,7 @@ name "/B10/"
 
 \end_inset
 
-/B10/ Beagle does not perform actual measurements on source code.
+/B10/ Beagle does not perform actual measurements on the source code.
 \end_layout
 
 \begin_layout Labeling
@@ -438,7 +528,54 @@ name "/B20/"
 
 \end_inset
 
-/B20/ Beagle does not reconstruct a model of the software's architecture.
+/B20/ Beagle does not reconstruct a model of the software's architecture
+ form existing source code.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/B30/"
+
+\end_inset
+
+/B30/ Beagle does not reconstruct the internal structure of a software component
+ and calls to other components.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+SEFF-Diagramme
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/B40/"
+
+\end_inset
+
+/B40/ Beagle only analyses Java programs.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/B50/"
+
+\end_inset
+
+/B50/ Beagle does no perfomance analysis.
+ It only analyses and anotates the resource demands, performance analysis
+ can be done by Palladio.
 \end_layout
 
 \end_body
