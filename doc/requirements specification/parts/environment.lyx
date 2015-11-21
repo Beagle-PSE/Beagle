@@ -74,6 +74,68 @@
 Environment
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E10/"
+
+\end_inset
+
+/E10/ As environment for the software are Eclipse and Java requierd.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E20/"
+
+\end_inset
+
+/E20/ Also Beagle needs the
+ 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ becourse it is depends on it.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E30/"
+
+\end_inset
+
+/E30/ Another thing is the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ which is requierd.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
