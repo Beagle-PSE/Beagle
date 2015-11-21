@@ -17,7 +17,7 @@
 % Include the terms and definitions file if presents (e.g. only when acutally building the glossary).
 \InputIfFileExists{\string"parts/terms and definitions.tex\string"}
 \end_preamble
-\options english,final
+\options english,draft
 \use_default_options true
 \maintain_unincluded_children false
 \language british
@@ -235,6 +235,27 @@ LatexCommand tableofcontents
 
 
 \begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%Liste der ToDos (wird niemals in der finalen Version angezeigt werden):
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+listoftodos
+\end_layout
+
 \end_inset
 
 
