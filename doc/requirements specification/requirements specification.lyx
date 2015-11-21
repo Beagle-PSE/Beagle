@@ -347,11 +347,11 @@ When listing anything with a reference notation, please do it in a List
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/F10/"
+name "/X10/"
 
 \end_inset
 
-/F10/ Foobar
+/X10/ Foobar
 \end_layout
 
 \begin_layout Plain Layout
@@ -359,7 +359,7 @@ Whenever referencing something with a reference notation, use a cross reference:
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F10/"
+reference "/X10/"
 
 \end_inset
 
