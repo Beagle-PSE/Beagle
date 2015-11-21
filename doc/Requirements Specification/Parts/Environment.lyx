@@ -134,7 +134,20 @@ gls{PCM}
 \end_inset
 
  instance modelling the software to be analysed.
- The model must contain all components and their 
+ The model must contain all 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ and their 
 \begin_inset ERT
 status open
 

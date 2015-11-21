@@ -123,7 +123,7 @@ name "/Q10/"
 
 \end_inset
 
-/Q10/ Beagle must be an Eclipse plugin.
+ Beagle shall be an Eclipse plugin.
  As both 
 \begin_inset ERT
 status open
@@ -137,8 +137,7 @@ gls{Palladio}
 
 \end_inset
 
- and its plugins are Eclipse plugins, too, this ensures good usability for
- the users.
+ and its plugins are Eclipse plugins, this ensures good usability for users.
 \end_layout
 
 \begin_layout Labeling
@@ -149,7 +148,7 @@ name "/Q20/"
 
 \end_inset
 
-/Q20/ The plugin must be controllable via context menus in Eclipse.
+ Beagle shall be controlled by context sensitive menus in Eclipse.
  
 \begin_inset Note Note
 status open
@@ -171,11 +170,11 @@ Nice To Have
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/Q30/"
+name "/OQ10/"
 
 \end_inset
 
-/OQ10/ Beagle should run on every system which runs Eclipse and 
+ Beagle should run on every system, Eclipse and 
 \begin_inset ERT
 status open
 
@@ -188,19 +187,19 @@ gls{Palladio}
 
 \end_inset
 
-.
+ run on.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/Q40/"
+name "/OQ20/"
 
 \end_inset
 
-/OQ20/ The code measurement software should be exchangeable with another
- software which supports the 
+ The code measurement software should be exchangeable with any software
+ which supports the 
 \begin_inset ERT
 status open
 
