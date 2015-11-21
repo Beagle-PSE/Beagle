@@ -111,5 +111,110 @@ Reference notation for nice to have requirements is /OQ#/
 
 \end_layout
 
+\begin_layout Section
+Must Have Non Function Requirements
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q10/"
+
+\end_inset
+
+/Q10/ Beagle must be an eclipse plugin.
+ As all 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{palladio}
+\end_layout
+
+\end_inset
+
+ and its plugins are eclipse plugins, too, this ensures good usability for
+ the users.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q20/"
+
+\end_inset
+
+/Q20/ The plugin must be controllable via context menu in eclipse.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+More precise?!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Nice To Have Function Requirements
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q30/"
+
+\end_inset
+
+/OQ10/ Begale should run on every system, where eclipse and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{palladio}
+\end_layout
+
+\end_inset
+
+ runs.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q40/"
+
+\end_inset
+
+/OQ20/ The software for the code measurements should be exchangeable by
+ another software which supports the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \end_body
 \end_document
