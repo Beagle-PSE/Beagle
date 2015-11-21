@@ -444,6 +444,43 @@ glspl{component})
 
 \begin_layout Plain Layout
 
+
+\backslash
+newacronym{CTA}{CTA}{Common Trace API}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+todo{add a short but precise definition of Common Trace API by a renowned
+ source}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Common Trace API}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Common Trace API},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
