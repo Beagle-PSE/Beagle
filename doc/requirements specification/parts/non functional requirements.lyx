@@ -112,7 +112,7 @@ Reference notation for nice to have requirements is /OQ#/
 \end_layout
 
 \begin_layout Section
-Must Have Non Function Requirements
+Must Have
 \end_layout
 
 \begin_layout Labeling
@@ -149,7 +149,7 @@ name "/Q20/"
 
 \end_inset
 
-/Q20/ The plugin must be controllable via context menu in eclipse.
+/Q20/ The plugin must be controllable via context menu in Eclipse.
  
 \begin_inset Note Note
 status open
@@ -164,7 +164,7 @@ More precise?!
 \end_layout
 
 \begin_layout Section
-Nice To Have Function Requirements
+Nice To Have
 \end_layout
 
 \begin_layout Labeling
@@ -175,7 +175,7 @@ name "/Q30/"
 
 \end_inset
 
-/OQ10/ Beagle should run on every system which runs eclipse and 
+/OQ10/ Beagle should run on every system which runs Eclipse and 
 \begin_inset ERT
 status open
 
