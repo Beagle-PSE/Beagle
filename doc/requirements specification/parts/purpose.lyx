@@ -168,7 +168,7 @@ gls{PCM}
 \end_inset
 
 .
- Unfortunaly 
+ Unfortunately 
 \begin_inset ERT
 status open
 
@@ -181,7 +181,7 @@ gls{SoMoX}
 
 \end_inset
 
- doesn't analyze 
+ doesn't analyse 
 \begin_inset ERT
 status open
 
@@ -196,8 +196,8 @@ glspl{resource demand}
 
 , which are essential for performance analysis.
  The purpose of Beagle is, to analyse the software dynamically by initiating
- performance measurments on the source code and to determine the resource
- demands, a component needs to perform a specfic operation.
+ performance measurements on the source code and to determine the resource
+ demands, a component needs to perform a specific operation.
 \end_layout
 
 \begin_layout Section
@@ -256,7 +256,7 @@ name "/C10/"
 
 \end_inset
 
-/C10/ Beagle shall enable the user to analyze given source code for its
+/C10/ Beagle shall enable the user to analyse given source code for its
  
 \begin_inset ERT
 status open
@@ -362,7 +362,7 @@ name "/OC10/"
 
 \end_inset
 
-/OC10/ Beagle should determine the aproximate probability in 
+/OC10/ Beagle should determine the approximate probability in 
 \begin_inset ERT
 status open
 
@@ -375,7 +375,7 @@ glspl{branch}
 
 \end_inset
 
-, which are annotaed in the 
+, which are annotated in the 
 \begin_inset ERT
 status open
 
@@ -389,7 +389,7 @@ gls{PCM}
 \end_inset
 
 , for each case.
- If the prohability depends on the input parameters, Beagle should determine
+ If the probability depends on the input parameters, Beagle should determine
  this dependency.
 \end_layout
 
@@ -401,7 +401,7 @@ name "/OC20/"
 
 \end_inset
 
-/OC20/ The branch prohabilitys as a function of the input parameters should
+/OC20/ The branch probability as a function of the input parameters should
  be annotated in the 
 \begin_inset ERT
 status open
@@ -439,7 +439,7 @@ glspl{loop construct}
 
 \end_inset
 
-, which are annotaed in the 
+, which are annotated in the 
 \begin_inset ERT
 status open
 
@@ -573,8 +573,8 @@ name "/B50/"
 
 \end_inset
 
-/B50/ Beagle does no perfomance analysis.
- It only analyses and anotates the resource demands, performance analysis
+/B50/ Beagle does no performance analysis.
+ It only analyses and annotates the resource demands, performance analysis
  can be done by Palladio.
 \end_layout
 
