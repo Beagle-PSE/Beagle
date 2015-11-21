@@ -307,9 +307,8 @@ newglossaryentry{component}{
 
 \begin_layout Plain Layout
 
-		a component of 
-\backslash
-gls{component based software}.
+		 is an artifact of the software development process with a description
+ of its application.
 \end_layout
 
 \begin_layout Plain Layout
@@ -328,26 +327,14 @@ gls{component based software}.
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-todo{add a short but precise definition of component based software by a
- renowned source}
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
-newglossaryentry{component based software}{
+newglossaryentry{component-based software}{
 \end_layout
 
 \begin_layout Plain Layout
 
-	name={component base software},
+	name={component-based software},
 \end_layout
 
 \begin_layout Plain Layout
@@ -357,6 +344,13 @@ newglossaryentry{component based software}{
 
 \begin_layout Plain Layout
 
+		is a software which is constituted of 
+\backslash
+glspl{component}.
+\end_layout
+
+\begin_layout Plain Layout
+
 	}
 \end_layout
 
@@ -367,6 +361,66 @@ newglossaryentry{component based software}{
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component-based software architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component-based software architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a 
+\backslash
+gls{software architecture} ...
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{}
 \end_layout
 
 \begin_layout Plain Layout
@@ -455,14 +509,6 @@ newacronym{PCM}{PCM}{Palladio Component Model}
 
 \begin_layout Plain Layout
 
-%
-\backslash
-todo{add a short but precise definition of Palladio Component Model by a
- renowned source}
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 newglossaryentry{Palladio Component Model}{
@@ -475,7 +521,23 @@ newglossaryentry{Palladio Component Model}{
 
 \begin_layout Plain Layout
 
-	description={}
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a domain-specific modeling language (DSL) designed to enable early
+ performance predictions for 
+\backslash
+glspl{software architecture}.
+ It predicts the performance of 
+\backslash
+glspl{component-based software architecture}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
 \end_layout
 
 \begin_layout Plain Layout
@@ -485,23 +547,18 @@ newglossaryentry{Palladio Component Model}{
 
 \begin_layout Plain Layout
 
-		
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-newglossaryentry{software architect}{
+newglossaryentry{palladio}{
 \end_layout
 
 \begin_layout Plain Layout
 
-	name={software architect},
+	name={palladio},
 \end_layout
 
 \begin_layout Plain Layout
@@ -511,9 +568,9 @@ newglossaryentry{software architect}{
 
 \begin_layout Plain Layout
 
-		is a software which specifies an 
+		is an approach for the definition of 
 \backslash
-gls{architecture} from existing components and interfaces.
+glspl{software architecture} with a special focus on performance properties.
 \end_layout
 
 \begin_layout Plain Layout
@@ -554,6 +611,46 @@ newglossaryentry{SoMoX}{
 \backslash
 gls{PCM} and reconstructs the internal structure of software components
  and calls to other components (SEFF).
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{software architect}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={software architect},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a person who specifies an 
+\backslash
+gls{architecture} from existing components and interfaces.
+ They use architectural styles and architectural patterns, analyze architectural
+ specifications, and make design decisions.
 \end_layout
 
 \begin_layout Plain Layout
@@ -753,7 +850,7 @@ newglossaryentry{layer}{
 
 \begin_layout Plain Layout
 
-		describes conceputal separation in software.
+		describes conceptual separation in software.
 \end_layout
 
 \begin_layout Plain Layout
