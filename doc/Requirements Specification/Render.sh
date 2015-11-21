@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file="requirements specification"
+file="Requirements Specification"
 
 # fail the script if any command fails
 set -e 
