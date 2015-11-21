@@ -1345,6 +1345,41 @@ newglossaryentry{system deployer}{
 
 \end_layout
 
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Kieker}{
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+todo{add a short but precise definition of Kieker}
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Kieker},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+
 \end_inset
 
 
