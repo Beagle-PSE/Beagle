@@ -492,6 +492,46 @@ newglossaryentry{Palladio Component Model}{
 
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{SoMoX}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={SoMoX},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is a plugin for palladio, that does static code analysis to reengineer
+ the architecture as a 
+\backslash
+gls{PCM} and reconstructs the internal structure of a software component
+ and calls to other components (SEFF).
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
