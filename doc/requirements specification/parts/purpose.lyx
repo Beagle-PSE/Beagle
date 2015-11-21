@@ -255,7 +255,7 @@ name "/C10/"
 
 \end_inset
 
-/C10/ Beagle shall enable the user to analyse given source code for its
+ Beagle shall enable the user to analyse given source code for its
  
 \begin_inset ERT
 status open
@@ -264,12 +264,12 @@ status open
 
 
 \backslash
-glspl{internal action}
+glsuserii{internal action}
 \end_layout
 
 \end_inset
 
-' 
+ 
 \begin_inset ERT
 status open
 
@@ -282,6 +282,8 @@ glspl{resource demand}
 
 \end_inset
 
+
+\lang british
 .
 \end_layout
 
@@ -293,7 +295,7 @@ name "/C20/"
 
 \end_inset
 
-/C20/ Beagle shall automatically annotate its 
+ Beagle shall automatically annotate its 
 \begin_inset ERT
 status open
 
@@ -361,7 +363,7 @@ name "/OC10/"
 
 \end_inset
 
-/OC10/ Beagle should determine the approximate probability in 
+ Beagle should determine the approximate probability in 
 \begin_inset ERT
 status open
 
@@ -400,7 +402,7 @@ name "/OC20/"
 
 \end_inset
 
-/OC20/ The branch probability as a function of the input parameters should
+ The branch probability as a function of the input parameters should
  be annotated in the 
 \begin_inset ERT
 status open
@@ -425,7 +427,7 @@ name "/OC30/"
 
 \end_inset
 
-/OC30/ Beagle should determine in 
+ Beagle should determine in 
 \begin_inset ERT
 status open
 
@@ -462,7 +464,7 @@ name "/OC40/"
 
 \end_inset
 
-/OC40/ The number of loop executions as a function of the input parameters
+ The number of loop executions as a function of the input parameters
  should be annotated in the 
 \begin_inset ERT
 status open
@@ -516,7 +518,7 @@ name "/B10/"
 
 \end_inset
 
-/B10/ Beagle does not perform actual measurements on the source code.
+ Beagle does not perform actual measurements on the source code.
 \end_layout
 
 \begin_layout Labeling
@@ -527,7 +529,7 @@ name "/B20/"
 
 \end_inset
 
-/B20/ Beagle does not reconstruct a model of the software's architecture
+ Beagle does not reconstruct a model of the software's architecture
  from existing source code.
 \end_layout
 
@@ -539,7 +541,7 @@ name "/B30/"
 
 \end_inset
 
-/B30/ Beagle does not reconstruct the internal structure of a software component
+ Beagle does not reconstruct the internal structure of a software component
  and calls to other components.
 \begin_inset Note Note
 status open
@@ -561,7 +563,7 @@ name "/B40/"
 
 \end_inset
 
-/B40/ Beagle only analyses Java programs.
+ Beagle only analyses Java programs.
 \end_layout
 
 \begin_layout Labeling
@@ -572,7 +574,7 @@ name "/B50/"
 
 \end_inset
 
-/B50/ Beagle does no performance analysis.
+ Beagle does no performance analysis.
  It only analyses and annotates the resource demands, performance analysis
  can be done by Palladio.
 \end_layout

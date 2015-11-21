@@ -434,7 +434,12 @@ glspl{component})
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={internal actions'}
 \end_layout
 
 \begin_layout Plain Layout
@@ -485,11 +490,197 @@ newglossaryentry{Palladio Component Model}{
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{software architect}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={sotware architect},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{system deployer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={system deployer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component developer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component developer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
 		
 \end_layout
 
 \begin_layout Plain Layout
 
+
+\backslash
+newglossaryentry{Palladio}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		foobar
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{CTA}{CTA}{
+\backslash
+gls{Common Trace API}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Common Trace API}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Common Trace API},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		is an API developed by NovaTec GmbH for measuring the time specific code
+ sections needs to be executed.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SEFF}{SEFF}{service effect specification}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{service effect specification}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={service effect specification},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \begin_layout Plain Layout

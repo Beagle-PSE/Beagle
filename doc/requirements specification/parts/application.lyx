@@ -104,7 +104,7 @@ name "/A10/"
 
 \end_inset
 
-/A10/ Reengineering of existing software
+ Reengineering of existing software.
 \end_layout
 
 \begin_layout Labeling
@@ -115,7 +115,7 @@ name "/A20/"
 
 \end_inset
 
-/A20/ Prototyping
+ Prototyping
 \end_layout
 
 \begin_layout Labeling
@@ -126,7 +126,9 @@ name "/A30/"
 
 \end_inset
 
-/A30/ Development of Software (compare implementations)
+ Software development.
+ Early implementations of components can be analysed with Beagle in order
+ to predict its performance in interaction with the software system.
 \end_layout
 
 \begin_layout Labeling
@@ -137,7 +139,7 @@ name "/A40/"
 
 \end_inset
 
-/A40/ Verifying of design and implementation
+ Verifying of design and implementation
 \end_layout
 
 \begin_layout Section
@@ -149,7 +151,7 @@ Target Group
 status open
 
 \begin_layout Plain Layout
-Defines the software’s target groups.
+Defines the software's target groups.
  They will typically be logically derived from the above part.
 \end_layout
 
@@ -170,22 +172,65 @@ name "/G10/"
 
 \end_inset
 
-/G10/ Component Architects (as in definition of lecture by Reussner)
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Glspl{software architect}
+\end_layout
+
+\end_inset
+
+ will use Beagle predominantly for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A10/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A40/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\emph on
 \begin_inset CommandInset label
 LatexCommand label
 name "/G20/"
 
 \end_inset
 
+ 
+\begin_inset ERT
+status open
 
-\emph default
-/G20/ Component Deployers (as in definition of lecture by Reussner)
+\begin_layout Plain Layout
+
+
+\backslash
+Glspl{system deployer}
+\end_layout
+
+\end_inset
+
+ will use Beagle predominantly for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A40/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -196,8 +241,34 @@ name "/G30/"
 
 \end_inset
 
-/G30/ Developers of component based software (as in definition of lecture
- by Reussner)
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Glspl{component developer}
+\end_layout
+
+\end_inset
+
+ will use Beagle predominantly for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A20/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A30/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -225,23 +296,22 @@ Reference notation is /A#/
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/A50/"
+name "/A100/"
 
 \end_inset
 
-/A50/ Desktop System (with Eclipse) with JRE
+ Desktop System (with Eclipse) with JRE
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/A60/"
+name "/A110/"
 
 \end_inset
 
-/A60/ Server (optional), add possibility to run on Server as additional
- function
+ Server (optional), add possibility to run on Server as additional function
 \end_layout
 
 \end_body

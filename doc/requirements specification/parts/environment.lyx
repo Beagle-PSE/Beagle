@@ -101,5 +101,78 @@ Reference notation is /E#/
 
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E10/"
+
+\end_inset
+
+ Beagle requires Java and Eclipse to run.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E20/"
+
+\end_inset
+
+ Beagle requires a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance modelling the software to be analysed.
+ The model must contain all components and their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E30/"
+
+\end_inset
+
+ Beagle requires the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ to communicate with performance measurement software.
+\end_layout
+
 \end_body
 \end_document
