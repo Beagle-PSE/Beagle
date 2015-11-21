@@ -104,7 +104,7 @@ name "/A10/"
 
 \end_inset
 
-/A10/ Reengineering of existing software.
+ Reengineering of existing software.
 \end_layout
 
 \begin_layout Labeling
@@ -115,7 +115,7 @@ name "/A20/"
 
 \end_inset
 
-/A20/ Prototyping
+ Prototyping
 \end_layout
 
 \begin_layout Labeling
@@ -126,7 +126,7 @@ name "/A30/"
 
 \end_inset
 
-/A30/ Software development.
+ Software development.
  Early implementations of components can be analysed with Beagle in order
  to predict its performance in interaction with the software system.
 \end_layout
@@ -139,7 +139,7 @@ name "/A40/"
 
 \end_inset
 
-/A40/ Verifying of design and implementation
+ Verifying of design and implementation
 \end_layout
 
 \begin_layout Section
@@ -172,7 +172,7 @@ name "/G10/"
 
 \end_inset
 
-/G10/ 
+ 
 \begin_inset ERT
 status open
 
@@ -204,17 +204,13 @@ reference "/A40/"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\emph on
 \begin_inset CommandInset label
 LatexCommand label
 name "/G20/"
 
 \end_inset
 
-
-\emph default
-/G20/ 
+ 
 \begin_inset ERT
 status open
 
@@ -245,7 +241,7 @@ name "/G30/"
 
 \end_inset
 
-/G30/ 
+ 
 \begin_inset ERT
 status open
 
@@ -304,7 +300,7 @@ name "/A100/"
 
 \end_inset
 
-/A100/ Desktop System (with Eclipse) with JRE
+ Desktop System (with Eclipse) with JRE
 \end_layout
 
 \begin_layout Labeling
@@ -315,8 +311,7 @@ name "/A110/"
 
 \end_inset
 
-/A110/ Server (optional), add possibility to run on Server as additional
- function
+ Server (optional), add possibility to run on Server as additional function
 \end_layout
 
 \end_body
