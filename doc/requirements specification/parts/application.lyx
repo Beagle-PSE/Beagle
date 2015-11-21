@@ -104,7 +104,7 @@ name "/A10/"
 
 \end_inset
 
-/A10/ reengineering of existing software
+/A10/ Reengineering of existing software
 \end_layout
 
 \begin_layout Labeling
@@ -137,7 +137,7 @@ name "/A40/"
 
 \end_inset
 
-/A40/ verifying of design and implementation
+/A40/ Verifying of design and implementation
 \end_layout
 
 \begin_layout Section
@@ -196,7 +196,8 @@ name "/G30/"
 
 \end_inset
 
-/G30/ Developers of component bases software
+/G30/ Developers of component based software (as in definition of lecture
+ by Reussner)
 \end_layout
 
 \begin_layout Section
