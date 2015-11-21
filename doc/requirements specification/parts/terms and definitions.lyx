@@ -171,8 +171,13 @@ newglossaryentry{branch}{
 
 \begin_layout Plain Layout
 
-	description={a construct in the source code, that only executes none or
- one of one or multiple cases.
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a construct in the source code, that only executes none or one of one
+ or multiple cases.
  In Java the 
 \backslash
 lstinline{if}, 
@@ -181,7 +186,14 @@ lstinline{if}-
 \backslash
 lstinline{else} and 
 \backslash
-lstinline{switch}-lstinline{case} constructs are branch constructs.}
+lstinline{switch}-
+\backslash
+lstinline{case} constructs are branch constructs.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
 \end_layout
 
 \begin_layout Plain Layout
@@ -197,18 +209,23 @@ lstinline{switch}-lstinline{case} constructs are branch constructs.}
 
 
 \backslash
-newglossaryentry{loop construct}
+newglossaryentry{loop construct}{
 \end_layout
 
 \begin_layout Plain Layout
 
-	name={loop construct}
+	name={loop construct},
 \end_layout
 
 \begin_layout Plain Layout
 
-	description={a construct in the source code, that executes a specific part
- none, one or multiple times.
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a construct in the source code, that executes a specific part none, one
+ or multiple times.
  In Java the 
 \backslash
 lstinline{for} loop, the 
@@ -217,7 +234,12 @@ lstinline{while} loop and the
 \backslash
 lstinline{do}-
 \backslash
-lstinline{while} construct are loops.}
+lstinline{while} construct are loops.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
 \end_layout
 
 \begin_layout Plain Layout
@@ -240,17 +262,30 @@ newglossaryentry{loop action}{
 
 	name={
 \backslash
-lstinline{<<LoopAction>>}},
+lstinline{LoopAction}},
 \end_layout
 
 \begin_layout Plain Layout
 
-	description={}
+	description={},
+\end_layout
+
+\begin_layout Plain Layout
+
+	sort={LoopAction}
 \end_layout
 
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -297,7 +332,7 @@ gls{component based software}.
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 todo{add a short but precise definition of component based software by a
  renowned source}
@@ -420,7 +455,7 @@ newacronym{PCM}{PCM}{Palladio Component Model}
 
 \begin_layout Plain Layout
 
-
+%
 \backslash
 todo{add a short but precise definition of Palladio Component Model by a
  renowned source}
@@ -456,7 +491,6 @@ newglossaryentry{Palladio Component Model}{
 \begin_layout Plain Layout
 
 \end_layout
-
 
 \end_inset
 
