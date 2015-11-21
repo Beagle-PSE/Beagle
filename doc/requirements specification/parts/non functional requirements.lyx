@@ -175,7 +175,7 @@ name "/Q30/"
 
 \end_inset
 
-/OQ10/ Begale should run on every system, where eclipse and 
+/OQ10/ Beagle should run on every system which runs eclipse and 
 \begin_inset ERT
 status open
 
@@ -188,7 +188,7 @@ gls{Palladio}
 
 \end_inset
 
- runs.
+.
 \end_layout
 
 \begin_layout Labeling
