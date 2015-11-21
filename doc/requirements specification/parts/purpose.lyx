@@ -108,97 +108,6 @@ It can be regarded as the document’s abstract.
 
 \end_layout
 
-\begin_layout Standard
-Palladio is a software enabling the user to analyse performance and other
- metrics of 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component based software}
-\end_layout
-
-\end_inset
-
-.
- The software must be meta-modelled as a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- for the analysis.
- When all this is done before any code is written, the models must, of course,
- be created manually, but in many scenarios, source code already exists.
- In this case, a software called 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- does static code analysis to reengineer the architecture as a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-.
- Unfortunately 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- does not analyse 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{resource demand}
-\end_layout
-
-\end_inset
-
-, which are essential for performance analysis.
- The purpose of Beagle is to analyse the software dynamically by initiating
- performance measurements on the source code and to determine the resource
- demands a component needs to perform a specific operation.
-\end_layout
-
 \begin_layout Section
 Must Have Criteria
 \end_layout
@@ -255,7 +164,7 @@ name "/C10/"
 
 \end_inset
 
-/C10/ Beagle shall enable the user to analyse given source code for its
+/C10/ Beagle shall enable the user to analyze given source code for its
  
 \begin_inset ERT
 status open
@@ -282,6 +191,8 @@ glspl{resource demand}
 
 \end_inset
 
+
+\lang british
 .
 \end_layout
 
@@ -361,7 +272,7 @@ name "/OC10/"
 
 \end_inset
 
-/OC10/ Beagle should determine the approximate probability in 
+/OC10/ Beagle should determine the aproximate probability in 
 \begin_inset ERT
 status open
 
@@ -374,7 +285,7 @@ glspl{branch}
 
 \end_inset
 
-, which are annotated in the 
+, which are annotaed in the 
 \begin_inset ERT
 status open
 
@@ -388,7 +299,7 @@ gls{PCM}
 \end_inset
 
 , for each case.
- If the probability depends on the input parameters, Beagle should determine
+ If the prohability depends on the input parameters, Beagle should determine
  this dependency.
 \end_layout
 
@@ -400,7 +311,7 @@ name "/OC20/"
 
 \end_inset
 
-/OC20/ The branch probability as a function of the input parameters should
+/OC20/ The branch prohabilitys as a function of the input parameters should
  be annotated in the 
 \begin_inset ERT
 status open
@@ -438,7 +349,7 @@ glspl{loop construct}
 
 \end_inset
 
-, which are annotated in the 
+, which are annotaed in the 
 \begin_inset ERT
 status open
 
@@ -516,7 +427,7 @@ name "/B10/"
 
 \end_inset
 
-/B10/ Beagle does not perform actual measurements on the source code.
+/B10/ Beagle does not perform actual measurements on source code.
 \end_layout
 
 \begin_layout Labeling
@@ -527,54 +438,7 @@ name "/B20/"
 
 \end_inset
 
-/B20/ Beagle does not reconstruct a model of the software's architecture
- from existing source code.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/B30/"
-
-\end_inset
-
-/B30/ Beagle does not reconstruct the internal structure of a software component
- and calls to other components.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-SEFF-Diagramme
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/B40/"
-
-\end_inset
-
-/B40/ Beagle only analyses Java programs.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/B50/"
-
-\end_inset
-
-/B50/ Beagle does no performance analysis.
- It only analyses and annotates the resource demands, performance analysis
- can be done by Palladio.
+/B20/ Beagle does not reconstruct a model of the software's architecture.
 \end_layout
 
 \end_body
