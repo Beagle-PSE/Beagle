@@ -124,7 +124,7 @@ name "/F10/"
 
 \end_inset
 
-/F10/ Reasonable measurement practice (e.g.
+ Reasonable measurement practice (e.g.
  speed vs.
  accuracy)
 \end_layout
@@ -137,7 +137,7 @@ name "/F20/"
 
 \end_inset
 
-/F20/ Software should only depend on Eclipse, the 
+ Software should only depend on Eclipse, the 
 \begin_inset ERT
 status open
 
@@ -161,7 +161,7 @@ name "/F30/"
 
 \end_inset
 
-/F30/ Parameterisation of results
+ Parameterisation of results
 \end_layout
 
 \begin_layout Section
@@ -176,8 +176,7 @@ name "/OF10/"
 
 \end_inset
 
-/OF10/ Analyse source code for its architecture and performance in one turn
- (e.g.
+ Analyse source code for its architecture and performance in one turn (e.g.
  with 
 \begin_inset ERT
 status open
