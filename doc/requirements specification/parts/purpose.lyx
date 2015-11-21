@@ -110,7 +110,7 @@ It can be regarded as the document’s abstract.
 
 \begin_layout Standard
 Palladio is a software enabling the user to analyse performance and other
- metrics for 
+ metrics of 
 \begin_inset ERT
 status open
 
@@ -124,7 +124,7 @@ gls{component based software}
 \end_inset
 
 .
- Therefore the software must be meta-modelled as a 
+ The software must be meta-modelled as a 
 \begin_inset ERT
 status open
 
@@ -137,7 +137,7 @@ gls{PCM}
 
 \end_inset
 
-.
+ for the analysis.
  When all this is done before any code is written, the models must, of course,
  be created manually, but in many scenarios, source code already exists.
  In this case, a software called 
@@ -180,7 +180,7 @@ gls{SoMoX}
 
 \end_inset
 
- doesn't analyse 
+ does not analyse 
 \begin_inset ERT
 status open
 
@@ -194,9 +194,9 @@ glspl{resource demand}
 \end_inset
 
 , which are essential for performance analysis.
- The purpose of Beagle is, to analyse the software dynamically by initiating
+ The purpose of Beagle is to analyse the software dynamically by initiating
  performance measurements on the source code and to determine the resource
- demands, a component needs to perform a specific operation.
+ demands a component needs to perform a specific operation.
 \end_layout
 
 \begin_layout Section
