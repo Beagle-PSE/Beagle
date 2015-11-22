@@ -67,6 +67,19 @@ To include references to defined terms, hit `Ctrl+L` (<=> include LaTeX environm
 
 _Make sure to always reference defined terms!_
 
+### BiBTeX
+
+#### Add a new Bibliography entry
+All Bibliography entries are stored in the file [Requirements Specification.bib](/Requirements Specification.bib). To add an entry, you have multiple options:
+
+ * Just edit the file.
+ * Use [JabRef](http://sourceforge.net/projects/jabref/files/jabref/2.11.1/), a GUI tool for BiBTeX
+ * Copy BiBTeX Code from sites like [Google Books](https://books.google.de/)
+ 
+ 
+ #### Cite
+ To cite use LyX: Insert -> Citation
+
 ## Building
 Please note that the LyX preview builds will not contain the glossary. There seems to be no way to achieve that. To make a build containing the glossary, use the provided shell scripts:
  * For Linux: `render.sh`. You’ll need to install `xindy` (`sudo apt-get install xindy` on Debian).
