@@ -442,7 +442,12 @@ newglossaryentry{component-based software architecture}{
 
 		is a 
 \backslash
-gls{software architecture} ...
+gls{software architecture} utilising the concept of 
+\backslash
+gls{component-based software}, therefore taking advantage of the reusability
+ of its parts and preserving the same for newly created 
+\backslash
+glspl{component}.
 \end_layout
 
 \begin_layout Plain Layout
