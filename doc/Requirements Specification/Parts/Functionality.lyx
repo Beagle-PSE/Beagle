@@ -230,7 +230,7 @@ status open
 
 
 \backslash
-glspl{measuring software}
+glspl{measurement software}
 \end_layout
 
 \end_inset
@@ -341,6 +341,184 @@ name "/F60/"
  Beagle does not modify the provided source code files.
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF10/"
+
+\end_inset
+
+ Beagle approximately determines relations between 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ interface parameters and 
+their 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF20/"
+
+\end_inset
+
+ Beagle determines the probability for each case to be taken in encountered
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{branch construct}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF30/"
+
+\end_inset
+
+ Beagle determines the probability for each case to be taken in encountered
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{branch construct}
+\end_layout
+
+\end_inset
+
+ depending on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface parameters.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF40/"
+
+\end_inset
+
+ Beagle determines the probable number of repeats in 
+encountered 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{loop construct}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF50/"
+
+\end_inset
+
+ Beagle determines the probable number of repeats in 
+encountered 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{loop construct}
+\end_layout
+
+\end_inset
+
+ depending on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface parameters.
+\end_layout
+
 \begin_layout Subsection
 Result Annotation
 \end_layout
@@ -374,13 +552,8 @@ Functional Requirements
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OF10/"
-
-\end_inset
-
- Analyse source code for its architecture and performance in one turn (e.g.
+todo Analyse source code for its architecture and performance in one turn
+ (e.g.
  with 
 \begin_inset ERT
 status open
