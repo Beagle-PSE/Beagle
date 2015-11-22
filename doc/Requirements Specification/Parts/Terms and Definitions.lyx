@@ -423,14 +423,6 @@ glspl{component}.
 
 \begin_layout Plain Layout
 
-%
-\backslash
-todo{add def.
- component-based software architecture}
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 newglossaryentry{component-based software architecture}{
@@ -465,14 +457,6 @@ gls{software architecture} ...
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-todo{add def.
- resource demand}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1203,13 +1187,6 @@ glspl{component} to resources.
 
 \backslash
 newglossaryentry{Kieker}{
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-todo{add a short but precise definition of Kieker}
 \end_layout
 
 \begin_layout Plain Layout
