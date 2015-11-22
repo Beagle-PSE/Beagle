@@ -2,10 +2,6 @@
 % Encoding: Cp1252
 
 
-@Other{conwaysLaw,
-  Url                      = {http://www.melconway.com/Home/Committees_Paper.html}
-}
-
 @Electronic{tuChemPcm,
   Title                    = {Palladio Component Model},
   Month                    = {09},
