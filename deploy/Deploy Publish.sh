@@ -14,36 +14,34 @@ if [ -z ${GH_TOKEN:+1} ]; then
 	exit 0
 fi
 
-echo $PWD
-ls -la
-
 PUBLISH=../publish
 BASE=$PWD
 mkdir -p $PUBLISH
 cd $PUBLISH
 
 REPO="https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
-git clone $REPO .
 
-echo $PWD
-ls -la
+function set_git_user {
+	git config user.name "Travis CI"
+	git config user.email "travis@example.org"
+}
 
-if ! [ `git branch --list gh-pages `]
+if ! [ `git ls-remote --heads $REPO branch | wc -l ` == 1 ]
 then
+	git clone $REPO .
+	echo "Continuing existing branch gh-pages"
+	set_git_user
+else
+	git init
+	set_git_user
+	
+	echo "Creating new branch gh-pages"
+	cp "$BASE/deploy/Default gh-pages README.md" "README.md"
+	git add .
+	git commit -m "gh-pages created by Travis CI"
 	git branch --no-track gh-pages
 fi
 git checkout gh-pages
-
-git config user.name "Travis CI"
-git config user.email "travis@example.org"
-
-# Remove all content - except the git files, duh
-find . -maxdepth 1 \! \( -name .git -o -name . \) -exec rm -rf {} \;
-
-echo $PWD
-ls -la
-
-git branch
 
 ###
 # Gather all assets that will be released
@@ -52,22 +50,23 @@ git branch
 # Build the master branch to the top most folder, but all other branches to subfolders
 [ $TRAVIS_BRANCH == "master" ] && pubdir="." || pubdir="branches/$TRAVIS_BRANCH"
 mkdir -p "$pubdir"
+cd "$pubdir"
+
+# Remove all content - except the git files and the branches folder
+find . -maxdepth 1 \! \( -name .git -o -name . -o -name branches \) -exec rm -rf {} \;
 
 # Requirements specification
 
-cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" "$pubdir"
+cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" .
 
 ###
 
-echo $PWD
-ls -la
-
 git add --all .
-git commit -m "Travis build of $TRAVIS_COMMIT_RANGE"
+git commit -m "Travis build of $TRAVIS_BRANCH ($TRAVIS_COMMIT_RANGE)"
 
 # Push from the current repo's gh-pages branch to the remote
 # repo's gh-pages branch. We redirect any output to
 # /dev/null to hide any sensitive credential data that might otherwise be exposed.
 git push --quiet $REPO gh-pages:gh-pages > /dev/null 2>&1
 
-cd $OLDPWD
+cd $BASE
