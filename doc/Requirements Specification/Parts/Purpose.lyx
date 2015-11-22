@@ -691,7 +691,7 @@ glsuseriv{software architecture}
 
 \end_inset
 
- from their source code, as this is done by 
+ from their source code, as this is done by other tools like 
 \begin_inset ERT
 status open
 
@@ -741,7 +741,7 @@ gls{SEFF}
 
 \end_inset
 
-, as this is done by 
+, as this is done by other tools like 
 \begin_inset ERT
 status open
 
@@ -785,7 +785,7 @@ status open
 
 
 \backslash
-gls{SoMoX}
+gls{Palladio}
 \end_layout
 
 \end_inset
