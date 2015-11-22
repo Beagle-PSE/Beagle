@@ -5,6 +5,9 @@ file="Requirements Specification"
 # fail the script if any command fails
 set -e 
 
+# Delete old rendered file
+rm "Requirements Specification.pdf"
+
 # Copy everything to a new folder that we can savely delete
 tmpdir=`mktemp -d`
 cp -r * "$tmpdir"
