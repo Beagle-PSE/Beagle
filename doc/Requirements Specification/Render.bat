@@ -20,6 +20,7 @@ cd %TMPDIR%
 pdflatex %FILENAME%.tex
 :: make the glossary
 makeglossaries %FILENAME%
+bibtex %FILENAME%
 :: render the pdf (we need at least two times. And you know… just to be sure ;))
 pdflatex %FILENAME%.tex
 pdflatex %FILENAME%.tex

@@ -16,6 +16,7 @@ lyx -e pdflatex "$file.lyx"
 pdflatex "$file.tex"
 # make the glossary
 makeglossaries "$file"
+bibtex "$file"
 # render the pdf (we need at least two times. And you know… just to be sure ;))
 pdflatex "$file.tex"
 pdflatex "$file.tex"
