@@ -121,7 +121,7 @@ Gls{Palladio}
 
 \end_inset
 
- for a existing software Beagle is helpful to find bottlenecks and problems.
+ for a existing software Beagle is helpful to detect bottlenecks and problems.
  
 \end_layout
 
@@ -147,6 +147,8 @@ name "/A30/"
  Beagle can be used for software development.
  Early implementations of components can be analysed with Beagle in order
  to predict their performance in interaction with the software system.
+ This leads to earlier detection of arising problems which hence can be
+ fixed in time.
 \end_layout
 
 \begin_layout Labeling
@@ -158,9 +160,35 @@ name "/A40/"
 \end_inset
 
  Beagle can be used for the verifying of design and implementation.
- If Beagle was used to analyse the concept of a new software, the software
- can be analysed after implementation and thereby more easily be compared.
- 
+ After designing the software with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ and implementing it, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ and Beagle can be used to compare.
+ Differences and problems in implementation can be detected and resolved
+ more easily.
 \end_layout
 
 \begin_layout Section
