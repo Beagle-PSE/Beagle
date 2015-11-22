@@ -223,12 +223,12 @@ newglossaryentry{ID}{
 
 
 \backslash
-newglossaryentry{branch}{
+newglossaryentry{SEFF condition}{
 \end_layout
 
 \begin_layout Plain Layout
 
-	name={branch construct},
+	name={SEFF condition},
 \end_layout
 
 \begin_layout Plain Layout
@@ -238,9 +238,7 @@ newglossaryentry{branch}{
 
 \begin_layout Plain Layout
 
-		a construct in the source code only executing none or one of one or multiple
- cases.
- In Java the 
+		conditions (like Java's  
 \backslash
 lstinline{if}, 
 \backslash
@@ -250,7 +248,18 @@ lstinline{else} and
 \backslash
 lstinline{switch}-
 \backslash
-lstinline{case} statements form branch constructs.
+lstinline{case} statements) which affect the calls a 
+\backslash
+gls{component} makes to other 
+\backslash
+glspl{component}.
+ Such conditions are---contrary to conditions that stay within an 
+\backslash
+gls{internal action}---modeled in the 
+\backslash
+glsuseri{component} 
+\backslash
+gls{SEFF}.
 \end_layout
 
 \begin_layout Plain Layout
@@ -271,12 +280,12 @@ lstinline{case} statements form branch constructs.
 
 
 \backslash
-newglossaryentry{loop construct}{
+newglossaryentry{SEFF loop}{
 \end_layout
 
 \begin_layout Plain Layout
 
-	name={loop construct},
+	name={SEFF loop},
 \end_layout
 
 \begin_layout Plain Layout
@@ -286,17 +295,26 @@ newglossaryentry{loop construct}{
 
 \begin_layout Plain Layout
 
-		a construct in the source code executing a specific code block none, one
- or multiple times.
- In Java the 
+		loops (like Java's 
 \backslash
-lstinline{for} loop, the 
+lstinline{for}, 
 \backslash
-lstinline{while} loop and the 
+lstinline{while} and 
 \backslash
 lstinline{do}-
 \backslash
-lstinline{while} statements form loops.
+lstinline{while} statement) which affect the calls a 
+\backslash
+gls{component} makes to other 
+\backslash
+glspl{component}.
+ Such loops are---contrary to loops that stay within an 
+\backslash
+gls{internal action}---modeled in the 
+\backslash
+glsuseri{component} 
+\backslash
+gls{SEFF}.
 \end_layout
 
 \begin_layout Plain Layout
@@ -545,7 +563,9 @@ glspl{component})
 
 
 \backslash
-newacronym{PCM}{PCM}{Palladio Component Model}
+newacronym{PCM}{PCM}{
+\backslash
+gls{Palladio Component Model}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1099,7 +1119,9 @@ glspl{component}.
 
 
 \backslash
-newacronym{SEFF}{SEFF}{service effect specification}
+newacronym{SEFF}{SEFF}{
+\backslash
+gls{service effect specification}}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1111,7 +1133,7 @@ newglossaryentry{service effect specification}{
 
 \begin_layout Plain Layout
 
-	name={Palladio Component Model},
+	name={service effect specification},
 \end_layout
 
 \begin_layout Plain Layout

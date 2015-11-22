@@ -406,7 +406,7 @@ status open
 
 
 \backslash
-glspl{branch construct}
+glspl{SEFF condition}
 \end_layout
 
 \end_inset
@@ -431,7 +431,7 @@ status open
 
 
 \backslash
-glspl{branch construct}
+glspl{SEFF condition}
 \end_layout
 
 \end_inset
@@ -471,7 +471,7 @@ status open
 
 
 \backslash
-glspl{loop construct}
+glspl{SEFF loop}
 \end_layout
 
 \end_inset
@@ -498,7 +498,7 @@ status open
 
 
 \backslash
-glspl{loop construct}
+glspl{SEFF loop}
 \end_layout
 
 \end_inset
