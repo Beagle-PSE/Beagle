@@ -478,7 +478,18 @@ newglossaryentry{resource demand}{
 
 \begin_layout Plain Layout
 
-		foobar
+		how much of a certain resource---like CPU, Network oder hard disk drive---a
+ 
+\backslash
+gls{component} needs to offer a certain functionality.
+ A resource demand is ideally specified platform independently, e.g.
+ by specifiying required CPU cycles, megabytes to be read, etc.
+ If such information is not available, resource demands can be expressed
+ platform dependend, e.g.
+ in nanoseconds.
+ In this case, a certain degree of portability can still be achieved if
+ information about the used platforms' speed relative to each other is available.
+ 
 \end_layout
 
 \begin_layout Plain Layout
