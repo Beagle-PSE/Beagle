@@ -4,7 +4,6 @@ sudo: required
 dist: trusty
 
 before_script:
-  - ./deploy/Init\ Publish.sh
   - cd doc/Requirements\ Specification/
   - ./Install.sh
   - cd $OLDPWD

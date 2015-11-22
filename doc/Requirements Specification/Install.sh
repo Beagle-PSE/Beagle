@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Script used by Travis to install all required LaTeX and LyX assets.
 # You can use this as a reference when setting up your own system.
 

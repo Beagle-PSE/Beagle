@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # fail the script if any command fails
 set -e
 
@@ -12,28 +14,55 @@ if [ -z ${GH_TOKEN:+1} ]; then
 	exit 0
 fi
 
+echo $PWD
+ls -la
+
+PUBLISH=../publish
+BASE=$PWD
+mkdir -p $PUBLISH
+cd $PUBLISH
+
+REPO="https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+git clone $REPO .
+
+echo $PWD
+ls -la
+
+if ! [ `git branch --list gh-pages `]
+then
+	git branch --no-track gh-pages
+fi
+git checkout gh-pages
+
+git config user.name "Travis CI"
+git config user.email "travis@example.org"
+
+# Remove all content - except the git files, duh
+find . -maxdepth 1 \! \( -name .git -o -name . \) -exec rm -rf {} \;
+
+echo $PWD
+ls -la
+
+git branch
+
 ###
 # Gather all assets that will be released
 ###
 
 # Build the master branch to the top most folder, but all other branches to subfolders
-[ $TRAVIS_BRANCH == "master"] && pubdir="publish/" || pubdir="publish/branches/$TRAVIS_BRANCH/"
+[ $TRAVIS_BRANCH == "master" ] && pubdir="." || pubdir="branches/$TRAVIS_BRANCH"
 mkdir -p "$pubdir"
 
 # Requirements specification
 
-cp doc/Requirements\ Specification/Requirements\ Specification.pdf "$pubdir"
+cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" "$pubdir"
 
 ###
 
-REPO="https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
+echo $PWD
+ls -la
 
-
-cd publish
-
-ls -l
-
-git add .
+git add --all .
 git commit -m "Travis build of $TRAVIS_COMMIT_RANGE"
 
 # Push from the current repo's gh-pages branch to the remote
