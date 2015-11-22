@@ -296,7 +296,7 @@ lstinline{while} loop and the
 \backslash
 lstinline{do}-
 \backslash
-lstinline{while} stements form loops.
+lstinline{while} statements form loops.
 \end_layout
 
 \begin_layout Plain Layout
@@ -918,7 +918,7 @@ newglossaryentry{Common Trace API}{
 
 \begin_layout Plain Layout
 
-		is an API developed by NovaTec GmbH for measuring the time, specific code
+		an API developed by NovaTec GmbH for measuring the time, specific code
  sections need to be executed.
 \end_layout
 
