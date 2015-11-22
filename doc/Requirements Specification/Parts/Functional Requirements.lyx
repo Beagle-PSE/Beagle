@@ -113,7 +113,7 @@ Reference notation for nice to have functionality is /OF#/
 \end_layout
 
 \begin_layout Standard
-Given a software's source code together with a 
+Given a software's source code together with a valid 
 \begin_inset ERT
 status open
 
@@ -508,6 +508,468 @@ glsuseri{component}
 
 \begin_layout Section
 Result Annotation
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F100/"
+
+\end_inset
+
+ Beagles stores all its results in the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ (Hereafter to be called 
+\begin_inset Quotes eld
+\end_inset
+
+Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance”).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F110/"
+
+\end_inset
+
+ Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance is a valid 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F120/"
+
+\end_inset
+
+ As far as technically possible, Beagle's results can be read from Beagle's
+ result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance by a Palladio installation without Beagle.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F130/"
+
+\end_inset
+
+ Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance contains all contained 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{internal action}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F140/"
+
+\end_inset
+
+ Any information found in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance provided to Beagle will be found in Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF100/"
+
+\end_inset
+
+ Beagle annotates 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ in its result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance dependent on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface's parameters using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{PCM}
+\end_layout
+
+\end_inset
+
+ expression language for 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF110/"
+
+\end_inset
+
+ Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance contains all contained 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{SEFF condition}
+\end_layout
+
+\end_inset
+
+ estimated branch probability.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF120/"
+
+\end_inset
+
+ Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance contains all contained 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{SEFF condition}
+\end_layout
+
+\end_inset
+
+ estimated branch probability dependent on the containing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface's parameters.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF130/"
+
+\end_inset
+
+ Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance contains all contained 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{SEFF loop}
+\end_layout
+
+\end_inset
+
+ estimated branch probability.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF140/"
+
+\end_inset
+
+ Beagle's result 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance contains all contained 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{SEFF loop}
+\end_layout
+
+\end_inset
+
+ estimated branch probability dependent on the containing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface's parameters.
 \end_layout
 
 \begin_layout Labeling

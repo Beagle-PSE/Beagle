@@ -264,7 +264,17 @@ gls{SEFF}.
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	useri={SEFF conditions's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	userii={SEFF conditions'}
 \end_layout
 
 \begin_layout Plain Layout
@@ -319,7 +329,17 @@ gls{SEFF}.
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	useri={SEFF loop's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	userii={SEFF loops'}
 \end_layout
 
 \begin_layout Plain Layout
@@ -389,7 +409,17 @@ newglossaryentry{component}{
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={component's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={components'}
 \end_layout
 
 \begin_layout Plain Layout
@@ -563,7 +593,7 @@ glspl{component})
 
 
 \backslash
-newacronym{PCM}{PCM}{
+newacronym[user1=PCM's]{PCM}{PCM}{
 \backslash
 gls{Palladio Component Model}}
 \end_layout
