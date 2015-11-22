@@ -6,7 +6,7 @@ file="Requirements Specification"
 set -e 
 
 # Delete old rendered file
-rm "Requirements Specification.pdf"
+rm -f "Requirements Specification.pdf"
 
 # Copy everything to a new folder that we can savely delete
 tmpdir=`mktemp -d`
