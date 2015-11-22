@@ -2,21 +2,11 @@ sudo: required
 dist: trusty
 
 script:
-  - ./deploy/publish-init.sh
-  - cd doc/requirements\ specification/
-  - ./install.sh
-  - ./render.sh
+  - ./deploy/Init\ Publish.sh
+  - cd doc/Requirements\ Specification/
+  - ./Install.sh
+  - ./Render.sh
   - cd $OLDPWD
   
 after_success:
-  - ./deploy/publish-deploy.sh
-
-addons:
-  apt:
-    packages:
-      - lyx
-      - texlive-latex-base
-      - texlive-latex-recommended
-      - texlive-latex-extra
-      - texlive-fonts-extra
-      
+  - ./deploy/Deploy\ Publish.sh
