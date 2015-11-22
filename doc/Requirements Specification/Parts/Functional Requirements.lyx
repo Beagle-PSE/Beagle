@@ -71,7 +71,7 @@
 \begin_body
 
 \begin_layout Chapter
-Functionality
+Functional Requirements
 \end_layout
 
 \begin_layout Standard
@@ -110,10 +110,6 @@ Reference notation for nice to have functionality is /OF#/
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Functional Requirements
 \end_layout
 
 \begin_layout Standard
@@ -159,7 +155,7 @@ gls{SEFF}
 , Beagle must fulfil the following requirements:
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Measurement
 \end_layout
 
@@ -184,8 +180,8 @@ gls{PCM}
 
 \end_inset
 
-, Beagle finds the sections in the source code that must be measured in
- order to find 
+, Beagle determines the sections in the source code to be measured in order
+ to find 
 \begin_inset ERT
 status open
 
@@ -370,10 +366,7 @@ glsuserii{component}
 
 \end_inset
 
- interface parameters and 
-their 
-\lang british
-
+ interface parameters and their 
 \begin_inset ERT
 status open
 
@@ -460,10 +453,7 @@ name "/OF40/"
 
 \end_inset
 
- Beagle determines the probable number of repeats in 
-encountered 
-\lang british
-
+ Beagle determines the probable number of repeats in encountered 
 \begin_inset ERT
 status open
 
@@ -487,10 +477,7 @@ name "/OF50/"
 
 \end_inset
 
- Beagle determines the probable number of repeats in 
-encountered 
-\lang british
-
+ Beagle determines the probable number of repeats in encountered 
 \begin_inset ERT
 status open
 
@@ -519,7 +506,7 @@ glsuseri{component}
  interface parameters.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Result Annotation
 \end_layout
 
@@ -544,10 +531,6 @@ gls{PCM}
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 todo Parameterisation of results
-\end_layout
-
-\begin_layout Section
-Functional Requirements
 \end_layout
 
 \begin_layout Labeling
