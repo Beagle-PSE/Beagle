@@ -104,7 +104,25 @@ name "/A10/"
 
 \end_inset
 
- Re-engineering of existing software.
+ Beagle can be used for re-engineering of existing software.
+ When 
+starting to use 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Palladio}
+\end_layout
+
+\end_inset
+
+ for a existing software Beagle is helpful to find bottlenecks and problems.
+ 
 \end_layout
 
 \begin_layout Labeling
@@ -115,7 +133,7 @@ name "/A20/"
 
 \end_inset
 
- Prototyping
+ Beagle may be used for prototyping.
 \end_layout
 
 \begin_layout Labeling
@@ -126,7 +144,7 @@ name "/A30/"
 
 \end_inset
 
- Software development.
+ Beagle can be used for software development.
  Early implementations of components can be analysed with Beagle in order
  to predict their performance in interaction with the software system.
 \end_layout
@@ -139,7 +157,10 @@ name "/A40/"
 
 \end_inset
 
- Verifying of design and implementation
+ Beagle can be used for the verifying of design and implementation.
+ If Beagle was used to analyse the concept of a new software, the software
+ can be analysed after implementation and thereby more easily be compared.
+ 
 \end_layout
 
 \begin_layout Section
@@ -300,7 +321,7 @@ name "/A100/"
 
 \end_inset
 
- Desktop System (with Eclipse) with JRE
+ Beagle runs on desktop systems with a JRE as it is a Eclipse Plugin.
 \end_layout
 
 \begin_layout Labeling
@@ -311,7 +332,9 @@ name "/A110/"
 
 \end_inset
 
- Server (optional), add possibility to run on Server as additional function
+ As an optional feature, Beagle has additionally the possibity to be run
+ on a Server.
+ ???? <- does this belong here?
 \end_layout
 
 \end_body
