@@ -3,10 +3,14 @@ language: java
 sudo: required
 dist: trusty
 
-script:
+before_script:
   - ./deploy/Init\ Publish.sh
   - cd doc/Requirements\ Specification/
   - ./Install.sh
+  - cd $OLDPWD
+  
+script:
+  - cd doc/Requirements\ Specification/
   - ./Render.sh
   - cd $OLDPWD
   

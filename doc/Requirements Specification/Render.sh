@@ -13,14 +13,14 @@ cd "$tmpdir"
 # generate .tex
 lyx -e pdflatex "$file.lyx"
 # generate all the other stuff
-pdflatex "$file.tex"
+pdflatex -halt-on-error "$file.tex"
 # make the glossary
 makeglossaries "$file"
 # render the pdf (we need at least two times. And you know… just to be sure ;))
-pdflatex "$file.tex"
-pdflatex "$file.tex"
-pdflatex "$file.tex"
-pdflatex "$file.tex"
+pdflatex -halt-on-error "$file.tex"
+pdflatex -halt-on-error "$file.tex"
+pdflatex -halt-on-error "$file.tex"
+pdflatex -halt-on-error "$file.tex"
 
 # Go back up
 cd "$OLDPWD"
