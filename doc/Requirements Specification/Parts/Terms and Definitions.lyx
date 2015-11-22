@@ -569,12 +569,20 @@ newglossaryentry{Palladio Component Model}{
 
 		a domain-specific modeling language (DSL) used by 
 \backslash
-gls{Palladio}, designed to enable early performance predictions for 
+gls{Palladio}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
-glspl{software architecture}.
- It can be used to predict the performance of 
+begin{quote}It is designed to enable early performance predictions for software
+ architectures and is aligned with a component-based software development
+ process.
 \backslash
-glspl{component-based software architecture}.
+end{quote} 
+\backslash
+cite{tuChemPcm}
 \end_layout
 
 \begin_layout Plain Layout
@@ -873,7 +881,9 @@ newglossaryentry{system}{
 \begin_layout Plain Layout
 
 		(usually) reflects the organizational structure that built it.
- (Conway's law)
+ (Conway's law) 
+\backslash
+cite{conwaysLaw}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1111,7 +1121,7 @@ newglossaryentry{service effect specification}{
 
 \begin_layout Plain Layout
 
-	name={Palladio Component Model},
+	name={service effect specification},
 \end_layout
 
 \begin_layout Plain Layout
