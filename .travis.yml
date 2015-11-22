@@ -1,0 +1,17 @@
+language: java
+
+sudo: required
+dist: trusty
+
+before_script:
+  - cd doc/Requirements\ Specification/
+  - ./Install.sh
+  - cd $OLDPWD
+  
+script:
+  - cd doc/Requirements\ Specification/
+  - ./Render.sh
+  - cd $OLDPWD
+  
+after_success:
+  - ./deploy/Deploy\ Publish.sh

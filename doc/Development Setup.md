@@ -22,3 +22,21 @@ You may need to set the language in `Tools -> Settings -> Language Settings -> L
 
 ### Markdown
 Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). The Eclipse [GitHub Flavored Markdown viewer plugin for Eclipse](https://marketplace.eclipse.org/content/github-flavored-markdown-viewer-plugin-eclipse) helps writing it. (_Hint:_ Don’t give the plugin your GitHub credentials. [Create a personal access token](https://github.com/settings/tokens) and change the API URL in the plugin’s settings: `https://api.github.com/?access_token=PERSONAL_ACCESS_TOKEN`)
+
+## Continuous Integration
+Beagle uses Travis, a continuous integration service. It tests Pull Requests as well as all branches in the repository whenever changes occur.
+
+You can enable Travis for your repository, too. This allows you to have automated tests for all your commits. It further generates all documentation documents for new commits. This is quite handy for pull requests, as you can simply post a link to the rendered file, making the reviewing process a whole lot easier.
+
+To activate Travis:
+
+#### Get GitHub Personal Access Token
+ * Go to [your GitHub personal access token settings page](https://github.com/settings/tokens) and create a new token. Only allowing access to the `repo` scope is sufficient.
+ * temporary save the token somewhere, e.g. in your clipboard
+ 
+#### Active Travis
+ * Go to [Travis](https:///travis-ci.org) and sign in
+ * Activate Travis for your fork of Beagle
+ * Go to the settings page for Beagle on Travis and create a new Environment Variable called `GH_TOKEN`. Paste the personal access token you created as value. _Leave the “show in log” switch OFF!_
+ 
+Done!
