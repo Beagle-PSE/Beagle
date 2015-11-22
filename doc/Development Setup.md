@@ -15,7 +15,7 @@ Required Eclipse plugins are:
 ## Documentation
 
 ### LyX
-Parts of the documentation are written in LaTeX using [LyX](http://www.lyx.org/). Some documents require special classes or layout files, like the [System Requirements Specification](requirements specification/README.md).
+Parts of the documentation are written in LaTeX using [LyX](http://www.lyx.org/). Some documents require special classes or layout files, like the [System Requirements Specification](Requirements Specification/README.md).
 
 #### Spell checking
 You may need to set the language in `Tools -> Settings -> Language Settings -> Language` to `en` to get English spell checking.
