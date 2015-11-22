@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../requirements specification.lyx
+\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -87,6 +87,12 @@ This file contains definitions of all terms and abbreviations.
 Make sure to define any abbreviation, technical or ambiguous term!
 \end_layout
 
+\begin_layout Plain Layout
+We are using user1 for genitive singular, and user2 for genitive plural
+ forms.
+ example:
+\end_layout
+
 \end_inset
 
 
@@ -108,49 +114,105 @@ ary#Defining_terms
 
 \begin_layout Plain Layout
 
-% Example definitions, using most features:
 \end_layout
 
 \begin_layout Plain Layout
 
+%We are using user1 for genitive singular, and user2 for genitive plural
+ forms.
+ 
+\end_layout
 
+\begin_layout Plain Layout
+
+%Example:
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% % The ID will be used when referencing this
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
 \backslash
-newglossaryentry{naiive}{
+newglossaryentry{ID}{
 \end_layout
 
 \begin_layout Plain Layout
 
-	name=na
-\backslash
-"{
-\backslash
-i}ve,
+% 	% The entry's printed name
 \end_layout
 
 \begin_layout Plain Layout
 
-	description={
+% 	name={name},
 \end_layout
 
 \begin_layout Plain Layout
 
-		is a French loanword (adjective, form of naïf) indicating having or showing
- a lack of experience, understanding or sophistication
+% 	% description for the glossary
 \end_layout
 
 \begin_layout Plain Layout
 
-	},
+% 	description={
 \end_layout
 
 \begin_layout Plain Layout
 
-	sort=naive
+% 		description
 \end_layout
 
 \begin_layout Plain Layout
 
-} 
+% 	},
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	% Plural form, if not formed by appending an "s"
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	plural={pluralform},
+\end_layout
+
+\begin_layout Plain Layout
+
+%     % Wort used to sort the entry, useful if name contains weird characters
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	sort={sortword},
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	% Define these only when needed:
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	user1={genitive singular form},
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	user2={genitive plural form}
+\end_layout
+
+\begin_layout Plain Layout
+
+% } 
 \end_layout
 
 \begin_layout Plain Layout
@@ -188,7 +250,7 @@ lstinline{else} and
 \backslash
 lstinline{switch}-
 \backslash
-lstinline{case} constructs are branch constructs.
+lstinline{case} statements form branch constructs.
 \end_layout
 
 \begin_layout Plain Layout
@@ -224,8 +286,8 @@ newglossaryentry{loop construct}{
 
 \begin_layout Plain Layout
 
-		a construct in the source code executing a specific part none, one or
- multiple times.
+		a construct in the source code executing a specific code block none, one
+ or multiple times.
  In Java the 
 \backslash
 lstinline{for} loop, the 
@@ -234,7 +296,7 @@ lstinline{while} loop and the
 \backslash
 lstinline{do}-
 \backslash
-lstinline{while} construct are loops.
+lstinline{while} statements form loops.
 \end_layout
 
 \begin_layout Plain Layout
@@ -286,10 +348,6 @@ lstinline{LoopAction}},
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 newglossaryentry{component}{
@@ -307,8 +365,8 @@ newglossaryentry{component}{
 
 \begin_layout Plain Layout
 
-		 is an artifact of the software development process with a description
- of its application.
+		 an artifact of a software development process with a description of its
+ application.
 \end_layout
 
 \begin_layout Plain Layout
@@ -344,7 +402,7 @@ newglossaryentry{component-based software}{
 
 \begin_layout Plain Layout
 
-		is a software which is constituted of 
+		a software constituted of 
 \backslash
 glspl{component}.
 \end_layout
@@ -361,14 +419,6 @@ glspl{component}.
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-todo{add def.
- component-based software architecture}
 \end_layout
 
 \begin_layout Plain Layout
@@ -407,22 +457,6 @@ gls{software architecture} ...
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-todo{add def.
- resource demand}
 \end_layout
 
 \begin_layout Plain Layout
@@ -533,11 +567,12 @@ newglossaryentry{Palladio Component Model}{
 
 \begin_layout Plain Layout
 
-		is a domain-specific modeling language (DSL) designed to enable early
- performance predictions for 
+		a domain-specific modeling language (DSL) used by 
+\backslash
+gls{Palladio}, designed to enable early performance predictions for 
 \backslash
 glspl{software architecture}.
- It predicts the performance of 
+ It can be used to predict the performance of 
 \backslash
 glspl{component-based software architecture}.
 \end_layout
@@ -575,9 +610,10 @@ newglossaryentry{Palladio}{
 
 \begin_layout Plain Layout
 
-		is an approach for the definition of 
+		an approach for the definition of 
 \backslash
-glspl{software architecture} with a special focus on performance properties.
+glspl{component-based software architecture} with a special focus on performance
+ properties.
 \end_layout
 
 \begin_layout Plain Layout
@@ -613,16 +649,26 @@ newglossaryentry{SoMoX}{
 
 \begin_layout Plain Layout
 
-		is a plugin for palladio, which does static code analysis to reengineer
- the architecture as a 
+		a 
 \backslash
-gls{PCM} and reconstructs the internal structure of software components
- and calls to other components (SEFF).
+gls{Palladio} plugin for static code analysis to reengineer a 
+\backslash
+glsuseriii{software architecture} from its source code.
+ Constructs a 
+\backslash
+gls{PCM} instance including the reconstructed components and their 
+\backslash
+gls{SEFF}.
 \end_layout
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={SoMoX'}
 \end_layout
 
 \begin_layout Plain Layout
@@ -653,10 +699,11 @@ newglossaryentry{software architect}{
 
 \begin_layout Plain Layout
 
-		is a person who specifies an architecture from existing components and
- interfaces.
- They use architectural styles and architectural patterns, analyze architectural
- specifications, and make design decisions.
+		a person who planes a 
+\backslash
+gls{software architecture} from existing components and interfaces.
+ Uses architectural styles and patterns, analyses architectural specifications,
+ and makes design decisions.
 \end_layout
 
 \begin_layout Plain Layout
@@ -697,7 +744,17 @@ newglossaryentry{software architecture}{
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user3={software's architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user4={softwares' architecture}
 \end_layout
 
 \begin_layout Plain Layout
@@ -734,7 +791,7 @@ glsuseri{system} logical partitioning into
 \backslash
 glspl{layer}, 
 \backslash
-glspl{subsystem}, and package, and their communication with each other.
+glspl{subsystem}, and packages, and their communication with each other.
 \end_layout
 
 \begin_layout Plain Layout
@@ -861,8 +918,8 @@ newglossaryentry{Common Trace API}{
 
 \begin_layout Plain Layout
 
-		is an API developed by NovaTec GmbH for measuring the time specific code
- sections needs to be executed.
+		an API developed by NovaTec GmbH for measuring the time, specific code
+ sections need to be executed.
 \end_layout
 
 \begin_layout Plain Layout
@@ -873,22 +930,6 @@ newglossaryentry{Common Trace API}{
 \begin_layout Plain Layout
 
 }
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
 \end_layout
 
 \begin_layout Plain Layout
@@ -1032,7 +1073,9 @@ newglossaryentry{component developer}{
 glspl{component}, specifies 
 \backslash
 glspl{component}, interfaces, and data types, and specifies data types.
- It creates service effect specifications, stores modelling and implementation
+ Creates 
+\backslash
+glspl{service effect specification}, stores modelling and implementation
  artecfacts in repositories, and implements, tests, and maintains 
 \backslash
 glspl{component}.
@@ -1056,14 +1099,14 @@ glspl{component}.
 
 
 \backslash
-newacronym{SEFF}{SEFF}{Service Effect Specification}
+newacronym{SEFF}{SEFF}{service effect specification}
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-newglossaryentry{Service Effect Specification}{
+newglossaryentry{service effect specification}{
 \end_layout
 
 \begin_layout Plain Layout
@@ -1078,15 +1121,16 @@ newglossaryentry{Service Effect Specification}{
 
 \begin_layout Plain Layout
 
-		describes the inner-component behaviour of a component operation on a
- highly abstract level by specifying the relationship between provided and
- required services of a component.
+		describes the inner behaviour of a 
+\backslash
+gls{component} on a highly abstract level by specifying the relationship
+ between provided and required services of a component.
   
 \end_layout
 
 \begin_layout Plain Layout
 
-}
+	}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1117,8 +1161,10 @@ newglossaryentry{system deployer}{
 
 \begin_layout Plain Layout
 
-		models the resource environments and allocations of components to resources.
- It also sets up the resource environments, deploys components onto resources,
+		models the resource environments and allocations of 
+\backslash
+glspl{component} to resources.
+ Also sets up the resource environments, deploys components onto resources,
  and maintains the running system.
 \end_layout
 
@@ -1138,230 +1184,9 @@ newglossaryentry{system deployer}{
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
 
 \backslash
 newglossaryentry{Kieker}{
-\end_layout
-
-\begin_layout Plain Layout
-
-%
-\backslash
-todo{add a short but precise definition of Kieker}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1378,7 +1203,6 @@ todo{add a short but precise definition of Kieker}
 
 }
 \end_layout
-
 
 \end_inset
 

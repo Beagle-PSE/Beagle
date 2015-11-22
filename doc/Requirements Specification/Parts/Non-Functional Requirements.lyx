@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../requirements specification.lyx
+\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -71,11 +71,7 @@
 \begin_body
 
 \begin_layout Chapter
-Application
-\end_layout
-
-\begin_layout Section
-Application Field
+Non Functional Requirements
 \end_layout
 
 \begin_layout Standard
@@ -83,235 +79,140 @@ Application Field
 status open
 
 \begin_layout Plain Layout
-Describes where the software is going to be used.
- This include typical use cases.
+Non Functional Requirements are all requirements that describe some aspect
+ of the software’s quality.
 \end_layout
 
 \begin_layout Plain Layout
-Reference notation is /A#/
+Requirements shall be atomic (as in “cannot be split”), precise (as in “not
+ ambiguous”, use definitions and references increase precision), measurable,
+ testable and verifiable.
+\end_layout
+
+\begin_layout Plain Layout
+They shall be grouped by topics using sections and subsections.
+\end_layout
+
+\begin_layout Plain Layout
+Please make sure to apply the same logic as in the purpose section to split
+ between mandatory and optional.
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation for mandatory requirements is /Q#/
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation for nice to have requirements is /OQ#/
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A10/"
-
-\end_inset
-
- Reengineering of existing software.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A20/"
-
-\end_inset
-
- Prototyping
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A30/"
-
-\end_inset
-
- Software development.
- Early implementations of components can be analysed with Beagle in order
- to predict its performance in interaction with the software system.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A40/"
-
-\end_inset
-
- Verifying of design and implementation
 \end_layout
 
 \begin_layout Section
-Target Group
+Must Have
 \end_layout
 
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q10/"
+
+\end_inset
+
+ Beagle shall be an Eclipse plugin.
+ As both 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ and its plugins are Eclipse plugins, this ensures good usability for users.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q20/"
+
+\end_inset
+
+ Beagle shall be controlled by context sensitive menus in Eclipse.
+ 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Defines the software's target groups.
- They will typically be logically derived from the above part.
-\end_layout
-
-\begin_layout Plain Layout
-Reference notation is /G#/
+More precise?!
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/G10/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Glspl{software architect}
-\end_layout
-
-\end_inset
-
- will use Beagle predominantly for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A10/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A40/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/G20/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Glspl{system deployer}
-\end_layout
-
-\end_inset
-
- will use Beagle predominantly for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A40/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/G30/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Glspl{component developer}
-\end_layout
-
-\end_inset
-
- will use Beagle predominantly for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A20/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A30/"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
-Operation Conditions
+Nice To Have
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ10/"
+
+\end_inset
+
+ Beagle should run on every system, Eclipse and 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Conditions under which the software will run.
+
+
+\backslash
+gls{Palladio}
 \end_layout
+
+\end_inset
+
+ run on.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ20/"
+
+\end_inset
+
+ The code measurement software should be exchangeable with any software
+ which supports the 
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Reference notation is /A#/
+
+
+\backslash
+gls{CTA}
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A100/"
-
-\end_inset
-
- Desktop System (with Eclipse) with JRE
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A110/"
-
-\end_inset
-
- Server (optional), add possibility to run on Server as additional function
+.
 \end_layout
 
 \end_body

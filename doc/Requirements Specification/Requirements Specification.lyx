@@ -16,9 +16,11 @@
 % Listings package is required by terms and definitions
 \usepackage{listings}
 % Include the terms and definitions file if presents (e.g. only when acutally building the glossary).
-\InputIfFileExists{\string"parts/terms and definitions.tex\string"}
+\InputIfFileExists{\string"Parts/Terms and Definitions.tex\string"}
+
+\renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
 \end_preamble
-\options english,draft
+\options english,final
 \use_default_options true
 \begin_modules
 enumitem
@@ -117,7 +119,7 @@ Christoph Michelbach, Ansgar Spiegler, Michael Vogt
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "parts/terms and definitions.lyx"
+filename "Parts/Terms and Definitions.lyx"
 
 \end_inset
 
@@ -130,7 +132,7 @@ status open
 
 \begin_layout Plain Layout
 Please define any technical or ambiguous terms as well as abbreviations.
- See parts/terms and definitions.lyx for details.
+ See Parts/Terms and Definitions.lyx for details.
 \end_layout
 
 \begin_layout Plain Layout
@@ -225,24 +227,6 @@ ation
 
 \backslash
 hyphenation{me-ta-mo-del} 
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-%Liste der ToDos (wird niemals in der finalen Version angezeigt werden):
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-listoftodos
 \end_layout
 
 \end_inset
@@ -456,7 +440,7 @@ mainmatter
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "parts/purpose.lyx"
+filename "Parts/Purpose.lyx"
 
 \end_inset
 
@@ -466,7 +450,7 @@ filename "parts/purpose.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "parts/application.lyx"
+filename "Parts/Application.lyx"
 
 \end_inset
 
@@ -476,7 +460,7 @@ filename "parts/application.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "parts/environment.lyx"
+filename "Parts/Environment.lyx"
 
 \end_inset
 
@@ -486,7 +470,7 @@ filename "parts/environment.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "parts/functionality.lyx"
+filename "Parts/Functionality.lyx"
 
 \end_inset
 
@@ -496,7 +480,7 @@ filename "parts/functionality.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "parts/non functional requirements.lyx"
+filename "Parts/Non-Functional Requirements.lyx"
 
 \end_inset
 
@@ -507,7 +491,7 @@ filename "parts/non functional requirements.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "parts/test cases.lyx"
+filename "Parts/Test Cases.lyx"
 
 \end_inset
 
@@ -517,7 +501,7 @@ filename "parts/test cases.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "parts/models.lyx"
+filename "Parts/Models.lyx"
 
 \end_inset
 

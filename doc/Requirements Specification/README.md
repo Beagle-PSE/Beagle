@@ -21,7 +21,7 @@ The specification is written in [LyX](http://www.lyx.org/). So obviously you'll 
     * You may remove the files `thesis.tex` and `thesis.bib` as well as the subfolder `sections`.
     
     
-  * Install the LyX layout file from [doc/dependencies/sqthesis.layout](../dependencies/sdqthesis.layout).
+  * Install the LyX layout file from [doc/Dependencies/sqthesis.layout](../Dependencies/sdqthesis.layout).
       * copy the file to your personal layout folder (Ubuntu: `~/.lyx/layouts`, Windows: `C:\Users\[User]\AppData\Roaming\LyX2.1\layouts`
       * Open LyX and run `Tools -> Reconfigure`
       * Restart LyX to use the template
@@ -58,7 +58,7 @@ To build our glossary, we use the `glossaries` package, which is superior to all
 Please refer to the [excellent glossaries article on WikiBooks](https://en.wikibooks.org/wiki/LaTeX/Glossary) for documentation of the `glossaries` package.
 
 #### Definitions
-All definitions of terms and abbreviations are done in the [parts/terms and abbreviations](parts/terms and abbreviations.lyx) file.
+All definitions of terms and abbreviations are done in the [Parts/Terms and Definitions](Parts/Terms and Definitions.lyx) file.
 
 _Make sure to include any technical or ambiguous term in the definition file!_
 

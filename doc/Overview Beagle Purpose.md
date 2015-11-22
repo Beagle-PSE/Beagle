@@ -5,7 +5,7 @@ _**Disclaimer**: The following information is a personal understanding at a very
 
 In a discussion about what Beagle actually does, the following chart has been created:
 
-![A chart describing the tools around Beagle](./overview-beagle-chart.jpg)
+![A chart describing the tools around Beagle](./Overview Beagle Chart.jpg)
 
 Despite being German, it serves as a brief overview about what Beagle is trying to achieve. It speaks for itself. However, some additional information shall be provided:
 

@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../requirements specification.lyx
+\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -71,7 +71,7 @@
 \begin_body
 
 \begin_layout Chapter
-Non Functional Requirements
+Environment
 \end_layout
 
 \begin_layout Standard
@@ -79,52 +79,48 @@ Non Functional Requirements
 status open
 
 \begin_layout Plain Layout
-Non Functional Requirements are all requirements that describe some aspect
- of the software’s quality.
+This part describes the software’s environment.
+ This are all components (hardware & software) the software interacts with
+ or depends on.
+ This includes standards and APIs.
 \end_layout
 
 \begin_layout Plain Layout
-Requirements shall be atomic (as in “cannot be split”), precise (as in “not
- ambiguous”, use definitions and references increase precision), measurable,
- testable and verifiable.
+Naturally, this only includes components that affect development.
+ Components shall be described together with the interfaces they offer to
+ our software.
+ Limitations they enforce, if any, shall be named.
 \end_layout
 
 \begin_layout Plain Layout
-They shall be grouped by topics using sections and subsections.
-\end_layout
-
-\begin_layout Plain Layout
-Please make sure to apply the same logic as in the purpose section to split
- between mandatory and optional.
-\end_layout
-
-\begin_layout Plain Layout
-Reference notation for mandatory requirements is /Q#/
-\end_layout
-
-\begin_layout Plain Layout
-Reference notation for nice to have requirements is /OQ#/
+Reference notation is /E#/
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Must Have
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/Q10/"
+name "/E10/"
 
 \end_inset
 
-/Q10/ Beagle must be an Eclipse plugin.
- As both 
+ Beagle requires Java and Eclipse to run.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E20/"
+
+\end_inset
+
+ Beagle requires a 
 \begin_inset ERT
 status open
 
@@ -132,50 +128,13 @@ status open
 
 
 \backslash
-gls{Palladio}
+gls{PCM}
 \end_layout
 
 \end_inset
 
- and its plugins are Eclipse plugins, too, this ensures good usability for
- the users.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/Q20/"
-
-\end_inset
-
-/Q20/ The plugin must be controllable via context menus in Eclipse.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-More precise?!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Nice To Have
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/Q30/"
-
-\end_inset
-
-/OQ10/ Beagle should run on every system which runs Eclipse and 
+ instance modelling the software to be analysed.
+ The model must contain all 
 \begin_inset ERT
 status open
 
@@ -183,7 +142,20 @@ status open
 
 
 \backslash
-gls{Palladio}
+glspl{component}
+\end_layout
+
+\end_inset
+
+ and their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF}
 \end_layout
 
 \end_inset
@@ -195,12 +167,11 @@ gls{Palladio}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/Q40/"
+name "/E30/"
 
 \end_inset
 
-/OQ20/ The code measurement software should be exchangeable with another
- software which supports the 
+ Beagle requires the 
 \begin_inset ERT
 status open
 
@@ -213,7 +184,7 @@ gls{CTA}
 
 \end_inset
 
-.
+ to communicate with performance measurement software.
 \end_layout
 
 \end_body

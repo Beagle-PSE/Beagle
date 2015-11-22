@@ -4,4 +4,4 @@ This is a student work experience project at the KIT for developing a dynamic so
 
 ## Development
 
-To start developing, read through [doc/development-setup.md](doc/development-setup.md).
+To start developing, read through [doc/Development Setup.md](doc/Development Setup.md).

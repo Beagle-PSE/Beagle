@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../requirements specification.lyx
+\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package babel
@@ -109,7 +109,46 @@ It can be regarded as the document’s abstract.
 \end_layout
 
 \begin_layout Standard
-Palladio is a software enabling the user to analyse performance and other
+When developing software, specifying its 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{software architecture}{architecture}
+\end_layout
+
+\end_inset
+
+ in a sophisticated way is a crucial, yet challenging task.
+ Decisions made at this point often highly influence software's properties,
+ such as maintainability and performance
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+cite these statements
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ is a software enabling developers to analyse performance and other such
  metrics of 
 \begin_inset ERT
 status open
@@ -123,37 +162,8 @@ gls{component-based software}
 
 \end_inset
 
-.
- The software must be meta-modelled as a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- for the analysis.
- When all this is done before any code is written, the models must, of course,
- be created manually, but in many scenarios, source code already exists.
- In this case, a software called 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- does static code analysis to reengineer the architecture as a 
+ at the definition phase, before actually writing any code.
+ To achieve that, the software is meta-modelled by the 
 \begin_inset ERT
 status open
 
@@ -167,7 +177,26 @@ gls{PCM}
 \end_inset
 
 .
- Unfortunately 
+\end_layout
+
+\begin_layout Standard
+If no code exists yet, models are created completely manually.
+ But in many scenarios some to all source code has already been written.
+ In such cases however, analysis with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ might still be wished.
+ 
 \begin_inset ERT
 status open
 
@@ -180,7 +209,47 @@ gls{SoMoX}
 
 \end_inset
 
- does not analyse 
+ is a tool for static code analysis of source code, to re-engineer the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseriii{software architecture}
+\end_layout
+
+\end_inset
+
+ into a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ Unfortunately, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{SoMoX}
+\end_layout
+
+\end_inset
+
+ results are limited, as they do not contain 
 \begin_inset ERT
 status open
 
@@ -193,10 +262,79 @@ glspl{resource demand}
 
 \end_inset
 
-, which are essential for performance analysis.
- The purpose of Beagle is to analyse the software dynamically by initiating
- performance measurements on the source code and to determine the resource
- demands a component needs to perform a specific operation.
+ which are essential for performance analysis.
+\end_layout
+
+\begin_layout Standard
+The purpose of this project is to analyse software dynamically by conducting
+ performance measurements on its source code, in order to determine the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ of its 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{internal action}
+\end_layout
+
+\end_inset
+
+.
+ Adding this information to the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ will enable developers to use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ to analyse and optimise their existing software with minimal effort.
 \end_layout
 
 \begin_layout Section
@@ -515,7 +653,7 @@ name "/B10/"
 
 \end_inset
 
- Beagle does not perform actual measurements on the source code.
+ Beagle does not perform actual measurements on source code.
 \end_layout
 
 \begin_layout Labeling
@@ -526,8 +664,20 @@ name "/B20/"
 
 \end_inset
 
- Beagle does not reconstruct a model of the software's architecture from
- existing source code.
+ Beagle does not reconstruct a model of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseriv{software architecture}
+\end_layout
+
+\end_inset
+
+ from their source code.
 \end_layout
 
 \begin_layout Labeling
@@ -538,18 +688,33 @@ name "/B30/"
 
 \end_inset
 
- Beagle does not reconstruct the internal structure of a software component
- and calls to other components.
-\begin_inset Note Note
+ Beagle does not reconstruct the internal structure of 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-SEFF-Diagramme
+
+
+\backslash
+glspl{component}
 \end_layout
 
 \end_inset
 
+ like their 
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -571,9 +736,7 @@ name "/B50/"
 
 \end_inset
 
- Beagle does no performance analysis.
- It only analyses and annotates the resource demands, performance analysis
- can be done by Palladio.
+ Beagle does no performance analysis or prediction.
 \end_layout
 
 \end_body

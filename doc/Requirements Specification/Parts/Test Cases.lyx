@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../requirements specification.lyx
+\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -71,7 +71,7 @@
 \begin_body
 
 \begin_layout Chapter
-Models
+Test Cases
 \end_layout
 
 \begin_layout Standard
@@ -79,35 +79,27 @@ Models
 status open
 
 \begin_layout Plain Layout
-Concludes the SRS.
- At his points, the software is completely specified in regards of requirements
- and attribute descriptions.
+Global test cases.
+ This chapter specifies the acceptance criteria.
+ As it was preceded by the requirements specification chapters, this part
+ should define ways to assert the requirements stated above.
+ 
 \end_layout
 
 \begin_layout Plain Layout
-This final chapter now models different viewpoints on how an implementation
- might look like.
- It’s meant to convey our vision of the software to the reader.
- It is also meant to specify this vision, such that it can lead us through
- the further development phases.
- It does not yet specify technical realizations like like UML class diagrams.
+This chapter is an essential part in making the requirements verifiable.
+ It will serve as a base for product acceptance and will be useful to track
+ progress in the implementation phase.
 \end_layout
 
 \begin_layout Plain Layout
-The chapter should contain:
+Make sure to stay at the level of acceptance testing.
+ This chapter should never define unit or integration tests.
+ (Which don’t make sense anyway, as we don’t have a design yet).
 \end_layout
 
 \begin_layout Plain Layout
-* Use case descriptions
-\end_layout
-
-\begin_layout Plain Layout
-* Sencario descriptions
-\end_layout
-
-\begin_layout Plain Layout
-* User interface draft (not necessarily a drawn one, attribute specifications
- are fine, too)
+Reference notation is /T#/
 \end_layout
 
 \end_inset

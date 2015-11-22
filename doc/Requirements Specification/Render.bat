@@ -1,6 +1,7 @@
 :: LyX executable. Add some logic here to search differen paths if your installation is elsewhere. 
 set LYX="C:\Program Files (x86)\LyX 2.1\bin\lyx.exe"
-set FILENAME="requirements specification"
+if not exist %LYX% set LYX="G:\Programme\LyX 2.1\bin\lyx.exe"
+set FILENAME="Requirements Specification"
 
 :: Get a temporary folder name that we can savely delete later
 call :GETTEMPNAME

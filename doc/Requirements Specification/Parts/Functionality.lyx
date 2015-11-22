@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../requirements specification.lyx
+\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -71,7 +71,7 @@
 \begin_body
 
 \begin_layout Chapter
-Environment
+Functionality
 \end_layout
 
 \begin_layout Standard
@@ -79,48 +79,65 @@ Environment
 status open
 
 \begin_layout Plain Layout
-This part describes the software’s environment.
- This are all components (hardware & software) the software interacts with
- or depends on.
- This includes standards and APIs.
+The main chapter of this document.
+ It states the functional requirements of our software.
+ 
 \end_layout
 
 \begin_layout Plain Layout
-Naturally, this only includes components that affect development.
- Components shall be described together with the interfaces they offer to
- our software.
- Limitations they enforce, if any, shall be named.
+Functional requirements shall be atomic (as in “cannot be split”), precise
+ (as in “not ambiguous”, use definitions and references increase precision),
+ measurable, testable and verifiable.
 \end_layout
 
 \begin_layout Plain Layout
-Reference notation is /E#/
+They shall be grouped by topics using sections and subsections.
+\end_layout
+
+\begin_layout Plain Layout
+Please make sure to apply the same logic as in the purpose section to split
+ between mandatory and optional.
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation for mandatory functionality is /F#/
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation for nice to have functionality is /OF#/
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Functional Requirements
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/E10/"
+name "/F10/"
 
 \end_inset
 
- Beagle requires Java and Eclipse to run.
+ Reasonable measurement practice (e.g.
+ speed vs.
+ accuracy)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/E20/"
+name "/F20/"
 
 \end_inset
 
- Beagle requires a 
+ Software should only depend on Eclipse, the 
 \begin_inset ERT
 status open
 
@@ -133,32 +150,34 @@ gls{PCM}
 
 \end_inset
 
- instance modelling the software to be analysed.
- The model must contain all components and their 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{SEFF}
-\end_layout
-
-\end_inset
-
-.
+ and the source code of the analysed software.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/E30/"
+name "/F30/"
 
 \end_inset
 
- Beagle requires the 
+ Parameterisation of results
+\end_layout
+
+\begin_layout Section
+Functional Requirements
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF10/"
+
+\end_inset
+
+ Analyse source code for its architecture and performance in one turn (e.g.
+ with 
 \begin_inset ERT
 status open
 
@@ -166,12 +185,25 @@ status open
 
 
 \backslash
-gls{CTA}
+gls{SoMoX}
 \end_layout
 
 \end_inset
 
- to communicate with performance measurement software.
+ & 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \end_body
