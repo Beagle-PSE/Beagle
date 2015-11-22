@@ -653,7 +653,21 @@ name "/B10/"
 
 \end_inset
 
- Beagle does not perform actual measurements on source code.
+ Beagle does not perform actual measurements on source code, as this is
+ done by other software and transferred through the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -677,7 +691,20 @@ glsuseriv{software architecture}
 
 \end_inset
 
- from their source code.
+ from their source code, as this is done by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -714,6 +741,19 @@ gls{SEFF}
 
 \end_inset
 
+, as this is done by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -736,7 +776,21 @@ name "/B50/"
 
 \end_inset
 
- Beagle does no performance analysis or prediction.
+ Beagle does no performance analysis or prediction, as this is done with
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
