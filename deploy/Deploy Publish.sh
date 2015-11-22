@@ -26,7 +26,7 @@ function set_git_user {
 	git config user.email "travis@example.org"
 }
 
-if ! [ `git ls-remote --heads $REPO branch | wc -l ` == 1 ]
+if [ `git ls-remote --heads $REPO branch gh-pages | wc -l` == 1 ]
 then
 	git clone $REPO .
 	echo "Continuing existing branch gh-pages"
