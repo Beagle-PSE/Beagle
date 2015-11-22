@@ -116,6 +116,53 @@ Reference notation for nice to have functionality is /OF#/
 Functional Requirements
 \end_layout
 
+\begin_layout Standard
+Given a software's source code together with a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance correctly describing the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+, including their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+, Beagle must fulfil the following requirements:
+\end_layout
+
+\begin_layout Subsection
+Measurement
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -124,9 +171,47 @@ name "/F10/"
 
 \end_inset
 
- Reasonable measurement practice (e.g.
- speed vs.
- accuracy)
+ Using the information provided in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+, Beagle finds the sections in the source code that must be measured in
+ order to find 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{internal action}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -137,7 +222,132 @@ name "/F20/"
 
 \end_inset
 
- Software should only depend on Eclipse, the 
+ Beagle conducts one or multiple 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{measuring software}
+\end_layout
+
+\end_inset
+
+ to measure the sections found in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F10/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F30/"
+
+\end_inset
+
+ Beagle uses existing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+ to conduct performance tests on the source code.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F40/"
+
+\end_inset
+
+ Beagle supports the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ to communicate with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F50/"
+
+\end_inset
+
+ Beagle does not depend on any specific 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F60/"
+
+\end_inset
+
+ Beagle does not modify the provided source code files.
+\end_layout
+
+\begin_layout Subsection
+Result Annotation
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+todo Software should only depend on Eclipse, the 
 \begin_inset ERT
 status open
 
@@ -155,13 +365,7 @@ gls{PCM}
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/F30/"
-
-\end_inset
-
- Parameterisation of results
+todo Parameterisation of results
 \end_layout
 
 \begin_layout Section

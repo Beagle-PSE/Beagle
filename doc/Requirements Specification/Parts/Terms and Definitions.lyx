@@ -1204,6 +1204,49 @@ newglossaryentry{Kieker}{
 }
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{measurement software}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={measurement software},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		software capable of measuring the time, given source code needs to execute
+ some task.
+ The software's results are usually returned in a time unit like nanoseconds.
+ Beagles interactes with such software through the 
+\backslash
+gls{CTA} and uses it to find 
+\backslash
+glspl{resource demand}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
