@@ -1,3 +1,6 @@
+sudo: required
+dist: trusty
+
 script:
   - ./deploy/publish-init.sh
   - cd doc/requirements\ specification/
