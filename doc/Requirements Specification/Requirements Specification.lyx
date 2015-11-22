@@ -529,5 +529,17 @@ printglossary[title=Terms and Definitions]
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintAll"
+bibfiles "Requirements Specification"
+options "bibtotoc,plain"
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
