@@ -5,9 +5,6 @@ file="Requirements Specification"
 # fail the script if any command fails
 set -e 
 
-# Delete old rendered file
-rm -f "Requirements Specification.pdf"
-
 # Copy everything to a new folder that we can savely delete
 tmpdir=`mktemp -d`
 cp -r * "$tmpdir"
@@ -30,7 +27,7 @@ pdflatex -halt-on-error "$file.tex"
 cd "$OLDPWD"
 
 # copy the rendered pdf to save it
-cp "$tmpdir/$file.pdf" .
+cp -f "$tmpdir/$file.pdf" .
 # Delete tmp-render as it contains tons of files we don’t want.
 rm -rf "$tmpdir"
 
