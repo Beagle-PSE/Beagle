@@ -1207,7 +1207,41 @@ newglossaryentry{Kieker}{
 
 \begin_layout Plain Layout
 
-	description={}
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{quote}
+\end_layout
+
+\begin_layout Plain Layout
+
+			a Java-based application performance monitoring and dynamic software
+ analysis framework.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{quote}
+\backslash
+cite{KiekerPaper}
+\end_layout
+
+\begin_layout Plain Layout
+
+		A 
+\backslash
+gls{measuring software} Beagle aims to support.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
 \end_layout
 
 \begin_layout Plain Layout
