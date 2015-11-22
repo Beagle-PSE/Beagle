@@ -533,7 +533,7 @@ printglossary[title=Terms and Definitions]
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 btprint "btPrintAll"
-bibfiles "Requirements Specification"
+bibfiles "Bibliography"
 options "bibtotoc,plain"
 
 \end_inset
