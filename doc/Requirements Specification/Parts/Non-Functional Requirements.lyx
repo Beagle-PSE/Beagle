@@ -191,6 +191,41 @@ name "/Q30/"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q40/"
+
+\end_inset
+
+ Beagle needs a define time to run in dependencey of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls {measurement software}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q50/"
+
+\end_inset
+
+ In every to measure component Beagle set a few measurement points.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset VSpace defskip
 \end_inset
 
