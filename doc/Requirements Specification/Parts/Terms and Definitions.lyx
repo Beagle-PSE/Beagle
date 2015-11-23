@@ -1359,6 +1359,54 @@ glspl{resource demand}.
 }
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{JRE}{JRE}{
+\backslash
+gls{Java Runtime Environment}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Java Runtime Environment}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Java Runtime Environment},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a software set containing a Java Virtual Machine, a browser plugin, the
+ Java standard libraries, and a configuration tool.
+ The Java Virtual Machine it contains is needed to run Java applications
+ or applets.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
