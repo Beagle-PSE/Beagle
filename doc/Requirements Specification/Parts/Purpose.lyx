@@ -506,7 +506,7 @@ status open
 
 
 \backslash
-glspl{branch}
+glspl{SEFF condition}
 \end_layout
 
 \end_inset
@@ -570,7 +570,7 @@ status open
 
 
 \backslash
-glspl{loop construct}
+glspl{SEFF loop}
 \end_layout
 
 \end_inset
