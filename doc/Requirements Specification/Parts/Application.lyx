@@ -84,7 +84,7 @@ status open
 
 \begin_layout Plain Layout
 Describes where the software is going to be used.
- This include typical use cases.
+ This includes typical use cases.
 \end_layout
 
 \begin_layout Plain Layout
@@ -104,7 +104,49 @@ name "/A10/"
 
 \end_inset
 
- Re-engineering of existing software.
+ Beagle can be used for re-engineering of existing software.
+ When starting to use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Palladio}
+\end_layout
+
+\end_inset
+
+ for an existing software Beagle is helpful to detect bottlenecks and problems
+ using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ created.
+ This allows an more efficient re-engineering.
 \end_layout
 
 \begin_layout Labeling
@@ -115,7 +157,62 @@ name "/A20/"
 
 \end_inset
 
- Prototyping
+ Beagle may be used for prototyping.
+ As it is possible to create a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ without existing code with the help of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ Beagle can analyse the yet unimplemented prototype.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ with the additional information from Beagle completes the prototype as
+ it contains information about the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ for each component.
 \end_layout
 
 \begin_layout Labeling
@@ -126,9 +223,11 @@ name "/A30/"
 
 \end_inset
 
- Software development.
+ Beagle can be used for software development.
  Early implementations of components can be analysed with Beagle in order
  to predict their performance in interaction with the software system.
+ This leads to earlier detection of arising problems which hence can be
+ fixed in time.
 \end_layout
 
 \begin_layout Labeling
@@ -139,7 +238,36 @@ name "/A40/"
 
 \end_inset
 
- Verifying of design and implementation
+ Beagle can be used for the verifying of design and implementation.
+ After designing the software with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ and implementing it, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ and Beagle can be used to compare.
+ Differences and problems in implementation can be detected and resolved
+ more easily.
 \end_layout
 
 \begin_layout Section
@@ -269,49 +397,6 @@ reference "/A30/"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Section
-Operation Conditions
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Conditions under which the software will run.
-\end_layout
-
-\begin_layout Plain Layout
-Reference notation is /A#/
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A100/"
-
-\end_inset
-
- Desktop System (with Eclipse) with JRE
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A110/"
-
-\end_inset
-
- Server (optional), add possibility to run on Server as additional function
 \end_layout
 
 \end_body
