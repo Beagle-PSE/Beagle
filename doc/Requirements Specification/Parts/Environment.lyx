@@ -187,5 +187,18 @@ gls{CTA}
  to communicate with performance measurement software.
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Graphics
+	filename UML Diagrams/Package.pdf
+	width 15cm
+	height 20cm
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
