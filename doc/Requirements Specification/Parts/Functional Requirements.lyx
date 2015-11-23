@@ -315,6 +315,17 @@ name "/F50/"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F60/"
+
+\end_inset
+
+ Measurement results are saved onto a persistent medium to avoid data loss.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset VSpace defskip
 \end_inset
 
@@ -504,7 +515,89 @@ name "/OF70/"
 
  The user may choose to re-test the source code or parts of it, in order
  to either gain more precision or to reflect source code changes.
- 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF80/"
+
+\end_inset
+
+ The user may launch and control a test of a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ over a network.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF90/"
+
+\end_inset
+
+ The user may pause a measurement of a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF92/"
+
+\end_inset
+
+ Beagle reports its progress back to the user.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF94/"
+
+\end_inset
+
+ The user may specify the parameterisation of a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{module}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
