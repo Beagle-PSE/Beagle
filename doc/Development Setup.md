@@ -12,13 +12,6 @@ Required Eclipse plugins are:
   * import all SoMoX projects into your working space (consider using a Working Set to group them)
   * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
   
-### For creating UML models
-
- * [UML-Designer](https://marketplace.eclipse.org/content/uml-designer)
- * [UML2Java Code Generator](http://marketplace.obeonetwork.com/module/uml2java-generator) (Can be installed in the welcome window of UML-Designer)
- * You need to install [Inkscape](https://inkscape.org/de/) for the build process.
- * When you create/edit an UML-diagram, always export it to a .svg file with the same name.
-  
 ## Documentation
 
 ### LyX
@@ -34,7 +27,7 @@ Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-h
 
  * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and move it to `C:\Program Files (x86)\Umlet\Umlet.exe` (Windows) or `/opt/Umlet/` (Linux). (If you want to put it somewhere else, you have to adopt `Render.bat` or `Render.sh`.) (Required to build your project.)
  * When you like to use UMLet as eclipse plugin, you can install this as well.
- * Only commit the `.uxf` files. When you want to embed them in LyX, refer to `My File.pdf`, these files will be generated during the build process.
+ * Only commit the `.uxf` files. When you want to embed them in LyX, refer to `My File.pdf`, these files will be generated during the build process. Please tick the checkbox "Keep aspect ratio" and insert a maximum width and heigth to keep the LyX preview working.
 
 
 ## Continuous Integration
