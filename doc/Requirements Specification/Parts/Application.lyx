@@ -300,7 +300,20 @@ name "/A100/"
 
 \end_inset
 
- Desktop System (with Eclipse) with JRE
+ Desktop System with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{JRE}
+\end_layout
+
+\end_inset
+
+ and Eclipse.
 \end_layout
 
 \begin_layout Labeling
