@@ -13,7 +13,7 @@ cd "$tmpdir"
 # generate .tex
 lyx -e pdflatex "$file.lyx"
 
-#generate .pdf from .svg
+#generate .pdf from .uxf
 for f in **/*.uxf ; do /opt/Umlet/umlet.sh -action=convert -format=pdf -filename="$f" ; done
 
 # generate all the other stuff
