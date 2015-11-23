@@ -488,9 +488,14 @@ newglossaryentry{component-based software architecture}{
 
 \begin_layout Plain Layout
 
-		is a 
+		a 
 \backslash
-gls{software architecture} ...
+gls{software architecture} utilising the concept of 
+\backslash
+gls{component-based software}, therefore taking advantage of the reusability
+ of its parts and preserving the same for newly created 
+\backslash
+glspl{component}.
 \end_layout
 
 \begin_layout Plain Layout
@@ -526,7 +531,18 @@ newglossaryentry{resource demand}{
 
 \begin_layout Plain Layout
 
-		foobar
+		how much of a certain resource---like CPU, Network oder hard disk drive---a
+ 
+\backslash
+gls{component} needs to offer a certain functionality.
+ A resource demand is ideally specified platform independently, e.g.
+ by specifiying required CPU cycles, megabytes to be read, etc.
+ If such information is not available, resource demands can be expressed
+ platform dependend, e.g.
+ in nanoseconds.
+ In this case, a certain degree of portability can still be achieved if
+ information about the used platforms' speed relative to each other is available.
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -619,12 +635,20 @@ newglossaryentry{Palladio Component Model}{
 
 		a domain-specific modeling language (DSL) used by 
 \backslash
-gls{Palladio}, designed to enable early performance predictions for 
+gls{Palladio}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
-glspl{software architecture}.
- It can be used to predict the performance of 
+begin{quote}It is designed to enable early performance predictions for software
+ architectures and is aligned with a component-based software development
+ process.
 \backslash
-glspl{component-based software architecture}.
+end{quote} 
+\backslash
+cite{tuChemPcm}
 \end_layout
 
 \begin_layout Plain Layout
@@ -923,7 +947,9 @@ newglossaryentry{system}{
 \begin_layout Plain Layout
 
 		(usually) reflects the organizational structure that built it.
- (Conway's law)
+ (Conway's law) 
+\backslash
+cite{conwaysLaw}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1248,7 +1274,41 @@ newglossaryentry{Kieker}{
 
 \begin_layout Plain Layout
 
-	description={}
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{quote}
+\end_layout
+
+\begin_layout Plain Layout
+
+			a Java-based application performance monitoring and dynamic software
+ analysis framework.
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+end{quote}
+\backslash
+cite{KiekerPaper}
+\end_layout
+
+\begin_layout Plain Layout
+
+		A 
+\backslash
+gls{measurement software} Beagle aims to support.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
 \end_layout
 
 \begin_layout Plain Layout
