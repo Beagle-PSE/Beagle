@@ -105,10 +105,7 @@ name "/A10/"
 \end_inset
 
  Beagle can be used for re-engineering of existing software.
- When 
-starting to use 
-\lang british
-
+ When starting to use 
 \begin_inset ERT
 status open
 
@@ -121,8 +118,35 @@ Gls{Palladio}
 
 \end_inset
 
- for a existing software Beagle is helpful to detect bottlenecks and problems.
+ for a existing software Beagle is helpful to detect bottlenecks and problems
+ using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ created.
+ This allows an more efficient re-engineering.
 \end_layout
 
 \begin_layout Labeling
@@ -134,6 +158,61 @@ name "/A20/"
 \end_inset
 
  Beagle may be used for prototyping.
+ As it is possible to create a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ without existing code with the help of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ Beagle can analyse the unimplemented prototype.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ with the additional information from Beagle completes the prototype as
+ it contains information about the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ for each component.
 \end_layout
 
 \begin_layout Labeling
