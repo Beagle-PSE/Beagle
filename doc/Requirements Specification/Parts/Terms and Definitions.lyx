@@ -488,9 +488,14 @@ newglossaryentry{component-based software architecture}{
 
 \begin_layout Plain Layout
 
-		is a 
+		a 
 \backslash
-gls{software architecture} ...
+gls{software architecture} utilising the concept of 
+\backslash
+gls{component-based software}, therefore taking advantage of the reusability
+ of its parts and preserving the same for newly created 
+\backslash
+glspl{component}.
 \end_layout
 
 \begin_layout Plain Layout
@@ -630,12 +635,20 @@ newglossaryentry{Palladio Component Model}{
 
 		a domain-specific modeling language (DSL) used by 
 \backslash
-gls{Palladio}, designed to enable early performance predictions for 
+gls{Palladio}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
-glspl{software architecture}.
- It can be used to predict the performance of 
+begin{quote}It is designed to enable early performance predictions for software
+ architectures and is aligned with a component-based software development
+ process.
 \backslash
-glspl{component-based software architecture}.
+end{quote} 
+\backslash
+cite{tuChemPcm}
 \end_layout
 
 \begin_layout Plain Layout
@@ -934,7 +947,9 @@ newglossaryentry{system}{
 \begin_layout Plain Layout
 
 		(usually) reflects the organizational structure that built it.
- (Conway's law)
+ (Conway's law) 
+\backslash
+cite{conwaysLaw}
 \end_layout
 
 \begin_layout Plain Layout
