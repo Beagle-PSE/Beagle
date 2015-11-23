@@ -165,7 +165,7 @@ gls{naiive}
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -253,7 +253,7 @@ Reference notation
 
 \begin_layout Standard
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -470,7 +470,7 @@ filename "Parts/Environment.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "Parts/Functionality.lyx"
+filename "Parts/Functional Requirements.lyx"
 
 \end_inset
 
