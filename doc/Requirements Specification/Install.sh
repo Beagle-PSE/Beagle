@@ -33,4 +33,14 @@ sudo texhash
 # Export a small lyx file to assert LyX is working and to make LyX read in its config
 # Reduces the noice when first calling lyx in the scripts
 lyx --export-to pdflatex $tmpdir/test.tex /usr/share/lyx/examples/splash.lyx
+
+#Install Umlet
+umlet="http://www.umlet.com/umlet_13_3/umlet_13.3.zip"
+
+zipnameumlet="$tmpdir/umlet.zip"
+
+wget -qO- -O $zipnameumlet $umlet && sudo unzip $zipnameumlet -d /opt
+sudo chown -R $USER /opt/Umlet
+chmod +x /opt/Umlet/umlet.sh
+
 rm -rf $tmpdir

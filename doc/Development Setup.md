@@ -32,8 +32,9 @@ Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-h
 
 ### For creating UML models
 
- * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and the the folder to your path. (Required to build your project).
+ * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and move it to `C:\Program Files (x86)\Umlet\Umlet.exe` (Windows) or `/opt/Umlet/` (Linux). (If you want to put it somewhere else, you have to adopt `Render.bat` or `Render.sh`.) (Required to build your project.)
  * When you like to use UMLet as eclipse plugin, you can install this as well.
+ * Only commit the `.uxf` files. When you want to embed them in LyX, refer to `My File.pdf`, these files will be generated during the build process.
 
 
 ## Continuous Integration

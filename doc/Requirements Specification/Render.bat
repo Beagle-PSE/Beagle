@@ -1,6 +1,9 @@
 :: LyX executable. Add some logic here to search differen paths if your installation is elsewhere. 
 set LYX="C:\Program Files (x86)\LyX 2.1\bin\lyx.exe"
 if not exist %LYX% set LYX="G:\Programme\LyX 2.1\bin\lyx.exe"
+set UMLET="C:\Program Files (x86)\Umlet\Umlet.exe";
+if not exist %UMLET% set UMLET="C:\Program Files\Umlet\Umlet.exe";
+if not exist %UMLET% set UMLET="C:\weitere Programme\Umlet\Umlet.exe";
 set FILENAME="Requirements Specification"
 
 :: Get a temporary folder name that we can savely delete later
@@ -18,7 +21,7 @@ cd %TMPDIR%
 %LYX% --export pdflatex %FILENAME%.lyx
 
 ::generate .pdf from .svg
-for /R %i in (*.uxf) DO Umlet -action=convert -format=pdf -filename=%i
+for /R %i in (*.uxf) DO %UMLET% -action=convert -format=pdf -filename=%i
 
 :: generate all the other stuff
 pdflatex %FILENAME%.tex
