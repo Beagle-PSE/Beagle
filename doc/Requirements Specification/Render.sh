@@ -27,7 +27,7 @@ pdflatex -halt-on-error "$file.tex"
 cd "$OLDPWD"
 
 # copy the rendered pdf to save it
-cp "$tmpdir/$file.pdf" .
+cp -f "$tmpdir/$file.pdf" .
 # Delete tmp-render as it contains tons of files we don’t want.
 rm -rf "$tmpdir"
 
