@@ -12,6 +12,13 @@ Required Eclipse plugins are:
   * import all SoMoX projects into your working space (consider using a Working Set to group them)
   * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
   
+### For creating UML models
+
+ * [UML-Designer](https://marketplace.eclipse.org/content/uml-designer)
+ * [UML2Java Code Generator](http://marketplace.obeonetwork.com/module/uml2java-generator) (Can be installed in the welcome window of UML-Designer)
+ * You need to install [Inkscape](https://inkscape.org/de/) for the build process.
+ * When you create/edit an UML-diagram, always export it to a .svg file with the same name.
+  
 ## Documentation
 
 ### LyX
@@ -22,6 +29,12 @@ You may need to set the language in `Tools -> Settings -> Language Settings -> L
 
 ### Markdown
 Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). The Eclipse [GitHub Flavored Markdown viewer plugin for Eclipse](https://marketplace.eclipse.org/content/github-flavored-markdown-viewer-plugin-eclipse) helps writing it. (_Hint:_ Don’t give the plugin your GitHub credentials. [Create a personal access token](https://github.com/settings/tokens) and change the API URL in the plugin’s settings: `https://api.github.com/?access_token=PERSONAL_ACCESS_TOKEN`)
+
+### For creating UML models
+
+ * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and the the folder to your path. (Required to build your project).
+ * When you like to use UMLet as eclipse plugin, you can install this as well.
+
 
 ## Continuous Integration
 Beagle uses Travis, a continuous integration service. It tests Pull Requests as well as all branches in the repository whenever changes occur.

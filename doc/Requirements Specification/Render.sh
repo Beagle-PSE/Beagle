@@ -12,6 +12,10 @@ cd "$tmpdir"
 
 # generate .tex
 lyx -e pdflatex "$file.lyx"
+
+#generate .pdf from .svg
+for f in *.uxf ; do Umlet -action=convert -format=pdf -filename="$f" ; done
+
 # generate all the other stuff
 pdflatex -halt-on-error "$file.tex"
 # make the glossary

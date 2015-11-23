@@ -16,6 +16,10 @@ cd %TMPDIR%
 
 :: generate .tex
 %LYX% --export pdflatex %FILENAME%.lyx
+
+::generate .pdf from .svg
+for /R %i in (*.uxf) DO Umlet -action=convert -format=pdf -filename=%i
+
 :: generate all the other stuff
 pdflatex %FILENAME%.tex
 :: make the glossary
@@ -28,16 +32,16 @@ pdflatex %FILENAME%.tex
 pdflatex %FILENAME%.tex
 
 :: Go back
-%drive%
+::%drive%
 cd %OLDPWD%
 
 
 :: Save the PDF
-copy %TMPDIR%\%FILENAME%.pdf . /y
+::copy %TMPDIR%\%FILENAME%.pdf . /y
 
 
 :: Delete the temporary folder, as we don't need the tons of files in it
-rmdir %TMPDIR% /s /q
+::rmdir %TMPDIR% /s /q
 goto :EOF
 
 :GETTEMPNAME
