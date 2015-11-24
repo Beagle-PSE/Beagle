@@ -151,6 +151,17 @@ name "/T20/"
 
 \end_inset
 
+ Correct Measurement (correct results)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T30/"
+
+\end_inset
+
  
 \end_layout
 
@@ -227,8 +238,79 @@ name "/T220/"
 
 \end_inset
 
- First Test Idea (what has to happen and what is the result), as abstracted
- as possible.
+ Transferring of data between interfaces and Beagle (correct data)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T230/"
+
+\end_inset
+
+ Beagle works with different software through 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T240/"
+
+\end_inset
+
+ Assert that provided source code files are not changed.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T250/"
+
+\end_inset
+
+ Assert that in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ only 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ are added and nothing is changed and so on.
 \end_layout
 
 \begin_layout Labeling
