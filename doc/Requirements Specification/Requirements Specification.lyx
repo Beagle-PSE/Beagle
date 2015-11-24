@@ -21,6 +21,7 @@
 \renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
 \usepackage{graphicx}
 \usepackage{grffile}
+\usepackage[all]{hypcap}
 \end_preamble
 \options english,final
 \use_default_options true
@@ -512,7 +513,7 @@ filename "Parts/Models.lyx"
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -524,6 +525,24 @@ status collapsed
 
 \backslash
 printglossary[title=Terms and Definitions]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\backslash
+listfigurename}
 \end_layout
 
 \end_inset
