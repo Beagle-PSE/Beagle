@@ -1,9 +1,9 @@
 :: LyX executable. Add some logic here to search differen paths if your installation is elsewhere. 
 set LYX="C:\Program Files (x86)\LyX 2.1\bin\lyx.exe"
 if not exist %LYX% set LYX="G:\Programme\LyX 2.1\bin\lyx.exe"
-set UMLET="C:\Program Files (x86)\Umlet\Umlet.exe"
-if not exist %UMLET% set UMLET="C:\Program Files\Umlet\Umlet.exe"
-if not exist %UMLET% set UMLET="C:\weitere Programme\Umlet\Umlet.exe"
+set UMLET="C:\Program Files (x86)\Umlet\umlet.jar"
+if not exist %UMLET% set UMLET="C:\Program Files\Umlet\umlet.jar"
+if not exist %UMLET% set UMLET="C:\weitere Programme\Umlet\umlet.jar"
 set FILENAME="Requirements Specification"
 
 :: Get a temporary folder name that we can savely delete later
@@ -17,14 +17,13 @@ set OLDPWD=%cd%
 C:
 cd %TMPDIR%
 
-::generate .pdf from .uxf
+::generate .pdf from .uxf (Must happen before LyX runs!)
 For /R %%f in (*.uxf) do (
 		%UMLET% -action=convert -format=pdf -filename="%%f"
 	)
-
+	
 :: generate .tex
 %LYX% --export pdflatex %FILENAME%.lyx
-
 
 :: generate all the other stuff
 pdflatex %FILENAME%.tex
@@ -37,14 +36,13 @@ pdflatex %FILENAME%.tex
 pdflatex %FILENAME%.tex
 pdflatex %FILENAME%.tex
 
+:copy
 :: Go back
 %drive%
 cd %OLDPWD%
 
-
-:: Save the PDF
-copy %TMPDIR%\%FILENAME%.pdf . /y
-
+:: copy all rendered pdfs to save them
+xcopy /s /y %TMPDIR%\*.pdf .
 
 :: Delete the temporary folder, as we don't need the tons of files in it
 rmdir %TMPDIR% /s /q
