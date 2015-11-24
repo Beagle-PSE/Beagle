@@ -115,5 +115,38 @@ The chapter should contain:
 
 \end_layout
 
+\begin_layout Section
+Scenario
+\end_layout
+
+\begin_layout Standard
+Imagine, that a Java based online shop is running on a middle-class web
+ server of a company named 
+\begin_inset Quotes eld
+\end_inset
+
+EmmaSun
+\begin_inset Quotes erd
+\end_inset
+
+.
+ During the first few years the software could deal with almost 99,9% of
+ the requests and orders that are handled quite well without any delay.
+ After an enormous expansion since the last year, the user numbers are currently
+ growing for about 5 percent each week.
+ Although the current servers are designed to fulfil a distinctly higher
+ amount of user requests, the administration reported some few dropouts
+ as well as increasing waiting times in single applications.
+ Unfortunately, the software is based on an early design that has grown
+ over years with missing documentation in many cases.
+ The effort to re-write the complete software is an impossible act.
+ The only solution is, to reanalyse the software's source code and hopefully
+ find any bottlenecks that can be repaired with lesser effort.
+ But reanalysing source code is also a quite unmanageable task.
+ So at this point, Beagle is used.
+ Beagle helps the team of software architects that was commissioned by EmmaSun
+ to analyse the whole software.
+\end_layout
+
 \end_body
 \end_document
