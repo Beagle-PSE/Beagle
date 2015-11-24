@@ -199,6 +199,58 @@ name "/C20/"
  he expects it to behave in such a manner.
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C30/"
+
+\end_inset
+
+ The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
+
+\end_inset
+
+ (see p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "input artefacts"
+
+\end_inset
+
+) are integer.
+ This means that all parts of the provided 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ describe the software correctly, completely and exactly like implemented
+ in the source code.
+ Beagle relies on this to be true and may produce inaccurate or wrong results
+ if it's not.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+This assumption will not cause problems if the PCM was re-engineered from
+ the software's source code.
+ But if the model and implementation diverged at any point (likely during
+ the software's implementation), it may, however, lead to unexpected results.
+\end_layout
+
+\end_deeper
 \begin_layout Section
 Challenges
 \end_layout
