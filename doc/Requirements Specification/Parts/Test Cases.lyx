@@ -75,6 +75,17 @@ Test Cases
 \end_layout
 
 \begin_layout Standard
+As Beagle should work with above defined interfaces it has to be tested
+ in complete.
+ However, this could result into testing the other softwares, which is not
+ what should be done, or even worse it could result in not detecting errors
+ and failures as they are compensated by other software.
+ On account of this two types of tests are needed: one testing the whole
+ system with its dependencies and another with parameters put in at the
+ interfaces and therefore only testing Beagle itself.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -105,6 +116,17 @@ Reference notation is /T#/
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T10/"
+
+\end_inset
+
+ First Test Idea
 \end_layout
 
 \end_body
