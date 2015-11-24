@@ -78,6 +78,127 @@ Discussion
 Assumptions
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C10/"
+
+\end_inset
+
+ The measured software was built using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software architecture}
+\end_layout
+
+\end_inset
+
+.
+ This assumption is derived from working with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+, which was built for analysing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software}
+\end_layout
+
+\end_inset
+
+.
+ Fortunately, it most of the time imposes little loss of generality, as
+ any object oriented software can be described using terms of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software architecture}
+\end_layout
+
+\end_inset
+
+ (regarding each class as a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ in the worst case).
+ Such software will naturally not have the advantages that come with the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software}
+\end_layout
+
+\end_inset
+
+ approach, but might still be analysed for their performance.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I (Joshua) think this to actually be true, but fear that the SDQ won't agree
+ on this.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C20/"
+
+\end_inset
+
+ The measured software has a constant, deterministic runtime for a fixed
+ configuration of input parameters, when ignoring influences of the hardware,
+ operating system and error of measurement.
+ This will be the case for most software.
+ The fact the user tries to measure the software when using Beagle implies
+ he expects it to behave in such a manner.
+\end_layout
+
 \begin_layout Section
 Challenges
 \end_layout
@@ -86,7 +207,7 @@ Challenges
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/P10/"
+name "/C100/"
 
 \end_inset
 
@@ -100,7 +221,7 @@ name "/P10/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/P20/"
+name "/C110/"
 
 \end_inset
 
@@ -111,7 +232,7 @@ name "/P20/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/P30/"
+name "/C120/"
 
 \end_inset
 
@@ -124,7 +245,7 @@ name "/P30/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/P40/"
+name "/C130/"
 
 \end_inset
 

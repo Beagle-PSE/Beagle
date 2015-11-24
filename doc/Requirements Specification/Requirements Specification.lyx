@@ -318,7 +318,7 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/C#/ mandatory criterion
+/P#/ purpose criterion
 \end_layout
 
 \begin_layout Labeling
@@ -348,17 +348,17 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/F#/ mandatory functional requirement
+/F#/ functional requirement
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/Q#/ mandatory non functional requirement
+/Q#/ non functional requirement
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/P#/ challenge
+/C#/ challenge or assumption
 \end_layout
 
 \begin_layout Labeling
