@@ -110,7 +110,8 @@ Make sure to stay at the level of acceptance testing.
 \end_layout
 
 \begin_layout Plain Layout
-Reference notation is /T#/
+Reference notation is /T#/.
+ /OT#/ indicates test for optional requirements.
 \end_layout
 
 \end_inset
@@ -126,7 +127,43 @@ name "/T10/"
 
 \end_inset
 
- First Test Idea
+ Smoke Test.
+ First of all, the software has to be running, otherwise there is nothing
+ to test.
+ On account of this the first test is a simple run-through.
+ For a valid input this has to work without exceptions and the software
+ has to terminate.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T20/"
+
+\end_inset
+
+ First Test Idea (what has to happen and what is the result), as abstracted
+ as possible.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT10/"
+
+\end_inset
+
+ First test for optional requirements.
 \end_layout
 
 \end_body
