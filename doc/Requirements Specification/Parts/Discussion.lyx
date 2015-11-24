@@ -226,6 +226,8 @@ name "/C110/"
 \end_inset
 
  Scalability and transferability need to be ensured.
+ Beagle must be able to determine the performance of software running on
+ an average desktop pc as well as running on a server or a cluster of servers.
 \end_layout
 
 \begin_layout Labeling
