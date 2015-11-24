@@ -18,7 +18,9 @@ C:
 cd %TMPDIR%
 
 ::generate .pdf from .uxf
-For /R %f in (*.uxf) do %UMLET% -action=convert -format=pdf -filename="%f"
+For /R %%f in (*.uxf) do (
+		%UMLET% -action=convert -format=pdf -filename="%%f"
+	)
 
 :: generate .tex
 %LYX% --export pdflatex %FILENAME%.lyx

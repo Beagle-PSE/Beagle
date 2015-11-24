@@ -19,6 +19,8 @@
 \InputIfFileExists{\string"Parts/Terms and Definitions.tex\string"}
 
 \renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
+\usepackage{graphicx}
+\usepackage{grffile}
 \end_preamble
 \options english,final
 \use_default_options true
