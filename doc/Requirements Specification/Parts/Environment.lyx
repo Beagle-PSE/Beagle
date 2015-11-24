@@ -194,17 +194,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
- 
-\backslash
-includegraphics[width=0.85
-\backslash
-textwidth]{Parts/UML Diagrams/Package.uxf.pdf}
-\end_layout
+\begin_inset Graphics
+	filename UML Diagrams/Package.uxf.pdf
+	lyxscale 50
+	width 80text%
 
 \end_inset
 
@@ -215,7 +208,7 @@ textwidth]{Parts/UML Diagrams/Package.uxf.pdf}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Package Diagram
+Component Diagram
 \end_layout
 
 \end_inset
