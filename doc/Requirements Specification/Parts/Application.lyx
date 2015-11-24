@@ -238,7 +238,7 @@ name "/A40/"
 
 \end_inset
 
- Beagle can be used for the verifying of design and implementation.
+ Beagle can be used to verify design and implementation.
  After designing the software with 
 \begin_inset ERT
 status open
