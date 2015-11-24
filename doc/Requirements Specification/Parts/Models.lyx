@@ -120,8 +120,20 @@ Scenario
 \end_layout
 
 \begin_layout Standard
-Imagine, that a Java based online shop is running on a middle-class web
- server of a company named 
+Imagine
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+all the people, living life in peace! (You-hu) You may say I'm a dreamer,
+ but I'm not the only one.
+ I hope one day you'll join us and the world will be as one.
+\end_layout
+
+\end_inset
+
+, that a Java based online shop is running on a middle-class web server
+ of a company named 
 \begin_inset Quotes eld
 \end_inset
 

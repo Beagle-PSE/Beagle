@@ -323,11 +323,6 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/OC#/ optional criterion
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
 /B#/ purpose boundary
 \end_layout
 
@@ -348,12 +343,12 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/F#/ mandatory functional requirement
+/D#/ data
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/OF#/ optional functional requirement
+/F#/ mandatory functional requirement
 \end_layout
 
 \begin_layout Labeling
@@ -363,7 +358,7 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/OQ#/ optional non functional requirement
+/P#/ challenge
 \end_layout
 
 \begin_layout Labeling
@@ -374,6 +369,13 @@ This document uses a fixed notation for all of its contents, making them
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 /M#/ model
+\end_layout
+
+\begin_layout Standard
+A preceding “O” marks optional points.
+ These relate to features that are desired and planned, but can not surely
+ be implemented in the project's scope.
+ They also serve as an outlook for further development.
 \end_layout
 
 \begin_layout Labeling
@@ -470,6 +472,16 @@ filename "Parts/Environment.lyx"
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
+filename "Parts/Data.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
 filename "Parts/Functional Requirements.lyx"
 
 \end_inset
@@ -492,6 +504,16 @@ filename "Parts/Non-Functional Requirements.lyx"
 LatexCommand input
 preview true
 filename "Parts/Test Cases.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Parts/Discussion.lyx"
 
 \end_inset
 
