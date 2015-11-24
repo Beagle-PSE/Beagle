@@ -218,6 +218,19 @@ name "/F20/"
 
 \end_inset
 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+todo{something is wrong, here}
+\end_layout
+
+\end_inset
+
  Beagle conducts one or multiple 
 \begin_inset ERT
 status open
