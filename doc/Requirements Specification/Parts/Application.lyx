@@ -268,6 +268,40 @@ gls{SoMoX}
  and Beagle can be used to compare.
  Differences and problems in implementation can be detected and resolved
  more easily.
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UML Diagrams/Use Cases.uxf.pdf
+	width 100text%
+	height 50theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Use Case Diagram for Beagle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -397,51 +431,6 @@ reference "/A30/"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Section
-Use Case Diagram
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement h
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Graphics
-	filename UML Diagrams/Use Cases.uxf.pdf
-	width 100text%
-	height 50theight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Use Case Diagram for Beagle
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body
