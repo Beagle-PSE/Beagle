@@ -642,9 +642,10 @@ gls{Palladio}.
 
 
 \backslash
-begin{quote}It is designed to enable early performance predictions for software
- architectures and is aligned with a component-based software development
- process.
+begin{quote}It is designed to enable early performance predictions for 
+\backslash
+glspl{software architecture} and is aligned with a component-based software
+ development process.
 \backslash
 end{quote} 
 \backslash
