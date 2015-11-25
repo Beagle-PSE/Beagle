@@ -585,7 +585,7 @@ listfigurename}
 LatexCommand bibtex
 btprint "btPrintAll"
 bibfiles "Bibliography"
-options "bibtotoc,plain"
+options "bibtotoc,apalike"
 
 \end_inset
 
