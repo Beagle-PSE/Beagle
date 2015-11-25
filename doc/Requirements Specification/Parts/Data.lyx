@@ -93,7 +93,7 @@ Reference notation is /D#/
 \end_layout
 
 \begin_layout Standard
-In the following section, “the software” refers to the software a user wants
+In the following chapter, “the software” refers to the software a user wants
  to analyse with Beagle.
  The term refers not only to source code, but also its conceptional attributes,
  like its purpose, structure and 
@@ -110,7 +110,11 @@ glslink{software architecture}{architecture}
 \end_inset
 
 .
- The software is excpected to be built using 
+\end_layout
+
+\begin_layout Standard
+Beagle deals with two major data artefacts: The software's source code and
+ an instance of the 
 \begin_inset ERT
 status open
 
@@ -118,13 +122,69 @@ status open
 
 
 \backslash
-gls{component-based software architecture}
+gls{PCM}
 \end_layout
 
 \end_inset
 
-.
- This assumption is with little loss of generality, as any software 
+ describing the software (hereafter to be called 
+\begin_inset Quotes eld
+\end_inset
+
+input source code
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+input PCM
+\begin_inset Quotes erd
+\end_inset
+
+ or simply 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "input artefacts"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Beagle will use the provided data to execute its tasks and write its results
+ back into the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance (hereafter to be called “
+\begin_inset CommandInset label
+LatexCommand label
+name "result PCM"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+) afterwards.
 \end_layout
 
 \begin_layout Section
@@ -139,11 +199,33 @@ name "/D10/"
 
 \end_inset
 
- The software’s source code.
- It must be written in Java and be compilable by the JDK installed on the
- PC Beagle runs on.
+ The software's source code.
+ It must be written in Java and either
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+be provided together with 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+.class
+\end_layout
+
+\end_inset
+
+ files compiled out of it, such that the files are executable on a JRE installed
+ on the computer Beagle runs on, or
+\end_layout
+
+\begin_layout Itemize
+be compilable by a JDK installed on the computer Beagle runs on.
+\end_layout
+
+\end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -152,7 +234,45 @@ name "/D20/"
 
 \end_inset
 
- The software's 
+ Information about the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+.
+ They must be modelled in the input 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/D30/"
+
+\end_inset
+
+ Information about the software's 
 \begin_inset ERT
 status open
 
@@ -165,8 +285,7 @@ glsuserii{component}
 
 \end_inset
 
- boundaries.
- Beagle uses the model to determine 
+ 
 \begin_inset ERT
 status open
 
@@ -174,21 +293,92 @@ status open
 
 
 \backslash
-gls{component}
+glspl{SEFF}
 \end_layout
 
 \end_inset
 
- boundaries.
- The model's quality and accuracy thus have a direct impact on Beagle's
- results' quality and accuracy.
+.
+ They must be modelled the input 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/D30/"
+name "/D40/"
+
+\end_inset
+
+ Mappings of the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ to the parts in the source code implementing them.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OD10/"
+
+\end_inset
+
+ User provided information about the software's parts he wishes to analyse.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OD20/"
+
+\end_inset
+
+ User provided information about measurement timeouts.
+ May be provided prior to or during Beagle's execution.
+\end_layout
+
+\begin_layout Section
+Output
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/D100/"
 
 \end_inset
 
@@ -213,61 +403,12 @@ status open
 
 
 \backslash
-gls{SEFF}
+glsuserii{internal action}
 \end_layout
 
 \end_inset
 
-, contained in the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- instance (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/D20/"
-
-\end_inset
-
-).
- Beagle uses the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SEFF}
-\end_layout
-
-\end_inset
-
- information to determine 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{internal action}
-\end_layout
-
-\end_inset
-
- and measurement points.
- Their quality and accuracy thus have a direct impact on Beagle's results'
- quality and accuracy.
+ execution time.
 \end_layout
 
 \begin_layout Labeling
@@ -282,27 +423,101 @@ glspl{internal action}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OD10/"
+name "/OD100/"
 
 \end_inset
 
- User provided information about the software's parts to be analysed.
+ The software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{internal action}
+\end_layout
+
+\end_inset
+
+ further 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+, like hard disk or network usage.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OD20/"
+name "/OD110/"
 
 \end_inset
 
- User provided information about measurement timeouts.
- May be provided prior to or during Beagle's execution.
+ Probabilities of 
+branches to be taken 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF condition}
 \end_layout
 
-\begin_layout Section
-Output
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OD120/"
+
+\end_inset
+
+ Probable number of repeats in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF loop}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_body

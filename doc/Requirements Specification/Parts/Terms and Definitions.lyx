@@ -1176,7 +1176,7 @@ glspl{component}.
 
 
 \backslash
-newacronym{SEFF}{SEFF}{
+newacronym[plural=SEFFs]{SEFF}{SEFF}{
 \backslash
 gls{service effect specification}}
 \end_layout

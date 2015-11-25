@@ -286,11 +286,11 @@ protected@write
 \backslash
 @auxout {}{
 \backslash
-string 
+string
 \backslash
-newlabel {#1}{{#1}{
+newlabel{#1}{{#1}{
 \backslash
-thepage}{#1}{#1}{}} }%
+thepage}{#1}{#1}{}}}%
 \end_layout
 
 \begin_layout Plain Layout
