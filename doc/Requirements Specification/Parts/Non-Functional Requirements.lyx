@@ -287,7 +287,7 @@ name "/OQ70/"
 
 \end_inset
 
- Beagle is robust against software errors e.g.
+ Beagle can handle errors e.g.
  exceptions.
 \end_layout
 
