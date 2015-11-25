@@ -255,7 +255,7 @@ gls{component} makes to other
 glspl{component}.
  Such conditions are---contrary to conditions that stay within an 
 \backslash
-gls{internal action}---modeled in the 
+gls{internal action}---modelled in the 
 \backslash
 glsuseri{component} 
 \backslash
@@ -320,7 +320,7 @@ gls{component} makes to other
 glspl{component}.
  Such loops are---contrary to loops that stay within an 
 \backslash
-gls{internal action}---modeled in the 
+gls{internal action}---modelled in the 
 \backslash
 glsuseri{component} 
 \backslash
@@ -531,14 +531,14 @@ newglossaryentry{resource demand}{
 
 \begin_layout Plain Layout
 
-		how much of a certain resource---like CPU, Network oder hard disk drive---a
+		how much of a certain resource---like CPU, Network or hard disk drive---a
  
 \backslash
 gls{component} needs to offer a certain functionality.
  A resource demand is ideally specified platform independently, e.g.
- by specifiying required CPU cycles, megabytes to be read, etc.
+ by specifying required CPU cycles, megabytes to be read, etc.
  If such information is not available, resource demands can be expressed
- platform dependend, e.g.
+ platform dependent, e.g.
  in nanoseconds.
  In this case, a certain degree of portability can still be achieved if
  information about the used platforms' speed relative to each other is available.
@@ -633,7 +633,7 @@ newglossaryentry{Palladio Component Model}{
 
 \begin_layout Plain Layout
 
-		a domain-specific modeling language (DSL) used by 
+		a domain-specific modelling language (DSL) used by 
 \backslash
 gls{Palladio}.
 \end_layout
@@ -642,9 +642,10 @@ gls{Palladio}.
 
 
 \backslash
-begin{quote}It is designed to enable early performance predictions for software
- architectures and is aligned with a component-based software development
- process.
+begin{quote}It is designed to enable early performance predictions for 
+\backslash
+glspl{software architecture} and is aligned with a component-based software
+ development process.
 \backslash
 end{quote} 
 \backslash
@@ -725,7 +726,7 @@ newglossaryentry{SoMoX}{
 
 		a 
 \backslash
-gls{Palladio} plugin for static code analysis to reengineer a 
+gls{Palladio} plugin for static code analysis to re-engineer a 
 \backslash
 glsuseriii{software architecture} from its source code.
  Constructs a 
@@ -1175,7 +1176,7 @@ glspl{component}.
 
 
 \backslash
-newacronym{SEFF}{SEFF}{
+newacronym[plural=SEFFs]{SEFF}{SEFF}{
 \backslash
 gls{service effect specification}}
 \end_layout
@@ -1342,11 +1343,59 @@ newglossaryentry{measurement software}{
 		software capable of measuring the time, given source code needs to execute
  some task.
  The software's results are usually returned in a time unit like nanoseconds.
- Beagles interactes with such software through the 
+ Beagles interacts with such software through the 
 \backslash
 gls{CTA} and uses it to find 
 \backslash
 glspl{resource demand}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{JRE}{JRE}{
+\backslash
+gls{Java Runtime Environment}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Java Runtime Environment}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Java Runtime Environment},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a software set containing a Java Virtual Machine, a browser plugin, the
+ Java standard libraries, and a configuration tool.
+ The Java Virtual Machine it contains is needed to run Java applications
+ or applets.
 \end_layout
 
 \begin_layout Plain Layout

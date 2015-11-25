@@ -71,41 +71,22 @@
 \begin_body
 
 \begin_layout Chapter
-Application
+Discussion
 \end_layout
 
 \begin_layout Section
-Application Field
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Describes where the software is going to be used.
- This includes typical use cases.
-\end_layout
-
-\begin_layout Plain Layout
-Reference notation is /A#/
-\end_layout
-
-\end_inset
-
-
+Assumptions
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/A10/"
+name "/C10/"
 
 \end_inset
 
- Beagle can be used for re-engineering of existing software.
- When starting to use 
+ The measured software was built using 
 \begin_inset ERT
 status open
 
@@ -113,65 +94,13 @@ status open
 
 
 \backslash
-Gls{Palladio}
+gls{component-based software architecture}
 \end_layout
 
 \end_inset
 
- for an existing software Beagle is helpful to detect bottlenecks and problems
- using the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- created.
- This allows an more efficient re-engineering.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A20/"
-
-\end_inset
-
- Beagle may be used for prototyping.
- As it is possible to create a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- without existing code with the help of 
+.
+ This assumption is derived from working with 
 \begin_inset ERT
 status open
 
@@ -184,8 +113,117 @@ gls{Palladio}
 
 \end_inset
 
- Beagle can analyse the yet unimplemented prototype.
+, which was built for analysing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software}
+\end_layout
+
+\end_inset
+
+.
+ Fortunately, it most of the time imposes little loss of generality, as
+ any object oriented software can be described using terms of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software architecture}
+\end_layout
+
+\end_inset
+
+ (regarding each class as a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ in the worst case).
+ Such software will naturally not have the advantages that come with the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software}
+\end_layout
+
+\end_inset
+
+ approach, but might still be analysed for their performance.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+I (Joshua) think this to actually be true, but fear that the SDQ won't agree
+ on this.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C20/"
+
+\end_inset
+
+ The measured software has a constant, deterministic runtime for a fixed
+ configuration of input parameters, when ignoring influences of the hardware,
+ operating system and error of measurement.
+ This will be the case for most software.
+ The fact the user tries to measure the software when using Beagle implies
+ he expects it to behave in such a manner.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C30/"
+
+\end_inset
+
  The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
+
+\end_inset
+
+ (see p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "input artefacts"
+
+\end_inset
+
+) are integer.
+ This means that all parts of the provided 
 \begin_inset ERT
 status open
 
@@ -198,109 +236,74 @@ gls{PCM}
 
 \end_inset
 
- with the additional information from Beagle completes the prototype as
- it contains information about the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{resource demand}
+ describe the software correctly, completely and exactly like implemented
+ in the source code.
+ Beagle relies on this to be true and may produce inaccurate or wrong results
+ if it's not.
 \end_layout
 
-\end_inset
-
- for each component.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A30/"
-
-\end_inset
-
- Beagle can be used for software development.
- Early implementations of components can be analysed with Beagle in order
- to predict their performance in interaction with the software system.
- This leads to earlier detection of arising problems which hence can be
- fixed in time.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A40/"
-
-\end_inset
-
- Beagle can be used to verify design and implementation.
- After designing the software with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Palladio}
-\end_layout
-
-\end_inset
-
- and implementing it, 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- and Beagle can be used to compare.
- Differences and problems in implementation can be detected and resolved
- more easily.
-\end_layout
-
-\begin_layout Section
-Target Group
-\end_layout
-
+\begin_deeper
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Defines the software's target groups.
- They will typically be logically derived from the above part.
+This assumption will not cause problems if the PCM was re-engineered from
+ the software's source code.
+ But if the model and implementation diverged at any point (likely during
+ the software's implementation), it may, however, lead to unexpected results.
 \end_layout
 
-\begin_layout Plain Layout
-Reference notation is /G#/
-\end_layout
-
-\end_inset
-
-
+\end_deeper
+\begin_layout Section
+Challenges
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/G10/"
+name "/C100/"
 
 \end_inset
 
- 
+ For accurate measurements, the CPU of the test server needs to be controlled.
+ This involves disabling turbo boost, reading the temperature of each core
+ and making sure the CPU is in a real world application thermal state, and
+ possibly further measures.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C110/"
+
+\end_inset
+
+ Scalability and transferability need to be ensured.
+ Beagle must be able to determine the performance of software running on
+ an average desktop pc as well as running on a server or a cluster of servers.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C120/"
+
+\end_inset
+
+ Different hardware platforms vary in different dimensions (CPU frequency,
+ number of CPU cores, size and distribution of CPU caches, speed of RAM,
+ etc.), yet the results have to be representative.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C130/"
+
+\end_inset
+
+ Only one component is tested at a time, yet 
 \begin_inset ERT
 status open
 
@@ -308,37 +311,13 @@ status open
 
 
 \backslash
-Glspl{software architect}
+glspl{component}
 \end_layout
 
 \end_inset
 
- will use Beagle predominantly for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A10/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A40/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/G20/"
-
-\end_inset
-
- 
+ need to interact with each other.
+ This means that other 
 \begin_inset ERT
 status open
 
@@ -346,57 +325,12 @@ status open
 
 
 \backslash
-Glspl{system deployer}
+glspl{component}
 \end_layout
 
 \end_inset
 
- will use Beagle predominantly for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A40/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/G30/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-Glspl{component developer}
-\end_layout
-
-\end_inset
-
- will use Beagle predominantly for 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A20/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/A30/"
-
-\end_inset
-
-.
+ need to be mocked.
 \end_layout
 
 \end_body

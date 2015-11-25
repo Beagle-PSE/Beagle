@@ -23,6 +23,13 @@ You may need to set the language in `Tools -> Settings -> Language Settings -> L
 ### Markdown
 Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). The Eclipse [GitHub Flavored Markdown viewer plugin for Eclipse](https://marketplace.eclipse.org/content/github-flavored-markdown-viewer-plugin-eclipse) helps writing it. (_Hint:_ Don’t give the plugin your GitHub credentials. [Create a personal access token](https://github.com/settings/tokens) and change the API URL in the plugin’s settings: `https://api.github.com/?access_token=PERSONAL_ACCESS_TOKEN`)
 
+### For creating UML models
+
+ * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and move it to `C:\Program Files (x86)\Umlet\Umlet.exe` (Windows) or `/opt/Umlet/` (Linux). (If you want to put it somewhere else, you have to adopt `Render.bat` or `Render.sh`.) (Required to build your project.)
+ * When you like to use UMLet as eclipse plugin, you can install this as well.
+ * Only commit the `.uxf` files. When you want to embed them in LyX, refer to `My File.pdf`, these files will be generated during the build process. Please tick the checkbox "Keep aspect ratio" and insert a maximum width and heigth to keep the LyX preview working.
+
+
 ## Continuous Integration
 Beagle uses Travis, a continuous integration service. It tests Pull Requests as well as all branches in the repository whenever changes occur.
 

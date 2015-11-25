@@ -48,6 +48,10 @@ $1
 # Main Part #
 #############
 
+# generate .pdf from .uxf (Must happen before LyX runs!)
+find . -name '*.uxf' -exec /opt/Umlet/umlet.sh -action=convert -format=pdf -filename='{}' \;
+
+
 # generate .tex
 log "Rendering with LyX"
 lyx -e pdflatex "$file.lyx" | tee -a $log || error
@@ -82,11 +86,13 @@ pdflatex -halt-on-error "$file.tex" | tee -a $log || error
 
 
 
-# Go back
+# copy all rendered pdfs to save them
+find . -name '*.pdf' -exec cp --parents -f '{}' "$OLDPWD" \;
+# save the log
+cp -f $log "$OLDPWD"
+# Go back up
 cd "$OLDPWD"
 
-# copy the rendered pdf and log to save them
-cp -f "$tmpdir/$file.pdf" $log .
 # Delete tmp-render as it contains tons of files we don’t want.
 rm -rf "$tmpdir"
 
