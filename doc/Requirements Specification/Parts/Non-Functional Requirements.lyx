@@ -291,6 +291,28 @@ name "/OQ70/"
  exceptions.
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ80/"
+
+\end_inset
+
+ Beagle stops measruements by timeout.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ90/"
+
+\end_inset
+
+ Beagle makes benchmarking of the hardware systems.
+\end_layout
+
 \begin_layout Section
 User Interface and Experience
 \end_layout
