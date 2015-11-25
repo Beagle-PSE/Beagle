@@ -109,7 +109,7 @@ name "/E10/"
 
 \end_inset
 
- Beagle requires Java and Eclipse to run.
+ Beagle requires not less than Java 7 and Eclipse Mars to run.
 \end_layout
 
 \begin_layout Labeling
