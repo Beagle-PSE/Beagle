@@ -156,8 +156,100 @@ EmmaSun
  find any bottlenecks that can be repaired with lesser effort.
  But reanalysing source code is also a quite unmanageable task.
  So at this point, Beagle is used.
- Beagle helps the team of software architects that was commissioned by EmmaSun
- to analyse the whole software.
+ Beagle helps the team of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ that was commissioned by EmmaSun to analyse the whole software.
+ As Beagle depends on a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+, the architects use the reversed-engineering plug-in SoMoX to create a
+ valid 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ including all software components and their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF}
+\end_layout
+
+\end_inset
+
+.
+ Providing Beagle a monitoring software named 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+, that matches the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Common Trace API}
+\end_layout
+
+\end_inset
+
+, Beagle starts with conducting measurements on single software components,
+ extending the PCM.
+ After around 6 ours of measuring, the results of measuring are added into
+ the PCM and Beagle calls Palladio to do a performance prediction.
+ The prediction indicates an architectural violation of some software components
+, that lead to a a huge amount of sub-function calls through hierarchical
+ layers.
+ The software architects decide to add an extra cache, that can store the
+ results of the sub-function calls and make them available immediately.
+ Fortunately, before they turn this idea into reality, they can adopt this
+ design decision into the PCM.
+ The little changes in the PCM lead to a much better performance prediction
+ and the software architects agree to reimplement the new design.
 \end_layout
 
 \end_body
