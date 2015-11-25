@@ -48,8 +48,19 @@ $1
 # Main Part #
 #############
 
+function renderuml {
+	/opt/Umlet/umlet.sh -action=convert -format=pdf -filename="$1" | tee -a $log || error
+}
+
 # generate .pdf from .uxf (Must happen before LyX runs!)
-find . -name '*.uxf' -exec /opt/Umlet/umlet.sh -action=convert -format=pdf -filename='{}' \;
+log "Rendering the UML diagrams"
+# redirect stream 5 to 1 (stdout)
+exec 5>&1
+# the conversion's output is duplicated to 5, which will be printed on stdout. stdout is captured in umletconversion
+umletconversion=$(find . -name '*.uxf' -exec /opt/Umlet/umlet.sh -action=convert -format=pdf -filename='{}' \; | tee -a $log | tee >(cat - >&5)) 
+# umlet fails to fail ( ;) ) if an error occurs. We try to fix this by searching for the words 'Exception' and 'Error' in the output
+# That's far from perfect but better than nothing.
+echo $umletconversion | grep -Eivq '(.*Exception.*|.*Error.*)' || error
 
 
 # generate .tex
