@@ -253,8 +253,8 @@ name "/OQ40/"
 
 \end_inset
 
- During the measurements Beagle saves the results of measurement to a hard
- disk.
+ The user has the possibility to pause the measurements.
+ As well the user can continue a measurement from save.
 \end_layout
 
 \begin_layout Labeling
@@ -265,8 +265,7 @@ name "/OQ50/"
 
 \end_inset
 
- The user has the possibility to pause the measurements.
- As well the user can continue a measurement from save.
+ If it is requested, Beagle shuts down the PC after it finished.
 \end_layout
 
 \begin_layout Labeling
@@ -277,17 +276,6 @@ name "/OQ60/"
 
 \end_inset
 
- If it is requested, Beagle shuts down the PC after it finished.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ70/"
-
-\end_inset
-
  Beagle report the progress of measurements in a progress bar.
 \end_layout
 
@@ -295,7 +283,7 @@ name "/OQ70/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OQ80/"
+name "/OQ70/"
 
 \end_inset
 
