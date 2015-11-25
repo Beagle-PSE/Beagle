@@ -124,7 +124,7 @@ glslink{software architecture}{architecture}
 
  in a sophisticated way is a crucial, yet challenging task.
  Decisions made at this point often highly influence software's properties,
- such as maintainability and performance
+ such as maintainability, reliability, security and performance
 \begin_inset Note Note
 status open
 

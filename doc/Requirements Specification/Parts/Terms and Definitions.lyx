@@ -535,7 +535,12 @@ newglossaryentry{resource demand}{
  
 \backslash
 gls{component} needs to offer a certain functionality.
- A resource demand is ideally specified platform independently, e.g.
+ In the 
+\backslash
+gls{PCM}, resource demands are part of the 
+\backslash
+gls{SEFF}.
+ They are ideally specified platform independently, e.g.
  by specifying required CPU cycles, megabytes to be read, etc.
  If such information is not available, resource demands can be expressed
  platform dependent, e.g.
@@ -583,7 +588,12 @@ newglossaryentry{internal action}{
 gls{component} executes without leaving its scope (e.g.
  without calling other 
 \backslash
-glspl{component})
+glspl{component}).
+ Part of a 
+\backslash
+glsuseri{component} 
+\backslash
+gls{SEFF}.
 \end_layout
 
 \begin_layout Plain Layout
@@ -744,46 +754,6 @@ gls{SEFF}.
 \begin_layout Plain Layout
 
 	user1={SoMoX'}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-newglossaryentry{software architect}{
-\end_layout
-
-\begin_layout Plain Layout
-
-	name={software architect},
-\end_layout
-
-\begin_layout Plain Layout
-
-	description={
-\end_layout
-
-\begin_layout Plain Layout
-
-		a person who planes a 
-\backslash
-gls{software architecture} from existing components and interfaces.
- Uses architectural styles and patterns, analyses architectural specifications,
- and makes design decisions.
-\end_layout
-
-\begin_layout Plain Layout
-
-	}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1145,17 +1115,23 @@ newglossaryentry{component developer}{
 
 \begin_layout Plain Layout
 
-		builds composite 
+		developer role in the 
 \backslash
-glspl{component}, specifies 
+gls{component-based software} development process.
+ Specifies, implements and tests 
 \backslash
-glspl{component}, interfaces, and data types, and specifies data types.
- Creates 
+glspl{component}, interfaces, and data types.
+ In the 
 \backslash
-glspl{service effect specification}, stores modelling and implementation
- artecfacts in repositories, and implements, tests, and maintains 
+gls{PCM}, component developers create 
 \backslash
-glspl{component}.
+glspl{service effect specification} to define 
+\backslash
+glsuserii{component} behavioural properties and store modelling and implementati
+on artecfacts in repositories.
+ 
+\backslash
+cite{PCMtechreport}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1176,21 +1152,12 @@ glspl{component}.
 
 
 \backslash
-newacronym[plural=SEFFs]{SEFF}{SEFF}{
-\backslash
-gls{service effect specification}}
+newglossaryentry{software architect}{
 \end_layout
 
 \begin_layout Plain Layout
 
-
-\backslash
-newglossaryentry{service effect specification}{
-\end_layout
-
-\begin_layout Plain Layout
-
-	name={service effect specification},
+	name={software architect},
 \end_layout
 
 \begin_layout Plain Layout
@@ -1200,11 +1167,28 @@ newglossaryentry{service effect specification}{
 
 \begin_layout Plain Layout
 
-		describes the inner behaviour of a 
+		developer role in the 
 \backslash
-gls{component} on a highly abstract level by specifying the relationship
- between provided and required services of a component.
-  
+gls{component-based software} development process.
+ Leads the development process by designing the 
+\backslash
+glsuseriii{software architecture} from existing or planned components and
+ interfaces.
+ Usually delegates the specification of required 
+\backslash
+glspl{component} to 
+\backslash
+glspl{component developer}.
+ Uses architectural styles and patterns, analyses architectural specifications,
+ and makes design decisions.
+ In the 
+\backslash
+gls{PCM}, software architects create the assembly model, specifying how
+ existing 
+\backslash
+glspl{component} are composed.
+\backslash
+cite{PCMtechreport}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1240,11 +1224,83 @@ newglossaryentry{system deployer}{
 
 \begin_layout Plain Layout
 
-		models the resource environments and allocations of 
+		developer role in the 
+\backslash
+gls{component-based software} development process.
+ Specifies the resource environment and allocates 
 \backslash
 glspl{component} to resources.
- Also sets up the resource environments, deploys components onto resources,
- and maintains the running system.
+ Resources can both be hardware resources (CPU, hard disk, network connection)
+ and software resources (thread pool, database connection).
+ In the 
+\backslash
+gls{PCM}, system deployers create the resource environment specification,
+ modelling the resource environment and 
+\backslash
+gls{component} allocations.
+ 
+\backslash
+cite{PCMtechreport}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SEFF}{SEFF}{
+\backslash
+gls{service effect specification}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{service effect specification}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={service effect specification},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		description of a 
+\backslash
+glsuseri{component} behaviour in the 
+\backslash
+gls{PCM}.
+ SEFFs contain information about the 
+\backslash
+glsuseri{component} calls to other components as well as its 
+\backslash
+glspl{resource demand}.
+ This information is used to derive the component's performance for simulation
+ and prediction.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1280,29 +1336,10 @@ newglossaryentry{Kieker}{
 
 \begin_layout Plain Layout
 
-		
+		"a Java-based application performance monitoring and dynamic software
+ analysis framework."
 \backslash
-begin{quote}
-\end_layout
-
-\begin_layout Plain Layout
-
-			a Java-based application performance monitoring and dynamic software
- analysis framework.
-\end_layout
-
-\begin_layout Plain Layout
-
-		
-\backslash
-end{quote}
-\backslash
-cite{KiekerPaper}
-\end_layout
-
-\begin_layout Plain Layout
-
-		A 
+cite{KiekerPaper} A 
 \backslash
 gls{measurement software} Beagle aims to support.
 \end_layout
