@@ -403,8 +403,25 @@ newglossaryentry{component}{
 
 \begin_layout Plain Layout
 
-		 an artifact of a software development process with a description of its
- application.
+		"a [software] unit of composition with contractually specified interfaces
+ and explicit context dependencies only.
+ A software component can be deployed independently and is subject to third-part
+y composition." 
+\backslash
+cite{ComponentSoftwareBook}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		There is no equivalent of components in modern programming languages,
+ in particular, a component usually consists of multiple Java classes.
+ Components can be composed from other components 
+\backslash
+cite{KrogmannPhD}.
 \end_layout
 
 \begin_layout Plain Layout
@@ -457,7 +474,17 @@ glspl{component}.
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={component-based software's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={component-based softwares'}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1433,6 +1460,52 @@ newglossaryentry{Java Runtime Environment}{
  Java standard libraries, and a configuration tool.
  The Java Virtual Machine it contains is needed to run Java applications
  or applets.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{QoS}{QoS}{
+\backslash
+gls{quality of service}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{quality of service}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={quality of service},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a software's extra-functional attributes, like performance, reliability,
+ maintainability or security.
 \end_layout
 
 \begin_layout Plain Layout
