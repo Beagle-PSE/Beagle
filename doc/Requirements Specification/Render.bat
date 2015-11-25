@@ -34,40 +34,44 @@ if exist %log% del %log%
 :::::::::::::::
 
 ::generate .pdf from .uxf (Must happen before LyX runs!)
+:: For some strange reason, Umlet has no output on windws. It also fails to fail ( ;) )
+:: if it encouters an error. Thus we have no way to know if it was successful and cannot
+:: abort on error or even report any errors.
+call :log Rendering the UML diagrams
 For /R %%f in (*.uxf) do (
-		%UMLET% -action=convert -format=pdf -filename="%%f"
+		%UMLET% -action=convert -format=pdf -filename="%%f" > %tee% || goto :teeerror
+		call :tee
 	)
-
 
 :: generate .tex
 call :log Rendering with LyX
-%LYX% --export pdflatex %FILENAME%.lyx > %tee% || (call :teeerror & exit /B 1)
+%LYX% --export pdflatex %FILENAME%.lyx > %tee% || goto :teeerror
 call :tee
 
 :: generate all the other stuff
 call :log First pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || (call :logerror & exit /B 1)
+pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 
 :: make the glossary
 call :log Generating the glossary
-makeglossaries %FILENAME% > %tee% || (call :teeerror & exit /B 1)
+makeglossaries %FILENAME% > %tee% || goto :teeerror
 call :tee
 
 :: make the biliography
 call :log Generating the bibliography
-bibtex %FILENAME% > %tee% || (call :teeerror & exit /B 1)
+bibtex %FILENAME% > %tee% || goto :teeerror
 call :tee
 
 :: render the pdf (we need at least two times. And you know… just to be sure ;))
 :: The output of the first runs is irrelevant
 call :log Second pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || (call :logerror & exit /B 1)
+pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 call :log Third pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || (call :logerror & exit /B 1)
+pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 call :log Fourth pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || (call :logerror & exit /B 1)
+pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 call :log Last pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex > %tee% || (call :teeerror & exit /B 1)
+pdflatex -halt-on-error %FILENAME%.tex > %tee% || goto :teeerror
 call :tee
 
 ::::::::::::::::::::::
@@ -124,21 +128,11 @@ type %tee%
 exit /B 0
 
 
-:: called when a normal logging command failed. Prints the whole log to stdout
+:: called when a normal logging command failed. Prints the whole log to stdout.
+:: Restores the PWD, saves the log and prints an error message
+:: Jump to this section using goto, such that it can abort the script.
 :logerror
 type %log%
-call :errorcleanup
-exit /B 1
-
-:: called when a tee logging command failed. Stores the tee file and continues with :logerror
-:teeerror
-call :tee
-call :logerror
-exit /B 1
-
-:: called on every fail. Restores the PWD
-:: saves the log, prints a messages and exits.
-:errorcleanup
 %drive%
 cd %OLDPWD%
 copy %log% . /y
@@ -149,5 +143,12 @@ echo(
 echo An error occured (see output above).
 echo You can see the files generated during rendering in %TMPDIR% (type "cd %%TMPDIR%%")
 exit /B 1
+exit /B 1
+
+:: called when a tee logging command failed. Stores the tee file and continues with :logerror
+:: Jump to this section using goto, such that it can abort the script.
+:teeerror
+call :tee
+goto :logerror
 
 :EOF
