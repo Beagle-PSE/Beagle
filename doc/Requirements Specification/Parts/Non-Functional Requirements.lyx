@@ -230,7 +230,7 @@ name "/OQ20/"
 
 \end_inset
 
- The measurements runs without user interaction.
+ The measurements run without user interaction.
 \end_layout
 
 \begin_layout Labeling
@@ -241,7 +241,7 @@ name "/OQ30/"
 
 \end_inset
 
- The measurements shall also possible over the network e.g.
+ The measurements also shall run over the network e.g.
  on a Server.
 \end_layout
 
@@ -277,7 +277,7 @@ name "/OQ60/"
 
 \end_inset
 
- If it is requested Beagle shut down the PC after it finished working.
+ If it is requested, Beagle shuts down the PC after it finished.
 \end_layout
 
 \begin_layout Labeling
@@ -288,7 +288,7 @@ name "/OQ70/"
 
 \end_inset
 
- Beagle reports progress of measurements in kind of a progress bar.
+ Beagle report the progress of measurements in a progress bar.
 \end_layout
 
 \begin_layout Labeling
