@@ -191,41 +191,6 @@ name "/Q30/"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/Q40/"
-
-\end_inset
-
- Beagle defines a maximum time dependent on the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls {measurement software}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/Q50/"
-
-\end_inset
-
- Beagle sets measurement points in every component to be measured.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
 \begin_inset VSpace defskip
 \end_inset
 
