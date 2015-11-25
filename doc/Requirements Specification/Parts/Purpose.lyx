@@ -389,7 +389,7 @@ Reference notation is /C#/
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/C10/"
+name "/P10/"
 
 \end_inset
 
@@ -426,7 +426,7 @@ glspl{resource demand}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/C20/"
+name "/P20/"
 
 \end_inset
 
@@ -494,7 +494,7 @@ Reference notation is /OC#/
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OC10/"
+name "/OP10/"
 
 \end_inset
 
@@ -533,7 +533,7 @@ gls{PCM}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OC20/"
+name "/OP20/"
 
 \end_inset
 
@@ -558,7 +558,7 @@ gls{PCM}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OC30/"
+name "/OP30/"
 
 \end_inset
 
@@ -595,7 +595,7 @@ gls{PCM}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OC40/"
+name "/OP40/"
 
 \end_inset
 
