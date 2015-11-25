@@ -262,7 +262,14 @@ gls{CTA}
 
 \end_inset
 
+ (asserts 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F40/"
 
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Labeling
@@ -274,6 +281,14 @@ name "/T240/"
 \end_inset
 
  Assert that provided source code files are not changed.
+ (asserts 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F50/"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Labeling
@@ -297,7 +312,7 @@ gls{PCM}
 
 \end_inset
 
- only 
+ 
 \begin_inset ERT
 status open
 
@@ -310,7 +325,22 @@ glspl{resource demand}
 
 \end_inset
 
- are added and nothing is changed and so on.
+ are added and nothing else is changed.
+ (asserts 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/C10/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F100/"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Labeling
