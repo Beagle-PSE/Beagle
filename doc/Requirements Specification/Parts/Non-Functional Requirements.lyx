@@ -241,30 +241,6 @@ name "/OQ30/"
 
 \end_inset
 
- The measurements also shall run over the network e.g.
- on a Server.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ40/"
-
-\end_inset
-
- The user has the possibility to pause the measurements.
- As well the user can continue a measurement from save.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ50/"
-
-\end_inset
-
  If it is requested, Beagle shuts down the PC after it finished.
 \end_layout
 
@@ -272,18 +248,7 @@ name "/OQ50/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OQ60/"
-
-\end_inset
-
- Beagle report the progress of measurements in a progress bar.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ70/"
+name "/OQ40/"
 
 \end_inset
 
@@ -295,22 +260,23 @@ name "/OQ70/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OQ80/"
+name "/OQ50/"
 
 \end_inset
 
- Beagle stops measruements by timeout.
+ Beagle stops measruements by an adaptive timeout.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OQ90/"
+name "/OQ60/"
 
 \end_inset
 
- Beagle makes benchmarking of the hardware systems.
+ Beagle makes benchmarking of the hardware systems to adapt results on differnet
+ hardware systems.
 \end_layout
 
 \begin_layout Section
