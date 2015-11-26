@@ -123,19 +123,28 @@ glslink{software architecture}{architecture}
 \end_inset
 
  in a sophisticated way is a crucial, yet challenging task.
- Decisions made at this point often highly influence software's properties,
- such as maintainability and performance
-\begin_inset Note Note
+ Decisions made at this point highly influence the software's 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-cite these statements
+
+
+\backslash
+gls{QoS}
 \end_layout
 
 \end_inset
 
+, but are usually difficult to change, as redesigns may be costly 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "PCMtechreport"
+
+\end_inset
+
 .
- 
+ To prevent poor design in the first place, 
 \begin_inset ERT
 status open
 
@@ -148,8 +157,48 @@ gls{Palladio}
 
 \end_inset
 
- is a software enabling developers to analyse performance and other such
- metrics of 
+, a model driven approach for software simulation, enables developers to
+ analyse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component-based software}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
+\end_layout
+
+\end_inset
+
+ at the definition phase, before actually writing any code.
+ Using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+, all parties involved in the development of 
 \begin_inset ERT
 status open
 
@@ -162,8 +211,7 @@ gls{component-based software}
 
 \end_inset
 
- at the definition phase, before actually writing any code.
- To achieve that, the software is meta-modelled by the 
+ model their domain in the 
 \begin_inset ERT
 status open
 
@@ -177,12 +225,26 @@ gls{PCM}
 \end_inset
 
 .
+ This information is hence used to simulate the software's behaviour, with
+ a focus on its 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
+\end_layout
+
+\end_inset
+
+ attributes.
 \end_layout
 
 \begin_layout Standard
-If no code exists yet, models are created completely manually.
- But in many scenarios some to all source code has already been written.
- In such cases however, analysis with 
+In many scenarios however, some to all source code may already exist.
+ Analysis with 
 \begin_inset ERT
 status open
 
@@ -195,8 +257,22 @@ gls{Palladio}
 
 \end_inset
 
- might still be wished.
- 
+ might still be wished, for example to simulate a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interaction with a software system or to freshly start analysing existing
+ software.
+ For such cases, 
 \begin_inset ERT
 status open
 
@@ -209,7 +285,8 @@ gls{SoMoX}
 
 \end_inset
 
- is a tool for static code analysis of source code, to re-engineer the 
+, a software for static source code analysis, allows users to re-engineer
+ their 
 \begin_inset ERT
 status open
 
@@ -236,6 +313,28 @@ gls{PCM}
 \end_inset
 
 .
+ The results contain the software's component boundaries, their bindings
+ to the provided source code and their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
+
+\end_inset
+
+.
  Unfortunately, 
 \begin_inset ERT
 status open
@@ -249,7 +348,7 @@ glsuseri{SoMoX}
 
 \end_inset
 
- results are limited, as they do not contain 
+ static approach does not allow it to determine the software's 
 \begin_inset ERT
 status open
 
@@ -262,13 +361,18 @@ glspl{resource demand}
 
 \end_inset
 
- which are essential for performance analysis.
+, which are essential for performance analysis.
 \end_layout
 
 \begin_layout Standard
-The purpose of this project is to analyse software dynamically by conducting
- performance measurements on its source code, in order to determine the
- 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
+
+\end_inset
+
+ also describes Beagle, an approach for dynamic source code analysis to
+ complement 
 \begin_inset ERT
 status open
 
@@ -276,12 +380,14 @@ status open
 
 
 \backslash
-glspl{resource demand}
+gls{SoMoX}
 \end_layout
 
 \end_inset
 
- of its 
+.
+ It aims to conduct performance measurements on source code of a software,
+ in order to determine its 
 \begin_inset ERT
 status open
 
@@ -307,6 +413,19 @@ glspl{internal action}
 
 \end_inset
 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
 .
  Adding this information to the software's 
 \begin_inset ERT
@@ -321,7 +440,7 @@ gls{PCM}
 
 \end_inset
 
- will enable developers to use 
+ enables developers to import their software into 
 \begin_inset ERT
 status open
 
@@ -334,11 +453,46 @@ gls{Palladio}
 
 \end_inset
 
- to analyse and optimise their existing software with minimal effort.
+ with minimal effort.
+ The purpose of this project is to implement Beagle.
+ Based on the foundations in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
+
+\end_inset
+
+, it aims to develop such a software adding dynamic properties to a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ using contemporary 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
-Must Have Criteria
+Criteria
 \end_layout
 
 \begin_layout Standard
@@ -389,11 +543,11 @@ Reference notation is /C#/
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/C10/"
+name "/P10/"
 
 \end_inset
 
- Beagle shall enable the user to analyse given source code for its 
+ Beagle enables the user to analyse given source code for its 
 \begin_inset ERT
 status open
 
@@ -426,11 +580,11 @@ glspl{resource demand}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/C20/"
+name "/P20/"
 
 \end_inset
 
- Beagle shall automatically annotate its 
+ Beagle annotates its 
 \begin_inset ERT
 status open
 
@@ -443,7 +597,7 @@ gls{resource demand}
 
 \end_inset
 
- findings in a given instance of the software 
+ findings in a given instance of the software's 
 \begin_inset ERT
 status open
 
@@ -459,8 +613,36 @@ gls{PCM}
 .
 \end_layout
 
-\begin_layout Section
-Nice to Have Criteria
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/P30/"
+
+\end_inset
+
+ Beagle, in conjunction with other software, enables the user to import
+ existing software for analysis into 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -477,7 +659,7 @@ This part should be visionary and state as many features that would add
  additional value to the software.
  It should also prove that we made up our minds about our software and can
  exactly imagine its usefulness.
- Criteria specified here may also be implemented by others, long after we’ve
+ Criteria specified here may also be implemented by others, long after we've
  finished our project.
 \end_layout
 
@@ -494,126 +676,11 @@ Reference notation is /OC#/
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OC10/"
+name "/OP10/"
 
 \end_inset
 
- Beagle should determine the approximate probability in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{SEFF condition}
-\end_layout
-
-\end_inset
-
-, which are annotated in the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-, for each case.
- If the probability depends on the input parameters, Beagle should determine
- this dependency.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OC20/"
-
-\end_inset
-
- The branch probability as a function of the input parameters should be
- annotated in the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OC30/"
-
-\end_inset
-
- Beagle should determine in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{SEFF loop}
-\end_layout
-
-\end_inset
-
-, which are annotated in the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-, too, how often the loop body is executed approximately.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OC40/"
-
-\end_inset
-
- The number of loop executions as a function of the input parameters should
- be annotated in the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-.
+ Beagle analyses given source code for further dynamic behavioural attributes.
 \end_layout
 
 \begin_layout Section
@@ -653,8 +720,21 @@ name "/B10/"
 
 \end_inset
 
- Beagle does not perform actual measurements on source code, as this is
- done by other software and transferred through the 
+ Beagle does not perform actual measurements on source code.
+ This is done by other software like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+ and results are transferred through the 
 \begin_inset ERT
 status open
 
@@ -686,12 +766,13 @@ status open
 
 
 \backslash
-glsuseriv{software architecture}
+glsuseriii{software architecture}
 \end_layout
 
 \end_inset
 
- from their source code, as this is done by other tools like 
+ from its source code.
+ This is done by other software like 
 \begin_inset ERT
 status open
 
@@ -741,7 +822,8 @@ gls{SEFF}
 
 \end_inset
 
-, as this is done by other tools like 
+.
+ This is done by other tools like 
 \begin_inset ERT
 status open
 
@@ -765,7 +847,7 @@ name "/B40/"
 
 \end_inset
 
- Beagle only analyses Java programs.
+ Beagle only analyses Java source code.
 \end_layout
 
 \begin_layout Labeling
@@ -776,8 +858,8 @@ name "/B50/"
 
 \end_inset
 
- Beagle does no performance analysis or prediction, as this is done with
- 
+ Beagle does no performance analysis or prediction.
+ This is may be achieved with 
 \begin_inset ERT
 status open
 

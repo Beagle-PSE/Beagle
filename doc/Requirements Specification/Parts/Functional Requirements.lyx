@@ -113,46 +113,22 @@ Reference notation for nice to have functionality is /OF#/
 \end_layout
 
 \begin_layout Standard
-Given a software's source code together with a valid 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
+Given Beagle is called with valid 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
 
 \end_inset
 
- instance correctly describing the software's 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{component}
-\end_layout
+ (see p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "input artefacts"
 
 \end_inset
 
-, including their 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SEFF}
-\end_layout
-
-\end_inset
-
-, Beagle must fulfil the following requirements:
+), it must fulfil the following requirements:
 \end_layout
 
 \begin_layout Section
@@ -311,6 +287,17 @@ name "/F50/"
 \end_inset
 
  Beagle does not modify the provided source code files.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F60/"
+
+\end_inset
+
+ Measurement results are saved onto a persistent medium to avoid data loss.
 \end_layout
 
 \begin_layout Labeling
@@ -504,11 +491,133 @@ name "/OF70/"
 
  The user may choose to re-test the source code or parts of it, in order
  to either gain more precision or to reflect source code changes.
- 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF80/"
+
+\end_inset
+
+ The user may launch and control a test of a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ over a network.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF90/"
+
+\end_inset
+
+ The user may pause a measurement of a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF92/"
+
+\end_inset
+
+ Beagle reports its progress back to the user.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF94/"
+
+\end_inset
+
+ The user may specify the parameterisation of a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
 Result Annotation
+\end_layout
+
+\begin_layout Standard
+Beagle will write all results to the provided 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance (
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, see p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "result PCM"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Labeling
@@ -532,25 +641,30 @@ gls{PCM}
 
 \end_inset
 
-.
- (Hereafter to be called 
+ (
 \begin_inset Quotes eld
 \end_inset
 
-Beagle's result 
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
 
 \end_inset
 
- instance”).
+
+\begin_inset Quotes erd
+\end_inset
+
+, see p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "result PCM"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Labeling
@@ -561,7 +675,14 @@ name "/F110/"
 
 \end_inset
 
- Beagle's result 
+ The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ is a valid 
 \begin_inset ERT
 status open
 
@@ -574,20 +695,7 @@ gls{PCM}
 
 \end_inset
 
- instance is a valid 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-.
+ instance.
 \end_layout
 
 \begin_layout Labeling
@@ -598,21 +706,14 @@ name "/F120/"
 
 \end_inset
 
- As far as technically possible, Beagle's results can be read from Beagle's
- result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
+ As far as technically possible, Beagle's results can be read from the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
 
 \end_inset
 
- instance by a Palladio installation without Beagle.
+ by a Palladio installation without Beagle.
 \end_layout
 
 \begin_layout Labeling
@@ -623,20 +724,14 @@ name "/F130/"
 
 \end_inset
 
- Beagle's result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
+ The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
 
 \end_inset
 
- instance contains all contained 
+ contains all contained 
 \begin_inset ERT
 status open
 
@@ -699,20 +794,14 @@ gls{PCM}
 
 \end_inset
 
- instance provided to Beagle will be found in Beagle's result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
+ instance provided to Beagle will be found in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
 
 \end_inset
 
- instance.
+.
 \end_layout
 
 \begin_layout Labeling
