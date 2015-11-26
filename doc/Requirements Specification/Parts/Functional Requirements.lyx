@@ -525,7 +525,7 @@ name "/OF90/"
 
 \end_inset
 
- The user may pause and later resume a measurement of a 
+ The user may pause and later resume a measurement.
 \begin_inset ERT
 status open
 
@@ -545,7 +545,7 @@ gls{component}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF92/"
+name "/OF100/"
 
 \end_inset
 
@@ -556,7 +556,7 @@ name "/OF92/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF94/"
+name "/OF110/"
 
 \end_inset
 
@@ -580,7 +580,7 @@ gls{component}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF96/"
+name "/OF120/"
 
 \end_inset
 
@@ -635,7 +635,7 @@ reference "result PCM"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/F100/"
+name "/F200/"
 
 \end_inset
 
@@ -682,7 +682,7 @@ reference "result PCM"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/F110/"
+name "/F210/"
 
 \end_inset
 
@@ -713,7 +713,7 @@ gls{PCM}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/F120/"
+name "/F220/"
 
 \end_inset
 
@@ -731,7 +731,7 @@ reference "result PCM"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/F130/"
+name "/F230/"
 
 \end_inset
 
@@ -788,7 +788,7 @@ glspl{resource demand}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/F140/"
+name "/F240/"
 
 \end_inset
 
@@ -827,7 +827,7 @@ reference "result PCM"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF100/"
+name "/OF200/"
 
 \end_inset
 
@@ -903,7 +903,7 @@ glspl{resource demand}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF110/"
+name "/OF210/"
 
 \end_inset
 
@@ -940,7 +940,7 @@ glsuserii{SEFF condition}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF120/"
+name "/OF220/"
 
 \end_inset
 
@@ -990,7 +990,7 @@ glsuseri{component}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF130/"
+name "/OF230/"
 
 \end_inset
 
@@ -1027,7 +1027,7 @@ glsuserii{SEFF loop}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF140/"
+name "/OF240/"
 
 \end_inset
 
