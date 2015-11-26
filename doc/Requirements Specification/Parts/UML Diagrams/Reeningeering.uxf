@@ -175,7 +175,7 @@ hardware resources</panel_attributes>
     <coordinates>
       <x>930</x>
       <y>310</y>
-      <w>140</w>
+      <w>150</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>execute Beagle</panel_attributes>
@@ -263,9 +263,9 @@ hardware resources</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>790</x>
+      <x>780</x>
       <y>400</y>
-      <w>120</w>
+      <w>140</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>Implement
