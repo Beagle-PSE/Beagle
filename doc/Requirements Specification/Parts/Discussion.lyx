@@ -277,9 +277,9 @@ name "/C110/"
 
 \end_inset
 
- Beagle must be able to ensure the transferability of its test results across
- differents hardware platforms and make performance predictions regarding
- the scalability of a software.
+ Beagle must be able to ensure the transferability of its measurement results
+ across different hardware platforms and to make performance predictions
+ regarding the scalability of a software.
  This stretches from software running on an average desktop pc via servers
  through to clusters of servers.
 \end_layout
