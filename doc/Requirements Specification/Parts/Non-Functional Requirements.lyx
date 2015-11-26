@@ -241,7 +241,8 @@ name "/OQ30/"
 
 \end_inset
 
- If it is requested, Beagle shuts down the PC after it finished.
+ Beagle can handle errors e.g.
+ exceptions.
 \end_layout
 
 \begin_layout Labeling
@@ -252,18 +253,6 @@ name "/OQ40/"
 
 \end_inset
 
- Beagle can handle errors e.g.
- exceptions.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ50/"
-
-\end_inset
-
  Beagle stops measruements by an adaptive timeout.
 \end_layout
 
@@ -271,7 +260,7 @@ name "/OQ50/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OQ60/"
+name "/OQ50/"
 
 \end_inset
 
