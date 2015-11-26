@@ -75,7 +75,7 @@ Test Cases
 \end_layout
 
 \begin_layout Standard
-As Beagle should work with above defined interfaces it has to be tested
+As Beagle has to work with the above defined interfaces it has to be tested
  in complete.
  However, this could result into testing the other softwares, which is not
  what should be done, or even worse it could result in not detecting errors
@@ -154,7 +154,8 @@ name "/T30/"
 
 \end_inset
 
- Assert that it works for a system with only the software specified in 
+ Assert that Beagle works for a system with only the software specified
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/Q10/"
@@ -172,39 +173,6 @@ name "/T40/"
 
 \end_inset
 
- Test with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Kieker}
-\end_layout
-
-\end_inset
-
- and other measurement software.
- Beagle should work with both.
- (asserts 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/Q20/"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T50/"
-
-\end_inset
-
  Transferring of data between interfaces and Beagle (correct data)
 \end_layout
 
@@ -212,7 +180,7 @@ name "/T50/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/T60/"
+name "/T50/"
 
 \end_inset
 
@@ -229,10 +197,32 @@ gls{CTA}
 
 \end_inset
 
+.
+ Test with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+ and other measurement software.
  (asserts 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F40/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q20/"
 
 \end_inset
 
@@ -243,7 +233,7 @@ reference "/F40/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/T70/"
+name "/T60/"
 
 \end_inset
 
@@ -262,7 +252,7 @@ reference "/F50/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/T80/"
+name "/T70/"
 
 \end_inset
 
@@ -293,6 +283,20 @@ glspl{resource demand}
 \end_inset
 
  are added and nothing else is changed.
+ This includes to assure that the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ is valid.
  (asserts 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -373,7 +377,8 @@ name "/OT20/"
 
 \end_inset
 
- Detect invalid input
+ Assert that Beagle detects invalid input and does not crash but responds
+ to it in a acceptable way.
 \end_layout
 
 \end_body
