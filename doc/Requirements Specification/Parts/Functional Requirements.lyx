@@ -539,6 +539,8 @@ gls{component}
 \end_inset
 
 .
+ Beagle ensures that the source files were not changed when the user resumes
+ the measurement.
 \end_layout
 
 \begin_layout Labeling
@@ -560,7 +562,7 @@ name "/OF94/"
 
 \end_inset
 
- The user may specify the parameterisation of a 
+ The user may specify the parametrisation of a 
 \begin_inset ERT
 status open
 
@@ -1075,7 +1077,7 @@ glsuseri{component}
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-todo Parameterisation of results
+todo Parametrisation of results
 \end_layout
 
 \begin_layout Labeling
