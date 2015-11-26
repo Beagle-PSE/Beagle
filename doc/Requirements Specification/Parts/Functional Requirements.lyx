@@ -576,6 +576,17 @@ gls{component}
 .
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF96/"
+
+\end_inset
+
+ If it is requested, Beagle shuts down the PC after it finished.
+\end_layout
+
 \begin_layout Section
 Result Annotation
 \end_layout
