@@ -560,7 +560,7 @@ name "/OF94/"
 
 \end_inset
 
- The user may specify the parameterisation of a 
+ The user may specify the parametrisation of a 
 \begin_inset ERT
 status open
 
@@ -724,7 +724,20 @@ reference "result PCM"
 
 \end_inset
 
- by a Palladio installation without Beagle.
+ by a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ installation without Beagle.
 \end_layout
 
 \begin_layout Labeling
@@ -1071,44 +1084,6 @@ glsuseri{component}
 \end_inset
 
  interface's parameters.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-todo Parameterisation of results
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-todo Analyse source code for its architecture and performance in one turn
- (e.g.
- with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- & 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Kieker}
-\end_layout
-
-\end_inset
-
-).
 \end_layout
 
 \end_body
