@@ -211,7 +211,20 @@ gls{Kieker}
 
 \end_inset
 
- and other measurement software.
+ and other 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
  (asserts 
 \begin_inset CommandInset ref
 LatexCommand ref

@@ -560,7 +560,7 @@ name "/OF94/"
 
 \end_inset
 
- The user may specify the parameterisation of a 
+ The user may specify the parametrisation of a 
 \begin_inset ERT
 status open
 
@@ -724,7 +724,20 @@ reference "result PCM"
 
 \end_inset
 
- by a Palladio installation without Beagle.
+ by a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ installation without Beagle.
 \end_layout
 
 \begin_layout Labeling
