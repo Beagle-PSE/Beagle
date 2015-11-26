@@ -277,9 +277,11 @@ name "/C110/"
 
 \end_inset
 
- Scalability and transferability need to be ensured.
- Beagle must be able to determine the performance of software running on
- an average desktop pc as well as running on a server or a cluster of servers.
+ Beagle must be able to ensure the transferability of its measurement results
+ across different hardware platforms and to make performance predictions
+ regarding the scalability of a software.
+ This stretches from software running on an average desktop pc via servers
+ through to clusters of servers.
 \end_layout
 
 \begin_layout Labeling

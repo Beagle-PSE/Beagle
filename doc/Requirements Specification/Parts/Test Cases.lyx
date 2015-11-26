@@ -75,6 +75,17 @@ Test Cases
 \end_layout
 
 \begin_layout Standard
+As Beagle has to work with the above defined interfaces it has to be tested
+ in complete.
+ However, this could result into testing the other softwares, which is not
+ what should be done, or even worse it could result in not detecting errors
+ and failures as they are compensated by other software.
+ On account of this two types of tests are needed: one testing the whole
+ system with its dependencies and another with parameters put in at the
+ interfaces and therefore only testing Beagle itself.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -99,12 +110,275 @@ Make sure to stay at the level of acceptance testing.
 \end_layout
 
 \begin_layout Plain Layout
-Reference notation is /T#/
+Reference notation is /T#/.
+ /OT#/ indicates test for optional requirements.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T10/"
+
+\end_inset
+
+ Smoke testing.
+ First of all, the software has to be running, otherwise there is nothing
+ to test.
+ On account of this the first test is a simple run-through.
+ For a valid input this has to work without exceptions and the software
+ has to terminate.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T20/"
+
+\end_inset
+
+ Correct measurement (correct results)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T30/"
+
+\end_inset
+
+ Assert that Beagle works for a system with only the software specified
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q10/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T40/"
+
+\end_inset
+
+ Transferring of data between interfaces and Beagle (correct data)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T50/"
+
+\end_inset
+
+ Beagle works with different software through 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+ Test with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+ and other measurement software.
+ (asserts 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F40/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q20/"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T60/"
+
+\end_inset
+
+ Assert that provided source code files are not changed.
+ (asserts 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F50/"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T70/"
+
+\end_inset
+
+ Assert that in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ are added and nothing else is changed.
+ This includes to assure that the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ is valid.
+ (asserts 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/C10/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/C20/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F100/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F110/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F130/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F140/"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT10/"
+
+\end_inset
+
+ Test with different operating systems and hardware.
+ (asserts 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ10/"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT20/"
+
+\end_inset
+
+ Assert that Beagle detects invalid input and does not crash but responds
+ to it in a acceptable way.
 \end_layout
 
 \end_body
