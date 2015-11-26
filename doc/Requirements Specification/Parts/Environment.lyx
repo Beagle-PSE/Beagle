@@ -109,7 +109,7 @@ name "/E10/"
 
 \end_inset
 
- Beagle should run on Java 7 runtime environment (or higher) and Eclipse
+ Beagle should run on Java 8 runtime environment (or higher) and Eclipse
  distribution that is up to date with Eclipse Mars (4.5).
 \end_layout
 
