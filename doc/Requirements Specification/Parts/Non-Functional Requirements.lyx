@@ -222,6 +222,52 @@ gls{Palladio}
  runs on.
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ20/"
+
+\end_inset
+
+ The measurements run without user interaction.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ30/"
+
+\end_inset
+
+ Beagle can handle errors e.g.
+ exceptions.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ40/"
+
+\end_inset
+
+ Beagle stops measruements by an adaptive timeout.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ50/"
+
+\end_inset
+
+ Beagle makes benchmarking of the hardware systems to adapt results on differnet
+ hardware systems.
+\end_layout
+
 \begin_layout Section
 User Interface and Experience
 \end_layout
