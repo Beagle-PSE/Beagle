@@ -104,8 +104,8 @@ name "/A10/"
 
 \end_inset
 
- Beagle can be used for re-engineering of existing software.
- When starting to use 
+ Beagle can be used to re-engineer source code.
+ To start to using 
 \begin_inset ERT
 status open
 
@@ -118,21 +118,8 @@ Gls{Palladio}
 
 \end_inset
 
- for an existing software Beagle is helpful to detect bottlenecks and problems
- using the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- 
+ for an existing software, Beagle can be combined with a tool for static
+ code analysis like 
 \begin_inset ERT
 status open
 
@@ -145,33 +132,8 @@ gls{SoMoX}
 
 \end_inset
 
- created.
- This allows an more efficient re-engineering.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A20/"
-
-\end_inset
-
- Beagle may be used for prototyping.
- As it is possible to create a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- without existing code with the help of 
+.
+ This way, the software can quickly be analysed with 
 \begin_inset ERT
 status open
 
@@ -184,8 +146,36 @@ gls{Palladio}
 
 \end_inset
 
- Beagle can analyse the yet unimplemented prototype.
- The 
+.
+ Modelling an existing software is such a time-consuming task that automatic
+ modelling is a valuable feature that may be crucial for developers to start
+ using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A20/"
+
+\end_inset
+
+ Beagle can be used for software development.
+ Early implementations of components modelled in the 
 \begin_inset ERT
 status open
 
@@ -198,8 +188,48 @@ gls{PCM}
 
 \end_inset
 
- with the additional information from Beagle completes the prototype as
- it contains information about the 
+ can be analysed with Beagle in order to predict their performance in interactio
+n with the software system.
+ This leads to earlier detection of arising problems (like implementation
+ errors or unrealistic modelling in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+), which can hence be fixed in time.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/A30/"
+
+\end_inset
+
+ Beagle may be used for prototyping.
+ Different implementations of a component modelled in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ may be analysed with Beagle to determine their 
 \begin_inset ERT
 status open
 
@@ -212,22 +242,24 @@ glspl{resource demand}
 
 \end_inset
 
- for each component.
-\end_layout
+.
+ 
+\begin_inset ERT
+status open
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/A30/"
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Palladio}
+\end_layout
 
 \end_inset
 
- Beagle can be used for software development.
- Early implementations of components can be analysed with Beagle in order
- to predict their performance in interaction with the software system.
- This leads to earlier detection of arising problems which hence can be
- fixed in time.
+ can then be used to simulate the software system's performance with each
+ implementation.
+ As performance is multi-dimensional, this can lead to more precise information
+ about the different implementation's effects on the system's runtime.
 \end_layout
 
 \begin_layout Labeling
@@ -238,8 +270,8 @@ name "/A40/"
 
 \end_inset
 
- Beagle can be used to verify design and implementation.
- After designing the software with 
+ Beagle can be used to verify a software's design and implementation.
+ After developing the software with 
 \begin_inset ERT
 status open
 
@@ -252,7 +284,7 @@ gls{Palladio}
 
 \end_inset
 
- and implementing it, 
+ and implementing it, a static code analysis tool like 
 \begin_inset ERT
 status open
 
@@ -265,9 +297,26 @@ gls{SoMoX}
 
 \end_inset
 
- and Beagle can be used to compare.
- Differences and problems in implementation can be detected and resolved
- more easily.
+ and Beagle can be re-engineer a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ which can then be compared to the initial one.
+ With this approach, differences and problems in the implementation can
+ be detected and resolved easier.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Float figure
 placement h
 wide false
@@ -279,8 +328,6 @@ status open
 \begin_inset Graphics
 	filename UML Diagrams/Use Cases.uxf.pdf
 	width 100text%
-	height 50theight%
-	keepAspectRatio
 
 \end_inset
 
@@ -291,7 +338,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Use Case Diagram for Beagle
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Use Case Diagram
+\end_layout
+
+\end_inset
+
+Use Case Diagram.
+ Optional features are drawn grey.
 \end_layout
 
 \end_inset

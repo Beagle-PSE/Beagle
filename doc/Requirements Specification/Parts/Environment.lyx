@@ -215,7 +215,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Beagle an it's interaction with other software
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Component Model
+\end_layout
+
+\end_inset
+
+Beagle and its interaction with other software
 \end_layout
 
 \end_inset
