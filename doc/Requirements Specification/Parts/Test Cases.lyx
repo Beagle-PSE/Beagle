@@ -143,7 +143,22 @@ name "/T20/"
 
 \end_inset
 
- Correct measurement (correct results)
+ For a correct result in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ it is essential to to measure at the correct points.
+ Therefore a test has to assert that Beagle discovers all sections needed
+ and that they are correct.
 \end_layout
 
 \begin_layout Labeling
@@ -154,8 +169,8 @@ name "/T30/"
 
 \end_inset
 
- Assert that Beagle works for a system with only the software specified
- in 
+ There has to be a test which asserts that Beagle works for a system with
+ only the software specified in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/Q10/"
@@ -163,6 +178,8 @@ reference "/Q10/"
 \end_inset
 
 .
+ A new system has to be set up with only these software applications and
+ Beagle has to be tested on it.
 \end_layout
 
 \begin_layout Labeling
@@ -173,7 +190,9 @@ name "/T40/"
 
 \end_inset
 
- Transferring of data between interfaces and Beagle (correct data)
+ All interfaces with other software have to be tested.
+ Asserting that transferring of data between interfaces and Beagle works
+ correctly in both ways.
 \end_layout
 
 \begin_layout Labeling
@@ -184,7 +203,7 @@ name "/T50/"
 
 \end_inset
 
- Beagle works with different software through 
+ Beagle has to work with different software through the 
 \begin_inset ERT
 status open
 
@@ -198,7 +217,7 @@ gls{CTA}
 \end_inset
 
 .
- Test with 
+ Therefore it is necessary to test Beagle with 
 \begin_inset ERT
 status open
 
@@ -225,7 +244,7 @@ gls{measurement software}
 \end_inset
 
 .
- (asserts 
+ Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F40/"
@@ -250,15 +269,28 @@ name "/T60/"
 
 \end_inset
 
- Assert that provided source code files are not changed.
- (asserts 
+ As Beagle only changes the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ the source code files must not be changed (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F50/"
 
 \end_inset
 
-)
+).
+ There have to be test to assert that.
 \end_layout
 
 \begin_layout Labeling
@@ -282,7 +314,7 @@ gls{PCM}
 
 \end_inset
 
- 
+ all 
 \begin_inset ERT
 status open
 
@@ -310,7 +342,7 @@ gls{PCM}
 \end_inset
 
  is valid.
- (asserts 
+ Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/C10/"
@@ -327,32 +359,32 @@ reference "/C20/"
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F100/"
+reference "/F200/"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F110/"
+reference "/F210/"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F130/"
+reference "/F230/"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F140/"
+reference "/F240/"
 
 \end_inset
 
-)
+.
 \end_layout
 
 \begin_layout Labeling
@@ -372,14 +404,14 @@ name "/OT10/"
 \end_inset
 
  Test with different operating systems and hardware.
- (asserts 
+ Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/OQ10/"
 
 \end_inset
 
-)
+.
 \end_layout
 
 \begin_layout Labeling

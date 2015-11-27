@@ -241,8 +241,8 @@ name "/OQ30/"
 
 \end_inset
 
- Beagle can handle errors e.g.
- exceptions.
+ If in the software which is measured, an error occur and e.g.
+ the program is killed or throws exeptions, Beagle shall handle it.
 \end_layout
 
 \begin_layout Labeling
