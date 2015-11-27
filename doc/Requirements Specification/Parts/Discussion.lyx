@@ -275,10 +275,20 @@ name "/C100/"
 
 \end_inset
 
- For accurate measurements, the CPU of the test server needs to be controlled.
- This involves disabling turbo boost, reading the temperature of each core
- and making sure the CPU is in a real world application thermal state, and
- possibly further measures.
+ There are a lot of factors influencing a CPU's performance: operating temperatu
+re, number of other processes, previous load, and data in cache, to name
+ just a few.
+ Beagle aims to find ways to compensate these factors.
+ This may involve disabling 
+\noun on
+Turbo Boost
+\noun default
+ on 
+\noun on
+Intel
+\noun default
+ CPUs, reading the cores' temperature and making sure the CPU is in a real
+ world application thermal state, and further measures.
 \end_layout
 
 \begin_layout Labeling
@@ -289,11 +299,14 @@ name "/C110/"
 
 \end_inset
 
- Beagle must be able to ensure the transferability of its measurement results
- across different hardware platforms and to make performance predictions
- regarding the scalability of a software.
+ Beagle must ensure the transferability and scalability of its measurement
+ results across different hardware platforms.
  This stretches from software running on an average desktop pc via servers
  through to clusters of servers.
+ Different hardware platforms vary in many different dimensions (CPU frequency,
+ number of CPU cores, size and distribution of CPU caches, speed of RAM,
+ network speed, hard disk throughput, etc.), yet the results have to be represent
+ative.
 \end_layout
 
 \begin_layout Labeling
@@ -304,20 +317,7 @@ name "/C120/"
 
 \end_inset
 
- Different hardware platforms vary in different dimensions (CPU frequency,
- number of CPU cores, size and distribution of CPU caches, speed of RAM,
- etc.), yet the results have to be representative.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/C130/"
-
-\end_inset
-
- Only one 
+ Beagle measures only one 
 \begin_inset ERT
 status open
 
@@ -330,7 +330,7 @@ gls{component}
 
 \end_inset
 
- is tested at a time, yet 
+ at a time, yet 
 \begin_inset ERT
 status open
 
@@ -343,8 +343,8 @@ glspl{component}
 
 \end_inset
 
- need to interact with each other.
- This means that other 
+ interact with each other.
+ If a 
 \begin_inset ERT
 status open
 
@@ -352,13 +352,138 @@ status open
 
 
 \backslash
-glspl{component}
+gls{component}
 \end_layout
 
 \end_inset
 
- need to be mocked.
+ calls another 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
 \end_layout
 
+\end_inset
+
+ that takes a long time to return or doesn't return at all (e.g.
+ because it's waiting for some input or it's defective), it might be wished
+ or required to mock this 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+.
+ Whether imitation of other 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ behaviour can be done automatically needs investigation.
+ Such imitations may not affect the measurement results.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C130/"
+
+\end_inset
+
+ On modern operating systems, multitasking is the default.
+ Users are used to work on multiple tasks at the same time and have multiple
+ programs running.
+ This could, however, influence Beagle's measurement results.
+ If a considerable impact on measurement results is recognised, strategies
+ to avoid them can be developed.
+ These may including prompting the user to close certain applications.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C140/"
+
+\end_inset
+
+ Beagle aims to parametrise its measurement results by the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface parameters.
+ Such parametrisation will likely be described by a regression function
+ 
+\begin_inset Formula $\mathbb{R}^{n}\rightarrow\mathbb{R}$
+\end_inset
+
+.
+ This elicits multiple challenges:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+regression of multi-dimensional functions is a challenging task.
+\end_layout
+
+\begin_layout Itemize
+the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{resource demand}
+\end_layout
+
+\end_inset
+
+ regression functions might likely not be continuous.
+\end_layout
+
+\begin_layout Itemize
+It is unclear what the real number representation of an arbitrary Java object
+ might be.
+\end_layout
+
+\begin_layout Standard
+Note that even if not all of the above points can be fully resolved, approximate
+ parametrisation might still produce better results than no parametrisation
+ at all.
+\end_layout
+
+\end_deeper
 \end_body
 \end_document
