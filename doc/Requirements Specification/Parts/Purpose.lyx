@@ -835,7 +835,8 @@ name "/B40/"
 
 \end_inset
 
- Beagle only analyses Java source code.
+ Beagle does not assert that analysis of source code written in a language
+ other than Java 6 is possible.
 \end_layout
 
 \begin_layout Labeling
