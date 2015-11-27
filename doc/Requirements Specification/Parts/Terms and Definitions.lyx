@@ -1532,7 +1532,7 @@ newglossaryentry{PCM Stochastic Expression Language}{
 
 \begin_layout Plain Layout
 
-	name={PCM Stochastic Expression},
+	name={PCM Stochastic Expression Language},
 \end_layout
 
 \begin_layout Plain Layout
@@ -1549,7 +1549,7 @@ gls{PCM} to define random variables.
  Random variables can be defined using basic mathematic operations, common
  stochastic distributions and interface parameters 
 \backslash
-cite{PCMtechpaper}.
+cite{PCMtechreport}.
 \end_layout
 
 \begin_layout Plain Layout
