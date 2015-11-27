@@ -701,7 +701,7 @@ status open
 
 
 \backslash
-listinline{if-else}
+lstinline{if-else}
 \end_layout
 
 \end_inset
@@ -714,7 +714,7 @@ status open
 
 
 \backslash
-listinline{switch-case}
+lstinline{switch-case}
 \end_layout
 
 \end_inset
