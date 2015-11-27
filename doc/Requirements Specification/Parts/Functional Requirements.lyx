@@ -194,27 +194,14 @@ name "/F20/"
 
 \end_inset
 
- Beagle conducts one or multiple 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{measurement software}
-\end_layout
-
-\end_inset
-
- to measure the sections found in 
+ Beagle conducts measurements of the sections found by 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F10/"
 
 \end_inset
 
-.
+ by utilising measurement software.
 \end_layout
 
 \begin_layout Labeling
@@ -238,7 +225,14 @@ gls{measurement software}
 
 \end_inset
 
- to conduct performance tests on the source code.
+ for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F20/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -275,7 +269,7 @@ gls{measurement software}
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Labeling
@@ -287,17 +281,6 @@ name "/F50/"
 \end_inset
 
  Beagle does not modify the provided source code files.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/F60/"
-
-\end_inset
-
- Measurement results are saved onto a persistent medium to avoid data loss.
 \end_layout
 
 \begin_layout Labeling
@@ -378,17 +361,10 @@ name "/OF30/"
 
 \end_inset
 
- Beagle determines the probability for each case to be taken in encountered
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{SEFF condition}
-\end_layout
+ Beagle determines 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF20/"
 
 \end_inset
 
@@ -440,16 +416,10 @@ name "/OF50/"
 
 \end_inset
 
- Beagle determines the probable number of repeats in encountered 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{SEFF loop}
-\end_layout
+ Beagle determines 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF40/"
 
 \end_inset
 
@@ -489,7 +459,7 @@ name "/OF70/"
 
 \end_inset
 
- The user may choose to re-test the source code or parts of it, in order
+ The user may choose to re-measure the source code or parts of it, in order
  to either gain more precision or to reflect source code changes.
 \end_layout
 
@@ -501,19 +471,7 @@ name "/OF80/"
 
 \end_inset
 
- The user may launch and control a test of a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
+ The user may launch and control a measurement running on another computer
  over a network.
 \end_layout
 
@@ -526,19 +484,6 @@ name "/OF90/"
 \end_inset
 
  The user may pause and later resume a measurement.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Labeling
@@ -549,7 +494,7 @@ name "/OF100/"
 
 \end_inset
 
- Beagle reports its progress back to the user.
+ Beagle reports its progress to the user.
 \end_layout
 
 \begin_layout Labeling
@@ -560,7 +505,7 @@ name "/OF110/"
 
 \end_inset
 
- The user may specify the parameterisation of a 
+ The user may specify the parametrisation of a 
 \begin_inset ERT
 status open
 
@@ -584,51 +529,12 @@ name "/OF120/"
 
 \end_inset
 
- If it is requested, Beagle shuts down the PC after it finished.
+ If requested by the user, Beagle shuts down the computer it's running on
+ after it finished.
 \end_layout
 
 \begin_layout Section
 Result Annotation
-\end_layout
-
-\begin_layout Standard
-Beagle will write all results to the provided 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- instance (
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "result PCM"
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-, see p.
- 
-\begin_inset CommandInset ref
-LatexCommand pageref
-reference "result PCM"
-
-\end_inset
-
-)
 \end_layout
 
 \begin_layout Labeling
@@ -817,6 +723,17 @@ reference "result PCM"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F250/"
+
+\end_inset
+
+ Measurement results are saved onto a persistent medium to avoid data loss.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset VSpace defskip
 \end_inset
 
@@ -831,46 +748,29 @@ name "/OF200/"
 
 \end_inset
 
- Beagle annotates 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{resource demand}
-\end_layout
+ If Beagle found parametrised results (e.g.
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF10/"
 
 \end_inset
 
- in its result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF30/"
 
 \end_inset
 
- instance dependent on the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuseri{component}
-\end_layout
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF50/"
 
 \end_inset
 
- interface's parameters using the 
+), they are expressed using the 
 \begin_inset ERT
 status open
 
@@ -878,237 +778,12 @@ status open
 
 
 \backslash
-glsuseri{PCM}
-\end_layout
-
-\end_inset
-
- expression language for 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{resource demand}
+gls{PCM Stochastic Expression Language}
 \end_layout
 
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OF210/"
-
-\end_inset
-
- Beagle's result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- instance contains all contained 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{SEFF condition}
-\end_layout
-
-\end_inset
-
- estimated branch probability.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OF220/"
-
-\end_inset
-
- Beagle's result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- instance contains all contained 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{SEFF condition}
-\end_layout
-
-\end_inset
-
- estimated branch probability dependent on the containing 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuseri{component}
-\end_layout
-
-\end_inset
-
- interface's parameters.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OF230/"
-
-\end_inset
-
- Beagle's result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- instance contains all contained 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{SEFF loop}
-\end_layout
-
-\end_inset
-
- estimated branch probability.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OF240/"
-
-\end_inset
-
- Beagle's result 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- instance contains all contained 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{SEFF loop}
-\end_layout
-
-\end_inset
-
- estimated branch probability dependent on the containing 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuseri{component}
-\end_layout
-
-\end_inset
-
- interface's parameters.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-todo Parameterisation of results
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-todo Analyse source code for its architecture and performance in one turn
- (e.g.
- with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- & 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Kieker}
-\end_layout
-
-\end_inset
-
-).
 \end_layout
 
 \end_body
