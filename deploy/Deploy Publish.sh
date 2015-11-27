@@ -48,7 +48,7 @@ git checkout gh-pages
 for branchpath in branches/*
 do
 	branch=$(basename $branchpath)
-	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; rm -rf branches/$branch)
+	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; git rm -rf branches/$branch)
 done
 
 
@@ -70,7 +70,7 @@ cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" .
 
 ###
 
-git add --all *
+git add --all .
 git commit -m "Travis build of $TRAVIS_BRANCH ($TRAVIS_COMMIT_RANGE)"
 
 # Push from the current repo's gh-pages branch to the remote
