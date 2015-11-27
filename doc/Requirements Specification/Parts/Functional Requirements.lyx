@@ -304,7 +304,7 @@ name "/F60/"
 
 \end_inset
 
- Beagle stops measurements by an adaptive timeout.
+ Beagle stops measurements by an adaptive timeout when enabled.
  This means that it stops measurements if the software fails to respond
  within a certain period of time.
  This timeout is adapted based on previous runs, so that measurements of
