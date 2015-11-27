@@ -351,7 +351,7 @@ gls{SoMoX}
 
 \end_inset
 
-, in a way so that it is automatically executed after 
+ to be executed after 
 \begin_inset ERT
 status open
 
@@ -364,7 +364,7 @@ gls{SoMoX}
 
 \end_inset
 
- (unmodified) has finished.
+ has finished.
 \end_layout
 
 \begin_layout Labeling
