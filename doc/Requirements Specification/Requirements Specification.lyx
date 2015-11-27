@@ -4,7 +4,30 @@
 \begin_header
 \textclass sdqthesis
 \begin_preamble
-% Build the SDQ Thesis title
+% Rewrite the title template to fit our needs (as we're not writing a thesis,
+% some things simply make no sense.
+\renewcommand{\settitle}{%
+    \publishers{%
+    \large
+    \iflanguage{english}
+        {at the Department of Informatics}%
+        {an der Fakultät für Informatik}\\
+    \theinstitute\\[2em]
+    \begin{tabular}{l l}
+        \iflanguage{english}{Reviewer}{Erstgutachter}: & \thereviewerone\\
+        \iflanguage{english}{Advisor}{Betreuender Mitarbeiter}: &  \theadvisorone\\
+        % if there is no second advisor, do not output this line
+        \ifthenelse{\equal{\theadvisortwo}{}}{}{%
+            \iflanguage{english}{Second advisor}{Zweiter betreuender Mitarbeiter}: & \theadvisortwo\\
+        }
+    \end{tabular}
+    }
+}
+
+% Metadata
+\reviewerone{Jun.-Prof. Dr.-Ing. Anne Koziolek}
+\advisorone{M.Sc. Axel Busch}
+\advisortwo{M.Sc. Michael Langhammer}
 \settitle
 
 % Use the superior glossaries package to replace nomencl
@@ -18,10 +41,16 @@
 % Include the terms and definitions file if presents (e.g. only when acutally building the glossary).
 \InputIfFileExists{\string"Parts/Terms and Definitions.tex\string"}
 
+% \todo is deprecated!
 \renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
+
+% Packages for floating images
 \usepackage{graphicx}
 \usepackage{grffile}
 \usepackage[all]{hypcap}
+
+% Make floats work batter with Koma book
+\usepackage{scrhack}
 \end_preamble
 \options english,final
 \use_default_options true
@@ -30,7 +59,7 @@ enumitem
 \end_modules
 \maintain_unincluded_children false
 \language british
-\language_package auto
+\language_package babel
 \inputencoding utf8
 \fontencoding global
 \font_roman default
@@ -172,7 +201,7 @@ gls{naiive}
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -260,7 +289,7 @@ Reference notation
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
