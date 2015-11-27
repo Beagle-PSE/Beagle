@@ -266,22 +266,6 @@ name "/OQ40/"
 
 \end_inset
 
- Beagle stops measurements by an adaptive timeout.
- This means that it stops measurements if the software fails to respond
- in a given time.
- This time is adapted based on previous runs, such that measurements of
- code sections that were fast in earlier measurements are aborted sooner
- if they fail to respond than measurements of sections known to be slow.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ50/"
-
-\end_inset
-
  Beagle runs benchmarks on hardware systems in order to provide information
  to make its results portable.
 \end_layout
@@ -354,7 +338,7 @@ name "/OQ100/"
 
 \end_inset
 
- Beagle is integrated in 
+ Beagle is integrated into 
 \begin_inset ERT
 status open
 
@@ -367,7 +351,7 @@ gls{SoMoX}
 
 \end_inset
 
-, such that it is automatically executed after 
+ to automatically be executed after 
 \begin_inset ERT
 status open
 

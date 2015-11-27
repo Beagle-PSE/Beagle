@@ -298,6 +298,41 @@ name "/F50/"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F60/"
+
+\end_inset
+
+ Beagle stops measurements by an adaptive timeout when enabled.
+ This means that it stops measurements if the software fails to respond
+ within a certain period of time.
+ This timeout is adapted based on previous runs, so that measurements of
+ code sections that were fast in earlier measurements are aborted sooner
+ if they fail to respond until then than measurements of sections known
+ to be slow.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F70/"
+
+\end_inset
+
+ The user can disable the adaptive timeout described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F60/"
+
+\end_inset
+
+ and replace it with a set timeout or disable the timeout entirely.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset VSpace defskip
 \end_inset
 
