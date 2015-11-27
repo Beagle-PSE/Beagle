@@ -244,8 +244,20 @@ gls{PCM}
 
 \begin_deeper
 \begin_layout Standard
-This assumption will not cause problems if the PCM was re-engineered from
- the software's source code.
+This assumption will not cause problems if the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ was re-engineered from the software's source code.
  But if the model and implementation diverged at any point (likely during
  the software's implementation), it may, however, lead to unexpected results.
 \end_layout
@@ -305,7 +317,20 @@ name "/C130/"
 
 \end_inset
 
- Only one component is tested at a time, yet 
+ Only one 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ is tested at a time, yet 
 \begin_inset ERT
 status open
 

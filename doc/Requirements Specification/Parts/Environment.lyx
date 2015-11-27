@@ -109,8 +109,21 @@ name "/E10/"
 
 \end_inset
 
- Beagle should run on Java 8 runtime environment (or higher) and Eclipse
- distribution that is up to date with Eclipse Mars (4.5).
+ Beagle should run on a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{JRE}{Java 8 runtime environment}
+\end_layout
+
+\end_inset
+
+ (or higher) and Eclipse distribution that is up to date with Eclipse Mars
+ (4.5).
 \end_layout
 
 \begin_layout Labeling
@@ -185,7 +198,20 @@ gls{CTA}
 
 \end_inset
 
- to communicate with performance measurement software.
+ to communicate with performance 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section

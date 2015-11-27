@@ -201,7 +201,20 @@ reference "/F10/"
 
 \end_inset
 
- by utilising measurement software.
+ by utilising
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{measurement software}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -630,7 +643,20 @@ reference "result PCM"
 
 \end_inset
 
- by a Palladio installation without Beagle.
+ by a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ installation without Beagle.
 \end_layout
 
 \begin_layout Labeling

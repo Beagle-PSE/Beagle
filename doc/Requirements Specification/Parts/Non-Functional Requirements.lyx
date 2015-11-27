@@ -230,7 +230,7 @@ name "/OQ20/"
 
 \end_inset
 
- The measurements run without user interaction.
+ User interaction in a measurement is not necessary.
 \end_layout
 
 \begin_layout Labeling
@@ -253,7 +253,7 @@ name "/OQ40/"
 
 \end_inset
 
- Beagle stops measruements by an adaptive timeout.
+ Beagle stops measurements by an adaptive timeout.
 \end_layout
 
 \begin_layout Labeling
@@ -264,7 +264,7 @@ name "/OQ50/"
 
 \end_inset
 
- Beagle makes benchmarking of the hardware systems to adapt results on differnet
+ Beagle makes benchmarking of the hardware systems to adapt results on different
  hardware systems.
 \end_layout
 
@@ -428,6 +428,280 @@ gls{SoMoX}
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+GUI model
+\end_layout
+
+\begin_layout Standard
+The user has multiple options to launch the analysis:
+\end_layout
+
+\begin_layout Enumerate
+To analyse the whole project, there is an entry 
+\begin_inset Quotes eld
+\end_inset
+
+Analyse with Beagle
+\begin_inset Quotes erd
+\end_inset
+
+ in the context menu of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.repository}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.repository_diagram}
+\end_layout
+
+\end_inset
+
+ file in eclipse.
+\end_layout
+
+\begin_layout Enumerate
+To analyse a single component, there is an entry 
+\begin_inset Quotes eld
+\end_inset
+
+Analyse with Beagle
+\begin_inset Quotes erd
+\end_inset
+
+ in the context menu of each 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ in the repository diagram.
+\end_layout
+
+\begin_layout Enumerate
+To analyse a single 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{internal action}
+\end_layout
+
+\end_inset
+
+, there is an entry 
+\begin_inset Quotes eld
+\end_inset
+
+Analyse with Beagle
+\begin_inset Quotes erd
+\end_inset
+
+ in the context menu of each 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{internal action}
+\end_layout
+
+\end_inset
+
+ in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ diagram.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+If an analysis with Beagle is not possible in option 1, 2 or 3, the context
+ menu entry will be shown greyed and a description why the analysis is not
+ possible appears, when the users tries to start the analysis.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+If 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ100/"
+
+\end_inset
+
+ is realized, the user has the option, when launching 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ to automatically launch the analysis with Beagle after 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ has finished.
+\end_layout
+
+\begin_layout Standard
+When the users launches the analysis, he gets an window where he can change
+ some settings for Beagle:
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ40/"
+
+\end_inset
+
+ is realized, the user can select the timeout here.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF80/"
+
+\end_inset
+
+ is realized, the connection to the measurement machine can be set up here.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ40/"
+
+\end_inset
+
+ is realized, the user can select to benchmark his hardware system.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ40/"
+
+\end_inset
+
+ is realized, Beagle also provides a button for benchmarking the hardware
+ without running any analysis.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When the analysis is running, a windows with a progress bar is displayed.
+\end_layout
+
+\begin_layout Standard
+In this window there is also button for pausing, if 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF90/"
+
+\end_inset
+
+ is realised.
+ When the measurement is paused, this button changes to a resume button.
+ In this state, the user also has the ability, to close eclipse.
+ When he starts eclipse after that, a dialogue appears which allows him
+ to resume the measurement, and to abort the measurement and drop the data
+ collected so far.
+ There is also a checkbox with the description 
+\begin_inset Quotes eld
+\end_inset
+
+Don't show this again
+\begin_inset Quotes erd
+\end_inset
+
+, to disable this dialogue.
+ Additional in each context menu with an entry 
+\begin_inset Quotes eld
+\end_inset
+
+Analyse with Beagle
+\begin_inset Quotes erd
+\end_inset
+
+ there is another entry called 
+\begin_inset Quotes eld
+\end_inset
+
+Resume last Beagle measurement
+\begin_inset Quotes erd
+\end_inset
+
+ in this state.
+\end_layout
+
+\begin_layout Standard
+In the progress bar, there is also a button to abort the measurement.
 \end_layout
 
 \end_body

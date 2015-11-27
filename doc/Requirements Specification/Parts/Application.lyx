@@ -164,6 +164,62 @@ gls{Palladio}
 
 .
  
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UML Diagrams/Reengineering.uxf.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Activity diagram for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A10/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+A typical workflow when using Beagle to re-engineer existing source code
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A10/"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -175,7 +231,20 @@ name "/A20/"
 \end_inset
 
  Beagle can be used for software development.
- Early implementations of components modelled in the 
+ Early implementations of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ modelled in the 
 \begin_inset ERT
 status open
 
@@ -216,7 +285,23 @@ name "/A30/"
 \end_inset
 
  Beagle may be used for prototyping.
- Different implementations of a component modelled in the 
+ Different implementations of a 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+
+\lang british
+ modelled in the 
 \begin_inset ERT
 status open
 
