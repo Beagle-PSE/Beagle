@@ -452,11 +452,15 @@ glsuseri{component}
  interface parameters.
 \end_layout
 
+\begin_layout Section
+Control
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF60/"
+name "/OF100/"
 
 \end_inset
 
@@ -468,7 +472,7 @@ name "/OF60/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF70/"
+name "/OF110/"
 
 \end_inset
 
@@ -480,7 +484,7 @@ name "/OF70/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF80/"
+name "/OF120/"
 
 \end_inset
 
@@ -492,29 +496,81 @@ name "/OF80/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF90/"
+name "/OF130/"
 
 \end_inset
 
- The user may pause and later resume a measurement.
+ The user may pause a measurement.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF100/"
+name "/OF140/"
 
 \end_inset
 
- Beagle reports its progress to the user.
+ The user may resume a paused measurement (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+), even if he turned off the computer after pausing it.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF110/"
+name "/OF150/"
+
+\end_inset
+
+ Beagle asserts that no input artefact (p.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
+
+\end_inset
+
+) was changed between pausing (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+) and resuming (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
+\end_inset
+
+) a measurement to assure its result's integrity.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF160/"
+
+\end_inset
+
+ Beagle's results do not change, no matter how often the user chooses to
+ pause and resume the measurements.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF170/"
 
 \end_inset
 
@@ -538,12 +594,12 @@ gls{component}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF120/"
+name "/OF180/"
 
 \end_inset
 
  If requested by the user, Beagle shuts down the computer it's running on
- after it finished.
+ after it finished a measurement.
 \end_layout
 
 \begin_layout Section
