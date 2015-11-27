@@ -222,8 +222,8 @@ name "/E40/"
 
 \end_inset
 
- The user should not run other programms while Beagle is execute.
- By reason that it falsified the measurement.
+ The user should not run other programms while Beagle is running.
+ By reason that it falsifies the measurement.
  To receive optimal measurements Beagle should run on a dedicated server.
 \end_layout
 
