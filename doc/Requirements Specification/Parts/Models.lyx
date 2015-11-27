@@ -289,9 +289,8 @@ gls{PCM}
 \end_inset
 
 .
- After around 6 ours of measuring, the results of measuring are added into
+ After around 6 hours of measuring, the results of measuring are added into
  the 
-
 \begin_inset ERT
 status open
 
@@ -304,10 +303,7 @@ gls{PCM}
 
 \end_inset
 
-
-\lang british
  and Beagle calls 
-
 \begin_inset ERT
 status open
 
@@ -320,8 +316,6 @@ gls{Palladio}
 
 \end_inset
 
-
-\lang british
  to do a performance prediction.
  The prediction indicates an architectural violation of some software 
 \begin_inset ERT
@@ -342,7 +336,6 @@ glspl{component}
  results of the sub-function calls and make them available immediately.
  Fortunately, before they turn this idea into reality, they can adopt this
  design decision into the 
-
 \begin_inset ERT
 status open
 
@@ -355,8 +348,6 @@ gls{PCM}
 
 \end_inset
 
-
-\lang british
 .
  The little changes in the 
 \begin_inset ERT
