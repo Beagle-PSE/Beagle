@@ -214,6 +214,18 @@ gls{measurement software}
 .
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/E40/"
+
+\end_inset
+
+ The user should not run other programms while Beagle is execute.
+ By reason that it falsified the measurement.
+\end_layout
+
 \begin_layout Section
 Component Model
 \end_layout
