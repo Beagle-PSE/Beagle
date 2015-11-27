@@ -50,6 +50,8 @@ find . -maxdepth 1 \! \( -name .svn -o -name . \) -exec rm -rf {} \;
 
 # Set up the repository
 git clone $GIT_URL $GITSUB --quiet
+# Remove the .git folder
+rm -rf $GITSUB/.git
 
 
 mkdir -p $GENERATEDSUB
