@@ -2,6 +2,8 @@
 
 # fail the script if any command fails
 set -e
+# Don't return a glob pattern if it doesn't match anything
+shopt -s nullglob
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 	echo "We won't deploy because we're on a pull request."
