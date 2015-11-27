@@ -70,7 +70,7 @@ cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" .
 
 ###
 
-git add --all .
+git add --all *
 git commit -m "Travis build of $TRAVIS_BRANCH ($TRAVIS_COMMIT_RANGE)"
 
 # Push from the current repo's gh-pages branch to the remote
