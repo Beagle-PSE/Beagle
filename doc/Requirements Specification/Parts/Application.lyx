@@ -175,7 +175,20 @@ name "/A20/"
 \end_inset
 
  Beagle can be used for software development.
- Early implementations of components modelled in the 
+ Early implementations of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ modelled in the 
 \begin_inset ERT
 status open
 
@@ -216,7 +229,23 @@ name "/A30/"
 \end_inset
 
  Beagle may be used for prototyping.
- Different implementations of a component modelled in the 
+ Different implementations of a 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+
+\lang british
+ modelled in the 
 \begin_inset ERT
 status open
 

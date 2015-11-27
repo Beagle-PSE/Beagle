@@ -313,8 +313,20 @@ gls{PCM}
 \end_inset
 
 .
- The results contain the software's component boundaries, their bindings
- to the provided source code and their 
+ The results contain the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ boundaries, their bindings to the provided source code and their 
 \begin_inset ERT
 status open
 

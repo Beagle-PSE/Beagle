@@ -142,7 +142,7 @@ EmmaSun
 \end_inset
 
 .
- During the first few years the software could deal with almost 99,9% of
+ During the first few years the software could deal with almost 99.9% of
  the requests and orders that are handled quite well without any delay.
  After an enormous expansion since the last year, the user numbers are currently
  growing for about 5 percent each week.
@@ -183,8 +183,20 @@ gls{PCM}
 
 \end_inset
 
-, the architects use the reversed-engineering plug-in SoMoX to create a
- valid 
+, the architects use the reversed-engineering plug-in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ to create a valid 
 \begin_inset ERT
 status open
 
@@ -197,7 +209,20 @@ gls{PCM}
 
 \end_inset
 
- including all software components and their 
+ including all software 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ and their 
 \begin_inset ERT
 status open
 
@@ -237,19 +262,117 @@ gls{Common Trace API}
 
 \end_inset
 
-, Beagle starts with conducting measurements on single software components,
- extending the PCM.
+, Beagle starts with conducting measurements on single software 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+, extending the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
  After around 6 ours of measuring, the results of measuring are added into
- the PCM and Beagle calls Palladio to do a performance prediction.
- The prediction indicates an architectural violation of some software components
+ the 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+
+\lang british
+ and Beagle calls 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+
+\lang british
+ to do a performance prediction.
+ The prediction indicates an architectural violation of some software 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
 , that lead to a a huge amount of sub-function calls through hierarchical
  layers.
  The software architects decide to add an extra cache, that can store the
  results of the sub-function calls and make them available immediately.
  Fortunately, before they turn this idea into reality, they can adopt this
- design decision into the PCM.
- The little changes in the PCM lead to a much better performance prediction
- and the software architects agree to reimplement the new design.
+ design decision into the 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+
+\lang british
+.
+ The little changes in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ lead to a much better performance prediction and the software architects
+ agree to reimplement the new design.
 \end_layout
 
 \end_body

@@ -217,8 +217,20 @@ status open
 
 \end_inset
 
- files compiled out of it, such that the files are executable on a JRE installed
- on the computer Beagle runs on, or
+ files compiled out of it, such that the files are executable on a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{JRE}
+\end_layout
+
+\end_inset
+
+ installed on the computer Beagle runs on, or
 \end_layout
 
 \begin_layout Itemize
@@ -477,10 +489,7 @@ name "/OD110/"
 
 \end_inset
 
- Probabilities of 
-branches to be taken 
-\lang british
-
+ Probabilities of branches to be taken 
 \begin_inset ERT
 status open
 
