@@ -498,10 +498,7 @@ gls{component}
 
 \end_inset
 
- in the repository diagram, where an analysis with Beagle is possible.
- Otherwise the context menu entry will be shown greyed and a description
- why the analysis is not possible appears, when the users tries to start
- the analysis.
+ in the repository diagram.
 \end_layout
 
 \begin_layout Enumerate
@@ -555,6 +552,14 @@ gls{SEFF}
  diagram.
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+If an analysis with Beagle is not possible in option 1, 2 or 3, the context
+ menu entry will be shown greyed and a description why the analysis is not
+ possible appears, when the users tries to start the analysis.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 If 
 \begin_inset CommandInset ref
@@ -593,8 +598,8 @@ gls{SoMoX}
 \end_layout
 
 \begin_layout Standard
-When the users launches the analysis by a context menu (option 1, 2 or 3),
- he gets an window where he can change some settings for Beagle:
+When the users launches the analysis, he gets an window where he can change
+ some settings for Beagle:
 \end_layout
 
 \begin_layout Enumerate
