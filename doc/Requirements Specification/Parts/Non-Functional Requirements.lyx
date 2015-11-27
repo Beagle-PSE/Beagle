@@ -262,22 +262,6 @@ System#exit
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OQ40/"
-
-\end_inset
-
- Beagle stops measurements by an adaptive timeout.
- This means that it stops measurements if the software fails to respond
- in a given time.
- This time is adapted based on previous runs, such that measurements of
- code sections that were fast in earlier measurements are aborted sooner
- if they fail to respond than measurements of sections known to be slow.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
 name "/OQ50/"
 
 \end_inset
