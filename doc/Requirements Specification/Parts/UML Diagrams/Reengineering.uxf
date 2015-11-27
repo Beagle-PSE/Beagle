@@ -4,8 +4,8 @@
   <element>
     <type>com.baselet.element.old.element.State</type>
     <coordinates>
-      <x>350</x>
-      <y>126</y>
+      <x>672</x>
+      <y>140</y>
       <w>196</w>
       <h>56</h>
     </coordinates>
@@ -15,19 +15,19 @@
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>406</x>
-      <y>28</y>
+      <x>728</x>
+      <y>14</y>
       <w>70</w>
-      <h>126</h>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>42;98;42;42</additional_attributes>
+    <additional_attributes>42;126;42;42</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.State</type>
     <coordinates>
-      <x>350</x>
-      <y>252</y>
+      <x>672</x>
+      <y>448</y>
       <w>196</w>
       <h>56</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <type>com.baselet.element.old.element.State</type>
     <coordinates>
-      <x>322</x>
-      <y>378</y>
+      <x>644</x>
+      <y>630</y>
       <w>252</w>
       <h>84</h>
     </coordinates>
@@ -49,41 +49,41 @@ with Palladio</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>294</y>
+      <x>756</x>
+      <y>490</y>
       <w>42</w>
-      <h>112</h>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>168</y>
+      <x>756</x>
+      <y>182</y>
       <w>42</w>
-      <h>112</h>
+      <h>294</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>434</x>
-      <y>448</y>
+      <x>756</x>
+      <y>700</y>
       <w>42</w>
-      <h>98</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>420</x>
-      <y>518</y>
+      <x>742</x>
+      <y>756</y>
       <w>56</w>
       <h>56</h>
     </coordinates>
@@ -93,8 +93,8 @@ with Palladio</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>238</x>
-      <y>518</y>
+      <x>560</x>
+      <y>756</y>
       <w>210</w>
       <h>56</h>
     </coordinates>
@@ -105,8 +105,8 @@ with Palladio</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>0</x>
-      <y>504</y>
+      <x>322</x>
+      <y>742</y>
       <w>252</w>
       <h>84</h>
     </coordinates>
@@ -117,31 +117,31 @@ deployment changes</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>406</y>
+      <x>434</x>
+      <y>658</y>
       <w>238</w>
-      <h>126</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>150.0;10.0;10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>462</x>
-      <y>364</y>
-      <w>406</w>
-      <h>210</h>
+      <x>784</x>
+      <y>560</y>
+      <w>392</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 [good results]</panel_attributes>
-    <additional_attributes>180.0;10.0;180.0;130.0;10.0;130.0</additional_attributes>
+    <additional_attributes>180.0;10.0;180.0;160.0;10.0;160.0</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.State</type>
     <coordinates>
-      <x>854</x>
-      <y>168</y>
+      <x>1190</x>
+      <y>140</y>
       <w>196</w>
       <h>56</h>
     </coordinates>
@@ -151,8 +151,8 @@ deployment changes</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.State</type>
     <coordinates>
-      <x>854</x>
-      <y>308</y>
+      <x>1176</x>
+      <y>448</y>
       <w>210</w>
       <h>56</h>
     </coordinates>
@@ -162,8 +162,8 @@ deployment changes</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>826</x>
-      <y>504</y>
+      <x>1176</x>
+      <y>644</y>
       <w>252</w>
       <h>98</h>
     </coordinates>
@@ -175,8 +175,8 @@ with Palladio
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>938</x>
-      <y>350</y>
+      <x>1260</x>
+      <y>490</y>
       <w>42</w>
       <h>182</h>
     </coordinates>
@@ -186,30 +186,30 @@ with Palladio
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>938</x>
-      <y>196</y>
+      <x>1260</x>
+      <y>182</y>
       <w>42</w>
-      <h>140</h>
+      <h>294</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>938</x>
-      <y>588</y>
+      <x>1260</x>
+      <y>728</y>
       <w>42</w>
-      <h>84</h>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>924</x>
-      <y>644</y>
+      <x>1246</x>
+      <y>854</y>
       <w>56</w>
       <h>56</h>
     </coordinates>
@@ -219,9 +219,9 @@ with Palladio
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>938</x>
-      <y>686</y>
-      <w>168</w>
+      <x>1260</x>
+      <y>896</y>
+      <w>154</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -231,20 +231,20 @@ with Palladio
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>574</y>
+      <x>434</x>
+      <y>812</y>
       <w>840</w>
-      <h>126</h>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 [bad results]</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;580.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;580.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>616</x>
-      <y>294</y>
+      <x>938</x>
+      <y>490</y>
       <w>196</w>
       <h>84</h>
     </coordinates>
@@ -253,33 +253,10 @@ planned changes</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>112</x>
-      <y>0</y>
-      <w>210</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>Existing software
-project</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>308</x>
-      <y>28</y>
-      <w>140</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>420</x>
-      <y>14</y>
+      <x>742</x>
+      <y>0</y>
       <w>56</w>
       <h>56</h>
     </coordinates>
@@ -289,8 +266,8 @@ project</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>924</x>
-      <y>770</y>
+      <x>1246</x>
+      <y>980</y>
       <w>56</w>
       <h>56</h>
     </coordinates>
@@ -300,12 +277,97 @@ project</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
-      <y>98</y>
+      <x>1022</x>
+      <y>70</y>
       <w>280</w>
-      <h>224</h>
+      <h>448</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>180.0;50.0;180.0;10.0;10.0;10.0;10.0;140.0</additional_attributes>
+    <additional_attributes>180.0;50.0;180.0;10.0;10.0;10.0;10.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>784</x>
+      <y>84</y>
+      <w>140</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>source code</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>1288</x>
+      <y>210</y>
+      <w>196</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>source code
+
+PCM with SEFF
+but without resource
+demands
+
+source code -
+decorator model</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>784</x>
+      <y>518</y>
+      <w>126</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>PCM with
+resource
+demands</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>784</x>
+      <y>210</y>
+      <w>196</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>source code
+
+PCM with SEFF
+but without resource
+demands
+
+source code -
+decorator model</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>1288</x>
+      <y>518</y>
+      <w>126</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>PCM with
+resource
+demands</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>1050</x>
+      <y>280</y>
+      <w>140</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>new
+source code</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
