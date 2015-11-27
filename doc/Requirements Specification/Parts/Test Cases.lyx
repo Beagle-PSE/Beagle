@@ -324,8 +324,9 @@ name "/OT20/"
 
 \end_inset
 
- Assert that Beagle detects invalid input and does not crash but responds
- to it in a acceptable way.
+ Assert that Beagle detects invalid input (e.g.
+ if source code decorator does not fit to the code) and does not crash but
+ responds to it in a acceptable way.
 \end_layout
 
 \begin_layout Labeling
