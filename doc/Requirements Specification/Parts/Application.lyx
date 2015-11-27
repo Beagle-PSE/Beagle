@@ -164,6 +164,62 @@ gls{Palladio}
 
 .
  
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UML Diagrams/Reengineering.uxf.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Activity diagram for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A10/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+A typical workflow when using Beagle to re-engineer existing source code
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A10/"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
