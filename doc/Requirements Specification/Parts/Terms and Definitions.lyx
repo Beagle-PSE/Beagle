@@ -403,10 +403,10 @@ newglossaryentry{component}{
 
 \begin_layout Plain Layout
 
-		"a [software] unit of composition with contractually specified interfaces
+		``a [software] unit of composition with contractually specified interfaces
  and explicit context dependencies only.
  A software component can be deployed independently and is subject to third-part
-y composition." 
+y composition.'' 
 \backslash
 cite{ComponentSoftwareBook}
 \backslash
@@ -1364,8 +1364,8 @@ newglossaryentry{Kieker}{
 
 \begin_layout Plain Layout
 
-		"a Java-based application performance monitoring and dynamic software
- analysis framework."
+		``a Java-based application performance monitoring and dynamic software
+ analysis framework.'' 
 \backslash
 cite{KiekerPaper} A 
 \backslash
