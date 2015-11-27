@@ -22,6 +22,9 @@
 \usepackage{graphicx}
 \usepackage{grffile}
 \usepackage[all]{hypcap}
+
+% Make floats work batter with Koma book
+\usepackage{scrhack}
 \end_preamble
 \options english,final
 \use_default_options true
@@ -260,7 +263,7 @@ Reference notation
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
