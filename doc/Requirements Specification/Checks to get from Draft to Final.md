@@ -1,5 +1,6 @@
 # Checks to get from Draft to Final
 
+* headings for must-have / optional critera
 * wording
 * spelling
 * grammar
