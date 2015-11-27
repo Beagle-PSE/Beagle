@@ -156,7 +156,7 @@ gls{PCM}
 
 \end_inset
 
- it is essential to have a correct measurement.
+ it is essential to to measure at the correct points.
  Therefore a test has to assert that Beagle discovers all sections needed
  and that they are correct.
 \end_layout
