@@ -539,6 +539,8 @@ gls{component}
 \end_inset
 
 .
+ Beagle ensures that the source files were not changed when the user resumes
+ the measurement.
 \end_layout
 
 \begin_layout Labeling
