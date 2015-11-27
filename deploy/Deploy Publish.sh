@@ -48,7 +48,7 @@ git checkout gh-pages
 for branchpath in branches/*
 do
 	branch=$(basename $branchpath)
-	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; git rm -rf branches/$branch)
+	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; git rm -rfq branches/$branch)
 done
 
 
