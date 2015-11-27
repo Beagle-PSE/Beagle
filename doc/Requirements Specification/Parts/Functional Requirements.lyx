@@ -500,7 +500,9 @@ name "/OF130/"
 
 \end_inset
 
- The user may pause a measurement.
+ The user may pause and resume a measurement.
+ Pausing causes all measurement activity to stop.
+ Resuming continues the measurement from where they were paused.
 \end_layout
 
 \begin_layout Labeling
@@ -518,7 +520,7 @@ reference "/OF130/"
 
 \end_inset
 
-), even if he turned off the computer after pausing it.
+), even if Beagle was closed after pausing it.
 \end_layout
 
 \begin_layout Labeling
