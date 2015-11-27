@@ -156,7 +156,10 @@ EmmaSun
  find any bottlenecks that can be repaired with lesser effort.
  But reanalysing source code is also a quite unmanageable task.
  So at this point, Beagle is used.
- Beagle helps the team of 
+\end_layout
+
+\begin_layout Standard
+Beagle helps the team of 
 \begin_inset ERT
 status open
 
@@ -289,9 +292,8 @@ gls{PCM}
 \end_inset
 
 .
- After around 6 ours of measuring, the results of measuring are added into
+ After around 6 hours of measuring, the results of measuring are added into
  the 
-
 \begin_inset ERT
 status open
 
@@ -304,10 +306,7 @@ gls{PCM}
 
 \end_inset
 
-
-\lang british
  and Beagle calls 
-
 \begin_inset ERT
 status open
 
@@ -320,8 +319,6 @@ gls{Palladio}
 
 \end_inset
 
-
-\lang british
  to do a performance prediction.
  The prediction indicates an architectural violation of some software 
 \begin_inset ERT
@@ -338,11 +335,13 @@ glspl{component}
 
 , that lead to a a huge amount of sub-function calls through hierarchical
  layers.
- The software architects decide to add an extra cache, that can store the
+\end_layout
+
+\begin_layout Standard
+The software architects decide to add an extra cache, that can store the
  results of the sub-function calls and make them available immediately.
  Fortunately, before they turn this idea into reality, they can adopt this
  design decision into the 
-
 \begin_inset ERT
 status open
 
@@ -355,8 +354,6 @@ gls{PCM}
 
 \end_inset
 
-
-\lang british
 .
  The little changes in the 
 \begin_inset ERT

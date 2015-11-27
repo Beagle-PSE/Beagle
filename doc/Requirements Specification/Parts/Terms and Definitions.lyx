@@ -1519,6 +1519,49 @@ newglossaryentry{quality of service}{
 }
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{PCM Stochastic Expression Language}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={PCM Stochastic Expression},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		expression language used by the 
+\backslash
+gls{PCM} to define random variables.
+ These variables can for example be used to specify glspl{resource demand}.
+ Random variables can be defined using basic mathematic operations, common
+ stochastic distributions and interface parameters 
+\backslash
+cite{PCMtechpaper}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
