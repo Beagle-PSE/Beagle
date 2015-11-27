@@ -610,19 +610,7 @@ gls{PCM}
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/P30/"
-
-\end_inset
-
- Beagle, in conjunction with other software, enables the user to import
- existing software for analysis into 
+, enabling the user to import existing software into 
 \begin_inset ERT
 status open
 
@@ -635,7 +623,7 @@ gls{Palladio}
 
 \end_inset
 
-.
+ for analysis.
 \end_layout
 
 \begin_layout Standard
