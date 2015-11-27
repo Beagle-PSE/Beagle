@@ -203,104 +203,6 @@ name "/T50/"
 
 \end_inset
 
- Beagle has to work with different software through the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{CTA}
-\end_layout
-
-\end_inset
-
-.
- Therefore it is necessary to test Beagle with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Kieker}
-\end_layout
-
-\end_inset
-
- and other 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{measurement software}
-\end_layout
-
-\end_inset
-
-.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F40/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/Q20/"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T60/"
-
-\end_inset
-
- As Beagle only changes the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- the source code files must not be changed (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F50/"
-
-\end_inset
-
-).
- There have to be test to assert that.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T70/"
-
-\end_inset
-
  Assert that in 
 \begin_inset ERT
 status open
@@ -314,7 +216,7 @@ gls{PCM}
 
 \end_inset
 
- all 
+ all measured 
 \begin_inset ERT
 status open
 
@@ -424,6 +326,104 @@ name "/OT20/"
 
  Assert that Beagle detects invalid input and does not crash but responds
  to it in a acceptable way.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT30/"
+
+\end_inset
+
+ Beagle has to work with different software through the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+ Therefore it is necessary to test Beagle with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+ and other 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F40/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q20/"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT40/"
+
+\end_inset
+
+ As Beagle only changes the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ the source code files must not be changed (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F50/"
+
+\end_inset
+
+).
+ There has to be a test to assert that.
 \end_layout
 
 \end_body
