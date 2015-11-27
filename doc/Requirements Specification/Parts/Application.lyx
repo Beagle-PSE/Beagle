@@ -105,7 +105,7 @@ name "/A10/"
 \end_inset
 
  Beagle can be used to re-engineer source code.
- To start to using 
+ To start using 
 \begin_inset ERT
 status open
 
@@ -286,7 +286,6 @@ name "/A30/"
 
  Beagle may be used for prototyping.
  Different implementations of a 
-
 \begin_inset ERT
 status open
 
@@ -299,8 +298,6 @@ gls{component}
 
 \end_inset
 
-
-\lang british
  modelled in the 
 \begin_inset ERT
 status open
