@@ -597,7 +597,7 @@ reference "/OQ100/"
 
 \end_inset
 
- is realized, the user has the option, when launching 
+ is realised, the user has the option, when launching 
 \begin_inset ERT
 status open
 
@@ -639,7 +639,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is realized, the user may adapt the default timeout.
+ is realised, the user may adapt the default timeout.
 \end_layout
 
 \begin_layout Enumerate
@@ -650,7 +650,7 @@ reference "/OF120/"
 
 \end_inset
 
- is realized, the connection to the measurement machine can be set up.
+ is realised, the connection to the measurement machine can be set up.
 \end_layout
 
 \begin_layout Enumerate
@@ -661,7 +661,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is realized, the user can select to additionally benchmark its hardware
+ is realised, the user can select to additionally benchmark its hardware
  system.
 \end_layout
 
@@ -673,7 +673,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is realized, Beagle also provides a button for benchmarking the hardware
+ is realised, Beagle also provides a button for benchmarking the hardware
  without running any analysis.
 \end_layout
 
