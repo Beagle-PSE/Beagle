@@ -222,20 +222,9 @@ name "/E40/"
 
 \end_inset
 
- The user should not run other programms while Beagle is running.
- By reason that it distorts the measurement.
+ The user should not run other programms while Beagle is running as this
+ disturbs the measurement.
  To receive optimal measurements Beagle should run on a dedicated server.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/E50/"
-
-\end_inset
-
- 
 \end_layout
 
 \begin_layout Section
