@@ -43,6 +43,15 @@ else
 fi
 git checkout gh-pages
 
+
+# Remove deleted branches' directories
+for branchpath in branches/*
+do
+	branch=$(basename $branchpath)
+	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; rm -rf branches/$branch)
+done
+
+
 ###
 # Gather all assets that will be released
 ###
