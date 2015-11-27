@@ -355,39 +355,6 @@ gls{SEFF}.
 
 
 \backslash
-newglossaryentry{loop action}{
-\end_layout
-
-\begin_layout Plain Layout
-
-	name={
-\backslash
-lstinline{LoopAction}},
-\end_layout
-
-\begin_layout Plain Layout
-
-	description={},
-\end_layout
-
-\begin_layout Plain Layout
-
-	sort={LoopAction}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
 newglossaryentry{component}{
 \end_layout
 

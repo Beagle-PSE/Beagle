@@ -692,7 +692,69 @@ name "/OP10/"
 
 \end_inset
 
- Beagle analyses given source code for further dynamic behavioural attributes.
+ Beagle analyses given source code for further dynamic behavioural attributes
+ like the number of loop executions or the prohability for branches in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+listinline{if-else}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+listinline{switch-case}
+\end_layout
+
+\end_inset
+
+ constructs.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OP20/"
+
+\end_inset
+
+ Beagle gives the results as a function of the input parameters of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{internal action}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OP30/"
+
+\end_inset
+
+ Beagle gives the user the possibilty to control the analysis with a GUI.
 \end_layout
 
 \begin_layout Section
