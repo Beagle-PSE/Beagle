@@ -430,6 +430,17 @@ gls{SoMoX}
 .
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ120/"
+
+\end_inset
+
+ Beagle reports its progress to the user.
+\end_layout
+
 \begin_layout Subsection
 GUI model
 \end_layout
@@ -617,7 +628,7 @@ reference "/OQ40/"
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OF80/"
+reference "/OF120/"
 
 \end_inset
 
@@ -662,7 +673,7 @@ When the analysis is running, a windows with a progress bar is displayed.
 In this window there is also button for pausing, if 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OF90/"
+reference "/OF130/"
 
 \end_inset
 
