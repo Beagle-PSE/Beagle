@@ -358,7 +358,7 @@ name "/T70/"
 
  Assert that Beagle stops measurements after timeout.
  Therefore run a measurement for software (which e.g.
- does not terminate) and define an timeout.
+ does not terminate) and define a timeout.
  Additional assert that this timeout can be turned off.
  Tests 
 \begin_inset CommandInset ref
