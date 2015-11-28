@@ -398,8 +398,8 @@ gls{SoMoX}
 \end_inset
 
 .
- It aims to conduct performance measurements on source code of a software
- in order to determine its 
+ It aims to conduct performance measurements on software’s source code in
+ order to determine its 
 \begin_inset ERT
 status open
 
@@ -850,8 +850,8 @@ name "/B50/"
 
 \end_inset
 
- Beagle does not do performance analysis nor prediction.
- This is may be achieved with 
+ Beagle does neither do performance analysis nor prediction.
+ That is may be achieved with 
 \begin_inset ERT
 status open
 
