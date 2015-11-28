@@ -191,6 +191,10 @@ name "result PCM"
 Input
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -351,12 +355,8 @@ glspl{component}
  to the parts in the source code implementing them.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -384,6 +384,10 @@ name "/OD20/"
 
 \begin_layout Section
 Output
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
 \end_layout
 
 \begin_layout Labeling
@@ -423,12 +427,8 @@ glsuserii{internal action}
  execution time.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling

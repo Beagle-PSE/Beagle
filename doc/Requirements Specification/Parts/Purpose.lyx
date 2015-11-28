@@ -551,6 +551,10 @@ Reference notation is /C#/
 
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -626,16 +630,10 @@ gls{Palladio}
  for analysis.
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Complements the above part.
@@ -658,6 +656,10 @@ Reference notation is /OC#/
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling

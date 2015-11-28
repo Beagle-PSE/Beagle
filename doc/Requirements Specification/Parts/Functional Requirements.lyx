@@ -135,6 +135,10 @@ reference "input artefacts"
 Measurement
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -331,12 +335,8 @@ reference "/F60/"
  and replace it with a set timeout or disable the timeout entirely.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -491,6 +491,10 @@ glsuseri{component}
 Control
 \end_layout
 
+\begin_layout Paragraph
+Optional
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -641,6 +645,10 @@ name "/OF180/"
 
 \begin_layout Section
 Result Annotation
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
 \end_layout
 
 \begin_layout Labeling
@@ -848,15 +856,11 @@ name "/F250/"
 
 \end_inset
 
- Measurement results are saved onto a persistent medium to avoid data loss.
+ Measurement results are saved onto a persistent medium to avoid data loss
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
