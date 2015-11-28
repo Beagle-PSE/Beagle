@@ -354,7 +354,7 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/P#/ purpose criterion
+/A#/ application attribute
 \end_layout
 
 \begin_layout Labeling
@@ -364,17 +364,7 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/A#/ application attribute
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/G#/ target group
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/E#/ software environment attribute
+/C#/ challenge or assumption
 \end_layout
 
 \begin_layout Labeling
@@ -384,7 +374,27 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+/E#/ software environment attribute
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 /F#/ functional requirement
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/G#/ target group
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/M#/ model
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/P#/ purpose criterion
 \end_layout
 
 \begin_layout Labeling
@@ -394,17 +404,7 @@ This document uses a fixed notation for all of its contents, making them
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-/C#/ challenge or assumption
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
 /T#/ test case
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-/M#/ model
 \end_layout
 
 \begin_layout Standard
