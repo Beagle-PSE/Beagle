@@ -110,15 +110,14 @@ Model</panel_attributes>
     <type>com.baselet.element.old.element.Note</type>
     <coordinates>
       <x>740</x>
-      <y>460</y>
+      <y>470</y>
       <w>220</w>
-      <h>100</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes> 
   components
   SEFF
-  source code decorator model
-  GAST model</panel_attributes>
+  source code decorator model</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

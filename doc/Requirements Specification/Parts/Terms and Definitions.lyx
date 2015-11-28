@@ -372,51 +372,9 @@ gls{PCM} source code decorator},
 
 \begin_layout Plain Layout
 
-		realises links from the 
-\backslash
-gls{GAST model} to the elements in the 
+		realises links from the source code to the elements in the 
 \backslash
 gls{PCM} and the other way round.
- 
-\backslash
-cite{KrogmannPhD}
-\end_layout
-
-\begin_layout Plain Layout
-
-	}
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-newglossaryentry{GAST model}{
-\end_layout
-
-\begin_layout Plain Layout
-
-	name={GAST model},
-\end_layout
-
-\begin_layout Plain Layout
-
-	description={
-\end_layout
-
-\begin_layout Plain Layout
-
-		is a language-independet model of source code allowing to trace each element
- back to its exact position in the source code.
  
 \backslash
 cite{KrogmannPhD}
