@@ -362,7 +362,7 @@ newglossaryentry{code decorator}{
 
 	name={
 \backslash
-gls{PCM} source code decrator}
+gls{PCM} source code decrator},
 \end_layout
 
 \begin_layout Plain Layout
@@ -377,6 +377,7 @@ gls{PCM} source code decrator}
 gls{GAST model} to the elements in the 
 \backslash
 gls{PCM} and the other way round.
+ 
 \backslash
 cite{KrogmannPhD}
 \end_layout
@@ -404,7 +405,7 @@ newglossaryentry{GAST model}{
 
 \begin_layout Plain Layout
 
-	name={GAST model}
+	name={GAST model},
 \end_layout
 
 \begin_layout Plain Layout
