@@ -398,7 +398,7 @@ name "/D100/"
 
 \end_inset
 
- The software's 
+ The execution time of the software 
 \begin_inset ERT
 status open
 
@@ -411,20 +411,7 @@ glsuserii{component}
 
 \end_inset
 
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{internal action}
-\end_layout
-
-\end_inset
-
- execution time and the CPU 
+ CPU 
 \begin_inset ERT
 status open
 
