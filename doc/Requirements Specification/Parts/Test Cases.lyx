@@ -132,8 +132,7 @@ name "/T10/"
 \end_inset
 
  Smoke testing.
- First of all, the software has to be running, otherwise there is nothing
- to test.
+ Assert that software is starting, running and terminating.
  On account of this the first test is a simple run-through.
  For a valid input this has to work without exceptions and the software
  has to terminate.
@@ -147,6 +146,8 @@ name "/T20/"
 
 \end_inset
 
+ Assert that Beagle discovers all sections needed for measurement and that
+ they are correct.
  For a correct result in the 
 \begin_inset ERT
 status open
@@ -161,8 +162,6 @@ gls{PCM}
 \end_inset
 
  it is essential to to measure at the correct points.
- Therefore a test has to assert that Beagle discovers all sections needed
- and that they are correct.
 \end_layout
 
 \begin_layout Labeling
@@ -173,8 +172,8 @@ name "/T30/"
 
 \end_inset
 
- There has to be a test which asserts that Beagle works for a system with
- only the software specified in 
+ Assert that Beagle works for a system with only the software specified
+ in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/Q10/"
@@ -194,9 +193,9 @@ name "/T40/"
 
 \end_inset
 
+ Assert that transferring of data between interfaces and Beagle works correctly
+ in boh ways.
  All interfaces with other software have to be tested.
- Asserting that transferring of data between interfaces and Beagle works
- correctly in both ways.
 \end_layout
 
 \begin_layout Labeling
@@ -305,7 +304,7 @@ name "/OT10/"
 
 \end_inset
 
- Test with different operating systems and hardware.
+ Assert that Beagle works for different operating systems and hardware.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -337,7 +336,7 @@ name "/OT30/"
 
 \end_inset
 
- Beagle has to work with different software through the 
+ Assert that Beagle works with different software through the 
 \begin_inset ERT
 status open
 
@@ -403,7 +402,8 @@ name "/OT40/"
 
 \end_inset
 
- As Beagle only changes the 
+ Assert that Beagle does not change source code files and other input except
+ from the 
 \begin_inset ERT
 status open
 
@@ -416,15 +416,15 @@ gls{PCM}
 
 \end_inset
 
- the source code files must not be changed (
+.
+ Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F50/"
 
 \end_inset
 
-).
- There has to be a test to assert that.
+.
 \end_layout
 
 \end_body
