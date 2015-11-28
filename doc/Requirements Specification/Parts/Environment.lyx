@@ -174,7 +174,20 @@ glspl{SEFF}
 
 \end_inset
 
-, the source code and the decorater model.
+, the source code and the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{code decorator}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
