@@ -77,7 +77,7 @@ Test Cases
 \begin_layout Standard
 As Beagle has to work with the above defined interfaces it has to be tested
  in complete.
- However, this could result into testing the other softwares, which is not
+ However, this could result into testing the other software, which is not
  what should be done, or even worse it could result in not detecting errors
  and failures as they are compensated by other software.
  On account of this two types of tests are needed: one testing the whole
