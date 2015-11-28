@@ -1023,6 +1023,17 @@ cite{conwaysLaw}
 
 
 \backslash
+newacronym{GUI}{GUI}{Graphical User Interface}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 newacronym{CTA}{CTA}{
 \backslash
 gls{Common Trace API}}

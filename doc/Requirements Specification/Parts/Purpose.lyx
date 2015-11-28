@@ -732,7 +732,20 @@ name "/OP30/"
 
 \end_inset
 
- Beagle gives the user the possibility to control the analysis with a GUI.
+ Beagle gives the user the possibility to control the analysis with a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+.
 \begin_inset Float figure
 placement h
 wide false
