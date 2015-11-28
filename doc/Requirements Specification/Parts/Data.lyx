@@ -347,7 +347,20 @@ status open
 
 
 \backslash
-glspl{component}
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF}
 \end_layout
 
 \end_inset

@@ -235,7 +235,7 @@ name "/E40/"
 
 \end_inset
 
- The user should not run other programms while Beagle is running as this
+ The user should not run other programs while Beagle is running as this
  disturbs the measurement.
  To receive optimal measurements Beagle should run on a dedicated server.
 \end_layout
