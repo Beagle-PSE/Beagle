@@ -273,8 +273,8 @@ name "/C40/"
 
  In the use of JaMopp the source code's Java version likely is restricted
  by JaMopp.
- The question is, if it is useful to further projects to get independent
- from JaMopp, to use higher Java versions functions.
+ To get Beagle independent from JaMopp can be useful for further projects,
+ to use higher Java versions functions.
 \end_layout
 
 \begin_layout Section
