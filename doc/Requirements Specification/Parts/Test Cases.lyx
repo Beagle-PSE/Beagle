@@ -163,6 +163,14 @@ gls{PCM}
  it is essential to to measure at the correct points.
  A part of this can be realised by checking if all code sections (of the
  measured part) were measured.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F10/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -277,6 +285,234 @@ reference "/F210/"
 \end_inset
 
 , 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F230/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F240/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T60/"
+
+\end_inset
+
+ Assert that Beagle measures the sections with measurement software through
+ the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F20/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F30/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F40/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T70/"
+
+\end_inset
+
+ Assert that Beagle stops measurements after timeout.
+ Therefore run a measurment for software (which e.g.
+ does not terminate) and define an timeout.
+ Additional assert that this timeout can be turned off.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F60/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F70/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T80/"
+
+\end_inset
+
+ Assert that results are stored in 
+the 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ by a manual test: run a measurement and check the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ afterwards.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F200/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T90/"
+
+\end_inset
+
+ Assert that the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{result PCM}
+\end_layout
+
+\end_inset
+
+ can be read by a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ installation without Beagle by opening it on such a system.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F220/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T100/"
+
+\end_inset
+
+ Assert that all the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{result PCM}
+\end_layout
+
+\end_inset
+
+ contains all gained information (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F230/"
+
+\end_inset
+
+) by checking if it is similar to a before defined 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ Test 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F230/"
@@ -422,6 +658,168 @@ gls{PCM}
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F50/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT50/"
+
+\end_inset
+
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF10/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF20/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF40/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT60/"
+
+\end_inset
+
+ Assert that Beagle reacts to different component's interface parameters.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF30/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF50/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT70/"
+
+\end_inset
+
+ Assert that it is possible for users to decide whether the whole source
+ code or only parts of it are analysed.
+ Therefore do several runs and determine the different parts which have
+ to be tested.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF100/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT80/"
+
+\end_inset
+
+ Assert that users are able to re-measure source code by measuring same
+ source code several times.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF110/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT90/"
+
+\end_inset
+
+ Assert that pausing and resuming measurements works as defined in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF150/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF160/"
+
+\end_inset
+
+ by testing same source code without pausing and several different numbers
+ of pauses.
+ The result has to be the same as long as nothing else changes.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT100/"
+
+\end_inset
+
+ Assert that Beagle shuts down the computer if requested by a manual test.
+ First, run a measurement and activate shutting down and then check if it
+ worked and the results are saved.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF180/"
 
 \end_inset
 
