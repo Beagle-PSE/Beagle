@@ -9,7 +9,7 @@
       <w>60</w>
       <h>100</h>
     </coordinates>
-    <panel_attributes>User</panel_attributes>
+    <panel_attributes>user</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -105,7 +105,7 @@ results in PCM</panel_attributes>
     <coordinates>
       <x>330</x>
       <y>140</y>
-      <w>110</w>
+      <w>100</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
@@ -155,7 +155,7 @@ fg=gray</panel_attributes>
     <coordinates>
       <x>310</x>
       <y>340</y>
-      <w>120</w>
+      <w>110</w>
       <h>150</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
@@ -181,7 +181,7 @@ fg=gray</panel_attributes>
     <coordinates>
       <x>460</x>
       <y>160</y>
-      <w>120</w>
+      <w>110</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
