@@ -551,6 +551,10 @@ Reference notation is /C#/
 
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -559,7 +563,8 @@ name "/P10/"
 
 \end_inset
 
- Beagle enables the user to analyse given source code for its 
+ Beagle enables the user to analyse given source code regarding the resources
+ its 
 \begin_inset ERT
 status open
 
@@ -572,20 +577,7 @@ glsuserii{internal action}
 
 \end_inset
 
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{resource demand}
-\end_layout
-
-\end_inset
-
-.
+ demand when executed.
 \end_layout
 
 \begin_layout Labeling
@@ -622,19 +614,7 @@ gls{PCM}
 
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/P30/"
-
-\end_inset
-
- Beagle, in conjunction with other software, enables the user to import
- existing software for analysis into 
+, enabling the user to import existing software into 
 \begin_inset ERT
 status open
 
@@ -647,19 +627,13 @@ gls{Palladio}
 
 \end_inset
 
-.
+ for analysis.
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Complements the above part.
@@ -682,6 +656,10 @@ Reference notation is /OC#/
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -859,7 +837,8 @@ name "/B40/"
 
 \end_inset
 
- Beagle only analyses Java source code.
+ Beagle does not assert that analysis of source code written in a language
+ other than Java 6 is possible.
 \end_layout
 
 \begin_layout Labeling

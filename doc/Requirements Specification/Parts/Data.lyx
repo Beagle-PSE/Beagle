@@ -191,6 +191,10 @@ name "result PCM"
 Input
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -343,7 +347,20 @@ status open
 
 
 \backslash
-glspl{component}
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF}
 \end_layout
 
 \end_inset
@@ -351,12 +368,8 @@ glspl{component}
  to the parts in the source code implementing them.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -386,6 +399,10 @@ name "/OD20/"
 Output
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -407,7 +424,7 @@ glsuserii{component}
 
 \end_inset
 
- 
+ CPU 
 \begin_inset ERT
 status open
 
@@ -415,20 +432,16 @@ status open
 
 
 \backslash
-glsuserii{internal action}
+glspl{resource demand}
 \end_layout
 
 \end_inset
 
- execution time.
+.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
