@@ -671,7 +671,7 @@ name "/OP10/"
 \end_inset
 
  Beagle analyses given source code for further dynamic behavioural attributes
- like the number of loop executions or the probability for branches in 
+ like the number of loop executions in 
 \begin_inset ERT
 status open
 
@@ -679,12 +679,12 @@ status open
 
 
 \backslash
-lstinline{if-else}
+glspl{SEFF loop}
 \end_layout
 
 \end_inset
 
- or 
+ or the probability for branches in 
 \begin_inset ERT
 status open
 
@@ -692,12 +692,12 @@ status open
 
 
 \backslash
-lstinline{switch-case}
+glspl{SEFF condition}
 \end_layout
 
 \end_inset
 
- constructs.
+.
 \end_layout
 
 \begin_layout Labeling
