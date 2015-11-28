@@ -385,10 +385,7 @@ name "/T80/"
 
 \end_inset
 
- Assert that results are stored in 
-the 
-\lang british
-
+ Assert that results are stored in the 
 \begin_inset ERT
 status open
 
@@ -434,15 +431,9 @@ name "/T90/"
 \end_inset
 
  Assert that the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{result PCM}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
 
 \end_inset
 
@@ -479,15 +470,9 @@ name "/T100/"
 \end_inset
 
  Assert that all the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{result PCM}
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
 
 \end_inset
 
