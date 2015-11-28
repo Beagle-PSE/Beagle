@@ -293,12 +293,8 @@ reference "/F240/"
 .
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -397,10 +393,6 @@ reference "/Q20/"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Paragraph
-Optional
 \end_layout
 
 \begin_layout Labeling
