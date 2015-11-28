@@ -286,7 +286,6 @@ name "/A30/"
 
  Beagle may be used for prototyping.
  Different implementations of a 
-
 \begin_inset ERT
 status open
 
@@ -299,8 +298,6 @@ gls{component}
 
 \end_inset
 
-
-\lang british
  modelled in the 
 \begin_inset ERT
 status open
@@ -355,7 +352,7 @@ name "/A40/"
 
 \end_inset
 
- Beagle can be used to verify a software's design and implementation.
+ Beagle can be used to verify design and implementation of a software.
  After developing the software with 
 \begin_inset ERT
 status open
