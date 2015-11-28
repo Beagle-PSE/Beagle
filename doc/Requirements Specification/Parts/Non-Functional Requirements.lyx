@@ -108,11 +108,16 @@ Reference notation for nice to have requirements is /OQ#/
 
 \end_inset
 
-
+In order to be as independent as possible and to provide good quality of
+ service and user experience, Beagle must fulfil the following requirements:
 \end_layout
 
 \begin_layout Section
 Dependencies
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
 \end_layout
 
 \begin_layout Labeling
@@ -189,12 +194,8 @@ name "/Q30/"
  software.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -230,7 +231,7 @@ name "/OQ20/"
 
 \end_inset
 
- User interaction in a measurement is not necessary.
+ No user interaction is required while Beagle conducts measurements.
 \end_layout
 
 \begin_layout Labeling
@@ -241,8 +242,21 @@ name "/OQ30/"
 
 \end_inset
 
- Beagle can handle errors e.g.
- exceptions.
+ Beagle shall handle any error thrown by the measured software, like uncaught
+ Exceptions or calls to 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+System#exit
+\end_layout
+
+\end_inset
+
+.
+ This means that such errors do not influence other measurements.
 \end_layout
 
 \begin_layout Labeling
@@ -253,23 +267,16 @@ name "/OQ40/"
 
 \end_inset
 
- Beagle stops measurements by an adaptive timeout.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ50/"
-
-\end_inset
-
- Beagle makes benchmarking of the hardware systems to adapt results on different
- hardware systems.
+ Beagle runs benchmarks on hardware systems in order to provide information
+ to make its results portable.
 \end_layout
 
 \begin_layout Section
 User Interface and Experience
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
 \end_layout
 
 \begin_layout Labeling
@@ -320,12 +327,8 @@ More precise?!
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -336,7 +339,7 @@ name "/OQ100/"
 
 \end_inset
 
- Beagle is integrated in 
+ Beagle is integrated into 
 \begin_inset ERT
 status open
 
@@ -349,7 +352,7 @@ gls{SoMoX}
 
 \end_inset
 
-, such that it is automatically executed after 
+ to automatically be executed after 
 \begin_inset ERT
 status open
 
@@ -428,6 +431,17 @@ gls{SoMoX}
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ120/"
+
+\end_inset
+
+ Beagle reports its progress to the user.
 \end_layout
 
 \begin_layout Subsection
@@ -568,7 +582,7 @@ reference "/OQ100/"
 
 \end_inset
 
- is realized, the user has the option, when launching 
+ is realised, the user has the option, when launching 
 \begin_inset ERT
 status open
 
@@ -610,18 +624,18 @@ reference "/OQ40/"
 
 \end_inset
 
- is realized, the user can select the timeout here.
+ is realised, the user may adapt the default timeout.
 \end_layout
 
 \begin_layout Enumerate
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OF80/"
+reference "/OF120/"
 
 \end_inset
 
- is realized, the connection to the measurement machine can be set up here.
+ is realised, the connection to the measurement machine can be set up.
 \end_layout
 
 \begin_layout Enumerate
@@ -632,7 +646,8 @@ reference "/OQ40/"
 
 \end_inset
 
- is realized, the user can select to benchmark his hardware system.
+ is realised, the user can select to additionally benchmark its hardware
+ system.
 \end_layout
 
 \begin_layout Standard
@@ -643,7 +658,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is realized, Beagle also provides a button for benchmarking the hardware
+ is realised, Beagle also provides a button for benchmarking the hardware
  without running any analysis.
 \end_layout
 
@@ -655,33 +670,32 @@ reference "/OQ40/"
 \end_layout
 
 \begin_layout Standard
-When the analysis is running, a windows with a progress bar is displayed.
+When the analysis is running, a window reporting progress is displayed.
 \end_layout
 
 \begin_layout Standard
 In this window there is also button for pausing, if 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OF90/"
+reference "/OF130/"
 
 \end_inset
 
  is realised.
- When the measurement is paused, this button changes to a resume button.
- In this state, the user also has the ability, to close eclipse.
- When he starts eclipse after that, a dialogue appears which allows him
- to resume the measurement, and to abort the measurement and drop the data
- collected so far.
- There is also a checkbox with the description 
-\begin_inset Quotes eld
+ If the measurement is paused, this button changes to a resume button.
+ If 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
 \end_inset
 
-Don't show this again
-\begin_inset Quotes erd
-\end_inset
-
-, to disable this dialogue.
- Additional in each context menu with an entry 
+ is implemented and the user chooses to close Eclipse, a dialogue allowing
+ him to resume the measurement will appear every time he starts Eclipse
+ afterwards.
+ This dialogue also offers the options to disable the dialogue in the future
+ and to abort the measurement and drop the data collected so far.
+ Additionally, in each context menu having an entry 
 \begin_inset Quotes eld
 \end_inset
 
@@ -689,7 +703,7 @@ Analyse with Beagle
 \begin_inset Quotes erd
 \end_inset
 
- there is another entry called 
+, there will be another entry called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -697,11 +711,11 @@ Resume last Beagle measurement
 \begin_inset Quotes erd
 \end_inset
 
- in this state.
+, allowing the user to resume the measurement.
 \end_layout
 
 \begin_layout Standard
-In the progress bar, there is also a button to abort the measurement.
+In the progress window, there is also a button to abort the measurement.
 \end_layout
 
 \end_body

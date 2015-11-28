@@ -135,6 +135,10 @@ reference "input artefacts"
 Measurement
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -201,7 +205,7 @@ reference "/F10/"
 
 \end_inset
 
- by utilising
+ by utilising 
 \begin_inset ERT
 status open
 
@@ -298,10 +302,43 @@ name "/F50/"
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
+\begin_inset CommandInset label
+LatexCommand label
+name "/F60/"
+
 \end_inset
 
+ Beagle provides a functionality to stop measurements by an adaptive timeout
+ when enabled.
+ This means that it aborts a measurement when it exceeds a certain period
+ of time.
+ This timeout is adapted based on previous runs with the same or similar
+ arguments.
+ It is increased if these previous runs took a long time (as it is expected
+ that these measurements will take a long time, too) and decreased if they
+ took a short time to answer a request.
+\end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F70/"
+
+\end_inset
+
+ The user can disable the adaptive timeout described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F60/"
+
+\end_inset
+
+ and replace it with a set timeout or disable the timeout entirely.
+\end_layout
+
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -452,11 +489,19 @@ glsuseri{component}
  interface parameters.
 \end_layout
 
+\begin_layout Section
+Control
+\end_layout
+
+\begin_layout Paragraph
+Optional
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF60/"
+name "/OF100/"
 
 \end_inset
 
@@ -468,7 +513,7 @@ name "/OF60/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF70/"
+name "/OF110/"
 
 \end_inset
 
@@ -480,7 +525,7 @@ name "/OF70/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF80/"
+name "/OF120/"
 
 \end_inset
 
@@ -492,29 +537,83 @@ name "/OF80/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF90/"
+name "/OF130/"
 
 \end_inset
 
- The user may pause and later resume a measurement.
+ The user may pause and resume a measurement.
+ Pausing causes all measurement activity to stop.
+ Resuming continues the measurement from where they were paused.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF100/"
+name "/OF140/"
 
 \end_inset
 
- Beagle reports its progress to the user.
+ The user may resume a paused measurement (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+), even if Beagle was closed after pausing it.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF110/"
+name "/OF150/"
+
+\end_inset
+
+ Beagle asserts that no input artefact (p.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
+
+\end_inset
+
+) was changed between pausing (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+) and resuming (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
+\end_inset
+
+) a measurement to assure its result's integrity.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF160/"
+
+\end_inset
+
+ Beagle's results do not change, no matter how often the user chooses to
+ pause and resume the measurements.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF170/"
 
 \end_inset
 
@@ -538,16 +637,20 @@ gls{component}
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OF120/"
+name "/OF180/"
 
 \end_inset
 
  If requested by the user, Beagle shuts down the computer it's running on
- after it finished.
+ after it finished a measurement.
 \end_layout
 
 \begin_layout Section
 Result Annotation
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
 \end_layout
 
 \begin_layout Labeling
@@ -755,15 +858,11 @@ name "/F250/"
 
 \end_inset
 
- Measurement results are saved onto a persistent medium to avoid data loss.
+ Measurement results are saved onto a persistent medium to avoid data loss
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling

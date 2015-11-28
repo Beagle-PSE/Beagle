@@ -191,6 +191,10 @@ name "result PCM"
 Input
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -311,7 +315,7 @@ glspl{SEFF}
 \end_inset
 
 .
- They must be modelled the input 
+ They must be modelled in the input 
 \begin_inset ERT
 status open
 
@@ -351,12 +355,8 @@ glspl{component}
  to the parts in the source code implementing them.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -386,6 +386,10 @@ name "/OD20/"
 Output
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -407,7 +411,7 @@ glsuserii{component}
 
 \end_inset
 
- 
+ CPU 
 \begin_inset ERT
 status open
 
@@ -415,20 +419,16 @@ status open
 
 
 \backslash
-glsuserii{internal action}
+glspl{resource demand}
 \end_layout
 
 \end_inset
 
- execution time.
+.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
-\end_inset
-
-
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -527,6 +527,57 @@ glspl{SEFF loop}
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OD130/"
+
+\end_inset
+
+ Measurement status data, containing all information required to resume
+ a measurement (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
+\end_inset
+
+, enables 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF160/"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OD140/"
+
+\end_inset
+
+ Verification data to check whether input artefacts changed (enables 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF150/"
+
+\end_inset
+
+).
 \end_layout
 
 \end_body

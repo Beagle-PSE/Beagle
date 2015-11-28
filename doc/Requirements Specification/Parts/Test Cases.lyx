@@ -77,7 +77,7 @@ Test Cases
 \begin_layout Standard
 As Beagle has to work with the above defined interfaces it has to be tested
  in complete.
- However, this could result into testing the other softwares, which is not
+ However, this could result into testing the other software, which is not
  what should be done, or even worse it could result in not detecting errors
  and failures as they are compensated by other software.
  On account of this two types of tests are needed: one testing the whole
@@ -119,6 +119,10 @@ Reference notation is /T#/.
 
 \end_layout
 
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -127,10 +131,8 @@ name "/T10/"
 
 \end_inset
 
- Smoke testing.
- First of all, the software has to be running, otherwise there is nothing
- to test.
- On account of this the first test is a simple run-through.
+ Assert that software is starting, running and terminating by a simple run-throu
+gh.
  For a valid input this has to work without exceptions and the software
  has to terminate.
 \end_layout
@@ -143,7 +145,32 @@ name "/T20/"
 
 \end_inset
 
- Correct measurement (correct results)
+ Assert that Beagle discovers all sections needed for measurement and that
+ they are correct.
+ For a correct result in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ it is essential to to measure at the correct points.
+ A part of this can be realised by checking if all code sections (of the
+ measured part) were measured.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F10/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -163,6 +190,8 @@ reference "/Q10/"
 \end_inset
 
 .
+ A new system has to be set up with only these software applications and
+ Beagle has to be tested on it.
 \end_layout
 
 \begin_layout Labeling
@@ -173,7 +202,9 @@ name "/T40/"
 
 \end_inset
 
- Transferring of data between interfaces and Beagle (correct data)
+ Assert that transferring of data between interfaces and Beagle works correctly
+ in boh ways.
+ All interfaces with other software have to be tested.
 \end_layout
 
 \begin_layout Labeling
@@ -181,91 +212,6 @@ name "/T40/"
 \begin_inset CommandInset label
 LatexCommand label
 name "/T50/"
-
-\end_inset
-
- Beagle works with different software through 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{CTA}
-\end_layout
-
-\end_inset
-
-.
- Test with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Kieker}
-\end_layout
-
-\end_inset
-
- and other 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{measurement software}
-\end_layout
-
-\end_inset
-
-.
- (asserts 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F40/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/Q20/"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T60/"
-
-\end_inset
-
- Assert that provided source code files are not changed.
- (asserts 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F50/"
-
-\end_inset
-
-)
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T70/"
 
 \end_inset
 
@@ -282,7 +228,7 @@ gls{PCM}
 
 \end_inset
 
- 
+ all measured 
 \begin_inset ERT
 status open
 
@@ -310,7 +256,7 @@ gls{PCM}
 \end_inset
 
  is valid.
- (asserts 
+ Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/C10/"
@@ -327,40 +273,249 @@ reference "/C20/"
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F100/"
+reference "/F200/"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F110/"
+reference "/F210/"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F130/"
+reference "/F230/"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F140/"
+reference "/F240/"
 
 \end_inset
 
-)
+.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-\begin_inset VSpace defskip
+\begin_inset CommandInset label
+LatexCommand label
+name "/T60/"
+
 \end_inset
 
+ Assert that Beagle measures the sections with measurement software through
+ the 
+\begin_inset ERT
+status open
 
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F20/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F30/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F40/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T70/"
+
+\end_inset
+
+ Assert that Beagle stops measurements after timeout.
+ Therefore run a measurment for software (which e.g.
+ does not terminate) and define an timeout.
+ Additional assert that this timeout can be turned off.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F60/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F70/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T80/"
+
+\end_inset
+
+ Assert that results are stored in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ by a manual test: run a measurement and check the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ afterwards.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F200/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T90/"
+
+\end_inset
+
+ Assert that the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ can be read by a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ installation without Beagle by opening it on such a system.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F220/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T100/"
+
+\end_inset
+
+ Assert that all the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ contains all gained information (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F230/"
+
+\end_inset
+
+) by checking if it is similar to a before defined 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ Test 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F230/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F240/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Optional
 \end_layout
 
 \begin_layout Labeling
@@ -371,15 +526,16 @@ name "/OT10/"
 
 \end_inset
 
- Test with different operating systems and hardware.
- (asserts 
+ Assert that Beagle works for different operating systems and hardware by
+ running measurements on different systems.
+ Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/OQ10/"
 
 \end_inset
 
-)
+.
 \end_layout
 
 \begin_layout Labeling
@@ -390,8 +546,351 @@ name "/OT20/"
 
 \end_inset
 
- Assert that Beagle detects invalid input and does not crash but responds
- to it in a acceptable way.
+ Assert that Beagle detects invalid input (e.g.
+ if source code decorator does not fit to the code) and does not crash but
+ responds to it in a acceptable way.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT30/"
+
+\end_inset
+
+ Assert that Beagle works with different software through the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+ Therefore it is necessary to test Beagle with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+ and other 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F40/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q20/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ30/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT40/"
+
+\end_inset
+
+ Assert that Beagle does not change source code files and other input except
+ from the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F50/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT50/"
+
+\end_inset
+
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF10/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF20/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF40/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT60/"
+
+\end_inset
+
+ Assert that Beagle reacts to different component's interface parameters.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF30/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF50/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT70/"
+
+\end_inset
+
+ Assert that it is possible for users to decide whether the whole source
+ code or only parts of it are analysed.
+ Therefore do several runs and determine the different parts which have
+ to be tested.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF100/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT80/"
+
+\end_inset
+
+ Assert that users are able to re-measure source code by measuring same
+ source code several times.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF110/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT90/"
+
+\end_inset
+
+ Assert that pausing and resuming measurements works as defined in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF150/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF160/"
+
+\end_inset
+
+ by testing same source code without pausing and several different numbers
+ of pauses.
+ The result has to be the same as long as nothing else changes.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT100/"
+
+\end_inset
+
+ Assert that Beagle shuts down the computer if requested by a manual test.
+ First, run a measurement and activate shutting down and then check if it
+ worked and the results are saved.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF180/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT110/"
+
+\end_inset
+
+ Assert that no user interaction is needed for measurements by running several
+ measurements without user interaction.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ20/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT120/"
+
+\end_inset
+
+ Assert that it is possible to run Beagle automatically after 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ has finished by having a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ run with activated automatic Beagle run.
+ Another test run has to assert that between both runs no user interaction
+ is needed.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ100/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ110/"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
