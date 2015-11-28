@@ -541,7 +541,8 @@ name "/OT10/"
 
 \end_inset
 
- Assert that Beagle works for different operating systems and hardware.
+ Assert that Beagle works for different operating systems and hardware by
+ running measurements on different systems.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -621,10 +622,17 @@ reference "/F40/"
 
 \end_inset
 
- and 
+, 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/Q20/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ30/"
 
 \end_inset
 
@@ -820,6 +828,80 @@ name "/OT100/"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/OF180/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT110/"
+
+\end_inset
+
+ Assert that no user interaction is needed for measurements by running several
+ measurements without user interaction.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ20/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT120/"
+
+\end_inset
+
+ Assert that it is possible to run Beagle automatically after 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ has finished by having a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ run with activated automatic Beagle run.
+ Another test run has to assert that between both runs no user interaction
+ is needed.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ100/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ110/"
 
 \end_inset
 
