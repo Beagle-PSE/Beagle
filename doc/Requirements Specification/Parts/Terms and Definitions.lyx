@@ -419,9 +419,7 @@ cite{ComponentSoftwareBook}
 
 		There is no equivalent of components in modern programming languages,
  in particular, a component usually consists of multiple Java classes.
- Components can be composed from other components 
-\backslash
-cite{KrogmannPhD}.
+ Components can be nested.
 \end_layout
 
 \begin_layout Plain Layout
