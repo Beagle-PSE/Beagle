@@ -161,6 +161,8 @@ gls{PCM}
 \end_inset
 
  it is essential to to measure at the correct points.
+ A part of this can be realised by checking if all code sections (of the
+ measured part) were measured.
 \end_layout
 
 \begin_layout Labeling
