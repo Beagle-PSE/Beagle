@@ -445,7 +445,19 @@ name "/OQ120/"
 \end_layout
 
 \begin_layout Subsection
-GUI model
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+ model
 \end_layout
 
 \begin_layout Standard
