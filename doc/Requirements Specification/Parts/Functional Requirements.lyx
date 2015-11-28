@@ -316,7 +316,7 @@ name "/F60/"
  arguments.
  It is increased if these previous runs took a long time (as it is expected
  that these measurements will take a long time, too) and decreased if they
- took a short time to terminate.
+ took a short time to answer a request.
 \end_layout
 
 \begin_layout Labeling
