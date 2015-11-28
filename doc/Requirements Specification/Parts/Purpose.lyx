@@ -507,6 +507,10 @@ gls{measurement software}
 Criteria
 \end_layout
 
+\begin_layout Subsection
+Mandatory Criteria
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
@@ -631,6 +635,10 @@ gls{Palladio}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Optional Criteria
 \end_layout
 
 \begin_layout Standard

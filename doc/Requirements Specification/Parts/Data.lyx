@@ -191,6 +191,10 @@ name "result PCM"
 Input
 \end_layout
 
+\begin_layout Subsection
+Mandatory Input Requirements
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -359,6 +363,10 @@ glspl{component}
 
 \end_layout
 
+\begin_layout Subsection
+Optional Input Requirements
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -384,6 +392,10 @@ name "/OD20/"
 
 \begin_layout Section
 Output
+\end_layout
+
+\begin_layout Subsection
+Mandatory Output Requirements
 \end_layout
 
 \begin_layout Labeling
@@ -429,6 +441,10 @@ glsuserii{internal action}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Optional Output Requirements
 \end_layout
 
 \begin_layout Labeling

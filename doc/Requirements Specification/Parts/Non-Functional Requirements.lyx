@@ -115,6 +115,10 @@ Reference notation for nice to have requirements is /OQ#/
 Dependencies
 \end_layout
 
+\begin_layout Subsection
+Mandatory Dependency Criteria
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -197,6 +201,10 @@ name "/Q30/"
 
 \end_layout
 
+\begin_layout Subsection
+Optional Dependency Criteria
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -274,6 +282,10 @@ name "/OQ40/"
 User Interface and Experience
 \end_layout
 
+\begin_layout Subsection
+Mandatory User Interface and Experience Criteria
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
@@ -328,6 +340,10 @@ More precise?!
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Optional User Interface and Experience Criteria
 \end_layout
 
 \begin_layout Labeling
