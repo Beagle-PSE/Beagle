@@ -670,8 +670,8 @@ name "/OP10/"
 
 \end_inset
 
- Beagle analyses given source code for further dynamic behavioural attributes
- like the number of loop executions in 
+ Beagle analyses consigned source code for further dynamic behavioural attribute
+s like the number of loop executions in 
 \begin_inset ERT
 status open
 
@@ -684,7 +684,7 @@ glspl{SEFF loop}
 
 \end_inset
 
- or the probability for branches in 
+ and the probability for branches in 
 \begin_inset ERT
 status open
 
@@ -708,7 +708,8 @@ name "/OP20/"
 
 \end_inset
 
- Beagle gives the results as a function of the input parameters of the 
+ Beagle outputs the results as a function of the input parameters of the
+ 
 \begin_inset ERT
 status open
 
@@ -716,7 +717,33 @@ status open
 
 
 \backslash
-gls{internal action}
+glspl{internal action}
+\end_layout
+
+\end_inset
+
+ as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{resource demand}
+\end_layout
+
+\end_inset
+
+ annotations in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
 \end_layout
 
 \end_inset
@@ -732,7 +759,7 @@ name "/OP30/"
 
 \end_inset
 
- Beagle gives the user the possibility to control the analysis with a 
+ Beagle provides the user to control the analysis with a 
 \begin_inset ERT
 status open
 
