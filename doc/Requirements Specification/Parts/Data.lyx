@@ -411,7 +411,7 @@ glsuserii{component}
 
 \end_inset
 
- 
+ CPU 
 \begin_inset ERT
 status open
 
@@ -419,12 +419,12 @@ status open
 
 
 \backslash
-glsuserii{internal action}
+glspl{resource demand}
 \end_layout
 
 \end_inset
 
- execution time.
+.
 \end_layout
 
 \begin_layout Paragraph
