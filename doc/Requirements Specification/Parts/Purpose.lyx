@@ -693,7 +693,7 @@ name "/OP10/"
 \end_inset
 
  Beagle analyses given source code for further dynamic behavioural attributes
- like the number of loop executions or the prohability for branches in 
+ like the number of loop executions or the probability for branches in 
 \begin_inset ERT
 status open
 
@@ -754,7 +754,7 @@ name "/OP30/"
 
 \end_inset
 
- Beagle gives the user the possibilty to control the analysis with a GUI.
+ Beagle gives the user the possibility to control the analysis with a GUI.
 \begin_inset Float figure
 placement h
 wide false
