@@ -131,9 +131,8 @@ name "/T10/"
 
 \end_inset
 
- Smoke testing.
- Assert that software is starting, running and terminating.
- On account of this the first test is a simple run-through.
+ Assert that software is starting, running and terminating by a simple run-throu
+gh.
  For a valid input this has to work without exceptions and the software
  has to terminate.
 \end_layout
