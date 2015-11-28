@@ -108,7 +108,8 @@ Reference notation for nice to have requirements is /OQ#/
 
 \end_inset
 
-
+In order to be as independent as possible and to provide good quality of
+ service and user experience, Beagle must fulfil the following requirements:
 \end_layout
 
 \begin_layout Section
