@@ -348,6 +348,19 @@ glspl{component}
 
 \end_inset
 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF}
+\end_layout
+
+\end_inset
+
  to the parts in the source code implementing them.
 \end_layout
 
