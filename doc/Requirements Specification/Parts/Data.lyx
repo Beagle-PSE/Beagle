@@ -200,7 +200,21 @@ name "/D10/"
 \end_inset
 
  The software's source code.
- It must be written in Java and either
+ It must be written in Java 6 because 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+ cannot cope with newer versions.
+ Either
 \end_layout
 
 \begin_deeper
