@@ -424,7 +424,20 @@ glsuserii{internal action}
 
 \end_inset
 
- execution time.
+ execution time and the CPU 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+s.
 \end_layout
 
 \begin_layout Paragraph
