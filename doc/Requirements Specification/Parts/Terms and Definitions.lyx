@@ -419,9 +419,7 @@ cite{ComponentSoftwareBook}
 
 		There is no equivalent of components in modern programming languages,
  in particular, a component usually consists of multiple Java classes.
- Components can be composed from other components 
-\backslash
-cite{KrogmannPhD}.
+ Components can be nested.
 \end_layout
 
 \begin_layout Plain Layout
@@ -1143,20 +1141,23 @@ newglossaryentry{component developer}{
 
 \begin_layout Plain Layout
 
-		developer role in the 
+``[specifies] the functional and extra-functional properties of their components.
+ They put the specification as well as the implementation in repositories,
+ where software architects can retrieve them.'' 
 \backslash
-gls{component-based software} development process.
- Specifies, implements and tests 
-\backslash
-glspl{component}, interfaces, and data types.
- In the 
+cite{PalladioPaper}
+\end_layout
+
+\begin_layout Plain Layout
+
+In the 
 \backslash
 gls{PCM}, component developers create 
 \backslash
 glspl{service effect specification} to define 
 \backslash
 glsuserii{component} behavioural properties and store modelling and implementati
-on artecfacts in repositories.
+on artefacts in repositories.
  
 \backslash
 cite{PCMtechreport}
