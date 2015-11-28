@@ -2,6 +2,8 @@
 
 # fail the script if any command fails
 set -e
+# Don't return a glob pattern if it doesn't match anything
+shopt -s nullglob
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
 	echo "We won't deploy because we're on a pull request."
@@ -42,6 +44,15 @@ else
 	git branch --no-track gh-pages
 fi
 git checkout gh-pages
+
+
+# Remove deleted branches' directories
+for branchpath in branches/*
+do
+	branch=$(basename $branchpath)
+	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; git rm -rfq branches/$branch)
+done
+
 
 ###
 # Gather all assets that will be released
