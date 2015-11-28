@@ -157,7 +157,7 @@ gls{Palladio}
 
 \end_inset
 
-, a model driven approach for software simulation, enables developers to
+, a model-driven approach for software simulation, enables developers to
  analyse 
 \begin_inset ERT
 status open
@@ -184,7 +184,7 @@ gls{QoS}
 
 \end_inset
 
- at the definition phase, before actually writing any code.
+ during the definition phase before actually writing any code.
  Using 
 \begin_inset ERT
 status open
@@ -225,7 +225,7 @@ gls{PCM}
 \end_inset
 
 .
- This information is hence used to simulate the software's behaviour, with
+ This information is then used to simulate the software's behaviour with
  a focus on its 
 \begin_inset ERT
 status open
@@ -243,7 +243,7 @@ gls{QoS}
 \end_layout
 
 \begin_layout Standard
-In many scenarios however, some to all source code may already exist.
+In many scenarios, however, some to all source code may already exist.
  Analysis with 
 \begin_inset ERT
 status open
@@ -257,7 +257,7 @@ gls{Palladio}
 
 \end_inset
 
- might still be wished, for example to simulate a 
+ might still be desired: For example to simulate a 
 \begin_inset ERT
 status open
 
@@ -326,7 +326,7 @@ gls{component}
 
 \end_inset
 
- boundaries, their bindings to the provided source code and their 
+ boundaries, their bindings to the provided source code, and their 
 \begin_inset ERT
 status open
 
@@ -398,7 +398,7 @@ gls{SoMoX}
 \end_inset
 
 .
- It aims to conduct performance measurements on source code of a software,
+ It aims to conduct performance measurements on source code of a software
  in order to determine its 
 \begin_inset ERT
 status open
@@ -474,7 +474,7 @@ key "KrogmannPhD"
 
 \end_inset
 
-, it aims to develop such a software adding dynamic properties to a 
+, it aims to develo a software adding dynamic properties to a 
 \begin_inset ERT
 status open
 
@@ -724,7 +724,8 @@ gls{Kieker}
 
 \end_inset
 
- and results are transferred through the 
+.
+ Their results are transferred to Beagle using the 
 \begin_inset ERT
 status open
 
@@ -849,7 +850,7 @@ name "/B50/"
 
 \end_inset
 
- Beagle does no performance analysis or prediction.
+ Beagle does not do performance analysis nor prediction.
  This is may be achieved with 
 \begin_inset ERT
 status open
