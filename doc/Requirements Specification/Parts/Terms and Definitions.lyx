@@ -355,29 +355,43 @@ gls{SEFF}.
 
 
 \backslash
-newglossaryentry{loop action}{
+newglossaryentry{code decorator}{
 \end_layout
 
 \begin_layout Plain Layout
 
 	name={
 \backslash
-lstinline{LoopAction}},
+gls{PCM} source code decorator},
 \end_layout
 
 \begin_layout Plain Layout
 
-	description={},
+	description={
 \end_layout
 
 \begin_layout Plain Layout
 
-	sort={LoopAction}
+		realises links from the source code to the elements in the 
+\backslash
+gls{PCM} and the other way round.
+ 
+\backslash
+cite{KrogmannPhD}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
 \end_layout
 
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -957,6 +971,17 @@ cite{conwaysLaw}
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{GUI}{GUI}{Graphical User Interface}
 \end_layout
 
 \begin_layout Plain Layout
