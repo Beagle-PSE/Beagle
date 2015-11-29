@@ -90,7 +90,7 @@ This final chapter now models different viewpoints on how an implementation
  It’s meant to convey our vision of the software to the reader.
  It is also meant to specify this vision, such that it can lead us through
  the further development phases.
- It does not yet specify technical realizations like like UML class diagrams.
+ It does not yet specify technical realisations like UML class diagrams.
 \end_layout
 
 \begin_layout Plain Layout
@@ -102,7 +102,7 @@ The chapter should contain:
 \end_layout
 
 \begin_layout Plain Layout
-* Sencario descriptions
+* Scenario descriptions
 \end_layout
 
 \begin_layout Plain Layout
@@ -132,18 +132,43 @@ All characters and organisations appearing in this work are fictitious.
 
 \end_inset
 
-, a Java based online shop is running on a middle-class web server.
- During the first few years the software could deal with almost 99.9% of
- its requests and orders, which were always handled quite well and without
- any delay.
- After an enormous expansion since the last year, the user numbers are currently
- growing for about 5% each week.
+, a Java-based online shop is running on a middle-class web server.
+ During the first few years the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserv{system}
+\end_layout
+
+\end_inset
+
+ was able to deal with almost 99.8% of incoming requests and orders quite
+ well and without any noticeable delay.
+ After an enormous expansion since the last year, the number of users is
+ currently growing by about 5% per week.
  Although the current servers are designed to fulfil a distinctly higher
  amount of user requests, the administration reported some few dropouts
- as well as increasing waiting times in single applications.
- Unfortunately, the software is based on an early design that has grown
- over years with missing documentation in many cases.
- The effort to re-write the complete software is unbearable.
+ as well as increasing waiting times in individual applications.
+ Unfortunately, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserv{system}
+\end_layout
+
+\end_inset
+
+ is based on an early design that has grown overthe years with missing documenta
+tion in many cases.
+ The effort to completly re-write it is unbearable.
  The code also scales bad, so buying new servers will not solve the problem
  either.
  The only solution seems to re-analyse the software's source code and 
@@ -175,7 +200,7 @@ gls{Palladio}
 
  and think it could serve them well to overcome their issues.
  Unfortunately, modelling all existing code is such a huge task that the
- management is reluctant to take this step.
+ management is reluctant to make this step.
 \end_layout
 
 \begin_layout Standard
@@ -366,7 +391,7 @@ glslabel{software architecture}{architectural}
 
 \end_inset
 
- violation of some software 
+ violation of certain software 
 \begin_inset ERT
 status open
 
@@ -410,7 +435,7 @@ glspl{software architect}
 \end_inset
 
  decide to add an extra cache which can store the results of most external
- calls and makes them available immediately.
+ calls and makes them available almost immediately.
  
 \begin_inset ERT
 status open
@@ -424,7 +449,7 @@ Glsuseri{Palladio}
 
 \end_inset
 
- predictions suggest that little changes in the 
+ predictions suggest that small changes in the 
 \begin_inset ERT
 status open
 
@@ -437,7 +462,7 @@ glsuseriii{software architecture}
 
 \end_inset
 
- adopting these changes will lead to a much better performance.
+ adopting these improvements will lead to a much better performance.
  The 
 \begin_inset ERT
 status open
