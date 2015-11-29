@@ -297,17 +297,6 @@ name "/F50/"
 
 \end_inset
 
- Beagle does not modify the provided source code files.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/F60/"
-
-\end_inset
-
  Beagle provides a functionality to stop measurements by an adaptive timeout
  when enabled.
  This means that it aborts a measurement when it exceeds a certain period
@@ -323,14 +312,14 @@ name "/F60/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/F70/"
+name "/F60/"
 
 \end_inset
 
  The user can disable the adaptive timeout described in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F60/"
+reference "/F50/"
 
 \end_inset
 
@@ -575,8 +564,8 @@ name "/OF150/"
  Beagle asserts that no input artefact (p.
  
 \begin_inset CommandInset ref
-LatexCommand ref
-reference "input artefacts"
+LatexCommand pageref
+reference "/OD140/"
 
 \end_inset
 
@@ -607,6 +596,9 @@ name "/OF160/"
 
  Beagle's results do not change, no matter how often the user chooses to
  pause and resume the measurements.
+ Thererfore Beagle assures approximately constant measurement conditions,
+ e.g.
+ by heating up the CPU with load before starting measurements when resuming.
 \end_layout
 
 \begin_layout Labeling
@@ -614,30 +606,6 @@ name "/OF160/"
 \begin_inset CommandInset label
 LatexCommand label
 name "/OF170/"
-
-\end_inset
-
- The user may specify the parametrisation of a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OF180/"
 
 \end_inset
 
@@ -827,7 +795,7 @@ name "/F240/"
 
 \end_inset
 
- Any information found in the 
+ Beagle does not remove any important information of the provided 
 \begin_inset ERT
 status open
 
@@ -840,14 +808,21 @@ gls{PCM}
 
 \end_inset
 
- instance provided to Beagle will be found in the 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "result PCM"
+.
+ The modified 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
 
 \end_inset
 
-.
+ will only be extended.
 \end_layout
 
 \begin_layout Labeling
