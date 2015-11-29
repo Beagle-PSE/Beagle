@@ -1,0 +1,1035 @@
+/**
+ * @version		3.0.0
+ * @package		K2
+ * @author		JoomlaWorks http://www.joomlaworks.net
+ * @copyright	Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.
+ * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
+ */
+
+/*
+TO DO:
+- Remove font-families
+- Combine required images into 1 sprite
+
+
+
+### Legend ###
+Font families used:
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:"Trebuchet MS",Trebuchet,Arial,Verdana,Sans-serif;
+	font-family:Arial, Helvetica, sans-serif;
+
+Colors used:
+	#f7fafe (light blue) used as background on all toolbars, category and user/author boxes
+
+*/
+
+
+
+/*----------------------------------------------------------------------
+	Common Elements
+----------------------------------------------------------------------*/
+
+/* --- Basic typography --- */
+a:active,
+a:focus {outline:0;}
+img {border:none;}
+
+/* --- Global K2 container --- */
+#k2Container {padding:0 0 24px 0;}
+body.contentpane #k2Container {padding:16px;} /* used in popups */
+
+/* --- General padding --- */
+.k2Padding {padding:4px;}
+
+/* --- Clearing --- */
+.clr {clear:both;height:0;line-height:0;display:block;float:none;padding:0;margin:0;border:none;}
+
+/* --- Zebra rows --- */
+.even {background:#fffff0;padding:2px;border-bottom:1px dotted #ccc;}
+.odd {background:#fff;padding:2px;border-bottom:1px dotted #ccc;}
+
+/* --- RSS feed icon --- */
+.k2FeedIcon {padding:4px 8px;}
+.k2FeedIcon a,
+.k2FeedIcon a:hover {display:block;float:right;margin:0;padding:0;width:16px;height:16px;background:url(../images/fugue/feed.png) no-repeat 50% 50%;}
+.k2FeedIcon a span,
+.k2FeedIcon a:hover span {display:none;}
+
+/* --- Rating --- */
+.itemRatingForm {display:block;vertical-align:middle;line-height:25px;float:left;}
+.itemRatingLog {font-size:11px;margin:0;padding:0 0 0 4px;float:left;}
+.itemRatingForm .formLogLoading {background:url(../images/system/loading.gif) no-repeat left center;height:25px;padding:0 0 0 20px;}
+.itemRatingList,
+.itemRatingList a:hover,
+.itemRatingList .itemCurrentRating {background:transparent url(../images/system/transparent_star.gif) left -1000px repeat-x;}
+.itemRatingList {position:relative;float:left;width:125px;height:25px;overflow:hidden;list-style:none;margin:0;padding:0;background-position:left top;}
+.itemRatingList li {display:inline;background:none;padding:0;}
+.itemRatingList a,
+.itemRatingList .itemCurrentRating {position:absolute;top:0;left:0;text-indent:-1000px;height:25px;line-height:25px;outline:none;overflow:hidden;border:none;cursor:pointer;}
+.itemRatingList a:hover {background-position:left bottom;}
+.itemRatingList a.one-star {width:20%;z-index:6;}
+.itemRatingList a.two-stars {width:40%;z-index:5;}
+.itemRatingList a.three-stars {width:60%;z-index:4;}
+.itemRatingList a.four-stars {width:80%;z-index:3;}
+.itemRatingList a.five-stars {width:100%;z-index:2;}
+.itemRatingList .itemCurrentRating {z-index:1;background-position:0 center;margin:0;padding:0;}
+span.siteRoot {display:none;}
+
+/* --- CSS added with Javascript --- */
+.smallerFontSize {font-size:100%;line-height:inherit;}
+.largerFontSize {font-size:150%;line-height:140%;}
+
+/* --- ReCaptcha --- */
+.recaptchatable .recaptcha_image_cell,
+#recaptcha_table {background-color:#fff !important;}
+#recaptcha_table {border-color: #ccc !important;}
+#recaptcha_response_field {border-color: #ccc !important;background-color:#fff !important;}
+
+/* --- Primary lists in modules --- */
+.k2LatestCommentsBlock ul,
+.k2TopCommentersBlock ul,
+.k2ItemsBlock ul,
+.k2LoginBlock ul,
+.k2UserBlock ul.k2UserBlockActions,
+.k2UserBlock ul.k2UserBlockRenderedMenu,
+.k2ArchivesBlock ul,
+.k2AuthorsListBlock ul,
+.k2CategoriesListBlock ul,
+.k2UsersBlock ul {} /* Example CSS: padding:0;margin:0;list-style:none;*/
+
+.k2LatestCommentsBlock ul li,
+.k2TopCommentersBlock ul li,
+.k2ItemsBlock ul li,
+.k2LoginBlock ul li,
+.k2UserBlock ul.k2UserBlockActions li,
+.k2UserBlock ul.k2UserBlockRenderedMenu li,
+.k2ArchivesBlock ul li,
+.k2AuthorsListBlock ul li,
+.k2CategoriesListBlock ul li,
+.k2UsersBlock ul li {} /* Example CSS: display:block;clear:both;padding:2px 0;border-bottom:1px dotted #ccc;*/
+
+.clearList {display:none;float:none;clear:both;} /* this class is used to clear all previous floating list elements */
+.lastItem {border:none;} /* class appended on last list item */
+
+/* --- Avatars --- */
+.k2Avatar img {display:block;float:left;background:#fff;border:1px solid #ccc;padding:2px;margin:2px 4px 4px 0;}
+
+/* --- Read more --- */
+a.k2ReadMore {}
+a.k2ReadMore:hover {}
+
+/* --- Pagination --- */
+.k2Pagination {padding:8px;margin:24px 0 4px 0;text-align:center;color:#999;}
+
+/* --- Pagination (additional styling for Joomla! 1.6+) --- */
+.k2Pagination ul {text-align:center;}
+.k2Pagination ul li {display:inline;}
+
+/* --- Extra fields: CSV data styling --- */
+table.csvData {}
+table.csvData tr th {}
+table.csvData tr td {}
+
+/* --- Featured flags: the classes are repeated further below to indicate placement in the CSS structure --- */
+.itemIsFeatured,
+.catItemIsFeatured,
+.userItemIsFeatured {background:url(../images/system/featuredItem.png) no-repeat 100% 0;}
+
+
+
+/*----------------------------------------------------------------------
+	Component: Item view
+----------------------------------------------------------------------*/
+a.itemPrintThisPage {display:block;width:160px;margin:4px auto 16px;padding:4px;background:#F7FAFE;border:1px solid #ccc;text-align:center;color:#555;font-size:13px;}
+a.itemPrintThisPage:hover {background:#eee;text-decoration:none;}
+.mfp-title { display: none; }
+
+.itemView {padding:8px 0 24px 0;margin:0 0 24px 0;border-bottom:1px dotted #ccc;} /* this is the item container for this view */
+.itemIsFeatured {} /* Attach a class for each featured item */
+
+span.itemEditLink {float:right;display:block;padding:4px 0;margin:0;width:120px;text-align:right;}
+span.itemEditLink a {padding:2px 12px;border:1px solid #ccc;background:#eee;text-decoration:none;font-size:11px;font-weight:normal;font-family:Arial, Helvetica, sans-serif;}
+span.itemEditLink a:hover {background:#ffffcc;}
+
+.itemHeader {}
+	.itemHeader span.itemDateCreated {color:#999;font-size:11px;}
+	.itemHeader h2.itemTitle {font-family:Georgia, "Times New Roman", Times, serif;font-size:36px;font-weight:normal;line-height:110%;padding:10px 0 4px 0;margin:0;}
+	.itemHeader h2.itemTitle span {}
+	.itemHeader h2.itemTitle span sup {font-size:12px;color:#CF1919;text-decoration:none;} /* "Featured" presented in superscript */
+	.itemHeader span.itemAuthor {display:block;padding:0;margin:0;}
+	.itemHeader span.itemAuthor a {}
+	.itemHeader span.itemAuthor a:hover {}
+
+.itemToolbar {padding:2px 0;margin:16px 0 0 0;border-top:1px dotted #ccc;border-bottom:1px dotted #ccc;background:#f7fafe;}
+	.itemToolbar ul {text-align:right;list-style:none;padding:0;margin:0;}
+	.itemToolbar ul li {display:inline;list-style:none;padding:0 4px 0 8px;margin:0;border-left:1px solid #ccc;text-align:center;background:none;font-size:12px;}
+	.itemToolbar ul > li:first-child {border:none;} /* remove the first CSS border from the left of the toolbar */
+	.itemToolbar ul li a {font-size:12px;font-weight:normal;}
+	.itemToolbar ul li a:hover {}
+	.itemToolbar ul li a span {}
+	.itemToolbar ul li a.itemPrintLink {}
+	.itemToolbar ul li a.itemPrintLink span {}
+	.itemToolbar ul li a.itemEmailLink {}
+	.itemToolbar ul li a.itemEmailLink span {}
+	.itemToolbar ul li a.itemVideoLink {}
+	.itemToolbar ul li a.itemVideoLink span {}
+	.itemToolbar ul li a.itemImageGalleryLink {}
+	.itemToolbar ul li a.itemImageGalleryLink span {}
+	.itemToolbar ul li a.itemCommentsLink {}
+	.itemToolbar ul li a.itemCommentsLink span {}
+	.itemToolbar ul li a img {vertical-align:middle;}
+	.itemToolbar ul li span.itemTextResizerTitle {}
+	.itemToolbar ul li a#fontDecrease {margin:0 0 0 2px;}
+	.itemToolbar ul li a#fontDecrease img {width:13px;height:13px;background:url(../images/system/font_decrease.gif) no-repeat;}
+	.itemToolbar ul li a#fontIncrease {margin:0 0 0 2px;}
+	.itemToolbar ul li a#fontIncrease img {width:13px;height:13px;background:url(../images/system/font_increase.gif) no-repeat;}
+	.itemToolbar ul li a#fontDecrease span,
+	.itemToolbar ul li a#fontIncrease span {display:none;}
+
+.itemRatingBlock {padding:8px 0;}
+	.itemRatingBlock span {display:block;float:left;font-style:normal;padding:0 4px 0 0;margin:0;color:#999;}
+
+.itemBody {padding:8px 0;margin:0;}
+
+.itemImageBlock {padding:8px;margin:0 0 16px 0;}
+	span.itemImage {display:block;text-align:center;margin:0 0 8px 0;}
+	span.itemImage img {border:1px solid #ccc;padding:8px;}
+	span.itemImageCaption {color:#666;float:left;display:block;font-size:11px;}
+	span.itemImageCredits {color:#999;float:right;display:block;font-style:italic;font-size:11px;}
+
+.itemIntroText {color:#444;font-size:18px;font-weight:bold;line-height:24px;padding:4px 0 12px 0;}
+	.itemIntroText img {}
+
+.itemFullText {}
+	.itemFullText h3 {margin:0;padding:16px 0 4px 0;}
+	.itemFullText p {}
+	.itemFullText img {}
+
+.itemExtraFields {margin:16px 0 0 0;padding:8px 0 0 0;border-top:1px dotted #ddd;}
+	.itemExtraFields h3 {margin:0;padding:0 0 8px 0;line-height:normal !important;}
+	.itemExtraFields ul {margin:0;padding:0;list-style:none;}
+	.itemExtraFields ul li {display:block;}
+	.itemExtraFields ul li span.itemExtraFieldsLabel {display:block;float:left;font-weight:bold;margin:0 4px 0 0;width:30%;}
+	.itemExtraFields ul li span.itemExtraFieldsValue {}
+
+.itemContentFooter {display:block;text-align:right;padding:4px;margin:16px 0 4px 0;border-top:1px solid #ddd;color:#999;}
+	span.itemHits {float:left;}
+	span.itemDateModified {}
+
+.itemSocialSharing {padding:8px 0;}
+	.itemTwitterButton {float:left;margin:2px 24px 0 0;}
+	.itemFacebookButton {float:left;margin-right:24px;width:200px;}
+	.itemGooglePlusOneButton {}
+
+.itemLinks {margin:16px 0;padding:0;}
+
+.itemCategory {padding:4px;border-bottom:1px dotted #ccc;}
+	.itemCategory span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.itemCategory a {}
+.itemTagsBlock {padding:4px;border-bottom:1px dotted #ccc;}
+	.itemTagsBlock span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.itemTagsBlock ul.itemTags {list-style:none;padding:0;margin:0;display:inline;}
+	.itemTagsBlock ul.itemTags li {display:inline;list-style:none;padding:0 4px 0 0;margin:0;text-align:center;}
+	.itemTagsBlock ul.itemTags li a {}
+	.itemTagsBlock ul.itemTags li a:hover {}
+
+.itemAttachmentsBlock {padding:4px;border-bottom:1px dotted #ccc;}
+	.itemAttachmentsBlock span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.itemAttachmentsBlock ul.itemAttachments {list-style:none;padding:0;margin:0;display:inline;}
+	.itemAttachmentsBlock ul.itemAttachments li {display:inline;list-style:none;padding:0 4px;margin:0;text-align:center;}
+	.itemAttachmentsBlock ul.itemAttachments li a {}
+	.itemAttachmentsBlock ul.itemAttachments li a:hover {}
+	.itemAttachmentsBlock ul.itemAttachments li span {font-size:10px;color:#999;font-weight:normal;}
+
+/* Author block */
+.itemAuthorBlock {background:#f7fafe;border:1px solid #ddd;margin:0 0 16px 0;padding:8px;}
+	.itemAuthorBlock img.itemAuthorAvatar {float:left;display:block;background:#fff;padding:4px;border:1px solid #ddd;margin:0 8px 0 0;}
+	.itemAuthorBlock .itemAuthorDetails {margin:0;padding:4px 0 0 0;}
+	.itemAuthorBlock .itemAuthorDetails h3.authorName {margin:0 0 4px 0;padding:0;}
+	.itemAuthorBlock .itemAuthorDetails h3.authorName a {font-family:Georgia, "Times New Roman", Times, serif;font-size:16px;}
+	.itemAuthorBlock .itemAuthorDetails h3.authorName a:hover {}
+	.itemAuthorBlock .itemAuthorDetails p {}
+	.itemAuthorBlock .itemAuthorDetails span.itemAuthorUrl {font-weight:bold;color:#555;border-right:1px solid #ccc;padding:0 8px 0 0;margin:0 4px 0 0;}
+	.itemAuthorBlock .itemAuthorDetails span.itemAuthorEmail {font-weight:bold;color:#555;}
+	.itemAuthorBlock .itemAuthorDetails span.itemAuthorUrl a,
+	.itemAuthorBlock .itemAuthorDetails span.itemAuthorEmail a {font-weight:normal;}
+
+/* Author latest */
+.itemAuthorLatest {margin-bottom:16px;padding:0;}
+	.itemAuthorLatest h3 {}
+	.itemAuthorLatest ul {}
+		.itemAuthorLatest ul li {}
+			.itemAuthorLatest ul li a {}
+			.itemAuthorLatest ul li a:hover {}
+
+/* Related by tag */
+.itemRelated {margin-bottom:16px;padding:0;} /* Add overflow-x:scroll; if you want to enable the scrolling features, as explained in item.php */
+	.itemRelated h3 {}
+	.itemRelated ul {}
+		.itemRelated ul li {}
+		.itemRelated ul li.k2ScrollerElement {float:left;overflow:hidden;border:1px solid #ccc;padding:4px;margin:0 4px 4px 0;background:#fff;} /* you need to insert this class in the related li element in item.php for this styling to take effect */
+		.itemRelated ul li.clr {clear:both;height:0;line-height:0;display:block;float:none;padding:0;margin:0;border:none;}
+			a.itemRelTitle {}
+			.itemRelCat {}
+				.itemRelCat a {}
+			.itemRelAuthor {}
+				.itemRelAuthor a {}
+			img.itemRelImg {}
+			.itemRelIntrotext {}
+			.itemRelFulltext {}
+			.itemRelMedia {}
+			.itemRelImageGallery {}
+
+/* Video */
+.itemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/system/videoplayer-bg.gif) repeat-x bottom;}
+	.itemVideoBlock .itemVideoEmbedded {text-align:center;} /* for embedded videos (not using AllVideos) */
+	.itemVideoBlock span.itemVideo {display:block;overflow:hidden;}
+	.itemVideoBlock span.itemVideoCaption {color:#eee;float:left;display:block;font-size:11px;font-weight:bold;width:60%;}
+	.itemVideoBlock span.itemVideoCredits {color:#eee;float:right;display:block;font-style:italic;font-size:11px;width:35%;text-align:right;}
+
+/* Image Gallery */
+.itemImageGallery {margin:0 0 16px 0;padding:0;}
+
+/* Article navigation */
+.itemNavigation {padding:4px 8px;margin:0 0 24px 0;border-top:1px dotted #ccc;border-bottom:1px dotted #ccc;background:#fffff0;}
+	.itemNavigation span.itemNavigationTitle {color:#999;}
+	.itemNavigation a.itemPrevious {padding:0 12px;}
+	.itemNavigation a.itemNext {padding:0 12px;}
+
+/* Comments */
+.itemComments {background:#f7fafe;border:1px solid #ddd;padding:16px;}
+
+	.itemComments ul.itemCommentsList {margin:0 0 16px;padding:0;list-style:none;}
+	.itemComments ul.itemCommentsList li {padding:4px;margin:0;border-bottom:1px dotted #ddd;}
+	.itemComments ul.itemCommentsList li.authorResponse {background:url(../images/system/stripes.png) repeat;}
+	.itemComments ul.itemCommentsList li.unpublishedComment {background:#ffeaea;}
+	.itemComments ul.itemCommentsList li img {float:left;margin:4px 4px 4px 0;padding:4px;background:#fff;border-bottom:1px solid #d7d7d7;border-left:1px solid #f2f2f2;border-right:1px solid #f2f2f2;}
+	.itemComments ul.itemCommentsList li span.commentDate {padding:0 4px 0 0;margin:0 8px 0 0;border-right:1px solid #ccc;font-weight:bold;font-size:14px;}
+	.itemComments ul.itemCommentsList li span.commentAuthorName {font-weight:bold;font-size:14px;}
+	.itemComments ul.itemCommentsList li p {padding:4px 0;}
+	.itemComments ul.itemCommentsList li span.commentAuthorEmail {display:none;}
+	.itemComments ul.itemCommentsList li span.commentLink {float:right;margin-left:8px;}
+	.itemComments ul.itemCommentsList li span.commentLink a {font-size:11px;color:#999;text-decoration:underline;}
+	.itemComments ul.itemCommentsList li span.commentLink a:hover {font-size:11px;color:#555;text-decoration:underline;}
+
+	.itemComments ul.itemCommentsList li span.commentToolbar {display:block;clear:both;}
+	.itemComments ul.itemCommentsList li span.commentToolbar a {font-size:11px;color:#999;text-decoration:underline;margin-right:4px;}
+	.itemComments ul.itemCommentsList li span.commentToolbar a:hover {font-size:11px;color:#555;text-decoration:underline;}
+	.itemComments ul.itemCommentsList li span.commentToolbarLoading {background:url(../images/system/searchLoader.gif) no-repeat 100% 50%;}
+
+.itemCommentsPagination {padding:4px;margin:0 0 24px 0;}
+	.itemCommentsPagination span.pagination {display:block;float:right;clear:both;}
+
+.itemCommentsForm h3 {margin:0;padding:0 0 4px 0;}
+	.itemCommentsForm p.itemCommentsFormNotes {border-top:2px solid #ccc;}
+	.itemCommentsForm form {}
+	.itemCommentsForm form label.formComment {display:block;margin:12px 0 0 2px;}
+	.itemCommentsForm form label.formName {display:block;margin:12px 0 0 2px;}
+	.itemCommentsForm form label.formEmail {display:block;margin:12px 0 0 2px;}
+	.itemCommentsForm form label.formUrl {display:block;margin:12px 0 0 2px;}
+	.itemCommentsForm form label.formRecaptcha {display:block;margin:12px 0 0 2px;}
+	.itemCommentsForm form textarea.inputbox {display:block;width:350px;height:160px;margin:0;}
+	.itemCommentsForm form input.inputbox {display:block;width:350px;margin:0;}
+	.itemCommentsForm form input#submitCommentButton {display:block;margin:16px 0 0 0;padding:4px;border:1px solid #ccc;background:#eee;font-size:16px;}
+	.itemCommentsForm form span#formLog {margin:0 0 0 20px;padding:0 0 0 20px;font-weight:bold;color:#CF1919;}
+	.itemCommentsForm form .formLogLoading {background:url(../images/system/loading.gif) no-repeat left center;}
+
+/* "Report comment" form */
+.k2ReportCommentFormContainer {padding:8px;width:480px;margin:0 auto;}
+	.k2ReportCommentFormContainer blockquote {width:462px;background:#f7fafe;border:1px solid #ddd;padding:8px;margin:0 0 8px 0;}
+	.k2ReportCommentFormContainer blockquote span.quoteIconLeft {font-style:italic;font-weight:bold;font-size:40px;color:#135CAE;line-height:30px;vertical-align:top;display:block;float:left;}
+	.k2ReportCommentFormContainer blockquote span.quoteIconRight {font-style:italic;font-weight:bold;font-size:40px;color:#135CAE;line-height:30px;vertical-align:top;display:block;float:right;}
+	.k2ReportCommentFormContainer blockquote span.theComment {font-family:Georgia, "Times New Roman", Times, serif;font-style:italic;font-size:12px;font-weight:normal;color:#000;padding:0 4px;}
+	.k2ReportCommentFormContainer form label {display:block;font-weight:bold;}
+	.k2ReportCommentFormContainer form input,
+	.k2ReportCommentFormContainer form textarea {display:block;border:1px solid #ddd;font-size:12px;padding:2px;margin:0 0 8px 0;width:474px;}
+	.k2ReportCommentFormContainer form #recaptcha {margin-bottom:24px;}
+	.k2ReportCommentFormContainer form span#formLog {margin:0 0 0 20px;padding:0 0 0 20px;font-weight:bold;color:#CF1919;}
+	.k2ReportCommentFormContainer form .formLogLoading {background:url(../images/system/loading.gif) no-repeat left center;}
+
+/* Back to top link */
+.itemBackToTop {text-align:right;}
+	.itemBackToTop a {text-decoration:underline;}
+	.itemBackToTop a:hover {text-decoration:underline;}
+
+
+
+/*----------------------------------------------------------------------
+	Component: Itemlist view (category)
+----------------------------------------------------------------------*/
+
+.itemListCategoriesBlock {}
+
+/* --- Category block --- */
+.itemListCategory {background:#f7fafe;border:1px solid #ddd;margin:4px 0;padding:8px;}
+	span.catItemAddLink {display:block;padding:8px 0;margin:0 0 4px 0;border-bottom:1px dotted #ccc;text-align:right;}
+	span.catItemAddLink a {padding:4px 16px;border:1px solid #ccc;background:#eee;text-decoration:none;}
+	span.catItemAddLink a:hover {background:#ffffcc;}
+	.itemListCategory img {float:left;display:block;background:#fff;padding:4px;border:1px solid #ddd;margin:0 8px 0 0;}
+	.itemListCategory h2 {}
+	.itemListCategory p {}
+
+/* --- Sub-category block --- */
+.itemListSubCategories {}
+	.itemListSubCategories h3 {}
+		.subCategoryContainer {float:left;}
+		.subCategoryContainerLast {} /* this class is appended to the last container on each row of items (useful when you want to set 0 padding/margin to the last container) */
+			.subCategory {background:#f7fafe;border:1px solid #ddd;margin:4px;padding:8px;}
+				.subCategory a.subCategoryImage,
+				.subCategory a.subCategoryImage:hover {text-align:center;display:block;}
+				.subCategory a.subCategoryImage img,
+				.subCategory a.subCategoryImage:hover img {background:#fff;padding:4px;border:1px solid #ddd;margin:0 8px 0 0;}
+				.subCategory h2 {}
+				.subCategory h2 a {}
+				.subCategory h2 a:hover {}
+				.subCategory p {}
+
+/* --- Item groups --- */
+.itemList {}
+	#itemListLeading {}
+	#itemListPrimary {}
+	#itemListSecondary {}
+	#itemListLinks {background:#f7fafe;border:1px solid #ddd;margin:8px 0;padding:8px;}
+
+		.itemContainer {float:left;}
+		.itemContainerLast {} /* this class is appended to the last container on each row of items (useful when you want to set 0 padding/margin to the last container) */
+
+/* --- Item block for each item group --- */
+.catItemView {padding:4px;} /* this is the item container for this view - we add a generic padding so that items don't get stuck with each other */
+
+	/* Additional class appended to the element above for further styling per group item */
+	.groupLeading {}
+	.groupPrimary {}
+	.groupSecondary {}
+	.groupLinks {padding:0;margin:0;}
+
+	.catItemIsFeatured {} /* Attach a class for each featured item */
+
+span.catItemEditLink {float:right;display:block;padding:4px 0;margin:0;width:120px;text-align:right;}
+span.catItemEditLink a {padding:2px 12px;border:1px solid #ccc;background:#eee;text-decoration:none;font-size:11px;font-weight:normal;font-family:Arial, Helvetica, sans-serif;}
+span.catItemEditLink a:hover {background:#ffffcc;}
+
+.catItemHeader {}
+	.catItemHeader span.catItemDateCreated {color:#999;font-size:11px;}
+	.catItemHeader h3.catItemTitle {font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;line-height:110%;padding:10px 0 4px 0;margin:0;}
+	.catItemHeader h3.catItemTitle span {}
+	.catItemHeader h3.catItemTitle span sup {font-size:12px;color:#CF1919;text-decoration:none;} /* superscript */
+	.catItemHeader span.catItemAuthor {display:block;padding:0;margin:0;}
+	.catItemHeader span.catItemAuthor a {}
+	.catItemHeader span.catItemAuthor a:hover {}
+
+.catItemRatingBlock {padding:8px 0;}
+	.catItemRatingBlock span {display:block;float:left;font-style:normal;padding:0 4px 0 0;margin:0;color:#999;}
+
+.catItemBody {padding:8px 0;margin:0;}
+
+.catItemImageBlock {padding:8px;margin:0 0 16px 0;}
+	span.catItemImage {display:block;text-align:center;margin:0 0 8px 0;}
+	span.catItemImage img {border:1px solid #ccc;padding:8px;}
+
+.catItemIntroText {font-size:inherit;font-weight:normal;line-height:inherit;padding:4px 0 12px 0;}
+	.catItemIntroText img {}
+
+.catItemExtraFields, .genericItemExtraFields {margin:16px 0 0 0;padding:8px 0 0 0;border-top:1px dotted #ddd;}
+	.catItemExtraFields h4, .genericItemExtraFields h4 {margin:0;padding:0 0 8px 0;line-height:normal !important;}
+	.catItemExtraFields ul, .genericItemExtraFields ul {margin:0;padding:0;list-style:none;}
+	.catItemExtraFields ul li, .genericItemExtraFields ul li {display:block;}
+	.catItemExtraFields ul li span.catItemExtraFieldsLabel, .genericItemExtraFields ul li span.genericItemExtraFieldsLabel {display:block;float:left;font-weight:bold;margin:0 4px 0 0;width:30%;}
+	.catItemExtraFields ul li span.catItemExtraFieldsValue {}
+
+.catItemLinks {margin:0 0 16px 0;padding:0;}
+
+.catItemHitsBlock {padding:4px;border-bottom:1px dotted #ccc;}
+	span.catItemHits {}
+
+.catItemCategory {padding:4px;border-bottom:1px dotted #ccc;}
+	.catItemCategory span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.catItemCategory a {}
+
+.catItemTagsBlock {padding:4px;border-bottom:1px dotted #ccc;}
+	.catItemTagsBlock span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.catItemTagsBlock ul.catItemTags {list-style:none;padding:0;margin:0;display:inline;}
+	.catItemTagsBlock ul.catItemTags li {display:inline;list-style:none;padding:0 4px 0 0;margin:0;text-align:center;}
+	.catItemTagsBlock ul.catItemTags li a {}
+	.catItemTagsBlock ul.catItemTags li a:hover {}
+
+.catItemAttachmentsBlock {padding:4px;border-bottom:1px dotted #ccc;}
+	.catItemAttachmentsBlock span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.catItemAttachmentsBlock ul.catItemAttachments {list-style:none;padding:0;margin:0;display:inline;}
+	.catItemAttachmentsBlock ul.catItemAttachments li {display:inline;list-style:none;padding:0 4px;margin:0;text-align:center;}
+	.catItemAttachmentsBlock ul.catItemAttachments li a {}
+	.catItemAttachmentsBlock ul.catItemAttachments li a:hover {}
+	.catItemAttachmentsBlock ul.catItemAttachments li span {font-size:10px;color:#999;font-weight:normal;}
+
+/* Video */
+.catItemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/system/videoplayer-bg.gif) repeat-x bottom;}
+	.catItemVideoBlock .catItemVideoEmbedded {text-align:center;} /* for embedded videos (not using AllVideos) */
+	.catItemVideoBlock span.catItemVideo {display:block;}
+
+/* Image Gallery */
+.catItemImageGallery {margin:0 0 16px 0;padding:0;}
+
+/* Anchor link to comments */
+.catItemCommentsLink {display:inline;margin:0 8px 0 0;padding:0 8px 0 0;border-right:1px solid #ccc;}
+	.catItemCommentsLink a {}
+	.catItemCommentsLink a:hover {}
+
+/* Read more link */
+.catItemReadMore {display:inline;}
+	.catItemReadMore a {}
+	.catItemReadMore a:hover {}
+
+/* Modified date */
+span.catItemDateModified {display:block;text-align:right;padding:4px;margin:4px 0;color:#999;border-top:1px solid #ddd;}
+
+
+
+/*----------------------------------------------------------------------
+	Component: Itemlist view (user)
+----------------------------------------------------------------------*/
+
+/* User info block */
+.userView {}
+	.userBlock {background:#f7fafe;border:1px solid #ddd;margin:0 0 16px 0;padding:8px;clear:both;}
+
+		span.userItemAddLink {display:block;padding:8px 0;margin:0 0 4px 0;border-bottom:1px dotted #ccc;text-align:right;}
+		span.userItemAddLink a {padding:4px 16px;border:1px solid #ccc;background:#eee;text-decoration:none;}
+		span.userItemAddLink a:hover {background:#ffffcc;}
+
+		.userBlock img {display:block;float:left;background:#fff;padding:4px;border:1px solid #ddd;margin:0 8px 0 0;}
+		.userBlock h2 {}
+		.userBlock .userDescription {padding:4px 0;}
+		.userBlock .userAdditionalInfo {padding:4px 0;margin:8px 0 0 0;}
+			span.userURL {font-weight:bold;color:#555;display:block;}
+			span.userEmail {font-weight:bold;color:#555;display:block;}
+
+		.userItemList {}
+
+/* User items */
+.userItemView {} /* this is the item container for this view */
+.userItemIsFeatured {} /* Attach a class for each featured item */
+
+.userItemViewUnpublished {opacity:0.9;border:4px dashed #ccc;background:#fffff2;padding:8px;margin:8px 0;}
+
+span.userItemEditLink {float:right;display:block;padding:4px 0;margin:0;width:120px;text-align:right;}
+	span.userItemEditLink a {padding:2px 12px;border:1px solid #ccc;background:#eee;text-decoration:none;font-size:11px;font-weight:normal;font-family:Arial, Helvetica, sans-serif;}
+	span.userItemEditLink a:hover {background:#ffffcc;}
+
+.userItemHeader {}
+	.userItemHeader span.userItemDateCreated {color:#999;font-size:11px;}
+	.userItemHeader h3.userItemTitle {font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;line-height:110%;padding:10px 0 4px 0;margin:0;}
+	.userItemHeader h3.userItemTitle span sup {font-size:12px;color:#CF1919;text-decoration:none;} /* "Unpublished" presented in superscript */
+
+.userItemBody {padding:8px 0;margin:0;}
+
+.userItemImageBlock {padding:0;margin:0;float:left;}
+	span.userItemImage {display:block;text-align:center;margin:0 8px 8px 0;}
+	span.userItemImage img {border:1px solid #ccc;padding:8px;}
+
+.userItemIntroText {font-size:inherit;font-weight:normal;line-height:inherit;padding:4px 0 12px 0;}
+	.userItemIntroText img {}
+
+.userItemLinks {margin:0 0 16px 0;padding:0;}
+
+.userItemCategory {padding:4px;border-bottom:1px dotted #ccc;}
+	.userItemCategory span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.userItemCategory a {}
+
+.userItemTagsBlock {padding:4px;border-bottom:1px dotted #ccc;}
+	.userItemTagsBlock span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.userItemTagsBlock ul.userItemTags {list-style:none;padding:0;margin:0;display:inline;}
+	.userItemTagsBlock ul.userItemTags li {display:inline;list-style:none;padding:0 4px 0 0;margin:0;text-align:center;}
+	.userItemTagsBlock ul.userItemTags li a {}
+	.userItemTagsBlock ul.userItemTags li a:hover {}
+
+/* Anchor link to comments */
+.userItemCommentsLink {display:inline;margin:0 8px 0 0;padding:0 8px 0 0;border-right:1px solid #ccc;}
+	.userItemCommentsLink a {}
+	.userItemCommentsLink a:hover {}
+
+/* Read more link */
+.userItemReadMore {display:inline;}
+	.userItemReadMore a {}
+	.userItemReadMore a:hover {}
+
+
+
+/*----------------------------------------------------------------------
+	Component: Itemlist view (tag)
+----------------------------------------------------------------------*/
+.tagView {}
+
+.tagItemList {}
+
+.tagItemView {border-bottom:1px dotted #ccc;padding:8px 0;margin:0 0 16px 0;} /* this is the item container for this view */
+
+.tagItemHeader {}
+	.tagItemHeader span.tagItemDateCreated {color:#999;font-size:11px;}
+	.tagItemHeader h2.tagItemTitle {font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;line-height:110%;padding:10px 0 4px 0;margin:0;}
+
+.tagItemBody {padding:8px 0;margin:0;}
+
+.tagItemImageBlock {padding:0;margin:0;float:left;}
+	span.tagItemImage {display:block;text-align:center;margin:0 8px 8px 0;}
+	span.tagItemImage img {border:1px solid #ccc;padding:8px;}
+
+.tagItemIntroText {font-size:inherit;font-weight:normal;line-height:inherit;padding:4px 0 12px 0;}
+	.tagItemIntroText img {}
+
+	.tagItemExtraFields {}
+		.tagItemExtraFields h4 {}
+		.tagItemExtraFields ul {}
+			.tagItemExtraFields ul li {}
+				.tagItemExtraFields ul li span.tagItemExtraFieldsLabel {}
+				.tagItemExtraFields ul li span.tagItemExtraFieldsValue {}
+
+	.tagItemCategory {display:inline;margin:0 8px 0 0;padding:0 8px 0 0;border-right:1px solid #ccc;}
+		.tagItemCategory span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+		.tagItemCategory a {}
+
+/* Read more link */
+.tagItemReadMore {display:inline;}
+	.tagItemReadMore a {}
+	.tagItemReadMore a:hover {}
+
+
+
+/*----------------------------------------------------------------------
+	Component: Itemlist view (generic)
+----------------------------------------------------------------------*/
+.genericView {}
+
+.genericItemList {}
+
+.genericItemView {border-bottom:1px dotted #ccc;padding:8px 0;margin:0 0 16px 0;} /* this is the item container for this view */
+
+.genericItemHeader {}
+	.genericItemHeader span.genericItemDateCreated {color:#999;font-size:11px;}
+	.genericItemHeader h2.genericItemTitle {font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;line-height:110%;padding:10px 0 4px 0;margin:0;}
+
+.genericItemBody {padding:8px 0;margin:0;}
+
+.genericItemImageBlock {padding:0;margin:0;float:left;}
+	span.genericItemImage {display:block;text-align:center;margin:0 8px 8px 0;}
+	span.genericItemImage img {border:1px solid #ccc;padding:8px;}
+
+.genericItemIntroText {font-size:inherit;font-weight:normal;line-height:inherit;padding:4px 0 12px 0;}
+	.genericItemIntroText img {}
+
+	.genericItemExtraFields {}
+		.genericItemExtraFields h4 {}
+		.genericItemExtraFields ul {}
+			.genericItemExtraFields ul li {}
+				.genericItemExtraFields ul li span.genericItemExtraFieldsLabel {}
+				.genericItemExtraFields ul li span.genericItemExtraFieldsValue {}
+
+	.genericItemCategory {display:inline;margin:0 8px 0 0;padding:0 8px 0 0;border-right:1px solid #ccc;}
+		.genericItemCategory span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+		.genericItemCategory a {}
+
+/* Read more link */
+.genericItemReadMore {display:inline;}
+	.genericItemReadMore a {}
+	.genericItemReadMore a:hover {}
+
+/* No results found message */
+#genericItemListNothingFound {padding:40px;text-align:center;}
+	#genericItemListNothingFound p {font-size:20px;color:#999;}
+
+
+/*----------------------------------------------------------------------
+	Component: Latest view
+----------------------------------------------------------------------*/
+
+.latestItemsContainer {float:left;}
+
+/* Category info block */
+.latestItemsCategory {background:#f7fafe;border:1px solid #ddd;margin:0 8px 8px 0;padding:8px;}
+	.latestItemsCategoryImage {text-align:center;}
+	.latestItemsCategoryImage img {background:#fff;padding:4px;border:1px solid #ddd;margin:0 8px 0 0;}
+.latestItemsCategory h2 {}
+.latestItemsCategory p {}
+
+/* User info block */
+.latestItemsUser {background:#f7fafe;border:1px solid #ddd;margin:0 8px 8px 0;padding:8px;clear:both;}
+	.latestItemsUser img {display:block;float:left;background:#fff;padding:4px;border:1px solid #ddd;margin:0 8px 0 0;}
+	.latestItemsUser h2 {}
+	.latestItemsUser p.latestItemsUserDescription {padding:4px 0;}
+	.latestItemsUser p.latestItemsUserAdditionalInfo {padding:4px 0;margin:8px 0 0 0;}
+		span.latestItemsUserURL {font-weight:bold;color:#555;display:block;}
+		span.latestItemsUserEmail {font-weight:bold;color:#555;display:block;}
+
+/* Latest items list */
+.latestItemList {padding:0 8px 8px 0;}
+
+.latestItemView {} /* this is the item container for this view */
+
+.latestItemHeader {}
+	.latestItemHeader h3.latestItemTitle {font-family:Georgia, "Times New Roman", Times, serif;font-size:24px;font-weight:normal;line-height:110%;padding:10px 0 4px 0;margin:0;}
+
+span.latestItemDateCreated {color:#999;font-size:11px;}
+
+.latestItemBody {padding:8px 0;margin:0;}
+
+.latestItemImageBlock {padding:0;margin:0;float:left;}
+	span.latestItemImage {display:block;text-align:center;margin:0 8px 8px 0;}
+	span.latestItemImage img {border:1px solid #ccc;padding:8px;}
+
+.latestItemIntroText {font-size:inherit;font-weight:normal;line-height:inherit;padding:4px 0 12px 0;}
+	.latestItemIntroText img {}
+
+.latestItemLinks {margin:0 0 16px 0;padding:0;}
+
+.latestItemCategory {padding:4px;border-bottom:1px dotted #ccc;}
+	.latestItemCategory span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.latestItemCategory a {}
+
+.latestItemTagsBlock {padding:4px;border-bottom:1px dotted #ccc;}
+	.latestItemTagsBlock span {font-weight:bold;color:#555;padding:0 4px 0 0;}
+	.latestItemTagsBlock ul.latestItemTags {list-style:none;padding:0;margin:0;display:inline;}
+	.latestItemTagsBlock ul.latestItemTags li {display:inline;list-style:none;padding:0 4px 0 0;margin:0;text-align:center;}
+	.latestItemTagsBlock ul.latestItemTags li a {}
+	.latestItemTagsBlock ul.latestItemTags li a:hover {}
+
+/* Video */
+.latestItemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/system/videoplayer-bg.gif) repeat-x bottom;}
+	.latestItemVideoBlock span.latestItemVideo {display:block;}
+
+/* Anchor link to comments */
+.latestItemCommentsLink {display:inline;margin:0 8px 0 0;padding:0 8px 0 0;border-right:1px solid #ccc;}
+	.latestItemCommentsLink a {}
+	.latestItemCommentsLink a:hover {}
+
+/* Read more link */
+.latestItemReadMore {display:inline;}
+	.latestItemReadMore a {}
+	.latestItemReadMore a:hover {}
+
+/* Items presented in a list */
+h2.latestItemTitleList {font-size:14px;padding:2px 0;margin:8px 0 2px 0;font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #ccc;line-height:normal;}
+
+
+
+/*----------------------------------------------------------------------
+	Component: Register & profile page views (register.php & profile.php)
+----------------------------------------------------------------------*/
+.k2AccountPage {}
+.k2AccountPage table {}
+.k2AccountPage table tr th {}
+.k2AccountPage table tr td {}
+.k2AccountPage table tr td label {white-space:nowrap;}
+img.k2AccountPageImage {border:4px solid #ddd;margin:10px 0;padding:0;display:block;}
+.k2AccountPage .k2AccountPageNotice {padding:8px;}
+.k2AccountPage .k2AccountPageUpdate {border-top:1px dotted #ccc;margin:8px 0;padding:8px;text-align:right;}
+
+.k2AccountPage th.k2ProfileHeading {text-align:left;font-size:18px;padding:8px;background:#f6f6f6;/*border-bottom:1px solid #e9e9e9;*/}
+.k2AccountPage td#userAdminParams {padding:0;margin:0;}
+.k2AccountPage table.admintable td.key,
+.k2AccountPage table.admintable td.paramlist_key {background:#f6f6f6;border-bottom:1px solid #e9e9e9;border-right:1px solid #e9e9e9;color:#666;font-weight:bold;text-align:right;font-size:11px;width:140px;}
+
+/* Profile edit */
+.k2AccountPage table.admintable {}
+.k2AccountPage table.admintable tr td {}
+.k2AccountPage table.admintable tr td span {}
+.k2AccountPage table.admintable tr td span label {}
+
+
+
+/*----------------------------------------------------------------------
+	Modules: mod_k2_comments
+----------------------------------------------------------------------*/
+
+/* Latest Comments */
+.k2LatestCommentsBlock {}
+.k2LatestCommentsBlock ul {}
+.k2LatestCommentsBlock ul li {}
+.k2LatestCommentsBlock ul li.lastItem {}
+.k2LatestCommentsBlock ul li a.lcAvatar img {}
+.k2LatestCommentsBlock ul li a {}
+.k2LatestCommentsBlock ul li a:hover {}
+.k2LatestCommentsBlock ul li span.lcComment {}
+.k2LatestCommentsBlock ul li span.lcUsername {}
+.k2LatestCommentsBlock ul li span.lcCommentDate {color:#999;}
+.k2LatestCommentsBlock ul li span.lcItemTitle {}
+.k2LatestCommentsBlock ul li span.lcItemCategory {}
+
+/* Top Commenters */
+.k2TopCommentersBlock {}
+.k2TopCommentersBlock ul {}
+.k2TopCommentersBlock ul li {}
+.k2TopCommentersBlock ul li.lastItem {}
+.k2TopCommentersBlock ul li a.tcAvatar img {}
+.k2TopCommentersBlock ul li a.tcLink {}
+.k2TopCommentersBlock ul li a.tcLink:hover {}
+.k2TopCommentersBlock ul li span.tcUsername {}
+.k2TopCommentersBlock ul li span.tcCommentsCounter {}
+.k2TopCommentersBlock ul li a.tcLatestComment {}
+.k2TopCommentersBlock ul li a.tcLatestComment:hover {}
+.k2TopCommentersBlock ul li span.tcLatestCommentDate {color:#999;}
+
+
+
+/*----------------------------------------------------------------------
+	Modules: mod_k2_content
+----------------------------------------------------------------------*/
+
+.k2ItemsBlock {}
+
+.k2ItemsBlock p.modulePretext {}
+
+.k2ItemsBlock ul {}
+.k2ItemsBlock ul li {}
+.k2ItemsBlock ul li a {}
+.k2ItemsBlock ul li a:hover {}
+.k2ItemsBlock ul li.lastItem {}
+
+.k2ItemsBlock ul li a.moduleItemTitle {}
+.k2ItemsBlock ul li a.moduleItemTitle:hover {}
+
+.k2ItemsBlock ul li .moduleItemAuthor {}
+.k2ItemsBlock ul li .moduleItemAuthor a {}
+.k2ItemsBlock ul li .moduleItemAuthor a:hover {}
+
+.k2ItemsBlock ul li a.moduleItemAuthorAvatar img {}
+
+.k2ItemsBlock ul li .moduleItemIntrotext {display:block;padding:4px 0;line-height:120%;}
+.k2ItemsBlock ul li .moduleItemIntrotext a.moduleItemImage img {float:right;margin:2px 0 4px 4px;padding:0;border:2px solid #ddd;}
+
+.k2ItemsBlock ul li .moduleItemExtraFields {}
+	.moduleItemExtraFields ul {}
+	.moduleItemExtraFields ul li {}
+	.moduleItemExtraFields ul li span.moduleItemExtraFieldsLabel {display:block;float:left;font-weight:bold;margin:0 4px 0 0;width:30%;}
+	.moduleItemExtraFields ul li span.moduleItemExtraFieldsValue {}
+
+.k2ItemsBlock ul li .moduleItemVideo {}
+.k2ItemsBlock ul li .moduleItemVideo span.moduleItemVideoCaption {}
+.k2ItemsBlock ul li .moduleItemVideo span.moduleItemVideoCredits {}
+
+.k2ItemsBlock ul li span.moduleItemDateCreated {}
+
+.k2ItemsBlock ul li a.moduleItemCategory {}
+
+.k2ItemsBlock ul li .moduleItemTags {}
+.k2ItemsBlock ul li .moduleItemTags b {}
+.k2ItemsBlock ul li .moduleItemTags a {padding:0 2px;}
+.k2ItemsBlock ul li .moduleItemTags a:hover {}
+
+.k2ItemsBlock ul li .moduleAttachments {}
+
+.k2ItemsBlock ul li a.moduleItemComments {border-right:1px solid #ccc;padding:0 4px 0 0;margin:0 8px 0 0;}
+.k2ItemsBlock ul li a.moduleItemComments:hover {}
+.k2ItemsBlock ul li span.moduleItemHits {border-right:1px solid #ccc;padding:0 4px 0 0;margin:0 8px 0 0;}
+.k2ItemsBlock ul li a.moduleItemReadMore {}
+.k2ItemsBlock ul li a.moduleItemReadMore:hover {}
+
+.k2ItemsBlock a.moduleCustomLink {}
+.k2ItemsBlock a.moduleCustomLink:hover {}
+
+
+
+/*----------------------------------------------------------------------
+	Modules: mod_k2_user (mod_k2_login will be removed in v2.6)
+----------------------------------------------------------------------*/
+
+.k2LoginBlock {}
+	.k2LoginBlock p.preText {}
+
+	.k2LoginBlock fieldset.input {margin:0;padding:0 0 8px 0;}
+	.k2LoginBlock fieldset.input p {margin:0;padding:0 0 4px 0;}
+	.k2LoginBlock fieldset.input p label {display:block;}
+	.k2LoginBlock fieldset.input p input {display:block;}
+	.k2LoginBlock fieldset.input p#form-login-remember label,
+	.k2LoginBlock fieldset.input p#form-login-remember input {display:inline;}
+	.k2LoginBlock fieldset.input input.button {}
+
+	.k2LoginBlock ul {}
+	.k2LoginBlock ul li {}
+
+	.k2LoginBlock p.postText {}
+
+.k2UserBlock {}
+	.k2UserBlock p.ubGreeting {border-bottom:1px dotted #ccc;}
+	.k2UserBlock .k2UserBlockDetails a.ubAvatar img {}
+	.k2UserBlock .k2UserBlockDetails span.ubName {display:block;font-weight:bold;font-size:14px;}
+	.k2UserBlock .k2UserBlockDetails span.ubCommentsCount {}
+
+	.k2UserBlock ul.k2UserBlockActions {}
+		.k2UserBlock ul.k2UserBlockActions li {}
+		.k2UserBlock ul.k2UserBlockActions li a {}
+		.k2UserBlock ul.k2UserBlockActions li a:hover {}
+
+	.k2UserBlock ul.k2UserBlockRenderedMenu {}
+		.k2UserBlock ul.k2UserBlockRenderedMenu li {}
+		.k2UserBlock ul.k2UserBlockRenderedMenu li a {}
+		.k2UserBlock ul.k2UserBlockRenderedMenu li a:hover {}
+		.k2UserBlock ul.k2UserBlockRenderedMenu li ul {} /* 2nd level ul */
+		.k2UserBlock ul.k2UserBlockRenderedMenu li ul li {}
+		.k2UserBlock ul.k2UserBlockRenderedMenu li ul li a {}
+		.k2UserBlock ul.k2UserBlockRenderedMenu li ul ul {} /* 3rd level ul (and so on...) */
+		.k2UserBlock ul.k2UserBlockRenderedMenu li ul ul li {}
+		.k2UserBlock ul.k2UserBlockRenderedMenu li ul ul li a {}
+
+	.k2UserBlock form {}
+	.k2UserBlock form input.ubLogout {}
+
+
+
+/*----------------------------------------------------------------------
+	Modules: mod_k2_tools
+----------------------------------------------------------------------*/
+
+/* --- Archives --- */
+.k2ArchivesBlock {}
+.k2ArchivesBlock ul {}
+.k2ArchivesBlock ul li {}
+.k2ArchivesBlock ul li a {}
+.k2ArchivesBlock ul li a:hover {}
+
+/* --- Authors --- */
+.k2AuthorsListBlock {}
+.k2AuthorsListBlock ul {}
+.k2AuthorsListBlock ul li {}
+.k2AuthorsListBlock ul li a.abAuthorAvatar img {}
+.k2AuthorsListBlock ul li a.abAuthorName {}
+.k2AuthorsListBlock ul li a.abAuthorName:hover {}
+.k2AuthorsListBlock ul li a.abAuthorLatestItem {display:block;clear:both;}
+.k2AuthorsListBlock ul li a.abAuthorLatestItem:hover {}
+.k2AuthorsListBlock ul li span.abAuthorCommentsCount {}
+
+/* --- Breadcrumbs --- */
+.k2BreadcrumbsBlock {}
+.k2BreadcrumbsBlock span.bcTitle {padding:0 4px 0 0;color:#999;}
+.k2BreadcrumbsBlock a {}
+.k2BreadcrumbsBlock a:hover {}
+.k2BreadcrumbsBlock span.bcSeparator {padding:0 4px;font-size:14px;}
+
+/* --- Calendar --- */
+.k2CalendarBlock {height:190px;margin-bottom:8px;} /* use this height value so that the calendar height won't change on Month change via ajax */
+.k2CalendarLoader {background:#fff url(../images/system/k2CalendarLoader.gif) no-repeat 50% 50%;}
+table.calendar {margin:0 auto;background:#fff;border-collapse:collapse;}
+table.calendar tr td {text-align:center;vertical-align:middle;padding:2px;border:1px solid #f4f4f4;background:#fff;}
+table.calendar tr td.calendarNavMonthPrev {background:#f3f3f3;text-align:left;}
+table.calendar tr td.calendarNavMonthPrev a {font-size:20px;text-decoration:none;}
+table.calendar tr td.calendarNavMonthPrev a:hover {font-size:20px;text-decoration:none;}
+table.calendar tr td.calendarCurrentMonth {background:#f3f3f3;}
+table.calendar tr td.calendarNavMonthNext {background:#f3f3f3;text-align:right;}
+table.calendar tr td.calendarNavMonthNext a {font-size:20px;text-decoration:none;}
+table.calendar tr td.calendarNavMonthNext a:hover {font-size:20px;text-decoration:none;}
+table.calendar tr td.calendarDayName {background:#e9e9e9;font-size:11px;width:14.2%;}
+table.calendar tr td.calendarDateEmpty {background:#fbfbfb;}
+table.calendar tr td.calendarDate {}
+table.calendar tr td.calendarDateLinked {padding:0;}
+table.calendar tr td.calendarDateLinked a {display:block;padding:2px;text-decoration:none;background:#eee;}
+table.calendar tr td.calendarDateLinked a:hover {display:block;background:#135cae;color:#fff;padding:2px;text-decoration:none;}
+table.calendar tr td.calendarToday {background:#135cae;color:#fff;}
+table.calendar tr td.calendarTodayLinked {background:#135cae;color:#fff;padding:0;}
+table.calendar tr td.calendarTodayLinked a {display:block;padding:2px;color:#fff;text-decoration:none;}
+table.calendar tr td.calendarTodayLinked a:hover {display:block;background:#BFD9FF;padding:2px;text-decoration:none;}
+
+/* --- Category Tree Select Box --- */
+.k2CategorySelectBlock {}
+.k2CategorySelectBlock form select {width:auto;}
+.k2CategorySelectBlock form select option {}
+
+/* --- Category List/Menu --- */
+.k2CategoriesListBlock {}
+.k2CategoriesListBlock ul {}
+.k2CategoriesListBlock ul li {}
+.k2CategoriesListBlock ul li a {}
+.k2CategoriesListBlock ul li a:hover {}
+.k2CategoriesListBlock ul li a span.catTitle {padding-right:4px;}
+.k2CategoriesListBlock ul li a span.catCounter {}
+.k2CategoriesListBlock ul li a:hover span.catTitle {}
+.k2CategoriesListBlock ul li a:hover span.catCounter {}
+.k2CategoriesListBlock ul li.activeCategory {}
+.k2CategoriesListBlock ul li.activeCategory a {font-weight:bold;}
+
+	/* Root level (0) */
+	ul.level0 {}
+	ul.level0 li {}
+	ul.level0 li a {}
+	ul.level0 li a:hover {}
+	ul.level0 li a span {}
+	ul.level0 li a:hover span {}
+
+		/* First level (1) */
+		ul.level1 {}
+		ul.level1 li {}
+		ul.level1 li a {}
+		ul.level1 li a:hover {}
+		ul.level1 li a span {}
+		ul.level1 li a:hover span {}
+
+			/* n level (n) - like the above... */
+
+/* --- Search Box --- */
+.k2SearchBlock {position:relative;}
+.k2SearchBlock form {}
+.k2SearchBlock form input.inputbox {}
+.k2SearchBlock form input.button {}
+.k2SearchBlock form input.k2SearchLoading {background:url(../images/system/searchLoader.gif) no-repeat 100% 50%;}
+.k2SearchBlock .k2LiveSearchResults {display:none;background:#fff;position:absolute;z-index:99;border:1px solid #ccc;margin-top:-1px;}
+	/* Live search results (fetched via ajax) */
+	.k2SearchBlock .k2LiveSearchResults ul.liveSearchResults {list-style:none;margin:0;padding:0;}
+	.k2SearchBlock .k2LiveSearchResults ul.liveSearchResults li {border:none;margin:0;padding:0;}
+	.k2SearchBlock .k2LiveSearchResults ul.liveSearchResults li a {display:block;padding:1px 2px;border-top:1px dotted #eee;}
+	.k2SearchBlock .k2LiveSearchResults ul.liveSearchResults li a:hover {background:#fffff0;}
+
+/* --- Tag Cloud --- */
+.k2TagCloudBlock {padding:8px 0;}
+.k2TagCloudBlock a {padding:4px;float:left;display:block;}
+.k2TagCloudBlock a:hover {padding:4px;float:left;display:block;background:#135cae;color:#fff;text-decoration:none;}
+
+/* --- Custom Code --- */
+.k2CustomCodeBlock {}
+
+
+
+/*----------------------------------------------------------------------
+	Modules: mod_k2_users
+----------------------------------------------------------------------*/
+
+.k2UsersBlock {}
+.k2UsersBlock ul {}
+.k2UsersBlock ul li {}
+.k2UsersBlock ul li.lastItem {}
+.k2UsersBlock ul li a.ubUserAvatar img {}
+.k2UsersBlock ul li a.ubUserName {}
+.k2UsersBlock ul li a.ubUserName:hover {}
+.k2UsersBlock ul li .ubUserDescription {}
+.k2UsersBlock ul li .ubUserAdditionalInfo {}
+	a.ubUserFeedIcon,
+	a.ubUserFeedIcon:hover {display:inline-block;margin:0 2px 0 0;padding:0;width:16px;height:16px;background:url(../images/fugue/feed.png) no-repeat 50% 50%;}
+	a.ubUserFeedIcon span,
+	a.ubUserFeedIcon:hover span {display:none;}
+	a.ubUserURL,
+	a.ubUserURL:hover {display:inline-block;margin:0 2px 0 0;padding:0;width:16px;height:16px;background:url(../images/fugue/globe.png) no-repeat 50% 50%;}
+	a.ubUserURL span,
+	a.ubUserURL:hover span {display:none;}
+	span.ubUserEmail {display:inline-block;margin:0 2px 0 0;padding:0;width:16px;height:16px;background:url(../images/fugue/mail.png) no-repeat 50% 50%;overflow:hidden;}
+	span.ubUserEmail a {display:inline-block;margin:0;padding:0;width:16px;height:16px;text-indent:-9999px;}
+
+.k2UsersBlock ul li h3 {clear:both;margin:8px 0 0 0;padding:0;}
+.k2UsersBlock ul li ul.ubUserItems {}
+.k2UsersBlock ul li ul.ubUserItems li {}
+
+
+
+/*----------------------------------------------------------------------
+	Plugins: K2 System Plugin - User Toolbar
+----------------------------------------------------------------------*/
+/* The toolbar */
+#k2UserToolbar {background:#000;position:fixed;top:0;left:0;right:0;z-index:9998;opacity:0.8;margin:0;padding:0;border:0;}
+	#k2UserToolbarInnerContainer {width:80%;margin:0 auto;padding:4px 40px;border:0;}
+	#k2UserToolbarInnerContainer img {height:24px;width:auto;}
+
+/* The modal */
+#k2AdminModalContainer {position:fixed;z-index:9999;top:0;left:0;right:0;bottom:0;background:rgba(0, 0, 0, 0.8);padding:0;margin:0;}
+	#k2AdminModal {margin:0;padding:40px;}
+		#k2AdminModal a {display:block;clear:both;background:#102547;text-align:right;margin:0;padding:0 16px;font-family:monospace;font-size:40px;line-height:40px;text-decoration:none;vertical-align:middle;height:40px;}
+		#k2AdminModal iframe {display:block;clear:both;border:0;background:#fff;/*width:100%;height:100%;*/}
+
+
+
+/* --- END --- */
