@@ -602,7 +602,7 @@ gls{Beagle}
 
 \end_inset
 
- enables the user to analyse given source code regarding the resources its
+ enables users to analyse given source code regarding the resources its
  
 \begin_inset ERT
 status open
@@ -666,7 +666,7 @@ gls{PCM}
 
 \end_inset
 
-, enabling the user to import existing software into 
+, enabling users to import existing software into 
 \begin_inset ERT
 status open
 
@@ -849,7 +849,7 @@ gls{Beagle}
 
 \end_inset
 
- provides the user to control the analysis with a 
+ provides users to control the analysis with a 
 \begin_inset ERT
 status open
 
@@ -904,10 +904,6 @@ UML Use Case Diagram.
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 

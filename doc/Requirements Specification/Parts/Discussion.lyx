@@ -195,7 +195,7 @@ name "/C20/"
  configuration of input parameters, when ignoring influences of the hardware,
  operating system and error of measurement.
  This will be the case for most software.
- The fact the user tries to measure the software when using 
+ The fact a user tries to measure the software when using 
 \begin_inset ERT
 status open
 
@@ -464,8 +464,8 @@ gls{component}
 \end_inset
 
  might be very effortful or even impossible.
- If this cannot be solved, Beagle may require the user to provide a test
- bed in which the measured components can be executed.
+ If this cannot be solved, Beagle may require users to provide a test bed
+ in which the measured components can be executed.
 \end_layout
 
 \begin_layout Labeling

@@ -480,10 +480,7 @@ name "/Q110/"
 
 \end_inset
 
-
  
-\lang british
-
 \begin_inset ERT
 status open
 
@@ -635,8 +632,7 @@ gls{SoMoX}
 
 \end_inset
 
-, such that the user does not need to provide further information after
- 
+, such that users does not need to provide further information after 
 \begin_inset ERT
 status open
 
@@ -676,7 +672,7 @@ gls{SoMoX}
 
 \end_inset
 
- provides, the user can already submit it while configuring 
+ provides, users can already submit it while configuring 
 \begin_inset ERT
 status open
 
@@ -733,7 +729,7 @@ glsentryshort{GUI}
 \end_layout
 
 \begin_layout Standard
-The user has multiple options to launch the analysis:
+Users have multiple options to launch the analysis:
 \end_layout
 
 \begin_layout Enumerate
@@ -867,7 +863,7 @@ gls{Beagle}
 
  is not possible in option 1, 2 or 3, the context menu entry will be shown
  greyed and a description why the analysis is not possible appears, when
- the users tries to start the analysis.
+ the user tries to start the analysis.
 \end_layout
 
 \end_deeper
@@ -879,7 +875,7 @@ reference "/OQ100/"
 
 \end_inset
 
- is realised, the user has the option, when launching 
+ is realised, the users have the option, when launching 
 \begin_inset ERT
 status open
 
@@ -922,7 +918,7 @@ gls{SoMoX}
 \end_layout
 
 \begin_layout Standard
-When the users launches the analysis, he gets an window where he can change
+When a user launches the analysis, he gets an window where he can change
  some settings for 
 \begin_inset ERT
 status open
@@ -947,7 +943,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is realised, the user may adapt the default timeout.
+ is realised, users may adapt the default timeout.
 \end_layout
 
 \begin_layout Enumerate
@@ -969,8 +965,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is realised, the user can select to additionally benchmark its hardware
- system.
+ is realised, users can select to additionally benchmark its hardware system.
 \end_layout
 
 \begin_layout Standard
