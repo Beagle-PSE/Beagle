@@ -156,7 +156,14 @@ gls{PCM}
 \begin_inset Quotes eld
 \end_inset
 
-input source code
+
+\begin_inset CommandInset label
+LatexCommand label
+name "input source code"
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -164,7 +171,14 @@ input source code
 \begin_inset Quotes eld
 \end_inset
 
-input PCM
+
+\begin_inset CommandInset label
+LatexCommand label
+name "input PCM"
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 

@@ -75,42 +75,6 @@ Test Cases
 \end_layout
 
 \begin_layout Standard
-As 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- has to work with the above defined interfaces it has to be tested in complete.
- However, this could result into testing the other software, which is not
- what should be done, or even worse it could result in not detecting errors
- and failures as they are compensated by other software.
- On account of this two types of tests are needed: one testing the whole
- system with its dependencies and another with parameters put in at the
- interfaces and therefore only testing 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- itself.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -144,6 +108,76 @@ Reference notation is /T#/.
 
 \end_layout
 
+\begin_layout Section
+Functionality
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Beagle}
+\end_layout
+
+\end_inset
+
+ has to correctly interact with the interfaces defined in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/E10/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/E20/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/E30/"
+
+\end_inset
+
+.
+ However, most tests must not include third party software but provide artificia
+l input data instead.
+ Doing otherwise could result in testing third party software, or, even
+ worse, in not detecting errors and failures because they are compensated
+ by other software.
+ Therefore the tests in this section always premise test provided 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
+
+\end_inset
+
+.
+ Integration tests are described in the next section.
+ Please note that 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q30/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ20/"
+
+\end_inset
+
+ are implicitly tested by the tests described below.
+\end_layout
+
 \begin_layout Paragraph
 Mandatory
 \end_layout
@@ -156,10 +190,22 @@ name "/T10/"
 
 \end_inset
 
- Assert that software is starting, running and terminating by a simple run-throu
-gh.
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ is starting, running and terminating by a simple run-through.
  For a valid input this has to work without exceptions and the software
- has to terminate.
+ has to terminate gracefully.
 \end_layout
 
 \begin_layout Labeling
@@ -184,20 +230,6 @@ gls{Beagle}
 \end_inset
 
  discovers all sections needed for measurement and that they are correct.
- For a correct result in the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- it is essential to to measure at the correct points.
  A part of this can be realised by checking if all code sections (of the
  measured part) were measured.
  Tests 
@@ -231,172 +263,8 @@ gls{Beagle}
 
 \end_inset
 
- works for a system with only the software specified in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/Q10/"
-
-\end_inset
-
-.
- A new system has to be set up with only these software applications and
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- has to be tested on it.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T40/"
-
-\end_inset
-
- Assert that transferring data between interfaces and 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- works correctly in both directions.
- All interfaces with other software have to be tested.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T50/"
-
-\end_inset
-
- Assert that in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- all measured 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{resource demand}
-\end_layout
-
-\end_inset
-
- are added and nothing else is changed.
- This includes to assure that the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- is valid.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/P10/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/P20/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F200/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F210/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F230/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F240/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T60/"
-
-\end_inset
-
- Assert that 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- measures the sections with measurement software through the 
+ correctly commissions measurements of the detected code sections through
+ the 
 \begin_inset ERT
 status open
 
@@ -438,7 +306,141 @@ reference "/F40/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/T70/"
+name "/T40/"
+
+\end_inset
+
+ Assert that all all measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ are added to the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ (which is read from where 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ wrote it to) by comparing it with a manual created 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance.
+ This includes to assert that the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ is valid.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/P10/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/P20/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F200/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F210/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F230/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T50/"
+
+\end_inset
+
+ Assert that all information found in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input PCM"
+
+\end_inset
+
+ can be found in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F240/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T60/"
 
 \end_inset
 
@@ -456,9 +458,28 @@ gls{Beagle}
 \end_inset
 
  stops measurements after timeout.
- Therefore run a measurement for software (which e.g.
- does not terminate) and define a timeout.
- Additional assert that this timeout can be turned off.
+ Provide 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input source code"
+
+\end_inset
+
+ which does not terminate, define a timeout and assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ terminates after that timeout, but not sooner.
+ Additionally assert that this timeout can be turned off.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -476,15 +497,19 @@ reference "/F60/"
 .
 \end_layout
 
+\begin_layout Paragraph
+Optional
+\end_layout
+
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/T80/"
+name "/OT10/"
 
 \end_inset
 
- Assert that results are stored in the 
+ Assert that 
 \begin_inset ERT
 status open
 
@@ -492,12 +517,13 @@ status open
 
 
 \backslash
-gls{PCM}
+gls{Beagle}
 \end_layout
 
 \end_inset
 
- by a manual test: run a measurement and check the 
+ detects invalid input (e.g.
+ if the 
 \begin_inset ERT
 status open
 
@@ -505,16 +531,42 @@ status open
 
 
 \backslash
-gls{PCM}
+gls{code decorator}
 \end_layout
 
 \end_inset
 
- afterwards.
+ does not fit to the code) and does not crash but responds to it in a acceptable
+ way.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT20/"
+
+\end_inset
+
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not crash if the provided source code kills its process(es) in any
+ possible way.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F200/"
+reference "/OQ30/"
 
 \end_inset
 
@@ -525,7 +577,570 @@ reference "/F200/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/T90/"
+name "/OT30/"
+
+\end_inset
+
+ Assert that approximate coherences between input parameters and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ are annotated in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+.
+ This test can be extended to match 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ capabilities by providing source code with arbitrary complex 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{resource demand}
+\end_layout
+
+\end_inset
+
+ functions.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF10/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT40/"
+
+\end_inset
+
+ Assert that the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ contains approximations of the probability for branches in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF condition}
+\end_layout
+
+\end_inset
+
+ to be taken and numbers of repetitions in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF loop}
+\end_layout
+
+\end_inset
+
+.
+ Optionally assert that these approximations are expressed dependent on
+ input parameters.
+ Like 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT30/"
+
+\end_inset
+
+, this test can be extended to match 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ capabilities by providing source code with arbitrary complex relations
+ between input parameters and repetitions 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF loop}
+\end_layout
+
+\end_inset
+
+ or branches taken in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF condition}
+\end_layout
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF20/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF30/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF40/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF50/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF200/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT50/"
+
+\end_inset
+
+ Assert that it is possible for users to decide whether the whole source
+ code or only parts of it are analysed.
+ Start several runs for different parts in given source code and determine
+ the different parts which have to be tested.
+ Assert that all other tests concerning the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ pass for the results of each run.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF100/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT60/"
+
+\end_inset
+
+ Assert that users are able to re-measure source code by measuring same
+ source code several times.
+ Assert that the individual results are united correctly in the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF110/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT70/"
+
+\end_inset
+
+ Assert that pausing and resuming measurements works as expected by testing
+ same source code without pausing and several different numbers of pauses.
+ The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ has to be the same (because artificial input data is provided, which is
+ not exposed to environmental influences).
+ Optionally close 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ or modify 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
+
+\end_inset
+
+ between pausing and resuming.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF150/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF160/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT80/"
+
+\end_inset
+
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ shuts down the computer if requested by a manual test.
+ First, run a measurement and activate shutting down and then check if it
+ worked and the results are saved.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF170/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT90/"
+
+\end_inset
+
+ Assert that running measurements over a network works exactly like running
+ measurements locally by running a reasonable number of the above tests
+ on a setup that measures over a network.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF120/"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OT100/"
+
+\end_inset
+
+ Assert that the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input source code"
+
+\end_inset
+
+ was not changed after 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ has run.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OQ50/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Integration
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T200/"
+
+\end_inset
+
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ works on a system with only the software specified in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q10/"
+
+\end_inset
+
+.
+ A new system has to be set up with only these software applications and
+ a reasonable number of the functionality tests have to be run on it (may
+ for example be achieved by running all tests on a continuous integration
+ service).
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q10/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T210/"
+
+\end_inset
+
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ works with different software through the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+ Test 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Kieker}
+\end_layout
+
+\end_inset
+
+ and other 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
+ Tests 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F40/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/Q20/"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/T220/"
 
 \end_inset
 
@@ -573,59 +1188,6 @@ reference "/F220/"
 .
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/T100/"
-
-\end_inset
-
- Assert that all the 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "result PCM"
-
-\end_inset
-
- contains all gained information (see 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F230/"
-
-\end_inset
-
-) by checking if it is similar to a previously defined 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-.
- Test 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F230/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F240/"
-
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Paragraph
 Optional
 \end_layout
@@ -634,7 +1196,7 @@ Optional
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OT10/"
+name "/OT200/"
 
 \end_inset
 
@@ -651,8 +1213,8 @@ gls{Beagle}
 
 \end_inset
 
- works for different operating systems and hardware by running measurements
- on different systems.
+ works for different operating systems and hardware by running a reasonable
+ number of integration tests on different systems.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -667,398 +1229,7 @@ reference "/OQ10/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/OT20/"
-
-\end_inset
-
- Assert that 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- detects invalid input (e.g.
- if the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{code decorator}
-\end_layout
-
-\end_inset
-
- does not fit to the code) and does not crash but responds to it in a acceptable
- way.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT30/"
-
-\end_inset
-
- Assert that 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- works with different software through the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{CTA}
-\end_layout
-
-\end_inset
-
-.
- Therefore it is necessary to test 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Kieker}
-\end_layout
-
-\end_inset
-
- and other 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{measurement software}
-\end_layout
-
-\end_inset
-
-.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F40/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/Q20/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OQ30/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT40/"
-
-\end_inset
-
- Assert that 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- does not change source code files and other input except from the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F50/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT50/"
-
-\end_inset
-
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF10/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF20/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF40/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT60/"
-
-\end_inset
-
- Assert that 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- reacts to different component's interface parameters.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF30/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF50/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT70/"
-
-\end_inset
-
- Assert that it is possible for users to decide whether the whole source
- code or only parts of it are analysed.
- Therefore do several runs and determine the different parts which have
- to be tested.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF100/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT80/"
-
-\end_inset
-
- Assert that users are able to re-measure source code by measuring same
- source code several times.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF110/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT90/"
-
-\end_inset
-
- Assert that pausing and resuming measurements works as defined in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF130/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF140/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF150/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF160/"
-
-\end_inset
-
- by testing same source code without pausing and several different numbers
- of pauses.
- The result has to be the same as long as nothing else changes.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT100/"
-
-\end_inset
-
- Assert that 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- shuts down the computer if requested by a manual test.
- First, run a measurement and activate shutting down and then check if it
- worked and the results are saved.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OF170/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT110/"
-
-\end_inset
-
- Assert that no user interaction is needed for measurements by running several
- measurements without user interaction.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OQ20/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OT120/"
+name "/OT210/"
 
 \end_inset
 
@@ -1088,20 +1259,8 @@ gls{SoMoX}
 
 \end_inset
 
- has finished by having a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- run with activated automatic 
+ has finished by running a reasonable number of functionality tests with
+ 
 \begin_inset ERT
 status open
 
@@ -1114,9 +1273,20 @@ gls{Beagle}
 
 \end_inset
 
- run.
- Another test run has to assert that between both runs no user interaction
- is needed.
+ being configured with and launched after 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
+.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
