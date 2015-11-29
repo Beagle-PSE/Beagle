@@ -282,7 +282,7 @@ gls{PCM}
 
 \end_inset
 
- was re-engineered from the software's source code.
+ was reverse-engineered from the software's source code.
  But if the model and implementation diverged at any point (likely during
  the software's implementation), it may, however, lead to unexpected results.
 \end_layout
