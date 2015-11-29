@@ -214,6 +214,22 @@ glspl{resource demand}
 \end_inset
 
 .
+ Correctly determining these sections assures the measurement results do
+ not depend on the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ assembly context.
+ 
 \begin_inset Note Note
 status open
 
@@ -467,7 +483,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T70/"
+reference "/T60/"
 
 \end_inset
 
@@ -503,7 +519,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T70/"
+reference "/T60/"
 
 \end_inset
 
@@ -567,6 +583,46 @@ glspl{resource demand}
 \end_inset
 
 .
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to find 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ usage context.
  
 \begin_inset Note Note
 status open
@@ -683,6 +739,33 @@ glsuseri{component}
 \end_inset
 
  interface parameters.
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to express them independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ usage context.
  
 \begin_inset Note Note
 status open
@@ -800,6 +883,33 @@ glsuseri{component}
 \end_inset
 
  interface parameters.
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to express them independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ usage context.
  
 \begin_inset Note Note
 status open

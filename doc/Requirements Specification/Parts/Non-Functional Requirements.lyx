@@ -210,6 +210,8 @@ reference "/T30/"
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -489,7 +491,49 @@ gls{Beagle}
 \end_inset
 
  runs benchmarks on hardware systems in order to provide information to
- make its results transferable.
+ make its results transferable: Using the benchmark information, measurement
+ results can be transferred between different hardware systems when simulating
+ in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+.
+ This insures the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{resource demand}
+\end_layout
+
+\end_inset
+
+ independence from the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ deployment context.
 \end_layout
 
 \begin_layout Labeling
