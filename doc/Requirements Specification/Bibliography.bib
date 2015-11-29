@@ -128,6 +128,17 @@ models deviated 12% in average and 30% in the worst case from measurements of th
 systems.}
 }
 
+@InProceedings{ByCounterPaper,
+  Title                    = {{ByCounter: Portable Runtime Counting of Bytecode Instructions and Method Invocations}},
+  Author                   = {Michael Kuperberg and Martin Krogmann and Ralf Reussner},
+  Booktitle                = {Proceedings of the 3rd International Workshop on Bytecode Semantics, Verification, Analysis and Transformation , Budapest, Hungary, 5th April 2008 (ETAPS 2008, 11th European Joint Conferences on Theory and Practice of Software)},
+  Year                     = {2008},
+  Abstract                 = {For bytecode-based applications, runtime instruction counts can be used as a platform-independent application execution metric, and also can serve as the basis for bytecode-based performance prediction. However, different instruction types have different execution durations, so they must be counted separately, and method invocations should be identified and counted because of their substantial contribution to the total application performance. For Java bytecode, most JVMs and profilers do not provide such functionality at all, and existing bytecode analysis frameworks require expensive JVM instrumentation for instruction-level counting. In this paper, we present ByCounter, a lightweight approach for exact runtime counting of executed bytecode instructions and method invocations. ByCounter significantly reduces total counting costs by instrumenting only the application bytecode and not the JVM, and it can be used without modifications on any JVM. We evaluate the presented approach by successfully applying it to multiple Java applications on different JVMs, and discuss the runtime costs of applying ByCounter to these cases.},
+  Keywords                 = {Java, bytecode, counting, portable, runtime, instrumentation, fine-grained},
+  Owner                    = {MichaelKuperberg},
+  Timestamp                = {2008.04.06}
+}
+
 @TechReport{PCMtechreport,
   Title                    = {The Palladio Component Model},
   Author                   = {Ralf Reussner and Steffen Becker and Erik Burger and Jens Happe and Michael Hauck and Anne Koziolek and Heiko Koziolek and Klaus Krogmann and Michael Kuperberg},
