@@ -75,14 +75,39 @@ Test Cases
 \end_layout
 
 \begin_layout Standard
-As Beagle has to work with the above defined interfaces it has to be tested
- in complete.
+As 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ has to work with the above defined interfaces it has to be tested in complete.
  However, this could result into testing the other software, which is not
  what should be done, or even worse it could result in not detecting errors
  and failures as they are compensated by other software.
  On account of this two types of tests are needed: one testing the whole
  system with its dependencies and another with parameters put in at the
- interfaces and therefore only testing Beagle itself.
+ interfaces and therefore only testing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ itself.
 \end_layout
 
 \begin_layout Standard
@@ -145,8 +170,20 @@ name "/T20/"
 
 \end_inset
 
- Assert that Beagle discovers all sections needed for measurement and that
- they are correct.
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ discovers all sections needed for measurement and that they are correct.
  For a correct result in the 
 \begin_inset ERT
 status open
@@ -181,8 +218,20 @@ name "/T30/"
 
 \end_inset
 
- Assert that Beagle works for a system with only the software specified
- in 
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ works for a system with only the software specified in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/Q10/"
@@ -191,7 +240,20 @@ reference "/Q10/"
 
 .
  A new system has to be set up with only these software applications and
- Beagle has to be tested on it.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ has to be tested on it.
 \end_layout
 
 \begin_layout Labeling
@@ -202,8 +264,20 @@ name "/T40/"
 
 \end_inset
 
- Assert that transferring data between interfaces and Beagle works correctly
- in both directions.
+ Assert that transferring data between interfaces and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ works correctly in both directions.
  All interfaces with other software have to be tested.
 \end_layout
 
@@ -259,14 +333,14 @@ gls{PCM}
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/C10/"
+reference "/P10/"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/C20/"
+reference "/P20/"
 
 \end_inset
 
@@ -309,8 +383,20 @@ name "/T60/"
 
 \end_inset
 
- Assert that Beagle measures the sections with measurement software through
- the 
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ measures the sections with measurement software through the 
 \begin_inset ERT
 status open
 
@@ -356,21 +442,34 @@ name "/T70/"
 
 \end_inset
 
- Assert that Beagle stops measurements after timeout.
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ stops measurements after timeout.
  Therefore run a measurement for software (which e.g.
  does not terminate) and define a timeout.
  Additional assert that this timeout can be turned off.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F60/"
+reference "/F50/"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F70/"
+reference "/F60/"
 
 \end_inset
 
@@ -450,7 +549,20 @@ gls{Palladio}
 
 \end_inset
 
- installation without Beagle by opening it on such a system.
+ installation without 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ by opening it on such a system.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -483,7 +595,7 @@ reference "/F230/"
 
 \end_inset
 
-) by checking if it is similar to a before defined 
+) by checking if it is similar to a previously defined 
 \begin_inset ERT
 status open
 
@@ -526,8 +638,21 @@ name "/OT10/"
 
 \end_inset
 
- Assert that Beagle works for different operating systems and hardware by
- running measurements on different systems.
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ works for different operating systems and hardware by running measurements
+ on different systems.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -546,7 +671,20 @@ name "/OT20/"
 
 \end_inset
 
- Assert that Beagle detects invalid input (e.g.
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ detects invalid input (e.g.
  if the 
 \begin_inset ERT
 status open
@@ -572,7 +710,20 @@ name "/OT30/"
 
 \end_inset
 
- Assert that Beagle works with different software through the 
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ works with different software through the 
 \begin_inset ERT
 status open
 
@@ -586,7 +737,20 @@ gls{CTA}
 \end_inset
 
 .
- Therefore it is necessary to test Beagle with 
+ Therefore it is necessary to test 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ with 
 \begin_inset ERT
 status open
 
@@ -645,8 +809,20 @@ name "/OT40/"
 
 \end_inset
 
- Assert that Beagle does not change source code files and other input except
- from the 
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not change source code files and other input except from the 
 \begin_inset ERT
 status open
 
@@ -710,7 +886,20 @@ name "/OT60/"
 
 \end_inset
 
- Assert that Beagle reacts to different component's interface parameters.
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ reacts to different component's interface parameters.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -819,13 +1008,26 @@ name "/OT100/"
 
 \end_inset
 
- Assert that Beagle shuts down the computer if requested by a manual test.
+ Assert that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ shuts down the computer if requested by a manual test.
  First, run a measurement and activate shutting down and then check if it
  worked and the results are saved.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OF180/"
+reference "/OF170/"
 
 \end_inset
 
@@ -860,7 +1062,20 @@ name "/OT120/"
 
 \end_inset
 
- Assert that it is possible to run Beagle automatically after 
+ Assert that it is possible to run 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ automatically after 
 \begin_inset ERT
 status open
 
@@ -886,7 +1101,20 @@ gls{SoMoX}
 
 \end_inset
 
- run with activated automatic Beagle run.
+ run with activated automatic 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ run.
  Another test run has to assert that between both runs no user interaction
  is needed.
  Tests 

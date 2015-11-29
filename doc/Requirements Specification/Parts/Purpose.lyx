@@ -383,8 +383,20 @@ key "KrogmannPhD"
 
 \end_inset
 
- also describes Beagle, an approach for dynamic source code analysis to
- complement 
+ also describes 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+, an approach for dynamic source code analysis to complement 
 \begin_inset ERT
 status open
 
@@ -466,7 +478,20 @@ gls{Palladio}
 \end_inset
 
  with minimal effort.
- The purpose of this project is to implement Beagle.
+ The purpose of this project is to implement 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+.
  Based on the foundations in 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -564,8 +589,21 @@ name "/P10/"
 
 \end_inset
 
- Beagle enables the user to analyse given source code regarding the resources
- its 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ enables the user to analyse given source code regarding the resources its
+ 
 \begin_inset ERT
 status open
 
@@ -589,7 +627,20 @@ name "/P20/"
 
 \end_inset
 
- Beagle annotates its 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ annotates its 
 \begin_inset ERT
 status open
 
@@ -671,8 +722,21 @@ name "/OP10/"
 
 \end_inset
 
- Beagle analyses consigned source code for further dynamic behavioural attribute
-s like the number of loop executions in 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ analyses consigned source code for further dynamic behavioural attributes
+ like the number of loop executions in 
 \begin_inset ERT
 status open
 
@@ -709,8 +773,20 @@ name "/OP20/"
 
 \end_inset
 
- Beagle outputs the results as a function of the input parameters of the
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ outputs the results as a function of the input parameters of the 
 \begin_inset ERT
 status open
 
@@ -760,7 +836,20 @@ name "/OP30/"
 
 \end_inset
 
- Beagle provides the user to control the analysis with a 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ provides the user to control the analysis with a 
 \begin_inset ERT
 status open
 
@@ -859,7 +948,20 @@ name "/B10/"
 
 \end_inset
 
- Beagle does not perform actual measurements on source code.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not perform actual measurements on source code.
  This is done by other software like 
 \begin_inset ERT
 status open
@@ -874,7 +976,20 @@ gls{Kieker}
 \end_inset
 
 .
- Their results are transferred to Beagle using the 
+ Their results are transferred to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ using the 
 \begin_inset ERT
 status open
 
@@ -898,7 +1013,20 @@ name "/B20/"
 
 \end_inset
 
- Beagle does not reconstruct a model of 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not reconstruct a model of 
 \begin_inset ERT
 status open
 
@@ -936,7 +1064,20 @@ name "/B30/"
 
 \end_inset
 
- Beagle does not reconstruct the internal structure of 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not reconstruct the internal structure of 
 \begin_inset ERT
 status open
 
@@ -987,8 +1128,21 @@ name "/B40/"
 
 \end_inset
 
- Beagle does not assert that analysis of source code written in a language
- other than Java 6 is possible.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not assert that analysis of source code written in a language other
+ than Java 6 is possible.
 \end_layout
 
 \begin_layout Labeling
@@ -999,7 +1153,20 @@ name "/B50/"
 
 \end_inset
 
- Beagle does neither do performance analysis nor prediction.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does neither do performance analysis nor prediction.
  That is may be achieved with 
 \begin_inset ERT
 status open
