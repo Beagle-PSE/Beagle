@@ -918,7 +918,7 @@ gls{SoMoX}
 \end_layout
 
 \begin_layout Standard
-When the user launches the analysis, they are presented a window in where
+When the users launches the analysis, they are presented a window where
  they can adapt certain 
 \begin_inset ERT
 status open
@@ -1022,8 +1022,8 @@ reference "/OF140/"
 
 \end_inset
 
- is implemented and the user chooses to close Eclipse, a dialogue allowing
- him to resume the analysis appears every time he launches Eclipse.
+ is implemented and the users choose to close Eclipse, a dialogue allowing
+ them to resume the analysis appears every time they launch Eclipse.
  This dialogue also offers the options to disable the dialogue for the future
  and to abort the analysis and drop the data collected to this point.
  Additionally, each context menu with the entry 
