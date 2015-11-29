@@ -255,20 +255,7 @@ System.exit()
 
 \end_inset
 
-, segfaults, stack overflows, the measured process being killed via 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-kill
-\end_layout
-
-\end_inset
-
- (if it runs as a separate process), being killed by the OS for any other
- violations or reasons).
+, or other unexpected termination of the software’s process(es)).
  This means that neither will Beagle crash because of such errors nor will
  other measurements be affected by them.
 \end_layout
