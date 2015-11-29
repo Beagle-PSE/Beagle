@@ -202,8 +202,8 @@ name "/T40/"
 
 \end_inset
 
- Assert that transferring of data between interfaces and Beagle works correctly
- in boh ways.
+ Assert that transferring data between interfaces and Beagle works correctly
+ in both directions.
  All interfaces with other software have to be tested.
 \end_layout
 
@@ -357,8 +357,8 @@ name "/T70/"
 \end_inset
 
  Assert that Beagle stops measurements after timeout.
- Therefore run a measurment for software (which e.g.
- does not terminate) and define an timeout.
+ Therefore run a measurement for software (which e.g.
+ does not terminate) and define a timeout.
  Additional assert that this timeout can be turned off.
  Tests 
 \begin_inset CommandInset ref
@@ -547,8 +547,21 @@ name "/OT20/"
 \end_inset
 
  Assert that Beagle detects invalid input (e.g.
- if source code decorator does not fit to the code) and does not crash but
- responds to it in a acceptable way.
+ if the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{code decorator}
+\end_layout
+
+\end_inset
+
+ does not fit to the code) and does not crash but responds to it in a acceptable
+ way.
 \end_layout
 
 \begin_layout Labeling

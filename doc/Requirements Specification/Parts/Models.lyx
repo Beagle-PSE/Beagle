@@ -152,9 +152,9 @@ EmmaSun
  Unfortunately, the software is based on an early design that has grown
  over years with missing documentation in many cases.
  The effort to re-write the complete software is an impossible act.
- The only solution is, to reanalyse the software's source code and hopefully
+ The only solution is, to re-analyse the software's source code and hopefully
  find any bottlenecks that can be repaired with lesser effort.
- But reanalysing source code is also a quite unmanageable task.
+ But re-analysing source code is also a quite unmanageable task.
  So at this point, Beagle is used.
 \end_layout
 
@@ -369,7 +369,7 @@ gls{PCM}
 \end_inset
 
  lead to a much better performance prediction and the software architects
- agree to reimplement the new design.
+ agree to re-implement the new design.
 \end_layout
 
 \end_body

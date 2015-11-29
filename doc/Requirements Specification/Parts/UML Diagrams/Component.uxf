@@ -115,9 +115,9 @@ Model</panel_attributes>
       <h>90</h>
     </coordinates>
     <panel_attributes> 
-  Components
+  components
   SEFF
-  Traceability Information</panel_attributes>
+  source code decorator model</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

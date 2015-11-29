@@ -105,7 +105,7 @@ name "/A10/"
 \end_inset
 
  Beagle can be used to re-engineer source code.
- To start to using 
+ To start using 
 \begin_inset ERT
 status open
 
@@ -162,8 +162,7 @@ gls{Palladio}
 
 \end_inset
 
-.
- 
+
 \begin_inset Float figure
 placement h
 wide false
@@ -189,7 +188,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Activity diagram for 
+UML Activity diagram for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A10/"
@@ -274,6 +273,61 @@ gls{PCM}
 \end_inset
 
 ), which can hence be fixed in time.
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UML Diagrams/Development.uxf.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+UML Activity diagram for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A20/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+A typical workflow when using Beagle during software development (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A20/"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -342,6 +396,61 @@ Gls{Palladio}
  implementation.
  As performance is multi-dimensional, this can lead to more precise information
  about the different implementation's effects on the system's runtime.
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UML Diagrams/Prototyp.uxf.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+UML Activity diagram for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A30/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+A typical workflow when using Beagle for prototyping (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A30/"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -395,9 +504,6 @@ gls{PCM}
  which can then be compared to the initial one.
  With this approach, differences and problems in the implementation can
  be detected and resolved easier.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 placement h
 wide false
@@ -407,8 +513,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename UML Diagrams/Use Cases.uxf.pdf
-	width 100text%
+	filename UML Diagrams/Validation.uxf.pdf
+	width 90text%
 
 \end_inset
 
@@ -420,16 +526,29 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Use Case Diagram
+UML Activity diagram for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A40/"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-Use Case Diagram.
- Optional features are drawn grey.
+A typical workflow when using Beagle to verify the implementation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A40/"
+
+\end_inset
+
+).
 \end_layout
 
 \end_inset

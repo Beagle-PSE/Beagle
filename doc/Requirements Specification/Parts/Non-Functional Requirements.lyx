@@ -271,6 +271,17 @@ name "/OQ40/"
  to make its results portable.
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OQ50/"
+
+\end_inset
+
+ Beagle does not modify the provided source code files.
+\end_layout
+
 \begin_layout Section
 User Interface and Experience
 \end_layout
@@ -445,7 +456,19 @@ name "/OQ120/"
 \end_layout
 
 \begin_layout Subsection
-GUI model
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+ model
 \end_layout
 
 \begin_layout Standard
