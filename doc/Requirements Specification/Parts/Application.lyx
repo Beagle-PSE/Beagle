@@ -741,7 +741,7 @@ name "/G10/"
 
 \end_inset
 
- 
+ Some 
 \begin_inset ERT
 status open
 
@@ -754,7 +754,7 @@ Glspl{software architect}
 
 \end_inset
 
- will use 
+ may use 
 \begin_inset ERT
 status open
 
@@ -767,7 +767,7 @@ gls{Beagle}
 
 \end_inset
 
- predominantly for 
+ for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A10/"
@@ -781,7 +781,7 @@ reference "/A40/"
 
 \end_inset
 
-.
+, even if reverse engineering does not belong to their typical tasks.
 \end_layout
 
 \begin_layout Labeling
