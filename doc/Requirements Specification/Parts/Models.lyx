@@ -179,7 +179,7 @@ status open
 
 
 \backslash
-gls{software architecture}
+glslink{software architecture}{architecture}
 \end_layout
 
 \end_inset
@@ -675,7 +675,7 @@ glspl{component}
  engine.
  Especially, there are different ways to parallelise the task.
  Different developers come up with different approaches, all having their
- advatages and disadvantiges.
+ advatages and disadvantages.
  The development lead soon realises that the effective performance will
  depend highly on the component's usage and deployment and cannot be predicted
  by simple measurements.
