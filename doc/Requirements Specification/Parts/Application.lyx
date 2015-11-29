@@ -173,8 +173,8 @@ gls{Palladio}
 
 .
  Modelling an existing software is such a time-consuming task that automatic
- modelling is a valuable feature that may be crucial for developers to start
- using 
+ modelling is a valuable feature which may be crucial to have for developers
+ who start using 
 \begin_inset ERT
 status open
 
@@ -187,7 +187,7 @@ gls{Palladio}
 
 \end_inset
 
-
+.
 \begin_inset Float figure
 wide false
 sideways false
@@ -318,10 +318,9 @@ gls{Beagle}
 
 \end_inset
 
- in order to predict their performance in interaction with the software
- system.
- This leads to earlier detection of arising problems (like implementation
- errors or unrealistic modelling in the 
+in order to predict their performance in interaction with the software system.
+ This leads to fast detection of arising problems (like implementation errors
+ or unrealistic modelling in the 
 \begin_inset ERT
 status open
 
@@ -334,7 +333,7 @@ gls{PCM}
 
 \end_inset
 
-), which can hence be fixed in time.
+), which can then be fixed early on.
 \begin_inset Float figure
 wide false
 sideways false
@@ -613,7 +612,7 @@ gls{SoMoX}
 
 \end_inset
 
- and 
+ or
 \begin_inset ERT
 status open
 
@@ -626,7 +625,7 @@ gls{Beagle}
 
 \end_inset
 
- can be re-engineer a 
+can reverse-engineer a 
 \begin_inset ERT
 status open
 
@@ -641,7 +640,7 @@ gls{PCM}
 
  which can then be compared to the initial one.
  With this approach, differences and problems in the implementation can
- be detected and resolved easier.
+ be detected and resolved more easily.
 \begin_inset Float figure
 wide false
 sideways false
@@ -754,7 +753,7 @@ Glspl{software architect}
 
 \end_inset
 
- will use 
+ can use 
 \begin_inset ERT
 status open
 
@@ -805,7 +804,7 @@ Glspl{system deployer}
 
 \end_inset
 
- will use 
+ can use 
 \begin_inset ERT
 status open
 
@@ -849,7 +848,7 @@ Glspl{component developer}
 
 \end_inset
 
- will use 
+ can use 
 \begin_inset ERT
 status open
 
