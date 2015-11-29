@@ -795,7 +795,7 @@ name "/F240/"
 
 \end_inset
 
- Beagle does not remove any information of the provided 
+ Beagle does not remove any information from the provided 
 \begin_inset ERT
 status open
 
@@ -809,7 +809,6 @@ gls{PCM}
 \end_inset
 
 .
- It will only add information.
 \end_layout
 
 \begin_layout Labeling
