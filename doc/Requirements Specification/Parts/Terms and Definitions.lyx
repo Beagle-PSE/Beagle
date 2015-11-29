@@ -735,10 +735,12 @@ newglossaryentry{Palladio}{
 
 \begin_layout Plain Layout
 
-		an approach for the definition of 
+		an approach for the prediction of 
 \backslash
-glspl{component-based software architecture} with a special focus on performance
- properties.
+glspl{component-based software architecture} 
+\backslash
+gls{QoS} with a special focus on performance properties.
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1262,6 +1264,7 @@ gls{PCM}, software architects create the assembly model, specifying how
  existing 
 \backslash
 glspl{component} are composed.
+ 
 \backslash
 cite{PCMtechreport}
 \end_layout
