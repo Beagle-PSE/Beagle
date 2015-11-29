@@ -214,6 +214,23 @@ glspl{resource demand}
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T10/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -258,6 +275,23 @@ gls{measurement software}
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T60/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -302,6 +336,23 @@ reference "/F20/"
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T60/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -352,6 +403,30 @@ gls{measurement software}
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T60/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT30/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -384,6 +459,24 @@ gls{Beagle}
  It is increased if these previous runs took a long time (as it is expected
  that these measurements will take a long time, too) and decreased if they
  took a short time to answer a request.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T70/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -402,6 +495,24 @@ reference "/F50/"
 \end_inset
 
  and replace it with a set timeout or disable the timeout entirely.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T70/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -456,6 +567,24 @@ glspl{resource demand}
 \end_inset
 
 .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -493,6 +622,23 @@ glspl{SEFF condition}
 \end_inset
 
 .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -537,6 +683,24 @@ glsuseri{component}
 \end_inset
 
  interface parameters.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -574,6 +738,24 @@ glspl{SEFF loop}
 \end_inset
 
 .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -618,6 +800,24 @@ glsuseri{component}
 \end_inset
 
  interface parameters.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -650,6 +850,24 @@ gls{Beagle}
 \end_inset
 
  will analyse the entire source code or only parts of it.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT70/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -662,6 +880,23 @@ name "/OF110/"
 
  Users may choose to re-analyse the source code or parts of it in order
  to either gain more precision or to reflect on source code changes.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT80/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -674,6 +909,24 @@ name "/OF120/"
 
  Users may launch and control a measurement running on another computer
  over a network.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT110/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -688,6 +941,24 @@ name "/OF130/"
  Pausing causes all analysis activity to stop.
  Resuming continues the analysis from the beginning of the measurement it
  was taking when it had been paused.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT90/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -719,6 +990,24 @@ gls{Beagle}
 \end_inset
 
  had been closed after pausing it.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT90/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -765,6 +1054,24 @@ reference "/OF140/"
 \end_inset
 
 ) an analysis to assure its result's integrity.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT90/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -805,6 +1112,24 @@ gls{Beagle}
 
  assures approximately constant measurement conditions, e.g.
  by heating up the CPU with load before starting measurements when resuming.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT90/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -829,6 +1154,24 @@ gls{Beagle}
 \end_inset
 
  shuts down the computer it's running on after it finished a measurement.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT100/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -897,6 +1240,23 @@ reference "result PCM"
 \end_inset
 
 ).
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -928,6 +1288,24 @@ gls{PCM}
 \end_inset
 
  instance.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -985,6 +1363,24 @@ gls{Beagle}
 \end_inset
 
 .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T90/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1002,7 +1398,7 @@ reference "result PCM"
 
 \end_inset
 
- contains all contained 
+ contains all measured 
 \begin_inset ERT
 status open
 
@@ -1042,6 +1438,24 @@ glspl{resource demand}
 \end_inset
 
 .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1065,20 +1479,32 @@ gls{Beagle}
 
 \end_inset
 
- does not remove any information from the provided 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
+ does not remove any information from the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input PCM"
 
 \end_inset
 
 .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T55/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -1090,6 +1516,24 @@ name "/F250/"
 \end_inset
 
  Measurement results are saved onto a persistent medium to avoid data loss.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -1153,6 +1597,24 @@ gls{PCM Stochastic Expression Language}
 \end_inset
 
 .
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

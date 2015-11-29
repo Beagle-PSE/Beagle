@@ -301,7 +301,14 @@ gls{Beagle}
 
 \end_inset
 
- should run on a dedicated server.
+ should run on a dedicated server (See also 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/C130/"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Section
