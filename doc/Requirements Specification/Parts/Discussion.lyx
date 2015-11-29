@@ -195,7 +195,7 @@ name "/C20/"
  a fixed configuration of input parameters when ignoring influences of the
  hardware, the operating system, and the error of measurement.
  This will be the case for most software systems.
- The fact that the users try to measure the software system when using 
+ The fact that users try to measure the software system when using 
 \begin_inset ERT
 status open
 
@@ -234,7 +234,7 @@ reference "input artefacts"
 
 \end_inset
 
-) are integers.
+) are of integrity.
  This means that all parts of the provided 
 \begin_inset ERT
 status open
