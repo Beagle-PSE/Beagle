@@ -231,7 +231,7 @@ gls{Beagle}
 
  discovers all sections needed for measurement and that they are correct.
  A part of this can be implemented by checking if all code sections (of
- the measured part) have been measured.
+ the measured part) have been executed.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
