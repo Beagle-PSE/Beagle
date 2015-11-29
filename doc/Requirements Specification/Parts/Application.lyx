@@ -305,8 +305,8 @@ gls{PCM}
 
 \end_inset
 
- can be analysed with
- \begin_inset ERT
+ can be analysed with 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
@@ -317,8 +317,8 @@ gls{Beagle}
 \end_layout
 
 \end_inset
-in order to predict their performance in interactio
-n with the software system.
+
+in order to predict their performance in interaction with the software system.
  This leads to fast detection of arising problems (like implementation errors
  or unrealistic modelling in the 
 \begin_inset ERT
@@ -624,6 +624,7 @@ gls{Beagle}
 \end_layout
 
 \end_inset
+
 can re-engineer a 
 \begin_inset ERT
 status open
@@ -752,7 +753,7 @@ Glspl{software architect}
 
 \end_inset
 
- can use
+ can use 
 \begin_inset ERT
 status open
 
@@ -764,6 +765,7 @@ gls{Beagle}
 \end_layout
 
 \end_inset
+
  predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -802,7 +804,7 @@ Glspl{system deployer}
 
 \end_inset
 
- can use
+ can use 
 \begin_inset ERT
 status open
 
@@ -814,6 +816,7 @@ gls{Beagle}
 \end_layout
 
 \end_inset
+
  predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -845,7 +848,7 @@ Glspl{component developer}
 
 \end_inset
 
- can use
+ can use 
 \begin_inset ERT
 status open
 
@@ -857,6 +860,7 @@ gls{Beagle}
 \end_layout
 
 \end_inset
+
  predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
