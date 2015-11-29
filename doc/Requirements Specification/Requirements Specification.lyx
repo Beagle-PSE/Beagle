@@ -56,6 +56,9 @@
 % Adding package bookmark improves bookmarks handling.
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
+
+% Break citations
+\usepackage{breakcites}
 \end_preamble
 \options english,final
 \use_default_options true

@@ -155,11 +155,36 @@ EmmaSun
  The only solution is, to re-analyse the software's source code and hopefully
  find any bottlenecks that can be repaired with lesser effort.
  But re-analysing source code is also a quite unmanageable task.
- So at this point, Beagle is used.
+ So at this point, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ is used.
 \end_layout
 
 \begin_layout Standard
-Beagle helps the team of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ helps the team of 
 \begin_inset ERT
 status open
 
@@ -173,7 +198,20 @@ glspl{software architect}
 \end_inset
 
  that was commissioned by EmmaSun to analyse the whole software.
- As Beagle depends on a 
+ As 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ depends on a 
 \begin_inset ERT
 status open
 
@@ -239,7 +277,20 @@ glspl{SEFF}
 \end_inset
 
 .
- Providing Beagle a monitoring software named 
+ Providing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ a monitoring software named 
 \begin_inset ERT
 status open
 
@@ -265,7 +316,20 @@ gls{Common Trace API}
 
 \end_inset
 
-, Beagle starts with conducting measurements on single software 
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ starts with conducting measurements on single software 
 \begin_inset ERT
 status open
 
@@ -306,7 +370,20 @@ gls{PCM}
 
 \end_inset
 
- and Beagle calls 
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ calls 
 \begin_inset ERT
 status open
 
