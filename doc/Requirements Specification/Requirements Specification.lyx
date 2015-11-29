@@ -60,6 +60,16 @@
 % Adding package bookmark improves bookmarks handling.
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
+
+% Set the PDF metadata
+\hypersetup{
+    pdftitle={Beagle --- Software Requirements Specification},
+    pdfsubject={Beagle is a tool for automatic dynamic source code analysis in order to find resource demands of component based software’s components’ internal actions.},
+    pdfauthor={Annika Berger, Joshua Gleitze, Roman Langrehr, Christoph Michelbach, Ansgar Spiegler, Michael Vogt},
+    pdfkeywords={component based software, dynamic analysis, reverse engeneering, resource demands, SoMoX, Beagle, Palladio, Eclipse, Common Trace API},
+    pdfcreator={LyX, pdflatex},
+    pdfproducer={LaTeX}
+}
 \end_preamble
 \options english,final
 \use_default_options true
@@ -212,22 +222,6 @@ gls{naiive}
 \begin_layout Standard
 \begin_inset ERT
 status open
-
-\begin_layout Plain Layout
-
-% Set the PDF metadata
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-setpdf
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 
