@@ -674,8 +674,8 @@ glspl{component}
  They soon realise that there are multiple ways to implement the conversion
  engine.
  Especially, there are different ways to parallelise the task.
- Different developers come up with different approaches, all having there
- pro and contra arguments.
+ Different developers come up with different approaches, all having their
+ advatages and disadvantiges.
  The development lead soon realises that the effective performance will
  depend highly on the component's usage and deployment and cannot be predicted
  by simple measurements.
