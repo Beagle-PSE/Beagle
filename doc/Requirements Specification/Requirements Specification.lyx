@@ -68,7 +68,9 @@
     pdfauthor={Annika Berger, Joshua Gleitze, Roman Langrehr, Christoph Michelbach, Ansgar Spiegler, Michael Vogt},
     pdfkeywords={component based software, dynamic analysis, reverse engeneering, resource demands, SoMoX, Beagle, Palladio, Eclipse, Common Trace API},
     pdfcreator={LyX, pdflatex},
-    pdfproducer={LaTeX}
+    pdfproducer={LaTeX},
+    hidelinks,
+    breaklinks
 }
 \end_preamble
 \options english,final
@@ -78,7 +80,7 @@ enumitem
 \end_modules
 \maintain_unincluded_children false
 \language british
-\language_package babel
+\language_package auto
 \inputencoding utf8
 \fontencoding global
 \font_roman default
