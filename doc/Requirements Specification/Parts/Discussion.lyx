@@ -408,7 +408,7 @@ gls{Beagle}
 
 \end_inset
 
- should be able to measure on single 
+ should be able to measure on specific 
 \begin_inset ERT
 status open
 
@@ -421,7 +421,7 @@ glspl{component}
 
 \end_inset
 
- (or bundles) at a time, some internal 
+, other 
 \begin_inset ERT
 status open
 
@@ -434,8 +434,21 @@ glspl{component}
 
 \end_inset
 
-, that are called during execution, may wished to be mocked (espacially
- those, which take long time to return or do not return at all, e.g.
+ of the software, that are called during the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ execution, may wished to be mocked (espacially those, which take long time
+ to return or do not return at all, e.g.
  a GUI).
  Mocking a 
 \begin_inset ERT
@@ -451,8 +464,8 @@ gls{component}
 \end_inset
 
  might be very effortful or even impossible.
- If this problem cannot be solved, the user has to ensure, that all of these
- are mocket, which need to be.
+ If this cannot be solved, Beagle may require the user to provide a test
+ bed in which the measured components can be executed.
 \end_layout
 
 \begin_layout Labeling
