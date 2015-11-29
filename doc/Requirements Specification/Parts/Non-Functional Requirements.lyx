@@ -490,86 +490,6 @@ gls{Beagle}
 
 \end_inset
 
- runs benchmarks on hardware systems in order to provide information to
- make its results transferable: Using the benchmark information, measurement
- results can be transferred between different hardware systems when simulating
- in 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Palladio}
-\end_layout
-
-\end_inset
-
-.
- This insures the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{resource demand}
-\end_layout
-
-\end_inset
-
- independence from the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuseri{component}
-\end_layout
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{deployment context}
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ50/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
  does not modify the provided source code files.
  
 \begin_inset Note Note
@@ -1128,7 +1048,7 @@ gls{Beagle}
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OQ40/"
+reference "/OF60/"
 
 \end_inset
 
@@ -1150,7 +1070,7 @@ reference "/OF120/"
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OQ40/"
+reference "/OF60/"
 
 \end_inset
 
@@ -1162,7 +1082,7 @@ reference "/OQ40/"
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OQ40/"
+reference "/OF60/"
 
 \end_inset
 
