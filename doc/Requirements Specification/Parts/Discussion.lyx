@@ -368,14 +368,14 @@ status open
 
 
 \backslash
-gls{component}
+gls{software component}
 \end_layout
 
 \end_inset
 
  might be very effortful or even impossible.
- If this problem cannot be solved, Beagle should be restricted on analysing
- server software.
+ If this problem cannot be solved, the user has to ensure, that all of these
+ are mocket, which need to be.
 \end_layout
 
 \begin_layout Labeling
