@@ -462,14 +462,14 @@ gls{Beagle}
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F60/"
+reference "/F50/"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/F70/"
+reference "/F60/"
 
 \end_inset
 
@@ -1027,7 +1027,7 @@ gls{Beagle}
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OF180/"
+reference "/OF170/"
 
 \end_inset
 

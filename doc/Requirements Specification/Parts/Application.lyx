@@ -189,7 +189,6 @@ gls{Palladio}
 
 
 \begin_inset Float figure
-placement h
 wide false
 sideways false
 status open
@@ -337,7 +336,6 @@ gls{PCM}
 
 ), which can hence be fixed in time.
 \begin_inset Float figure
-placement h
 wide false
 sideways false
 status open
@@ -499,7 +497,6 @@ Gls{Palladio}
  As performance is multi-dimensional, this can lead to more precise information
  about the different implementation's effects on the system's runtime.
 \begin_inset Float figure
-placement h
 wide false
 sideways false
 status open
@@ -646,7 +643,6 @@ gls{PCM}
  With this approach, differences and problems in the implementation can
  be detected and resolved easier.
 \begin_inset Float figure
-placement h
 wide false
 sideways false
 status open
