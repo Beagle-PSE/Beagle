@@ -919,9 +919,9 @@ gls{Beagle}
 
 \end_inset
 
- shuts down the computer if requested by a manual test.
- First, run a measurement and activate shutting down and then check if it
- worked and the results are saved.
+ shuts down the computer if requested in a manual test.
+ Run a measurement and activate shutting down and then check if it worked
+ and the results were saved.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
