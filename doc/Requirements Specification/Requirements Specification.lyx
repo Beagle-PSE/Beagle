@@ -31,13 +31,14 @@
 \settitle
 
 % Use the superior glossaries package to replace nomencl
-\usepackage[acronym,toc,xindy,nomain]{glossaries}
+\usepackage[toc,xindy,nomain,nopostdot,nonumberlist,acronym]{glossaries}
 \makeglossaries
 \usepackage[xindy]{imakeidx}
 \makeindex
 
 % Listings package is required by terms and definitions
 \usepackage{listings}
+
 % Include the terms and definitions file if presents (e.g. only when acutally building the glossary).
 \InputIfFileExists{\string"Parts/Terms and Definitions.tex\string"}
 
@@ -51,6 +52,10 @@
 
 % Make floats work batter with Koma book
 \usepackage{scrhack}
+
+% Adding package bookmark improves bookmarks handling.
+% More features and faster updated bookmarks.
+\usepackage{bookmark}
 \end_preamble
 \options english,final
 \use_default_options true
@@ -238,6 +243,22 @@ setcounter{page}{1}
 pagenumbering{roman}
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Don't add blank pages in the toc section
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KOMAoptions{open=any}
+\end_layout
+
 \end_inset
 
 
@@ -271,19 +292,94 @@ hyphenation{me-ta-mo-del}
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% bookmark for toc
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[section]{
+\backslash
+contentsname}{toc}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
 \end_inset
 
 
-\begin_inset Newpage newpage
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+printacronyms
+\end_layout
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cleardoublepage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\backslash
+listfigurename}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Addchap
 Reference notation
 \end_layout
 
@@ -455,7 +551,7 @@ reference "/X10/"
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -467,6 +563,22 @@ status collapsed
 
 \backslash
 mainmatter
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Enabling to only start chapters on the right again.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KOMAoptions{open=right}
 \end_layout
 
 \end_inset
@@ -581,32 +693,6 @@ status open
 \backslash
 printglossary[title=Terms and Definitions]
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{chapter}{
-\backslash
-listfigurename}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
 
 \end_inset
 
