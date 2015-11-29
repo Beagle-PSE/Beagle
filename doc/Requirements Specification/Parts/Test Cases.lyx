@@ -615,7 +615,7 @@ glsuseri{Beagle}
 
 \end_inset
 
- capabilities by providing source code with arbitrary complex 
+ capabilities by providing source code with arbitrarily complex 
 \begin_inset ERT
 status open
 
@@ -654,7 +654,7 @@ reference "result PCM"
 
 \end_inset
 
- contains approximations of the probability for branches in 
+ contains approximations of the probability of branches in 
 \begin_inset ERT
 status open
 
@@ -681,7 +681,7 @@ glspl{SEFF loop}
 \end_inset
 
 .
- Optionally assert that these approximations are expressed dependent on
+ Optionally assert that these approximations are expressed dependently on
  input parameters.
  Like 
 \begin_inset CommandInset ref
@@ -703,8 +703,8 @@ glsuseri{Beagle}
 
 \end_inset
 
- capabilities by providing source code with arbitrary complex relations
- between input parameters and repetitions 
+ capabilities by providing source code with arbitrarily complex relations
+ between input parameters and repetitions, 
 \begin_inset ERT
 status open
 
@@ -712,7 +712,7 @@ status open
 
 
 \backslash
-glspl{SEFF loop}
+glspl{SEFF loop},
 \end_layout
 
 \end_inset
