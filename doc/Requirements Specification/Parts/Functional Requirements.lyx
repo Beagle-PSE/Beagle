@@ -596,7 +596,7 @@ name "/OF160/"
 
  Beagle's results do not change, no matter how often the user chooses to
  pause and resume the measurements.
- Thererfore Beagle assures approximately constant measurement conditions,
+ Therefore Beagle assures approximately constant measurement conditions,
  e.g.
  by heating up the CPU with load before starting measurements when resuming.
 \end_layout
@@ -795,7 +795,7 @@ name "/F240/"
 
 \end_inset
 
- Beagle does not remove any important information of the provided 
+ Beagle does not remove any information of the provided 
 \begin_inset ERT
 status open
 
@@ -809,20 +809,7 @@ gls{PCM}
 \end_inset
 
 .
- The modified 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- will only be extended.
+ It will only add information.
 \end_layout
 
 \begin_layout Labeling
