@@ -832,8 +832,9 @@ newglossaryentry{software architecture}{
 
 \begin_layout Plain Layout
 
-		the high-level structure and design of a software system as well as the
- discipline of creating and documenting these.
+		the high-level structure and design of a 
+\backslash
+glsuserv{system} as well as the discipline of creating and documenting these.
 \end_layout
 
 \begin_layout Plain Layout
@@ -975,7 +976,12 @@ cite{conwaysLaw}
 
 \begin_layout Plain Layout
 
-	}
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user5={software system}
 \end_layout
 
 \begin_layout Plain Layout
