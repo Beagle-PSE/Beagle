@@ -90,7 +90,7 @@ This final chapter now models different viewpoints on how an implementation
  It’s meant to convey our vision of the software to the reader.
  It is also meant to specify this vision, such that it can lead us through
  the further development phases.
- It does not yet specify technical realizations like like UML class diagrams.
+ It does not yet specify technical realisations like like UML class diagrams.
 \end_layout
 
 \begin_layout Plain Layout
@@ -102,7 +102,7 @@ The chapter should contain:
 \end_layout
 
 \begin_layout Plain Layout
-* Sencario descriptions
+* Scenario descriptions
 \end_layout
 
 \begin_layout Plain Layout
@@ -120,7 +120,6 @@ Scenario
 \end_layout
 
 \begin_layout Standard
-Imagine
 \begin_inset Note Note
 status open
 
@@ -132,7 +131,7 @@ all the people, living life in peace! (You-hu) You may say I'm a dreamer,
 
 \end_inset
 
-, that a Java based online shop is running on a middle-class web server
+Imagine that a Java-based online shop is running on a middle-class web server
  of a company named 
 \begin_inset Quotes eld
 \end_inset
@@ -142,19 +141,27 @@ EmmaSun
 \end_inset
 
 .
- During the first few years the software could deal with almost 99.9% of
- the requests and orders that are handled quite well without any delay.
- After an enormous expansion since the last year, the user numbers are currently
- growing for about 5 percent each week.
+ During the first few years, the software system was able to deal with 99.9%
+ of incoming requests and orders quite well and without any noticeable delay.
+ After an enormous expansion since the last year, the number of users is
+ currently growing by about 5% per week.
  Although the current servers are designed to fulfil a distinctly higher
  amount of user requests, the administration reported some few dropouts
- as well as increasing waiting times in single applications.
- Unfortunately, the software is based on an early design that has grown
- over years with missing documentation in many cases.
- The effort to re-write the complete software is an impossible act.
- The only solution is, to re-analyse the software's source code and hopefully
- find any bottlenecks that can be repaired with lesser effort.
+ as well as increasing waiting times in individual applications.
+ Unfortunately, the software system is based on an early design which has
+ grown over years with missing documentation in many cases.
+ Because of the enormous amount of effort it'd require, re-writing the entire
+ software system is an almost impossible task.
+ The only solution is to re-analyse the software system's source code and
+ hopefully find all bottlenecks which can be repaired with less effort.
  But re-analysing source code is also a quite unmanageable task.
+<<<<<<< HEAD
+ At this point, Beagle is employed.
+\end_layout
+
+\begin_layout Standard
+Beagle supports the team of 
+=======
  So at this point, 
 \begin_inset ERT
 status open
@@ -185,6 +192,7 @@ gls{Beagle}
 \end_inset
 
  helps the team of 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -197,6 +205,10 @@ glspl{software architect}
 
 \end_inset
 
+<<<<<<< HEAD
+ commissioned by EmmaSun to analyse the entire software system.
+ Since Beagle depends on a 
+=======
  that was commissioned by EmmaSun to analyse the whole software.
  As 
 \begin_inset ERT
@@ -212,6 +224,7 @@ gls{Beagle}
 \end_inset
 
  depends on a 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -277,6 +290,9 @@ glspl{SEFF}
 \end_inset
 
 .
+<<<<<<< HEAD
+ Having provided a monitoring software called 
+=======
  Providing 
 \begin_inset ERT
 status open
@@ -291,6 +307,7 @@ gls{Beagle}
 \end_inset
 
  a monitoring software named 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -303,7 +320,7 @@ gls{Kieker}
 
 \end_inset
 
-, that matches the 
+ which supports the 
 \begin_inset ERT
 status open
 
@@ -316,6 +333,9 @@ gls{Common Trace API}
 
 \end_inset
 
+<<<<<<< HEAD
+ to Beagle, it starts to conduct measurements on individual software 
+=======
 , 
 \begin_inset ERT
 status open
@@ -330,6 +350,7 @@ gls{Beagle}
 \end_inset
 
  starts with conducting measurements on single software 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -342,7 +363,7 @@ glspl{component}
 
 \end_inset
 
-, extending the 
+ extending the 
 \begin_inset ERT
 status open
 
@@ -356,7 +377,7 @@ gls{PCM}
 \end_inset
 
 .
- After around 6 hours of measuring, the results of measuring are added into
+ After about 6 hours of measuring, the measurement results are added to
  the 
 \begin_inset ERT
 status open
@@ -396,8 +417,9 @@ gls{Palladio}
 
 \end_inset
 
- to do a performance prediction.
- The prediction indicates an architectural violation of some software 
+ to make a performance prediction.
+ The prediction indicates an architectural violation of certain software
+ 
 \begin_inset ERT
 status open
 
@@ -410,14 +432,27 @@ glspl{component}
 
 \end_inset
 
-, that lead to a a huge amount of sub-function calls through hierarchical
+ which lead to a a huge amount of sub-function calls throughout hierarchical
  layers.
 \end_layout
 
 \begin_layout Standard
-The software architects decide to add an extra cache, that can store the
- results of the sub-function calls and make them available immediately.
- Fortunately, before they turn this idea into reality, they can adopt this
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ decide to add an extra cache which can store the results of the sub-function
+ calls and make them available almost immediately.
+ Fortunately, before they have to implement this idea, they can adopt their
  design decision into the 
 \begin_inset ERT
 status open
@@ -431,8 +466,8 @@ gls{PCM}
 
 \end_inset
 
-.
- The little changes in the 
+ without jeopardising real-world systems.
+ The small changes in the 
 \begin_inset ERT
 status open
 
@@ -445,8 +480,20 @@ gls{PCM}
 
 \end_inset
 
- lead to a much better performance prediction and the software architects
- agree to re-implement the new design.
+ lead to a much better performance prediction and the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ agree to implement the new design.
 \end_layout
 
 \end_body
