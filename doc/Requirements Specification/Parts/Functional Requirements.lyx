@@ -282,7 +282,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T60/"
+reference "/T30/"
 
 \end_inset
 
@@ -343,7 +343,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T60/"
+reference "/T30/"
 
 \end_inset
 
@@ -410,7 +410,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T60/"
+reference "/T210/"
 
 \end_inset
 
@@ -467,7 +467,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T70/"
+reference "/T60/"
 
 \end_inset
 
@@ -503,7 +503,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T70/"
+reference "/T60/"
 
 \end_inset
 
@@ -575,7 +575,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT30/"
 
 \end_inset
 
@@ -629,7 +629,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -691,7 +691,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -746,7 +746,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -808,7 +808,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -858,7 +858,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT70/"
+reference "/OT50/"
 
 \end_inset
 
@@ -887,7 +887,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT80/"
+reference "/OT60/"
 
 \end_inset
 
@@ -917,7 +917,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT110/"
+reference "/OT90/"
 
 \end_inset
 
@@ -949,7 +949,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -998,7 +998,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -1062,7 +1062,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -1120,7 +1120,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -1162,7 +1162,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT100/"
+reference "/OT80/"
 
 \end_inset
 
