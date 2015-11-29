@@ -735,11 +735,12 @@ newglossaryentry{Palladio}{
 
 \begin_layout Plain Layout
 
-		an approach for the prediction of 
+		an approach to the predict 
 \backslash
-glspl{component-based software architecture} 
+gls{QoS} properties of 
 \backslash
-gls{QoS} with a special focus on performance properties.
+glspl{component-based software architecture} with a special focus on performance
+ properties.
  
 \end_layout
 
