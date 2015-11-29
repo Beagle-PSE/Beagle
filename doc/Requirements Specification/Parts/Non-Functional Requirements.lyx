@@ -242,8 +242,8 @@ name "/OQ30/"
 
 \end_inset
 
- Beagle shall handle any error thrown by the measured software, like uncaught
- Exceptions or calls to 
+ Beagle shall handle any error caused by the measured software (uncaught
+ exceptions, uncaught errors, calls to 
 \begin_inset listings
 inline true
 status open
@@ -255,8 +255,9 @@ System#exit
 
 \end_inset
 
-.
- This means that such errors do not influence other measurements.
+, or other unexpected termination of the software’s process(es)).
+ This means that neither will Beagle crash because of such errors nor will
+ other measurements be affected by them.
 \end_layout
 
 \begin_layout Labeling
