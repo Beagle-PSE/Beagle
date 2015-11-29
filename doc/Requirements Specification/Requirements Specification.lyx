@@ -607,6 +607,34 @@ status open
 
 
 \backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad %phantom item
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 addcontentsline{toc}{chapter}{
 \backslash
 listfigurename}
@@ -619,6 +647,43 @@ listfigurename}
 
 \begin_layout Standard
 \begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+quad %phantom item
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
 
 \end_inset
 
