@@ -76,7 +76,6 @@
     hidelinks,
     breaklinks
 }
-
 \end_preamble
 \options english,final
 \use_default_options true
@@ -448,7 +447,7 @@ makeatletter
 \backslash
 renewcommand{
 \backslash
-label}[1]{
+label}[1]{%
 \end_layout
 
 \begin_layout Plain Layout
@@ -457,12 +456,12 @@ label}[1]{
 \backslash
 edef
 \backslash
-@currentlabel{#1}% Set target label
+@currentlabel{#1}% Set target label %
 \end_layout
 
 \begin_layout Plain Layout
 
-	#1
+	#1%
 \end_layout
 
 \begin_layout Plain Layout
@@ -471,7 +470,7 @@ edef
 \backslash
 phantomsection
 \backslash
-labelorig{#1}
+labelorig{#1}%
 \end_layout
 
 \begin_layout Plain Layout
