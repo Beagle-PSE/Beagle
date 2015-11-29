@@ -179,7 +179,7 @@ status open
 
 
 \backslash
-glslabel{software architecture}{architecture}
+gls{software architecture}
 \end_layout
 
 \end_inset
@@ -386,7 +386,7 @@ status open
 
 
 \backslash
-glslabel{software architecture}{architectural}
+glslabel{architectural}
 \end_layout
 
 \end_inset
