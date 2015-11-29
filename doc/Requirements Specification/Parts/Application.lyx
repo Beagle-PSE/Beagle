@@ -189,7 +189,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-Activity diagram for 
+UML Activity diagram for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A10/"
@@ -278,6 +278,65 @@ gls{PCM}
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UML Diagrams/Development.uxf.pdf
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+UML Activity diagram for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A20/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+A typical workflow when using Beagle during software development (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/A20/"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
 name "/A30/"
@@ -342,6 +401,11 @@ Gls{Palladio}
  implementation.
  As performance is multi-dimensional, this can lead to more precise information
  about the different implementation's effects on the system's runtime.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
 \end_layout
 
 \begin_layout Labeling
