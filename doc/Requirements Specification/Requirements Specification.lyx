@@ -734,7 +734,7 @@ status open
 
 
 \backslash
-glossarystyle{altlist}
+setglossarystyle{altlist}
 \end_layout
 
 \begin_layout Plain Layout
