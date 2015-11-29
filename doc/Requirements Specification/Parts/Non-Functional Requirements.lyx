@@ -630,8 +630,7 @@ gls{SoMoX}
 
 \end_inset
 
- so that the user does not need to provide additional information after
- 
+ so the user does not need to provide additional information after 
 \begin_inset ERT
 status open
 
@@ -901,20 +900,7 @@ gls{SoMoX}
 
 \end_inset
 
- has finished when launching 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- .
+ has finished when launching the latter.
 \end_layout
 
 \begin_layout Standard
