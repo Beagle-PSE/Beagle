@@ -61,6 +61,10 @@
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
 
+
+% Break citations
+\usepackage{breakcites}
+
 % Set the PDF metadata
 \hypersetup{
     pdftitle={Beagle --- Software Requirements Specification},
@@ -72,6 +76,7 @@
     hidelinks,
     breaklinks
 }
+
 \end_preamble
 \options english,final
 \use_default_options true

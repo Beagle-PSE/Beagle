@@ -695,10 +695,11 @@ begin{quote}It is designed to enable early performance predictions for
 \backslash
 glspl{software architecture} and is aligned with a component-based software
  development process.
-\backslash
-end{quote} 
+ 
 \backslash
 cite{Kounev}
+\backslash
+end{quote} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -773,11 +774,19 @@ newglossaryentry{SoMoX}{
 
 \begin_layout Plain Layout
 
-		a 
+		``
+\backslash
+textbf{So}ftware 
+\backslash
+textbf{Mo}del e
+\backslash
+textbf{X}tractor'', a 
 \backslash
 gls{Palladio} plugin for static code analysis to re-engineer a 
 \backslash
-glsuseriii{software architecture} from its source code.
+glsuseriii{software architecture} from its source code developed in 
+\backslash
+cite{KrogmannPhD}.
  Constructs a 
 \backslash
 gls{PCM} instance including the reconstructed components and their 
@@ -1167,11 +1176,16 @@ newglossaryentry{component developer}{
 
 \begin_layout Plain Layout
 
-``[specifies] the functional and extra-functional properties of their components.
+
+\backslash
+begin{quote}``[specifies] the functional and extra-functional properties
+ of their components.
  They put the specification as well as the implementation in repositories,
  where software architects can retrieve them.'' 
 \backslash
 cite{PalladioPaper}
+\backslash
+end{quote}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1391,10 +1405,14 @@ newglossaryentry{Kieker}{
 
 \begin_layout Plain Layout
 
-		``a Java-based application performance monitoring and dynamic software
- analysis framework.'' 
+		
 \backslash
-cite{KiekerPaper} A 
+begin{quote}``a Java-based application performance monitoring and dynamic
+ software analysis framework.'' 
+\backslash
+cite{KiekerPaper}
+\backslash
+end{quote} A 
 \backslash
 gls{measurement software} Beagle aims to support.
 \end_layout
@@ -1582,6 +1600,57 @@ cite{PCMtechreport}.
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Beagle}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Beagle},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		``
+\backslash
+textbf{BE}haviour 
+\backslash
+textbf{A}nalysis using 
+\backslash
+textbf{G}enetic 
+\backslash
+textbf{L}earning and 
+\backslash
+textbf{E}volution''.
+ Approach for dynamic analysis of source code in order to find its behavioural
+ attributes developed in 
+\backslash
+cite{KrogmannPhD}.
+ This project aims to implement Beagle.},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={Beagle's}
 \end_layout
 
 \begin_layout Plain Layout
