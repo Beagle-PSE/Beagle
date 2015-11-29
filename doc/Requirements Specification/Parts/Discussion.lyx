@@ -195,8 +195,20 @@ name "/C20/"
  configuration of input parameters, when ignoring influences of the hardware,
  operating system and error of measurement.
  This will be the case for most software.
- The fact the user tries to measure the software when using Beagle implies
- he expects it to behave in such a manner.
+ The fact the user tries to measure the software when using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ implies he expects it to behave in such a manner.
 \end_layout
 
 \begin_layout Labeling
@@ -238,8 +250,21 @@ gls{PCM}
 
  describe the software correctly, completely and exactly like implemented
  in the source code.
- Beagle relies on this to be true and may produce inaccurate or wrong results
- if it is not.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ relies on this to be true and may produce inaccurate or wrong results if
+ it is not.
 \end_layout
 
 \begin_deeper
@@ -273,8 +298,21 @@ name "/C40/"
 
  In the use of JaMopp the source code's Java version likely is restricted
  by JaMopp.
- To get Beagle independent from JaMopp can be useful for further projects,
- to use higher Java versions functions.
+ To get 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ independent from JaMopp can be useful for further projects, to use higher
+ Java versions functions.
 \end_layout
 
 \begin_layout Section
@@ -292,7 +330,20 @@ name "/C100/"
  There are a lot of factors influencing a CPU's performance: operating temperatu
 re, number of other processes, previous load, and data in cache, to name
  just a few.
- Beagle aims to find ways to compensate these factors.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ aims to find ways to compensate these factors.
  This may involve disabling 
 \noun on
 Turbo Boost
@@ -313,8 +364,21 @@ name "/C110/"
 
 \end_inset
 
- Beagle must ensure the transferability and scalability of its measurement
- results across different hardware platforms.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ must ensure the transferability and scalability of its measurement results
+ across different hardware platforms.
  This stretches from software running on an average desktop pc via servers
  through to clusters of servers.
  Different hardware platforms vary in many different dimensions (CPU frequency,
@@ -331,7 +395,7 @@ name "/C120/"
 
 \end_inset
 
- Beagle measures only one 
+ As 
 \begin_inset ERT
 status open
 
@@ -339,12 +403,12 @@ status open
 
 
 \backslash
-gls{component}
+gls{Beagle}
 \end_layout
 
 \end_inset
 
- at a time, yet 
+ should be able to measure on single 
 \begin_inset ERT
 status open
 
@@ -357,8 +421,23 @@ glspl{component}
 
 \end_inset
 
- interact with each other.
- If a 
+ (or bundles) at a time, some internal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+, that are called during execution, may wished to be mocked (espacially
+ those, which take long time to return or do not return at all, e.g.
+ a GUI).
+ Mocking a 
 \begin_inset ERT
 status open
 
@@ -371,50 +450,9 @@ gls{component}
 
 \end_inset
 
- calls another 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
- that takes a long time to return or does not return at all (e.g.
- because it is waiting for some input or it is defective), it might be wished
- or required to mock this 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
-.
- Whether imitation of other 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{component}
-\end_layout
-
-\end_inset
-
- behaviour can be done automatically needs investigation.
- Such imitations may not affect the measurement results.
+ might be very effortful or even impossible.
+ If this problem cannot be solved, the user has to ensure, that all of these
+ are mocket, which need to be.
 \end_layout
 
 \begin_layout Labeling
@@ -428,7 +466,20 @@ name "/C130/"
  On modern operating systems, multitasking is the default.
  Users are used to work on multiple tasks at the same time and have multiple
  programs running.
- This could, however, influence Beagle's measurement results.
+ This could, however, influence 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ measurement results.
  If a considerable impact on measurement results is recognised, strategies
  to avoid them can be developed.
  These may including prompting the user to close certain applications.
@@ -442,7 +493,20 @@ name "/C140/"
 
 \end_inset
 
- Beagle aims to parametrise its measurement results by the 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ aims to parametrise its measurement results by the 
 \begin_inset ERT
 status open
 

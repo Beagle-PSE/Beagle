@@ -38,12 +38,13 @@ A (small!) subset of the required LaTeX packages are:
   * Bera Mono Font (`beramono`)
   * Microtype (`microtype`)
   * Enumitem (`enumitem`)
+  * Break citations (`breakcites`)
   
 If you care for the full list, look it up yourself in `sdqthesis.cls`.
   
-On Ubuntu, all required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-extra` and `texlive-lang-german` packages (you'll likely have them installed already):
+On Ubuntu, all required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-extra`, `texlive-bibtex-extra` and `texlive-lang-german` packages (you'll likely have them installed already):
 ```
-sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german
+sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german texlive-bibtex-extra
 ```
 
 On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically.

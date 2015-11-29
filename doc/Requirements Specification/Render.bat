@@ -50,7 +50,7 @@ call :tee
 
 :: generate all the other stuff
 call :log First pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
+pdflatex -interaction=nonstopmode -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 
 :: make the glossary
 call :log Generating the glossary
@@ -65,13 +65,13 @@ call :tee
 :: render the pdf (we need at least two times. And you know… just to be sure ;))
 :: The output of the first runs is irrelevant
 call :log Second pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
+pdflatex -interaction=nonstopmode -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 call :log Third pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
+pdflatex -interaction=nonstopmode -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 call :log Fourth pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
+pdflatex -interaction=nonstopmode -halt-on-error %FILENAME%.tex >> %log% || goto :logerror
 call :log Last pdflatex run
-pdflatex -halt-on-error %FILENAME%.tex > %tee% || goto :teeerror
+pdflatex -interaction=nonstopmode -halt-on-error %FILENAME%.tex > %tee% || goto :teeerror
 call :tee
 
 ::::::::::::::::::::::

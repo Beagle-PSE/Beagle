@@ -113,7 +113,20 @@ Reference notation for nice to have functionality is /OF#/
 \end_layout
 
 \begin_layout Standard
-Given Beagle is called with valid 
+Given 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ is called with valid 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "input artefacts"
@@ -160,8 +173,21 @@ gls{PCM}
 
 \end_inset
 
-, Beagle determines the sections in the source code to be measured in order
- to find 
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines the sections in the source code to be measured in order to find
+ 
 \begin_inset ERT
 status open
 
@@ -198,7 +224,20 @@ name "/F20/"
 
 \end_inset
 
- Beagle conducts measurements of the sections found by 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ conducts measurements of the sections found by 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F10/"
@@ -229,7 +268,20 @@ name "/F30/"
 
 \end_inset
 
- Beagle uses existing 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ uses existing 
 \begin_inset ERT
 status open
 
@@ -260,7 +312,20 @@ name "/F40/"
 
 \end_inset
 
- Beagle supports the 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ supports the 
 \begin_inset ERT
 status open
 
@@ -297,8 +362,21 @@ name "/F50/"
 
 \end_inset
 
- Beagle provides a functionality to stop measurements by an adaptive timeout
- when enabled.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ provides a functionality to stop measurements by an adaptive timeout when
+ enabled.
  This means that it aborts a measurement when it exceeds a certain period
  of time.
  This timeout is adapted based on previous runs with the same or similar
@@ -338,7 +416,20 @@ name "/OF10/"
 
 \end_inset
 
- Beagle approximately determines relations between 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ approximately determines relations between 
 \begin_inset ERT
 status open
 
@@ -375,8 +466,20 @@ name "/OF20/"
 
 \end_inset
 
- Beagle determines the probability for each case to be taken in encountered
  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines the probability for each case to be taken in encountered 
 \begin_inset ERT
 status open
 
@@ -400,7 +503,20 @@ name "/OF30/"
 
 \end_inset
 
- Beagle determines 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/OF20/"
@@ -431,7 +547,20 @@ name "/OF40/"
 
 \end_inset
 
- Beagle determines the probable number of repeats in encountered 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines the probable number of repeats in encountered 
 \begin_inset ERT
 status open
 
@@ -455,7 +584,20 @@ name "/OF50/"
 
 \end_inset
 
- Beagle determines 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/OF40/"
@@ -494,8 +636,20 @@ name "/OF100/"
 
 \end_inset
 
- The user may choose whether Beagle will analyse the whole source code or
- only parts of it.
+ The user may choose whether 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ will analyse the whole source code or only parts of it.
 \end_layout
 
 \begin_layout Labeling
@@ -550,7 +704,20 @@ reference "/OF130/"
 
 \end_inset
 
-), even if Beagle was closed after pausing it.
+), even if 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ was closed after pausing it.
 \end_layout
 
 \begin_layout Labeling
@@ -561,7 +728,20 @@ name "/OF150/"
 
 \end_inset
 
- Beagle asserts that no input artefact (p.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ asserts that no input artefact (p.
  
 \begin_inset CommandInset ref
 LatexCommand pageref
@@ -594,10 +774,35 @@ name "/OF160/"
 
 \end_inset
 
- Beagle's results do not change, no matter how often the user chooses to
- pause and resume the measurements.
- Therefore Beagle assures approximately constant measurement conditions,
- e.g.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ results do not change, no matter how often the user chooses to pause and
+ resume the measurements.
+ Therefore 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ assures approximately constant measurement conditions, e.g.
  by heating up the CPU with load before starting measurements when resuming.
 \end_layout
 
@@ -609,8 +814,20 @@ name "/OF170/"
 
 \end_inset
 
- If requested by the user, Beagle shuts down the computer it's running on
- after it finished a measurement.
+ If requested by the user, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ shuts down the computer it's running on after it finished a measurement.
 \end_layout
 
 \begin_layout Section
@@ -629,7 +846,20 @@ name "/F200/"
 
 \end_inset
 
- Beagles stores all its results in the software's 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ stores all its results in the software's 
 \begin_inset ERT
 status open
 
@@ -707,7 +937,20 @@ name "/F220/"
 
 \end_inset
 
- As far as technically possible, Beagle's results can be read from the 
+ As far as technically possible, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ results can be read from the 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "result PCM"
@@ -727,7 +970,20 @@ gls{Palladio}
 
 \end_inset
 
- installation without Beagle.
+ installation without 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling
@@ -795,7 +1051,20 @@ name "/F240/"
 
 \end_inset
 
- Beagle does not remove any information from the provided 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not remove any information from the provided 
 \begin_inset ERT
 status open
 
@@ -834,7 +1103,20 @@ name "/OF200/"
 
 \end_inset
 
- If Beagle found parametrised results (e.g.
+ If 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ found parametrised results (e.g.
  in 
 \begin_inset CommandInset ref
 LatexCommand ref

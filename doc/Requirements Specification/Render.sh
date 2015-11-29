@@ -48,10 +48,6 @@ $1
 # Main Part #
 #############
 
-function renderuml {
-	/opt/Umlet/umlet.sh -action=convert -format=pdf -filename="$1" | tee -a $log || error
-}
-
 # generate .pdf from .uxf (Must happen before LyX runs!)
 log "Rendering the UML diagrams"
 # redirect stream 5 to 1 (stdout)
@@ -69,7 +65,7 @@ lyx -e pdflatex "$file.lyx" | tee -a $log || error
 
 # generate all the other stuff
 log "First pdflatex run"
-pdflatex -halt-on-error "$file.tex" >> $log || error
+pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" >> $log || error
 
 # make the glossary
 log "Generating the glossary"
@@ -82,13 +78,13 @@ bibtex "$file" | tee -a $log || error
 # render the pdf (we need at least two times. And you know… just to be sure ;))
 # The output of the first runs is irrelevant
 log "Second pdflatex run"
-pdflatex -halt-on-error "$file.tex" >> $log || error
+pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" || error
 log "Third pdflatex run"
-pdflatex -halt-on-error "$file.tex" >> $log || error
+pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" >> $log || error
 log "Fourth pdflatex run"
-pdflatex -halt-on-error "$file.tex" >> $log || error
+pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" >> $log || error
 log "Last pdflatex run"
-pdflatex -halt-on-error "$file.tex" | tee -a $log || error
+pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" | tee -a $log || error
 
 ####################
 # End of Main Part #

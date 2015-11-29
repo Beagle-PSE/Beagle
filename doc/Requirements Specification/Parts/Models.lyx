@@ -155,11 +155,44 @@ EmmaSun
  The only solution is to re-analyse the software system's source code and
  hopefully find all bottlenecks which can be repaired with less effort.
  But re-analysing source code is also a quite unmanageable task.
+<<<<<<< HEAD
  At this point, Beagle is employed.
 \end_layout
 
 \begin_layout Standard
 Beagle supports the team of 
+=======
+ So at this point, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ is used.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ helps the team of 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -172,8 +205,26 @@ glspl{software architect}
 
 \end_inset
 
+<<<<<<< HEAD
  commissioned by EmmaSun to analyse the entire software system.
  Since Beagle depends on a 
+=======
+ that was commissioned by EmmaSun to analyse the whole software.
+ As 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ depends on a 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -239,7 +290,24 @@ glspl{SEFF}
 \end_inset
 
 .
+<<<<<<< HEAD
  Having provided a monitoring software called 
+=======
+ Providing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ a monitoring software named 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -265,7 +333,24 @@ gls{Common Trace API}
 
 \end_inset
 
+<<<<<<< HEAD
  to Beagle, it starts to conduct measurements on individual software 
+=======
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ starts with conducting measurements on single software 
+>>>>>>> master
 \begin_inset ERT
 status open
 
@@ -306,7 +391,20 @@ gls{PCM}
 
 \end_inset
 
- and Beagle calls 
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ calls 
 \begin_inset ERT
 status open
 

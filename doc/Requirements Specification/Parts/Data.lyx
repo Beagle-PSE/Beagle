@@ -94,7 +94,20 @@ Reference notation is /D#/
 
 \begin_layout Standard
 In the following chapter, “the software” refers to the software a user wants
- to analyse with Beagle.
+ to analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+.
  The term refers not only to source code, but also its conceptional attributes,
  like its purpose, structure and 
 \begin_inset ERT
@@ -113,8 +126,20 @@ glslink{software architecture}{architecture}
 \end_layout
 
 \begin_layout Standard
-Beagle deals with two major data artefacts: The software's source code and
- an instance of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ deals with two major data artefacts: The software's source code and an
+ instance of the 
 \begin_inset ERT
 status open
 
@@ -159,8 +184,21 @@ name "input artefacts"
 \end_inset
 
 ).
- Beagle will use the provided data to execute its tasks and write its results
- back into the 
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ will use the provided data to execute its tasks and write its results back
+ into the 
 \begin_inset ERT
 status open
 
@@ -234,11 +272,37 @@ gls{JRE}
 
 \end_inset
 
- installed on the computer Beagle runs on, or
+ installed on the computer 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ runs on, or
 \end_layout
 
 \begin_layout Itemize
-be compilable by a JDK installed on the computer Beagle runs on.
+be compilable by a JDK installed on the computer 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ runs on.
 \end_layout
 
 \end_deeper
@@ -406,7 +470,20 @@ name "/OD20/"
 \end_inset
 
  User provided information about measurement timeouts.
- May be provided prior to or during Beagle's execution.
+ May be provided prior to or during 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ execution.
 \end_layout
 
 \begin_layout Section

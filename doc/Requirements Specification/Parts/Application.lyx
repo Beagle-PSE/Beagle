@@ -104,7 +104,20 @@ name "/A10/"
 
 \end_inset
 
- Beagle can be used to re-engineer source code.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ can be used to re-engineer source code.
  To start using 
 \begin_inset ERT
 status open
@@ -118,8 +131,20 @@ Gls{Palladio}
 
 \end_inset
 
- for an existing software, Beagle can be combined with a tool for static
- code analysis like 
+ for an existing software, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ can be combined with a tool for static code analysis like 
 \begin_inset ERT
 status open
 
@@ -199,8 +224,20 @@ reference "/A10/"
 
 \end_inset
 
-A typical workflow when using Beagle to re-engineer existing source code
- (
+A typical workflow when using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to re-engineer existing source code (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A10/"
@@ -228,7 +265,20 @@ name "/A20/"
 
 \end_inset
 
- Beagle can be used for software development.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ can be used for software development.
  Early implementations of 
 \begin_inset ERT
 status open
@@ -255,8 +305,21 @@ gls{PCM}
 
 \end_inset
 
- can be analysed with Beagle in order to predict their performance in interactio
-n with the software system.
+ can be analysed with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ in order to predict their performance in interaction with the software
+ system.
  This leads to earlier detection of arising problems (like implementation
  errors or unrealistic modelling in the 
 \begin_inset ERT
@@ -308,7 +371,20 @@ reference "/A20/"
 
 \end_inset
 
-A typical workflow when using Beagle during software development (
+A typical workflow when using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ during software development (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A20/"
@@ -336,7 +412,20 @@ name "/A30/"
 
 \end_inset
 
- Beagle may be used for prototyping.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ may be used for prototyping.
  Different implementations of a 
 \begin_inset ERT
 status open
@@ -363,7 +452,20 @@ gls{PCM}
 
 \end_inset
 
- may be analysed with Beagle to determine their 
+ may be analysed with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to determine their 
 \begin_inset ERT
 status open
 
@@ -430,7 +532,20 @@ reference "/A30/"
 
 \end_inset
 
-A typical workflow when using Beagle for prototyping (
+A typical workflow when using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ for prototyping (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A30/"
@@ -458,7 +573,20 @@ name "/A40/"
 
 \end_inset
 
- Beagle can be used to verify software's design and implementation.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ can be used to verify software's design and implementation.
  After developing the software with 
 \begin_inset ERT
 status open
@@ -485,7 +613,20 @@ gls{SoMoX}
 
 \end_inset
 
- and Beagle can be re-engineer a 
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ can be re-engineer a 
 \begin_inset ERT
 status open
 
@@ -537,7 +678,20 @@ reference "/A40/"
 
 \end_inset
 
-A typical workflow when using Beagle to verify the implementation (
+A typical workflow when using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to verify the implementation (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A40/"
@@ -600,7 +754,20 @@ Glspl{software architect}
 
 \end_inset
 
- will use Beagle predominantly for 
+ will use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A10/"
@@ -638,7 +805,20 @@ Glspl{system deployer}
 
 \end_inset
 
- will use Beagle predominantly for 
+ will use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A40/"
@@ -669,7 +849,20 @@ Glspl{component developer}
 
 \end_inset
 
- will use Beagle predominantly for 
+ will use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A20/"
