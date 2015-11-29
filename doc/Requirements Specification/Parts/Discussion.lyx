@@ -379,13 +379,35 @@ gls{Beagle}
 \end_inset
 
  must ensure the transferability and scalability of its measurement results
- across different hardware platforms.
+ across different hardware platforms, in order to abstract them from their
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{deployment context}
+\end_layout
+
+\end_inset
+
+.
  This stretches from software running on an average desktop pc via servers
  through to clusters of servers.
  Different hardware platforms vary in many different dimensions (CPU frequency,
  number of CPU cores, size and distribution of CPU caches, speed of RAM,
  network speed, hard disk throughput, etc.), yet the results have to be represent
 ative.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF60/"
+
+\end_inset
+
+ already addresses this.
 \end_layout
 
 \begin_layout Labeling
