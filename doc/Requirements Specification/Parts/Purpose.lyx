@@ -849,7 +849,7 @@ gls{Beagle}
 
 \end_inset
 
- provides users to control the analysis with a 
+ offers users a 
 \begin_inset ERT
 status open
 
@@ -862,7 +862,7 @@ gls{GUI}
 
 \end_inset
 
-.
+ to control the analysis .
 \begin_inset Float figure
 placement h
 wide false

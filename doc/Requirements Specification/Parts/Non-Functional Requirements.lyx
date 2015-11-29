@@ -904,8 +904,8 @@ gls{SoMoX}
 \end_layout
 
 \begin_layout Standard
-When users launches the analysis, they are presented a window where
- they can adapt certain 
+When users launch the analysis, they are presented a window where they can
+ adapt certain 
 \begin_inset ERT
 status open
 
@@ -929,7 +929,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is implemented, the users may adapt the default timeout.
+ is implemented, users may adapt the default timeout.
 \end_layout
 
 \begin_layout Enumerate
@@ -951,7 +951,7 @@ reference "/OQ40/"
 
 \end_inset
 
- is implemented, users can select to additionally benchmark their hardware
+ is implemented, users may choose to additionally benchmark their hardware
  system.
 \end_layout
 
