@@ -331,20 +331,7 @@ name "/C120/"
 
 \end_inset
 
- Beagle measures only one 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
- at a time, yet 
+ As Beagle should be able to measure on single 
 \begin_inset ERT
 status open
 
@@ -357,8 +344,23 @@ glspl{component}
 
 \end_inset
 
- interact with each other.
- If a 
+ (or bundles) at a time, some internal 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+, that are called during execution, may wished to be mocked (espacially
+ those, which take long time to return or do not return at all, e.g.
+ a GUI).
+ Mocking a 
 \begin_inset ERT
 status open
 
@@ -371,50 +373,9 @@ gls{component}
 
 \end_inset
 
- calls another 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
- that takes a long time to return or does not return at all (e.g.
- because it is waiting for some input or it is defective), it might be wished
- or required to mock this 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{component}
-\end_layout
-
-\end_inset
-
-.
- Whether imitation of other 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glsuserii{component}
-\end_layout
-
-\end_inset
-
- behaviour can be done automatically needs investigation.
- Such imitations may not affect the measurement results.
+ might be very effortful or even impossible.
+ If this problem cannot be solved, the user has to ensure, that all of these
+ are mocket, which need to be.
 \end_layout
 
 \begin_layout Labeling
