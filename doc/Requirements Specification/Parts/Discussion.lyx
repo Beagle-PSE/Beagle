@@ -263,6 +263,20 @@ gls{PCM}
 \end_layout
 
 \end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C40/"
+
+\end_inset
+
+ In the use of JaMopp the source code's Java version likely is restricted
+ by JaMopp.
+ To get Beagle independent from JaMopp can be useful for further projects,
+ to use higher Java versions functions.
+\end_layout
+
 \begin_layout Section
 Challenges
 \end_layout

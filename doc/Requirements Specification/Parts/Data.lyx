@@ -366,6 +366,20 @@ glspl{SEFF}
 \end_inset
 
  to the parts in the source code implementing them.
+ They must be modelled in the input 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{code decorator}{PCMs source code decorator}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Paragraph
