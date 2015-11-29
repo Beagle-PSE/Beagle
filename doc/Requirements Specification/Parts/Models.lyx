@@ -127,7 +127,7 @@ status collapsed
 \begin_layout Plain Layout
 All characters and organisations appearing in this work are fictitious.
  Any resemblance to real persons or companies, living or dead, is purely
- coincidental
+ coincidental.
 \end_layout
 
 \end_inset
@@ -809,7 +809,7 @@ status open
 
 
 \backslash
-glslabel{system}{software system}
+glslink{system}{software system}
 \end_layout
 
 \end_inset
@@ -831,7 +831,7 @@ gls{QoS}
  When analysing the imported model, they recognise significant differences
  between the initial predictions for the prototype and the ones made for
  the actual implementation.
- The necessity to check copy right violations and content integrity as well
+ The necessity to check copyright violations and content integrity as well
  as making backups and reporting progress to the user resulted in more network
  usage by the conversion 
 \begin_inset ERT
@@ -861,7 +861,7 @@ status collapsed
 \begin_layout Plain Layout
 All characters and organisations appearing in this work are fictitious.
  Any resemblance to real persons or companies, living or dead, is purely
- coincidental
+ coincidental.
 \end_layout
 
 \end_inset
