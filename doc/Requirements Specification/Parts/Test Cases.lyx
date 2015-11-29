@@ -807,7 +807,7 @@ name "/OT60/"
 
 \end_inset
 
- Assert that users are able to re-measure source code by measuring same
+ Assert that users are able to re-measure source code by measuring the same
  source code several times.
  Assert that the individual results are united correctly in the 
 \begin_inset CommandInset ref
@@ -836,7 +836,7 @@ name "/OT70/"
 \end_inset
 
  Assert that pausing and resuming measurements works as expected by testing
- same source code without pausing and several different numbers of pauses.
+ the same source code without pausing and several different numbers of pauses.
  The 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -846,7 +846,7 @@ reference "result PCM"
 
  has to be the same (because artificial input data is provided, which is
  not exposed to environmental influences).
- Optionally close 
+ Optionally, close 
 \begin_inset ERT
 status open
 
