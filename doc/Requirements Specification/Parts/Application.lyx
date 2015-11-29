@@ -148,8 +148,8 @@ gls{Palladio}
 
 .
  Modelling an existing software is such a time-consuming task that automatic
- modelling is a valuable feature that may be crucial for developers to start
- using 
+ modelling is a valuable feature which may be crucial to have for developers
+ who start using 
 \begin_inset ERT
 status open
 
@@ -162,7 +162,7 @@ gls{Palladio}
 
 \end_inset
 
-
+.
 \begin_inset Float figure
 placement h
 wide false
@@ -272,7 +272,7 @@ gls{PCM}
 
 \end_inset
 
-), which can hence be fixed in time.
+), which can then be fixed early on.
 \begin_inset Float figure
 placement h
 wide false
@@ -488,7 +488,7 @@ gls{SoMoX}
 
 \end_inset
 
- and Beagle can be re-engineer a 
+ or Beagle can re-engineer a 
 \begin_inset ERT
 status open
 
@@ -503,7 +503,7 @@ gls{PCM}
 
  which can then be compared to the initial one.
  With this approach, differences and problems in the implementation can
- be detected and resolved easier.
+ be detected and resolved more easily.
 \begin_inset Float figure
 placement h
 wide false
@@ -604,7 +604,7 @@ Glspl{software architect}
 
 \end_inset
 
- will use Beagle predominantly for 
+ can use Beagle predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A10/"
@@ -642,7 +642,7 @@ Glspl{system deployer}
 
 \end_inset
 
- will use Beagle predominantly for 
+ can use Beagle predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A40/"
@@ -673,7 +673,7 @@ Glspl{component developer}
 
 \end_inset
 
- will use Beagle predominantly for 
+ can use Beagle predominantly for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/A20/"
