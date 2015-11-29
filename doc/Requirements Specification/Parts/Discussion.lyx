@@ -141,7 +141,7 @@ gls{component-based software architecture}
 
 \end_inset
 
- (regarding each class as a 
+ (considering each class as a 
 \begin_inset ERT
 status open
 
@@ -169,7 +169,7 @@ gls{component-based software}
 
 \end_inset
 
- approach, but might still be analysed for their performance.
+ approach but might still be wanted to be analysed for their performance.
 \begin_inset Note Note
 status open
 
@@ -191,11 +191,11 @@ name "/C20/"
 
 \end_inset
 
- The measured software has a constant, deterministic runtime for a fixed
- configuration of input parameters, when ignoring influences of the hardware,
- operating system and error of measurement.
- This will be the case for most software.
- The fact the user tries to measure the software when using 
+ The measured software system has a constant, deterministic runtime for
+ a fixed configuration of input parameters when ignoring influences of the
+ hardware, the operating system, and the error of measurement.
+ This will be the case for most software systems.
+ The fact that the users try to measure the software system when using 
 \begin_inset ERT
 status open
 
@@ -208,7 +208,7 @@ gls{Beagle}
 
 \end_inset
 
- implies he expects it to behave in such a manner.
+ implies they expect it to behave in such a way.
 \end_layout
 
 \begin_layout Labeling
@@ -234,7 +234,7 @@ reference "input artefacts"
 
 \end_inset
 
-) are integer.
+) are integers.
  This means that all parts of the provided 
 \begin_inset ERT
 status open
@@ -248,7 +248,7 @@ gls{PCM}
 
 \end_inset
 
- describe the software correctly, completely and exactly like implemented
+ describe the software correctly, completely, and exactly like implemented
  in the source code.
  
 \begin_inset ERT
@@ -296,9 +296,9 @@ name "/C40/"
 
 \end_inset
 
- In the use of JaMopp the source code's Java version likely is restricted
- by JaMopp.
- To get 
+ When using JaMopp, the source code's Java version is probably restricted
+ by it.
+ Making 
 \begin_inset ERT
 status open
 
@@ -311,8 +311,9 @@ gls{Beagle}
 
 \end_inset
 
- independent from JaMopp can be useful for further projects, to use higher
- Java versions functions.
+ independent from JaMopp can be useful for future projects since they then
+ would be able to use functions of newer Java versions in the software system
+ to be tested.
 \end_layout
 
 \begin_layout Section
@@ -353,7 +354,7 @@ Turbo Boost
 Intel
 \noun default
  CPUs, reading the cores' temperature and making sure the CPU is in a real
- world application thermal state, and further measures.
+ world application thermal state, as well as further measures.
 \end_layout
 
 \begin_layout Labeling
@@ -408,7 +409,7 @@ gls{Beagle}
 
 \end_inset
 
- should be able to measure on specific 
+ should be able to measure specific 
 \begin_inset ERT
 status open
 
@@ -434,7 +435,7 @@ glspl{component}
 
 \end_inset
 
- of the software, that are called during the measured 
+ of the software which are called during the measured 
 \begin_inset ERT
 status open
 
@@ -447,8 +448,8 @@ glsuseri{component}
 
 \end_inset
 
- execution, may wished to be mocked (espacially those, which take long time
- to return or do not return at all, e.g.
+ execution may be desired to be mocked (especially those which take long
+ time to return or do not return at all, e.g.
  a GUI).
  Mocking a 
 \begin_inset ERT
@@ -478,7 +479,7 @@ name "/C130/"
 
  On modern operating systems, multitasking is the default.
  Users are used to work on multiple tasks at the same time and have multiple
- programs running.
+ programs running simultaneously.
  This could, however, influence 
 \begin_inset ERT
 status open
@@ -494,7 +495,7 @@ glsuseri{Beagle}
 
  measurement results.
  If a considerable impact on measurement results is recognised, strategies
- to avoid them can be developed.
+ to avoid them may be developed.
  These may including prompting the user to close certain applications.
  Users will likely be advised to provide a dedicated machine to run the
  measurements on.
@@ -521,7 +522,7 @@ gls{Beagle}
 
 \end_inset
 
- aims to parametrise its measurement results by the 
+ aims to parameterise its measurement results by the 
 \begin_inset ERT
 status open
 
@@ -546,11 +547,11 @@ glsuseri{component}
 
 \begin_deeper
 \begin_layout Itemize
-regression of multi-dimensional functions is a challenging task.
+Regression of multi-dimensional functions is a challenging task.
 \end_layout
 
 \begin_layout Itemize
-the 
+The 
 \begin_inset ERT
 status open
 
@@ -563,7 +564,7 @@ glsuserii{resource demand}
 
 \end_inset
 
- regression functions might likely not be continuous.
+ regression functions will probably not be continuous.
 \end_layout
 
 \begin_layout Itemize
@@ -573,7 +574,7 @@ It is unclear what the real number representation of an arbitrary Java object
 
 \begin_layout Standard
 Note that even if not all of the above points can be fully resolved, approximate
- parametrisation might still produce better results than no parametrisation
+ parametrisation might still produce better results than no parameterisation
  at all.
  The genetic programming approach (
 \begin_inset CommandInset ref
@@ -616,7 +617,7 @@ key "KrogmannPhD"
 
 \end_inset
 
- however describes an approach combining different sources of 
+, however, describes an approach combining different sources of 
 \begin_inset ERT
 status open
 
@@ -629,7 +630,7 @@ gls{resource demand}
 
 \end_inset
 
- demand data using genetic programming.
+ data using genetic programming.
  It aims to combine their advantages and would enable Beagle to create a
  more accurate model of 
 \begin_inset ERT
@@ -645,7 +646,7 @@ glspl{resource demand}
 \end_inset
 
 .
- Other performance measurement techniques, such as 
+ Other performance measurement techniques (such as 
 \begin_inset ERT
 status open
 
@@ -658,9 +659,9 @@ gls{ByCounter}
 
 \end_inset
 
- could be integrated.
- Whether this approach can be implemented in the scope of this project needs
- further investigation and consideration.
+) could be integrated.
+ Whether this approach can be implemented in the scope of this project,
+ needs further investigation and consideration.
 \end_layout
 
 \end_body
