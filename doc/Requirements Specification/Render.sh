@@ -78,7 +78,7 @@ bibtex "$file" | tee -a $log || error
 # render the pdf (we need at least two times. And you know… just to be sure ;))
 # The output of the first runs is irrelevant
 log "Second pdflatex run"
-pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" || error
+pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" >> $log || error
 log "Third pdflatex run"
 pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" >> $log || error
 log "Fourth pdflatex run"
