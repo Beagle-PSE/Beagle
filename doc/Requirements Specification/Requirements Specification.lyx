@@ -300,6 +300,17 @@ status open
 
 
 \backslash
+let
+\backslash
+labelorig
+\backslash
+label
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
 makeatletter
 \end_layout
 
@@ -309,29 +320,30 @@ makeatletter
 \backslash
 renewcommand{
 \backslash
-label}[1]{%
+label}[1]{
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\backslash
+edef
+\backslash
+@currentlabel{#1}% Set target label
+\end_layout
+
+\begin_layout Plain Layout
+
+	#1
 \end_layout
 
 \begin_layout Plain Layout
 
 	
 \backslash
-protected@write 
+phantomsection
 \backslash
-@auxout {}{
-\backslash
-string
-\backslash
-newlabel{#1}{{#1}{
-\backslash
-thepage}{#1}{#1}{}}}%
-\end_layout
-
-\begin_layout Plain Layout
-
-	
-\backslash
-hypertarget{#1}{#1}
+labelorig{#1}
 \end_layout
 
 \begin_layout Plain Layout
