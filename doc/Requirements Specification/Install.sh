@@ -10,7 +10,7 @@ set -e
 sudo add-apt-repository -y ppa:lyx-devel/release
 sudo apt-get update
 # Install dependency packages
-sudo apt-get install -qq lyx texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german xindy
+sudo apt-get install -qq lyx texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-lang-german xindy
 
 # Copy the lyx layout file to the private lyx layouts folder
 mkdir -p ~/.lyx/layouts
