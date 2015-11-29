@@ -120,46 +120,42 @@ Scenario
 \end_layout
 
 \begin_layout Standard
-Imagine
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-all the people, living life in peace! (You-hu) You may say I'm a dreamer,
- but I'm not the only one.
- I hope one day you'll join us and the world will be as one.
-\end_layout
-
-\end_inset
-
-, that a Java based online shop is running on a middle-class web server
- of a company named 
-\begin_inset Quotes eld
-\end_inset
-
-EmmaSun
-\begin_inset Quotes erd
-\end_inset
-
-.
+EmmaSun, a Java based online shop is running on a middle-class web server.
  During the first few years the software could deal with almost 99.9% of
- the requests and orders that are handled quite well without any delay.
+ its requests and orders, which were always handled quite well and without
+ any delay.
  After an enormous expansion since the last year, the user numbers are currently
- growing for about 5 percent each week.
+ growing for about 5% each week.
  Although the current servers are designed to fulfil a distinctly higher
  amount of user requests, the administration reported some few dropouts
  as well as increasing waiting times in single applications.
  Unfortunately, the software is based on an early design that has grown
  over years with missing documentation in many cases.
- The effort to re-write the complete software is an impossible act.
- The only solution is, to re-analyse the software's source code and hopefully
- find any bottlenecks that can be repaired with lesser effort.
- But re-analysing source code is also a quite unmanageable task.
- So at this point, Beagle is used.
+ The effort to re-write the complete software is unbearable.
+ The code also scales bad, so buying new servers will not solve the problem
+ either.
+ The only solution seems to re-analyse the software's source code and architectu
+re to hopefully find the bottlenecks that can be repaired with least effort.
+ EmmaSun's developers have heard of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ and think it could serve them well to overcome their issues.
+ Unfortunately, modelling all existing code is such a huge task that the
+ management is reluctant to take this step.
 \end_layout
 
 \begin_layout Standard
-Beagle helps the team of 
+At this point, 
 \begin_inset ERT
 status open
 
@@ -167,26 +163,12 @@ status open
 
 
 \backslash
-glspl{software architect}
+gls{Beagle}
 \end_layout
 
 \end_inset
 
- that was commissioned by EmmaSun to analyse the whole software.
- As Beagle depends on a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-, the architects use the reversed-engineering plug-in 
+ and 
 \begin_inset ERT
 status open
 
@@ -199,7 +181,21 @@ gls{SoMoX}
 
 \end_inset
 
- to create a valid 
+ come into play.
+ The team of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ that was commissioned by EmmaSun start to reverse-engineer a complete 
 \begin_inset ERT
 status open
 
@@ -212,7 +208,7 @@ gls{PCM}
 
 \end_inset
 
- including all software 
+ instance modelling all software 
 \begin_inset ERT
 status open
 
@@ -238,8 +234,21 @@ glspl{SEFF}
 
 \end_inset
 
+ using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
+\end_layout
+
+\end_inset
+
 .
- Providing Beagle a monitoring software named 
+ In conjunction with 
 \begin_inset ERT
 status open
 
@@ -252,7 +261,7 @@ gls{Kieker}
 
 \end_inset
 
-, that matches the 
+, 
 \begin_inset ERT
 status open
 
@@ -260,12 +269,12 @@ status open
 
 
 \backslash
-gls{Common Trace API}
+gls{Beagle}
 \end_layout
 
 \end_inset
 
-, Beagle starts with conducting measurements on single software 
+ is then used to conduct measurements on the software's 
 \begin_inset ERT
 status open
 
@@ -278,7 +287,7 @@ glspl{component}
 
 \end_inset
 
-, extending the 
+, adding resource demand information to the 
 \begin_inset ERT
 status open
 
@@ -292,21 +301,8 @@ gls{PCM}
 \end_inset
 
 .
- After around 6 hours of measuring, the results of measuring are added into
- the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- and Beagle calls 
+ After less than two days, the team is able to analyse its software with
+ 
 \begin_inset ERT
 status open
 
@@ -319,8 +315,8 @@ gls{Palladio}
 
 \end_inset
 
- to do a performance prediction.
- The prediction indicates an architectural violation of some software 
+ and run performance predictions for various improvements.
+ The analysis reveals an architectural violation of some software 
 \begin_inset ERT
 status open
 
@@ -333,15 +329,15 @@ glspl{component}
 
 \end_inset
 
-, that lead to a a huge amount of sub-function calls through hierarchical
- layers.
+, that lead to a a huge amount of inter-component calls throughout various
+ hierarchical layers.
 \end_layout
 
 \begin_layout Standard
-The software architects decide to add an extra cache, that can store the
- results of the sub-function calls and make them available immediately.
- Fortunately, before they turn this idea into reality, they can adopt this
- design decision into the 
+After revising several improvement approaches, EmmaSun's software architects
+ decide to add an extra cache which can store the results of most external
+ calls and makes them available immediately.
+ 
 \begin_inset ERT
 status open
 
@@ -349,27 +345,35 @@ status open
 
 
 \backslash
-gls{PCM}
+Glsuseri{Palladio}
+\end_layout
+
+\end_inset
+
+ predictions suggest that little changes in the software's architecture
+ adopting these changes will lead to a much better performance.
+ The software architects agree to implement the new design.
+\end_layout
+
+\begin_layout Standard
+After a two weeks, EmmaSun can already publish first improvements that improve
+ the shop's performance.
+ The development team continues to use Palladio to model and plan their
+ software's architecture, leading to further improvements in its code quality
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
 \end_layout
 
 \end_inset
 
 .
- The little changes in the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
- lead to a much better performance prediction and the software architects
- agree to re-implement the new design.
 \end_layout
 
 \end_body
