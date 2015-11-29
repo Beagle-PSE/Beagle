@@ -508,7 +508,7 @@ Two years later, EmmaSun emerged to be an established and much used online
  shop.
  The last years were busy and EmmaSun constantly hired new developers and
  deployed its software on an ever growing compound of servers.
- Because of its good experience with 
+ Because of their good experience with 
 \begin_inset ERT
 status open
 
@@ -521,9 +521,21 @@ gls{Palladio}
 
 \end_inset
 
-, EmmaSun's software architects never stopped to model their software in
- it.
- Because of this, the 
+, EmmaSun's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ never stopped to model their software in it.
+ Thus, the 
 \begin_inset ERT
 status open
 
@@ -553,13 +565,13 @@ gls{QoS}
 \end_layout
 
 \begin_layout Standard
-Today, EmmaSun's managers decided to offer a new, ground-braking feature:
+Today, EmmaSun's managers decided to offer a new, ground-breaking feature:
  Automatic audio conversion.
- For any audio piece, no matter whether it's sold on CD, tape or LP will
- automatically be offered to the user in various digital music formats,
- from high quality FLAC to small 128 kbit/s MP3.
- While the management isn't, EmmaSun's development team is fully aware of
- the implications on performance this feature will have.
+ Any audio piece, no matter whether it is sold on CD, tape or LP will automatica
+lly be offered to the user in various digital music formats, from high quality
+ FLAC to small 128 kbit/s MP3.
+ While the management is not, EmmaSun's development team is fully aware
+ of the implications on performance this feature will have.
  They decide that careful planing is crucial to offer a reliable and fast
  conversion service.
 \end_layout
@@ -607,10 +619,7 @@ glspl{system deployer}
 \end_inset
 
  to coordinate the necessary hardware changes.
- After that, 
-the 
-\lang british
-
+ After that, the 
 \begin_inset ERT
 status open
 
@@ -664,7 +673,7 @@ glspl{software architect}
 
 \end_inset
 
- then import each of these approaches into Palladio using 
+ then import each of these prototypes into Palladio using 
 \begin_inset ERT
 status open
 
@@ -819,12 +828,12 @@ gls{QoS}
 \end_inset
 
 .
- When comparing the new predictions, they recognise significant differences
+ When analysing the imported model, they recognise significant differences
  between the initial predictions for the prototype and the ones made for
  the actual implementation.
- Requirements to check copy right violations and content integrity as well
- as to making backups and reporting progress to the user resulted in more
- network usage by the conversion 
+ The necessity to check copy right violations and content integrity as well
+ as making backups and reporting progress to the user resulted in more network
+ usage by the conversion 
 \begin_inset ERT
 status open
 
