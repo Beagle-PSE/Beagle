@@ -166,8 +166,8 @@ glsuserv{system}
 
 \end_inset
 
- is based on an early design that has grown overthe years with missing documenta
-tion in many cases.
+ is based on an early design that has grown over the years with missing
+ documentation in many cases.
  The effort to completly re-write it is unbearable.
  The code also scales bad, so buying new servers will not solve the problem
  either.
