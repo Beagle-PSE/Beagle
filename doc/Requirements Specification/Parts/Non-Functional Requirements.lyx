@@ -533,7 +533,20 @@ glsuseri{component}
 
 \end_inset
 
- deployment context.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{deployment context}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Labeling

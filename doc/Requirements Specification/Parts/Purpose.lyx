@@ -547,10 +547,7 @@ glspl{resource demand}
 .
  While the first one simply determines how long a piece of code need to
  execute a given task on a given machine, the latter respects the implications
- 
-of 
-\lang british
-
+ of 
 \begin_inset ERT
 status open
 
@@ -603,7 +600,46 @@ glsuseri{component}
 
 \end_inset
 
- usage, deployment and assembly context.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{usage context}{usage}
+\end_layout
+
+\end_inset
+
+,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{deployment context}{deployment}
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{assembly context}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -762,7 +798,7 @@ gls{Palladio}
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Complements the above part.

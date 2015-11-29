@@ -228,7 +228,20 @@ glsuseri{component}
 
 \end_inset
 
- assembly context.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{assembly context}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
@@ -622,7 +635,20 @@ glsuseri{component}
 
 \end_inset
 
- usage context.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
@@ -765,7 +791,23 @@ glsuseri{component}
 
 \end_inset
 
- usage context.
+
+ 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
@@ -909,7 +951,20 @@ glsuseri{component}
 
 \end_inset
 
- usage context.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
