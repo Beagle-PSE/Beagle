@@ -487,7 +487,7 @@ name "/F60/"
 
 \end_inset
 
- The user can disable the adaptive timeout described in 
+ Users can disable the adaptive timeout described in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/F50/"
@@ -836,7 +836,7 @@ name "/OF100/"
 
 \end_inset
 
- The user may choose whether 
+ Users may choose whether 
 \begin_inset ERT
 status open
 
@@ -878,7 +878,7 @@ name "/OF110/"
 
 \end_inset
 
- The user may choose to re-analyse the source code or parts of it in order
+ Users may choose to re-analyse the source code or parts of it in order
  to either gain more precision or to reflect on source code changes.
 \begin_inset Note Note
 status open
@@ -907,7 +907,7 @@ name "/OF120/"
 
 \end_inset
 
- The user may launch and control a measurement running on another computer
+ Users may launch and control a measurement running on another computer
  over a network.
  
 \begin_inset Note Note
@@ -937,7 +937,7 @@ name "/OF130/"
 
 \end_inset
 
- The user may pause and resume a measurement.
+ Users may pause and resume a measurement.
  Pausing causes all analysis activity to stop.
  Resuming continues the analysis from the beginning of the measurement it
  was taking when it had been paused.
@@ -969,7 +969,7 @@ name "/OF140/"
 
 \end_inset
 
- The user may resume a paused measurement (
+ Users may resume a paused measurement (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/OF130/"

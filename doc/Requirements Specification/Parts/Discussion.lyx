@@ -195,7 +195,7 @@ name "/C20/"
  configuration of input parameters, when ignoring influences of the hardware,
  operating system and error of measurement.
  This will be the case for most software.
- The fact the user tries to measure the software when using 
+ The fact a user tries to measure the software when using 
 \begin_inset ERT
 status open
 
@@ -464,8 +464,21 @@ gls{component}
 \end_inset
 
  might be very effortful or even impossible.
- If this cannot be solved, Beagle may require the user to provide a test
- bed in which the measured components can be executed.
+ If this cannot be solved, Beagle may require users to provide a test bed
+ in which the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ can be executed.
 \end_layout
 
 \begin_layout Labeling
@@ -496,6 +509,8 @@ glsuseri{Beagle}
  If a considerable impact on measurement results is recognised, strategies
  to avoid them can be developed.
  These may including prompting the user to close certain applications.
+ Users will likely be advised to provide a dedicated machine to run the
+ measurements on.
 \end_layout
 
 \begin_layout Labeling
@@ -573,8 +588,93 @@ It is unclear what the real number representation of an arbitrary Java object
 Note that even if not all of the above points can be fully resolved, approximate
  parametrisation might still produce better results than no parametrisation
  at all.
+ The genetic programming approach (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/C150/"
+
+\end_inset
+
+) might help solving this, too.
 \end_layout
 
 \end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/C150/"
+
+\end_inset
+
+ This projects focuses on measuring using dynamic analysis tools that provide
+ their results through the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
+
+\end_inset
+
+ however describes an approach combining different sources of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{resource demand}
+\end_layout
+
+\end_inset
+
+ demand data using genetic programming.
+ It aims to combine their advantages and would enable Beagle to create a
+ more accurate model of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+ Other performance measurement techniques, such as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{ByCounter}
+\end_layout
+
+\end_inset
+
+ could be integrated.
+ Whether this approach can be implemented in the scope of this project needs
+ further investigation and consideration.
+\end_layout
+
 \end_body
 \end_document
