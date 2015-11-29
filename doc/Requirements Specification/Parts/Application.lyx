@@ -258,8 +258,8 @@ gls{PCM}
 
  can be analysed with Beagle in order to predict their performance in interactio
 n with the software system.
- This leads to earlier detection of arising problems (like implementation
- errors or unrealistic modelling in the 
+ This leads to fast detection of arising problems (like implementation errors
+ or unrealistic modelling in the 
 \begin_inset ERT
 status open
 
