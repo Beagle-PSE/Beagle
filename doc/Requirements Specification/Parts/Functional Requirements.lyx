@@ -429,7 +429,7 @@ gls{Beagle}
 
 \end_inset
 
- approximately determines relations between 
+ approximately determines coherences between 
 \begin_inset ERT
 status open
 
@@ -560,7 +560,7 @@ gls{Beagle}
 
 \end_inset
 
- determines the probable number of repeats in encountered 
+ determines the probable number of repetitions in encountered 
 \begin_inset ERT
 status open
 
@@ -649,7 +649,7 @@ gls{Beagle}
 
 \end_inset
 
- will analyse the whole source code or only parts of it.
+ will analyse the entire source code or only parts of it.
 \end_layout
 
 \begin_layout Labeling
@@ -660,8 +660,8 @@ name "/OF110/"
 
 \end_inset
 
- The user may choose to re-measure the source code or parts of it, in order
- to either gain more precision or to reflect source code changes.
+ The user may choose to re-analyse the source code or parts of it in order
+ to either gain more precision or to reflect on source code changes.
 \end_layout
 
 \begin_layout Labeling
@@ -685,8 +685,9 @@ name "/OF130/"
 \end_inset
 
  The user may pause and resume a measurement.
- Pausing causes all measurement activity to stop.
- Resuming continues the measurement from where they were paused.
+ Pausing causes all analysis activity to stop.
+ Resuming continues the analysis from the beginning of the measurement it
+ was taking when it had been paused.
 \end_layout
 
 \begin_layout Labeling
@@ -704,7 +705,7 @@ reference "/OF130/"
 
 \end_inset
 
-), even if 
+) even if 
 \begin_inset ERT
 status open
 
@@ -717,7 +718,7 @@ gls{Beagle}
 
 \end_inset
 
- was closed after pausing it.
+ had been closed after pausing it.
 \end_layout
 
 \begin_layout Labeling
@@ -749,7 +750,7 @@ reference "/OD140/"
 
 \end_inset
 
-) was changed between pausing (
+) has been changed between pausing (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/OF130/"
@@ -763,7 +764,7 @@ reference "/OF140/"
 
 \end_inset
 
-) a measurement to assure its result's integrity.
+) an analysis to assure its result's integrity.
 \end_layout
 
 \begin_layout Labeling
