@@ -1262,6 +1262,7 @@ gls{PCM}, software architects create the assembly model, specifying how
  existing 
 \backslash
 glspl{component} are composed.
+ 
 \backslash
 cite{PCMtechreport}
 \end_layout
