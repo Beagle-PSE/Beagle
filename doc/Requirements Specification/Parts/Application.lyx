@@ -162,8 +162,7 @@ gls{Palladio}
 
 \end_inset
 
-.
- 
+
 \begin_inset Float figure
 placement h
 wide false
@@ -274,10 +273,6 @@ gls{PCM}
 \end_inset
 
 ), which can hence be fixed in time.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
 \begin_inset Float figure
 placement h
 wide false
@@ -401,10 +396,6 @@ Gls{Palladio}
  implementation.
  As performance is multi-dimensional, this can lead to more precise information
  about the different implementation's effects on the system's runtime.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
 \begin_inset Float figure
 placement h
 wide false
@@ -513,10 +504,6 @@ gls{PCM}
  which can then be compared to the initial one.
  With this approach, differences and problems in the implementation can
  be detected and resolved easier.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
 \begin_inset Float figure
 placement h
 wide false
@@ -571,10 +558,6 @@ reference "/A40/"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 
 \end_layout
 
