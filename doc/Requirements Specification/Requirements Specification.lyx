@@ -53,9 +53,25 @@
 % Make floats work batter with Koma book
 \usepackage{scrhack}
 
+% No page anchors and no page numbers for the title pages
+\hypersetup{pageanchor=false}
+\pagenumbering{gobble}
+
 % Adding package bookmark improves bookmarks handling.
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
+
+% Set the PDF metadata
+\hypersetup{
+    pdftitle={Beagle --- Software Requirements Specification},
+    pdfsubject={Beagle is a tool for automatic dynamic source code analysis in order to find resource demands of component based software’s components’ internal actions.},
+    pdfauthor={Annika Berger, Joshua Gleitze, Roman Langrehr, Christoph Michelbach, Ansgar Spiegler, Michael Vogt},
+    pdfkeywords={component based software, dynamic analysis, reverse engeneering, resource demands, SoMoX, Beagle, Palladio, Eclipse, Common Trace API},
+    pdfcreator={LyX, pdflatex},
+    pdfproducer={LaTeX},
+    hidelinks,
+    breaklinks
+}
 \end_preamble
 \options english,final
 \use_default_options true
@@ -64,7 +80,7 @@ enumitem
 \end_modules
 \maintain_unincluded_children false
 \language british
-\language_package babel
+\language_package auto
 \inputencoding utf8
 \fontencoding global
 \font_roman default
@@ -82,6 +98,7 @@ enumitem
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement tph
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -210,14 +227,14 @@ status open
 
 \begin_layout Plain Layout
 
-% Set the PDF metadata
+% Enable hyperref page anchors again
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-setpdf
+hypersetup{pageanchor=true}
 \end_layout
 
 \begin_layout Plain Layout
@@ -713,7 +730,7 @@ status open
 
 
 \backslash
-glossarystyle{altlist}
+setglossarystyle{altlist}
 \end_layout
 
 \begin_layout Plain Layout

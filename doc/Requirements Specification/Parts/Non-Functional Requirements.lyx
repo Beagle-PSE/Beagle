@@ -325,6 +325,30 @@ name "/Q110/"
 
 \end_inset
 
+ Beagle uses native Eclipse features for its 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/Q120/"
+
+\end_inset
+
  Beagle can be controlled by context sensitive menus in Eclipse.
  
 \begin_inset Note Note
@@ -464,7 +488,7 @@ status open
 
 
 \backslash
-gls{GUI}
+glsentryshort{GUI}
 \end_layout
 
 \end_inset
