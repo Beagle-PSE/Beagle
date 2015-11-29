@@ -1658,6 +1658,49 @@ cite{KrogmannPhD}.
 }
 \end_layout
 
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{ByCounter}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={ByCounter},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		tool that instruments Java bytecode and executes it in order to count
+ how often each method and Java Byte Code instruction is called.
+ The resulting counts may serve as fine-grained, deployment-independent
+ information about the measured code's 
+\backslash
+glspl{resource demand} 
+\backslash
+cite{ByCounterPaper}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
 \end_inset
 
 
