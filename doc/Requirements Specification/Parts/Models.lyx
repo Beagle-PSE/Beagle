@@ -116,46 +116,37 @@ The chapter should contain:
 \end_layout
 
 \begin_layout Section
-Scenario
+Scenario 1
 \end_layout
 
 \begin_layout Standard
-Imagine
-\begin_inset Note Note
-status open
+EmmaSun
+\begin_inset Foot
+status collapsed
 
 \begin_layout Plain Layout
-all the people, living life in peace! (You-hu) You may say I'm a dreamer,
- but I'm not the only one.
- I hope one day you'll join us and the world will be as one.
+All characters and organisations appearing in this work are fictitious.
+ Any resemblance to real persons or companies, living or dead, is purely
+ coincidental.
 \end_layout
 
 \end_inset
 
-, that a Java based online shop is running on a middle-class web server
- of a company named 
-\begin_inset Quotes eld
-\end_inset
-
-EmmaSun
-\begin_inset Quotes erd
-\end_inset
-
-.
+, a Java based online shop is running on a middle-class web server.
  During the first few years the software could deal with almost 99.9% of
- the requests and orders that are handled quite well without any delay.
+ its requests and orders, which were always handled quite well and without
+ any delay.
  After an enormous expansion since the last year, the user numbers are currently
- growing for about 5 percent each week.
+ growing for about 5% each week.
  Although the current servers are designed to fulfil a distinctly higher
  amount of user requests, the administration reported some few dropouts
  as well as increasing waiting times in single applications.
  Unfortunately, the software is based on an early design that has grown
  over years with missing documentation in many cases.
- The effort to re-write the complete software is an impossible act.
- The only solution is, to re-analyse the software's source code and hopefully
- find any bottlenecks that can be repaired with lesser effort.
- But re-analysing source code is also a quite unmanageable task.
- So at this point, 
+ The effort to re-write the complete software is unbearable.
+ The code also scales bad, so buying new servers will not solve the problem
+ either.
+ The only solution seems to re-analyse the software's source code and 
 \begin_inset ERT
 status open
 
@@ -163,15 +154,32 @@ status open
 
 
 \backslash
-gls{Beagle}
+glslabel{software architecture}{architecture}
 \end_layout
 
 \end_inset
 
- is used.
+ to hopefully find the bottlenecks that can be repaired with least effort.
+ EmmaSun's developers have heard of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ and think it could serve them well to overcome their issues.
+ Unfortunately, modelling all existing code is such a huge task that the
+ management is reluctant to take this step.
 \end_layout
 
 \begin_layout Standard
+At this point, 
 \begin_inset ERT
 status open
 
@@ -184,47 +192,7 @@ gls{Beagle}
 
 \end_inset
 
- helps the team of 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{software architect}
-\end_layout
-
-\end_inset
-
- that was commissioned by EmmaSun to analyse the whole software.
- As 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- depends on a 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{PCM}
-\end_layout
-
-\end_inset
-
-, the architects use the reversed-engineering plug-in 
+ and 
 \begin_inset ERT
 status open
 
@@ -237,7 +205,21 @@ gls{SoMoX}
 
 \end_inset
 
- to create a valid 
+ come into play.
+ The team of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ that was commissioned by EmmaSun start to reverse-engineer a complete 
 \begin_inset ERT
 status open
 
@@ -250,7 +232,7 @@ gls{PCM}
 
 \end_inset
 
- including all software 
+ instance modelling all software 
 \begin_inset ERT
 status open
 
@@ -276,8 +258,7 @@ glspl{SEFF}
 
 \end_inset
 
-.
- Providing 
+ using 
 \begin_inset ERT
 status open
 
@@ -285,12 +266,13 @@ status open
 
 
 \backslash
-gls{Beagle}
+gls{SoMoX}
 \end_layout
 
 \end_inset
 
- a monitoring software named 
+.
+ In conjunction with 
 \begin_inset ERT
 status open
 
@@ -299,19 +281,6 @@ status open
 
 \backslash
 gls{Kieker}
-\end_layout
-
-\end_inset
-
-, that matches the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Common Trace API}
 \end_layout
 
 \end_inset
@@ -329,7 +298,7 @@ gls{Beagle}
 
 \end_inset
 
- starts with conducting measurements on single software 
+ is then used to conduct measurements on the software's 
 \begin_inset ERT
 status open
 
@@ -342,7 +311,20 @@ glspl{component}
 
 \end_inset
 
-, extending the 
+, adding 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{resource demand}
+\end_layout
+
+\end_inset
+
+ information to the 
 \begin_inset ERT
 status open
 
@@ -356,8 +338,260 @@ gls{PCM}
 \end_inset
 
 .
- After around 6 hours of measuring, the results of measuring are added into
- the 
+ After less than two days, the team is able to analyse its software with
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ and run performance predictions for various approaches of improvement.
+ The analysis reveals an 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslabel{software architecture}{architectural}
+\end_layout
+
+\end_inset
+
+ violation of some software 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+, which leads to a a huge amount of inter-
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+ calls throughout various hierarchical layers.
+\end_layout
+
+\begin_layout Standard
+After revising several improvement approaches, EmmaSun's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ decide to add an extra cache which can store the results of most external
+ calls and makes them available immediately.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Glsuseri{Palladio}
+\end_layout
+
+\end_inset
+
+ predictions suggest that little changes in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseriii{software architecture}
+\end_layout
+
+\end_inset
+
+ adopting these changes will lead to a much better performance.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ agree to implement the new design.
+\end_layout
+
+\begin_layout Standard
+After a two weeks, EmmaSun can already publish first changes that improve
+ the shop's performance.
+ The development team continues to use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ to model and plan their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseriii{software architecture}
+\end_layout
+
+\end_inset
+
+, leading to further improvements in its code quality and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Scenario 2
+\end_layout
+
+\begin_layout Standard
+Two years later, EmmaSun emerged to be an established and much used online
+ shop.
+ The last years were busy and EmmaSun constantly hired new developers and
+ deployed its software on an ever growing compound of servers.
+ Because of their good experience with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+, EmmaSun's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ never stopped to model their software in it.
+ Thus, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseriii{software architecture}
+\end_layout
+
+\end_inset
+
+ became more and more sophisticated, increasing EmmaSun's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
+\end_layout
+
+\end_inset
+
+ along the way.
+\end_layout
+
+\begin_layout Standard
+Today, EmmaSun's managers decided to offer a new, ground-breaking feature:
+ Automatic audio conversion.
+ Any audio piece, no matter whether it is sold on CD, tape or LP will automatica
+lly be offered to the user in various digital music formats, from high quality
+ FLAC to small 128 kbit/s MP3.
+ While the management is not, EmmaSun's development team is fully aware
+ of the implications on performance this feature will have.
+ They decide that careful planing is crucial to offer a reliable and fast
+ conversion service.
+\end_layout
+
+\begin_layout Standard
+As usual, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ start to model the new feature's sub-architecture and components in the
+ 
 \begin_inset ERT
 status open
 
@@ -366,6 +600,88 @@ status open
 
 \backslash
 gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ They cooperate close-meshed with the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{system deployer}
+\end_layout
+
+\end_inset
+
+ to coordinate the necessary hardware changes.
+ After that, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component developer}
+\end_layout
+
+\end_inset
+
+ start to implement the new 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+.
+ They soon realise that there are multiple ways to implement the conversion
+ engine.
+ Especially, there are different ways to parallelise the task.
+ Different developers come up with different approaches, all having there
+ pro and contra arguments.
+ The development lead soon realises that the effective performance will
+ depend highly on the component's usage and deployment and cannot be predicted
+ by simple measurements.
+ 
+\end_layout
+
+\begin_layout Standard
+To determine the best solution, the developers start to implement a prototype
+ for each approach.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ then import each of these prototypes into Palladio using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SoMoX}
 \end_layout
 
 \end_inset
@@ -383,7 +699,70 @@ gls{Beagle}
 
 \end_inset
 
- calls 
+, like they did two years ago.
+ In Palladio, they are able to simulate the load they think the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{system}
+\end_layout
+
+\end_inset
+
+ will face on the new servers planned for purchase.
+ Using the predictions, they are able to determine which approach will perform
+ best for the planned context.
+ The development team starts to implement it.
+\end_layout
+
+\begin_layout Standard
+Four months later, the new feature is almost ready to be launched.
+ Most code has been written and basic functionality has been asserted.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component developer}
+\end_layout
+
+\end_inset
+
+ are mainly fixing minor bugs while the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{system deployer}
+\end_layout
+
+\end_inset
+
+ prepare to purchase and install the newly required hardware.
+ Meanwhile, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{software architect}
+\end_layout
+
+\end_inset
+
+ import the new code into 
 \begin_inset ERT
 status open
 
@@ -396,8 +775,7 @@ gls{Palladio}
 
 \end_inset
 
- to do a performance prediction.
- The prediction indicates an architectural violation of some software 
+ using 
 \begin_inset ERT
 status open
 
@@ -405,20 +783,12 @@ status open
 
 
 \backslash
-glspl{component}
+gls{SoMoX}
 \end_layout
 
 \end_inset
 
-, that lead to a a huge amount of sub-function calls through hierarchical
- layers.
-\end_layout
-
-\begin_layout Standard
-The software architects decide to add an extra cache, that can store the
- results of the sub-function calls and make them available immediately.
- Fortunately, before they turn this idea into reality, they can adopt this
- design decision into the 
+ and 
 \begin_inset ERT
 status open
 
@@ -426,13 +796,44 @@ status open
 
 
 \backslash
-gls{PCM}
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to assure the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{system}{software system}
+\end_layout
+
+\end_inset
+
+ will hold the predicted 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
 \end_layout
 
 \end_inset
 
 .
- The little changes in the 
+ When analysing the imported model, they recognise significant differences
+ between the initial predictions for the prototype and the ones made for
+ the actual implementation.
+ The necessity to check copyright violations and content integrity as well
+ as making backups and reporting progress to the user resulted in more network
+ usage by the conversion 
 \begin_inset ERT
 status open
 
@@ -440,13 +841,39 @@ status open
 
 
 \backslash
-gls{PCM}
+gls{component}
 \end_layout
 
 \end_inset
 
- lead to a much better performance prediction and the software architects
- agree to re-implement the new design.
+ than predicted.
+ Fortunately, this bottleneck can be fixed by using better network infrastructur
+e hardware.
+\end_layout
+
+\begin_layout Standard
+When the new conversion feature is released, users are astonished by its
+ speed.
+ EmmaSun's largest competitor, Million Shopping
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+All characters and organisations appearing in this work are fictitious.
+ Any resemblance to real persons or companies, living or dead, is purely
+ coincidental.
+\end_layout
+
+\end_inset
+
+, releases a similar feature soon after.
+ But as users start using it, it becomes slower and unreliable, resulting
+ in unsatisfied customers and sometimes even failed transactions.
+ EmmaSun's services, on the other hand, prove to be reliable and scale very
+ well.
+ A year later, EmmaSun will call the feature one of the main reasons they
+ became the world's leading online shop.
+ 
 \end_layout
 
 \end_body
