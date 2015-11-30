@@ -108,8 +108,20 @@ Reference notation for nice to have requirements is /OQ#/
 
 \end_inset
 
-In order to be as independent as possible and to provide good quality of
- service and user experience, 
+In order to be as independent as possible and to provide good 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
+\end_layout
+
+\end_inset
+
+ and user experience, 
 \begin_inset ERT
 status open
 
@@ -858,7 +870,20 @@ To analyse the entire project, there is an entry
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -892,11 +917,37 @@ lstinline{.repository_diagram}
 \end_layout
 
 \begin_layout Enumerate
-To analyse a single component, there is an entry 
+To analyse a single 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+, there is an entry 
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -934,7 +985,20 @@ gls{internal action}
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1139,7 +1203,20 @@ reference "/OF140/"
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1147,7 +1224,20 @@ Analyse with Beagle
 \begin_inset Quotes eld
 \end_inset
 
-Resume Latest Beagle Analysis
+Resume Latest 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ Analysis
 \begin_inset Quotes erd
 \end_inset
 
