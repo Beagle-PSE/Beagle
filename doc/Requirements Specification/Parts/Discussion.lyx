@@ -472,7 +472,20 @@ glsuseri{component}
 
  execution may be desired to be mocked (especially those which take long
  time to return or do not return at all, e.g.
- a GUI).
+ a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+).
  Mocking a 
 \begin_inset ERT
 status open
@@ -487,8 +500,20 @@ gls{component}
 \end_inset
 
  might be very effortful or even impossible.
- If this cannot be solved, Beagle may require users to provide a test bed
- in which the measured 
+ If this cannot be solved, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ may require users to provide a test bed in which the measured 
 \begin_inset ERT
 status open
 
@@ -666,8 +691,20 @@ gls{resource demand}
 \end_inset
 
  data using genetic programming.
- It aims to combine their advantages and would enable Beagle to create a
- more accurate model of 
+ It aims to combine their advantages and would enable 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to create a more accurate model of 
 \begin_inset ERT
 status open
 

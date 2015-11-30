@@ -270,8 +270,20 @@ glsuseri{component}
 
 \end_inset
 
- interaction with a software system or to freshly start analysing existing
- software.
+ interaction with a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserv{system}
+\end_layout
+
+\end_inset
+
+ or to freshly start analysing existing software.
  For such cases, 
 \begin_inset ERT
 status open

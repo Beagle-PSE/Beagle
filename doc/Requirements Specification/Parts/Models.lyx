@@ -417,7 +417,20 @@ gls{component}
 
 \end_inset
 
- calls throughout various hierarchical layers.
+ calls throughout various hierarchical 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{layer}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -615,8 +628,20 @@ glspl{software architect}
 
 \end_inset
 
- start to model the new feature's sub-architecture and components in the
- 
+ start to model the new feature's sub-architecture and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ in the 
 \begin_inset ERT
 status open
 
@@ -677,8 +702,46 @@ glspl{component}
  Different developers come up with different approaches, all having their
  advatages and disadvantages.
  The development management soon realises that the effective performance
- will depend highly on the component's usage and deployment and cannot be
- predicted by simple measurements.
+ will depend highly on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{usage context}{usage}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{deployment context}{deployment}
+\end_layout
+
+\end_inset
+
+ and cannot be predicted by simple measurements.
  
 \end_layout
 
@@ -698,7 +761,20 @@ glspl{software architect}
 
 \end_inset
 
- then import each of these prototypes into Palladio using 
+ then import each of these prototypes into 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ using 
 \begin_inset ERT
 status open
 
@@ -725,7 +801,20 @@ gls{Beagle}
 \end_inset
 
 , like they did two years ago.
- In Palladio, they are able to simulate the load they think the 
+ In 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+, they are able to simulate the load they think the 
 \begin_inset ERT
 status open
 
