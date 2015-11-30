@@ -715,7 +715,33 @@ glsuserii{component}
 
 \end_inset
 
- usage and deployment and cannot be predicted by simple measurements.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{usage context}{usage}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{deployment context}{deployment}
+\end_layout
+
+\end_inset
+
+ and cannot be predicted by simple measurements.
  
 \end_layout
 
