@@ -318,7 +318,20 @@ gls{Beagle}
 
 \end_inset
 
-in order to predict their performance in interaction with the software system.
+ in order to predict their performance in interaction with the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserv{system}
+\end_layout
+
+\end_inset
+
+.
  This leads to fast detection of arising problems (like implementation errors
  or unrealistic modelling in the 
 \begin_inset ERT
@@ -612,7 +625,7 @@ gls{SoMoX}
 
 \end_inset
 
- or
+ or 
 \begin_inset ERT
 status open
 
@@ -625,7 +638,7 @@ gls{Beagle}
 
 \end_inset
 
-can reverse-engineer a 
+ can reverse-engineer a 
 \begin_inset ERT
 status open
 
