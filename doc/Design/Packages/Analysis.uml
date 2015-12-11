@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NF-VcKBSEeWVfMeWaVID2g" name="Analysis">
+  <packagedElement xmi:type="uml:Component" xmi:id="_-0sUEKBEEeWVfMeWaVID2g" name="Genetic Analyser">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_9k9i0KBKEeWVfMeWaVID2g" name="Port1" type="_-0sUEKBEEeWVfMeWaVID2g" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_OSA9sKBFEeWVfMeWaVID2g" name="Analyser">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_h7aUQKBHEeWVfMeWaVID2g" name="Operation1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_R1qb4KBLEeWVfMeWaVID2g" supplier="_OSA9sKBFEeWVfMeWaVID2g">
+    <client xmi:type="uml:Component" href="Beagle%20Core.uml#_CEbRYKBDEeWVfMeWaVID2g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_Byzm0KBMEeWVfMeWaVID2g" name="Interpolation Analyser">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_G1ongKBMEeWVfMeWaVID2g" name="Port1" type="_Byzm0KBMEeWVfMeWaVID2g" aggregation="composite"/>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_MNmKsKBMEeWVfMeWaVID2g" client="_Byzm0KBMEeWVfMeWaVID2g" supplier="_OSA9sKBFEeWVfMeWaVID2g" contract="_OSA9sKBFEeWVfMeWaVID2g"/>
+  </packagedElement>
+</uml:Package>
