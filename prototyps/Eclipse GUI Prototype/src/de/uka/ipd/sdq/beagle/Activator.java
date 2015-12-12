@@ -1,4 +1,4 @@
-package eclipse_gui_protoype;
+package de.uka.ipd.sdq.beagle;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

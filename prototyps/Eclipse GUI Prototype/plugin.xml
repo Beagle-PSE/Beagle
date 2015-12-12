@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+         
+    <menuContribution locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+      <command
+            commandId="de.uka.ipd.sdq.beagle.startBeagle"
+            id="de.uka.ipd.sdq.beagle.fileExplorerContextMenuEntry"
+            label="Beagle is alive!"
+            style="push">
+      </command>
+    </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="de.uka.ipd.sdq.beagle.handler.DemoBeagleContextMenuEntryHandler"
+            id="de.uka.ipd.sdq.beagle.startBeagle"
+            name="Run Beagle">
+      </command>
+   </extension>
+
+</plugin>
