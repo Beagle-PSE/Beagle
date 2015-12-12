@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Mqc3EKBSEeWVfMeWaVID2g" name="Beagle Core" URI="">
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Mqc3EKBSEeWVfMeWaVID2g" name="Beagle Core" URI="">
   <packagedElement xmi:type="uml:Component" xmi:id="_CEbRYKBDEeWVfMeWaVID2g" name="Beagle Core">
     <ownedAttribute xmi:type="uml:Port" xmi:id="__TQGEKBJEeWVfMeWaVID2g" name="Port1" type="_CEbRYKBDEeWVfMeWaVID2g" aggregation="composite"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_F0ULoKDUEeWv3dQk34uqzw" name="Blackboard">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_P-jNMKDjEeWVpfCzK8hwSg" name="SEFF Loops" type="_7RjZsKDiEeWVpfCzK8hwSg" aggregation="composite" association="_P-dGkKDjEeWVpfCzK8hwSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ys7bUKDkEeWVpfCzK8hwSg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ytA64KDkEeWVpfCzK8hwSg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_YO4PMKDkEeWVpfCzK8hwSg" name="SEFF Branches" type="_DUhKkKDjEeWVpfCzK8hwSg" aggregation="composite" association="_YO1L4KDkEeWVpfCzK8hwSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5GKOQKDkEeWVpfCzK8hwSg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5GN4oKDkEeWVpfCzK8hwSg" value="*"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UhwnwaDlEeWVpfCzK8hwSg" name="RDIAs" type="_GLvPUKDjEeWVpfCzK8hwSg" aggregation="composite" association="_UhvZoKDlEeWVpfCzK8hwSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Z42oQKDlEeWVpfCzK8hwSg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Z44dcKDlEeWVpfCzK8hwSg" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_I-iE4KDUEeWv3dQk34uqzw" name="Beagle Controller">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_WdHJ4KDUEeWv3dQk34uqzw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_WdBqUKDUEeWv3dQk34uqzw"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_zcUEIKDUEeWv3dQk34uqzw" name="main">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_i3kqAKDVEeWv3dQk34uqzw" annotatedElement="_zcUEIKDUEeWv3dQk34uqzw">
+        <body>prepareInputArtefacts()
+while (¬finished) do
+	</body>
+      </ownedComment>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WdBqUKDUEeWv3dQk34uqzw" name="Beagle Controller -> Blackboard" memberEnd="_WdHJ4KDUEeWv3dQk34uqzw _WdMCYKDUEeWv3dQk34uqzw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WdEtoKDUEeWv3dQk34uqzw" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WdFUsKDUEeWv3dQk34uqzw" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_WdMCYKDUEeWv3dQk34uqzw" type="_I-iE4KDUEeWv3dQk34uqzw" association="_WdBqUKDUEeWv3dQk34uqzw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7RjZsKDiEeWVpfCzK8hwSg" name="SEFF Loop"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_DUhKkKDjEeWVpfCzK8hwSg" name="SEFF Branch"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_P-dGkKDjEeWVpfCzK8hwSg" name="Blackboard SEFF Loop List" memberEnd="_P-jNMKDjEeWVpfCzK8hwSg _P-j0QKDjEeWVpfCzK8hwSg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_P-hYAKDjEeWVpfCzK8hwSg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_P-h_EKDjEeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_P-j0QKDjEeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_P-dGkKDjEeWVpfCzK8hwSg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_9m3OwKDjEeWVpfCzK8hwSg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9m9VYKDjEeWVpfCzK8hwSg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YO1L4KDkEeWVpfCzK8hwSg" name="Blackboard SEFF Branches List" memberEnd="_YO4PMKDkEeWVpfCzK8hwSg _YO42QKDkEeWVpfCzK8hwSg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YO3BEKDkEeWVpfCzK8hwSg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YO3oIKDkEeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_YO42QKDkEeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_YO1L4KDkEeWVpfCzK8hwSg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_UhvZoKDlEeWVpfCzK8hwSg" name="Blackboard RDIA List" memberEnd="_UhwnwaDlEeWVpfCzK8hwSg _UhxO0KDlEeWVpfCzK8hwSg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UhwAsKDlEeWVpfCzK8hwSg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UhwnwKDlEeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_UhxO0KDlEeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_UhvZoKDlEeWVpfCzK8hwSg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GLvPUKDjEeWVpfCzK8hwSg" name="Resource Demanding Internal Action"/>
 </uml:Package>
