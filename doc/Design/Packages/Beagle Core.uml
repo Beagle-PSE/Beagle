@@ -144,6 +144,7 @@ write results()</body>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_5qdooKD5EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="read"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_lNXa4KEQEeWQRf-no0GeMA" name="Stochastic Expression"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_P-dGkKDjEeWVpfCzK8hwSg" name="Blackboard SEFF Loop List" visibility="public" memberEnd="_P-jNMKDjEeWVpfCzK8hwSg _P-j0QKDjEeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_P-hYAKDjEeWVpfCzK8hwSg" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_P-h_EKDjEeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
@@ -225,14 +226,12 @@ write results()</body>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_88e9kKD6EeWVpfCzK8hwSg" name="beagle controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_88asIKD6EeWVpfCzK8hwSg"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_lNXa4KEQEeWQRf-no0GeMA" name="Stochastic Expression"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_JUmncKEUEeWQRf-no0GeMA" memberEnd="_JUsHAKEUEeWQRf-no0GeMA _JUsuEKEUEeWQRf-no0GeMA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JUq44KEUEeWQRf-no0GeMA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JUq44aEUEeWQRf-no0GeMA" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_JUsuEKEUEeWQRf-no0GeMA" name="measurement controller" type="_gq6J4KDwEeWVpfCzK8hwSg" association="_JUmncKEUEeWQRf-no0GeMA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Usage" xmi:id="_j2jcIKEUEeWQRf-no0GeMA" client="_CEbRYKBDEeWVfMeWaVID2g" supplier="_S2taMKDwEeWVpfCzK8hwSg"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
