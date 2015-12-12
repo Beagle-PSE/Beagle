@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
-  <notation:Diagram xmi:id="_5DuF4KBCEeWVfMeWaVID2g" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
-    <styles xmi:type="notation:StringValueStyle" xmi:id="_5DuF4aBCEeWVfMeWaVID2g" name="diagram_compatibility_version" stringValue="1.1.0"/>
-    <styles xmi:type="notation:DiagramStyle" xmi:id="_5DuF4qBCEeWVfMeWaVID2g"/>
-    <styles xmi:type="style:PapyrusViewStyle" xmi:id="_5DuF46BCEeWVfMeWaVID2g">
-      <owner xmi:type="uml:Model" href="Beagle.uml#_47bskKBCEeWVfMeWaVID2g"/>
-    </styles>
-    <element xmi:type="uml:Model" href="Beagle.uml#_47bskKBCEeWVfMeWaVID2g"/>
-  </notation:Diagram>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://www.eclipse.org/papyrus/infra/viewpoints/configuration" xmlns:css="http://www.eclipse.org/papyrus/infra/gmfdiag/css" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <notation:Diagram xmi:id="_5EQ4cKBCEeWVfMeWaVID2g" type="PapyrusUMLComponentDiagram" name="Architecture" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_CEydwKBDEeWVfMeWaVID2g" type="2002">
       <children xmi:type="notation:DecorationNode" xmi:id="_CE8OwKBDEeWVfMeWaVID2g" type="5004"/>
@@ -23,21 +15,13 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CIJ60qBDEeWVfMeWaVID2g"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="__TYB4KBJEeWVfMeWaVID2g" type="3069">
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_173OAaBLEeWVfMeWaVID2g" source="PapyrusCSSForceValue">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1731EKBLEeWVfMeWaVID2g" key="canonical" value="true"/>
-        </eAnnotations>
-        <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_34TskKBLEeWVfMeWaVID2g" source="displayNameLabelIcon">
-          <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_34TskaBLEeWVfMeWaVID2g" key="displayNameLabelIcon_value" value="true"/>
-        </eAnnotations>
         <children xmi:type="notation:DecorationNode" xmi:id="__TYo8KBJEeWVfMeWaVID2g" type="5006">
           <layoutConstraint xmi:type="notation:Location" xmi:id="__TYo8aBJEeWVfMeWaVID2g" x="39" y="-83"/>
         </children>
         <children xmi:type="notation:DecorationNode" xmi:id="__TYo8qBJEeWVfMeWaVID2g" type="5007">
           <layoutConstraint xmi:type="notation:Location" xmi:id="__TYo86BJEeWVfMeWaVID2g" x="25" y="-10"/>
         </children>
-        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_0060EKBLEeWVfMeWaVID2g" name="shapeVisibility"/>
-        <styles xmi:type="notation:CanonicalStyle" xmi:id="_173OAKBLEeWVfMeWaVID2g" canonical="false"/>
-        <styles xmi:type="notation:StringListValueStyle" xmi:id="_20QOkKBLEeWVfMeWaVID2g" name="maskLabel"/>
+        <styles xmi:type="notation:CanonicalStyle" xmi:id="_173OAKBLEeWVfMeWaVID2g"/>
         <element xmi:type="uml:Port" href="Packages/Beagle%20Core.uml#__TQGEKBJEeWVfMeWaVID2g"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="__TYB4aBJEeWVfMeWaVID2g" x="247" y="79" width="20" height="20"/>
       </children>
@@ -58,7 +42,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-0_PAqBEEeWVfMeWaVID2g"/>
       </children>
       <element xmi:type="uml:Component" href="Packages/Analysis.uml#_-0sUEKBEEeWVfMeWaVID2g"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-0zBwaBEEeWVfMeWaVID2g" x="958" y="127"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-0zBwaBEEeWVfMeWaVID2g" x="927" y="127" width="181"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_By1cAKBMEeWVfMeWaVID2g" type="2002">
       <children xmi:type="notation:DecorationNode" xmi:id="_By1cAqBMEeWVfMeWaVID2g" type="5004"/>
@@ -88,7 +72,7 @@
     </children>
     <children xmi:type="notation:Shape" xmi:id="_j2lRUKEUEeWQRf-no0GeMA" type="2003">
       <children xmi:type="notation:DecorationNode" xmi:id="_j2l4YKEUEeWQRf-no0GeMA" type="5005">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_j2l4YaEUEeWQRf-no0GeMA" x="-7" y="-38"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_j2l4YaEUEeWQRf-no0GeMA" x="-22" y="-32"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="_j2l4YqEUEeWQRf-no0GeMA" type="6032">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_j2l4Y6EUEeWQRf-no0GeMA" y="5"/>
@@ -98,7 +82,7 @@
     </children>
     <children xmi:type="notation:Shape" xmi:id="__DUvcKEUEeWHnqblWsT1jQ" type="2003">
       <children xmi:type="notation:DecorationNode" xmi:id="__DV9kKEUEeWHnqblWsT1jQ" type="5005">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="__DV9kaEUEeWHnqblWsT1jQ" y="5"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="__DV9kaEUEeWHnqblWsT1jQ" x="-52" y="23"/>
       </children>
       <children xmi:type="notation:DecorationNode" xmi:id="__DXywKEUEeWHnqblWsT1jQ" type="6032">
         <layoutConstraint xmi:type="notation:Location" xmi:id="__DXywaEUEeWHnqblWsT1jQ" y="5"/>
@@ -110,6 +94,9 @@
     <styles xmi:type="notation:DiagramStyle" xmi:id="_5EQ4cqBCEeWVfMeWaVID2g"/>
     <styles xmi:type="style:PapyrusViewStyle" xmi:id="_5EQ4c6BCEeWVfMeWaVID2g">
       <owner xmi:type="uml:Model" href="Beagle.uml#_47bskKBCEeWVfMeWaVID2g"/>
+    </styles>
+    <styles xmi:type="notation:EObjectListValueStyle" xmi:id="_XF8nsKElEeWuoaiXEYXzVw" name="css_stylesheets">
+      <eObjectListValue xmi:type="css:StyleSheetReference" href="Packages/Beagle%20Core.notation#_xXu4EKDmEeWVpfCzK8hwSg"/>
     </styles>
     <element xmi:type="uml:Model" href="Beagle.uml#_47bskKBCEeWVfMeWaVID2g"/>
     <edges xmi:type="notation:Connector" xmi:id="_j2mfcKEUEeWQRf-no0GeMA" type="4018" source="__TYB4KBJEeWVfMeWaVID2g" target="_j2lRUKEUEeWQRf-no0GeMA">
@@ -162,6 +149,9 @@
     <styles xmi:type="style:PapyrusViewStyle" xmi:id="_5Eb3k6BCEeWVfMeWaVID2g">
       <owner xmi:type="uml:Model" href="Beagle.uml#_47bskKBCEeWVfMeWaVID2g"/>
       <configuration xmi:type="configuration:PapyrusDiagram" href="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration#_7wLmpNxhEeOqHvRyiN87hA"/>
+    </styles>
+    <styles xmi:type="notation:EObjectListValueStyle" xmi:id="_X0E5AKElEeWuoaiXEYXzVw" name="css_stylesheets">
+      <eObjectListValue xmi:type="css:StyleSheetReference" href="Packages/Beagle%20Core.notation#_xXu4EKDmEeWVpfCzK8hwSg"/>
     </styles>
     <element xmi:type="uml:Model" href="Beagle.uml#_47bskKBCEeWVfMeWaVID2g"/>
   </notation:Diagram>
