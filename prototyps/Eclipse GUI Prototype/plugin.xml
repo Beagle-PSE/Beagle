@@ -10,6 +10,23 @@
             id="de.uka.ipd.sdq.beagle.fileExplorerContextMenuEntry"
             label="Beagle is alive!"
             style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     ifEmpty="false"
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.extension"
+                           value="repository">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+         </visibleWhen>
       </command>
     </menuContribution>
    </extension>
