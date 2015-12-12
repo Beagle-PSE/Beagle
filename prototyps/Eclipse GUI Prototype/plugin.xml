@@ -48,6 +48,23 @@
          </visibleWhen>
       </command>
     </menuContribution>
+    <menuContribution
+          allPopups="false"
+          locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+       <command
+             commandId="de.uka.ipd.sdq.beagle.startBeagleComponent"
+             id="de.uka.ipd.sdq.beagle.repositoryDiagramContextMenuEntry"
+             label="Analyse with Beagle"
+             style="push">
+            <visibleWhen>
+               <with variable="selection">
+                  	<iterate ifEmpty="false"> 
+                    	 <instanceof value="de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart"/>
+                	</iterate>
+                </with>
+            </visibleWhen>
+       </command>
+    </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
@@ -55,6 +72,10 @@
             defaultHandler="de.uka.ipd.sdq.beagle.handler.DemoBeagleContextMenuEntryHandler"
             id="de.uka.ipd.sdq.beagle.startBeagle"
             name="Run Beagle">
+      </command>
+      <command
+            id="de.uka.ipd.sdq.beagle.repositoryDiagramContextMenuEntry"
+            name="Run Beagle for a single component.">
       </command>
    </extension>
 
