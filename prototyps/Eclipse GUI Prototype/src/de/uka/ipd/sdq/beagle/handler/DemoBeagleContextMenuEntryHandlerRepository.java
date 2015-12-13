@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-public class DemoBeagleContextMenuEntryHandler extends AbstractHandler {
+public class DemoBeagleContextMenuEntryHandlerRepository extends AbstractHandler {
 	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
 
 	@Override
