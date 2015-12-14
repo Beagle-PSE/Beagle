@@ -21,7 +21,8 @@ public class DemoBeagleContextMenuEntryHandlerComponent extends AbstractHandler 
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
 				"Belive it, or not. But Beagle ist alive!\n" + "You want to analyse: A single component: "
-						+ basicComponentEditPart.toString());
+						+ basicComponentEditPart.getPrimaryShape().getFigureBasicComponent_Name_LabelFigure()
+								.getText());
 		return null;
 	}
 }
