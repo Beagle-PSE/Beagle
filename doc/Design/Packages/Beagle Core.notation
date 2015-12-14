@@ -356,11 +356,11 @@
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_ctJLkKHnEeWB_pi2tzIUuQ" type="7007">
         <children xmi:type="notation:Shape" xmi:id="_9osmoKHnEeWB_pi2tzIUuQ" type="3007">
-          <element xmi:type="uml:Operation" href="Beagle%20Core/Evaluatable%20Expression.uml#_9nd3kKHnEeWB_pi2tzIUuQ"/>
+          <element xmi:type="uml:Operation" href="Beagle%20Core/Evaluable%20Expression.uml#_9nd3kKHnEeWB_pi2tzIUuQ"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_9osmoaHnEeWB_pi2tzIUuQ"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_Bfd_sKHvEeWB_pi2tzIUuQ" type="3007">
-          <element xmi:type="uml:Operation" href="Beagle%20Core/Evaluatable%20Expression.uml#_BetxwKHvEeWB_pi2tzIUuQ"/>
+          <element xmi:type="uml:Operation" href="Beagle%20Core/Evaluable%20Expression.uml#_BetxwKHvEeWB_pi2tzIUuQ"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_Bfd_saHvEeWB_pi2tzIUuQ"/>
         </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_ctJLkaHnEeWB_pi2tzIUuQ"/>
@@ -374,7 +374,7 @@
         <styles xmi:type="notation:FilteringStyle" xmi:id="_ctJLmKHnEeWB_pi2tzIUuQ"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ctJLmaHnEeWB_pi2tzIUuQ"/>
       </children>
-      <element xmi:type="uml:Interface" href="Beagle%20Core/Evaluatable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
+      <element xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ctH9caHnEeWB_pi2tzIUuQ" x="2352" y="1179"/>
     </children>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_Dks5caDUEeWv3dQk34uqzw" name="diagram_compatibility_version" stringValue="1.1.0"/>
