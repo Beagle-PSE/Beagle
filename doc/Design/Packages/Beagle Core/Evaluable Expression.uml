@@ -7,7 +7,11 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_9nd3kKHnEeWB_pi2tzIUuQ" name="receive">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Gz5x8KHoEeWB_pi2tzIUuQ" type="_3MNrYKHnEeWB_pi2tzIUuQ"/>
     </ownedOperation>
-    <ownedOperation xmi:type="uml:Operation" xmi:id="_BetxwKHvEeWB_pi2tzIUuQ" name="evaluate"/>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_BetxwKHvEeWB_pi2tzIUuQ" name="evaluate">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_UKo3kKKuEeWh1tU52yVaJA" isUnique="false" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_3MNrYKHnEeWB_pi2tzIUuQ" name="Evaluatable Expression Visitor">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_LxiJkKHoEeWB_pi2tzIUuQ" name="visit">
