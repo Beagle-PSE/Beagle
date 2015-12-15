@@ -26,11 +26,14 @@ Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-h
 
 ### For creating UML models
 
+#### UMLet
  * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and move it to `C:\Program Files (x86)\Umlet\Umlet.exe` (Windows) or `/opt/Umlet/` (Linux). (If you want to put it somewhere else, you have to adopt `Render.bat` or `Render.sh`.) (Required to build your project.)
  * If on Linux: Make `/opt/Umlet/umlet.sh` executable.
  * When you like to use UMLet as eclipse plugin, you can install this as well.
  * Only commit the `.uxf` files. When you want to embed them in LyX, refer to `My File.pdf`, these files will be generated during the build process. Please tick the checkbox "Keep aspect ratio" and insert a maximum width and heigth to keep the LyX preview working.
 
+#### Papyrus
+ * Install Papyrus in Eclipse from the [Papyrus update site](http://download.eclipse.org/modeling/mdt/papyrus/updates/releases/mars).
 
 ## Continuous Integration
 Beagle uses Travis, a continuous integration service. It tests Pull Requests as well as all branches in the repository whenever changes occur.
