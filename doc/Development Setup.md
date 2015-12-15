@@ -12,6 +12,7 @@ Required Eclipse plugins are:
  * SoMoX based on JaMoPP, as it can be checked out (SVN) from [https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/](https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/) (Credentials: `anonymous:anonymous`)
   * import all SoMoX projects into your working space (consider using a Working Set to group them)
   * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
+  * [Checkstyle] (http://eclipse-cs.sourceforge.net/#!/)
   
 ## Documentation
 
