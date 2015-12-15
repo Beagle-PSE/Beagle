@@ -627,20 +627,7 @@ gls{Beagle}
 
  can analyse 
 \begin_inset ERT
- can analyse its 
-
-\begin_layout Plain Layout
-
-
-\backslash
-glspl{resource demand}
-\end_layout
-
-\end_inset
-
- of a 
-\begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
