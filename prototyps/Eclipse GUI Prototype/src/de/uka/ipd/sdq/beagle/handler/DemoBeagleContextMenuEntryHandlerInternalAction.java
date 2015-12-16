@@ -9,6 +9,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart;
+import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart;
+
 public class DemoBeagleContextMenuEntryHandlerInternalAction extends AbstractHandler {
 
 	@Override
@@ -18,9 +21,21 @@ public class DemoBeagleContextMenuEntryHandlerInternalAction extends AbstractHan
 		// BasicComponentEditPart basicComponentEditPart =
 		// (BasicComponentEditPart) selection.getFirstElement();
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		Object guiObject = selection.getFirstElement();
+		String displayString = null;
+		if (guiObject instanceof InternalActionEditPart) {
+			InternalActionEditPart internalActionEditPart = (InternalActionEditPart) guiObject;
+			displayString = internalActionEditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel()
+					.toString();
+		} else {
+			assert guiObject instanceof InternalAction2EditPart;
+			InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) guiObject;
+			displayString = internalAction2EditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel()
+					.toString();
+		}
 		MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
 				"Belive it, or not. But Beagle ist alive!\n" + "You want to analyse: A single component: "
-						+ selection.getFirstElement());
+						+ displayString);
 		return null;
 	}
 }

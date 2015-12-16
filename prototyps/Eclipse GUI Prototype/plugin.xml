@@ -74,11 +74,19 @@
              label="Analyse with Beagle"
              style="push">
             <visibleWhen>
-               <with variable="selection">
-                  	<iterate ifEmpty="false"> 
-                    	 <instanceof value="de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart"/>
-                	</iterate>
-                </with>
+	            <or>
+	               <with variable="selection">
+	                  	<iterate ifEmpty="false"> 
+	                    	 <instanceof value="de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart"/>
+	                	</iterate>
+	                </with>
+	                
+	               <with variable="selection">
+	                  	<iterate ifEmpty="false"> 
+	                    	 <instanceof value="de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart"/>
+	                	</iterate>
+	                </with>
+                </or>
             </visibleWhen>
        </command>
     </menuContribution>
