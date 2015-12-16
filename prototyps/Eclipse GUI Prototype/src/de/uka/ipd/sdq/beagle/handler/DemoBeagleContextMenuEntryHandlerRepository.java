@@ -12,6 +12,13 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+/**
+ *
+ * TODO Document class
+ *
+ * @author Roman Langrehr
+ * @version 0
+ */
 public class DemoBeagleContextMenuEntryHandlerRepository extends AbstractHandler {
 	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
 

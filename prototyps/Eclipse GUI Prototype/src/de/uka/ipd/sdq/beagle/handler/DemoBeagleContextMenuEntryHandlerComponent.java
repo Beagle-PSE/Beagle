@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.handler;
 
+import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -9,8 +11,13 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
-
+/**
+ *
+ * TODO Document class
+ *
+ * @author Roman Langrehr
+ * @version 0
+ */
 public class DemoBeagleContextMenuEntryHandlerComponent extends AbstractHandler {
 
 	@Override
