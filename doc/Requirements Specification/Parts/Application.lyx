@@ -638,7 +638,20 @@ gls{Beagle}
 
 \end_inset
 
- can reverse-engineer a 
+ can analyse 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ of a 
 \begin_inset ERT
 status open
 
