@@ -156,7 +156,6 @@
     </module>
     <module name="CustomImportOrder">
       <property name="severity" value="warning"/>
-      <property name="separateLineBetweenGroup" value="false"/>
     </module>
     <module name="AnonInnerLength">
       <property name="severity" value="warning"/>
