@@ -1,0 +1,23 @@
+// Customization of MANIFEST.MF
+
+
+sourceCompatibility = 1.5
+version = '1.0'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Beagle',
+                   'Implementation-Version': version
+    }
+}
+
+
+
+
+// Publishing JAR File
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
