@@ -64,7 +64,9 @@
     </module>
     <module name="SummaryJavadoc">
       <property name="severity" value="warning"/>
-      <property name="forbiddenSummaryFragments" value="^.{20,100}$"/>
+      <property name="forbiddenSummaryFragments" value="^[^\.]{0,20}\..*$"/>
+      <message key="summary.javaDoc" value="Zusammenfassung zu kurz (mindestens 20 Zeichen!)."/>
+      <message key="summary.first.sentence" value="Satz Javadoc ist unvollständig: Zusammenfassung fehlt."/>
     </module>
     <module name="AtclauseOrder">
       <property name="severity" value="warning"/>
@@ -514,6 +516,11 @@
     <module name="Regexp">
       <property name="severity" value="ignore"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+    </module>
+    <module name="SummaryJavadoc">
+      <property name="forbiddenSummaryFragments" value="^[^\.]{80,}.*$"/>
+      <message key="summary.javaDoc" value="Zusammenfassung zu lang (höchstens 80 Zeichen!)."/>
+      <message key="summary.first.sentence" value="Satz Javadoc ist unvollständig: Zusammenfassung fehlt."/>
     </module>
   </module>
   <module name="JavadocPackage">
