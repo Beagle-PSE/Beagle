@@ -156,7 +156,6 @@
     </module>
     <module name="CustomImportOrder">
       <property name="severity" value="warning"/>
-      <property name="separateLineBetweenGroup" value="false"/>
     </module>
     <module name="AnonInnerLength">
       <property name="severity" value="warning"/>
@@ -330,7 +329,8 @@
       <property name="severity" value="error"/>
     </module>
     <module name="JUnitTestCase">
-      <property name="severity" value="error"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="error"/>
     </module>
     <module name="MagicNumber">
       <property name="severity" value="warning"/>
