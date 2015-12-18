@@ -46,7 +46,7 @@ Operation {
 	gradient: none;
 	lineColor: #000000;
 	elementIcon: false;
-	maskLabel: parametersType, parametersMultiplicity, visibility, name, returnMultiplicity, returnType;
+	maskLabel: parametersType, parametersMultiplicity, parametersName, visibility, name, returnMultiplicity, returnType;
 }
 
 Port {
