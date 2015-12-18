@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NF-VcKBSEeWVfMeWaVID2g" name="Analysis">
+  <packagedElement xmi:type="uml:Component" xmi:id="_-0sUEKBEEeWVfMeWaVID2g" name="Genetic Analyser"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_Byzm0KBMEeWVfMeWaVID2g" name="Interpolation Analyser">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_us4FcKEUEeWQRf-no0GeMA" name="Port1" type="_Byzm0KBMEeWVfMeWaVID2g" aggregation="composite"/>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_72BtAKEUEeWHnqblWsT1jQ" client="_Byzm0KBMEeWVfMeWaVID2g">
+      <supplier xmi:type="uml:Interface" href="Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
+      <contract xmi:type="uml:Interface" href="Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
+    </interfaceRealization>
+  </packagedElement>
+</uml:Package>
