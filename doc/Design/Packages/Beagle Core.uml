@@ -20,15 +20,15 @@
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_F0ULoKDUEeWv3dQk34uqzw" name="Blackboard">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_P-jNMKDjEeWVpfCzK8hwSg" name="SEFF Loops" visibility="private" type="_7RjZsKDiEeWVpfCzK8hwSg" aggregation="composite" association="_P-dGkKDjEeWVpfCzK8hwSg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_P-jNMKDjEeWVpfCzK8hwSg" name="SEFF Loops" visibility="private" type="_7RjZsKDiEeWVpfCzK8hwSg" aggregation="shared" association="_P-dGkKDjEeWVpfCzK8hwSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ys7bUKDkEeWVpfCzK8hwSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ytA64KDkEeWVpfCzK8hwSg" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_YO4PMKDkEeWVpfCzK8hwSg" name="SEFF Branches" visibility="private" type="_DUhKkKDjEeWVpfCzK8hwSg" aggregation="composite" association="_YO1L4KDkEeWVpfCzK8hwSg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YO4PMKDkEeWVpfCzK8hwSg" name="SEFF Branches" visibility="private" type="_DUhKkKDjEeWVpfCzK8hwSg" aggregation="shared" association="_YO1L4KDkEeWVpfCzK8hwSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5GKOQKDkEeWVpfCzK8hwSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5GN4oKDkEeWVpfCzK8hwSg" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_UhwnwaDlEeWVpfCzK8hwSg" name="RDIAs" visibility="private" type="_GLvPUKDjEeWVpfCzK8hwSg" aggregation="composite" association="_UhvZoKDlEeWVpfCzK8hwSg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_UhwnwaDlEeWVpfCzK8hwSg" name="RDIAs" visibility="private" type="_GLvPUKDjEeWVpfCzK8hwSg" aggregation="shared" association="_UhvZoKDlEeWVpfCzK8hwSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Z42oQKDlEeWVpfCzK8hwSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Z44dcKDlEeWVpfCzK8hwSg" value="*"/>
       </ownedAttribute>
@@ -250,4 +250,5 @@ write results()</body>
     </profileApplication>
   </uml:Package>
   <standard:Create xmi:id="_JiYyUKD0EeWVpfCzK8hwSg" base_BehavioralFeature="__BK2UKDzEeWVpfCzK8hwSg"/>
+  <standard:Create xmi:id="_YuK5sKKZEeWL-IJIx5eHSw" base_BehavioralFeature="_zR0rkKD5EeWVpfCzK8hwSg"/>
 </xmi:XMI>
