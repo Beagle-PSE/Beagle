@@ -64,7 +64,7 @@
     </module>
     <module name="SummaryJavadoc">
       <property name="severity" value="warning"/>
-      <property name="forbiddenSummaryFragments" value="^.{20,100}$"/>
+      <property name="forbiddenSummaryFragments" value="^.$"/>
     </module>
     <module name="AtclauseOrder">
       <property name="severity" value="warning"/>
@@ -78,6 +78,7 @@
     <module name="AbstractClassName">
       <property name="severity" value="warning"/>
       <property name="format" value="^[A-Z][A-Za-z]{5,}$"/>
+      <property name="ignoreModifier" value="true"/>
     </module>
     <module name="ClassTypeParameterName">
       <property name="severity" value="warning"/>
@@ -143,6 +144,9 @@
     </module>
     <module name="ImportOrder">
       <property name="severity" value="warning"/>
+      <property name="option" value="top"/>
+      <property name="separated" value="true"/>
+      <property name="sortStaticImportsAlphabetically" value="true"/>
     </module>
     <module name="RedundantImport">
       <property name="severity" value="warning"/>
@@ -163,7 +167,7 @@
     </module>
     <module name="ExecutableStatementCount">
       <property name="severity" value="warning"/>
-      <property name="max" value="5"/>
+      <property name="max" value="100"/>
       <property name="tokens" value="INSTANCE_INIT,STATIC_INIT,METHOD_DEF,CTOR_DEF"/>
     </module>
     <module name="LineLength">
@@ -329,7 +333,8 @@
       <property name="severity" value="error"/>
     </module>
     <module name="JUnitTestCase">
-      <property name="severity" value="error"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="MagicNumber">
       <property name="severity" value="warning"/>
