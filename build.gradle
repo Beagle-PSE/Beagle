@@ -1,4 +1,4 @@
-apply plugin: 'java'
+apply plugin: 'java', 'checkstyle'
 defaultTasks 'build'
 
 // Customization of MANIFEST.MF
@@ -17,4 +17,9 @@ repositories {
 
 dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.+'
+	checkstyle
+}
+
+check {
+
 }
