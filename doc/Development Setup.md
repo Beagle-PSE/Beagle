@@ -32,6 +32,9 @@ Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-h
  * When you like to use UMLet as eclipse plugin, you can install this as well.
  * Only commit the `.uxf` files. When you want to embed them in LyX, refer to `My File.pdf`, these files will be generated during the build process. Please tick the checkbox "Keep aspect ratio" and insert a maximum width and heigth to keep the LyX preview working.
  
+### Fonts (Design)
+The UML Diagrams of the design phase use [Adobe Source Sans Pro](https://github.com/adobe-fonts/source-sans-pro) and [Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro). Install them to your system as detailed. 
+
 ## Continuous Integration
 Beagle uses Travis, a continuous integration service. It tests Pull Requests as well as all branches in the repository whenever changes occur.
 
