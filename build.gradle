@@ -1,5 +1,5 @@
 apply plugin: 'java', 'checkstyle'
-defaultTasks 'build'
+defaultTasks 'build', 'check'
 
 // Customization of MANIFEST.MF
 sourceCompatibility = 1.8
