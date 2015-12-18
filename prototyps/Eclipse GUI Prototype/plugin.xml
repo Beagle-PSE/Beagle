@@ -90,6 +90,48 @@
             </visibleWhen>
        </command>
     </menuContribution>
+    <menuContribution
+          locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+       <command
+             commandId="de.uka.ipd.sdq.beagle.startBeagle"
+             id="de.uka.ipd.sdq.beagle.projectExplorerContextMenuEntry"
+             label="Analyse with Beagle"
+             style="push">
+          <visibleWhen
+                checkEnabled="false">
+             <or>
+                <with
+                      variable="activeMenuSelection">
+                   <iterate
+                         ifEmpty="false"
+                         operator="or">
+                      <adapt
+                            type="org.eclipse.core.resources.IResource">
+                         <test
+                               property="org.eclipse.core.resources.extension"
+                               value="repository">
+                         </test>
+                      </adapt>
+                   </iterate>
+                </with>
+                <with
+                      variable="activeMenuSelection">
+                   <iterate
+                         ifEmpty="false"
+                         operator="or">
+                      <adapt
+                            type="org.eclipse.core.resources.IResource">
+                         <test
+                               property="org.eclipse.core.resources.extension"
+                               value="repository_diagram">
+                         </test>
+                      </adapt>
+                   </iterate>
+                </with>
+             </or>
+          </visibleWhen>
+       </command>
+    </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
