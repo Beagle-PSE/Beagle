@@ -1,5 +1,14 @@
 package de.uka.sdq.beagle.core.expressions;
 
+/*
+ * ATTENTION: Checkstyle turned off!
+ * remove this comment block when implementing this class!
+ *
+ * CHECKSTYLE:OFF
+ *
+ * TODO
+ */
+
 /**
  * TODO Document this type.
  *
@@ -8,7 +17,7 @@ public class ComparisonExpression implements EvaluableExpression {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * de.uka.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.beagle.
 	 * core.expressions.EvaluableExpressionVisitor)
@@ -21,7 +30,7 @@ public class ComparisonExpression implements EvaluableExpression {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * de.uka.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.beagle.
 	 * core.expressions.EvaluableVariableAssignment)

@@ -2,6 +2,15 @@ package de.uka.sdq.beagle.core.expressions;
 
 import java.util.Collection;
 
+/*
+ * ATTENTION: Checkstyle turned off!
+ * remove this comment block when implementing this class!
+ *
+ * CHECKSTYLE:OFF
+ *
+ * TODO
+ */
+
 /**
  * Expression that multiplies all its contained expressions.
  *

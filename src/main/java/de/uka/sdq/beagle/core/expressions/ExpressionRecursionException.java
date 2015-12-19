@@ -1,5 +1,14 @@
 package de.uka.sdq.beagle.core.expressions;
 
+/*
+ * ATTENTION: Checkstyle turned off!
+ * remove this comment block when implementing this class!
+ *
+ * CHECKSTYLE:OFF
+ *
+ * TODO
+ */
+
 /**
  * Might be thrown if a {@link EvaluableExpression} contains itself.
  *

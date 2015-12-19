@@ -3,6 +3,15 @@ package de.uka.sdq.beagle.core;
 import java.io.Serializable;
 import java.util.Set;
 
+/*
+ * ATTENTION: Checkstyle turned off!
+ * remove this comment block when implementing this class!
+ *
+ * CHECKSTYLE:OFF
+ *
+ * TODO
+ */
+
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link BeagleController}, the Blackboard pattern from POSA I. The Blackboard’s
