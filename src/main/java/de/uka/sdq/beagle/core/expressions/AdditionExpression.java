@@ -3,7 +3,7 @@ package de.uka.sdq.beagle.core.expressions;
 import java.util.Collection;
 
 /**
- * Expression that adds all its contained expressions.
+ * Expression that sums up all its contained expressions.
  *
  * @author Joshua Gleitze
  */
