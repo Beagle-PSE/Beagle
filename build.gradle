@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'checkstyle'
-defaultTasks 'build', 'check'
+apply plugin: 'jacoco'
+defaultTasks 'build', 'jacoco'
 
 // Customization of MANIFEST.MF
 sourceCompatibility = 1.8
@@ -18,8 +19,11 @@ repositories {
 
 dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.+'
+	checkstyle
 }
 
-check {
-
+checkstyle {
+	toolVersion = "6.11"
 }
+
+
