@@ -107,7 +107,7 @@ pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" | tee -a $log || er
 
 if [ "$3" = "srs-only" ]
 then
-	cp --parents -f "Requirements Specification.pdf" "$dest"
+	cp --parents -f "$file.pdf" "$dest"
 else
 	# copy all rendered pdfs to save them
 	find . -name '*.pdf' -exec cp --parents -f '{}' "$dest" \;

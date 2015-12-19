@@ -29,17 +29,21 @@ task srs(type: Exec) {
 	def logdest = file("$buildDir/reports/Requirements Specification Render.log")
 	
 	workingDir "$projectDir/doc/Requirements Specification/"
-	args dest, logdest, 'srs-only'
-		
+	
 	switch (System.getProperty('os.name').toLowerCase().split()[0]) {
 		case 'windows':
-			executable 'Render.bat '
+			commandLine 'cmd', '/c', 'Render.bat', dest, logdest, 'srs-only'
     	break
 		case 'linux':
+			args dest, logdest, 'srs-only'
     		executable './Render.sh'
     		break
-		default:
+	}
+	
+	doFirst {
+		if (!System.getProperty('os.name').toLowerCase().contains('linux') && !System.getProperty('os.name').toLowerCase().contains('windows')) {
     		throw new Exception('Sorry, we don’t support your operating system for building the SRS!')
+		}
 	}
 	
 	// only print the output for log level info or higher
@@ -52,8 +56,10 @@ task srsinstall(type: Exec) {
 	inputs.dir "$projectDir/doc/Requirements Specification"
 	outputs.file "$buildDir/doc/Requirements Specification.pdf"
 	
-	if (!System.getProperty('os.name').toLowerCase().contains('linux')) {
-		throw new Exception('Sorry, we only support linux for automatic setup of the srs render environment. Please refer to doc/Development Setup.md')
+	doFirst {
+		if (!System.getProperty('os.name').toLowerCase().contains('linux')) {
+			throw new Exception('Sorry, we only support linux for automatic setup of the srs render environment. Please refer to doc/Development Setup.md!')
+		}
 	}
 	
 	workingDir "$projectDir/doc/Requirements Specification/"
