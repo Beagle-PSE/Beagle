@@ -26,4 +26,10 @@ checkstyle {
 	toolVersion = "6.11"
 }
 
+test {
+	jacoco {
+
+	}
+}
+
 
