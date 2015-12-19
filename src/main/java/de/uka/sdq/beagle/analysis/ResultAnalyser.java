@@ -19,9 +19,9 @@ public interface ResultAnalyser {
 	 * when {@link #contribute(AnalyserBlackboardView)} will be called. Passing a
 	 * {@code blackboard} that was last modified by this analyser’s
 	 * {@link #contribute(AnalyserBlackboardView)} must always result in {@code false}.
-	 * <p>
-	 * This method must behave entirely stateless, meaning that its result do not depend
-	 * on any prior calls to any method but only on the passed {@code blackboard}.
+	 *
+	 * <p>This method must behave entirely stateless, meaning that its result do not
+	 * depend on any prior calls to any method but only on the passed {@code blackboard}.
 	 * Furthermore, calls with equal blackboard contents must always result in the same
 	 * value.
 	 *
@@ -32,18 +32,15 @@ public interface ResultAnalyser {
 
 	/**
 	 * Contributes this analyser’s knowledge to the passed blackboard.
-	 * <p>
-	 * Calling this method with a blackboard for which
+	 *
+	 * <p>Calling this method with a blackboard for which
 	 * {@link #canContribute(ReadOnlyBlackboardView)} returns {@code false} results in
-	 * undefined behaviour. This method must
-	 * <ul>
-	 * <li>behave entirely stateless, meaning that its result do not depend on any prior
-	 * calls to any method (especially not {@link #canContribute(ReadOnlyBlackboardView)})
-	 * but only on the passed {@code blackboard}.
-	 * <li>store all its results on the passed {@code blackboard}.
+	 * undefined behaviour. This method must <ul> <li>behave entirely stateless, meaning
+	 * that its result do not depend on any prior calls to any method (especially not
+	 * {@link #canContribute(ReadOnlyBlackboardView)}) but only on the passed
+	 * {@code blackboard}. <li>store all its results on the passed {@code blackboard}.
 	 * <li>assure that if {@link #canContribute(ReadOnlyBlackboardView)} is called with
-	 * the blackboard like its left by this method, it will return {@code false}.
-	 * </ul>
+	 * the blackboard like its left by this method, it will return {@code false}. </ul>
 	 * Implementing {@link de.uka.sdq.beagle.core.BlackboardStorer} and using
 	 * {@link de.uka.sdq.beagle.core.Blackboard#writeFor(Class, java.io.Serializable)} is,
 	 * if needed, the recommended way to achieve the behaviour described above.

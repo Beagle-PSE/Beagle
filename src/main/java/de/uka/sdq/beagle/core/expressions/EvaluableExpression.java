@@ -9,13 +9,13 @@ package de.uka.sdq.beagle.core.expressions;
  * {@link EvaluableVariable}s. Most expressions will define a requirement on the minimum
  * and/or maximum amount of contained evaluable expressions. An expression can be
  * evaluated by calling {@link #evaluate(EvaluableVariableAssignment)}.
- * <p>
- * Note that expressions may not contain themselves. Any operation on an expression which
- * contains itself or anyhow contains an expression containing itself has undefined
+ *
+ * <p>Note that expressions may not contain themselves. Any operation on an expression
+ * which contains itself or anyhow contains an expression containing itself has undefined
  * behaviour. An {@link ExpressionRecursionException} may be thrown to indicate this
  * situation.
- * <p>
- * Implementations are encouraged to override {@link Object#equals(Object)} and
+ *
+ * <p>Implementations are encouraged to override {@link Object#equals(Object)} and
  * {@link Object#hashCode()} to fulfil the following: If for two evaluable expressions
  * {@code a} and {@code b} {@code a.equals(b)} returns {@code true} true,
  * {@code a.evaluate(ass)} will return a value equal to {@code b.evaluate(ass)} for any
