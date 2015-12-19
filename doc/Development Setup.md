@@ -17,7 +17,7 @@ Required Eclipse plugins are:
 ## Building & Dependency Management
 The project is built using [Gradle](http://gradle.org/) 2.9. It can be downloaded [here](http://gradle.org/gradle-download/). Ubuntu users can use [this PPA](https://launchpad.net/~cwchien/+archive/ubuntu/gradle).
 
-We use the default commands: `gradle build` (or simply `gradle`) to test and build, `gradle test` to only run tests.
+We use the default commands: `gradle build` (or simply `gradle`) to test and build, `gradle test` to only run tests. Run `gradle tasks` to see all available tasks.
   
 ## Documentation
 
