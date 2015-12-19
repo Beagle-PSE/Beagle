@@ -19,16 +19,13 @@ repositories {
 
 dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.+'
-	checkstyle
 }
 
 checkstyle {
+	ignoreFailures = false
 	toolVersion = "6.11"
 }
 
-test {
-	jacoco {
+build.dependsOn check
 
-	}
-}
-
+check.dependsOn jacocoTestReport
