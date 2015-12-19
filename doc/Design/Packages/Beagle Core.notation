@@ -373,26 +373,6 @@
       <element xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ctH9caHnEeWB_pi2tzIUuQ" x="2352" y="1179"/>
     </children>
-    <children xmi:type="notation:Shape" xmi:id="_nvYZYKWqEeWVjrqJHndH-A" type="2010">
-      <children xmi:type="notation:DecorationNode" xmi:id="_nvYZYqWqEeWVjrqJHndH-A" type="5035"/>
-      <children xmi:type="notation:DecorationNode" xmi:id="_nvYZY6WqEeWVjrqJHndH-A" type="8502">
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_nvYZZKWqEeWVjrqJHndH-A" y="5"/>
-      </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_nvZAcKWqEeWVjrqJHndH-A" type="7020">
-        <styles xmi:type="notation:TitleStyle" xmi:id="_nvZAcaWqEeWVjrqJHndH-A"/>
-        <styles xmi:type="notation:SortingStyle" xmi:id="_nvZAcqWqEeWVjrqJHndH-A"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_nvZAc6WqEeWVjrqJHndH-A"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nvZAdKWqEeWVjrqJHndH-A"/>
-      </children>
-      <children xmi:type="notation:BasicCompartment" xmi:id="_nvZAdaWqEeWVjrqJHndH-A" type="7021">
-        <styles xmi:type="notation:TitleStyle" xmi:id="_nvZAdqWqEeWVjrqJHndH-A"/>
-        <styles xmi:type="notation:SortingStyle" xmi:id="_nvZAd6WqEeWVjrqJHndH-A"/>
-        <styles xmi:type="notation:FilteringStyle" xmi:id="_nvZAeKWqEeWVjrqJHndH-A"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nvZAeaWqEeWVjrqJHndH-A"/>
-      </children>
-      <element xmi:type="uml:DataType" href="Beagle%20Core.uml#_nvWkMKWqEeWVjrqJHndH-A"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nvYZYaWqEeWVjrqJHndH-A" x="1345" y="1731" width="220" height="144"/>
-    </children>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_Dks5caDUEeWv3dQk34uqzw" name="diagram_compatibility_version" stringValue="1.1.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_Dks5cqDUEeWv3dQk34uqzw"/>
     <styles xmi:type="style:PapyrusViewStyle" xmi:id="_Dks5c6DUEeWv3dQk34uqzw">
