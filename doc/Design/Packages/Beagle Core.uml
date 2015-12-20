@@ -99,6 +99,19 @@ od
 
 write results()</body>
         </ownedComment>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_n1yG4KWrEeWVjrqJHndH-A" name="PCM repository files" type="_nvWkMKWqEeWVjrqJHndH-A">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_q3I_EKWrEeWVjrqJHndH-A" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_q3K0QKWrEeWVjrqJHndH-A" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ppylsKWsEeWVjrqJHndH-A" name="IDs of stuff to measure">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_trmOQKWsEeWVjrqJHndH-A" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_troDcKWsEeWVjrqJHndH-A" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_bMH3sKWrEeWVjrqJHndH-A" name="execution files" type="_nvWkMKWqEeWVjrqJHndH-A">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ftyFAKWrEeWVjrqJHndH-A" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ftz6MKWrEeWVjrqJHndH-A" value="*"/>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_7RjZsKDiEeWVpfCzK8hwSg" name="SEFF Loop"/>
@@ -242,6 +255,7 @@ write results()</body>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_zyWCEKEiEeWuoaiXEYXzVw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_zyOGQKEiEeWuoaiXEYXzVw"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:DataType" xmi:id="_nvWkMKWqEeWVjrqJHndH-A" name="File"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
