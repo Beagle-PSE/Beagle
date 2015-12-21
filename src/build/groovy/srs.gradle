@@ -10,14 +10,11 @@ task srs(type: Exec) {
 	inputs.dir "$projectDir/doc/Requirements Specification"
 	outputs.file "$buildDir/doc/Requirements Specification.pdf"
 	
-	println "$projectDir/doc/Requirements Specification"
-	println "$buildDir/doc/Requirements Specification.pdf"
-	
 	def dest = file("$buildDir/doc/")
 	def logdest = file("$buildDir/reports/Requirements Specification Render.log")
 	
 	workingDir "$projectDir/doc/Requirements Specification/"
-
+	
 	switch (System.getProperty('os.name').toLowerCase().split()[0]) {
 		case 'windows':
 			commandLine 'cmd', '/c', 'Render.bat', dest, logdest, 'srs-only'

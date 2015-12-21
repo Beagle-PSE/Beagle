@@ -14,6 +14,11 @@ Required Eclipse plugins are:
   * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
   * [Checkstyle] (http://eclipse-cs.sourceforge.net/#!/)
   
+## Building & Dependency Management
+The project is built using [Gradle](http://gradle.org/) 2.9. It can be downloaded [here](http://gradle.org/gradle-download/). Ubuntu users can use [this PPA](https://launchpad.net/~cwchien/+archive/ubuntu/gradle).
+
+We use the default commands: `gradle build` (or simply `gradle`) to test and build, `gradle test` to only run tests. Run `gradle tasks` to see all available tasks.
+  
 ## Documentation
 
 ### LyX
