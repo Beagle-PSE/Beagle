@@ -48,7 +48,7 @@ public interface EvaluableExpression {
 	 *            must assign a value to at least all {@link EvaluableVariable}s contained
 	 *            in this expression.
 	 * @return the value for the given assignments.
-	 * @throws UndefinedExpression
+	 * @throws UndefinedExpressionException
 	 *             if {@code variableAssignments} does not contain a valid assignment for
 	 *             a contained variable.
 	 */

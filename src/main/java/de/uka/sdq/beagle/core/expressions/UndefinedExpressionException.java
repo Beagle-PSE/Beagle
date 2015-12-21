@@ -16,7 +16,7 @@ package de.uka.sdq.beagle.core.expressions;
  * @author Joshua Gleitze
  * @see EvaluableExpression
  */
-public class UndefinedExpression extends RuntimeException {
+public class UndefinedExpressionException extends RuntimeException {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
@@ -34,7 +34,7 @@ public class UndefinedExpression extends RuntimeException {
 	 * @param undefinedVariable
 	 *            The variable missing in {@code assignment}.
 	 */
-	public UndefinedExpression(final EvaluableVariableAssignment assignment,
+	public UndefinedExpressionException(final EvaluableVariableAssignment assignment,
 			final EvaluableVariable undefinedVariable) {
 		// TODO Auto-generated constructor stub
 	}
