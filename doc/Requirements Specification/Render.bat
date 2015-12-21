@@ -10,9 +10,9 @@ setlocal enableextensions
 ::	2. the file to write the log to. Defaults to 'Render.sh' in the working directory
 ::	3. if "srs-only" is passed as 3. parameter, only the rendered 'Requirements Specification.pdf' will be created  
 
-IF %1=="" ( SET DEST="%cd%" ) ELSE ( SET DEST=%1 )
-IF %2=="" ( SET LOGDEST="%cd%\Render.log" ) ELSE ( SET LOGDEST=%2 )
-mkdir %DEST%
+IF [%1]==[] ( SET DEST="%cd%" ) ELSE ( SET DEST=%1 )
+IF [%2]==[] ( SET LOGDEST="%cd%\Render.log" ) ELSE ( SET LOGDEST=%2 )
+if not exist %DEST% mkdir %DEST%
 
 :: LyX executable. Add some logic here to search differen paths if your installation is elsewhere. 
 set LYX="C:\Program Files (x86)\LyX 2.1\bin\lyx.exe"
@@ -29,7 +29,7 @@ set sep=######################################
 call :GETTEMPNAME
 :: Create the folder and copy all contents in it
 mkdir %TMPDIR%
-xcopy . %TMPDIR% /e /i
+xcopy . %TMPDIR% /e /i /q
 set log="%TMPDIR%\Render.log"
 set tee="%TMPDIR%\tee"
 
@@ -41,7 +41,7 @@ cd %TMPDIR%
 :: The old log was copied in, remove it.
 if exist %log% del %log%
 :: remove old PDFs
-del /S *.pdf
+del /S *.pdf 1>nul
 
 
 :::::::::::::::
