@@ -19,4 +19,24 @@ public interface EvaluableExpressionVisitor {
 	void visit(MultiplicationExpression expression);
 
 	void visit(EvaluableVariable variable);
+
+	void visit(ComparisonExpression expression);
+
+	void visit(ConstantExpression constant);
+
+	void visit(DivisionExpression expression);
+
+	void visit(ExponentationExpression expression);
+
+	void visit(ExponentialFunctionExpression expression);
+
+	void visit(IfThenElseExpression expression);
+
+	void visit(LogarithmExpression expression);
+
+	void visit(NaturalLogarithmExpression expression);
+
+	void visit(SineExpression expression);
+
+	void visit(SubstractionExpression expression);
 }
