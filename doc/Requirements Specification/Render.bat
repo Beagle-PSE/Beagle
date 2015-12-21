@@ -12,7 +12,7 @@ setlocal enableextensions
 
 IF %1=="" ( SET DEST="%cd%" ) ELSE ( SET DEST=%1 )
 IF %2=="" ( SET LOGDEST="%cd%\Render.log" ) ELSE ( SET LOGDEST=%2 )
-mkdir "%DEST%"
+mkdir %DEST%
 
 :: LyX executable. Add some logic here to search differen paths if your installation is elsewhere. 
 set LYX="C:\Program Files (x86)\LyX 2.1\bin\lyx.exe"
@@ -103,10 +103,10 @@ call :tee
 cd %OLDPWD%
 
 IF "%3"=="srs-only" (
-	xcopy /y %TMPDIR%\%FILENAME%.pdf "%DEST%"
+	xcopy /y %TMPDIR%\%FILENAME%.pdf %DEST%
 ) ELSE (
 	:: copy all rendered pdfs to save them
-	xcopy /s /y %TMPDIR%\*.pdf "%DEST%"
+	xcopy /s /y %TMPDIR%\*.pdf %DEST%
 )
 
 :: save the log
