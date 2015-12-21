@@ -59,8 +59,8 @@ task verifyTestCoverage << {
 	}
 }
 
-task qc (dependsOn: ['check', 'verifyNoCheckstyleWarnings', 'verifyTestCoverage'])
-
-check.dependsOn jacocoTestReport
+task qc (dependsOn: ['verifyNoCheckstyleWarnings', 'verifyTestCoverage'])
 
 verifyNoCheckstyleWarnings.dependsOn check
+verifyTestCoverage.dependsOn jacocoTestReport
+build.dependsOn jacocoTestReport
