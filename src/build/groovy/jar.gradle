@@ -1,0 +1,13 @@
+/**
+ * Customises the built jar, like the MANIFEST file
+ *
+ * @author Annika Berger
+ * @author Joshua Gleitze
+ */
+ 
+jar {
+    manifest {
+        attributes 'Implementation-Title': project.name,
+                   'Implementation-Version': project.version
+    }
+}
