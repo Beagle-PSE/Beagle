@@ -1,17 +1,26 @@
-// plugins required by any task.
-plugins {
-	id 'java'
-	id 'org.ajoberstar.github-pages' version '1.3.2'
-}
+import groovy.transform.Field 
 
-// Repositories available to declare dependencies from
-repositories {
-	mavenCentral()
+@Field List mainTaskAdditions = []
+
+/**
+ * Allows scripts to run their tasks on the main (build) task.
+ * Scripts should no add their tasks to the build tasks themselves but use this method
+ * to reduce dependencies between them.
+ *
+ * @param t
+ *		A Task to run on the build task
+ */
+void addToMainTask(Task t) {
+	mainTaskAdditions += t
 }
 
 // import all tasks defined in src/build/groovy
 fileTree("$projectDir/src/build/groovy").include('*.gradle').each { file ->
      apply from: file
 } 
+
+for (Task t : mainTaskAdditions) {
+	build.dependsOn t
+}
 
 defaultTasks 'build'

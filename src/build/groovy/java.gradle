@@ -1,9 +1,11 @@
 /**
- * Customises the built jar, like the MANIFEST file
+ * Sets up the Java build tasks and customises the built jar, like the MANIFEST.mf file.
  *
  * @author Annika Berger
  * @author Joshua Gleitze
  */
+
+apply plugin: 'java'
  
 jar {
     manifest {

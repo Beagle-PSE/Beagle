@@ -5,6 +5,7 @@
  */
  
 task srs(type: Exec) {
+	group 'Build'
 	description 'Renders the Requirements Specification.'
 	
 	inputs.dir "$projectDir/doc/Requirements Specification"
@@ -36,7 +37,8 @@ task srs(type: Exec) {
 }
 
 task srsinstall(type: Exec) {
-	description 'Sets up the environment for rendering the srs, but only if the srs is out of date.'	
+	group 'Build Setup'
+	description 'Sets up the environment for rendering the Requirements Specification, but only if the it is out of date.'	
 	
 	inputs.dir "$projectDir/doc/Requirements Specification"
 	outputs.file "$buildDir/doc/Requirements Specification.pdf"
@@ -55,4 +57,4 @@ task srsinstall(type: Exec) {
 	logging.captureStandardError LogLevel.INFO
 }
 
-build.dependsOn srs
+addToMainTask srs
