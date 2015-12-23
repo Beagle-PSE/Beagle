@@ -4,7 +4,7 @@
  * detailed explanatory Javadoc
  * No checkstyle violations (errors or warnings)
  * 100% Code coverage by JUnit Tests
- * JUnit test check were created by another person and are complete (check everything possible)
+ * JUnit test check were created by another person and are complete (no reviewer can think of any additional, meaningful test case)
  * Travis 'goes green'. This shows code coverage and checkstyle is okay.
  * discussions about PR are finished
  * found errors and mistakes are fixed
