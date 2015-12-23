@@ -154,7 +154,7 @@ write results()</body>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_CJW4MKioEeW317sgBX4gxw" name="get SEFF Loopes to be measured" isQuery="true">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_csPhAKioEeW317sgBX4gxw" type="_7RjZsKDiEeWVpfCzK8hwSg" direction="return">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_k4Dr4KioEeW317sgBX4gxw" value="1"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_k4Dr4KioEeW317sgBX4gxw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_k4LAoKioEeW317sgBX4gxw" value="*"/>
         </ownedParameter>
       </ownedOperation>
