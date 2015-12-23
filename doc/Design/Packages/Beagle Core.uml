@@ -209,10 +209,10 @@ write results()</body>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_og2PQKmfEeW-HedfGpYj_Q" name="get SEFF Loops to be measured" isQuery="true">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_rTYBQKmfEeW-HedfGpYj_Q" type="_7RjZsKDiEeWVpfCzK8hwSg" direction="return"/>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_1E6MwKmfEeW-HedfGpYj_Q" name="set final SEFF Loops" visibility="public" isQuery="true">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_CpWMsKmhEeW-HedfGpYj_Q" name="blackboard" type="_7RjZsKDiEeWVpfCzK8hwSg" effect="update">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_50vuEKmhEeW-HedfGpYj_Q"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_500mkKmhEeW-HedfGpYj_Q" value="*"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YXyZoKmiEeW-HedfGpYj_Q" name="set final RDIAs" isQuery="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_i8si0KmiEeW-HedfGpYj_Q" name="blackboard" type="_GLvPUKDjEeWVpfCzK8hwSg" effect="update">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_84nw8KmwEeWw9OrdUR3Q_Q"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_84t3kKmwEeWw9OrdUR3Q_Q" value="*"/>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_LqmVUKmiEeW-HedfGpYj_Q" name="set final SEFF Branches" isQuery="true">
@@ -221,9 +221,15 @@ write results()</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WN24sKmiEeW-HedfGpYj_Q" value="*"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_YXyZoKmiEeW-HedfGpYj_Q" name="set final RDIAs" isQuery="true">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_i8si0KmiEeW-HedfGpYj_Q" name="blackboard" type="_GLvPUKDjEeWVpfCzK8hwSg" effect="update"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1E6MwKmfEeW-HedfGpYj_Q" name="set final SEFF Loops" visibility="public" isQuery="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_CpWMsKmhEeW-HedfGpYj_Q" name="blackboard" type="_7RjZsKDiEeWVpfCzK8hwSg" effect="update">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_50vuEKmhEeW-HedfGpYj_Q"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_500mkKmhEeW-HedfGpYj_Q" value="*"/>
+        </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_pQrhAKmwEeWw9OrdUR3Q_Q" name="remeasure RDIAs"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_kp7_YKmwEeWw9OrdUR3Q_Q" name="remeasure SEFF Branches"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_34OWAKmsEeWw9OrdUR3Q_Q" name="remeasure SEFF Loops" isQuery="true"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_P-dGkKDjEeWVpfCzK8hwSg" name="Blackboard SEFF Loop List" visibility="public" memberEnd="_P-jNMKDjEeWVpfCzK8hwSg _P-j0QKDjEeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_P-hYAKDjEeWVpfCzK8hwSg" source="org.eclipse.papyrus">
