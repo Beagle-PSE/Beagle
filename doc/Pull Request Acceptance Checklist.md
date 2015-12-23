@@ -14,7 +14,6 @@
  * detailed explanatory Javadoc
  * configured Checkstyle, Formatter and Clean Up
  * No Checkstyle violations (errors or warnings)
- * Push destination is not our master branch
  * correct location in project folder
  * discussions about PR are finished
  * found errors and mistakes are fixed
