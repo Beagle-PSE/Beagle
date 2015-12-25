@@ -9,13 +9,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-public class MyPageTwo extends WizardPage {
+public class MyPageTwo2 extends WizardPage {
 
 	private Text text1;
 
 	private Composite container;
 
-	public MyPageTwo() {
+	public MyPageTwo2() {
 
 		super("Second Page");
 

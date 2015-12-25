@@ -6,7 +6,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Shell shell = new Shell();
-		Wizard myWizard = new MyWizard();
+		Wizard myWizard = new BeagleAnalysisWizard();
 		WizardDialog wizardDialog = new WizardDialog(shell, myWizard);
 		System.out.println(wizardDialog.open());
 	}

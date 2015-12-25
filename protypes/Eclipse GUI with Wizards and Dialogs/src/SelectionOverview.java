@@ -6,37 +6,31 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 public class SelectionOverview extends WizardPage {
-
 	private Text text1;
-
 	private Composite container;
 
 	public SelectionOverview() {
-
 		super("Selection Overview");
-
 		setTitle("Selection Overview");
-
 		setDescription("Make sure you want to anaylse the components listed below.");
-
 	}
 
 	@Override
-
 	public void createControl(Composite parent) {
-
 		container = new Composite(parent, SWT.NONE);
-
 		GridLayout layout = new GridLayout();
-
 		container.setLayout(layout);
+		layout.numColumns = 1;
 
-		layout.numColumns = 2;
+		Label labelHead = new Label(container, SWT.NONE);
+		labelHead.setText("These components are selected for anaylsis:");
 
 		Label label1 = new Label(container, SWT.NONE);
-
-		label1.setText(
-				"<html>These components are selected for anaylsis:<br>    • Some component<br>    • Some other component</html>");
+		label1.setText("    • Some Component");
+		Label label2 = new Label(container, SWT.NONE);
+		label2.setText("    • Some Different Component");
+		Label label3 = new Label(container, SWT.NONE);
+		label3.setText("    • And Another One");
 
 		/*
 		 * text1 = new Text(container, SWT.BORDER | SWT.SINGLE);
@@ -73,15 +67,6 @@ public class SelectionOverview extends WizardPage {
 		// required to avoid an error in the system
 
 		setControl(container);
-
 		setPageComplete(true);
-
 	}
-
-	public String getText1() {
-
-		return text1.getText();
-
-	}
-
 }
