@@ -22,14 +22,14 @@ public class SelectionOverview extends WizardPage {
 		container.setLayout(layout);
 		layout.numColumns = 1;
 
-		Label labelHead = new Label(container, SWT.NONE);
+		final Label labelHead = new Label(container, SWT.NONE);
 		labelHead.setText("These components are selected for anaylsis:");
 
-		Label label1 = new Label(container, SWT.NONE);
+		final Label label1 = new Label(this.container, SWT.NONE);
 		label1.setText("    • Some Component");
-		Label label2 = new Label(container, SWT.NONE);
+		final Label label2 = new Label(this.container, SWT.NONE);
 		label2.setText("    • Some Different Component");
-		Label label3 = new Label(container, SWT.NONE);
+		final Label label3 = new Label(this.container, SWT.NONE);
 		label3.setText("    • And Another One");
 
 		/*
@@ -66,7 +66,7 @@ public class SelectionOverview extends WizardPage {
 
 		// required to avoid an error in the system
 
-		setControl(container);
+		setControl(this.container);
 		setPageComplete(true);
 	}
 }

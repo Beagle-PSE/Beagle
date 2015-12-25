@@ -26,35 +26,35 @@ public class Timeout extends WizardPage {
 	@Override
 
 	public void createControl(Composite parent) {
-		containerAll = new Composite(parent, SWT.NONE);
-		GridLayout layoutAll = new GridLayout();
-		containerAll.setLayout(layoutAll);
+		this.containerAll = new Composite(parent, SWT.NONE);
+		final GridLayout layoutAll = new GridLayout();
+		this.containerAll.setLayout(layoutAll);
 		layoutAll.numColumns = 1;
 
-		container2 = new Composite(containerAll, SWT.NONE);
-		GridLayout layout2 = new GridLayout();
-		container2.setLayout(layout2);
+		this.container2 = new Composite(containerAll, SWT.NONE);
+		final GridLayout layout2 = new GridLayout();
+		this.container2.setLayout(layout2);
 		layout2.numColumns = 2;
 
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		final GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 
-		Button radioAdaptiveTimout = new Button(container2, SWT.RADIO);
-		Label lblRadioAdaptiveTimout = new Label(container2, SWT.NONE);
+		final Button radioAdaptiveTimout = new Button(this.container2, SWT.RADIO);
+		final Label lblRadioAdaptiveTimout = new Label(this.container2, SWT.NONE);
 		lblRadioAdaptiveTimout.setText("Use an adaptive timeout.");
 
-		Button radioSetTimout = new Button(container2, SWT.RADIO);
-		Label lblRadioSetTimout = new Label(container2, SWT.NONE);
+		final Button radioSetTimout = new Button(container2, SWT.RADIO);
+		final Label lblRadioSetTimout = new Label(container2, SWT.NONE);
 		lblRadioSetTimout.setText("Use a set timout.");
 
-		Button radioNoTimeout = new Button(container2, SWT.RADIO);
-		Label lblRadioNoTimeout = new Label(container2, SWT.NONE);
+		final Button radioNoTimeout = new Button(container2, SWT.RADIO);
+		final Label lblRadioNoTimeout = new Label(container2, SWT.NONE);
 		lblRadioNoTimeout.setText("Don't use a timout.");
 
 		radioAdaptiveTimout.setSelection(true);
 
-		SelectionListener radioAdaptiveTimeoutSelected = new SelectionListener() {
+		final SelectionListener radioAdaptiveTimeoutSelected = new SelectionListener() {
 			@Override
-			public void widgetSelected(SelectionEvent arg0) {
+			public void widgetSelected(final SelectionEvent arg0) {
 				timeout = -2;
 			}
 
@@ -138,9 +138,8 @@ public class Timeout extends WizardPage {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				if (e.character < '0' || e.character > '9') { // remove
-																// everything
-																// not a number
+				// remove everything not a number
+				if (e.character < '0' || e.character > '9') {
 					text1.setText(text1.getText().replace("" + e.character, ""));
 				}
 
@@ -153,11 +152,11 @@ public class Timeout extends WizardPage {
 
 		});
 
-		text1.setLayoutData(gd);
+		this.text1.setLayoutData(gd);
 
 		// required to avoid an error in the system
 
-		setControl(container2);
+		setControl(this.container2);
 
 		setPageComplete(true);
 	}
