@@ -6,6 +6,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,5 +47,13 @@ public class MeasurementToolContributionsHandler {
 		} catch (final CoreException exception) {
 			throw new RuntimeException(exception);
 		}
+		String measurmentToolsAsString = "";
+		for (final MeasurementTool measurmentTool : measurementTools) {
+			measurmentToolsAsString += " - " + measurmentTool.getClass().getPackage() + "."
+					+ measurmentTool.getClass().getName() + "\n";
+		}
+		final IWorkbench workbench = PlatformUI.getWorkbench();
+		final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
+		MessageDialog.openInformation(window.getShell(), "Beagle is alive!", "Available measurment tools:\n");
 	}
 }
