@@ -54,6 +54,7 @@ public class MeasurementToolContributionsHandler {
 		}
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		final IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
-		MessageDialog.openInformation(window.getShell(), "Beagle is alive!", "Available measurment tools:\n");
+		MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
+				"Available measurment tools:\n" + measurmentToolsAsString);
 	}
 }
