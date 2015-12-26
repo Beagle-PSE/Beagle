@@ -22,10 +22,17 @@ public class MeasurementToolContributionsHandler {
 	 * The extension point id for the measurement tools.
 	 */
 	private static final String MEASUREMT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdg.beagle.measurmenttool";
+
+	/**
+	 * The property name of the extension point for the measurement tools for the
+	 * {@link MeasurementTool} implementations.
+	 */
 	private static final String MEASUREMT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME = "MeasurmentToolClass";
 
 	/**
-	 * Method, that is executed by eclipse with all available extensions.
+	 * Scans the measurement tool extension point for available measurement tools.
+	 *
+	 * @return All available measurement tools.
 	 */
 	public List<MeasurementTool> getAvailableMeasurmentTools() {
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();

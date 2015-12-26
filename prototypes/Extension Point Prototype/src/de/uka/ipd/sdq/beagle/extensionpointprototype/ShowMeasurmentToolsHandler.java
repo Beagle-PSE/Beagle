@@ -11,6 +11,11 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import java.util.List;
 
+/**
+ * Handles the menu entry "show available measurement tools".
+ *
+ * @author Roman Langrehr
+ */
 public class ShowMeasurmentToolsHandler extends AbstractHandler {
 
 	@Override
