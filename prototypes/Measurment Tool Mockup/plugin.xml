@@ -5,7 +5,9 @@
          id="de.uka.ipd.sdg.beagle.measurmenttoolmockup"
          name="Measurment Tool Mockup"
          point="de.uka.ipd.sdg.beagle.measurmenttool">
-      <MeasurmentTool></MeasurmentTool>
+      <MeasurmentTool
+            MeasurmentToolClass="de.uka.ipd.sdq.beagle.measurmenttoolmockup.MockupMeasurmentTool">
+      </MeasurmentTool>
    </extension>
 
 </plugin>
