@@ -29,6 +29,16 @@ public class Timeout extends WizardPage {
 	private static String description = "Blah blah ... a timeout can be used.";
 
 	/**
+	 * Numeric value for "adaptive timeout".
+	 */
+	private final int adaptiveTimout = -2;
+
+	/**
+	 * Numeric value for "no timeout".
+	 */
+	private final int noTimeout = -1;
+
+	/**
 	 * A textbox for the timeout in seconds (if the timeout is set manually).
 	 */
 	private Text tbTimeoutSeconds;
@@ -40,19 +50,19 @@ public class Timeout extends WizardPage {
 	/**
 	 * A sub-container.
 	 */
-	private Composite container1;
+	private Composite lowerContainer;
 	/**
 	 * A sub-container.
 	 */
-	private Composite container2;
+	private Composite upperContainer;
 	/**
 	 * The default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no timeout]
 	 * [>= 0 -> timeout in seconds]
 	 */
-	private final int defaultTimeout = -2;
+	private final int defaultTimeout = this.adaptiveTimout;
 	/**
-	 * The default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no timeout]
-	 * [>= 0 -> timeout in seconds]
+	 * Applies the default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no
+	 * timeout] [>= 0 -> timeout in seconds]
 	 */
 	private int timeout = this.defaultTimeout;
 
@@ -73,23 +83,23 @@ public class Timeout extends WizardPage {
 		this.mainContainer.setLayout(layoutAll);
 		layoutAll.numColumns = 1;
 
-		this.container2 = new Composite(this.mainContainer, SWT.NONE);
-		final GridLayout layout2 = new GridLayout();
-		this.container2.setLayout(layout2);
-		layout2.numColumns = 2;
+		this.upperContainer = new Composite(this.mainContainer, SWT.NONE);
+		final GridLayout upperLayout = new GridLayout();
+		this.upperContainer.setLayout(upperLayout);
+		upperLayout.numColumns = 2;
 
 		final GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 
-		final Button radioAdaptiveTimout = new Button(this.container2, SWT.RADIO);
-		final Label lblRadioAdaptiveTimout = new Label(this.container2, SWT.NONE);
+		final Button radioAdaptiveTimout = new Button(this.upperContainer, SWT.RADIO);
+		final Label lblRadioAdaptiveTimout = new Label(this.upperContainer, SWT.NONE);
 		lblRadioAdaptiveTimout.setText("Use an adaptive timeout.");
 
-		final Button radioSetTimout = new Button(this.container2, SWT.RADIO);
-		final Label lblRadioSetTimout = new Label(this.container2, SWT.NONE);
+		final Button radioSetTimout = new Button(this.upperContainer, SWT.RADIO);
+		final Label lblRadioSetTimout = new Label(this.upperContainer, SWT.NONE);
 		lblRadioSetTimout.setText("Use a set timout.");
 
-		final Button radioNoTimeout = new Button(this.container2, SWT.RADIO);
-		final Label lblRadioNoTimeout = new Label(this.container2, SWT.NONE);
+		final Button radioNoTimeout = new Button(this.upperContainer, SWT.RADIO);
+		final Label lblRadioNoTimeout = new Label(this.upperContainer, SWT.NONE);
 		lblRadioNoTimeout.setText("Don't use a timout.");
 
 		radioAdaptiveTimout.setSelection(true);
@@ -158,19 +168,19 @@ public class Timeout extends WizardPage {
 
 		radioNoTimeout.addSelectionListener(radioNoTimeoutSelected);
 
-		this.container1 = new Composite(this.mainContainer, SWT.NONE);
-		final GridLayout layout = new GridLayout();
-		this.container1.setLayout(layout);
-		layout.numColumns = 3;
+		this.lowerContainer = new Composite(this.mainContainer, SWT.NONE);
+		final GridLayout lowerLayout = new GridLayout();
+		this.lowerContainer.setLayout(lowerLayout);
+		lowerLayout.numColumns = 3;
 
-		final Label label1 = new Label(this.container1, SWT.NONE);
+		final Label label1 = new Label(this.lowerContainer, SWT.NONE);
 		label1.setText("Custom timeout: ");
 
-		this.tbTimeoutSeconds = new Text(this.container1, SWT.BORDER | SWT.SINGLE);
+		this.tbTimeoutSeconds = new Text(this.lowerContainer, SWT.BORDER | SWT.SINGLE);
 		this.tbTimeoutSeconds.setText("");
 		this.tbTimeoutSeconds.setEnabled(false);
 
-		final Label label2 = new Label(this.container1, SWT.NONE);
+		final Label label2 = new Label(this.lowerContainer, SWT.NONE);
 		label2.setText("seconds");
 
 		this.tbTimeoutSeconds.addKeyListener(new KeyListener() {
@@ -199,7 +209,7 @@ public class Timeout extends WizardPage {
 
 		// required to avoid an error in the system
 
-		setControl(this.container2);
+		setControl(this.upperContainer);
 
 		setPageComplete(true);
 	}
