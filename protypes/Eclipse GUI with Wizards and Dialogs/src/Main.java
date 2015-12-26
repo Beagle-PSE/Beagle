@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.Shell;
  * @author Christoph Michelbach
  *
  */
-public class Main {
+public final class Main {
 	/**
 	 * Private constructor preventing instantiation.
 	 */
