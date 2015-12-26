@@ -3,33 +3,53 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 
+/**
+ * Page 1 of the wizard.
+ * 
+ * @author Christoph Michelbach
+ *
+ */
 public class SelectionOverview extends WizardPage {
-	private Text text1;
-	private Composite container;
+	/**
+	 * The title of this page.
+	 */
+	private static String title = "Selection Overview";
 
+	/**
+	 * The description of this page.
+	 */
+	private static String description = "Make sure you want to anaylse the components listed below.";
+
+	/**
+	 * The main container.
+	 */
+	private Composite mainContainer;
+
+	/**
+	 * Constructor setting the tile and the description of this page.
+	 */
 	public SelectionOverview() {
-		super("Selection Overview");
-		setTitle("Selection Overview");
-		setDescription("Make sure you want to anaylse the components listed below.");
+		super(title);
+		setTitle(title);
+		setDescription(description);
 	}
 
 	@Override
-	public void createControl(Composite parent) {
-		container = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		container.setLayout(layout);
+	public void createControl(final Composite parent) {
+		this.mainContainer = new Composite(parent, SWT.NONE);
+		final GridLayout layout = new GridLayout();
+		this.mainContainer.setLayout(layout);
 		layout.numColumns = 1;
 
-		final Label labelHead = new Label(container, SWT.NONE);
+		final Label labelHead = new Label(this.mainContainer, SWT.NONE);
 		labelHead.setText("These components are selected for anaylsis:");
 
-		final Label label1 = new Label(this.container, SWT.NONE);
+		final Label label1 = new Label(this.mainContainer, SWT.NONE);
 		label1.setText("    • Some Component");
-		final Label label2 = new Label(this.container, SWT.NONE);
+		final Label label2 = new Label(this.mainContainer, SWT.NONE);
 		label2.setText("    • Some Different Component");
-		final Label label3 = new Label(this.container, SWT.NONE);
+		final Label label3 = new Label(this.mainContainer, SWT.NONE);
 		label3.setText("    • And Another One");
 
 		/*
@@ -65,8 +85,7 @@ public class SelectionOverview extends WizardPage {
 		 */
 
 		// required to avoid an error in the system
-
-		setControl(this.container);
+		setControl(this.mainContainer);
 		setPageComplete(true);
 	}
 }

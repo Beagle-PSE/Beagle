@@ -11,27 +11,69 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * Page 2 of the wizard.
+ * 
+ * @author Christoph Michelbach
+ *
+ */
 public class Timeout extends WizardPage {
-	private Text text1;
-	private Composite containerAll, container1, container2;
-	private int timeout = -2;
+	/**
+	 * The title of this page.
+	 */
+	private static String title = "Timeout";
 
+	/**
+	 * The description of this page.
+	 */
+	private static String description = "Blah blah ... a timeout can be used.";
+
+	/**
+	 * A textbox for the timeout in seconds (if the timeout is set manually).
+	 */
+	private Text tbTimeoutSeconds;
+
+	/**
+	 * The main container for this page.
+	 */
+	private Composite mainContainer;
+	/**
+	 * A sub-container.
+	 */
+	private Composite container1;
+	/**
+	 * A sub-container.
+	 */
+	private Composite container2;
+	/**
+	 * The default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no timeout]
+	 * [>= 0 -> timeout in seconds]
+	 */
+	private final int defaultTimeout = -2;
+	/**
+	 * The default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no timeout]
+	 * [>= 0 -> timeout in seconds]
+	 */
+	private int timeout = this.defaultTimeout;
+
+	/**
+	 * Constructor setting the tile and the introduction to this page.
+	 */
 	public Timeout() {
-		super("Timeout");
-		setTitle("Timeout");
-		setDescription("Blah blah ... a timeout can be used.");
-		setControl(text1);
+		super(title);
+		setTitle(title);
+		setDescription(description);
+		setControl(this.tbTimeoutSeconds);
 	}
 
 	@Override
-
-	public void createControl(Composite parent) {
-		this.containerAll = new Composite(parent, SWT.NONE);
+	public void createControl(final Composite parent) {
+		this.mainContainer = new Composite(parent, SWT.NONE);
 		final GridLayout layoutAll = new GridLayout();
-		this.containerAll.setLayout(layoutAll);
+		this.mainContainer.setLayout(layoutAll);
 		layoutAll.numColumns = 1;
 
-		this.container2 = new Composite(containerAll, SWT.NONE);
+		this.container2 = new Composite(this.mainContainer, SWT.NONE);
 		final GridLayout layout2 = new GridLayout();
 		this.container2.setLayout(layout2);
 		layout2.numColumns = 2;
@@ -42,12 +84,12 @@ public class Timeout extends WizardPage {
 		final Label lblRadioAdaptiveTimout = new Label(this.container2, SWT.NONE);
 		lblRadioAdaptiveTimout.setText("Use an adaptive timeout.");
 
-		final Button radioSetTimout = new Button(container2, SWT.RADIO);
-		final Label lblRadioSetTimout = new Label(container2, SWT.NONE);
+		final Button radioSetTimout = new Button(this.container2, SWT.RADIO);
+		final Label lblRadioSetTimout = new Label(this.container2, SWT.NONE);
 		lblRadioSetTimout.setText("Use a set timout.");
 
-		final Button radioNoTimeout = new Button(container2, SWT.RADIO);
-		final Label lblRadioNoTimeout = new Label(container2, SWT.NONE);
+		final Button radioNoTimeout = new Button(this.container2, SWT.RADIO);
+		final Label lblRadioNoTimeout = new Label(this.container2, SWT.NONE);
 		lblRadioNoTimeout.setText("Don't use a timout.");
 
 		radioAdaptiveTimout.setSelection(true);
@@ -55,55 +97,55 @@ public class Timeout extends WizardPage {
 		final SelectionListener radioAdaptiveTimeoutSelected = new SelectionListener() {
 			@Override
 			public void widgetSelected(final SelectionEvent arg0) {
-				timeout = -2;
+				Timeout.this.timeout = -2;
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
+			public void widgetDefaultSelected(final SelectionEvent arg0) {
 				// do nothing
 			}
 		};
 
-		SelectionListener radioSetTimeoutSelected = new SelectionListener() {
+		final SelectionListener radioSetTimeoutSelected = new SelectionListener() {
 			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				text1.setEnabled(true);
+			public void widgetSelected(final SelectionEvent arg0) {
+				Timeout.this.tbTimeoutSeconds.setEnabled(true);
 
-				if (text1.getText().isEmpty()) {
+				if (Timeout.this.tbTimeoutSeconds.getText().isEmpty()) {
 					setPageComplete(false);
 				} else {
 					setPageComplete(true);
-					timeout = Integer.parseInt(text1.getText());
+					Timeout.this.timeout = Integer.parseInt(tbTimeoutSeconds.getText());
 				}
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
+			public void widgetDefaultSelected(final SelectionEvent arg0) {
 				// do nothing
 			}
 		};
 
-		SelectionListener radioSetTimeoutDeselected = new SelectionListener() {
+		final SelectionListener radioSetTimeoutDeselected = new SelectionListener() {
 			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				text1.setEnabled(false);
+			public void widgetSelected(final SelectionEvent arg0) {
+				Timeout.this.tbTimeoutSeconds.setEnabled(false);
 				setPageComplete(true);
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
+			public void widgetDefaultSelected(final SelectionEvent arg0) {
 				// do nothing
 			}
 		};
 
-		SelectionListener radioNoTimeoutSelected = new SelectionListener() {
+		final SelectionListener radioNoTimeoutSelected = new SelectionListener() {
 			@Override
-			public void widgetSelected(SelectionEvent arg0) {
-				timeout = -1;
+			public void widgetSelected(final SelectionEvent arg0) {
+				Timeout.this.timeout = -1;
 			}
 
 			@Override
-			public void widgetDefaultSelected(SelectionEvent arg0) {
+			public void widgetDefaultSelected(final SelectionEvent arg0) {
 				// do nothing
 			}
 		};
@@ -116,34 +158,35 @@ public class Timeout extends WizardPage {
 
 		radioNoTimeout.addSelectionListener(radioNoTimeoutSelected);
 
-		container1 = new Composite(containerAll, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		container1.setLayout(layout);
+		this.container1 = new Composite(this.mainContainer, SWT.NONE);
+		final GridLayout layout = new GridLayout();
+		this.container1.setLayout(layout);
 		layout.numColumns = 3;
 
-		Label label1 = new Label(container1, SWT.NONE);
+		final Label label1 = new Label(this.container1, SWT.NONE);
 		label1.setText("Custom timeout: ");
 
-		text1 = new Text(container1, SWT.BORDER | SWT.SINGLE);
-		text1.setText("");
-		text1.setEnabled(false);
+		this.tbTimeoutSeconds = new Text(this.container1, SWT.BORDER | SWT.SINGLE);
+		this.tbTimeoutSeconds.setText("");
+		this.tbTimeoutSeconds.setEnabled(false);
 
-		Label label2 = new Label(container1, SWT.NONE);
+		final Label label2 = new Label(this.container1, SWT.NONE);
 		label2.setText("seconds");
 
-		text1.addKeyListener(new KeyListener() {
+		this.tbTimeoutSeconds.addKeyListener(new KeyListener() {
 			@Override
-			public void keyPressed(KeyEvent e) {
+			public void keyPressed(final KeyEvent e) {
 			}
 
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyReleased(final KeyEvent e) {
 				// remove everything not a number
 				if (e.character < '0' || e.character > '9') {
-					text1.setText(text1.getText().replace("" + e.character, ""));
+					Timeout.this.tbTimeoutSeconds
+							.setText(Timeout.this.tbTimeoutSeconds.getText().replace("" + e.character, ""));
 				}
 
-				if (text1.getText().isEmpty()) {
+				if (Timeout.this.tbTimeoutSeconds.getText().isEmpty()) {
 					setPageComplete(false);
 				} else {
 					setPageComplete(true);
@@ -152,7 +195,7 @@ public class Timeout extends WizardPage {
 
 		});
 
-		this.text1.setLayoutData(gd);
+		this.tbTimeoutSeconds.setLayoutData(gd);
 
 		// required to avoid an error in the system
 
@@ -161,7 +204,12 @@ public class Timeout extends WizardPage {
 		setPageComplete(true);
 	}
 
+	/**
+	 * Returns the timeout chosen by the user.
+	 * 
+	 * @return the timeout chosen by the user.
+	 */
 	public int getTimeout() {
-		return timeout;
+		return this.timeout;
 	}
 }

@@ -3,10 +3,25 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Shell;
 
+/**
+ * The class setting up and controlling the wizard.
+ * 
+ * @author Christoph Michelbach
+ *
+ */
 public class BeagleAnalysisWizard extends Wizard {
+	/**
+	 * A page of this wizard.
+	 */
 	protected SelectionOverview selectionOverview;
+	/**
+	 * A page of this wizard.
+	 */
 	protected Timeout timeout;
 
+	/**
+	 * The constructor of this class.
+	 */
 	public BeagleAnalysisWizard() {
 		super();
 		setNeedsProgressMonitor(true);
@@ -19,11 +34,11 @@ public class BeagleAnalysisWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		selectionOverview = new SelectionOverview();
-		timeout = new Timeout();
+		this.selectionOverview = new SelectionOverview();
+		this.timeout = new Timeout();
 
-		addPage(selectionOverview);
-		addPage(timeout);
+		addPage(this.selectionOverview);
+		addPage(this.timeout);
 	}
 
 	@Override
@@ -31,9 +46,9 @@ public class BeagleAnalysisWizard extends Wizard {
 	public boolean performFinish() {
 		// open dialog
 		// TODO use timeout.getTimeout() when launching the analysis
-		MessageDialog dialog = new MessageDialog(new Shell(), "Beagle Analysis", null, "Beagle Analysis is running.",
-				MessageDialog.INFORMATION, new String[] { "Abort", "Pause" }, 0);
-		int buttonClick = dialog.open();
+		final MessageDialog dialog = new MessageDialog(new Shell(), "Beagle Analysis is Running", null,
+				"Beagle Analysis is running.", MessageDialog.INFORMATION, new String[] { "Abort", "Pause" }, 0);
+		final int buttonClick = dialog.open();
 
 		if (buttonClick == 0) {
 			System.out.println("User clicked 'Abort'.");
