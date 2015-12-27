@@ -20,7 +20,8 @@ import de.undercouch.gradle.tasks.download.Download
 task downloadWebFonts(type: Download) {
     src ([
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Serif.zip',
-    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip'
+    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip',
+    	'http://fontawesome.io/assets/font-awesome-4.5.0.zip'
     ])
     dest "$buildDir/tmp/fonts/"
 	onlyIfNewer true
@@ -31,12 +32,13 @@ task downloadWebFonts(type: Download) {
 
 task copyWebFonts(dependsOn: downloadWebFonts, type: Copy) {
 	def sourcePaths = []
-	fileTree(downloadWebFonts.dest).include('*.zip').each { file ->
-		sourcePaths += zipTree(file)
-	}
+	def allZips = fileTree(downloadWebFonts.dest).include('*.zip')
+	allZips.each { file ->	sourcePaths.add zipTree(file) }
 	
     from sourcePaths
     into "$WEB_DEST/fonts"
+    
+    inputs.files allZips
 }
 
 task renderWebPages(type: Copy) {

@@ -9,4 +9,13 @@ public class BeagleHelpers {
 		beagleContext.title = title
 		return ''
 	}
+	
+	public String fileIconClass(String formatName) {
+		switch(formatName) {
+			case 'pdf':
+				return 'file-pdf-o'
+			default:
+				return 'file-o'
+		}
+	}
 }

@@ -4,8 +4,9 @@ An Eclipse plugin that dynamically analyses software for its runtime properties.
 import existing, component-based based software into [Palladio](http://www.palladio-simulator.com/).
 
 ## Documentation
-{{#> artefact link="System Requirements Specification.pdf" type="pdf"}}
-uiae
+{{#> artefact link="Software Requirements Specification.pdf" type="pdf"}}
+	{{#> title}}Requirements Specification{{/title}}
+	{{#> description}}Our specification of this project’s visions and goals{{/description}} 
 {{/artefact}}
 	
 ## Reports

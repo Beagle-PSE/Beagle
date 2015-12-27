@@ -5,8 +5,14 @@ body {
 	margin: 0 auto;
 }
 
+* {
+	font-size: 1rem;
+	font-family: 'Computer Modern Serif', serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Computer Modern Sans', sans-serif;
+	font-weight: bold;
 }
 
 h1 {
@@ -14,7 +20,6 @@ h1 {
 	text-align: center;
 }
 
-p {
-	font-size: 1rem;
-	font-family: 'Computer Modern Serif', serif;
+.description {
+	font-size: .8rem;
 }
