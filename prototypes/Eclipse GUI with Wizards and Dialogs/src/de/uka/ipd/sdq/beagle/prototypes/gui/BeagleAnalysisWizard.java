@@ -13,11 +13,11 @@ public class BeagleAnalysisWizard extends Wizard {
 	/**
 	 * A page of this wizard.
 	 */
-	private SelectionOverview selectionOverview;
+	private SelectionOverviewPage selectionOverviewPage;
 	/**
 	 * A page of this wizard.
 	 */
-	private Timeout timeout;
+	private TimeoutPage timeoutPage;
 
 	/**
 	 * The constructor of this class.
@@ -34,11 +34,11 @@ public class BeagleAnalysisWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		this.selectionOverview = new SelectionOverview();
-		this.timeout = new Timeout();
+		this.selectionOverviewPage = new SelectionOverviewPage();
+		this.timeoutPage = new TimeoutPage();
 
-		addPage(this.selectionOverview);
-		addPage(this.timeout);
+		addPage(this.selectionOverviewPage);
+		addPage(this.timeoutPage);
 	}
 
 	@Override

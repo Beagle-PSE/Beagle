@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Label;
  * 
  * @author Christoph Michelbach
  */
-public class SelectionOverview extends WizardPage {
+public class SelectionOverviewPage extends WizardPage {
 	/**
 	 * The title of this page.
 	 */
@@ -36,7 +36,7 @@ public class SelectionOverview extends WizardPage {
 	/**
 	 * Constructor setting the tile and the description of this page.
 	 */
-	public SelectionOverview() {
+	public SelectionOverviewPage() {
 		super(TITLE);
 		setTitle(TITLE);
 		setDescription(DESCRIPTION);

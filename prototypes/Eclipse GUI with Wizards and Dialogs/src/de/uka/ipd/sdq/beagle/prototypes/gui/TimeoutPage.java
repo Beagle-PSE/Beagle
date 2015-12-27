@@ -18,7 +18,7 @@ import org.eclipse.swt.widgets.Text;
  * 
  * @author Christoph Michelbach
  */
-public class Timeout extends WizardPage {
+public class TimeoutPage extends WizardPage {
 	/**
 	 * The title of this page.
 	 */
@@ -90,7 +90,7 @@ public class Timeout extends WizardPage {
 	/**
 	 * Constructor setting the tile and the introduction to this page.
 	 */
-	public Timeout() {
+	public TimeoutPage() {
 		super(TITLE);
 		setTitle(TITLE);
 		setDescription(DESCRIPTION);
@@ -128,7 +128,7 @@ public class Timeout extends WizardPage {
 		final SelectionListener radioAdaptiveTimeoutSelected = new SelectionListener() {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				Timeout.this.timeout = ADAPTIVE_TIMEOUT;
+				TimeoutPage.this.timeout = ADAPTIVE_TIMEOUT;
 			}
 
 			@Override
@@ -140,13 +140,13 @@ public class Timeout extends WizardPage {
 		final SelectionListener radioSetTimeoutSelected = new SelectionListener() {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				Timeout.this.tbTimeoutSeconds.setEnabled(true);
+				TimeoutPage.this.tbTimeoutSeconds.setEnabled(true);
 
-				if (Timeout.this.tbTimeoutSeconds.getText().isEmpty()) {
+				if (TimeoutPage.this.tbTimeoutSeconds.getText().isEmpty()) {
 					setPageComplete(false);
 				} else {
 					setPageComplete(true);
-					Timeout.this.timeout = Integer.parseInt(Timeout.this.tbTimeoutSeconds.getText());
+					TimeoutPage.this.timeout = Integer.parseInt(TimeoutPage.this.tbTimeoutSeconds.getText());
 				}
 			}
 
@@ -159,7 +159,7 @@ public class Timeout extends WizardPage {
 		final SelectionListener radioSetTimeoutDeselected = new SelectionListener() {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				Timeout.this.tbTimeoutSeconds.setEnabled(false);
+				TimeoutPage.this.tbTimeoutSeconds.setEnabled(false);
 				setPageComplete(true);
 			}
 
@@ -172,7 +172,7 @@ public class Timeout extends WizardPage {
 		final SelectionListener radioNoTimeoutSelected = new SelectionListener() {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				Timeout.this.timeout = NO_TIMEOUT;
+				TimeoutPage.this.timeout = NO_TIMEOUT;
 			}
 
 			@Override
@@ -213,11 +213,11 @@ public class Timeout extends WizardPage {
 			public void keyReleased(final KeyEvent keyEvent) {
 				// remove everything not a number
 				if (keyEvent.character < '0' || keyEvent.character > '9') {
-					Timeout.this.tbTimeoutSeconds
-							.setText(Timeout.this.tbTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
+					TimeoutPage.this.tbTimeoutSeconds
+							.setText(TimeoutPage.this.tbTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
 				}
 
-				if (Timeout.this.tbTimeoutSeconds.getText().isEmpty()) {
+				if (TimeoutPage.this.tbTimeoutSeconds.getText().isEmpty()) {
 					setPageComplete(false);
 				} else {
 					setPageComplete(true);
