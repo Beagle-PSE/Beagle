@@ -1,9 +1,20 @@
 #!/bin/bash
 
+# Requirements Specification render script.
+# Parameters (all optional):
+#	1. the folder to copy the results to. Defaults to the working directory
+#	2. the file to write the log to. Defaults to 'Render.sh' in the working directory
+#	3. if "srs-only" is passed as 3. parameter, only the rendered 'Requirements Specification.pdf' will be created  
+
 file="Requirements Specification"
 
 # fail the script if any command fails
 set -e 
+
+# destination of the created files
+dest=${1:-$PWD}
+logdest=${2:-$PWD/Render.log}
+mkdir -p "$dest"
 
 # Copy everything to a new folder that we can savely delete
 tmpdir=`mktemp -d`
@@ -14,6 +25,8 @@ cd "$tmpdir"
 
 # The old log was copied in, remove it.
 rm -f $log
+# remove old PDFs
+find . -name '*.pdf' -exec rm -f '{}' \;
 
 # Called when one of the commands fails. Restores the PWD, writes the full log to stdout,
 # saves the log, prints a messages and exits.
@@ -92,11 +105,18 @@ pdflatex -interaction=nonstopmode -halt-on-error "$file.tex" | tee -a $log || er
 
 
 
+if [ "$3" = "srs-only" ]
+then
+	cp --parents -f "$file.pdf" "$dest"
+else
+	# copy all rendered pdfs to save them
+	find . -name '*.pdf' -exec cp --parents -f '{}' "$dest" \;
+fi
 
-# copy all rendered pdfs to save them
-find . -name '*.pdf' -exec cp --parents -f '{}' "$OLDPWD" \;
 # save the log
-cp -f $log "$OLDPWD"
+mkdir -p "$(dirname "$logdest")"
+cp -f $log "$logdest"
+
 # Go back up
 cd "$OLDPWD"
 

@@ -67,8 +67,10 @@ cd "$pubdir"
 find . -maxdepth 1 \! \( -name .git -o -name . -o -name branches \) -exec rm -rf {} \;
 
 # Requirements specification
+cp "$BASE/build/doc/Requirements Specification.pdf" .
 
-cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" .
+# README.md
+cp "$BASE/deploy/Default gh-pages README.md" ./README.md
 
 ###
 

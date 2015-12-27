@@ -47,7 +47,6 @@
       <property name="severity" value="warning"/>
       <property name="scope" value="anoninner"/>
       <property name="authorFormat" value="^[A-Z][A-Za-z\-]* [A-Z][A-Za-z\-]*( [A-Z][A-Za-z\-]*)*$"/>
-      <property name="versionFormat" value="^(0|([1-9][0-9]*))(\.(0|([1-9][0-9]*)))*$"/>
     </module>
     <module name="JavadocVariable">
       <property name="severity" value="warning"/>
@@ -85,7 +84,7 @@
     </module>
     <module name="ClassTypeParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][A-Za-z]*$"/>
+      <property name="format" value="^[A-Z]+(_[A-Z]+)*$"/>
     </module>
     <module name="ConstantName">
       <property name="severity" value="warning"/>
@@ -113,7 +112,7 @@
     </module>
     <module name="InterfaceTypeParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][A-Za-z]*$"/>
+      <property name="format" value="^[A-Z]+(_[A-Z]+)*$"/>
     </module>
     <module name="PackageName">
       <property name="severity" value="warning"/>
@@ -523,8 +522,8 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="SummaryJavadoc">
-      <property name="forbiddenSummaryFragments" value="^[^\.]{100,}.*$"/>
-      <message key="summary.javaDoc" value="Summary too long (max 100 letters)."/>
+      <property name="forbiddenSummaryFragments" value="^[^\.]{121,}.*$"/>
+      <message key="summary.javaDoc" value="Summary too long (max 120 letters)."/>
       <message key="summary.first.sentence" value="Javadoc incomplete: missing summary."/>
     </module>
   </module>
