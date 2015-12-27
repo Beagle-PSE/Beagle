@@ -1,0 +1,3 @@
+<div class="artefact">
+	{{> @partial-block }}
+</div>

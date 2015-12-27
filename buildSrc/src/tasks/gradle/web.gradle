@@ -1,0 +1,66 @@
+/**
+ * Tasks for creating and deploying Beagle’s web presence.
+ *
+ * @author Joshua Gleitze
+ */
+ buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1+'
+    }
+}
+
+
+import de.undercouch.gradle.tasks.download.Download
+
+ final String WEB_DEST = "$buildDir/web"
+
+task downloadWebFonts(type: Download) {
+    src ([
+    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Serif.zip',
+    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip'
+    ])
+    dest "$buildDir/tmp/fonts/"
+	onlyIfNewer true
+	quiet true
+	
+	outputs.upToDateWhen { fileTree(downloadWebFonts.dest).include('*.zip').size() == src.size() }
+}
+
+task copyWebFonts(dependsOn: downloadWebFonts, type: Copy) {
+	def sourcePaths = []
+	fileTree(downloadWebFonts.dest).include('*.zip').each { file ->
+		sourcePaths += zipTree(file)
+	}
+	
+    from sourcePaths
+    into "$WEB_DEST/fonts"
+}
+
+task renderWebPages(type: Copy) {
+    inputs.dir "$projectDir/src/web/handlebars"
+    
+    group "Build"
+    description "Renders Beagle’s web presence."
+    
+    def compileAction = new CompileWebFilesAction()
+    compileAction.addRootTemplateFiles	'html': file("$projectDir/src/web/handlebars/roottemplate.html"),
+    									'htmd': file("$projectDir/src/web/handlebars/roottemplate.html")
+    HandlebarsFactory.partialsFolder = file("$projectDir/src/web/handlebars/partials")
+    HandlebarsFactory.partialsExtension = "part"
+    
+	from "$projectDir/src/web/handlebars/pages"
+	into WEB_DEST
+	eachFile compileAction
+}
+
+task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
+	from "$projectDir/src/web"
+	include "css/**/*.css"
+	into WEB_DEST
+}
+
+task web(dependsOn: [renderWebPages, copyWebAssets])
+addToMainTask web

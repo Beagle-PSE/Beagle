@@ -1,0 +1,11 @@
+# Beagle
+
+An Eclipse plugin that dynamically analyses software for its runtime properties. Developed to
+import existing, component-based based software into [Palladio](http://www.palladio-simulator.com/).
+
+## Documentation
+{{#> artefact link="System Requirements Specification.pdf" type="pdf"}}
+uiae
+{{/artefact}}
+	
+## Reports

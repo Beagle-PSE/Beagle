@@ -1,0 +1,4 @@
+// import all dependencies defined in dependencies.gradle files
+fileTree("$projectDir/src/main/groovy").include('**/dependencies.gradle').each { file ->
+	apply from: file
+} 
