@@ -1,4 +1,6 @@
 apply plugin: 'java'
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
 defaultTasks 'build'
 
 // Customization of MANIFEST.MF
@@ -18,6 +20,52 @@ repositories {
 dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.+'
 }
+
+checkstyle {
+	toolVersion = "6.11"
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+	}
+}
+
+task verifyNoCheckstyleWarnings << {
+	description 'throws if checkstyle warnings were found in a previous checkstyle run'
+
+	def checkstyleWarningsMain = 'build/reports/checkstyle/main.xml'
+	def checkstyleWarningsTest = 'build/reports/checkstyle/test.xml'
+
+	File warningsFile = file (checkstyleWarningsMain)
+	if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
+		throw new GradleException("There were checkstyle warnings in src/main!")
+	}
+	warningsFile = file (checkstyleWarningsTest)
+	if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
+		throw new GradleException("There were checkstyle warnings in src/test!")
+	}
+}
+
+
+task verifyTestCoverage << {
+	description 'throws if code coverage is not 100%'
+
+	def jacocoReport = 'build/reports/jacoco/test/jacocoTestReport.xml'
+
+	File report = file (jacocoReport)
+	if (report.exists() && report.text ==~ /.*missed="[^0]".*/) {
+		throw new GradleException("Code Coverage by Tests is not 100%!")
+	}
+}
+
+task qc (dependsOn: ['verifyNoCheckstyleWarnings', 'verifyTestCoverage'])
+
+verifyNoCheckstyleWarnings.dependsOn check
+verifyTestCoverage.dependsOn jacocoTestReport
+build.dependsOn jacocoTestReport
+
+
 
 task srs(type: Exec) {
 	description 'Renders the Requirements Specification.'
