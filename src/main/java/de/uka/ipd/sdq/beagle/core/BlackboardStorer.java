@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.analysis.ResultAnalyser;
-
 import java.io.Serializable;
 
 /**
@@ -9,9 +7,10 @@ import java.io.Serializable;
  * state object is defined by {@code WRITTEN_TYPE}.
  *
  * <p>To illustrate the usage of this interface, two examples follow. We look at a typical
- * use case: Two {@linkplain ResultAnalyser ResultAnalysers}, {@code MyAnalyser} and
- * {@code YourAnalyser}. Both want to store data on the {@linkplain Blackboard} to keep
- * track of whether there is something new to look at.
+ * use case: Two {@linkplain de.uka.ipd.sdq.beagle.analysis.ResultAnalyser
+ * ResultAnalysers}, {@code MyAnalyser} and {@code YourAnalyser}. Both want to store data
+ * on the {@linkplain Blackboard} to keep track of whether there is something new to look
+ * at.
  *
  * <p>{@code YourAnalyser} simply wants to keep track of the {@linkplain SEFFLoop
  * SEFFLoops} he has already seen. He wants to use an {@code HashSet} to do so:
@@ -19,22 +18,22 @@ import java.io.Serializable;
  * <code>
  *
  * <pre>
- * public class YourAnalyser implements ResultAnalyser, BlackboardStorer&lt;HashSet&lt;SEFFLoop&gt;&lt; {
+ * public class YourAnalyser implements ResultAnalyser, BlackboardStorer&lt;HashSet&lt;SEFFLoop&gt;&gt; {
  *
  * 	public boolean canContribute(ReadOnlyBlackboardView blackboard) {
- * 		Set<SEFFLoop> alreadySeen = blackboard.readFor(YourAnalyser.class);
- * 		Set<SEFFLoop> allLoops = blackboard.getAllSEFFLoops();
- * 		return allLoops.size() > 0 && (alreadySeen == null || !alreadySeen.containsAll(allLoops));
+ * 		Set&lt;SEFFLoop&gt; alreadySeen = blackboard.readFor(YourAnalyser.class);
+ * 		Set&lt;SEFFLoop&gt; allLoops = blackboard.getAllSEFFLoops();
+ * 		return allLoops.size() &gt; 0 && (alreadySeen == null || !alreadySeen.containsAll(allLoops));
  * 	}
  *
  * 	public boolean contribute(AnalyserBlackboardView blackboard) {
- * 		Set<SEFFLoop> alreadySeen = blackboard.readFor(YourAnalyser.class);
+ * 		Set&lt;SEFFLoop&gt; alreadySeen = blackboard.readFor(YourAnalyser.class);
  * 		if (alreadySeen == null) {
- * 			alreadySeen = new HashSet<SEFFLoop>();
+ * 			alreadySeen = new HashSet&lt;SEFFLoop&gt;();
  * 			blackboard.writeFor(YourAnalyser.class, alreadySeen);
  * 		}
- * 		Set<SEFFLoop> allLoops = blackboard.getAllSEFFLoops();
- * 		Set<SEFFLoop> todo = allLoops.removeAll(alreadySeen);
+ * 		Set&lt;SEFFLoop&gt; allLoops = blackboard.getAllSEFFLoops();
+ * 		Set&lt;SEFFLoop&gt; todo = allLoops.removeAll(alreadySeen);
  *
  * 		for (SEFFLoop loop : todo) {
  * 			// do the logic here
@@ -61,7 +60,7 @@ import java.io.Serializable;
  * <code>
  *
  * <pre>
- * public class MyAnalyser implements ResultAnalyser, BlackboardStorer<MyAnalyserDataStructure> {
+ * public class MyAnalyser implements ResultAnalyser, BlackboardStorer&lt;MyAnalyserDataStructure&gt; {
  *  // everything here is like above:
  *  public boolean canContribute(ReadOnlyBlackboardView blackboard) {
  *     MyAnalyserDataStructure stored = blackboard.readFor(MyAnalyser.class);
