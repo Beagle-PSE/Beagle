@@ -494,9 +494,6 @@
     <module name="TrailingComment">
       <property name="severity" value="warning"/>
     </module>
-    <module name="UncommentedMain">
-      <property name="severity" value="warning"/>
-    </module>
     <module name="UpperEll">
       <property name="severity" value="error"/>
     </module>
