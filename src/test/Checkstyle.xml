@@ -78,7 +78,7 @@
     </module>
     <module name="AbstractClassName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][A-Za-z]{5,}$"/>
+      <property name="format" value="^[A-Z][A-Za-z]{3,}$"/>
       <property name="ignoreModifier" value="true"/>
     </module>
     <module name="ClassTypeParameterName">
@@ -90,16 +90,16 @@
     </module>
     <module name="LocalFinalVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{4,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="LocalVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{4,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
       <property name="allowOneCharVarInForLoop" value="true"/>
     </module>
     <module name="MemberName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{5,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="MethodName">
       <property name="severity" value="warning"/>
@@ -119,18 +119,19 @@
     </module>
     <module name="ParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{5,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="StaticVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{5,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="TypeName">
       <property name="severity" value="warning"/>
       <property name="format" value="^[A-Z][a-zA-Z0-9]{7,}$"/>
     </module>
     <module name="AbbreviationAsWordInName">
-      <property name="severity" value="ignore"/>
+      <property name="severity" value="warning"/>
+      <property name="allowedAbbreviationLength" value="4"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="AvoidStarImport">
