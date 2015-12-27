@@ -64,7 +64,7 @@ public class TimeoutPage extends WizardPage {
 	/**
 	 * A textbox for the timeout in seconds (if the timeout is set manually).
 	 */
-	private Text tbTimeoutSeconds;
+	private Text textboxTimeoutSeconds;
 
 	/**
 	 * The main container for this page.
@@ -94,7 +94,7 @@ public class TimeoutPage extends WizardPage {
 		super(TITLE);
 		setTitle(TITLE);
 		setDescription(DESCRIPTION);
-		setControl(this.tbTimeoutSeconds);
+		setControl(this.textboxTimeoutSeconds);
 	}
 
 	@Override
@@ -140,13 +140,13 @@ public class TimeoutPage extends WizardPage {
 		final SelectionListener radioSetTimeoutSelected = new SelectionListener() {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutPage.this.tbTimeoutSeconds.setEnabled(true);
+				TimeoutPage.this.textboxTimeoutSeconds.setEnabled(true);
 
-				if (TimeoutPage.this.tbTimeoutSeconds.getText().isEmpty()) {
+				if (TimeoutPage.this.textboxTimeoutSeconds.getText().isEmpty()) {
 					setPageComplete(false);
 				} else {
 					setPageComplete(true);
-					TimeoutPage.this.timeout = Integer.parseInt(TimeoutPage.this.tbTimeoutSeconds.getText());
+					TimeoutPage.this.timeout = Integer.parseInt(TimeoutPage.this.textboxTimeoutSeconds.getText());
 				}
 			}
 
@@ -159,7 +159,7 @@ public class TimeoutPage extends WizardPage {
 		final SelectionListener radioSetTimeoutDeselected = new SelectionListener() {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutPage.this.tbTimeoutSeconds.setEnabled(false);
+				TimeoutPage.this.textboxTimeoutSeconds.setEnabled(false);
 				setPageComplete(true);
 			}
 
@@ -197,14 +197,14 @@ public class TimeoutPage extends WizardPage {
 		final Label label1 = new Label(this.lowerContainer, SWT.NONE);
 		label1.setText("Custom timeout: ");
 
-		this.tbTimeoutSeconds = new Text(this.lowerContainer, SWT.BORDER | SWT.SINGLE);
-		this.tbTimeoutSeconds.setText("");
-		this.tbTimeoutSeconds.setEnabled(false);
+		this.textboxTimeoutSeconds = new Text(this.lowerContainer, SWT.BORDER | SWT.SINGLE);
+		this.textboxTimeoutSeconds.setText("");
+		this.textboxTimeoutSeconds.setEnabled(false);
 
 		final Label label2 = new Label(this.lowerContainer, SWT.NONE);
 		label2.setText("seconds");
 
-		this.tbTimeoutSeconds.addKeyListener(new KeyListener() {
+		this.textboxTimeoutSeconds.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(final KeyEvent keyEvent) {
 			}
@@ -213,11 +213,11 @@ public class TimeoutPage extends WizardPage {
 			public void keyReleased(final KeyEvent keyEvent) {
 				// remove everything not a number
 				if (keyEvent.character < '0' || keyEvent.character > '9') {
-					TimeoutPage.this.tbTimeoutSeconds
-							.setText(TimeoutPage.this.tbTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
+					TimeoutPage.this.textboxTimeoutSeconds
+							.setText(TimeoutPage.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
 				}
 
-				if (TimeoutPage.this.tbTimeoutSeconds.getText().isEmpty()) {
+				if (TimeoutPage.this.textboxTimeoutSeconds.getText().isEmpty()) {
 					setPageComplete(false);
 				} else {
 					setPageComplete(true);
@@ -225,7 +225,7 @@ public class TimeoutPage extends WizardPage {
 			}
 		});
 
-		this.tbTimeoutSeconds.setLayoutData(gridData);
+		this.textboxTimeoutSeconds.setLayoutData(gridData);
 
 		// required to avoid an error in the system
 		setControl(this.upperContainer);
