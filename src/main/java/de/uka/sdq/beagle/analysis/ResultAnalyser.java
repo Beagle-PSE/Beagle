@@ -35,13 +35,22 @@ public interface ResultAnalyser {
 	 *
 	 * <p>Calling this method with a blackboard for which
 	 * {@link #canContribute(ReadOnlyBlackboardView)} returns {@code false} results in
-	 * undefined behaviour. This method must <ul> <li>behave entirely stateless, meaning
-	 * that its result do not depend on any prior calls to any method (especially not
-	 * {@link #canContribute(ReadOnlyBlackboardView)}) but only on the passed
-	 * {@code blackboard}. <li>store all its results on the passed {@code blackboard}.
+	 * undefined behaviour. This method must
+	 *
+	 * <ul>
+	 *
+	 * <li>behave entirely stateless, meaning that its result do not depend on any prior
+	 * calls to any method (especially not {@link #canContribute(ReadOnlyBlackboardView)})
+	 * but only on the passed {@code blackboard}.
+	 *
+	 * <li>store all its results on the passed {@code blackboard}.
+	 *
 	 * <li>assure that if {@link #canContribute(ReadOnlyBlackboardView)} is called with
-	 * the blackboard like its left by this method, it will return {@code false}. </ul>
-	 * Implementing {@link de.uka.sdq.beagle.core.BlackboardStorer} and using
+	 * the blackboard like its left by this method, it will return {@code false}.
+	 *
+	 * </ul>
+	 *
+	 * <p>Implementing {@link de.uka.sdq.beagle.core.BlackboardStorer} and using
 	 * {@link de.uka.sdq.beagle.core.Blackboard#writeFor(Class, java.io.Serializable)} is,
 	 * if needed, the recommended way to achieve the behaviour described above.
 	 *
