@@ -137,7 +137,7 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="AvoidStaticImport">
-      <property name="severity" value="ignore"/>
+      <property name="severity" value="warning"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="IllegalImport">
@@ -146,6 +146,7 @@
     <module name="ImportOrder">
       <property name="severity" value="warning"/>
       <property name="option" value="top"/>
+      <property name="groups" value="de.uka.ipd.sdq.beagle,*,de,org,com,java,javax"/>
       <property name="separated" value="true"/>
       <property name="sortStaticImportsAlphabetically" value="true"/>
     </module>
@@ -160,7 +161,9 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="CustomImportOrder">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="AnonInnerLength">
       <property name="severity" value="warning"/>
