@@ -358,7 +358,8 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="MultipleStringLiterals">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="MultipleVariableDeclarations">
       <property name="severity" value="warning"/>
@@ -529,6 +530,9 @@
       <property name="forbiddenSummaryFragments" value="^[^\.]{121,}.*$"/>
       <message key="summary.javaDoc" value="Summary too long (max 120 letters)."/>
       <message key="summary.first.sentence" value="Javadoc incomplete: missing summary."/>
+    </module>
+    <module name="StringLiteralEquality">
+      <property name="severity" value="warning"/>
     </module>
   </module>
   <module name="JavadocPackage">
