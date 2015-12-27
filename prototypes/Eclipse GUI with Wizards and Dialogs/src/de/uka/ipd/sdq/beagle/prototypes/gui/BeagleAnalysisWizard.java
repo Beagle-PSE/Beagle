@@ -10,10 +10,12 @@ import org.eclipse.swt.widgets.Shell;
  * @author Christoph Michelbachx
  */
 public class BeagleAnalysisWizard extends Wizard {
+
 	/**
 	 * A page of this wizard.
 	 */
 	private SelectionOverviewPage selectionOverviewPage;
+
 	/**
 	 * A page of this wizard.
 	 */
@@ -47,9 +49,9 @@ public class BeagleAnalysisWizard extends Wizard {
 		// TODO use timeout.getTimeout() when launching the analysis
 		final String dialogTitle = "Beagle Analysis is Running";
 		final String dialogMessage = "Beagle Analysis is running.";
-		final String[] buttonLabels = { "Abort", "Pause" };
+		final String[] buttonLabels = {"Abort", "Pause"};
 		final MessageDialog dialog = new MessageDialog(new Shell(), dialogTitle, null, dialogMessage,
-				MessageDialog.INFORMATION, buttonLabels, 0);
+			MessageDialog.INFORMATION, buttonLabels, 0);
 		final int buttonClick = dialog.open();
 
 		if (buttonClick == 0) {

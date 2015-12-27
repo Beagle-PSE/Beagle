@@ -10,6 +10,7 @@ import org.eclipse.swt.widgets.Shell;
  * @author Christoph Michelbach
  */
 public final class Main {
+
 	/**
 	 * Private constructor preventing instantiation.
 	 */
@@ -19,8 +20,7 @@ public final class Main {
 	/**
 	 * The main method launching this prototype.
 	 * 
-	 * @param args
-	 *            Parameters will not be considered.
+	 * @param args Parameters will not be considered.
 	 */
 	public static void main(final String[] args) {
 		final Shell shell = new Shell();

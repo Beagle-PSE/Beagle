@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Label;
  * @author Christoph Michelbach
  */
 public class SelectionOverviewPage extends WizardPage {
+
 	/**
 	 * The title of this page.
 	 */

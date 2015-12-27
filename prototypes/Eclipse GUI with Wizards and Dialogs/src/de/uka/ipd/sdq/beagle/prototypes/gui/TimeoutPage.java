@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Text;
  * @author Christoph Michelbach
  */
 public class TimeoutPage extends WizardPage {
+
 	/**
 	 * The title of this page.
 	 */
@@ -126,6 +127,7 @@ public class TimeoutPage extends WizardPage {
 		radioAdaptiveTimout.setSelection(true);
 
 		final SelectionListener radioAdaptiveTimeoutSelected = new SelectionListener() {
+
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutPage.this.timeout = ADAPTIVE_TIMEOUT;
@@ -138,6 +140,7 @@ public class TimeoutPage extends WizardPage {
 		};
 
 		final SelectionListener radioSetTimeoutSelected = new SelectionListener() {
+
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutPage.this.textboxTimeoutSeconds.setEnabled(true);
@@ -157,6 +160,7 @@ public class TimeoutPage extends WizardPage {
 		};
 
 		final SelectionListener radioSetTimeoutDeselected = new SelectionListener() {
+
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutPage.this.textboxTimeoutSeconds.setEnabled(false);
@@ -170,6 +174,7 @@ public class TimeoutPage extends WizardPage {
 		};
 
 		final SelectionListener radioNoTimeoutSelected = new SelectionListener() {
+
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutPage.this.timeout = NO_TIMEOUT;
@@ -205,6 +210,7 @@ public class TimeoutPage extends WizardPage {
 		label2.setText("seconds");
 
 		this.textboxTimeoutSeconds.addKeyListener(new KeyListener() {
+
 			@Override
 			public void keyPressed(final KeyEvent keyEvent) {
 			}
@@ -214,7 +220,7 @@ public class TimeoutPage extends WizardPage {
 				// remove everything not a number
 				if (keyEvent.character < '0' || keyEvent.character > '9') {
 					TimeoutPage.this.textboxTimeoutSeconds
-							.setText(TimeoutPage.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
+						.setText(TimeoutPage.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
 				}
 
 				if (TimeoutPage.this.textboxTimeoutSeconds.getText().isEmpty()) {
