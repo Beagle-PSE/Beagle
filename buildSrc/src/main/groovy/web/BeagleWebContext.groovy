@@ -4,6 +4,8 @@ import org.gradle.api.Task
 public class BeagleWebContext {
 	private static Project project
 	
+	Map<String, String> ENV = System.getenv()
+	
 	String title = ''
 	String content = ''
 	

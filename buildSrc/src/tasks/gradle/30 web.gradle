@@ -37,20 +37,24 @@ task downloadWebFonts(type: Download) {
 	}
 }
 
-task copyWebFonts(dependsOn: downloadWebFonts, type: Copy) {
+task copyWebFonts(dependsOn: downloadWebFonts) {
 	ext {
 		dest = "$WEB_DEST/fonts"
 	}
 	
-	def sourcePaths = []
-	def allZips = fileTree(downloadWebFonts.dest).include('*.zip')
-	allZips.each { file -> sourcePaths.add zipTree(file) }
+    inputs.file downloadWebFonts.dest
+	outputs.file dest
 	
-    from sourcePaths
-    into dest
-    
-    inputs.files allZips
-    outputs.file dest
+	doLast {	
+		def sourcePaths = []
+		def allZips = fileTree(downloadWebFonts.dest).include('*.zip')
+		allZips.each { file -> sourcePaths.add zipTree(file) }
+		
+		copy {
+	    	from sourcePaths
+	    	into dest
+	    }
+	}
 }
 
 task renderWebPages(type: Copy) {
@@ -74,7 +78,8 @@ task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 	into WEB_DEST
 }
 
-task copyWebArtefacts(dependsOn: [javadoc, srs, check, jacocoTestReport]) {
+task copyWebArtefacts() {
+	mustRunAfter javadoc, srs, check, jacocoTestReport
 	def checkstyleFileName = 'checkstyle.html'
 	def srsFileName = 'Requirements Specification.pdf'
 	
@@ -121,5 +126,3 @@ task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts]) {
 		dest = WEB_DEST
 	}
 }
-
-addToMainTask web

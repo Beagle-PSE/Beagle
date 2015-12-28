@@ -50,15 +50,11 @@ git checkout gh-pages
 for branchpath in branches/*
 do
 	branch=$(basename $branchpath)
-	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; git rm -rfq branches/$branch)
+	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder of $branch"; git rm -rfq branches/$branch)
 done
 
 
-###
-# Gather all assets that will be released
-###
-
-# Build the master branch to the top most folder, but all other branches to subfolders
+# Deploy the master branch to the top most folder, but all other branches to subfolders
 [ $TRAVIS_BRANCH == "master" ] && pubdir="." || pubdir="branches/$TRAVIS_BRANCH"
 mkdir -p "$pubdir"
 cd "$pubdir"
@@ -67,10 +63,7 @@ cd "$pubdir"
 find . -maxdepth 1 \! \( -name .git -o -name . -o -name branches \) -exec rm -rf {} \;
 
 # Requirements specification
-cp "$BASE/build/doc/Requirements Specification.pdf" .
-
-# README.md
-cp "$BASE/deploy/Default gh-pages README.md" ./README.md
+cp -r "$BASE/build/web"/* .
 
 ###
 

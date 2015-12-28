@@ -21,7 +21,7 @@ void addToMainTask(Task t) {
 }
 
 // import all tasks defined in src/build/groovy
-fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').each { file ->
+fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').sort().each { file ->
      apply from: file
 } 
 
