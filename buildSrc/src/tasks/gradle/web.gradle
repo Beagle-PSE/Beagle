@@ -64,5 +64,11 @@ task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 	into WEB_DEST
 }
 
-task web(dependsOn: [renderWebPages, copyWebAssets])
+task copyWebArtefacts(type: Copy, dependsOn: javadoc) {
+	from javadoc.destinationDir
+	into WEB_DEST
+}
+
+task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts])
+
 addToMainTask web
