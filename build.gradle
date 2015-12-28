@@ -3,14 +3,10 @@ import groovy.transform.Field
 @Field List mainTaskAdditions = []
 
 buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1+'
-    }
+	fileTree("$projectDir/buildSrc/src/tasks/gradle/buildscript-dependencies").include('*.gradle').each { file ->
+	     apply from: file, to: buildscript
+	} 
 }
-apply plugin: 'de.undercouch.download'
 
 /**
  * Allows scripts to run their tasks on the main (build) task.
@@ -25,7 +21,7 @@ void addToMainTask(Task t) {
 }
 
 // import all tasks defined in src/build/groovy
-fileTree("$projectDir/buildSrc/src/tasks/gradle").include('**/*.gradle').each { file ->
+fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').each { file ->
      apply from: file
 } 
 
