@@ -4,11 +4,11 @@ An Eclipse plugin that dynamically analyses software for its runtime properties.
 to import existing, component-based software into [Palladio](http://www.palladio-simulator.com/).
 
 ## Documentation
-{{#> artefact link="Software Requirements Specification.pdf" type="pdf"}}
+{{#> artefact link=paths.srs type="pdf"}}
 	{{#> title}}Requirements Specification{{/title}}
 	{{#> description}}Specification of the project’s visions and goals.{{/description}} 
 {{/artefact}}
-{{#> artefact link="javadoc" type="html"}}
+{{#> artefact link=(concat paths.javadoc "index.html") type="html"}}
 	{{#> title}}Javadoc{{/title}}
 	{{#> description}}We put great effort in creating detailed, informative documentation.{{/description}} 
 {{/artefact}}
@@ -18,7 +18,7 @@ to import existing, component-based software into [Palladio](http://www.palladio
 	{{#> title}}Test Coverage{{/title}}
 	{{#> description}}Beagle requires 100% test coverage for all production code.{{/description}} 
 {{/artefact}}
-{{#> artefact link="checkstyle" type="html"}}
+{{#> artefact link=paths.checkstyle type="html"}}
 	{{#> title}}Checkstyle{{/title}}
 	{{#> description}}We use detailed Checkstyle rules to help keeping the code readable.{{/description}} 
 {{/artefact}}

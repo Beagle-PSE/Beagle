@@ -5,15 +5,18 @@
  */
  
 task srs(type: Exec) {
-	group 'Build'
+	group 'Documentation'
 	description 'Renders the Requirements Specification.'
 	
+	ext {
+		dest = file("$buildDir/docs/")
+		pdfdest = file("$dest/Requirements Specification.pdf")
+		logdest = file("$buildDir/reports/Requirements Specification Render.log")
+	}
+	
 	inputs.dir "$projectDir/doc/Requirements Specification"
-	outputs.file "$buildDir/doc/Requirements Specification.pdf"
-	
-	def dest = file("$buildDir/doc/")
-	def logdest = file("$buildDir/reports/Requirements Specification Render.log")
-	
+	outputs.file pdfdest
+
 	workingDir "$projectDir/doc/Requirements Specification/"
 	
 	switch (System.getProperty('os.name').toLowerCase().split()[0]) {
@@ -41,7 +44,7 @@ task srsinstall(type: Exec) {
 	description 'Sets up the environment for rendering the Requirements Specification, but only if the it is out of date.'	
 	
 	inputs.dir "$projectDir/doc/Requirements Specification"
-	outputs.file "$buildDir/doc/Requirements Specification.pdf"
+	outputs.file srs.pdfdest
 	
 	doFirst {
 		if (!System.getProperty('os.name').toLowerCase().contains('linux')) {

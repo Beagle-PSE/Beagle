@@ -11,9 +11,6 @@ class CompileHandlebarsFilter extends BeagleWebFilter {
 
 	@Override
 	protected String getResultString() {
-		final Handlebars handlebars = HandlebarsFactory.getFor this.context
-		
-		final Template template = handlebars.compileInline this.inputString 
-		return template.apply(this.context) 
+		return HandlebarsRenderer.getFor(this.context).render(this.inputString)
 	}
 }

@@ -3,7 +3,8 @@
  *
  * @author Joshua Gleitze
  */
- buildscript {
+
+buildscript {
     repositories {
         jcenter()
     }
@@ -15,7 +16,7 @@
 
 import de.undercouch.gradle.tasks.download.Download
 
- final String WEB_DEST = "$buildDir/web"
+final String WEB_DEST = "$buildDir/web"
 
 task downloadWebFonts(type: Download) {
     src ([
@@ -27,31 +28,40 @@ task downloadWebFonts(type: Download) {
 	onlyIfNewer true
 	quiet true
 	
-	outputs.upToDateWhen { fileTree(downloadWebFonts.dest).include('*.zip').size() == src.size() }
+	outputs.upToDateWhen { 
+		fileTree(downloadWebFonts.dest).include('*.zip').size() == src.size()
+	}
+	
+	doFirst {
+		dest.mkdirs()
+	}
 }
 
 task copyWebFonts(dependsOn: downloadWebFonts, type: Copy) {
+	ext {
+		dest = "$WEB_DEST/fonts"
+	}
+	
 	def sourcePaths = []
 	def allZips = fileTree(downloadWebFonts.dest).include('*.zip')
-	allZips.each { file ->	sourcePaths.add zipTree(file) }
+	allZips.each { file -> sourcePaths.add zipTree(file) }
 	
     from sourcePaths
-    into "$WEB_DEST/fonts"
+    into dest
     
     inputs.files allZips
+    outputs.file dest
 }
 
 task renderWebPages(type: Copy) {
     inputs.dir "$projectDir/src/web/handlebars"
     
-    group "Build"
-    description "Renders Beagle’s web presence."
-    
     def compileAction = new CompileWebFilesAction()
     compileAction.addRootTemplateFiles	'html': file("$projectDir/src/web/handlebars/roottemplate.html"),
     									'htmd': file("$projectDir/src/web/handlebars/roottemplate.html")
-    HandlebarsFactory.partialsFolder = file("$projectDir/src/web/handlebars/partials")
-    HandlebarsFactory.partialsExtension = "part"
+    HandlebarsRenderer.partialsFolder = file("$projectDir/src/web/handlebars/partials")
+    HandlebarsRenderer.partialsExtension = "part"
+    BeagleWebContext.project = project
     
 	from "$projectDir/src/web/handlebars/pages"
 	into WEB_DEST
@@ -64,11 +74,52 @@ task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 	into WEB_DEST
 }
 
-task copyWebArtefacts(type: Copy, dependsOn: javadoc) {
-	from javadoc.destinationDir
-	into WEB_DEST
+task copyWebArtefacts(dependsOn: [javadoc, srs, check, jacocoTestReport]) {
+	def checkstyleFileName = 'checkstyle.html'
+	def srsFileName = 'Requirements Specification.pdf'
+	
+	ext {
+		javadocDest = "$WEB_DEST/javadoc"
+		srsDest = "$WEB_DEST/$srsFileName"
+		checkstyleDest = "$WEB_DEST/$checkstyleFileName"
+		jacocoDest = "$WEB_DEST/coverage"
+	}
+	
+	inputs.files javadoc.destinationDir, srs.pdfdest, checkstyleHtml.dest, jacocoTestReport.reports.html.destination
+	outputs.files javadocDest, srsDest, checkstyleDest, jacocoDest
+	
+	doLast {
+		copy {	
+			from javadoc.destinationDir
+			into javadocDest
+		}	
+		
+		copy {
+			from srs.pdfdest
+			rename {file -> srsFileName}
+			into WEB_DEST
+		}
+		
+		copy {
+			from checkstyleHtml.dest
+			rename {file -> checkstyleFileName}
+			into WEB_DEST
+		}
+		
+		copy {
+			from jacocoTestReport.reports.html.destination
+			into jacocoDest
+		}
+	}
 }
 
-task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts])
+task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts]) {
+    group "Build"
+    description "Builds Beagle’s web presence."
+    
+	ext {
+		dest = WEB_DEST
+	}
+}
 
 addToMainTask web
