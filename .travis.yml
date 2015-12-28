@@ -7,7 +7,7 @@ install:
   - sudo add-apt-repository -y ppa:cwchien/gradle && sudo apt-get update && sudo apt-get install -qq gradle-2.9
   
 script:
-  - gradle srsinstall build || gradle build --info
+  - gradle srsinstall build qc || gradle build qc --info
   
 after_success:
   - ./deploy/Deploy\ Publish.sh
