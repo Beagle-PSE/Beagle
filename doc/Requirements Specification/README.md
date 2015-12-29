@@ -2,7 +2,10 @@
 This folder contains the System Requirements Specification’s source files.
 
 ## Installation
-The specification is written in [LyX](http://www.lyx.org/). So obviously you'll need to install LyX and LaTeX.
+Ubuntu users can try to run `gradle srsinstall`, which will execute all installation steps detailed below. Please note that
+while the script offers great convenience, it was written to be used on a continuous integration server and might hence make settings that are not optimal for a private computer.
+ 
+The specification is written in [LyX](http://www.lyx.org/). So obviously you'll first need to install LyX and LaTeX.
 
 ### Install the SDQ template
 

@@ -1,6 +1,6 @@
-# Beagle
+# Beagle [![Build Status](https://travis-ci.org/Beagle-PSE/Beagle.svg?branch=master)](https://travis-ci.org/Beagle-PSE/Beagle)
 
-This is a student work experience project at the KIT for developing a dynamic software performance analyzer.
+An analyser to measure abstracted runtime properties of component-based software. [Web page](https://Beagle-PSE.github.io/Beagle). 
 
 ## Development
 

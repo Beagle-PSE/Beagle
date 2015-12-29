@@ -1,0 +1,2 @@
+# Build logic groovy classes
+Groovy classes that will be available to build tasks. If classes have dependencies, they can declare them in a file called `dependencies.gradle` (anywhere in the directory tree). These files use the normal [gradle DSL](https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html) and should add their dependencies to the `compile` configuration.
