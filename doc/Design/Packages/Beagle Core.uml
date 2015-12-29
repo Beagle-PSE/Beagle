@@ -78,7 +78,7 @@ readOnlyBlackboard := {@link #_DQjdUKDzEeWVpfCzK8hwSg}.{@link #__BK2UKDzEeWVpfCz
 analyserBlackboard := {@link #_rqzFQKD4EeWVpfCzK8hwSg}.{@link #_zR0rkKD5EeWVpfCzK8hwSg}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
  &#xD;
 while (¬finished) do&#xD;
-  allConstructs := {@link #_zyUM4KEiEeWuoaiXEYXzVw} ∪ {@link #_5aqTEKDuEeWVpfCzK8hwSg} ∪ {@link #_KM-roqDtEeWVpfCzK8hwSg}&#xD;
+  allConstructs := {@link #_zyUM4KEiEeWuoaiXEYXzVw} ∪ {@link #_5aqTEKDuEeWVpfCzK8hwSg} ∪ {@link #_KM-roqDtEeWVpfCzK8hwSg} &#xD;
   if |allConstructs| > 0 then&#xD;
     {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_Tc6FQKD1EeWVpfCzK8hwSg}()&#xD;
     {@link #_zyUM4KEiEeWuoaiXEYXzVw} := ∅&#xD;
