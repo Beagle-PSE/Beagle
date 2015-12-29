@@ -21,13 +21,13 @@ public class MeasurementToolContributionsHandler {
 	/**
 	 * The extension point id for the measurement tools.
 	 */
-	private static final String MEASUREMT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdg.beagle.measurmenttool";
+	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdg.beagle.measurmenttool";
 
 	/**
 	 * The property name of the extension point for the measurement tools for the
 	 * {@link MeasurementTool} implementations.
 	 */
-	private static final String MEASUREMT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME = "MeasurmentToolClass";
+	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME = "MeasurmentToolClass";
 
 	/**
 	 * Scans the measurement tool extension point for available measurement tools.
@@ -43,11 +43,11 @@ public class MeasurementToolContributionsHandler {
 		// }
 		// final IExtension[] extensions = point.getExtensions();
 		final List<MeasurementTool> measurementTools = new ArrayList<>();
-		final IConfigurationElement[] config = registry.getConfigurationElementsFor(MEASUREMT_TOOL_EXTENSION_POINT_ID);
+		final IConfigurationElement[] config = registry.getConfigurationElementsFor(MEASUREMENT_TOOL_EXTENSION_POINT_ID);
 		try {
 			for (final IConfigurationElement element : config) {
 				final Object object = element
-						.createExecutableExtension(MEASUREMT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME);
+						.createExecutableExtension(MEASUREMENT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME);
 				if (object instanceof MeasurementTool) {
 					measurementTools.add((MeasurementTool) object);
 				}

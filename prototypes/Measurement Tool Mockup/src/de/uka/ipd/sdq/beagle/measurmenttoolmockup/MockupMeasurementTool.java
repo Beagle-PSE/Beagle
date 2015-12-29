@@ -9,7 +9,7 @@ import de.uka.sdq.beagle.measurement.MeasurementTool;
  *
  * @author Roman Langrehr
  */
-public class MockupMeasurmentTool implements MeasurementTool {
+public class MockupMeasurementTool implements MeasurementTool {
 
 	@Override
 	public void measure(final MeasurementOrder measurements) {
