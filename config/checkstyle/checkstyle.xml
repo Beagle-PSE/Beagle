@@ -13,6 +13,7 @@
   <module name="TreeWalker">
     <property name="severity" value="warning"/>
     <property name="tabWidth" value="4"/>
+    <module name="FileContentsHolder"/>
     <module name="AnnotationUseStyle">
       <property name="severity" value="warning"/>
     </module>
@@ -521,8 +522,8 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="SummaryJavadoc">
-      <property name="forbiddenSummaryFragments" value="^[^\.]{100,}.*$"/>
-      <message key="summary.javaDoc" value="Summary too long (max 100 letters)."/>
+      <property name="forbiddenSummaryFragments" value="^[^\.]{121,}.*$"/>
+      <message key="summary.javaDoc" value="Summary too long (max 120 letters)."/>
       <message key="summary.first.sentence" value="Javadoc incomplete: missing summary."/>
     </module>
   </module>
@@ -578,4 +579,5 @@
     <property name="severity" value="ignore"/>
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
+  <module name="SuppressionCommentFilter"/>
 </module>
