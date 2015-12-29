@@ -26,6 +26,7 @@ public class BeagleWebContext {
 	 * {@link ApplyRootTemplateFilter}.
 	 */
 	String content = ''
+
 	/** 
 	 * Paths to artefacts available to the templates.
 	 */
@@ -39,13 +40,35 @@ public class BeagleWebContext {
 		 */
 		String javadoc = relative task('copyWebArtefacts').property('javadocDest')
 		/**
-		 * Path to to checkstyle report html file.
+		 * Path to the checkstyle report html file.
 		 */
 		String checkstyle = relative task('copyWebArtefacts').property('checkstyleDest')
 		/**
 		 * Path to the test code coverage html file.
 		 */
 		String coverage = relative task('copyWebArtefacts').property('jacocoDest')
+		/**
+		 * Path to the css folder
+		 */
+		String css = relative task('copyWebAssets').property('cssdest')
+
+		/**
+		 * Path to the font folders.
+		 */
+		Object fonts = new Object() {
+			/**
+			 * Font awesome, as downloaded from https://fortawesome.github.io/Font-Awesome/
+			 */
+			String fontAwesome = relative task('copyWebFonts').property('fontawesomedest')
+			/**
+			 * Computer Modern Serif, as downloaded from http://checkmyworking.com/cm-web-fonts/
+			 */
+			String cmSerif = relative task('copyWebFonts').property('cmserifdest')
+			/**
+			 * Computer Modern Sans, as downloaded from http://checkmyworking.com/cm-web-fonts/
+			 */
+			String cmSans = relative task('copyWebFonts').property('cmsansdest')
+		}
 	}
 	
 	/**

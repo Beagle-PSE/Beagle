@@ -42,8 +42,19 @@ task downloadWebFonts(type: Download) {
 task copyWebFonts(dependsOn: downloadWebFonts) {
 	description 'Copies downloaded fonts for Beagle’s web presence into the web directory.'
 	
+	def cmsansInputDirname = 'Sans'
+	def cmsansOutputDirname = 'cm-sans'
+	def cmserifInputDirname = 'Serif'
+	def cmserifOutputDirname = 'cm-serif'
+	def faInputDirname = 'font-awesome-4.5.0'
+	def faOutputDirname = 'font-awesome'
+	
+	
 	ext {
 		dest = "$WEB_DEST/fonts"
+		cmsansdest = "$dest/$cmsansOutputDirname"
+		cmserifdest = "$dest/$cmserifOutputDirname"
+		fontawesomedest = "$dest/$faOutputDirname"
 	}
 	
     inputs.file downloadWebFonts.dest
@@ -58,6 +69,10 @@ task copyWebFonts(dependsOn: downloadWebFonts) {
 	    	from sourcePaths
 	    	into dest
 	    }
+	    
+	    file("$dest/$cmsansInputDirname").renameTo(file(cmsansdest))
+	    file("$dest/$cmserifInputDirname").renameTo(file(cmserifdest))
+	    file("$dest/$faInputDirname").renameTo(file(fontawesomedest))
 	}
 }
 
@@ -79,6 +94,10 @@ task renderWebPages(type: Copy) {
 
 task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 	description 'Copies web assets (scripts, stylesheets, …) into Beagle’s web presence.'
+	
+	ext {
+		cssdest = "$WEB_DEST/css"
+	}
 	
 	from "$projectDir/src/web"
 	include "css/**/*.css"
