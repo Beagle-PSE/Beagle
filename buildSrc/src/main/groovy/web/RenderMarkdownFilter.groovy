@@ -1,9 +1,14 @@
 import org.pegdown.PegDownProcessor
 
-class CompileMarkdownFilter extends BeagleWebFilter {
+/**
+ * ReaderFilter that interprets its input as Markdown and renders it to HTML.
+ *
+ * @author Joshua Gleitze
+ */
+class RenderMarkdownFilter extends BeagleWebFilter {
 	private static final PegDownProcessor PEGDOWN_PROCESSOR = new PegDownProcessor()
 
-	public CompileMarkdownFilter(final Reader templateReader) {
+	public RenderMarkdownFilter(final Reader templateReader) {
 		super(templateReader)
 	}
 

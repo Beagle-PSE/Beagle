@@ -1,5 +1,5 @@
 /**
- * Sets up the Java build tasks and customises the built jar, like the MANIFEST.mf file.
+ * Sets up the Java build tasks and customises the built jar, e.g. its MANIFEST.mf file.
  *
  * @author Annika Berger
  * @author Joshua Gleitze

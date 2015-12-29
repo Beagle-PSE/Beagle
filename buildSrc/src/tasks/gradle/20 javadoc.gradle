@@ -1,4 +1,6 @@
 /**
  * Tasks to render the project’s javadoc.
+ *
+ * @author Joshua Gleitze
  */
 addToMainTask javadoc

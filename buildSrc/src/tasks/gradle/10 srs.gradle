@@ -41,10 +41,7 @@ task srs(type: Exec) {
 
 task srsinstall(type: Exec) {
 	group 'Build Setup'
-	description 'Sets up the environment for rendering the Requirements Specification, but only if the it is out of date.'	
-	
-	inputs.dir "$projectDir/doc/Requirements Specification"
-	outputs.file srs.pdfdest
+	description 'Sets up the environment for rendering the Requirements Specification.'	
 	
 	doFirst {
 		if (!System.getProperty('os.name').toLowerCase().contains('linux')) {
@@ -55,7 +52,7 @@ task srsinstall(type: Exec) {
 	workingDir "$projectDir/doc/Requirements Specification/"
 	executable './Install.sh'
 	
-	// only print the output for log level info or higher
+	// only print the output for log level info or higher, including stderr
 	logging.captureStandardOutput LogLevel.INFO
 	logging.captureStandardError LogLevel.INFO
 }

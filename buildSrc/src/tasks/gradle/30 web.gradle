@@ -19,6 +19,8 @@ import de.undercouch.gradle.tasks.download.Download
 final String WEB_DEST = "$buildDir/web"
 
 task downloadWebFonts(type: Download) {
+	description 'Downloads fonts required by Beagle’s web presence'
+	
     src ([
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Serif.zip',
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip',
@@ -38,6 +40,8 @@ task downloadWebFonts(type: Download) {
 }
 
 task copyWebFonts(dependsOn: downloadWebFonts) {
+	description 'Copies downloaded fonts for Beagle’s web presence into the web directory.'
+	
 	ext {
 		dest = "$WEB_DEST/fonts"
 	}
@@ -58,6 +62,7 @@ task copyWebFonts(dependsOn: downloadWebFonts) {
 }
 
 task renderWebPages(type: Copy) {
+	description 'Renders the pages of Beagle’s web presence.'
     inputs.dir "$projectDir/src/web/handlebars"
     
     def compileAction = new CompileWebFilesAction()
@@ -73,12 +78,16 @@ task renderWebPages(type: Copy) {
 }
 
 task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
+	description 'Copies web assets (scripts, stylesheets, …) into Beagle’s web presence.'
+	
 	from "$projectDir/src/web"
 	include "css/**/*.css"
 	into WEB_DEST
 }
 
 task copyWebArtefacts() {
+	description 'Copies all build artefacts that will be published into Beagle’s web presence.'
+	
 	mustRunAfter javadoc, srs, check, jacocoTestReport
 	def checkstyleFileName = 'checkstyle.html'
 	def srsFileName = 'Requirements Specification.pdf'
