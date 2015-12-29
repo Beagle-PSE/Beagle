@@ -32,6 +32,10 @@ public class CompileWebFilesAction implements Action<FileCopyDetails> {
 		
 		final String rootTemplate = getRootTemplate copyDetails
 		copyDetails.filter ApplyRootTemplateFilter.class, context: context, rootTemplateText: rootTemplate
+		
+		if (copyDetails.name ==~ /^.*\.html$/) {
+			copyDetails.filter HTMLFormatFilter.class
+		}
 	}
 	
 	/**
