@@ -12,7 +12,7 @@ script:
   
 after_script:
   - gradle web || gradle web --info --stacktrace
-  - ./deploy/Deploy\ Publish.sh
+  - ./buildSrc/src/deploy/bash/Deploy\ Web.sh
   
 after_success:
-  - ./deploy/Deploy\ SVN.sh
+  - ./buildSrc/src/deploy/bash/Deploy\ SVN.sh

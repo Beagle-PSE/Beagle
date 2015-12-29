@@ -1,5 +1,13 @@
 #!/bin/bash
 
+######################################################################
+# Web page deployment script                                         #
+# Deploys Beagle’s web presence to the repository’s gh-pages branch. #
+# To be called from Beagle’s root folder on Travis CI                #
+#                                                                    #
+# author: Joshua Gleitze                                             #
+######################################################################
+
 # fail the script if any command fails
 set -e
 # Don't return a glob pattern if it doesn't match anything

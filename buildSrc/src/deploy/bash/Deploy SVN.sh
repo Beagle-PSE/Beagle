@@ -1,5 +1,13 @@
 #!/bin/bash
 
+##############################################################
+# SVN deployment script                                      #
+# Deploys Beagle’s code an built artefacts to the SDQ’s SVN. #
+# To be called from Beagle’s root folder on Travis CI        #
+#                                                            #
+# author: Joshua Gleitze                                     #
+##############################################################
+
 # fail the script if any command fails
 set -e
 
