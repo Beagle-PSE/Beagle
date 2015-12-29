@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <choice minOccurs="1" maxOccurs="unbounded">
-            <element ref="MeasurmentTool"/>
+            <element ref="MeasurementTool"/>
          </choice>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,9 +47,9 @@
       </complexType>
    </element>
 
-   <element name="MeasurmentTool">
+   <element name="MeasurementTool">
       <complexType>
-         <attribute name="MeasurmentToolClass" type="string" use="required">
+         <attribute name="MeasurementToolClass" type="string" use="required">
             <annotation>
                <documentation>
                   

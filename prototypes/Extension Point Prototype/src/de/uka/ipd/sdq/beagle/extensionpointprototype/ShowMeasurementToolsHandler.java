@@ -24,7 +24,7 @@ public class ShowMeasurementToolsHandler extends AbstractHandler {
 				.getAvailableMeasurmentTools();
 		String measurementToolsAsString = "";
 		for (final MeasurementTool measurementTool : measurementTools) {
-			measurementToolsAsString += " - " + measurementTool.getClass().getPackage() + "."
+			measurementToolsAsString += " - " + measurementTool.getClass().getPackage().getName() + "."
 					+ measurementTool.getClass().getName() + "\n";
 		}
 		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);

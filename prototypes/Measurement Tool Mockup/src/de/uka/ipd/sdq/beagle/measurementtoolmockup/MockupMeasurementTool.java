@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurmenttoolmockup;
+package de.uka.ipd.sdq.beagle.measurementtoolmockup;
 
 import de.uka.sdq.beagle.measurement.MeasurementOrder;
 import de.uka.sdq.beagle.measurement.MeasurementTool;

@@ -2,12 +2,12 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="de.uka.ipd.sdg.beagle.measurmenttoolmockup"
-         name="Measurment Tool Mockup"
-         point="de.uka.ipd.sdg.beagle.measurmenttool">
-      <MeasurmentTool
-            MeasurmentToolClass="de.uka.ipd.sdq.beagle.measurmenttoolmockup.MockupMeasurmentTool">
-      </MeasurmentTool>
+         id="de.uka.ipd.sdg.beagle.measurementtoolmockup"
+         name="Measurement Tool Mockup"
+         point="de.uka.ipd.sdg.beagle.measurementtool">
+      <MeasurementTool
+            MeasurementToolClass="de.uka.ipd.sdq.beagle.measurementtoolmockup.MockupMeasurementTool">
+      </MeasurementTool>
    </extension>
 
 </plugin>
