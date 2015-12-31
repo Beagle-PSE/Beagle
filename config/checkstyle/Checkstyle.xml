@@ -79,7 +79,7 @@
     </module>
     <module name="AbstractClassName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][A-Za-z]{5,}$"/>
+      <property name="format" value="^[A-Z][A-Za-z]{3,}$"/>
       <property name="ignoreModifier" value="true"/>
     </module>
     <module name="ClassTypeParameterName">
@@ -91,16 +91,16 @@
     </module>
     <module name="LocalFinalVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{4,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="LocalVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{4,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
       <property name="allowOneCharVarInForLoop" value="true"/>
     </module>
     <module name="MemberName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{5,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="MethodName">
       <property name="severity" value="warning"/>
@@ -120,25 +120,26 @@
     </module>
     <module name="ParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{5,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="StaticVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{5,}$"/>
+      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
     </module>
     <module name="TypeName">
       <property name="severity" value="warning"/>
       <property name="format" value="^[A-Z][a-zA-Z0-9]{7,}$"/>
     </module>
     <module name="AbbreviationAsWordInName">
-      <property name="severity" value="ignore"/>
+      <property name="severity" value="warning"/>
+      <property name="allowedAbbreviationLength" value="4"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="AvoidStarImport">
       <property name="severity" value="warning"/>
     </module>
     <module name="AvoidStaticImport">
-      <property name="severity" value="ignore"/>
+      <property name="severity" value="warning"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="IllegalImport">
@@ -147,6 +148,7 @@
     <module name="ImportOrder">
       <property name="severity" value="warning"/>
       <property name="option" value="top"/>
+      <property name="groups" value="de.uka.ipd.sdq.beagle,*,de,org,com,java,javax"/>
       <property name="separated" value="true"/>
       <property name="sortStaticImportsAlphabetically" value="true"/>
     </module>
@@ -161,7 +163,9 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="CustomImportOrder">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###SPECIAL_IMPORTS###THIRD_PARTY_PACKAGE"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="AnonInnerLength">
       <property name="severity" value="warning"/>
@@ -201,7 +205,7 @@
     <module name="NoWhitespaceAfter">
       <property name="severity" value="warning"/>
       <property name="allowLineBreaks" value="false"/>
-      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS,TYPECAST,GENERIC_START"/>
+      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS,GENERIC_START"/>
     </module>
     <module name="NoWhitespaceBefore">
       <property name="severity" value="warning"/>
@@ -226,21 +230,22 @@
     </module>
     <module name="WhitespaceAround">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,DO_WHILE,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SLIST,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,TYPE_EXTENSION_AND,WILDCARD_TYPE"/>
+      <property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,DO_WHILE,EQUAL,GE,GT,LAND,LCURLY,LE,LITERAL_ASSERT,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,LITERAL_RETURN,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,RCURLY,SL,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN,TYPE_EXTENSION_AND,WILDCARD_TYPE"/>
       <property name="ignoreEnhancedForColon" value="false"/>
     </module>
     <module name="EmptyLineSeparator">
       <property name="severity" value="warning"/>
+      <property name="allowNoEmptyLineBetweenFields" value="true"/>
       <property name="allowMultipleEmptyLines" value="false"/>
     </module>
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
       <property name="option" value="nl"/>
-      <property name="tokens" value="DOT,AT,LPAREN"/>
+      <property name="tokens" value="DOT,AT"/>
     </module>
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
+      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,LPAREN,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
     </module>
     <module name="ModifierOrder">
       <property name="severity" value="warning"/>
@@ -266,7 +271,7 @@
     </module>
     <module name="RightCurly">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="LITERAL_TRY,LITERAL_CATCH,LITERAL_FINALLY,LITERAL_IF,LITERAL_ELSE,LITERAL_FOR,LITERAL_WHILE,LITERAL_DO"/>
+      <property name="tokens" value="LITERAL_TRY,LITERAL_CATCH,LITERAL_FINALLY,LITERAL_IF,LITERAL_ELSE,LITERAL_DO"/>
     </module>
     <module name="AvoidInlineConditionals">
       <property name="severity" value="ignore"/>
@@ -355,7 +360,8 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="MultipleStringLiterals">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="MultipleVariableDeclarations">
       <property name="severity" value="warning"/>
@@ -455,6 +461,7 @@
     </module>
     <module name="VisibilityModifier">
       <property name="severity" value="error"/>
+      <property name="protectedAllowed" value="true"/>
     </module>
     <module name="OneTopLevelClass">
       <property name="severity" value="error"/>
@@ -477,11 +484,16 @@
     </module>
     <module name="Indentation">
       <property name="severity" value="warning"/>
+      <property name="caseIndent" value="1"/>
+      <property name="throwsIndent" value="1"/>
+      <property name="arrayInitIndent" value="1"/>
+      <property name="lineWrappingIndentation" value="1"/>
     </module>
     <module name="CommentsIndentation">
       <property name="severity" value="warning"/>
     </module>
     <module name="TodoComment">
+      <property name="severity" value="warning"/>
       <property name="format" value="TODO[:]{0,1}"/>
     </module>
     <module name="TrailingComment">
@@ -507,7 +519,8 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="ClassDataAbstractionCoupling">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="FinalParameters">
       <property name="severity" value="warning"/>
@@ -525,6 +538,9 @@
       <property name="forbiddenSummaryFragments" value="^[^\.]{121,}.*$"/>
       <message key="summary.javaDoc" value="Summary too long (max 120 letters)."/>
       <message key="summary.first.sentence" value="Javadoc incomplete: missing summary."/>
+    </module>
+    <module name="StringLiteralEquality">
+      <property name="severity" value="warning"/>
     </module>
   </module>
   <module name="JavadocPackage">
