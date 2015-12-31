@@ -127,7 +127,7 @@
     </module>
     <module name="TypeName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][a-zA-Z0-9]{7,}$"/>
+      <property name="format" value="^[A-Z][a-zA-Z0-9]{7,}$|^Main$"/>
     </module>
     <module name="AbbreviationAsWordInName">
       <property name="severity" value="warning"/>
