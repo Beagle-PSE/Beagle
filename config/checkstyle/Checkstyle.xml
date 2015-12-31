@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: BeagleCheckstyle for Prototypes
+    Checkstyle-Configuration: BeagleCheckstyle
     Description: none
 -->
 <module name="Checker">
@@ -13,6 +13,7 @@
   <module name="TreeWalker">
     <property name="severity" value="warning"/>
     <property name="tabWidth" value="4"/>
+    <module name="FileContentsHolder"/>
     <module name="AnnotationUseStyle">
       <property name="severity" value="warning"/>
     </module>
@@ -240,11 +241,11 @@
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
       <property name="option" value="nl"/>
-      <property name="tokens" value="DOT,AT,LPAREN"/>
+      <property name="tokens" value="DOT,AT"/>
     </module>
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
+      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,LPAREN,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
     </module>
     <module name="ModifierOrder">
       <property name="severity" value="warning"/>
@@ -491,6 +492,10 @@
     <module name="CommentsIndentation">
       <property name="severity" value="warning"/>
     </module>
+    <module name="TodoComment">
+      <property name="severity" value="warning"/>
+      <property name="format" value="TODO[:]{0,1}"/>
+    </module>
     <module name="TrailingComment">
       <property name="severity" value="warning"/>
     </module>
@@ -558,6 +563,16 @@
   </module>
   <module name="RegexpSingleline">
     <property name="severity" value="warning"/>
+    <property name="format" value="System\.out"/>
+    <property name="message" value="You may not use System.out, please use a proper logging system."/>
+  </module>
+  <module name="RegexpSingleline">
+    <property name="severity" value="warning"/>
+    <property name="format" value="System\.in"/>
+    <property name="message" value="You may not use System.in, please use a proper loggin system."/>
+  </module>
+  <module name="RegexpSingleline">
+    <property name="severity" value="warning"/>
     <property name="format" value="System\.exit"/>
     <property name="message" value="You may not use System.exit"/>
   </module>
@@ -565,6 +580,10 @@
     <property name="severity" value="warning"/>
     <property name="format" value="System\.err"/>
     <property name="message" value="You may not use System.err"/>
+  </module>
+  <module name="RegexpMultiline">
+    <property name="format" value="System\.out"/>
+    <property name="message" value="You may not use System.out, please use a proper logging system"/>
   </module>
   <module name="NewlineAtEndOfFile">
     <property name="severity" value="warning"/>
@@ -576,4 +595,5 @@
     <property name="severity" value="ignore"/>
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
+  <module name="SuppressionCommentFilter"/>
 </module>

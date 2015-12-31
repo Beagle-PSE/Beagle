@@ -23,6 +23,7 @@ dependencies {
 
 checkstyle {
 	toolVersion = "6.11"
+	configFile = 'config/checkstyle/Checkstyle.xml' as File
 }
 
 jacocoTestReport {
