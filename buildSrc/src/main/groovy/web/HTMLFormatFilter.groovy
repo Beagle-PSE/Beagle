@@ -3,7 +3,7 @@ import org.jsoup.nodes.Document.OutputSettings
 
 
 /**
- * Filter Reader that formats its html input to be easy readable.
+ * Filter Reader that formats its html input to be easily readable.
  *
  * @author Joshua Gleitze
  */
