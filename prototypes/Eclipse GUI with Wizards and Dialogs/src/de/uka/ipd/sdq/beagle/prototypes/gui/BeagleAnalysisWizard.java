@@ -7,7 +7,7 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * The class setting up and controlling the wizard.
  * 
- * @author Christoph Michelbachx
+ * @author Christoph Michelbach
  */
 public class BeagleAnalysisWizard extends Wizard {
 
