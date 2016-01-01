@@ -10,7 +10,7 @@ buildscript {
 
 /**
  * Allows scripts to run their tasks on the main (build) task.
- * Scripts should no add their tasks to the build tasks themselves but use this method
+ * Scripts should not add their tasks to the build tasks themselves but use this method
  * to reduce dependencies between them.
  *
  * @param t

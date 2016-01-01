@@ -2,18 +2,18 @@ import org.apache.tools.ant.filters.BaseFilterReader
 import org.apache.commons.io.IOUtils 
 
 /**
- * Abstract class to quickly create FilterReaders that operate on a whole file content string.
+ * Abstract class to quickly create FilterReaders that operate on an entire file content string.
  * Implementing classes should add their logic only to {@link #getResultString()}.
  *
  * @author Joshua Gleitze
  */
 abstract class BeagleWebFilter extends BaseFilterReader {
 	/**
-	 * The whole input file’s content as a string.
+	 * The entire input file’s content as a string.
 	 */
 	protected final String inputString
 	/**
-	 * The whole input file’s conten as a reader.
+	 * The entire input file’s content as a reader.
 	 */
 	protected final Reader inputReader
 
@@ -33,7 +33,7 @@ abstract class BeagleWebFilter extends BaseFilterReader {
 			this.in = new StringReader(this.resultString)
 			setInitialized true
 		}
-		super.read()
+		super.read()a
 	}
 	
 	/**
