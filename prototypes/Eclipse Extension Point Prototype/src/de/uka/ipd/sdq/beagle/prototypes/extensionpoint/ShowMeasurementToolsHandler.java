@@ -20,16 +20,16 @@ public class ShowMeasurementToolsHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		final List<MeasurementTool> measurementTools = new MeasurementToolContributionsHandler()
-				.getAvailableMeasurmentTools();
+		final List<MeasurementTool> measurementTools =
+			new MeasurementToolContributionsHandler().getAvailableMeasurmentTools();
 		String measurementToolsAsString = "";
 		for (final MeasurementTool measurementTool : measurementTools) {
 			measurementToolsAsString += " - " + measurementTool.getClass().getPackage().getName() + "."
-					+ measurementTool.getClass().getName() + "\n";
+				+ measurementTool.getClass().getName() + "\n";
 		}
 		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
-				"Available measurment tools:\n" + measurementToolsAsString);
+			"Available measurment tools:\n" + measurementToolsAsString);
 		return null;
 	}
 }
