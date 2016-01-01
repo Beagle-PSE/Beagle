@@ -1,0 +1,6 @@
+def base = file(".").toURI()
+
+file("prototypes").eachDir() { dir ->
+	// get path in form of 'prototypes/ProjectName'
+	include base.relativize(dir.toURI()).toString()[0..-2]
+}

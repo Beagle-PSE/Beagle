@@ -1,0 +1,60 @@
+/**
+ * Tasks to build the Software Requirements Specification
+ *
+ * @author Joshua Gleitze
+ */
+ 
+task srs(type: Exec) {
+	group 'Documentation'
+	description 'Renders the Requirements Specification.'
+	
+	ext {
+		dest = file("$buildDir/docs/")
+		pdfdest = file("$dest/Requirements Specification.pdf")
+		logdest = file("$buildDir/reports/Requirements Specification Render.log")
+	}
+	
+	inputs.dir "$projectDir/doc/Requirements Specification"
+	outputs.file pdfdest
+
+	workingDir "$projectDir/doc/Requirements Specification/"
+	
+	switch (System.getProperty('os.name').toLowerCase().split()[0]) {
+		case 'windows':
+			commandLine 'cmd', '/c', 'Render.bat', dest, logdest, 'srs-only'
+    	break
+		case 'linux':
+			args dest, logdest, 'srs-only'
+    		executable './Render.sh'
+    		break
+	}
+	
+	doFirst {
+		if (!System.getProperty('os.name').toLowerCase().contains('linux') && !System.getProperty('os.name').toLowerCase().contains('windows')) {
+    		throw new Exception('Sorry, we don’t support your operating system for building the SRS!')
+		}
+	}
+	
+	// only print the output for log level info or higher
+	logging.captureStandardOutput LogLevel.INFO
+}
+
+task srsinstall(type: Exec) {
+	group 'Build Setup'
+	description 'Sets up the environment for rendering the Requirements Specification.'	
+	
+	doFirst {
+		if (!System.getProperty('os.name').toLowerCase().contains('linux')) {
+			throw new Exception('Sorry, we only support linux for automatic setup of the srs render environment. Please refer to doc/Development Setup.md!')
+		}
+	}
+	
+	workingDir "$projectDir/doc/Requirements Specification/"
+	executable './Install.sh'
+	
+	// only print the output for log level info or higher, including stderr
+	logging.captureStandardOutput LogLevel.INFO
+	logging.captureStandardError LogLevel.INFO
+}
+
+build.dependsOn srs

@@ -1,0 +1,14 @@
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// handlebars.java to render the templates (https://github.com/jknack/handlebars.java)
+	compile group: 'com.github.jknack', name: 'handlebars', version: '4.+'
+   	// pegdown to render markdown (https://github.com/sirthias/pegdown)
+   	compile group: 'org.pegdown', name: 'pegdown', version: '1.6+'
+   	// jsoup to format the html (http://jsoup.org/)
+   	compile group: 'org.jsoup', name: 'jsoup', version: '1.8+'
+   	// commons IO because I’m lazy
+   	compile group: 'commons-io', name: 'commons-io', version: '2.4+'
+}

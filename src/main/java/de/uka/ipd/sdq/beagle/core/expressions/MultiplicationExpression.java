@@ -23,7 +23,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *
 	 * @param factors
 	 *            The factors forming this expression’s product. {@code factors.size()}
-	 *            must be >= 2.
+	 *            must at least be 2.
 	 */
 	public MultiplicationExpression(final Collection<EvaluableExpression> factors) {
 		// TODO: Implement method
@@ -34,7 +34,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *
 	 * @param factors
 	 *            The factors forming this expression’s product. {@code factors.length}
-	 *            must be >= 2.
+	 *            must at least be 2.
 	 */
 	public MultiplicationExpression(final EvaluableExpression... factors) {
 		// TODO: Implement method
@@ -53,9 +53,8 @@ public class MultiplicationExpression implements EvaluableExpression {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableExpressionVisitor)
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
@@ -66,8 +65,8 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 * (non-Javadoc)
 	 *
 	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableVariableAssignment)
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
 	public double evaluate(EvaluableVariableAssignment variableAssignments) {
