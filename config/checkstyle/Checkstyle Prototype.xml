@@ -13,6 +13,7 @@
   <module name="TreeWalker">
     <property name="severity" value="warning"/>
     <property name="tabWidth" value="4"/>
+    <module name="FileContentsHolder"/>
     <module name="AnnotationUseStyle">
       <property name="severity" value="warning"/>
     </module>
