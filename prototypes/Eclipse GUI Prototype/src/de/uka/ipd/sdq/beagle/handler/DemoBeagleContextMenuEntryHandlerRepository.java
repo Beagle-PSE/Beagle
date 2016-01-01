@@ -13,27 +13,29 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
- *
- * TODO Document class
+ * Handles the context menu entries, that start an analysis of the whole project.
  *
  * @author Roman Langrehr
- * @version 0
  */
 public class DemoBeagleContextMenuEntryHandlerRepository extends AbstractHandler {
+
+	/**
+	 * RegEx for the file extensions, where the context menu entry should be displayed.
+	 */
 	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		Shell shell = HandlerUtil.getActiveShell(event);
-		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
-		IStructuredSelection selection = (IStructuredSelection) sel;
+		final Shell shell = HandlerUtil.getActiveShell(event);
+		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
+		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
-		Object firstElement = selection.getFirstElement();
+		final Object firstElement = structuredSelection.getFirstElement();
 		if (firstElement instanceof IFile) {
-			IFile clickedFile = (IFile) firstElement;
-			IPath clickedFilePath = clickedFile.getFullPath();
+			final IFile clickedFile = (IFile) firstElement;
+			final IPath clickedFilePath = clickedFile.getFullPath();
 			if (clickedFilePath.getFileExtension().matches(FILE_EXTENSION_MATCHER)) {
-				IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+				final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 				MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
 						"Belive it, or not. But Beagle ist alive!\n" + "You want to analyse: The whole repository: "
 								+ clickedFilePath.toString());

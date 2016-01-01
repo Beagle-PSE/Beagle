@@ -4,25 +4,21 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 /**
- *
  * The activator class controls the plug-in life cycle.
  *
  * @author Roman Langrehr
- * @version 0
  */
 public class Activator extends AbstractUIPlugin {
 
-	// The plug-in ID
+	/**
+	 * The plug-in ID.
+	 */
 	public static final String PLUGIN_ID = "Eclipse_GUI_Protoype";
 
-	// The shared instance
-	private static Activator plugin;
-
 	/**
-	 * The constructor
+	 * The shared instance.
 	 */
-	public Activator() {
-	}
+	private static Activator plugin;
 
 	/*
 	 * (non-Javadoc)
@@ -47,7 +43,7 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Returns the shared instance
+	 * Returns the shared instance.
 	 *
 	 * @return the shared instance
 	 */

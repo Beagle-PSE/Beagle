@@ -12,20 +12,18 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
- *
- * TODO Document class
+ * Handles the context menu entries, that start an analysis of a component.
  *
  * @author Roman Langrehr
- * @version 0
  */
 public class DemoBeagleContextMenuEntryHandlerComponent extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
-		IStructuredSelection selection = (IStructuredSelection) sel;
-		BasicComponentEditPart basicComponentEditPart = (BasicComponentEditPart) selection.getFirstElement();
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
+		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+		final BasicComponentEditPart basicComponentEditPart = (BasicComponentEditPart) structuredSelection.getFirstElement();
+		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 		MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
 				"Belive it, or not. But Beagle ist alive!\n" + "You want to analyse: A single component: "
 						+ basicComponentEditPart.getPrimaryShape().getFigureBasicComponent_Name_LabelFigure()

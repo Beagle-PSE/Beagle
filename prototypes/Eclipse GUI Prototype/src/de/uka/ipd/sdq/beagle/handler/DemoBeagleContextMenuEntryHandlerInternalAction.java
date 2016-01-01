@@ -13,30 +13,28 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
- *
- * TODO Document class
+ * Handles the context menu entries, that start an analysis of an internal action.
  *
  * @author Roman Langrehr
- * @version 0
  */
 public class DemoBeagleContextMenuEntryHandlerInternalAction extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		ISelection sel = HandlerUtil.getActiveMenuSelection(event);
-		IStructuredSelection selection = (IStructuredSelection) sel;
+		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
+		final IStructuredSelection stucteredSelection = (IStructuredSelection) selection;
 		// BasicComponentEditPart basicComponentEditPart =
 		// (BasicComponentEditPart) selection.getFirstElement();
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		Object guiObject = selection.getFirstElement();
+		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		final Object guiObject = stucteredSelection.getFirstElement();
 		String displayString = null;
 		if (guiObject instanceof InternalActionEditPart) {
-			InternalActionEditPart internalActionEditPart = (InternalActionEditPart) guiObject;
+			final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) guiObject;
 			displayString = internalActionEditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel()
 					.toString();
 		} else {
 			assert guiObject instanceof InternalAction2EditPart;
-			InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) guiObject;
+			final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) guiObject;
 			displayString = internalAction2EditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel()
 					.toString();
 		}
