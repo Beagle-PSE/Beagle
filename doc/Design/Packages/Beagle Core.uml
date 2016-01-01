@@ -123,6 +123,9 @@ write results()</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RcnQYKEUEeWQRf-no0GeMA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rcq6wKEUEeWQRf-no0GeMA" value="*"/>
       </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_664BkLClEeWUDtVlk6a50w" name="can measure">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="__oAfELClEeWUDtVlk6a50w" name="blackboard" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
+      </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Tc6FQKD1EeWVpfCzK8hwSg" name="measure">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_ni_pwKD1EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="read"/>
       </ownedOperation>

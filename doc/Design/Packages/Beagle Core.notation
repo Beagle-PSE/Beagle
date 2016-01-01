@@ -198,6 +198,10 @@
           <element xmi:type="uml:Operation" href="Beagle%20Core.uml#_Tc6FQKD1EeWVpfCzK8hwSg"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_TdKj8aD1EeWVpfCzK8hwSg"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_67fFkLClEeWUDtVlk6a50w" type="3013">
+          <element xmi:type="uml:Operation" href="Beagle%20Core.uml#_664BkLClEeWUDtVlk6a50w"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_67fFkbClEeWUDtVlk6a50w"/>
+        </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_gq9NNqDwEeWVpfCzK8hwSg"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_gq9NN6DwEeWVpfCzK8hwSg"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_gq9NOKDwEeWVpfCzK8hwSg"/>
@@ -210,7 +214,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gq9NPqDwEeWVpfCzK8hwSg"/>
       </children>
       <element xmi:type="uml:Class" href="Beagle%20Core.uml#_gq6J4KDwEeWVpfCzK8hwSg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gq8mIaDwEeWVpfCzK8hwSg" x="1337" y="1412" width="276"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gq8mIaDwEeWVpfCzK8hwSg" x="1320" y="1403" width="291" height="120"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_DQl5kKDzEeWVpfCzK8hwSg" type="2008">
       <children xmi:type="notation:DecorationNode" xmi:id="_DQmgoKDzEeWVpfCzK8hwSg" type="5029"/>
@@ -588,7 +592,7 @@
       <element xmi:type="uml:Association" href="Beagle%20Core.uml#_qgmqYKD1EeWVpfCzK8hwSg"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qhATAqD1EeWVpfCzK8hwSg" points="[-9, 27, -13, -162]$[-28, 152, -32, -37]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qiObAKD1EeWVpfCzK8hwSg" id="(0.0,0.25)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qiObAaD1EeWVpfCzK8hwSg" id="(1.0,0.51)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qiObAaD1EeWVpfCzK8hwSg" id="(1.0,0.5)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_F69twKD2EeWVpfCzK8hwSg" type="4001" source="_I-mWUKDUEeWv3dQk34uqzw" target="_S2vPYKDwEeWVpfCzK8hwSg">
       <children xmi:type="notation:DecorationNode" xmi:id="_F6-U0KD2EeWVpfCzK8hwSg" type="6001">
@@ -694,7 +698,7 @@
       <styles xmi:type="notation:FontStyle" xmi:id="_JVUZIaEUEeWQRf-no0GeMA"/>
       <element xmi:type="uml:Association" href="Beagle%20Core.uml#_JUmncKEUEeWQRf-no0GeMA"/>
       <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JVUZIqEUEeWQRf-no0GeMA" points="[-9, -7, 239, -16]$[-214, -43, 34, -52]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JWxxsKEUEeWQRf-no0GeMA" id="(0.0,0.5981308411214953)"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JWxxsKEUEeWQRf-no0GeMA" id="(0.0,0.5916666666666667)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JWxxsaEUEeWQRf-no0GeMA" id="(1.0,0.36220472440944884)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_zy7Q4KEiEeWuoaiXEYXzVw" type="4001" source="_F0hnAKDUEeWv3dQk34uqzw" target="_DUnRMKDjEeWVpfCzK8hwSg">
