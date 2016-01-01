@@ -1,5 +1,5 @@
 /**
- * Defines all Helpers available to web handlebars templates.
+ * Defines all helpers available to web handlebars templates.
  *
  * @author Joshua Gleitze
  */
@@ -7,8 +7,8 @@ public class BeagleHelpers {
 	private BeagleWebContext beagleContext;
 	
 	/**
-	 * Creates an instance of Helpers that can be passed to handlebars.java. Helpers may affect the 
-	 * passed {@link beagleContext}, so a new instanc should be used for every BeagleWebContext.
+	 * Creates an instance of helpers that can be passed to handlebars.java. Helpers may affect the 
+	 * passed {@link beagleContext}, so a new instance should be used for every new BeagleWebContext.
 	 *
 	 * @param beagleContext	The context the helpers operate on.
 	 */
@@ -28,10 +28,10 @@ public class BeagleHelpers {
 	}
 	
 	/**
-	 * Returns an font-awesome class name representing a file of the given format.
+	 * Returns a font-awesome class name representing a file of the given format.
 	 *
 	 * @param formatName	The name of the file’s format.
-	 * @return	An font-awesome class name of an icon representing {@code formatName}
+	 * @return	A font-awesome class name of an icon representing {@code formatName}
 	 */
 	public String fileIconClass(final String formatName) {
 		switch(formatName) {

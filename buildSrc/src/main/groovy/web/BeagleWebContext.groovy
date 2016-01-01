@@ -73,7 +73,7 @@ public class BeagleWebContext {
 	
 	/**
 	 * Returns one task on {@link #project} named {@code name}. If there are multiple such tasks,
-	 * one is picked. It is neithor defined nor reliable which one will be picked.
+	 * one is picked. It is neither defined nor reliable which one will be picked.
 	 *
 	 * @param name	The name of the desired task.
 	 * @return	A task of {@link #project} named {@code name} or {@code null} if there is no 
@@ -87,7 +87,7 @@ public class BeagleWebContext {
 	/** 
 	 * Makes a given path relative to the web output folder.
 	 *
-	 * @param path	A path (anything accepte by Gradles Project#files).
+	 * @param path	A path (anything accepted by Gradle’s Project#files).
 	 * @return	A path to {@code path} relative to Beagle’s {@code web} task’s {@code dest} property.
 	 */
 	private static String relative(final Object path) {
