@@ -1,0 +1,15 @@
+/**
+ * Sets up the Java build tasks and customises the built jar, e.g. its MANIFEST.mf file.
+ *
+ * @author Annika Berger
+ * @author Joshua Gleitze
+ */
+
+apply plugin: 'java'
+ 
+jar {
+    manifest {
+        attributes 'Implementation-Title': project.name,
+                   'Implementation-Version': project.version
+    }
+}

@@ -1,122 +1,32 @@
-apply plugin: 'java'
-apply plugin: 'checkstyle'
-apply plugin: 'jacoco'
+import groovy.transform.Field 
+
+@Field List mainTaskAdditions = []
+
+buildscript {
+	fileTree("$projectDir/buildSrc/src/tasks/gradle/buildscript-dependencies").include('*.gradle').each { file ->
+	     apply from: file, to: buildscript
+	} 
+}
+
+/**
+ * Allows scripts to run their tasks on the main (build) task.
+ * Scripts should not add their tasks to the build tasks themselves but use this method
+ * to reduce dependencies between them.
+ *
+ * @param t
+ *		A Task to run on the build task
+ */
+void addToMainTask(Task t) {
+	mainTaskAdditions += t
+}
+
+// import all tasks defined in src/build/groovy
+fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').sort().each { file ->
+     apply from: file
+} 
+
+for (Task t : mainTaskAdditions) {
+	build.dependsOn t
+}
+
 defaultTasks 'build'
-
-// Customization of MANIFEST.MF
-sourceCompatibility = 1.8
-version = '1.0'
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Beagle',
-                   'Implementation-Version': version
-    }
-}
-
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	testCompile group: 'junit', name: 'junit', version: '4.+'
-}
-
-checkstyle {
-	toolVersion = "6.11"
-	configFile = 'config/checkstyle/Checkstyle.xml' as File
-}
-
-jacocoTestReport {
-	reports {
-		xml.enabled true
-	}
-}
-
-task verifyNoCheckstyleWarnings << {
-	description 'throws if checkstyle warnings were found in a previous checkstyle run'
-
-	def checkstyleWarningsMain = 'build/reports/checkstyle/main.xml'
-	def checkstyleWarningsTest = 'build/reports/checkstyle/test.xml'
-
-	File warningsFile = file (checkstyleWarningsMain)
-	if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
-		throw new GradleException("There were checkstyle warnings in src/main!")
-	}
-	warningsFile = file (checkstyleWarningsTest)
-	if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
-		throw new GradleException("There were checkstyle warnings in src/test!")
-	}
-}
-
-
-task verifyTestCoverage << {
-	description 'throws if code coverage is not 100%'
-
-	def jacocoReport = 'build/reports/jacoco/test/jacocoTestReport.xml'
-
-	File report = file (jacocoReport)
-	if (report.exists() && report.text ==~ /.*missed="[^0]".*/) {
-		throw new GradleException("Code Coverage by Tests is not 100%!")
-	}
-}
-
-task qc (dependsOn: ['verifyNoCheckstyleWarnings', 'verifyTestCoverage'])
-
-verifyNoCheckstyleWarnings.dependsOn check
-verifyTestCoverage.dependsOn jacocoTestReport
-build.dependsOn jacocoTestReport
-
-
-
-task srs(type: Exec) {
-	description 'Renders the Requirements Specification.'
-	
-	inputs.dir "$projectDir/doc/Requirements Specification"
-	outputs.file "$buildDir/doc/Requirements Specification.pdf"
-	
-	def dest = file("$buildDir/doc/")
-	def logdest = file("$buildDir/reports/Requirements Specification Render.log")
-	
-	workingDir "$projectDir/doc/Requirements Specification/"
-	
-	switch (System.getProperty('os.name').toLowerCase().split()[0]) {
-		case 'windows':
-			commandLine 'cmd', '/c', 'Render.bat', dest, logdest, 'srs-only'
-    	break
-		case 'linux':
-			args dest, logdest, 'srs-only'
-    		executable './Render.sh'
-    		break
-	}
-	
-	doFirst {
-		if (!System.getProperty('os.name').toLowerCase().contains('linux') && !System.getProperty('os.name').toLowerCase().contains('windows')) {
-    		throw new Exception('Sorry, we don’t support your operating system for building the SRS!')
-		}
-	}
-	
-	// only print the output for log level info or higher
-	logging.captureStandardOutput LogLevel.INFO
-}
-
-task srsinstall(type: Exec) {
-	description 'Sets up the environment for rendering the srs, but only if the srs is out of date.'	
-	
-	inputs.dir "$projectDir/doc/Requirements Specification"
-	outputs.file "$buildDir/doc/Requirements Specification.pdf"
-	
-	doFirst {
-		if (!System.getProperty('os.name').toLowerCase().contains('linux')) {
-			throw new Exception('Sorry, we only support linux for automatic setup of the srs render environment. Please refer to doc/Development Setup.md!')
-		}
-	}
-	
-	workingDir "$projectDir/doc/Requirements Specification/"
-	executable './Install.sh'
-	
-	// only print the output for log level info or higher
-	logging.captureStandardOutput LogLevel.INFO
-	logging.captureStandardError LogLevel.INFO
-}
-
-build.dependsOn srs

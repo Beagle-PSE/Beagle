@@ -1,0 +1,77 @@
+/**
+ * Tasks asserting the code’s quality
+ *
+ * @author Annika Berger
+ * @author Joshua Gleitze
+ */
+ 
+apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
+
+repositories {
+ 	mavenCentral()
+}
+ 
+checkstyle {
+	toolVersion = "6.11"
+	configFile = 'config/checkstyle/Checkstyle.xml' as File
+}
+
+jacocoTestReport {
+	reports {
+		xml.enabled true
+		html.destination "${buildDir}/reports/jacoco/html"
+	}
+}
+
+task verifyNoCheckstyleWarnings(dependsOn: check) << {
+	description 'Throws if checkstyle warnings were found in a previous checkstyle run.'
+
+	def checkstyleWarningsMain = 'build/reports/checkstyle/main.xml'
+	def checkstyleWarningsTest = 'build/reports/checkstyle/test.xml'
+
+	File warningsFile = file (checkstyleWarningsMain)
+	if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
+		throw new GradleException("There were checkstyle warnings in src/main!")
+	}
+	warningsFile = file (checkstyleWarningsTest)
+	if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
+		throw new GradleException("There were checkstyle warnings in src/test!")
+	}
+}
+
+
+task verifyTestCoverage(dependsOn: jacocoTestReport) << {
+	description 'Throws if test code coverage is not 100%.'
+
+	def jacocoReport = 'build/reports/jacoco/test/jacocoTestReport.xml'
+
+	File report = file (jacocoReport)
+	if (report.exists() && report.text ==~ /.*missed="[^0]".*/) {
+		throw new GradleException("Code Coverage by Tests is not 100%!")
+	}
+}
+
+// taken from: http://stackoverflow.com/questions/20361942/generate-checkstyle-html-report-with-gradle/20362150#20362150
+task checkstyleHtml {
+	description 'Generates a HTML report file for a checkstyle run.'
+	
+	ext {
+		dest = new File(checkstyleMain.reports.xml.destination.parent, 'main.html')
+	}
+	
+	doLast {
+		ant.xslt(in: checkstyleMain.reports.xml.destination,
+			style: file("$projectDir/config/checkstyle/Checkstyle HTML Render.xsl"),
+			out: dest)
+    }
+}
+
+task qc (dependsOn: ['verifyNoCheckstyleWarnings', 'verifyTestCoverage']) {
+	group 'Verification'
+	description 'Verifies the code’s quality. Fails the build if issues are found.'
+}
+
+checkstyleMain.finalizedBy checkstyleHtml
+
+addToMainTask jacocoTestReport

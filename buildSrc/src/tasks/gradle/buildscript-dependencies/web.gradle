@@ -1,0 +1,7 @@
+repositories {
+	jcenter()
+}
+
+dependencies {
+	classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1+'
+}
