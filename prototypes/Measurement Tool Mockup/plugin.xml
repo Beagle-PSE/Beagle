@@ -6,7 +6,7 @@
          name="Measurement Tool Mockup"
          point="de.uka.ipd.sdg.beagle.measurementtool">
       <MeasurementTool
-            MeasurementToolClass="de.uka.ipd.sdq.beagle.measurementtoolmockup.MockupMeasurementTool">
+            MeasurementToolClass="de.uka.ipd.sdq.beagle.prototypes.extensionpoint.measurementtoolmockup.MockupMeasurementTool">
       </MeasurementTool>
    </extension>
 

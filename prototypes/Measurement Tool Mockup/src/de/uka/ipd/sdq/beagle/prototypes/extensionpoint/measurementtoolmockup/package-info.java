@@ -4,4 +4,4 @@
  *
  * @author Roman Langrehr
  */
-package de.uka.ipd.sdq.beagle.measurementtoolmockup;
+package de.uka.ipd.sdq.beagle.prototypes.extensionpoint.measurementtoolmockup;

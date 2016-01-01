@@ -19,7 +19,7 @@
          point="org.eclipse.ui.handlers">
       <handler
             commandId="de.uka.ipd.sdq.beagle.extensionpointprototype.commands.showMeasurmentTools"
-            class="de.uka.ipd.sdq.beagle.extensionpointprototype.ShowMeasurementToolsHandler">
+            class="de.uka.ipd.sdq.beagle.prototypes.extensionpoint.ShowMeasurementToolsHandler">
       </handler>
    </extension>
    <extension

@@ -4,4 +4,4 @@
  *
  * @author Roman Langrehr
  */
-package de.uka.ipd.sdq.beagle.extensionpointprototype;
+package de.uka.ipd.sdq.beagle.prototypes.extensionpoint;

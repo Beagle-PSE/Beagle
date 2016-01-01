@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.extensionpointprototype;
+package de.uka.ipd.sdq.beagle.prototypes.extensionpoint;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
