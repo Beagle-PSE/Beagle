@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.handler;
+package de.uka.ipd.sdq.beagle.prototypes.contextmenus.handlers;
 
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart;
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart;
@@ -17,7 +17,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
  *
  * @author Roman Langrehr
  */
-public class DemoBeagleContextMenuEntryHandlerInternalAction extends AbstractHandler {
+public class DemoBeagleContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {

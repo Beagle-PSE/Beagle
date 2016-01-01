@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.handler;
+package de.uka.ipd.sdq.beagle.prototypes.contextmenus.handlers;
 
 import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
 
@@ -16,7 +16,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
  *
  * @author Roman Langrehr
  */
-public class DemoBeagleContextMenuEntryHandlerComponent extends AbstractHandler {
+public class DemoBeagleContextMenuEntryHandlerForComponents extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {

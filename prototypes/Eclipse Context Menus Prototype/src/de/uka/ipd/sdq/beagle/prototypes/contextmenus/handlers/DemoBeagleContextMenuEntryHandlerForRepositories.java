@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.handler;
+package de.uka.ipd.sdq.beagle.prototypes.contextmenus.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -17,7 +17,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
  *
  * @author Roman Langrehr
  */
-public class DemoBeagleContextMenuEntryHandlerRepository extends AbstractHandler {
+public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHandler {
 
 	/**
 	 * RegEx for the file extensions, where the context menu entry should be displayed.
