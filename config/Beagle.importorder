@@ -1,0 +1,9 @@
+#Organize Import Order
+#Sun Dec 27 12:51:20 CET 2015
+6=javax
+5=java
+4=com
+3=org
+2=de
+1=
+0=de.uka.ipd.sdq.beagle
