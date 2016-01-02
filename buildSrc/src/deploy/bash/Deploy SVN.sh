@@ -58,7 +58,7 @@ find . -maxdepth 1 \! \( -name .svn -o -name . \) -exec rm -rf {} \;
 cp -r "$BASE"/* .
 
 # Remove files that are not needed
-rm -rf build/tmp build/classes
+rm -rf build/tmp build/classes .git .gradle
 
 svn add . --force --non-interactive --quiet
 
