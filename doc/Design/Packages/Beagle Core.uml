@@ -78,12 +78,8 @@ readOnlyBlackboard ≔ {@link #_DQjdUKDzEeWVpfCzK8hwSg}.{@link #__BK2UKDzEeWVpfC
 analyserBlackboard ≔ {@link #_rqzFQKD4EeWVpfCzK8hwSg}.{@link #_zR0rkKD5EeWVpfCzK8hwSg}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
  &#xD;
 while (¬finished) do&#xD;
-  allConstructs ≔ {@link #_zyUM4KEiEeWuoaiXEYXzVw} ∪ {@link #_5aqTEKDuEeWVpfCzK8hwSg} ∪ {@link #_KM-roqDtEeWVpfCzK8hwSg} &#xD;
-  if |allConstructs| > 0 then&#xD;
+  if {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_664BkLClEeWUDtVlk6a50w}(readOnlyBlackboard) then&#xD;
     {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_Tc6FQKD1EeWVpfCzK8hwSg}()&#xD;
-    {@link #_zyUM4KEiEeWuoaiXEYXzVw} ≔ ∅&#xD;
-    {@link #_5aqTEKDuEeWVpfCzK8hwSg} ≔ ∅&#xD;
-    {@link #_KM-roqDtEeWVpfCzK8hwSg} ≔ ∅&#xD;
   else&#xD;
     analysersIterator ≔ {@link #_F6a7MqD2EeWVpfCzK8hwSg}.iterator()&#xD;
     while ¬analysersIterator.current().{@link #_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboard) do&#xD;
@@ -124,6 +120,9 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rcq6wKEUEeWQRf-no0GeMA" value="*"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_664BkLClEeWUDtVlk6a50w" name="can measure">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_P7cZ4LC9EeW2QoBjFVIuyA">
+          <body>return |{@link #_zyUM4KEiEeWuoaiXEYXzVw} ∪ {@link #_5aqTEKDuEeWVpfCzK8hwSg} ∪ {@link #_KM-roqDtEeWVpfCzK8hwSg}|  > 0</body>
+        </ownedComment>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="__oAfELClEeWUDtVlk6a50w" name="blackboard" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Tc6FQKD1EeWVpfCzK8hwSg" name="measure">
