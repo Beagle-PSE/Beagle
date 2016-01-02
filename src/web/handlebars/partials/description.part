@@ -1,0 +1,7 @@
+{{!-- 
+	An element’s description
+	
+	partial-block: the description
+--}}
+
+<span class="description">{{> @partial-block}}</span>
