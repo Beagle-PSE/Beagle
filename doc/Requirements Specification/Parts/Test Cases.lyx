@@ -149,10 +149,10 @@ reference "/E30/"
 .
  However, most tests must not include third party software but provide artificia
 l input data instead.
- Doing otherwise could result in testing third party software, or, even
+ Doing differently could result in testing third party software, or, even
  worse, in not detecting errors and failures because they are compensated
  by other software.
- Therefore the tests in this section always premise test provided 
+ Therefore, tests in this section always premise test-provided 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "input artefacts"
@@ -203,8 +203,8 @@ gls{Beagle}
 
 \end_inset
 
- is starting, running and terminating by a simple run-through.
- For a valid input this has to work without exceptions and the software
+ is starting, running, and terminating by a simple run-through.
+ For a valid input, this has to work without exceptions and the software
  has to terminate gracefully.
 \end_layout
 
@@ -230,8 +230,8 @@ gls{Beagle}
 \end_inset
 
  discovers all sections needed for measurement and that they are correct.
- A part of this can be realised by checking if all code sections (of the
- measured part) were measured.
+ A part of this can be implemented by checking if all code sections (of
+ the measured part) have been executed.
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -343,7 +343,7 @@ gls{Beagle}
 
 \end_inset
 
- wrote it to) by comparing it with a manual created 
+ wrote it to) by comparing it with a manually created 
 \begin_inset ERT
 status open
 
@@ -465,7 +465,7 @@ reference "input source code"
 
 \end_inset
 
- which does not terminate, define a timeout and assert that 
+ which does not terminate, define a timeout, and assert that 
 \begin_inset ERT
 status open
 
@@ -536,8 +536,8 @@ gls{code decorator}
 
 \end_inset
 
- does not fit to the code) and does not crash but responds to it in a acceptable
- way.
+ does not fit to the code) and does not crash but responds to it in an acceptabl
+e way.
 \end_layout
 
 \begin_layout Labeling
@@ -615,7 +615,7 @@ glsuseri{Beagle}
 
 \end_inset
 
- capabilities by providing source code with arbitrary complex 
+ capabilities by providing source code with arbitrarily complex 
 \begin_inset ERT
 status open
 
@@ -654,7 +654,7 @@ reference "result PCM"
 
 \end_inset
 
- contains approximations of the probability for branches in 
+ contains approximations of the probability of branches in 
 \begin_inset ERT
 status open
 
@@ -681,7 +681,7 @@ glspl{SEFF loop}
 \end_inset
 
 .
- Optionally assert that these approximations are expressed dependent on
+ Optionally assert that these approximations are expressed dependently on
  input parameters.
  Like 
 \begin_inset CommandInset ref
@@ -703,8 +703,8 @@ glsuseri{Beagle}
 
 \end_inset
 
- capabilities by providing source code with arbitrary complex relations
- between input parameters and repetitions 
+ capabilities by providing source code with arbitrarily complex relations
+ between input parameters and repetitions of 
 \begin_inset ERT
 status open
 
@@ -712,7 +712,7 @@ status open
 
 
 \backslash
-glspl{SEFF loop}
+glspl{SEFF loop},
 \end_layout
 
 \end_inset
@@ -807,7 +807,7 @@ name "/OT60/"
 
 \end_inset
 
- Assert that users are able to re-measure source code by measuring same
+ Assert that users are able to re-measure source code by measuring the same
  source code several times.
  Assert that the individual results are united correctly in the 
 \begin_inset CommandInset ref
@@ -836,7 +836,7 @@ name "/OT70/"
 \end_inset
 
  Assert that pausing and resuming measurements works as expected by testing
- same source code without pausing and several different numbers of pauses.
+ the same source code without pausing and several different numbers of pauses.
  The 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -846,7 +846,7 @@ reference "result PCM"
 
  has to be the same (because artificial input data is provided, which is
  not exposed to environmental influences).
- Optionally close 
+ Optionally, close 
 \begin_inset ERT
 status open
 
@@ -986,7 +986,7 @@ gls{Beagle}
  Tests 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OQ50/"
+reference "/OQ40/"
 
 \end_inset
 

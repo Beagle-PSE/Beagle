@@ -318,7 +318,20 @@ gls{Beagle}
 
 \end_inset
 
-in order to predict their performance in interaction with the software system.
+ in order to predict their performance in interaction with the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserv{system}
+\end_layout
+
+\end_inset
+
+.
  This leads to fast detection of arising problems (like implementation errors
  or unrealistic modelling in the 
 \begin_inset ERT
@@ -599,20 +612,7 @@ gls{Palladio}
 
 \end_inset
 
- and implementing it, a static code analysis tool like 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SoMoX}
-\end_layout
-
-\end_inset
-
- or
+ and implementing it, 
 \begin_inset ERT
 status open
 
@@ -625,20 +625,20 @@ gls{Beagle}
 
 \end_inset
 
-can reverse-engineer a 
+ can analyse its 
 \begin_inset ERT
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 
 \backslash
-gls{PCM}
+glspl{resource demand}
 \end_layout
 
 \end_inset
 
- which can then be compared to the initial one.
+ which can then be compared to the predicted ones.
  With this approach, differences and problems in the implementation can
  be detected and resolved more easily.
 \begin_inset Float figure

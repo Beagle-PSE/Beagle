@@ -270,8 +270,20 @@ glsuseri{component}
 
 \end_inset
 
- interaction with a software system or to freshly start analysing existing
- software.
+ interaction with a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserv{system}
+\end_layout
+
+\end_inset
+
+ or to freshly start analysing existing software.
  For such cases, 
 \begin_inset ERT
 status open
@@ -529,6 +541,119 @@ gls{measurement software}
 .
 \end_layout
 
+\begin_layout Standard
+It's important do understand the difference between simple performance measureme
+nts and the detection of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+ While the first one simply determines how long a piece of code need to
+ execute a given task on a given machine, the latter respects the implications
+ of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component-based software architecture}
+\end_layout
+
+\end_inset
+
+.
+ This means 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ tries to gain 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{resource demand}
+\end_layout
+
+\end_inset
+
+ information that is independent from a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{usage context}{usage}
+\end_layout
+
+\end_inset
+
+,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{deployment context}{deployment}
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{assembly context}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Criteria
 \end_layout
@@ -685,7 +810,7 @@ gls{Palladio}
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Complements the above part.

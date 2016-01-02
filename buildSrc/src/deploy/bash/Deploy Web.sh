@@ -1,5 +1,13 @@
 #!/bin/bash
 
+######################################################################
+# Web page deployment script                                         #
+# Deploys Beagle’s web presence to the repository’s gh-pages branch. #
+# To be called from Beagle’s root folder on Travis CI                #
+#                                                                    #
+# author: Joshua Gleitze                                             #
+######################################################################
+
 # fail the script if any command fails
 set -e
 # Don't return a glob pattern if it doesn't match anything
@@ -50,15 +58,11 @@ git checkout gh-pages
 for branchpath in branches/*
 do
 	branch=$(basename $branchpath)
-	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder for $branch"; git rm -rfq branches/$branch)
+	git rev-parse --verify origin/$branch > /dev/null 2>&1 || (echo "Removing obsolete branch folder of $branch"; git rm -rfq branches/$branch)
 done
 
 
-###
-# Gather all assets that will be released
-###
-
-# Build the master branch to the top most folder, but all other branches to subfolders
+# Deploy the master branch to the top most folder, but all other branches to subfolders
 [ $TRAVIS_BRANCH == "master" ] && pubdir="." || pubdir="branches/$TRAVIS_BRANCH"
 mkdir -p "$pubdir"
 cd "$pubdir"
@@ -67,8 +71,7 @@ cd "$pubdir"
 find . -maxdepth 1 \! \( -name .git -o -name . -o -name branches \) -exec rm -rf {} \;
 
 # Requirements specification
-
-cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" .
+cp -r "$BASE/build/web"/* .
 
 ###
 

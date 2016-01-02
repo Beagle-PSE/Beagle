@@ -108,8 +108,20 @@ Reference notation for nice to have requirements is /OQ#/
 
 \end_inset
 
-In order to be as independent as possible and to provide good quality of
- service and user experience, 
+In order to be as independent as possible and to provide good 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{QoS}
+\end_layout
+
+\end_inset
+
+ and user experience, 
 \begin_inset ERT
 status open
 
@@ -210,6 +222,8 @@ reference "/T30/"
 \end_layout
 
 \end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -472,31 +486,6 @@ reference "/OT25/"
 \begin_inset CommandInset label
 LatexCommand label
 name "/OQ40/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- runs benchmarks on hardware systems in order to provide information to
- make its results transferable.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/OQ50/"
 
 \end_inset
 
@@ -881,7 +870,20 @@ To analyse the entire project, there is an entry
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -915,11 +917,37 @@ lstinline{.repository_diagram}
 \end_layout
 
 \begin_layout Enumerate
-To analyse a single component, there is an entry 
+To analyse a single 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{component}
+\end_layout
+
+\end_inset
+
+, there is an entry 
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -957,7 +985,20 @@ gls{internal action}
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1071,7 +1112,7 @@ gls{Beagle}
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OQ40/"
+reference "/OF60/"
 
 \end_inset
 
@@ -1093,7 +1134,7 @@ reference "/OF120/"
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OQ40/"
+reference "/OF60/"
 
 \end_inset
 
@@ -1105,7 +1146,7 @@ reference "/OQ40/"
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OQ40/"
+reference "/OF60/"
 
 \end_inset
 
@@ -1162,7 +1203,20 @@ reference "/OF140/"
 \begin_inset Quotes eld
 \end_inset
 
-Analyse with Beagle
+Analyse with 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1170,7 +1224,20 @@ Analyse with Beagle
 \begin_inset Quotes eld
 \end_inset
 
-Resume Latest Beagle Analysis
+Resume Latest 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ Analysis
 \begin_inset Quotes erd
 \end_inset
 

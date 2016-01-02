@@ -735,10 +735,13 @@ newglossaryentry{Palladio}{
 
 \begin_layout Plain Layout
 
-		an approach for the definition of 
+		an approach to the predict 
+\backslash
+gls{QoS} properties of 
 \backslash
 glspl{component-based software architecture} with a special focus on performance
  properties.
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1262,6 +1265,7 @@ gls{PCM}, software architects create the assembly model, specifying how
  existing 
 \backslash
 glspl{component} are composed.
+ 
 \backslash
 cite{PCMtechreport}
 \end_layout
@@ -1705,6 +1709,138 @@ cite{ByCounterPaper}.
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{usage context}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={usage context},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		how a 
+\backslash
+gls{component} is used.
+ Includes the number, frequency and distribution of calls made the the 
+\backslash
+glsuseri{component} services.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{deployment context}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={deployment context},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		in which environment a 
+\backslash
+gls{component} runs.
+ Specifies which resources are available to the component.
+ Includes information like the performance of the hardware the component
+ runs on but also information about the software resources like the virtual
+ machine or thread pools.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{assembly context}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={assembly context},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		the 
+\backslash
+glspl{component} in conjuntion with a 
+\backslash
+gls{component}.
+ Specifies which 
+\backslash
+glspl{component} provide the 
+\backslash
+glsuseri{component} required interfaces.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset

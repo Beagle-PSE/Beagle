@@ -3,16 +3,16 @@ language: java
 sudo: required
 dist: trusty
 
-before_script:
-  - cd doc/Requirements\ Specification/
-  - ./Install.sh
-  - cd $OLDPWD
+install:
+  - sudo add-apt-repository -y ppa:cwchien/gradle && sudo apt-get update && sudo apt-get install -qq gradle-2.9
+  - gradle dependencies srsinstall
   
 script:
-  - cd doc/Requirements\ Specification/
-  - ./Render.sh
-  - cd $OLDPWD
+  - gradle build qc || gradle build qc --info --stacktrace
+  - gradle web || gradle web --info --stacktrace
+  
+after_script:
+  - ./buildSrc/src/deploy/bash/Deploy\ Web.sh
   
 after_success:
-  - ./deploy/Deploy\ Publish.sh
-  - ./deploy/Deploy\ SVN.sh
+  - ./buildSrc/src/deploy/bash/Deploy\ SVN.sh

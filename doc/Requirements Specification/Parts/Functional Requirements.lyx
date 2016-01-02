@@ -214,6 +214,35 @@ glspl{resource demand}
 \end_inset
 
 .
+ Correctly determining these sections assures the measurement results do
+ not depend on the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{assembly context}
+\end_layout
+
+\end_inset
+
+.
+ 
 \begin_inset Note Note
 status open
 
@@ -567,6 +596,59 @@ glspl{resource demand}
 \end_inset
 
 .
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to find 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
@@ -683,6 +765,49 @@ glsuseri{component}
 \end_inset
 
  interface parameters.
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to express them independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+
+ 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
@@ -800,6 +925,46 @@ glsuseri{component}
 \end_inset
 
  interface parameters.
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to express them independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
  
 \begin_inset Note Note
 status open
@@ -818,6 +983,86 @@ reference "/OT40/"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF60/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ runs benchmarks on hardware systems in order to provide information to
+ make its results transferable: Using the benchmark information, measurement
+ results can be transferred between different hardware systems when simulating
+ in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+.
+ This insures the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{resource demand}
+\end_layout
+
+\end_inset
+
+ independence from the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{deployment context}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section

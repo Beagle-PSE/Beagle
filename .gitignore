@@ -1,5 +1,8 @@
 *.class
 
+# Build Folder
+build/
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -24,3 +27,6 @@ hs_err_pid*
 
 # Markdown HTML renderings created by the GitHub Flavored Markdown Viewer plugin for Eclipse
 **/.*.md.html
+
+# Gradle
+.gradle/

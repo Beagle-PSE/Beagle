@@ -417,7 +417,20 @@ gls{component}
 
 \end_inset
 
- calls throughout various hierarchical layers.
+ calls throughout various hierarchical 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{layer}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -529,10 +542,10 @@ Scenario 2
 \end_layout
 
 \begin_layout Standard
-Two years later, EmmaSun emerged to be an established and much used online
+Two years later, EmmaSun emerged to be an established and much-used online
  shop.
  The last years were busy and EmmaSun constantly hired new developers and
- deployed its software on an ever growing compound of servers.
+ deployed its software on an evergrowing cluster of servers.
  Because of their good experience with 
 \begin_inset ERT
 status open
@@ -559,7 +572,7 @@ glspl{software architect}
 
 \end_inset
 
- never stopped to model their software in it.
+ never stopped to model their software using it.
  Thus, the 
 \begin_inset ERT
 status open
@@ -592,9 +605,9 @@ gls{QoS}
 \begin_layout Standard
 Today, EmmaSun's managers decided to offer a new, ground-breaking feature:
  Automatic audio conversion.
- Any audio piece, no matter whether it is sold on CD, tape or LP will automatica
-lly be offered to users in various digital music formats, from high quality
- FLAC to small 128 kbit/s MP3.
+ Any audio piece, no matter whether it is sold on CD, tape, or LP, will
+ automatically be offered to users in various digital music formats, from
+ high quality FLACs to small 128 kbit/s MP3s.
  While the management is not, EmmaSun's development team is fully aware
  of the implications on performance this feature will have.
  They decide that careful planing is crucial to offer a reliable and fast
@@ -615,8 +628,20 @@ glspl{software architect}
 
 \end_inset
 
- start to model the new feature's sub-architecture and components in the
- 
+ start to model the new feature's sub-architecture and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{component}
+\end_layout
+
+\end_inset
+
+ in the 
 \begin_inset ERT
 status open
 
@@ -630,7 +655,7 @@ gls{PCM}
 \end_inset
 
 .
- They cooperate close-meshed with the 
+ They cooperate continuously with the 
 \begin_inset ERT
 status open
 
@@ -676,9 +701,47 @@ glspl{component}
  Especially, there are different ways to parallelise the task.
  Different developers come up with different approaches, all having their
  advatages and disadvantages.
- The development lead soon realises that the effective performance will
- depend highly on the component's usage and deployment and cannot be predicted
- by simple measurements.
+ The development management soon realises that the effective performance
+ will depend highly on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{usage context}{usage}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{deployment context}{deployment}
+\end_layout
+
+\end_inset
+
+ and cannot be predicted by simple measurements.
  
 \end_layout
 
@@ -698,7 +761,20 @@ glspl{software architect}
 
 \end_inset
 
- then import each of these prototypes into Palladio using 
+ then import each of these prototypes into 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ using 
 \begin_inset ERT
 status open
 
@@ -725,7 +801,20 @@ gls{Beagle}
 \end_inset
 
 , like they did two years ago.
- In Palladio, they are able to simulate the load they think the 
+ In 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+, they are able to simulate the load they think the 
 \begin_inset ERT
 status open
 
@@ -877,8 +966,8 @@ e hardware.
 \end_layout
 
 \begin_layout Standard
-When the new conversion feature is released, users are astonished by its
- speed.
+When the new conversion feature is implemented, users are astonished by
+ its speed.
  EmmaSun's largest competitor, Million Shopping
 \begin_inset Foot
 status collapsed
@@ -892,8 +981,8 @@ All characters and organisations appearing in this work are fictitious.
 \end_inset
 
 , releases a similar feature soon after.
- But as users start using it, it becomes slower and unreliable, resulting
- in unsatisfied customers and sometimes even failed transactions.
+ But as users start using it, it becomes slower and less reliable over time,
+ resulting in unsatisfied customers and sometimes even failed transactions.
  EmmaSun's services, on the other hand, prove to be reliable and scale very
  well.
  A year later, EmmaSun will call the feature one of the main reasons they
