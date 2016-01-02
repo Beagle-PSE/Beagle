@@ -50,7 +50,7 @@
 
 % Set the PDF metadata
 \hypersetup{
-    pdftitle={Beagle --- Design & Architecturen},
+    pdftitle={Beagle --- Design and Architecture},
     pdfsubject={Beagle is a tool for automatic dynamic source code analysis in order to find resource demands of component based software’s components’ internal actions.},
     pdfauthor={Annika Berger, Joshua Gleitze, Roman Langrehr, Christoph Michelbach, Ansgar Spiegler, Michael Vogt},
     pdfkeywords={component based software, dynamic analysis, reverse engeneering, resource demands, SoMoX, Beagle, Palladio, Eclipse, Kieker},
@@ -146,7 +146,7 @@ Beagle
 \end_layout
 
 \begin_layout Subtitle
-Design & Architecture
+Design and Architecture
 \end_layout
 
 \begin_layout Date
