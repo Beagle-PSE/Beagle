@@ -37,7 +37,6 @@ if [ -z ${SVN_PASSWORD:+1} ]; then
 fi
 
 SVN_URL="https://svnserver.informatik.kit.edu/i43/svn/stud/2015WS-PSE-Gruppe5/"
-GIT_URL="https://github.com/Beagle-PSE/Beagle.git"
 
 
 # Set up our environment
@@ -52,7 +51,7 @@ cd $SVN
 svn checkout $SVN_URL $SVN --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet  > /dev/null 2>&1
 
 # Remove all content - except the svn files
-find . -maxdepth 1 \! \( -name .svn -o -name . \) -exec rm -rf {} \;
+find . -maxdepth 1 \! \( -name .svn -o -name . \) -exec svn rm --force --quiet {} \;
 
 # Copy in the files
 cp -r "$BASE"/* .
