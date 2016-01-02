@@ -19,7 +19,8 @@ public class ConstantExpression implements EvaluableExpression {
 	 * TODO document this method.
 	 *
 	 * @param value
-	 * @return
+	 *            TODO
+	 * @return TODO
 	 */
 	public static ConstantExpression forValue(double value) {
 		// TODO implement this method
@@ -37,9 +38,8 @@ public class ConstantExpression implements EvaluableExpression {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableExpressionVisitor)
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
 	 */
 	@Override
 	public void receive(EvaluableExpressionVisitor visitor) {
@@ -51,8 +51,8 @@ public class ConstantExpression implements EvaluableExpression {
 	 * (non-Javadoc)
 	 *
 	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableVariableAssignment)
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
 	public double evaluate(EvaluableVariableAssignment variableAssignments) {

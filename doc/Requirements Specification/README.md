@@ -2,9 +2,12 @@
 This folder contains the System Requirements Specification’s source files.
 
 ## Installation
-The specification is written in [LyX](http://www.lyx.org/). So obviously you'll need to install LyX and LaTeX.
+Ubuntu users can try to run `gradle srsinstall`, which will execute all installation steps detailed below. Please note that
+while the script offers great convenience, it was written to be used on a continuous integration server and might hence make settings that are not optimal for a private computer.
+ 
+The specification is written in [LyX](http://www.lyx.org/). So obviously you'll first need to install LyX and LaTeX.
 
-### Install the SDQ template
+### Install the SDQ Template
 
   * Download the [SDQ thesis template](https://sdqweb.ipd.kit.edu/wiki/File:Ausarbeitungs-Vorlage_SDQ_2014.zip) and install it according to your LaTeX distribution.
     * On Ubuntu: 
@@ -28,7 +31,7 @@ The specification is written in [LyX](http://www.lyx.org/). So obviously you'll 
 	  
 	
 
-### Install required packages
+### Install Required Packages
 A (small!) subset of the required LaTeX packages are:
 
   * KOMAscript book (`scrbook`)
@@ -73,7 +76,7 @@ _Make sure to always reference defined terms!_
 
 ### BiBTeX
 
-#### Add a new Bibliography entry
+#### Add a New Bibliography Entry
 All Bibliography entries are stored in the file [Requirements Specification.bib](/Requirements Specification.bib). To add an entry, you have multiple options:
 
  * Just edit the file.

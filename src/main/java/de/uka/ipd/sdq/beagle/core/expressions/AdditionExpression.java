@@ -24,7 +24,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 *
 	 * @param summands
 	 *            The summands forming this expression’s sum. {@code summands.size()} must
-	 *            be >= 2.
+	 *            at least be 2.
 	 */
 	public AdditionExpression(final Collection<EvaluableExpression> summands) {
 		// TODO: Implement method
@@ -36,7 +36,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 *
 	 * @param summands
 	 *            The summands forming this expression’s sum. {@code summands.length} must
-	 *            be >= 2.
+	 *            at least be 2.
 	 */
 	public AdditionExpression(final EvaluableExpression... summands) {
 		// TODO: Implement method
@@ -45,9 +45,8 @@ public class AdditionExpression implements EvaluableExpression {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableExpressionVisitor)
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
@@ -58,8 +57,8 @@ public class AdditionExpression implements EvaluableExpression {
 	 * (non-Javadoc)
 	 *
 	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableVariableAssignment)
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
