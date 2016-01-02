@@ -5,7 +5,8 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * The class setting up and controlling the wizard.
+ * The class setting up and controlling the wizard allowing the user to configure Beagle’s
+ * behaviour during the analysis and afterwards starting the analysis.
  * 
  * @author Christoph Michelbach
  */
