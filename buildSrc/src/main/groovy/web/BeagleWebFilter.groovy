@@ -33,7 +33,7 @@ abstract class BeagleWebFilter extends BaseFilterReader {
 			this.in = new StringReader(this.resultString)
 			setInitialized true
 		}
-		super.read()a
+		super.read()
 	}
 	
 	/**

@@ -88,6 +88,6 @@ checkstyle {
 
 configure(prototypeSubprojects){
 	checkstyle {
-		configFile = file('$rootProject.projectDir/config/checkstyle/Checkstyle Prototypes.xml')
+		configFile = file('$rootProject.projectDir/config/checkstyle/Checkstyle Prototype.xml')
 	}
 }
