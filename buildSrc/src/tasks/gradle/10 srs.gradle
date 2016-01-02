@@ -57,4 +57,4 @@ task srsinstall(type: Exec) {
 	logging.captureStandardError LogLevel.INFO
 }
 
-addToMainTask srs
+build.dependsOn srs

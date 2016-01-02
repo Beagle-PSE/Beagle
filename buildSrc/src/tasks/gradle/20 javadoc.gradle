@@ -3,4 +3,7 @@
  *
  * @author Joshua Gleitze
  */
-addToMainTask javadoc
+ 
+allprojects {
+	build.dependsOn javadoc
+}
