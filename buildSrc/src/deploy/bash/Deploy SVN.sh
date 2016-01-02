@@ -27,12 +27,12 @@ if [ "$TRAVIS_BRANCH" != "master" ]; then
 fi
 
 if [ -z ${SVN_USER:+1} ]; then
-	echo "We can't update the SVN because this no SVN_USER was provided."
+	echo "We can't update the SVN because no SVN_USER was provided."
 	exit 0
 fi
 
 if [ -z ${SVN_PASSWORD:+1} ]; then
-	echo "We can't update the SVN because this no SVN_PASSWORD was provided."
+	echo "We can't update the SVN because no SVN_PASSWORD was provided."
 	exit 0
 fi
 
@@ -42,8 +42,6 @@ GIT_URL="https://github.com/Beagle-PSE/Beagle.git"
 
 # Set up our environment
 SVN=../svn
-GITSUB=$SVN/repository
-GENERATEDSUB=$SVN/generated
 BASE=$PWD
 rm -rf $SVN
 mkdir -p $SVN
@@ -51,23 +49,20 @@ mkdir -p $SVN
 cd $SVN
 
 # Check out from SVN
-svn checkout $SVN_URL $SVN --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet
+svn checkout $SVN_URL $SVN --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet  > /dev/null 2>&1
 
 # Remove all content - except the svn files
 find . -maxdepth 1 \! \( -name .svn -o -name . \) -exec rm -rf {} \;
 
-# Set up the repository
-git clone $GIT_URL $GITSUB --quiet
-# Remove the .git folder
-rm -rf $GITSUB/.git
+# Copy in the files
+cp -r "$BASE"/* .
 
-
-mkdir -p $GENERATEDSUB
-cp "$BASE/doc/Requirements Specification/Requirements Specification.pdf" $GENERATEDSUB
+# Remove files that are not needed
+rm -rf build/tmp build/classes
 
 svn add . --force --non-interactive --quiet
 
-svn commit -m "Automatic Travis update from $GIT_URL" --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet
+svn commit -m "Automatic Travis update from $GIT_URL" --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet  > /dev/null 2>&1
 
 cd $BASE
 
