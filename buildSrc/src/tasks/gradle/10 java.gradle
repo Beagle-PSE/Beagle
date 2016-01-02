@@ -5,7 +5,9 @@
  * @author Joshua Gleitze
  */
 
-apply plugin: 'java'
+allprojects {
+	apply plugin: 'java'
+}
  
 jar {
     manifest {
