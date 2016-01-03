@@ -11,7 +11,7 @@ import java.util.Collection;
 
 /**
  * Controls which measurement tool is working. <p> There is always at most one measurement
- * tool working. </p>
+ * tool working.
  *
  * @author Roman Langrehr
  * @see BeagleController
@@ -19,7 +19,7 @@ import java.util.Collection;
 public class MeasurementController {
 
 	/**
-	 * All measurement tools, that can be used for measurements.
+	 * All measurement tools that can be used for measurements.
 	 */
 	private Collection<MeasurementTool> measurementTools;
 
@@ -27,7 +27,7 @@ public class MeasurementController {
 	 * Determines, weather at a measurement tool can contribute to the blackboard.
 	 *
 	 * @param blackboard The blackboard
-	 * @return Weather a measurement toll can measure something, which is marked as 'to be
+	 * @return Whether a measurement toll can measure something, which is marked as 'to be
 	 *         measured'. When {@code true} is returned this is no guarantee, that at
 	 *         least one new measurement result will be added.
 	 */
@@ -37,11 +37,11 @@ public class MeasurementController {
 	}
 
 	/**
-	 * Causes the available measurement tools to measure everything, which is marked as
-	 * 'to be measured' as far as the measurement tools are able to do this. <p> This
-	 * method may only be called, when {@link #canMeasure(ReadOnlyBlackboardView)}
-	 * returned {@code true} before and the blackboard wasn't changed between this call
-	 * and the call of this method. </p>
+	 * Causes the available measurement tools to measure everything which is marked as 'to
+	 * be measured' as far as the measurement tools are able to do this. <p> This method
+	 * may only be called, when {@link #canMeasure(ReadOnlyBlackboardView)} returned
+	 * {@code true} before and the blackboard wasn't changed between this call and the
+	 * call of this method. Otherwise the behaviour of this method is undefined. </p>
 	 *
 	 * @param blackboard The blackboard.
 	 */

@@ -10,7 +10,7 @@ import de.uka.ipd.sdq.beagle.judge.FinalJudge;
 import de.uka.ipd.sdq.beagle.measurement.MeasurementTool;
 
 /**
- * Controls weather a {@link MeasurementTool}, a {@link ResultAnalyser} or the
+ * Controls whether a {@link MeasurementTool}, a {@link ResultAnalyser} or the
  * {@link FinalJudge} is working. If a {@link ResultAnalyser} is working, it also
  * controls, which one. There is always only at most one measurement tool or one result
  * analyser or the final judge working.
