@@ -61,7 +61,7 @@ rm -rf build/tmp build/classes .git .gradle
 
 svn add . --force --non-interactive --quiet
 
-svn commit -m "Automatic Travis update from $GIT_URL" --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet  > /dev/null 2>&1
+svn commit -m "Automatic Travis update from https://github.com/Beagle-PSE/Beagle.git" --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet  > /dev/null 2>&1
 
 cd $BASE
 
