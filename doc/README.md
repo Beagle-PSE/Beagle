@@ -1,13 +1,17 @@
-# System Requirements Specification
-This folder contains the System Requirements Specification’s source files.
+# Documentation
 
-## Installation
-Ubuntu users can try to run `gradle srsinstall`, which will execute all installation steps detailed below. Please note that
+## Working with LyX files
+The Requirements Specification and Design document use LyX to write and generate PDFs.
+
+### Installation
+In order to render PDFs, the following steps need to be performed.
+
+Ubuntu users can try to run [the deployment install script](../../buildSrc/src/deploy/bash/Install Doc.sh), which will execute all installation steps detailed below. Please note that
 while the script offers great convenience, it was written to be used on a continuous integration server and might hence make settings that are not optimal for a private computer.
  
 The specification is written in [LyX](http://www.lyx.org/). So obviously you'll first need to install LyX and LaTeX.
 
-### Install the SDQ Template
+#### Install the SDQ Template
 
   * Download the [SDQ thesis template](https://sdqweb.ipd.kit.edu/wiki/File:Ausarbeitungs-Vorlage_SDQ_2014.zip) and install it according to your LaTeX distribution.
     * On Ubuntu: 
@@ -31,7 +35,7 @@ The specification is written in [LyX](http://www.lyx.org/). So obviously you'll 
 	  
 	
 
-### Install Required Packages
+#### Install Required Packages
 A (small!) subset of the required LaTeX packages are:
 
   * KOMAscript book (`scrbook`)
@@ -46,22 +50,22 @@ A (small!) subset of the required LaTeX packages are:
   
 If you care for the full list, look it up yourself in `sdqthesis.cls`.
 
-#### Ubuntu
+##### Ubuntu
 All required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-extra`, `xindy`, `texlive-bibtex-extra` and `texlive-lang-german` debian packages (you'll likely have most of them installed already):
 ```
 sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german texlive-bibtex-extra xindy
 ```
 
-#### Windows
+##### Windows
 On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically. However, you need to install Perl: [ActivePerl](http://www.activestate.com/activeperl/downloads). Make sure the checkbox "Add Perl to PATH", which appeares during the installation process, is checked.
 
-## Usage
+### Writing
 Most of LyX’s usage is intuitive and should not require explanation. All documents are equiped with tons of notes and comments to make writing as easy as possible. Nevertheless, some points shall be outlined:
 
-### Glossary
+#### Glossary
 To build our glossary, we use the `glossaries` package, which is superior to all other glossary building packages. Unfortunately, it’s not supported by LyX.
 
-#### Documentation 
+##### Documentation 
 Please refer to the [excellent glossaries article on WikiBooks](https://en.wikibooks.org/wiki/LaTeX/Glossary) for documentation of the `glossaries` package.
 
 #### Definitions
@@ -74,9 +78,9 @@ To include references to defined terms, hit `Ctrl+L` (<=> include LaTeX environm
 
 _Make sure to always reference defined terms!_
 
-### BiBTeX
+#### BiBTeX
 
-#### Add a New Bibliography Entry
+##### Add a New Bibliography Entry
 All Bibliography entries are stored in the file [Requirements Specification.bib](/Requirements Specification.bib). To add an entry, you have multiple options:
 
  * Just edit the file.
@@ -84,12 +88,18 @@ All Bibliography entries are stored in the file [Requirements Specification.bib]
  * Copy BiBTeX Code from sites like [Google Books](https://books.google.de/)
  
  
-#### Cite
+##### Cite
 To cite use LyX: Insert -> Citation
 
-## Building
-Please note that the LyX preview builds will not contain the glossary. There seems to be no way to achieve that. To make a true build, run
+### Building
+Please note that the LyX preview builds will differ from the correct output. To make a true build, run
 ```
 gradle srs
 ```
-in the Beagle project (“top”) directory. The SRS will be rendered to `build/doc/Requirements Specification.pdf`. It will also be built by `gradle build`.
+for the Requirements Specification or 
+
+```
+gradle design
+```
+for the design document
+in the Beagle project (“top”) directory. The files will be rendered to `build/doc/`. They will also be built by `gradle build`.
