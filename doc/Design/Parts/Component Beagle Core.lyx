@@ -119,6 +119,117 @@ List all associated packages
 The most important classes
 \end_layout
 
+\begin_layout Paragraph
+The Controller classes.
+\end_layout
+
+\begin_layout Standard
+The classes 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{Beagle Controller}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{Measurment Controller}
+\end_layout
+
+\end_inset
+
+ manage, when which measurement or result analyser component is working.
+\end_layout
+
+\begin_layout Standard
+There is always only one measurement tool or one result analyser working.
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{Beagle Controller}
+\end_layout
+
+\end_inset
+
+ starts by asking the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{Measurment Controller}
+\end_layout
+
+\end_inset
+
+ weather it wants to measure something now, which will be usually the case,
+ when there is something unmeasured, and if so invoking to .
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{Measurment Controller}
+\end_layout
+
+\end_inset
+
+ now decides, which tool to run.
+ Usually it will tell each tool to measure, when there is anything left
+ to measure.
+\end_layout
+
+\begin_layout Standard
+After that the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{Beagle Controller}
+\end_layout
+
+\end_inset
+
+ checks for each result analyser, weather it can contribute to the blackboard
+ and if so, let it work.
+\end_layout
+
+\begin_layout Standard
+Finally a special result analyser, the final judge, always works.
+ It decides wether enough information has been collected and Beagle can
+ terminate.
+ If so, it also creates or selects the final result for each measurment,
+ which will be added in the PCM.
+\end_layout
+
 \begin_layout Section
 Reasons for chosen design
 \end_layout
