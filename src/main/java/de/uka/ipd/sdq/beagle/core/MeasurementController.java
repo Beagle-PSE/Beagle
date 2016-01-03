@@ -1,16 +1,11 @@
 package de.uka.ipd.sdq.beagle.core;
 
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class! CHECKSTYLE:OFF TODO
- */
-
 import de.uka.ipd.sdq.beagle.measurement.MeasurementTool;
 
 import java.util.Collection;
 
 /**
- * Controls which measurement tool is working. <p> There is always at most one measurement
+ * Controls which measurement tool is working. <p>There is always at most one measurement
  * tool working.
  *
  * @author Roman Langrehr
@@ -32,20 +27,20 @@ public class MeasurementController {
 	 *         least one new measurement result will be added.
 	 */
 	public boolean canMeasure(final ReadOnlyBlackboardView blackboard) {
-		// TODO implement method
+		// implement method
 		return false;
 	}
 
 	/**
 	 * Causes the available measurement tools to measure everything which is marked as 'to
-	 * be measured' as far as the measurement tools are able to do this. <p> This method
-	 * may only be called, when {@link #canMeasure(ReadOnlyBlackboardView)} returned
+	 * be measured' as far as the measurement tools are able to do this. <p>This method
+	 * may only be called if {@link #canMeasure(ReadOnlyBlackboardView)} returned
 	 * {@code true} before and the blackboard wasn't changed between this call and the
-	 * call of this method. Otherwise the behaviour of this method is undefined. </p>
+	 * call of this method. Otherwise the behaviour of this method is undefined.
 	 *
 	 * @param blackboard The blackboard.
 	 */
 	public void measure(final MeasurementControllerBlackboardView blackboard) {
-		// TODO implement method
+		// implement method
 	}
 }
