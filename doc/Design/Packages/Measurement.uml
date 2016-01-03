@@ -22,15 +22,15 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_LaP0kLJHEeWgdqdZ8hPRgg" name="SEFF Loop Count Result">
+    <packagedElement xmi:type="uml:Class" xmi:id="_LaP0kLJHEeWgdqdZ8hPRgg" name="Loop Repetition Count Result">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_bQ2g4rJHEeWgdqdZ8hPRgg" name="parametrisation" visibility="private" type="_Y4Hu8LJHEeWgdqdZ8hPRgg" isUnique="false" association="_bQ150LJHEeWgdqdZ8hPRgg"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_zOl28LJIEeWgdqdZ8hPRgg" name="count" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_QQPTILJHEeWgdqdZ8hPRgg" name="SEFF Branch Count Result">
+    <packagedElement xmi:type="uml:Class" xmi:id="_QQPTILJHEeWgdqdZ8hPRgg" name="Branch Decision Result">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_a8mIILJHEeWgdqdZ8hPRgg" name="parametrisation" visibility="private" type="_Y4Hu8LJHEeWgdqdZ8hPRgg" isUnique="false" association="_a8lhELJHEeWgdqdZ8hPRgg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_539XoLJIEeWgdqdZ8hPRgg" name="count" visibility="private">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_539XoLJIEeWgdqdZ8hPRgg" name="branch index" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedAttribute>
     </packagedElement>
