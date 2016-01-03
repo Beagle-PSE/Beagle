@@ -266,10 +266,7 @@ status open
 \end_inset
 
  method.
- The
- 
-\lang british
-
+ The 
 \begin_inset listings
 inline true
 status open
@@ -314,10 +311,7 @@ Result Analyser
  reporting to be able to contribute.
  This analyser may then propose results for items that have measurement
  results.
- If there is no such analyser, 
-the 
-\lang british
-
+ If there is no such analyser, the 
 \begin_inset listings
 inline true
 status open
@@ -388,6 +382,7 @@ status open
 	filename UML Diagrams/Controller_Classes.PDF
 	width 90text%
 	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
