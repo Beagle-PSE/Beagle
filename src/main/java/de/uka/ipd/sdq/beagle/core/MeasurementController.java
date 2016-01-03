@@ -5,7 +5,9 @@ import de.uka.ipd.sdq.beagle.measurement.MeasurementTool;
 import java.util.Collection;
 
 /**
- * Controls which measurement tool is working. <p>There is always at most one measurement
+ * Controls which measurement tool is working.
+ *
+ * <p>There is always at most one measurement
  * tool working.
  *
  * @author Roman Langrehr
@@ -33,11 +35,14 @@ public class MeasurementController {
 
 	/**
 	 * Instructs all available measurement tools to measure all items marked as “to be
-	 * measured”. <p>Measurement Tools may not produce results for every item but will
-	 * report results for all items they were able to measure. <p>This method may only be
-	 * called, when {@link #canMeasure(ReadOnlyBlackboardView)} returned {@code true}
-	 * before and the blackboard wasn't changed between this call. Otherwise the behaviour
-	 * of this method is undefined.
+	 * measured”.
+	 *
+	 * <p>Measurement Tools may not produce results for every item but will
+	 * report results for all items they were able to measure.
+	 *
+	 * <p>This method may only be called, when {@link #canMeasure(ReadOnlyBlackboardView)}
+	 * returned {@code true} before and the blackboard wasn't changed between this call.
+	 * Otherwise the behaviour of this method is undefined.
 	 *
 	 * @param blackboard The blackboard.
 	 */
