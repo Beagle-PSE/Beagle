@@ -126,6 +126,12 @@ write results()</body>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Tc6FQKD1EeWVpfCzK8hwSg" name="measure">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_ni_pwKD1EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="read"/>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_csxo8LIeEeWOK_XCYg9zlQ" name="can Measure" isQuery="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ok2DILIeEeWOK_XCYg9zlQ" name="blackboard" type="_DQjdUKDzEeWVpfCzK8hwSg" effect="read"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_08CpULIeEeWOK_XCYg9zlQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_no8HcKD6EeWVpfCzK8hwSg" name="Final Judge">
       <ownedOperation xmi:type="uml:Operation" xmi:id="_FmcdAKD7EeWVpfCzK8hwSg" name="judge">
