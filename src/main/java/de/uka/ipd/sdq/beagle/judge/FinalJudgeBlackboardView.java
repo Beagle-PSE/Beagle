@@ -22,7 +22,7 @@ public class FinalJudgeBlackboardView {
 	 * @param blackboard The {@link Blackboard} to be accessed through the
 	 *            FinalJudgeBlackboardView.
 	 */
-	public FinalJudgeBlackboardView(Blackboard blackboard) {
+	public FinalJudgeBlackboardView(final Blackboard blackboard) {
 	}
 
 	/**
@@ -58,27 +58,27 @@ public class FinalJudgeBlackboardView {
 	 * @param finalRdias A collection of the final {@link ResourceDemandingInternalAction}
 	 *            s to be set on the {@link Blackboard}
 	 */
-	public void setFinalResourceDemandingInternalAction(Collection<ResourceDemandingInternalAction> finalRdias) {
+	public void setFinalResourceDemandingInternalAction(final Collection<ResourceDemandingInternalAction> finalRdias) {
 
 	}
 
 	/**
 	 * Sets the final {@link SEFFBranch}es on the {@link Blackboard}.
 	 *
-	 * @param finalRdias A collection of the final {@link SEFFBranch}es to be set on the
-	 *            {@link Blackboard}
+	 * @param finalSeffBranches A collection of the final {@link SEFFBranch}es to be set
+	 *            on the {@link Blackboard}
 	 */
-	public void setFinalSeffBranches(Collection<SEFFBranch> finalSeffBranches) {
+	public void setFinalSeffBranches(final Collection<SEFFBranch> finalSeffBranches) {
 
 	}
 
 	/**
 	 * Sets the final {@link SEFFLoop}s on the {@link Blackboard}.
 	 *
-	 * @param finalRdias A collection of the final {@link SEFFLoop}s to be set on the
+	 * @param finalSeffLoops A collection of the final {@link SEFFLoop}s to be set on the
 	 *            {@link Blackboard}
 	 */
-	public void setFinalSeffLoops(Collection<SEFFLoop> finalSeffLoops) {
+	public void setFinalSeffLoops(final Collection<SEFFLoop> finalSeffLoops) {
 
 	}
 
@@ -87,7 +87,7 @@ public class FinalJudgeBlackboardView {
 	 *
 	 * @param remeasure The {@link ResourceDemandingInternalAction}s to be remeasured.
 	 */
-	public void remeasureResourceDemandingInternalActions(Collection<ResourceDemandingInternalAction> remeasure) {
+	public void remeasureResourceDemandingInternalActions(final Collection<ResourceDemandingInternalAction> remeasure) {
 
 	}
 
@@ -96,7 +96,7 @@ public class FinalJudgeBlackboardView {
 	 *
 	 * @param remeasure The {@link SEFFBranch}es to be remeasured.
 	 */
-	public void remeasureSeffBranches(Collection<SEFFBranch> remeasure) {
+	public void remeasureSeffBranches(final Collection<SEFFBranch> remeasure) {
 
 	}
 
@@ -105,7 +105,7 @@ public class FinalJudgeBlackboardView {
 	 *
 	 * @param remeasure The {@link SEFFLoop}s to be remeasured.
 	 */
-	public void remeasureSeffLoops(Collection<SEFFLoop> remeasure) {
+	public void remeasureSeffLoops(final Collection<SEFFLoop> remeasure) {
 
 	}
 

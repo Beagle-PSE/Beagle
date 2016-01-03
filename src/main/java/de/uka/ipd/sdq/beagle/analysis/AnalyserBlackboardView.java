@@ -20,7 +20,7 @@ public class AnalyserBlackboardView {
 	 * @param blackboard The {@link Blackboard} to be accessed through the
 	 *            AnalyserBlackboardView.
 	 */
-	public AnalyserBlackboardView(Blackboard blackboard) {
+	public AnalyserBlackboardView(final Blackboard blackboard) {
 
 	}
 

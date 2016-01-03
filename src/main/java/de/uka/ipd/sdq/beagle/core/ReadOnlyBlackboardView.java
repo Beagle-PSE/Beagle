@@ -15,7 +15,7 @@ public class ReadOnlyBlackboardView {
 	 * @param blackboard The {@link Blackboard} to be accessed through the
 	 *            ReadOnlyBlackboardView.
 	 */
-	public ReadOnlyBlackboardView(Blackboard blackboard) {
+	public ReadOnlyBlackboardView(final Blackboard blackboard) {
 
 	}
 
