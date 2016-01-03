@@ -128,7 +128,7 @@ write results()</body>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="__oAfELClEeWUDtVlk6a50w" name="blackboard" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Tc6FQKD1EeWVpfCzK8hwSg" name="measure">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ni_pwKD1EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="read"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ni_pwKD1EeWVpfCzK8hwSg" name="blackboard" type="_gzE1gKiSEeW317sgBX4gxw" effect="read"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_DQjdUKDzEeWVpfCzK8hwSg" name="Read-Only Blackboard View">
