@@ -6,33 +6,14 @@
  
 import static groovyx.gpars.GParsPool.withPool
 
-/**
- * Locations to search for UMLET on Windows
- */
-String[] UMLET_LOCATIONS = [/C:\Program Files (x86)\Umlet\\umlet.jar/,
-							/C:\Program Files\Umlet\\umlet.jar/,
-							/C:\weitere Programme\Umlet\\umlet.jar/]
-
-/**
- * Returs the path to the UMLET executable on this system.
- */
-def UMLET() {
-	 if (System.getProperty('os.name').toLowerCase().split()[0] == 'windows') {
-		for (String loc : UMLET_LOCATIONS) {
-			if (file(loc).exists()) {
-				return loc
-			}
-		}
-		throw new RuntimeException("We can not find a UMLET installation on your machine. Please install it.\n"
-			 + "If you’ve already installed it, please add the path to your installation folder is srs.gradle!")
-	} else {
-		return "/opt/Umlet/umlet.jar"
-	} 
-}
-
 def srssrc = file("$projectDir/doc/Requirements Specification")
  
 task srsUml {
+	description 'Renders the UML Diagrams used by the requirements specification.'
+	
+	// import the UmletRenderer as DSL extension	
+	extensions.create('umletrender', UmletRenderer, project)
+	
 	ext {
 		src = srssrc
 		dest = file("$buildDir/tmp/umletrender")
@@ -40,7 +21,6 @@ task srsUml {
 
 	def inputUxfs = fileTree(src).include('**/*.uxf')
 	def outputUxfs = fileTree(dest).include('**/*.uxf')
-	description 'Renders the UML Diagrams used by the requirements specification.'
 	
 	inputs.files inputUxfs
 	outputs.upToDateWhen { 
@@ -48,8 +28,6 @@ task srsUml {
 	}
 	
 	doLast {
-		logging.captureStandardOutput LogLevel.INFO
-		
 		dest.mkdirs()
 		
 		copy {
@@ -59,9 +37,8 @@ task srsUml {
 		// executed in parallel by a thread pool with 8 threads
  		withPool(8) {
 			fileTree(dest).include('**/*.uxf').eachParallel { file ->
-				exec {
-					executable 'java'
-					args "-jar", UMLET(), "-action=convert", "-format=pdf", "-filename=$file"
+				umletrender {
+					render file
 				}
 			}
 		}
