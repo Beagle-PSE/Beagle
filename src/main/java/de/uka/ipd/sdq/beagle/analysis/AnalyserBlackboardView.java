@@ -32,7 +32,9 @@ public class AnalyserBlackboardView {
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}.
 	 *
-	 * @return @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
+	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} known to Beagle
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
 	 */
 	public Collection<ResourceDemandingInternalAction> getAllResourceDemandingInternalActions() {
 		return null; // TODO Implement method
@@ -41,7 +43,8 @@ public class AnalyserBlackboardView {
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
 	 *
-	 * @return @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
+	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
 	 */
 	public Collection<SEFFBranch> getAllSeffBranches() {
 		return null; // TODO Implement method
@@ -50,7 +53,8 @@ public class AnalyserBlackboardView {
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()}.
 	 *
-	 * @return @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
+	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
 	public Collection<SEFFLoop> getAllSeffLoops() {
 		return null; // TODO Implement method
