@@ -7,5 +7,17 @@
       <supplier xmi:type="uml:Interface" href="Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
       <contract xmi:type="uml:Interface" href="Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
     </interfaceRealization>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_JVjMALISEeWV-PuQpV8rqA" name="can Contribute" isQuery="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JVoEgLISEeWV-PuQpV8rqA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JVoEgbISEeWV-PuQpV8rqA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JVoEgrISEeWV-PuQpV8rqA" value="1"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_JVorkLISEeWV-PuQpV8rqA" name="blackboard">
+        <type xmi:type="uml:Class" href="Beagle%20Core.uml#_DQjdUKDzEeWVpfCzK8hwSg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JVpSoLISEeWV-PuQpV8rqA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JVpSobISEeWV-PuQpV8rqA" value="1"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
 </uml:Package>
