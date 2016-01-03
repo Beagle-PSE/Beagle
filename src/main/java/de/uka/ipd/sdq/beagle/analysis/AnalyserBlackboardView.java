@@ -20,7 +20,7 @@ import java.util.Collection;
 public class AnalyserBlackboardView {
 
 	/**
-	 * Creates a new AnalyserBlackboardView for {@param blackboard}.
+	 * Creates a new AnalyserBlackboardView for {@code blackboard}.
 	 *
 	 * @param blackboard The {@link Blackboard} to be accessed through the
 	 *            AnalyserBlackboardView.
