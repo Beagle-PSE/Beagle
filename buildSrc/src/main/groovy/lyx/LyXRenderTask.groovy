@@ -21,6 +21,9 @@ import java.io.OutputStreamWriter
  */
 public class LyXRenderTask extends DefaultTask {
 
+	/**
+	 * The locations that will be searched for a LyX installation on Windows
+	 */
 	static final String[] LYX_LOCATIONS =  [/C:\Program Files (x86)\LyX 2.1\bin\lyx.exe/,
 											/G:\Programme\LyX 2.1\bin\lyx.exe/]
 	private static final OS = System.getProperty('os.name').toLowerCase().split()[0]
@@ -31,13 +34,31 @@ public class LyXRenderTask extends DefaultTask {
 	 */
 	static final int LATEX_RENDER_COUNT = 3
 
+	/**
+	 * Relative path to the document to be rendered in the document Folder.
+	 */
 	String document	
+	/**
+	 * The folder containing the document to be rendered an its dependencies.
+	 */
 	@InputDirectory
 	File documentFolder
+	/**
+	 * Whether to render a bibliography
+	 */
 	boolean bibliography
+	/**
+	 * Whether to render a glossary
+	 */
 	boolean glossary
+	/**
+	 * The file the rendered document will be written to.
+	 */
 	@OutputFile
 	File dest
+	/**
+	 * The file the log will be written to.
+	 */
 	File logdest = project.file("$project.buildDir/reports/lyxRender/${getName()}.log")
 
 	
@@ -175,6 +196,9 @@ public class LyXRenderTask extends DefaultTask {
 		this.logdest = logdest
 	}
 	
+	/**
+	 * Get the path to the lyx executable on this system.
+	 */
 	private static String getLyX() {
 		if (OS == 'windows') {
 			for (String loc : LYX_LOCATIONS) {
@@ -190,6 +214,11 @@ public class LyXRenderTask extends DefaultTask {
 		}
 	}
 	
+	/**
+	 * Decorates and logs the provided message to a stream returned by {@link #tee()}
+	 *
+	 * @param message	The message to log.
+	 */
 	def log(String message) {
 		def width = 100
 		def sep = '#'
@@ -201,6 +230,10 @@ public class LyXRenderTask extends DefaultTask {
 		out.close()
 	}
 	
+	/**
+	 * Gets an output stream suitable to log to. If the use wants to log to a file, writing to the returned
+	 * stream will log both to System.out and the desired log file.
+	 */
 	def tee() {
 		logdest == null ? System.out : new TeeOutputStream(new FileOutputStream(logdest, true), System.out)
 	}
