@@ -108,6 +108,7 @@ task copyWebArtefacts() {
 	description 'Copies all build artefacts that will be published into Beagle’s web presence.'
 	
 	mustRunAfter javadoc, srs, check, jacocoTestReport
+	// file names of the copied files. Change the rename while copying.
 	def checkstyleFileName = 'checkstyle.html'
 	def srsFileName = 'Requirements Specification.pdf'
 	
@@ -118,7 +119,7 @@ task copyWebArtefacts() {
 		jacocoDest = "$WEB_DEST/coverage"
 	}
 	
-	inputs.files javadoc.destinationDir, srs.pdfdest, checkstyleHtml.dest, jacocoTestReport.reports.html.destination
+	inputs.files javadoc.destinationDir, srs.dest, checkstyleHtml.dest, jacocoTestReport.reports.html.destination
 	outputs.files javadocDest, srsDest, checkstyleDest, jacocoDest
 	
 	doLast {
@@ -128,7 +129,7 @@ task copyWebArtefacts() {
 		}	
 		
 		copy {
-			from srs.pdfdest
+			from srs.dest
 			rename {file -> srsFileName}
 			into WEB_DEST
 		}
