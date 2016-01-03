@@ -373,9 +373,9 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CIjQdqEUEeWQRf-no0GeMA"/>
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_CIjQd6EUEeWQRf-no0GeMA" type="7007">
-        <children xmi:type="notation:Shape" xmi:id="_7fw1ALIeEeWOK_XCYg9zlQ" type="3007">
-          <element xmi:type="uml:Operation" href="Measurement.uml#_7enlgLIeEeWOK_XCYg9zlQ"/>
-          <layoutConstraint xmi:type="notation:Location" xmi:id="_7fw1AbIeEeWOK_XCYg9zlQ"/>
+        <children xmi:type="notation:Shape" xmi:id="_lXU6ELIlEeWOK_XCYg9zlQ" type="3007">
+          <element xmi:type="uml:Operation" href="Measurement.uml#_lWYe4LIlEeWOK_XCYg9zlQ"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_lXU6EbIlEeWOK_XCYg9zlQ"/>
         </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_CIjQeKEUEeWQRf-no0GeMA"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_CIjQeaEUEeWQRf-no0GeMA"/>
