@@ -22,7 +22,7 @@ import java.util.Collection;
 public class FinalJudgeBlackboardView {
 
 	/**
-	 * Creates a new FinalJudgeBlackboardView for {@param blackboard}.
+	 * Creates a new FinalJudgeBlackboardView for {@code blackboard}.
 	 *
 	 * @param blackboard The {@link Blackboard} to be accessed through the
 	 *            FinalJudgeBlackboardView.
