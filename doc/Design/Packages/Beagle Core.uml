@@ -14,7 +14,7 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_ngTe8KDxEeWVpfCzK8hwSg" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_gGc1IKD0EeWVpfCzK8hwSg" visibility="public" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_gGc1IKD0EeWVpfCzK8hwSg" name="blackboard" visibility="public" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_6buAEKDxEeWVpfCzK8hwSg" name="contribute">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_qV3dMKD5EeWVpfCzK8hwSg" name="blackboard" type="_rqzFQKD4EeWVpfCzK8hwSg" effect="read"/>
@@ -50,7 +50,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HODtUKD2EeWVpfCzK8hwSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HOHXsKD2EeWVpfCzK8hwSg" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_88fkoKD6EeWVpfCzK8hwSg" name="Final Judge" visibility="private" type="_no8HcKD6EeWVpfCzK8hwSg" isUnique="false" association="_88asIKD6EeWVpfCzK8hwSg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_88fkoKD6EeWVpfCzK8hwSg" name="Final Judge" visibility="private" type="_u7hSULITEeWV-PuQpV8rqA" isUnique="false" association="_88asIKD6EeWVpfCzK8hwSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vknp8KENEeWQRf-no0GeMA" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vkrUUKENEeWQRf-no0GeMA" value="1"/>
       </ownedAttribute>
@@ -88,7 +88,7 @@ while (¬finished) do&#xD;
     if analysersIterator.current().{@link #_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboard)&#xD;
       analysersIterator.current().{@link #_6buAEKDxEeWVpfCzK8hwSg}(analyserBlackboard)&#xD;
     else&#xD;
-      finished ≔ {@link #_88fkoKD6EeWVpfCzK8hwSg}.{@link #_FmcdAKD7EeWVpfCzK8hwSg}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
+      finished ≔{@link #_u7hSULITEeWV-PuQpV8rqA}.{@link #_w1qDwLITEeWV-PuQpV8rqA}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
     fi&#xD;
   fi&#xD;
 od&#xD;
@@ -121,20 +121,13 @@ write results()</body>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_664BkLClEeWUDtVlk6a50w" name="can measure">
         <ownedComment xmi:type="uml:Comment" xmi:id="_P7cZ4LC9EeW2QoBjFVIuyA">
-          <body>return |blackboard.{@link #_5rNhcKD3EeWVpfCzK8hwSg}() ∪ blackboard.{@link #_RuQqwKD4EeWVpfCzK8hwSg}() ∪ blackboard.{@link #_CJW4MKioEeW317sgBX4gxw}()|  > 0</body>
+          <body>return |blackboard.{@link #_5rNhcKD3EeWVpfCzK8hwSg}() ∪ blackboard.{@link #_RuQqwKD4EeWVpfCzK8hwSg}()&#xD;
+   ∪ blackboard.{@link #_CJW4MKioEeW317sgBX4gxw}()|  > 0</body>
         </ownedComment>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="__oAfELClEeWUDtVlk6a50w" name="blackboard" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_Tc6FQKD1EeWVpfCzK8hwSg" name="measure">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_ni_pwKD1EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="read"/>
-      </ownedOperation>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_no8HcKD6EeWVpfCzK8hwSg" name="Final Judge">
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_FmcdAKD7EeWVpfCzK8hwSg" name="judge">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_NVJ1IKD7EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="update"/>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_QNJV8KD7EeWVpfCzK8hwSg" name="finished" direction="return">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_DQjdUKDzEeWVpfCzK8hwSg" name="Read-Only Blackboard View">
@@ -451,6 +444,14 @@ write results()</body>
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uL27wLFqEeW_rv0J6Owpcw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_uL3i0LFqEeW_rv0J6Owpcw" key="nature" value="UML_Nature"/>
       </eAnnotations>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_u7hSULITEeWV-PuQpV8rqA" name="Final Judge">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_w1qDwLITEeWV-PuQpV8rqA" name="judge" concurrency="guarded">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_w1qDwbITEeWV-PuQpV8rqA" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="update"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_w1qDwrITEeWV-PuQpV8rqA" name="finished" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
