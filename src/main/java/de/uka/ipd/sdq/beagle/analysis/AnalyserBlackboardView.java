@@ -56,7 +56,9 @@ public class AnalyserBlackboardView {
 	}
 
 	/**
-	 * Adds a result to the {@link Blackboard}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#addAnalyseResult()}.
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addAnalyseResult()
 	 */
 	public void addAnalyseResult() {
 

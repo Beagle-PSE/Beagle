@@ -4,29 +4,24 @@ import java.io.Serializable;
 import java.util.Set;
 
 /*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
+ * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
+ * class! CHECKSTYLE:OFF TODO
  */
 
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link BeagleController}, the Blackboard pattern from POSA I. The Blackboard’s
  * vocabulary consists of TODO: reference vocabulary types. It further allows classes to
- * store custom data.
- * <p>
- * The Blackboard is typically not accessed directly by its using classes, but through
- * <em>blackboard views</em> (recognisable by having the {@code BlackboardView} suffix).
- * These are surrogates for the blackboard. They don’t modify its contents but only
- * restrict access to it.
+ * store custom data. <p> The Blackboard is typically not accessed directly by its using
+ * classes, but through <em>blackboard views</em> (recognisable by having the
+ * {@code BlackboardView} suffix). These are surrogates for the blackboard. They don’t
+ * modify its contents but only restrict access to it.
  *
  * @author Joshua Gleitze
  * @see BeagleController
  */
 public class Blackboard implements Serializable {
+
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
@@ -73,15 +68,12 @@ public class Blackboard implements Serializable {
 	 * they write. Calling this method will override any data potentially stored
 	 * previously for the given {@code writer}.
 	 *
-	 * @param writer
-	 *            The class the data should be written for.
-	 * @param written
-	 *            The data to write.
-	 * @param <WRITTEN_TYPE>
-	 *            {@code written}’s type.
+	 * @param writer The class the data should be written for.
+	 * @param written The data to write.
+	 * @param <WRITTEN_TYPE> {@code written}’s type.
 	 */
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
-			final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
+		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 		// TODO implement this method
 	}
 
@@ -89,18 +81,22 @@ public class Blackboard implements Serializable {
 	 * Reads data previously written for {@code writer} through
 	 * {@link #writeFor(Class, Serializable)}.
 	 *
-	 * @param writer
-	 *            The class the desired data was written for.
-	 * @param <WRITTEN_TYPE>
-	 *            The type of the data to be read.
+	 * @param writer The class the desired data was written for.
+	 * @param <WRITTEN_TYPE> The type of the data to be read.
 	 * @return The data written in the last call to {@linkplain #writeFor} for
 	 *         {@code writer}. {@code null} if no data has been written for {@code writer}
 	 *         yet.
 	 * @see #writeFor(Class, Serializable)
 	 */
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
-			final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
+		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		// TODO implement this method
 		return null;
+	}
+
+	/**
+	 * Adds a result to the {@link Blackboard}.
+	 */
+	public void addAnalyseResult() {
 	}
 }
