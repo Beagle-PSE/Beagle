@@ -38,7 +38,7 @@ public class UmletRenderer {
 		
 		project.exec {
 			executable 'java'
-			args "-ea", "-jar", UMLET(), "-action=convert", "-format=pdf", "-filename=$uxfFile"
+			args "-jar", UMLET(), "-action=convert", "-format=pdf", "-filename=$uxfFile"
     		standardOutput = outputRecord
 		}
 		
