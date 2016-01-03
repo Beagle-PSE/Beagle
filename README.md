@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Beagle-PSE/Beagle.png?label=ready&title=Ready)](https://waffle.io/Beagle-PSE/Beagle)
 # Beagle [![Build Status](https://travis-ci.org/Beagle-PSE/Beagle.svg?branch=master)](https://travis-ci.org/Beagle-PSE/Beagle)
 
 An analyser to measure abstracted runtime properties of component-based software. [Web page](https://Beagle-PSE.github.io/Beagle). 
