@@ -13,9 +13,9 @@ import java.util.Collection;
  */
 
 /**
- * This view of the Blackboard is designed to be used by {@link FinalJugde}, therefore
- * allowing remeasuring of {@link ResourceDemandingInternalAction}s, {@link SeffBranch}es,
- * and {@link SeffLoop}s.
+ * This view of the Blackboard is designed to be used by FinalJugde, therefore allowing
+ * remeasuring of {@link ResourceDemandingInternalAction}s, {@link SEFFBranch}es, and
+ * {@link SEFFLoop}s.
  * 
  * @author Christoph Michelbach
  */
