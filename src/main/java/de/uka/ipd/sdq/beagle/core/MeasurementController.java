@@ -34,10 +34,8 @@ public class MeasurementController {
 	}
 
 	/**
-	 * Instructs all available measurement tools to measure all items marked as ìto be
-	 * measuredî.
-	 *
-	 * <p>Measurement Tools may not produce results for every item but will
+	 * Instructs all available {@link MeasurementTool}s to measure all items marked as ‚Äúto
+	 * be measured‚Äù. Measurement Tools may not produce results for every item but will
 	 * report results for all items they were able to measure.
 	 *
 	 * <p>This method may only be called, when {@link #canMeasure(ReadOnlyBlackboardView)}
