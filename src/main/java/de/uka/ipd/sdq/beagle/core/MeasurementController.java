@@ -32,11 +32,12 @@ public class MeasurementController {
 	}
 
 	/**
-	 * Causes the available measurement tools to measure everything which is marked as 'to
-	 * be measured' as far as the measurement tools are able to do this. <p>This method
-	 * may only be called if {@link #canMeasure(ReadOnlyBlackboardView)} returned
-	 * {@code true} before and the blackboard wasn't changed between this call and the
-	 * call of this method. Otherwise the behaviour of this method is undefined.
+	 * Instructs all available measurement tools to measure all items marked as “to be
+	 * measured”. <p>Measurement Tools may not produce results for every item but will
+	 * report results for all items they were able to measure. <p>This method may only be
+	 * called, when {@link #canMeasure(ReadOnlyBlackboardView)} returned {@code true}
+	 * before and the blackboard wasn't changed between this call. Otherwise the behaviour
+	 * of this method is undefined.
 	 *
 	 * @param blackboard The blackboard.
 	 */
