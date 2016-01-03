@@ -17,10 +17,10 @@ import java.util.Collection;
 public class FinalJudgeBlackboardView {
 
 	/**
-	 * Creates a new FinalJudgeBlackboardView for {@code blackboard}.
+	 * Creates a new {@code FinalJudgeBlackboardView} for {@code blackboard}.
 	 *
 	 * @param blackboard The {@link Blackboard} to be accessed through the
-	 *            FinalJudgeBlackboardView.
+	 *            {@code FinalJudgeBlackboardView}.
 	 */
 	public FinalJudgeBlackboardView(final Blackboard blackboard) {
 	}

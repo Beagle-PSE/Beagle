@@ -10,10 +10,10 @@ import java.util.Collection;
 public class ReadOnlyBlackboardView {
 
 	/**
-	 * Creates a new ReadOnlyBlackboardView for {@param blackboard}.
+	 * Creates a new {@code ReadOnlyBlackboardView} for {@param blackboard}.
 	 *
 	 * @param blackboard The {@link Blackboard} to be accessed through the
-	 *            ReadOnlyBlackboardView.
+	 *            {@code ReadOnlyBlackboardView}.
 	 */
 	public ReadOnlyBlackboardView(final Blackboard blackboard) {
 

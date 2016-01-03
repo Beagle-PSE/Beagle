@@ -15,10 +15,10 @@ import java.util.Collection;
 public class AnalyserBlackboardView {
 
 	/**
-	 * Creates a new AnalyserBlackboardView for {@code blackboard}.
+	 * Creates a new {@code AnalyserBlackboardView} for {@code blackboard}.
 	 *
 	 * @param blackboard The {@link Blackboard} to be accessed through the
-	 *            AnalyserBlackboardView.
+	 *            {@code AnalyserBlackboardView}.
 	 */
 	public AnalyserBlackboardView(final Blackboard blackboard) {
 
