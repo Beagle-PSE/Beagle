@@ -1,25 +1,51 @@
 package de.uka.ipd.sdq.beagle.core;
 
 /*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
+ * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
+ * class! CHECKSTYLE:OFF TODO
  */
 
+import de.uka.ipd.sdq.beagle.measurement.MeasurementTool;
+
+import java.util.Collection;
+
 /**
- * TODO Document this type.
+ * Controls which measurement tool is working. <p> There is always at most one measurement
+ * tool working. </p>
  *
+ * @author Roman Langrehr
+ * @see BeagleController
  */
 public class MeasurementController {
-	public boolean canMeasure(ReadOnlyBlackboardView blackboard) {
+
+	/**
+	 * All measurement tools, that can be used for measurements.
+	 */
+	private Collection<MeasurementTool> measurementTools;
+
+	/**
+	 * Determines, weather at a measurement tool can contribute to the blackboard.
+	 *
+	 * @param blackboard The blackboard
+	 * @return Weather a measurement toll can measure something, which is marked as 'to be
+	 *         measured'. When {@code true} is returned this is no guarantee, that at
+	 *         least one new measurement result will be added.
+	 */
+	public boolean canMeasure(final ReadOnlyBlackboardView blackboard) {
 		// TODO implement method
 		return false;
 	}
 
-	public void measure(MeasurementControllerBlackboardView blackboard) {
+	/**
+	 * Causes the available measurement tools to measure everything, which is marked as
+	 * 'to be measured' as far as the measurement tools are able to do this. <p> This
+	 * method may only be called, when {@link #canMeasure(ReadOnlyBlackboardView)}
+	 * returned {@code true} before and the blackboard wasn't changed between this call
+	 * and the call of this method. </p>
+	 *
+	 * @param blackboard The blackboard.
+	 */
+	public void measure(final MeasurementControllerBlackboardView blackboard) {
 		// TODO implement method
 	}
 }
