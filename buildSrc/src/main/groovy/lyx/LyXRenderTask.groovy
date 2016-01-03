@@ -202,7 +202,7 @@ public class LyXRenderTask extends DefaultTask {
 	private static String getLyX() {
 		if (OS == 'windows') {
 			for (String loc : LYX_LOCATIONS) {
-				if (file(loc).exists()) {
+				if (new File(loc).exists()) {
 					return loc
 				}
 			}
