@@ -108,7 +108,7 @@
     </module>
     <module name="MethodTypeParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][A-Za-z]*$"/>
+      <property name="format" value="^[A-Z]+(_[A-Z]+)*$"/>
     </module>
     <module name="InterfaceTypeParameterName">
       <property name="severity" value="warning"/>
