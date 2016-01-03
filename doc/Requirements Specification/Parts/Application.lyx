@@ -198,6 +198,8 @@ status open
 \begin_inset Graphics
 	filename UML Diagrams/Reengineering.uxf.pdf
 	width 90text%
+	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
@@ -357,6 +359,8 @@ status open
 \begin_inset Graphics
 	filename UML Diagrams/Development.uxf.pdf
 	width 90text%
+	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
@@ -518,6 +522,8 @@ status open
 \begin_inset Graphics
 	filename UML Diagrams/Prototyp.uxf.pdf
 	width 90text%
+	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
@@ -651,6 +657,8 @@ status open
 \begin_inset Graphics
 	filename UML Diagrams/Validation.uxf.pdf
 	width 90text%
+	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
