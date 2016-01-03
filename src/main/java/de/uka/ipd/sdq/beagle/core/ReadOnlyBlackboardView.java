@@ -2,11 +2,6 @@ package de.uka.ipd.sdq.beagle.core;
 
 import java.util.Collection;
 
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class! CHECKSTYLE:OFF TODO
- */
-
 /**
  * A view of the Blackboard only allowing reading access.
  * 

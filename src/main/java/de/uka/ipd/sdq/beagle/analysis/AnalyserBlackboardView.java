@@ -7,11 +7,6 @@ import de.uka.ipd.sdq.beagle.core.SEFFLoop;
 
 import java.util.Collection;
 
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class! CHECKSTYLE:OFF TODO
- */
-
 /**
  * This view of the {@link Blackboard} is designed to be used by {@link ResultAnalyser}.
  * 
