@@ -7,8 +7,7 @@ import java.util.Collection;
 /**
  * Controls which measurement tool is working.
  *
- * <p>There is always at most one measurement
- * tool working.
+ * <p>There is always at most one measurement tool working.
  *
  * @author Roman Langrehr
  * @see BeagleController
@@ -21,10 +20,10 @@ public class MeasurementController {
 	private Collection<MeasurementTool> measurementTools;
 
 	/**
-	 * Determines, weather at a measurement tool can contribute to the blackboard.
+	 * Determines whether a measurement tool can contribute to the blackboard.
 	 *
 	 * @param blackboard The blackboard
-	 * @return Whether a measurement toll can measure something, which is marked as 'to be
+	 * @return Whether a measurement tool can measure something, which is marked as 'to be
 	 *         measured'. When {@code true} is returned this is no guarantee, that at
 	 *         least one new measurement result will be added.
 	 */
