@@ -4,39 +4,84 @@
  * @author Joshua Gleitze
  */
  
-task srs(type: Exec) {
+import static groovyx.gpars.GParsPool.withPool
+
+/**
+ * Locations to search for UMLET on Windows
+ */
+String[] UMLET_LOCATIONS = [/C:\Program Files (x86)\Umlet\\umlet.jar/,
+							/C:\Program Files\Umlet\\umlet.jar/,
+							/C:\weitere Programme\Umlet\\umlet.jar/]
+
+/**
+ * Returs the path to the UMLET executable on this system.
+ */
+def UMLET = {
+	 if (System.getProperty('os.name').toLowerCase().split()[0] == 'windows') {
+		for (String loc : UMLET_LOCATIONS) {
+			if (file(loc).exists()) {
+				return loc
+			}
+		}
+		throw new RuntimeException("We can not find a UMLET installation on your machine. Please install it.\n"
+			 + "If you’ve already installed it, please add the path to your installation folder is srs.gradle!")
+	} else {
+		return "/opt/Umlet/umlet.sh"
+	} 
+}
+
+def srssrc = file("$projectDir/doc/Requirements Specification")
+ 
+task srsUml {
+	ext {
+		src = srssrc
+		dest = file("$buildDir/tmp/umletrender")
+	}
+
+	def inputUxfs = fileTree(src).include('**/*.uxf')
+	def outputUxfs = fileTree(dest).include('**/*.uxf')
+	description 'Renders the UML Diagrams used by the requirements specification.'
+	
+	inputs.files inputUxfs
+	outputs.upToDateWhen { 
+		(inputUxfs.size() == outputUxfs.size()) && (outputUxfs.find { !file("${it}.pdf").exists() } == null)
+	}
+	
+	doLast {
+		logging.captureStandardOutput LogLevel.INFO
+		
+		dest.mkdirs()
+		
+		copy {
+			from src
+			into dest
+		}
+		// executed in parallel by a thread pool with 8 threads
+ 		withPool(8) {
+			fileTree(dest).include('**/*.uxf').eachParallel { file ->
+				exec {
+					executable UMLET()
+					args "-action=convert", "-format=pdf", "-filename=$file"
+				}
+			}
+		}
+	}
+}
+ 
+task srs(type: LyXRenderTask) {
+	dependsOn srsUml
+	
 	group 'Documentation'
 	description 'Renders the Requirements Specification.'
 	
-	ext {
-		dest = file("$buildDir/docs/")
-		pdfdest = file("$dest/Requirements Specification.pdf")
-		logdest = file("$buildDir/reports/Requirements Specification Render.log")
-	}
+	from srsUml.dest
+	document "Requirements Specification.lyx"
 	
-	inputs.dir "$projectDir/doc/Requirements Specification"
-	outputs.file pdfdest
-
-	workingDir "$projectDir/doc/Requirements Specification/"
+	glossary true
+	bibliography true
 	
-	switch (System.getProperty('os.name').toLowerCase().split()[0]) {
-		case 'windows':
-			commandLine 'cmd', '/c', 'Render.bat', dest, logdest, 'srs-only'
-    	break
-		case 'linux':
-			args dest, logdest, 'srs-only'
-    		executable './Render.sh'
-    		break
-	}
-	
-	doFirst {
-		if (!System.getProperty('os.name').toLowerCase().contains('linux') && !System.getProperty('os.name').toLowerCase().contains('windows')) {
-    		throw new Exception('Sorry, we don’t support your operating system for building the SRS!')
-		}
-	}
-	
-	// only print the output for log level info or higher
-	logging.captureStandardOutput LogLevel.INFO
+	// override the dir for up to date check because this is the dir that decides.
+	inputs.dir srssrc
 }
 
 task srsinstall(type: Exec) {
