@@ -156,11 +156,13 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="UnusedImports">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ImportControl">
-      <property name="severity" value="ignore"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+      <property name="severity" value="warning"/>
+      <property name="processJavadoc" value="true"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="CustomImportOrder">
       <property name="severity" value="ignore"/>
