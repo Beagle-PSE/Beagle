@@ -213,7 +213,8 @@
     </module>
     <module name="OperatorWrap">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="ASSIGN,BAND,BAND_ASSIGN,BOR,BOR_ASSIGN,BSR,BSR_ASSIGN,BXOR,BXOR_ASSIGN,COLON,DIV,DIV_ASSIGN,EQUAL,GE,GT,LAND,LE,LITERAL_INSTANCEOF,LOR,LT,MINUS,MINUS_ASSIGN,MOD,MOD_ASSIGN,NOT_EQUAL,PLUS,PLUS_ASSIGN,QUESTION,SL,SL_ASSIGN,SR,SR_ASSIGN,STAR,STAR_ASSIGN"/>
+      <property name="option" value="eol"/>
+      <property name="tokens" value="ASSIGN,BAND_ASSIGN,BOR_ASSIGN,BSR_ASSIGN,BXOR_ASSIGN,MINUS_ASSIGN,MOD_ASSIGN,PLUS_ASSIGN,SL_ASSIGN,SR_ASSIGN,STAR_ASSIGN"/>
     </module>
     <module name="MethodParamPad">
       <property name="severity" value="warning"/>
@@ -535,6 +536,7 @@
     <module name="StringLiteralEquality">
       <property name="severity" value="warning"/>
     </module>
+    <module name="OperatorWrap"/>
   </module>
   <module name="JavadocPackage">
     <property name="severity" value="warning"/>

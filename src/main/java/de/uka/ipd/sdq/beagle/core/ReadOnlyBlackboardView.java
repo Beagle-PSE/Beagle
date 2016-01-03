@@ -1,6 +1,4 @@
-package de.uka.ipd.sdq.beagle.analysis;
-
-import de.uka.ipd.sdq.beagle.core.Blackboard;
+package de.uka.ipd.sdq.beagle.core;
 
 /*
  * ATTENTION: Checkstyle turned off!
