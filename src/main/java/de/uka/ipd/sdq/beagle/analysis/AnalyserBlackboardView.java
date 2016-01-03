@@ -19,6 +19,12 @@ import java.util.Collection;
  */
 public class AnalyserBlackboardView {
 
+	/**
+	 * Creates a new AnalyserBlackboardView for {@param blackboard}.
+	 *
+	 * @param blackboard The {@link Blackboard} to be accessed through the
+	 *            AnalyserBlackboardView.
+	 */
 	public AnalyserBlackboardView(Blackboard blackboard) {
 		// TODO: Implement method
 	}
