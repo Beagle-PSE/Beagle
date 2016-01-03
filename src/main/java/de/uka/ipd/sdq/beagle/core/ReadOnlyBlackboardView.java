@@ -3,7 +3,7 @@ package de.uka.ipd.sdq.beagle.core;
 import java.util.Collection;
 
 /**
- * A view of the Blackboard only allowing reading access.
+ * A view of the {@link Blackboard} only allowing reading access.
  * 
  * @author Christoph Michelbach
  */
