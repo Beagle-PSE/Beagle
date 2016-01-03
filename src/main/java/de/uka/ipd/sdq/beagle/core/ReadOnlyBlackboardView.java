@@ -21,7 +21,7 @@ public class ReadOnlyBlackboardView {
 	 *            ReadOnlyBlackboardView.
 	 */
 	public ReadOnlyBlackboardView(Blackboard blackboard) {
-		// TODO: Implement method
+
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class ReadOnlyBlackboardView {
 	 * @return the {@link ResourceDemandingInternalAction}s to be measured
 	 */
 	public Collection<ResourceDemandingInternalAction> getResourceDemandingInternalActionsToBeMeasured() {
-		return null; // TODO: Implement method
+		return null;
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class ReadOnlyBlackboardView {
 	 * @return the {@link SEFFBranch}es to be measured
 	 */
 	public Collection<SEFFBranch> getSeffBranchesToBeMeasured() {
-		return null; // TODO: Implement method
+		return null;
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class ReadOnlyBlackboardView {
 	 * @return the {@link SEFFLoop}s to be measured
 	 */
 	public Collection<SEFFLoop> getSeffLoopsToBeMeasured() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class ReadOnlyBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
 	 */
 	public Collection<ResourceDemandingInternalAction> getAllResourceDemandingInternalActions() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class ReadOnlyBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
 	 */
 	public Collection<SEFFBranch> getAllSeffBranches() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
@@ -79,6 +79,6 @@ public class ReadOnlyBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
 	public Collection<SEFFLoop> getAllSeffLoops() {
-		return null; // TODO Implement method
+		return null;
 	}
 }

@@ -26,7 +26,7 @@ public class AnalyserBlackboardView {
 	 *            AnalyserBlackboardView.
 	 */
 	public AnalyserBlackboardView(Blackboard blackboard) {
-		// TODO: Implement method
+
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class AnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
 	 */
 	public Collection<ResourceDemandingInternalAction> getAllResourceDemandingInternalActions() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class AnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
 	 */
 	public Collection<SEFFBranch> getAllSeffBranches() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
@@ -57,14 +57,14 @@ public class AnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
 	public Collection<SEFFLoop> getAllSeffLoops() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
 	 * Adds a result to the {@link Blackboard}.
 	 */
 	public void addAnalyseResult() {
-		// TODO Implement method
+
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class AnalyserBlackboardView {
 	 * @return the {@link ResourceDemandingInternalAction}s to be measured
 	 */
 	public Collection<ResourceDemandingInternalAction> getResourceDemandingInternalActionsToBeMeasured() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class AnalyserBlackboardView {
 	 * @return the {@link SEFFBranch}es to be measured
 	 */
 	public Collection<SEFFBranch> getSeffBranchesToBeMeasured() {
-		return null; // TODO Implement method
+		return null;
 	}
 
 	/**
@@ -91,6 +91,6 @@ public class AnalyserBlackboardView {
 	 * @return the {@link SEFFLoop}s to be measured
 	 */
 	public Collection<SEFFLoop> getSeffLoopsToBeMeasured() {
-		return null; // TODO Implement method
+		return null;
 	}
 }
