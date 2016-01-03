@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.analysis.ReadOnlyBlackboardView;
-
 /*
  * ATTENTION: Checkstyle turned off!
  * remove this comment block when implementing this class!
