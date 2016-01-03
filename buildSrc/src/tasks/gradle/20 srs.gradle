@@ -84,22 +84,4 @@ task srs(type: LyXRenderTask) {
 	inputs.dir srssrc
 }
 
-task srsinstall(type: Exec) {
-	group 'Build Setup'
-	description 'Sets up the environment for rendering the Requirements Specification.'	
-	
-	doFirst {
-		if (!System.getProperty('os.name').toLowerCase().contains('linux')) {
-			throw new Exception('Sorry, we only support linux for automatic setup of the srs render environment. Please refer to doc/Development Setup.md!')
-		}
-	}
-	
-	workingDir "$projectDir/doc/Requirements Specification/"
-	executable './Install.sh'
-	
-	// only print the output for log level info or higher, including stderr
-	logging.captureStandardOutput LogLevel.INFO
-	logging.captureStandardError LogLevel.INFO
-}
-
 build.dependsOn srs
