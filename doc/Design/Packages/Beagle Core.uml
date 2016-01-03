@@ -121,7 +121,7 @@ write results()</body>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_664BkLClEeWUDtVlk6a50w" name="can measure">
         <ownedComment xmi:type="uml:Comment" xmi:id="_P7cZ4LC9EeW2QoBjFVIuyA">
-          <body>return |{@link #_zyUM4KEiEeWuoaiXEYXzVw} ∪ {@link #_5aqTEKDuEeWVpfCzK8hwSg} ∪ {@link #_KM-roqDtEeWVpfCzK8hwSg}|  > 0</body>
+          <body>return |blackboard.{@link #_5rNhcKD3EeWVpfCzK8hwSg}() ∪ blackboard.{@link #_RuQqwKD4EeWVpfCzK8hwSg}() ∪ blackboard.{@link #_CJW4MKioEeW317sgBX4gxw}()|  > 0</body>
         </ownedComment>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="__oAfELClEeWUDtVlk6a50w" name="blackboard" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
       </ownedOperation>
