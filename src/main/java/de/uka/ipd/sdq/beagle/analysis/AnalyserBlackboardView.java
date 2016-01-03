@@ -29,6 +29,11 @@ public class AnalyserBlackboardView {
 		// TODO: Implement method
 	}
 
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}.
+	 *
+	 * @return {@see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}
+	 */
 	public Collection<ResourceDemandingInternalAction> getAllResourceDemandingInternalActions() {
 		return null; // TODO Implement method
 	}
