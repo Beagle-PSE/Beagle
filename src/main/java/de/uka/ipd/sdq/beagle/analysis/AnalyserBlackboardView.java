@@ -13,7 +13,9 @@ import java.util.Collection;
  */
 
 /**
- * TODO Document this type.
+ * This view of the Blackboard is designed to be used by {@link ResultAnalyser}.
+ * 
+ * @author Christoph Michelbach
  */
 public class AnalyserBlackboardView {
 
