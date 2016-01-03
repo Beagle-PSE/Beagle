@@ -22,7 +22,6 @@ public class BeagleController {
 	 */
 	private final Blackboard blackboard = new Blackboard();
 
-	// add args
 	/**
 	 * Runs the complete analysis, including measurements, result analysis and the final
 	 * judging.
