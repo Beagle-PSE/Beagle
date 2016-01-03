@@ -35,6 +35,10 @@ public class BeagleWebContext {
 		 * Path to the Requirements Specification PDF.
 		 */
 		String srs = relative task('copyWebArtefacts').property('srsDest')
+		/** 
+		 * Path to the Design Specification PDF.
+		 */
+		String design = relative task('copyWebArtefacts').property('designDest')
 		/**
 		 * Path to the javadoc folder.
 		 */

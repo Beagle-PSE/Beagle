@@ -8,6 +8,10 @@ to import existing, component-based software into [Palladio](http://www.palladio
 	{{#> title}}Requirements Specification{{/title}}
 	{{#> description}}Specification of the project’s visions and goals.{{/description}} 
 {{/artefact}}
+{{#> artefact link=paths.design type="pdf"}}
+	{{#> title}}Design and Architecture{{/title}}
+	{{#> description}}Specification of Beagle’s architecture.{{/description}} 
+{{/artefact}}
 {{#> artefact link=(concat paths.javadoc "overview-summary.html") type="html"}}
 	{{#> title}}Javadoc{{/title}}
 	{{#> description}}We put great effort in creating detailed, informative documentation.{{/description}} 

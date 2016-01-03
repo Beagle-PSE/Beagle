@@ -6,6 +6,15 @@
 # fail the script if any command fails
 set -e
 
+##########################################################
+# Doc dependencies install script                        #
+# Installs all dependencies to render documentation PDFs #
+# To be called from Beagle’s root folder on Travis CI    #
+#                                                        #
+# author: Joshua Gleitze                                 #
+##########################################################
+
+
 # LyX PPA for latest version
 sudo add-apt-repository -y ppa:lyx-devel/release
 sudo apt-get update
@@ -14,7 +23,7 @@ sudo apt-get install -qq lyx texlive-latex-base texlive-latex-recommended texliv
 
 # Copy the lyx layout file to the private lyx layouts folder
 mkdir -p ~/.lyx/layouts
-cp ../Dependencies/sdqthesis.layout ~/.lyx/layouts
+cp doc/Dependencies/sdqthesis.layout ~/.lyx/layouts
 
 # Download the sdqthesis template, unzip it, copy the important content into the local texmf, run texhash
 texmf="/usr/share/texmf/tex/latex/sdqthesis"

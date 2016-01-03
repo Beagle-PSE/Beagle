@@ -1,0 +1,14 @@
+/**
+ * Contains a task cleaning the build/tmp folder.
+ *
+ * @author Joshua Gleitze
+ */
+
+task cleanTmp {
+	description "Deletes the temporary folder used by tasks."
+	group "Build"
+	
+	doLast {
+		file("$buildDir/tmp").deleteDir()
+	}
+}
