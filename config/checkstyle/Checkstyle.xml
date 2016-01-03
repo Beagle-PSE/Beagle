@@ -157,6 +157,8 @@
     </module>
     <module name="UnusedImports">
       <property name="severity" value="warning"/>
+      <property name="processJavadoc" value="true"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ImportControl">
       <property name="severity" value="ignore"/>
