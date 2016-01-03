@@ -226,7 +226,7 @@ write results()</body>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_gzE1gKiSEeW317sgBX4gxw" name="Measurement Blackboard View">
+    <packagedElement xmi:type="uml:Class" xmi:id="_gzE1gKiSEeW317sgBX4gxw" name="Measurement Controller Blackboard View">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_vxJFYKiUEeW317sgBX4gxw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" association="_vw-tUKiUEeW317sgBX4gxw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gSXYUKiWEeW317sgBX4gxw" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gSaboKiWEeW317sgBX4gxw" value="1"/>
