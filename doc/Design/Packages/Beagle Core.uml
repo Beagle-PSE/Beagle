@@ -14,7 +14,7 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_ngTe8KDxEeWVpfCzK8hwSg" direction="return">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
         </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_gGc1IKD0EeWVpfCzK8hwSg" visibility="public" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_gGc1IKD0EeWVpfCzK8hwSg" name="blackboard" visibility="public" type="_DQjdUKDzEeWVpfCzK8hwSg"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_6buAEKDxEeWVpfCzK8hwSg" name="contribute">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_qV3dMKD5EeWVpfCzK8hwSg" name="blackboard" type="_rqzFQKD4EeWVpfCzK8hwSg" effect="read"/>
