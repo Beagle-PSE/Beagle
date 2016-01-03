@@ -116,7 +116,303 @@ List all associated packages
 \end_layout
 
 \begin_layout Section
-The most important classes
+Overview
+\end_layout
+
+\begin_layout Subsection*
+Controller classes
+\end_layout
+
+\begin_layout Standard
+The classes 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Beagle Controller
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Controller
+\end_layout
+
+\end_inset
+
+ manage the invocation of 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tool
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analyser
+\end_layout
+
+\end_inset
+
+ components.
+ 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Beagle Controller#main
+\end_layout
+
+\end_inset
+
+ is the main control loop, managing the control flow throughout Beagle’s
+ measuring and analysis activity.
+ There is always exactly one 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tool
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analyser
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+ running at any given moment during the execution of 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Beagle Controller#main
+\end_layout
+
+\end_inset
+
+ (“the main loop”).
+\end_layout
+
+\begin_layout Standard
+An iteration of the main loop starts by asking the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Controller
+\end_layout
+
+\end_inset
+
+ whether it wants to conduct measurements for the current blackboard state---whi
+ch will usually be the case if there is something not yet measured---, and
+ if so, calling its 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+#measure
+\end_layout
+
+\end_inset
+
+ method.
+ The 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Controller
+\end_layout
+
+\end_inset
+
+ will then decide which 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tool
+\end_layout
+
+\end_inset
+
+s to run.
+ Usually it will tell every tool to measure as long as there is something
+ left to be measured.
+\end_layout
+
+\begin_layout Standard
+After that, the main loop invokes one arbitrary chosen 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analyser
+\end_layout
+
+\end_inset
+
+ reporting to be able to contribute.
+ This analyser may then propose results for items that have measurement
+ results.
+ If there is no such analyser, the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+ will be called.
+ It decides whether enough information has been collected and Beagle can
+ terminate.
+ If this is the case, it also creates or selects the final result for each
+ item that has proposed results.
+\end_layout
+
+\begin_layout Standard
+The main loop will then be repeated until the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+ was called and its 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+#judge
+\end_layout
+
+\end_inset
+
+ method returned 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+true
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename UML Diagrams/Controller_Classes.PDF
+	width 90text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Controller classes
+\end_layout
+
+\end_inset
+
+UML class diagram of the controller classes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
