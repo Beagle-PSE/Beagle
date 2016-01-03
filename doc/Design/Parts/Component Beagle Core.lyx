@@ -230,6 +230,51 @@ Finally a special result analyser, the final judge, always works.
  which will be added in the PCM.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/doc/Design/UML Diagrams/Controller_Classes.PDF
+	width 90text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Controller classes
+\end_layout
+
+\end_inset
+
+UML Class diagram for the controller classes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Reasons for chosen design
 \end_layout
