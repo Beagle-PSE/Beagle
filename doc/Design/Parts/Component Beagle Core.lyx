@@ -116,119 +116,264 @@ List all associated packages
 \end_layout
 
 \begin_layout Section
-The most important classes
+Overview
 \end_layout
 
-\begin_layout Paragraph
-The Controller classes.
+\begin_layout Subsection*
+Controller classes
 \end_layout
 
 \begin_layout Standard
 The classes 
-\begin_inset ERT
+\begin_inset listings
+inline true
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-lstinline{Beagle Controller}
+Beagle Controller
 \end_layout
 
 \end_inset
 
  and 
-\begin_inset ERT
+\begin_inset listings
+inline true
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-lstinline{Measurment Controller}
+Measurement Controller
 \end_layout
 
 \end_inset
 
- manage, when which measurement or result analyser component is working.
+ manage the invocation of 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tool
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analyser
+\end_layout
+
+\end_inset
+
+ components.
+ 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Beagle Controller#main
+\end_layout
+
+\end_inset
+
+ is the main control loop, managing the control flow throughout Beagle’s
+ measuring and analysis activity.
+ There is always exactly one 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tool
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analyser
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+ running at any given moment during the execution of 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Beagle Controller#main
+\end_layout
+
+\end_inset
+
+ (“the main loop”).
 \end_layout
 
 \begin_layout Standard
-There is always only one measurement tool, one result analyser or the final
- judge working.
+An iteration of the main loop starts by asking the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Controller
+\end_layout
+
+\end_inset
+
+ whether it wants to conduct measurements for the current blackboard state---whi
+ch will usually be the case if there is something not yet measured---, and
+ if so, calling its 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+#measure
+\end_layout
+
+\end_inset
+
+ method.
+ The
+ 
+\lang british
+
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Controller
+\end_layout
+
+\end_inset
+
+ will then decide which 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tool
+\end_layout
+
+\end_inset
+
+s to run.
+ Usually it will tell every tool to measure as long as there is something
+ left to be measured.
 \end_layout
 
 \begin_layout Standard
-The 
-\begin_inset ERT
+After that, the main loop invokes one arbitrary chosen 
+\begin_inset listings
+inline true
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-lstinline{Beagle Controller}
+Result Analyser
 \end_layout
 
 \end_inset
 
- starts by asking the 
-\begin_inset ERT
+ reporting to be able to contribute.
+ This analyser may then propose results for items that have measurement
+ results.
+ If there is no such analyser, 
+the 
+\lang british
+
+\begin_inset listings
+inline true
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-lstinline{Measurment Controller}
+Final Judge
 \end_layout
 
 \end_inset
 
- weather it wants to measure something now, which will be usually the case,
- when there is something unmeasured, and if so invoking to .
- The 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinline{Measurment Controller}
-\end_layout
-
-\end_inset
-
- now decides, which tool to run.
- Usually it will tell each tool to measure, when there is anything left
- to measure.
-\end_layout
-
-\begin_layout Standard
-After that the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-lstinline{Beagle Controller}
-\end_layout
-
-\end_inset
-
- checks for each result analyser, weather it can contribute to the blackboard
- and if so, let it work.
-\end_layout
-
-\begin_layout Standard
-Finally a special result analyser, the final judge, always works.
- It decides wether enough information has been collected and Beagle can
+ will be called.
+ It decides whether enough information has been collected and Beagle can
  terminate.
- If so, it also creates or selects the final result for each measurment,
- which will be added in the PCM.
+ If this is the case, it also creates or selects the final result for each
+ item that has proposed results.
+\end_layout
+
+\begin_layout Standard
+The main loop will then be repeated until the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+ was called and its 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+#judge
+\end_layout
+
+\end_inset
+
+ method returned 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+true
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -262,7 +407,7 @@ Controller classes
 
 \end_inset
 
-UML Class diagram for the controller classes.
+UML class diagram of the controller classes.
 \end_layout
 
 \end_inset
