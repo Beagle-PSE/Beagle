@@ -240,10 +240,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/doc/Design/UML Diagrams/Controller_Classes.PDF
+	filename UML Diagrams/Controller_Classes.PDF
 	width 90text%
 	height 100pheight%
-	keepAspectRatio
 
 \end_inset
 
