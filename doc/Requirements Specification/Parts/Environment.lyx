@@ -327,6 +327,8 @@ status open
 \begin_inset Graphics
 	filename UML Diagrams/Component.uxf.pdf
 	width 100text%
+	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
