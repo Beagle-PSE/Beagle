@@ -214,7 +214,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T30/"
+reference "/T200/"
 
 \end_inset
 
@@ -269,7 +269,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT30/"
+reference "/T210/"
 
 \end_inset
 
@@ -364,7 +364,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT10/"
+reference "/OT200/"
 
 \end_inset
 
@@ -469,7 +469,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT25/"
+reference "/OT20/"
 
 \end_inset
 
@@ -511,7 +511,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT115/"
+reference "/OT100/"
 
 \end_inset
 
@@ -701,7 +701,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT120/"
+reference "/OT210/"
 
 \end_inset
 
@@ -809,7 +809,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT120/"
+reference "/OT210/"
 
 \end_inset
 
@@ -1112,7 +1112,7 @@ gls{Beagle}
 If 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OF60/"
+reference "/F60/"
 
 \end_inset
 
