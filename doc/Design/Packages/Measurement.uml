@@ -2,7 +2,7 @@
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_wSYjYKBTEeWVfMeWaVID2g" name="Measurement">
   <packagedElement xmi:type="uml:Interface" xmi:id="_5_804KBTEeWVfMeWaVID2g" name="Measurement Tool">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_zGNoYKWiEeWVjrqJHndH-A" name="measure">
-      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3SCIkKWiEeWVjrqJHndH-A" type="_ujPzgKWiEeWVjrqJHndH-A" isUnique="false" effect="read"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_3SCIkKWiEeWVjrqJHndH-A" name="order" type="_ujPzgKWiEeWVjrqJHndH-A" isUnique="false" effect="read"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ujPzgKWiEeWVjrqJHndH-A" name="Measurement Order"/>

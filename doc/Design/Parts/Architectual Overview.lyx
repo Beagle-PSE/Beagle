@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../Requirements Specification.lyx
+\master ../Design.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
