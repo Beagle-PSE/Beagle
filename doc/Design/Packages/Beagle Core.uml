@@ -127,7 +127,7 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rcq6wKEUEeWQRf-no0GeMA" value="*"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_664BkLClEeWUDtVlk6a50w" name="can measure">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_P7cZ4LC9EeW2QoBjFVIuyA" annotatedElement="_S2taMKDwEeWVpfCzK8hwSg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_P7cZ4LC9EeW2QoBjFVIuyA" annotatedElement="_664BkLClEeWUDtVlk6a50w _gq6J4KDwEeWVpfCzK8hwSg">
           <body>return |blackboard.{@link #_5rNhcKD3EeWVpfCzK8hwSg}()
   ∪ blackboard.{@link #_RuQqwKD4EeWVpfCzK8hwSg}()
   ∪ blackboard.{@link #_CJW4MKioEeW317sgBX4gxw}()|  > 0</body>
