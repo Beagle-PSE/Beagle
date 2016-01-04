@@ -13,7 +13,7 @@ import java.util.Set;
 public class ReadOnlyBlackboardView {
 
 	/**
-	 * Creates a new {@code ReadOnlyBlackboardView} for {@param blackboard}.
+	 * Creates a new {@code ReadOnlyBlackboardView} for {@code blackboard}.
 	 *
 	 * @param blackboard The {@link Blackboard} to be accessed through the
 	 *            {@code ReadOnlyBlackboardView}.
