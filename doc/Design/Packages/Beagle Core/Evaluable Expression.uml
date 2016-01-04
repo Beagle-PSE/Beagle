@@ -4,6 +4,7 @@
     <ownedComment xmi:type="uml:Comment" xmi:id="_oz__8KH4EeWB_pi2tzIUuQ" annotatedElement="_uu11cKHyEeWB_pi2tzIUuQ">
       <body>{@link #_ctETEKHnEeWB_pi2tzIUuQ}s implement the Visitor Pattern. Components may subclass {@link #_3MNrYKHnEeWB_pi2tzIUuQ}. As a consequence, {@link #_ctETEKHnEeWB_pi2tzIUuQ}s are not intended to be subclassed, as {@link ../Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg}s and {@link ../Beagle%20Core.uml#_no8HcKD6EeWVpfCzK8hwSg}s will and may rely on the exact set of available {@link #_ctETEKHnEeWB_pi2tzIUuQ}s.</body>
     </ownedComment>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ZdZ48bLZEeWjc5YKGj5xEA" name="natural logarithm expression" type="_2IqY8LLYEeWjc5YKGj5xEA" association="_ZdYDwLLZEeWjc5YKGj5xEA"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_9nd3kKHnEeWB_pi2tzIUuQ" name="receive">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Gz5x8KHoEeWB_pi2tzIUuQ" type="_3MNrYKHnEeWB_pi2tzIUuQ"/>
     </ownedOperation>
@@ -80,6 +81,12 @@
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4W4DgKHuEeWB_pi2tzIUuQ" value="1"/>
     </ownedAttribute>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_WmjvIKKoEeWuC7TGf5-sqA" client="_H5vJ4KHuEeWB_pi2tzIUuQ" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_2IqY8LLYEeWjc5YKGj5xEA" name="Natural Logarithm Expression" visibility="public">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2IrAALLYEeWjc5YKGj5xEA" name="Antinaturallogarithm" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_2IrAAbLYEeWjc5YKGj5xEA" name="Base" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Nyg_ILLZEeWjc5YKGj5xEA" name="evaluable expression" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_NybfkLLZEeWjc5YKGj5xEA"/>
+      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_2IrAArLYEeWjc5YKGj5xEA" client="_2IqY8LLYEeWjc5YKGj5xEA _2IqY8LLYEeWjc5YKGj5xEA _2IqY8LLYEeWjc5YKGj5xEA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
+    </nestedClassifier>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_hRdYYKH0EeWB_pi2tzIUuQ" name="Multiplication Expression">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_uAi6IaH0EeWB_pi2tzIUuQ" name="Factors" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_uAhsAKH0EeWB_pi2tzIUuQ">
@@ -109,7 +116,7 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_kv1B0qKmEeWuC7TGf5-sqA" name="Base" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_kv0awKKmEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_HhMSgKKoEeWuC7TGf5-sqA" client="_hjdB4KKlEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_-HyvoKKmEeWuC7TGf5-sqA" name="Inequation Expression">
+  <packagedElement xmi:type="uml:Class" xmi:id="_-HyvoKKmEeWuC7TGf5-sqA" name="Comparsion Expression">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_iiqxQqKnEeWuC7TGf5-sqA" name="Smaller" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_iiqKMKKnEeWuC7TGf5-sqA"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_juSP06KnEeWuC7TGf5-sqA" name="Greater" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_juSP0KKnEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_XM4vUKKoEeWuC7TGf5-sqA" client="_-HyvoKKmEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
@@ -280,6 +287,18 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yLIMgKKqEeWuC7TGf5-sqA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yLKBsKKqEeWuC7TGf5-sqA" value="*"/>
     </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NybfkLLZEeWjc5YKGj5xEA" memberEnd="_Nyg_ILLZEeWjc5YKGj5xEA _NyiNQLLZEeWjc5YKGj5xEA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Nyei4LLZEeWjc5YKGj5xEA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NyfxALLZEeWjc5YKGj5xEA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NyiNQLLZEeWjc5YKGj5xEA" name="natural logarithm expression" type="_2IqY8LLYEeWjc5YKGj5xEA" association="_NybfkLLZEeWjc5YKGj5xEA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZdYDwLLZEeWjc5YKGj5xEA" memberEnd="_ZdZ48bLZEeWjc5YKGj5xEA _ZdbHELLZEeWjc5YKGj5xEA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZdZR4LLZEeWjc5YKGj5xEA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZdZ48LLZEeWjc5YKGj5xEA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ZdbHELLZEeWjc5YKGj5xEA" name="evaluable expression" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_ZdYDwLLZEeWjc5YKGj5xEA"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-_INEKHyEeWB_pi2tzIUuQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-_KpUKHyEeWB_pi2tzIUuQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
