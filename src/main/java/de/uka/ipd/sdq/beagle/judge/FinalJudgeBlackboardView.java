@@ -15,6 +15,8 @@ import java.util.Set;
  * {@link SEFFLoop}s, and setting final expressions.
  * 
  * @author Christoph Michelbach
+ * 
+ * @see {@link Blackboard} for information about {@link Blackboard} views
  */
 public class FinalJudgeBlackboardView {
 

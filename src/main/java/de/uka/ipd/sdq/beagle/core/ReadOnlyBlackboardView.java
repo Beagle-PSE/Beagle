@@ -7,6 +7,8 @@ import java.util.Set;
  * provided.
  * 
  * @author Christoph Michelbach
+ * 
+ * @see {@link Blackboard} for information about {@link Blackboard} views
  */
 public class ReadOnlyBlackboardView {
 

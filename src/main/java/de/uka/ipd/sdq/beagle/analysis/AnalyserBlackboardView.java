@@ -10,9 +10,12 @@ import java.util.Set;
 
 /**
  * View of the {@link Blackboard} designed to be used by {@link ResultAnalyser}. Reading
- * information and adding results to the {@link Blackboard} is supported.
+ * information and adding results to the {@link Blackboard} is supported. * @author
  * 
  * @author Christoph Michelbach
+ * 
+ * @see {@link Blackboard} for information about {@link Blackboard} views
+ * 
  */
 public class AnalyserBlackboardView {
 
