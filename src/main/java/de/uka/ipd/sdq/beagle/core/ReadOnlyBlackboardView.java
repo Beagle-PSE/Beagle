@@ -3,7 +3,8 @@ package de.uka.ipd.sdq.beagle.core;
 import java.util.Set;
 
 /**
- * A view of the {@link Blackboard} only allowing reading access.
+ * View of the {@link Blackboard} only allowing reading access. Writing access isn't
+ * provided.
  * 
  * @author Christoph Michelbach
  */

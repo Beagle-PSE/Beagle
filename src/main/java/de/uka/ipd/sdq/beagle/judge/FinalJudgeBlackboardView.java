@@ -9,9 +9,10 @@ import de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression;
 import java.util.Set;
 
 /**
- * This view of the {@link Blackboard} is designed to be used by
- * {@link de.uka.ipd.sdq.beagle.judge.FinalJudge}, therefore allowing remeasuring of
- * {@link ResourceDemandingInternalAction}s, {@link SEFFBranch}es, and {@link SEFFLoop}s.
+ * View of the {@link Blackboard} designed to be used by
+ * {@link de.uka.ipd.sdq.beagle.judge.FinalJudge}, therefore allowing reading access,
+ * remeasuring {@link ResourceDemandingInternalAction}s, {@link SEFFBranch}es, and
+ * {@link SEFFLoop}s, and setting final expressions.
  * 
  * @author Christoph Michelbach
  */

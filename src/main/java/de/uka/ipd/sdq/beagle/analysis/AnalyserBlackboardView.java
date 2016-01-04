@@ -8,7 +8,8 @@ import de.uka.ipd.sdq.beagle.core.SEFFLoop;
 import java.util.Set;
 
 /**
- * This view of the {@link Blackboard} is designed to be used by {@link ResultAnalyser}.
+ * View of the {@link Blackboard} designed to be used by {@link ResultAnalyser}. Reading
+ * information and adding results to the {@link Blackboard} is supported.
  * 
  * @author Christoph Michelbach
  */
