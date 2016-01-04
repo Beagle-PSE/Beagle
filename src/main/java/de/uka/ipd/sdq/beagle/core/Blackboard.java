@@ -1,21 +1,25 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
+
 import java.io.Serializable;
 import java.util.Set;
-
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class! CHECKSTYLE:OFF TODO
- */
 
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link BeagleController}, the Blackboard pattern from POSA I. The Blackboard’s
- * vocabulary consists of TODO: reference vocabulary types. It further allows classes to
- * store custom data. <p> The Blackboard is typically not accessed directly by its using
- * classes, but through <em>blackboard views</em> (recognisable by having the
- * {@code BlackboardView} suffix). These are surrogates for the blackboard. They don’t
- * modify its contents but only restrict access to it.
+ * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SEFFBranch},
+ * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult}, {@link BranchDecisionMeasurementResult}
+ * , {@link LoopRepetitionCountMeasurementResult} and {@link EvaluableExpression}. It further allows
+ * classes to store custom data.
+ *
+ * <p>The Blackboard is typically not accessed directly by its using classes, but through
+ * <em>blackboard views</em> (recognisable by having the {@code BlackboardView} suffix).
+ * These are surrogates for the blackboard. They don’t modify its contents but only
+ * restrict access to it.
  *
  * @author Joshua Gleitze
  * @see BeagleController
@@ -30,20 +34,20 @@ public class Blackboard implements Serializable {
 	/**
 	 * All {@linkplain SEFFLoop SEFF loops} known to Beagle.
 	 *
-	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle.
+	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SEFFLoop> getAllSEFFLoops() {
-		// TODO implement this method
 		return null;
 	}
 
 	/**
 	 * All {@linkplain SEFFBranch SEFF branches} known to Beagle.
 	 *
-	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle.
+	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SEFFBranch> getAllSEFFBranches() {
-		// TODO implement this method
 		return null;
 	}
 
@@ -52,10 +56,70 @@ public class Blackboard implements Serializable {
 	 * actions} known to Beagle.
 	 *
 	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 *         actions} known to Beagle.
+	 *         actions} known to Beagle. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
-		// TODO implement this method
+		return null;
+	}
+
+	/**
+	 * Reports that {@code rdia} shall be measured for its resource demands.
+	 *
+	 * @param rdia A resource demanding action that shall be measured. Must not be
+	 *            {@code null} and must be known to the Blackboard.
+	 */
+	public void setToBeMeasured(final ResourceDemandingInternalAction rdia) {
+	}
+
+	/**
+	 * Reports that {@code branch} shall be measured for its branch decisions.
+	 *
+	 * @param branch A SEFF branch that shall be measured. Must not be {@code null} and
+	 *            must be known to the Blackboard.
+	 */
+	public void setToBeMeasured(final SEFFBranch branch) {
+	}
+
+	/**
+	 * Reports that {@code loop} shall be measured for its repetitions.
+	 *
+	 * @param loop A SEFF Branch that shall be measured. Must not be {@code null} and must
+	 *            be known to the Blackboard.
+	 */
+	public void setToBeMeasured(final SEFFLoop loop) {
+	}
+
+	/**
+	 * {@linkplain SEFFLoop SEFF loops} that shall be measured for their repetitions.
+	 *
+	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
+		return null;
+	}
+
+	/**
+	 * {@linkplain SEFFBranch SEFF branches} that shall be measured for their branch
+	 * decisions.
+	 *
+	 * @return All {@linkplain SEFFBranch SEFF branches} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<SEFFBranch> getSEFFBranchesToBeMeasured() {
+		return null;
+	}
+
+	/**
+	 * {@linkplain ResourceDemandingInternalAction RDIAs} that shall be measured for their
+	 * resource demands.
+	 *
+	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} to be measured. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
+	 */
+	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
 		return null;
 	}
 
@@ -68,20 +132,19 @@ public class Blackboard implements Serializable {
 	 * they write. Calling this method will override any data potentially stored
 	 * previously for the given {@code writer}.
 	 *
-	 * @param writer The class the data should be written for.
+	 * @param writer The class the data should be written for. Must not be {@code null}.
 	 * @param written The data to write.
 	 * @param <WRITTEN_TYPE> {@code written}’s type.
 	 */
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
-		// TODO implement this method
 	}
 
 	/**
 	 * Reads data previously written for {@code writer} through
 	 * {@link #writeFor(Class, Serializable)}.
 	 *
-	 * @param writer The class the desired data was written for.
+	 * @param writer The class the desired data was written for. Must not be {@code null}.
 	 * @param <WRITTEN_TYPE> The type of the data to be read.
 	 * @return The data written in the last call to {@linkplain #writeFor} for
 	 *         {@code writer}. {@code null} if no data has been written for {@code writer}
@@ -90,13 +153,144 @@ public class Blackboard implements Serializable {
 	 */
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		// TODO implement this method
 		return null;
 	}
 
 	/**
-	 * Adds a result to the {@link Blackboard}.
+	 * Adds a measurement result for the provided {@code rdia}.
+	 *
+	 * @param rdia A resource demanding action that was measured. Must not be {@code null}
+	 *            .
+	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void addAnalyseResult() {
+	public void reportMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+		final ResourceDemandMeasurementResult result) {
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code loop}.
+	 *
+	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
+	 * @param result The result of that measurement. Must not be {@code null}.
+	 */
+	public void reportMeasurementResultFor(final SEFFLoop loop, final LoopRepetitionCountMeasurementResult result) {
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code branch}.
+	 *
+	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
+	 * @param result The result of that measurement. Must not be {@code null}.
+	 */
+	public void reportMeasurementResultFor(final SEFFBranch branch, final BranchDecisionMeasurementResult result) {
+	}
+
+	/**
+	 * Gets all results yet measured for the loop repetitions of {@code loop}.
+	 *
+	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
+	 *            .
+	 * @return All measurement results reported for {@code loop}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
+		return null;
+	}
+
+	/**
+	 * Gets all results yet measured for branch decisions of {@code branch}.
+	 *
+	 * @param branch A SEFF Branch to get the measurement results of. Must not be
+	 *            {@code null}.
+	 * @return All measurement results reported for {@code branch}. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
+		return null;
+	}
+
+	/**
+	 * Gets all results yet measured for the resource demands of {@code rdia}.
+	 *
+	 * @param rdia An resource demanding internal action to get the measuremnt results of.
+	 *            Must not be {@code null}.
+	 * @return All measurement results reported for {@code rdia}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		return null;
+	}
+
+	/**
+	 * Adds {@code expression} as a proposal to describe {@code rdia}’s measurement
+	 * results’ parametric dependencies.
+	 *
+	 * @param rdia A resource demanding internal action. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code rdia}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void proposeExpressionFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Adds {@code expression} as a proposal to describe {@code loop}’s measurement
+	 * results’ parametric dependencies.
+	 *
+	 * @param loop A SEFF Loop. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code loop}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void proposeExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Adds {@code expression} as a proposal to describe {@code branch}’s measurement
+	 * results’ parametric dependencies.
+	 *
+	 * @param branch A SEFF Branch. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code branch}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void proposeExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Sets {@code expression} as the final description of {@code rdia}’s measurement
+	 * results’ parametric dependencies. Consecutive calls to this method will override
+	 * previous settings.
+	 *
+	 * @param rdia A resource demanding internal action. Must not be {@code null}.
+	 * @param expression An evaluable expression describing {@code rdia}’s measurement
+	 *            results. May be {@code null} to describe that no suitable expression was
+	 *            found.
+	 */
+	public void setFinalExpressionFor(final ResourceDemandingInternalAction rdia,
+		final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Sets {@code expression} as the final description of {@code loop}’s measurement
+	 * results’ parametric dependencies. Consecutive calls to this method will override
+	 * previous settings.
+	 *
+	 * @param loop A SEFF Loop. Must not be {@code null}.
+	 * @param expression An evaluable expression describing {@code loop}’s measurement
+	 *            results. May be {@code null} to describe that no suitable expression was
+	 *            found.
+	 */
+	public void setFinalExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Sets {@code expression} as the final description of {@code branch}’s measurement
+	 * results’ parametric dependencies. Consecutive calls to this method will override
+	 * previous settings.
+	 *
+	 * @param branch A SEFF Branch. Must not be {@code null}.
+	 * @param expression An evaluable expression describing {@code branch}’s measurement
+	 *            results. May be {@code null} to describe that no suitable expression was
+	 *            found.
+	 */
+	public void setFinalExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
 	}
 }
