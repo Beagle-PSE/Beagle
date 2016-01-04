@@ -1,8 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * 
- *
+ * An variable which can be analyzed. Set in relation with an specific value it gets an
+ * evaluable expression.
+ * @author Annika Berger
  */
 public class EvaluableVariable implements EvaluableExpression {
 

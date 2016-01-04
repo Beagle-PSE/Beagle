@@ -1,27 +1,29 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
+ * A evaluable expression containing constants.
  * 
  * @author Annika Berger
  *
  */
-public class ConstantExpression implements EvaluableExpression {
+public final class ConstantExpression implements EvaluableExpression {
 
 	/**
-	 * TODO document this method.
-	 *
-	 * @param value TODO
-	 * @return TODO
+	 * Inizialises a new constant expression with a given {@code value}.
+	 * 
+	 * @param value which should be assigned to the expression
 	 */
-	public static ConstantExpression forValue(final double value) {
-		return null;
+	private ConstantExpression(final double value) {
 	}
 
 	/**
-	 * TODO document this constructor.
+	 * Looks for the constant expression belonging to a input {@code value}.
 	 *
+	 * @param value whose expression should be returned
+	 * @return the constant expression belonging to the given {@code value}
 	 */
-	private ConstantExpression(final double value) {
+	public static ConstantExpression forValue(final double value) {
+		return null;
 	}
 
 	/*
@@ -43,7 +45,7 @@ public class ConstantExpression implements EvaluableExpression {
 	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
-	public double evaluate(EvaluableVariableAssignment variableAssignments) {
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return 0;
 	}
 
