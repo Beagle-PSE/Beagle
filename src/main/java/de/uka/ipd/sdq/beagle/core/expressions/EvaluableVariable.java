@@ -1,23 +1,22 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * TODO Document class
+ * 
  *
  */
 public class EvaluableVariable implements EvaluableExpression {
 
 	/**
-	 * 
+	 * Get this evaluable varibales name.
 	 *
 	 * @return the name
 	 */
 	public String getName() {
-		// TODO: Implement method
 		return null;
 	}
 
 	/**
-	 * TODO describe name
+	 * Naming the evaluable variable.
 	 *
 	 * @param name the name to set
 	 */
