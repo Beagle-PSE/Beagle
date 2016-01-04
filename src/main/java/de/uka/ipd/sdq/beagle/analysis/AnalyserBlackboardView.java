@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * View of the {@link Blackboard} designed to be used by {@link ResultAnalyser}. Reading
- * information and adding results to the {@link Blackboard} is supported. * @author
+ * information and adding proposed expressions to the {@link Blackboard} is supported.
  * 
  * @author Christoph Michelbach
  * 
