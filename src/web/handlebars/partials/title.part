@@ -1,0 +1,7 @@
+{{!-- 
+	An element’s title
+	
+	partial-block: the title
+--}}
+
+<h6 class="title">{{> @partial-block}}</h6>

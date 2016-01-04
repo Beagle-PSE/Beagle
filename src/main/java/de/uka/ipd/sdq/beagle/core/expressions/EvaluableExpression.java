@@ -25,9 +25,9 @@ package de.uka.ipd.sdq.beagle.core.expressions;
  * {@code d.evaluate(ass)} for any {@link EvaluableVariableAssignment} {@code ass} but
  * {@code a.equals(b)} returns {@code false}. However, the implementation of
  * {@code equals} should aim to allow as few such pairs {@code (c,d)} as possible. <br>
- * Users should be aware that calling {@link EvaluableExpression#equals(Object)} may be
- * very costly, as it might require a lot of comparisons and expressions may an unlimited
- * amount of contained expressions.
+ * Users should be aware that calling {@link Object#equals(Object)
+ * EvaluableExpression#equals(Object)} may be very costly, as it might require a lot of
+ * comparisons and expressions may an unlimited amount of contained expressions.
  *
  * @author Joshua Gleitze
  */

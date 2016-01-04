@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.analysis;
 
+import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
+
 /**
  * An analyser that contributes knowledge of any kind to the
  * {@link de.uka.ipd.sdq.beagle.core.Blackboard}. There is no restriction on the kind of

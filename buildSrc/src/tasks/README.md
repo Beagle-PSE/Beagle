@@ -1,0 +1,5 @@
+# Build Configuration
+All gradle files in this folder (but not in subdirectories) will be added to the gradle build configuration. They will be added in the order indicated by their file name, that’s why numbers are used to order them. The files should be kept at a reasonable small size. If more complicated logic is required, it should be put in groovy classes.
+
+## Task Dependencies
+Dependencies required at the task’s runtime can and should be declared in the gradle files among the tasks using them. However, any configuration that goes into a `buildscript` block (mostly dependencies required to *compile* the tasks) does not work as expected. This (and only this) configuration must be put in gradle files in the `buildscript-dependencies` folder, but without the surrounding `buildscript` block.

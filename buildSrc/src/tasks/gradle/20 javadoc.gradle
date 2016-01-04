@@ -1,0 +1,9 @@
+/**
+ * Tasks to render the project’s javadoc.
+ *
+ * @author Joshua Gleitze
+ */
+ 
+allprojects {
+	build.dependsOn javadoc
+}
