@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
+
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -55,6 +59,64 @@ public class ReadOnlyBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFLoopsToBeMeasured()
 	 */
 	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#readFor(WRITTEN_TYPE)}.
+	 *
+	 * @param writer The class the desired data was written for. Must not be {@code null}.
+	 * @param <WRITTEN_TYPE> The type of the data to be read.
+	 * @return The data written in the last call to {@linkplain #writeFor} for
+	 *         {@code writer}. {@code null} if no data has been written for {@code writer}
+	 *         yet.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(WRITTEN_TYPE)
+	 */
+	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
+		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
+		return null;
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)}.
+	 *
+	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
+	 *            .
+	 * @return All measurement results reported for {@code loop}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)
+	 */
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
+		return null;
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFBranch)}.
+	 *
+	 * @param branch A SEFF Branch to get the measurement results of. Must not be
+	 *            {@code null}.
+	 * @return All measurement results reported for {@code branch}. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFBranch)
+	 */
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
+		return null;
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)}
+	 * .
+	 *
+	 * @param rdia An resource demanding internal action to get the measuremnt results of.
+	 *            Must not be {@code null}.
+	 * @return All measurement results reported for {@code rdia}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
+	 */
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
 		return null;
 	}
 
