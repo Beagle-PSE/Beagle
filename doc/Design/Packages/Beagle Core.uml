@@ -455,6 +455,10 @@ write results()</body>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_838pgLLaEeW_GIAp8elJew" name="Beagle Example Run">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_8SzDILLcEeW_GIAp8elJew" name="" type="_qgmqYKD1EeWVpfCzK8hwSg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-3X4sLLcEeW_GIAp8elJew" name="" type="_qgmqYKD1EeWVpfCzK8hwSg"/>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>

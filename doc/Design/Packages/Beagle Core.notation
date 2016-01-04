@@ -1364,4 +1364,20 @@
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cFIwQLIVEeWV-PuQpV8rqA" id="(0.0,0.552)"/>
     </edges>
   </notation:Diagram>
+  <notation:Diagram xmi:id="_AF-rwLLbEeW_GIAp8elJew" type="PapyrusUMLSequenceDiagram" name="ExampleRun" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_AF-rwbLbEeW_GIAp8elJew" type="2001">
+      <children xmi:type="notation:DecorationNode" xmi:id="_AF-rwrLbEeW_GIAp8elJew" type="5001"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_AF-rw7LbEeW_GIAp8elJew" type="7001">
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AF-rxLLbEeW_GIAp8elJew"/>
+      </children>
+      <element xmi:type="uml:Interaction" href="Beagle%20Core.uml#_838pgLLaEeW_GIAp8elJew"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AF-rxbLbEeW_GIAp8elJew"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_AF-rxrLbEeW_GIAp8elJew" name="diagram_compatibility_version" stringValue="1.1.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_AF-rx7LbEeW_GIAp8elJew"/>
+    <styles xmi:type="style:PapyrusViewStyle" xmi:id="_AF-ryLLbEeW_GIAp8elJew">
+      <owner xmi:type="uml:Package" href="Beagle%20Core.uml#_Mqc3EKBSEeWVfMeWaVID2g"/>
+    </styles>
+    <element xmi:type="uml:Interaction" href="Beagle%20Core.uml#_838pgLLaEeW_GIAp8elJew"/>
+  </notation:Diagram>
 </xmi:XMI>
