@@ -4,6 +4,9 @@
     <ownedOperation xmi:type="uml:Operation" xmi:id="_zGNoYKWiEeWVjrqJHndH-A" name="measure">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_3SCIkKWiEeWVjrqJHndH-A" name="order" type="_ujPzgKWiEeWVjrqJHndH-A" isUnique="false" effect="read"/>
     </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_lWYe4LIlEeWOK_XCYg9zlQ" name="measure">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qjom4LIlEeWOK_XCYg9zlQ" name="measurements" type="_ujPzgKWiEeWVjrqJHndH-A" isUnique="false" effect="update"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_ujPzgKWiEeWVjrqJHndH-A" name="Measurement Order"/>
 </uml:Package>
