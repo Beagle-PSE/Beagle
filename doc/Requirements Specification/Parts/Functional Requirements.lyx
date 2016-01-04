@@ -250,7 +250,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T10/"
+reference "/T20/"
 
 \end_inset
 
@@ -311,7 +311,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T60/"
+reference "/T30/"
 
 \end_inset
 
@@ -372,7 +372,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T60/"
+reference "/T30/"
 
 \end_inset
 
@@ -439,14 +439,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T60/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OT30/"
+reference "/T210/"
 
 \end_inset
 
@@ -657,7 +650,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT30/"
 
 \end_inset
 
@@ -711,7 +704,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -791,10 +784,7 @@ glsuseri{component}
 
 \end_inset
 
-
  
-\lang british
-
 \begin_inset ERT
 status open
 
@@ -816,7 +806,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -871,7 +861,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -973,7 +963,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT50/"
+reference "/OT40/"
 
 \end_inset
 
@@ -1103,7 +1093,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT70/"
+reference "/OT50/"
 
 \end_inset
 
@@ -1132,7 +1122,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT80/"
+reference "/OT60/"
 
 \end_inset
 
@@ -1162,7 +1152,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT110/"
+reference "/OT90/"
 
 \end_inset
 
@@ -1194,7 +1184,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -1243,7 +1233,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -1307,7 +1297,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -1365,7 +1355,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT90/"
+reference "/OT70/"
 
 \end_inset
 
@@ -1407,7 +1397,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/OT100/"
+reference "/OT80/"
 
 \end_inset
 
@@ -1492,11 +1482,18 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
+reference "/T40/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
 reference "/T50/"
 
 \end_inset
 
-
+ 
 \end_layout
 
 \end_inset
@@ -1616,7 +1613,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T90/"
+reference "/T220/"
 
 \end_inset
 
@@ -1740,7 +1737,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T55/"
+reference "/T50/"
 
 \end_inset
 
@@ -1842,24 +1839,6 @@ gls{PCM Stochastic Expression Language}
 \end_inset
 
 .
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Tested by 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/OT50/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body

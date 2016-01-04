@@ -15,15 +15,16 @@ import java.io.Serializable;
  * <p>{@code YourAnalyser} simply wants to keep track of the {@linkplain SEFFLoop
  * SEFFLoops} he has already seen. He wants to use an {@code HashSet} to do so:
  *
+ * <pre>
+ *
  * <code>
  *
- * <pre>
  * public class YourAnalyser implements ResultAnalyser, BlackboardStorer&lt;HashSet&lt;SEFFLoop&gt;&gt; {
  *
  * 	public boolean canContribute(ReadOnlyBlackboardView blackboard) {
  * 		Set&lt;SEFFLoop&gt; alreadySeen = blackboard.readFor(YourAnalyser.class);
  * 		Set&lt;SEFFLoop&gt; allLoops = blackboard.getAllSEFFLoops();
- * 		return allLoops.size() &gt; 0 && (alreadySeen == null || !alreadySeen.containsAll(allLoops));
+ * 		return allLoops.size() &gt; 0 &amp;&amp; (alreadySeen == null || !alreadySeen.containsAll(allLoops));
  * 	}
  *
  * 	public boolean contribute(AnalyserBlackboardView blackboard) {
@@ -41,25 +42,26 @@ import java.io.Serializable;
  * 		}
  * 	}
  * }
- * </pre>
  *
  * </code>
+ *
+ * </pre>
  *
  * <p>{@code MyAnalyser} however, wants to use its own data structure:
  *
- * <code>
- *
  * <pre>
+ *
+ * <code>
  * public MyAnalyserDataStructure implements Serializable {
  * 		// a whole bunch of getters and setters
  * }
- * </pre>
- *
  * </code>
  *
- * <code>
+ * </pre>
  *
  * <pre>
+ *
+ * <code>
  * public class MyAnalyser implements ResultAnalyser, BlackboardStorer&lt;MyAnalyserDataStructure&gt; {
  *  // everything here is like above:
  *  public boolean canContribute(ReadOnlyBlackboardView blackboard) {
@@ -75,9 +77,9 @@ import java.io.Serializable;
  *      blackboard.writeFor(MyAnalyser.class, newData);
  *      // …
  *  }
- * </pre>
- *
  * </code>
+ *
+ * </pre>
  *
  * @author Joshua Gleitze
  * @param <WRITTEN_TYPE>

@@ -1,0 +1,11 @@
+{{!-- 
+	An artefact link block
+	
+	link: link to the artefact. Will be prepended with the artefact folder
+	type: the artefact’s type (usually the file’s extension (without the dot!))
+	partial-block: the link block’s content. You’ll usually want to use {{#> title}} and {{#> description}}
+--}}
+<a href="{{link}}" class="artefact">
+	<span class="fa fa-{{fileIconClass type}} file"></span>
+	{{> @partial-block }}
+</a>
