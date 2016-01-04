@@ -1474,7 +1474,7 @@
     <children xmi:type="notation:Shape" xmi:id="_kajf4LIREeWV-PuQpV8rqA" type="2012">
       <children xmi:type="notation:DecorationNode" xmi:id="_kajf4rIREeWV-PuQpV8rqA" type="5038"/>
       <element xmi:type="uml:Comment" href="Beagle%20Core.uml#_i3kqAKDVEeWv3dQk34uqzw"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kajf4bIREeWV-PuQpV8rqA" x="769" y="-372"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kajf4bIREeWV-PuQpV8rqA" x="767" y="-406"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_nRLuwLIREeWV-PuQpV8rqA" type="2008">
       <children xmi:type="notation:DecorationNode" xmi:id="_nRMV0LIREeWV-PuQpV8rqA" type="5029"/>
