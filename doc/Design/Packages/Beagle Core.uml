@@ -20,6 +20,14 @@
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_qV3dMKD5EeWVpfCzK8hwSg" name="blackboard" type="_rqzFQKD4EeWVpfCzK8hwSg" effect="read"/>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_gYTZELLaEeWi36SSdQyzSA" name="Final Judge">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yN9MALLaEeWi36SSdQyzSA" name="judge">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_4JG70LLaEeWi36SSdQyzSA" name="blackboard" type="_9waukKiSEeW317sgBX4gxw"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_51C5MLLaEeWi36SSdQyzSA" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_F0ULoKDUEeWv3dQk34uqzw" name="Blackboard">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_P-jNMKDjEeWVpfCzK8hwSg" name="SEFF Loops" visibility="private" type="_7RjZsKDiEeWVpfCzK8hwSg" aggregation="shared" association="_P-dGkKDjEeWVpfCzK8hwSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ys7bUKDkEeWVpfCzK8hwSg"/>
@@ -50,10 +58,7 @@
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HODtUKD2EeWVpfCzK8hwSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HOHXsKD2EeWVpfCzK8hwSg" value="*"/>
       </ownedAttribute>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_88fkoKD6EeWVpfCzK8hwSg" name="Final Judge" visibility="private" type="_u7hSULITEeWV-PuQpV8rqA" isUnique="false" association="_88asIKD6EeWVpfCzK8hwSg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_vknp8KENEeWQRf-no0GeMA" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_vkrUUKENEeWQRf-no0GeMA" value="1"/>
-      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_808_4LLaEeWi36SSdQyzSA" name="Final Judge" visibility="private" type="_gYTZELLaEeWi36SSdQyzSA" isUnique="false" association="_80u9cLLaEeWi36SSdQyzSA"/>
       <ownedBehavior xmi:type="uml:Activity" xmi:id="_vu0-kKD8EeWVpfCzK8hwSg" name="Main Method" specification="_zcUEIKDUEeWv3dQk34uqzw" node="_zoYqEKD8EeWVpfCzK8hwSg _m324sKEOEeWQRf-no0GeMA _VZfu8KEPEeWQRf-no0GeMA">
         <edge xmi:type="uml:ControlFlow" xmi:id="_cMXw8KEPEeWQRf-no0GeMA" target="_m324sKEOEeWQRf-no0GeMA" source="_zoYqEKD8EeWVpfCzK8hwSg"/>
         <edge xmi:type="uml:ControlFlow" xmi:id="_fCBvcKEPEeWQRf-no0GeMA" target="_VZfu8KEPEeWQRf-no0GeMA" source="_m324sKEOEeWQRf-no0GeMA"/>
@@ -90,7 +95,7 @@ while (¬finished) do&#xD;
     if analysersIterator.current().{@link #_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboardView)&#xD;
       analysersIterator.current().{@link #_6buAEKDxEeWVpfCzK8hwSg}(analyserBlackboardView)&#xD;
     else&#xD;
-      finished ≔{@link #_u7hSULITEeWV-PuQpV8rqA}.{@link #_w1qDwLITEeWV-PuQpV8rqA}(finalJudgeBlackboardView)&#xD;
+      finished ≔{@link #_808_4LLaEeWi36SSdQyzSA}.{@link #_yN9MALLaEeWi36SSdQyzSA}(finalJudgeBlackboardView)&#xD;
     fi&#xD;
   fi&#xD;
 od&#xD;
@@ -412,15 +417,6 @@ write results()</body>
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xMo9MKD4EeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
       </eAnnotations>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_88asIKD6EeWVpfCzK8hwSg" memberEnd="_88e9kKD6EeWVpfCzK8hwSg _88fkoKD6EeWVpfCzK8hwSg">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_88eWgKD6EeWVpfCzK8hwSg" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_88eWgaD6EeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_88e9kKD6EeWVpfCzK8hwSg" name="beagle controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_88asIKD6EeWVpfCzK8hwSg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sABVQKEiEeWuoaiXEYXzVw" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sAGNwKEiEeWuoaiXEYXzVw" value="*"/>
-      </ownedEnd>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_JUmncKEUEeWQRf-no0GeMA" memberEnd="_JUsHAKEUEeWQRf-no0GeMA _JUsuEKEUEeWQRf-no0GeMA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JUq44KEUEeWQRf-no0GeMA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JUq44aEUEeWQRf-no0GeMA" key="nature" value="UML_Nature"/>
@@ -551,6 +547,15 @@ write results()</body>
         <type xmi:type="uml:Class" href="Measurement.uml#_QQPTILJHEeWgdqdZ8hPRgg"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YVMgsLJKEeWgdqdZ8hPRgg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YVO88LJKEeWgdqdZ8hPRgg" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_80u9cLLaEeWi36SSdQyzSA" memberEnd="_806joLLaEeWi36SSdQyzSA _808_4LLaEeWi36SSdQyzSA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_804HYLLaEeWi36SSdQyzSA" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_804ucLLaEeWi36SSdQyzSA" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_806joLLaEeWi36SSdQyzSA" name="beagle controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_80u9cLLaEeWi36SSdQyzSA">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_MfCTILLbEeWi36SSdQyzSA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_MfF9gLLbEeWi36SSdQyzSA" value="*"/>
       </ownedEnd>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
