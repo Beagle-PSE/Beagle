@@ -2,7 +2,7 @@
 <uml:Package xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_uu11cKHyEeWB_pi2tzIUuQ" name="Evaluable Expression">
   <packagedElement xmi:type="uml:Interface" xmi:id="_ctETEKHnEeWB_pi2tzIUuQ" name="Evaluable Expression">
     <ownedComment xmi:type="uml:Comment" xmi:id="_oz__8KH4EeWB_pi2tzIUuQ" annotatedElement="_uu11cKHyEeWB_pi2tzIUuQ">
-      <body>{@link #_ctETEKHnEeWB_pi2tzIUuQ}s implement the Visitor Pattern. Components may subclass {@link #_3MNrYKHnEeWB_pi2tzIUuQ}. As a consequence, {@link #_ctETEKHnEeWB_pi2tzIUuQ}s are not intended to be subclassed, as {@link ../Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg}s and {@link ../Beagle%20Core.uml#_no8HcKD6EeWVpfCzK8hwSg}s will and may rely on the exact set of available {@link #_ctETEKHnEeWB_pi2tzIUuQ}s.</body>
+      <body>{@link #_ctETEKHnEeWB_pi2tzIUuQ}s implement the Visitor Pattern. Components may subclass {@link #_3MNrYKHnEeWB_pi2tzIUuQ}. As a consequence, {@link #_ctETEKHnEeWB_pi2tzIUuQ}s are not intended to be subclassed, as {@link ../Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg}s and the {@link ../Beagle%20Core.uml#_gYTZELLaEeWi36SSdQyzSA} will and may rely on the exact set of available {@link #_ctETEKHnEeWB_pi2tzIUuQ}s.</body>
     </ownedComment>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_9nd3kKHnEeWB_pi2tzIUuQ" name="receive">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_Gz5x8KHoEeWB_pi2tzIUuQ" type="_3MNrYKHnEeWB_pi2tzIUuQ"/>

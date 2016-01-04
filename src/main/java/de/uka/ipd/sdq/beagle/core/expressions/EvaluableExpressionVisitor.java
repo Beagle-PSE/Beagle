@@ -10,91 +10,91 @@ package de.uka.ipd.sdq.beagle.core.expressions;
 public interface EvaluableExpressionVisitor {
 
 	/**
-	 * Called if the visited expression is a {@code AdditionExpression}.
+	 * Called if the visited expression is a {@link AdditionExpression}.
 	 *
 	 * @param expression to be visited
 	 */
 	void visit(AdditionExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code MultiplicationExpression}.
+	 * Called if the visited expression is a {@link MultiplicationExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(MultiplicationExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code EvaluableVariable}.
+	 * Called if the visited expression is a {@link EvaluableVariable}.
 	 *
 	 * @param variable visited expression
 	 */
 	void visit(EvaluableVariable variable);
 
 	/**
-	 * Called if the visited expression is a {@code ComparisonExpression}.
+	 * Called if the visited expression is a {@link ComparisonExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(ComparisonExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code ConstantExpression}.
+	 * Called if the visited expression is a {@link ConstantExpression}.
 	 *
 	 * @param constant visited expression
 	 */
 	void visit(ConstantExpression constant);
 
 	/**
-	 * Called if the visited expression is a {@code DivisionExpression}.
+	 * Called if the visited expression is a {@link DivisionExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(DivisionExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code ExponentationExpression}.
+	 * Called if the visited expression is a {@link ExponentationExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(ExponentationExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code ExponentialFunctionExpression}.
+	 * Called if the visited expression is a {@link ExponentialFunctionExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(ExponentialFunctionExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code IfThenElseExpression}.
+	 * Called if the visited expression is a {@link IfThenElseExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(IfThenElseExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code LogarithmExpression}.
+	 * Called if the visited expression is a {@link LogarithmExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(LogarithmExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code NaturalLogarithmExpression}.
+	 * Called if the visited expression is a {@link NaturalLogarithmExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(NaturalLogarithmExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code SineExpression}.
+	 * Called if the visited expression is a {@link SineExpression}.
 	 *
 	 * @param expression visited expression
 	 */
 	void visit(SineExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@code SubstractionExpression}.
+	 * Called if the visited expression is a {@link SubstractionExpression}.
 	 *
 	 * @param expression visited expression
 	 */
