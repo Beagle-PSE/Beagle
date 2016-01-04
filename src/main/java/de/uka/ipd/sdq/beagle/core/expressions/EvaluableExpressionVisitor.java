@@ -31,8 +31,6 @@ public interface EvaluableExpressionVisitor {
 	void visit(ExponentialFunctionExpression expression);
 
 	void visit(IfThenElseExpression expression);
-
-	void visit(InequationExpression expression);
 	
 	void visit(LogarithmExpression expression);
 
