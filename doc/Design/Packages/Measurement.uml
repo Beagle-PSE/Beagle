@@ -8,10 +8,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_ujPzgKWiEeWVjrqJHndH-A" name="Measurement Order"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_9AQ3QLJGEeWgdqdZ8hPRgg" name="Resource Demand Measurement Result" visibility="public">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_bmahM7JHEeWgdqdZ8hPRgg" name="parametrisation" visibility="private" type="_Y4Hu8LJHEeWgdqdZ8hPRgg" isUnique="false" association="_bmahMLJHEeWgdqdZ8hPRgg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ziT5oLJHEeWgdqdZ8hPRgg" value="1"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ziWV4LJHEeWgdqdZ8hPRgg" value="1"/>
-      </ownedAttribute>
+      <generalization xmi:type="uml:Generalization" xmi:id="_FCNDQLLdEeW6_aO_smvbhw" general="_Yae8ALLcEeWYbvIJ2tLPPw"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_CIPoQLJIEeWgdqdZ8hPRgg" name="type" visibility="private" isUnique="false">
         <ownedComment xmi:type="uml:Comment" xmi:id="_fLOZ0LJJEeWgdqdZ8hPRgg">
           <body></body>
@@ -22,44 +19,30 @@
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_LaP0kLJHEeWgdqdZ8hPRgg" name="Loop Repetition Count Result">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_bQ2g4rJHEeWgdqdZ8hPRgg" name="parametrisation" visibility="private" type="_Y4Hu8LJHEeWgdqdZ8hPRgg" isUnique="false" association="_bQ150LJHEeWgdqdZ8hPRgg"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LaP0kLJHEeWgdqdZ8hPRgg" name="Loop Repetition Count Measurement Result">
+      <generalization xmi:type="uml:Generalization" xmi:id="_EnBjILLdEeW6_aO_smvbhw" general="_Yae8ALLcEeWYbvIJ2tLPPw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_bQ2g4rJHEeWgdqdZ8hPRgg" name="parametrisation" visibility="private" type="_Y4Hu8LJHEeWgdqdZ8hPRgg" isUnique="false"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_zOl28LJIEeWgdqdZ8hPRgg" name="count" visibility="private" isUnique="false">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedAttribute>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_QQPTILJHEeWgdqdZ8hPRgg" name="Branch Decision Result">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_a8mIILJHEeWgdqdZ8hPRgg" name="parametrisation" visibility="private" type="_Y4Hu8LJHEeWgdqdZ8hPRgg" isUnique="false" association="_a8lhELJHEeWgdqdZ8hPRgg"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_QQPTILJHEeWgdqdZ8hPRgg" name="Branch Decision Measurement Result">
+      <generalization xmi:type="uml:Generalization" xmi:id="_FeGVELLdEeW6_aO_smvbhw" general="_Yae8ALLcEeWYbvIJ2tLPPw"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_539XoLJIEeWgdqdZ8hPRgg" name="branch index" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_Y4Hu8LJHEeWgdqdZ8hPRgg" name="Parametrisation"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_a8lhELJHEeWgdqdZ8hPRgg" name="SEFF Branch Result parametrisation" memberEnd="_a8mIILJHEeWgdqdZ8hPRgg _a8mIIbJHEeWgdqdZ8hPRgg">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_a8lhEbJHEeWgdqdZ8hPRgg" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_a8lhErJHEeWgdqdZ8hPRgg" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_a8mIIbJHEeWgdqdZ8hPRgg" name="seff branch count result" type="_QQPTILJHEeWgdqdZ8hPRgg" association="_a8lhELJHEeWgdqdZ8hPRgg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7C7ycLJHEeWgdqdZ8hPRgg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7C-OsLJHEeWgdqdZ8hPRgg" value="*"/>
-      </ownedEnd>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Yae8ALLcEeWYbvIJ2tLPPw" name="Parameterised Measurement Result" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_u9bkgLLcEeW6_aO_smvbhw" name="parametrisation" visibility="private" type="_Y4Hu8LJHEeWgdqdZ8hPRgg" isUnique="false" association="_u9Vd4LLcEeW6_aO_smvbhw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_bQ150LJHEeWgdqdZ8hPRgg" name="SEFF Loop Result parametrisation" memberEnd="_bQ2g4rJHEeWgdqdZ8hPRgg _bQ2g47JHEeWgdqdZ8hPRgg">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bQ2g4LJHEeWgdqdZ8hPRgg" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bQ2g4bJHEeWgdqdZ8hPRgg" key="nature" value="UML_Nature"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_u9Vd4LLcEeW6_aO_smvbhw" memberEnd="_u9bkgLLcEeW6_aO_smvbhw _u9en0LLcEeW6_aO_smvbhw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_u9ZIQLLcEeW6_aO_smvbhw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_u9ZvULLcEeW6_aO_smvbhw" key="nature" value="UML_Nature"/>
       </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_bQ2g47JHEeWgdqdZ8hPRgg" name="seff loop count result" type="_LaP0kLJHEeWgdqdZ8hPRgg" association="_bQ150LJHEeWgdqdZ8hPRgg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_1u-lgLJHEeWgdqdZ8hPRgg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_1vBBwLJHEeWgdqdZ8hPRgg" value="*"/>
-      </ownedEnd>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_bmahMLJHEeWgdqdZ8hPRgg" name="RDIA Measurement Result parametrisation" memberEnd="_bmahM7JHEeWgdqdZ8hPRgg _bmahNLJHEeWgdqdZ8hPRgg">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bmahMbJHEeWgdqdZ8hPRgg" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bmahMrJHEeWgdqdZ8hPRgg" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_bmahNLJHEeWgdqdZ8hPRgg" name="resource demand measurement result" type="_9AQ3QLJGEeWgdqdZ8hPRgg" association="_bmahMLJHEeWgdqdZ8hPRgg">
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3jrdULJHEeWgdqdZ8hPRgg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3jvHsLJHEeWgdqdZ8hPRgg" value="*"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_u9en0LLcEeW6_aO_smvbhw" name="parameterised measurement result" type="_Yae8ALLcEeWYbvIJ2tLPPw" association="_u9Vd4LLcEeW6_aO_smvbhw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_wrqA4LLcEeW6_aO_smvbhw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_wrtEMLLcEeW6_aO_smvbhw" value="*"/>
       </ownedEnd>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_EXgVILJIEeWgdqdZ8hPRgg">
