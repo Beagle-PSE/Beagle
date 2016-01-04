@@ -248,30 +248,37 @@ public class FinalJudgeBlackboardView {
 	}
 
 	/**
-	 * Remeasures the {@link ResourceDemandingInternalAction}s in {@code remeasure}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(ResourceDemandingInternalAction)}
+	 * .
 	 *
-	 * @param remeasure The {@link ResourceDemandingInternalAction}s to be remeasured.
+	 * @param rdia A resource demanding action that shall be measured. Must not be
+	 *            {@code null} and must be known to the Blackboard.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(ResourceDemandingInternalAction)
 	 */
-	public void remeasureResourceDemandingInternalActions(final Set<ResourceDemandingInternalAction> remeasure) {
-
+	public void setToBeMeasured(final ResourceDemandingInternalAction rdia) {
 	}
 
 	/**
-	 * Remeasures the {@link SEFFBranch}es in {@code remeasure}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFBranch)} .
 	 *
-	 * @param remeasure The {@link SEFFBranch}es to be remeasured.
+	 * @param branch A SEFF branch that shall be measured. Must not be {@code null} and
+	 *            must be known to the Blackboard.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFBranch)
 	 */
-	public void remeasureSeffBranches(final Set<SEFFBranch> remeasure) {
-
+	public void setToBeMeasured(final SEFFBranch branch) {
 	}
 
 	/**
-	 * Remeasures the {@link SEFFLoop}s in {@code remeasure}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFLoop)} .
 	 *
-	 * @param remeasure The {@link SEFFLoop}s to be remeasured.
+	 * @param loop A SEFF Branch that shall be measured. Must not be {@code null} and must
+	 *            be known to the Blackboard.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFLoop)
 	 */
-	public void remeasureSeffLoops(final Set<SEFFLoop> remeasure) {
-
+	public void setToBeMeasured(final SEFFLoop loop) {
 	}
 
 }
