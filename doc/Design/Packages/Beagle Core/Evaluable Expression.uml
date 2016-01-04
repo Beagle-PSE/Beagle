@@ -72,29 +72,29 @@
     </ownedAttribute>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_czgy4KKjEeWuC7TGf5-sqA" client="_WQiUgKHnEeWB_pi2tzIUuQ" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2IqY8LLYEeWjc5YKGj5xEA" name="Natural Logarithm Expression" visibility="public">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_m0ARMrLaEeWjc5YKGj5xEA" name="naturalantilogarithm" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_mz_qILLaEeWjc5YKGj5xEA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_AVa18LLbEeWjc5YKGj5xEA" name="base" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_AVZAwLLbEeWjc5YKGj5xEA"/>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_2IrAArLYEeWjc5YKGj5xEA" client="_2IqY8LLYEeWjc5YKGj5xEA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
+  </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_H5vJ4KHuEeWB_pi2tzIUuQ" name="If-Then-Else Expression">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_f5lOMKHuEeWB_pi2tzIUuQ" name="Condition" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_f5jZAKHuEeWB_pi2tzIUuQ"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_pV1tQKHuEeWB_pi2tzIUuQ" name="Then" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_pV0fIKHuEeWB_pi2tzIUuQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_pV1tQKHuEeWB_pi2tzIUuQ" name="Then" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_pV0fIKHuEeWB_pi2tzIUuQ"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_0JMiIaHuEeWB_pi2tzIUuQ" name="Else" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_0JLUAKHuEeWB_pi2tzIUuQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4W1nQKHuEeWB_pi2tzIUuQ" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4W4DgKHuEeWB_pi2tzIUuQ" value="1"/>
     </ownedAttribute>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_WmjvIKKoEeWuC7TGf5-sqA" client="_H5vJ4KHuEeWB_pi2tzIUuQ" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
-    <nestedClassifier xmi:type="uml:Class" xmi:id="_2IqY8LLYEeWjc5YKGj5xEA" name="Natural Logarithm Expression" visibility="public">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_m0ARMrLaEeWjc5YKGj5xEA" name="naturalantilogarithm" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_mz_qILLaEeWjc5YKGj5xEA"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_AVa18LLbEeWjc5YKGj5xEA" name="base" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_AVZAwLLbEeWjc5YKGj5xEA"/>
-      <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_2IrAArLYEeWjc5YKGj5xEA" client="_2IqY8LLYEeWjc5YKGj5xEA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
-    </nestedClassifier>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_hRdYYKH0EeWB_pi2tzIUuQ" name="Multiplication Expression">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_uAi6IaH0EeWB_pi2tzIUuQ" name="Factors" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_uAhsAKH0EeWB_pi2tzIUuQ">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_uAi6IaH0EeWB_pi2tzIUuQ" name="Factors" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_uAhsAKH0EeWB_pi2tzIUuQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_xiL04KH0EeWB_pi2tzIUuQ" value="2"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_xiO4MKH0EeWB_pi2tzIUuQ" value="*"/>
     </ownedAttribute>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_kZAyYKKoEeWuC7TGf5-sqA" client="_hRdYYKH0EeWB_pi2tzIUuQ" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_FrGD4KH1EeWB_pi2tzIUuQ" name="Addition Expression">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_MXKTQqH1EeWB_pi2tzIUuQ" name="Summands" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_MXJsMKH1EeWB_pi2tzIUuQ">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MXKTQqH1EeWB_pi2tzIUuQ" name="Summands" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_MXJsMKH1EeWB_pi2tzIUuQ">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_S4FpoKH1EeWB_pi2tzIUuQ" value="2"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_S4JUAKH1EeWB_pi2tzIUuQ" value="*"/>
     </ownedAttribute>
@@ -106,31 +106,31 @@
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_LHKToKKoEeWuC7TGf5-sqA" client="_6xgR4KH5EeWB_pi2tzIUuQ" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_9qcXMKKkEeWuC7TGf5-sqA" name="Exponential Function Expression">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_JHlv8KKlEeWuC7TGf5-sqA" name="Exponent" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_JHgQYKKlEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JHlv8KKlEeWuC7TGf5-sqA" name="Exponent" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_JHgQYKKlEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_OrlcoKKoEeWuC7TGf5-sqA" client="_9qcXMKKkEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_hjdB4KKlEeWuC7TGf5-sqA" name="Logarithm Expression">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_jkBWAKKmEeWuC7TGf5-sqA" name="Antilogarithm" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_jj9EkKKmEeWuC7TGf5-sqA"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_kv1B0qKmEeWuC7TGf5-sqA" name="Base" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_kv0awKKmEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_jkBWAKKmEeWuC7TGf5-sqA" name="Antilogarithm" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_jj9EkKKmEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_kv1B0qKmEeWuC7TGf5-sqA" name="Base" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_kv0awKKmEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_HhMSgKKoEeWuC7TGf5-sqA" client="_hjdB4KKlEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_-HyvoKKmEeWuC7TGf5-sqA" name="Comparsion Expression">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_iiqxQqKnEeWuC7TGf5-sqA" name="Smaller" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_iiqKMKKnEeWuC7TGf5-sqA"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_juSP06KnEeWuC7TGf5-sqA" name="Greater" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_juSP0KKnEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_iiqxQqKnEeWuC7TGf5-sqA" name="Smaller" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_iiqKMKKnEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_juSP06KnEeWuC7TGf5-sqA" name="Greater" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_juSP0KKnEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_XM4vUKKoEeWuC7TGf5-sqA" client="_-HyvoKKmEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_zAAQ8KKoEeWuC7TGf5-sqA" name="Sine Expression">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_-ShuEKKoEeWuC7TGf5-sqA" name="Argument" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_-Sgf8KKoEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-ShuEKKoEeWuC7TGf5-sqA" name="Argument" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_-Sgf8KKoEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_PjJhUKKpEeWuC7TGf5-sqA" client="_zAAQ8KKoEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_VT3iwKKpEeWuC7TGf5-sqA" name="Division Expression">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_yLToIKKpEeWuC7TGf5-sqA" name="Divisor" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_yLTBEKKpEeWuC7TGf5-sqA"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_yrLbA6KpEeWuC7TGf5-sqA" name="Dividend" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_yrLbAKKpEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yLToIKKpEeWuC7TGf5-sqA" name="Divisor" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_yLTBEKKpEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yrLbA6KpEeWuC7TGf5-sqA" name="Dividend" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_yrLbAKKpEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_ASkBQKKrEeWuC7TGf5-sqA" client="_VT3iwKKpEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_jI71IKKpEeWuC7TGf5-sqA" name="Substraction Expression">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_R6gk0qKqEeWuC7TGf5-sqA" name="Minuend" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_R6f9wKKqEeWuC7TGf5-sqA"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_SxP_kaKqEeWuC7TGf5-sqA" name="Subtrahend" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" association="_SxPYgKKqEeWuC7TGf5-sqA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SxP_kaKqEeWuC7TGf5-sqA" name="Subtrahend" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_SxPYgKKqEeWuC7TGf5-sqA"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_9JeJYKKqEeWuC7TGf5-sqA" client="_jI71IKKpEeWuC7TGf5-sqA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_f5jZAKHuEeWB_pi2tzIUuQ" memberEnd="_f5lOMKHuEeWB_pi2tzIUuQ _f5nDYKHuEeWB_pi2tzIUuQ">
