@@ -64,34 +64,43 @@ public class AnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor()}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(ResourceDemandingInternalAction, EvaluableExpression)}
+	 * .
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code rdia}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(ResourceDemandingInternalAction,
+	 *      EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression) {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor()}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFLoop, EvaluableExpression)}
+	 * .
 	 *
 	 * @param loop A SEFF Loop. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code loop}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFLoop,
+	 *      EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor()}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFBranch, EvaluableExpression)}
+	 * .
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFBranch,
+	 *      EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
 	}
