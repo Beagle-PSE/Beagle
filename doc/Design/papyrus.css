@@ -49,7 +49,8 @@ Operation {
 	maskLabel: parametersType, parametersMultiplicity, parametersName, visibility, name, returnMultiplicity, returnType;
 }
 
-Port {
+Port,
+Property {
 	fontColor: #000000;
 	fontName: "Source Code Pro";
 	fontHeight: 9;
@@ -73,4 +74,9 @@ Comment {
 
 .code {
 	fontName: "Source Code Pro";
+}
+
+Property {
+	elementIcon: false;
+	fillColor: #FFFFFF;
 }
