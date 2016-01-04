@@ -82,11 +82,11 @@ public class ReadOnlyBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()}.
 	 *
 	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()
 	 */
 	public Set<SEFFLoop> getAllSEFFLoops() {
 		return null;
