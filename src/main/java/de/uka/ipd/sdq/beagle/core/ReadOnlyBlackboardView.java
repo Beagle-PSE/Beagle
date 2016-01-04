@@ -63,14 +63,15 @@ public class ReadOnlyBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#readFor(WRITTEN_TYPE)}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#readFor(BlackboardStorer)} .
 	 *
 	 * @param writer The class the desired data was written for. Must not be {@code null}.
 	 * @param <WRITTEN_TYPE> The type of the data to be read.
 	 * @return The data written in the last call to {@linkplain #writeFor} for
 	 *         {@code writer}. {@code null} if no data has been written for {@code writer}
 	 *         yet.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(WRITTEN_TYPE)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(BlackboardStorer)
 	 */
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {

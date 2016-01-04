@@ -47,12 +47,13 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(WRITTEN_TYPE, WRITTEN_TYPE)}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(BlackboardStorer, Serializable)}
+	 * .
 	 *
 	 * @param writer The class the data should be written for. Must not be {@code null}.
 	 * @param written The data to write.
 	 * @param <WRITTEN_TYPE> {@code written}’s type.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(BlackboardStorer, Serializable)
 	 */
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
