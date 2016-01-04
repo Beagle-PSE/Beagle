@@ -7,12 +7,12 @@ package de.uka.ipd.sdq.beagle.measurement;
  *
  * @author Joshua Gleitze
  */
-public class LoopRepetitionCountResult extends ParameterisationDependentMeasurementResult {
+public class LoopRepetitionCountMeasurementResult extends ParameterisationDependentMeasurementResult {
 
 	/**
 	 * Creates a result for a loop measurement for which no parameterisation was recorded.
 	 */
-	public LoopRepetitionCountResult() {
+	public LoopRepetitionCountMeasurementResult() {
 	}
 
 	/**
@@ -20,7 +20,7 @@ public class LoopRepetitionCountResult extends ParameterisationDependentMeasurem
 	 *
 	 * @param parameterisation The state of variables during measurement.
 	 */
-	public LoopRepetitionCountResult(final Parameterisation parameterisation) {
+	public LoopRepetitionCountMeasurementResult(final Parameterisation parameterisation) {
 	}
 
 	/**

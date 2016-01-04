@@ -7,13 +7,13 @@ package de.uka.ipd.sdq.beagle.measurement;
  *
  * @author Joshua Gleitze
  */
-public class BranchDecisionResult extends ParameterisationDependentMeasurementResult {
+public class BranchDecisionMeasurementResult extends ParameterisationDependentMeasurementResult {
 
 	/**
 	 * Creates a result for a branch measurement for which no parameterisation was
 	 * recorded.
 	 */
-	public BranchDecisionResult() {
+	public BranchDecisionMeasurementResult() {
 	}
 
 	/**
@@ -21,7 +21,7 @@ public class BranchDecisionResult extends ParameterisationDependentMeasurementRe
 	 *
 	 * @param parameterisation The state of variables during measurement.
 	 */
-	public BranchDecisionResult(final Parameterisation parameterisation) {
+	public BranchDecisionMeasurementResult(final Parameterisation parameterisation) {
 	}
 
 	/**

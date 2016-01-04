@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression;
-import de.uka.ipd.sdq.beagle.measurement.BranchDecisionResult;
-import de.uka.ipd.sdq.beagle.measurement.LoopRepetitionCountResult;
+import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
@@ -12,8 +12,8 @@ import java.util.Set;
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link BeagleController}, the Blackboard pattern from POSA I. The Blackboard’s
  * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SEFFBranch},
- * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult}, {@link BranchDecisionResult}
- * , {@link LoopRepetitionCountResult} and {@link EvaluableExpression}. It further allows
+ * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult}, {@link BranchDecisionMeasurementResult}
+ * , {@link LoopRepetitionCountMeasurementResult} and {@link EvaluableExpression}. It further allows
  * classes to store custom data.
  *
  * <p>The Blackboard is typically not accessed directly by its using classes, but through
@@ -173,7 +173,7 @@ public class Blackboard implements Serializable {
 	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final SEFFLoop loop, final LoopRepetitionCountResult result) {
+	public void reportMeasurementResultFor(final SEFFLoop loop, final LoopRepetitionCountMeasurementResult result) {
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final SEFFBranch branch, final BranchDecisionResult result) {
+	public void reportMeasurementResultFor(final SEFFBranch branch, final BranchDecisionMeasurementResult result) {
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class Blackboard implements Serializable {
 	 * @return All measurement results reported for {@code branch}. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<BranchDecisionResult> getMeasurementResultsFor(final SEFFBranch branch) {
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
 		return null;
 	}
 
