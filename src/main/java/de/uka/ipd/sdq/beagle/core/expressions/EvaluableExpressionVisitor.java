@@ -1,19 +1,17 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when adding details to this interface!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document class
+ * Provides methods to visit all evaluable expressions.
+ * @author Annika Berger
  *
  */
 public interface EvaluableExpressionVisitor {
+
+	/**
+	 * TODO document this method.
+	 *
+	 * @param expression to be visited
+	 */
 	void visit(AdditionExpression expression);
 
 	void visit(MultiplicationExpression expression);
@@ -31,7 +29,7 @@ public interface EvaluableExpressionVisitor {
 	void visit(ExponentialFunctionExpression expression);
 
 	void visit(IfThenElseExpression expression);
-	
+
 	void visit(LogarithmExpression expression);
 
 	void visit(NaturalLogarithmExpression expression);

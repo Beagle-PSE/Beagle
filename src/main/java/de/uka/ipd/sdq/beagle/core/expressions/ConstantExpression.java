@@ -1,16 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document this type.
+ * 
+ * @author Annika Berger
  *
  */
 public class ConstantExpression implements EvaluableExpression {
@@ -18,12 +10,10 @@ public class ConstantExpression implements EvaluableExpression {
 	/**
 	 * TODO document this method.
 	 *
-	 * @param value
-	 *            TODO
+	 * @param value TODO
 	 * @return TODO
 	 */
-	public static ConstantExpression forValue(double value) {
-		// TODO implement this method
+	public static ConstantExpression forValue(final double value) {
 		return null;
 	}
 
@@ -31,8 +21,7 @@ public class ConstantExpression implements EvaluableExpression {
 	 * TODO document this constructor.
 	 *
 	 */
-	private ConstantExpression(double value) {
-		// TODO Auto-generated constructor stub
+	private ConstantExpression(final double value) {
 	}
 
 	/*
@@ -42,8 +31,7 @@ public class ConstantExpression implements EvaluableExpression {
 	 * beagle. core.expressions.EvaluableExpressionVisitor)
 	 */
 	@Override
-	public void receive(EvaluableExpressionVisitor visitor) {
-		// TODO Auto-generated method stub
+	public void receive(final EvaluableExpressionVisitor visitor) {
 
 	}
 
@@ -56,7 +44,6 @@ public class ConstantExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(EvaluableVariableAssignment variableAssignments) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

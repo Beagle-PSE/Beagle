@@ -16,7 +16,7 @@ package de.uka.ipd.sdq.beagle.core.expressions;
  * situation.
  *
  * <p>Implementations are encouraged to override {@link Object#equals(Object)} and
- * {@link Object#hashCode()} to fulfil the following: If for two evaluable expressions
+ * {@link Object#hashCode()} to fulfill the following: If for two evaluable expressions
  * {@code a} and {@code b} {@code a.equals(b)} returns {@code true} true,
  * {@code a.evaluate(ass)} will return a value equal to {@code b.evaluate(ass)} for any
  * {@link EvaluableVariableAssignment} {@code ass}. The inverse implication will usually

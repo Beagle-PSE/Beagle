@@ -1,16 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document this type.
+ * Expression that compares all its contained expressions.
+ * @author Annika Berger
  *
  */
 public class ComparisonExpression implements EvaluableExpression {
@@ -23,8 +15,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * core.expressions.EvaluableExpressionVisitor)
 	 */
 	@Override
-	public void receive(EvaluableExpressionVisitor visitor) {
-		// TODO Auto-generated method stub
+	public void receive(final EvaluableExpressionVisitor visitor) {
 
 	}
 
@@ -36,8 +27,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
-	public double evaluate(EvaluableVariableAssignment variableAssignments) {
-		// TODO Auto-generated method stub
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return 0;
 	}
 
