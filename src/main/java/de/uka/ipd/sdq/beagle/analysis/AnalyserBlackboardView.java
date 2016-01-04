@@ -5,7 +5,7 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SEFFBranch;
 import de.uka.ipd.sdq.beagle.core.SEFFLoop;
 
-import java.util.Collection;
+import java.util.Set;
 
 /**
  * This view of the {@link Blackboard} is designed to be used by {@link ResultAnalyser}.
@@ -28,30 +28,33 @@ public class AnalyserBlackboardView {
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}.
 	 *
 	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 *         actions} known to Beagle
+	 *         actions} known to Beagle. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
 	 */
-	public Collection<ResourceDemandingInternalAction> getAllResourceDemandingInternalActions() {
+	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
 		return null;
 	}
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
 	 *
-	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle
+	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
 	 */
-	public Collection<SEFFBranch> getAllSeffBranches() {
+	public Set<SEFFBranch> getAllSEFFBranches() {
 		return null;
 	}
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()}.
 	 *
-	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle
+	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
-	public Collection<SEFFLoop> getAllSeffLoops() {
+	public Set<SEFFLoop> getAllSEFFLoops() {
 		return null;
 	}
 
@@ -65,29 +68,38 @@ public class AnalyserBlackboardView {
 	}
 
 	/**
-	 * Returns the {@link ResourceDemandingInternalAction}s to be measured.
-	 * 
-	 * @return the {@link ResourceDemandingInternalAction}s to be measured
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()}.
+	 *
+	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} to be measured. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()
 	 */
-	public Collection<ResourceDemandingInternalAction> getResourceDemandingInternalActionsToBeMeasured() {
+	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
 		return null;
 	}
 
 	/**
-	 * Returns the {@link SEFFBranch}es to be measured.
-	 * 
-	 * @return the {@link SEFFBranch}es to be measured
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()}.
+	 *
+	 * @return All {@linkplain SEFFBranch SEFF branches} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()
 	 */
-	public Collection<SEFFBranch> getSeffBranchesToBeMeasured() {
+	public Set<SEFFBranch> getSEFFBranchesToBeMeasured() {
 		return null;
 	}
 
 	/**
-	 * Returns the {@link SEFFLoop}s to be measured.
-	 * 
-	 * @return the {@link SEFFLoop}s to be measured
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFLoopsToBeMeasured()}.
+	 *
+	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFLoopsToBeMeasured()
 	 */
-	public Collection<SEFFLoop> getSeffLoopsToBeMeasured() {
+	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
 		return null;
 	}
 }
