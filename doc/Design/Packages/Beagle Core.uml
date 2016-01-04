@@ -456,8 +456,30 @@ write results()</body>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Interaction" xmi:id="_838pgLLaEeW_GIAp8elJew" name="Beagle Example Run">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_8SzDILLcEeW_GIAp8elJew" name="" type="_qgmqYKD1EeWVpfCzK8hwSg"/>
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_-3X4sLLcEeW_GIAp8elJew" name="" type="_qgmqYKD1EeWVpfCzK8hwSg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_sAH-gLLfEeW_GIAp8elJew" name="" type="_I-iE4KDUEeWv3dQk34uqzw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ATB3ALLgEeW_GIAp8elJew" name="" type="_gq6J4KDwEeWVpfCzK8hwSg"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_sAHXcLLfEeW_GIAp8elJew" name="" represents="_sAH-gLLfEeW_GIAp8elJew" coveredBy="_Gi_ZMLLgEeW_GIAp8elJew _QyEcULLgEeW_GIAp8elJew _1dB90LLfEeW_GIAp8elJew _dTTvULLgEeW_GIAp8elJew _dTQE8LLgEeW_GIAp8elJew _1dB90bLfEeW_GIAp8elJew _1dBWwLLfEeW_GIAp8elJew"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_ATBP8LLgEeW_GIAp8elJew" name="" represents="_ATB3ALLgEeW_GIAp8elJew" coveredBy="_GjAAQLLgEeW_GIAp8elJew _HmEm0bLgEeW_GIAp8elJew _HmEm0LLgEeW_GIAp8elJew _QyDOMLLgEeW_GIAp8elJew _dTTvULLgEeW_GIAp8elJew _dTQE8LLgEeW_GIAp8elJew"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Gi_ZMLLgEeW_GIAp8elJew" name="can measure_MessageSend" covered="_sAHXcLLfEeW_GIAp8elJew" message="_Gi8V4LLgEeW_GIAp8elJew"/>
+      <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_HmEm0LLgEeW_GIAp8elJew" name="ActionExecSpec0" covered="_ATBP8LLgEeW_GIAp8elJew" finish="_HmEm0bLgEeW_GIAp8elJew" start="_GjAAQLLgEeW_GIAp8elJew"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GjAAQLLgEeW_GIAp8elJew" name="can measure_MessageRecv" covered="_ATBP8LLgEeW_GIAp8elJew" message="_Gi8V4LLgEeW_GIAp8elJew"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QyDOMLLgEeW_GIAp8elJew" name="can measure_MessageSend0" covered="_ATBP8LLgEeW_GIAp8elJew" message="_QyCAELLgEeW_GIAp8elJew"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_QyEcULLgEeW_GIAp8elJew" name="can measure_MessageRecv0" covered="_sAHXcLLfEeW_GIAp8elJew" message="_QyCAELLgEeW_GIAp8elJew"/>
+      <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_HmEm0bLgEeW_GIAp8elJew" name="ActionExecSpec0Finish" covered="_ATBP8LLgEeW_GIAp8elJew" execution="_HmEm0LLgEeW_GIAp8elJew"/>
+      <fragment xmi:type="uml:CombinedFragment" xmi:id="_dTQE8LLgEeW_GIAp8elJew" name="CombinedFragment" covered="_ATBP8LLgEeW_GIAp8elJew _sAHXcLLfEeW_GIAp8elJew" interactionOperator="opt">
+        <operand xmi:type="uml:InteractionOperand" xmi:id="_dTTvULLgEeW_GIAp8elJew" name="InteractionOperand" covered="_ATBP8LLgEeW_GIAp8elJew _sAHXcLLfEeW_GIAp8elJew">
+          <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_1dBWwLLfEeW_GIAp8elJew" name="ActionExecSpecStart" covered="_sAHXcLLfEeW_GIAp8elJew" execution="_1dB90LLfEeW_GIAp8elJew"/>
+          <fragment xmi:type="uml:ActionExecutionSpecification" xmi:id="_1dB90LLfEeW_GIAp8elJew" name="ActionExecSpec" covered="_sAHXcLLfEeW_GIAp8elJew" finish="_1dB90bLfEeW_GIAp8elJew" start="_1dBWwLLfEeW_GIAp8elJew"/>
+          <fragment xmi:type="uml:ExecutionOccurrenceSpecification" xmi:id="_1dB90bLfEeW_GIAp8elJew" name="ActionExecSpecFinish" covered="_sAHXcLLfEeW_GIAp8elJew" execution="_1dB90LLfEeW_GIAp8elJew"/>
+          <guard xmi:type="uml:InteractionConstraint" xmi:id="_dTUWYLLgEeW_GIAp8elJew">
+            <specification xmi:type="uml:LiteralBoolean" xmi:id="_D0R6wLLhEeW_GIAp8elJew" name="can measure_Result" value="true"/>
+            <maxint xmi:type="uml:LiteralInteger" xmi:id="_dTU9cLLgEeW_GIAp8elJew" value="1"/>
+            <minint xmi:type="uml:LiteralInteger" xmi:id="_dTUWYrLgEeW_GIAp8elJew"/>
+          </guard>
+        </operand>
+      </fragment>
+      <message xmi:type="uml:Message" xmi:id="_Gi8V4LLgEeW_GIAp8elJew" name="can measure" receiveEvent="_GjAAQLLgEeW_GIAp8elJew" sendEvent="_Gi_ZMLLgEeW_GIAp8elJew" signature="_664BkLClEeWUDtVlk6a50w"/>
+      <message xmi:type="uml:Message" xmi:id="_QyCAELLgEeW_GIAp8elJew" name="can measure_Result" messageSort="reply" receiveEvent="_QyEcULLgEeW_GIAp8elJew" sendEvent="_QyDOMLLgEeW_GIAp8elJew" signature="_664BkLClEeWUDtVlk6a50w"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
