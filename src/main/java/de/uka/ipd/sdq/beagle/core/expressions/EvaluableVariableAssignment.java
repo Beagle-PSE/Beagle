@@ -1,9 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * The assignment of an {@link EvaluableVariable} and a value.
- * 
- * 
+ * Assigns {@link EvaluableVariable EvaluableVariables} to values.
  * @author Annika Berger
  * 
  * @see EvaluableVariable
