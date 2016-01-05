@@ -1,12 +1,30 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * Expression that executes an exponential function on all its contained expressions.
+ * Expression that potentises the given exponent to the base e.
  * 
  * @author Annika Berger
  *
  */
 public class ExponentialFunctionExpression implements EvaluableExpression {
+
+	/**
+	 * Set an {@link EvaluableExpression} as exponent.
+	 *
+	 * @param expression which is the exponent
+	 */
+	public void setExponent(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is set as exponent.
+	 *
+	 * @return the exponent
+	 */
+	public EvaluableExpression getExponent() {
+		return null;
+	}
 
 	/*
 	 * (non-Javadoc)

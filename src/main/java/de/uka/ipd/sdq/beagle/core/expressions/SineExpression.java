@@ -1,12 +1,30 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * Expression that executes a sine function on all its contained expressions.
+ * Expression that executes a sine function on its contained expression.
  * 
  * @author Annika Berger
  *
  */
 public class SineExpression implements EvaluableExpression {
+
+	/**
+	 * Set a {@link EvaluableExpression} to be the argument of the sine function.
+	 *
+	 * @param expression to be the argument.
+	 */
+	public void setArgument(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is the argument of the sine function.
+	 *
+	 * @return the argument of the function
+	 */
+	public EvaluableExpression getArgument() {
+		return null;
+	}
 
 	/*
 	 * (non-Javadoc)

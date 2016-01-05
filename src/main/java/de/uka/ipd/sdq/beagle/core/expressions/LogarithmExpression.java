@@ -1,11 +1,50 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * Expression that executes the logarithmic function on all its contained expressions.
+ * Expression that executes a logarithm with defined expressions as base and
+ * antilogarithm.
  * 
  * @author Annika Berger
  */
 public class LogarithmExpression implements EvaluableExpression {
+
+	/**
+	 * Set the base of the logarithm.
+	 *
+	 * @param expression which is supposed to be the base.
+	 */
+	public void setBase(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Get {@link EvaluableExpression}, which is the base of the logarithm.
+	 *
+	 * @return the base of the logarithm.
+	 */
+	public EvaluableExpression getBase() {
+		return null;
+	}
+
+	/**
+	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
+	 * {@code LogarithmExpression}.
+	 *
+	 * @param expression to be the antilogarithm
+	 */
+	public void setAnitlogarithm(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is the antilogarithm, or parameter of the
+	 * {@code LogarithmExpression}.
+	 *
+	 * @return the antilogarithm expression.s
+	 */
+	public EvaluableExpression getAntilogarithm() {
+		return null;
+	}
 
 	/*
 	 * (non-Javadoc)

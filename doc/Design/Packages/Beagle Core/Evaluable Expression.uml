@@ -76,8 +76,8 @@
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_czgy4KKjEeWuC7TGf5-sqA" client="_WQiUgKHnEeWB_pi2tzIUuQ" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_2IqY8LLYEeWjc5YKGj5xEA" name="Natural Logarithm Expression" visibility="public">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_m0ARMrLaEeWjc5YKGj5xEA" name="naturalantilogarithm" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_mz_qILLaEeWjc5YKGj5xEA"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_AVa18LLbEeWjc5YKGj5xEA" name="base" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_AVZAwLLbEeWjc5YKGj5xEA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_m0ARMrLaEeWjc5YKGj5xEA" name="antilogarithm" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false" association="_mz_qILLaEeWjc5YKGj5xEA"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_AVa18LLbEeWjc5YKGj5xEA" name="base" visibility="private" type="_ctETEKHnEeWB_pi2tzIUuQ" isUnique="false"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_2IrAArLYEeWjc5YKGj5xEA" client="_2IqY8LLYEeWjc5YKGj5xEA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_ILoHwLLcEeWjc5YKGj5xEA" client="_2IqY8LLYEeWjc5YKGj5xEA" supplier="_ctETEKHnEeWB_pi2tzIUuQ" contract="_ctETEKHnEeWB_pi2tzIUuQ"/>
   </packagedElement>
@@ -297,15 +297,6 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_m0A4QLLaEeWjc5YKGj5xEA" type="_2IqY8LLYEeWjc5YKGj5xEA" association="_mz_qILLaEeWjc5YKGj5xEA">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_54kuULLaEeWjc5YKGj5xEA"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_54nKkLLaEeWjc5YKGj5xEA" value="*"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_AVZAwLLbEeWjc5YKGj5xEA" memberEnd="_AVa18LLbEeWjc5YKGj5xEA _AVa18bLbEeWjc5YKGj5xEA">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_AVaO4LLbEeWjc5YKGj5xEA" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_AVaO4bLbEeWjc5YKGj5xEA" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_AVa18bLbEeWjc5YKGj5xEA" name="natural logarithm expression" type="_2IqY8LLYEeWjc5YKGj5xEA" association="_AVZAwLLbEeWjc5YKGj5xEA">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_KZYOMLLbEeWjc5YKGj5xEA"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_KZaDYLLbEeWjc5YKGj5xEA" value="*"/>
     </ownedEnd>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-_INEKHyEeWB_pi2tzIUuQ">

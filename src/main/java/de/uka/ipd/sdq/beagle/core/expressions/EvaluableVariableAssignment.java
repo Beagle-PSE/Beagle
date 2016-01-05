@@ -38,7 +38,7 @@ public class EvaluableVariableAssignment {
 	 * @return {@code true} if a value is assigned for the given variable. Else it returns
 	 *         {@code false}.
 	 */
-	public boolean valueAssignedFor(final EvaluableVariable variable) {
+	public boolean isValueAssignedFor(final EvaluableVariable variable) {
 		return false;
 	}
 }
