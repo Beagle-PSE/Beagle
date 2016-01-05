@@ -184,42 +184,6 @@ public class AnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()}.
-	 *
-	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 *         actions} to be measured. Changes to the returned set will not modify the
-	 *         blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()
-	 */
-	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
-		return null;
-	}
-
-	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()}.
-	 *
-	 * @return All {@linkplain SEFFBranch SEFF branches} to be measured. Changes to the
-	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()
-	 */
-	public Set<SEFFBranch> getSEFFBranchesToBeMeasured() {
-		return null;
-	}
-
-	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFLoopsToBeMeasured()}.
-	 *
-	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
-	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFLoopsToBeMeasured()
-	 */
-	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
-		return null;
-	}
-
-	/**
 	 * Delegates to
 	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addRDIAsToBeMeasured(ResourceDemandingInternalAction...)}
 	 * .
@@ -227,6 +191,7 @@ public class AnalyserBlackboardView {
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to the {@link Blackboard}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addRDIAsToBeMeasured(ResourceDemandingInternalAction...)
+	 * @see #addRDIAsToBeMeasured(Collection)
 	 */
 	public void addRDIAsToBeMeasured(final ResourceDemandingInternalAction... rdias) {
 	}
@@ -238,6 +203,7 @@ public class AnalyserBlackboardView {
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to the {@link Blackboard}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addRDIAsToBeMeasured(Collection)
+	 * @see #addRDIAsToBeMeasured(ResourceDemandingInternalAction...)
 	 */
 	public void addRDIAsToBeMeasured(final Collection<ResourceDemandingInternalAction> rdias) {
 	}
@@ -250,6 +216,7 @@ public class AnalyserBlackboardView {
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to the Blackboard.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFBranchesToBeMeasured(SEFFBranch...)
+	 * @see #addSEFFBranchesToBeMeasured(Collection)
 	 */
 	public void addSEFFBranchesToBeMeasured(final SEFFBranch... branches) {
 	}
@@ -262,6 +229,7 @@ public class AnalyserBlackboardView {
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to the Blackboard.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFBranchesToBeMeasured(Collection)
+	 * @see #addSEFFBranchesToBeMeasured(SEFFBranch...)
 	 */
 	public void addSEFFBranchesToBeMeasured(final Collection<SEFFBranch> branches) {
 	}
@@ -274,6 +242,7 @@ public class AnalyserBlackboardView {
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to the Blackboard.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFLoopsToBeMeasured(SEFFLoop...)
+	 * @see #addSEFFLoopsToBeMeasured(Collection)
 	 */
 	public void addSEFFLoopsToBeMeasured(final SEFFLoop... loops) {
 	}
@@ -286,6 +255,7 @@ public class AnalyserBlackboardView {
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to the Blackboard.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFLoopsToBeMeasured(Collection)
+	 * @see #addSEFFLoopsToBeMeasured(SEFFLoop...)
 	 */
 	public void addSEFFLoopsToBeMeasured(final Collection<SEFFLoop> loops) {
 	}

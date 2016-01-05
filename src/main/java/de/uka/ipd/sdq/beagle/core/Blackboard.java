@@ -70,6 +70,7 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to this blackboard.
+	 * @see #addRDIAsToBeMeasured(Collection)
 	 */
 	public void addRDIAsToBeMeasured(final ResourceDemandingInternalAction... rdias) {
 	}
@@ -79,6 +80,7 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to this blackboard.
+	 * @see #addRDIAsToBeMeasured(ResourceDemandingInternalAction...)
 	 */
 	public void addRDIAsToBeMeasured(final Collection<ResourceDemandingInternalAction> rdias) {
 	}
@@ -88,6 +90,7 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
+	 * @see #addSEFFBranchesToBeMeasured(Collection)
 	 */
 	public void addSEFFBranchesToBeMeasured(final SEFFBranch... branches) {
 	}
@@ -97,6 +100,7 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
+	 * @see #addSEFFBranchesToBeMeasured(SEFFBranch...)
 	 */
 	public void addSEFFBranchesToBeMeasured(final Collection<SEFFBranch> branches) {
 	}
@@ -106,6 +110,7 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
+	 * @see #addSEFFLoopsToBeMeasured(Collection)
 	 */
 	public void addSEFFLoopsToBeMeasured(final SEFFLoop... loops) {
 	}
@@ -115,6 +120,7 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
+	 * @see #addSEFFLoopsToBeMeasured(SEFFLoop...)
 	 */
 	public void addSEFFLoopsToBeMeasured(final Collection<SEFFLoop> loops) {
 	}
