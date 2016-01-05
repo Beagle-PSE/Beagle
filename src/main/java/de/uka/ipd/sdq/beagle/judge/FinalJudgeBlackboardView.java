@@ -219,7 +219,7 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForRDIA(ResourceDemandingInternalAction, EvaluableExpression)}
+	 * {@link Blackboard#setFinalExpressionForRDIA(ResourceDemandingInternalAction, EvaluableExpression)}
 	 * .
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.

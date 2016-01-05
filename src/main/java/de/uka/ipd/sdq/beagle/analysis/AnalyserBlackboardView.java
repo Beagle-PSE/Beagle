@@ -144,13 +144,13 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@Blackboard#proposeExpressionForRDIA(ResourceDemandingInternalAction, EvaluableExpression)}
+	 * {@link Blackboard#proposeExpressionForRDIA(ResourceDemandingInternalAction, EvaluableExpression)}
 	 * .
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code rdia}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionForRDIA(ResourceDemandingInternalAction,
+	 * @see Blackboard#proposeExpressionForRDIA(ResourceDemandingInternalAction,
 	 *      EvaluableExpression)
 	 */
 	public void proposeExpressionForRDIA(final ResourceDemandingInternalAction rdia,

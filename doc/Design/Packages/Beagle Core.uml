@@ -293,6 +293,24 @@ write results()</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pgK2oLGUEeW_rv0J6Owpcw" value="*"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_YJHfULPFEeW187ThVZjyaw" name="report Measurements Results for RDIA">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_lDj8gLPFEeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_n8aY8LPFEeW187ThVZjyaw" name="result">
+          <type xmi:type="uml:Class" href="Measurement.uml#_9AQ3QLJGEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_uNlcELPFEeW187ThVZjyaw" name="report Measurement Result for SEFFLoop">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_1QA9ALPFEeW187ThVZjyaw" name="loop" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_5twToLPFEeW187ThVZjyaw" name="result">
+          <type xmi:type="uml:Class" href="Measurement.uml#_LaP0kLJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_6PAmkLPFEeW187ThVZjyaw" name="report Measurement Result for SEFFBranch">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_AFi8ILPGEeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_DUIYALPGEeW187ThVZjyaw" name="result">
+          <type xmi:type="uml:Class" href="Measurement.uml#_QQPTILJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_9waukKiSEeW317sgBX4gxw" name="Final Judge Blackboard View">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_z8uzYK7nEeW_rv0J6Owpcw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false"/>

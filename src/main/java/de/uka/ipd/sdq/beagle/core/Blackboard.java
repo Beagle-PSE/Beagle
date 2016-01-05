@@ -195,12 +195,25 @@ public class Blackboard implements Serializable {
 	/**
 	 * Adds a measurement result for the provided {@code rdia}.
 	 *
-	 * @param rdia A resource demanding action that was measured. Must not be {@code null}
-	 *            .
+	 * @param rdia A resource demanding internal action that was measured. Must not be
+	 *            {@code null} .
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+	public void reportMeasurementResultForRDIA(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult result) {
+	}
+
+	/**
+	 * Adds measurement results for {@linkplain ResourceDemandingInternalAction
+	 * ResourceDemandingInternalActions}.
+	 *
+	 * @param results The result of some measurements associated with it's Resource
+	 *            Demanding Internal Action. Must not be {@code null} and no key or value
+	 *            of this map may be {@code null}. Not each Resource Demanding Internal
+	 *            Action of this blackboard needs to be a key in this map.
+	 */
+	public void reportMeasurementResultsForRDIAs(
+		final Map<ResourceDemandingInternalAction, Set<ResourceDemandMeasurementResult>> results) {
 	}
 
 	/**
@@ -209,7 +222,20 @@ public class Blackboard implements Serializable {
 	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final SEFFLoop loop, final LoopRepetitionCountMeasurementResult result) {
+	public void reportMeasurementResultForSEFFLoop(final SEFFLoop loop,
+		final LoopRepetitionCountMeasurementResult result) {
+	}
+
+	/**
+	 * Adds measurement results for {@linkplain SEFFLoop SEFFLoops}.
+	 *
+	 * @param results The result of some measurements associated with it's SEFF Loops.
+	 *            Must not be {@code null} and no key or value of this map may be
+	 *            {@code null}. Not each Resource Demanding Internal Action of this
+	 *            blackboard needs to be a key in this map.
+	 */
+	public void reportMeasurementResultsForSEFFLoops(
+		final Map<ResourceDemandingInternalAction, Set<LoopRepetitionCountMeasurementResult>> results) {
 	}
 
 	/**
@@ -218,7 +244,20 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final SEFFBranch branch, final BranchDecisionMeasurementResult result) {
+	public void reportMeasurementResultForSEFFBranch(final SEFFBranch branch,
+		final BranchDecisionMeasurementResult result) {
+	}
+
+	/**
+	 * Adds measurement results for {@linkplain SEFFBranch SEFFBranches}.
+	 *
+	 * @param results The result of some measurements associated with it's SEFF Branches.
+	 *            Must not be {@code null} and no key or value of this map may be
+	 *            {@code null}. Not each Resource Demanding Internal Action of this
+	 *            blackboard needs to be a key in this map.
+	 */
+	public void reportMeasurementResultsForSEFFBranches(
+		final Map<ResourceDemandingInternalAction, Set<BranchDecisionMeasurementResult>> results) {
 	}
 
 	/**
