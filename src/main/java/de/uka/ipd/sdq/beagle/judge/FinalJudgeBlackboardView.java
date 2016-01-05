@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -17,9 +18,10 @@ import java.util.Set;
  * {@link de.uka.ipd.sdq.beagle.judge.FinalJudge}, therefore allowing reading access,
  * remeasuring {@link ResourceDemandingInternalAction}s, {@link SEFFBranch}es, and
  * {@link SEFFLoop}s, and setting final expressions.
- * 
+ *
  * @author Christoph Michelbach
- * 
+ * @author Roman Langrehr
+ *
  * @see Blackboard for information about Blackboard views
  */
 public class FinalJudgeBlackboardView {
@@ -265,36 +267,73 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(ResourceDemandingInternalAction)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addRDIAsToBeMeasured(ResourceDemandingInternalAction...)}
 	 * .
 	 *
-	 * @param rdia A resource demanding action that shall be measured. Must not be
-	 *            {@code null} and must be known to the Blackboard.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(ResourceDemandingInternalAction)
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to the {@link Blackboard}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addRDIAsToBeMeasured(ResourceDemandingInternalAction...)
 	 */
-	public void setToBeMeasured(final ResourceDemandingInternalAction rdia) {
+	public void addRDIAsToBeMeasured(final ResourceDemandingInternalAction... rdias) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFBranch)} .
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addRDIAsToBeMeasured(Collection)} .
 	 *
-	 * @param branch A SEFF branch that shall be measured. Must not be {@code null} and
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to the {@link Blackboard}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addRDIAsToBeMeasured(Collection)
+	 */
+	public void addRDIAsToBeMeasured(final Collection<ResourceDemandingInternalAction> rdias) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFBranchesToBeMeasured(SEFFBranch...)}
+	 * .
+	 *
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to the Blackboard.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFBranch)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFBranchesToBeMeasured(SEFFBranch...)
 	 */
-	public void setToBeMeasured(final SEFFBranch branch) {
+	public void addSEFFBranchesToBeMeasured(final SEFFBranch... branches) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFLoop)} .
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFBranchesToBeMeasured(Collection)}
+	 * .
 	 *
-	 * @param loop A SEFF Branch that shall be measured. Must not be {@code null} and must
-	 *            be known to the Blackboard.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setToBeMeasured(SEFFLoop)
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to the Blackboard.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFBranchesToBeMeasured(Collection)
 	 */
-	public void setToBeMeasured(final SEFFLoop loop) {
+	public void addSEFFBranchesToBeMeasured(final Collection<SEFFBranch> branches) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFLoopsToBeMeasured(SEFFLoop...)}
+	 * .
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to the Blackboard.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFLoopsToBeMeasured(SEFFLoop...)
+	 */
+	public void addSEFFLoopsToBeMeasured(final SEFFLoop... loops) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFLoopsToBeMeasured(Collection)}
+	 * .
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to the Blackboard.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addSEFFLoopsToBeMeasured(Collection)
+	 */
+	public void addSEFFLoopsToBeMeasured(final Collection<SEFFLoop> loops) {
 	}
 
 }

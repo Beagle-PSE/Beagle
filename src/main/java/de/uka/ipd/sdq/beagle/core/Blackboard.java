@@ -6,15 +6,16 @@ import de.uka.ipd.sdq.beagle.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link BeagleController}, the Blackboard pattern from POSA I. The Blackboard’s
  * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SEFFBranch},
- * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult}, {@link BranchDecisionMeasurementResult}
- * , {@link LoopRepetitionCountMeasurementResult} and {@link EvaluableExpression}. It further allows
- * classes to store custom data.
+ * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult},
+ * {@link BranchDecisionMeasurementResult} , {@link LoopRepetitionCountMeasurementResult}
+ * and {@link EvaluableExpression}. It further allows classes to store custom data.
  *
  * <p>The Blackboard is typically not accessed directly by its using classes, but through
  * <em>blackboard views</em> (recognisable by having the {@code BlackboardView} suffix).
@@ -22,6 +23,7 @@ import java.util.Set;
  * restrict access to it.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  * @see BeagleController
  */
 public class Blackboard implements Serializable {
@@ -64,30 +66,57 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * Reports that {@code rdia} shall be measured for its resource demands.
+	 * Reports that {@code rdias} shall be measured for its resource demands.
 	 *
-	 * @param rdia A resource demanding action that shall be measured. Must not be
-	 *            {@code null} and must be known to the Blackboard.
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to this blackboard.
 	 */
-	public void setToBeMeasured(final ResourceDemandingInternalAction rdia) {
+	public void addRDIAsToBeMeasured(final ResourceDemandingInternalAction... rdias) {
 	}
 
 	/**
-	 * Reports that {@code branch} shall be measured for its branch decisions.
+	 * Reports that {@code rdias} shall be measured for its resource demands.
 	 *
-	 * @param branch A SEFF branch that shall be measured. Must not be {@code null} and
-	 *            must be known to the Blackboard.
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to this blackboard.
 	 */
-	public void setToBeMeasured(final SEFFBranch branch) {
+	public void addRDIAsToBeMeasured(final Collection<ResourceDemandingInternalAction> rdias) {
 	}
 
 	/**
-	 * Reports that {@code loop} shall be measured for its repetitions.
+	 * Reports that {@code branches} shall be measured for its branch decisions.
 	 *
-	 * @param loop A SEFF Branch that shall be measured. Must not be {@code null} and must
-	 *            be known to the Blackboard.
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to this blackboard.
 	 */
-	public void setToBeMeasured(final SEFFLoop loop) {
+	public void addSEFFBranchesToBeMeasured(final SEFFBranch... branches) {
+	}
+
+	/**
+	 * Reports that {@code branches} shall be measured for its branch decisions.
+	 *
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to this blackboard.
+	 */
+	public void addSEFFBranchesToBeMeasured(final Collection<SEFFBranch> branches) {
+	}
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to this blackboard.
+	 */
+	public void addSEFFLoopsToBeMeasured(final SEFFLoop... loops) {
+	}
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to this blackboard.
+	 */
+	public void addSEFFLoopsToBeMeasured(final Collection<SEFFLoop> loops) {
 	}
 
 	/**
