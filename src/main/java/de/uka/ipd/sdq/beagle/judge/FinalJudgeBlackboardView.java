@@ -278,7 +278,6 @@ public class FinalJudgeBlackboardView {
 	}
 
 	/**
-	 *
 	 * Delegates to {@link Blackboard#setFinalExpressionsForSEFFLoops(Map)}
 	 *
 	 * @param expressions An evaluable expression for some SEFF Loops describing their
@@ -291,7 +290,6 @@ public class FinalJudgeBlackboardView {
 	}
 
 	/**
-	 *
 	 * Delegates to {@link Blackboard#setFinalExpressionsForSEFFBranches(Map)}
 	 *
 	 * @param expressions An evaluable expression for some SEFF Branches describing their
