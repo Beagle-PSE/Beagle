@@ -9,7 +9,7 @@ package de.uka.ipd.sdq.beagle.core.expressions;
 public class SubstractionExpression implements EvaluableExpression {
 
 	/**
-	 * Set a {@link EvaluableExpression} as substrahend of the
+	 * Set an {@link EvaluableExpression} as substrahend of the
 	 * {@code SubstractionExpression}.
 	 *
 	 * @param expression to be the substrahend
@@ -28,7 +28,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	}
 
 	/**
-	 * Set a {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}.
+	 * Set an {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}.
 	 *
 	 * @param expression to be the minuend
 	 */

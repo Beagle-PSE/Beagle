@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
  * Expression that executes the natural logarithmic function. The antilogarithm is a
- * contained {@link EvaluableExpression} as antilogarithm and the Base is e.
+ * contained {@link EvaluableExpression} and the base is e (Euler’s number).
  *
  * @author Annika Berger
  */

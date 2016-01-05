@@ -9,7 +9,7 @@ package de.uka.ipd.sdq.beagle.core.expressions;
 public class SineExpression implements EvaluableExpression {
 
 	/**
-	 * Set a {@link EvaluableExpression} to be the argument of the sine function.
+	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
 	 *
 	 * @param expression to be the argument.
 	 */

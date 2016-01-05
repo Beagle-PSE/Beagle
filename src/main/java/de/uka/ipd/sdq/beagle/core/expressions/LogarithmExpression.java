@@ -18,7 +18,7 @@ public class LogarithmExpression implements EvaluableExpression {
 	}
 
 	/**
-	 * Get {@link EvaluableExpression}, which is the base of the logarithm.
+	 * Get the {@link EvaluableExpression} which is the base of the logarithm.
 	 *
 	 * @return the base of the logarithm.
 	 */
