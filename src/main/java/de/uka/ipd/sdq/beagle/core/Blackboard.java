@@ -70,9 +70,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to this blackboard.
-	 * @see #addRDIAsToBeMeasured(Collection)
+	 * @see #remeasureRDIAs(Collection)
 	 */
-	public void addRDIAsToBeMeasured(final ResourceDemandingInternalAction... rdias) {
+	public void remeasureRDIAs(final ResourceDemandingInternalAction... rdias) {
 	}
 
 	/**
@@ -80,9 +80,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to this blackboard.
-	 * @see #addRDIAsToBeMeasured(ResourceDemandingInternalAction...)
+	 * @see #remeasureRDIAs(ResourceDemandingInternalAction...)
 	 */
-	public void addRDIAsToBeMeasured(final Collection<ResourceDemandingInternalAction> rdias) {
+	public void remeasureRDIAs(final Collection<ResourceDemandingInternalAction> rdias) {
 	}
 
 	/**
@@ -90,9 +90,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
-	 * @see #addSEFFBranchesToBeMeasured(Collection)
+	 * @see #remeasureSEFFBranches(Collection)
 	 */
-	public void addSEFFBranchesToBeMeasured(final SEFFBranch... branches) {
+	public void remeasureSEFFBranches(final SEFFBranch... branches) {
 	}
 
 	/**
@@ -100,9 +100,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
-	 * @see #addSEFFBranchesToBeMeasured(SEFFBranch...)
+	 * @see #remeasureSEFFBranches(SEFFBranch...)
 	 */
-	public void addSEFFBranchesToBeMeasured(final Collection<SEFFBranch> branches) {
+	public void remeasureSEFFBranches(final Collection<SEFFBranch> branches) {
 	}
 
 	/**
@@ -110,9 +110,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
-	 * @see #addSEFFLoopsToBeMeasured(Collection)
+	 * @see #remeasureSEFFLoops(Collection)
 	 */
-	public void addSEFFLoopsToBeMeasured(final SEFFLoop... loops) {
+	public void remeasureSEFFLoops(final SEFFLoop... loops) {
 	}
 
 	/**
@@ -120,9 +120,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
-	 * @see #addSEFFLoopsToBeMeasured(SEFFLoop...)
+	 * @see #remeasureSEFFLoops(SEFFLoop...)
 	 */
-	public void addSEFFLoopsToBeMeasured(final Collection<SEFFLoop> loops) {
+	public void remeasureSEFFLoops(final Collection<SEFFLoop> loops) {
 	}
 
 	/**
