@@ -12,9 +12,9 @@ import java.util.Set;
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link BeagleController}, the Blackboard pattern from POSA I. The Blackboard’s
  * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SEFFBranch},
- * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult}, {@link BranchDecisionMeasurementResult}
- * , {@link LoopRepetitionCountMeasurementResult} and {@link EvaluableExpression}. It further allows
- * classes to store custom data.
+ * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult},
+ * {@link BranchDecisionMeasurementResult} , {@link LoopRepetitionCountMeasurementResult}
+ * and {@link EvaluableExpression}. It further allows classes to store custom data.
  *
  * <p>The Blackboard is typically not accessed directly by its using classes, but through
  * <em>blackboard views</em> (recognisable by having the {@code BlackboardView} suffix).
@@ -212,8 +212,8 @@ public class Blackboard implements Serializable {
 	/**
 	 * Gets all results yet measured for the resource demands of {@code rdia}.
 	 *
-	 * @param rdia An resource demanding internal action to get the measuremnt results of.
-	 *            Must not be {@code null}.
+	 * @param rdia An resource demanding internal action to get the measurement results
+	 *            of. Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */

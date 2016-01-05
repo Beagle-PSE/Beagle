@@ -141,8 +141,8 @@ public class FinalJudgeBlackboardView {
 	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)}
 	 * .
 	 *
-	 * @param rdia An resource demanding internal action to get the measuremnt results of.
-	 *            Must not be {@code null}.
+	 * @param rdia An resource demanding internal action to get the measurement results
+	 *            of. Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
