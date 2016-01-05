@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * Expression that compares all its contained expressions.
+ * Expression that compares both its contained expressions.
  * 
  * @author Annika Berger
  *
@@ -10,12 +10,10 @@ public class ComparisonExpression implements EvaluableExpression {
 
 	/**
 	 * Set the {@link EvaluableExpression} which is supposed to be the smaller one in the
-	 * comparison. As the comparison is only able to compare if one expression is smaller
-	 * or greater than another, it is needed to determine which expression is on the side
-	 * of the smaller one in the comparison.
+	 * comparison.
 	 * 
-	 * <p>For example: if "e1 &lt; e2" should be expressed, e1 is set as smaller and e2 as
-	 * greater.
+	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
 	 *
 	 * @param expression which is supposed to be the smaller one
 	 */
@@ -25,12 +23,10 @@ public class ComparisonExpression implements EvaluableExpression {
 
 	/**
 	 * Set the {@link EvaluableExpression} which is supposed to be the greater one in the
-	 * comparison. As the comparison is only able to compare if one expression is smaller
-	 * or greater than another, it is needed to determine which expression is on the side
-	 * of the smaller one in the comparison.
+	 * comparison.
 	 * 
-	 * <p>For example: if "e1 &lt; e2" should be expressed, e1 is set as smaller and e2 as
-	 * greater.
+	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
 	 * 
 	 * @param expression which is supposed to be the greater one
 	 */
@@ -42,8 +38,8 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * Get the {@link EvaluableExpression} which is supposed to be the greater one in the
 	 * comparison.
 	 * 
-	 * <p>For example: if "e1 &lt; e2" should be expressed, e1 is set as smaller and e2 as
-	 * greater.
+	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
 	 *
 	 * @return the greater expression
 	 */
@@ -55,8 +51,8 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * Get the {@link EvaluableExpression} which is supposed to be the smaller one in the
 	 * comparison.
 	 * 
-	 * <p>For example: if "e1 &lt; e2" should be expressed, e1 is set as smaller and e2 as
-	 * greater.
+	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
 	 *
 	 * @return the smaller expression
 	 */
