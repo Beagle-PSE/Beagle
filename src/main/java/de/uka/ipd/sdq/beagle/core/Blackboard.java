@@ -7,6 +7,7 @@ import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -247,8 +248,8 @@ public class Blackboard implements Serializable {
 	/**
 	 * Gets all results yet measured for the resource demands of {@code rdia}.
 	 *
-	 * @param rdia An resource demanding internal action to get the measuremnt results of.
-	 *            Must not be {@code null}.
+	 * @param rdia An resource demanding internal action to get the measurement results
+	 *            of. Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
@@ -257,36 +258,76 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * Adds {@code expression} as a proposal to describe {@code rdia}’s measurement
-	 * results’ parametric dependencies.
+	 * Adds {@code evaluable expression} as a proposal to describe {@code rdia}’s
+	 * measurement results’ parametric dependencies.
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code rdia}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression) {
+	public void proposeExpressionForRDIA(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression) {
 	}
 
 	/**
-	 * Adds {@code expression} as a proposal to describe {@code loop}’s measurement
-	 * results’ parametric dependencies.
-	 *
-	 * @param loop A SEFF Loop. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code loop}’s
-	 *            measurement results. Must not be {@code null}.
-	 */
-	public void proposeExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Adds {@code expression} as a proposal to describe {@code branch}’s measurement
-	 * results’ parametric dependencies.
+	 * Adds {@code evaluable expression} as a proposal to describe {@code branch}’s
+	 * measurement results’ parametric dependencies.
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
+	public void proposeExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Adds {@code evaluable expression} as a proposal to describe {@code loop}’s
+	 * measurement results’ parametric dependencies.
+	 *
+	 * @param loop A SEFF Loop. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code loop}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void proposeExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Adds {@code evaluable expressions} as a proposal to describe {@code rdia}’s
+	 * measurement results’ parametric dependencies.
+	 *
+	 * @param expressions A map which lists for each Resource Demanding Internal Action
+	 *            some evaluable expression which are proposed to describe the resource
+	 *            demanding internal action's measurement results. Must not be
+	 *            {@code null} and no key or value of this map may be {@code null}. Not
+	 *            each Resource Demanding Internal Action of this blackboard needs to be a
+	 *            key in this map.
+	 */
+	public void proposeExpressionsForRDIAs(
+		final Map<ResourceDemandingInternalAction, EvaluableExpression> expressions) {
+	}
+
+	/**
+	 * Adds {@code evaluable expressions} as a proposal to describe {@code branch}’s
+	 * measurement results’ parametric dependencies.
+	 *
+	 * @param expressions A map which lists for each SEFFBranch some evaluable expression
+	 *            which are proposed to describe the SEFF Branch's measurement results.
+	 *            Must not be {@code null} and no key or value of this map may be
+	 *            {@code null}. Not each SEFFBranch of this blackboard needs to be a key
+	 *            in this map.
+	 */
+	public void proposeExpressionsForSEFFBranches(final Map<SEFFBranch, EvaluableExpression> expressions) {
+	}
+
+	/**
+	 * Adds {@code evaluable expressions} as a proposal to describe {@code loop}’s
+	 * measurement results’ parametric dependencies.
+	 *
+	 * @param expressions A map which lists for each SEFF Loop some evaluable expression
+	 *            which are proposed to describe the SEFF Loop's measurement results. Must
+	 *            not be {@code null} and no key or value of this map may be {@code null}.
+	 *            Not each SEFFLoop of this blackboard needs to be a key in this map.
+	 */
+	public void proposeExpressionsForSEFFLoops(final Map<SEFFLoop, EvaluableExpression> expressions) {
 	}
 
 	/**

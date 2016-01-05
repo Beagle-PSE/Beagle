@@ -11,6 +11,7 @@ import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -155,13 +156,13 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(ResourceDemandingInternalAction, EvaluableExpression)}
+	 * {@link Blackboard#proposeExpressionForRDIA(ResourceDemandingInternalAction, EvaluableExpression)}
 	 * .
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code rdia}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(ResourceDemandingInternalAction,
+	 * @see Blackboard#proposeExpressionForRDIA(ResourceDemandingInternalAction,
 	 *      EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression) {
@@ -169,28 +170,25 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFLoop, EvaluableExpression)}
-	 * .
+	 * {@link Blackboard#proposeExpressionForSEFFLoop(SEFFLoop, EvaluableExpression)} .
 	 *
 	 * @param loop A SEFF Loop. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code loop}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFLoop,
-	 *      EvaluableExpression)
+	 * @see Blackboard#proposeExpressionForSEFFLoop(SEFFLoop, EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFBranch, EvaluableExpression)}
+	 * {@link Blackboard#proposeExpressionForSEFFBranch(SEFFBranch, EvaluableExpression)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#proposeExpressionFor(SEFFBranch,
-	 *      EvaluableExpression)
+	 * @see Blackboard#proposeExpressionForSEFFBranch(SEFFBranch, EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
 	}
@@ -339,4 +337,40 @@ public class FinalJudgeBlackboardView {
 	public void remeasureSEFFLoops(final Collection<SEFFLoop> loops) {
 	}
 
+	/**
+	 * Delegates to {@link Blackboard#proposeExpressionsForRDIAs(Map)}.
+	 *
+	 * @param expressions A map which lists for each Resource Demanding Internal Action
+	 *            some evaluable expression which are proposed to describe the resource
+	 *            demanding internal action's measurement results. Must not be
+	 *            {@code null} and no key or value of this map may be {@code null}. Not
+	 *            each Resource Demanding Internal Action of this blackboard needs to be a
+	 *            key in this map.
+	 */
+	public void proposeExpressionsForRDIAs(
+		final Map<ResourceDemandingInternalAction, EvaluableExpression> expressions) {
+	}
+
+	/**
+	 * Delegates to {@link Blackboard#proposeExpressionsForRDIAs(Map)}.
+	 *
+	 * @param expressions A map which lists for each SEFFBranch some evaluable expression
+	 *            which are proposed to describe the SEFF Branch's measurement results.
+	 *            Must not be {@code null} and no key or value of this map may be
+	 *            {@code null}. Not each SEFFBranch of this blackboard needs to be a key
+	 *            in this map.
+	 */
+	public void proposeExpressionsForSEFFBranches(final Map<SEFFBranch, EvaluableExpression> expressions) {
+	}
+
+	/**
+	 * Delegates to {@link Blackboard#proposeExpressionsForSEFFLoops(Map)}.
+	 *
+	 * @param expressions A map which lists for each SEFF Loop some evaluable expression
+	 *            which are proposed to describe the SEFF Loop's measurement results. Must
+	 *            not be {@code null} and no key or value of this map may be {@code null}.
+	 *            Not each SEFFLoop of this blackboard needs to be a key in this map.
+	 */
+	public void proposeExpressionsForSEFFLoops(final Map<SEFFLoop, EvaluableExpression> expressions) {
+	}
 }
