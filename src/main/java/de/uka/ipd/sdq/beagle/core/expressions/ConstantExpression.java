@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * A evaluable expression containing constants.
+ * An {@link EvalueableExpression} having a constant value.
  * 
  * @author Annika Berger
  *
@@ -11,13 +11,13 @@ public final class ConstantExpression implements EvaluableExpression {
 	/**
 	 * Inizialises a new constant expression with a given {@code value}.
 	 * 
-	 * @param value which should be assigned to the expression
+	 * @param value constant value of this expression
 	 */
 	private ConstantExpression(final double value) {
 	}
 
 	/**
-	 * Looks for the constant expression belonging to a input {@code value}.
+	 * Looks for the constant expression belonging to an input {@code value}.
 	 *
 	 * @param value whose expression should be returned
 	 * @return the constant expression belonging to the given {@code value}
