@@ -219,14 +219,14 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionFor(ResourceDemandingInternalAction, EvaluableExpression)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForRDIA(ResourceDemandingInternalAction, EvaluableExpression)}
 	 * .
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
 	 * @param expression An evaluable expression describing {@code rdia}’s measurement
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionFor(ResourceDemandingInternalAction,
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForRDIA(ResourceDemandingInternalAction,
 	 *      EvaluableExpression)
 	 */
 	public void setFinalExpressionFor(final ResourceDemandingInternalAction rdia,
@@ -235,14 +235,14 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionFor(SEFFBranch, EvaluableExpression)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSEFFBranch(SEFFBranch, EvaluableExpression)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression describing {@code branch}’s measurement
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionFor(SEFFBranch,
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSEFFBranch(SEFFBranch,
 	 *      EvaluableExpression)
 	 */
 	public void setFinalExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
@@ -250,14 +250,14 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionFor(SEFFLoop, EvaluableExpression)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSEFFLoop(SEFFLoop, EvaluableExpression)}
 	 * .
 	 *
 	 * @param loop A SEFF Loop. Must not be {@code null}.
 	 * @param expression An evaluable expression describing {@code loop}’s measurement
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionFor(SEFFLoop,
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSEFFLoop(SEFFLoop,
 	 *      EvaluableExpression)
 	 */
 	public void setFinalExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
