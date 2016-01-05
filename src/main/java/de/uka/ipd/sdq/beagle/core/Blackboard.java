@@ -212,8 +212,8 @@ public class Blackboard implements Serializable {
 	/**
 	 * Gets all results yet measured for the resource demands of {@code rdia}.
 	 *
-	 * @param rdia An resource demanding internal action to get the measurement results
-	 *            of. Must not be {@code null}.
+	 * @param rdia A resource demanding internal action to get the measurement results of.
+	 *            Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
