@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * An {@link EvalueableExpression} having a constant value.
+ * An {@link EvaluableExpression} having a constant value.
  * 
  * @author Annika Berger
  *
