@@ -222,6 +222,15 @@ write results()</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_a34-oLGUEeW_rv0J6Owpcw" value="*"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nEUSILOrEeWIVfUNZJ7McQ" name="remeasure RDIAs">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_znTRkLOrEeWIVfUNZJ7McQ" name="toRemeasure" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_mvNIULOsEeWIVfUNZJ7McQ" name="remeasure SEFF Branches">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tp8s4LOsEeWIVfUNZJ7McQ" name="toRemeasure" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_vTp1oLOsEeWIVfUNZJ7McQ" name="remeasure SEFF Loops">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zzEnQLOsEeWIVfUNZJ7McQ" name="toRemeasure" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_gzE1gKiSEeW317sgBX4gxw" name="Measurement Controller Blackboard View">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_vxJFYKiUEeW317sgBX4gxw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" association="_vw-tUKiUEeW317sgBX4gxw">
@@ -309,20 +318,20 @@ write results()</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_500mkKmhEeW-HedfGpYj_Q" value="*"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_pQrhAKmwEeWw9OrdUR3Q_Q" name="remeasure RDIA">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_VttAMK1LEeWtMIKs7-6sVw" name="remeasure" type="_GLvPUKDjEeWVpfCzK8hwSg">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_pQrhAKmwEeWw9OrdUR3Q_Q" name="remeasure RDIAs">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_VttAMK1LEeWtMIKs7-6sVw" name="toRemeasure" type="_GLvPUKDjEeWVpfCzK8hwSg">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BPd8IK7lEeW_rv0J6Owpcw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BPkp0K7lEeW_rv0J6Owpcw" value="*"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_kp7_YKmwEeWw9OrdUR3Q_Q" name="remeasure SEFF Branch">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_aitnUK1LEeWtMIKs7-6sVw" name="remeasure" type="_DUhKkKDjEeWVpfCzK8hwSg">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_kp7_YKmwEeWw9OrdUR3Q_Q" name="remeasure SEFF Branches">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_aitnUK1LEeWtMIKs7-6sVw" name="toRemeasure" type="_DUhKkKDjEeWVpfCzK8hwSg">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D_cwcK7lEeW_rv0J6Owpcw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D_hB4K7lEeW_rv0J6Owpcw" value="*"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_34OWAKmsEeWw9OrdUR3Q_Q" name="remeasure SEFF Loop" isQuery="true">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_cShYEK1LEeWtMIKs7-6sVw" name="remeasure" type="_7RjZsKDiEeWVpfCzK8hwSg">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_34OWAKmsEeWw9OrdUR3Q_Q" name="remeasure SEFF Loops" isQuery="true">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_cShYEK1LEeWtMIKs7-6sVw" name="toRemeasure" type="_7RjZsKDiEeWVpfCzK8hwSg">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HFc4EK7lEeW_rv0J6Owpcw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HFkM0K7lEeW_rv0J6Owpcw" value="*"/>
         </ownedParameter>

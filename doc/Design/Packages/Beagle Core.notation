@@ -317,6 +317,18 @@
           <element xmi:type="uml:Operation" href="Beagle%20Core.uml#_3eFN4LGSEeW_rv0J6Owpcw"/>
           <layoutConstraint xmi:type="notation:Location" xmi:id="_3fQSkbGSEeW_rv0J6Owpcw"/>
         </children>
+        <children xmi:type="notation:Shape" xmi:id="_nFbscLOrEeWIVfUNZJ7McQ" type="3013">
+          <element xmi:type="uml:Operation" href="Beagle%20Core.uml#_nEUSILOrEeWIVfUNZJ7McQ"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_nFbscbOrEeWIVfUNZJ7McQ"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_mv5E0LOsEeWIVfUNZJ7McQ" type="3013">
+          <element xmi:type="uml:Operation" href="Beagle%20Core.uml#_mvNIULOsEeWIVfUNZJ7McQ"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_mv5E0bOsEeWIVfUNZJ7McQ"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_vUPrgLOsEeWIVfUNZJ7McQ" type="3013">
+          <element xmi:type="uml:Operation" href="Beagle%20Core.uml#_vTp1oLOsEeWIVfUNZJ7McQ"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_vUPrgbOsEeWIVfUNZJ7McQ"/>
+        </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_rq1hiKD4EeWVpfCzK8hwSg"/>
         <styles xmi:type="notation:SortingStyle" xmi:id="_rq1hiaD4EeWVpfCzK8hwSg"/>
         <styles xmi:type="notation:FilteringStyle" xmi:id="_rq1hiqD4EeWVpfCzK8hwSg"/>
@@ -329,7 +341,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rq1hkKD4EeWVpfCzK8hwSg"/>
       </children>
       <element xmi:type="uml:Class" href="Beagle%20Core.uml#_rqzFQKD4EeWVpfCzK8hwSg"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rq06caD4EeWVpfCzK8hwSg" x="1708" y="336" width="512" height="210"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rq06caD4EeWVpfCzK8hwSg" x="1708" y="336" width="598" height="270"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_CIiCUKEUEeWQRf-no0GeMA" type="2004">
       <children xmi:type="notation:DecorationNode" xmi:id="_CIipYKEUEeWQRf-no0GeMA" type="5011"/>
@@ -1299,7 +1311,7 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_85HuMLLaEeWi36SSdQyzSA" id="(0.7560975609756098,0.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_85HuMbLaEeWi36SSdQyzSA" id="(0.5166666666666664,1.0029239766081866)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_UVe_ELLoEeWeMoSNZeiBAQ" type="4007" source="_u7nY8LITEeWV-PuQpV8rqA" target="_9wdK0KiSEeW317sgBX4gxw">
+    <edges xmi:type="notation:Connector" xmi:id="_UVe_ELLoEeWeMoSNZeiBAQ" type="4007" target="_9wdK0KiSEeW317sgBX4gxw">
       <children xmi:type="notation:DecorationNode" xmi:id="_UVg0QLLoEeWeMoSNZeiBAQ" type="6016">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_UVg0QbLoEeWeMoSNZeiBAQ" x="6" y="17"/>
       </children>
