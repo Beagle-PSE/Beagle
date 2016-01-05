@@ -193,7 +193,7 @@ public class AnalyserBlackboardView {
 	 *            key in this map.
 	 */
 	public void proposeExpressionsForRDIAs(
-		final Map<ResourceDemandingInternalAction, EvaluableExpression> expressions) {
+		final Map<ResourceDemandingInternalAction, Set<EvaluableExpression>> expressions) {
 	}
 
 	/**
@@ -205,7 +205,7 @@ public class AnalyserBlackboardView {
 	 *            {@code null}. Not each SEFFBranch of this blackboard needs to be a key
 	 *            in this map.
 	 */
-	public void proposeExpressionsForSEFFBranches(final Map<SEFFBranch, EvaluableExpression> expressions) {
+	public void proposeExpressionsForSEFFBranches(final Map<SEFFBranch, Set<EvaluableExpression>> expressions) {
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class AnalyserBlackboardView {
 	 *            not be {@code null} and no key or value of this map may be {@code null}.
 	 *            Not each SEFFLoop of this blackboard needs to be a key in this map.
 	 */
-	public void proposeExpressionsForSEFFLoops(final Map<SEFFLoop, EvaluableExpression> expressions) {
+	public void proposeExpressionsForSEFFLoops(final Map<SEFFLoop, Set<EvaluableExpression>> expressions) {
 	}
 
 	/**
