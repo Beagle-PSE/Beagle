@@ -9,18 +9,18 @@ package de.uka.ipd.sdq.beagle.core.expressions;
 public class EvaluableVariable implements EvaluableExpression {
 
 	/**
-	 * Get this evaluable varibales name.
+	 * Get this evaluable varibale's name.
 	 *
-	 * @return the name
+	 * @return the variable's name. Is never {@code null}
 	 */
 	public String getName() {
 		return null;
 	}
 
 	/**
-	 * Naming the evaluable variable.
+	 * Names this evaluable variable.
 	 *
-	 * @param name the name to set
+	 * @param name this variable's name. Must not be {@code null}
 	 */
 	public void setName(final String name) {
 	}
