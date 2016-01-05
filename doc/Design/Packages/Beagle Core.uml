@@ -179,6 +179,24 @@ write results()</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_P0-q0LGUEeW_rv0J6Owpcw" value="*"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_iSgp0LPIEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_sFF-MLPIEeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zm5iwLPIEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_9AQ3QLJGEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_IvLkELPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_R7I9ULPJEeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_cOe1YLPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_QQPTILJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_iS_VgLPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_nrhgcLPJEeW187ThVZjyaw" name="loop" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_qWlYgLPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_LaP0kLJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_rqzFQKD4EeWVpfCzK8hwSg" name="Analyser Blackboard View">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_xMo9MaD4EeWVpfCzK8hwSg" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" association="_xMlS0KD4EeWVpfCzK8hwSg"/>
@@ -248,6 +266,24 @@ write results()</body>
           <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_vUakcLPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vUakcbPJEeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vUakcrPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_QQPTILJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_vUeO0LPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vUeO0bPJEeW187ThVZjyaw" name="loop" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vUeO0rPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_LaP0kLJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_vUfc8LPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vUfc8bPJEeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vUfc8rPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_9AQ3QLJGEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_gzE1gKiSEeW317sgBX4gxw" name="Measurement Controller Blackboard View">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_vxJFYKiUEeW317sgBX4gxw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" association="_vw-tUKiUEeW317sgBX4gxw">
@@ -309,6 +345,24 @@ write results()</body>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_AFi8ILPGEeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_DUIYALPGEeW187ThVZjyaw" name="result">
           <type xmi:type="uml:Class" href="Measurement.uml#_QQPTILJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yIVdkLPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yIVdkbPJEeW187ThVZjyaw" name="loop" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yIVdkrPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_LaP0kLJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yIX50LPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yIX50bPJEeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yIX50rPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_QQPTILJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_yIZvALPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yIZvAbPJEeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_yIZvArPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_9AQ3QLJGEeWgdqdZ8hPRgg"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
@@ -410,6 +464,24 @@ write results()</body>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7LDIbO4EeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7LDIrO4EeW187ThVZjyaw" name="expression">
           <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3GCGoLPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3GCGobPJEeW187ThVZjyaw" name="loop" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3GCGorPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_LaP0kLJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3GGYELPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3GGYEbPJEeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3GGYErPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_QQPTILJHEeWgdqdZ8hPRgg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3GKCcLPJEeW187ThVZjyaw" name="get Measurement Results for">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3GKCcbPJEeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3GKCcrPJEeW187ThVZjyaw" direction="return">
+          <type xmi:type="uml:Class" href="Measurement.uml#_9AQ3QLJGEeWgdqdZ8hPRgg"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>

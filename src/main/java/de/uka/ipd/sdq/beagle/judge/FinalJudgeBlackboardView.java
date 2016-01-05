@@ -17,7 +17,8 @@ import java.util.Set;
 /**
  * View of the {@link Blackboard} designed to be used by
  * {@link de.uka.ipd.sdq.beagle.judge.FinalJudge}, therefore allowing reading access,
- * remeasuring {@link ResourceDemandingInternalAction}s, {@link SEFFBranch}es, and
+ * remeasuring {@linkplain ResourceDemandingInternalAction
+ * ResourceDemandingInternalActions}, {@linkplain SEFFBranch SEFFBranches}, and
  * {@link SEFFLoop}s, and setting final expressions.
  *
  * @author Christoph Michelbach
@@ -67,18 +68,6 @@ public class FinalJudgeBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()
 	 */
 	public Set<SEFFLoop> getAllSEFFLoops() {
-		return null;
-	}
-
-	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()}.
-	 *
-	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 *         actions} to be measured. Changes to the returned set will not modify the
-	 *         blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()
-	 */
-	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
 		return null;
 	}
 
@@ -144,8 +133,8 @@ public class FinalJudgeBlackboardView {
 	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)}
 	 * .
 	 *
-	 * @param rdia An resource demanding internal action to get the measuremnt results of.
-	 *            Must not be {@code null}.
+	 * @param rdia An resource demanding internal action to get the measurement results
+	 *            of. Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
@@ -191,6 +180,18 @@ public class FinalJudgeBlackboardView {
 	 * @see Blackboard#proposeExpressionForSEFFBranch(SEFFBranch, EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()}.
+	 *
+	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} to be measured. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()
+	 */
+	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
+		return null;
 	}
 
 	/**
