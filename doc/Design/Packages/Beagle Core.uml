@@ -203,7 +203,6 @@ write results()</body>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3D1P8LGUEeW_rv0J6Owpcw" value="*"/>
         </ownedParameter>
       </ownedOperation>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_Pb2AoLFpEeW_rv0J6Owpcw" name="add Analyse Result" isQuery="true"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_sE1dsLGSEeW_rv0J6Owpcw" name="get RDIAs to be measured" isQuery="true">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_wxahkLGSEeW_rv0J6Owpcw" type="_GLvPUKDjEeWVpfCzK8hwSg" direction="return">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SIBrgLGUEeW_rv0J6Owpcw"/>
@@ -230,6 +229,24 @@ write results()</body>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_vTp1oLOsEeWIVfUNZJ7McQ" name="remeasure SEFF Loops">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_zzEnQLOsEeWIVfUNZJ7McQ" name="toRemeasure" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_vYbm8LO3EeW187ThVZjyaw" name="propose Expression for RDIA">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_18M18LO3EeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_9pBXsLO3EeW187ThVZjyaw" name="expression">
+          <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BNLa8LO4EeW187ThVZjyaw" name="propose Expression for SEFFLoop">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_HluRYLO4EeW187ThVZjyaw" name="loop" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_NSK20LO4EeW187ThVZjyaw" name="expression">
+          <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Ql_YALO4EeW187ThVZjyaw" name="propose Expression for SEFFBranch">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_Wz5EsLO4EeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZYaP4LO4EeW187ThVZjyaw" name="expression">
+          <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
+        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_gzE1gKiSEeW317sgBX4gxw" name="Measurement Controller Blackboard View">
@@ -352,6 +369,24 @@ write results()</body>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_VV_40LGTEeW_rv0J6Owpcw" type="_7RjZsKDiEeWVpfCzK8hwSg" direction="return">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hAKkcLGUEeW_rv0J6Owpcw"/>
           <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hr2lwLGUEeW_rv0J6Owpcw" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_a7E8gLO4EeW187ThVZjyaw" name="propose Expression for SEFFBranch">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7E8gbO4EeW187ThVZjyaw" name="branch" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7E8grO4EeW187ThVZjyaw" name="expression">
+          <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_a7JN8LO4EeW187ThVZjyaw" name="propose Expression for SEFFLoop">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7JN8bO4EeW187ThVZjyaw" name="loop" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7JN8rO4EeW187ThVZjyaw" name="expression">
+          <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_a7LDILO4EeW187ThVZjyaw" name="propose Expression for RDIA">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7LDIbO4EeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_a7LDIrO4EeW187ThVZjyaw" name="expression">
+          <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
