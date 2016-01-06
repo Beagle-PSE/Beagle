@@ -8,7 +8,7 @@ All parts of the Javadoc are written as sentences, meaning that they begin with 
 * Package names are written in lowercase and have a minimum length of 2 characters per part.
 
 ### Use of Acronyms
-All attributes used in the SRS are permitted.
+All acronyms used in the SRS are permitted.
 
 ## Tags
 `@param` and `@returns` tags have to state their value ranges if they refer to primitive data types as well as stating whether they can be `null` and the meaning of them being `null` if they refer to object data types.
