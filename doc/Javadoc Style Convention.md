@@ -9,7 +9,7 @@ All parts of the Javadoc are written as sentences, meaning that they begin with 
 
 ### Use of Acronyms
 1. All acronyms used in the SRS are permitted.
-
+2. Acronyms are treated as normal words and are spelled as specified in `Naming Convention`. They are not written capitalised.
 
 
 ## Tags
