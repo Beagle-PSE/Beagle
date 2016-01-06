@@ -110,7 +110,7 @@ public class AnalyserBlackboardView {
 	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)}
 	 * .
 	 *
-	 * @param rdia An resource demanding internal action to get the measuremnt results of.
+	 * @param rdia A resource demanding internal action to get the measurement results of.
 	 *            Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
