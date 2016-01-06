@@ -37,6 +37,9 @@
         </ownedParameter>
       </ownedOperation>
     </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ym-zELShEeWU5qgzJNzOuw" name="PCM Beagle Mapping"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_cgQxwLShEeWU5qgzJNzOuw" name="read" client="_0tFusLSMEeWU5qgzJNzOuw" supplier="_Ym-zELShEeWU5qgzJNzOuw"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_fx3FYLShEeWU5qgzJNzOuw" name="write" client="_uqsrQLSIEeWU5qgzJNzOuw" supplier="_Ym-zELShEeWU5qgzJNzOuw"/>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_BmSrMLSMEeWU5qgzJNzOuw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BmTSQLSMEeWU5qgzJNzOuw" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
