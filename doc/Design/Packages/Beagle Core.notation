@@ -625,7 +625,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KcYK4rO3EeW187ThVZjyaw"/>
       </children>
       <element xmi:type="uml:Class" href="Beagle%20Core.uml#_9waukKiSEeW317sgBX4gxw"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9wdK0aiSEeW317sgBX4gxw" x="2991" y="336" width="899" height="420"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9wdK0aiSEeW317sgBX4gxw" x="2907" y="334" width="899" height="420"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_P7juoLC9EeW2QoBjFVIuyA" type="2012">
       <children xmi:type="notation:DecorationNode" xmi:id="_P7kVsLC9EeW2QoBjFVIuyA" type="5038"/>
@@ -1034,9 +1034,9 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_z-Jvsa7nEeW_rv0J6Owpcw"/>
       <element xmi:type="uml:Association" href="Beagle%20Core.uml#_z8cfgK7nEeW_rv0J6Owpcw"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z-Jvsq7nEeW_rv0J6Owpcw" points="[224, 0, -773, 497]$[224, -162, -773, 335]$[1369, -162, 372, 335]$[1369, -280, 372, 217]"/>
-      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0BAPYK7nEeW_rv0J6Owpcw" id="(0.44038929440389296,0.0)"/>
-      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0BAPYa7nEeW_rv0J6Owpcw" id="(0.0,0.4852459016393443)"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_z-Jvsq7nEeW_rv0J6Owpcw" points="[-2, 5, -1144, 291]$[274, 5, -868, 291]$[274, -68, -868, 218]$[702, -68, -440, 218]$[702, -287, -440, -1]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0BAPYK7nEeW_rv0J6Owpcw" id="(1.0,0.011111111111111112)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0BAPYa7nEeW_rv0J6Owpcw" id="(0.5113088616981831,1.0)"/>
     </edges>
     <edges xmi:type="notation:Connector" xmi:id="_uM1zMLFqEeW_rv0J6Owpcw" type="4001" source="_DQl5kKDzEeWVpfCzK8hwSg" target="_F0hnAKDUEeWv3dQk34uqzw" routing="Rectilinear">
       <children xmi:type="notation:DecorationNode" xmi:id="_uM2aQLFqEeW_rv0J6Owpcw" type="6001">
