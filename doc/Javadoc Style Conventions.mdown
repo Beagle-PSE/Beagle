@@ -1,0 +1,19 @@
+# Javadoc Style Conventions
+* All javadocs are written like a sentence.
+  So it had to start with a capital and ends with a full stop.
+
+## Naming conventions
+* Class name are written in UpperCamelCase and had a minimum length of 3.
+* Method name are written in lowerCamelCase and had a minimum length of 2.
+* Parameter and variable name are written in lowerCamelCase and had a minimum length of 3.
+* Attributes and  are written in lowercase and had a minimum length of 3.
+* Package name are written in lowercase and had a minimum length of 2.
+
+### Acronyms
+* Acronyms used in the SRS are allowed.
+
+## Tags
+* Every `{@param}` and `{@return}` tag states the values range.
+  This include to state if it can be `null` (for object types) and when it does, what that means.
+* It is forbitten to add the package when the `{@link}` or `{@see}` tag is uesed.
+  Only exepted if it is necessary.
