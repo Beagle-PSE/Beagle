@@ -120,20 +120,20 @@
     <children xmi:type="notation:Shape" xmi:id="_Mqf6YKBSEeWVfMeWaVID2g" type="2007">
       <children xmi:type="notation:DecorationNode" xmi:id="_Mqf6YqBSEeWVfMeWaVID2g" type="5026"/>
       <children xmi:type="notation:BasicCompartment" xmi:id="_Mqf6Y6BSEeWVfMeWaVID2g" type="7016">
-        <children xmi:type="notation:Shape" xmi:id="_IAHYELOcEeWl5dq8_C8Vhg" type="3009">
-          <children xmi:type="notation:DecorationNode" xmi:id="_IAH_ILOcEeWl5dq8_C8Vhg" type="5017"/>
-          <children xmi:type="notation:BasicCompartment" xmi:id="_IAH_IbOcEeWl5dq8_C8Vhg" type="7010">
-            <styles xmi:type="notation:TitleStyle" xmi:id="_IAH_IrOcEeWl5dq8_C8Vhg"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IAH_I7OcEeWl5dq8_C8Vhg"/>
+        <children xmi:type="notation:Shape" xmi:id="_O1AMYLSFEeWh8JL1q5eqcQ" type="3009">
+          <children xmi:type="notation:DecorationNode" xmi:id="_O1AzcLSFEeWh8JL1q5eqcQ" type="5017"/>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_O1AzcbSFEeWh8JL1q5eqcQ" type="7010">
+            <styles xmi:type="notation:TitleStyle" xmi:id="_O1AzcrSFEeWh8JL1q5eqcQ"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_O1Azc7SFEeWh8JL1q5eqcQ"/>
           </children>
-          <element xmi:type="uml:Package" href="Packages/Beagle%20Core.uml#_IAAqYLOcEeWl5dq8_C8Vhg"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IAHYEbOcEeWl5dq8_C8Vhg" x="13" y="38" width="308" height="145"/>
+          <element xmi:type="uml:Package" href="Packages/Beagle%20Core/Evaluable%20Expression.uml#_uu11cKHyEeWB_pi2tzIUuQ"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_O1AMYbSFEeWh8JL1q5eqcQ" x="29" y="44" width="297"/>
         </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_Mqf6ZKBSEeWVfMeWaVID2g"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mqf6ZaBSEeWVfMeWaVID2g"/>
       </children>
       <element xmi:type="uml:Package" href="Packages/Beagle%20Core.uml#_Mqc3EKBSEeWVfMeWaVID2g"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mqf6YaBSEeWVfMeWaVID2g" x="235" y="136" width="344" height="244"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mqf6YaBSEeWVfMeWaVID2g" x="239" y="94" width="344" height="244"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_NGAKoKBSEeWVfMeWaVID2g" type="2007">
       <children xmi:type="notation:DecorationNode" xmi:id="_NGAKoqBSEeWVfMeWaVID2g" type="5026"/>
@@ -169,7 +169,7 @@
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2R8YM7SCEeWh8JL1q5eqcQ"/>
       </children>
       <element xmi:type="uml:Package" href="Beagle.uml#_2R5U4LSCEeWh8JL1q5eqcQ"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2R7xIbSCEeWh8JL1q5eqcQ" x="1168" y="163"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2R7xIbSCEeWh8JL1q5eqcQ" x="1125" y="156"/>
     </children>
     <styles xmi:type="notation:StringValueStyle" xmi:id="_5Eb3kaBCEeWVfMeWaVID2g" name="diagram_compatibility_version" stringValue="1.1.0"/>
     <styles xmi:type="notation:DiagramStyle" xmi:id="_5Eb3kqBCEeWVfMeWaVID2g"/>
