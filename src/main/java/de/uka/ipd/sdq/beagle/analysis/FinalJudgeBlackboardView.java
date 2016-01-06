@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.judge;
+package de.uka.ipd.sdq.beagle.analysis;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
@@ -14,7 +14,7 @@ import java.util.Set;
 
 /**
  * View of the {@link Blackboard} designed to be used by
- * {@link de.uka.ipd.sdq.beagle.judge.FinalJudge}, therefore allowing reading access,
+ * {@link de.uka.ipd.sdq.beagle.analysis.FinalJudge}, therefore allowing reading access,
  * remeasuring {@link ResourceDemandingInternalAction}s, {@link SEFFBranch}es, and
  * {@link SEFFLoop}s, and setting final expressions.
  * 

@@ -3,10 +3,7 @@
   <packagedElement xmi:type="uml:Component" xmi:id="_-0sUEKBEEeWVfMeWaVID2g" name="Genetic Analyser"/>
   <packagedElement xmi:type="uml:Component" xmi:id="_Byzm0KBMEeWVfMeWaVID2g" name="Interpolation Analyser">
     <ownedAttribute xmi:type="uml:Port" xmi:id="_us4FcKEUEeWQRf-no0GeMA" name="Port1" type="_Byzm0KBMEeWVfMeWaVID2g" aggregation="composite"/>
-    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_72BtAKEUEeWHnqblWsT1jQ" client="_Byzm0KBMEeWVfMeWaVID2g">
-      <supplier xmi:type="uml:Interface" href="Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
-      <contract xmi:type="uml:Interface" href="Beagle%20Core.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
-    </interfaceRealization>
+    <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_72BtAKEUEeWHnqblWsT1jQ" client="_Byzm0KBMEeWVfMeWaVID2g" supplier="_S2taMKDwEeWVpfCzK8hwSg" contract="_S2taMKDwEeWVpfCzK8hwSg"/>
     <ownedOperation xmi:type="uml:Operation" xmi:id="_JVjMALISEeWV-PuQpV8rqA" name="can Contribute" isQuery="true">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_JVoEgLISEeWV-PuQpV8rqA" direction="return">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
@@ -165,6 +162,31 @@
         <type xmi:type="uml:Class" href="Beagle%20Core.uml#_7RjZsKDiEeWVpfCzK8hwSg"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hAKkcLGUEeW_rv0J6Owpcw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hr2lwLGUEeW_rv0J6Owpcw" value="*"/>
+      </ownedParameter>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_S2taMKDwEeWVpfCzK8hwSg" name="Result Analyser">
+    <nestedClassifier xmi:type="uml:FunctionBehavior" xmi:id="_RwZAcKDyEeWVpfCzK8hwSg" name="Contribute may only be called if possible">
+      <language>Natural language</language>
+      <body>can Contribute() returns true </body>
+    </nestedClassifier>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_N6x2QKDxEeWVpfCzK8hwSg" name="can Contribute" isQuery="true">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_ngTe8KDxEeWVpfCzK8hwSg" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedParameter>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_gGc1IKD0EeWVpfCzK8hwSg" name="blackboard" visibility="public">
+        <type xmi:type="uml:Class" href="Beagle%20Core.uml#_DQjdUKDzEeWVpfCzK8hwSg"/>
+      </ownedParameter>
+    </ownedOperation>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_6buAEKDxEeWVpfCzK8hwSg" name="contribute">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_qV3dMKD5EeWVpfCzK8hwSg" name="blackboard" type="_rqzFQKD4EeWVpfCzK8hwSg" effect="read"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_gYTZELLaEeWi36SSdQyzSA" name="Final Judge">
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_yN9MALLaEeWi36SSdQyzSA" name="judge">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_4JG70LLaEeWi36SSdQyzSA" name="blackboard" type="_9waukKiSEeW317sgBX4gxw"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_51C5MLLaEeWi36SSdQyzSA" direction="return">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
       </ownedParameter>
     </ownedOperation>
   </packagedElement>

@@ -6,7 +6,6 @@
   <packagedElement xmi:type="uml:Package" href="Packages/Beagle%20Core.uml#_Mqc3EKBSEeWVfMeWaVID2g"/>
   <packagedElement xmi:type="uml:Package" href="Packages/Analysis.uml#_NF-VcKBSEeWVfMeWaVID2g"/>
   <packagedElement xmi:type="uml:Package" href="Packages/Measurement.uml#_wSYjYKBTEeWVfMeWaVID2g"/>
-  <packagedElement xmi:type="uml:Package" xmi:id="_AHE_QLOcEeWl5dq8_C8Vhg" name="Judge"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_2R5U4LSCEeWh8JL1q5eqcQ" name="GUI"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_5_804KBTEeWVfMeWaVID2g" name="Measurement Tool">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_zGNoYKWiEeWVjrqJHndH-A" name="measure">
