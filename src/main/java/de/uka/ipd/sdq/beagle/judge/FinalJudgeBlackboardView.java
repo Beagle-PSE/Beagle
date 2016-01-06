@@ -265,7 +265,7 @@ public class FinalJudgeBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link Blackboard#setFinalExpressionsForRDIAs(Map)}
+	 * Delegates to {@link Blackboard#setFinalExpressionsForRDIAs(Map)}.
 	 *
 	 * @param expressions An evaluable expression for some Resource Demanding Internal
 	 *            Actions describing their measurement results. The evaluable expressions
@@ -279,7 +279,7 @@ public class FinalJudgeBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link Blackboard#setFinalExpressionsForSEFFLoops(Map)}
+	 * Delegates to {@link Blackboard#setFinalExpressionsForSEFFLoops(Map)}.
 	 *
 	 * @param expressions An evaluable expression for some SEFF Loops describing their
 	 *            measurement results. The evaluable expressions may be {@code null} to
@@ -291,7 +291,7 @@ public class FinalJudgeBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link Blackboard#setFinalExpressionsForSEFFBranches(Map)}
+	 * Delegates to {@link Blackboard#setFinalExpressionsForSEFFBranches(Map)}.
 	 *
 	 * @param expressions An evaluable expression for some SEFF Branches describing their
 	 *            measurement results. The evaluable expressions may be {@code null} to
