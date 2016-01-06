@@ -32,6 +32,7 @@ package de.uka.ipd.sdq.beagle.core.expressions;
  * @author Joshua Gleitze
  */
 public interface EvaluableExpression {
+
 	/**
 	 * Calls the appropriate overload of {@link EvaluableExpressionVisitor#visit} on
 	 * {@code visitor}. This implements the well-known <em>visitor pattern</em>.

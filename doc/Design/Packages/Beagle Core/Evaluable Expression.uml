@@ -13,7 +13,7 @@
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_3MNrYKHnEeWB_pi2tzIUuQ" name="Evaluatable Expression Visitor">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_3MNrYKHnEeWB_pi2tzIUuQ" name="Evaluable Expression Visitor">
     <ownedOperation xmi:type="uml:Operation" xmi:id="_LxiJkKHoEeWB_pi2tzIUuQ" name="visit">
       <ownedParameter xmi:type="uml:Parameter" xmi:id="_QP6ZYKHoEeWB_pi2tzIUuQ" type="_WQiUgKHnEeWB_pi2tzIUuQ" effect="update"/>
     </ownedOperation>

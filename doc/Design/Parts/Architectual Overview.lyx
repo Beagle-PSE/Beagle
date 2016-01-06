@@ -111,5 +111,156 @@ Components’ interaction
 Communication between Beagle and external tools
 \end_layout
 
+\begin_layout Section
+Extension Points
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tools
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analysers
+\end_layout
+
+\end_inset
+
+ and the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+ are connected to Beagle via Eclipse Extension Points.
+\end_layout
+
+\begin_layout Standard
+This means they can be developed as separate eclipse plugins and specify
+ in their 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+plugin.xml
+\end_layout
+
+\end_inset
+
+ file the classes, which represent the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tools
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analysers
+\end_layout
+
+\end_inset
+
+ or a 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+.
+ When there are multiple plugins with a 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+, the user has to select one in the GUI.
+\end_layout
+
+\begin_layout Standard
+This concept has the advantage, that everybody can write his own or select
+ some existing 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Tools
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Result Analysers
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judges
+\end_layout
+
+\end_inset
+
+ and just install them into his eclipse to use them.
+\end_layout
+
 \end_body
 \end_document
