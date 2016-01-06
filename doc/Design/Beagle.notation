@@ -589,7 +589,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1-TGsbSGEeWh8JL1q5eqcQ"/>
           </children>
           <element xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_I-iE4KDUEeWv3dQk34uqzw"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1-SfkbSGEeWh8JL1q5eqcQ" x="1001" y="63" width="208" height="40"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1-SfkbSGEeWh8JL1q5eqcQ" x="997" y="225" width="208" height="40"/>
         </children>
         <children xmi:type="notation:Shape" xmi:id="_1-TGsrSGEeWh8JL1q5eqcQ" type="3010">
           <children xmi:type="notation:DecorationNode" xmi:id="_1-TGtLSGEeWh8JL1q5eqcQ" type="5014"/>
@@ -745,7 +745,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1-ZNSbSGEeWh8JL1q5eqcQ"/>
           </children>
           <element xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_gzE1gKiSEeW317sgBX4gxw"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1-YmMbSGEeWh8JL1q5eqcQ" x="994" y="222" width="497" height="42"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1-YmMbSGEeWh8JL1q5eqcQ" x="992" y="64" width="497" height="42"/>
         </children>
         <styles xmi:type="notation:TitleStyle" xmi:id="_Mqf6ZKBSEeWVfMeWaVID2g"/>
         <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mqf6ZaBSEeWVfMeWaVID2g"/>
