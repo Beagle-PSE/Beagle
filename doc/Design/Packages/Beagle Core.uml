@@ -400,8 +400,8 @@ write results()</body>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_YXyZoKmiEeW-HedfGpYj_Q" name="set final Expression for RDIA" isQuery="true">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_i8si0KmiEeW-HedfGpYj_Q" name="finalRDIAs" type="_GLvPUKDjEeWVpfCzK8hwSg" effect="update">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_84nw8KmwEeWw9OrdUR3Q_Q"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_84t3kKmwEeWw9OrdUR3Q_Q" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_84nw8KmwEeWw9OrdUR3Q_Q" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_84t3kKmwEeWw9OrdUR3Q_Q" value="1"/>
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_y8piULO8EeW187ThVZjyaw" name="expression">
           <type xmi:type="uml:Interface" href="Beagle%20Core/Evaluable%20Expression.uml#_ctETEKHnEeWB_pi2tzIUuQ"/>
@@ -409,15 +409,15 @@ write results()</body>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_LqmVUKmiEeW-HedfGpYj_Q" name="set final Expression for SEFFBranch" isQuery="true">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_VIYeYKmiEeW-HedfGpYj_Q" name="finalSEFFBranches" type="_DUhKkKDjEeWVpfCzK8hwSg" effect="update">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WNwyEKmiEeW-HedfGpYj_Q"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WN24sKmiEeW-HedfGpYj_Q" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WNwyEKmiEeW-HedfGpYj_Q" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WN24sKmiEeW-HedfGpYj_Q" value="1"/>
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_3XbrkLO8EeW187ThVZjyaw" name="expression" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_1E6MwKmfEeW-HedfGpYj_Q" name="set final Expression for SEFFLoop" visibility="public" isQuery="true">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_CpWMsKmhEeW-HedfGpYj_Q" name="finalSEFFLoops" type="_7RjZsKDiEeWVpfCzK8hwSg" effect="update">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_50vuEKmhEeW-HedfGpYj_Q"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_500mkKmhEeW-HedfGpYj_Q" value="*"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_50vuEKmhEeW-HedfGpYj_Q" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_500mkKmhEeW-HedfGpYj_Q" value="1"/>
         </ownedParameter>
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_8dQ88LO8EeW187ThVZjyaw" name="expression" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
       </ownedOperation>

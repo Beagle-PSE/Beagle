@@ -1139,7 +1139,7 @@
       </children>
       <styles xmi:type="notation:FontStyle" xmi:id="_d4NMYbJBEeWgdqdZ8hPRgg"/>
       <element xmi:type="uml:Association" href="Beagle%20Core.uml#_d3fasLJBEeWgdqdZ8hPRgg"/>
-      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_d4NMYrJBEeWgdqdZ8hPRgg" points="[225, 0, 579, -760]$[225, 364, 579, -396]$[-374, 364, -20, -396]$[-374, 756, -20, -4]"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_d4NMYrJBEeWgdqdZ8hPRgg" points="[254, -4, 608, -764]$[254, 460, 608, -300]$[-374, 460, -20, -300]$[-374, 756, -20, -4]"/>
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_d6iusLJBEeWgdqdZ8hPRgg" id="(0.2197986577181208,1.0)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_d6iusbJBEeWgdqdZ8hPRgg" id="(1.0,0.011111111111111112)"/>
     </edges>
