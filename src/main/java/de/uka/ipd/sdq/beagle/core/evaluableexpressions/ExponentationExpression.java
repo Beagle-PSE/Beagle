@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /*
  * ATTENTION: Checkstyle turned off!
@@ -13,11 +13,11 @@ package de.uka.ipd.sdq.beagle.core.expressions;
  * TODO Document this type.
  *
  */
-public class DivisionExpression implements EvaluableExpression {
+public class ExponentationExpression implements EvaluableExpression {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.beagle.
 	 * core.expressions.EvaluableExpressionVisitor)
@@ -30,7 +30,7 @@ public class DivisionExpression implements EvaluableExpression {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.beagle.
 	 * core.expressions.EvaluableVariableAssignment)

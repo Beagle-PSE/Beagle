@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /*
  * ATTENTION: Checkstyle turned off!
@@ -13,7 +13,7 @@ package de.uka.ipd.sdq.beagle.core.expressions;
  * TODO Document this type.
  *
  */
-public class IfThenElseExpression implements EvaluableExpression {
+public class SubstractionExpression implements EvaluableExpression {
 
 	/*
 	 * (non-Javadoc)
