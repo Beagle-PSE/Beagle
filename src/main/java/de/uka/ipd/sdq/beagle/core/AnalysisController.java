@@ -49,7 +49,7 @@ public class AnalysisController {
 	 * data exchange in any action invoked by this controller must happen exclusively via
 	 * this {@link Blackboard} instance.
 	 */
-	private final Blackboard blackboard = new Blackboard();
+	private final Blackboard blackboard = null;
 
 	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
