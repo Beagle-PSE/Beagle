@@ -1,8 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
 /**
- * A variable which can be analyzed. A variable can be assigned a value through the
- * {@link EvaluableVariableAssignment} class.
+ * An {@link EvaluableExpression} representing a named variable.
  * 
  * @author Annika Berger
  */
