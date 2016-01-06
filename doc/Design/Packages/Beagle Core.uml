@@ -240,13 +240,22 @@ write results()</body>
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_nEUSILOrEeWIVfUNZJ7McQ" name="remeasure RDIAs">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_znTRkLOrEeWIVfUNZJ7McQ" name="toRemeasure" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_znTRkLOrEeWIVfUNZJ7McQ" name="toRemeasure" type="_GLvPUKDjEeWVpfCzK8hwSg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Lb4MELSTEeWh8JL1q5eqcQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Lb6oULSTEeWh8JL1q5eqcQ" value="*"/>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_mvNIULOsEeWIVfUNZJ7McQ" name="remeasure SEFF Branches">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tp8s4LOsEeWIVfUNZJ7McQ" name="toRemeasure" type="_DUhKkKDjEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_tp8s4LOsEeWIVfUNZJ7McQ" name="toRemeasure" type="_DUhKkKDjEeWVpfCzK8hwSg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NC_T0LSTEeWh8JL1q5eqcQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NDBwELSTEeWh8JL1q5eqcQ" value="*"/>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_vTp1oLOsEeWIVfUNZJ7McQ" name="remeasure SEFF Loops">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zzEnQLOsEeWIVfUNZJ7McQ" name="toRemeasure" type="_7RjZsKDiEeWVpfCzK8hwSg"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zzEnQLOsEeWIVfUNZJ7McQ" name="toRemeasure" type="_7RjZsKDiEeWVpfCzK8hwSg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_OfWkILSTEeWh8JL1q5eqcQ"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_OfZAYLSTEeWh8JL1q5eqcQ" value="*"/>
+        </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_vYbm8LO3EeW187ThVZjyaw" name="propose Expression for RDIA">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_18M18LO3EeW187ThVZjyaw" name="rdia" type="_GLvPUKDjEeWVpfCzK8hwSg"/>
@@ -688,7 +697,7 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YVO88LJKEeWgdqdZ8hPRgg" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_80u9cLLaEeWi36SSdQyzSA" memberEnd="_806joLLaEeWi36SSdQyzSA _808_4LLaEeWi36SSdQyzSA">
+    <packagedElement xmi:type="uml:Association" xmi:id="_80u9cLLaEeWi36SSdQyzSA" visibility="public" memberEnd="_806joLLaEeWi36SSdQyzSA _808_4LLaEeWi36SSdQyzSA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_804HYLLaEeWi36SSdQyzSA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_804ucLLaEeWi36SSdQyzSA" key="nature" value="UML_Nature"/>
       </eAnnotations>
