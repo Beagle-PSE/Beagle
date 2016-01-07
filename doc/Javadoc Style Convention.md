@@ -1,6 +1,9 @@
 # Javadoc Style Convention
 All parts of the Javadoc are written as sentences, meaning that they begin with a capital letter and end with a full stop.
 
+## Definitions
+* Camel Case: https://google.github.io/styleguide/javaguide.html#s5.3-camel-case ([archived](https://web.archive.org/web/20151208081251/https://google.github.io/styleguide/javaguide.html#s5.3-camel-case))
+
 ## Naming Convention
 * Class names are written in UpperCamelCase and have a minimum length of 3 characters.
 * Method names are written in lowerCamelCase and have a minimum length of 3 characters.
