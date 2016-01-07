@@ -291,12 +291,19 @@ Implementation Plan
 
 \begin_layout Standard
 Each task should be done by one person and another person should write the
- test cases for this task, except for the prototyps – they don't need automatic
+ test cases for this task, except for the prototyps – they do not need automatic
  test cases.
 \end_layout
 
 \begin_layout Section*
 Preparation (2015-12-24 – 2016-01-10)
+\end_layout
+
+\begin_layout Standard
+For the parts of our project that are depending on the eclipse API we decided
+ to create prototyps to learn how to use the API.
+ As knowing about an API your are working with is esential for the Design,
+ we decided to do this already in the Design phase.
 \end_layout
 
 \begin_layout Standard
@@ -1536,10 +1543,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement
- 
-\lang british
-Evaluable Expressions
+Implement Evaluable Expressions
 \end_layout
 
 \end_inset
