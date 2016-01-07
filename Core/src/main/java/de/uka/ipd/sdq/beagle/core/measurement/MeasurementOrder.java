@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement;
+package de.uka.ipd.sdq.beagle.core.measurement;
 
 /*
  * ATTENTION: Checkstyle turned off!

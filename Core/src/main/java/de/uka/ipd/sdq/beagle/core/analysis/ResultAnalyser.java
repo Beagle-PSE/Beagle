@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.analysis;
+package de.uka.ipd.sdq.beagle.core.analysis;
 
 import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
 
@@ -7,7 +7,7 @@ import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
  * {@link de.uka.ipd.sdq.beagle.core.Blackboard}. There is no restriction on the kind of
  * knowledge, as long as it can be expressed in the blackboard’s vocabulary. Tools wishing
  * to conduct measurements on software are advised to implement
- * {@link de.uka.ipd.sdq.beagle.measurement.MeasurementTool} instead of this interface.
+ * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this interface.
  *
  * @author Joshua Gleitze
  */

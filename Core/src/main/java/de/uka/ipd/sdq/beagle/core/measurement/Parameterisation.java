@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement;
+package de.uka.ipd.sdq.beagle.core.measurement;
 
 /**
  * Describes the values of variables potentially influencing a measurement result. A

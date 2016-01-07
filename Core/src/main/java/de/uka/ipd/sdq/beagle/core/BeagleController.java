@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.analysis.ResultAnalyser;
-import de.uka.ipd.sdq.beagle.judge.FinalJudge;
-import de.uka.ipd.sdq.beagle.measurement.MeasurementTool;
+import de.uka.ipd.sdq.beagle.core.analysis.ResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 
 /**
  * Controls whether a {@link MeasurementTool}, a {@link ResultAnalyser} or the

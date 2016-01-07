@@ -7,7 +7,7 @@ import java.io.Serializable;
  * state object is defined by {@code WRITTEN_TYPE}.
  *
  * <p>To illustrate the usage of this interface, two examples follow. We look at a typical
- * use case: Two {@linkplain de.uka.ipd.sdq.beagle.analysis.ResultAnalyser
+ * use case: Two {@linkplain de.uka.ipd.sdq.beagle.core.analysis.ResultAnalyser
  * ResultAnalysers}, {@code MyAnalyser} and {@code YourAnalyser}. Both want to store data
  * on the {@linkplain Blackboard} to keep track of whether there is something new to look
  * at.

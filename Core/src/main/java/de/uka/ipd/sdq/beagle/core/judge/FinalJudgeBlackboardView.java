@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.judge;
+package de.uka.ipd.sdq.beagle.core.judge;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
@@ -6,15 +6,15 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SEFFBranch;
 import de.uka.ipd.sdq.beagle.core.SEFFLoop;
 import de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression;
-import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
-import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
 import java.util.Set;
 
 /**
  * View of the {@link Blackboard} designed to be used by
- * {@link de.uka.ipd.sdq.beagle.judge.FinalJudge}, therefore allowing reading access,
+ * {@link de.uka.ipd.sdq.beagle.core.judge.FinalJudge}, therefore allowing reading access,
  * remeasuring {@link ResourceDemandingInternalAction}s, {@link SEFFBranch}es, and
  * {@link SEFFLoop}s, and setting final expressions.
  * 

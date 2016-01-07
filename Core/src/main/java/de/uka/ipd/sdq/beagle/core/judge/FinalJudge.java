@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement;
+package de.uka.ipd.sdq.beagle.core.judge;
 
 /*
  * ATTENTION: Checkstyle turned off!
@@ -11,8 +11,7 @@ package de.uka.ipd.sdq.beagle.measurement;
 
 /**
  * TODO Document this type.
- *
  */
-public interface MeasurementTool {
-	void measure(MeasurementOrder measurements);
+public interface FinalJudge {
+	void judge(FinalJudgeBlackboardView blackboard);
 }

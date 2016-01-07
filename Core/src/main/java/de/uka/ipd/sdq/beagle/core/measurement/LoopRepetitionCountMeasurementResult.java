@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement;
+package de.uka.ipd.sdq.beagle.core.measurement;
 
 /**
  * A result of counting repetitions of a loop. It expresses that a loop construct’s body

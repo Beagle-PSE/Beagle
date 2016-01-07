@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement;
+package de.uka.ipd.sdq.beagle.core.measurement;
 
 /**
  * A result of measuring which branch is taken in a branching source code construct. This

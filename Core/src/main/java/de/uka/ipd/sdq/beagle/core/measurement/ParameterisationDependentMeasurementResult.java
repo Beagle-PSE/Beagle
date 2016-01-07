@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement;
+package de.uka.ipd.sdq.beagle.core.measurement;
 
 /**
  * A measurement result that may depend on the state of variables while executing the

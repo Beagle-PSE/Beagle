@@ -1,9 +1,9 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression;
-import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
-import de.uka.ipd.sdq.beagle.measurement.LoopRepetitionCountMeasurementResult;
-import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
 import java.util.Set;

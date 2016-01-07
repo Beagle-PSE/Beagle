@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.analysis;
+package de.uka.ipd.sdq.beagle.core.analysis;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
@@ -6,8 +6,8 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SEFFBranch;
 import de.uka.ipd.sdq.beagle.core.SEFFLoop;
 import de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression;
-import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
-import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
 import java.util.Set;

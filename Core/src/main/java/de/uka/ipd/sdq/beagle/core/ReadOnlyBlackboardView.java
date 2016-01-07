@@ -1,10 +1,10 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.measurement.BranchDecisionMeasurementResult;
-import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
-
 import java.io.Serializable;
 import java.util.Set;
+
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 /**
  * View of the {@link Blackboard} only allowing reading access. Writing access isn't
