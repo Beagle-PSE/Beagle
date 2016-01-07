@@ -1,3 +1,5 @@
+{{setTitle "Development Setup"}}
+
 # Development setup
 
 Development is done in [Eclipse Mars for RCP and RAP Developers](http://www.eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/mars1).
@@ -10,8 +12,8 @@ Required Eclipse plugins are:
  * [JaMoPP](http://www.jamopp.org/index.php/JaMoPP)
  * [Papyrus](https://eclipse.org/papyrus/updates/index.php)
  * SoMoX based on JaMoPP, as it can be checked out (SVN) from [https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/](https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/) (Credentials: `anonymous:anonymous`)
-  * import all SoMoX projects into your working space (consider using a Working Set to group them)
-  * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
+     * import all SoMoX projects into your working space (consider using a Working Set to group them)
+     * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
   * [Checkstyle] (http://eclipse-cs.sourceforge.net/#!/)
   
 ## Building & Dependency Management
@@ -51,9 +53,9 @@ To activate Travis:
  * Go to [your GitHub personal access token settings page](https://github.com/settings/tokens) and create a new token. Only allowing access to the `repo` scope is sufficient.
  * temporary save the token somewhere, e.g. in your clipboard
  
-#### Active Travis
+#### Activate Travis
  * Go to [Travis](https:///travis-ci.org) and sign in
  * Activate Travis for your fork of Beagle
  * Go to the settings page for Beagle on Travis and create a new Environment Variable called `GH_TOKEN`. Paste the personal access token you created as value. _Leave the “show in log” switch OFF!_
  
-Done!
+**Done!**

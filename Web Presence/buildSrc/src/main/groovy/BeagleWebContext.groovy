@@ -72,6 +72,10 @@ public class BeagleWebContext {
 			 * Computer Modern Sans, as downloaded from http://checkmyworking.com/cm-web-fonts/
 			 */
 			String cmSans = relative project.copyWebFonts.cmsansdest
+			/**
+			 * Computer Modern Typewriter, as downloaded from http://checkmyworking.com/cm-web-fonts/
+			 */
+			String cmTypewriter = relative project.copyWebFonts.cmtypedest
 		}
 	}
 	

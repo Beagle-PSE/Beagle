@@ -21,6 +21,7 @@ task downloadWebFonts(type: Download) {
 	description 'Downloads fonts required by Beagle’s web presence'
 	
     src ([
+    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Typewriter.zip',
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Serif.zip',
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip',
     	'http://fontawesome.io/assets/font-awesome-4.5.0.zip'
@@ -45,6 +46,8 @@ task copyWebFonts(dependsOn: downloadWebFonts) {
 	def cmsansOutputDirname = 'cm-sans'
 	def cmserifInputDirname = 'Serif'
 	def cmserifOutputDirname = 'cm-serif'
+	def cmtypeInputDirname = 'Typewriter'
+	def cmtypeOutputDirname = 'cm-typewriter'
 	def faInputDirname = 'font-awesome-4.5.0'
 	def faOutputDirname = 'font-awesome'
 	
@@ -53,6 +56,7 @@ task copyWebFonts(dependsOn: downloadWebFonts) {
 		dest = "$WEB_DEST/fonts"
 		cmsansdest = "$dest/$cmsansOutputDirname"
 		cmserifdest = "$dest/$cmserifOutputDirname"
+		cmtypedest = "$dest/$cmtypeOutputDirname"
 		fontawesomedest = "$dest/$faOutputDirname"
 	}
 	
@@ -71,6 +75,7 @@ task copyWebFonts(dependsOn: downloadWebFonts) {
 	    
 	    file("$dest/$cmsansInputDirname").renameTo(file(cmsansdest))
 	    file("$dest/$cmserifInputDirname").renameTo(file(cmserifdest))
+	    file("$dest/$cmtypeInputDirname").renameTo(file(cmtypedest))
 	    file("$dest/$faInputDirname").renameTo(file(fontawesomedest))
 	}
 }
