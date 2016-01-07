@@ -1,5 +1,5 @@
 # Javadoc Style Convention
-All parts of the Javadoc are written as sentences, meaning that they begin with a capital letter and end with a period.
+All parts of the Javadoc are written as sentences, meaning that they begin with a capital letter and end with a full stop.
 
 ## Naming Convention
 * Class names are written in UpperCamelCase and have a minimum length of 3 characters.
