@@ -530,11 +530,6 @@
       <property name="severity" value="ignore"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
-    <module name="SummaryJavadoc">
-      <property name="forbiddenSummaryFragments" value="^[^\.]{121,}.*$"/>
-      <message key="summary.javaDoc" value="Summary too long (max 120 letters)."/>
-      <message key="summary.first.sentence" value="Javadoc incomplete: missing summary."/>
-    </module>
     <module name="StringLiteralEquality">
       <property name="severity" value="warning"/>
     </module>
