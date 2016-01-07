@@ -39,6 +39,17 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_808_4LLaEeWi36SSdQyzSA" name="Final Judge" visibility="private" isUnique="false" association="_80u9cLLaEeWi36SSdQyzSA">
         <type xmi:type="uml:Interface" href="Analysis.uml#_gYTZELLaEeWi36SSdQyzSA"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_75GrkLVfEeWaM-xzDUXk_w" name="result analyser">
+        <type xmi:type="uml:Interface" href="Analysis.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_vYLFIbVgEeWaM-xzDUXk_w" name="result analysers" visibility="private" association="_vYIo4LVgEeWaM-xzDUXk_w">
+        <type xmi:type="uml:Interface" href="Analysis.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4wzocLVgEeWaM-xzDUXk_w"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4w1doLVgEeWaM-xzDUXk_w" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9RXpkbVgEeWaM-xzDUXk_w" name="Final Judge" visibility="private" isUnique="false" association="_9RVNULVgEeWaM-xzDUXk_w">
+        <type xmi:type="uml:Interface" href="../Beagle.uml#_gYTZELLaEeWi36SSdQyzSA"/>
+      </ownedAttribute>
       <ownedBehavior xmi:type="uml:Activity" xmi:id="_vu0-kKD8EeWVpfCzK8hwSg" name="Main Method" specification="_zcUEIKDUEeWv3dQk34uqzw" node="_zoYqEKD8EeWVpfCzK8hwSg _m324sKEOEeWQRf-no0GeMA _VZfu8KEPEeWQRf-no0GeMA">
         <edge xmi:type="uml:ControlFlow" xmi:id="_cMXw8KEPEeWQRf-no0GeMA" target="_m324sKEOEeWQRf-no0GeMA" source="_zoYqEKD8EeWVpfCzK8hwSg"/>
         <edge xmi:type="uml:ControlFlow" xmi:id="_fCBvcKEPEeWQRf-no0GeMA" target="_VZfu8KEPEeWQRf-no0GeMA" source="_m324sKEOEeWQRf-no0GeMA"/>
@@ -102,12 +113,15 @@ write results()</body>
     <packagedElement xmi:type="uml:Class" xmi:id="_GLvPUKDjEeWVpfCzK8hwSg" name="Resource Demanding Internal Action"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_gq6J4KDwEeWVpfCzK8hwSg" name="Measurement Controller">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_JUsHAKEUEeWQRf-no0GeMA" name="Measurement Tools" visibility="private" association="_JUmncKEUEeWQRf-no0GeMA">
-        <type xmi:type="uml:Interface" href="../Beagle.uml#_5_804KBTEeWVfMeWaVID2g"/>
+        <type xmi:type="uml:Interface" href="Measurement.uml#_5_804KBTEeWVfMeWaVID2g"/>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RcnQYKEUEeWQRf-no0GeMA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Rcq6wKEUEeWQRf-no0GeMA" value="*"/>
       </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_664BkLClEeWUDtVlk6a50w" name="can measure">
-        <ownedComment xmi:type="uml:Comment" xmi:id="_P7cZ4LC9EeW2QoBjFVIuyA" annotatedElement="_664BkLClEeWUDtVlk6a50w _gq6J4KDwEeWVpfCzK8hwSg">
+        <ownedComment xmi:type="uml:Comment" xmi:id="_P7cZ4LC9EeW2QoBjFVIuyA">
+          <annotatedElement xmi:type="uml:Operation" href="#_664BkLClEeWUDtVlk6a50w"/>
+          <annotatedElement xmi:type="uml:Class" href="#_gq6J4KDwEeWVpfCzK8hwSg"/>
+          <annotatedElement xmi:type="uml:Interface" href="Analysis.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
           <body>return |blackboard.{@link #_5rNhcKD3EeWVpfCzK8hwSg}()
   ∪ blackboard.{@link #_RuQqwKD4EeWVpfCzK8hwSg}()
   ∪ blackboard.{@link #_CJW4MKioEeW317sgBX4gxw}()|  > 0</body>
@@ -262,7 +276,7 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_oLh8gKENEeWQRf-no0GeMA" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_F6ZGAKD2EeWVpfCzK8hwSg" memberEnd="_F6a7MqD2EeWVpfCzK8hwSg _F6cJUKD2EeWVpfCzK8hwSg">
+    <packagedElement xmi:type="uml:Association" xmi:id="_F6ZGAKD2EeWVpfCzK8hwSg" visibility="package" memberEnd="_F6a7MqD2EeWVpfCzK8hwSg _F6cJUKD2EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_F6a7MKD2EeWVpfCzK8hwSg" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_F6a7MaD2EeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
       </eAnnotations>
@@ -418,6 +432,24 @@ write results()</body>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_UVMrMLLoEeWeMoSNZeiBAQ" name="" supplier="_Mqc3EKBSEeWVfMeWaVID2g"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_vYIo4LVgEeWaM-xzDUXk_w" name="Beagle Controller" visibility="public" memberEnd="_vYLFIbVgEeWaM-xzDUXk_w _vYLsMLVgEeWaM-xzDUXk_w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vYJ3ALVgEeWaM-xzDUXk_w" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_vYLFILVgEeWaM-xzDUXk_w" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_vYLsMLVgEeWaM-xzDUXk_w" name="beagle controller" type="_I-iE4KDUEeWv3dQk34uqzw" isUnique="false" association="_vYIo4LVgEeWaM-xzDUXk_w">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5ORAgLVgEeWaM-xzDUXk_w"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5OTcwLVgEeWaM-xzDUXk_w" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_9RVNULVgEeWaM-xzDUXk_w" visibility="public" memberEnd="_9RXpkbVgEeWaM-xzDUXk_w _9RYQoLVgEeWaM-xzDUXk_w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9RWbcLVgEeWaM-xzDUXk_w" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9RXpkLVgEeWaM-xzDUXk_w" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_9RYQoLVgEeWaM-xzDUXk_w" name="beagle controller" type="_I-iE4KDUEeWv3dQk34uqzw" isUnique="false" association="_9RVNULVgEeWaM-xzDUXk_w">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AjOb4LVhEeWaM-xzDUXk_w"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AjPqALVhEeWaM-xzDUXk_w" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>

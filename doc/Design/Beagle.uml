@@ -112,13 +112,6 @@
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Interface" xmi:id="_5_804KBTEeWVfMeWaVID2g" name="Measurement Tool">
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_zGNoYKWiEeWVjrqJHndH-A" name="measure">
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_3SCIkKWiEeWVjrqJHndH-A" name="order" isUnique="false" effect="read">
-          <type xmi:type="uml:Class" href="Packages/Measurement.uml#_ujPzgKWiEeWVjrqJHndH-A"/>
-        </ownedParameter>
-      </ownedOperation>
-    </packagedElement>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fLPA4LJJEeWgdqdZ8hPRgg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fLQPALJJEeWgdqdZ8hPRgg" source="http://www.eclipse.org/uml2/2.0.0/UML">
