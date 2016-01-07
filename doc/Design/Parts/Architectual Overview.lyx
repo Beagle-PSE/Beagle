@@ -179,9 +179,9 @@ Result Analyser (Can-do Pattern)
 \end_layout
 
 \begin_layout Standard
-Based on the measurement results, the Result Analyser will suggest stochastic
- expressions that lead to a parametrisation of Resource Demanding Internal
- Actions, Seff Branches and Seff Loops.
+Based on the measurement results, the Result Analyser will suggest evaluable
+ expressions expressing that lead to a parametrisation of Resource Demanding
+ Internal Actions, SEFF Branches or SEFF Loops.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -189,7 +189,7 @@ Final Judge
 \end_layout
 
 \begin_layout Standard
-This component is responsible to decide, which proposed stochastic expression
+This component is responsible to decide, which proposed evaluable expression
  fits best to the PCM.
  It also decides if more measurements should be done and when the final
  solution is found.
