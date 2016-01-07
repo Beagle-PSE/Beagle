@@ -11,7 +11,7 @@ All parts of the Javadoc are written as sentences, meaning that they begin with 
 * Package names are written in lowercase and have a minimum length of 2 characters per part.
 
 ### Use of Acronyms
-* Only acronyms used in the SRS are permitted. Their use when possible is mandatory.
+* Only acronyms used in the SRS are permitted.
 * Acronyms are treated as normal words and are spelled as specified in `Naming Convention`. They are not capitalised.
 
 
