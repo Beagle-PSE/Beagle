@@ -1,38 +1,29 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document this type.
+ * An {@link EvaluableExpression} having a constant value.
+ * 
+ * @author Annika Berger
  *
  */
-public class ConstantExpression implements EvaluableExpression {
+public final class ConstantExpression implements EvaluableExpression {
 
 	/**
-	 * TODO document this method.
-	 *
-	 * @param value
-	 *            TODO
-	 * @return TODO
+	 * Inizialises a new constant expression with a given {@code value}.
+	 * 
+	 * @param value constant value of this expression
 	 */
-	public static ConstantExpression forValue(double value) {
-		// TODO implement this method
-		return null;
+	private ConstantExpression(final double value) {
 	}
 
 	/**
-	 * TODO document this constructor.
+	 * Looks for the constant expression belonging to an input {@code value}.
 	 *
+	 * @param value whose expression should be returned
+	 * @return the constant expression belonging to the given {@code value}
 	 */
-	private ConstantExpression(double value) {
-		// TODO Auto-generated constructor stub
+	public static ConstantExpression forValue(final double value) {
+		return null;
 	}
 
 	/*
@@ -42,8 +33,7 @@ public class ConstantExpression implements EvaluableExpression {
 	 * beagle. core.expressions.EvaluableExpressionVisitor)
 	 */
 	@Override
-	public void receive(EvaluableExpressionVisitor visitor) {
-		// TODO Auto-generated method stub
+	public void receive(final EvaluableExpressionVisitor visitor) {
 
 	}
 
@@ -55,8 +45,7 @@ public class ConstantExpression implements EvaluableExpression {
 	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
-	public double evaluate(EvaluableVariableAssignment variableAssignments) {
-		// TODO Auto-generated method stub
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return 0;
 	}
 
