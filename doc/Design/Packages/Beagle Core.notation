@@ -95,7 +95,7 @@
         <stringListValue>code</stringListValue>
       </styles>
       <element xmi:type="uml:Comment" href="Beagle%20Core.uml#_i3kqAKDVEeWv3dQk34uqzw"/>
-      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8RnbcaDVEeWv3dQk34uqzw" x="2324" y="1622" width="712" height="386"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8RnbcaDVEeWv3dQk34uqzw" x="2324" y="1622" width="813" height="386"/>
     </children>
     <children xmi:type="notation:Shape" xmi:id="_7R1GgKDiEeWVpfCzK8hwSg" type="2008">
       <children xmi:type="notation:DecorationNode" xmi:id="_7R3iwKDiEeWVpfCzK8hwSg" type="5029"/>

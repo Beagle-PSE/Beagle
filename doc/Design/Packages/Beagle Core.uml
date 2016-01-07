@@ -79,10 +79,10 @@
       <ownedOperation xmi:type="uml:Operation" xmi:id="_zcUEIKDUEeWv3dQk34uqzw" name="perform analysis">
         <ownedComment xmi:type="uml:Comment" xmi:id="_i3kqAKDVEeWv3dQk34uqzw" annotatedElement="_zcUEIKDUEeWv3dQk34uqzw _I-iE4KDUEeWv3dQk34uqzw">
           <body>finished ≔ false&#xD;
-readOnlyBlackboardView ≔ {@link #_DQjdUKDzEeWVpfCzK8hwSg}.{@link #__BK2UKDzEeWVpfCzK8hwSg}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
-measurementControllerBlackboardView ≔ {@link #_gzE1gKiSEeW317sgBX4gxw}.{@link #_pnMmcKimEeW317sgBX4gxw}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
-analyserBlackboardView ≔ {@link #_rqzFQKD4EeWVpfCzK8hwSg}.{@link #_zR0rkKD5EeWVpfCzK8hwSg}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
-finalJudgeBlackboardView ≔ {@link #_9waukKiSEeW317sgBX4gxw}.{@link #_B3QRAKinEeW317sgBX4gxw}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
+readOnlyBlackboardView ≔ {@link #_DQjdUKDzEeWVpfCzK8hwSg}.{@link #__BK2UKDzEeWVpfCzK8hwSg}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+measurementControllerBlackboardView ≔ {@link #_gzE1gKiSEeW317sgBX4gxw}.{@link #_pnMmcKimEeW317sgBX4gxw}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+analyserBlackboardView ≔ {@link #_rqzFQKD4EeWVpfCzK8hwSg}.{@link #_zR0rkKD5EeWVpfCzK8hwSg}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+finalJudgeBlackboardView ≔ {@link #_9waukKiSEeW317sgBX4gxw}.{@link #_B3QRAKinEeW317sgBX4gxw}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
  &#xD;
 while (¬finished) do&#xD;
   if {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_664BkLClEeWUDtVlk6a50w}(readOnlyBlackboardView) then&#xD;
