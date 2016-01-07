@@ -11,10 +11,10 @@ All parts of the Javadoc are written as sentences, meaning that they begin with 
 * Package names are written in lowercase and have a minimum length of 2 characters per part.
 
 ### Use of Acronyms
-1. All acronyms used in the SRS are permitted.
-2. Acronyms are treated as normal words and are spelled as specified in `Naming Convention`. They are not capitalised.
+* Only acronyms used in the SRS are permitted. Their use when possible is mandatory.
+* Acronyms are treated as normal words and are spelled as specified in `Naming Convention`. They are not capitalised.
 
 
 ## Tags
-1. `@param` and `@returns` tags have to state their value ranges if they refer to primitive data types as well as stating whether they can be `null` and the meaning of them being `null` if they refer to object data types.
-2. Unnecessarily stating the package when using `{@link}` or `{@see}` tags is forbidden.
+* `@param` and `@returns` tags have to state their value ranges if they refer to primitive data types as well as stating whether they can be `null` and the meaning of them being `null` if they refer to object data types.
+* Unnecessarily stating the package when using `{@link}` or `{@see}` tags is forbidden.
