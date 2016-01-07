@@ -10,7 +10,7 @@ import java.util.Set;
 
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
- * {@link BeagleController}, the Blackboard pattern from POSA I. The Blackboard’s
+ * {@link AnalysisController}, the Blackboard pattern from POSA I. The Blackboard’s
  * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SEFFBranch},
  * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult},
  * {@link BranchDecisionMeasurementResult} , {@link LoopRepetitionCountMeasurementResult}
@@ -22,7 +22,7 @@ import java.util.Set;
  * restrict access to it.
  *
  * @author Joshua Gleitze
- * @see BeagleController
+ * @see AnalysisController
  */
 public class Blackboard implements Serializable {
 
@@ -30,6 +30,17 @@ public class Blackboard implements Serializable {
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
 	private static final long serialVersionUID = 6382577321150787599L;
+
+	/**
+	 * Creates a new blackboard that can be used to analyse the given elements.
+	 *
+	 * @param rdias All resource demanding internal action to be known to analysers.
+	 * @param branches All SEFF branches to be known to analysers.
+	 * @param loops All SEFF loops to be known to analysers.
+	 */
+	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SEFFBranch> branches,
+		final Set<SEFFLoop> loops) {
+	}
 
 	/**
 	 * All {@linkplain SEFFLoop SEFF loops} known to Beagle.
