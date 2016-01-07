@@ -871,7 +871,7 @@ Depengin on:
 \begin_inset Text
 
 \begin_layout Plain Layout
-#040
+#040 (SEFF classes)
 \end_layout
 
 \end_inset
@@ -1040,7 +1040,7 @@ status open
 
 \begin_layout Plain Layout
 
-Parameterisation-Dependent Measurement Result
+ParameterisationDependentMeasurementResult
 \end_layout
 
 \end_inset
@@ -1586,7 +1586,7 @@ status open
 
 \begin_layout Plain Layout
 
-Evaluable Expression
+EvaluableExpression
 \end_layout
 
 \end_inset
@@ -1709,7 +1709,7 @@ status open
 
 \begin_layout Plain Layout
 
-Parameterisation-Dependent Measurement Result
+ParameterisationDependentMeasurementResult
 \end_layout
 
 \end_inset
@@ -1844,7 +1844,7 @@ status open
 
 \begin_layout Plain Layout
 
-Beagle Controller
+BeagleController
 \end_layout
 
 \end_inset
@@ -1856,7 +1856,7 @@ status open
 
 \begin_layout Plain Layout
 
-Measurement Controller
+MeasurementController
 \end_layout
 
 \end_inset
@@ -1881,7 +1881,7 @@ Depengin on:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depending on #060 (
+#060 (
 \begin_inset listings
 inline true
 status open
@@ -2011,7 +2011,19 @@ Depengin on:
 \begin_inset Text
 
 \begin_layout Plain Layout
-#120 (Measurment Results)
+#120 (Measurment Results), #060 (
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Blackboard
+\end_layout
+
+\end_inset
+
+), #070 (Blackboard Views) and #040 (SEFF classes)
 \end_layout
 
 \end_inset
@@ -2053,7 +2065,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kieker measurement tool
+Averaging Final Judge
 \end_layout
 
 \end_inset
@@ -2100,12 +2112,36 @@ status open
 
 \begin_layout Plain Layout
 
-MeasurementTool
+FinalJudge
 \end_layout
 
 \end_inset
 
- based on Kieker.
+, which takes as final 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+EvaluableExpression
+\end_layout
+
+\end_inset
+
+ for all 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurableSeffElement
+\end_layout
+
+\end_inset
+
+s the average of all availabe measurement results.
 \end_layout
 
 \end_inset
@@ -2146,8 +2182,92 @@ Depengin on:
 
 \end_layout
 
+\begin_layout Standard
+Optional: Build more, better 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementTool
+\end_layout
+
+\end_inset
+
+s, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ResultAnalyser
+\end_layout
+
+\end_inset
+
+s and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+FinalJudge
+\end_layout
+
+\end_inset
+
+s.
+\end_layout
+
 \begin_layout Section*
 Week 4 (2016-02-01 – 2016-02-07)
+\end_layout
+
+\begin_layout Standard
+Reserved for tasks, that take longer than expected.
+\end_layout
+
+\begin_layout Standard
+Optional: Build more, better 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementTool
+\end_layout
+
+\end_inset
+
+s, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ResultAnalyser
+\end_layout
+
+\end_inset
+
+s and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+FinalJudge
+\end_layout
+
+\end_inset
+
+s.
 \end_layout
 
 \end_body
