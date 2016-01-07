@@ -290,9 +290,9 @@ Implementation Plan
 \end_layout
 
 \begin_layout Standard
-Each task should be done by one person and another person should write the
- test cases for this task, except for the prototyps – they do not need automatic
- test cases.
+Each task will be assigned to one person and another person will write tests
+ for it.
+ Except for the prototypes: they do not need automated tests.
 \end_layout
 
 \begin_layout Section*
@@ -300,10 +300,10 @@ Preparation (2015-12-24 – 2016-01-10)
 \end_layout
 
 \begin_layout Standard
-For the parts of our project that are depending on the eclipse API we decided
- to create prototyps to learn how to use the API.
- As knowing about an API your are working with is esential for the Design,
- we decided to do this already in the Design phase.
+For the parts of our project depending on the Eclipse API we decided to
+ create prototypes to learn how to use the API.
+ As knowledge about used APIs is essential for a software’s design, we decided
+ to already create prototypes in the design phase.
 \end_layout
 
 \begin_layout Standard
@@ -367,9 +367,9 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Write a simple eclipse plugin that adds all context menus specified in the
- SRS GUI model to eclipse by using eclipse extension points and shows a
- sample dialog, when the user clicks on a context menu.
+Write a simple Eclipse plugin that adds all context menus specified in the
+ SRS GUI model to Eclipse by using Eclipse extension points.
+ Show a sample dialog when the user clicks on a context menu.
 \end_layout
 
 \end_inset
@@ -380,7 +380,7 @@ Write a simple eclipse plugin that adds all context menus specified in the
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -471,13 +471,13 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Write a simple eclipse plugin that offers an extension point for measurement
+Write a simple Eclipse plugin that offers an extension point for measurement
  tools and allows other plugins to offer a measurement tool.
  The plugin should display the available measurement tools.
 \end_layout
 
 \begin_layout Plain Layout
-Create a plugin with a measuremnt tool stub, that uses the extension point.
+Create a plugin with a measuremnt tool stub that uses the extension point.
 \end_layout
 
 \end_inset
@@ -488,7 +488,7 @@ Create a plugin with a measuremnt tool stub, that uses the extension point.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -575,7 +575,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Create an eclipse plugin that shows a wizard as described in the SRS GUI
+Create an Eclipse plugin that shows a wizard as described in the SRS GUI
  model.
  The wizard should show some demonstration content.
 \end_layout
@@ -588,7 +588,7 @@ Create an eclipse plugin that shows a wizard as described in the SRS GUI
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -730,7 +730,7 @@ ResourceDemandingInternalAction
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -858,7 +858,7 @@ ResourceDemandingInternalAction
 
 \end_inset
 
-s
+s.
 \end_layout
 
 \end_inset
@@ -869,7 +869,7 @@ s
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -979,7 +979,7 @@ Blackboard
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1052,7 +1052,7 @@ ParameterisationDependentMeasurementResult
 
 \end_inset
 
- subclasses and not their functionallity).
+ subclasses and not their functionality).
 \end_layout
 
 \end_inset
@@ -1189,7 +1189,7 @@ FinalJudgeBlackboardView
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1281,7 +1281,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate the prototype for Context Menus in Beagle.
+Integrate the prototype for Context Menus into Beagle.
 \end_layout
 
 \end_inset
@@ -1292,7 +1292,7 @@ Integrate the prototype for Context Menus in Beagle.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1379,7 +1379,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate the prototype for Eclipse Extension Points in Beagle.
+Integrate the prototype for Eclipse Extension Points into Beagle.
 \end_layout
 
 \end_inset
@@ -1390,7 +1390,7 @@ Integrate the prototype for Eclipse Extension Points in Beagle.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1477,7 +1477,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate the prototype for Context Menus in Beagle.
+Integrate the prototype for Context Menus into Beagle.
 \end_layout
 
 \end_inset
@@ -1488,7 +1488,7 @@ Integrate the prototype for Context Menus in Beagle.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1615,7 +1615,7 @@ Evaluable Expressions
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1738,7 +1738,7 @@ Measurement
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1864,7 +1864,7 @@ MeasurementController
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -1983,7 +1983,7 @@ MeasurementTool
 
 \end_inset
 
- based on Kieker.
+ executing Kieker.
 \end_layout
 
 \end_inset
@@ -1994,7 +1994,7 @@ MeasurementTool
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -2133,7 +2133,7 @@ MeasurableSeffElement
 
 \end_inset
 
-s the average of all availabe measurement results.
+s the average of all available measurement results.
 \end_layout
 
 \end_inset
@@ -2144,7 +2144,7 @@ s the average of all availabe measurement results.
 \begin_inset Text
 
 \begin_layout Plain Layout
-Depengin on:
+Depends on:
 \end_layout
 
 \end_inset
@@ -2219,7 +2219,7 @@ Week 4 (2016-02-01 – 2016-02-07)
 \end_layout
 
 \begin_layout Standard
-Reserved for tasks, that take longer than expected.
+Reserved for tasks that take longer than expected.
 \end_layout
 
 \begin_layout Standard
