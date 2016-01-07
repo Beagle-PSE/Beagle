@@ -1718,19 +1718,7 @@ ParameterisationDependentMeasurementResult
 
 \end_inset
 
-, all its subclasses and 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Parametrisation
-\end_layout
-
-\end_inset
-
-.
+ and all of its subclasses.
  (Package 
 \begin_inset Quotes eld
 \end_inset
