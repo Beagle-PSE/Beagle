@@ -1,28 +1,28 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
- * Expression that potentises the given exponent to the base e (Euler’s number).
+ * An {@link EvaluableExpression} having a constant value.
  * 
  * @author Annika Berger
  *
  */
-public class ExponentialFunctionExpression implements EvaluableExpression {
+public final class ConstantExpression implements EvaluableExpression {
 
 	/**
-	 * Set an {@link EvaluableExpression} as exponent.
-	 *
-	 * @param expression which is the exponent
+	 * Inizialises a new constant expression with a given {@code value}.
+	 * 
+	 * @param value constant value of this expression
 	 */
-	public void setExponent(final EvaluableExpression expression) {
-
+	private ConstantExpression(final double value) {
 	}
 
 	/**
-	 * Get the {@link EvaluableExpression} which is set as exponent.
+	 * Looks for the constant expression belonging to an input {@code value}.
 	 *
-	 * @return the exponent
+	 * @param value whose expression should be returned
+	 * @return the constant expression belonging to the given {@code value}
 	 */
-	public EvaluableExpression getExponent() {
+	public static ConstantExpression forValue(final double value) {
 		return null;
 	}
 

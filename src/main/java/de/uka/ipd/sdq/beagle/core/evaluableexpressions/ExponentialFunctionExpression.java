@@ -1,27 +1,29 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
- * An {@link EvaluableExpression} representing a named variable.
+ * Expression that potentises the given exponent to the base e (Euler’s number).
  * 
  * @author Annika Berger
+ *
  */
-public class EvaluableVariable implements EvaluableExpression {
+public class ExponentialFunctionExpression implements EvaluableExpression {
 
 	/**
-	 * Get this evaluable varibale's name.
+	 * Set an {@link EvaluableExpression} as exponent.
 	 *
-	 * @return the variable's name. Is never {@code null}
+	 * @param expression which is the exponent
 	 */
-	public String getName() {
-		return null;
+	public void setExponent(final EvaluableExpression expression) {
+
 	}
 
 	/**
-	 * Names this evaluable variable.
+	 * Get the {@link EvaluableExpression} which is set as exponent.
 	 *
-	 * @param name this variable's name. Must not be {@code null}
+	 * @return the exponent
 	 */
-	public void setName(final String name) {
+	public EvaluableExpression getExponent() {
+		return null;
 	}
 
 	/*
@@ -32,6 +34,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+
 	}
 
 	/*

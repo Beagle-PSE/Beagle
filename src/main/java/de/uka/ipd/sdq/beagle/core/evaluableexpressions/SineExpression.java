@@ -1,28 +1,28 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
- * An {@link EvaluableExpression} having a constant value.
+ * Expression that executes a sine function on its contained expression.
  * 
  * @author Annika Berger
  *
  */
-public final class ConstantExpression implements EvaluableExpression {
+public class SineExpression implements EvaluableExpression {
 
 	/**
-	 * Inizialises a new constant expression with a given {@code value}.
-	 * 
-	 * @param value constant value of this expression
+	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
+	 *
+	 * @param expression to be the argument.
 	 */
-	private ConstantExpression(final double value) {
+	public void setArgument(final EvaluableExpression expression) {
+
 	}
 
 	/**
-	 * Looks for the constant expression belonging to an input {@code value}.
+	 * Get the {@link EvaluableExpression} which is the argument of the sine function.
 	 *
-	 * @param value whose expression should be returned
-	 * @return the constant expression belonging to the given {@code value}
+	 * @return the argument of the function
 	 */
-	public static ConstantExpression forValue(final double value) {
+	public EvaluableExpression getArgument() {
 		return null;
 	}
 

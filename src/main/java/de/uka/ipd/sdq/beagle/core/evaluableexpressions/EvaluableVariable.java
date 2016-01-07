@@ -1,29 +1,27 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
- * Expression that executes a sine function on its contained expression.
+ * An {@link EvaluableExpression} representing a named variable.
  * 
  * @author Annika Berger
- *
  */
-public class SineExpression implements EvaluableExpression {
+public class EvaluableVariable implements EvaluableExpression {
 
 	/**
-	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
+	 * Get this evaluable varibale's name.
 	 *
-	 * @param expression to be the argument.
+	 * @return the variable's name. Is never {@code null}
 	 */
-	public void setArgument(final EvaluableExpression expression) {
-
+	public String getName() {
+		return null;
 	}
 
 	/**
-	 * Get the {@link EvaluableExpression} which is the argument of the sine function.
+	 * Names this evaluable variable.
 	 *
-	 * @return the argument of the function
+	 * @param name this variable's name. Must not be {@code null}
 	 */
-	public EvaluableExpression getArgument() {
-		return null;
+	public void setName(final String name) {
 	}
 
 	/*
@@ -34,7 +32,6 @@ public class SineExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
 	}
 
 	/*
