@@ -676,7 +676,43 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement SEFF Loop, SEFF Branch, Resource Demanding Internal Action
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+SEFFLoop
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+SEFFBranch
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ResourceDemandingInternalAction
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -779,8 +815,43 @@ Description/Classes:
 
 \begin_layout Plain Layout
 Create a class that provides all information from the PCM which are relevant
- for Beagle and a factory that uses these information to create the SEFF
- Loops, SEFF Branches and Resource Demanding Internal Actions
+ for Beagle and a factory that uses these information to create the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+SEFFLoop
+\end_layout
+
+\end_inset
+
+s, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+SEFFBranch
+\end_layout
+
+\end_inset
+
+es and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ResourceDemandingInternalAction
+\end_layout
+
+\end_inset
+
+s
 \end_layout
 
 \end_inset
@@ -878,7 +949,19 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement Blackboard
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Blackboard
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -902,9 +985,67 @@ Depengin on:
 \end_layout
 
 \begin_layout Plain Layout
-(Not depending on #050, as the Blackboard only needs the classes SEFF Loop,
- SEFF Branch and Resource Demanding Internal Action and not their functionallity
-).
+(Not depending on #050, as the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Blackboard
+\end_layout
+
+\end_inset
+
+ only needs the class stubs for 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+SEFFLoop
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+SEFFBranch
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ResourceDemandingInternalAction
+\end_layout
+
+\end_inset
+
+ and the 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Parameterisation-Dependent Measurement Result
+\end_layout
+
+\end_inset
+
+ subclasses and not their functionallity).
 \end_layout
 
 \end_inset
@@ -982,8 +1123,55 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement Read-OnlyBlackboardView, AnalyserBlackboardView, MeasurementController
-BlackboardView, FinalJudgeBlackboardView
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Read-OnlyBlackboardView
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+AnalyserBlackboardView
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementControllerBlackboardView
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+FinalJudgeBlackboardView
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -1086,7 +1274,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate the prototype for Context Menus in Beagle
+Integrate the prototype for Context Menus in Beagle.
 \end_layout
 
 \end_inset
@@ -1184,7 +1372,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate the prototype for Eclipse Extension Points in Beagle
+Integrate the prototype for Eclipse Extension Points in Beagle.
 \end_layout
 
 \end_inset
@@ -1282,7 +1470,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate the prototype for Context Menus in Beagle
+Integrate the prototype for Context Menus in Beagle.
 \end_layout
 
 \end_inset
@@ -1327,8 +1515,635 @@ Depengin on:
 Week 2 (2016-01-18 – 2016-01-24)
 \end_layout
 
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement
+ 
+\lang british
+Evaluable Expressions
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#110
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement all subclasses of the interface 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Evaluable Expression
+\end_layout
+
+\end_inset
+
+.
+ (Package 
+\begin_inset Quotes eld
+\end_inset
+
+Evaluable Expressions
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depengin on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement Measurment Results
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#120
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Parameterisation-Dependent Measurement Result
+\end_layout
+
+\end_inset
+
+, all its subclasses and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Parametrisation
+\end_layout
+
+\end_inset
+
+.
+ (Package 
+\begin_inset Quotes eld
+\end_inset
+
+Measurement
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depengin on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement Blackboard Controller
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#130
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Beagle Controller
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Controller
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depengin on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depending on #060 (
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Blackboard
+\end_layout
+
+\end_inset
+
+) and #070 (Blackboard Views)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Week 3 (2016-01-25 – 2016-01-31)
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kieker measurement tool
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#140
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Build a 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementTool
+\end_layout
+
+\end_inset
+
+ based on Kieker.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depengin on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#120 (Measurment Results)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kieker measurement tool
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#150
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Build a 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementTool
+\end_layout
+
+\end_inset
+
+ based on Kieker.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depengin on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section*
