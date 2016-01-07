@@ -108,6 +108,7 @@ li blockquote {
 	padding: 0 .7rem;
 	display: block;
 	margin-bottom: 1rem;
+	color: black;
 }
 
 .artefact .file {
