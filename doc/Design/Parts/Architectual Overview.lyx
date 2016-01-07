@@ -78,7 +78,7 @@ Architectural Overview
 The architectural overview summarizes Beagle's software design, that follows
  the Software Requirement Specification (SRS).
  Beagle's design decisions are mainly proposed to fulfil all mandatory tasks
- mentioned in the SRS, but also allows supplement by optional criteria.
+ mentioned in the SRS, but also allows supplementing by optional criteria.
  However, some mandatory criteria have changed, concerning the Common Trace
  API (CTA) (/B10/, /F30/, /F40/, /Q20/).
  The CTA will not be used from Beagle any more, because it cannot conduct
