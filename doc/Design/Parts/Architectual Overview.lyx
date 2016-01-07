@@ -153,7 +153,7 @@ Core Component (Mediator Pattern)
 \end_layout
 
 \begin_layout Standard
-In Order to manage and synchronise the requests and execution of different
+In order to manage and synchronise the requests and execution of different
  jobs, Beagle is controlled by a core component.
  The core component conducts the order of executable services, distributes
  information and is responsible for class instantiation.
