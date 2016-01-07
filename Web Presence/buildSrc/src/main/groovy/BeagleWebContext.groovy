@@ -1,16 +1,19 @@
 import org.gradle.api.Project
 import org.gradle.api.Task
+import java.nio.file.Path
 
 /**
  * The context (data object) that will be passed to all Beagle handlebars templates.
  * Each page has its own context instance. The context has properties derived from the
- * Beagle gradle project, stored in {@link #project}. This project must be set before
- * creating an instance of this class.
+ * Beagle Web Presence gradle project, stored in {@link #project}. This project must be
+ * set before creating an instance of this class.
  *
  * @author Joshua Gleitze
  */
 public class BeagleWebContext {
 	private static Project project
+	
+	
 	
 	/**
 	 * All available System Environment Variables.
@@ -26,6 +29,19 @@ public class BeagleWebContext {
 	 * {@link ApplyRootTemplateFilter}.
 	 */
 	String content = ''
+	/**
+	 * The page’s source file’s name.
+	 */
+	String fileName = ''
+	/**
+	 * The page’s source file’s path relative to the web index.
+	 */
+	String filePath = ''
+	
+	/**
+	 * All Beagle subprojects that are java projects.
+	 */
+	Collection<Project> javaProjects = project.rootProject.javaSubprojects
 
 	/** 
 	 * Paths to artefacts available to the templates.
@@ -86,7 +102,7 @@ public class BeagleWebContext {
 	 * @return	A path to {@code path} relative to Beagle’s {@code web} task’s {@code dest} property.
 	 */
 	private static String relative(final Object path) {
-		URI base = project.file(project.web.dest).toURI()
-		return base.relativize(project.file(path).toURI())
+		Path base = project.file(project.web.dest).toPath()
+		return base.relativize(project.file(path).toPath())
 	}
 }

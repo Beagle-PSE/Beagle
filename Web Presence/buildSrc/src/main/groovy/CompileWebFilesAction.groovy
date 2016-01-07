@@ -22,6 +22,8 @@ public class CompileWebFilesAction implements Action<FileCopyDetails> {
 	public void execute(final FileCopyDetails copyDetails) {
 		// set up the context and helpers
 		final BeagleWebContext context = new BeagleWebContext()
+		context.fileName = copyDetails.name
+		context.filePath = copyDetails.path
 		
 		copyDetails.filter CompileHandlebarsFilter.class, context: context
 		

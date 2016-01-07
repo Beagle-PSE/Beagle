@@ -1,3 +1,5 @@
+import java.nio.file.Path
+
 /**
  * Defines all helpers available to web handlebars templates.
  *
@@ -70,5 +72,20 @@ public class BeagleHelpers {
 		(user, repo) = repoSlug.tokenize('/')
 		final String branchFolder = branch == 'master' ? '' : "/branches/$branch"
 		return "https://${user}.github.io/${repo}${branchFolder}"
+	}
+	
+	/**
+	 * Determines the relative path from the momentary source file to {@code path}.
+	 *
+	 * @param path	A path relative to the web root.
+	 * @return	A relative path from the momentary source file to {@code path}.
+	 */	
+	public String relative(String path) {
+		String home = beagleContext.filePath.substring(0, beagleContext.filePath.length() - beagleContext.fileName.length())
+		Path here = new File(home).toPath();
+		Path there = new File(path).toPath()
+		
+		println "make relative: $path ($there) from $beagleContext.filePath ($here) : ${here.relativize(there)}"
+		return here.relativize(there)
 	}
 }
