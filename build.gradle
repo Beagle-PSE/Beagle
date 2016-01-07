@@ -1,19 +1,23 @@
-import groovy.transform.Field 
-
 /**
  * All prototype subprojects. Useful for configure blocks: configure(prototypeSubprojects){}
  */
 ext.prototypeSubprojects = subprojects.findAll {it.name.startsWith('prototype')}
 
-buildscript {
-	fileTree("$projectDir/buildSrc/src/tasks/gradle/buildscript-dependencies").include('*.gradle').each { file ->
-	     apply from: file, to: buildscript
-	} 
+gradle.allprojects {
+	buildscript {
+		fileTree("$projectDir/buildSrc/src/tasks/gradle/buildscript-dependencies").include('*.gradle').each { file ->
+			println "here: $file"
+		 	apply from: file, to: buildscript
+		} 
+	}
 }
 
+allprojects {
 // import all tasks defined in src/build/groovy
-fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').sort().each { file ->
-     apply from: file
-} 
+	fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').sort().each { file ->
+		println "$projectDir: $file"
+		 apply from: file
+	} 
+}
 
 defaultTasks 'build'
