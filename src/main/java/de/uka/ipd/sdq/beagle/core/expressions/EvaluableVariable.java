@@ -1,61 +1,48 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document class
- *
+ * An {@link EvaluableExpression} representing a named variable.
+ * 
+ * @author Annika Berger
  */
 public class EvaluableVariable implements EvaluableExpression {
+
 	/**
-	 * TODO describe name
+	 * Get this evaluable varibale's name.
 	 *
-	 * @return the name
+	 * @return the variable's name. Is never {@code null}
 	 */
 	public String getName() {
-		// TODO: Implement method
 		return null;
 	}
 
 	/**
-	 * TODO describe name
+	 * Names this evaluable variable.
 	 *
-	 * @param name
-	 *            the name to set
+	 * @param name this variable's name. Must not be {@code null}
 	 */
-	public void setName(String name) {
-		// TODO: Implement method
+	public void setName(final String name) {
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 */
+	@Override
+	public void receive(final EvaluableExpressionVisitor visitor) {
 	}
 
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableExpressionVisitor)
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
-	public void receive(EvaluableExpressionVisitor visitor) {
-		// TODO: Implement method
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableVariableAssignment)
-	 */
-	@Override
-	public double evaluate(EvaluableVariableAssignment variableAssignments) {
-		// TODO Auto-generated method stub
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return 0;
 	}
 

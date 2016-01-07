@@ -16,7 +16,7 @@ package de.uka.ipd.sdq.beagle.core.expressions;
  * situation.
  *
  * <p>Implementations are encouraged to override {@link Object#equals(Object)} and
- * {@link Object#hashCode()} to fulfil the following: If for two evaluable expressions
+ * {@link Object#hashCode()} to fulfill the following: If for two evaluable expressions
  * {@code a} and {@code b} {@code a.equals(b)} returns {@code true} true,
  * {@code a.evaluate(ass)} will return a value equal to {@code b.evaluate(ass)} for any
  * {@link EvaluableVariableAssignment} {@code ass}. The inverse implication will usually
@@ -37,21 +37,18 @@ public interface EvaluableExpression {
 	 * Calls the appropriate overload of {@link EvaluableExpressionVisitor#visit} on
 	 * {@code visitor}. This implements the well-known <em>visitor pattern</em>.
 	 *
-	 * @param visitor
-	 *            The visitor wishing to visit this expression.
+	 * @param visitor The visitor wishing to visit this expression.
 	 */
 	void receive(EvaluableExpressionVisitor visitor);
 
 	/**
 	 * Calculates this expression’s value for the given {@code variableAssignments}.
 	 *
-	 * @param variableAssignments
-	 *            must assign a value to at least all {@link EvaluableVariable}s contained
-	 *            in this expression.
+	 * @param variableAssignments must assign a value to at least all
+	 *            {@link EvaluableVariable}s contained in this expression.
 	 * @return the value for the given assignments.
-	 * @throws UndefinedExpressionException
-	 *             if {@code variableAssignments} does not contain a valid assignment for
-	 *             a contained variable.
+	 * @throws UndefinedExpressionException if {@code variableAssignments} does not
+	 *             contain a valid assignment for a contained variable.
 	 */
 	double evaluate(EvaluableVariableAssignment variableAssignments);
 }

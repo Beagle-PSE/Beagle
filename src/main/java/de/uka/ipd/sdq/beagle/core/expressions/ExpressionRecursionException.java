@@ -1,14 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
  * Might be thrown if a {@link EvaluableExpression} contains itself.
  *
@@ -26,11 +17,9 @@ public class ExpressionRecursionException extends RuntimeException {
 	 * Creates an Exception for the fact that {@code selfContainedExpression}, contains
 	 * itself.
 	 *
-	 * @param selfContainedExpression
-	 *            an expression containing itself.
+	 * @param selfContainedExpression an expression containing itself.
 	 */
 	public ExpressionRecursionException(final EvaluableExpression selfContainedExpression) {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -39,7 +28,6 @@ public class ExpressionRecursionException extends RuntimeException {
 	 * @return the causing, self-contained expression.
 	 */
 	public EvaluableExpression getCausingExpression() {
-		// TODO implement method
 		return null;
 	}
 
