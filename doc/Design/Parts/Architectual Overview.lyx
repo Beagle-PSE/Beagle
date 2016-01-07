@@ -84,7 +84,7 @@ The architectural overview summarizes Beagle's software design, that follows
  The CTA will not be used by Beagle any more, because it cannot conduct
  as precise measurements as desired.
  That leads to a direct dependency from Beagle to the measurement software
- Kieker - without the CTA as intermediary.
+ Kieker – without the CTA as intermediary.
 \end_layout
 
 \begin_layout Standard
@@ -214,7 +214,7 @@ The interaction of Beagle's components is guided by the Beagle Core through
  The blackboard contains SEFF specific information, describing what to measure,
  measurement results and stochastic expression annotations.
  Measurement Tools and Result Analysers have the possibility to decide for
- their own, whether they can contribute or not- depending on the information
+ their own, whether they can contribute or not – depending on the information
  provided on the blackboard.
  Each component gets a different view of the blackboard, limiting its access
  to more than what is absolutely necessary.
