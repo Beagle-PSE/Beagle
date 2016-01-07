@@ -216,7 +216,7 @@ The interaction of Beagle's components is guided by the Beagle Core through
  Measurement Tools and Result Analysers have the possibility to decide for
  their own, whether they can contribute or not- depending on the information
  provided on the blackboard.
- Each component gets a different view of the blackboard, limiting it's access
+ Each component gets a different view of the blackboard, limiting its access
  to more than what is absolutely necessary.
  In order to unify the communication, Beagle Core provides its own classes
  (SEFF characteristics and Evaluable Expression).
