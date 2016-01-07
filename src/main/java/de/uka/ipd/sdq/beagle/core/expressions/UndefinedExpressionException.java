@@ -1,14 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
  * Thrown if a {@link EvaluableExpression} is to be evaluated, but insufficient variable
  * assignments are provided.
@@ -29,35 +20,30 @@ public class UndefinedExpressionException extends RuntimeException {
 	 * to be {@link EvaluableExpression#evaluate}d, but the passed {@code assignment} did
 	 * not contain a valid assignment for {@code undefinedVariable}.
 	 *
-	 * @param assignment
-	 *            The assignment raising the exception.
-	 * @param undefinedVariable
-	 *            The variable missing in {@code assignment}.
+	 * @param assignment The assignment raising the exception.
+	 * @param undefinedVariable The variable missing in {@code assignment}.
 	 */
 	public UndefinedExpressionException(final EvaluableVariableAssignment assignment,
-			final EvaluableVariable undefinedVariable) {
-		// TODO Auto-generated constructor stub
+		final EvaluableVariable undefinedVariable) {
 	}
 
 	/**
 	 * The assignment that caused this exception by not assigning a value to
-	 * {@link} #getMissingVariable()}.
+	 * {@link #getMissingVariable()}.
 	 *
 	 * @return the causing assignment.
 	 */
 	public EvaluableVariableAssignment getCausingAssignment() {
-		// TODO implement method
 		return null;
 	}
 
 	/**
-	 * The variable having no assignment in {@link #getCausingAssignment()} while beink
+	 * The variable having no assignment in {@link #getCausingAssignment()} while being
 	 * needed.
 	 *
 	 * @return the missing variable.
 	 */
 	public EvaluableVariable getMissingVariable() {
-		// TODO implement method
 		return null;
 
 	}

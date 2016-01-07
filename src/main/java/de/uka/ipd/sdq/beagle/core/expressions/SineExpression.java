@@ -1,30 +1,39 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document this type.
+ * Expression that executes a sine function on its contained expression.
+ * 
+ * @author Annika Berger
  *
  */
 public class SineExpression implements EvaluableExpression {
 
+	/**
+	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
+	 *
+	 * @param expression to be the argument.
+	 */
+	public void setArgument(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is the argument of the sine function.
+	 *
+	 * @return the argument of the function
+	 */
+	public EvaluableExpression getArgument() {
+		return null;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableExpressionVisitor)
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
 	 */
 	@Override
-	public void receive(EvaluableExpressionVisitor visitor) {
-		// TODO Auto-generated method stub
+	public void receive(final EvaluableExpressionVisitor visitor) {
 
 	}
 
@@ -32,12 +41,11 @@ public class SineExpression implements EvaluableExpression {
 	 * (non-Javadoc)
 	 *
 	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.beagle.
-	 * core.expressions.EvaluableVariableAssignment)
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
 	@Override
-	public double evaluate(EvaluableVariableAssignment variableAssignments) {
-		// TODO Auto-generated method stub
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return 0;
 	}
 
