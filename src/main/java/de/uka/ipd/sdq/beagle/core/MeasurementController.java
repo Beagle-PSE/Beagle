@@ -10,7 +10,7 @@ import java.util.Collection;
  * <p>There is always at most one measurement tool working.
  *
  * @author Roman Langrehr
- * @see BeagleController
+ * @see AnalysisController
  */
 public class MeasurementController {
 
