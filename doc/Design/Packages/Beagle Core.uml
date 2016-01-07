@@ -285,12 +285,6 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pWeFoKENEeWQRf-no0GeMA" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_xMlS0KD4EeWVpfCzK8hwSg" visibility="private">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xMoWIKD4EeWVpfCzK8hwSg" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xMo9MKD4EeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-      <memberEnd xmi:type="uml:Property" href="Analysis.uml#_xMo9MaD4EeWVpfCzK8hwSg"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_JUmncKEUEeWQRf-no0GeMA" memberEnd="_JUsHAKEUEeWQRf-no0GeMA _JUsuEKEUEeWQRf-no0GeMA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JUq44KEUEeWQRf-no0GeMA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JUq44aEUEeWQRf-no0GeMA" key="nature" value="UML_Nature"/>
@@ -449,6 +443,24 @@ write results()</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_AjOb4LVhEeWaM-xzDUXk_w"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_AjPqALVhEeWaM-xzDUXk_w" value="*"/>
       </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_kU8WULViEeWaM-xzDUXk_w" memberEnd="_kU-LgbViEeWaM-xzDUXk_w _kU-ykLViEeWaM-xzDUXk_w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kU89YLViEeWaM-xzDUXk_w" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kU-LgLViEeWaM-xzDUXk_w" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_kU-ykLViEeWaM-xzDUXk_w" name="analyser blackboard view" association="_kU8WULViEeWaM-xzDUXk_w">
+        <type xmi:type="uml:Class" href="Analysis.uml#_rqzFQKD4EeWVpfCzK8hwSg"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_kU-LgbViEeWaM-xzDUXk_w" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_kU8WULViEeWaM-xzDUXk_w"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_daAvELVjEeWaM-xzDUXk_w" memberEnd="_daCkQbVjEeWaM-xzDUXk_w _daCkQrVjEeWaM-xzDUXk_w">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_daBWILVjEeWaM-xzDUXk_w" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_daCkQLVjEeWaM-xzDUXk_w" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_daCkQrVjEeWaM-xzDUXk_w" name="final judge blackboard view" association="_daAvELVjEeWaM-xzDUXk_w">
+        <type xmi:type="uml:Class" href="../Beagle.uml#_9waukKiSEeW317sgBX4gxw"/>
+      </ownedEnd>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_daCkQbVjEeWaM-xzDUXk_w" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_daAvELVjEeWaM-xzDUXk_w"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
