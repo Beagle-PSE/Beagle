@@ -1,6 +1,8 @@
 import org.gradle.api.Project
 import org.apache.commons.io.output.ByteArrayOutputStream 
 import org.gradle.api.logging.LogLevel
+import org.gradle.api.file.FileCollection
+import static groovyx.gpars.GParsPool.withPool
 
 /**
  * DSL extenion to renders an UMLET file. The rendered file will be called {@code $inputFile.pdf} and be created 
@@ -20,7 +22,7 @@ public class UmletRenderer {
 	/** 
 	 * Creates the DSL extension.
 	 *
-	 * @param project	The gradle projec to use.
+	 * @param project	The gradle project to use.
 	 */
 	public UmletRenderer(Project project) {
 		this.project = project
@@ -47,6 +49,19 @@ public class UmletRenderer {
 		if (errorStrings.find { outputLowerCase.contains(it) } != null) {
 			throw new RuntimeException("UMLET conversion failed for $uxfFile\n\nOutput:\n$outputRecord")
 		}
+	}
+	
+	/**
+	 * Renders {@code uxfFile}. Rendering is executed in parallel by a thread pool.
+	 *
+	 * @param uxfFiles	The umlet files to render.
+	 */
+	public void render(FileCollection uxfFiles) {
+		 withPool(8) {
+		 	uxfFiles.eachParallel {
+		 		render it
+		 	}
+		 }
 	}
 	
 	/**

@@ -4,9 +4,7 @@
  * @author Joshua Gleitze
  */
  
-import static groovyx.gpars.GParsPool.withPool
-
-def srssrc = file("$projectDir/doc/Requirements Specification")
+def srssrc = file("$projectDir/src/srs/lyx")
  
 task srsUml {
 	description 'Renders the UML Diagrams used by the requirements specification.'
@@ -34,13 +32,9 @@ task srsUml {
 			from src
 			into dest
 		}
-		// executed in parallel by a thread pool with 8 threads
- 		withPool(8) {
-			fileTree(dest).include('**/*.uxf').eachParallel { file ->
-				umletrender {
-					render file
-				}
-			}
+		
+		umletrender {
+			render fileTree(dest).include('**/*.uxf')
 		}
 	}
 }
@@ -53,6 +47,7 @@ task srs(type: LyXRenderTask) {
 	
 	from srsUml.dest
 	document "Requirements Specification.lyx"
+	into buildDir
 	
 	glossary true
 	bibliography true

@@ -34,27 +34,27 @@ public class BeagleWebContext {
 		/** 
 		 * Path to the Requirements Specification PDF.
 		 */
-		String srs = relative task('copyWebArtefacts').property('srsDest')
+		String srs = relative project.copyWebArtefacts.srsDest
 		/** 
 		 * Path to the Design Specification PDF.
 		 */
-		String design = relative task('copyWebArtefacts').property('designDest')
+		String design = relative project.copyWebArtefacts.designDest
 		/**
 		 * Path to the javadoc folder.
 		 */
-		String javadoc = relative task('copyWebArtefacts').property('javadocDest')
+		String javadoc = relative project.copyWebArtefacts.javadocDest
 		/**
 		 * Path to the checkstyle report html file.
 		 */
-		String checkstyle = relative task('copyWebArtefacts').property('checkstyleDest')
+		String checkstyle = relative project.copyWebArtefacts.checkstyleDest
 		/**
 		 * Path to the test code coverage html file.
 		 */
-		String coverage = relative task('copyWebArtefacts').property('jacocoDest')
+		String coverage = relative project.copyWebArtefacts.jacocoDest
 		/**
 		 * Path to the css folder
 		 */
-		String css = relative task('copyWebAssets').property('cssdest')
+		String css = relative project.copyWebAssets.cssdest
 
 		/**
 		 * Path to the font folders.
@@ -63,29 +63,16 @@ public class BeagleWebContext {
 			/**
 			 * Font awesome, as downloaded from https://fortawesome.github.io/Font-Awesome/
 			 */
-			String fontAwesome = relative task('copyWebFonts').property('fontawesomedest')
+			String fontAwesome = relative project.copyWebFonts.fontawesomedest
 			/**
 			 * Computer Modern Serif, as downloaded from http://checkmyworking.com/cm-web-fonts/
 			 */
-			String cmSerif = relative task('copyWebFonts').property('cmserifdest')
+			String cmSerif = relative project.copyWebFonts.cmserifdest
 			/**
 			 * Computer Modern Sans, as downloaded from http://checkmyworking.com/cm-web-fonts/
 			 */
-			String cmSans = relative task('copyWebFonts').property('cmsansdest')
+			String cmSans = relative project.copyWebFonts.cmsansdest
 		}
-	}
-	
-	/**
-	 * Returns one task on {@link #project} named {@code name}. If there are multiple such tasks,
-	 * one is picked. It is neither defined nor reliable which one will be picked.
-	 *
-	 * @param name	The name of the desired task.
-	 * @return	A task of {@link #project} named {@code name} or {@code null} if there is no 
-	 *			such task.
-	 */
-	private static Task task(final String name) {
-		Set<Task> allTasks = project.getTasksByName name, true
-		return allTasks.iterator()[0]
 	}
 	
 	/** 
@@ -95,7 +82,7 @@ public class BeagleWebContext {
 	 * @return	A path to {@code path} relative to Beagle’s {@code web} task’s {@code dest} property.
 	 */
 	private static String relative(final Object path) {
-		URI base = project.file(task('web').property('dest')).toURI()
+		URI base = project.file(project.web.dest).toURI()
 		return base.relativize(project.file(path).toURI())
 	}
 }

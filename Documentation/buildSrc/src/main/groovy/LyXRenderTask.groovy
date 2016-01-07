@@ -147,7 +147,7 @@ public class LyXRenderTask extends DefaultTask {
 	 */
 	def document(String relativeDocumentPath) {
 		this.document = relativeDocumentPath ==~ /^.*\.lyx$/ ? relativeDocumentPath[0..-5] : relativeDocumentPath
-		dest = dest ?: project.file("$project.buildDir/docs/${project.file(document).name}.pdf")
+		dest = dest ?: project.file("$project.buildDir/docs/${getDestFileName()}")
 	}
 	
 	/** 
@@ -164,9 +164,18 @@ public class LyXRenderTask extends DefaultTask {
 	 * Sets the exact file to render the document to. You’ll usually want to add the .pdf extension.
 	 * If the input document is named $name.lyx, this defaults to $project.buildDir/docs/$name.pdf
 	 *
-	 * @param to	The file to render the document to. Anything accepted by
+	 * @param to	The file to render the document to. Anything accepted by gradle’s file method
+	 */
 	def to(Object to) {
 		this.dest = project.file(to)
+	}
+	
+	/**
+	 * Sets the folder to render the document to. If the input document is named $name.lyx, this 
+	 * the created document will be named $name.pdf. Defaults to $project.buildDir/docs.
+	  */
+	def into(Object into) {
+		this.dest = new File(project.file(into), getDestFileName())
 	}
 	
 	/**
@@ -236,5 +245,10 @@ public class LyXRenderTask extends DefaultTask {
 	 */
 	def tee() {
 		logdest == null ? System.out : new TeeOutputStream(new FileOutputStream(logdest, true), System.out)
+	}
+	
+	private String getDestFileName() {
+		assert this.document != null : "The source document must be set at this point!"
+		return "${project.file(document).name}.pdf"
 	}
 }

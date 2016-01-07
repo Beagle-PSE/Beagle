@@ -5,7 +5,7 @@
  * @author Joshua Gleitze
  */
  
-allprojects {
+configure(javaSubprojects) {
 	apply plugin: 'checkstyle'
 	apply plugin: 'jacoco'
 	
@@ -20,15 +20,15 @@ allprojects {
 	jacocoTestReport {
 		reports {
 			xml.enabled true
-			html.destination "${buildDir}/reports/jacoco/html"
+			html.destination "$buildDir/reports/jacoco/html"
 		}
 	}
 	
 	task verifyNoCheckstyleWarnings(dependsOn: check) << {
 		description 'Throws if checkstyle warnings were found in a previous checkstyle run.'
 	
-		def checkstyleWarningsMain = 'build/reports/checkstyle/main.xml'
-		def checkstyleWarningsTest = 'build/reports/checkstyle/test.xml'
+		def checkstyleWarningsMain = '$buildDir/reports/checkstyle/main.xml'
+		def checkstyleWarningsTest = '$buildDir/reports/checkstyle/test.xml'
 	
 		File warningsFile = file (checkstyleWarningsMain)
 		if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
@@ -44,7 +44,7 @@ allprojects {
 	task verifyTestCoverage(dependsOn: jacocoTestReport) << {
 		description 'Throws if test code coverage is not 100%.'
 	
-		def jacocoReport = 'build/reports/jacoco/test/jacocoTestReport.xml'
+		def jacocoReport = '$buildDir/reports/jacoco/test/jacocoTestReport.xml'
 	
 		File report = file (jacocoReport)
 		if (report.exists() && report.text ==~ /.*missed="[^0]".*/) {
@@ -64,7 +64,7 @@ allprojects {
 		
 		doLast {
 			ant.xslt(in: checkstyleMain.reports.xml.destination,
-				style: file("$projectDir/config/checkstyle/Checkstyle HTML Render.xsl"),
+				style: file("$rootProject.projectDir/config/checkstyle/Checkstyle HTML Render.xsl"),
 				out: dest)
 	    }
 	}
@@ -79,15 +79,16 @@ allprojects {
 	build.dependsOn jacocoTestReport
 }
 
-// only required for production code
-qc.dependsOn verifyTestCoverage
-
-checkstyle {
-	configFile = file('config/checkstyle/Checkstyle.xml')
+configure(javaSubprojects.minus(prototypeSubprojects)) {
+	qc.dependsOn verifyTestCoverage
+	
+	checkstyle {
+		configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle.xml")
+	}
 }
 
-configure(prototypeSubprojects){
+configure(prototypeSubprojects.intersect(javaSubprojects)){
 	checkstyle {
-		configFile = file('$rootProject.projectDir/config/checkstyle/Checkstyle Prototype.xml')
+		configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle Prototype.xml")
 	}
 }

@@ -16,6 +16,10 @@ to import existing, component-based software into [Palladio](http://www.palladio
 	{{#> title}}Javadoc{{/title}}
 	{{#> description}}We put great effort in creating detailed, informative documentation.{{/description}} 
 {{/artefact}}
+{{#> artefact link=developers.html type="html"}}
+	{{#> title}}Developer’s Documentation{{/title}}
+	{{#> description}}Files for developers wishing to extend or improve Beagle, documenting best practices and how to get started.{{/description}}
+{{/artefact}}
 	
 ## Reports
 {{#> artefact link="coverage" type="html"}}

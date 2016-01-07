@@ -13,10 +13,9 @@ buildscript {
     }
 }
 
-
 import de.undercouch.gradle.tasks.download.Download
 
-final String WEB_DEST = "$buildDir/web"
+final String WEB_DEST = buildDir
 
 task downloadWebFonts(type: Download) {
 	description 'Downloads fonts required by Beagle’s web presence'
@@ -26,7 +25,7 @@ task downloadWebFonts(type: Download) {
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip',
     	'http://fontawesome.io/assets/font-awesome-4.5.0.zip'
     ])
-    dest "$buildDir/tmp/fonts/"
+    dest "$rootProject.buildDir/tmp/fonts/"
 	onlyIfNewer true
 	quiet true
 	
@@ -78,16 +77,17 @@ task copyWebFonts(dependsOn: downloadWebFonts) {
 
 task renderWebPages(type: Copy) {
 	description 'Renders the pages of Beagle’s web presence.'
-    inputs.dir "$projectDir/src/web/handlebars"
+	inputs.files "$projectDir/src/main", "$projectDir/src/template"
     
     def compileAction = new CompileWebFilesAction()
-    compileAction.addRootTemplateFiles	'html': file("$projectDir/src/web/handlebars/roottemplate.html"),
-    									'htmd': file("$projectDir/src/web/handlebars/roottemplate.html")
-    HandlebarsRenderer.partialsFolder = file("$projectDir/src/web/handlebars/partials")
+    def htmlroottemplate = file("$projectDir/src/template/handlebars/roottemplate.html")
+    compileAction.addRootTemplateFiles	'html': htmlroottemplate,
+    									'htmd': htmlroottemplate
+    HandlebarsRenderer.partialsFolder = file("$projectDir/src/template/handlebars/partials")
     HandlebarsRenderer.partialsExtension = "part"
     BeagleWebContext.project = project
     
-	from "$projectDir/src/web/handlebars/pages"
+	from "$projectDir/src/main/handlebars"
 	into WEB_DEST
 	eachFile compileAction
 }
@@ -99,7 +99,7 @@ task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 		cssdest = "$WEB_DEST/css"
 	}
 	
-	from "$projectDir/src/web"
+	from "$projectDir/src/template"
 	include "css/**/*.css"
 	into WEB_DEST
 }
@@ -107,60 +107,70 @@ task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 task copyWebArtefacts() {
 	description 'Copies all build artefacts that will be published into Beagle’s web presence.'
 	
-	mustRunAfter javadoc, srs, design, check, jacocoTestReport
 	
-	// file names of the copied files. Change the rename while copying.
-	def checkstyleFileName = 'checkstyle.html'
-	def srsFileName = 'Requirements Specification.pdf'
-	def designFileName = 'Design and Architecture.pdf'
+	def doc = project(':Documentation')
+	def designFileName = "Architecture & Design.pdf"
 	
 	ext {
 		javadocDest = "$WEB_DEST/javadoc"
-		srsDest = "$WEB_DEST/$srsFileName"
-		checkstyleDest = "$WEB_DEST/$checkstyleFileName"
+		srsDest = "$WEB_DEST/$doc.srs.dest.name"
+		checkstyleDest = "$WEB_DEST/checkstyle"
 		jacocoDest = "$WEB_DEST/coverage"
 		designDest = "$WEB_DEST/$designFileName"
 	}
 	
-	inputs.files javadoc.destinationDir, srs.dest, design.dest, checkstyleHtml.dest, jacocoTestReport.reports.html.destination
+	
+	def checkstyleDirs = rootProject.javaSubprojects.collect { it.checkstyleHtml.dest }
+	def testReports = rootProject.javaSubprojects.collect { it.jacocoTestReport.reports.html.destination }
+	
+	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.design.dest, checkstyleDirs, testReports
 	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest
 	
 	doLast {
+		rootProject.javaSubprojects.each { project ->
+			println "copying for $project"
+			copy {	
+				from project.javadoc.destinationDir
+				into "$javadocDest/$project.name"
+			}	
+		
+			copy {
+				from project.checkstyleHtml.dest
+				rename {file -> "${project.name}.html"}
+				into checkstyleDest
+			}
+			
+			copy {
+				from project.jacocoTestReport.reports.html.destination
+				into jacocoDest
+			}
+		}
+		
 		copy {	
-			from javadoc.destinationDir
+			from doc.javadoc.destinationDir
 			into javadocDest
 		}	
 		
 		copy {
-			from srs.dest
-			rename {file -> srsFileName}
+			from doc.srs.dest
 			into WEB_DEST
 		}
 		
 		copy {
-			from design.dest
+			from doc.design.dest
 			rename {file -> designFileName}
 			into WEB_DEST
-		}
-		
-		copy {
-			from checkstyleHtml.dest
-			rename {file -> checkstyleFileName}
-			into WEB_DEST
-		}
-		
-		copy {
-			from jacocoTestReport.reports.html.destination
-			into jacocoDest
 		}
 	}
 }
 
 task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts]) {
     group "Build"
-    description "Builds Beagle’s web presence."
+    description "Builds Beagle’s web presence. Synonym of :Web Presence:build"
     
 	ext {
 		dest = WEB_DEST
 	}
 }
+
+build.dependsOn web

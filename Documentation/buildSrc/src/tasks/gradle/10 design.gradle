@@ -2,8 +2,9 @@ task design(type: LyXRenderTask) {
 	group 'Documentation'
 	description 'Renders the Design Specification document.'
 	
-	from "$projectDir/doc/Design"
+	from "$projectDir/src/design/lyx"
 	document "Design.lyx"
+	into buildDir
 }
 
 build.dependsOn design
