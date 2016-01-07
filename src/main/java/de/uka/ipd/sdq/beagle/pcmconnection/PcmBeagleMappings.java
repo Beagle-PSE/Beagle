@@ -87,8 +87,11 @@ public class PcmBeagleMappings implements Serializable {
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
 	 * @param identifier The identifier used for {@code rdia} in the PCM repository. Must
 	 *            not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code rdia}. More formally: if
+	 *             {@code this.hasPcmIdOf(rdia) && !this.getPcmIdOf(rdia).equals(identifier)}
 	 */
-	public void setPcmIdOf(final ResourceDemandingInternalAction rdia, final String identifier) {
+	public void addPcmIdOf(final ResourceDemandingInternalAction rdia, final String identifier) {
 	}
 
 	/**
@@ -97,8 +100,11 @@ public class PcmBeagleMappings implements Serializable {
 	 * @param branch A SEFF branch. Must not be {@code null}.
 	 * @param identifier The identifier used for {@code branch} in the PCM repository.
 	 *            Must not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code branch}. More formally: if
+	 *             {@code this.hasPcmIdOf(branch) && !this.getPcmIdOf(branch).equals(identifier)}
 	 */
-	public void setPcmIdOf(final SEFFBranch branch, final String identifier) {
+	public void addPcmIdOf(final SEFFBranch branch, final String identifier) {
 	}
 
 	/**
@@ -107,8 +113,11 @@ public class PcmBeagleMappings implements Serializable {
 	 * @param loop A SEFF loop. Must not be {@code null}.
 	 * @param identifier The identifier used for {@code loop} in the PCM repository. Must
 	 *            not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code loop}. More formally: if
+	 *             {@code this.hasPcmIdOf(loop) && !this.getPcmIdOf(loop).equals(identifier)}
 	 */
-	public void setPcmIdOf(final SEFFLoop loop, final String identifier) {
+	public void addPcmIdOf(final SEFFLoop loop, final String identifier) {
 	}
 
 }
