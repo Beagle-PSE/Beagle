@@ -141,8 +141,8 @@ Overview of the entire system
 \end_layout
 
 \begin_layout Standard
-Beagle is divided up into a few components that are distinguished by high-level
- functionality and service.
+Beagle is divided into components that are distinguished by high-level functiona
+lity and service.
  Components may depend on information provided by another component, but
  their internal logic strictly works independent.
  The composition of following components represents Beagle's architecture:
