@@ -144,7 +144,7 @@ Overview of the entire system
 Beagle is divided into components that are distinguished by high-level functiona
 lity and service.
  Components may depend on information provided by another component, but
- their internal logic strictly works independent.
+ their internal logic works strictly independently.
  The composition of following components represents Beagle's architecture:
 \end_layout
 
