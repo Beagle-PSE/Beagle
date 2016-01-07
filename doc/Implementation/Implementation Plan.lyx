@@ -50,7 +50,7 @@
 
 % Set the PDF metadata
 \hypersetup{
-    pdftitle={Beagle --- Design and Architecture},
+    pdftitle={Beagle --- Implementation plan},
     pdfsubject={Beagle is a tool for automatic dynamic source code analysis in order to find resource demands of component based software’s components’ internal actions.},
     pdfauthor={Annika Berger, Joshua Gleitze, Roman Langrehr, Christoph Michelbach, Ansgar Spiegler, Michael Vogt},
     pdfkeywords={component based software, dynamic analysis, reverse engeneering, resource demands, SoMoX, Beagle, Palladio, Eclipse, Kieker},
@@ -82,7 +82,7 @@ enumitem
 \font_tt_scale 100
 \graphics default
 \default_output_format default
-\output_sync 0
+\output_sync 1
 \bibtex_command default
 \index_command default
 \float_placement tph
@@ -146,7 +146,7 @@ Beagle
 \end_layout
 
 \begin_layout Subtitle
-Design and Architecture
+Implementation plan
 \end_layout
 
 \begin_layout Date
@@ -255,91 +255,312 @@ contentsname}{toc}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_layout Chapter*
+Implementation Plan
+\end_layout
 
-\end_inset
-
-
+\begin_layout Section*
+Preparation (2015-12-24 – 2016-01-10)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
+Task:
+\end_layout
 
-% assures we have correct links for the list of figures
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prototype for Context Menus
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#010
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Write a simple eclipse plugin that adds all context menus specified in the
+ SRS GUI model to eclipse by using eclipse extension points and shows a
+ sample dialog, when the user clicks on a context menu.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depengin on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Prototype for Eclipse Extension Points
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#020
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Write a simple eclipse plugin that offers an extension point for measurement
+ tools and allows other plugins to offer a measurement tool.
+ The plugin should display the available measurement tools.
 \end_layout
 
 \begin_layout Plain Layout
-
-
-\backslash
-phantomsection
+Create a plugin with a measuremnt tool stub, that uses the extension point.
 \end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-addcontentsline{toc}{chapter}{
-\backslash
-listfigurename}
+Depengin on:
 \end_layout
 
 \end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset FloatList figure
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-% Start the main document (includes new numbering in arabic numbers)
+–
 \end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-mainmatter
+Task:
 \end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
+Prototype for GUI
 \end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-% Enabling to only start chapters on the right again.
+Nr:
 \end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
 
 \begin_layout Plain Layout
-
-
-\backslash
-KOMAoptions{open=right}
+#030
 \end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Create an eclipse plugin that shows a wizard as described in the SRS GUI
+ model.
+ The wizard should show some demonstration content.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depengin on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -347,69 +568,27 @@ KOMAoptions{open=right}
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Architectual Overview.lyx"
-
+\align center
+\begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Beagle Core.lyx"
-
-\end_inset
-
-
+\begin_layout Section*
+Week 1 (2016-01-11 – 2016-01-17)
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Beagle GUI.lyx"
-
-\end_inset
-
-
+\begin_layout Section*
+Week 2 (2016-01-18 – 2016-01-24)
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Measurement Tool.lyx"
-
-\end_inset
-
-
+\begin_layout Section*
+Week 3 (2016-01-25 – 2016-01-31)
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Result Analyser.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Final Judge.lyx"
-
-\end_inset
-
-
+\begin_layout Section*
+Week 4 (2016-02-01 – 2016-02-07)
 \end_layout
 
 \end_body
