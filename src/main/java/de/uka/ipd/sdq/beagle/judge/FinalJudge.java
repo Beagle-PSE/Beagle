@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.analysis;
+package de.uka.ipd.sdq.beagle.judge;
 
 /*
  * ATTENTION: Checkstyle turned off!
