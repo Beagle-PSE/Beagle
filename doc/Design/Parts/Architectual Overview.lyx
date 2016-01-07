@@ -166,7 +166,7 @@ Measurement Tool (Can-do Pattern)
 \end_layout
 
 \begin_layout Standard
-The Measurement Tool is responsible for all kind of measurements that are
+The Measurement Tool is responsible for all kinds of measurements that are
  needed to get the execution time of Resource Demanding Internal Actions,
  Seff Branches and Seff Loops in regard to a certain parametrisation.
  Therefore, Kieker will be instructed by an adapter pattern.
