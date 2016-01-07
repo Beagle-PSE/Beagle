@@ -170,7 +170,8 @@ The Measurement Tool is responsible for all kinds of measurements that are
  needed to get the execution time of Resource Demanding Internal Actions,
  branch decisions of SEFF Branches and repitions of SEFF Loops in regard
  to a certain parametrisation.
- Therefore, Kieker will be instructed by an adapter pattern.
+ An adapter instructing Kieker will be the first class to implement this
+ interface.
 \end_layout
 
 \begin_layout Subsubsection*
