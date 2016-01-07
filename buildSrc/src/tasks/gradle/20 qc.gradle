@@ -24,31 +24,36 @@ configure(javaSubprojects) {
 		}
 	}
 	
-	task verifyNoCheckstyleWarnings(dependsOn: check) << {
+	task verifyNoCheckstyleWarnings(dependsOn: check) {
 		description 'Throws if checkstyle warnings were found in a previous checkstyle run.'
 	
-		def checkstyleWarningsMain = '$buildDir/reports/checkstyle/main.xml'
-		def checkstyleWarningsTest = '$buildDir/reports/checkstyle/test.xml'
+		def checkstyleWarningsMain = file("$buildDir/reports/checkstyle/main.xml")
+		def checkstyleWarningsTest = file("$buildDir/reports/checkstyle/test.xml")
+		
+		onlyIf {checkstyleWarningsMain.exists() || checkstyleWarningsTest.exists()}
 	
-		File warningsFile = file (checkstyleWarningsMain)
-		if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
-			throw new GradleException("There were checkstyle warnings in src/main!")
-		}
-		warningsFile = file (checkstyleWarningsTest)
-		if (warningsFile.exists() && warningsFile.text.contains("<error ")) {
-			throw new GradleException("There were checkstyle warnings in src/test!")
+		doLast {
+			if (checkstyleWarningsMain.exists() && checkstyleWarningsMain.text.contains("<error ")) {
+				throw new GradleException("There were checkstyle warnings in src/main!")
+			}
+			if (checkstyleWarningsTest.exists() && checkstyleWarningsTest.text.contains("<error ")) {
+				throw new GradleException("There were checkstyle warnings in src/test!")
+			}
 		}
 	}
 	
 	
-	task verifyTestCoverage(dependsOn: jacocoTestReport) << {
+	task verifyTestCoverage(dependsOn: jacocoTestReport) {
 		description 'Throws if test code coverage is not 100%.'
 	
-		def jacocoReport = '$buildDir/reports/jacoco/test/jacocoTestReport.xml'
+		def jacocoReport = file("$buildDir/reports/jacoco/test/jacocoTestReport.xml")
+		
+		onlyIf {jacocoReport.exists()}
 	
-		File report = file (jacocoReport)
-		if (report.exists() && report.text ==~ /.*missed="[^0]".*/) {
-			throw new GradleException("Code Coverage by Tests is not 100%!")
+		doLast {
+			if (jacocoReport.text ==~ /.*missed="[^0]".*/) {
+				throw new GradleException("Code Coverage by Tests is not 100%!")
+			}
 		}
 	}
 	
