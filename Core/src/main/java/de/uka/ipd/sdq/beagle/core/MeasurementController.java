@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import java.util.Collection;
-
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+
+import java.util.Collection;
 
 /**
  * Controls which measurement tool is working.

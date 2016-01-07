@@ -7,11 +7,13 @@ import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
  * {@link de.uka.ipd.sdq.beagle.core.Blackboard}. There is no restriction on the kind of
  * knowledge, as long as it can be expressed in the blackboard’s vocabulary. Tools wishing
  * to conduct measurements on software are advised to implement
- * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this interface.
+ * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this
+ * interface.
  *
  * @author Joshua Gleitze
  */
 public interface ResultAnalyser {
+
 	/**
 	 * Determines whether this analyser can potentially contribute knowledge in the
 	 * moment. If {@code true} is returned, the analyser can potentially contribute, but
@@ -27,8 +29,7 @@ public interface ResultAnalyser {
 	 * Furthermore, calls with equal blackboard contents must always result in the same
 	 * value.
 	 *
-	 * @param blackboard
-	 *            The current blackboard.
+	 * @param blackboard The current blackboard.
 	 */
 	void canContribute(ReadOnlyBlackboardView blackboard);
 
@@ -53,11 +54,10 @@ public interface ResultAnalyser {
 	 * </ul>
 	 *
 	 * <p>Implementing {@link de.uka.ipd.sdq.beagle.core.BlackboardStorer} and using
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, java.io.Serializable)} is,
-	 * if needed, the recommended way to achieve the behaviour described above.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, java.io.Serializable)}
+	 * is, if needed, the recommended way to achieve the behaviour described above.
 	 *
-	 * @param blackboard
-	 *            The current blackboard.
+	 * @param blackboard The current blackboard.
 	 */
 	void contribute(AnalyserBlackboardView blackboard);
 }

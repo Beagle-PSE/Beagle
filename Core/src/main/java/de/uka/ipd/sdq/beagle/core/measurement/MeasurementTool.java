@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 /*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when adding details to this interface!
+ * ATTENTION: Checkstyle turned off! remove this comment block when adding details to this
+ * interface!
  *
  * CHECKSTYLE:OFF
  *
@@ -14,5 +14,6 @@ package de.uka.ipd.sdq.beagle.core.measurement;
  *
  */
 public interface MeasurementTool {
+
 	void measure(MeasurementOrder measurements);
 }

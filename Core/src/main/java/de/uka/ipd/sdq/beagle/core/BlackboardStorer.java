@@ -82,8 +82,8 @@ import java.io.Serializable;
  * </pre>
  *
  * @author Joshua Gleitze
- * @param <WRITTEN_TYPE>
- *            The type of data the BlackboardStorer wants to write to the blackboard.
+ * @param <WRITTEN_TYPE> The type of data the BlackboardStorer wants to write to the
+ *            blackboard.
  * @see Blackboard
  */
 public interface BlackboardStorer<WRITTEN_TYPE extends Serializable> {

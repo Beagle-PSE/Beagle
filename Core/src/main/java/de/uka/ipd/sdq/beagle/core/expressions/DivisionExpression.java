@@ -25,15 +25,16 @@ public class DivisionExpression implements EvaluableExpression {
 	public EvaluableExpression getDivisor() {
 		return null;
 	}
+
 	/**
 	 * Sets the {@link EvaluableExpression} which is the dividend.
 	 *
 	 * @param expression which is the dividendF.
 	 */
 	public void setDividend(final EvaluableExpression expression) {
-		
+
 	}
-	
+
 	/**
 	 * Gets the dividend of the expression.
 	 *

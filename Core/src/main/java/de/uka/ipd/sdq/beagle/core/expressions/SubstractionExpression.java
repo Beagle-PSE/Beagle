@@ -28,7 +28,8 @@ public class SubstractionExpression implements EvaluableExpression {
 	}
 
 	/**
-	 * Set an {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}.
+	 * Set an {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}
+	 * .
 	 *
 	 * @param expression to be the minuend
 	 */
