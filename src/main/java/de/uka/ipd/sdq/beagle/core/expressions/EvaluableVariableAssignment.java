@@ -1,31 +1,42 @@
 package de.uka.ipd.sdq.beagle.core.expressions;
 
-/*
- * ATTENTION: Checkstyle turned off!
- * remove this comment block when implementing this class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document class
+ * Assigns {@link EvaluableVariable EvaluableVariables} to values.
+ * @author Annika Berger
+ * 
+ * @see EvaluableVariable
  *
  */
 public class EvaluableVariableAssignment {
 
-	public double getValueFor(EvaluableVariable variable) {
-		// TODO: Implement method
+	/**
+	 * Gets the assigned value for the {@code EvaluableVariable variable}.
+	 *
+	 * @param variable whose value is wanted
+	 * @return the value for the given variable
+	 */
+	public double getValueFor(final EvaluableVariable variable) {
 		return 0;
 	}
 
-	public void setValueFor(EvaluableVariable variable, double value) {
-		// TODO: Implement method
+	/**
+	 * Assigns a value to an evaluable variable.
+	 *
+	 * @param variable to which the value belongs
+	 * @param value to be set
+	 */
+	public void setValueFor(final EvaluableVariable variable, final double value) {
 	}
 
-	public boolean valueAssignedFor(EvaluableVariable variable) {
-		// TODO: Implement method
+	/**
+	 * Checks whether the {@code EvaluableVariable variable} has already a value assigned
+	 * or not.
+	 *
+	 * @param variable whose assignment status should be identified.
+	 * @return {@code true} if a value is assigned for the given variable. Else it returns
+	 *         {@code false}.
+	 */
+	public boolean isValueAssignedFor(final EvaluableVariable variable) {
 		return false;
 	}
 }
