@@ -12,7 +12,7 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
 	 * {@code LogarithmExpression}.
 	 *
-	 * @param expression to be the antilogarithm
+	 * @param expression To be the antilogarithm.
 	 */
 	public void setAnitlogarithm(final EvaluableExpression expression) {
 
@@ -22,7 +22,7 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 * Get the {@link EvaluableExpression} which is the antilogarithm, or parameter of the
 	 * {@code LogarithmExpression}.
 	 *
-	 * @return the antilogarithm expression.s
+	 * @return The antilogarithm expression.s.
 	 */
 	public EvaluableExpression getAntilogarithm() {
 		return null;

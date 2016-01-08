@@ -11,7 +11,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	/**
 	 * Inizialises a new constant expression with a given {@code value}.
 	 * 
-	 * @param value constant value of this expression
+	 * @param value Constant value of this expression.
 	 */
 	private ConstantExpression(final double value) {
 	}
@@ -19,8 +19,8 @@ public final class ConstantExpression implements EvaluableExpression {
 	/**
 	 * Looks for the constant expression belonging to an input {@code value}.
 	 *
-	 * @param value whose expression should be returned
-	 * @return the constant expression belonging to the given {@code value}
+	 * @param value Whose expression should be returned.
+	 * @return The constant expression belonging to the given {@code value}.
 	 */
 	public static ConstantExpression forValue(final double value) {
 		return null;

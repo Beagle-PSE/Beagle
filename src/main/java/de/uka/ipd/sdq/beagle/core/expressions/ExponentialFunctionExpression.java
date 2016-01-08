@@ -11,7 +11,7 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	/**
 	 * Set an {@link EvaluableExpression} as exponent.
 	 *
-	 * @param expression which is the exponent
+	 * @param expression Which is the exponent.
 	 */
 	public void setExponent(final EvaluableExpression expression) {
 
@@ -20,7 +20,7 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	/**
 	 * Get the {@link EvaluableExpression} which is set as exponent.
 	 *
-	 * @return the exponent
+	 * @return The exponent.
 	 */
 	public EvaluableExpression getExponent() {
 		return null;
