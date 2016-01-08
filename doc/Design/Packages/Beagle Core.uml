@@ -61,21 +61,21 @@
           <body>finished ≔ false&#xD;
 readOnlyBlackboardView ≔ {@link #_DQjdUKDzEeWVpfCzK8hwSg}.{@link #__BK2UKDzEeWVpfCzK8hwSg}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
 measurementControllerBlackboardView ≔ {@link #_gzE1gKiSEeW317sgBX4gxw}.{@link #_pnMmcKimEeW317sgBX4gxw}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
-analyserBlackboardView ≔ {@link #_rqzFQKD4EeWVpfCzK8hwSg}.{@link #_zR0rkKD5EeWVpfCzK8hwSg}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
-finalJudgeBlackboardView ≔ {@link #_9waukKiSEeW317sgBX4gxw}.{@link #_B3QRAKinEeW317sgBX4gxw}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+analyserBlackboardView ≔ {@link Analysis.uml#_rqzFQKD4EeWVpfCzK8hwSg}.{@link Analysis.uml#_zR0rkKD5EeWVpfCzK8hwSg}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+finalJudgeBlackboardView ≔ {@link ../Beagle.uml#_9waukKiSEeW317sgBX4gxw}.{@link ../Beagle.uml#_B3QRAKinEeW317sgBX4gxw}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
  &#xD;
 while (¬finished) do&#xD;
   if {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_664BkLClEeWUDtVlk6a50w}(readOnlyBlackboardView) then&#xD;
     {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_Tc6FQKD1EeWVpfCzK8hwSg}(measurementControllerBlackboardView)&#xD;
   else&#xD;
     analysersIterator ≔ {@link #_F6a7MqD2EeWVpfCzK8hwSg}.iterator()&#xD;
-    while ¬analysersIterator.current().{@link #_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboardView) do&#xD;
+    while ¬analysersIterator.current().{@link Analysis.uml#_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboardView) do&#xD;
       analysersIterator.next()&#xD;
     od&#xD;
-    if analysersIterator.current().{@link #_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboardView)&#xD;
-      analysersIterator.current().{@link #_6buAEKDxEeWVpfCzK8hwSg}(analyserBlackboardView)&#xD;
+    if analysersIterator.current().{@link Analysis.uml#_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboardView)&#xD;
+      analysersIterator.current().{@link Analysis.uml#_6buAEKDxEeWVpfCzK8hwSg}(analyserBlackboardView)&#xD;
     else&#xD;
-      finished ≔{@link #_808_4LLaEeWi36SSdQyzSA}.{@link #_yN9MALLaEeWi36SSdQyzSA}(finalJudgeBlackboardView)&#xD;
+      finished ≔{@link #_808_4LLaEeWi36SSdQyzSA}.{@link ../Beagle.uml#_yN9MALLaEeWi36SSdQyzSA}(finalJudgeBlackboardView)&#xD;
     fi&#xD;
   fi&#xD;
 od</body>
