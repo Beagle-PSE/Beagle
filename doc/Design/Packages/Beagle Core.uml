@@ -53,6 +53,9 @@
         <type xmi:type="uml:Interface" href="../Beagle.uml#_gYTZELLaEeWi36SSdQyzSA"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_1ACRIbSSEeWU5qgzJNzOuw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" association="_0_6VULSSEeWU5qgzJNzOuw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_WvCzALX_EeW_Rrkal-a9Yg" name="Final Judge" visibility="private" isUnique="false" association="_Wu8FULX_EeW_Rrkal-a9Yg">
+        <type xmi:type="uml:Interface" href="../Beagle.uml#_gYTZELLaEeWi36SSdQyzSA"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_j2csQLSNEeWU5qgzJNzOuw" name="construct">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_cggkALSOEeWU5qgzJNzOuw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw"/>
       </ownedOperation>
@@ -421,6 +424,15 @@ od</body>
       <ownedEnd xmi:type="uml:Property" xmi:id="_1ACRIrSSEeWU5qgzJNzOuw" name="analysis controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_0_6VULSSEeWU5qgzJNzOuw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7jf-ILSSEeWU5qgzJNzOuw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7jjBcLSSEeWU5qgzJNzOuw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Wu8FULX_EeW_Rrkal-a9Yg" memberEnd="_WvCzALX_EeW_Rrkal-a9Yg _WvEBILX_EeW_Rrkal-a9Yg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Wu_IoLX_EeW_Rrkal-a9Yg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WvBk4LX_EeW_Rrkal-a9Yg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_WvEBILX_EeW_Rrkal-a9Yg" name="analysis controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_Wu8FULX_EeW_Rrkal-a9Yg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fe6GILX_EeW_Rrkal-a9Yg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fe--oLX_EeW_Rrkal-a9Yg" value="*"/>
       </ownedEnd>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
