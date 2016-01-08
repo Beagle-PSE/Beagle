@@ -523,7 +523,6 @@ od</body>
       </ownedEnd>
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_UVMrMLLoEeWeMoSNZeiBAQ" name="" supplier="_Mqc3EKBSEeWVfMeWaVID2g"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_IAAqYLOcEeWl5dq8_C8Vhg" name="Expressions"/>
     <packagedElement xmi:type="uml:Association" xmi:id="_Ll-_wLSSEeWU5qgzJNzOuw" name="Final Judge View -> Blackboard" memberEnd="_LmJX0LSSEeWU5qgzJNzOuw _LmJ-4LSSEeWU5qgzJNzOuw">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LmEfULSSEeWU5qgzJNzOuw" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LmIJsLSSEeWU5qgzJNzOuw" key="nature" value="UML_Nature"/>
