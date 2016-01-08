@@ -162,7 +162,7 @@ In order to manage and synchronise the requests and execution of different
 \end_layout
 
 \begin_layout Subsubsection*
-Measurement Tool (Can-do Pattern)
+Measurement Tool
 \end_layout
 
 \begin_layout Standard
@@ -175,7 +175,7 @@ The Measurement Tool is responsible for all kinds of measurements that are
 \end_layout
 
 \begin_layout Subsubsection*
-Result Analyser (Can-do Pattern)
+Result Analyser
 \end_layout
 
 \begin_layout Standard
