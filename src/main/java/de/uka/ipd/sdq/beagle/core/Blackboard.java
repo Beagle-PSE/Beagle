@@ -6,6 +6,7 @@ import de.uka.ipd.sdq.beagle.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -22,6 +23,7 @@ import java.util.Set;
  * restrict access to it.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  * @see AnalysisController
  */
 public class Blackboard implements Serializable {
@@ -75,30 +77,63 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * Reports that {@code rdia} shall be measured for its resource demands.
+	 * Reports that {@code rdias} shall be measured for its resource demands.
 	 *
-	 * @param rdia A resource demanding action that shall be measured. Must not be
-	 *            {@code null} and must be known to the Blackboard.
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to this blackboard.
+	 * @see #remeasureRDIAs(Collection)
 	 */
-	public void setToBeMeasured(final ResourceDemandingInternalAction rdia) {
+	public void remeasureRDIAs(final ResourceDemandingInternalAction... rdias) {
 	}
 
 	/**
-	 * Reports that {@code branch} shall be measured for its branch decisions.
+	 * Reports that {@code rdias} shall be measured for its resource demands.
 	 *
-	 * @param branch A SEFF branch that shall be measured. Must not be {@code null} and
-	 *            must be known to the Blackboard.
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to this blackboard.
+	 * @see #remeasureRDIAs(ResourceDemandingInternalAction...)
 	 */
-	public void setToBeMeasured(final SEFFBranch branch) {
+	public void remeasureRDIAs(final Collection<ResourceDemandingInternalAction> rdias) {
 	}
 
 	/**
-	 * Reports that {@code loop} shall be measured for its repetitions.
+	 * Reports that {@code branches} shall be measured for its branch decisions.
 	 *
-	 * @param loop A SEFF Branch that shall be measured. Must not be {@code null} and must
-	 *            be known to the Blackboard.
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to this blackboard.
+	 * @see #remeasureSEFFBranches(Collection)
 	 */
-	public void setToBeMeasured(final SEFFLoop loop) {
+	public void remeasureSEFFBranches(final SEFFBranch... branches) {
+	}
+
+	/**
+	 * Reports that {@code branches} shall be measured for its branch decisions.
+	 *
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to this blackboard.
+	 * @see #remeasureSEFFBranches(SEFFBranch...)
+	 */
+	public void remeasureSEFFBranches(final Collection<SEFFBranch> branches) {
+	}
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to this blackboard.
+	 * @see #remeasureSEFFLoops(Collection)
+	 */
+	public void remeasureSEFFLoops(final SEFFLoop... loops) {
+	}
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to this blackboard.
+	 * @see #remeasureSEFFLoops(SEFFLoop...)
+	 */
+	public void remeasureSEFFLoops(final Collection<SEFFLoop> loops) {
 	}
 
 	/**
@@ -170,11 +205,11 @@ public class Blackboard implements Serializable {
 	/**
 	 * Adds a measurement result for the provided {@code rdia}.
 	 *
-	 * @param rdia A resource demanding action that was measured. Must not be {@code null}
-	 *            .
+	 * @param rdia A resource demanding internal action that was measured. Must not be
+	 *            {@code null} .
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+	public void reportMeasurementResultForRDIA(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult result) {
 	}
 
@@ -184,7 +219,8 @@ public class Blackboard implements Serializable {
 	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final SEFFLoop loop, final LoopRepetitionCountMeasurementResult result) {
+	public void reportMeasurementResultForSEFFLoop(final SEFFLoop loop,
+		final LoopRepetitionCountMeasurementResult result) {
 	}
 
 	/**
@@ -193,7 +229,8 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultFor(final SEFFBranch branch, final BranchDecisionMeasurementResult result) {
+	public void reportMeasurementResultForSEFFBranch(final SEFFBranch branch,
+		final BranchDecisionMeasurementResult result) {
 	}
 
 	/**
@@ -223,8 +260,8 @@ public class Blackboard implements Serializable {
 	/**
 	 * Gets all results yet measured for the resource demands of {@code rdia}.
 	 *
-	 * @param rdia A resource demanding internal action to get the measurement results of.
-	 *            Must not be {@code null}.
+	 * @param rdia An resource demanding internal action to get the measurement results
+	 *            of. Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
@@ -240,18 +277,8 @@ public class Blackboard implements Serializable {
 	 * @param expression An evaluable expression proposed to describe {@code rdia}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Adds {@code expression} as a proposal to describe {@code loop}’s measurement
-	 * results’ parametric dependencies.
-	 *
-	 * @param loop A SEFF Loop. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code loop}’s
-	 *            measurement results. Must not be {@code null}.
-	 */
-	public void proposeExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
+	public void proposeExpressionForRDIA(final ResourceDemandingInternalAction rdia,
+		final EvaluableExpression expression) {
 	}
 
 	/**
@@ -262,46 +289,57 @@ public class Blackboard implements Serializable {
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
+	public void proposeExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Adds {@code expression} as a proposal to describe {@code loop}’s measurement
+	 * results’ parametric dependencies.
+	 *
+	 * @param loop A SEFF Loop. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code loop}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void proposeExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
 	}
 
 	/**
 	 * Sets {@code expression} as the final description of {@code rdia}’s measurement
-	 * results’ parametric dependencies. Consecutive calls to this method will override
-	 * previous settings.
+	 * results’ parametric dependencies. Consecutive calls to this method with the same
+	 * {@code rdia} will override previous settings.
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
 	 * @param expression An evaluable expression describing {@code rdia}’s measurement
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionFor(final ResourceDemandingInternalAction rdia,
+	public void setFinalExpressionForRDIA(final ResourceDemandingInternalAction rdia,
 		final EvaluableExpression expression) {
 	}
 
 	/**
 	 * Sets {@code expression} as the final description of {@code loop}’s measurement
-	 * results’ parametric dependencies. Consecutive calls to this method will override
-	 * previous settings.
+	 * results’ parametric dependencies. Consecutive calls to this method with the same
+	 * {@code loop} will override previous settings.
 	 *
 	 * @param loop A SEFF Loop. Must not be {@code null}.
 	 * @param expression An evaluable expression describing {@code loop}’s measurement
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionFor(final SEFFLoop loop, final EvaluableExpression expression) {
+	public void setFinalExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
 	}
 
 	/**
 	 * Sets {@code expression} as the final description of {@code branch}’s measurement
-	 * results’ parametric dependencies. Consecutive calls to this method will override
-	 * previous settings.
+	 * results’ parametric dependencies. Consecutive calls to this method with the same
+	 * {@code branch} will override previous settings.
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression describing {@code branch}’s measurement
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionFor(final SEFFBranch branch, final EvaluableExpression expression) {
+	public void setFinalExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
 	}
 }
