@@ -75,7 +75,7 @@ Architectural Overview
 \end_layout
 
 \begin_layout Standard
-The architectural overview summarizes Beagle's software design, that follows
+The architectural overview summarises Beagle's software design, that follows
  the Software Requirement Specification (SRS).
  Beagle's design decisions are mainly proposed to fulfil all mandatory tasks
  mentioned in the SRS, but also allows supplementing by optional criteria.
