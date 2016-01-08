@@ -4,97 +4,117 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>390</x>
-      <y>260</y>
-      <w>660</w>
-      <h>180</h>
+      <x>800</x>
+      <y>70</y>
+      <w>360</w>
+      <h>290</h>
     </coordinates>
     <panel_attributes>Evaluable Expressions
 --
-bg=gray
-fg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1070</x>
-      <y>50</y>
-      <w>210</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Read-Only Blackboard View</panel_attributes>
++&lt;&lt;Interface&gt;&gt; Evaluable Expression
++&lt;&lt;Interface&gt;&gt; Evaluable Expression Visitor
++Constant Expression
++Evaluable Variable Expression
++Natural Logarithm Expression
++Exponential Function Expression
++Comparison Expression
++Sine Expression
++Substraction Expression
++Addition Expression
++Multiplication Expression
++If-Then-Else Expression
++Exponentation Expression
++Logarithm Expression
++Division Expression
+halign=left</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>390</x>
-      <y>70</y>
-      <w>660</w>
-      <h>180</h>
+      <x>800</x>
+      <y>370</y>
+      <w>220</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Analysis
 --
-
-bg=gray
-fg=red</panel_attributes>
++&lt;&lt;Interface&gt;&gt; Result Analyser
++Analyser Blackboard View
+halign=left</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>360</x>
-      <y>20</y>
-      <w>1020</w>
+      <x>380</x>
+      <y>30</y>
+      <w>820</w>
       <h>580</h>
     </coordinates>
     <panel_attributes>Beagle Core
 --
-bg=gray
-fg=red</panel_attributes>
++Read-Only Blackboard View
++Resource Demanding Internal Action
++Measurement Controller
++Blackboard
++SEFF Loop
++SEFF Branch
++Analysis Controller
++Measurement Controller Blackboard View
+halign=left
+valign=top</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
       <x>390</x>
-      <y>450</y>
-      <w>200</w>
+      <y>430</y>
+      <w>230</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>Judge
 --
-bg=gray
-fg=red</panel_attributes>
++&lt;&lt;Interface&gt;&gt; Final Judge
++Final Jugde Blackboard View
+halign=left</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>600</x>
-      <y>450</y>
-      <w>180</w>
-      <h>130</h>
+      <x>390</x>
+      <y>210</y>
+      <w>370</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>Measurement
 --
-bg=gray
-fg=red</panel_attributes>
++&lt;&lt;Interface&gt;&gt; Measurement Tool
++Resource Demanding Measurement Result
++Loop Repitition Count Measurement Result
++Parametrisation-Dependent Measurement Result
++Branch Decision Measurement Result
++Parametrisation
++Measurement Order
+halign=left</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>790</x>
-      <y>450</y>
-      <w>260</w>
+      <x>800</x>
+      <y>460</y>
+      <w>290</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>PCM Connection
 --
-bg=gray
-fg=red</panel_attributes>
++PCM Repository Blackboard Factory
++PCM Repository Writer
++RCM Beagle Mapping
+halign=left</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
