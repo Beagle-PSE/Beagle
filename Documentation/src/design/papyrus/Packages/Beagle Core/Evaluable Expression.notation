@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:css="http://www.eclipse.org/papyrus/infra/gmfdiag/css" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_D4JxgKHzEeWB_pi2tzIUuQ" type="PapyrusUMLClassDiagram" name="Evaluatable Expression" measurementUnit="Pixel">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:css="http://www.eclipse.org/papyrus/infra/gmfdiag/css" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/viewpoints/policy/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_D4JxgKHzEeWB_pi2tzIUuQ" type="PapyrusUMLClassDiagram" name="Evaluable Expression" measurementUnit="Pixel">
   <children xmi:type="notation:Shape" xmi:id="_J2ibgKHzEeWB_pi2tzIUuQ" type="2008">
     <children xmi:type="notation:DecorationNode" xmi:id="_J2jCkKHzEeWB_pi2tzIUuQ" type="5029"/>
     <children xmi:type="notation:DecorationNode" xmi:id="_J2jCkaHzEeWB_pi2tzIUuQ" type="8510">
