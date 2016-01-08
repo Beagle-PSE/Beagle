@@ -48,6 +48,11 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_WvCzALX_EeW_Rrkal-a9Yg" name="Final Judge" visibility="private" isUnique="false" association="_Wu8FULX_EeW_Rrkal-a9Yg">
         <type xmi:type="uml:Interface" href="../Beagle.uml#_gYTZELLaEeWi36SSdQyzSA"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_78DcMbX_EeW_Rrkal-a9Yg" name="Analysers" visibility="private" association="_77_KwLX_EeW_Rrkal-a9Yg">
+        <type xmi:type="uml:Interface" href="Analysis.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__7qsYLX_EeW_Rrkal-a9Yg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__7tIoLX_EeW_Rrkal-a9Yg" value="*"/>
+      </ownedAttribute>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_j2csQLSNEeWU5qgzJNzOuw" name="construct">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_cggkALSOEeWU5qgzJNzOuw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw"/>
       </ownedOperation>
@@ -63,14 +68,14 @@ while (¬finished) do&#xD;
   if {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_664BkLClEeWUDtVlk6a50w}(readOnlyBlackboardView) then&#xD;
     {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_Tc6FQKD1EeWVpfCzK8hwSg}(measurementControllerBlackboardView)&#xD;
   else&#xD;
-    analysersIterator ≔ {@link #_F6a7MqD2EeWVpfCzK8hwSg}.iterator()&#xD;
+    analysersIterator ≔ {@link #_78DcMbX_EeW_Rrkal-a9Yg}.iterator()&#xD;
     while ¬analysersIterator.current().{@link Analysis.uml#_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboardView) do&#xD;
       analysersIterator.next()&#xD;
     od&#xD;
     if analysersIterator.current().{@link Analysis.uml#_N6x2QKDxEeWVpfCzK8hwSg}(readOnlyBlackboardView)&#xD;
       analysersIterator.current().{@link Analysis.uml#_6buAEKDxEeWVpfCzK8hwSg}(analyserBlackboardView)&#xD;
     else&#xD;
-      finished ≔{@link #_808_4LLaEeWi36SSdQyzSA}.{@link ../Beagle.uml#_yN9MALLaEeWi36SSdQyzSA}(finalJudgeBlackboardView)&#xD;
+      finished ≔{@link ../Beagle.uml#_gYTZELLaEeWi36SSdQyzSA}.{@link ../Beagle.uml#_yN9MALLaEeWi36SSdQyzSA}(finalJudgeBlackboardView)&#xD;
     fi&#xD;
   fi&#xD;
 od</body>
@@ -417,11 +422,6 @@ od</body>
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_78DcMLX_EeW_Rrkal-a9Yg" key="nature" value="UML_Nature"/>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_78EqULX_EeW_Rrkal-a9Yg" name="analysis controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_77_KwLX_EeW_Rrkal-a9Yg"/>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_78DcMbX_EeW_Rrkal-a9Yg" name="Analysers" visibility="private" association="_77_KwLX_EeW_Rrkal-a9Yg">
-        <type xmi:type="uml:Interface" href="Analysis.uml#_S2taMKDwEeWVpfCzK8hwSg"/>
-        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__7qsYLX_EeW_Rrkal-a9Yg"/>
-        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__7tIoLX_EeW_Rrkal-a9Yg" value="*"/>
-      </ownedEnd>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
