@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:standard="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <uml:Package xmi:id="_ckALoLSIEeWU5qgzJNzOuw" name="PCM Connection">
+    <packagedElement xmi:type="uml:Class" xmi:id="_uqsrQLSIEeWU5qgzJNzOuw" name="PCM Repository Blackboard Factory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_n0Ji0LSLEeWU5qgzJNzOuw" name="construct">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_L5O6oLSMEeWU5qgzJNzOuw" name="PCM repository files">
+          <type xmi:type="uml:DataType" href="Beagle%20Core.uml#_nvWkMKWqEeWVjrqJHndH-A"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NT7-ELSMEeWU5qgzJNzOuw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NUA2kLSMEeWU5qgzJNzOuw" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_RUiswLSMEeWU5qgzJNzOuw" name="get blackboard for all elements">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YwncwLSMEeWU5qgzJNzOuw" direction="return">
+          <type xmi:type="uml:Class" href="Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_nLKawLSMEeWU5qgzJNzOuw" name="get blackboard for IDs">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_slO2wLSMEeWU5qgzJNzOuw" name="IDs">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tgoIALSMEeWU5qgzJNzOuw" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tgrLULSMEeWU5qgzJNzOuw" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_vtAgALSMEeWU5qgzJNzOuw" direction="return">
+          <type xmi:type="uml:Class" href="Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_0tFusLSMEeWU5qgzJNzOuw" name="PCM Repository Writer">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_4Zo48LSMEeWU5qgzJNzOuw" name="construct">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_9HST0LSMEeWU5qgzJNzOuw" name="blackboard">
+          <type xmi:type="uml:Class" href="Beagle%20Core.uml#_DQjdUKDzEeWVpfCzK8hwSg"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_BSDrILSNEeWU5qgzJNzOuw" name="write to">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_H56v8LSNEeWU5qgzJNzOuw" name="PCM repository files">
+          <type xmi:type="uml:DataType" href="Beagle%20Core.uml#_nvWkMKWqEeWVjrqJHndH-A"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ym-zELShEeWU5qgzJNzOuw" name="PCM Beagle Mapping"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_cgQxwLShEeWU5qgzJNzOuw" name="read" client="_0tFusLSMEeWU5qgzJNzOuw" supplier="_Ym-zELShEeWU5qgzJNzOuw"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_fx3FYLShEeWU5qgzJNzOuw" name="write" client="_uqsrQLSIEeWU5qgzJNzOuw" supplier="_Ym-zELShEeWU5qgzJNzOuw"/>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_BmSrMLSMEeWU5qgzJNzOuw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BmTSQLSMEeWU5qgzJNzOuw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Package>
+  <standard:Create xmi:id="_F0r-QLSMEeWU5qgzJNzOuw" base_BehavioralFeature="_n0Ji0LSLEeWU5qgzJNzOuw"/>
+  <standard:Create xmi:id="_97nTwLSMEeWU5qgzJNzOuw" base_BehavioralFeature="_4Zo48LSMEeWU5qgzJNzOuw"/>
+</xmi:XMI>
