@@ -19,8 +19,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	/**
 	 * Set the {@link EvaluableExpression} to be contained in the if statement.
 	 *
-	 * @param ifExpression the {@link EvaluableExpression} to be contained in the if
-	 *            statement
+	 * @param ifExpression The {@link EvaluableExpression} to be contained in the if
+	 *            statement.
 	 */
 	public void setIfExpression(final EvaluableExpression ifExpression) {
 	}
@@ -37,7 +37,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 	/**
 	 * Set the {@link EvaluableExpression} to be contained in the else-statement.
 	 *
-	 * @param elseExpression the {@link EvaluableExpression} to be contained in the
+	 * @param elseExpression The {@link EvaluableExpression} to be contained in the
 	 *            else-statement.
 	 */
 	public void setElseExpression(final EvaluableExpression elseExpression) {
@@ -55,8 +55,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	/**
 	 * Set the {@link EvaluableExpression} to be contained in the then-statement.
 	 *
-	 * @param thenExpression the {@link EvaluableExpression} to be contained in the
-	 *            then-statement
+	 * @param thenExpression The {@link EvaluableExpression} to be contained in the
+	 *            then-statement.
 	 */
 	public void setThenExpression(final EvaluableExpression thenExpression) {
 	}

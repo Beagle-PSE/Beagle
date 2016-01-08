@@ -10,7 +10,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	/**
 	 * Set an {@link EvaluableExpression} as exponent.
 	 *
-	 * @param expression which is the exponent
+	 * @param expression This expression's exponent.
 	 */
 	public void setExponent(final EvaluableExpression expression) {
 
@@ -19,7 +19,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	/**
 	 * Set an {@link EvaluableExpression} as base.
 	 *
-	 * @param expression which is the base.
+	 * @param expression This expression's base.
 	 */
 	public void setBase(final EvaluableExpression expression) {
 
@@ -28,7 +28,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	/**
 	 * Get the {@link EvaluableExpression} which is set as exponent.
 	 *
-	 * @return the exponent
+	 * @return The expression's exponent.
 	 */
 	public EvaluableExpression getExponent() {
 		return null;
@@ -37,7 +37,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	/**
 	 * Get the {@link EvaluableExpression} which is set as base.
 	 *
-	 * @return the base
+	 * @return The expression's base.
 	 */
 	public EvaluableExpression getBase() {
 		return null;
