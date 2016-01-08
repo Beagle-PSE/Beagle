@@ -20,7 +20,7 @@ public class DivisionExpression implements EvaluableExpression {
 	/**
 	 * Gets the divisor of the expression.
 	 *
-	 * @return the divisor.
+	 * @return This expression's divisor.
 	 */
 	public EvaluableExpression getDivisor() {
 		return null;
@@ -37,7 +37,7 @@ public class DivisionExpression implements EvaluableExpression {
 	/**
 	 * Gets the dividend of the expression.
 	 *
-	 * @return the dividend.
+	 * @return This expression's dividend.
 	 */
 	public EvaluableExpression getDividend() {
 		return null;
