@@ -435,6 +435,18 @@ od</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZAhbgLYBEeW_Rrkal-a9Yg" value="*"/>
       </ownedEnd>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_yB-t0LYBEeW_Rrkal-a9Yg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_yB_78LYBEeW_Rrkal-a9Yg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_yCBKELYBEeW_Rrkal-a9Yg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <memberEnd xmi:type="uml:Property" href="Analysis.uml#_yCBxILYBEeW_Rrkal-a9Yg"/>
+      <memberEnd xmi:type="uml:Property" href="#_yCBxIbYBEeW_Rrkal-a9Yg"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_yCBxIbYBEeW_Rrkal-a9Yg" name="analyser blackboard view" association="_yB-t0LYBEeW_Rrkal-a9Yg">
+        <type xmi:type="uml:Class" href="Analysis.uml#_rqzFQKD4EeWVpfCzK8hwSg"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2hlFoLYBEeW_Rrkal-a9Yg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2hoI8LYBEeW_Rrkal-a9Yg" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
