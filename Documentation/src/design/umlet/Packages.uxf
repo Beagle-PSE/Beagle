@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>390</x>
+      <y>260</y>
+      <w>660</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Evaluable Expressions
+--
+bg=gray
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1070</x>
+      <y>50</y>
+      <w>210</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Read-Only Blackboard View</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>390</x>
+      <y>70</y>
+      <w>660</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Analysis
+--
+
+bg=gray
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>360</x>
+      <y>20</y>
+      <w>1020</w>
+      <h>580</h>
+    </coordinates>
+    <panel_attributes>Beagle Core
+--
+bg=gray
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>390</x>
+      <y>450</y>
+      <w>200</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Judge
+--
+bg=gray
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>600</x>
+      <y>450</y>
+      <w>180</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Measurement
+--
+bg=gray
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>790</x>
+      <y>450</y>
+      <w>260</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>PCM Connection
+--
+bg=gray
+fg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
