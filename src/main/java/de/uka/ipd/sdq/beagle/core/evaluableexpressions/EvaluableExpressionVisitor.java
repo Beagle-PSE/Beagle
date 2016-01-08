@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Provides methods to visit all evaluable expressions. Implements the well known Visitor
