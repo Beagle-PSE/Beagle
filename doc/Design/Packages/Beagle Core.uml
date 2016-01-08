@@ -50,39 +50,39 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_GDSngKDvEeWVpfCzK8hwSg" value="*"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_zyUM4KEiEeWuoaiXEYXzVw" name="SEFF Branches to be measured" visibility="private" type="_DUhKkKDjEeWVpfCzK8hwSg" aggregation="shared" association="_zyOGQKEiEeWuoaiXEYXzVw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TZgt0LSPEeWU5qgzJNzOuw" name="construct">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ZXsjgLSPEeWU5qgzJNzOuw" name="rdias" type="_GLvPUKDjEeWVpfCzK8hwSg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_aIWkYLSPEeWU5qgzJNzOuw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_aIdSELSPEeWU5qgzJNzOuw" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_20MdwLSPEeWU5qgzJNzOuw" name="branches" type="_DUhKkKDjEeWVpfCzK8hwSg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3dhHkLSPEeWU5qgzJNzOuw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3dnOMLSPEeWU5qgzJNzOuw" value="*"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_5XzC8LSPEeWU5qgzJNzOuw" name="loops" type="_7RjZsKDiEeWVpfCzK8hwSg">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5-iS0LSPEeWU5qgzJNzOuw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5-lWILSPEeWU5qgzJNzOuw" value="*"/>
+        </ownedParameter>
+      </ownedOperation>
     </packagedElement>
-    <packagedElement xmi:type="uml:Class" xmi:id="_I-iE4KDUEeWv3dQk34uqzw" name="Beagle Controller">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_WdHJ4KDUEeWv3dQk34uqzw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" association="_uLvnALFqEeW_rv0J6Owpcw"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_I-iE4KDUEeWv3dQk34uqzw" name="Analysis Controller">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_qgn4gqD1EeWVpfCzK8hwSg" name="Measurement Controller" visibility="private" type="_gq6J4KDwEeWVpfCzK8hwSg" isUnique="false" association="_qgmqYKD1EeWVpfCzK8hwSg"/>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_F6a7MqD2EeWVpfCzK8hwSg" name="Analysers" visibility="private" type="_S2taMKDwEeWVpfCzK8hwSg" association="_F6ZGAKD2EeWVpfCzK8hwSg">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HODtUKD2EeWVpfCzK8hwSg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HOHXsKD2EeWVpfCzK8hwSg" value="*"/>
       </ownedAttribute>
       <ownedAttribute xmi:type="uml:Property" xmi:id="_808_4LLaEeWi36SSdQyzSA" name="Final Judge" visibility="private" type="_gYTZELLaEeWi36SSdQyzSA" isUnique="false" association="_80u9cLLaEeWi36SSdQyzSA"/>
-      <ownedBehavior xmi:type="uml:Activity" xmi:id="_vu0-kKD8EeWVpfCzK8hwSg" name="Main Method" specification="_zcUEIKDUEeWv3dQk34uqzw" node="_zoYqEKD8EeWVpfCzK8hwSg _m324sKEOEeWQRf-no0GeMA _VZfu8KEPEeWQRf-no0GeMA">
-        <edge xmi:type="uml:ControlFlow" xmi:id="_cMXw8KEPEeWQRf-no0GeMA" target="_m324sKEOEeWQRf-no0GeMA" source="_zoYqEKD8EeWVpfCzK8hwSg"/>
-        <edge xmi:type="uml:ControlFlow" xmi:id="_fCBvcKEPEeWQRf-no0GeMA" target="_VZfu8KEPEeWQRf-no0GeMA" source="_m324sKEOEeWQRf-no0GeMA"/>
-        <variable xmi:type="uml:Variable" xmi:id="_t2JggKEOEeWQRf-no0GeMA" name="finished">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-        </variable>
-        <node xmi:type="uml:InitialNode" xmi:id="_zoYqEKD8EeWVpfCzK8hwSg" name="InitialNode1" outgoing="_cMXw8KEPEeWQRf-no0GeMA"/>
-        <node xmi:type="uml:AddVariableValueAction" xmi:id="_m324sKEOEeWQRf-no0GeMA" name="finished=false" incoming="_cMXw8KEPEeWQRf-no0GeMA" outgoing="_fCBvcKEPEeWQRf-no0GeMA" variable="_t2JggKEOEeWQRf-no0GeMA">
-          <value xmi:type="uml:ValuePin" xmi:id="_5V3FEKEOEeWQRf-no0GeMA" visibility="private">
-            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-            <value xmi:type="uml:LiteralBoolean" xmi:id="_5V3FEaEOEeWQRf-no0GeMA"/>
-          </value>
-        </node>
-        <node xmi:type="uml:DecisionNode" xmi:id="_VZfu8KEPEeWQRf-no0GeMA" name="DecisionNode1" incoming="_fCBvcKEPEeWQRf-no0GeMA"/>
-      </ownedBehavior>
-      <ownedOperation xmi:type="uml:Operation" xmi:id="_zcUEIKDUEeWv3dQk34uqzw" name="main" method="_vu0-kKD8EeWVpfCzK8hwSg">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_1ACRIbSSEeWU5qgzJNzOuw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" association="_0_6VULSSEeWU5qgzJNzOuw"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_j2csQLSNEeWU5qgzJNzOuw" name="construct">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_cggkALSOEeWU5qgzJNzOuw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_zcUEIKDUEeWv3dQk34uqzw" name="perform analysis">
         <ownedComment xmi:type="uml:Comment" xmi:id="_i3kqAKDVEeWv3dQk34uqzw" annotatedElement="_zcUEIKDUEeWv3dQk34uqzw _I-iE4KDUEeWv3dQk34uqzw">
-          <body>prepare input artefacts()&#xD;
- &#xD;
-finished ≔ false&#xD;
-readOnlyBlackboardView ≔ {@link #_DQjdUKDzEeWVpfCzK8hwSg}.{@link #__BK2UKDzEeWVpfCzK8hwSg}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
-measurementControllerBlackboardView ≔ {@link #_gzE1gKiSEeW317sgBX4gxw}.{@link #_pnMmcKimEeW317sgBX4gxw}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
-analyserBlackboardView ≔ {@link #_rqzFQKD4EeWVpfCzK8hwSg}.{@link #_zR0rkKD5EeWVpfCzK8hwSg}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
-finalJudgeBlackboardView ≔ {@link #_9waukKiSEeW317sgBX4gxw}.{@link #_B3QRAKinEeW317sgBX4gxw}({@link #_WdHJ4KDUEeWv3dQk34uqzw})&#xD;
+          <body>finished ≔ false&#xD;
+readOnlyBlackboardView ≔ {@link #_DQjdUKDzEeWVpfCzK8hwSg}.{@link #__BK2UKDzEeWVpfCzK8hwSg}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+measurementControllerBlackboardView ≔ {@link #_gzE1gKiSEeW317sgBX4gxw}.{@link #_pnMmcKimEeW317sgBX4gxw}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+analyserBlackboardView ≔ {@link #_rqzFQKD4EeWVpfCzK8hwSg}.{@link #_zR0rkKD5EeWVpfCzK8hwSg}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
+finalJudgeBlackboardView ≔ {@link #_9waukKiSEeW317sgBX4gxw}.{@link #_B3QRAKinEeW317sgBX4gxw}({@link #_1ACRIbSSEeWU5qgzJNzOuw})&#xD;
  &#xD;
 while (¬finished) do&#xD;
   if {@link #_qgn4gqD1EeWVpfCzK8hwSg}.{@link #_664BkLClEeWUDtVlk6a50w}(readOnlyBlackboardView) then&#xD;
@@ -98,23 +98,8 @@ while (¬finished) do&#xD;
       finished ≔{@link #_808_4LLaEeWi36SSdQyzSA}.{@link #_yN9MALLaEeWi36SSdQyzSA}(finalJudgeBlackboardView)&#xD;
     fi&#xD;
   fi&#xD;
-od&#xD;
- &#xD;
-write results()</body>
+od</body>
         </ownedComment>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_n1yG4KWrEeWVjrqJHndH-A" name="PCM repository files" type="_nvWkMKWqEeWVjrqJHndH-A">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_q3I_EKWrEeWVjrqJHndH-A" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_q3K0QKWrEeWVjrqJHndH-A" value="*"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_ppylsKWsEeWVjrqJHndH-A" name="IDs of stuff to measure">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_trmOQKWsEeWVjrqJHndH-A" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_troDcKWsEeWVjrqJHndH-A" value="*"/>
-        </ownedParameter>
-        <ownedParameter xmi:type="uml:Parameter" xmi:id="_bMH3sKWrEeWVjrqJHndH-A" name="execution files" type="_nvWkMKWqEeWVjrqJHndH-A">
-          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ftyFAKWrEeWVjrqJHndH-A" value="1"/>
-          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ftz6MKWrEeWVjrqJHndH-A" value="*"/>
-        </ownedParameter>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_7RjZsKDiEeWVpfCzK8hwSg" name="SEFF Loop"/>
@@ -139,7 +124,7 @@ write results()</body>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_DQjdUKDzEeWVpfCzK8hwSg" name="Read-Only Blackboard View">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_T-VpQaDzEeWVpfCzK8hwSg" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" association="_z8cfgK7nEeW_rv0J6Owpcw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_cbhZgLSSEeWU5qgzJNzOuw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_cbdIELSSEeWU5qgzJNzOuw"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="__BK2UKDzEeWVpfCzK8hwSg" name="construct">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_NBZ24KD0EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" effect="read"/>
       </ownedOperation>
@@ -205,7 +190,7 @@ write results()</body>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_rqzFQKD4EeWVpfCzK8hwSg" name="Analyser Blackboard View">
-      <ownedAttribute xmi:type="uml:Property" xmi:id="_xMo9MaD4EeWVpfCzK8hwSg" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" association="_xMlS0KD4EeWVpfCzK8hwSg"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_VFHMoLSSEeWU5qgzJNzOuw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_VE_34LSSEeWU5qgzJNzOuw"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_zR0rkKD5EeWVpfCzK8hwSg" name="construct">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_5qdooKD5EeWVpfCzK8hwSg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" effect="read"/>
       </ownedOperation>
@@ -311,6 +296,7 @@ write results()</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gSXYUKiWEeW317sgBX4gxw" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gSaboKiWEeW317sgBX4gxw" value="1"/>
       </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_d3lhULJBEeWgdqdZ8hPRgg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_d3fasLJBEeWgdqdZ8hPRgg"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_pnMmcKimEeW317sgBX4gxw" name="construct">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_c3A4gaimEeW317sgBX4gxw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" effect="read"/>
       </ownedOperation>
@@ -395,6 +381,7 @@ write results()</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_9waukKiSEeW317sgBX4gxw" name="Final Judge Blackboard View">
       <ownedAttribute xmi:type="uml:Property" xmi:id="_z8uzYK7nEeW_rv0J6Owpcw" name="blackboard" visibility="private" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LmJX0LSSEeWU5qgzJNzOuw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_Ll-_wLSSEeWU5qgzJNzOuw"/>
       <ownedOperation xmi:type="uml:Operation" xmi:id="_B3QRAKinEeW317sgBX4gxw" name="construct">
         <ownedParameter xmi:type="uml:Parameter" xmi:id="_VAwG4aimEeW317sgBX4gxw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" isUnique="false" effect="read"/>
       </ownedOperation>
@@ -527,12 +514,6 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_9m9VYKDjEeWVpfCzK8hwSg" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_WdBqUKDUEeWv3dQk34uqzw" name="Beagle Controller -> Blackboard" visibility="private" memberEnd="_WdMCYKDUEeWv3dQk34uqzw">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_WdEtoKDUEeWv3dQk34uqzw" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_WdFUsKDUEeWv3dQk34uqzw" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_WdMCYKDUEeWv3dQk34uqzw" type="_I-iE4KDUEeWv3dQk34uqzw" association="_WdBqUKDUEeWv3dQk34uqzw"/>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_YO1L4KDkEeWVpfCzK8hwSg" name="Blackboard SEFF Branches List" visibility="public" memberEnd="_YO4PMKDkEeWVpfCzK8hwSg _YO42QKDkEeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YO3BEKDkEeWVpfCzK8hwSg" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YO3oIKDkEeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
@@ -584,11 +565,6 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pWeFoKENEeWQRf-no0GeMA" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_xMlS0KD4EeWVpfCzK8hwSg" visibility="private" memberEnd="_xMo9MaD4EeWVpfCzK8hwSg">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xMoWIKD4EeWVpfCzK8hwSg" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xMo9MKD4EeWVpfCzK8hwSg" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_JUmncKEUEeWQRf-no0GeMA" memberEnd="_JUsHAKEUEeWQRf-no0GeMA _JUsuEKEUEeWQRf-no0GeMA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JUq44KEUEeWQRf-no0GeMA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JUq44aEUEeWQRf-no0GeMA" key="nature" value="UML_Nature"/>
@@ -601,17 +577,6 @@ write results()</body>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_zyWCEKEiEeWuoaiXEYXzVw" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_zyOGQKEiEeWuoaiXEYXzVw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:DataType" xmi:id="_nvWkMKWqEeWVjrqJHndH-A" name="File"/>
-    <packagedElement xmi:type="uml:Association" xmi:id="_z8cfgK7nEeW_rv0J6Owpcw" name="" visibility="private" memberEnd="_T-VpQaDzEeWVpfCzK8hwSg">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_z8e7wK7nEeW_rv0J6Owpcw" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_z8fi0K7nEeW_rv0J6Owpcw" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-    </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_uLvnALFqEeW_rv0J6Owpcw" memberEnd="_WdHJ4KDUEeWv3dQk34uqzw">
-      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_uL27wLFqEeW_rv0J6Owpcw" source="org.eclipse.papyrus">
-        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_uL3i0LFqEeW_rv0J6Owpcw" key="nature" value="UML_Nature"/>
-      </eAnnotations>
-    </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_d3fasLJBEeWgdqdZ8hPRgg" memberEnd="_d3lhULJBEeWgdqdZ8hPRgg _d3mIYLJBEeWgdqdZ8hPRgg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_d3ieALJBEeWgdqdZ8hPRgg" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_d3kTMLJBEeWgdqdZ8hPRgg" key="nature" value="UML_Nature"/>
@@ -620,7 +585,6 @@ write results()</body>
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_g3pZALJBEeWgdqdZ8hPRgg"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_g3scULJBEeWgdqdZ8hPRgg" value="*"/>
       </ownedEnd>
-      <ownedEnd xmi:type="uml:Property" xmi:id="_d3lhULJBEeWgdqdZ8hPRgg" name="blackboard" type="_F0ULoKDUEeWv3dQk34uqzw" association="_d3fasLJBEeWgdqdZ8hPRgg"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Association" xmi:id="_c0urQLJDEeWgdqdZ8hPRgg" name="SEFFLoops proposed expressions" memberEnd="_c00K0LJDEeWgdqdZ8hPRgg _c02AALJDEeWgdqdZ8hPRgg" navigableOwnedEnd="_c02AALJDEeWgdqdZ8hPRgg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_c0wgcLJDEeWgdqdZ8hPRgg" source="org.eclipse.papyrus">
@@ -721,7 +685,7 @@ write results()</body>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YVO88LJKEeWgdqdZ8hPRgg" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_80u9cLLaEeWi36SSdQyzSA" visibility="public" memberEnd="_806joLLaEeWi36SSdQyzSA _808_4LLaEeWi36SSdQyzSA">
+	<packagedElement xmi:type="uml:Association" xmi:id="_80u9cLLaEeWi36SSdQyzSA" name="Analysis Controller -> Final Judge" memberEnd="_806joLLaEeWi36SSdQyzSA _808_4LLaEeWi36SSdQyzSA">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_804HYLLaEeWi36SSdQyzSA" source="org.eclipse.papyrus">
         <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_804ucLLaEeWi36SSdQyzSA" key="nature" value="UML_Nature"/>
       </eAnnotations>
@@ -732,6 +696,42 @@ write results()</body>
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_UVMrMLLoEeWeMoSNZeiBAQ" name="" supplier="_Mqc3EKBSEeWVfMeWaVID2g"/>
     <packagedElement xmi:type="uml:Package" xmi:id="_IAAqYLOcEeWl5dq8_C8Vhg" name="Expressions"/>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Ll-_wLSSEeWU5qgzJNzOuw" name="Final Judge View -> Blackboard" memberEnd="_LmJX0LSSEeWU5qgzJNzOuw _LmJ-4LSSEeWU5qgzJNzOuw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_LmEfULSSEeWU5qgzJNzOuw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_LmIJsLSSEeWU5qgzJNzOuw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_LmJ-4LSSEeWU5qgzJNzOuw" name="final judge blackboard view" type="_9waukKiSEeW317sgBX4gxw" association="_Ll-_wLSSEeWU5qgzJNzOuw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NQ5CYLSSEeWU5qgzJNzOuw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NQ63kLSSEeWU5qgzJNzOuw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_VE_34LSSEeWU5qgzJNzOuw" name="Analyser View -> Blackboard" memberEnd="_VFHMoLSSEeWU5qgzJNzOuw _VFJo4LSSEeWU5qgzJNzOuw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VFC7MLSSEeWU5qgzJNzOuw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_VFGlkLSSEeWU5qgzJNzOuw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_VFJo4LSSEeWU5qgzJNzOuw" name="analyser blackboard view" type="_rqzFQKD4EeWVpfCzK8hwSg" association="_VE_34LSSEeWU5qgzJNzOuw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YWQ0ULSSEeWU5qgzJNzOuw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YWUesLSSEeWU5qgzJNzOuw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_cbdIELSSEeWU5qgzJNzOuw" name="Read-Only View -> Blackboard" memberEnd="_cbhZgLSSEeWU5qgzJNzOuw _cbhZgbSSEeWU5qgzJNzOuw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_cbeWMLSSEeWU5qgzJNzOuw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_cbgycLSSEeWU5qgzJNzOuw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_cbhZgbSSEeWU5qgzJNzOuw" name="read-only blackboard view" type="_DQjdUKDzEeWVpfCzK8hwSg" association="_cbdIELSSEeWU5qgzJNzOuw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ljhf0LSSEeWU5qgzJNzOuw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ljjVALSSEeWU5qgzJNzOuw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0_6VULSSEeWU5qgzJNzOuw" memberEnd="_1ACRIbSSEeWU5qgzJNzOuw _1ACRIrSSEeWU5qgzJNzOuw">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0_9YoLSSEeWU5qgzJNzOuw" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1ACRILSSEeWU5qgzJNzOuw" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_1ACRIrSSEeWU5qgzJNzOuw" name="analysis controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_0_6VULSSEeWU5qgzJNzOuw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7jf-ILSSEeWU5qgzJNzOuw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7jjBcLSSEeWU5qgzJNzOuw" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
@@ -743,4 +743,6 @@ write results()</body>
   <standard:Create xmi:id="_YuK5sKKZEeWL-IJIx5eHSw" base_BehavioralFeature="_zR0rkKD5EeWVpfCzK8hwSg"/>
   <standard:Create xmi:id="_6jquoKimEeW317sgBX4gxw" base_BehavioralFeature="_pnMmcKimEeW317sgBX4gxw"/>
   <standard:Create xmi:id="_FrW0wKinEeW317sgBX4gxw" base_BehavioralFeature="_B3QRAKinEeW317sgBX4gxw"/>
+  <standard:Create xmi:id="_sBKq8LSNEeWU5qgzJNzOuw" base_BehavioralFeature="_j2csQLSNEeWU5qgzJNzOuw"/>
+  <standard:Create xmi:id="_WIGbALSPEeWU5qgzJNzOuw" base_BehavioralFeature="_TZgt0LSPEeWU5qgzJNzOuw"/>
 </xmi:XMI>
