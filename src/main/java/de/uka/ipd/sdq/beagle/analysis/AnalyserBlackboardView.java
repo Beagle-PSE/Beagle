@@ -19,10 +19,9 @@ import java.util.Set;
  *
  * @author Christoph Michelbach
  * @author Roman Langrehr
- * 
+ *
  * @see Blackboard for information about Blackboard views.
- * 
->>>>>>> master
+ *
  */
 public class AnalyserBlackboardView {
 
