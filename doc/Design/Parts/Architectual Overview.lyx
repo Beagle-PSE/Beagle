@@ -168,7 +168,7 @@ Measurement Tool
 \begin_layout Standard
 The Measurement Tool is responsible for all kinds of measurements that are
  needed to get the execution time of Resource Demanding Internal Actions,
- branch decisions of SEFF Branches and repitions of SEFF Loops in regard
+ branch decisions of SEFF Branches and repetitions of SEFF Loops in regard
  to a certain parametrisation.
  An adapter instructing Kieker will be the first class to implement this
  interface.
@@ -180,8 +180,8 @@ Result Analyser
 
 \begin_layout Standard
 Based on the measurement results, the Result Analyser will suggest evaluable
- expressions expressing that lead to a parametrisation of Resource Demanding
- Internal Actions, SEFF Branches or SEFF Loops.
+ expressions that lead to a parametrisation of Resource Demanding Internal
+ Actions, SEFF Branches or SEFF Loops.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -200,9 +200,9 @@ GUI (Model-View-Controller)
 \end_layout
 
 \begin_layout Standard
-Actually, the GUI is not a necessary component that provides functionality
- for parametrisation.
- But it is useful for providing interaction between Beagle and the user
+The GUI is not a necessary component that provides functionality for parametrisa
+tion.
+ But it is necessary for providing interaction between Beagle and the user
  as the user may want to set up some features of Beagle.
 \end_layout
 
