@@ -5,7 +5,6 @@ import de.uka.ipd.sdq.beagle.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -175,18 +174,6 @@ public class MeasurementControllerBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link Blackboard#reportMeasurementResultsForRDIAs(Map)}.
-	 *
-	 * @param results The result of some measurements associated with it's Resource
-	 *            Demanding Internal Action. Must not be {@code null} and no key or value
-	 *            of this map may be {@code null}. Not each Resource Demanding Internal
-	 *            Action of this blackboard needs to be a key in this map.
-	 */
-	public void reportMeasurementResultsForRDIAs(
-		final Map<ResourceDemandingInternalAction, Set<ResourceDemandMeasurementResult>> results) {
-	}
-
-	/**
 	 * Delegates to
 	 * {@link Blackboard#reportMeasurementResultForSEFFLoop(SEFFLoop, LoopRepetitionCountMeasurementResult)}
 	 * .
@@ -199,18 +186,6 @@ public class MeasurementControllerBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link Blackboard#reportMeasurementResultsForSEFFLoops(Map)}.
-	 *
-	 * @param results The result of some measurements associated with it's SEFF Loops.
-	 *            Must not be {@code null} and no key or value of this map may be
-	 *            {@code null}. Not each Resource Demanding Internal Action of this
-	 *            blackboard needs to be a key in this map.
-	 */
-	public void reportMeasurementResultsForSEFFLoops(
-		final Map<ResourceDemandingInternalAction, Set<LoopRepetitionCountMeasurementResult>> results) {
-	}
-
-	/**
 	 * Delegates to
 	 * {@link Blackboard#reportMeasurementResultForSEFFBranch(SEFFBranch, BranchDecisionMeasurementResult)}
 	 * .
@@ -220,17 +195,5 @@ public class MeasurementControllerBlackboardView {
 	 */
 	public void reportMeasurementResultForSEFFBranch(final SEFFBranch branch,
 		final BranchDecisionMeasurementResult result) {
-	}
-
-	/**
-	 * Delegates to {@link Blackboard#reportMeasurementResultsForSEFFBranches(Map)}.
-	 *
-	 * @param results The result of some measurements associated with it's SEFF Branches.
-	 *            Must not be {@code null} and no key or value of this map may be
-	 *            {@code null}. Not each Resource Demanding Internal Action of this
-	 *            blackboard needs to be a key in this map.
-	 */
-	public void reportMeasurementResultsForSEFFBranches(
-		final Map<ResourceDemandingInternalAction, Set<BranchDecisionMeasurementResult>> results) {
 	}
 }

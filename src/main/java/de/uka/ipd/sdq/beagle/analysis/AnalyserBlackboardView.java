@@ -11,7 +11,6 @@ import de.uka.ipd.sdq.beagle.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -180,43 +179,6 @@ public class AnalyserBlackboardView {
 	 * @see Blackboard#proposeExpressionForSEFFBranch(SEFFBranch, EvaluableExpression)
 	 */
 	public void proposeExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Delegates to {@link Blackboard#proposeExpressionsForRDIAs(Map)}.
-	 *
-	 * @param expressions A map which lists for each Resource Demanding Internal Action
-	 *            some evaluable expression which are proposed to describe the resource
-	 *            demanding internal action's measurement results. Must not be
-	 *            {@code null} and no key or value of this map may be {@code null}. Not
-	 *            each Resource Demanding Internal Action of this blackboard needs to be a
-	 *            key in this map.
-	 */
-	public void proposeExpressionsForRDIAs(
-		final Map<ResourceDemandingInternalAction, Set<EvaluableExpression>> expressions) {
-	}
-
-	/**
-	 * Delegates to {@link Blackboard#proposeExpressionsForRDIAs(Map)}.
-	 *
-	 * @param expressions A map which lists for each SEFFBranch some evaluable expression
-	 *            which are proposed to describe the SEFF Branch's measurement results.
-	 *            Must not be {@code null} and no key or value of this map may be
-	 *            {@code null}. Not each SEFFBranch of this blackboard needs to be a key
-	 *            in this map.
-	 */
-	public void proposeExpressionsForSEFFBranches(final Map<SEFFBranch, Set<EvaluableExpression>> expressions) {
-	}
-
-	/**
-	 * Delegates to {@link Blackboard#proposeExpressionsForSEFFLoops(Map)}.
-	 *
-	 * @param expressions A map which lists for each SEFF Loop some evaluable expression
-	 *            which are proposed to describe the SEFF Loop's measurement results. Must
-	 *            not be {@code null} and no key or value of this map may be {@code null}.
-	 *            Not each SEFFLoop of this blackboard needs to be a key in this map.
-	 */
-	public void proposeExpressionsForSEFFLoops(final Map<SEFFLoop, Set<EvaluableExpression>> expressions) {
 	}
 
 	/**
