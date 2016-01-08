@@ -9,6 +9,7 @@
   <packagedElement xmi:type="uml:Package" xmi:id="_AHE_QLOcEeWl5dq8_C8Vhg" name="Judge"/>
   <packagedElement xmi:type="uml:Package" href="Packages/PCM%20Connection.uml#_ckALoLSIEeWU5qgzJNzOuw"/>
   <packagedElement xmi:type="uml:DataType" xmi:id="_nvWkMKWqEeWVjrqJHndH-A" name="File"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_syO00LXoEeW_Rrkal-a9Yg" name="Beagle"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fLPA4LJJEeWgdqdZ8hPRgg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fLQPALJJEeWgdqdZ8hPRgg" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
