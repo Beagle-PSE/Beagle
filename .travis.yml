@@ -10,10 +10,13 @@ install:
   
 script:
   - gradle build qc || gradle build qc --info --stacktrace
+  
+after_failure:
   - gradle web || gradle web --info --stacktrace
   
+after_success:
+  - gradle cleanTmp
+  - ./buildSrc/src/deploy/bash/Deploy\ SVN.sh
+
 after_script:
   - ./buildSrc/src/deploy/bash/Deploy\ Web.sh
-  
-after_success:
-  - ./buildSrc/src/deploy/bash/Deploy\ SVN.sh

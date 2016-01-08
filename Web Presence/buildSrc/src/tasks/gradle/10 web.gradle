@@ -1,0 +1,181 @@
+/**
+ * Tasks for creating and deploying Beagle’s web presence.
+ *
+ * @author Joshua Gleitze
+ */
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1+'
+    }
+}
+
+import de.undercouch.gradle.tasks.download.Download
+
+final String WEB_DEST = buildDir
+
+task downloadWebFonts(type: Download) {
+	description 'Downloads fonts required by Beagle’s web presence'
+	
+    src ([
+    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Typewriter.zip',
+    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Serif.zip',
+    	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip',
+    	'http://fontawesome.io/assets/font-awesome-4.5.0.zip'
+    ])
+    dest "$rootProject.buildDir/tmp/fonts/"
+	onlyIfNewer true
+	quiet true
+	
+	outputs.upToDateWhen { 
+		fileTree(downloadWebFonts.dest).include('*.zip').size() == src.size()
+	}
+	
+	doFirst {
+		dest.mkdirs()
+	}
+}
+
+task copyWebFonts(dependsOn: downloadWebFonts) {
+	description 'Copies downloaded fonts for Beagle’s web presence into the web directory.'
+	
+	def cmsansInputDirname = 'Sans'
+	def cmsansOutputDirname = 'cm-sans'
+	def cmserifInputDirname = 'Serif'
+	def cmserifOutputDirname = 'cm-serif'
+	def cmtypeInputDirname = 'Typewriter'
+	def cmtypeOutputDirname = 'cm-typewriter'
+	def faInputDirname = 'font-awesome-4.5.0'
+	def faOutputDirname = 'font-awesome'
+	
+	
+	ext {
+		dest = "$WEB_DEST/fonts"
+		cmsansdest = "$dest/$cmsansOutputDirname"
+		cmserifdest = "$dest/$cmserifOutputDirname"
+		cmtypedest = "$dest/$cmtypeOutputDirname"
+		fontawesomedest = "$dest/$faOutputDirname"
+	}
+	
+    inputs.file downloadWebFonts.dest
+	outputs.file dest
+	
+	doLast {	
+		def sourcePaths = []
+		def allZips = fileTree(downloadWebFonts.dest).include('*.zip')
+		allZips.each { file -> sourcePaths.add zipTree(file) }
+		
+		copy {
+	    	from sourcePaths
+	    	into dest
+	    }
+	    
+	    file("$dest/$cmsansInputDirname").renameTo(file(cmsansdest))
+	    file("$dest/$cmserifInputDirname").renameTo(file(cmserifdest))
+	    file("$dest/$cmtypeInputDirname").renameTo(file(cmtypedest))
+	    file("$dest/$faInputDirname").renameTo(file(fontawesomedest))
+	}
+}
+
+task renderWebPages(type: Copy) {
+	description 'Renders the pages of Beagle’s web presence.'
+	inputs.files "$projectDir/src/main", "$projectDir/src/template"
+    
+    def compileAction = new CompileWebFilesAction()
+    def htmlroottemplate = file("$projectDir/src/template/handlebars/roottemplate.html")
+    compileAction.addRootTemplateFiles	'html': htmlroottemplate,
+    									'htmd': htmlroottemplate
+    HandlebarsRenderer.partialsFolder = file("$projectDir/src/template/handlebars/partials")
+    HandlebarsRenderer.partialsExtension = "part"
+    BeagleWebContext.project = project
+    
+	from "$projectDir/src/main/handlebars"
+	into WEB_DEST
+	eachFile compileAction
+}
+
+task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
+	description 'Copies web assets (scripts, stylesheets, …) into Beagle’s web presence.'
+	
+	ext {
+		cssdest = "$WEB_DEST/css"
+	}
+	
+	from "$projectDir/src/template"
+	include "css/**/*.css"
+	into WEB_DEST
+}
+
+task copyWebArtefacts() {
+	description 'Copies all build artefacts that will be published into Beagle’s web presence.'
+	
+	
+	def doc = project(':Documentation')
+	def designFileName = "Architecture & Design.pdf"
+	
+	ext {
+		javadocDest = "$WEB_DEST/javadoc"
+		srsDest = "$WEB_DEST/$doc.srs.dest.name"
+		checkstyleDest = "$WEB_DEST/checkstyle"
+		jacocoDest = "$WEB_DEST/coverage"
+		designDest = "$WEB_DEST/$designFileName"
+	}
+	
+	
+	def checkstyleDirs = rootProject.javaSubprojects.collect { it.checkstyleHtml.dest }
+	def testReports = rootProject.javaSubprojects.collect { it.jacocoTestReport.reports.html.destination }
+	
+	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.design.dest, checkstyleDirs, testReports
+	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest
+	
+	doLast {
+		rootProject.javaSubprojects.each { project ->
+			println "copying for $project"
+			copy {	
+				from project.javadoc.destinationDir
+				into "$javadocDest/$project.name"
+			}	
+		
+			copy {
+				from project.checkstyleHtml.dest
+				rename {file -> "${project.name}.html"}
+				into checkstyleDest
+			}
+			
+			copy {
+				from project.jacocoTestReport.reports.html.destination
+				into jacocoDest
+			}
+		}
+		
+		copy {	
+			from doc.javadoc.destinationDir
+			into javadocDest
+		}	
+		
+		copy {
+			from doc.srs.dest
+			into WEB_DEST
+		}
+		
+		copy {
+			from doc.design.dest
+			rename {file -> designFileName}
+			into WEB_DEST
+		}
+	}
+}
+
+task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts]) {
+    group "Build"
+    description "Builds Beagle’s web presence. Synonym of :Web Presence:build"
+    
+	ext {
+		dest = WEB_DEST
+	}
+}
+
+build.dependsOn web

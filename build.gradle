@@ -1,19 +1,39 @@
-import groovy.transform.Field 
-
 /**
- * All prototype subprojects. Useful for configure blocks: configure(prototypeSubprojects){}
+ * Collections of subprojects. Useful for configure blocks: configure(prototypeSubprojects){}
  */
-ext.prototypeSubprojects = subprojects.findAll {it.name.startsWith('prototype')}
+ext.prototypeSubprojects = subprojects.findAll {it.name.startsWith('Prototype')}
+ext.javaSubprojects = subprojects.findAll {file("$it.projectDir/src/main/java").exists()}
 
-buildscript {
-	fileTree("$projectDir/buildSrc/src/tasks/gradle/buildscript-dependencies").include('*.gradle').each { file ->
-	     apply from: file, to: buildscript
+allprojects {
+	// All subprojects have a build and clean task
+	if (tasks.findByPath('build') == null) {
+		task build {
+			group 'Build'
+			description 'Assembles and tests this project.'
+		}
+	}
+	
+	if (tasks.findByPath('clean') == null) {
+		task clean {
+			group 'Build'
+			description 'Deletes the build directory.'
+			
+			doLast {
+				file(buildDir).deleteDir()
+			}
+		}
+	}
+	
+	buildscript {
+		fileTree("$projectDir/buildSrc/src/tasks/gradle/buildscript-dependencies").include('*.gradle').each { file ->
+		 	project.apply from: file, to: buildscript
+		} 
+	}
+
+	// import all tasks defined in src/build/groovy
+	fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').sort().each { file ->
+		project.apply from: file
 	} 
 }
-
-// import all tasks defined in src/build/groovy
-fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').sort().each { file ->
-     apply from: file
-} 
 
 defaultTasks 'build'

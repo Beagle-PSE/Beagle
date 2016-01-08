@@ -1,0 +1,29 @@
+/**
+ * Tasks to render the javadoc of all java source projects.
+ *
+ * @author Joshua Gleitze
+ */
+ 
+
+FileTree getAllInputFiles() {
+	def result
+	rootProject.javaSubprojects.each { project ->
+		def srcTree = fileTree("$project.projectDir/src/main/java").include("**/*.java")
+		if (result == null) {
+			result = srcTree
+		} else {
+			result.add(scrTree)
+		}
+	}
+	return result
+}
+
+task javadoc(type: Javadoc) {
+	group 'Documentation'
+	description 'Generates Javadoc API documentation for the main source code.'
+	
+	source getAllInputFiles()
+	destinationDir = file("$buildDir/javadoc")
+}
+
+build.dependsOn javadoc

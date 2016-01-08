@@ -71,7 +71,7 @@ cd "$pubdir"
 find . -maxdepth 1 \! \( -name .git -o -name . -o -name branches \) -exec rm -rf {} \;
 
 # Requirements specification
-cp -r "$BASE/build/web"/* .
+cp -r "$BASE/Web Presence/build"/* .
 
 ###
 
