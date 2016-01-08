@@ -84,8 +84,6 @@ public class BeagleHelpers {
 		String home = beagleContext.filePath.substring(0, beagleContext.filePath.length() - beagleContext.fileName.length())
 		Path here = new File(home).toPath();
 		Path there = new File(path).toPath()
-		
-		println "make relative: $path ($there) from $beagleContext.filePath ($here) : ${here.relativize(there)}"
 		return here.relativize(there)
 	}
 }
