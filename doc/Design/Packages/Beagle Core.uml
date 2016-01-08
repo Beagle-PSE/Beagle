@@ -423,6 +423,18 @@ od</body>
       </eAnnotations>
       <ownedEnd xmi:type="uml:Property" xmi:id="_78EqULX_EeW_Rrkal-a9Yg" name="analysis controller" type="_I-iE4KDUEeWv3dQk34uqzw" association="_77_KwLX_EeW_Rrkal-a9Yg"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_Vky7gLYBEeW_Rrkal-a9Yg">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_VkzikLYBEeW_Rrkal-a9Yg" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Vk1XwLYBEeW_Rrkal-a9Yg" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <memberEnd xmi:type="uml:Property" href="../Beagle.uml#_Vk1XwbYBEeW_Rrkal-a9Yg"/>
+      <memberEnd xmi:type="uml:Property" href="#_Vk1-0LYBEeW_Rrkal-a9Yg"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_Vk1-0LYBEeW_Rrkal-a9Yg" name="final judge blackboard view" association="_Vky7gLYBEeW_Rrkal-a9Yg">
+        <type xmi:type="uml:Class" href="../Beagle.uml#_9waukKiSEeW317sgBX4gxw"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZAg0cLYBEeW_Rrkal-a9Yg"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZAhbgLYBEeW_Rrkal-a9Yg" value="*"/>
+      </ownedEnd>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_IdQWQKD0EeWVpfCzK8hwSg">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_IdUnsKD0EeWVpfCzK8hwSg" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>

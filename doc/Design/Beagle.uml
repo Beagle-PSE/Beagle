@@ -22,6 +22,10 @@
           <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
           <association xmi:type="uml:Association" href="Packages/Beagle%20Core.uml#_Ll-_wLSSEeWU5qgzJNzOuw"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_Vk1XwbYBEeW_Rrkal-a9Yg" name="blackboard">
+          <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
+          <association xmi:type="uml:Association" href="Packages/Beagle%20Core.uml#_Vky7gLYBEeW_Rrkal-a9Yg"/>
+        </ownedAttribute>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_B3QRAKinEeW317sgBX4gxw" name="construct">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_VAwG4aimEeW317sgBX4gxw" name="blackboard" isUnique="false" effect="read">
             <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
