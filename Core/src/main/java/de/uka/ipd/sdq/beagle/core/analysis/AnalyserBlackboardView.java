@@ -18,7 +18,7 @@ import java.util.Set;
  * 
  * @author Christoph Michelbach
  * 
- * @see Blackboard for information about Blackboard views
+ * @see Blackboard for information about Blackboard views.
  * 
  */
 public class AnalyserBlackboardView {
@@ -36,7 +36,7 @@ public class AnalyserBlackboardView {
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}.
 	 *
-	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
 	 *         actions} known to Beagle. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
@@ -120,7 +120,7 @@ public class AnalyserBlackboardView {
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
 	 *
-	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
+	 * @return All {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
 	 */
@@ -131,7 +131,7 @@ public class AnalyserBlackboardView {
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()}.
 	 *
-	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 * @return All {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()
 	 */

@@ -12,7 +12,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	 * Set an {@link EvaluableExpression} as substrahend of the
 	 * {@code SubstractionExpression}.
 	 *
-	 * @param expression to be the substrahend
+	 * @param expression The expression to be the substrahend.
 	 */
 	public void setSubtrahend(final EvaluableExpression expression) {
 
@@ -21,7 +21,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	/**
 	 * Get the {@link EvaluableExpression} which is the substrahend.
 	 *
-	 * @return the substrahend
+	 * @return This expression's substrahend.
 	 */
 	public EvaluableExpression getSubstrahend() {
 		return null;
@@ -31,7 +31,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	 * Set an {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}
 	 * .
 	 *
-	 * @param expression to be the minuend
+	 * @param expression The expression to be the minuend.
 	 */
 	public void setMinuend(final EvaluableExpression expression) {
 
@@ -40,7 +40,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	/**
 	 * Get the {@link EvaluableExpression} which is the minuend.
 	 *
-	 * @return the minuend
+	 * @return This expression's minuend.
 	 */
 	public EvaluableExpression getMinuend() {
 		return null;

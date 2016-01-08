@@ -75,8 +75,45 @@ Architectural Overview
 \end_layout
 
 \begin_layout Standard
+The architectural overview summarises Beagle's software design, that follows
+ the Software Requirement Specification (SRS).
+ Beagle's design decisions are mainly proposed to fulfil all mandatory tasks
+ mentioned in the SRS, but also allows supplementing by optional criteria.
+ However, some mandatory criteria have changed, concerning the Common Trace
+ API (CTA) (/B10/, /F30/, /F40/, /Q20/).
+ The CTA was planned to be used by Beagle but isn't any more because it
+ cannot conduct as precise measurements as desired.
+ Beagle's Measurement Tools need to be directly connected to specific measuremen
+t software like Kiker – without the CTA as intermediary.
+\end_layout
+
+\begin_layout Standard
+The following chapter is divided into 4 sub-chapters:
+\end_layout
+
+\begin_layout Itemize
+1.1 Gives a short overview of Beagle's entire system, briefly presenting
+ the whole design ideas as well as the subsystem structure and its out-most
+ functionality.
+\end_layout
+
+\begin_layout Itemize
+1.2 Completes the internal description of Beagle's system from 1.1, describing
+ the interaction of subsystem components.
+\end_layout
+
+\begin_layout Itemize
+1.3 Describes the communication process between Beagle and external tools
+ such as measurement software or analyser software.
+\end_layout
+
+\begin_layout Itemize
+1.4 Explains why some components are developed as Eclipse Extension Points.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Architectual Overview 
@@ -103,8 +140,89 @@ Architectual Overview
 Overview of the entire system
 \end_layout
 
+\begin_layout Standard
+Beagle is divided into components that are distinguished by high-level functiona
+lity and service.
+ Components may depend on information provided by another component, but
+ their internal logic works strictly independently.
+ The composition of following components represents Beagle's architecture:
+\end_layout
+
+\begin_layout Subsubsection*
+Core Component (Mediator Pattern)
+\end_layout
+
+\begin_layout Standard
+In order to manage and synchronise the requests and execution of different
+ jobs, Beagle is controlled by a core component.
+ The core component conducts the order of executable services, distributes
+ information and is responsible for class instantiation.
+ It depends on proper functionality of the other components and will offer
+ a parametrised PCM at the end of a successful execution.
+\end_layout
+
+\begin_layout Subsubsection*
+Measurement Tool
+\end_layout
+
+\begin_layout Standard
+The Measurement Tool is responsible for all kinds of measurements that are
+ needed to get the execution time of Resource Demanding Internal Actions,
+ branch decisions of SEFF Branches and repetitions of SEFF Loops in regard
+ to a certain parametrisation.
+ An adapter instructing Kieker will be the first class to implement this
+ interface.
+\end_layout
+
+\begin_layout Subsubsection*
+Result Analyser
+\end_layout
+
+\begin_layout Standard
+Based on the measurement results, the Result Analyser will suggest evaluable
+ expressions that lead to a parametrisation of Resource Demanding Internal
+ Actions, SEFF Branches or SEFF Loops.
+\end_layout
+
+\begin_layout Subsubsection*
+Final Judge
+\end_layout
+
+\begin_layout Standard
+This component is responsible to decide, which proposed evaluable expression
+ fits best to the PCM.
+ It also decides if more measurements should be done and when the final
+ solution is found.
+\end_layout
+
+\begin_layout Subsubsection*
+GUI (Model-View-Controller)
+\end_layout
+
+\begin_layout Standard
+The GUI is not a necessary component that provides functionality for parametrisa
+tion.
+ But it is necessary for providing interaction between Beagle and the user
+ as the user may want to set up some features of Beagle.
+\end_layout
+
 \begin_layout Section
 Components’ interaction
+\end_layout
+
+\begin_layout Standard
+The interaction of Beagle's components is guided by the Beagle Core through
+ the Blackboard Pattern.
+ The blackboard contains SEFF specific information, describing what to measure,
+ measurement results and evaluable expression annotations.
+ Measurement Tools and Result Analysers have the possibility to decide for
+ their own, whether they can contribute or not – depending on the information
+ provided on the blackboard.
+ Each component gets a different view of the blackboard, limiting its access
+ to more than what is absolutely necessary.
+ In order to unify the communication, Beagle Core provides its own classes
+ (SEFF characteristics and Evaluable Expression).
+ 
 \end_layout
 
 \begin_layout Section

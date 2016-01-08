@@ -23,7 +23,7 @@ public class MeasurementController {
 	 * Determines whether a {@link MeasurementTool} can contribute to the
 	 * {@link Blackboard}.
 	 *
-	 * @param blackboard The blackboard
+	 * @param blackboard The blackboard.
 	 * @return Whether a {@link MeasurementTool} can measure something which is marked as
 	 *         'to be measured'. When {@code true} is returned, this is no guarantee that
 	 *         at least one new measurement result will be added.

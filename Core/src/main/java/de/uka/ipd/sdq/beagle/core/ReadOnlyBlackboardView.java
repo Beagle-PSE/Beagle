@@ -12,7 +12,7 @@ import java.util.Set;
  * 
  * @author Christoph Michelbach
  * 
- * @see Blackboard for information about Blackboard views
+ * @see Blackboard for information about Blackboard views.
  */
 public class ReadOnlyBlackboardView {
 
@@ -82,7 +82,7 @@ public class ReadOnlyBlackboardView {
 	 * Delegates to
 	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)}.
 	 *
-	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
+	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}.
 	 *            .
 	 * @return All measurement results reported for {@code loop}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
