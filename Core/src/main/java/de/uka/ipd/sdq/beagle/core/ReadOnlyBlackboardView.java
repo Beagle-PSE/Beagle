@@ -9,9 +9,9 @@ import java.util.Set;
 /**
  * View of the {@link Blackboard} only allowing reading access. Writing access isn't
  * provided.
- * 
+ *
  * @author Christoph Michelbach
- * 
+ *
  * @see Blackboard for information about Blackboard views.
  */
 public class ReadOnlyBlackboardView {
@@ -63,7 +63,7 @@ public class ReadOnlyBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)} .
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)}.
 	 *
 	 * @param writer The class the desired data was written for. Must not be {@code null}.
 	 * @param <WRITTEN_TYPE> The type of the data to be read.
@@ -82,7 +82,7 @@ public class ReadOnlyBlackboardView {
 	 * Delegates to
 	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)}.
 	 *
-	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}.
+	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
 	 *            .
 	 * @return All measurement results reported for {@code loop}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
