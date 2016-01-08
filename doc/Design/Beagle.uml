@@ -5,10 +5,118 @@
   </packageImport>
   <packagedElement xmi:type="uml:Package" xmi:id="_syO00LXoEeW_Rrkal-a9Yg" name="Beagle">
     <packagedElement xmi:type="uml:Package" href="Packages/PCM%20Connection.uml#_ckALoLSIEeWU5qgzJNzOuw"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_AHE_QLOcEeWl5dq8_C8Vhg" name="Judge"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_AHE_QLOcEeWl5dq8_C8Vhg" name="Judge">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_gYTZELLaEeWi36SSdQyzSA" name="Final Judge">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_yN9MALLaEeWi36SSdQyzSA" name="judge">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_4JG70LLaEeWi36SSdQyzSA" name="blackboard" type="_9waukKiSEeW317sgBX4gxw"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_51C5MLLaEeWi36SSdQyzSA" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_9waukKiSEeW317sgBX4gxw" name="Final Judge Blackboard View">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_z8uzYK7nEeW_rv0J6Owpcw" name="blackboard" visibility="private" isUnique="false">
+          <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_LmJX0LSSEeWU5qgzJNzOuw" name="blackboard">
+          <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
+          <association xmi:type="uml:Association" href="Packages/Beagle%20Core.uml#_Ll-_wLSSEeWU5qgzJNzOuw"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_B3QRAKinEeW317sgBX4gxw" name="construct">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VAwG4aimEeW317sgBX4gxw" name="blackboard" isUnique="false" effect="read">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_F0ULoKDUEeWv3dQk34uqzw"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_NwIl0KmfEeW-HedfGpYj_Q" name="get RDIAs to be measured" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_YQ5O0KmfEeW-HedfGpYj_Q" direction="return">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_GLvPUKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_2wh4EK7kEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_2wolwK7kEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_ixhU8KmfEeW-HedfGpYj_Q" name="get SEFF Branches to be measured" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_nEMrEKmfEeW-HedfGpYj_Q" direction="return">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_DUhKkKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zXYyAK7kEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zXgGwK7kEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_og2PQKmfEeW-HedfGpYj_Q" name="get SEFF Loops to be measured" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_rTYBQKmfEeW-HedfGpYj_Q" direction="return">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_7RjZsKDiEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5MJl8K7kEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5MNQUK7kEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_YXyZoKmiEeW-HedfGpYj_Q" name="set final RDIAs" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_i8si0KmiEeW-HedfGpYj_Q" name="finalRDIAs" effect="update">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_GLvPUKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_84nw8KmwEeWw9OrdUR3Q_Q"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_84t3kKmwEeWw9OrdUR3Q_Q" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_LqmVUKmiEeW-HedfGpYj_Q" name="set final SEFF Branches" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VIYeYKmiEeW-HedfGpYj_Q" name="finalSEFFBranches" effect="update">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_DUhKkKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WNwyEKmiEeW-HedfGpYj_Q"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WN24sKmiEeW-HedfGpYj_Q" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_1E6MwKmfEeW-HedfGpYj_Q" name="set final SEFF Loops" visibility="public" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_CpWMsKmhEeW-HedfGpYj_Q" name="finalSEFFLoops" effect="update">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_7RjZsKDiEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_50vuEKmhEeW-HedfGpYj_Q"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_500mkKmhEeW-HedfGpYj_Q" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_pQrhAKmwEeWw9OrdUR3Q_Q" name="remeasure RDIA">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VttAMK1LEeWtMIKs7-6sVw" name="remeasure">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_GLvPUKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_BPd8IK7lEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BPkp0K7lEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_kp7_YKmwEeWw9OrdUR3Q_Q" name="remeasure SEFF Branch">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_aitnUK1LEeWtMIKs7-6sVw" name="remeasure">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_DUhKkKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_D_cwcK7lEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_D_hB4K7lEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_34OWAKmsEeWw9OrdUR3Q_Q" name="remeasure SEFF Loop" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_cShYEK1LEeWtMIKs7-6sVw" name="remeasure">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_7RjZsKDiEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HFc4EK7lEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HFkM0K7lEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_GTkbcLGTEeW_rv0J6Owpcw" name="get all RDIAs" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_L9U5QLGTEeW_rv0J6Owpcw" direction="return">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_GLvPUKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c3DaALGUEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dvzm8LGUEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_OhA-ALGTEeW_rv0J6Owpcw" name="get all SEFF Branches" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_RAf4MLGTEeW_rv0J6Owpcw" direction="return">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_DUhKkKDjEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_fIDMQLGUEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_fzumgLGUEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_RYTUMLGTEeW_rv0J6Owpcw" name="get all SEFF Loops" isQuery="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_VV_40LGTEeW_rv0J6Owpcw" direction="return">
+            <type xmi:type="uml:Class" href="Packages/Beagle%20Core.uml#_7RjZsKDiEeWVpfCzK8hwSg"/>
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hAKkcLGUEeW_rv0J6Owpcw"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hr2lwLGUEeW_rv0J6Owpcw" value="*"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
     <packagedElement xmi:type="uml:Package" href="Packages/Measurement.uml#_wSYjYKBTEeWVfMeWaVID2g"/>
     <packagedElement xmi:type="uml:Package" href="Packages/Analysis.uml#_NF-VcKBSEeWVfMeWaVID2g"/>
     <packagedElement xmi:type="uml:Package" href="Packages/Beagle%20Core.uml#_Mqc3EKBSEeWVfMeWaVID2g"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_d2EasLXsEeW_Rrkal-a9Yg" name="GUI"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_fLPA4LJJEeWgdqdZ8hPRgg">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_fLQPALJJEeWgdqdZ8hPRgg" source="http://www.eclipse.org/uml2/2.0.0/UML">
