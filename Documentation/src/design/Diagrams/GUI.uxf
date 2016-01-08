@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>162</x>
-      <y>468</y>
+      <y>513</y>
       <w>189</w>
       <h>171</h>
     </coordinates>
@@ -18,7 +18,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>153</x>
-      <y>747</y>
+      <y>792</y>
       <w>189</w>
       <h>171</h>
     </coordinates>
@@ -32,7 +32,7 @@ WizardPage
     <id>Relation</id>
     <coordinates>
       <x>234</x>
-      <y>630</y>
+      <y>675</y>
       <w>27</w>
       <h>135</h>
     </coordinates>
@@ -43,7 +43,7 @@ WizardPage
     <id>UMLClass</id>
     <coordinates>
       <x>495</x>
-      <y>657</y>
+      <y>702</y>
       <w>225</w>
       <h>63</h>
     </coordinates>
@@ -58,7 +58,7 @@ WizardPage
     <id>Relation</id>
     <coordinates>
       <x>306</x>
-      <y>675</y>
+      <y>720</y>
       <w>207</w>
       <h>90</h>
     </coordinates>
@@ -70,7 +70,7 @@ WizardPage
     <id>UMLClass</id>
     <coordinates>
       <x>495</x>
-      <y>729</y>
+      <y>774</y>
       <w>225</w>
       <h>63</h>
     </coordinates>
@@ -85,7 +85,7 @@ WizardPage
     <id>Relation</id>
     <coordinates>
       <x>333</x>
-      <y>729</y>
+      <y>774</y>
       <w>180</w>
       <h>36</h>
     </coordinates>
@@ -97,7 +97,7 @@ WizardPage
     <id>UMLClass</id>
     <coordinates>
       <x>495</x>
-      <y>801</y>
+      <y>846</y>
       <w>225</w>
       <h>63</h>
     </coordinates>
@@ -112,7 +112,7 @@ WizardPage
     <id>Relation</id>
     <coordinates>
       <x>333</x>
-      <y>801</y>
+      <y>846</y>
       <w>180</w>
       <h>36</h>
     </coordinates>
@@ -124,7 +124,7 @@ WizardPage
     <id>UMLClass</id>
     <coordinates>
       <x>495</x>
-      <y>873</y>
+      <y>918</y>
       <w>225</w>
       <h>63</h>
     </coordinates>
@@ -139,7 +139,7 @@ WizardPage
     <id>Relation</id>
     <coordinates>
       <x>333</x>
-      <y>864</y>
+      <y>909</y>
       <w>180</w>
       <h>36</h>
     </coordinates>
@@ -151,25 +151,25 @@ WizardPage
     <id>UMLClass</id>
     <coordinates>
       <x>162</x>
-      <y>90</y>
+      <y>135</y>
       <w>342</w>
       <h>171</h>
     </coordinates>
     <panel_attributes>GuiController
 --
 --
-analyse(components : Component[*])
-startAnalysis(userConfiguration : UserConfiguration)
-pause()
-continue()
-abort()</panel_attributes>
++ analyse(components : Component[*])
++ startAnalysis(userConfiguration : UserConfiguration)
+- pause()
+- continue()
+- abort()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>621</x>
-      <y>117</y>
+      <y>162</y>
       <w>99</w>
       <h>36</h>
     </coordinates>
@@ -180,7 +180,7 @@ abort()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>495</x>
-      <y>126</y>
+      <y>171</y>
       <w>144</w>
       <h>36</h>
     </coordinates>
@@ -192,7 +192,7 @@ m2=*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>621</x>
-      <y>162</y>
+      <y>207</y>
       <w>99</w>
       <h>36</h>
     </coordinates>
@@ -203,7 +203,7 @@ m2=*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>495</x>
-      <y>171</y>
+      <y>216</y>
       <w>144</w>
       <h>36</h>
     </coordinates>
@@ -216,7 +216,7 @@ m2=1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>441</x>
-      <y>324</y>
+      <y>369</y>
       <w>135</w>
       <h>198</h>
     </coordinates>
@@ -230,7 +230,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>342</x>
-      <y>459</y>
+      <y>504</y>
       <w>117</w>
       <h>36</h>
     </coordinates>
@@ -242,7 +242,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>477</x>
-      <y>252</y>
+      <y>297</y>
       <w>27</w>
       <h>90</h>
     </coordinates>
@@ -255,9 +255,9 @@ m2=1</panel_attributes>
     <id>UMLNote</id>
     <coordinates>
       <x>630</x>
-      <y>243</y>
-      <w>126</w>
-      <h>63</h>
+      <y>297</y>
+      <w>135</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>Stores everything the user configured.
 bg=gray
@@ -269,7 +269,7 @@ bg=gray
     <id>Relation</id>
     <coordinates>
       <x>567</x>
-      <y>297</y>
+      <y>342</y>
       <w>108</w>
       <h>54</h>
     </coordinates>
@@ -280,7 +280,7 @@ bg=gray
     <id>Relation</id>
     <coordinates>
       <x>18</x>
-      <y>54</y>
+      <y>99</y>
       <w>171</w>
       <h>90</h>
     </coordinates>
@@ -291,9 +291,9 @@ bg=gray
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>0</y>
-      <w>126</w>
-      <h>63</h>
+      <y>54</y>
+      <w>117</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>Is called by the context-menu entries.
 bg=gray
@@ -305,7 +305,7 @@ bg=gray
     <id>Relation</id>
     <coordinates>
       <x>567</x>
-      <y>459</y>
+      <y>504</y>
       <w>216</w>
       <h>243</h>
     </coordinates>
@@ -318,7 +318,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>567</x>
-      <y>441</y>
+      <y>486</y>
       <w>225</w>
       <h>324</h>
     </coordinates>
@@ -331,7 +331,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>567</x>
-      <y>423</y>
+      <y>468</y>
       <w>234</w>
       <h>414</h>
     </coordinates>
@@ -344,7 +344,7 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>567</x>
-      <y>405</y>
+      <y>450</y>
       <w>243</w>
       <h>504</h>
     </coordinates>
@@ -352,5 +352,28 @@ m2=1</panel_attributes>
 m1=1
 m2=1</panel_attributes>
     <additional_attributes>10.0;10.0;250.0;10.0;250.0;530.0;170.0;530.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>405</x>
+      <y>0</y>
+      <w>288</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>The GuiController calls `pause()`, `continue()`, and `abort()` itself upon receiving information about which button has been clicked from its Dialog object.
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>441</x>
+      <y>63</y>
+      <w>63</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;80.0</additional_attributes>
   </element>
 </diagram>
