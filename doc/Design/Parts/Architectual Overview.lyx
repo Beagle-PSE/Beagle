@@ -81,8 +81,8 @@ The architectural overview summarises Beagle's software design, that follows
  mentioned in the SRS, but also allows supplementing by optional criteria.
  However, some mandatory criteria have changed, concerning the Common Trace
  API (CTA) (/B10/, /F30/, /F40/, /Q20/).
- The CTA will not be used by Beagle any more, because it cannot conduct
- as precise measurements as desired.
+ The CTA was planned to be used by Beagle but isn't any more because it
+ cannot conduct as precise measurements as desired.
  Beagle's Measurement Tools need to be directly connected to specific measuremen
 t software like Kiker – without the CTA as intermediary.
 \end_layout
