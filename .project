@@ -8,4 +8,60 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<filteredResources>
+		<filter>
+			<id>1452281192910</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-Core</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1452281192915</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-Documentation</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1452281192920</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-Web Presence</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1452281192926</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-Prototypes</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1452281192931</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-.gradle</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1452281192936</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-name-matches-false-false-build</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
 </projectDescription>
