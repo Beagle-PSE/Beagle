@@ -10,7 +10,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	/**
 	 * Get this evaluable varibale's name.
 	 *
-	 * @return the variable's name. Is never {@code null}
+	 * @return The variable's name. Is never {@code null}.
 	 */
 	public String getName() {
 		return null;
@@ -19,7 +19,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	/**
 	 * Names this evaluable variable.
 	 *
-	 * @param name this variable's name. Must not be {@code null}
+	 * @param name This variable's name. Must not be {@code null}.
 	 */
 	public void setName(final String name) {
 	}

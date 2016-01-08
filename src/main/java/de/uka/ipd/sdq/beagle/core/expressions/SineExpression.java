@@ -11,7 +11,7 @@ public class SineExpression implements EvaluableExpression {
 	/**
 	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
 	 *
-	 * @param expression to be the argument.
+	 * @param expression The expression to be the argument.
 	 */
 	public void setArgument(final EvaluableExpression expression) {
 
@@ -20,7 +20,7 @@ public class SineExpression implements EvaluableExpression {
 	/**
 	 * Get the {@link EvaluableExpression} which is the argument of the sine function.
 	 *
-	 * @return the argument of the function
+	 * @return The argument of the function.
 	 */
 	public EvaluableExpression getArgument() {
 		return null;

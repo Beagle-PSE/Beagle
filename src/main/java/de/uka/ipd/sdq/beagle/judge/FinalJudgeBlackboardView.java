@@ -20,7 +20,7 @@ import java.util.Set;
  * 
  * @author Christoph Michelbach
  * 
- * @see Blackboard for information about Blackboard views
+ * @see Blackboard for information about Blackboard views.
  */
 public class FinalJudgeBlackboardView {
 
