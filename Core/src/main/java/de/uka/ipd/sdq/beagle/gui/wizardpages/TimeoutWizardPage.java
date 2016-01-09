@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.gui.wizardpages;
 
 import de.uka.ipd.sdq.beagle.gui.BeagleAnalysisWizard;
-import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
 import de.uka.ipd.sdq.beagle.gui.EclipseWizardPage;
+import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
 
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose between an adaptive
@@ -23,7 +23,7 @@ public class TimeoutWizardPage extends EclipseWizardPage {
 	 *
 	 * @param userConfiguration The {@link UserConfiguration} this
 	 *            {@link TimeoutWizardPage} will be permanently linked to. Changing the
-	 *            associated {@link UserConfiguratien} is not possible.
+	 *            associated {@link UserConfiguration} is not possible.
 	 */
 	public TimeoutWizardPage(final UserConfiguration userConfiguration) {
 

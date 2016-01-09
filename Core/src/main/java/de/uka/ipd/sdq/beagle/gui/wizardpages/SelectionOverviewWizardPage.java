@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.gui.wizardpages;
 
 import de.uka.ipd.sdq.beagle.gui.BeagleAnalysisWizard;
-import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
 import de.uka.ipd.sdq.beagle.gui.EclipseWizardPage;
+import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
 
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose which of the
@@ -24,7 +24,7 @@ public class SelectionOverviewWizardPage extends EclipseWizardPage {
 	 *
 	 * @param userConfiguration The {@link UserConfiguration} this
 	 *            {@link SelectionOverviewWizardPage} will be permanently linked to.
-	 *            Changing the associated {@link UserConfiguratien} is not possible.
+	 *            Changing the associated {@link UserConfiguration} is not possible.
 	 */
 	public SelectionOverviewWizardPage(final UserConfiguration userConfiguration) {
 
