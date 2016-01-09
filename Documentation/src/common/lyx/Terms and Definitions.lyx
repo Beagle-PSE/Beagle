@@ -1847,9 +1847,7 @@ glsuseri{component} required interfaces.
 
 
 \backslash
-newacronym{SRS}{SRS}{Software Requirements Specififcation, see 
-\backslash
-cite{srs}}
+newacronym{SRS}{SRS}{Software Requirements Specification}
 \end_layout
 
 \begin_layout Plain Layout

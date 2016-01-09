@@ -71,23 +71,72 @@
 \begin_body
 
 \begin_layout Chapter
-Component: Result Analyser
+Beagle’s Knowledge: The Blackboard
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Component: Result Analyser
+\begin_inset Graphics
+	filename ../../umlet/Blackboard Layers.uxf.pdf
+	width 90text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
-- Give reasons for the generally chosen design
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Abstraction Layers on the Blackboard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Blackboard.uxf.pdf
+	width 100text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
-List all associated packages
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Blackboard and its views
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -96,7 +145,43 @@ List all associated packages
 \end_layout
 
 \begin_layout Section
-Reasons for chosen design
+Measurable SEFF Elements
+\end_layout
+
+\begin_layout Section
+Evaluable Expressions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Evaluable Expression.uxf.pdf
+	width 100text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Evaluable Expressions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

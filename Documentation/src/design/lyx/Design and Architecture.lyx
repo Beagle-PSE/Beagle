@@ -59,10 +59,8 @@
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
 
-
 % Break citations
 \usepackage{breakcites}
-
 
 % Set the PDF metadata
 \hypersetup{
@@ -402,14 +400,6 @@ listfigurename}
 \end_layout
 
 \begin_layout Standard
-\begin_inset FloatList algorithm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -482,7 +472,7 @@ filename "Parts/Architectual Overview.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "Parts/Component Beagle Core.lyx"
+filename "Parts/Blackboard.lyx"
 
 \end_inset
 
@@ -493,7 +483,7 @@ filename "Parts/Component Beagle Core.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "Parts/Component Beagle GUI.lyx"
+filename "Parts/Analysis.lyx"
 
 \end_inset
 
@@ -504,29 +494,7 @@ filename "Parts/Component Beagle GUI.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "Parts/Component Measurement Tool.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Result Analyser.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Final Judge.lyx"
+filename "Parts/GUI.lyx"
 
 \end_inset
 
