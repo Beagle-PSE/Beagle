@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.gui.wizardpages;
 
 import de.uka.ipd.sdq.beagle.gui.BeagleAnalysisWizard;
 import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
-import de.uka.ipd.sdq.beagle.gui.WizardPage;
+import de.uka.ipd.sdq.beagle.gui.EclipseWizardPage;
 
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to configure whether they want
@@ -11,7 +11,12 @@ import de.uka.ipd.sdq.beagle.gui.WizardPage;
  * 
  * @author Christoph Michelbach
  */
-public class MachineSelectionWizardPage extends WizardPage {
+public class MachineSelectionWizardPage extends EclipseWizardPage {
+
+	/**
+	 * The {@link UserConfiguration} associated with this {@link EclipseWizardPage}.
+	 */
+	private UserConfiguration userConfiguration;
 
 	/**
 	 * Constructs a new {@link MachineSelectionWizardPage} being linked to the given

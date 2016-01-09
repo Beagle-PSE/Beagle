@@ -1,5 +1,8 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import java.awt.Component;
+import java.util.Set;
+
 /**
  * Stores the configuration of the analysis by the user.
  * 
@@ -7,4 +10,8 @@ package de.uka.ipd.sdq.beagle.gui;
  */
 public class UserConfiguration {
 
+	/**
+	 * The {@link Component}s associated with this {@link UserConfiguration}.
+	 */
+	private Set<Component> components;
 }

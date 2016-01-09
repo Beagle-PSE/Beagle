@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.gui.wizardpages;
 
 import de.uka.ipd.sdq.beagle.gui.BeagleAnalysisWizard;
 import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
-import de.uka.ipd.sdq.beagle.gui.WizardPage;
+import de.uka.ipd.sdq.beagle.gui.EclipseWizardPage;
 
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose between an adaptive
@@ -10,7 +10,12 @@ import de.uka.ipd.sdq.beagle.gui.WizardPage;
  * 
  * @author Christoph Michelbach
  */
-public class TimeoutWizardPage extends WizardPage {
+public class TimeoutWizardPage extends EclipseWizardPage {
+
+	/**
+	 * The {@link UserConfiguration} associated with this {@link EclipseWizardPage}.
+	 */
+	private UserConfiguration userConfiguration;
 
 	/**
 	 * Constructs a new {@link TimeoutWizardPage} being linked to the given

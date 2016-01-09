@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import de.uka.ipd.sdq.beagle.core.BeagleController;
+
 import java.util.Set;
 
 /**
@@ -10,6 +12,26 @@ import java.util.Set;
  * @author Christoph Michelbach
  */
 public class GuiController {
+
+	/**
+	 * The {@link BeagleAnalysisWizard} associated with this {@link GuiController}.
+	 */
+	private BeagleAnalysisWizard beagleAnalysisWizard;
+
+	/**
+	 * The {@link UserConfiguration} associated with this {@link GuiController}.
+	 */
+	private UserConfiguration userConfiguration;
+
+	/**
+	 * The {@link EclipseDialog} associated with this {@link GuiController}.
+	 */
+	private EclipseDialog eclipseDialog;
+
+	/**
+	 * The {@link BeagleController} associated with this {@link GuiController}.
+	 */
+	private BeagleController beagleController;
 
 	/**
 	 * Creates a new {@link GuiController} with the given components. It's not possible to

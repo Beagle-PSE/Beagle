@@ -8,4 +8,13 @@ package de.uka.ipd.sdq.beagle.gui;
  */
 public class BeagleAnalysisWizard {
 
+	/**
+	 * The user configuration associated with this {@link BeagleAnalysisWizard}.
+	 */
+	private UserConfiguration userConfiguration;
+
+	/**
+	 * The {@link EclipseWizardPage}s of this {@link BeagleAnalysisWizard}.
+	 */
+	private EclipseWizardPage[] eclipseWizardPages;
 }
