@@ -19,15 +19,12 @@ task srs(type: LyXRenderTask) {
 	group 'Documentation'
 	description 'Renders the Requirements Specification.'
 	
-	from files(srsUml.dest)
+	from rendersrc.plus(fileTree(srsUml.dest).include("**/*.uxf.pdf"))
 	document "srs/lyx/Requirements Specification.lyx"
 	into buildDir
 	
 	glossary true
 	bibliography true
-	
-	// override the dir for up to date check because this is the dir that decides.
-	inputs.files rendersrc
 }
 
 build.dependsOn srs

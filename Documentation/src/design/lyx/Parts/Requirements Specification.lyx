@@ -1,0 +1,404 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass sdqthesis
+\use_default_options true
+\master ../Design and Architecture.lyx
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Requirements Specification
+\end_layout
+
+\begin_layout Standard
+Beagle's software design directly follows the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+.
+ Most design decisions are proposed to fulfil mandatory requirements while
+ allowing easily supplementing optional requirements.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Changes-to-the"
+
+\end_inset
+
+ describes changes to the SRS that proved necessary while designing Beagle.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Relating-Requirements-to"
+
+\end_inset
+
+ describes how Beagle’s requirements are reflected in its design.
+ However, some mandatory criteria have changed, concerning the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Changes-to-the"
+
+\end_inset
+
+Changes to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{SRS}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{CTA}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ was planned to be used by Beagle to communicate with measurement software
+ (/B10/, /F40/).
+ While starting to investigate the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{API}
+\end_layout
+
+\end_inset
+
+, it became apparent that it does not offer the expected functionality.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ is designed to return measurement results on method level, while Beagle’s
+ measurements need to be performed on sub-method (statement) level.
+ Furthermore, there is no possibility to instrument source code, or control
+ measurement software, the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ can only return measurement results.
+ Beagle's Measurement Tools will now be directly connected to specific measureme
+nt software like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Kieker}
+\end_layout
+
+\end_inset
+
+, without the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ as intermediary.
+\end_layout
+
+\begin_layout Standard
+Accordingly, the following modifications where made to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/B10/ Results are not transferred through the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/F40/ Has been removed without substitution.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/T30/ Has been removed without substitution.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/T210/ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ will not be tested.
+\end_layout
+
+\begin_layout Subsection*
+Measurement Timeout
+\end_layout
+
+\begin_layout Standard
+The measurement timeout functionality described in /F50/ and /F60/ is a
+ valuable function to Beagle.
+ However, it is not required to successfully use Beagle for the purpose
+ described in the Chapter 1 of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+.
+ Denoting it as mandatory was a mistake.
+ 
+\end_layout
+
+\begin_layout Standard
+Hence, the following modifications where made to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/F50/ was moved to /OF70/
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+/F60/ was moved to /OF80/
+\end_layout
+
+\begin_layout Subsection*
+Layout
+\end_layout
+
+\begin_layout Standard
+Further minor changes have been made to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+, fixing broken links and layout issues.
+\end_layout
+
+\begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Relating-Requirements-to"
+
+\end_inset
+
+Relating Requirements to the Design
+\end_layout
+
+\end_body
+\end_document

@@ -1878,6 +1878,17 @@ newacronym{HDD}{HDD}{Hard Disk Drive}
 
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{API}{API}{Application Programming Interface}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 
