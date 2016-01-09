@@ -83,8 +83,12 @@ The architectural overview summarises Beagle's software design, that follows
  API (CTA) (/B10/, /F30/, /F40/, /Q20/).
  The CTA was planned to be used by Beagle but isn't any more because it
  cannot conduct as precise measurements as desired.
- Beagle's Measurement Tools need to be directly connected to specific measuremen
-t software like Kiker – without the CTA as intermediary.
+ The CTA was designed to work on a method level to determine hotspots in
+ source code's methods.
+ There is also no possibility to instrument measurements, the CTA can only
+ return measurement results.
+ So Beagle's Measurement Tools need to be directly connected to specific
+ measurement software like Kiker – without the CTA as intermediary.
 \end_layout
 
 \begin_layout Standard
