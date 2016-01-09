@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../Design.lyx
+\master ../Design and Architecture.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -61,6 +61,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\listings_params "mathescape=true"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -119,8 +120,121 @@ List all associated packages
 Overview
 \end_layout
 
-\begin_layout Subsection*
-Controller classes
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Beagle Core Component.uxf.pdf
+	width 80text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Beagle Core Component and its interfaces
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Packages.uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Beagle Core’s separation into Packages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Blackboard
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Blackboard Layers.uxf.pdf
+	width 90text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Abstraction Layers on the Blackboard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Controller Classes
 \end_layout
 
 \begin_layout Standard
@@ -371,6 +485,247 @@ true
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+finished $
+\backslash
+coloneqq $ false
+\end_layout
+
+\begin_layout Plain Layout
+
+readOnlyBlackboardView $
+\backslash
+coloneqq $ Read-Only Blackboard View.construct(blackboard)
+\end_layout
+
+\begin_layout Plain Layout
+
+measurementControllerBlackboardView $
+\backslash
+coloneqq $ MeasurementController Blackboard View.construct(blackboard)
+\end_layout
+
+\begin_layout Plain Layout
+
+measurementResultAnalyserBlackboardView $
+\backslash
+coloneqq $ Result Analyser Blackboard View.construct(blackboard)
+\end_layout
+
+\begin_layout Plain Layout
+
+prosedExpressionsAnalyserBlackboardView $
+\backslash
+coloneqq $ Proposed Expressions Blackboard View.construct(blackboard)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+while($
+\backslash
+neg $finished) do
+\end_layout
+
+\begin_layout Plain Layout
+
+	measurementsFinished $
+\backslash
+coloneqq $ false
+\end_layout
+
+\begin_layout Plain Layout
+
+	while($
+\backslash
+neg $measurementsFinished) do
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(measurementController.can measure(readOnlyBlackboardView)) then
+\end_layout
+
+\begin_layout Plain Layout
+
+			measurementController.measure(measurementControllerBlackboardView)
+\end_layout
+
+\begin_layout Plain Layout
+
+		else
+\end_layout
+
+\begin_layout Plain Layout
+
+		measurementResultAnalysersIterator = measurementResultAnalysers.iterator()
+\end_layout
+
+\begin_layout Plain Layout
+
+		while(measurementResultAnalysersIterator.hasCurrent() $
+\backslash
+wedge 
+\backslash
+neg $measurementResultAnalysersIterator.current().canContribute(readOnlyBlackboard
+View)) do
+\end_layout
+
+\begin_layout Plain Layout
+
+			measurementResultAnalysersIterator.next()
+\end_layout
+
+\begin_layout Plain Layout
+
+		od
+\end_layout
+
+\begin_layout Plain Layout
+
+		if(measurementResultAnalysersIterator.hasCurrent()) then
+\end_layout
+
+\begin_layout Plain Layout
+
+			measurementResultAnalysersIterator.current().contribute(measurementResultAnalys
+erBlackboardView);
+\end_layout
+
+\begin_layout Plain Layout
+
+		else
+\end_layout
+
+\begin_layout Plain Layout
+
+			measurementsFinished $
+\backslash
+coloneqq $ true
+\end_layout
+
+\begin_layout Plain Layout
+
+		fi
+\end_layout
+
+\begin_layout Plain Layout
+
+	fi
+\end_layout
+
+\begin_layout Plain Layout
+
+	proposedExpressionsAnalysersIterator = proposedExpressionsAnalysers.iterator()
+\end_layout
+
+\begin_layout Plain Layout
+
+	while(proposedExpressionsAnalysersIterator.hasCurrent() $
+\backslash
+wedge 
+\backslash
+neg $proposedExpressionsAnalysersIterator.current().canContribute(readOnlyBlackboa
+rdView)) do
+\end_layout
+
+\begin_layout Plain Layout
+
+		measurementResultAnalysersIterator.next()
+\end_layout
+
+\begin_layout Plain Layout
+
+	od
+\end_layout
+
+\begin_layout Plain Layout
+
+	if(measurementResultAnalysersIterator.hasCurrent()) then
+\end_layout
+
+\begin_layout Plain Layout
+
+		measurementResultAnalysersIterator.current().contribute(prosedExpressionsAnalyse
+rBlackboardView);
+\end_layout
+
+\begin_layout Plain Layout
+
+	else
+\end_layout
+
+\begin_layout Plain Layout
+
+		finished $
+\backslash
+coloneqq $ finalJudge.judge(blackboard)
+\end_layout
+
+\begin_layout Plain Layout
+
+	fi
+\end_layout
+
+\begin_layout Plain Layout
+
+od
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Beagle Controller#perform Anyalysis()
+\end_layout
+
+\end_inset
+
+Beagle Controller#perform Anyalysis() in pseudocode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -413,14 +768,6 @@ UML class diagram of the controller classes.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Reasons for chosen design
-\end_layout
-
-\begin_layout Section
-Chosen design patterns
 \end_layout
 
 \begin_layout Section

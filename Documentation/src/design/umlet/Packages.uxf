@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>430</x>
+      <y>70</y>
+      <w>360</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>Evaluable Expressions
+--
+
+ +&lt;&lt;Interface&gt;&gt; Evaluable Expression
+ +&lt;&lt;Interface&gt;&gt; Evaluable Expression Visitor
+ +Constant Expression
+ +Evaluable Variable
+ +Natural Logarithm Expression
+ +Exponential Function Expression
+ +Comparison Expression
+ +Sine Expression
+ +Substraction Expression
+ +Addition Expression
+ +Multiplication Expression
+ +If-Then-Else Expression
+ +Exponentation Expression
+ +Logarithm Expression
+ +Division Expression
+ +Evaluable Variable Assignment
+ +Expression Recursion Exception
+ +Undefined Expression Exception
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>510</y>
+      <w>220</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Analysis
+--
+
+ +&lt;&lt;Interface&gt;&gt; Result Analyser
+ +Analyser Blackboard View
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>30</y>
+      <w>820</w>
+      <h>580</h>
+    </coordinates>
+    <panel_attributes>Beagle Core
+--
+
+ +&lt;&lt;Interface&gt;&gt; BlackboardStorer
+ +Read-Only Blackboard View
+ +Resource Demanding Internal Action
+ +Measurement Controller
+ +Blackboard
+ +SEFF Loop
+ +SEFF Branch
+ +Analysis Controller
+ +Measurement Controller Blackboard View
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>410</y>
+      <w>230</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Judge
+--
+
+ +&lt;&lt;Interface&gt;&gt; Final Judge
+ +Final Jugde Blackboard View
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>230</y>
+      <w>370</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Measurement
+--
+
+ +&lt;&lt;Interface&gt;&gt; Measurement Tool
+ +Resource Demand Measurement Result
+ +Loop Repitition Count Measurement Result
+ +Parametrisation-Dependent Measurement Result
+ +Branch Decision Measurement Result
+ +Parametrisation
+ +Measurement Order
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>430</x>
+      <y>460</y>
+      <w>290</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>PCM Connection
+--
+
+ +PCM Repository Blackboard Factory
+ +PCM Repository Writer
+ +PCM Beagle Mapping
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

@@ -30,6 +30,16 @@
 \advisortwo{M.Sc. Michael Langhammer}
 \settitle
 
+
+% Use the superior glossaries package to replace nomencl
+\usepackage[toc,xindy,nopostdot,nonumberlist,acronym]{glossaries}
+\makeglossaries
+\usepackage[xindy]{imakeidx}
+\makeindex
+
+% Listings package is required by terms and definitions
+\usepackage{listings}
+
 % \todo is deprecated!
 \renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
 
@@ -41,12 +51,18 @@
 % Make floats work batter with Koma book
 \usepackage{scrhack}
 
-% No page numbers for the title pages
+% No page anchors and no page numbers for the title pages
+\hypersetup{pageanchor=false}
 \pagenumbering{gobble}
 
 % Adding package bookmark improves bookmarks handling.
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
+
+
+% Break citations
+\usepackage{breakcites}
+
 
 % Set the PDF metadata
 \hypersetup{
@@ -59,6 +75,31 @@
     hidelinks,
     breaklinks
 }
+
+%Farben fuer Programmlisting
+\usepackage{listings,xcolor}
+\definecolor{pl_background}{rgb}{0.95,0.95,0.95}
+\definecolor{pl_comment}{rgb}{0.12, 0.38, 0.18 }
+\definecolor{pl_ifelse}{rgb}{0.74,0.74,.29}
+\definecolor{pl_keyword}{rgb}{0.37, 0.08, 0.25}
+\definecolor{pl_string}{rgb}{0.06, 0.10, 0.98}
+% Vordefiniertes Programmlisting
+\lstset{
+language = sh,
+basicstyle = \small\sffamily,
+backgroundcolor = \color{pl_background},
+stringstyle = \color{pl_string},
+keywordstyle = \color{pl_keyword}\bfseries,
+commentstyle = \color{pl_comment}\itshape,
+frame = lrbt,
+numbers = left,
+showstringspaces = false,
+breaklines = true,
+xleftmargin = 15pt,
+emph = [1]{php},
+emphstyle = [1]\color{black},
+emph = [2]{if,and,or,else},
+emphstyle = [2]\color{pl_ifelse}}
 \end_preamble
 \options english,final
 \use_default_options true
@@ -131,7 +172,7 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\listings_params "basicstyle={\ttfamily},breaklines=true"
+\listings_params "basicstyle={\ttfamily},breaklines=true,mathescape=true"
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -162,8 +203,72 @@ Christoph Michelbach, Ansgar Spiegler, Michael Vogt
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../common/lyx/Terms and Definitions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Please define any technical or ambiguous terms as well as abbreviations.
+ See ../../common/lyx/Terms and Definitions.lyx for details.
+\end_layout
+
+\begin_layout Plain Layout
+To reference defined terms hit Ctrl+L to open a LaTeX environment.
+ Use gls (lowercase), Gls (uppercase), glspl (lowercase plural), Glspl (uppercas
+e plural).
+ Refer to Writing Documentation.md for further details.
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{naiive}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Enable hyperref page anchors again
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypersetup{pageanchor=true}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -310,6 +415,35 @@ listfigurename}
 \end_layout
 
 \begin_layout Standard
+\begin_inset FloatList algorithm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% List of all abbreviations
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+printacronyms[title=Abbreviations]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -406,6 +540,68 @@ filename "Parts/Component Result Analyser.lyx"
 LatexCommand input
 preview true
 filename "Parts/Component Final Judge.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Include the glossary
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setglossarystyle{altlist}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+printglossary[title=Terms and Definitions]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cleardoublepage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../../common/bibtex/Bibliography"
+options "bibtotoc,apalike"
 
 \end_inset
 
