@@ -30,6 +30,16 @@
 \advisortwo{M.Sc. Michael Langhammer}
 \settitle
 
+
+% Use the superior glossaries package to replace nomencl
+\usepackage[toc,xindy,nopostdot,nonumberlist,acronym]{glossaries}
+\makeglossaries
+\usepackage[xindy]{imakeidx}
+\makeindex
+
+% Listings package is required by terms and definitions
+\usepackage{listings}
+
 % \todo is deprecated!
 \renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
 
@@ -41,12 +51,18 @@
 % Make floats work batter with Koma book
 \usepackage{scrhack}
 
-% No page numbers for the title pages
+% No page anchors and no page numbers for the title pages
+\hypersetup{pageanchor=false}
 \pagenumbering{gobble}
 
 % Adding package bookmark improves bookmarks handling.
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
+
+
+% Break citations
+\usepackage{breakcites}
+
 
 % Set the PDF metadata
 \hypersetup{
@@ -162,8 +178,72 @@ Christoph Michelbach, Ansgar Spiegler, Michael Vogt
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "../../common/lyx/Terms and Definitions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Please define any technical or ambiguous terms as well as abbreviations.
+ See ../../common/lyx/Terms and Definitions.lyx for details.
+\end_layout
+
+\begin_layout Plain Layout
+To reference defined terms hit Ctrl+L to open a LaTeX environment.
+ Use gls (lowercase), Gls (uppercase), glspl (lowercase plural), Glspl (uppercas
+e plural).
+ Refer to Writing Documentation.md for further details.
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset ERT
 status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{naiive}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Enable hyperref page anchors again
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hypersetup{pageanchor=true}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \begin_layout Plain Layout
 
@@ -315,6 +395,27 @@ status open
 
 \begin_layout Plain Layout
 
+% List of all abbreviations
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+printacronyms[title=Abbreviations]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 % Start the main document (includes new numbering in arabic numbers)
 \end_layout
 
@@ -406,6 +507,68 @@ filename "Parts/Component Result Analyser.lyx"
 LatexCommand input
 preview true
 filename "Parts/Component Final Judge.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Include the glossary
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setglossarystyle{altlist}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+printglossary[title=Terms and Definitions]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cleardoublepage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+phantomsection
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../../common/bibtex/Bibliography"
+options "bibtotoc,apalike"
 
 \end_inset
 

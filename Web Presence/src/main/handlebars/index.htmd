@@ -4,23 +4,26 @@ An Eclipse plugin that dynamically analyses software for its runtime properties.
 to import existing, component-based software into [Palladio](http://www.palladio-simulator.com/).
 
 ## Documentation
+{{#> artefact link="Developers.html" type="html"}}
+	{{#> title}}Developer’s Documentation{{/title}}
+	{{#> description}}Documents for developers wishing to extend or improve Beagle, explaining best practices and how to get started.{{/description}}
+{{/artefact}}
 {{#> artefact link=paths.srs type="pdf"}}
 	{{#> title}}Requirements Specification{{/title}}
 	{{#> description}}Specification of the project’s visions and goals.{{/description}} 
 {{/artefact}}
 {{#> artefact link=paths.design type="pdf"}}
-	{{#> title}}Design and Architecture{{/title}}
-	{{#> description}}Specification of Beagle’s architecture.{{/description}} 
+	{{#> title}}Architecture and Design{{/title}}
+	{{#> description}}Documentation of Beagle’s design and architectual concepts.{{/description}} 
 {{/artefact}}
-{{#> artefact link=(concat paths.javadoc "overview-summary.html") type="html"}}
+{{#> artefact link=(concat paths.javadoc "/overview-summary.html") type="html"}}
 	{{#> title}}Javadoc{{/title}}
 	{{#> description}}We put great effort in creating detailed, informative documentation.{{/description}} 
 {{/artefact}}
-{{#> artefact link="Developers.html" type="html"}}
-	{{#> title}}Developer’s Documentation{{/title}}
-	{{#> description}}Files for developers wishing to extend or improve Beagle, documenting best practices and how to get started.{{/description}}
+{{#> artefact link=paths.implementationPlan type="pdf"}}
+	{{#> title}}Implementation Plan{{/title}}
+	{{#> description}}Roadmap for Beagle’s implementation.{{/description}} 
 {{/artefact}}
-	
 ## Reports
 {{#> artefact link="coverage" type="html"}}
 	{{#> title}}Test Coverage{{/title}}

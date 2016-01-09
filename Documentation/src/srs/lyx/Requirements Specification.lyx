@@ -39,9 +39,6 @@
 % Listings package is required by terms and definitions
 \usepackage{listings}
 
-% Include the terms and definitions file if presents (e.g. only when acutally building the glossary).
-\InputIfFileExists{\string"Parts/Terms and Definitions.tex\string"}
-
 % \todo is deprecated!
 \renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
 
@@ -181,7 +178,8 @@ Christoph Michelbach, Ansgar Spiegler, Michael Vogt
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "Parts/Terms and Definitions.lyx"
+preview true
+filename "../../common/lyx/Terms and Definitions.lyx"
 
 \end_inset
 
@@ -194,14 +192,14 @@ status open
 
 \begin_layout Plain Layout
 Please define any technical or ambiguous terms as well as abbreviations.
- See Parts/Terms and Definitions.lyx for details.
+ See ../../common/lyx/Terms and Definitions.lyx for details.
 \end_layout
 
 \begin_layout Plain Layout
 To reference defined terms hit Ctrl+L to open a LaTeX environment.
  Use gls (lowercase), Gls (uppercase), glspl (lowercase plural), Glspl (uppercas
 e plural).
- Refer to README.md for further details.
+ Refer to Writing Documentation.md for further details.
 \end_layout
 
 \begin_layout Plain Layout
@@ -775,8 +773,7 @@ phantomsection
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-btprint "btPrintAll"
-bibfiles "Bibliography"
+bibfiles "../../common/bibtex/Bibliography"
 options "bibtotoc,apalike"
 
 \end_inset

@@ -55,6 +55,10 @@ public class BeagleWebContext {
 		 * Path to the Design Specification PDF.
 		 */
 		String design = relative project.copyWebArtefacts.designDest
+		/** 
+		 * Path to the implementation plan PDF.
+		 */
+		String implementationPlan = relative project.copyWebArtefacts.implementationPlanDest
 		/**
 		 * Path to the javadoc folder.
 		 */
