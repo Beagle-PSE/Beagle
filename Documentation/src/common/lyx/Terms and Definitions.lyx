@@ -4,7 +4,6 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -570,8 +569,9 @@ newglossaryentry{resource demand}{
 
 \begin_layout Plain Layout
 
-		how much of a certain resource---like CPU, Network or hard disk drive---a
- 
+		how much of a certain resource---like 
+\backslash
+gls{CPU}, Network or hard disk drive---a 
 \backslash
 gls{component} needs to offer a certain functionality.
  In the 
@@ -1837,6 +1837,41 @@ glsuseri{component} required interfaces.
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SRS}{SRS}{Software Requirements Specififcation, see 
+\backslash
+cite{srs}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{CPU}{CPU}{Central Processing Unit}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{HDD}{HDD}{Hard Disk Drive}
 \end_layout
 
 \begin_layout Plain Layout

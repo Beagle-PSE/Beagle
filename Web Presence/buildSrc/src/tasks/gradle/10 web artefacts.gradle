@@ -1,0 +1,59 @@
+/**
+ * Tasks preparing all artefacts to be published for the web presence.
+ *
+ * @author Joshua Gleitze
+ */
+final String WEB_DEST = buildDir
+
+task copyWebArtefacts() {
+	description 'Copies all build artefacts that will be published into Beagle’s web presence.'
+	
+	
+	def doc = project(':Documentation')
+	ext {
+		javadocDest = "$WEB_DEST/javadoc"
+		srsDest = "$WEB_DEST/$doc.srs.dest.name"
+		checkstyleDest = "$WEB_DEST/checkstyle"
+		jacocoDest = "$WEB_DEST/coverage"
+		designDest = "$WEB_DEST/$doc.design.dest.name"
+		implementationPlanDest = "$WEB_DEST/$doc.implementation.dest.name"
+	}
+	
+	
+	def checkstyleDirs = rootProject.javaSubprojects.collect { it.checkstyleHtml.dest }
+	def testReports = rootProject.javaSubprojects.collect { it.jacocoTestReport.reports.html.destination }
+	
+	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.design.dest, checkstyleDirs, testReports, doc.implementation.dest
+	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest, implementationPlanDest
+	
+	doLast {
+		rootProject.javaSubprojects.each { project ->
+			println "copying for $project"
+			copy {	
+				from project.javadoc.destinationDir
+				into "$javadocDest/$project.name"
+			}	
+		
+			copy {
+				from project.checkstyleHtml.dest
+				rename {file -> "${project.name}.html"}
+				into checkstyleDest
+			}
+			
+			copy {
+				from project.jacocoTestReport.reports.html.destination
+				into jacocoDest
+			}
+		}
+		
+		copy {	
+			from doc.javadoc.destinationDir
+			into javadocDest
+		}	
+		
+		copy {
+			from doc.srs.dest, doc.design.dest, doc.implementation.dest
+			into WEB_DEST
+		}
+	}
+}
