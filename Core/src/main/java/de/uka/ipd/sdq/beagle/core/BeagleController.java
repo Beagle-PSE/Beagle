@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
 
 /**
- * 
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
  * pause, continue, and abort an Analysis.
  * 
