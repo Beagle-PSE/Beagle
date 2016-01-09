@@ -4,3 +4,6 @@ de.uka.ipd.sdq.beagle.core.evaluableexpressions
 de.uka.ipd.sdq.beagle.core.judge
 de.uka.ipd.sdq.beagle.core.measurement
 de.uka.ipd.sdq.beagle.core.pcmconnection
+de.uka.ipd.sdq.beagle.gui
+org.eclipse.jface.dialogs
+org.eclipse.jface.wizard
