@@ -28,8 +28,12 @@ public class UmletRenderTask extends DefaultTask {
 	/**
 	 * All files to be copied to the rendered location.
 	 */
-	@InputFiles
 	FileCollection renderSourceFiles
+	/**
+	 * All uxf files to be rendered
+	 */
+	@InputFiles
+	FileCollection uxfSourceFiles
 	/**
 	 * The folder to copy all input files to.
 	 */
@@ -40,6 +44,8 @@ public class UmletRenderTask extends DefaultTask {
 	def render() {
 		assert renderSourceFiles != null : "Please specify the source files!"
 		assert dest != null : "Please specify the destination folder!"
+		
+		dest.deleteDir()
 		
 		project.copy {
 			from renderSourceFiles
@@ -91,6 +97,7 @@ public class UmletRenderTask extends DefaultTask {
 	 */
 	def from(Object... renderFiles) {
 		this.renderSourceFiles = project.files(renderFiles)
+		this.uxfSourceFiles = this.renderSourceFiles.asFileTree.matching { it.include '**/*.uxf'}
 	}
 	
 	/**
