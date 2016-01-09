@@ -160,9 +160,47 @@ GUI Controller
 \end_layout
 
 \begin_layout Standard
-GUI Controller is the heart of the GUI.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+ Controller is the heart of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+.
  An object of it is created (and the method open() is called) to open the
- GUI.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+.
  This class controls the flow of actions over the entire analysis but gives
  control to Beagle Controller after the user started the analysis.
 \end_layout
