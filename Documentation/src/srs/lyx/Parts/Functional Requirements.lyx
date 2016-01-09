@@ -311,7 +311,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T30/"
+reference "/T210/"
 
 \end_inset
 
@@ -372,160 +372,7 @@ status open
 Tested by 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "/T30/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/F40/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- supports the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{CTA}
-\end_layout
-
-\end_inset
-
- to communicate with 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{measurement software}
-\end_layout
-
-\end_inset
-
-.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Tested by 
-\begin_inset CommandInset ref
-LatexCommand ref
 reference "/T210/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/F50/"
-
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- provides a functionality to stop measurements by an adaptive timeout when
- enabled.
- This means that it aborts a measurement when it exceeds a certain period
- of time.
- This timeout is adapted based on previous runs with the same or similar
- arguments.
- It is increased if these previous runs took a long time (as it is expected
- that these measurements will take a long time, too) and decreased if they
- took a short time to answer a request.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Tested by 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/T60/"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
-name "/F60/"
-
-\end_inset
-
- Users can disable the adaptive timeout described in 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F50/"
-
-\end_inset
-
- and replace it with a set timeout or disable the timeout entirely.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Tested by 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/T60/"
 
 \end_inset
 
@@ -1053,6 +900,92 @@ gls{deployment context}
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF70/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ provides a functionality to stop measurements by an adaptive timeout when
+ enabled.
+ This means that it aborts a measurement when it exceeds a certain period
+ of time.
+ This timeout is adapted based on previous runs with the same or similar
+ arguments.
+ It is increased if these previous runs took a long time (as it is expected
+ that these measurements will take a long time, too) and decreased if they
+ took a short time to answer a request.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T60/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF80/"
+
+\end_inset
+
+ Users can disable the adaptive timeout described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF70/"
+
+\end_inset
+
+ and replace it with a set timeout or disable the timeout entirely.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T60/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
