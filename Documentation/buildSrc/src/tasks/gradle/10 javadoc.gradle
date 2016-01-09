@@ -2,6 +2,7 @@
  * Tasks to render the javadoc of all java source projects.
  *
  * @author Joshua Gleitze
+ * @author Annika Berger
  */
  
 
@@ -24,6 +25,24 @@ task javadoc(type: Javadoc) {
 	
 	source getAllInputFiles()
 	destinationDir = file("$buildDir/javadoc")
+
+	options.overview "$projectDir/src/javadoc/html/Overview.html"
+}
+ 
+def rendersrc = fileTree("$projectDir/src").include('common/**').include('javadoc/lyx/**')
+ 
+task glossary(type: LyXRenderTask) {
+	
+	group 'Documentation'
+	description 'Renders the Glossary.'
+	
+	from rendersrc
+	document "javadoc/lyx/Glossary.lyx"
+	into javadoc.destinationDir
+	
+	glossary true
+	bibliography true
 }
 
-build.dependsOn javadoc
+build.dependsOn javadoc, glossary
+
