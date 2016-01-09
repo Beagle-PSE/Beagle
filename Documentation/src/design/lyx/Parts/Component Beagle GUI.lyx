@@ -116,9 +116,9 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../../GUI.uxf.pdf
-	width 90text%
-	height 100pheight%
+	filename ../../umlet/GUI.uxf.pdf
+	width 100text%
+	height 100theight%
 
 \end_inset
 
