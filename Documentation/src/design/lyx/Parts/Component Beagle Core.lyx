@@ -72,7 +72,7 @@
 \begin_body
 
 \begin_layout Chapter
-Component: Beagle Core
+Beagle Core Component
 \end_layout
 
 \begin_layout Standard
@@ -118,6 +118,14 @@ List all associated packages
 
 \begin_layout Section
 Overview
+\end_layout
+
+\begin_layout Standard
+Beagle Core contains all management logic required to perform dynamic analysis
+ on software.
+ It does, however, not contain any logic to actually run measurements or
+ analyse parametric dependencies.
+ Instead, it requires interfaces offering this functionality: 
 \end_layout
 
 \begin_layout Standard
@@ -316,70 +324,62 @@ Controller Classes
 \end_layout
 
 \begin_layout Standard
-The classes 
-\begin_inset listings
-inline true
-status open
 
-\begin_layout Plain Layout
-
-Beagle Controller
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
+At Beagle’s core, 
+\family typewriter
+\lang british
+Analysis Controller
+\family default
+ controls all analysis activity by instructing the 
+\family typewriter
 Measurement Controller
+\family default
+, the 
+\family typewriter
+Measurement Result Analysers
+\family default
+, the 
+\family typewriter
+Proposed Expression Analysers
+\family default
+ and the 
+\family typewriter
+Final Judge
+\family default
+.
+
+\lang british
+ While not contributing itself, it is charge of all control flow during
+ analysis.
 \end_layout
 
-\end_inset
-
- manage the invocation of 
+\begin_layout Standard
 \begin_inset listings
 inline true
 status open
 
 \begin_layout Plain Layout
 
-Measurement Tool
+Analysis Controller#perform Analysis
 \end_layout
 
 \end_inset
 
- or 
+ performs a complete analysis, starting by measuring the examined software,
+ and continuing to analyse until the 
 \begin_inset listings
 inline true
 status open
 
 \begin_layout Plain Layout
 
-Result Analyser
+Final Judge
 \end_layout
 
 \end_inset
 
- components.
- 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Beagle Controller#main
-\end_layout
-
-\end_inset
-
- is the main control loop, managing the control flow throughout Beagle’s
- measuring and analysis activity.
- There is always exactly one 
+ reports that the analysis is finished.
+ There is always at most one 
 \begin_inset listings
 inline true
 status open
@@ -398,7 +398,19 @@ status open
 
 \begin_layout Plain Layout
 
-Result Analyser
+Measurement Result Analyser
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Proposed Expression Analyser
 \end_layout
 
 \end_inset
@@ -416,17 +428,9 @@ Final Judge
 \end_inset
 
  running at any given moment during the execution of 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Beagle Controller#main
-\end_layout
-
-\end_inset
-
+\family typewriter
+Analysis Controller#perform Analysis
+\family default
  (“the main loop”).
 \end_layout
 
@@ -470,7 +474,7 @@ Measurement Controller
 
 \end_inset
 
- will then decide which 
+ will then instruct the 
 \begin_inset listings
 inline true
 status open
@@ -482,9 +486,21 @@ Measurement Tool
 
 \end_inset
 
-s to run.
- Usually it will tell every tool to measure as long as there is something
- left to be measured.
+s to measure.
+ Usually, it will tell every tool to measure all new 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Elements.
 \end_layout
 
 \begin_layout Standard
@@ -495,15 +511,57 @@ status open
 
 \begin_layout Plain Layout
 
-Result Analyser
+Measurement Result Analyser
 \end_layout
 
 \end_inset
 
- reporting to be able to contribute.
- This analyser may then propose results for items that have measurement
- results.
- If there is no such analyser, the 
+ reporting to be able to contribute to the current blackboard state.
+ This analyser may then propose expressions describing the parametric dependenci
+es of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Elements’ measurement results.
+ If there is no such analyser, an arbitrary chosen 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Proposed Expression Analyser
+\end_layout
+
+\end_inset
+
+ reporting to be able to contribute will be invoked.
+ It may then propose more expressions based on the ones the 
+ones 
+\lang british
+
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Measurement Result Analyser
+\end_layout
+
+\end_inset
+
+s added to the blackboard, usually trying to improve them.
+ If there 
 \begin_inset listings
 inline true
 status open
@@ -515,7 +573,7 @@ Final Judge
 
 \end_inset
 
- will be called.
+ii will be called.
  It decides whether enough information has been collected and Beagle can
  terminate.
  If this is the case, it also creates or selects the final result for each

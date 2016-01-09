@@ -106,7 +106,7 @@ algorithm2e
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement tph
+\float_placement h
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -310,6 +310,13 @@ ation
 
 \backslash
 hyphenation{me-ta-mo-del} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyphenation{Ex-pres-sion}
 \end_layout
 
 \end_inset
