@@ -812,7 +812,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename UML Diagrams/Controller_Classes.PDF
+	filename ../../umlet/Controllers.uxf.pdf
 	width 90text%
 	height 100pheight%
 	keepAspectRatio
