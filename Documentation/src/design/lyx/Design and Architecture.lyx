@@ -40,8 +40,6 @@
 % Listings package is required by terms and definitions
 \usepackage{listings}
 
-\usepackage[figure]{algorithm2e}
-
 % \todo is deprecated!
 \renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
 
