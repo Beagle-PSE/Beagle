@@ -38,10 +38,10 @@ public class GuiController {
 	 * change the set of components but the user can choose that certain components will
 	 * not be measured even though they are in the set {@code components}.
 	 *
-	 * @param components The components this {@link GuiController} will use. These
-	 *            components are represented by PCM identifiers.
+	 * @param pcmElementsToMeasure The PCM elements this {@link GuiController} will use.
+	 *            These PCM elements are represented by PCM identifiers.
 	 */
-	public GuiController(final Set<String> components) {
+	public GuiController(final Set<String> pcmElementsToMeasure) {
 		// refine type
 	}
 
