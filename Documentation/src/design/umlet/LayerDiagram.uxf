@@ -9,8 +9,8 @@
       <w>290</w>
       <h>280</h>
     </coordinates>
-    <panel_attributes>Final Expressions
-
+    <panel_attributes>halign=left
+Final Expressions
 
 
 --
@@ -30,17 +30,17 @@ Code Section</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>110</x>
+      <x>60</x>
       <y>390</y>
-      <w>230</w>
+      <w>280</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
-                           Result Analyser
+    Measurement Result Analyser
 
 </panel_attributes>
-    <additional_attributes>210;30;80;30;80;80;210;80</additional_attributes>
+    <additional_attributes>260;30;130;30;130;80;260;80</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
@@ -72,15 +72,15 @@ Code Section</panel_attributes>
     <coordinates>
       <x>580</x>
       <y>360</y>
-      <w>210</w>
+      <w>250</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-
-   Fitness Funktion
+   Proposed Expression 
+                 Analyser
 
 
 </panel_attributes>
-    <additional_attributes>30;30;140;30;140;80;30;80</additional_attributes>
+    <additional_attributes>30;30;160;30;160;80;30;80</additional_attributes>
   </element>
 </diagram>
