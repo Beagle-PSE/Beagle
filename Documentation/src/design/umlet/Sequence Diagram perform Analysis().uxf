@@ -40,10 +40,10 @@
       <x>700</x>
       <y>30</y>
       <w>30</w>
-      <h>190</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
@@ -83,7 +83,7 @@ perform analysis()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>700</x>
-      <y>200</y>
+      <y>110</y>
       <w>20</w>
       <h>70</h>
     </coordinates>
@@ -94,7 +94,7 @@ perform analysis()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>180</y>
+      <y>90</y>
       <w>530</w>
       <h>40</h>
     </coordinates>
@@ -106,18 +106,19 @@ can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_a
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>260</y>
+      <y>160</y>
       <w>530</w>
-      <h>30</h>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;510.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.
+true</panel_attributes>
+    <additional_attributes>10.0;20.0;510.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
       <x>620</x>
-      <y>210</y>
+      <y>120</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
@@ -125,43 +126,21 @@ can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_a
     <additional_attributes/>
   </element>
   <element>
-    <id>Text</id>
-    <coordinates>
-      <x>110</x>
-      <y>310</y>
-      <w>150</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[can measure result]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>70</x>
-      <y>140</y>
-      <w>1730</w>
-      <h>1630</h>
-    </coordinates>
-    <panel_attributes>loop</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>700</x>
-      <y>260</y>
+      <y>170</y>
       <w>30</w>
-      <h>110</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>700</x>
-      <y>350</y>
+      <y>220</y>
       <w>20</w>
       <h>70</h>
     </coordinates>
@@ -172,7 +151,7 @@ can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_a
     <id>UMLFrame</id>
     <coordinates>
       <x>620</x>
-      <y>360</y>
+      <y>230</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
@@ -183,7 +162,7 @@ can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_a
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>410</y>
+      <y>280</y>
       <w>530</w>
       <h>30</h>
     </coordinates>
@@ -194,24 +173,13 @@ can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_a
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>330</y>
+      <y>200</y>
       <w>530</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 measure(blackboard: Measurement Controller Blackboard View)</panel_attributes>
     <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>60</x>
-      <y>1070</y>
-      <w>1760</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;1740.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -228,7 +196,7 @@ measure(blackboard: Measurement Controller Blackboard View)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>450</y>
+      <y>320</y>
       <w>680</w>
       <h>40</h>
     </coordinates>
@@ -240,7 +208,7 @@ can contribute result1 = can contribute(blackboard: Read-Only Blackboard View)</
     <id>UMLGeneric</id>
     <coordinates>
       <x>850</x>
-      <y>470</y>
+      <y>340</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -251,12 +219,13 @@ can contribute result1 = can contribute(blackboard: Read-Only Blackboard View)</
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>520</y>
+      <y>380</y>
       <w>680</w>
-      <h>30</h>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;660.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.
+false</panel_attributes>
+    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -264,38 +233,16 @@ can contribute result1 = can contribute(blackboard: Read-Only Blackboard View)</
       <x>850</x>
       <y>70</y>
       <w>30</w>
-      <h>420</h>
+      <h>290</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;400.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>120</x>
-      <y>570</y>
-      <w>190</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[can contribute result1]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>100</x>
-      <y>550</y>
-      <w>1150</w>
-      <h>490</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;10.0;270.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>850</x>
-      <y>610</y>
+      <y>450</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -306,7 +253,7 @@ can contribute result1 = can contribute(blackboard: Read-Only Blackboard View)</
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>660</y>
+      <y>500</y>
       <w>680</w>
       <h>30</h>
     </coordinates>
@@ -317,7 +264,7 @@ can contribute result1 = can contribute(blackboard: Read-Only Blackboard View)</
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>590</y>
+      <y>430</y>
       <w>680</w>
       <h>40</h>
     </coordinates>
@@ -329,12 +276,12 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
     <id>Relation</id>
     <coordinates>
       <x>850</x>
-      <y>520</y>
+      <y>390</y>
       <w>30</w>
-      <h>110</h>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -380,28 +327,6 @@ can contribute result2 = can contribute(blackboard: Read-Only Blackboard View)</
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;950.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>130</x>
-      <y>820</y>
-      <w>190</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[can contribute result2]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>110</x>
-      <y>800</y>
-      <w>1130</w>
-      <h>220</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
-    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
@@ -463,7 +388,7 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
     <id>UMLFrame</id>
     <coordinates>
       <x>780</x>
-      <y>480</y>
+      <y>350</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
@@ -474,7 +399,7 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
     <id>UMLFrame</id>
     <coordinates>
       <x>800</x>
-      <y>620</y>
+      <y>460</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
@@ -515,17 +440,6 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
     <additional_attributes/>
   </element>
   <element>
-    <id>Text</id>
-    <coordinates>
-      <x>170</x>
-      <y>1060</y>
-      <w>50</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[else]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>1270</x>
@@ -535,18 +449,6 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1020.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>190</x>
-      <y>1070</y>
-      <w>1100</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-can contribute result3 = can contribute(blackboard: Read-Only Blackboard View)</panel_attributes>
-    <additional_attributes>1080.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -590,28 +492,6 @@ can contribute result3 = can contribute(blackboard: Read-Only Blackboard View)</
       <h>40</h>
     </coordinates>
     <panel_attributes>ref</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>120</x>
-      <y>1170</y>
-      <w>190</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[can contribute result3]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>90</x>
-      <y>1160</y>
-      <w>1690</w>
-      <h>560</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -783,39 +663,6 @@ contribute(blackboard: Proposed Expression Analyser Blackboard View)</panel_attr
     <additional_attributes>10.0;10.0;1230.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Text</id>
-    <coordinates>
-      <x>120</x>
-      <y>1430</y>
-      <w>190</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[can contribute result4]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>170</x>
-      <y>1310</y>
-      <w>50</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[else]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>100</x>
-      <y>1410</y>
-      <w>1660</w>
-      <h>290</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>80</x>
@@ -858,17 +705,6 @@ contribute(blackboard: Proposed Expression Analyser Blackboard View)</panel_attr
     </coordinates>
     <panel_attributes>lt=..</panel_attributes>
     <additional_attributes>10.0;10.0;1670.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>170</x>
-      <y>1560</y>
-      <w>50</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[else]</panel_attributes>
-    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
@@ -916,39 +752,6 @@ finished = judge(blackboard: Blackboard)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>20</x>
-      <y>90</y>
-      <w>1810</w>
-      <h>1690</h>
-    </coordinates>
-    <panel_attributes>loop</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>210</x>
-      <y>60</y>
-      <w>170</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>finished = false: boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>150</x>
-      <y>90</y>
-      <w>80</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[¬finished]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>0</x>
@@ -962,10 +765,10 @@ finished = judge(blackboard: Blackboard)</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>650</x>
-      <y>220</y>
+      <x>660</x>
+      <y>130</y>
       <w>110</w>
-      <h>70</h>
+      <h>30</h>
     </coordinates>
     <panel_attributes>can measure()</panel_attributes>
     <additional_attributes/>
@@ -974,12 +777,12 @@ finished = judge(blackboard: Blackboard)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>700</x>
-      <y>410</y>
+      <y>280</y>
       <w>30</w>
-      <h>180</h>
+      <h>310</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -1211,115 +1014,5 @@ finished = judge(blackboard: Blackboard)</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>90</x>
-      <y>290</y>
-      <w>1180</w>
-      <h>770</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>100</x>
-      <y>920</y>
-      <w>1160</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;1140.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>200</x>
-      <y>110</y>
-      <w>280</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>measurements finished = false: boolean</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>110</x>
-      <y>150</y>
-      <w>180</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[¬measurements finished]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>170</x>
-      <y>440</y>
-      <w>50</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[else]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>90</x>
-      <y>680</y>
-      <w>1170</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;1150.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>170</x>
-      <y>690</y>
-      <w>50</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[else]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>170</x>
-      <y>940</y>
-      <w>50</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>[else]</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>210</x>
-      <y>970</y>
-      <w>280</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>measurements finished = true</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>80</x>
-      <y>430</y>
-      <w>1210</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;1190.0;10.0</additional_attributes>
   </element>
 </diagram>
