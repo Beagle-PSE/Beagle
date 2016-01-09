@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>9</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>162</x>
-      <y>513</y>
-      <w>189</w>
-      <h>171</h>
+      <x>7</x>
+      <y>413</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>BeagleAnalysisWizard
 --
@@ -17,10 +17,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>153</x>
-      <y>792</y>
-      <w>189</w>
-      <h>171</h>
+      <x>0</x>
+      <y>630</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;abstract&gt;&gt;
 WizardPage
@@ -31,10 +31,10 @@ WizardPage
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>234</x>
-      <y>675</y>
-      <w>27</w>
-      <h>135</h>
+      <x>63</x>
+      <y>539</y>
+      <w>21</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -42,10 +42,10 @@ WizardPage
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>495</x>
-      <y>702</y>
-      <w>225</w>
-      <h>63</h>
+      <x>266</x>
+      <y>560</y>
+      <w>175</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>SelectionOverviewWizardPage
 --
@@ -57,22 +57,22 @@ WizardPage
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>720</y>
-      <w>207</w>
-      <h>90</h>
+      <x>126</x>
+      <y>574</y>
+      <w>154</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;80.0;210.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0;200.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>495</x>
-      <y>774</y>
-      <w>225</w>
-      <h>63</h>
+      <x>266</x>
+      <y>616</y>
+      <w>175</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>MachineSelectionWizardPage
 --
@@ -84,10 +84,10 @@ WizardPage
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>333</x>
-      <y>774</y>
-      <w>180</w>
-      <h>36</h>
+      <x>140</x>
+      <y>616</y>
+      <w>140</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
@@ -96,10 +96,10 @@ WizardPage
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>495</x>
-      <y>846</y>
-      <w>225</w>
-      <h>63</h>
+      <x>266</x>
+      <y>672</y>
+      <w>175</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>NetworkConfigurationWizardPage
 --
@@ -111,10 +111,10 @@ WizardPage
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>333</x>
-      <y>846</y>
-      <w>180</w>
-      <h>36</h>
+      <x>140</x>
+      <y>672</y>
+      <w>140</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
@@ -123,10 +123,10 @@ WizardPage
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>495</x>
-      <y>918</y>
-      <w>225</w>
-      <h>63</h>
+      <x>266</x>
+      <y>728</y>
+      <w>175</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>TimeoutWizardPage
 --
@@ -138,10 +138,10 @@ WizardPage
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>333</x>
-      <y>909</y>
-      <w>180</w>
-      <h>36</h>
+      <x>140</x>
+      <y>721</y>
+      <w>140</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 </panel_attributes>
@@ -150,28 +150,26 @@ WizardPage
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>162</x>
-      <y>135</y>
-      <w>342</w>
-      <h>171</h>
+      <x>245</x>
+      <y>119</y>
+      <w>266</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>GuiController
 --
 --
-+ analyse(components : Component[*])
-+ startAnalysis(userConfiguration : UserConfiguration)
-- pause()
-- continue()
-- abort()</panel_attributes>
++ GuiController(components : Component[*])
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>162</y>
-      <w>99</w>
-      <h>36</h>
+      <x>602</x>
+      <y>140</y>
+      <w>77</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>Component</panel_attributes>
     <additional_attributes/>
@@ -179,10 +177,10 @@ WizardPage
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>171</y>
-      <w>144</w>
-      <h>36</h>
+      <x>504</x>
+      <y>147</y>
+      <w>112</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=*</panel_attributes>
@@ -191,10 +189,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>207</y>
-      <w>99</w>
-      <h>36</h>
+      <x>602</x>
+      <y>175</y>
+      <w>77</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>Dialog</panel_attributes>
     <additional_attributes/>
@@ -202,10 +200,10 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>216</y>
-      <w>144</w>
-      <h>36</h>
+      <x>504</x>
+      <y>182</y>
+      <w>112</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -215,10 +213,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>441</x>
-      <y>369</y>
-      <w>135</w>
-      <h>198</h>
+      <x>224</x>
+      <y>301</y>
+      <w>105</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>UserConfiguration
 --
@@ -229,10 +227,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
-      <y>504</y>
-      <w>117</w>
-      <h>36</h>
+      <x>147</x>
+      <y>406</y>
+      <w>91</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
@@ -241,10 +239,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>477</x>
-      <y>297</y>
-      <w>27</w>
-      <h>90</h>
+      <x>252</x>
+      <y>245</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -254,10 +252,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>630</x>
-      <y>297</y>
-      <w>135</w>
-      <h>54</h>
+      <x>84</x>
+      <y>189</y>
+      <w>105</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Stores everything the user configured.
 bg=gray
@@ -268,21 +266,21 @@ bg=gray
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>342</y>
-      <w>108</w>
-      <h>54</h>
+      <x>98</x>
+      <y>224</y>
+      <w>140</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;180.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>18</x>
-      <y>99</y>
-      <w>171</w>
-      <h>90</h>
+      <x>133</x>
+      <y>91</y>
+      <w>133</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;80.0</additional_attributes>
@@ -290,10 +288,10 @@ bg=gray
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>0</x>
-      <y>54</y>
-      <w>117</w>
-      <h>54</h>
+      <x>119</x>
+      <y>56</y>
+      <w>91</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Is called by the context-menu entries.
 bg=gray
@@ -304,10 +302,10 @@ bg=gray
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>504</y>
-      <w>216</w>
-      <h>243</h>
+      <x>322</x>
+      <y>406</y>
+      <w>168</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -317,10 +315,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>486</y>
-      <w>225</w>
-      <h>324</h>
+      <x>322</x>
+      <y>392</y>
+      <w>175</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -330,10 +328,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>468</y>
-      <w>234</w>
-      <h>414</h>
+      <x>322</x>
+      <y>378</y>
+      <w>182</w>
+      <h>322</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -343,10 +341,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
-      <y>450</y>
-      <w>243</w>
-      <h>504</h>
+      <x>322</x>
+      <y>364</y>
+      <w>189</w>
+      <h>392</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -356,24 +354,76 @@ m2=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>405</x>
-      <y>0</y>
-      <w>288</w>
-      <h>72</h>
+      <x>791</x>
+      <y>147</y>
+      <w>224</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>The GuiController calls `pause()`, `continue()`, and `abort()` itself upon receiving information about which button has been clicked from its Dialog object.
+    <panel_attributes>The GuiController calls `pause()`, `continue()`, and `abort()` upon receiving information about which button has been clicked from its Dialog object.
 bg=gray</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
-      <y>63</y>
+      <x>805</x>
+      <y>196</y>
       <w>63</w>
-      <h>90</h>
+      <h>161</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>70.0;10.0;10.0;210.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>609</x>
+      <y>343</y>
+      <w>308</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>BeagleController
+--
+--
++ startAnalysis(userConfiguration : UserConfiguration)
++ pause()
++ continue()
++ abort()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>231</y>
+      <w>266</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>360.0;160.0;360.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>665</x>
+      <y>497</y>
+      <w>112</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>AnalysisController</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>707</x>
+      <y>406</y>
+      <w>21</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
