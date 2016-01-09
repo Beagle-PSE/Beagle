@@ -1,8 +1,4 @@
-package de.uka.ipd.sdq.beagle.gui.wizardpages;
-
-import de.uka.ipd.sdq.beagle.gui.BeagleAnalysisWizard;
-import de.uka.ipd.sdq.beagle.gui.EclipseWizardPage;
-import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
+package de.uka.ipd.sdq.beagle.gui;
 
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose between an adaptive
