@@ -192,7 +192,7 @@ get proposed expressions for(rdia1)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-expression 1</panel_attributes>
+{expression 1}</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
@@ -227,7 +227,7 @@ get proposed expressions for(rdia1)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-expression 1</panel_attributes>
+{expression 1}</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
@@ -449,7 +449,7 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
       <w>340</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_expression 1: Constant Expression_</panel_attributes>
+    <panel_attributes>_expression 1: Evaluable Expression_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

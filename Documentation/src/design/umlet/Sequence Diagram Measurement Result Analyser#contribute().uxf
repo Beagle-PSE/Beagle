@@ -192,7 +192,7 @@ get Measurement Results for(rdia1)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-result1</panel_attributes>
+{result1}</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
@@ -227,7 +227,7 @@ get Measurement Results for(rdia1)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-result1</panel_attributes>
+{result1}</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
@@ -356,12 +356,13 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>460</y>
+      <y>450</y>
       <w>750</w>
-      <h>30</h>
+      <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;730.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.
+0.7071</panel_attributes>
+    <additional_attributes>10.0;20.0;730.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
