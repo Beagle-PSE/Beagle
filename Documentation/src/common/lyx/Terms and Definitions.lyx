@@ -4,7 +4,6 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -1837,6 +1836,19 @@ glsuseri{component} required interfaces.
 \begin_layout Plain Layout
 
 }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SRS}{SRS}{Software Requirements Specififcation, see 
+\backslash
+cite{srs}}
 \end_layout
 
 \begin_layout Plain Layout

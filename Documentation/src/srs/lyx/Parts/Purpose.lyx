@@ -997,7 +997,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename UML Diagrams/Use Cases.uxf.pdf
+	filename ../../umlet/Use Cases.uxf.pdf
 	width 100text%
 	height 100pheight%
 	keepAspectRatio

@@ -1,10 +1,33 @@
-task design(type: LyXRenderTask) {
-	group 'Documentation'
-	description 'Renders the Design Specification document.'
+/**
+ * Tasks to build the Design & Architecture Documentation
+ *
+ * @author Joshua Gleitze
+ */
+ 
+def rendersrc = fileTree("$projectDir/src").include('common/**').include('design/**')
+ 
+task designUml(type: UmletRenderTask) {
+	description 'Renders the UML Diagrams used by the Design and Architecture Specification.'
 	
-	from "$projectDir/src/design/lyx"
-	document "Design.lyx"
+	from rendersrc
+	into "$buildDir/tmp/umletRender/design"
+}
+ 
+task design(type: LyXRenderTask) {
+	dependsOn designUml
+	
+	group 'Documentation'
+	description 'Renders the Design and Architecture Specification.'
+	
+	from files(designUml.dest)
+	document "design/lyx/Design and Architecture.lyx"
 	into buildDir
+	
+	glossary true
+	bibliography true
+	
+	// override the dir for up to date check because this is the dir that decides.
+	inputs.files rendersrc
 }
 
 build.dependsOn design
