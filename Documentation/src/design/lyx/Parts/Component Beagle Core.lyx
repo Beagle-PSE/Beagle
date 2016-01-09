@@ -569,8 +569,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset listings
-inline false
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
@@ -578,198 +577,167 @@ status open
 finished $
 \backslash
 coloneqq $ false
-\end_layout
-
-\begin_layout Plain Layout
-
-readOnlyBlackboardView $
 \backslash
-coloneqq $ Read-Only Blackboard View.construct(blackboard)
+;
 \end_layout
 
 \begin_layout Plain Layout
 
-measurementControllerBlackboardView $
+
+\backslash
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+romraBlackboardView $
+\backslash
+coloneqq $ Read-Only Measurement Result Analyser Blackboard View.construct(blackb
+oard)
+\backslash
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+mraBlackboardView $
 \backslash
 coloneqq $ MeasurementController Blackboard View.construct(blackboard)
-\end_layout
-
-\begin_layout Plain Layout
-
-measurementResultAnalyserBlackboardView $
 \backslash
-coloneqq $ Result Analyser Blackboard View.construct(blackboard)
+;
 \end_layout
 
 \begin_layout Plain Layout
 
-prosedExpressionsAnalyserBlackboardView $
+ropeBlackboardView $
+\backslash
+coloneqq $ Read-Only Proposed Expression Analyser Blackboard View.construct(black
+board)
+\backslash
+;
+\end_layout
+
+\begin_layout Plain Layout
+
+peBlackboardView $
 \backslash
 coloneqq $ Proposed Expressions Blackboard View.construct(blackboard)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-while($
 \backslash
-neg $finished) do
+;
 \end_layout
 
 \begin_layout Plain Layout
 
-	measurementsFinished $
+
 \backslash
-coloneqq $ false
+;
 \end_layout
 
 \begin_layout Plain Layout
 
-	while($
+\end_layout
+
+\begin_layout Plain Layout
+
+
 \backslash
-neg $measurementsFinished) do
-\end_layout
-
-\begin_layout Plain Layout
-
-		if(measurementController.can measure(readOnlyBlackboardView)) then
-\end_layout
-
-\begin_layout Plain Layout
-
-			measurementController.measure(measurementControllerBlackboardView)
-\end_layout
-
-\begin_layout Plain Layout
-
-		else
-\end_layout
-
-\begin_layout Plain Layout
-
-		measurementResultAnalysersIterator = measurementResultAnalysers.iterator()
-\end_layout
-
-\begin_layout Plain Layout
-
-		while(measurementResultAnalysersIterator.hasCurrent() $
+While {$
 \backslash
-wedge 
+neg $finished} {
+\end_layout
+
+\begin_layout Plain Layout
+
+	
 \backslash
-neg $measurementResultAnalysersIterator.current().canContribute(readOnlyBlackboard
-View)) do
+uIf {measurement controller.can measure(blackboard)} {
 \end_layout
 
 \begin_layout Plain Layout
 
-			measurementResultAnalysersIterator.next()
-\end_layout
-
-\begin_layout Plain Layout
-
-		od
-\end_layout
-
-\begin_layout Plain Layout
-
-		if(measurementResultAnalysersIterator.hasCurrent()) then
-\end_layout
-
-\begin_layout Plain Layout
-
-			measurementResultAnalysersIterator.current().contribute(measurementResultAnalys
-erBlackboardView);
-\end_layout
-
-\begin_layout Plain Layout
-
-		else
-\end_layout
-
-\begin_layout Plain Layout
-
-			measurementsFinished $
+		measurement controller.measure(blackboard)
 \backslash
-coloneqq $ true
+;
 \end_layout
 
 \begin_layout Plain Layout
 
-		fi
-\end_layout
-
-\begin_layout Plain Layout
-
-	fi
-\end_layout
-
-\begin_layout Plain Layout
-
-	proposedExpressionsAnalysersIterator = proposedExpressionsAnalysers.iterator()
-\end_layout
-
-\begin_layout Plain Layout
-
-	while(proposedExpressionsAnalysersIterator.hasCurrent() $
+	} 
 \backslash
-wedge 
+uElseIf {$
 \backslash
-neg $proposedExpressionsAnalysersIterator.current().canContribute(readOnlyBlackboa
-rdView)) do
+exists
+\backslash
+ analyser 
+\backslash
+in measuremet
+\backslash
+ result
+\backslash
+ analysers: analyser.can
+\backslash
+ contribute(romraBlackboardView)$} {
 \end_layout
 
 \begin_layout Plain Layout
 
-		measurementResultAnalysersIterator.next()
+		analyser.contribute(mraBlackboardView)
 \end_layout
 
 \begin_layout Plain Layout
 
-	od
+	} 
+\backslash
+uElseIf {$
+\backslash
+exists
+\backslash
+ analyser 
+\backslash
+in proposed
+\backslash
+ expression
+\backslash
+ analysers: analyser.can
+\backslash
+ contribute(ropeBlackboardView)$} {
 \end_layout
 
 \begin_layout Plain Layout
 
-	if(measurementResultAnalysersIterator.hasCurrent()) then
+		analyser.contribute(peBlackboardView)
 \end_layout
 
 \begin_layout Plain Layout
 
-		measurementResultAnalysersIterator.current().contribute(prosedExpressionsAnalyse
-rBlackboardView);
-\end_layout
-
-\begin_layout Plain Layout
-
-	else
+	} 
+\backslash
+Else {
 \end_layout
 
 \begin_layout Plain Layout
 
 		finished $
 \backslash
-coloneqq $ finalJudge.judge(blackboard)
+coloneqq $ final judge.judge(blackboard)
 \end_layout
 
 \begin_layout Plain Layout
 
-	fi
+	}
 \end_layout
 
 \begin_layout Plain Layout
 
-od
-\end_layout
-
-\begin_layout Plain Layout
-
+}
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -781,12 +749,12 @@ od
 status open
 
 \begin_layout Plain Layout
-Beagle Controller#perform Anyalysis()
+Beagle Controller#perform Analysis()
 \end_layout
 
 \end_inset
 
-Beagle Controller#perform Anyalysis() in pseudocode
+Beagle Controller#perform Analysis() in pseudocode
 \end_layout
 
 \end_inset
