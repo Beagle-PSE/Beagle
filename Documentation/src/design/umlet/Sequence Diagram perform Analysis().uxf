@@ -99,7 +99,7 @@ perform analysis()</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
+can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
     <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -201,7 +201,7 @@ measure(blackboard: Measurement Controller Blackboard View)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-can contribute result1 = can contribute(blackboard: Read-Only Blackboard View)</panel_attributes>
+can contribute(blackboard: Read-Only Blackboard View)</panel_attributes>
     <additional_attributes>660.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -675,7 +675,7 @@ false</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
+can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
     <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -777,7 +777,7 @@ can contribute(blackboard: Read-Only Blackboard View)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
+can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
     <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -912,7 +912,7 @@ measure(blackboard: Measurement Controller Blackboard View)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-can contribute result1 = can contribute(blackboard: Read-Only Blackboard View)</panel_attributes>
+can contribute(blackboard: Read-Only Blackboard View)</panel_attributes>
     <additional_attributes>660.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -1036,7 +1036,7 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
+can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
     <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
