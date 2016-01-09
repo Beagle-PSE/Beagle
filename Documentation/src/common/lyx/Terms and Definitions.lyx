@@ -4,7 +4,6 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../Requirements Specification.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -1848,7 +1847,9 @@ glsuseri{component} required interfaces.
 
 
 \backslash
-newacronym{RDIA}{RDIA}{resource demanding internal action}
+newacronym{SRS}{SRS}{Software Requirements Specififcation, see 
+\backslash
+cite{srs}}
 \end_layout
 
 \begin_layout Plain Layout
