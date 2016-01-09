@@ -72,7 +72,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
+      <x>830</x>
       <y>220</y>
       <w>360</w>
       <h>220</h>
@@ -97,14 +97,14 @@ Proposed Expression Analyser
     <coordinates>
       <x>560</x>
       <y>200</y>
-      <w>400</w>
+      <w>290</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*
 r1=- proposed expression analysers
 m2=*</panel_attributes>
-    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -162,19 +162,19 @@ Measurement Result Analyser
     <coordinates>
       <x>560</x>
       <y>90</y>
-      <w>510</w>
+      <w>290</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 r1=- final judge
 m2=*</panel_attributes>
-    <additional_attributes>490.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1050</x>
+      <x>830</x>
       <y>20</y>
       <w>280</w>
       <h>110</h>
