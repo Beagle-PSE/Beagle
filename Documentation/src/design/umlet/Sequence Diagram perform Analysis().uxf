@@ -4,12 +4,12 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>130</x>
+      <x>120</x>
       <y>30</y>
-      <w>120</w>
+      <w>140</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:Beagle Controller_</panel_attributes>
+    <panel_attributes>_:Analysis Controller_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
