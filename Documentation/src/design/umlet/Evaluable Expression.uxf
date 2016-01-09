@@ -13,7 +13,6 @@
 Evaluable Expression
 --
 
---
 
 --
 
@@ -648,7 +647,6 @@ m2=*</panel_attributes>
 Evaluable Expression Visitor
 --
  
---
  
 --
  
@@ -678,7 +676,6 @@ Evaluable Expression Visitor
     <panel_attributes>Evaluable Variable Assignment
 --
  
---
  
 --
 	+ getValueFor (variable: Evaluable Variable )
