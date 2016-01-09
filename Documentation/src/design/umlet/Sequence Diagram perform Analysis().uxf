@@ -31,7 +31,7 @@
       <w>160</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:MeasurementController_</panel_attributes>
+    <panel_attributes>_:Measurement Controller_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -53,7 +53,7 @@
       <w>140</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:MeasurementTool_</panel_attributes>
+    <panel_attributes>_:Measurement Tool_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -75,7 +75,7 @@
       <w>140</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:MeasurementTool_</panel_attributes>
+    <panel_attributes>_:Measurement Tool_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -333,7 +333,7 @@ measure(blackboard: Measurement Controller Blackboard View)</panel_attributes>
       <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:MeasurementResultAnalyser_</panel_attributes>
+    <panel_attributes>_:Measurement Result Analyser_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -456,7 +456,7 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
       <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:MeasurementResultAnalyser_</panel_attributes>
+    <panel_attributes>_:Measurement Result Analyser_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -623,7 +623,7 @@ contribute(blackboard: Measurement Result Analyser Blackboard View)</panel_attri
       <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:ProposedExpressionAnalyser_</panel_attributes>
+    <panel_attributes>_:Proposed Expression Analyser_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -779,7 +779,7 @@ contribute(blackboard: Proposed Expression Analyser Blackboard View)</panel_attr
       <w>220</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_:ProposedExpressionAnalyser_</panel_attributes>
+    <panel_attributes>_:Proposed Expression Analyser_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

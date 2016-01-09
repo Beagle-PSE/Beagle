@@ -4,10 +4,10 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>50</x>
+      <x>170</x>
       <y>20</y>
-      <w>1160</w>
-      <h>520</h>
+      <w>1040</w>
+      <h>500</h>
     </coordinates>
     <panel_attributes>sd can measure()</panel_attributes>
     <additional_attributes/>
@@ -37,14 +37,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>50</x>
+      <x>180</x>
       <y>80</y>
-      <w>530</w>
+      <w>400</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
-    <additional_attributes>510.0;20.0;10.0;20.0</additional_attributes>
+can measure(blackboard: Read-Only Blackbaord View)</panel_attributes>
+    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -60,13 +60,13 @@ can measure result = can measure(blackboard: Read-Only Blackbaord View)</panel_a
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>60</x>
+      <x>180</x>
       <y>460</y>
-      <w>520</w>
+      <w>400</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;500.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;380.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -344,10 +344,10 @@ get SEFF Loops to be measured()</panel_attributes>
       <x>840</x>
       <y>410</y>
       <w>30</w>
-      <h>140</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -355,10 +355,10 @@ get SEFF Loops to be measured()</panel_attributes>
       <x>560</x>
       <y>460</y>
       <w>30</w>
-      <h>90</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -366,10 +366,10 @@ get SEFF Loops to be measured()</panel_attributes>
       <x>1120</x>
       <y>400</y>
       <w>30</w>
-      <h>150</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
