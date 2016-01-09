@@ -225,8 +225,8 @@ Control Flow
 The GUI Controller is called via actions originating from context menu clicks.
  An object of GUI Controller is created there and the method open() is called
  on it.
- It creates an object of User Configuration witch which it from now on will
- be associated with.
+ It creates an object of User Configuration which it from now on will be
+ associated with.
  It then creates a new Beagle Analysis Wizard object associated with the
  same User Configuration object.
  Beagle Analysis Wizard then creates its Wizard Pages which are also associated
