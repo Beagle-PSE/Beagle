@@ -5,7 +5,7 @@ import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SEFFBranch;
 import de.uka.ipd.sdq.beagle.core.SEFFLoop;
-import de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 

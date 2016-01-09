@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.expressions;
+package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Thrown if a {@link EvaluableExpression} is to be evaluated, but insufficient variable
