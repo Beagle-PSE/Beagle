@@ -132,9 +132,38 @@ gls{CTA}
 
 \end_inset
 
- was planned to be used by Beagle but isn't any more because it cannot conduct
+ was planned to be used by Beagle but isn't any more because it
+ cannot conduct
  as precise measurements as desired.
- Beagle's Measurement Tools need to be directly connected to specific measuremen
+ The
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+ was designed to work on a method level to determine hotspots in
+ source code's methods.
+ There is also no possibility to instrument source code, the 
+ \begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+ can only
+ return measurement results.
+ So Beagle's Measurement Tools need to be directly connected to specific measuremen
 t software like 
 \begin_inset ERT
 status open
