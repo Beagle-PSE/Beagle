@@ -4,39 +4,13 @@
  * @author Joshua Gleitze
  */
  
-def srssrc = file("$projectDir/src/srs/lyx")
+def rendersrc = fileTree("$projectDir/src").include('common/**').include('srs/**')
  
-task srsUml {
+task srsUml(type: UmletRenderTask) {
 	description 'Renders the UML Diagrams used by the requirements specification.'
 	
-	// import the UmletRenderer as DSL extension	
-	extensions.create('umletrender', UmletRenderer, project)
-	
-	ext {
-		src = srssrc
-		dest = file("$buildDir/tmp/umletrender")
-	}
-
-	def inputUxfs = fileTree(src).include('**/*.uxf')
-	def outputUxfs = fileTree(dest).include('**/*.uxf')
-	
-	inputs.files inputUxfs
-	outputs.upToDateWhen { 
-		(inputUxfs.size() == outputUxfs.size()) && (outputUxfs.find { !file("${it}.pdf").exists() } == null)
-	}
-	
-	doLast {
-		dest.mkdirs()
-		
-		copy {
-			from src
-			into dest
-		}
-		
-		umletrender {
-			render fileTree(dest).include('**/*.uxf')
-		}
-	}
+	from rendersrc
+	into "$buildDir/tmp/umletRender/srs"
 }
  
 task srs(type: LyXRenderTask) {
@@ -45,15 +19,15 @@ task srs(type: LyXRenderTask) {
 	group 'Documentation'
 	description 'Renders the Requirements Specification.'
 	
-	from srsUml.dest
-	document "Requirements Specification.lyx"
+	from files(srsUml.dest)
+	document "srs/lyx/Requirements Specification.lyx"
 	into buildDir
 	
 	glossary true
 	bibliography true
 	
 	// override the dir for up to date check because this is the dir that decides.
-	inputs.dir srssrc
+	inputs.files rendersrc
 }
 
 build.dependsOn srs

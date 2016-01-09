@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../Design.lyx
+\master ../Design and Architecture.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -76,19 +76,121 @@ Architectural Overview
 
 \begin_layout Standard
 The architectural overview summarises Beagle's software design, that follows
- the Software Requirement Specification (SRS).
+ the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+.
  Beagle's design decisions are mainly proposed to fulfil all mandatory tasks
- mentioned in the SRS, but also allows supplementing by optional criteria.
- However, some mandatory criteria have changed, concerning the Common Trace
- API (CTA) (/B10/, /F30/, /F40/, /Q20/).
- The CTA was planned to be used by Beagle but isn't any more because it
- cannot conduct as precise measurements as desired.
- The CTA was designed to work on a method level to determine hotspots in
- source code's methods.
- There is also no possibility to instrument measurements, the CTA can only
- return measurement results.
+ mentioned in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+, but also allows supplementing by optional criteria.
+ However, some mandatory criteria have changed, concerning the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ (/B10/, /F30/, /F40/, /Q20/).
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ was planned to be used by Beagle but isn't any more because it does not
+ offer the expected functionality.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ is designed to work on a method level, while Beagle’s measurements need
+ to be performed on a sub-method (statement) level.
+ There is also no possibility to instrument source code, the  
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ can only return measurement results.
  So Beagle's Measurement Tools need to be directly connected to specific
- measurement software like Kiker – without the CTA as intermediary.
+ measurement software like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Kieker}
+\end_layout
+
+\end_inset
+
+, without the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{CTA}
+\end_layout
+
+\end_inset
+
+ as intermediary.
 \end_layout
 
 \begin_layout Standard
