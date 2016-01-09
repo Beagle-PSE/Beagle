@@ -1,15 +1,17 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import org.eclipse.jface.wizard.WizardPage;
+
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose between an adaptive
  * timeout, a constant timeout, or no timeout at all.
  * 
  * @author Christoph Michelbach
  */
-public class TimeoutWizardPage extends EclipseWizardPage {
+public class TimeoutWizardPage extends WizardPage {
 
 	/**
-	 * The {@link UserConfiguration} associated with this {@link EclipseWizardPage}.
+	 * The {@link UserConfiguration} associated with this {@link WizardPage}.
 	 */
 	private UserConfiguration userConfiguration;
 

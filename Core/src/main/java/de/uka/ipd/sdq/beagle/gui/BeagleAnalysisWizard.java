@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import org.eclipse.jface.wizard.WizardPage;
+
 /**
  * Sets up and controls the graphical wizard allowing the user to configure Beagle’s
  * behaviour during the analysis and afterwards starts the analysis.
@@ -14,7 +16,7 @@ public class BeagleAnalysisWizard {
 	private UserConfiguration userConfiguration;
 
 	/**
-	 * The {@link EclipseWizardPage}s of this {@link BeagleAnalysisWizard}.
+	 * The {@link WizardPage}s of this {@link BeagleAnalysisWizard}.
 	 */
-	private EclipseWizardPage[] eclipseWizardPages;
+	private WizardPage[] wizardPages;
 }

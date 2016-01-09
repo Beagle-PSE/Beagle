@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.gui;
+package org.eclipse.jface.dialogs;
 
 /**
  * Exists only for reasons of dependency. Will be replaced by Eclipse {@code Dialog}
@@ -6,6 +6,6 @@ package de.uka.ipd.sdq.beagle.gui;
  * 
  * @author Christoph Michelbach
  */
-public class EclipseDialog {
+public class MessageDialog {
 
 }

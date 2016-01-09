@@ -1,15 +1,17 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import org.eclipse.jface.wizard.WizardPage;
+
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to configure the network if
  * they previously chose to perform the analysis on a machine connected over a network.
  * 
  * @author Christoph Michelbach
  */
-public class NetworkConfigurationWizardPage extends EclipseWizardPage {
+public class NetworkConfigurationWizardPage extends WizardPage {
 
 	/**
-	 * The {@link UserConfiguration} associated with this {@link EclipseWizardPage}.
+	 * The {@link UserConfiguration} associated with this {@link WizardPage}.
 	 */
 	private UserConfiguration userConfiguration;
 

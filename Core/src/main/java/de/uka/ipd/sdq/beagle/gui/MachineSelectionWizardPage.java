@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import org.eclipse.jface.wizard.WizardPage;
+
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to configure whether they want
  * to perform the analysis on the machine they're at or on a machine connected via a
@@ -7,10 +9,10 @@ package de.uka.ipd.sdq.beagle.gui;
  * 
  * @author Christoph Michelbach
  */
-public class MachineSelectionWizardPage extends EclipseWizardPage {
+public class MachineSelectionWizardPage extends WizardPage {
 
 	/**
-	 * The {@link UserConfiguration} associated with this {@link EclipseWizardPage}.
+	 * The {@link UserConfiguration} associated with this {@link WizardPage}.
 	 */
 	private UserConfiguration userConfiguration;
 

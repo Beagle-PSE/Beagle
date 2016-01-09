@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import org.eclipse.jface.wizard.WizardPage;
+
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose which of the
  * components they selected will be be analysed. Leaving out some components is possible,
@@ -7,10 +9,10 @@ package de.uka.ipd.sdq.beagle.gui;
  * 
  * @author Christoph Michelbach
  */
-public class SelectionOverviewWizardPage extends EclipseWizardPage {
+public class SelectionOverviewWizardPage extends WizardPage {
 
 	/**
-	 * The {@link UserConfiguration} associated with this {@link EclipseWizardPage}.
+	 * The {@link UserConfiguration} associated with this {@link WizardPage}.
 	 */
 	private UserConfiguration userConfiguration;
 

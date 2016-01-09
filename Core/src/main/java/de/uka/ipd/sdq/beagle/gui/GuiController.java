@@ -2,6 +2,8 @@ package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.BeagleController;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+
 import java.util.Set;
 
 /**
@@ -24,9 +26,9 @@ public class GuiController {
 	private UserConfiguration userConfiguration;
 
 	/**
-	 * The {@link EclipseDialog} associated with this {@link GuiController}.
+	 * The {@link MessageDialog} associated with this {@link GuiController}.
 	 */
-	private EclipseDialog eclipseDialog;
+	private MessageDialog messageDialog;
 
 	/**
 	 * The {@link BeagleController} associated with this {@link GuiController}.
