@@ -1,6 +1,6 @@
 de.uka.ipd.sdq.beagle.core
 de.uka.ipd.sdq.beagle.core.analysis
-de.uka.ipd.sdq.beagle.core.expressions
+de.uka.ipd.sdq.beagle.core.evaluableexpressions
 de.uka.ipd.sdq.beagle.core.judge
 de.uka.ipd.sdq.beagle.core.measurement
 de.uka.ipd.sdq.beagle.core.pcmconnection
