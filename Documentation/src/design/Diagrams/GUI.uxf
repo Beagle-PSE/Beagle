@@ -182,7 +182,8 @@ Wizard Page
       <w>112</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>lt=-&gt;
+    <panel_attributes>lt=x-&gt;
+m1=*
 m2=*</panel_attributes>
     <additional_attributes>10.0;10.0;140.0;10.0</additional_attributes>
   </element>
@@ -230,10 +231,12 @@ m2=1</panel_attributes>
       <x>252</x>
       <y>364</y>
       <w>91</w>
-      <h>28</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-</panel_attributes>
+m1=1
+m2=1
+{unique}</panel_attributes>
     <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -473,5 +476,16 @@ m2=1</panel_attributes>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
     <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>336</x>
+      <y>483</y>
+      <w>301</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes>WizardPages</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
