@@ -246,66 +246,6 @@ reference "/F10/"
 \labelwidthstring 00.00.0000
 \begin_inset CommandInset label
 LatexCommand label
-name "/T30/"
-
-\end_inset
-
- Assert that 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- correctly commissions measurements of the detected code sections through
- the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{CTA}
-\end_layout
-
-\end_inset
-
-.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F20/"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F30/"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F40/"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\begin_inset CommandInset label
-LatexCommand label
 name "/T40/"
 
 \end_inset
@@ -1065,20 +1005,7 @@ gls{Beagle}
 
 \end_inset
 
- works with different software through the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{CTA}
-\end_layout
-
-\end_inset
-
-.
+ works with different measurement software.
  Test 
 \begin_inset ERT
 status open
@@ -1120,13 +1047,6 @@ gls{measurement software}
 
 .
  Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/F40/"
-
-\end_inset
-
- and 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "/Q20/"
