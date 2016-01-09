@@ -23,19 +23,20 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
+      <x>200</x>
       <y>370</y>
-      <w>320</w>
+      <w>380</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>Measurement Controller
 --
 --
 
-  + can contribute ( 
-      blackboard: Blackboard ): boolean
+  + can contribute ( blackboard: Read-Only
+      Measurement Controller Blackboard View ): boolean
 
-  + contribute ( blackboard: Blackboard)
+  + contribute ( blackboard:
+      Measurement Controller Blackboard View)
 </panel_attributes>
     <additional_attributes/>
   </element>

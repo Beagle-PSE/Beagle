@@ -225,7 +225,7 @@ m1=1</panel_attributes>
     <coordinates>
       <x>963</x>
       <y>234</y>
-      <w>216</w>
+      <w>180</w>
       <h>360</h>
     </coordinates>
     <panel_attributes>fontsize=12
@@ -423,7 +423,7 @@ m1=1
     <coordinates>
       <x>666</x>
       <y>1125</y>
-      <w>270</w>
+      <w>261</w>
       <h>252</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -453,17 +453,18 @@ Measurement Tool
     <coordinates>
       <x>18</x>
       <y>1503</y>
-      <w>288</w>
+      <w>360</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>Measurement Controller
 --
 --
 
-  + can contribute ( 
-      blackboard: Blackboard ): boolean
+  + can contribute ( blackboard: Read-Only
+      Measurement Controller Blackboard View ): boolean
 
-  + contribute ( blackboard: Blackboard)
+  + contribute ( blackboard:
+      Measurement Controller Blackboard View)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -511,23 +512,23 @@ Measurement Result Analyser
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
+      <x>369</x>
       <y>1476</y>
-      <w>270</w>
+      <w>198</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=1
 m1=- measurement controller
 m2=*</panel_attributes>
-    <additional_attributes>10.0;60.0;280.0;60.0;280.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;200.0;60.0;200.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>144</x>
       <y>1620</y>
-      <w>153</w>
+      <w>144</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -541,7 +542,7 @@ m2=*</panel_attributes>
     <coordinates>
       <x>828</x>
       <y>1449</y>
-      <w>360</w>
+      <w>333</w>
       <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -578,7 +579,7 @@ Proposed Expression Analyser
     <coordinates>
       <x>594</x>
       <y>1476</y>
-      <w>225</w>
+      <w>207</w>
       <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -592,7 +593,7 @@ m2=*</panel_attributes>
     <coordinates>
       <x>828</x>
       <y>1314</y>
-      <w>270</w>
+      <w>261</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
