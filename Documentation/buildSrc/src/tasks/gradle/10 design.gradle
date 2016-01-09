@@ -19,15 +19,12 @@ task design(type: LyXRenderTask) {
 	group 'Documentation'
 	description 'Renders the Design and Architecture Specification.'
 	
-	from files(designUml.dest)
+	from rendersrc.plus(fileTree(designUml.dest).include("**/*.uxf.pdf"))
 	document "design/lyx/Design and Architecture.lyx"
 	into buildDir
 	
 	glossary true
 	bibliography true
-	
-	// override the dir for up to date check because this is the dir that decides.
-	inputs.files rendersrc
 }
 
 build.dependsOn design
