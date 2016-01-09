@@ -570,8 +570,9 @@ newglossaryentry{resource demand}{
 
 \begin_layout Plain Layout
 
-		how much of a certain resource---like CPU, Network or hard disk drive---a
- 
+		how much of a certain resource---like 
+\backslash
+gls{CPU}, Network or hard disk drive---a 
 \backslash
 gls{component} needs to offer a certain functionality.
  In the 
@@ -1867,6 +1868,9 @@ newacronym{CPU}{CPU}{Central Processing Unit}
 
 \begin_layout Plain Layout
 
+
+\backslash
+newacronym{HDD}{HDD}{Hard Disk Drive}
 \end_layout
 
 \begin_layout Plain Layout
