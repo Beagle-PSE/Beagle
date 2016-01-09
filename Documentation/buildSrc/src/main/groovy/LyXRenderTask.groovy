@@ -1,7 +1,8 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
-import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputFile
+import org.gradle.api.file.FileCollection
 import org.gradle.api.logging.LogLevel
 import org.apache.commons.io.output.TeeOutputStream
 import java.io.FileOutputStream
@@ -14,7 +15,7 @@ import java.io.OutputStreamWriter
  * and {@code makeglossaries} (if using {@link #glossary}) must be available from the command line.
  * Add paths to {@link #LYX_LOCATIONS} to add paths to search for lyx installations on windows.
  *
- * The tasks copies the {@link #documentFolder} into {@code $project.buildDir/tmp/lyxRender/$\{getName()\}}
+ * The tasks copies the {@link #renderSourceFiles} into {@code $project.buildDir/tmp/lyxRender/$name}
  * and executes all commands in there. It is not removed after the task ran and can be used to analyse failures.
  * 
  * @author Joshua Gleitze
@@ -35,14 +36,14 @@ public class LyXRenderTask extends DefaultTask {
 	static final int LATEX_RENDER_COUNT = 3
 
 	/**
-	 * Relative path to the document to be rendered in the document Folder.
+	 * Relative path to the document to be rendered. Must be contained in the document folder.
 	 */
 	String document	
 	/**
-	 * The folder containing the document to be rendered an its dependencies.
+	 * All files needed to render the document.
 	 */
-	@InputDirectory
-	File documentFolder
+	@InputFiles
+	FileCollection renderSourceFiles
 	/**
 	 * Whether to render a bibliography
 	 */
@@ -69,17 +70,25 @@ public class LyXRenderTask extends DefaultTask {
     	logdest.createNewFile()
 		logging.captureStandardOutput LogLevel.INFO
 		
-    	def tmp = project.file("$project.buildDir/tmp/lyxRender/${getName()}")
+    	def tmp = project.file("$project.buildDir/tmp/lyxRender/$name")
     	tmp.deleteDir()
     	tmp.mkdirs()
     	
-    	assert documentFolder != null : "Please specify the document folder!"
+    	assert renderSourceFiles != null : "Please specify the document folder!"
     	assert document != null : "Please specify the relative path to the document!"
-    	assert documentFolder?.exists() : "The document folder must exist!"
-    	assert new File(documentFolder, "${document}.lyx").exists() : "The document must exist within the document folder!"
+    	
+    	project.copy {
+    		from renderSourceFiles
+    		into tmp
+    	}
+
+    	def documentfile = new File(tmp, "${document}.lyx")
+    	assert documentfile.exists() : "The document must exist within the source files!"
+    	def renderpwd = documentfile.parentFile
+    	def documentname = documentfile.name[0..-5]
     	
     	def defaults = {
-    		it.workingDir tmp
+    		it.workingDir renderpwd
     		it.standardOutput = tee()
     	}
     	
@@ -87,12 +96,7 @@ public class LyXRenderTask extends DefaultTask {
 			defaults delegate
     		
 			executable 'pdflatex'
-			args '-interaction=nonstopmode', '-halt-on-error',  "${document}.tex"
-    	}
-    	
-    	project.copy {
-    		from documentFolder
-    		into tmp
+			args '-interaction=nonstopmode', '-halt-on-error',  "${documentname}.tex"
     	}
     	
     	log "rendering with LyX"
@@ -100,33 +104,34 @@ public class LyXRenderTask extends DefaultTask {
 			defaults delegate
     		
 			executable LYX
-			args '--export', 'pdflatex', "${document}.lyx"
+			args '--export', 'pdflatex', "${documentname}.lyx"
     	}
     	
-    	if (glossary || bibliography) {
-	    	log "pdflatex run before calling auxilary tools"
+    	if (glossary) {
+	    	log "pdflatex run before generating the glossary"
 	    	project.exec pdflatex
 	    	
-	    	if (glossary) {
-		    	log "generating the glossary"
-		    	project.exec {
-    				defaults delegate
-    				
-		    		executable 'makeglossaries'
-		    		args document
-		    	}
-		    }
+	    	log "generating the glossary"
+	    	project.exec {
+   				defaults delegate
+   				
+	    		executable 'makeglossaries'
+	    		args documentname
+	    	}
+	    }
 		    
-	    	if (bibliography) {
-		    	log "generating the bibliography"
-		    	project.exec {
-    				defaults delegate
-    				
-		    		executable 'bibtex'
-		    		args document
-		    	}
-		    }
-		}
+    	if (bibliography) {
+	    	log "pdflatex run before generating the bibiography"
+	    	project.exec pdflatex
+	    	
+	    	log "generating the bibliography"
+	    	project.exec {
+   				defaults delegate
+   				
+	    		executable 'bibtex'
+	    		args documentname
+	    	}
+	    }
 		
 		LATEX_RENDER_COUNT.times {
 			log "${it + 1}. pdflatex render run"
@@ -141,9 +146,10 @@ public class LyXRenderTask extends DefaultTask {
     }
 	
 	/**
-	 * Sets the lyx document to be rendered. The .lyx extension may be ommited.
+	 * Sets the lyx document to be rendered. 
 	 *
-	 * @param relativeDocumentPath	The document that shall be rendered. A path specification relative to {@link #from} is expected.
+	 * @param relativeDocumentPath	The document that shall be rendered. A relative path to the same base as
+	 *								the files specified in {@link #from}. The .lyx extension may be ommited.
 	 */
 	def document(String relativeDocumentPath) {
 		this.document = relativeDocumentPath ==~ /^.*\.lyx$/ ? relativeDocumentPath[0..-5] : relativeDocumentPath
@@ -151,20 +157,20 @@ public class LyXRenderTask extends DefaultTask {
 	}
 	
 	/** 
-	 * The rendering working directory. It must contain all files referenced by the rendered document as well as the
+	 * The rendering working files. Must contain all files referenced by the rendered document as well as the
 	 * rendered document itself.
 	 *
-	 * @param documentFolder	Any path accepted by gradle’s file method to the documentFolder.
+	 * @param renderFiles	Any path accepted by gradle’s {@code files} method.
 	 */
-	def from(Object documentFolder) {
-		this.documentFolder = project.file(documentFolder)
+	def from(Object... renderFiles) {
+		this.renderSourceFiles = project.files(renderFiles)
 	}
 	
 	/**
 	 * Sets the exact file to render the document to. You’ll usually want to add the .pdf extension.
 	 * If the input document is named $name.lyx, this defaults to $project.buildDir/docs/$name.pdf
 	 *
-	 * @param to	The file to render the document to. Anything accepted by gradle’s file method
+	 * @param to	The file to render the document to. Anything accepted by gradle’s {@code file} method.
 	 */
 	def to(Object to) {
 		this.dest = project.file(to)

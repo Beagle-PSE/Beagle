@@ -109,66 +109,6 @@ task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 	into WEB_DEST
 }
 
-task copyWebArtefacts() {
-	description 'Copies all build artefacts that will be published into Beagle’s web presence.'
-	
-	
-	def doc = project(':Documentation')
-	def designFileName = "Architecture & Design.pdf"
-	
-	ext {
-		javadocDest = "$WEB_DEST/javadoc"
-		srsDest = "$WEB_DEST/$doc.srs.dest.name"
-		checkstyleDest = "$WEB_DEST/checkstyle"
-		jacocoDest = "$WEB_DEST/coverage"
-		designDest = "$WEB_DEST/$designFileName"
-	}
-	
-	
-	def checkstyleDirs = rootProject.javaSubprojects.collect { it.checkstyleHtml.dest }
-	def testReports = rootProject.javaSubprojects.collect { it.jacocoTestReport.reports.html.destination }
-	
-	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.design.dest, checkstyleDirs, testReports
-	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest
-	
-	doLast {
-		rootProject.javaSubprojects.each { project ->
-			println "copying for $project"
-			copy {	
-				from project.javadoc.destinationDir
-				into "$javadocDest/$project.name"
-			}	
-		
-			copy {
-				from project.checkstyleHtml.dest
-				rename {file -> "${project.name}.html"}
-				into checkstyleDest
-			}
-			
-			copy {
-				from project.jacocoTestReport.reports.html.destination
-				into jacocoDest
-			}
-		}
-		
-		copy {	
-			from doc.javadoc.destinationDir
-			into javadocDest
-		}	
-		
-		copy {
-			from doc.srs.dest
-			into WEB_DEST
-		}
-		
-		copy {
-			from doc.design.dest
-			rename {file -> designFileName}
-			into WEB_DEST
-		}
-	}
-}
-
 task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts]) {
     group "Build"
     description "Builds Beagle’s web presence. Synonym of :Web Presence:build"

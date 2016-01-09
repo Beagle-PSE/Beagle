@@ -4,7 +4,7 @@
 \begin_header
 \textclass sdqthesis
 \use_default_options true
-\master ../Design.lyx
+\master ../Design and Architecture.lyx
 \maintain_unincluded_children false
 \language british
 \language_package default
@@ -119,8 +119,121 @@ List all associated packages
 Overview
 \end_layout
 
-\begin_layout Subsection*
-Controller classes
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Beagle Core Component.uxf.pdf
+	width 80text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The Beagle Core Component and its interfaces
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Packages.uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Beagle Core’s separation into Packages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Blackboard
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../../umlet/Blackboard Layers.uxf.pdf
+	width 90text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Abstraction Layers on the Blackboard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Controller Classes
 \end_layout
 
 \begin_layout Standard
@@ -413,14 +526,6 @@ UML class diagram of the controller classes.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Reasons for chosen design
-\end_layout
-
-\begin_layout Section
-Chosen design patterns
 \end_layout
 
 \begin_layout Section
