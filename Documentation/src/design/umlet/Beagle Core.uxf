@@ -690,7 +690,8 @@ m2=*</panel_attributes>
       <w>270</w>
       <h>81</h>
     </coordinates>
-    <panel_attributes>Measurement Tool
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Measurement Tool
 --
 
 --
@@ -717,7 +718,8 @@ m2=*</panel_attributes>
       <w>324</w>
       <h>171</h>
     </coordinates>
-    <panel_attributes>Proposed Expression Analyser
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Proposed Expression Analyser
 --
 --
 
@@ -750,7 +752,8 @@ m2=*</panel_attributes>
       <w>324</w>
       <h>171</h>
     </coordinates>
-    <panel_attributes>Measurement Result Analyser
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Measurement Result Analyser
 --
 --
 
