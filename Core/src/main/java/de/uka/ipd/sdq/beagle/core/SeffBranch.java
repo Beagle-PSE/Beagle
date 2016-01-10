@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import java.io.Serializable;
-
 /**
  * Models branches in a component's SEFF, originating from conditional constructs.
  * 
@@ -12,7 +10,7 @@ import java.io.Serializable;
  * 
  * @author Annika Berger
  */
-public class SeffBranch extends MeasurableSeffElement implements Serializable {
+public class SeffBranch extends MeasurableSeffElement {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

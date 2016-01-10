@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import java.io.Serializable;
-
 /*
  * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
  * class!
@@ -16,7 +14,7 @@ import java.io.Serializable;
  * 
  * @author Christoph Michelbach
  */
-public class ExternalCall extends MeasurableSeffElement implements Serializable {
+public class ExternalCall extends MeasurableSeffElement {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
