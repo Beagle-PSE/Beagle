@@ -11,8 +11,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
  * EvaluableExpressions} to propose new {@linkplain EvaluableExpression
  * EvaluableExpressions}. Analysers that only use measurement results should implement
  * {@link MeasurementResultAnalyser} instead of this interface. For more details, look for
- * the Blackboard layers in the Design & Architecture document in chapter 2. Tools wishing
- * to conduct measurements on software are advised to implement
+ * the Blackboard layers in the Design and Architecture document in chapter 2. Tools
+ * wishing to conduct measurements on software are advised to implement
  * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this
  * interface.
  *
