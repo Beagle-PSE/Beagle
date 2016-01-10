@@ -1,11 +1,11 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.core.analysis.ResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser;
 import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
 
 /**
  * Conducts a complete analysis of elements on a blackboard. Controls the
- * {@link MeasurementController}, {@link ResultAnalyser ResultAnalysers} and the
+ * {@link MeasurementController}, {@link ProposedExpressionAnalyser ResultAnalysers} and the
  * {@link FinalJudge} to measure and analyse parametric dependencies.
  *
  * <h3>The Analysis</h3> During the analysis, the controller will ask participants whether
@@ -15,11 +15,11 @@ import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
  * <ul>
  *
  * <li>There is always only the {@link MeasurementController}, only the {@link FinalJudge}
- * or only one {@link ResultAnalyser} (or none of the previous) running. They may use
+ * or only one {@link ProposedExpressionAnalyser} (or none of the previous) running. They may use
  * parallelisation as they wish but are self-responsible for synchronisation.
  *
- * <li>A {@link ResultAnalyser} will only be called if its
- * {@link ResultAnalyser#canContribute(ReadOnlyBlackboardView) canContribute} method
+ * <li>A {@link ProposedExpressionAnalyser} will only be called if its
+ * {@link ProposedExpressionAnalyser#canContribute(ReadOnlyBlackboardView) canContribute} method
  * returns {@code true}. The {@link MeasurementController} will only be called if its
  * {@link MeasurementController#canMeasure canMeasure} method returns {@code true}.
  *
@@ -27,11 +27,11 @@ import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
  * be called next if its {@link MeasurementController#canMeasure canMeasure} method
  * returns {@code true}.
  *
- * <li>Any {@link ResultAnalyser} whose
- * {@link ResultAnalyser#canContribute(ReadOnlyBlackboardView) canContribute} method
+ * <li>Any {@link ProposedExpressionAnalyser} whose
+ * {@link ProposedExpressionAnalyser#canContribute(ReadOnlyBlackboardView) canContribute} method
  * returns {@code true} will be called.
  *
- * <li>The {@linkplain FinalJudge} will only be called if no {@link ResultAnalyser} can
+ * <li>The {@linkplain FinalJudge} will only be called if no {@link ProposedExpressionAnalyser} can
  * contribute.
  *
  * </ul>
