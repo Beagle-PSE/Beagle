@@ -336,8 +336,9 @@ public class Blackboard implements Serializable {
 
 	/**
 	 * Returns the final expression set for {@code element}. The return value of this
-	 * method may change if {@link setFinalExpressionFor(MeasurableSeffElement,
-	 * EvaluableExpression} is called with the same {@code element} between calls to
+	 * method may change if
+	 * {@link #setFinalExpressionFor(MeasurableSeffElement, EvaluableExpression)} is
+	 * called with the same {@code element} between calls to
 	 * {@code addProposedExpressionFor} with this element as parameter.
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
