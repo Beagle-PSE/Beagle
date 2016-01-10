@@ -37,14 +37,14 @@
       <x>0</x>
       <y>0</y>
       <w>720</w>
-      <h>160</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>PCM Repository Writer
 --
 --
 
   &lt;&lt;Create&gt;&gt; + construct (
-      blackboard: Read Only Blackboard View )
+      blackboard: Blackboard )
 
   + write to( repository: PCM repository files )
 </panel_attributes>
@@ -56,7 +56,7 @@
       <x>760</x>
       <y>0</y>
       <w>800</w>
-      <h>200</h>
+      <h>220</h>
     </coordinates>
     <panel_attributes>PCM Repository Blackboard Factory
 --
@@ -74,27 +74,27 @@
     <id>Relation</id>
     <coordinates>
       <x>480</x>
-      <y>140</y>
+      <y>160</y>
       <w>100</w>
-      <h>360</h>
+      <h>340</h>
     </coordinates>
     <panel_attributes>fontsize=12
 lt=&lt;.
 read</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>940</x>
-      <y>180</y>
+      <y>200</y>
       <w>120</w>
-      <h>320</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>fontsize=12
 lt=&lt;.
 write</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -116,12 +116,12 @@ Blackboard Storer
     <id>Relation</id>
     <coordinates>
       <x>1340</x>
-      <y>180</y>
+      <y>200</y>
       <w>260</w>
-      <h>320</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
