@@ -346,37 +346,13 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * Adds {@code expression} as a proposal to describe {@code rdia}’s measurement
-	 * results’ parametric dependencies.
+	 * Adds {@code expression} as a proposal.
 	 *
-	 * @param rdia A resource demanding internal action. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code rdia}’s
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code element}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionForRDIA(final ResourceDemandingInternalAction rdia,
-		final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Adds {@code expression} as a proposal to describe {@code branch}’s measurement
-	 * results’ parametric dependencies.
-	 *
-	 * @param branch A SEFF Branch. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code branch}’s
-	 *            measurement results. Must not be {@code null}.
-	 */
-	public void proposeExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Adds {@code expression} as a proposal to describe {@code loop}’s measurement
-	 * results’ parametric dependencies.
-	 *
-	 * @param loop A SEFF Loop. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code loop}’s
-	 *            measurement results. Must not be {@code null}.
-	 */
-	public void proposeExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
+	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 	}
 
 	/**
