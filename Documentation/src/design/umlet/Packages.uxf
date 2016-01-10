@@ -4,16 +4,15 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>420</x>
+      <x>450</x>
       <y>40</y>
-      <w>360</w>
-      <h>350</h>
+      <w>380</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>Evaluable Expressions
 --
 
  +&lt;&lt;Interface&gt;&gt; Evaluable Expression
- +&lt;&lt;Interface&gt;&gt; Evaluable Expression Visitor
  +Constant Expression
  +Evaluable Variable
  +Natural Logarithm Expression
@@ -38,16 +37,19 @@ valign=top</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>20</x>
-      <y>560</y>
-      <w>370</w>
-      <h>100</h>
+      <y>480</y>
+      <w>440</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>Analysis
 --
 
  +&lt;&lt;Interface&gt;&gt; Measurement Result Analyser
  +&lt;&lt;Interface&gt;&gt; Proposed Expression Analyser
- +Analyser Blackboard View
+ +Measurement Analyser Blackboard View
+ +Read-Only Measurement Analyser Blackboard View
+ +Proposed Expression Analyser Blackboard View
+ +Read-Only Proposed Expression Analyser Blackboard View
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
@@ -57,23 +59,25 @@ valign=top</panel_attributes>
     <coordinates>
       <x>0</x>
       <y>0</y>
-      <w>820</w>
-      <h>710</h>
+      <w>850</w>
+      <h>720</h>
     </coordinates>
     <panel_attributes>Beagle Core
 --
 
  +&lt;&lt;Interface&gt;&gt; BlackboardStorer
+ +&lt;&lt;Interface&gt;&gt; Measurable SEFF Element
  +Read-Only Blackboard View
  +Resource Demanding Internal Action
  +Measurement Controller
  +Blackboard
  +SEFF Loop
  +SEFF Branch
+ +External Call Parameter
  +Analysis Controller
  +Measurement Controller Blackboard View
- +Measurable SEFF Element
- +Beagle Controller
+ +Read-Only Measurement Controller Blackboard View
+ +Analysis Controller
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
@@ -81,16 +85,18 @@ valign=top</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>20</x>
-      <y>450</y>
-      <w>230</w>
-      <h>90</h>
+      <x>510</x>
+      <y>570</y>
+      <w>310</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Judge
 --
 
  +&lt;&lt;Interface&gt;&gt; Final Judge
- +Final Jugde Blackboard View
+ +&lt;&lt;Interface&gt;&gt; Evaluable Expression Fitness Function
+ +Final Fitness Function Blackboard View
+ 
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
@@ -99,18 +105,20 @@ valign=top</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>20</x>
-      <y>250</y>
+      <y>260</y>
       <w>370</w>
-      <h>170</h>
+      <h>200</h>
     </coordinates>
     <panel_attributes>Measurement
 --
 
  +&lt;&lt;Interface&gt;&gt; Measurement Tool
+ +Measurement Controller
  +Resource Demand Measurement Result
  +Loop Repitition Count Measurement Result
  +Parametrisation-Dependent Measurement Result
  +Branch Decision Measurement Result
+ +Parameter Change Measurement Result
  +Parametrisation
  +Measurement Order
 halign=left
@@ -120,9 +128,9 @@ valign=top</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>420</x>
-      <y>410</y>
-      <w>290</w>
+      <x>510</x>
+      <y>420</y>
+      <w>310</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>PCM Connection
@@ -141,7 +149,7 @@ valign=top</panel_attributes>
       <x>0</x>
       <y>730</y>
       <w>820</w>
-      <h>180</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>GUI
 --
@@ -153,6 +161,7 @@ valign=top</panel_attributes>
  +Selection Overview Wizard Page
  +Timeout Wizard Page
  +User Configuration
+ +Beagle Controller
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
