@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.gui;
 
-import de.uka.ipd.sdq.beagle.core.BeagleController;
-
 import org.eclipse.jface.dialogs.MessageDialog;
 
 import java.util.Set;
@@ -10,7 +8,7 @@ import java.util.Set;
  * Controls the Graphical User Interface (GUI). One {@code GuiController} corresponds to
  * exactly one instance of the GUI. Opening it several times is not possible. Note that
  * it's possible for a GUI instance to exist while not being open.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class GuiController {
@@ -18,21 +16,25 @@ public class GuiController {
 	/**
 	 * The {@link BeagleAnalysisWizard} associated with this {@link GuiController}.
 	 */
+	@SuppressWarnings("unused")
 	private BeagleAnalysisWizard beagleAnalysisWizard;
 
 	/**
 	 * The {@link UserConfiguration} associated with this {@link GuiController}.
 	 */
+	@SuppressWarnings("unused")
 	private UserConfiguration userConfiguration;
 
 	/**
 	 * The {@link MessageDialog} associated with this {@link GuiController}.
 	 */
+	@SuppressWarnings("unused")
 	private MessageDialog messageDialog;
 
 	/**
 	 * The {@link BeagleController} associated with this {@link GuiController}.
 	 */
+	@SuppressWarnings("unused")
 	private BeagleController beagleController;
 
 	/**

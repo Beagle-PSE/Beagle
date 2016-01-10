@@ -1,5 +1,10 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.judge;
 
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
@@ -8,14 +13,15 @@ import java.io.Serializable;
 import java.util.Set;
 
 /**
- * Interface of {@link Blackboard} designed to be used by
+ * Interface for Blackboard views designed to be passed to an
  * {@link EvaluableExpressionFitnessFunction}. Provides reading and writing access for
- * data on the Blackboard as well as access to the {@code getMeasurementResultsFor}
+ * custom data on the Blackboard as well as access to the {@code getMeasurementResultsFor}
  * methods.
  *
  * @author Christoph Michelbach
+ * @author Joshua Gleitze
  */
-public interface EvaluableExpressionFitnessFunctionView {
+public interface EvaluableExpressionFitnessFunctionBlackboardView {
 
 	/**
 	 * Delegates to
@@ -28,7 +34,7 @@ public interface EvaluableExpressionFitnessFunctionView {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
 	 */
-	Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia);
+	Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(ResourceDemandingInternalAction rdia);
 
 	/**
 	 * Delegates to
@@ -40,7 +46,7 @@ public interface EvaluableExpressionFitnessFunctionView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
-	Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch);
+	Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(SeffBranch branch);
 
 	/**
 	 * Delegates to
@@ -52,7 +58,7 @@ public interface EvaluableExpressionFitnessFunctionView {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
-	Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SeffLoop loop);
+	Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(SeffLoop loop);
 
 	/**
 	 * Delegates to
@@ -66,16 +72,7 @@ public interface EvaluableExpressionFitnessFunctionView {
 	 *         never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
-	Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(final ExternalCallParameter externalCallParameter);
-
-	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)}
-	 * .
-	 *
-	 * @param element A SEFF element. Must not be {@code null}.
-	 */
-	void getProposedExpressionFor(final MeasurableSeffElement element);
+	Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(ExternalCallParameter externalCallParameter);
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)} .
@@ -88,8 +85,7 @@ public interface EvaluableExpressionFitnessFunctionView {
 	 *         {@code writer} yet.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)
 	 */
-	<WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
-		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer);
+	<WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer);
 
 	/**
 	 * Delegates to
@@ -100,7 +96,6 @@ public interface EvaluableExpressionFitnessFunctionView {
 	 * @param <WRITTEN_TYPE> {@code written}’s type.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)
 	 */
-	<WRITTEN_TYPE extends Serializable> void writeFor(final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer,
-		final WRITTEN_TYPE written);
-
+	<WRITTEN_TYPE extends Serializable> void writeFor(Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer,
+		WRITTEN_TYPE written);
 }

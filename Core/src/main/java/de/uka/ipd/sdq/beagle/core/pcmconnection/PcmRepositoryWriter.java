@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
-import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
+import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -22,7 +22,7 @@ public class PcmRepositoryWriter {
 	 *
 	 * @param blackboard The blackboard containing results.
 	 */
-	public PcmRepositoryWriter(final ReadOnlyBlackboardView blackboard) {
+	public PcmRepositoryWriter(final Blackboard blackboard) {
 	}
 
 	/**

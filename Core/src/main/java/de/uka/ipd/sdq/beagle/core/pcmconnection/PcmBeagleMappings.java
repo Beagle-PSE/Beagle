@@ -15,6 +15,11 @@ import java.io.Serializable;
 public class PcmBeagleMappings implements Serializable {
 
 	/**
+	 * Serialisation version UID, see {@link java.io.Serializable}.
+	 */
+	private static final long serialVersionUID = -2442979526968290433L;
+
+	/**
 	 * Gets the identifier used for {@code rdia} in the PCM repository.
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.

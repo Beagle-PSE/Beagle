@@ -6,7 +6,7 @@ import org.eclipse.jface.wizard.WizardPage;
  * A page of {@link BeagleAnalysisWizard} allowing the user to configure whether they want
  * to perform the analysis on the machine they're at or on a machine connected via a
  * network.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class MachineSelectionWizardPage extends WizardPage {
@@ -14,6 +14,7 @@ public class MachineSelectionWizardPage extends WizardPage {
 	/**
 	 * The {@link UserConfiguration} associated with this {@link WizardPage}.
 	 */
+	@SuppressWarnings("unused")
 	private UserConfiguration userConfiguration;
 
 	/**
