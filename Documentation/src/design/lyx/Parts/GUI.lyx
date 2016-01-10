@@ -71,7 +71,7 @@
 \begin_body
 
 \begin_layout Chapter
-Component: Beagle GUI
+Graphical User Interface
 \end_layout
 
 \begin_layout Standard
@@ -103,10 +103,6 @@ List all associated packages
 
 \end_layout
 
-\begin_layout Section
-Overview
-\end_layout
-
 \begin_layout Standard
 \begin_inset Float figure
 wide false
@@ -133,7 +129,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-GUI Classes
+GUI Class Diagram
 \end_layout
 
 \end_inset
@@ -152,14 +148,11 @@ UML class diagram of the GUI classes.
 \end_layout
 
 \begin_layout Section
-Most Important Classes
-\end_layout
-
-\begin_layout Subsection
-GUI Controller
+Design
 \end_layout
 
 \begin_layout Standard
+The 
 \begin_inset ERT
 status open
 
@@ -172,7 +165,8 @@ gls{GUI}
 
 \end_inset
 
- Controller is the heart of the 
+ follows the Model-View-Controller paradigm.
+ It accordingly clearly separates responsibilities: Displaying 
 \begin_inset ERT
 status open
 
@@ -185,9 +179,10 @@ gls{GUI}
 
 \end_inset
 
-.
- An object of it is created (and the method open() is called) to open the
- 
+ parts, controlling these parts, setting up the model (Beagle Core), and
+ the model itself.
+ This leads to a clear flow of information and control.
+ Information is stored either locally or in a single object every 
 \begin_inset ERT
 status open
 
@@ -200,21 +195,11 @@ gls{GUI}
 
 \end_inset
 
-.
- This class controls the flow of actions over the entire analysis but gives
- control to Beagle Controller after the user started the analysis.
-\end_layout
-
-\begin_layout Subsection
-Beagle Controller
-\end_layout
-
-\begin_layout Standard
-Beagle Controller becomes active after the user started the analysis and
- unless the analysis is paused is active until the analysis is finished
- or aborted.
- Beagle Controller is commanded by GUI Controller to start, pause, continue,
- and abort the analysis.
+ class knows (the User Configuration) because only the user’s settings need
+ to be transported through all objects.
+ The user always has control over the analysis because information can be
+ transported from the dialog, though the GUI Controller object, to the Beagle
+ Controller which can instruct the model.
 \end_layout
 
 \begin_layout Section
@@ -222,48 +207,135 @@ Control Flow
 \end_layout
 
 \begin_layout Standard
-The GUI Controller is called via actions originating from context menu clicks.
- An object of GUI Controller is created there and the method open() is called
- on it.
- It creates an object of User Configuration which it from now on will be
- associated with.
- It then creates a new Beagle Analysis Wizard object associated with the
- same User Configuration object.
- Beagle Analysis Wizard then creates its Wizard Pages which are also associated
- with the same User Configuration objects.
- That's because this object stores everything the user configures, so all
- pages of the Wizard need to read from and/or write on it.
+GUI Controller is the heart of Beagle’s 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+.
+ It is responsible to start the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+.
+ The class controls the flow of actions on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+ and gives control to Beagle Controller once the user started the analysis.
+ Beagle Controller is commanded by GUI Controller to start, pause, continue,
+ and abort the analysis.
+\end_layout
+
+\begin_layout Standard
+The GUI Controller is created and called from actions originating from context
+ menu clicks.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+ stores all data obtained from the user in the User Configuration.
+ Thus, the GUI Controller creates a User Configuration which it from now
+ on will be associated with.
+ It then creates a new Beagle Analysis Wizard which in return will create
+ its Wizard Pages.
+ All objects obtain the User Configuration to be able to directly provide
+ their gathered information to it.
+ Calling GUI Controller’s open() method will display the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+ and show the Analysis Wizard, prompting the use for all information necessary
+ to perform an analysis.
 \end_layout
 
 \begin_layout Standard
 After the wizard has finished, control is returned to the GUI Controller
- object which then opens a dialog providing the user with the information
- that the analysis is running and the options to pause/continue or to abort
- the analysis.
- To get the analysis running, pausing, continuing, or to abort it, the GUI
- Controller objects calls the corresponding methods of Beagle Controller
- when it receives information that the wizard has finished or a button in
- the dialog the GUI Controller objects opens after the wizard has finished
- has been clicked.
+ which will now (concurrently) instruct the Beagle Controller to set up
+ the Beagle Core Component.
+ To do so, Beagle Controller sets up a Blackboard based on the information
+ collected in the User Configuration.
+ For example, it uses a PCM Repository Blackboard Factory to translate 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
 \end_layout
 
-\begin_layout Section
-Reasons for Chosen Design
+\end_inset
+
+ objects to the affected Measurable 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Elements.
+ The prepared Blackboard is then passed to Beagle Core’s Analysis Controller,
+ which will perform the actual analysis.
+ 
 \end_layout
 
 \begin_layout Standard
-This design has been chosen for the clarity of its flow of information and
- control.
- Information is stored either locally or in a single object every different
- object knows (the User Configuration object) because only the settings
- of the user need to be transported through all objects.
- The user always has control over the analysis because information can be
- transported from the dialog, though the GUI Controller object, to the Beagle
- Controller which controls the analysis.
-\end_layout
-
-\begin_layout Section
-Chosen Design Patterns
+In the meantime, GUI Controller opens a dialog providing the user with informati
+on about the analysis and options to pause, continue or abort the analysis.
+ GUI Controller bequeaths these calls the corresponding methods of Beagle
+ Controller, which handles the Beagle Core.
 \end_layout
 
 \end_body
