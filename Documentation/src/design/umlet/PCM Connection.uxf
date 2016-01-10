@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>60</x>
+      <y>300</y>
+      <w>580</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>PCM Beagle Mapping
+--
+--
+  + get PCM ID of ( rdia: Resource Demanding Internal Action ): String
+  + get PCM ID of ( branch: SEFF Branch ): String
+  + get PCM ID of ( loop: SEFF Loop ): String
+
+ 
+  + has PCM ID of ( rdia: Resource Demanding Internal Action  ): boolean
+  + has PCM ID of ( branch: SEFF Branch ): boolean
+  + has PCM ID of ( loop: SEFF Loop ): boolean
+
+ 
+  + add PCM ID of ( rdia: Resource Demanding Internal Action, identifier: String )
+  + add PCM ID of ( branch: SEFF Branch, identifier: String )
+  + add PCM ID of ( loop: SEFF Loop, identifier: String )
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>40</y>
+      <w>340</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>PCM Repository Writer
+--
+--
+
+  &lt;&lt;Create&gt;&gt; + construct (
+      blackboard: Read Only Blackboard View )
+
+  + write to( repository: PCM repository files )
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>380</x>
+      <y>40</y>
+      <w>370</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>PCM Repository Blackboard Factory
+--
+--
+
+  &lt;&lt;Create&gt;&gt; + construct (
+      repository: PCM repository files )
+
+  + get blackboard for all elements() : Blackboard
+  + get blackboard for IDs( IDs: String) : Blackboard
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>510</x>
+      <y>180</y>
+      <w>50</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;.
+write</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>180</y>
+      <w>50</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;.
+read</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
