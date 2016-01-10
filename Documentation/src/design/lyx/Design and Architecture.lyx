@@ -59,10 +59,8 @@
 % More features and faster updated bookmarks.
 \usepackage{bookmark}
 
-
 % Break citations
 \usepackage{breakcites}
-
 
 % Set the PDF metadata
 \hypersetup{
@@ -76,35 +74,15 @@
     breaklinks
 }
 
-%Farben fuer Programmlisting
-\usepackage{listings,xcolor}
-\definecolor{pl_background}{rgb}{0.95,0.95,0.95}
-\definecolor{pl_comment}{rgb}{0.12, 0.38, 0.18 }
-\definecolor{pl_ifelse}{rgb}{0.74,0.74,.29}
-\definecolor{pl_keyword}{rgb}{0.37, 0.08, 0.25}
-\definecolor{pl_string}{rgb}{0.06, 0.10, 0.98}
-% Vordefiniertes Programmlisting
-\lstset{
-language = sh,
-basicstyle = \small\sffamily,
-backgroundcolor = \color{pl_background},
-stringstyle = \color{pl_string},
-keywordstyle = \color{pl_keyword}\bfseries,
-commentstyle = \color{pl_comment}\itshape,
-frame = lrbt,
-numbers = left,
-showstringspaces = false,
-breaklines = true,
-xleftmargin = 15pt,
-emph = [1]{php},
-emphstyle = [1]\color{black},
-emph = [2]{if,and,or,else},
-emphstyle = [2]\color{pl_ifelse}}
+% Algorithm settings
+\DontPrintSemicolon 
+\SetAlFnt{\small}
 \end_preamble
 \options english,final
 \use_default_options true
 \begin_modules
 enumitem
+algorithm2e
 \end_modules
 \maintain_unincluded_children false
 \language british
@@ -126,7 +104,7 @@ enumitem
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement tph
+\float_placement h
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -332,6 +310,13 @@ ation
 hyphenation{me-ta-mo-del} 
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+hyphenation{Ex-pres-sion}
+\end_layout
+
 \end_inset
 
 
@@ -415,14 +400,6 @@ listfigurename}
 \end_layout
 
 \begin_layout Standard
-\begin_inset FloatList algorithm
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -495,7 +472,7 @@ filename "Parts/Architectual Overview.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "Parts/Component Beagle Core.lyx"
+filename "Parts/Blackboard.lyx"
 
 \end_inset
 
@@ -506,7 +483,7 @@ filename "Parts/Component Beagle Core.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "Parts/Component Beagle GUI.lyx"
+filename "Parts/Analysis.lyx"
 
 \end_inset
 
@@ -517,29 +494,7 @@ filename "Parts/Component Beagle GUI.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 preview true
-filename "Parts/Component Measurement Tool.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Result Analyser.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-preview true
-filename "Parts/Component Final Judge.lyx"
+filename "Parts/GUI.lyx"
 
 \end_inset
 
