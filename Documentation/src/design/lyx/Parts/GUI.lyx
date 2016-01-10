@@ -147,6 +147,51 @@ UML class diagram of the GUI classes.
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Context Menus.uxf.pdf
+	width 100text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Context menus Class Diagram
+\end_layout
+
+\end_inset
+
+UML class diagram of the context menus.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Design
 \end_layout
@@ -251,6 +296,30 @@ gls{GUI}
  and gives control to Beagle Controller once the user started the analysis.
  Beagle Controller is commanded by GUI Controller to start, pause, continue,
  and abort the analysis.
+\end_layout
+
+\begin_layout Standard
+There are three context menu entries added by Beagle with eclipse extension
+ points: One for analysing a complete repository in the package explorer
+ and the project explorer on the .repository and .repository_diagram files.
+ Another one for analysing a single components in the repository diagram
+ on the Basic Component Edit Parts.
+ The last one is for analysing a single internal actions in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ diagram for Internal Action Edit Parts and Internal Action 2 Edit Parts.
+ Each of them has its own Command Handler class, which is handles clicks
+ on the context menu entries.
 \end_layout
 
 \begin_layout Standard
