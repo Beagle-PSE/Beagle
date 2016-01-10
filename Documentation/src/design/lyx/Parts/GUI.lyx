@@ -115,6 +115,7 @@ status open
 	filename ../../umlet/GUI.uxf.pdf
 	width 100text%
 	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -134,7 +135,20 @@ GUI Class Diagram
 
 \end_inset
 
-UML class diagram of the GUI classes.
+UML class diagram of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{GUI}
+\end_layout
+
+\end_inset
+
+ classes.
 \end_layout
 
 \end_inset
@@ -360,10 +374,8 @@ In the meantime, GUI Controller opens a dialog providing the user with informati
 on about the analysis and options to pause, continue or abort the analysis.
  GUI Controller bequeaths these calls the corresponding methods of Beagle
  Controller, which handles the Beagle Core.
-\end_layout
-
-\begin_layout Section
-PCM Connection
+ Once the Analysis Controller has finished the analysis, the Beagle Controller
+ uses a PCM Writer to write the results back to the PCM files.
 \end_layout
 
 \begin_layout Standard
@@ -373,9 +385,10 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ../../umlet/PCM Connection.uxf.pdf
-	width 100text%
+	width 70text%
 	height 100theight%
 	keepAspectRatio
 
@@ -385,7 +398,32 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-How to access the PCM
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+PCM Translation Class Diagram
+\end_layout
+
+\end_inset
+
+Classes used to read from and write to
+ 
+\lang british
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ repository files.
 \end_layout
 
 \end_inset
