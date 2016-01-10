@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import java.io.Serializable;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.judge;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
