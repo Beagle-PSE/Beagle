@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementControllerBlackboardView;
 
 import java.util.Collection;
 
