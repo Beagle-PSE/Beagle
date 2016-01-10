@@ -37,9 +37,9 @@ valign=top</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>20</x>
-      <y>480</y>
+      <y>510</y>
       <w>440</w>
-      <h>200</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>Analysis
 --
@@ -67,7 +67,6 @@ valign=top</panel_attributes>
 
  +&lt;&lt;Interface&gt;&gt; BlackboardStorer
  +&lt;&lt;Interface&gt;&gt; Measurable SEFF Element
- +Read-Only Blackboard View
  +Resource Demanding Internal Action
  +Measurement Controller
  +Blackboard
@@ -105,7 +104,7 @@ valign=top</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>20</x>
-      <y>260</y>
+      <y>270</y>
       <w>370</w>
       <h>200</h>
     </coordinates>
