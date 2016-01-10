@@ -46,7 +46,7 @@ valign=top</panel_attributes>
 
  +&lt;&lt;Interface&gt;&gt; Measurement Result Analyser
  +&lt;&lt;Interface&gt;&gt; Proposed Expression Analyser
- +Measurement Analyser Blackboard View
+ +Measurement Result Analyser Blackboard View
  +Read-Only Measurement Analyser Blackboard View
  +Proposed Expression Analyser Blackboard View
  +Read-Only Proposed Expression Analyser Blackboard View
