@@ -1,18 +1,25 @@
 package de.uka.ipd.sdq.beagle.core.analysis;
 
 import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 /**
- * An analyser that contributes knowledge of any kind to the
- * {@link de.uka.ipd.sdq.beagle.core.Blackboard}. There is no restriction on the kind of
- * knowledge, as long as it can be expressed in the blackboard’s vocabulary. Tools wishing
+ * An analyser that contributes {@linkplain EvaluableExpression EvaluableExpressions} to
+ * the {@link de.uka.ipd.sdq.beagle.core.Blackboard} by analysing
+ * {@linkplain EvaluableExpression EvaluableExpressions}. This analyser can use
+ * measurement results and already proposed {@linkplain EvaluableExpression
+ * EvaluableExpressions} to propose new {@linkplain EvaluableExpression
+ * EvaluableExpressions}. Analysers that only use measurement results should implement
+ * {@link MeasurementResultAnalyser} instead of this interface. For more details, look for
+ * the Blackboard layers in the Design & Architecture document in chapter 2. Tools wishing
  * to conduct measurements on software are advised to implement
  * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this
  * interface.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
-public interface ResultAnalyser {
+public interface ProposedExpressionAnalyser {
 
 	/**
 	 * Determines whether this analyser can potentially contribute knowledge in the
