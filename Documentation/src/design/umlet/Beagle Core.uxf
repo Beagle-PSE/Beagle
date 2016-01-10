@@ -247,8 +247,7 @@ m1=1</panel_attributes>
 lt=[RDIAs]-&gt;
 m2=*
 r2=proposed expressions
-m1=0..1
-</panel_attributes>
+m1=0..1</panel_attributes>
     <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -436,9 +435,9 @@ m2=0..1</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>18</x>
-      <y>1719</y>
+      <y>1737</y>
       <w>288</w>
-      <h>126</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 Measurement Tool
@@ -454,14 +453,15 @@ Measurement Tool
       <x>18</x>
       <y>1503</y>
       <w>360</w>
-      <h>126</h>
+      <h>153</h>
     </coordinates>
     <panel_attributes>Measurement Controller
 --
 --
 
   + can contribute ( blackboard: Read-Only
-      Measurement Controller Blackboard View ): boolean
+           Measurement Controller Blackboard View )
+      : boolean
 
   + contribute ( blackboard:
       Measurement Controller Blackboard View)
@@ -527,15 +527,15 @@ m2=*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>144</x>
-      <y>1620</y>
+      <y>1647</y>
       <w>144</w>
-      <h>117</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..*
 r1=- measurement tools
 m2=*</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

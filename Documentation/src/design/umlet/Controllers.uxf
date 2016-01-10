@@ -26,14 +26,15 @@
       <x>200</x>
       <y>370</y>
       <w>380</w>
-      <h>140</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>Measurement Controller
 --
 --
 
   + can contribute ( blackboard: Read-Only
-      Measurement Controller Blackboard View ): boolean
+           Measurement Controller Blackboard View )
+      : boolean
 
   + contribute ( blackboard:
       Measurement Controller Blackboard View)
@@ -44,7 +45,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>200</x>
-      <y>610</y>
+      <y>700</y>
       <w>320</w>
       <h>140</h>
     </coordinates>
@@ -60,15 +61,15 @@ Measurement Tool
     <id>Relation</id>
     <coordinates>
       <x>340</x>
-      <y>500</y>
+      <y>530</y>
       <w>160</w>
-      <h>130</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..*
 r1=- measurement tools
 m2=*</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
