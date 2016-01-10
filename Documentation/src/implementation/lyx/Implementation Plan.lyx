@@ -477,7 +477,7 @@ Write a simple Eclipse plugin that offers an extension point for measurement
 \end_layout
 
 \begin_layout Plain Layout
-Create a plugin with a measuremnt tool stub that uses the extension point.
+Create a plugin with a measurement tool stub that uses the extension point.
 \end_layout
 
 \end_inset
@@ -719,6 +719,18 @@ ResourceDemandingInternalAction
 
 \end_inset
 
+ 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ExternalCallParameter
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -846,7 +858,7 @@ SEFFBranch
 
 \end_inset
 
-es and 
+es, 
 \begin_inset listings
 inline true
 status open
@@ -854,6 +866,18 @@ status open
 \begin_layout Plain Layout
 
 ResourceDemandingInternalAction
+\end_layout
+
+\end_inset
+
+s and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ExternalCallParameter
 \end_layout
 
 \end_inset
@@ -1040,6 +1064,18 @@ ResourceDemandingInternalAction
 
 \end_inset
 
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ExternalCallParameter
+\end_layout
+
+\end_inset
+
  and the 
 \begin_inset listings
 inline true
@@ -1137,7 +1173,7 @@ status open
 
 \begin_layout Plain Layout
 
-Read-OnlyBlackboardView
+Read-Only Measurement Controller Blackboard View
 \end_layout
 
 \end_inset
@@ -1149,7 +1185,7 @@ status open
 
 \begin_layout Plain Layout
 
-AnalyserBlackboardView
+Measurement Controller Blackboard View
 \end_layout
 
 \end_inset
@@ -1161,7 +1197,7 @@ status open
 
 \begin_layout Plain Layout
 
-MeasurementControllerBlackboardView
+Read-Only Measurement Result Analyser Blackboard View
 \end_layout
 
 \end_inset
@@ -1173,7 +1209,31 @@ status open
 
 \begin_layout Plain Layout
 
-FinalJudgeBlackboardView
+Measurement Result Analyser Blackboard View
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Read-Only Proposed Expression Analyser Blackboard View
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Proposed Expression Analyser Blackboard View
 \end_layout
 
 \end_inset
@@ -1666,7 +1726,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement Measurment Results
+Implement Measurement Results
 \end_layout
 
 \end_inset
@@ -1789,7 +1849,133 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement Blackboard Controller
+Implement Measurement Order
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#125
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementOrder
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+CodeSection
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depends on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#040 (SEFF Classes)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement Blackboard Controllers
 \end_layout
 
 \end_inset
@@ -1886,6 +2072,271 @@ Blackboard
 \end_inset
 
 ) and #070 (Blackboard Views)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement tool helper classes.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#133
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Abstract Measurement Tool
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Abstract Proposed Expression Analyser
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Abstract Measurement Result Analyser
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depends on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+–
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement Final Judge
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#137
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Final Judge
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depends on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#060 (
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Blackboard
+\end_layout
+
+\end_inset
+
+) and #120 (Measurement Results)
+\end_layout
+
+\begin_layout Plain Layout
+(Not depending on #160 (Fitness Function), because only method stubs are
+ needed here.)
 \end_layout
 
 \end_inset
@@ -2003,7 +2454,7 @@ Depends on:
 \begin_inset Text
 
 \begin_layout Plain Layout
-#120 (Measurment Results), #060 (
+#120 (Measurement Results), #060 (
 \begin_inset listings
 inline true
 status open
@@ -2015,7 +2466,7 @@ Blackboard
 
 \end_inset
 
-), #070 (Blackboard Views) and #040 (SEFF classes)
+), #070 (Blackboard Views), #040 (SEFF classes) and #125 (Measurement Order)
 \end_layout
 
 \end_inset
@@ -2057,7 +2508,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Averaging Final Judge
+Averaging Measurement Result Analyser
 \end_layout
 
 \end_inset
@@ -2104,7 +2555,7 @@ status open
 
 \begin_layout Plain Layout
 
-FinalJudge
+Measurement Result Analyser
 \end_layout
 
 \end_inset
@@ -2121,6 +2572,18 @@ EvaluableExpression
 
 \end_inset
 
+ a 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ConstantExpression
+\end_layout
+
+\end_inset
+
  for all 
 \begin_inset listings
 inline true
@@ -2133,7 +2596,7 @@ MeasurableSeffElement
 
 \end_inset
 
-s the average of all available measurement results.
+s with the average of all available measurement results.
 \end_layout
 
 \end_inset
@@ -2153,7 +2616,133 @@ Depends on:
 \begin_inset Text
 
 \begin_layout Plain Layout
-–
+#120 (Measurement Results), #060 (
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Blackboard
+\end_layout
+
+\end_inset
+
+), #070 (Blackboard Views), #040 (SEFF classes) and #133 (tool helper classes).
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement Evaluable Expression Fitness Function 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#160
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implement a 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+EvaluableExpessionFitnessFunction
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depends on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#120 (Measurement Results) and #040 (SEFF classes)
 \end_layout
 
 \end_inset
@@ -2194,7 +2783,7 @@ status open
 
 \begin_layout Plain Layout
 
-ResultAnalyser
+MeasurementResultAnalyser
 \end_layout
 
 \end_inset
@@ -2206,7 +2795,7 @@ status open
 
 \begin_layout Plain Layout
 
-FinalJudge
+ProposedExpressionAnalyser
 \end_layout
 
 \end_inset
@@ -2242,7 +2831,7 @@ status open
 
 \begin_layout Plain Layout
 
-ResultAnalyser
+MeasurementResultAnalyser
 \end_layout
 
 \end_inset
@@ -2254,7 +2843,7 @@ status open
 
 \begin_layout Plain Layout
 
-FinalJudge
+ProposedExpressionAnalyser
 \end_layout
 
 \end_inset
