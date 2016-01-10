@@ -118,7 +118,13 @@ d, when it can do so and may use information of other tools, but don't need
 As it makes no sense to run a tool that perform regression of the measurement
  results before any measurements have been made, the vocabulary of the blackboar
 d is divided in different layers and the tools can only see some of them.
- On the bottom layer are the code sections and all tools can see them on
+ On the bottom layer are the code sections and all tools can access them,
+ on the highest level are the final expressions and only the final judge
+ can access them.
+ In between are the Measurement Result Analysers.
+ They can access access the measurement results (and the code sections).
+ On top of them are the Proposed Expressions Analysers, which can additionally
+ access all already proposed expressions.
 \end_layout
 
 \begin_layout Standard
@@ -154,6 +160,49 @@ Abstraction Layers on the Blackboard
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The tools contribute content of their highest level or the level above that:
+ Measurement Tools contribute measurement results, Measurement Result Analysers
+ and Proposed Expressions Analysers contribute 
+\begin_inset Quotes eld
+\end_inset
+
+proposed
+\begin_inset Quotes erd
+\end_inset
+
+ evaluable expressions and the Final Judge the 
+\begin_inset Quotes eld
+\end_inset
+
+final
+\begin_inset Quotes erd
+\end_inset
+
+ evaluable expressions, which will be added to the PCM.
+\end_layout
+
+\begin_layout Standard
+Each kind of tool has a different priority, contrary to their access level:
+ The Measurement Tools have the highest priority.
+ Only when no Measurement Tool can contribute something, a Measurement Result
+ Analysers is invoked and so on.
+ This ensures, that the layers a tool depends on, have already been filled
+ with the best, possible content.
+ E.g.
+ when a Proposed Expressions Analyser is invoked, all tools that could contribut
+e content for it and do not depend on the Proposed Expressions Analyser's
+ kind of results, the 
+\begin_inset Quotes eld
+\end_inset
+
+proposed
+\begin_inset Quotes erd
+\end_inset
+
+ evaluable expressions, have already done so.
 \end_layout
 
 \begin_layout Standard
