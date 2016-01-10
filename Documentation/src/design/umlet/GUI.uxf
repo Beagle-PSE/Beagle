@@ -647,7 +647,7 @@ bg=gray
       <w>360</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>Context Menu Entry Handler For Components
+    <panel_attributes>Context Menu Entry Handler For Internal Actions
 --
 
 --
