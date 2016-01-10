@@ -51,8 +51,8 @@ Wizard Page
     <panel_attributes>Selection Overview Wizard Page
 --
 --
-+ &lt;&lt;create&gt;&gt; SelectionOverviewWizardPage
-    ( : UserConfiguration)</panel_attributes>
++ &lt;&lt;create&gt;&gt; Selection Overview Wizard Page
+    ( : User Configuration)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -78,8 +78,8 @@ Wizard Page
     <panel_attributes>Machine Selection Wizard Page
 --
 --
-+ &lt;&lt;create&gt;&gt; MachineSelectionWizardPage
-    ( : UserConfiguration)</panel_attributes>
++ &lt;&lt;create&gt;&gt; Machine Selection Wizard Page
+    ( : User Configuration)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -105,8 +105,8 @@ Wizard Page
     <panel_attributes>Network Configuration Wizard Page
 --
 --
-+ &lt;&lt;create&gt;&gt; NetworkConfigurationWizardPage
-    ( : UserConfiguration)</panel_attributes>
++ &lt;&lt;create&gt;&gt; Network Configuration Wizard Page
+    ( : User Configuration)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -132,8 +132,8 @@ Wizard Page
     <panel_attributes>Timeout Wizard Page
 --
 --
-+ &lt;&lt;create&gt;&gt; TimeoutWizardPage
-    ( : UserConfiguration)</panel_attributes>
++ &lt;&lt;create&gt;&gt; Timeout Wizard Page
+    ( : User Configuration)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -365,11 +365,11 @@ bg=gray</panel_attributes>
     <panel_attributes>Beagle Controller
 --
 --
-+ BeagleController(userConfiguration : UserConfiguration)
-+ startAnalysis()
-+ pauseAnalysis()
-+ continueAnalysis()
-+ abortAnalysis()</panel_attributes>
++ Beagle Controller(user configuration : User Configuration)
++ start Analysis()
++ pause Analysis()
++ continue Analysis()
++ abort Analysis()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -568,7 +568,7 @@ bg=gray
     </coordinates>
     <panel_attributes>Package::org.eclipse.core.commands
 &lt;&lt;abstract&gt;&gt;
-AbstractHandler
+Abstract Handler
 --
 --</panel_attributes>
     <additional_attributes/>
@@ -592,11 +592,11 @@ AbstractHandler
       <w>360</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>ContextMenuEntryHandlerForComponents
+    <panel_attributes>Context Menu Entry Handler For Components
 --
 
 --
-+ execute(event: ExecutionEvent): Object</panel_attributes>
++ execute(event: Execution Event): Object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -632,11 +632,11 @@ bg=gray
       <w>360</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>ContextMenuEntryHandlerForRepositories
+    <panel_attributes>Context Menu Entry Handler For Repositories
 --
 
 --
-+ execute(event: ExecutionEvent): Object</panel_attributes>
++ execute(event: Execution Event): Object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -647,11 +647,11 @@ bg=gray
       <w>360</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>ContextMenuEntryHandlerForComponents
+    <panel_attributes>Context Menu Entry Handler For Components
 --
 
 --
-+ execute(event: ExecutionEvent): Object</panel_attributes>
++ execute(event: Execution Event): Object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
