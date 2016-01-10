@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>747</x>
+      <x>774</x>
       <y>711</y>
       <w>369</w>
       <h>495</h>
@@ -22,7 +22,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>144</x>
+      <x>171</x>
       <y>171</y>
       <w>315</w>
       <h>90</h>
@@ -39,7 +39,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>657</x>
+      <x>684</x>
       <y>171</y>
       <w>315</w>
       <h>90</h>
@@ -56,7 +56,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>405</x>
+      <x>432</x>
       <y>0</y>
       <w>315</w>
       <h>72</h>
@@ -72,7 +72,7 @@ Measurable SEFF Element
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
+      <x>225</x>
       <y>369</y>
       <w>315</w>
       <h>90</h>
@@ -89,7 +89,7 @@ Measurable SEFF Element
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
+      <x>378</x>
       <y>117</y>
       <w>225</w>
       <h>270</h>
@@ -100,7 +100,7 @@ Measurable SEFF Element
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
+      <x>621</x>
       <y>117</y>
       <w>243</w>
       <h>72</h>
@@ -111,7 +111,7 @@ Measurable SEFF Element
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>288</x>
+      <x>315</x>
       <y>117</y>
       <w>324</w>
       <h>72</h>
@@ -122,7 +122,7 @@ Measurable SEFF Element
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>963</x>
+      <x>990</x>
       <y>207</y>
       <w>180</w>
       <h>522</h>
@@ -137,7 +137,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>207</x>
+      <x>234</x>
       <y>450</y>
       <w>666</w>
       <h>279</h>
@@ -154,7 +154,7 @@ m1=1</panel_attributes>
     <coordinates>
       <x>0</x>
       <y>198</y>
-      <w>801</w>
+      <w>828</w>
       <h>531</h>
     </coordinates>
     <panel_attributes>fontsize=12
@@ -162,14 +162,14 @@ lt=&lt;&lt;&lt;&lt;-
 r2=SEFF Branches {{unique}}
 m2=*
 m1=1</panel_attributes>
-    <additional_attributes>870.0;570.0;870.0;530.0;110.0;530.0;110.0;20.0;160.0;20.0</additional_attributes>
+    <additional_attributes>900.0;570.0;900.0;530.0;140.0;530.0;140.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
+      <x>414</x>
       <y>738</y>
-      <w>369</w>
+      <w>378</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>fontsize=12
@@ -183,7 +183,7 @@ m1=0..1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>27</x>
       <y>720</y>
       <w>396</w>
       <h>117</h>
@@ -202,7 +202,7 @@ Evaluable Expression
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>162</x>
+      <x>189</x>
       <y>252</y>
       <w>666</w>
       <h>477</h>
@@ -218,7 +218,7 @@ m1=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
+      <x>405</x>
       <y>450</y>
       <w>522</w>
       <h>279</h>
@@ -233,7 +233,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
+      <x>711</x>
       <y>252</y>
       <w>432</w>
       <h>477</h>
@@ -248,9 +248,9 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
+      <x>414</x>
       <y>783</y>
-      <w>369</w>
+      <w>378</w>
       <h>45</h>
     </coordinates>
     <panel_attributes>fontsize=12
@@ -264,7 +264,7 @@ m1=0..1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
+      <x>414</x>
       <y>891</y>
       <w>378</w>
       <h>45</h>
@@ -280,7 +280,7 @@ m1=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
+      <x>99</x>
       <y>891</y>
       <w>324</w>
       <h>36</h>
@@ -292,7 +292,7 @@ Resource Demand Measurement Result</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
+      <x>99</x>
       <y>945</y>
       <w>324</w>
       <h>36</h>
@@ -304,7 +304,7 @@ Loop Repitition Count Measurement Result</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
+      <x>99</x>
       <y>999</y>
       <w>324</w>
       <h>36</h>
@@ -316,7 +316,7 @@ Branch Decision Measurement Result</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
+      <x>414</x>
       <y>945</y>
       <w>378</w>
       <h>45</h>
@@ -332,7 +332,7 @@ m1=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
+      <x>414</x>
       <y>999</y>
       <w>378</w>
       <h>45</h>
@@ -348,7 +348,7 @@ m1=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>414</x>
+      <x>441</x>
       <y>1440</y>
       <w>315</w>
       <h>135</h>
@@ -367,9 +367,9 @@ m1=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
+      <x>594</x>
       <y>1197</y>
-      <w>441</w>
+      <w>450</w>
       <h>261</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -381,7 +381,7 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>36</x>
+      <x>63</x>
       <y>1773</y>
       <w>288</w>
       <h>126</h>
@@ -397,7 +397,7 @@ Measurement Tool
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>36</x>
+      <x>63</x>
       <y>1557</y>
       <w>288</w>
       <h>126</h>
@@ -416,7 +416,7 @@ Measurement Tool
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>801</x>
+      <x>828</x>
       <y>1701</y>
       <w>324</w>
       <h>198</h>
@@ -439,7 +439,7 @@ Measurement Result Analyser
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
+      <x>891</x>
       <y>1458</y>
       <w>252</w>
       <h>99</h>
@@ -457,9 +457,9 @@ Measurement Result Analyser
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>315</x>
+      <x>342</x>
       <y>1566</y>
-      <w>180</w>
+      <w>198</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -471,9 +471,9 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>675</x>
+      <x>702</x>
       <y>1566</y>
-      <w>414</w>
+      <w>441</w>
       <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -485,7 +485,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
+      <x>459</x>
       <y>1701</y>
       <w>324</w>
       <h>198</h>
@@ -508,9 +508,9 @@ Proposed Expression Analyser
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>558</x>
+      <x>585</x>
       <y>1566</y>
-      <w>207</w>
+      <w>225</w>
       <h>153</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -522,7 +522,7 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
+      <x>747</x>
       <y>1494</y>
       <w>162</w>
       <h>45</h>
@@ -536,7 +536,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>27</x>
       <y>1143</y>
       <w>558</w>
       <h>207</h>
@@ -559,7 +559,7 @@ Evaluable Expession Fitness Function
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
+      <x>576</x>
       <y>1152</y>
       <w>216</w>
       <h>45</h>
@@ -573,7 +573,7 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
+      <x>576</x>
       <y>63</y>
       <w>27</w>
       <h>81</h>
@@ -584,7 +584,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
+      <x>585</x>
       <y>369</y>
       <w>315</w>
       <h>108</h>
@@ -602,9 +602,9 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>864</x>
+      <x>891</x>
       <y>405</y>
-      <w>207</w>
+      <w>243</w>
       <h>324</h>
     </coordinates>
     <panel_attributes>fontsize=12
@@ -617,7 +617,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>630</x>
+      <x>657</x>
       <y>468</y>
       <w>315</w>
       <h>261</h>
@@ -632,18 +632,18 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>558</x>
+      <x>576</x>
       <y>333</y>
-      <w>180</w>
+      <w>234</w>
       <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;180.0;10.0;180.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
+      <x>99</x>
       <y>1053</y>
       <w>324</w>
       <h>36</h>
@@ -655,7 +655,7 @@ Parameter Change Measurement Result</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>387</x>
+      <x>414</x>
       <y>1053</y>
       <w>378</w>
       <h>45</h>
@@ -671,7 +671,7 @@ m1=1
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>81</x>
+      <x>108</x>
       <y>1656</y>
       <w>130</w>
       <h>134</h>
@@ -685,7 +685,7 @@ m2=*</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>45</x>
+      <x>72</x>
       <y>1989</y>
       <w>270</w>
       <h>81</h>
@@ -702,7 +702,7 @@ Measurement Tool
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>144</x>
+      <x>171</x>
       <y>1872</y>
       <w>146</w>
       <h>134</h>
@@ -714,7 +714,7 @@ Measurement Tool
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>432</x>
+      <x>459</x>
       <y>1989</y>
       <w>324</w>
       <h>171</h>
@@ -737,7 +737,7 @@ Proposed Expression Analyser
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>504</x>
+      <x>531</x>
       <y>1872</y>
       <w>146</w>
       <h>134</h>
@@ -749,7 +749,7 @@ Proposed Expression Analyser
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>801</x>
+      <x>828</x>
       <y>1989</y>
       <w>324</w>
       <h>171</h>
@@ -772,7 +772,7 @@ Measurement Result Analyser
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>891</x>
+      <x>918</x>
       <y>1872</y>
       <w>146</w>
       <h>134</h>
