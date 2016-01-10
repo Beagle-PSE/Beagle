@@ -87,16 +87,16 @@ Parameterisation-Dependent Measurement Result
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>33</x>
+      <x>44</x>
       <y>22</y>
-      <w>176</w>
+      <w>165</w>
       <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 r1=parameterisation
 m2=*</panel_attributes>
-    <additional_attributes>140.0;20.0;30.0;20.0;30.0;110.0</additional_attributes>
+    <additional_attributes>130.0;20.0;20.0;20.0;20.0;110.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -170,7 +170,7 @@ m2=*</panel_attributes>
       <w>231</w>
       <h>176</h>
     </coordinates>
-    <panel_attributes>Code Section
+    <panel_attributes> Code Section
 --
 
   start: Integer 
@@ -555,7 +555,7 @@ Measurement Event Visitor
     <coordinates>
       <x>759</x>
       <y>286</y>
-      <w>77</w>
+      <w>66</w>
       <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
@@ -582,23 +582,23 @@ Measurement Event Visitor
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>396</x>
+      <x>407</x>
       <y>33</y>
-      <w>242</w>
+      <w>231</w>
       <h>55</h>
     </coordinates>
     <panel_attributes>lt=[Identifier]-&gt;
 m2=1..*
 m1=0..1
 </panel_attributes>
-    <additional_attributes>40.0;20.0;200.0;20.0</additional_attributes>
+    <additional_attributes>30.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1353</x>
       <y>1155</y>
-      <w>132</w>
+      <w>121</w>
       <h>209</h>
     </coordinates>
     <panel_attributes>lt=&lt;-

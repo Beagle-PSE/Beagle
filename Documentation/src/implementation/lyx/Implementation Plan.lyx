@@ -1975,7 +1975,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement Blackboard Controller
+Implement Blackboard Controllers
 \end_layout
 
 \end_inset
@@ -2113,10 +2113,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Implement 
-tool helper classes
-\lang british
-.
+Implement tool helper classes.
 \end_layout
 
 \end_inset
@@ -2631,8 +2628,7 @@ Blackboard
 
 \end_inset
 
-), #070 (Blackboard Views), #040 (SEFF classes) and #133 (
-tool helper classes).
+), #070 (Blackboard Views), #040 (SEFF classes) and #133 (tool helper classes).
 \end_layout
 
 \end_inset
