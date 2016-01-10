@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * View of the {@link Blackboard} designed to be used by {@link ResultAnalyser}. Reading
+ * View of the {@link Blackboard} designed to be used by {@link ProposedExpressionAnalyser}. Reading
  * information and adding proposed expressions to the {@link Blackboard} is supported.
  *
  * @author Christoph Michelbach
@@ -36,12 +36,12 @@ public class AnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRdias()}.
 	 *
 	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
 	 *         actions} known to Beagle. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRdias()
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
 		return null;
@@ -183,12 +183,12 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureRDIAs(ResourceDemandingInternalAction...)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredRdias(ResourceDemandingInternalAction...)}
 	 * .
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to the {@link Blackboard}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureRDIAs(ResourceDemandingInternalAction...)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredRdias(ResourceDemandingInternalAction...)
 	 * @see #remeasureRDIAs(Collection)
 	 */
 	public void remeasureRDIAs(final ResourceDemandingInternalAction... rdias) {
@@ -196,11 +196,11 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureRDIAs(Collection)} .
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredRdias(Collection)} .
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to the {@link Blackboard}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureRDIAs(Collection)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredRdias(Collection)
 	 * @see #remeasureRDIAs(ResourceDemandingInternalAction...)
 	 */
 	public void remeasureRDIAs(final Collection<ResourceDemandingInternalAction> rdias) {
@@ -221,7 +221,7 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFBranches(Collection)} .
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredSeffBranches(Collection)} .
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to the Blackboard.

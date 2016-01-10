@@ -7,7 +7,7 @@ import java.io.Serializable;
  * state object is defined by {@code WRITTEN_TYPE}.
  *
  * <p>To illustrate the usage of this interface, two examples follow. We look at a typical
- * use case: Two {@linkplain de.uka.ipd.sdq.beagle.core.analysis.ResultAnalyser
+ * use case: Two {@linkplain de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser
  * ResultAnalysers}, {@code MyAnalyser} and {@code YourAnalyser}. Both want to store data
  * on the {@linkplain Blackboard} to keep track of whether there is something new to look
  * at.
@@ -19,24 +19,24 @@ import java.io.Serializable;
  *
  * <code>
  *
- * public class YourAnalyser implements ResultAnalyser, BlackboardStorer&lt;HashSet&lt;SEFFLoop&gt;&gt; {
+ * public class YourAnalyser implements ResultAnalyser, BlackboardStorer&lt;HashSet&lt;SeffLoop&gt;&gt; {
  *
  * 	public boolean canContribute(ReadOnlyBlackboardView blackboard) {
- * 		Set&lt;SEFFLoop&gt; alreadySeen = blackboard.readFor(YourAnalyser.class);
- * 		Set&lt;SEFFLoop&gt; allLoops = blackboard.getAllSEFFLoops();
+ * 		Set&lt;SeffLoop&gt; alreadySeen = blackboard.readFor(YourAnalyser.class);
+ * 		Set&lt;SeffLoop&gt; allLoops = blackboard.getAllSEFFLoops();
  * 		return allLoops.size() &gt; 0 &amp;&amp; (alreadySeen == null || !alreadySeen.containsAll(allLoops));
  * 	}
  *
  * 	public boolean contribute(AnalyserBlackboardView blackboard) {
- * 		Set&lt;SEFFLoop&gt; alreadySeen = blackboard.readFor(YourAnalyser.class);
+ * 		Set&lt;SeffLoop&gt; alreadySeen = blackboard.readFor(YourAnalyser.class);
  * 		if (alreadySeen == null) {
- * 			alreadySeen = new HashSet&lt;SEFFLoop&gt;();
+ * 			alreadySeen = new HashSet&lt;SeffLoop&gt;();
  * 			blackboard.writeFor(YourAnalyser.class, alreadySeen);
  * 		}
- * 		Set&lt;SEFFLoop&gt; allLoops = blackboard.getAllSEFFLoops();
- * 		Set&lt;SEFFLoop&gt; todo = allLoops.removeAll(alreadySeen);
+ * 		Set&lt;SeffLoop&gt; allLoops = blackboard.getAllSEFFLoops();
+ * 		Set&lt;SeffLoop&gt; todo = allLoops.removeAll(alreadySeen);
  *
- * 		for (SEFFLoop loop : todo) {
+ * 		for (SeffLoop loop : todo) {
  * 			// do the logic here
  * 			alreadySeen.add(loop);
  * 		}

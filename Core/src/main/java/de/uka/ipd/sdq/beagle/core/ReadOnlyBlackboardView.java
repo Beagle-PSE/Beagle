@@ -27,12 +27,12 @@ public class ReadOnlyBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
 	 *
 	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
 	 *         actions} to be measured. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
 		return null;
@@ -122,12 +122,12 @@ public class ReadOnlyBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRdias()}.
 	 *
 	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
 	 *         actions} known to Beagle. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRdias()
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
 		return null;
