@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * Read-only view of the {@link Blackboard} designed to be used by
- * {@link MeasurementResultAnalyser}. It allows reading access and adding access for
+ * {@link MeasurementResultAnalyser}. It allows reading access for
  * {@linkplain ResourceDemandMeasurementResult ResourceDemandMeasurementResults},
  * {@linkplain BranchDecisionMeasurementResult BranchDecisionMeasurementResults} and
  * {@linkplain LoopRepetitionCountMeasurementResult LoopRepetitionCountMeasurementResults}
