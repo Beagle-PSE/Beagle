@@ -7,7 +7,7 @@ import java.io.Serializable;
  * 
  * @author Annika Berger
  */
-public abstract class MeasurableSEFFElement implements Serializable {
+public abstract class MeasurableSeffElement implements Serializable {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

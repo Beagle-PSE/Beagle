@@ -6,7 +6,7 @@ package de.uka.ipd.sdq.beagle.core;
  * @author Annika Berger
  *
  */
-public class SEFFBranch extends MeasurableSEFFElement {
+public class SeffBranch extends MeasurableSeffElement {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

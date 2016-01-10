@@ -12,8 +12,8 @@ import java.util.Set;
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link AnalysisController}, the Blackboard pattern from POSA I. The Blackboard’s
- * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SEFFBranch},
- * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult},
+ * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SeffBranch},
+ * {@link SeffLoop}, {@link ResourceDemandMeasurementResult},
  * {@link BranchDecisionMeasurementResult} , {@link LoopRepetitionCountMeasurementResult}
  * and {@link EvaluableExpression}. It further allows classes to store custom data.
  *
@@ -40,27 +40,27 @@ public class Blackboard implements Serializable {
 	 * @param branches All SEFF branches to be known to analysers.
 	 * @param loops All SEFF loops to be known to analysers.
 	 */
-	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SEFFBranch> branches,
-		final Set<SEFFLoop> loops) {
+	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
+		final Set<SeffLoop> loops) {
 	}
 
 	/**
-	 * All {@linkplain SEFFLoop SEFF loops} known to Beagle.
+	 * All {@linkplain SeffLoop SEFF loops} known to Beagle.
 	 *
-	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 * @return all {@linkplain SeffLoop SEFF loops} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFLoop> getAllSEFFLoops() {
+	public Set<SeffLoop> getAllSeffLoops() {
 		return null;
 	}
 
 	/**
-	 * All {@linkplain SEFFBranch SEFF branches} known to Beagle.
+	 * All {@linkplain SeffBranch SEFF branches} known to Beagle.
 	 *
-	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
+	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFBranch> getAllSEFFBranches() {
+	public Set<SeffBranch> getAllSEFFBranches() {
 		return null;
 	}
 
@@ -103,7 +103,7 @@ public class Blackboard implements Serializable {
 	 *            must be known to this blackboard.
 	 * @see #remeasureSEFFBranches(Collection)
 	 */
-	public void remeasureSEFFBranches(final SEFFBranch... branches) {
+	public void remeasureSEFFBranches(final SeffBranch... branches) {
 	}
 
 	/**
@@ -111,9 +111,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
-	 * @see #remeasureSEFFBranches(SEFFBranch...)
+	 * @see #remeasureSEFFBranches(SeffBranch...)
 	 */
-	public void remeasureSEFFBranches(final Collection<SEFFBranch> branches) {
+	public void remeasureSEFFBranches(final Collection<SeffBranch> branches) {
 	}
 
 	/**
@@ -121,9 +121,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
-	 * @see #remeasureSEFFLoops(Collection)
+	 * @see #remeasureSeffLoops(Collection)
 	 */
-	public void remeasureSEFFLoops(final SEFFLoop... loops) {
+	public void remeasureSEFFLoops(final SeffLoop... loops) {
 	}
 
 	/**
@@ -131,29 +131,29 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
-	 * @see #remeasureSEFFLoops(SEFFLoop...)
+	 * @see #remeasureSEFFLoops(SeffLoop...)
 	 */
-	public void remeasureSEFFLoops(final Collection<SEFFLoop> loops) {
+	public void remeasureSeffLoops(final Collection<SeffLoop> loops) {
 	}
 
 	/**
-	 * {@linkplain SEFFLoop SEFF loops} that shall be measured for their repetitions.
+	 * {@linkplain SeffLoop SEFF loops} that shall be measured for their repetitions.
 	 *
-	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
+	 * @return All {@linkplain SeffLoop SEFF loops} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
+	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
 		return null;
 	}
 
 	/**
-	 * {@linkplain SEFFBranch SEFF branches} that shall be measured for their branch
+	 * {@linkplain SeffBranch SEFF branches} that shall be measured for their branch
 	 * decisions.
 	 *
-	 * @return All {@linkplain SEFFBranch SEFF branches} to be measured. Changes to the
+	 * @return All {@linkplain SeffBranch SEFF branches} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFBranch> getSEFFBranchesToBeMeasured() {
+	public Set<SeffBranch> getSEFFBranchesToBeMeasured() {
 		return null;
 	}
 
@@ -219,7 +219,7 @@ public class Blackboard implements Serializable {
 	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSEFFLoop(final SEFFLoop loop,
+	public void reportMeasurementResultForSeffLoop(final SeffLoop loop,
 		final LoopRepetitionCountMeasurementResult result) {
 	}
 
@@ -229,7 +229,7 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSEFFBranch(final SEFFBranch branch,
+	public void reportMeasurementResultForSEFFBranch(final SeffBranch branch,
 		final BranchDecisionMeasurementResult result) {
 	}
 
@@ -241,7 +241,7 @@ public class Blackboard implements Serializable {
 	 * @return All measurement results reported for {@code loop}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
 		return null;
 	}
 
@@ -253,7 +253,7 @@ public class Blackboard implements Serializable {
 	 * @return All measurement results reported for {@code branch}. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
 		return null;
 	}
 
@@ -289,7 +289,7 @@ public class Blackboard implements Serializable {
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
+	public void proposeExpressionForSEFFBranch(final SeffBranch branch, final EvaluableExpression expression) {
 	}
 
 	/**
@@ -300,7 +300,7 @@ public class Blackboard implements Serializable {
 	 * @param expression An evaluable expression proposed to describe {@code loop}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
+	public void proposeExpressionForSeffLoop(final SeffLoop loop, final EvaluableExpression expression) {
 	}
 
 	/**
@@ -327,7 +327,7 @@ public class Blackboard implements Serializable {
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
+	public void setFinalExpressionForSeffLoop(final SeffLoop loop, final EvaluableExpression expression) {
 	}
 
 	/**
@@ -340,6 +340,6 @@ public class Blackboard implements Serializable {
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
+	public void setFinalExpressionForSEFFBranch(final SeffBranch branch, final EvaluableExpression expression) {
 	}
 }

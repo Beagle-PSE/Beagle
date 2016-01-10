@@ -6,7 +6,7 @@ package de.uka.ipd.sdq.beagle.core;
  * @author Annika Berger
  *
  */
-public class ResourceDemandingInternalAction extends MeasurableSEFFElement {
+public class ResourceDemandingInternalAction extends MeasurableSeffElement {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

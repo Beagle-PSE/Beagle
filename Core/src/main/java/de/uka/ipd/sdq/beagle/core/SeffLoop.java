@@ -8,7 +8,7 @@ package de.uka.ipd.sdq.beagle.core;
  * @author Annika Berger
  *
  */
-public class SEFFLoop extends MeasurableSEFFElement {
+public class SeffLoop extends MeasurableSeffElement {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
