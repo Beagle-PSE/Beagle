@@ -358,6 +358,15 @@ public class Blackboard implements Serializable {
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 	}
 
+	/**
+	 * Returns an object which holds and is responsible allows access to the fitness
+	 * function grading {@linkplain EvaluableExpression evaluable expressions} regarding
+	 * their fitness.
+	 * 
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
 		return null;
 	}
