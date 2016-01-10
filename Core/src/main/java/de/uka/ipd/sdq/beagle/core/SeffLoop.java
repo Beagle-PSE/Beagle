@@ -6,7 +6,6 @@ package de.uka.ipd.sdq.beagle.core;
  * within an internal action—modelled in a component’s SEFF.
  * 
  * @author Annika Berger
- *
  */
 public class SeffLoop extends MeasurableSeffElement {
 

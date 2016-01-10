@@ -31,6 +31,7 @@ package de.uka.ipd.sdq.beagle.core;
  *
  * </ul>
  * 
+ * @author Christoph Michelbach
  * @author Annika Berger
  *
  */
