@@ -12,7 +12,7 @@ import java.io.Serializable;
  * on the {@linkplain Blackboard} to keep track of whether there is something new to look
  * at.
  *
- * <p>{@code YourAnalyser} simply wants to keep track of the {@linkplain SEFFLoop
+ * <p>{@code YourAnalyser} simply wants to keep track of the {@linkplain SeffLoop
  * SEFFLoops} he has already seen. He wants to use an {@code HashSet} to do so:
  *
  * <pre>
