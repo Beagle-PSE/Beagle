@@ -40,14 +40,15 @@
     <id>UMLClass</id>
     <coordinates>
       <x>702</x>
-      <y>171</y>
+      <y>162</y>
       <w>315</w>
-      <h>90</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Resource Demanding Internal Action
 --
 
   action: Code Section
+  resource Type: String
   
 --
 </panel_attributes>
@@ -103,10 +104,10 @@ Measurable SEFF Element
       <x>639</x>
       <y>117</y>
       <w>243</w>
-      <h>72</h>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;250.0;10.0;250.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0;250.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -123,16 +124,16 @@ Measurable SEFF Element
     <id>Relation</id>
     <coordinates>
       <x>1008</x>
-      <y>207</y>
+      <y>198</y>
       <w>180</w>
-      <h>522</h>
+      <h>531</h>
     </coordinates>
     <panel_attributes>fontsize=12
 lt=&lt;&lt;&lt;&lt;-
 r2=RDIAs {{unique}}
 m2=*
 m1=1</panel_attributes>
-    <additional_attributes>70.0;560.0;70.0;400.0;180.0;400.0;180.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>70.0;570.0;70.0;410.0;180.0;410.0;180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -234,16 +235,16 @@ m1=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>729</x>
-      <y>252</y>
+      <y>261</y>
       <w>432</w>
-      <h>477</h>
+      <h>468</h>
     </coordinates>
     <panel_attributes>fontsize=12
 lt=&lt;&lt;&lt;&lt;-
 r2=RDIAs to be measured {{unique}}
 m2=*
 m1=1</panel_attributes>
-    <additional_attributes>350.0;510.0;350.0;320.0;460.0;320.0;460.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>350.0;500.0;350.0;310.0;460.0;310.0;460.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
