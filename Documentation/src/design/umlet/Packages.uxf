@@ -168,9 +168,9 @@ valign=top</panel_attributes>
     <panel_attributes>Context Menus
 --
 
- +Beagle Context Menu Entry Handler For Components
- +Beagle Context Menu Entry Handler For Internal Actions
- +Beagle Context Menu Entry Handler For Repositories
+ +Context Menu Entry Handler For Components
+ +Context Menu Entry Handler For Internal Actions
+ +Context Menu Entry Handler For Repositories
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
