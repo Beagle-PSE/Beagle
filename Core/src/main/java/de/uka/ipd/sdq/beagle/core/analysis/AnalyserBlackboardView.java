@@ -3,8 +3,8 @@ package de.uka.ipd.sdq.beagle.core.analysis;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
-import de.uka.ipd.sdq.beagle.core.SEFFBranch;
-import de.uka.ipd.sdq.beagle.core.SEFFLoop;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
@@ -78,29 +78,29 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)}.
 	 *
 	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
 	 *            .
 	 * @return All measurement results reported for {@code loop}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
-	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
 		return null;
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFBranch)}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)}.
 	 *
 	 * @param branch A SEFF Branch to get the measurement results of. Must not be
 	 *            {@code null}.
 	 * @return All measurement results reported for {@code branch}. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFBranch)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
-	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
 		return null;
 	}
 
@@ -120,24 +120,24 @@ public class AnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
 	 *
-	 * @return All {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
+	 * @return All {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()
 	 */
-	public Set<SEFFBranch> getAllSEFFBranches() {
+	public Set<SeffBranch> getAllSEFFBranches() {
 		return null;
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()}.
 	 *
-	 * @return All {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 * @return All {@linkplain SeffLoop SEFF loops} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
-	public Set<SEFFLoop> getAllSEFFLoops() {
+	public Set<SeffLoop> getAllSeffLoops() {
 		return null;
 	}
 
@@ -158,27 +158,27 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#proposeExpressionForSEFFLoop(SEFFLoop, EvaluableExpression)} .
+	 * {@link Blackboard#proposeExpressionForSeffLoop(SeffLoop, EvaluableExpression)} .
 	 *
 	 * @param loop A SEFF Loop. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code loop}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see Blackboard#proposeExpressionForSEFFLoop(SEFFLoop, EvaluableExpression)
+	 * @see Blackboard#proposeExpressionForSeffLoop(SeffLoop, EvaluableExpression)
 	 */
-	public void proposeExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
+	public void proposeExpressionForSeffLoop(final SeffLoop loop, final EvaluableExpression expression) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#proposeExpressionForSEFFBranch(SEFFBranch, EvaluableExpression)}
+	 * {@link Blackboard#proposeExpressionForSeffBranch(SeffBranch, EvaluableExpression)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see Blackboard#proposeExpressionForSEFFBranch(SEFFBranch, EvaluableExpression)
+	 * @see Blackboard#proposeExpressionForSeffBranch(SeffBranch, EvaluableExpression)
 	 */
-	public void proposeExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
+	public void proposeExpressionForSeffBranch(final SeffBranch branch, final EvaluableExpression expression) {
 	}
 
 	/**
@@ -208,15 +208,15 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFBranches(SEFFBranch...)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFBranches(SeffBranch...)}
 	 * .
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to the Blackboard.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFBranches(SEFFBranch...)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFBranches(SeffBranch...)
 	 * @see #remeasureSEFFBranches(Collection)
 	 */
-	public void remeasureSEFFBranches(final SEFFBranch... branches) {
+	public void remeasureSEFFBranches(final SeffBranch... branches) {
 	}
 
 	/**
@@ -226,32 +226,32 @@ public class AnalyserBlackboardView {
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to the Blackboard.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFBranches(Collection)
-	 * @see #remeasureSEFFBranches(SEFFBranch...)
+	 * @see #remeasureSEFFBranches(SeffBranch...)
 	 */
-	public void remeasureSEFFBranches(final Collection<SEFFBranch> branches) {
+	public void remeasureSEFFBranches(final Collection<SeffBranch> branches) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFLoops(SEFFLoop...)} .
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFLoops(SeffLoop...)} .
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to the Blackboard.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFLoops(SEFFLoop...)
-	 * @see #remeasureSEFFLoops(Collection)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFLoops(SeffLoop...)
+	 * @see #remeasureSeffLoops(Collection)
 	 */
-	public void remeasureSEFFLoops(final SEFFLoop... loops) {
+	public void remeasureSeffLoops(final SeffLoop... loops) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFLoops(Collection)} .
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSeffLoops(Collection)} .
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to the Blackboard.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSEFFLoops(Collection)
-	 * @see #remeasureSEFFLoops(SEFFLoop...)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#remeasureSeffLoops(Collection)
+	 * @see #remeasureSeffLoops(SeffLoop...)
 	 */
-	public void remeasureSEFFLoops(final Collection<SEFFLoop> loops) {
+	public void remeasureSeffLoops(final Collection<SeffLoop> loops) {
 	}
 }
