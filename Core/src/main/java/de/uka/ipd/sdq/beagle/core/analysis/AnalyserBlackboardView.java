@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * View of the {@link Blackboard} designed to be used by {@link ResultAnalyser}. Reading
+ * View of the {@link Blackboard} designed to be used by {@link ProposedExpressionAnalyser}. Reading
  * information and adding proposed expressions to the {@link Blackboard} is supported.
  *
  * @author Christoph Michelbach
