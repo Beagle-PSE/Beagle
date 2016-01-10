@@ -41,9 +41,9 @@ public class MeasurementController {
 	 * produce results for every item but will report results for all items they were able
 	 * to measure.
 	 *
-	 * <p>This method may only be called, when {@link #canMeasure(ReadOnlyBlackboardView)}
-	 * returned {@code true} before and the {@link Blackboard} wasn't changed between this
-	 * call. Otherwise the behaviour of this method is undefined.
+	 * <p>This method may only be called, when {@link #canMeasure} returned {@code true}
+	 * before and the {@link Blackboard} wasn't changed between this call. Otherwise the
+	 * behaviour of this method is undefined.
 	 *
 	 * @param blackboard The blackboard.
 	 */

@@ -20,17 +20,17 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
  * may use parallelisation as they wish but are self-responsible for synchronisation.
  *
  * <li>A {@link ProposedExpressionAnalyser} will only be called if its
- * {@link ProposedExpressionAnalyser#canContribute(ReadOnlyBlackboardView) canContribute}
- * method returns {@code true}. The {@link MeasurementController} will only be called if
- * its {@link MeasurementController#canMeasure canMeasure} method returns {@code true}.
+ * {@link ProposedExpressionAnalyser#canContribute} method returns {@code true}. The
+ * {@link MeasurementController} will only be called if its
+ * {@link MeasurementController#canMeasure canMeasure} method returns {@code true}.
  *
  * <li>When picking the next participant, the {@link MeasurementController} will be always
  * be called next if its {@link MeasurementController#canMeasure canMeasure} method
  * returns {@code true}.
  *
  * <li>Any {@link ProposedExpressionAnalyser} whose
- * {@link ProposedExpressionAnalyser#canContribute(ReadOnlyBlackboardView) canContribute}
- * method returns {@code true} will be called.
+ * {@link ProposedExpressionAnalyser#canContribute canContribute} method returns
+ * {@code true} will be called.
  *
  * <li>The {@linkplain FinalJudge} will only be called if no
  * {@link ProposedExpressionAnalyser} can contribute.
