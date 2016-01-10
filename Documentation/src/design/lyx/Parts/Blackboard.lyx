@@ -75,6 +75,53 @@ Beagle’s Knowledge: The Blackboard
 \end_layout
 
 \begin_layout Standard
+The Beagle Core uses the Blackboard as described in 
+\begin_inset CommandInset citation
+LatexCommand cite
+after " Chapter 2.2"
+key "buschmann1996patternoriented"
+
+\end_inset
+
+.
+ The blackboard is the central data storage which stores all available SEFF
+ elements, which SEFF elements should be measured, all measurement results
+ and the final expression for each measurable SEFF element.
+ It also stores individual information for each Measurement Tool, Measurement
+ Result Analyser, Proposed Expression Analyser and the Final Judge (in the
+ this section: 
+\begin_inset Quotes eld
+\end_inset
+
+the tools
+\begin_inset Quotes erd
+\end_inset
+
+), because these tools are not allowed to hold status information.
+ The fact that all status informations are stored on the Blackboard allows
+ the serialisation of an analysis, as all elements on the blackboard are
+ serialisable.
+\end_layout
+
+\begin_layout Standard
+The blackboard design also allows communication between the tools, without
+ dependencies between them: Each tool contributes his knowledge to the blackboar
+d, when it can do so and may use information of other tools, but don't need
+ to know about the tool, that contributed them.
+ This enables adding and removing of tools without adapting the Beagle Core
+ and developing them separately.
+ Additional, it is easy to compare different combinations of tools to analyse
+ the software.
+\end_layout
+
+\begin_layout Standard
+As it makes no sense to run a tool that perform regression of the measurement
+ results before any measurements have been made, the vocabulary of the blackboar
+d is divided in different layers and the tools can only see some of them.
+ On the bottom layer are the code sections and all tools can see them on
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
