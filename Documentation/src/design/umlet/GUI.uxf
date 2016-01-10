@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>9</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>117</x>
-      <y>765</y>
-      <w>189</w>
-      <h>171</h>
+      <x>147</x>
+      <y>595</y>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>Beagle Analysis Wizard
 --
@@ -17,10 +17,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>81</x>
-      <y>1017</y>
-      <w>225</w>
-      <h>171</h>
+      <x>119</x>
+      <y>791</y>
+      <w>175</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>Package::org.eclipse.jface.wizard
 &lt;&lt;abstract&gt;&gt;
@@ -32,10 +32,10 @@ Wizard Page
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
-      <y>927</y>
-      <w>27</w>
-      <h>108</h>
+      <x>203</x>
+      <y>721</y>
+      <w>21</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
@@ -45,10 +45,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>954</y>
-      <w>297</w>
-      <h>63</h>
+      <x>413</x>
+      <y>742</y>
+      <w>231</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>Selection Overview Wizard Page
 --
@@ -60,10 +60,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>1026</y>
-      <w>297</w>
-      <h>63</h>
+      <x>413</x>
+      <y>798</y>
+      <w>231</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>Machine Selection Wizard Page
 --
@@ -75,10 +75,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>1098</y>
-      <w>297</w>
-      <h>63</h>
+      <x>413</x>
+      <y>854</y>
+      <w>231</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>Network Configuration Wizard Page
 --
@@ -90,10 +90,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>1170</y>
-      <w>297</w>
-      <h>63</h>
+      <x>413</x>
+      <y>910</y>
+      <w>231</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>Timeout Wizard Page
 --
@@ -105,10 +105,10 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>486</x>
-      <y>387</y>
-      <w>342</w>
-      <h>171</h>
+      <x>434</x>
+      <y>301</y>
+      <w>266</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>GUI Controller
 --
@@ -122,21 +122,21 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>315</x>
-      <y>432</y>
-      <w>99</w>
-      <h>36</h>
+      <x>294</x>
+      <y>336</y>
+      <w>84</w>
+      <h>28</h>
     </coordinates>
-    <panel_attributes>Dialog</panel_attributes>
+    <panel_attributes>Message Dialog</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>405</x>
-      <y>441</y>
-      <w>99</w>
-      <h>36</h>
+      <x>371</x>
+      <y>343</y>
+      <w>77</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -146,10 +146,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>459</x>
-      <y>621</y>
-      <w>135</w>
-      <h>198</h>
+      <x>413</x>
+      <y>483</y>
+      <w>105</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>User Configuration
 --
@@ -160,10 +160,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>765</y>
-      <w>180</w>
-      <h>36</h>
+      <x>287</x>
+      <y>595</y>
+      <w>140</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -173,10 +173,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>549</y>
-      <w>27</w>
-      <h>90</h>
+      <x>441</x>
+      <y>427</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
@@ -186,10 +186,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>675</x>
-      <y>567</y>
-      <w>135</w>
-      <h>81</h>
+      <x>581</x>
+      <y>441</y>
+      <w>105</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Stores everything the user configured (for example the timeout).
 bg=gray
@@ -200,10 +200,10 @@ bg=gray
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>585</y>
-      <w>108</w>
-      <h>54</h>
+      <x>511</x>
+      <y>455</y>
+      <w>84</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;40.0</additional_attributes>
@@ -211,10 +211,10 @@ bg=gray
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>378</y>
-      <w>81</w>
-      <h>63</h>
+      <x>392</x>
+      <y>294</y>
+      <w>63</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;70.0;50.0</additional_attributes>
@@ -222,10 +222,10 @@ bg=gray
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>324</x>
-      <y>333</y>
-      <w>117</w>
-      <h>54</h>
+      <x>308</x>
+      <y>259</y>
+      <w>91</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Is called by the context-menu entries.
 bg=gray
@@ -236,10 +236,10 @@ bg=gray
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>756</y>
-      <w>216</w>
-      <h>243</h>
+      <x>511</x>
+      <y>588</y>
+      <w>168</w>
+      <h>189</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -249,10 +249,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>738</y>
-      <w>225</w>
-      <h>324</h>
+      <x>511</x>
+      <y>574</y>
+      <w>175</w>
+      <h>252</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -262,10 +262,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>720</y>
-      <w>234</w>
-      <h>414</h>
+      <x>511</x>
+      <y>560</y>
+      <w>182</w>
+      <h>322</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -275,10 +275,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>702</y>
-      <w>243</w>
-      <h>504</h>
+      <x>511</x>
+      <y>546</y>
+      <w>189</w>
+      <h>392</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -288,10 +288,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>360</x>
+      <x>336</x>
       <y>0</y>
-      <w>288</w>
-      <h>72</h>
+      <w>224</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>The GuiController calls `pause()`, `continue()`, and `abort()` upon receiving information about which button has been clicked from its Dialog object.
 bg=gray</panel_attributes>
@@ -300,10 +300,10 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>63</y>
-      <w>45</w>
-      <h>63</h>
+      <x>378</x>
+      <y>49</y>
+      <w>35</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;50.0</additional_attributes>
@@ -311,10 +311,10 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>162</x>
-      <y>108</y>
-      <w>396</w>
-      <h>108</h>
+      <x>182</x>
+      <y>84</y>
+      <w>308</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Beagle Controller
 --
@@ -329,10 +329,10 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>189</y>
-      <w>162</w>
-      <h>216</h>
+      <x>483</x>
+      <y>147</y>
+      <w>126</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -342,10 +342,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
-      <y>270</y>
-      <w>144</w>
-      <h>27</h>
+      <x>210</x>
+      <y>210</y>
+      <w>112</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>Analysis Controller</panel_attributes>
     <additional_attributes/>
@@ -354,9 +354,9 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>252</x>
-      <y>207</y>
-      <w>72</w>
-      <h>81</h>
+      <y>161</y>
+      <w>56</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -365,10 +365,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>396</x>
-      <y>270</y>
-      <w>171</w>
-      <h>27</h>
+      <x>364</x>
+      <y>210</y>
+      <w>133</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>PCM Repository Writer</panel_attributes>
     <additional_attributes/>
@@ -376,10 +376,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>468</x>
-      <y>207</y>
-      <w>72</w>
-      <h>81</h>
+      <x>420</x>
+      <y>161</y>
+      <w>56</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -388,10 +388,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>153</y>
-      <w>243</w>
-      <h>27</h>
+      <x>546</x>
+      <y>119</y>
+      <w>189</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>PCM Repository Blackboard Factory</panel_attributes>
     <additional_attributes/>
@@ -399,10 +399,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>144</y>
-      <w>99</w>
-      <h>36</h>
+      <x>483</x>
+      <y>112</y>
+      <w>77</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;uses&gt;&gt;</panel_attributes>
@@ -412,9 +412,9 @@ m2=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>252</x>
-      <y>513</y>
-      <w>252</w>
-      <h>270</h>
+      <y>399</y>
+      <w>196</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -424,10 +424,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>882</y>
-      <w>180</w>
-      <h>360</h>
+      <x>287</x>
+      <y>686</y>
+      <w>140</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -437,10 +437,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>864</y>
-      <w>180</w>
-      <h>306</h>
+      <x>287</x>
+      <y>672</y>
+      <w>140</w>
+      <h>238</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -450,10 +450,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>846</y>
-      <w>180</w>
-      <h>252</h>
+      <x>287</x>
+      <y>658</y>
+      <w>140</w>
+      <h>196</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -463,10 +463,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>828</y>
-      <w>180</w>
-      <h>198</h>
+      <x>287</x>
+      <y>644</y>
+      <w>140</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -476,10 +476,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>0</x>
-      <y>945</y>
-      <w>135</w>
-      <h>45</h>
+      <x>56</x>
+      <y>735</y>
+      <w>105</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>The Eclipse Wizard Page class.
 bg=gray
@@ -490,12 +490,37 @@ bg=gray
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>63</x>
-      <y>981</y>
-      <w>36</w>
-      <h>54</h>
+      <x>105</x>
+      <y>763</y>
+      <w>28</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;20.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>196</x>
+      <y>280</y>
+      <w>91</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>The Eclipse Message Dialog class.
+bg=gray
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>273</x>
+      <y>315</y>
+      <w>42</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;30.0</additional_attributes>
   </element>
 </diagram>
