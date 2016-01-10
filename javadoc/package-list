@@ -5,5 +5,7 @@ de.uka.ipd.sdq.beagle.core.judge
 de.uka.ipd.sdq.beagle.core.measurement
 de.uka.ipd.sdq.beagle.core.pcmconnection
 de.uka.ipd.sdq.beagle.gui
+de.uka.ipd.sdq.beagle.gui.contextmenus
+org.eclipse.core.commands
 org.eclipse.jface.dialogs
 org.eclipse.jface.wizard
