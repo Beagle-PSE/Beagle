@@ -60,7 +60,7 @@ public class Blackboard implements Serializable {
 	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SeffBranch> getAllSEFFBranches() {
+	public Set<SeffBranch> getAllSeffBranches() {
 		return null;
 	}
 
@@ -229,7 +229,7 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSEFFBranch(final SeffBranch branch,
+	public void reportMeasurementResultForSeffBranch(final SeffBranch branch,
 		final BranchDecisionMeasurementResult result) {
 	}
 
@@ -289,7 +289,7 @@ public class Blackboard implements Serializable {
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void proposeExpressionForSEFFBranch(final SeffBranch branch, final EvaluableExpression expression) {
+	public void proposeExpressionForSeffBranch(final SeffBranch branch, final EvaluableExpression expression) {
 	}
 
 	/**
@@ -340,6 +340,6 @@ public class Blackboard implements Serializable {
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionForSEFFBranch(final SeffBranch branch, final EvaluableExpression expression) {
+	public void setFinalExpressionForSeffBranch(final SeffBranch branch, final EvaluableExpression expression) {
 	}
 }

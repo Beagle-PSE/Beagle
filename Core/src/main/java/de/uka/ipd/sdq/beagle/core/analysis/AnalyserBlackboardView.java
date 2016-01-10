@@ -120,11 +120,11 @@ public class AnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
 	 *
 	 * @return All {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()
 	 */
 	public Set<SeffBranch> getAllSEFFBranches() {
 		return null;
@@ -170,15 +170,15 @@ public class AnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#proposeExpressionForSEFFBranch(SeffBranch, EvaluableExpression)}
+	 * {@link Blackboard#proposeExpressionForSeffBranch(SeffBranch, EvaluableExpression)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see Blackboard#proposeExpressionForSEFFBranch(SeffBranch, EvaluableExpression)
+	 * @see Blackboard#proposeExpressionForSeffBranch(SeffBranch, EvaluableExpression)
 	 */
-	public void proposeExpressionForSEFFBranch(final SeffBranch branch, final EvaluableExpression expression) {
+	public void proposeExpressionForSeffBranch(final SeffBranch branch, final EvaluableExpression expression) {
 	}
 
 	/**

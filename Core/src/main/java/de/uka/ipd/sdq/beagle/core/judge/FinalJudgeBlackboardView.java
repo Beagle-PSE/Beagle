@@ -47,11 +47,11 @@ public class FinalJudgeBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
 	 *
 	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()
 	 */
 	public Set<SeffBranch> getAllSEFFBranches() {
 		return null;
@@ -168,13 +168,13 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#proposeExpressionForSEFFBranch(SeffBranch, EvaluableExpression)}
+	 * {@link Blackboard#proposeExpressionForSeffBranch(SeffBranch, EvaluableExpression)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression proposed to describe {@code branch}’s
 	 *            measurement results. Must not be {@code null}.
-	 * @see Blackboard#proposeExpressionForSEFFBranch(SeffBranch, EvaluableExpression)
+	 * @see Blackboard#proposeExpressionForSeffBranch(SeffBranch, EvaluableExpression)
 	 */
 	public void proposeExpressionFor(final SeffBranch branch, final EvaluableExpression expression) {
 	}
@@ -233,14 +233,14 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSEFFBranch(SeffBranch, EvaluableExpression)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSeffBranch(SeffBranch, EvaluableExpression)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch. Must not be {@code null}.
 	 * @param expression An evaluable expression describing {@code branch}’s measurement
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSEFFBranch(SeffBranch,
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#setFinalExpressionForSeffBranch(SeffBranch,
 	 *      EvaluableExpression)
 	 */
 	public void setFinalExpressionFor(final SeffBranch branch, final EvaluableExpression expression) {

@@ -31,11 +31,11 @@ public class MeasurementControllerBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
 	 *
 	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()
 	 */
 	public Set<SeffBranch> getAllSEFFBranches() {
 		return null;
@@ -187,13 +187,13 @@ public class MeasurementControllerBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#reportMeasurementResultForSEFFBranch(SeffBranch, BranchDecisionMeasurementResult)}
+	 * {@link Blackboard#reportMeasurementResultForSeffBranch(SeffBranch, BranchDecisionMeasurementResult)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSEFFBranch(final SeffBranch branch,
+	public void reportMeasurementResultForSeffBranch(final SeffBranch branch,
 		final BranchDecisionMeasurementResult result) {
 	}
 }
