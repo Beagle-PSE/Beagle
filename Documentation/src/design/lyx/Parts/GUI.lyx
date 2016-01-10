@@ -272,7 +272,7 @@ gls{SEFF}
 
 \end_inset
 
- diagram for Internal Action Edit Parts and Internal Action 2 Edit Parts.
+ diagram for the Internal Action Edit Parts.
  Each of them has its own Command Handler class, which is handles clicks
  on the context menu entries.
 \end_layout
