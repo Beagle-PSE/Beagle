@@ -1,7 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
 
 /**
- * TODO Document this type.
+ * Models an internal action which has a resource demands.
+ * 
  * @author Annika Berger
  *
  */

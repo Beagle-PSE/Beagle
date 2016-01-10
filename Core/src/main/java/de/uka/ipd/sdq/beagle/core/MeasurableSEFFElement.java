@@ -3,7 +3,7 @@ package de.uka.ipd.sdq.beagle.core;
 import java.io.Serializable;
 
 /**
- * TODO Document this type.
+ * Models elements from the SEFF which can be measured.
  * 
  * @author Annika Berger
  */

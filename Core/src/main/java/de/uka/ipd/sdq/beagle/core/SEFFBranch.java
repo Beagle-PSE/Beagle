@@ -1,6 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
+
 /**
- * TODO Document this type.
+ * Models branches from the SEFF which can be measured.
+ * 
  * @author Annika Berger
  *
  */
