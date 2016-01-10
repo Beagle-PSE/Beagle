@@ -1,21 +1,13 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import java.io.Serializable;
-
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document class
- *
+ * Models loops (like Java’s for , while and do - while statement) which affect the calls
+ * a component makes to other components. Such loops are—contrary to loops that stay
+ * within an internal action—modelled in a component’s SEFF.
+ * 
+ * @author Annika Berger
  */
-public class SeffLoop extends MeasurableSeffElement implements Serializable {
+public class SeffLoop extends MeasurableSeffElement {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

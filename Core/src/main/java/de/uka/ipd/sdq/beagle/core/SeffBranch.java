@@ -2,18 +2,15 @@ package de.uka.ipd.sdq.beagle.core;
 
 import java.io.Serializable;
 
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document this type.
- *
+ * /** Models branches in a component's SEFF, originating from conditional constructs.
+ * 
+ * <p>SEFF conditions are conditions (like Java’s if , if - else and switch - case
+ * statements) which affect the calls a component makes to other components. Such
+ * conditions are—contrary to conditions that stay within an internal action—modelled in a
+ * component’s SEFF.
+ * 
+ * @author Annika Berger
  */
 public class SeffBranch extends MeasurableSeffElement implements Serializable {
 
