@@ -13,8 +13,8 @@ import java.io.Serializable;
 import java.util.Set;
 
 /**
- * Interface for Blackboard Views that may be passed to a
- * {@link EvaluableExpressionFitnessFunction}.
+ * Interface for Blackboard Views that may be passed to an
+ * EvaluableExpressionFitnessFunction.
  *
  * @author Joshua Gleitze
  */
