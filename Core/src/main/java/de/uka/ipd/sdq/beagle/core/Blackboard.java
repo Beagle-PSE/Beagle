@@ -358,6 +358,10 @@ public class Blackboard implements Serializable {
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 	}
 
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		return null;
+	}
+
 	/**
 	 * Writes data for {@code writer} to the blackboard. This method serves as a type safe
 	 * mean for tools to store data that is not part of their results. Values stored here
