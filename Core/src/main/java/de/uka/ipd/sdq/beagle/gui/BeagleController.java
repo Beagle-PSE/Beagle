@@ -1,6 +1,4 @@
-package de.uka.ipd.sdq.beagle.core;
-
-import de.uka.ipd.sdq.beagle.gui.UserConfiguration;
+package de.uka.ipd.sdq.beagle.gui;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,

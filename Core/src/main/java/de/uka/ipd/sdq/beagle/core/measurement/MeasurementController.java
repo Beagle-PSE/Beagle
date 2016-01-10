@@ -1,6 +1,8 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.measurement;
 
-import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementControllerBlackboardView;
 
 import java.util.Collection;
 
@@ -17,6 +19,7 @@ public class MeasurementController {
 	/**
 	 * All measurement tools that can be used for measurements.
 	 */
+	@SuppressWarnings("unused")
 	private Collection<MeasurementTool> measurementTools;
 
 	/**
@@ -28,8 +31,7 @@ public class MeasurementController {
 	 *         'to be measured'. When {@code true} is returned, this is no guarantee that
 	 *         at least one new measurement result will be added.
 	 */
-	public boolean canMeasure(final ReadOnlyBlackboardView blackboard) {
-		// implement method
+	public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
 		return false;
 	}
 

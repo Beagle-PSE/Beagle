@@ -1,6 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.analysis;
 
-import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 /**
@@ -37,7 +36,7 @@ public interface MeasurementResultAnalyser {
 	 *
 	 * @param blackboard The current blackboard.
 	 */
-	void canContribute(ReadOnlyBlackboardView blackboard);
+	void canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView blackboard);
 
 	/**
 	 * Contributes this analyser’s knowledge to the passed blackboard.

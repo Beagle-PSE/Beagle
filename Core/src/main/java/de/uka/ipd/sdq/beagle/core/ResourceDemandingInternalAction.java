@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 /**
  * Models an internal action demanding resources being executed.
- * 
+ *
  * <p>The internal action applies to a specific <em>resource type</em>. The resource type
  * describes both the resource that was demanded and the unit the result’s value is
  * expressed in. To support extensibility, these types are represented as strings with no
@@ -30,18 +30,18 @@ package de.uka.ipd.sdq.beagle.core;
  * non-volatile storage
  *
  * </ul>
- * 
+ *
  * @author Christoph Michelbach
  * @author Annika Berger
  *
  */
-public class ResourceDemandingInternalAction extends MeasurableSeffElement {
+public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
 	private static final long serialVersionUID = -8743471676122273889L;
-	
+
 	/**
 	 * Gets this internal action's <em>result type</em>.
 	 *
@@ -51,13 +51,12 @@ public class ResourceDemandingInternalAction extends MeasurableSeffElement {
 	public String getResourceType() {
 		return null;
 	}
-	
 
 	/**
 	 * Sets this internal action’s <em>result type</em>.
 	 *
-	 * @param resourceType This internal actions's <em>result type</em>, as defined in the class
-	 *            description. May not be {@code null}.
+	 * @param resourceType This internal actions's <em>result type</em>, as defined in the
+	 *            class description. May not be {@code null}.
 	 * @throws NullPointerException If {@code resourceType} is {@code null}.
 	 */
 	public void setResourceType(final String resourceType) {
