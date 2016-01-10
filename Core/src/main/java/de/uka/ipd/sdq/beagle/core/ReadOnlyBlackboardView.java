@@ -58,7 +58,7 @@ public class ReadOnlyBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
-	public Set<SeffLoop> getSEFFLoopsToBeMeasured() {
+	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
 		return null;
 	}
 
@@ -151,7 +151,7 @@ public class ReadOnlyBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
-	public Set<SeffLoop> getAllSEFFLoops() {
+	public Set<SeffLoop> getAllSeffLoops() {
 		return null;
 	}
 }

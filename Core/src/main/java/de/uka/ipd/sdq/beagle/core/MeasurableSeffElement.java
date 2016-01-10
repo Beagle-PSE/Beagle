@@ -1,19 +1,17 @@
 package de.uka.ipd.sdq.beagle.core;
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
+
+import java.io.Serializable;
 
 /**
+ * Models elements from a component's SEFF which can be measured.
  * 
- * TODO Document this type.
- * 
- * @author Christoph Michelbach
+ * @author Annika Berger
  */
-public class MeasurableSeffElement {
+public abstract class MeasurableSeffElement implements Serializable {
+
+	/**
+	 * Serialisation version UID, see {@link java.io.Serializable}.
+	 */
+	private static final long serialVersionUID = -5621320951845614253L;
 
 }

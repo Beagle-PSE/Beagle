@@ -1,18 +1,10 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import java.io.Serializable;
-
-/*
- * ATTENTION: Checkstyle turned off! remove this comment block when implementing this
- * class!
- *
- * CHECKSTYLE:OFF
- *
- * TODO
- */
-
 /**
- * TODO Document this type.
+ * Models an internal action demanding resources being executed.
+ *
+ @auther Christoph Michelbach
+ * @author Annika Berger
  *
  */
 public class ResourceDemandingInternalAction extends MeasurableSeffElement implements Serializable {
@@ -20,6 +12,5 @@ public class ResourceDemandingInternalAction extends MeasurableSeffElement imple
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
-	private static final long serialVersionUID = 669223602302227906L;
-
+	private static final long serialVersionUID = -8743471676122273889L;
 }

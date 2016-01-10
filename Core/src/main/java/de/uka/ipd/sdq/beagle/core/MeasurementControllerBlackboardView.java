@@ -48,7 +48,7 @@ public class MeasurementControllerBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
-	public Set<SeffLoop> getAllSEFFLoops() {
+	public Set<SeffLoop> getAllSeffLoops() {
 		return null;
 	}
 
@@ -156,7 +156,7 @@ public class MeasurementControllerBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
-	public Set<SeffLoop> getSEFFLoopsToBeMeasured() {
+	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
 		return null;
 	}
 
@@ -175,25 +175,25 @@ public class MeasurementControllerBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#addMeasurementResultForSEFFLoop(SeffLoop, LoopRepetitionCountMeasurementResult)}
+	 * {@link Blackboard#reportMeasurementResultForSeffLoop(SeffLoop, LoopRepetitionCountMeasurementResult)}
 	 * .
 	 *
 	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSEFFLoop(final SeffLoop loop,
+	public void reportMeasurementResultForSeffLoop(final SeffLoop loop,
 		final LoopRepetitionCountMeasurementResult result) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#addMeasurementResultForSEFFBranch(SeffBranch, BranchDecisionMeasurementResult)}
+	 * {@link Blackboard#reportMeasurementResultForSeffBranch(SeffBranch, BranchDecisionMeasurementResult)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSEFFBranch(final SeffBranch branch,
+	public void reportMeasurementResultForSeffBranch(final SeffBranch branch,
 		final BranchDecisionMeasurementResult result) {
 	}
 }
