@@ -702,13 +702,14 @@ Measurement Tool
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>198</x>
+      <x>144</x>
       <y>1872</y>
-      <w>44</w>
+      <w>146</w>
       <h>134</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>27;27;27;117</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>81;27;81;117</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
@@ -736,13 +737,14 @@ Proposed Expression Analyser
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>558</x>
+      <x>504</x>
       <y>1872</y>
-      <w>44</w>
+      <w>146</w>
       <h>134</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>27;27;27;117</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>81;27;81;117</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
@@ -770,12 +772,13 @@ Measurement Result Analyser
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>945</x>
+      <x>891</x>
       <y>1872</y>
-      <w>44</w>
+      <w>146</w>
       <h>134</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>27;27;27;117</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>81;27;81;117</additional_attributes>
   </element>
 </diagram>
