@@ -263,10 +263,10 @@ The Blackboard and its views.
 \end_layout
 
 \begin_layout Standard
-This concept is supported by the Blackboard views: To ensure, that each
- tool, except the Final Judge, can access only certain layers, they never
+This concept is supported by the Blackboard views: To ensure that each tool
+ -- except the Final Judge -- can access only certain layers, they never
  get access to the blackboard.
- They only get an Blackboard View, which has the subset of the Blackboard's
+ They only get a Blackboard View which provides the subset of the Blackboard's
  methods they are allowed to use.
  Each view can navigate to the blackboard and each method on the view delegates
  to the equivalent method on the blackboard.
@@ -276,6 +276,12 @@ This concept is supported by the Blackboard views: To ensure, that each
 
 \begin_layout Section
 Measurable SEFF Elements
+\end_layout
+
+\begin_layout Standard
+The blackboard distinguishes between measurable SEFF elements and SEFF elements
+ in general.
+ Tools access the set they need through their corresponding views.
 \end_layout
 
 \begin_layout Section
