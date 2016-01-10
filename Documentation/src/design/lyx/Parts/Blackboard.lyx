@@ -211,7 +211,7 @@ proposed
 Typical Measurement Result Analysers are regression tools.
  Proposed Expressions Analyser are, fore example, a tool that takes the
  average of all available Evaluable Expressions or that builds new ones
- for an genetic programming approach..
+ for an genetic programming approach.
 \end_layout
 
 \begin_layout Standard
