@@ -391,10 +391,9 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/Documentation/src/design/umlet/Sequence Diagram perform Analysis().uxf.pdf
+	filename ../../umlet/Sequence Diagram perform Analysis().uxf.pdf
 	width 90text%
 	height 100pheight%
-	keepAspectRatio
 
 \end_inset
 
@@ -426,10 +425,9 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/Documentation/src/design/umlet/Sequence Diagram can measure().uxf.pdf
+	filename ../../umlet/Sequence Diagram can measure().uxf.pdf
 	width 90text%
 	height 100pheight%
-	keepAspectRatio
 
 \end_inset
 
@@ -461,10 +459,9 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/Documentation/src/design/umlet/Sequence Diagram measure().uxf.pdf
+	filename ../../Sequence Diagram measure().uxf.pdf
 	width 90text%
 	height 100pheight%
-	keepAspectRatio
 
 \end_inset
 
@@ -496,7 +493,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/Documentation/src/design/umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf.pdf
+	filename ../../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf.pdf
 	width 90text%
 	height 100pheight%
 	keepAspectRatio
@@ -531,7 +528,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/Documentation/src/design/umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf
+	filename ../../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf
 	width 90text%
 	height 100pheight%
 	keepAspectRatio
@@ -566,7 +563,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Meine Dateien/Uni/Semester B03 (WS1516)/PSE/Beagle/Documentation/src/design/umlet/Sequence Diagram judge().uxf.pdf
+	filename ../../umlet/Sequence Diagram judge().uxf.pdf
 	width 90text%
 	height 100pheight%
 	keepAspectRatio
