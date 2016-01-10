@@ -42,12 +42,13 @@
       <x>684</x>
       <y>171</y>
       <w>315</w>
-      <h>90</h>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Resource Demanding Internal Action
 --
-
+  
   action: Code Section
+  resource Type: String
   
 --
 </panel_attributes>
@@ -234,16 +235,16 @@ m1=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>711</x>
-      <y>252</y>
+      <y>270</y>
       <w>432</w>
-      <h>477</h>
+      <h>459</h>
     </coordinates>
     <panel_attributes>fontsize=12
 lt=&lt;&lt;&lt;&lt;-
 r2=RDIAs to be measured {{unique}}
 m2=*
 m1=1</panel_attributes>
-    <additional_attributes>350.0;510.0;350.0;320.0;460.0;320.0;460.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>350.0;490.0;350.0;300.0;460.0;300.0;460.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -673,21 +674,21 @@ m1=1
     <coordinates>
       <x>108</x>
       <y>1656</y>
-      <w>130</w>
+      <w>146</w>
       <h>134</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..*
 r1=-measurement tools
 m2=*</panel_attributes>
-    <additional_attributes>72;117;72;27</additional_attributes>
+    <additional_attributes>81;117;81;27</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>72</x>
+      <x>63</x>
       <y>1989</y>
-      <w>270</w>
+      <w>288</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Abstract&gt;&gt;
@@ -702,14 +703,14 @@ Measurement Tool
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>171</x>
+      <x>117</x>
       <y>1872</y>
-      <w>146</w>
-      <h>134</h>
+      <w>168</w>
+      <h>125</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>81;27;81;117</additional_attributes>
+    <additional_attributes>90;27;90;108</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
@@ -739,12 +740,12 @@ Proposed Expression Analyser
     <coordinates>
       <x>531</x>
       <y>1872</y>
-      <w>146</w>
+      <w>168</w>
       <h>134</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>81;27;81;117</additional_attributes>
+    <additional_attributes>90;27;90;117</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
@@ -774,11 +775,11 @@ Measurement Result Analyser
     <coordinates>
       <x>918</x>
       <y>1872</y>
-      <w>146</w>
+      <w>168</w>
       <h>134</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>81;27;81;117</additional_attributes>
+    <additional_attributes>90;27;90;117</additional_attributes>
   </element>
 </diagram>
