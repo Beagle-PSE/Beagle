@@ -1,21 +1,29 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.measurement;
 
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import java.io.Serializable;
 import java.util.Set;
 
 /**
  * View of the {@link Blackboard} designed to be used by {@link MeasurementResultAnalyser}
- * . It allows reading access for {@linkplain ResourceDemandingInternalAction resource
- * demanding internal actions}, {@linkplain SeffBranch SEFF branches},
- * {@linkplain SeffLoop SEFF loops}, {@linkplain ExternalCallParameter external call
- * parameters}, reading, and the fitness function.
+ * . It allows reading access and adding access for
+ * {@linkplain ResourceDemandingInternalAction resource demanding internal actions},
+ * {@linkplain SeffBranch SEFF branches}, {@linkplain SeffLoop SEFF loops},
+ * {@linkplain ExternalCallParameter external call parameters}, reading, and the fitness
+ * function.
  *
  * @author Christoph Michelbach
  */
-public class ReadOnlyMeasurementControllerBlackboardView {
+public class MeasurementControllerBlackboardView {
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
@@ -67,6 +75,54 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	}
 
 	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
+	 * .
+	 *
+	 * @param rdia A resource demanding internal action that was measured. Must not be
+	 *            {@code null} .
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+		final ResourceDemandMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(SeffLoop, LoopRepetitionCountMeasurementResult)}
+	 * .
+	 *
+	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(SeffBranch, BranchDecisionMeasurementResult)}
+	 * .
+	 *
+	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(ExternalCallParameter, ParameterChangeMeasurementResult)}
+	 * .
+	 *
+	 * @param parameter An external call parameter which was measured. Must not be
+	 *            {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ExternalCallParameter parameter,
+		final ParameterChangeMeasurementResult results) {
+	}
+
+	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
 	 *
 	 * @return An object which holds and is responsible allows access to the fitness
@@ -92,5 +148,18 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		return null;
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)} .
+	 *
+	 * @param writer The class the data should be written for. Must not be {@code null}.
+	 * @param written The data to write.
+	 * @param <WRITTEN_TYPE> {@code written}’s type.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)
+	 */
+	public <WRITTEN_TYPE extends Serializable> void writeFor(
+		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 	}
 }

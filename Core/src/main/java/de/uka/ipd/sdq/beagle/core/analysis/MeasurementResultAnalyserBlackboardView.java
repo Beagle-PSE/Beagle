@@ -1,7 +1,15 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.analysis;
 
-import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
@@ -20,7 +28,7 @@ import java.util.Set;
  *
  * @author Christoph Michelbach
  */
-public class MeasurementResultAnalyserBlackboardView {
+public class MeasurementResultAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
@@ -117,6 +125,7 @@ public class MeasurementResultAnalyserBlackboardView {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
 	 */
+	@Override
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
 		return null;
 	}
@@ -131,6 +140,7 @@ public class MeasurementResultAnalyserBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
+	@Override
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
 		return null;
 	}
@@ -145,6 +155,7 @@ public class MeasurementResultAnalyserBlackboardView {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
+	@Override
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
 		return null;
 	}
@@ -161,6 +172,7 @@ public class MeasurementResultAnalyserBlackboardView {
 	 *         never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
+	@Override
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
 		return null;

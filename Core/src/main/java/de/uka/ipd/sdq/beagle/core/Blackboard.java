@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
@@ -296,10 +297,12 @@ public class Blackboard implements Serializable {
 	/**
 	 * Adds a measurement result for the provided {@code loop}.
 	 *
-	 * @param call An external call which was measured. Must not be {@code null}.
+	 * @param parameter An external call parameter which was measured. Must not be
+	 *            {@code null}.
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void addMeasurementResultFor(final ExternalCall call, final ParameterChangeMeasurementResult results) {
+	public void addMeasurementResultFor(final ExternalCallParameter parameter,
+		final ParameterChangeMeasurementResult results) {
 	}
 
 	/**
@@ -353,7 +356,7 @@ public class Blackboard implements Serializable {
 	 * Returns an object which holds and is responsible allows access to the fitness
 	 * function grading {@linkplain EvaluableExpression evaluable expressions} regarding
 	 * their fitness.
-	 * 
+	 *
 	 * @return An object which holds and is responsible allows access to the fitness
 	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
 	 *         regarding their fitness.
