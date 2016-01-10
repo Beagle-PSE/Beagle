@@ -193,11 +193,11 @@ public class FinalJudgeBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()}.
 	 *
 	 * @return All {@linkplain SeffBranch SEFF branches} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set<SeffBranch> getSEFFBranchesToBeMeasured() {
 		return null;

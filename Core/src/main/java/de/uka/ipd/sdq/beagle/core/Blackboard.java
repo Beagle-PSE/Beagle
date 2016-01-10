@@ -153,7 +153,7 @@ public class Blackboard implements Serializable {
 	 * @return All {@linkplain SeffBranch SEFF branches} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SeffBranch> getSEFFBranchesToBeMeasured() {
+	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
 		return null;
 	}
 
