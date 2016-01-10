@@ -511,7 +511,8 @@ Final Fitness Function View
       <w>242</w>
       <h>143</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
     <additional_attributes>225;27;225;126;27;126</additional_attributes>
   </element>
   <element>
@@ -520,32 +521,35 @@ Final Fitness Function View
       <x>351</x>
       <y>1512</y>
       <w>935</w>
-      <h>404</h>
+      <h>405</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
+    <panel_attributes>lt=.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
     <additional_attributes>918;27;918;387;27;387;27;351</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>1413</x>
-      <y>531</y>
-      <w>71</w>
-      <h>611</h>
+      <x>1386</x>
+      <y>513</y>
+      <w>146</w>
+      <h>629</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>54;594;54;27;27;27</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;.
+          &lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>81;612;81;45;54;45</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>999</x>
-      <y>144</y>
-      <w>485</w>
-      <h>431</h>
+      <y>126</y>
+      <w>533</w>
+      <h>449</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>468;414;468;27;27;27</additional_attributes>
+    <panel_attributes>lt=.
+  &lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>468;432;468;45;27;45</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
