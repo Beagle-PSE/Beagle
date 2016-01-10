@@ -265,16 +265,6 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * Adds a measurement result for the provided {@code branch}.
-	 *
-	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
-	 * @param result The result of that measurement. Must not be {@code null}.
-	 */
-	public void addMeasurementResultForSEFFBranch(final SeffBranch branch,
-		final BranchDecisionMeasurementResult result) {
-	}
-
-	/**
 	 * Adds a measurement result for the provided {@code rdia}.
 	 *
 	 * @param rdia A resource demanding internal action that was measured. Must not be
@@ -291,7 +281,7 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch which was measured. Must not be {@code null}.
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void addMeasurementResultFor(final SeffBranch branch, final LoopRepetitionCountMeasurementResult results) {
+	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
 	}
 
 	/**
@@ -300,7 +290,7 @@ public class Blackboard implements Serializable {
 	 * @param loop A SEFF Loop which was measured. Must not be {@code null}.
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void addMeasurementResultFor(final SeffLoop loop, final ParameterChangeMeasurementResult results) {
+	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
 	}
 
 	/**
