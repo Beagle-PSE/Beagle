@@ -15,16 +15,19 @@
   + get PCM ID of ( rdia: Resource Demanding Internal Action ): String
   + get PCM ID of ( branch: SEFF Branch ): String
   + get PCM ID of ( loop: SEFF Loop ): String
+  + get PCM ID of ( ecp: Excernal Call Parameter ): String
 
  
   + has PCM ID of ( rdia: Resource Demanding Internal Action  ): boolean
   + has PCM ID of ( branch: SEFF Branch ): boolean
   + has PCM ID of ( loop: SEFF Loop ): boolean
+  + has PCM ID of ( ecp: Excernal Call Parameter ): boolean
 
  
   + add PCM ID of ( rdia: Resource Demanding Internal Action, identifier: String )
   + add PCM ID of ( branch: SEFF Branch, identifier: String )
   + add PCM ID of ( loop: SEFF Loop, identifier: String )
+  + add PCM ID of ( ecp: External Call Parameter, identifier: String )
 </panel_attributes>
     <additional_attributes/>
   </element>
