@@ -596,7 +596,7 @@ AbstractHandler
 --
 
 --
-execute(event: ExecutionEvent): Object</panel_attributes>
++ execute(event: ExecutionEvent): Object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -636,7 +636,7 @@ bg=gray
 --
 
 --
-execute(event: ExecutionEvent): Object</panel_attributes>
++ execute(event: ExecutionEvent): Object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -651,7 +651,7 @@ execute(event: ExecutionEvent): Object</panel_attributes>
 --
 
 --
-execute(event: ExecutionEvent): Object</panel_attributes>
++ execute(event: ExecutionEvent): Object</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -695,9 +695,9 @@ execute(event: ExecutionEvent): Object</panel_attributes>
       <w>160</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;-x
 m1=1
-m2=*</panel_attributes>
+m2= *</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -708,9 +708,9 @@ m2=*</panel_attributes>
       <w>160</w>
       <h>130</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;-x
 m1=1
-m2=*</panel_attributes>
+m2= *</panel_attributes>
     <additional_attributes>140.0;10.0;40.0;10.0;40.0;100.0;10.0;100.0</additional_attributes>
   </element>
   <element>
@@ -721,9 +721,9 @@ m2=*</panel_attributes>
       <w>160</w>
       <h>220</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;-x
 m1=1
-m2=*</panel_attributes>
+m2= *</panel_attributes>
     <additional_attributes>140.0;10.0;80.0;10.0;80.0;190.0;10.0;190.0</additional_attributes>
   </element>
 </diagram>
