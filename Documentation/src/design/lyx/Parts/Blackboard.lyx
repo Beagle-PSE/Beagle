@@ -131,7 +131,18 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The Blackboard and its views
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Blackboard Class Diagram
+\end_layout
+
+\end_inset
+
+The Blackboard and its views.
+ The accessor methods are explicitly stated to visualise the view’s usage.
+ 
 \end_layout
 
 \end_inset
@@ -171,7 +182,17 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Evaluable Expressions
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Evaluable Expression Class Diagram
+\end_layout
+
+\end_inset
+
+The Evaluable Expression Interface and its implementations realise the Visitor
+ pattern.
 \end_layout
 
 \end_inset
