@@ -59,7 +59,7 @@ valign=top</panel_attributes>
     <coordinates>
       <x>0</x>
       <y>0</y>
-      <w>850</w>
+      <w>910</w>
       <h>720</h>
     </coordinates>
     <panel_attributes>Beagle Core
@@ -87,7 +87,7 @@ valign=top</panel_attributes>
     <coordinates>
       <x>510</x>
       <y>570</y>
-      <w>310</w>
+      <w>380</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>Judge
