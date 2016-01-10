@@ -72,45 +72,43 @@ public class ProposedExpressionAnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredRdias()}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredRdias(Collection)}.
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to this blackboard.
-	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredSeffBranches()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredSeffBranches(Collection)}
+	 * .
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
-	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredSeffLoops()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredSeffLoops(Collection)}.
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
-	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredExternalCallParameters()}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredExternalCallParameters(Collection)}
 	 * .
 	 *
 	 * @param parameters external call parameters that shall be measured. Must not be
 	 *            {@code null} and must be known to this blackboard.
-	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
 	}
@@ -177,12 +175,12 @@ public class ProposedExpressionAnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getProposedlExpressionFor(MeasurableSeffElement)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)}
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
 	 */
-	public void getProposedlExpressionFor(final MeasurableSeffElement element) {
+	public void getProposedExpressionFor(final MeasurableSeffElement element) {
 	}
 
 	/**

@@ -73,7 +73,7 @@ public class MeasurementControllerBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#addMeasurementResultForRDIA(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultFor(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
 	 * .
 	 *
 	 * @param rdia A resource demanding internal action that was measured. Must not be

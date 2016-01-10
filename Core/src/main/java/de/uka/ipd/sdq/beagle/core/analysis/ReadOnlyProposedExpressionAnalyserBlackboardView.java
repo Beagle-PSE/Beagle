@@ -132,12 +132,12 @@ public class ReadOnlyProposedExpressionAnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getProposedlExpressionFor(MeasurableSeffElement)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)}
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
 	 */
-	public void getProposedlExpressionFor(final MeasurableSeffElement element) {
+	public void getProposedExpressionFor(final MeasurableSeffElement element) {
 	}
 
 	/**
