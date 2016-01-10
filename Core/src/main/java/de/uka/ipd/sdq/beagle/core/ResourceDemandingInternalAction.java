@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core;
 
 /**
- * Models an internal action which has a resource demands.
+ * Models an internal action demanding resources being executed.
  * 
  * @author Annika Berger
  *

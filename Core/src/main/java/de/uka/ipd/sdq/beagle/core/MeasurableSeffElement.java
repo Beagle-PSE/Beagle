@@ -3,7 +3,7 @@ package de.uka.ipd.sdq.beagle.core;
 import java.io.Serializable;
 
 /**
- * Models elements from the SEFF which can be measured.
+ * Models elements from a component's SEFF which can be measured.
  * 
  * @author Annika Berger
  */

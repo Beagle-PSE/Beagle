@@ -1,7 +1,12 @@
 package de.uka.ipd.sdq.beagle.core;
 
 /**
- * Models branches from the SEFF which can be measured.
+ * Models branches in a component's SEFF, originating from conditional constructs.
+ * 
+ * <p>SEFF conditions are conditions (like Java’s if , if - else and switch - case
+ * statements) which affect the calls a component makes to other components. Such
+ * conditions are—contrary to conditions that stay within an internal action—modelled in
+ * the component’s SEFF.
  * 
  * @author Annika Berger
  *
