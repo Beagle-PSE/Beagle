@@ -512,7 +512,7 @@ Final Fitness Function View
       <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
+m2= &lt;&lt;implements&gt;&gt;</panel_attributes>
     <additional_attributes>225;27;225;126;27;126</additional_attributes>
   </element>
   <element>
@@ -548,7 +548,8 @@ Final Fitness Function View
       <h>449</h>
     </coordinates>
     <panel_attributes>lt=.
-  &lt;&lt;implements&gt;&gt;</panel_attributes>
+
+&lt;&lt;implements&gt;&gt;</panel_attributes>
     <additional_attributes>468;432;468;45;27;45</additional_attributes>
   </element>
   <element>
@@ -559,7 +560,8 @@ Final Fitness Function View
       <w>1034</w>
       <h>179</h>
     </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
+    <panel_attributes>lt=.
+m2= &lt;&lt;implements&gt;&gt;</panel_attributes>
     <additional_attributes>1017;162;1017;27;27;27</additional_attributes>
   </element>
 </diagram>
