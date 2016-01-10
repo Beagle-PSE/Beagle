@@ -175,7 +175,7 @@
 --
 --
 
- + get RDIAs to be measured (): Resource Demanding Internal Action [*]
+  + get RDIAs to be measured (): Resource Demanding Internal Action [*]
   + get SEFF Branches to be measured (): SEFF Branch [*]
   + get SEFF Loops to be measured (): SEFF Loop [*]
   + get External Call Parameters to be measured (): External Call Parameter [*]
@@ -215,7 +215,7 @@
 --
 --
 
- + get RDIAs to be measured (): Resource Demanding Internal Action [*]
+  + get RDIAs to be measured (): Resource Demanding Internal Action [*]
   + get SEFF Branches to be measured (): SEFF Branch [*]
   + get SEFF Loops to be measured (): SEFF Loop [*]
   + get External Call Parameters to be measured (): External Call Parameter [*]
@@ -287,7 +287,7 @@ m2=*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1208</x>
-      <y>440</y>
+      <y>480</y>
       <w>328</w>
       <h>96</h>
     </coordinates>
@@ -304,7 +304,7 @@ Blackboard Storer
     <id>UMLClass</id>
     <coordinates>
       <x>1208</x>
-      <y>624</y>
+      <y>664</y>
       <w>232</w>
       <h>32</h>
     </coordinates>
@@ -316,7 +316,7 @@ Measurement Result Analyser</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1208</x>
-      <y>672</y>
+      <y>712</y>
       <w>232</w>
       <h>32</h>
     </coordinates>
@@ -328,7 +328,7 @@ Proposed Expression Analyser</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1208</x>
-      <y>576</y>
+      <y>616</y>
       <w>232</w>
       <h>32</h>
     </coordinates>
@@ -340,7 +340,7 @@ Measurement Controller</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1208</x>
-      <y>720</y>
+      <y>760</y>
       <w>232</w>
       <h>32</h>
     </coordinates>
@@ -475,13 +475,11 @@ m2=*</panel_attributes>
       <x>1136</x>
       <y>40</y>
       <w>400</w>
-      <h>344</h>
+      <h>320</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 Evaluable Expression Fitness Function View
 --
--id: Long {composite}
-_-ClassAttribute: Long_
 --
  
   + get Measurement Results for (
@@ -533,13 +531,13 @@ _-ClassAttribute: Long_
     <id>Relation</id>
     <coordinates>
       <x>840</x>
-      <y>376</y>
+      <y>352</y>
       <w>344</w>
-      <h>1488</h>
+      <h>1512</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>410.0;10.0;410.0;1840.0;10.0;1840.0;10.0;1810.0</additional_attributes>
+    <additional_attributes>410.0;10.0;410.0;1870.0;10.0;1870.0;10.0;1840.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -556,7 +554,7 @@ _-ClassAttribute: Long_
     <id>UMLClass</id>
     <coordinates>
       <x>1208</x>
-      <y>768</y>
+      <y>808</y>
       <w>232</w>
       <h>32</h>
     </coordinates>
@@ -568,7 +566,7 @@ Evaluable Expression Fitness Function</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1432</x>
-      <y>528</y>
+      <y>568</y>
       <w>128</w>
       <h>272</h>
     </coordinates>
@@ -581,7 +579,7 @@ Evaluable Expression Fitness Function</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1432</x>
-      <y>584</y>
+      <y>624</y>
       <w>48</w>
       <h>24</h>
     </coordinates>
@@ -592,7 +590,7 @@ Evaluable Expression Fitness Function</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1432</x>
-      <y>632</y>
+      <y>672</y>
       <w>48</w>
       <h>24</h>
     </coordinates>
@@ -603,7 +601,7 @@ Evaluable Expression Fitness Function</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1432</x>
-      <y>680</y>
+      <y>720</y>
       <w>48</w>
       <h>24</h>
     </coordinates>
@@ -614,7 +612,7 @@ Evaluable Expression Fitness Function</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1432</x>
-      <y>728</y>
+      <y>768</y>
       <w>48</w>
       <h>24</h>
     </coordinates>
