@@ -1847,9 +1847,7 @@ glsuseri{component} required interfaces.
 
 
 \backslash
-newacronym{SRS}{SRS}{Software Requirements Specififcation, see 
-\backslash
-cite{srs}}
+newacronym{SRS}{SRS}{Software Requirements Specification}
 \end_layout
 
 \begin_layout Plain Layout
@@ -1883,6 +1881,21 @@ newacronym{HDD}{HDD}{Hard Disk Drive}
 
 \backslash
 newacronym{API}{API}{Application Programming Interface}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{RDIA}{RDIA}{
+\backslash
+glslink{resource demand}{Resource Demanding} 
+\backslash
+glslink{internal action}{Internal Action}}
 \end_layout
 
 \begin_layout Plain Layout

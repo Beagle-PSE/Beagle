@@ -83,8 +83,15 @@ status open
 
 
 \backslash
-gls{SRS}
+acrfull{SRS}
 \end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "srs"
 
 \end_inset
 
@@ -138,7 +145,7 @@ status open
 
 
 \backslash
-Gls{SRS}
+acrlong{SRS}
 \end_layout
 
 \end_inset
@@ -155,7 +162,7 @@ status open
 
 
 \backslash
-Gls{CTA}
+acrlong{CTA}
 \end_layout
 
 \end_inset
