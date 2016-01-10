@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
@@ -24,6 +25,7 @@ import java.util.Set;
  *
  * @author Joshua Gleitze
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  * @see AnalysisController
  */
 public class Blackboard implements Serializable {
@@ -45,12 +47,14 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * All {@linkplain SEFFLoop SEFF loops} known to Beagle.
+	 * All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 * actions} known to Beagle.
 	 *
-	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
-	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} known to Beagle. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFLoop> getAllSEFFLoops() {
+	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
 		return null;
 	}
 
@@ -65,84 +69,35 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * All {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 * actions} known to Beagle.
+	 * All {@linkplain SEFFLoop SEFF loops} known to Beagle.
 	 *
-	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 *         actions} known to Beagle. Changes to the returned set will not modify the
-	 *         blackboard content. Is never {@code null}.
+	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
+	public Set<SEFFLoop> getAllSEFFLoops() {
 		return null;
 	}
 
 	/**
-	 * Reports that {@code rdias} shall be measured for its resource demands.
+	 * Returns all {@linkplain ExternalCallParameter external call parameters} known to
+	 * Beagle.
 	 *
-	 * @param rdias Resource demanding internal actions that shall be measured. Must not
-	 *            be {@code null} and must be known to this blackboard.
-	 * @see #remeasureRDIAs(Collection)
+	 * @return All {@linkplain ExternalCallParameter external call parameters} known to
+	 *         Beagle. Is never {@code null}.
 	 */
-	public void remeasureRDIAs(final ResourceDemandingInternalAction... rdias) {
+	public Set<ExternalCallParameter> getAllExternalCallParameters() {
+		return null;
 	}
 
 	/**
-	 * Reports that {@code rdias} shall be measured for its resource demands.
+	 * {@linkplain ResourceDemandingInternalAction RDIAs} that shall be measured for their
+	 * resource demands.
 	 *
-	 * @param rdias Resource demanding internal actions that shall be measured. Must not
-	 *            be {@code null} and must be known to this blackboard.
-	 * @see #remeasureRDIAs(ResourceDemandingInternalAction...)
+	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} to be measured. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
 	 */
-	public void remeasureRDIAs(final Collection<ResourceDemandingInternalAction> rdias) {
-	}
-
-	/**
-	 * Reports that {@code branches} shall be measured for its branch decisions.
-	 *
-	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
-	 *            must be known to this blackboard.
-	 * @see #remeasureSEFFBranches(Collection)
-	 */
-	public void remeasureSEFFBranches(final SEFFBranch... branches) {
-	}
-
-	/**
-	 * Reports that {@code branches} shall be measured for its branch decisions.
-	 *
-	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
-	 *            must be known to this blackboard.
-	 * @see #remeasureSEFFBranches(SEFFBranch...)
-	 */
-	public void remeasureSEFFBranches(final Collection<SEFFBranch> branches) {
-	}
-
-	/**
-	 * Reports that {@code loops} shall be measured for its repetitions.
-	 *
-	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
-	 *            be known to this blackboard.
-	 * @see #remeasureSEFFLoops(Collection)
-	 */
-	public void remeasureSEFFLoops(final SEFFLoop... loops) {
-	}
-
-	/**
-	 * Reports that {@code loops} shall be measured for its repetitions.
-	 *
-	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
-	 *            be known to this blackboard.
-	 * @see #remeasureSEFFLoops(SEFFLoop...)
-	 */
-	public void remeasureSEFFLoops(final Collection<SEFFLoop> loops) {
-	}
-
-	/**
-	 * {@linkplain SEFFLoop SEFF loops} that shall be measured for their repetitions.
-	 *
-	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
-	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 */
-	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
+	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
 		return null;
 	}
 
@@ -158,15 +113,203 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * {@linkplain ResourceDemandingInternalAction RDIAs} that shall be measured for their
-	 * resource demands.
+	 * {@linkplain SEFFLoop SEFF loops} that shall be measured for their repetitions.
 	 *
-	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 *         actions} to be measured. Changes to the returned set will not modify the
-	 *         blackboard content. Is never {@code null}.
+	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
+	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
 		return null;
+	}
+
+	/**
+	 * Returns all {@linkplain ExternalCallParameter external call parameters} which shall
+	 * be measured.
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} which shall
+	 *         be measured. Is never {@code null}.
+	 */
+	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
+		return null;
+	}
+
+	/**
+	 * Reports that {@code rdias} shall be measured for its resource demands.
+	 *
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredRDIAs(Collection)
+	 */
+	public void addToBeMeasuredRDIAs(final ResourceDemandingInternalAction... rdias) {
+	}
+
+	/**
+	 * Reports that {@code rdias} shall be measured for its resource demands.
+	 *
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredRDIAs(ResourceDemandingInternalAction...)
+	 */
+	public void addToBeMeasuredRDIAs(final Collection<ResourceDemandingInternalAction> rdias) {
+	}
+
+	/**
+	 * Reports that {@code branches} shall be measured for its branch decisions.
+	 *
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to this blackboard.
+	 * @see #addToBeMeasuredSEFFBranches(Collection)
+	 */
+	public void addToBeMeasuredSEFFBranches(final SEFFBranch... branches) {
+	}
+
+	/**
+	 * Reports that {@code branches} shall be measured for its branch decisions.
+	 *
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to this blackboard.
+	 * @see #addToBeMeasuredSEFFBranches(SEFFBranch...)
+	 */
+	public void addToBeMeasuredSEFFBranches(final Collection<SEFFBranch> branches) {
+	}
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to this blackboard.
+	 * @see #addToBeMeasuredSEFFLoops(Collection)
+	 */
+	public void addToBeMeasuredSEFFLoops(final SEFFLoop... loops) {
+	}
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to this blackboard.
+	 * @see #addToBeMeasuredSEFFLoops(SEFFLoop...)
+	 */
+	public void addToBeMeasuredSEFFLoops(final Collection<SEFFLoop> loops) {
+	}
+
+	/**
+	 * Reports that {@code parameters} shall be measured.
+	 *
+	 * @param parameters external call parameters that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredExternalCallParameters(Collection)
+	 */
+	public void addToBeMeasuredExternalCallParameters(final ExternalCallParameter... parameters) {
+	}
+
+	/**
+	 * Reports that {@code parameters} shall be measured.
+	 *
+	 * @param parameters external call parameters that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
+	 */
+	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+	}
+
+	/**
+	 * Gets all results yet measured for the resource demands of {@code rdia}.
+	 *
+	 * @param rdia An resource demanding internal action to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results reported for {@code rdia}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		return null;
+	}
+
+	/**
+	 * Gets all results yet measured for branch decisions of {@code branch}.
+	 *
+	 * @param branch A SEFF Branch to get the measurement results of. Must not be
+	 *            {@code null}.
+	 * @return All measurement results reported for {@code branch}. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
+		return null;
+	}
+
+	/**
+	 * Gets all results yet measured for the loop repetitions of {@code loop}.
+	 *
+	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
+	 *            .
+	 * @return All measurement results reported for {@code loop}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
+		return null;
+	}
+
+	/**
+	 * Gets all results yet measured for the external parameter
+	 * {@code externalCallParameter}.
+	 *
+	 * @param externalCallParameter An external parameter to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results reported for {@code loexternalCallParameterop}.
+	 *         Changes to the returned set will not modify the blackboard content. Is
+	 *         never {@code null}.
+	 */
+	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
+		final ExternalCallParameter externalCallParameter) {
+		return null;
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code branch}.
+	 *
+	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
+	 * @param result The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultForSEFFBranch(final SEFFBranch branch,
+		final BranchDecisionMeasurementResult result) {
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code rdia}.
+	 *
+	 * @param rdia A resource demanding internal action that was measured. Must not be
+	 *            {@code null} .
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+		final ResourceDemandMeasurementResult results) {
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code branch}.
+	 *
+	 * @param branch A SEFF Branch which was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SEFFBranch branch, final LoopRepetitionCountMeasurementResult results) {
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code loop}.
+	 *
+	 * @param loop A SEFF Loop which was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SEFFLoop loop, final ParameterChangeMeasurementResult results) {
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code loop}.
+	 *
+	 * @param call An external call which was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ExternalCall call, final ParameterChangeMeasurementResult results) {
 	}
 
 	/**
@@ -199,73 +342,6 @@ public class Blackboard implements Serializable {
 	 */
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		return null;
-	}
-
-	/**
-	 * Adds a measurement result for the provided {@code rdia}.
-	 *
-	 * @param rdia A resource demanding internal action that was measured. Must not be
-	 *            {@code null} .
-	 * @param result The result of that measurement. Must not be {@code null}.
-	 */
-	public void reportMeasurementResultForRDIA(final ResourceDemandingInternalAction rdia,
-		final ResourceDemandMeasurementResult result) {
-	}
-
-	/**
-	 * Adds a measurement result for the provided {@code loop}.
-	 *
-	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
-	 * @param result The result of that measurement. Must not be {@code null}.
-	 */
-	public void reportMeasurementResultForSEFFLoop(final SEFFLoop loop,
-		final LoopRepetitionCountMeasurementResult result) {
-	}
-
-	/**
-	 * Adds a measurement result for the provided {@code branch}.
-	 *
-	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
-	 * @param result The result of that measurement. Must not be {@code null}.
-	 */
-	public void reportMeasurementResultForSEFFBranch(final SEFFBranch branch,
-		final BranchDecisionMeasurementResult result) {
-	}
-
-	/**
-	 * Gets all results yet measured for the loop repetitions of {@code loop}.
-	 *
-	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
-	 *            .
-	 * @return All measurement results reported for {@code loop}. Changes to the returned
-	 *         set will not modify the blackboard content. Is never {@code null}.
-	 */
-	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
-		return null;
-	}
-
-	/**
-	 * Gets all results yet measured for branch decisions of {@code branch}.
-	 *
-	 * @param branch A SEFF Branch to get the measurement results of. Must not be
-	 *            {@code null}.
-	 * @return All measurement results reported for {@code branch}. Changes to the
-	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 */
-	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
-		return null;
-	}
-
-	/**
-	 * Gets all results yet measured for the resource demands of {@code rdia}.
-	 *
-	 * @param rdia An resource demanding internal action to get the measurement results
-	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code rdia}. Changes to the returned
-	 *         set will not modify the blackboard content. Is never {@code null}.
-	 */
-	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
 		return null;
 	}
 

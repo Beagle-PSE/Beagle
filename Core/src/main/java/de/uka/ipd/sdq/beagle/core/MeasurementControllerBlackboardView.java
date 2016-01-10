@@ -162,7 +162,7 @@ public class MeasurementControllerBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#reportMeasurementResultForRDIA(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultForRDIA(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
 	 * .
 	 *
 	 * @param rdia A resource demanding internal action that was measured. Must not be
@@ -175,7 +175,7 @@ public class MeasurementControllerBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#reportMeasurementResultForSEFFLoop(SEFFLoop, LoopRepetitionCountMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultForSEFFLoop(SEFFLoop, LoopRepetitionCountMeasurementResult)}
 	 * .
 	 *
 	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
@@ -187,7 +187,7 @@ public class MeasurementControllerBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#reportMeasurementResultForSEFFBranch(SEFFBranch, BranchDecisionMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultForSEFFBranch(SEFFBranch, BranchDecisionMeasurementResult)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
