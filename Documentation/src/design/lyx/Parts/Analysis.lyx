@@ -394,6 +394,7 @@ status open
 	filename ../../umlet/Sequence Diagram perform Analysis().uxf.pdf
 	width 90text%
 	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
@@ -428,6 +429,7 @@ status open
 	filename ../../umlet/Sequence Diagram can measure().uxf.pdf
 	width 90text%
 	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
@@ -462,6 +464,7 @@ status open
 	filename ../../Sequence Diagram measure().uxf.pdf
 	width 90text%
 	height 100pheight%
+	keepAspectRatio
 
 \end_inset
 
