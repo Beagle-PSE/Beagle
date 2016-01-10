@@ -98,7 +98,7 @@ the tools
 \end_inset
 
 ), because these tools are not allowed to hold status information.
- The fact that all status informations are stored on the Blackboard allows
+ The fact that all status information are stored on the Blackboard allows
  the serialisation of an analysis, as all elements on the blackboard are
  serialisable.
 \end_layout
@@ -115,16 +115,18 @@ d, when it can do so and may use information of other tools, but don't need
 \end_layout
 
 \begin_layout Standard
-As it makes no sense to run a tool that perform regression of the measurement
- results before any measurements have been made, the vocabulary of the blackboar
-d is divided in different layers and the tools can only see some of them.
+As it makes no sense to run a tool that performs regression of the measurement
+ results before any measurements have been made, the different kind of tools
+ have a different priority.
+ Therefore the vocabulary of the blackboard is divided in different layers
+ and the tools can only see some of them.
  On the bottom layer are the code sections and all tools can access them,
  on the highest level are the final expressions and only the final judge
  can access them.
  In between are the Measurement Result Analysers.
  They can access access the measurement results (and the code sections).
  On top of them are the Proposed Expressions Analysers, which can additionally
- access all already proposed expressions.
+ access all already proposed Evaluable Expressions.
 \end_layout
 
 \begin_layout Standard
@@ -173,7 +175,7 @@ proposed
 \begin_inset Quotes erd
 \end_inset
 
- evaluable expressions and the Final Judge the 
+ Evaluable Expressions and the Final Judge the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -181,7 +183,7 @@ final
 \begin_inset Quotes erd
 \end_inset
 
- evaluable expressions, which will be added to the PCM.
+ Evaluable Expressions, which will be added to the PCM.
 \end_layout
 
 \begin_layout Standard
@@ -203,6 +205,13 @@ proposed
 \end_inset
 
  evaluable expressions, have already done so.
+\end_layout
+
+\begin_layout Standard
+Typical Measurement Result Analysers are regression tools.
+ Proposed Expressions Analyser are, fore example, a tool that takes the
+ average of all available Evaluable Expressions or that builds new ones
+ for an genetic programming approach..
 \end_layout
 
 \begin_layout Standard
@@ -249,6 +258,18 @@ The Blackboard and its views.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+This concept is supported by the Blackboard views: To ensure, that each
+ tool, except the Final Judge, can access only certain layers, they never
+ get access to the blackboard.
+ They only get an Blackboard View, which has the subset of the Blackboard's
+ methods they are allowed to use.
+ Each view can navigate to the blackboard and each method on the view delegates
+ to the equivalent method on the blackboard.
+ The outcome of this is, that each tool can only use the blackboard's method,
+ it is allowed to use.
 \end_layout
 
 \begin_layout Section
