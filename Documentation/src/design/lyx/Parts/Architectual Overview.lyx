@@ -77,7 +77,7 @@ Architectural Overview
 \begin_layout Standard
 This chapter gives an introduction to Beagle’s high level design.
  The following chapters will describe conceptual details of different subsystems.
- For the specification of single types, please refer to Beagle’s Javdoc
+ For the specification of single types, please refer to Beagle’s Javadoc
  documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -106,7 +106,7 @@ In order to manage and synchronise the requests and execution of different
  The core component conducts the order of executable services, distributes
  information and is responsible for class instantiation.
  It contains all management logic required to perform dynamic analysis on
- software and will offer a parametrised 
+ software and will offer a parameterised 
 \begin_inset ERT
 status open
 
