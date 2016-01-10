@@ -136,6 +136,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ../../umlet/Blackboard Layers.uxf.pdf
 	width 90text%
@@ -221,6 +222,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ../../umlet/Blackboard.uxf.pdf
 	width 100text%
@@ -287,6 +289,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ../../umlet/Evaluable Expression.uxf.pdf
 	width 100text%
