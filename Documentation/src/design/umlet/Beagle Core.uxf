@@ -633,13 +633,13 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
+      <x>576</x>
       <y>333</y>
-      <w>180</w>
+      <w>234</w>
       <h>54</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;180.0;10.0;180.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -672,7 +672,7 @@ m1=1
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>99</x>
+      <x>108</x>
       <y>1656</y>
       <w>146</w>
       <h>134</h>
@@ -686,9 +686,9 @@ m2=*</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>72</x>
+      <x>63</x>
       <y>1989</y>
-      <w>270</w>
+      <w>288</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Abstract&gt;&gt;
@@ -703,14 +703,14 @@ Measurement Tool
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>162</x>
+      <x>117</x>
       <y>1872</y>
       <w>168</w>
-      <h>134</h>
+      <h>125</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 &lt;&lt;implements&gt;&gt;</panel_attributes>
-    <additional_attributes>90;27;90;117</additional_attributes>
+    <additional_attributes>90;27;90;108</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Class</type>
@@ -738,7 +738,7 @@ Proposed Expression Analyser
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>522</x>
+      <x>531</x>
       <y>1872</y>
       <w>168</w>
       <h>134</h>
@@ -773,7 +773,7 @@ Measurement Result Analyser
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>909</x>
+      <x>918</x>
       <y>1872</y>
       <w>168</w>
       <h>134</h>

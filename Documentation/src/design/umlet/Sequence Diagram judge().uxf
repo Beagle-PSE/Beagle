@@ -5,7 +5,7 @@
     <id>UMLFrame</id>
     <coordinates>
       <x>0</x>
-      <y>20</y>
+      <y>0</y>
       <w>1700</w>
       <h>890</h>
     </coordinates>
@@ -16,7 +16,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>130</x>
-      <y>70</y>
+      <y>50</y>
       <w>210</w>
       <h>30</h>
     </coordinates>
@@ -27,7 +27,7 @@
     <id>Relation</id>
     <coordinates>
       <x>230</x>
-      <y>90</y>
+      <y>70</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -38,7 +38,7 @@
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>110</y>
+      <y>90</y>
       <w>250</w>
       <h>40</h>
     </coordinates>
@@ -50,7 +50,7 @@ judge(blackboard: Blackbaord)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>230</x>
-      <y>130</y>
+      <y>110</y>
       <w>20</w>
       <h>760</h>
     </coordinates>
@@ -61,7 +61,7 @@ judge(blackboard: Blackbaord)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>870</y>
+      <y>850</y>
       <w>250</w>
       <h>40</h>
     </coordinates>
@@ -73,7 +73,7 @@ true</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>360</x>
-      <y>30</y>
+      <y>10</y>
       <w>390</w>
       <h>30</h>
     </coordinates>
@@ -84,7 +84,7 @@ true</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>130</y>
+      <y>110</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -96,7 +96,7 @@ get all RDIAs()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>180</y>
+      <y>160</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -108,7 +108,7 @@ get all RDIAs()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>570</x>
-      <y>150</y>
+      <y>130</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -119,7 +119,7 @@ get all RDIAs()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>210</y>
+      <y>190</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -131,7 +131,7 @@ get proposed expressions for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>260</y>
+      <y>240</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -143,7 +143,7 @@ get proposed expressions for(rdia1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>570</x>
-      <y>230</y>
+      <y>210</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -154,7 +154,7 @@ get proposed expressions for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>50</y>
+      <y>30</y>
       <w>30</w>
       <h>120</h>
     </coordinates>
@@ -165,7 +165,7 @@ get proposed expressions for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>190</y>
+      <y>170</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -176,19 +176,19 @@ get proposed expressions for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>780</y>
+      <y>760</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-set final expression for(rdia1, expression1)</panel_attributes>
+set final expression for(rdia1, expression2)</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>850</y>
+      <y>830</y>
       <w>350</w>
       <h>30</h>
     </coordinates>
@@ -199,7 +199,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>570</x>
-      <y>800</y>
+      <y>780</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -210,7 +210,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>850</y>
+      <y>830</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -221,7 +221,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>960</x>
-      <y>50</y>
+      <y>30</y>
       <w>30</w>
       <h>870</h>
     </coordinates>
@@ -232,7 +232,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>830</x>
-      <y>30</y>
+      <y>10</y>
       <w>290</w>
       <h>30</h>
     </coordinates>
@@ -243,7 +243,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>790</x>
-      <y>90</y>
+      <y>70</y>
       <w>30</w>
       <h>830</h>
     </coordinates>
@@ -254,7 +254,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>620</x>
-      <y>70</y>
+      <y>50</y>
       <w>340</w>
       <h>30</h>
     </coordinates>
@@ -265,7 +265,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1150</x>
-      <y>30</y>
+      <y>10</y>
       <w>340</w>
       <h>30</h>
     </coordinates>
@@ -276,7 +276,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1320</x>
-      <y>50</y>
+      <y>30</y>
       <w>30</w>
       <h>870</h>
     </coordinates>
@@ -287,7 +287,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>980</x>
-      <y>70</y>
+      <y>50</y>
       <w>340</w>
       <h>30</h>
     </coordinates>
@@ -298,7 +298,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>570</x>
-      <y>310</y>
+      <y>290</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
@@ -309,7 +309,7 @@ set final expression for(rdia1, expression1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>290</y>
+      <y>270</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -321,7 +321,7 @@ get fiteness function()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>340</y>
+      <y>320</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
@@ -333,7 +333,7 @@ fitnessFunction</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>270</y>
+      <y>250</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -344,7 +344,7 @@ fitnessFunction</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1140</x>
-      <y>90</y>
+      <y>70</y>
       <w>30</w>
       <h>320</h>
     </coordinates>
@@ -355,7 +355,7 @@ fitnessFunction</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>370</y>
+      <y>350</y>
       <w>920</w>
       <h>40</h>
     </coordinates>
@@ -367,7 +367,7 @@ grade for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1140</x>
-      <y>390</y>
+      <y>370</y>
       <w>20</w>
       <h>160</h>
     </coordinates>
@@ -378,7 +378,7 @@ grade for(rdia1, expression1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1340</x>
-      <y>70</y>
+      <y>50</y>
       <w>340</w>
       <h>30</h>
     </coordinates>
@@ -389,7 +389,7 @@ grade for(rdia1, expression1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1550</x>
-      <y>90</y>
+      <y>70</y>
       <w>30</w>
       <h>410</h>
     </coordinates>
@@ -400,7 +400,7 @@ grade for(rdia1, expression1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1150</x>
-      <y>460</y>
+      <y>440</y>
       <w>420</w>
       <h>40</h>
     </coordinates>
@@ -412,7 +412,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1150</x>
-      <y>500</y>
+      <y>480</y>
       <w>420</w>
       <h>40</h>
     </coordinates>
@@ -424,7 +424,7 @@ get Value("CPU")</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1550</x>
-      <y>480</y>
+      <y>460</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -435,7 +435,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1550</x>
-      <y>510</y>
+      <y>490</y>
       <w>30</w>
       <h>190</h>
     </coordinates>
@@ -446,7 +446,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>580</x>
-      <y>410</y>
+      <y>390</y>
       <w>580</w>
       <h>40</h>
     </coordinates>
@@ -458,7 +458,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>570</x>
-      <y>430</y>
+      <y>410</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -469,7 +469,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>580</x>
-      <y>450</y>
+      <y>430</y>
       <w>580</w>
       <h>40</h>
     </coordinates>
@@ -481,7 +481,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>530</y>
+      <y>510</y>
       <w>920</w>
       <h>40</h>
     </coordinates>
@@ -493,7 +493,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1140</x>
-      <y>590</y>
+      <y>570</y>
       <w>20</w>
       <h>160</h>
     </coordinates>
@@ -504,7 +504,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>570</x>
-      <y>630</y>
+      <y>610</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -515,7 +515,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>580</x>
-      <y>610</y>
+      <y>590</y>
       <w>580</w>
       <h>40</h>
     </coordinates>
@@ -527,7 +527,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>580</x>
-      <y>650</y>
+      <y>630</y>
       <w>580</w>
       <h>40</h>
     </coordinates>
@@ -539,7 +539,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>730</y>
+      <y>710</y>
       <w>920</w>
       <h>40</h>
     </coordinates>
@@ -551,7 +551,7 @@ get Measurement Results for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>240</x>
-      <y>570</y>
+      <y>550</y>
       <w>920</w>
       <h>40</h>
     </coordinates>
@@ -563,7 +563,7 @@ grade for(rdia1, expression2)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1150</x>
-      <y>660</y>
+      <y>640</y>
       <w>420</w>
       <h>40</h>
     </coordinates>
@@ -575,7 +575,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1150</x>
-      <y>700</y>
+      <y>680</y>
       <w>420</w>
       <h>40</h>
     </coordinates>
@@ -587,7 +587,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1140</x>
-      <y>540</y>
+      <y>520</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -598,7 +598,7 @@ get Value("CPU")</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1550</x>
-      <y>680</y>
+      <y>660</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -609,7 +609,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>350</y>
+      <y>330</y>
       <w>30</w>
       <h>100</h>
     </coordinates>
@@ -620,7 +620,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>460</y>
+      <y>440</y>
       <w>30</w>
       <h>190</h>
     </coordinates>
@@ -631,7 +631,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>570</x>
-      <y>660</y>
+      <y>640</y>
       <w>30</w>
       <h>160</h>
     </coordinates>
@@ -642,7 +642,7 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1140</x>
-      <y>740</y>
+      <y>720</y>
       <w>30</w>
       <h>180</h>
     </coordinates>
@@ -653,11 +653,22 @@ get Value("CPU")</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1550</x>
-      <y>710</y>
+      <y>690</y>
       <w>30</w>
       <h>210</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>1700</w>
+      <h>890</h>
+    </coordinates>
+    <panel_attributes>sd judge()</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

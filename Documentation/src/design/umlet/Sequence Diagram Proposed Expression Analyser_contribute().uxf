@@ -4,8 +4,8 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>0</x>
-      <y>150</y>
+      <x>10</x>
+      <y>270</y>
       <w>1580</w>
       <h>530</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>380</x>
-      <y>200</y>
+      <x>390</x>
+      <y>320</y>
       <w>210</w>
       <h>30</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>220</y>
+      <x>490</x>
+      <y>340</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -38,19 +38,19 @@
     <id>Relation</id>
     <coordinates>
       <x>0</x>
-      <y>240</y>
-      <w>500</w>
+      <y>360</y>
+      <w>520</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 contribute(blackboard: Proposed Expression Analyser Blackbaord View)</panel_attributes>
-    <additional_attributes>480.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>490.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>480</x>
-      <y>260</y>
+      <x>490</x>
+      <y>380</y>
       <w>20</w>
       <h>400</h>
     </coordinates>
@@ -60,8 +60,8 @@ contribute(blackboard: Proposed Expression Analyser Blackbaord View)</panel_attr
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>0</x>
-      <y>650</y>
+      <x>10</x>
+      <y>770</y>
       <w>500</w>
       <h>30</h>
     </coordinates>
@@ -71,8 +71,8 @@ contribute(blackboard: Proposed Expression Analyser Blackbaord View)</panel_attr
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>610</x>
-      <y>160</y>
+      <x>620</x>
+      <y>280</y>
       <w>390</w>
       <h>30</h>
     </coordinates>
@@ -82,8 +82,8 @@ contribute(blackboard: Proposed Expression Analyser Blackbaord View)</panel_attr
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1100</x>
-      <y>200</y>
+      <x>1110</x>
+      <y>320</y>
       <w>110</w>
       <h>30</h>
     </coordinates>
@@ -93,8 +93,8 @@ contribute(blackboard: Proposed Expression Analyser Blackbaord View)</panel_attr
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>910</x>
-      <y>180</y>
+      <x>920</x>
+      <y>300</y>
       <w>210</w>
       <h>50</h>
     </coordinates>
@@ -104,101 +104,31 @@ contribute(blackboard: Proposed Expression Analyser Blackbaord View)</panel_attr
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>260</y>
-      <w>350</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-get all RDIAs()</panel_attributes>
-    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>490</x>
-      <y>320</y>
-      <w>350</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-{rdia1}</panel_attributes>
-    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>820</x>
-      <y>280</y>
-      <w>20</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>830</x>
-      <y>270</y>
-      <w>350</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-get all RDIAs()</panel_attributes>
-    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>830</x>
-      <y>310</y>
-      <w>350</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-{rdia1}</panel_attributes>
-    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1160</x>
-      <y>290</y>
-      <w>20</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>490</x>
+      <x>500</x>
       <y>380</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-get proposed expressions for(rdia1)</panel_attributes>
+get all RDIAs()</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
+      <x>500</x>
       <y>440</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-{expression 1}</panel_attributes>
+{rdia1}</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>820</x>
+      <x>830</x>
       <y>400</y>
       <w>20</w>
       <h>60</h>
@@ -209,31 +139,31 @@ get proposed expressions for(rdia1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
+      <x>840</x>
       <y>390</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-get proposed expressions for(rdia1)</panel_attributes>
+get all RDIAs()</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
+      <x>840</x>
       <y>430</y>
       <w>350</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-{expression 1}</panel_attributes>
+{rdia1}</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1160</x>
+      <x>1170</x>
       <y>410</y>
       <w>20</w>
       <h>40</h>
@@ -244,8 +174,78 @@ get proposed expressions for(rdia1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>180</y>
+      <x>500</x>
+      <y>500</y>
+      <w>350</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+get proposed expressions for(rdia1)</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>500</x>
+      <y>560</y>
+      <w>350</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+{expression 1, expression 2}</panel_attributes>
+    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>830</x>
+      <y>520</y>
+      <w>20</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>510</y>
+      <w>350</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+get proposed expressions for(rdia1)</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>550</y>
+      <w>350</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+{expression 1, expression 2}</panel_attributes>
+    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1170</x>
+      <y>530</y>
+      <w>20</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>300</y>
       <w>30</w>
       <h>120</h>
     </coordinates>
@@ -255,8 +255,8 @@ get proposed expressions for(rdia1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>330</y>
+      <x>830</x>
+      <y>450</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -266,8 +266,8 @@ get proposed expressions for(rdia1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>450</y>
+      <x>830</x>
+      <y>570</y>
       <w>30</w>
       <h>60</h>
     </coordinates>
@@ -277,19 +277,19 @@ get proposed expressions for(rdia1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1160</x>
-      <y>220</y>
+      <x>1170</x>
+      <y>350</y>
       <w>30</w>
-      <h>90</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1160</x>
-      <y>320</y>
+      <x>1170</x>
+      <y>440</y>
       <w>30</w>
       <h>110</h>
     </coordinates>
@@ -299,8 +299,8 @@ get proposed expressions for(rdia1)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1160</x>
-      <y>440</y>
+      <x>1170</x>
+      <y>560</y>
       <w>30</w>
       <h>150</h>
     </coordinates>
@@ -311,19 +311,19 @@ get proposed expressions for(rdia1)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>490</x>
-      <y>540</y>
-      <w>350</w>
+      <y>660</y>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-add proposed expression for(rdia1, expression2)</panel_attributes>
-    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+add proposed expression for(rdia1, expression 3)</panel_attributes>
+    <additional_attributes>340.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>610</y>
+      <x>500</x>
+      <y>730</y>
       <w>350</w>
       <h>30</h>
     </coordinates>
@@ -333,8 +333,8 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>820</x>
-      <y>560</y>
+      <x>830</x>
+      <y>680</y>
       <w>20</w>
       <h>60</h>
     </coordinates>
@@ -345,19 +345,19 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>830</x>
-      <y>550</y>
-      <w>350</w>
+      <y>670</y>
+      <w>370</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-add proposed expression for(rdia1, expression2)</panel_attributes>
-    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+add proposed expression for(rdia1, expression 3)</panel_attributes>
+    <additional_attributes>340.0;20.0;20.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>830</x>
-      <y>600</y>
+      <x>840</x>
+      <y>720</y>
       <w>350</w>
       <h>30</h>
     </coordinates>
@@ -367,8 +367,8 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1160</x>
-      <y>570</y>
+      <x>1170</x>
+      <y>690</y>
       <w>20</w>
       <h>40</h>
     </coordinates>
@@ -378,8 +378,8 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>510</y>
+      <x>830</x>
+      <y>630</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -389,8 +389,8 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>610</y>
+      <x>830</x>
+      <y>730</y>
       <w>30</w>
       <h>80</h>
     </coordinates>
@@ -400,8 +400,8 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1160</x>
-      <y>600</y>
+      <x>1170</x>
+      <y>720</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -411,8 +411,8 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1210</x>
-      <y>180</y>
+      <x>1220</x>
+      <y>300</y>
       <w>30</w>
       <h>510</h>
     </coordinates>
@@ -422,8 +422,8 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1080</x>
-      <y>160</y>
+      <x>1090</x>
+      <y>280</y>
       <w>290</w>
       <h>30</h>
     </coordinates>
@@ -433,19 +433,19 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1400</x>
-      <y>220</y>
+      <x>1410</x>
+      <y>350</y>
       <w>30</w>
-      <h>470</h>
+      <h>460</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;450.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1230</x>
-      <y>200</y>
+      <x>1240</x>
+      <y>320</y>
       <w>340</w>
       <h>30</h>
     </coordinates>
@@ -455,19 +455,19 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>550</x>
-      <y>490</y>
+      <x>560</x>
+      <y>610</y>
       <w>340</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_expression 2: Constant Expression_</panel_attributes>
+    <panel_attributes>_expression 3: Constant Expression_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>490</y>
+      <x>500</x>
+      <y>610</y>
       <w>80</w>
       <h>30</h>
     </coordinates>
@@ -477,12 +477,34 @@ add proposed expression for(rdia1, expression2)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>700</x>
-      <y>510</y>
+      <x>710</x>
+      <y>630</y>
       <w>30</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1170</x>
+      <y>360</y>
+      <w>340</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_expression 2: Evaluable Expression_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1330</x>
+      <y>380</y>
+      <w>30</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;410.0</additional_attributes>
   </element>
 </diagram>
