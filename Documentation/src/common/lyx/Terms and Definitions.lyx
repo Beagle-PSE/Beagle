@@ -1887,6 +1887,21 @@ newacronym{API}{API}{Application Programming Interface}
 
 \end_layout
 
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{RDIA}{RDIA}{
+\backslash
+glslink{resource demand}{Resource Demanding} 
+\backslash
+glslink{internal action}{Internal Action}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
 \end_inset
 
 

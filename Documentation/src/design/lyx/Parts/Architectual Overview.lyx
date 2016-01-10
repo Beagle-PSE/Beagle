@@ -93,7 +93,7 @@ Beagle consists of a core component and interfaces to external components.
  Components may depend on information provided by another component, but
  their internal logic works strictly independently.
  Communication takes exclusively place through the core component.
- The following are the key components and interfaces: 
+ The following are Beagle’s key components and interfaces: 
 \end_layout
 
 \begin_layout Subsection*
@@ -106,10 +106,23 @@ In order to manage and synchronise the requests and execution of different
  The core component conducts the order of executable services, distributes
  information and is responsible for class instantiation.
  It contains all management logic required to perform dynamic analysis on
- software and will offer a parametrised PCM at the end of a successful execution.
+ software and will offer a parametrised 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ at the end of a successful execution.
  It does, however, not contain any logic to actually run measurements or
  analyse parametric dependencies.
- Instead, it depends on proper other components providing this functionality.
+ Instead, it depends on other components providing this functionality.
  
 \begin_inset Float figure
 wide false
@@ -161,8 +174,20 @@ Measurement Tool
 
 \begin_layout Standard
 Measurement Tools are responsible for all kinds of measurements that are
- needed to get the execution time of Resource Demanding Internal Actions,
- branch decisions of 
+ needed to get the execution time of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{RDIA}
+\end_layout
+
+\end_inset
+
+, branch decisions of 
 \begin_inset ERT
 status open
 
@@ -210,35 +235,9 @@ Measurement Result Analyser
 \end_layout
 
 \begin_layout Standard
-Based on the measurement results, a Measurement Result Analyser will suggest
- evaluable expressions that describe the parametrisation of Resource Demanding
- Internal Actions, 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SEFF}
-\end_layout
-
-\end_inset
-
- Branches or 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{SEFF}
-\end_layout
-
-\end_inset
-
- Loops.
+Based on the measurement results, Measurement Result Analysers will suggest
+ Evaluable Expressions that describe the parametric dependencies found in
+ the results.
  Typical implementations are regression tools.
 \end_layout
 
@@ -269,7 +268,8 @@ key "KrogmannPhD"
 \end_inset
 
 .
- The genetic approach described by Krogmann
+ The genetic approach described by Krogmann would be implemented as a Proposed
+ Expression Analyser.
 \end_layout
 
 \begin_layout Subsection*
@@ -296,15 +296,7 @@ gls{PCM}
  solution is found.
 \end_layout
 
-\begin_layout Subsection*
-GUI (Model-View-Controller)
-\end_layout
-
 \begin_layout Standard
-The GUI is not a necessary component that provides functionality for parametrisa
-tion.
- But it is necessary for providing interaction between Beagle and the user
- as the user may want to set up some features of Beagle.
 \begin_inset Float figure
 wide false
 sideways false
@@ -337,7 +329,7 @@ Beagle Core Overview Class Diagram
 \end_inset
 
 Class overview of Beagle Core.
- For details about specific classes, refer to 
+ For details about specific classes, refer to Beagle’s Javadoc 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "javadoc"
