@@ -7,6 +7,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 /**
@@ -14,8 +15,8 @@ import java.util.Set;
  * . It allows reading access and adding access for
  * {@linkplain ResourceDemandingInternalAction resource demanding internal actions},
  * {@linkplain SeffBranch SEFF branches}, {@linkplain SeffLoop SEFF loops},
- * {@linkplain ExternalCallParameter external call parameters}, reading, and the fitness
- * function. .
+ * {@linkplain ExternalCallParameter external call parameters}, reading, writing, and the
+ * fitness function.
  *
  * @author Christoph Michelbach
  */
@@ -61,6 +62,50 @@ public class MeasurementResultAnalyserBlackboardView {
 	 */
 	public Set<ExternalCallParameter> getAllExternalCallParameters() {
 		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredRdias()}.
+	 *
+	 * @param rdias Resource demanding internal actions that shall be measured. Must not
+	 *            be {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
+	 */
+	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredSeffBranches()}.
+	 *
+	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
+	 *            must be known to this blackboard.
+	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
+	 */
+	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredSeffLoops()}.
+	 *
+	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
+	 *            be known to this blackboard.
+	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
+	 */
+	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredExternalCallParameters()}
+	 * .
+	 *
+	 * @param parameters external call parameters that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
+	 */
+	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
 	}
 
 	/**
@@ -124,6 +169,18 @@ public class MeasurementResultAnalyserBlackboardView {
 	}
 
 	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addProposedExpressionFor(MeasurableSeffElement, EvaluableExpression)}
+	 * .
+	 *
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code element}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+	}
+
+	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
 	 *
 	 * @return An object which holds and is responsible allows access to the fitness
@@ -149,6 +206,19 @@ public class MeasurementResultAnalyserBlackboardView {
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		return null;
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)} .
+	 *
+	 * @param writer The class the data should be written for. Must not be {@code null}.
+	 * @param written The data to write.
+	 * @param <WRITTEN_TYPE> {@code written}’s type.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)
+	 */
+	public <WRITTEN_TYPE extends Serializable> void writeFor(
+		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 	}
 
 }
