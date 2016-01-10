@@ -406,7 +406,7 @@ name "alg:Beagle-Controller#perform-Analys"
 status open
 
 \begin_layout Plain Layout
-Beagle Controller#perform Analysis() pseudocode
+Pseudocode of Beagle Controller#perform Analysis()
 \end_layout
 
 \end_inset
@@ -435,6 +435,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename ../../umlet/Sequence Diagram perform Analysis().uxf.pdf
 	width 90text%
@@ -450,182 +451,18 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-UML Sequence diagram for Analysis Controller#perform Analysis()
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
+\begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../umlet/Sequence Diagram can measure().uxf.pdf
-	width 90text%
-	height 100pheight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-UML Sequence diagram for Measurement Controller#can measure()
+Sequence diagram for Analysis Controller#perform Analysis()
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../umlet/Sequence Diagram measure().uxf.pdf
-	width 90text%
-	height 100pheight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-UML Sequence diagram for Measurement Controller#measure()
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf.pdf
-	width 90text%
-	height 100pheight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-UML Sequence diagram for Measurement Result Analyser#contribute()
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf
-	width 90text%
-	height 100pheight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-UML Sequence diagram for Proposed Expression Analyser#contribute()
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../umlet/Sequence Diagram judge().uxf.pdf
-	width 90text%
-	height 100pheight%
-	keepAspectRatio
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-UML Sequence diagram for Final Judge#judge()
+An exemplary run of Analysis Controller#perform Analysis() with a concrete
+ setup of Analysers.
+ Various method calls will be shown in following diagrams.
 \end_layout
 
 \end_inset
@@ -640,6 +477,217 @@ UML Sequence diagram for Final Judge#judge()
 
 \begin_layout Section
 Measurement
+\end_layout
+
+\begin_layout Standard
+Measurement Tools are responsible for actually running the software examined
+ by Beagle.
+ They’ll usually instrument the source code, execute it and collect the
+ results from the instrumentation points.
+ Because this competence is fundamentally different from analysing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Elements, it has a different vocabulary and different business objects.
+ The Measurement Controller translates between Measurement Tools and Beagle
+ Core.
+ For instance, measuring code does not involve any control flow abstraction
+ like the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+, but operates directly on source code.
+ On the other hand, the Analysers require already interpreted results to
+ propose expressions for them.
+\end_layout
+
+\begin_layout Standard
+When the Blackboard is created by PCM Repository Blackboard Factory, all
+ Measurable SEFF Elements get a Code Section pointing to where they are
+ defined in the source code, as read in from the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ files.
+ Based on this information, the Measurement Controller creates a Measurement
+ Order.
+ This order describes the source code sections Beagle needs information
+ about in the language of the Measurement Tools.
+ The description is analogous to the Instrumentation Points described in
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
+
+\end_inset
+
+, 5.10.2:
+\end_layout
+
+\begin_layout Itemize
+Before and after each external call, parameter value sections will be put
+ on the Measurement Order to capture the transferred and returned parameter’s
+ state.
+\end_layout
+
+\begin_layout Itemize
+An execution section will be added to the Measurement Order for each branch
+ in a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF condition}
+\end_layout
+
+\end_inset
+
+ (represented by one SEFF Branch) to determine which branch was executed.
+\end_layout
+
+\begin_layout Itemize
+An execution section will be created for the body of every 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF loop}
+\end_layout
+
+\end_inset
+
+, to count how often it will be executed.
+\end_layout
+
+\begin_layout Itemize
+For each Resource Demanding Internal Action, a resource demand section will
+ be created to measure the resource demands of that action and type.
+\end_layout
+
+\begin_layout Standard
+The order also contains Launch Configurations that can be used to run the
+ examined software’s code.
+ These launch configurations are provided by the user.
+ They are not Eclipse’s launch configurations, although an adapter to them
+ would make a good implementation of Launch Configuration.
+\end_layout
+
+\begin_layout Standard
+When receiving the order, Measurement Tools can instrument the source code
+ based on this information.
+ Executing the instrumented code (through the Launch Configurations) hence
+ gives them information about the executed code sections.
+ They give this information back in the form of a list of Measurement Events
+ ordered by the time they occurred.
+ The Measurement Controller has no expectations about what a Measurement
+ Tool can measure, tools are allowed to support only a subset of the instrumenta
+tion instructions on the Measurement Order.
+ A measurement can also lead to no Measurement Events at all, for example
+ because of a Launch Configuration only running code the user is not interested
+ in.
+\end_layout
+
+\begin_layout Standard
+The Measurement Controller then uses a Measurement Event Parser to create
+ Para\SpecialChar \-
+met\SpecialChar \-
+erisa\SpecialChar \-
+tion-Dependent Measurement Results that Measurement Result
+ Analysers can operate on out of the captured Measurement Events:
+\end_layout
+
+\begin_layout Itemize
+The last consecutive occurrences of Parameter Value Captured Events from
+ the same code section sets the parameterisation for all following results.
+ If the events occur after an External Call, they are used to create a Parameter
+ Change Measurement Result.
+\end_layout
+
+\begin_layout Itemize
+The sum of consecutive executions of a SEFF Loop’s body is used to create
+ a Loop Repetition Count Measurement Result.
+\end_layout
+
+\begin_layout Itemize
+Which code section was executed determines the branch index for the created
+ Branch Decision Measurement Result.
+\end_layout
+
+\begin_layout Itemize
+A Resource Demand Captured Event can directly be translated to a Resource
+ Demand Measurement Result.
+\end_layout
+
+\begin_layout Standard
+The Measurable SEFF Elements the created Para\SpecialChar \-
+met\SpecialChar \-
+erisa\SpecialChar \-
+tion-Dependent Measurement
+ Results will be assigned to are determined by the code sections the Measurement
+ Events occurred for.
+\end_layout
+
+\begin_layout Standard
+The measurement order also provides a Parameter Characteriser, Measurement
+ Tools shall use to characterise parameters in parameter value sections.
+ This functionality, including the Parameterisation and Parameter Characterisati
+on classes, is intentionally only sketched in the current design.
+ Implementing them is out of this project’s scope and will only be targeted
+ if time is left after implementing Beagle’s mandatory requirements.
+ However, they are included in the class diagram to show that the functionality
+ will seamlessly integrate into the design.
+ 
+\end_layout
+
+\begin_layout Standard
+The first implementation of a Measurement Tool will be an adapter to the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glslink{Kieker}{Kieker performance monitoring framework}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -669,12 +717,252 @@ status open
 status open
 
 \begin_layout Plain Layout
-Measurement
+Measurement Class Diagram
 \end_layout
 
 \end_inset
 
-The Measurement Results.
+Classes involved in Measurement.
+ Classes on the left hand side belong to Beagle Core’s View, classes on
+ the left hand to Measurement Tools’ view.
+ Classes in the centre are used by both sides or translate between the views.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Sequence Diagram can measure().uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sequence diagram for Measurement Controller#can measure()
+\end_layout
+
+\end_inset
+
+An exemplary run of Measurement Controller#can measure(), checking whether
+ there are new SEFF Elements to be measured.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Sequence Diagram measure().uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sequence diagram for Measurement Controller#measure()
+\end_layout
+
+\end_inset
+
+An exemplary run of Measurement Controller#measure, preparing the Measurement
+ Order and commissioning it to the registered Measurement Tools.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analysers
+\end_layout
+
+\begin_layout Standard
+Measurement Result Analysers and Proposed Expression Analysers (“Analysers
+\begin_inset Quotes erd
+\end_inset
+
+) are not limited in their functionality.
+ There exist many different approaches to analyse parametric dependencies,
+ all having their advantages and disadvantages.
+ Especially if Krogmann’s genetic programming approach is implemented (as
+ a Proposed Expression Analyser), more, different Analysers may drastically
+ improve the final result and the computation time needed to find it 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
+
+\end_inset
+
+.
+ The Final Judge will always pick the best result (in regard of the Fitness
+ Function) and no proposed expression is ever deleted, so the result can
+ only get better by adding more analysers.
+\end_layout
+
+\begin_layout Standard
+Analysers have to carefully implement their #can contribute() methods.
+ There intentionally exist very little restrictions to when and how often
+ an Analyser may run to not restrict the variety of approaches that can
+ be implemented.
+ However, Analysers have to make sure that the analysis can terminate.
+ This is especially crucial with multiple analysers, all constantly generating
+ new results.
+ It can be achieved by regularly not contributing, and hence letting the
+ Final Judge decide from time to time.
+ The Final Judge will not terminate the analysis if there is reasonable
+ hope for a better result, so analysers are likely to be called again after
+ returning false in their #can contribute method.
+\end_layout
+
+\begin_layout Standard
+The first implementation will include a Measurement Result Analyser proposing
+ all measurement results as a Constant Expression and a Proposed Expression
+ Analyser proposing the average of all proposed Constant Expressions.
+ These will still be useful when implementing more complex analysers like
+ the genetic analyser.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sequence diagram for Measurement Result Analyser#contribute()
+\end_layout
+
+\end_inset
+
+An exemplary run of Measurement Result Analyser#contribute() for a Measurement
+ Result Analyser contributing the measurement results’s values as Constant
+ Expressions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sequence diagram for Proposed Expression Analyser#contribute()
+\end_layout
+
+\end_inset
+
+An exemplary run of Proposed Expression Analyser#contribute() for a Proposed
+ Expression Analyser contributing the average of all Constant Expressions
+ proposed for a SEFF Element.
 \end_layout
 
 \end_inset
@@ -689,6 +977,86 @@ The Measurement Results.
 
 \begin_layout Section
 Final Judge
+\end_layout
+
+\begin_layout Standard
+The Final Judge is in charge of deciding when to end the analysis.
+ As explained above, this is not trivial, as stopping it to soon will likely
+ generate bad results.
+ Therefore, it will apply a combination of heuristics, including how much
+ the best and average result improved in the last analysis iterations, how
+ long the analysis is running, how many optimal results have been found,
+ etcetera.
+ Prompting users is an option, too.
+ There are only two cases in which the analysis will be ended immediately:
+\end_layout
+
+\begin_layout Itemize
+All Measurable SEFF Elements have an optimal proposed Evaluable Expression
+ on the Blackboard, or
+\end_layout
+
+\begin_layout Itemize
+The Measurement Controller, all Measurement Result Analysers and all Proposed
+ Expression Analysers returned false in their #can measure or #can contribute
+ method in the last iteration of the analysis loop.
+\end_layout
+
+\begin_layout Standard
+The Final Judge grades Evaluable Expressions based on a fitness function.
+ Because analysers may use a fitness function to generate better results,
+ the it is available to them from the Blackboard.
+ The Final Judge will always pick the proposed expression graded best for
+ the final expression.
+ If there are multiple such expressions, is it undefined which one will
+ be chosen.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Sequence Diagram judge().uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sequence diagram for Final Judge#judge()
+\end_layout
+
+\end_inset
+
+Exemplary run of Final Judge#judge().
+ Two expressions have been proposed for a Resource Demanding Internal Action
+ having one Measurement Result of its CPU usage.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
