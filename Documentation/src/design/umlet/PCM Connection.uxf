@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>10</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>60</x>
-      <y>300</y>
-      <w>580</w>
-      <h>240</h>
+      <x>48</x>
+      <y>288</y>
+      <w>488</w>
+      <h>248</h>
     </coordinates>
     <panel_attributes>PCM Beagle Mapping
 --
@@ -35,9 +35,9 @@
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
       <x>0</x>
-      <y>40</y>
-      <w>340</w>
-      <h>150</h>
+      <y>80</y>
+      <w>288</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>PCM Repository Writer
 --
@@ -53,10 +53,10 @@
   <element>
     <type>com.baselet.element.old.element.Class</type>
     <coordinates>
-      <x>380</x>
-      <y>40</y>
-      <w>370</w>
-      <h>150</h>
+      <x>304</x>
+      <y>80</y>
+      <w>320</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>PCM Repository Blackboard Factory
 --
@@ -73,27 +73,27 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
-      <y>180</y>
-      <w>50</w>
-      <h>140</h>
+      <x>192</x>
+      <y>192</y>
+      <w>40</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>fontsize=12
 lt=&lt;.
-write</panel_attributes>
+read</panel_attributes>
     <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>180</y>
-      <w>50</w>
-      <h>140</h>
+      <x>432</x>
+      <y>192</y>
+      <w>40</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>fontsize=12
 lt=&lt;.
-read</panel_attributes>
+write</panel_attributes>
     <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
