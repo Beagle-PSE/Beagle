@@ -5,11 +5,11 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 /**
- * Handles the context menu entries, that start an analysis of the whole project.
+ * Handles the context menu entries, that start an analysis of a component.
  *
  * @author Roman Langrehr
  */
-public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHandler {
+public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
