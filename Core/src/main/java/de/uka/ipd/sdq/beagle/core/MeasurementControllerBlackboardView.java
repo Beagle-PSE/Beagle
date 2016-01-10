@@ -1,7 +1,9 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
@@ -14,7 +16,7 @@ import java.util.Set;
  * BranchDecisionMeasurementResults} and {@linkplain LoopRepetitionCountMeasurementResult
  * LoopRepetitionCountMeasurementResults} .
  *
- * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class MeasurementControllerBlackboardView {
 
@@ -61,34 +63,43 @@ public class MeasurementControllerBlackboardView {
 	 *
 	 * @param rdia A resource demanding internal action that was measured. Must not be
 	 *            {@code null} .
-	 * @param result The result of that measurement. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForRDIA(final ResourceDemandingInternalAction rdia,
-		final ResourceDemandMeasurementResult result) {
+	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+		final ResourceDemandMeasurementResult results) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#reportMeasurementResultForSeffLoop(SeffLoop, LoopRepetitionCountMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultFor(SeffLoop, LoopRepetitionCountMeasurementResult)}
 	 * .
 	 *
 	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
-	 * @param result The result of that measurement. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSeffLoop(final SeffLoop loop,
-		final LoopRepetitionCountMeasurementResult result) {
+	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link Blackboard#reportMeasurementResultForSeffBranch(SeffBranch, BranchDecisionMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultFor(SeffBranch, BranchDecisionMeasurementResult)}
 	 * .
 	 *
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
-	 * @param result The result of that measurement. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void reportMeasurementResultForSeffBranch(final SeffBranch branch,
-		final BranchDecisionMeasurementResult result) {
+	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(ExternalCall, ParameterChangeMeasurementResult)}
+	 * .
+	 *
+	 * @param call An external call which was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ExternalCall call, final ParameterChangeMeasurementResult results) {
 	}
 
 	/**
@@ -165,6 +176,18 @@ public class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
+	 *
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
+	 */
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
 		return null;
 	}
 
