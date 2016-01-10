@@ -3,7 +3,7 @@ package de.uka.ipd.sdq.beagle.core;
 import java.io.Serializable;
 
 /**
- * /** Models branches in a component's SEFF, originating from conditional constructs.
+ * Models branches in a component's SEFF, originating from conditional constructs.
  * 
  * <p>SEFF conditions are conditions (like Java’s if , if - else and switch - case
  * statements) which affect the calls a component makes to other components. Such
