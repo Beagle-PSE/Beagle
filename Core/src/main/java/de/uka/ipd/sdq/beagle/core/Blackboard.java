@@ -13,8 +13,8 @@ import java.util.Set;
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link AnalysisController}, the Blackboard pattern from POSA I. The Blackboard’s
- * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SEFFBranch},
- * {@link SEFFLoop}, {@link ResourceDemandMeasurementResult},
+ * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SeffBranch},
+ * {@link SeffLoop}, {@link ResourceDemandMeasurementResult},
  * {@link BranchDecisionMeasurementResult} , {@link LoopRepetitionCountMeasurementResult}
  * and {@link EvaluableExpression}. It further allows classes to store custom data.
  *
@@ -42,8 +42,8 @@ public class Blackboard implements Serializable {
 	 * @param branches All SEFF branches to be known to analysers.
 	 * @param loops All SEFF loops to be known to analysers.
 	 */
-	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SEFFBranch> branches,
-		final Set<SEFFLoop> loops) {
+	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
+		final Set<SeffLoop> loops) {
 	}
 
 	/**
@@ -54,27 +54,27 @@ public class Blackboard implements Serializable {
 	 *         actions} known to Beagle. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
 	 */
-	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
+	public Set<ResourceDemandingInternalAction> getAllRdias() {
 		return null;
 	}
 
 	/**
-	 * All {@linkplain SEFFBranch SEFF branches} known to Beagle.
+	 * All {@linkplain SeffBranch SEFF branches} known to Beagle.
 	 *
-	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
+	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFBranch> getAllSEFFBranches() {
+	public Set<SeffBranch> getAllSeffBranches() {
 		return null;
 	}
 
 	/**
-	 * All {@linkplain SEFFLoop SEFF loops} known to Beagle.
+	 * All {@linkplain SeffLoop SEFF loops} known to Beagle.
 	 *
-	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 * @return all {@linkplain SeffLoop SEFF loops} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFLoop> getAllSEFFLoops() {
+	public Set<SeffLoop> getAllSeffLoops() {
 		return null;
 	}
 
@@ -97,28 +97,28 @@ public class Blackboard implements Serializable {
 	 *         actions} to be measured. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
 	 */
-	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
+	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
 		return null;
 	}
 
 	/**
-	 * {@linkplain SEFFBranch SEFF branches} that shall be measured for their branch
+	 * {@linkplain SeffBranch SEFF branches} that shall be measured for their branch
 	 * decisions.
 	 *
-	 * @return All {@linkplain SEFFBranch SEFF branches} to be measured. Changes to the
+	 * @return All {@linkplain SeffBranch SEFF branches} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFBranch> getSEFFBranchesToBeMeasured() {
+	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
 		return null;
 	}
 
 	/**
-	 * {@linkplain SEFFLoop SEFF loops} that shall be measured for their repetitions.
+	 * {@linkplain SeffLoop SEFF loops} that shall be measured for their repetitions.
 	 *
-	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
+	 * @return All {@linkplain SeffLoop SEFF loops} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
+	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
 		return null;
 	}
 
@@ -138,9 +138,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to this blackboard.
-	 * @see #addToBeMeasuredRDIAs(Collection)
+	 * @see #addToBeMeasuredRdias(Collection)
 	 */
-	public void addToBeMeasuredRDIAs(final ResourceDemandingInternalAction... rdias) {
+	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... rdias) {
 	}
 
 	/**
@@ -148,9 +148,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param rdias Resource demanding internal actions that shall be measured. Must not
 	 *            be {@code null} and must be known to this blackboard.
-	 * @see #addToBeMeasuredRDIAs(ResourceDemandingInternalAction...)
+	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
 	 */
-	public void addToBeMeasuredRDIAs(final Collection<ResourceDemandingInternalAction> rdias) {
+	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
 	}
 
 	/**
@@ -158,9 +158,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
-	 * @see #addToBeMeasuredSEFFBranches(Collection)
+	 * @see #addToBeMeasuredSeffBranches(Collection)
 	 */
-	public void addToBeMeasuredSEFFBranches(final SEFFBranch... branches) {
+	public void addToBeMeasuredSeffBranches(final SeffBranch... branches) {
 	}
 
 	/**
@@ -168,9 +168,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
 	 *            must be known to this blackboard.
-	 * @see #addToBeMeasuredSEFFBranches(SEFFBranch...)
+	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
 	 */
-	public void addToBeMeasuredSEFFBranches(final Collection<SEFFBranch> branches) {
+	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
 	}
 
 	/**
@@ -178,9 +178,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
-	 * @see #addToBeMeasuredSEFFLoops(Collection)
+	 * @see #addToBeMeasuredSeffLoops(Collection)
 	 */
-	public void addToBeMeasuredSEFFLoops(final SEFFLoop... loops) {
+	public void addToBeMeasuredSeffLoops(final SeffLoop... loops) {
 	}
 
 	/**
@@ -188,9 +188,9 @@ public class Blackboard implements Serializable {
 	 *
 	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
 	 *            be known to this blackboard.
-	 * @see #addToBeMeasuredSEFFLoops(SEFFLoop...)
+	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
 	 */
-	public void addToBeMeasuredSEFFLoops(final Collection<SEFFLoop> loops) {
+	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
 	}
 
 	/**
@@ -233,7 +233,7 @@ public class Blackboard implements Serializable {
 	 * @return All measurement results reported for {@code branch}. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
 		return null;
 	}
 
@@ -245,7 +245,7 @@ public class Blackboard implements Serializable {
 	 * @return All measurement results reported for {@code loop}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
-	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
+	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
 		return null;
 	}
 
@@ -270,7 +270,7 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
 	 * @param result The result of that measurement. Must not be {@code null}.
 	 */
-	public void addMeasurementResultForSEFFBranch(final SEFFBranch branch,
+	public void addMeasurementResultForSEFFBranch(final SeffBranch branch,
 		final BranchDecisionMeasurementResult result) {
 	}
 
@@ -291,7 +291,7 @@ public class Blackboard implements Serializable {
 	 * @param branch A SEFF Branch which was measured. Must not be {@code null}.
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void addMeasurementResultFor(final SEFFBranch branch, final LoopRepetitionCountMeasurementResult results) {
+	public void addMeasurementResultFor(final SeffBranch branch, final LoopRepetitionCountMeasurementResult results) {
 	}
 
 	/**
@@ -300,7 +300,7 @@ public class Blackboard implements Serializable {
 	 * @param loop A SEFF Loop which was measured. Must not be {@code null}.
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
-	public void addMeasurementResultFor(final SEFFLoop loop, final ParameterChangeMeasurementResult results) {
+	public void addMeasurementResultFor(final SeffLoop loop, final ParameterChangeMeasurementResult results) {
 	}
 
 	/**

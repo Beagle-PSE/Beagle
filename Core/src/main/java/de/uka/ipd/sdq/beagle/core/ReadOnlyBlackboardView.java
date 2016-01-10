@@ -27,12 +27,12 @@ public class ReadOnlyBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
 	 *
 	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
 	 *         actions} to be measured. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRDIAsToBeMeasured()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRDIAsToBeMeasured() {
 		return null;
@@ -40,25 +40,25 @@ public class ReadOnlyBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()}.
 	 *
-	 * @return All {@linkplain SEFFBranch SEFF branches} to be measured. Changes to the
+	 * @return All {@linkplain SeffBranch SEFF branches} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFBranchesToBeMeasured()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
-	public Set<SEFFBranch> getSEFFBranchesToBeMeasured() {
+	public Set<SeffBranch> getSEFFBranchesToBeMeasured() {
 		return null;
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFLoopsToBeMeasured()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()}.
 	 *
-	 * @return All {@linkplain SEFFLoop SEFF loops} to be measured. Changes to the
+	 * @return All {@linkplain SeffLoop SEFF loops} to be measured. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSEFFLoopsToBeMeasured()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
-	public Set<SEFFLoop> getSEFFLoopsToBeMeasured() {
+	public Set<SeffLoop> getSEFFLoopsToBeMeasured() {
 		return null;
 	}
 
@@ -80,29 +80,29 @@ public class ReadOnlyBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)}.
 	 *
 	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
 	 *            .
 	 * @return All measurement results reported for {@code loop}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFLoop)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
-	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SEFFLoop loop) {
+	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
 		return null;
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFBranch)}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)}.
 	 *
 	 * @param branch A SEFF Branch to get the measurement results of. Must not be
 	 *            {@code null}.
 	 * @return All measurement results reported for {@code branch}. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SEFFBranch)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
-	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SEFFBranch branch) {
+	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
 		return null;
 	}
 
@@ -122,36 +122,36 @@ public class ReadOnlyBlackboardView {
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllRdias()}.
 	 *
 	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
 	 *         actions} known to Beagle. Changes to the returned set will not modify the
 	 *         blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRDIAs()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllRdias()
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRDIAs() {
 		return null;
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
 	 *
-	 * @return all {@linkplain SEFFBranch SEFF branches} known to Beagle. Changes to the
+	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFBranches()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()
 	 */
-	public Set<SEFFBranch> getAllSEFFBranches() {
+	public Set<SeffBranch> getAllSEFFBranches() {
 		return null;
 	}
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()}.
 	 *
-	 * @return all {@linkplain SEFFLoop SEFF loops} known to Beagle. Changes to the
+	 * @return all {@linkplain SeffLoop SEFF loops} known to Beagle. Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSEFFLoops()
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()
 	 */
-	public Set<SEFFLoop> getAllSEFFLoops() {
+	public Set<SeffLoop> getAllSEFFLoops() {
 		return null;
 	}
 }

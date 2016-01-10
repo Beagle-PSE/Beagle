@@ -12,14 +12,14 @@ import java.io.Serializable;
  */
 
 /**
- * TODO Document class
+ * TODO Document this type.
  *
  */
-public class SEFFLoop extends MeasurableSeffElement implements Serializable {
+public class SeffBranch extends MeasurableSeffElement implements Serializable {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
-	private static final long serialVersionUID = 116182090562332981L;
+	private static final long serialVersionUID = -1525692970296450080L;
 
 }
