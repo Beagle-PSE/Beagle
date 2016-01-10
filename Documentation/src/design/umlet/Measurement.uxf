@@ -4,30 +4,29 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>80</y>
-      <w>300</w>
-      <h>210</h>
+      <x>560</x>
+      <y>790</y>
+      <w>320</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Interface&gt;&gt;
 Measurement Tool
 --
+--
 
---
-+measure(in order: Measuremnt Order)
---
+  +measure ( order: Measurement Order )
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
-      <y>80</y>
-      <w>350</w>
+      <x>270</x>
+      <y>350</y>
+      <w>390</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>Parametrisation-Dependent Measurement Result
+    <panel_attributes>Parameterisation-Dependent Measurement Result
 --
 
 --
@@ -39,12 +38,12 @@ Measurement Tool
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1020</x>
-      <y>80</y>
+      <x>990</x>
+      <y>350</y>
       <w>210</w>
       <h>90</h>
     </coordinates>
-    <panel_attributes>Parametrisation
+    <panel_attributes>Parameterisation
 --
 
 --
@@ -56,34 +55,35 @@ Measurement Tool
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>950</x>
-      <y>310</y>
+      <x>520</x>
+      <y>0</y>
       <w>290</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>Branch Decision Measurement Result
 --
--branch Index: Integer[1]
+
+  - branch index: Integer
+  
 --
 
---
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>310</y>
-      <w>300</w>
+      <x>270</x>
+      <y>650</y>
+      <w>370</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>Resource Demand Measurement Result
 --
--type: String[1]
--value: Real[1]
---
-
+  
+  - type: String
+  - value: Real
+  
 --
 </panel_attributes>
     <additional_attributes/>
@@ -91,30 +91,30 @@ Measurement Tool
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>120</y>
-      <w>250</w>
+      <x>650</x>
+      <y>390</y>
+      <w>360</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
-        -parametrisation
+        parameterisation
 m2=*</panel_attributes>
-    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>320</y>
+      <x>110</x>
+      <y>0</y>
       <w>320</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>Loop Repitition Count Measurement Result
 --
--count: Integer[1]
---
 
+  - count: Integer
+  
 --
 </panel_attributes>
     <additional_attributes/>
@@ -122,43 +122,43 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>160</y>
-      <w>30</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>750</x>
-      <y>160</y>
+      <x>260</x>
+      <y>80</y>
       <w>230</w>
-      <h>170</h>
+      <h>290</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0;210.0;90.0;210.0;150.0</additional_attributes>
+    <additional_attributes>210.0;270.0;210.0;80.0;10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>670</x>
-      <y>160</y>
+      <x>460</x>
+      <y>80</y>
+      <w>230</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;80.0;210.0;80.0;210.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>430</y>
       <w>30</w>
-      <h>170</h>
+      <h>240</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
-      <y>430</y>
+      <x>70</x>
+      <y>1090</y>
       <w>210</w>
-      <h>90</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>Measurement Order
 --
@@ -167,5 +167,98 @@ m2=*</panel_attributes>
 
 --</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>1080</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Code Section
+--
+
+  start: Integer 
+  start file: File
+  end: Integer
+  end file : File
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>1150</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+r1=loop sections
+m2=*</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>1100</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+r1=resource demand sections
+m2=*</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>890</y>
+      <w>100</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+operate on</panel_attributes>
+    <additional_attributes>10.0;190.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>590</y>
+      <w>320</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Measurement Controller
+--
+--
+
+  + can contribute ( 
+      blackboard: Blackboard ): boolean
+
+  + contribute ( blackboard: Blackboard)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>1200</y>
+      <w>370</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+r1=branch sections
+m2=*</panel_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
