@@ -75,97 +75,28 @@ Architectural Overview
 \end_layout
 
 \begin_layout Standard
-The following chapter is divided into 4 sub-chapters:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Overview-of-the"
-
-\end_inset
-
- Gives a short overview of Beagle's entire system, briefly presenting the
- whole design ideas as well as the subsystem structure and its out-most
- functionality.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Components’-interaction"
+This chapter gives an introduction to Beagle’s high level design.
+ The following chapters will describe conceptual details of different subsystems.
+ For the specification of single types, please refer to Beagle’s Javdoc
+ documentation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "javadoc"
 
 \end_inset
 
- Completes the internal description of Beagle's system from 1.1, describing
- the interaction of subsystem components.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Communication-between-Beagle"
-
-\end_inset
-
- Describes the communication process between Beagle and external tools such
- as measurement software or analyser software.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Extension-Points"
-
-\end_inset
-
- Explains why some components are developed as Eclipse Extension Points.
+.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Architectual Overview 
-\end_layout
-
-\begin_layout Plain Layout
-- Overview of the whole system
-\end_layout
-
-\begin_layout Plain Layout
-- Description of components’ interaction
-\end_layout
-
-\begin_layout Plain Layout
-- Communication between Beagle and external tools
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Overview-of-the"
-
-\end_inset
-
-Overview of the entire system
-\end_layout
-
-\begin_layout Standard
-Beagle is divided into components that are distinguished by high-level functiona
-lity and service.
+Beagle consists of a core component and interfaces to external components.
  Components may depend on information provided by another component, but
  their internal logic works strictly independently.
- The composition of following components represents Beagle's architecture:
+ Communication takes exclusively place through the core component.
+ The following are Beagle’s key components and interfaces: 
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Subsection*
 Core Component (Mediator Pattern)
 \end_layout
 
@@ -174,245 +105,315 @@ In order to manage and synchronise the requests and execution of different
  jobs, Beagle is controlled by a core component.
  The core component conducts the order of executable services, distributes
  information and is responsible for class instantiation.
- It depends on proper functionality of the other components and will offer
- a parametrised PCM at the end of a successful execution.
+ It contains all management logic required to perform dynamic analysis on
+ software and will offer a parametrised 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
 \end_layout
 
-\begin_layout Subsubsection*
+\end_inset
+
+ at the end of a successful execution.
+ It does, however, not contain any logic to actually run measurements or
+ analyse parametric dependencies.
+ Instead, it depends on other components providing this functionality.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Beagle Core Component.uxf.pdf
+	width 60text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Beagle Core Component
+\end_layout
+
+\end_inset
+
+The Beagle Core Component and its interfaces.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
 Measurement Tool
 \end_layout
 
 \begin_layout Standard
-The Measurement Tool is responsible for all kinds of measurements that are
- needed to get the execution time of Resource Demanding Internal Actions,
- branch decisions of SEFF Branches and repetitions of SEFF Loops in regard
- to a certain parametrisation.
- An adapter instructing Kieker will be the first class to implement this
- interface.
-\end_layout
+Measurement Tools are responsible for all kinds of measurements that are
+ needed to get the execution time of 
+\begin_inset ERT
+status open
 
-\begin_layout Subsubsection*
-Result Analyser
-\end_layout
+\begin_layout Plain Layout
 
-\begin_layout Standard
-Based on the measurement results, the Result Analyser will suggest evaluable
- expressions that lead to a parametrisation of Resource Demanding Internal
- Actions, SEFF Branches or SEFF Loops.
-\end_layout
 
-\begin_layout Subsubsection*
-Final Judge
+\backslash
+glspl{RDIA}
 \end_layout
-
-\begin_layout Standard
-This component is responsible to decide, which proposed evaluable expression
- fits best to the PCM.
- It also decides if more measurements should be done and when the final
- solution is found.
-\end_layout
-
-\begin_layout Subsubsection*
-GUI (Model-View-Controller)
-\end_layout
-
-\begin_layout Standard
-The GUI is not a necessary component that provides functionality for parametrisa
-tion.
- But it is necessary for providing interaction between Beagle and the user
- as the user may want to set up some features of Beagle.
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Components’-interaction"
 
 \end_inset
 
-Components’ interaction
+, branch decisions of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Branches and repetitions of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Loops in regard to a certain parametrisation.
+ An adapter instructing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Kieker}
+\end_layout
+
+\end_inset
+
+ will be the first class to implement this interface.
+\end_layout
+
+\begin_layout Subsection*
+Measurement Result Analyser
 \end_layout
 
 \begin_layout Standard
-The interaction of Beagle's components is guided by the Beagle Core through
- the Blackboard Pattern.
- The blackboard contains SEFF specific information, describing what to measure,
- measurement results and evaluable expression annotations.
- Measurement Tools and Result Analysers have the possibility to decide for
- their own, whether they can contribute or not – depending on the information
- provided on the blackboard.
- Each component gets a different view of the blackboard, limiting its access
- to more than what is absolutely necessary.
- In order to unify the communication, Beagle Core provides its own classes
- (SEFF characteristics and Evaluable Expression).
+Based on the measurement results, Measurement Result Analysers will suggest
+ Evaluable Expressions that describe the parametric dependencies found in
+ the results.
+ Typical implementations are regression tools.
+\end_layout
+
+\begin_layout Subsection*
+Proposed Expression Analyser
+\end_layout
+
+\begin_layout Standard
+Proposed Expression Analysers try to improve the results of Measurement
+ Result Analysers.
+ They usually try to combine proposed expressions to build a better one
+ (in terms of Beagle’s Fitness Function).
+ As different regression approaches usually have different advantages and
+ shortcomings, combining their results may produce a more accurate expression
+ because it contains 
+\begin_inset Quotes eld
+\end_inset
+
+more parts of the truth
+\begin_inset Quotes erd
+\end_inset
+
  
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Communication-between-Beagle"
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
 
 \end_inset
 
-Communication between Beagle and external tools
+.
+ The genetic approach described by Krogmann would be implemented as a Proposed
+ Expression Analyser.
 \end_layout
 
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Extension-Points"
-
-\end_inset
-
-Extension Points
-\end_layout
-
-\begin_layout Standard
-The 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Measurement Tools
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Result Analysers
-\end_layout
-
-\end_inset
-
- and the 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
+\begin_layout Subsection*
 Final Judge
 \end_layout
 
-\end_inset
-
- are connected to Beagle via Eclipse Extension Points.
-\end_layout
-
 \begin_layout Standard
-This means they can be developed as separate eclipse plugins and specify
- in their 
-\begin_inset listings
-inline true
+This class is responsible to decide which proposed evaluable expression
+ describes the measured results best and will be annotated in the 
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-plugin.xml
-\end_layout
 
-\end_inset
-
- file the classes, which represent the 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Measurement Tools
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Result Analysers
-\end_layout
-
-\end_inset
-
- or a 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Final Judge
+\backslash
+gls{PCM}
 \end_layout
 
 \end_inset
 
 .
- When there are multiple plugins with a 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-Final Judge
-\end_layout
-
-\end_inset
-
-, the user has to select one in the GUI.
+ It also decides if more measurements should be done and when the final
+ solution is found.
 \end_layout
 
 \begin_layout Standard
-This concept has the advantage, that everybody can write his own or select
- some existing 
-\begin_inset listings
-inline true
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Beagle Core.uxf.pdf
+	width 100text%
+	height 100theight%
+	keepAspectRatio
 
-Measurement Tools
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Beagle Core Overview Class Diagram
 \end_layout
 
 \end_inset
 
-, 
-\begin_inset listings
-inline true
-status open
+Class overview of Beagle Core.
+ For details about specific classes, refer to Beagle’s Javadoc 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "javadoc"
 
-\begin_layout Plain Layout
+\end_inset
 
-Result Analysers
+.
 \end_layout
 
 \end_inset
 
- and 
-\begin_inset listings
-inline true
-status open
 
-\begin_layout Plain Layout
-
-Final Judges
 \end_layout
 
 \end_inset
 
- and just install them into his eclipse to use them.
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Packages.uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Beagle Core Package Diagram
+\end_layout
+
+\end_inset
+
+Beagle Core’s separation into Packages.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Extension Points
+\end_layout
+
+\begin_layout Standard
+Measurement Tools, Measurement Expression Analysers and Proposed Expression
+ Analysers are connected to Beagle via Eclipse Extension Points.
+ This allows a flexible configuration of the used plugins after compilation.
+ Development of the plugins can take place independently (because the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{API}
+\end_layout
+
+\end_inset
+
+ is fixed) and which plugins users install can depend on the software they
+ have available.
 \end_layout
 
 \end_body
