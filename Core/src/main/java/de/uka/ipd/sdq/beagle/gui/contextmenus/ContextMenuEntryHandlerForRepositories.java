@@ -9,7 +9,7 @@ import org.eclipse.core.commands.ExecutionException;
  *
  * @author Roman Langrehr
  */
-public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHandler {
+public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
