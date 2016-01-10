@@ -67,16 +67,12 @@ valign=top</panel_attributes>
 
  +&lt;&lt;Interface&gt;&gt; BlackboardStorer
  +&lt;&lt;Interface&gt;&gt; Measurable SEFF Element
- +Resource Demanding Internal Action
- +Measurement Controller
+ +Analysis Controller
  +Blackboard
+ +External Call Parameter
+ +Resource Demanding Internal Action
  +SEFF Loop
  +SEFF Branch
- +External Call Parameter
- +Analysis Controller
- +Measurement Controller Blackboard View
- +Read-Only Measurement Controller Blackboard View
- +Analysis Controller
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
@@ -94,8 +90,8 @@ valign=top</panel_attributes>
 
  +&lt;&lt;Interface&gt;&gt; Final Judge
  +&lt;&lt;Interface&gt;&gt; Evaluable Expression Fitness Function
- +Final Fitness Function Blackboard View
- 
+ +&lt;&lt;Interface&gt;&gt; Evaluable Expression Fitness Function Blackboard View
+ +Abstraction And Precision Fitness Function
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
@@ -103,23 +99,27 @@ valign=top</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>20</x>
-      <y>270</y>
+      <x>10</x>
+      <y>200</y>
       <w>370</w>
-      <h>200</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>Measurement
 --
 
  +&lt;&lt;Interface&gt;&gt; Measurement Tool
- +Measurement Controller
- +Resource Demand Measurement Result
- +Loop Repitition Count Measurement Result
- +Parametrisation-Dependent Measurement Result
  +Branch Decision Measurement Result
- +Parameter Change Measurement Result
- +Parametrisation
+ +Loop Repitition Count Measurement Result
+ +Measurement Controller
+ +Measurement Controller Blackboard View
  +Measurement Order
+ +Parameter Change Measurement Result
+ +Read-Only Measurement Controller Blackboard View
+ +Resource Demand Measurement Result
+ +Parametrisation-Dependent Measurement Result 
+ +Parametrisation
+
+ 
 halign=left
 valign=top</panel_attributes>
     <additional_attributes/>
