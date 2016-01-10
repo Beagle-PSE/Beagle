@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="13.3">
-  <zoom_level>5</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>105</x>
-      <y>320</y>
-      <w>280</w>
-      <h>450</h>
+      <x>96</x>
+      <y>448</y>
+      <w>472</w>
+      <h>856</h>
     </coordinates>
     <panel_attributes>Blackboard
 --
@@ -16,13 +16,16 @@
   + get all RDIAs (): Resource Demanding Internal Action [*]
   + get all SEFF Branches (): SEFF Branch [*]
   + get all SEFF Loops (): SEFF Loop [*]
+  + get all External Call Parameters (): External Call Parameter [*]
 
   + get RDIAs to be measured (): Resource Demanding Internal Action [*]
   + get SEFF Branches to be measured (): SEFF Branch [*]
-  + get all SEFF Loops to be measured (): SEFF Loop [*]
-  + add to be measured (rdias: Resource Demanding Internal Action [*] )
-  + add to be measured (branches: SEFF Branch [*] )
-  + add to be measured (loops: SEFF Loop [*] )
+  + get SEFF Loops to be measured (): SEFF Loop [*]
+  + get External Call Parameters to be measured (): External Call Parameter [*]
+  + add to be measured ( rdias: Resource Demanding Internal Action [*] )
+  + add to be measured ( branches: SEFF Branch [*] )
+  + add to be measured ( loops: SEFF Loop [*] )
+  + add to be measured ( parameters: External Call Parameter [*] )
  
   + get Measurement Results for (
           rdia: Resource Demanding Internal Action )
@@ -33,6 +36,9 @@
   + get Measurement Results for (
           loop: SEFF Loop)
           : Loop Repitition Count Measurement Result [*]
+  + get Measurement Results for (
+          parameter: External Call Parameter)
+          : Call Parameter Measurement Result [*]
   + add Measurement Results for (
           rdia: Resource Demanding Internal Action,
           results: Resource Demand Measurement Result [*] )
@@ -42,6 +48,10 @@
   + add Measurement Results for (
           loop: SEFF Loop,
           results: Loop Repetition Measurement Result [*] )
+  + add Measurement Results for (
+          call: External Call,
+          results: Call Parameter Measurement Result[*])
+
 
   + get proposed expressions for (
           element: Measureable SEFF Element )
@@ -57,7 +67,7 @@
            element: Mesaurable SEFF Element,
            expression: Evaluable Expression )
 
-  + get fitness function (): Final Expression Fitness Function
+  + get fitness function (): Evaulable Expression Fitness Function
            
   + &lt;Written Type&gt; read for (
           writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
@@ -70,10 +80,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>105</x>
+      <x>696</x>
       <y>0</y>
-      <w>265</w>
-      <h>265</h>
+      <w>472</w>
+      <h>504</h>
     </coordinates>
     <panel_attributes>Measurement Result Analyser Blackboard View
 --
@@ -82,49 +92,12 @@
   + get all RDIAs (): Resource Demanding Internal Action [*]
   + get all SEFF Branches (): SEFF Branch [*]
   + get all SEFF Loops (): SEFF Loop [*]
+  + get all External Call Parameters (): External Call Parameter [*]
 
-  + add to be measured (rdias: Resource Demanding Internal Action [*] )
-  + add to be measured (branches: SEFF Branch [*] )
-  + add to be measured (loops: SEFF Loop [*] )
- 
-  + get Measurement Results for (
-          rdia: Resource Demanding Internal Action )
-          : Resource Demand Measurement Result [*]
-  + get Measurement Results for (
-          branch: SEFF Branch )
-          : Branch Decision Measurement Result [*]
-  + get Measurement Results for (
-          loop: SEFF Loop)
-
-  + add proposed expressions for (
-           element: Measurable SEFF Element,
-           expressions: Evaluable Expression [*] )
-
-  + get fitness function (): Final Expression Fitness Function
-           
-  + &lt;Written Type&gt; read for (
-          writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
-          : Written Type
-  + &lt;Written Type&gt; write for (
-          writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt;,
-          written: Written Type )</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>400</x>
-      <y>0</y>
-      <w>275</w>
-      <h>185</h>
-    </coordinates>
-    <panel_attributes>Read-Only Measurement Result Analyser Blackboard View
---
---
-
-  + get all RDIAs (): Resource Demanding Internal Action [*]
-  + get all SEFF Branches (): SEFF Branch [*]
-  + get all SEFF Loops (): SEFF Loop [*]
+  + add to be measured ( rdias: Resource Demanding Internal Action [*] )
+  + add to be measured ( branches: SEFF Branch [*] )
+  + add to be measured ( loops: SEFF Loop [*] )
+  + add to be measured ( calls: External Call [*] )
  
   + get Measurement Results for (
           rdia: Resource Demanding Internal Action )
@@ -135,8 +108,55 @@
   + get Measurement Results for (
           loop: SEFF Loop)
           : Loop Repitition Count Measurement Result [*]
+  + get Measurement Results for (
+          parameter: External Call Parameter)
+          : Call Parameter Measurement Result [*]
 
-  + get fitness function (): Final Expression Fitness Function
+  + add proposed expressions for (
+           element: Measurable SEFF Element,
+           expressions: Evaluable Expression [*] )
+
+  + get fitness function (): Evaulable Expression Fitness Function
+           
+  + &lt;Written Type&gt; read for (
+          writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
+          : Written Type
+  + &lt;Written Type&gt; write for (
+          writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt;,
+          written: Written Type )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>0</y>
+      <w>464</w>
+      <h>352</h>
+    </coordinates>
+    <panel_attributes>Read-Only Measurement Result Analyser Blackboard View
+--
+--
+
+  + get all RDIAs (): Resource Demanding Internal Action [*]
+  + get all SEFF Branches (): SEFF Branch [*]
+  + get all SEFF Loops (): SEFF Loop [*]
+  + get all External Call Parametrs (): External Call Parameter [*]
+ 
+  + get Measurement Results for (
+          rdia: Resource Demanding Internal Action )
+          : Resource Demand Measurement Result [*]
+  + get Measurement Results for (
+          branch: SEFF Branch )
+          : Branch Decision Measurement Result [*]
+  + get Measurement Results for (
+          loop: SEFF Loop)
+          : Loop Repitition Count Measurement Result [*]
+  + get Measurement Results for (
+          parameter: External Call Parameter)
+          : Call Parameter Measurement Result [*]
+
+  + get fitness function (): Evaulable Expression Fitness Function
            
   + &lt;Written Type&gt; read for (
           writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
@@ -146,18 +166,19 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>230</y>
-      <w>265</w>
-      <h>200</h>
+      <x>696</x>
+      <y>792</y>
+      <w>472</w>
+      <h>384</h>
     </coordinates>
     <panel_attributes>Measurement Controller Blackboard View
 --
 --
 
-  + get RDIAs to be measured (): Resource Demanding Internal Action [*]
+ + get RDIAs to be measured (): Resource Demanding Internal Action [*]
   + get SEFF Branches to be measured (): SEFF Branch [*]
-  + get all SEFF Loops to be measured (): SEFF Loop [*]
+  + get SEFF Loops to be measured (): SEFF Loop [*]
+  + get External Call Parameters to be measured (): External Call Parameter [*]
 
   + add Measurement Results for (
           rdia: Resource Demanding Internal Action,
@@ -168,6 +189,11 @@
   + add Measurement Results for (
           loop: SEFF Loop,
           results: Loop Repetition Measurement Result [*] )
+  + add Measurement Results for (
+          call: External Call,
+          results: Call Parameterisation Measurement Result[*])
+
+  + get fitness function (): Evaulable Expression Fitness Function
 
   + &lt;Written Type&gt; read for (
           writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
@@ -180,18 +206,21 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>480</y>
-      <w>265</w>
-      <h>115</h>
+      <x>696</x>
+      <y>560</y>
+      <w>472</w>
+      <h>184</h>
     </coordinates>
     <panel_attributes>Read-Only Measurement Controller Blackboard View
 --
 --
 
-  + get RDIAs to be measured (): Resource Demanding Internal Action [*]
+ + get RDIAs to be measured (): Resource Demanding Internal Action [*]
   + get SEFF Branches to be measured (): SEFF Branch [*]
-  + get all SEFF Loops to be measured (): SEFF Loop [*]
+  + get SEFF Loops to be measured (): SEFF Loop [*]
+  + get External Call Parameters to be measured (): External Call Parameter [*]
+
+  + get fitness function (): Evaulable Expression Fitness Function
 
   + &lt;Written Type&gt; read for (
           writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
@@ -201,10 +230,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>285</x>
-      <y>765</y>
-      <w>50</w>
-      <h>65</h>
+      <x>312</x>
+      <y>1296</y>
+      <w>88</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=1
@@ -215,57 +244,58 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>765</y>
-      <w>85</w>
-      <h>55</h>
+      <x>560</x>
+      <y>1256</y>
+      <w>152</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-r1=1
-m1=- blackboard
+m1=1
+r1=- blackboard
 m2=*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0;150.0;80.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>260</y>
-      <w>50</w>
-      <h>70</h>
+      <x>560</x>
+      <y>448</y>
+      <w>152</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-r1=1
-m1=- blackboard
+m1=1
+r1=- blackboard
 m2=*</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>355</x>
-      <y>180</y>
-      <w>190</w>
-      <h>150</h>
+      <x>328</x>
+      <y>344</y>
+      <w>88</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 r1=1
 m1=- blackboard
 m2=*</panel_attributes>
-    <additional_attributes>10.0;280.0;10.0;190.0;360.0;190.0;360.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>490</y>
-      <w>165</w>
-      <h>55</h>
+      <x>96</x>
+      <y>1896</y>
+      <w>264</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>template=Written Type
 &lt;&lt;Interface&gt;&gt;
 Blackboard Storer
 --
+
 --
 </panel_attributes>
     <additional_attributes/>
@@ -273,10 +303,10 @@ Blackboard Storer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>610</y>
-      <w>130</w>
-      <h>15</h>
+      <x>672</x>
+      <y>1968</y>
+      <w>208</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>Measurement Result Analyser</panel_attributes>
     <additional_attributes/>
@@ -284,10 +314,10 @@ Blackboard Storer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>635</y>
-      <w>130</w>
-      <h>15</h>
+      <x>672</x>
+      <y>1896</y>
+      <w>208</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>Proposed Expression Analyser</panel_attributes>
     <additional_attributes/>
@@ -295,10 +325,10 @@ Blackboard Storer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>585</y>
-      <w>130</w>
-      <h>15</h>
+      <x>408</x>
+      <y>1968</y>
+      <w>208</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>Measurement Controller</panel_attributes>
     <additional_attributes/>
@@ -306,10 +336,10 @@ Blackboard Storer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>490</x>
-      <y>660</y>
-      <w>130</w>
-      <h>15</h>
+      <x>400</x>
+      <y>1896</y>
+      <w>208</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>Final Judge</panel_attributes>
     <additional_attributes/>
@@ -317,54 +347,54 @@ Blackboard Storer
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>540</y>
-      <w>50</w>
-      <h>140</h>
+      <x>304</x>
+      <y>1912</y>
+      <w>216</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;260.0;80.0;260.0</additional_attributes>
+    <additional_attributes>10.0;40.0;250.0;40.0;250.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>640</y>
-      <w>50</w>
-      <h>15</h>
+      <x>496</x>
+      <y>1936</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>615</y>
-      <w>50</w>
-      <h>15</h>
+      <x>760</x>
+      <y>1936</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>590</y>
-      <w>50</w>
-      <h>15</h>
+      <x>496</x>
+      <y>1912</y>
+      <w>288</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+    <additional_attributes>340.0;10.0;340.0;40.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>435</x>
-      <y>740</y>
-      <w>265</w>
-      <h>295</h>
+      <x>696</x>
+      <y>1240</y>
+      <w>472</w>
+      <h>544</h>
     </coordinates>
     <panel_attributes>Proposed Expression Analyser Blackboard View
 --
@@ -373,10 +403,12 @@ Blackboard Storer
   + get all RDIAs (): Resource Demanding Internal Action [*]
   + get all SEFF Branches (): SEFF Branch [*]
   + get all SEFF Loops (): SEFF Loop [*]
-
-  + add to be measured (rdias: Resource Demanding Internal Action [*] )
-  + add to be measured (branches: SEFF Branch [*] )
-  + add to be measured (loops: SEFF Loop [*] )
+  + get all External Call Parameters (): External Call Parameter [*]
+  
+  + add to be measured ( rdias: Resource Demanding Internal Action [*] )
+  + add to be measured ( branches: SEFF Branch [*] )
+  + add to be measured ( loops: SEFF Loop [*] )
+  + add to be measured ( parameters: External Call Parameter [*] )
  
   + get Measurement Results for (
           rdia: Resource Demanding Internal Action )
@@ -387,6 +419,9 @@ Blackboard Storer
   + get Measurement Results for (
           loop: SEFF Loop)
           : Loop Repitition Count Measurement Result [*]
+  + get Measurement Results for (
+          parameter: External Call Parameter)
+          : Call Parameter Measurement Result [*]
 
   + get proposed expressions for (
           element: Measureable SEFF Element )
@@ -395,7 +430,7 @@ Blackboard Storer
            element: Measurable SEFF Element,
            expressions: Evaluable Expression [*] )
 
-  + get fitness function (): Final Expression Fitness Function
+  + get fitness function (): Evaulable Expression Fitness Function
            
   + &lt;Written Type&gt; read for (
           writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
@@ -408,10 +443,10 @@ Blackboard Storer
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>105</x>
-      <y>820</y>
-      <w>265</w>
-      <h>215</h>
+      <x>96</x>
+      <y>1384</y>
+      <w>472</w>
+      <h>400</h>
     </coordinates>
     <panel_attributes>Read-Only Proposed Expression Analyser Blackboard View
 --
@@ -420,6 +455,7 @@ Blackboard Storer
   + get all RDIAs (): Resource Demanding Internal Action [*]
   + get all SEFF Branches (): SEFF Branch [*]
   + get all SEFF Loops (): SEFF Loop [*]
+  + get all External Call Parameters (): External Call Parameter [*]
  
   + get Measurement Results for (
           rdia: Resource Demanding Internal Action )
@@ -430,12 +466,15 @@ Blackboard Storer
   + get Measurement Results for (
           loop: SEFF Loop)
           : Loop Repitition Count Measurement Result [*]
+  + get Measurement Results for (
+          parameter: External Call Parameter)
+          : Call Parameter Measurement Result [*]
 
   + get proposed expressions for (
           element: Measureable SEFF Element )
           : Evaluable Expressions [*]
 
-  + get fitness function (): Final Expression Fitness Function
+  + get fitness function (): Evaulable Expression Fitness Function
            
   + &lt;Written Type&gt; read for (
           writer: Class&lt;? extends Blackboard Storer&lt;Written Type&gt; &gt; )
@@ -445,29 +484,29 @@ Blackboard Storer
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>365</y>
-      <w>310</w>
-      <h>25</h>
+      <x>560</x>
+      <y>928</y>
+      <w>152</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-r1=1
-m1=- blackboard
+m1=1
+r1=- blackboard
 m2=*</panel_attributes>
-    <additional_attributes>10.0;20.0;600.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>395</y>
-      <w>310</w>
-      <h>130</h>
+      <x>560</x>
+      <y>640</y>
+      <w>152</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-r1=1
-m1=- blackboard
+m1=1
+r1=- blackboard
 m2=*</panel_attributes>
-    <additional_attributes>10.0;20.0;550.0;20.0;550.0;230.0;600.0;230.0</additional_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
 </diagram>
