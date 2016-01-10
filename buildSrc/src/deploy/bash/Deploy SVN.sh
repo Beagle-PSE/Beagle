@@ -48,7 +48,7 @@ mkdir -p $SVN
 cd $SVN
 
 # Check out from SVN
-svn checkout $SVN_URL $SVN --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet  > /dev/null 2>&1
+svn checkout $SVN_URL $SVN --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive 
 
 # Remove all content - except the svn files
 find . -maxdepth 1 \! \( -name .svn -o -name . \) -exec svn rm --force --quiet {} \;
@@ -59,9 +59,9 @@ cp -r "$BASE"/* .
 # Remove files that are not needed
 rm -rf .git **/.gradle .gradle
 
-svn add . --force --non-interactive --quiet
+svn add . --force --non-interactive
 
-svn commit -m "Automatic Travis update from https://github.com/Beagle-PSE/Beagle.git" --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet  > /dev/null 2>&1
+svn commit -m "Automatic Travis update from https://github.com/Beagle-PSE/Beagle.git" --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive
 
 cd $BASE
 
