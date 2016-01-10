@@ -184,18 +184,6 @@ public class ProposedExpressionAnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addProposedExpressionFor(MeasurableSeffElement, EvaluableExpression)}
-	 * .
-	 *
-	 * @param element A SEFF element. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code element}’s
-	 *            measurement results. Must not be {@code null}.
-	 */
-	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-	}
-
-	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
 	 *
 	 * @return An object which holds and is responsible allows access to the fitness
