@@ -23,9 +23,9 @@ import java.util.Set;
  * These are surrogates for the blackboard. They don’t modify its contents but only
  * restrict access to it.
  *
+ * @author Christoph Michelbach
  * @author Joshua Gleitze
  * @author Roman Langrehr
- * @author Christoph Michelbach
  * @see AnalysisController
  */
 public class Blackboard implements Serializable {
@@ -313,6 +313,52 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
+	 * Returns a set of all {@linkplain EvaluableExpression evaluable expressions}
+	 * proposed for {@code element}.
+	 *
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @return A set of all {@linkplain EvaluableExpression evaluable expressions}
+	 *         proposed for {@code element}.
+	 */
+	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
+		return null;
+	}
+
+	/**
+	 * Adds {@code expression} as a proposal.
+	 *
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code element}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+	}
+
+	/**
+	 * Returns the final expression set for {@code element}. The return value of this
+	 * method may change if {@link setFinalExpressionFor(MeasurableSeffElement,
+	 * EvaluableExpression} is called with the same {@code element} between calls to
+	 * {@code addProposedExpressionFor} with this element as parameter.
+	 *
+	 * @param element A SEFF element. Must not be {@code null}.
+	 */
+	public void getFinalExpressionFor(final MeasurableSeffElement element) {
+	}
+
+	/**
+	 * Sets {@code expression} as the final description of {@code element}’s measurement
+	 * results. Consecutive calls to this method with the same {@code element} will
+	 * override previous settings.
+	 *
+	 * @param element A SEFF element Must not be {@code null}.
+	 * @param expression An evaluable expression describing {@code element}’s measurement
+	 *            results. May be {@code null} to describe that no suitable expression was
+	 *            found.
+	 */
+	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+	}
+
+	/**
 	 * Writes data for {@code writer} to the blackboard. This method serves as a type safe
 	 * mean for tools to store data that is not part of their results. Values stored here
 	 * will never contribute to Beagle’s results. Any class calling this method should
@@ -343,55 +389,5 @@ public class Blackboard implements Serializable {
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		return null;
-	}
-
-	/**
-	 * Adds {@code expression} as a proposal.
-	 *
-	 * @param element A SEFF element. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code element}’s
-	 *            measurement results. Must not be {@code null}.
-	 */
-	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Sets {@code expression} as the final description of {@code rdia}’s measurement
-	 * results’ parametric dependencies. Consecutive calls to this method with the same
-	 * {@code rdia} will override previous settings.
-	 *
-	 * @param rdia A resource demanding internal action. Must not be {@code null}.
-	 * @param expression An evaluable expression describing {@code rdia}’s measurement
-	 *            results. May be {@code null} to describe that no suitable expression was
-	 *            found.
-	 */
-	public void setFinalExpressionForRDIA(final ResourceDemandingInternalAction rdia,
-		final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Sets {@code expression} as the final description of {@code loop}’s measurement
-	 * results’ parametric dependencies. Consecutive calls to this method with the same
-	 * {@code loop} will override previous settings.
-	 *
-	 * @param loop A SEFF Loop. Must not be {@code null}.
-	 * @param expression An evaluable expression describing {@code loop}’s measurement
-	 *            results. May be {@code null} to describe that no suitable expression was
-	 *            found.
-	 */
-	public void setFinalExpressionForSEFFLoop(final SEFFLoop loop, final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Sets {@code expression} as the final description of {@code branch}’s measurement
-	 * results’ parametric dependencies. Consecutive calls to this method with the same
-	 * {@code branch} will override previous settings.
-	 *
-	 * @param branch A SEFF Branch. Must not be {@code null}.
-	 * @param expression An evaluable expression describing {@code branch}’s measurement
-	 *            results. May be {@code null} to describe that no suitable expression was
-	 *            found.
-	 */
-	public void setFinalExpressionForSEFFBranch(final SEFFBranch branch, final EvaluableExpression expression) {
 	}
 }
