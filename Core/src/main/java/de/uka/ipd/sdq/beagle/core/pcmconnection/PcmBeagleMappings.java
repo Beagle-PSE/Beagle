@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
-import de.uka.ipd.sdq.beagle.core.SEFFBranch;
-import de.uka.ipd.sdq.beagle.core.SEFFLoop;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 
 import java.io.Serializable;
 
@@ -33,7 +33,7 @@ public class PcmBeagleMappings implements Serializable {
 	 *         {@code this.hasPcmIdOf(branch)} returns {@code true}. {@code null}
 	 *         otherwise.
 	 */
-	public String getPcmIdOf(final SEFFBranch branch) {
+	public String getPcmIdOf(final SeffBranch branch) {
 		return null;
 	}
 
@@ -44,7 +44,7 @@ public class PcmBeagleMappings implements Serializable {
 	 * @return The identifier used for {@code loop} in the PCM repository if
 	 *         {@code this.hasPcmIdOf(loop)} returns {@code true}. {@code null} otherwise.
 	 */
-	public String getPcmIdOf(final SEFFLoop loop) {
+	public String getPcmIdOf(final SeffLoop loop) {
 		return null;
 	}
 
@@ -66,7 +66,7 @@ public class PcmBeagleMappings implements Serializable {
 	 * @return {@code true} only if this mapping contains a PCM identifier for
 	 *         {@code branch}.
 	 */
-	public boolean hasPcmIdOf(final SEFFBranch branch) {
+	public boolean hasPcmIdOf(final SeffBranch branch) {
 		return false;
 	}
 
@@ -77,7 +77,7 @@ public class PcmBeagleMappings implements Serializable {
 	 * @return {@code true} only if this mapping contains a PCM identifier for
 	 *         {@code loop}.
 	 */
-	public boolean hasPcmIdOf(final SEFFLoop loop) {
+	public boolean hasPcmIdOf(final SeffLoop loop) {
 		return false;
 	}
 
@@ -104,7 +104,7 @@ public class PcmBeagleMappings implements Serializable {
 	 *             {@code branch}. More formally: if
 	 *             {@code this.hasPcmIdOf(branch) && !this.getPcmIdOf(branch).equals(identifier)}
 	 */
-	public void addPcmIdOf(final SEFFBranch branch, final String identifier) {
+	public void addPcmIdOf(final SeffBranch branch, final String identifier) {
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class PcmBeagleMappings implements Serializable {
 	 *             {@code loop}. More formally: if
 	 *             {@code this.hasPcmIdOf(loop) && !this.getPcmIdOf(loop).equals(identifier)}
 	 */
-	public void addPcmIdOf(final SEFFLoop loop, final String identifier) {
+	public void addPcmIdOf(final SeffLoop loop, final String identifier) {
 	}
 
 }
