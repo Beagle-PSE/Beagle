@@ -2,8 +2,8 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.ReadOnlyBlackboardView;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
-import de.uka.ipd.sdq.beagle.core.SEFFBranch;
-import de.uka.ipd.sdq.beagle.core.SEFFLoop;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 
 import java.io.File;
 
@@ -27,8 +27,8 @@ public class PcmRepositoryWriter {
 
 	/**
 	 * Writes the Beagle’s findings to the {@code repositoryFile}. For each
-	 * {@linkplain ResourceDemandingInternalAction}, {@linkplain SEFFBranch} and
-	 * {@linkplain SEFFLoop}, the method will look up the identifier of the element in the
+	 * {@linkplain ResourceDemandingInternalAction}, {@linkplain SeffBranch} and
+	 * {@linkplain SeffLoop}, the method will look up the identifier of the element in the
 	 * source repository file the object was created for. If {@code repositoryFile}
 	 * contains an element with this identifier that is of the appropriate type, the
 	 * object’s result will appropriately written to {@code repositoryFile}. Nothing will
