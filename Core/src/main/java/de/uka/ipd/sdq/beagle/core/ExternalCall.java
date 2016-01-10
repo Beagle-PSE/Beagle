@@ -13,9 +13,10 @@ import java.io.Serializable;
 
 /**
  * TODO Document class
- *
+ * 
+ * @author Christoph Michelbach
  */
-public class ExternalCall implements Serializable {
+public class ExternalCall extends MeasurableSeffElement implements Serializable {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

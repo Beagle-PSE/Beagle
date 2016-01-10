@@ -15,7 +15,7 @@ import java.io.Serializable;
  * TODO Document class
  *
  */
-public class SEFFLoop implements Serializable {
+public class SEFFLoop extends MeasurableSeffElement implements Serializable {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

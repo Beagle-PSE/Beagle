@@ -15,7 +15,7 @@ import java.io.Serializable;
  * TODO Document this type.
  *
  */
-public class ResourceDemandingInternalAction implements Serializable {
+public class ResourceDemandingInternalAction extends MeasurableSeffElement implements Serializable {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.

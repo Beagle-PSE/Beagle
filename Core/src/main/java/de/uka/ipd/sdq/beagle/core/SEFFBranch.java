@@ -15,7 +15,7 @@ import java.io.Serializable;
  * TODO Document this type.
  *
  */
-public class SEFFBranch implements Serializable {
+public class SEFFBranch extends MeasurableSeffElement implements Serializable {
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
