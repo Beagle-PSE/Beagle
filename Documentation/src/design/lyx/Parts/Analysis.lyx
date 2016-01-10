@@ -461,7 +461,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../../Sequence Diagram measure().uxf.pdf
+	filename ../../umlet/Sequence Diagram measure().uxf.pdf
 	width 90text%
 	height 100pheight%
 	keepAspectRatio
