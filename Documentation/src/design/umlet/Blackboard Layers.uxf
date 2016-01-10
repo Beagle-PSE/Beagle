@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
+      <x>330</x>
       <y>180</y>
       <w>290</w>
       <h>340</h>
@@ -36,9 +36,9 @@ Measurable SEFF Element</panel_attributes>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>890</x>
+      <x>590</x>
       <y>300</y>
-      <w>222</w>
+      <w>242</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -47,27 +47,27 @@ Measurement Result
                    Analyser
 
 </panel_attributes>
-    <additional_attributes>30;30;130;30;130;100;30;100</additional_attributes>
+    <additional_attributes>30;30;150;30;150;100;30;100</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>890</x>
+      <x>590</x>
       <y>200</y>
-      <w>194</w>
+      <w>214</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
   Final Jugde
 </panel_attributes>
-    <additional_attributes>30;30;130;30;130;100;30;100</additional_attributes>
+    <additional_attributes>30;30;150;30;150;100;30;100</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>400</x>
+      <x>70</x>
       <y>260</y>
-      <w>250</w>
+      <w>280</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
@@ -76,20 +76,20 @@ Measurement Result
 
 
 </panel_attributes>
-    <additional_attributes>230;30;110;30;110;80;230;80</additional_attributes>
+    <additional_attributes>260;30;110;30;110;80;260;80</additional_attributes>
   </element>
   <element>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
-      <x>390</x>
+      <x>80</x>
       <y>370</y>
-      <w>260</w>
+      <w>270</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;-                  
-Measurement Controller       
+                                 Measurement Tools
 
 </panel_attributes>
-    <additional_attributes>240;30;120;30;120;120;240;120</additional_attributes>
+    <additional_attributes>250;30;100;30;100;120;250;120</additional_attributes>
   </element>
 </diagram>
