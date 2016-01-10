@@ -13,9 +13,12 @@ import java.io.Serializable;
 import java.util.Set;
 
 /**
- * Interface for Blackboard Views that may be passed to an
- * EvaluableExpressionFitnessFunction.
+ * Interface for Blackboard views designed to be passed to an
+ * {@link EvaluableExpressionFitnessFunction}. Provides reading and writing access for
+ * custom data on the Blackboard as well as access to the {@code getMeasurementResultsFor}
+ * methods.
  *
+ * @author Christoph Michelbach
  * @author Joshua Gleitze
  */
 public interface EvaluableExpressionFitnessFunctionBlackboardView {
