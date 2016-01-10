@@ -177,12 +177,12 @@ public class ProposedExpressionAnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFinalExpressionFor(MeasurableSeffElement)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getProposedlExpressionFor(MeasurableSeffElement)}
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
 	 */
-	public void getFinalExpressionFor(final MeasurableSeffElement element) {
+	public void getProposedlExpressionFor(final MeasurableSeffElement element) {
 	}
 
 	/**
