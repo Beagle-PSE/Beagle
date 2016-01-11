@@ -36,8 +36,9 @@ public interface ProposedExpressionAnalyser {
 	 * value.
 	 *
 	 * @param blackboard The current blackboard.
+	 * @return {@code true} only if {@link #contribute} may be called.
 	 */
-	void canContribute(ReadOnlyProposedExpressionAnalyserBlackboardView blackboard);
+	boolean canContribute(ReadOnlyProposedExpressionAnalyserBlackboardView blackboard);
 
 	/**
 	 * Contributes this analyser’s knowledge to the passed blackboard.
