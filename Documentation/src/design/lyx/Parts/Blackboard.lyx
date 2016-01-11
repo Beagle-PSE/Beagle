@@ -99,8 +99,7 @@ the tools
 
 ) because these tools are not allowed to hold status information.
  The fact that all status information is stored on the Blackboard allows
- the serialisation of an analysis because as elements on the blackboard
- are serialisable.
+ the serialisation of an analysis as elements on the blackboard are serialisable.
 \end_layout
 
 \begin_layout Standard
