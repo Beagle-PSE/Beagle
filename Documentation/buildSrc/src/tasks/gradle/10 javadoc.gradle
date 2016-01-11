@@ -27,6 +27,7 @@ task javadoc(type: Javadoc) {
 	destinationDir = file("$buildDir/javadoc")
 
 	options.overview "$projectDir/src/javadoc/html/Overview.html"
+	options.encoding = "UTF-8"
 }
  
 def rendersrc = fileTree("$projectDir/src").include('common/**').include('javadoc/lyx/**')
