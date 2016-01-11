@@ -35,8 +35,9 @@ public interface MeasurementResultAnalyser {
 	 * value.
 	 *
 	 * @param blackboard The current blackboard.
+	 * @return {@code true} only if {@link #contribute} may be called.
 	 */
-	void canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView blackboard);
+	boolean canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView blackboard);
 
 	/**
 	 * Contributes this analyser’s knowledge to the passed blackboard.
