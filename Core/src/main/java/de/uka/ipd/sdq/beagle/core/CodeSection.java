@@ -59,7 +59,7 @@ public class CodeSection implements Serializable {
 	 * The number thus describes how many statements precede the section’s first statement
 	 * in the {@linkplain #getStartFile() start source code file}.
 	 *
-	 * @return The first statement’s index. A positive Integer or 0.
+	 * @return The first statement’s index. A positive integer or 0.
 	 */
 	public int getStartSectionIndex() {
 		return 0;
@@ -80,7 +80,7 @@ public class CodeSection implements Serializable {
 	 * The number thus describes how many statements precede the section’s last statement
 	 * in the {@linkplain #getStartFile() end source code file}.
 	 *
-	 * @return The last statement’s index. A positive Integer or 0.
+	 * @return The last statement’s index. A positive integer or 0.
 	 */
 	public int getEndSectionIndex() {
 		return 0;
