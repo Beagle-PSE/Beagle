@@ -28,12 +28,6 @@ task copyWebArtefacts() {
 	
 	doLast {
 		rootProject.javaSubprojects.each { project ->
-			println "copying for $project"
-			copy {	
-				from project.javadoc.destinationDir
-				into "$javadocDest/$project.name"
-			}	
-		
 			copy {
 				from project.checkstyleHtml.dest
 				rename {file -> "${project.name}.html"}
