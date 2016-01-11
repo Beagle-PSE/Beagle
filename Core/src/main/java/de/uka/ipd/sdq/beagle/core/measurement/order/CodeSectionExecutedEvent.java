@@ -11,14 +11,14 @@ import de.uka.ipd.sdq.beagle.core.CodeSection;
  *
  * @author Joshua Gleitze
  */
-public class CodeSectionExecutedMeasurementEvent extends AbstractMeasurementEvent {
+public class CodeSectionExecutedEvent extends AbstractMeasurementEvent {
 
 	/**
 	 * Creates an event for the fact that {@code codeSection} was started to be executed.
 	 *
 	 * @param codeSection The section that was executed. Must not be {@code null}.
 	 */
-	public CodeSectionExecutedMeasurementEvent(final CodeSection codeSection) {
+	public CodeSectionExecutedEvent(final CodeSection codeSection) {
 		super(codeSection);
 	}
 

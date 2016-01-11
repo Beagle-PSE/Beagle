@@ -1,10 +1,10 @@
 package de.uka.ipd.sdq.beagle.core;
 
 /**
- * Models an internal action demanding resources being executed.
+ * Models an internal action demanding resources of a specific type when being executed.
  *
  * <p>The internal action applies to a specific <em>resource type</em>. The resource type
- * describes both the resource that was demanded and the unit the result’s value is
+ * describes both the resource that is demanded and the unit the demand’s value is
  * expressed in. To support extensibility, these types are represented as strings with no
  * inherent restrictions. However, the following Strings should be used per convention:
  *
@@ -33,6 +33,7 @@ package de.uka.ipd.sdq.beagle.core;
  *
  * @author Christoph Michelbach
  * @author Annika Berger
+ * @author Joshua Gleitze
  *
  */
 public class ResourceDemandingInternalAction implements MeasurableSeffElement {
