@@ -97,7 +97,7 @@ key "srs"
 
 .
  Most design decisions are proposed to fulfil mandatory requirements while
- allowing easily supplementing optional requirements.
+ allowing to easily add optional requirements.
  Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -105,7 +105,20 @@ reference "sec:Changes-to-the"
 
 \end_inset
 
- describes changes to the SRS that proved necessary while designing Beagle.
+ describes changes to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SRS}
+\end_layout
+
+\end_inset
+
+ that proved necessary while designing Beagle.
  Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -114,7 +127,7 @@ reference "sec:Relating-Requirements-to"
 \end_inset
 
  describes how Beagle’s requirements are reflected in its design.
- However, some mandatory criteria have changed, concerning the 
+ However, some mandatory criteria have changed concerning the 
 \begin_inset ERT
 status open
 
@@ -213,10 +226,11 @@ gls{CTA}
 
 \end_inset
 
- is designed to return measurement results on method level, while Beagle’s
+ is designed to return measurement results on method level, whereas Beagle’s
  measurements need to be performed on sub-method (statement) level.
- Furthermore, there is no possibility to instrument source code, or control
- measurement software, the 
+ Furthermore, there is no possibility to instrument source code or to control
+ measurement software.
+ The 
 \begin_inset ERT
 status open
 
@@ -244,7 +258,7 @@ Gls{Kieker}
 
 \end_inset
 
-, without the 
+ without the 
 \begin_inset ERT
 status open
 
@@ -331,7 +345,7 @@ Measurement Timeout
 The measurement timeout functionality described in /F50/ and /F60/ is a
  valuable function to Beagle.
  However, it is not required to successfully use Beagle for the purpose
- described in the Chapter 1 of the 
+ described in Chapter 1 of the 
 \begin_inset ERT
 status open
 
@@ -395,16 +409,6 @@ gls{SRS}
 \end_inset
 
 , fixing broken links and layout issues.
-\end_layout
-
-\begin_layout Section
-\begin_inset CommandInset label
-LatexCommand label
-name "sec:Relating-Requirements-to"
-
-\end_inset
-
-Relating Requirements to the Design
 \end_layout
 
 \end_body
