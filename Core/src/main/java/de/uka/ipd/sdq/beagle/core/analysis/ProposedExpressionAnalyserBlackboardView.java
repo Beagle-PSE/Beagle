@@ -167,7 +167,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code loexternalCallParameterop}.
+	 * @return All measurement results reported for {@code externalCallParameter}.
 	 *         Changes to the returned set will not modify the blackboard content. Is
 	 *         never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
@@ -211,6 +211,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *         {@code writer} yet.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)
 	 */
+	@Override
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		return null;
@@ -225,6 +226,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 * @param <WRITTEN_TYPE> {@code written}’s type.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)
 	 */
+	@Override
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 	}
