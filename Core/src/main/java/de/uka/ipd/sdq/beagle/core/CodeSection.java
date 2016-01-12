@@ -32,11 +32,13 @@ public class CodeSection implements Serializable {
 	 * {@code startFile} to the {@code endIndex}th statement in {@code endFile}.
 	 *
 	 * @param startFile The file containing this section’s first statement. Must not be
-	 *            {@code null} and {@code startFile.exists()} must return {@code true}.
+	 *            {@code null} and {@link File#isFile() startFile.isFile()} must return
+	 *            {@code true}.
 	 * @param startIndex The index of the first statement in this section. Counting starts
 	 *            at 0.
 	 * @param endFile The file containing this section’s last statement. Must not be
-	 *            {@code null} and {@code startFile.exists()} must return {@code true}.
+	 *            {@code null} and {@link File#isFile() endFile.isFile()} must return
+	 *            {@code true}.
 	 * @param endIndex The index of the last statement in this section. Counting starts at
 	 *            0.
 	 */

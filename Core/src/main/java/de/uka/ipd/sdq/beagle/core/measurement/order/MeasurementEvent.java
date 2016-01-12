@@ -8,6 +8,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
  * {@linkplain MeasurementTool MeasurementTools}. They are visitable in terms of the
  * well-known visitor pattern. Every code event belongs to a specific code section it was
  * created for. Measurement Events are immutable, meaning that once created, their
+ * attributes cannot be changed.
  *
  * @author Joshua Gleitze
  */
