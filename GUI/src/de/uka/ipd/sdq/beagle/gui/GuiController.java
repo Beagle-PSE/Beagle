@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+
 /**
  * The class controlling the GUI.
  * 
@@ -16,6 +18,12 @@ public class GuiController {
 	 * linked to it uses.
 	 */
 	private UserConfiguration userConfiguration;
+
+	/**
+	 * Is used to display the actions "pause", "continue", and "abort" to the user. These
+	 * actions are regarding the analysis.
+	 */
+	private MessageDialog messageDialog;
 
 	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
@@ -36,6 +44,25 @@ public class GuiController {
 	public void open() {
 		if (!this.hasBeenOpened) {
 			this.hasBeenOpened = true;
+			this.engageWizard();
+			// to do: start analysis here
+			this.engageDialog();
 		}
+	}
+
+	/**
+	 * Opens up the wizard allowing the user to configure Beagle’s behaviour during the
+	 * analysis.
+	 */
+	public void engageWizard() {
+
+	}
+
+	/**
+	 * Opens up the dialog displaying the actions "pause", "continue", and "abort" to the
+	 * user. These actions are regarding the analysis.
+	 */
+	public void engageDialog() {
+
 	}
 }
