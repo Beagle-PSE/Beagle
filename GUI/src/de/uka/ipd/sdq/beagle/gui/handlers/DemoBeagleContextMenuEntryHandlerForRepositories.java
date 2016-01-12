@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.prototypes.contextmenus.handlers;
+package de.uka.ipd.sdq.beagle.gui.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;

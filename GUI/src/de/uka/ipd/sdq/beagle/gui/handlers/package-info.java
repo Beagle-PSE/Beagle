@@ -3,4 +3,4 @@
  *
  * @author Roman Langrehr
  */
-package de.uka.ipd.sdq.beagle.prototypes.contextmenus.handlers;
+package de.uka.ipd.sdq.beagle.gui.handlers;

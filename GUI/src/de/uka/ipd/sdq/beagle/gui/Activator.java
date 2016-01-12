@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.prototypes.contextmenus;
+package de.uka.ipd.sdq.beagle.gui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;

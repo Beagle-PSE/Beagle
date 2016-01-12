@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.prototypes.contextmenus.handlers;
+package de.uka.ipd.sdq.beagle.gui.handlers;
 
 import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
 

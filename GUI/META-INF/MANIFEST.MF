@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse_GUI_Protoype
 Bundle-SymbolicName: Beagle_GUI;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: de.uka.ipd.sdq.beagle.prototypes.contextmenus.Activator
+Bundle-Activator: de.uka.ipd.sdq.beagle.gui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.e4.ui.model.workbench;bundle-version="1.1.100.v20150407-1430",
