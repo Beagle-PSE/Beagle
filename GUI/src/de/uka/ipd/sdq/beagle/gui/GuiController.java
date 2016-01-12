@@ -20,6 +20,11 @@ public class GuiController {
 	private UserConfiguration userConfiguration;
 
 	/**
+	 * The wizard allowing the user to configure Beagle’s behaviour during the analysis.
+	 */
+	private BeagleAnalysisWizard beagleAnalysisWizard;
+
+	/**
 	 * Is used to display the actions "pause", "continue", and "abort" to the user. These
 	 * actions are regarding the analysis.
 	 */
