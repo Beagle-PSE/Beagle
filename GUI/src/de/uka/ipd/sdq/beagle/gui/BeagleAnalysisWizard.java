@@ -1,10 +1,10 @@
 package de.uka.ipd.sdq.beagle.gui;
 
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.swt.widgets.Shell;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,10 +18,20 @@ import java.util.List;
 public class BeagleAnalysisWizard extends Wizard {
 
 	/**
-	 * The constructor of this class.
+	 * The {@link ActionListener} which will be executed when the wizard finishes.
 	 */
-	public BeagleAnalysisWizard() {
+	private ActionListener wizardFinished;
+
+	/**
+	 * Constructs a new {@link BeagleAnalysisWizard} which runs {@code wizardFinished}
+	 * when it finihes.
+	 * 
+	 * @param wizardFinished The {@link ActionListener} which will be executed when the
+	 *            wizard finishes.
+	 */
+	public BeagleAnalysisWizard(final ActionListener wizardFinished) {
 		super();
+		this.wizardFinished = wizardFinished;
 		setNeedsProgressMonitor(true);
 	}
 
@@ -44,23 +54,7 @@ public class BeagleAnalysisWizard extends Wizard {
 
 	@Override
 	public boolean performFinish() {
-		// open dialog
-		// TODO use timeout.getTimeout() when launching the analysis
-		final String dialogTitle = "Beagle Analysis is Running";
-		final String dialogMessage = "Beagle Analysis is running.";
-		final String[] buttonLabels = {"Abort", "Pause"};
-		final MessageDialog dialog = new MessageDialog(new Shell(), dialogTitle, null, dialogMessage,
-			MessageDialog.INFORMATION, buttonLabels, 0);
-		final int buttonClick = dialog.open();
-
-		if (buttonClick == 0) {
-			System.out.println("User clicked 'Abort'.");
-		}
-
-		if (buttonClick == 1) {
-			System.out.println("User clicked 'Pause'.");
-		}
-
+		this.wizardFinished.actionPerformed(new ActionEvent(this, 0, "wizard finished"));
 		return true;
 	}
 }
