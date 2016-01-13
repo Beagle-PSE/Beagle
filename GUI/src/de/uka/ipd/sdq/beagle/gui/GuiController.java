@@ -12,10 +12,27 @@ import java.util.List;
 public class GuiController {
 
 	/**
-	 * {@code true} if and only if the GUI has been opened (has been made visible to the
-	 * user).
+	 * Describes the state of the {@link GuiController}. {@link GuiController} goes
+	 * through the states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
+	 * {@code terminated} witch no way to go backwards but the option to skip states.
+	 * 
+	 * @author Christoph Michelbach
 	 */
-	private boolean hasBeenOpened;
+	private enum GuiControllerState {
+		/**
+		 * The states of an {@link GuiController}. {@link GuiController} goes through the
+		 * states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
+		 * {@code terminated} witch no way to go backwards but the option to skip states.
+		 */
+		unopened, wizardOpen, dialogOpen, terminated
+	};
+
+	/**
+	 * Describes the state of the {@link GuiController}. {@link GuiController} goes
+	 * through the states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
+	 * {@code terminated} witch no way to go backwards but the option to skip states.
+	 */
+	private GuiControllerState state;
 
 	/**
 	 * The {@link UserConfiguration} this {@link GuiController} and therefore everything
