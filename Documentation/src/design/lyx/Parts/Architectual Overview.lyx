@@ -90,9 +90,9 @@ key "javadoc"
 
 \begin_layout Standard
 Beagle consists of a core component and interfaces to external components.
- Components may depend on information provided by another component, but
- their internal logic works strictly independently.
- Communication takes exclusively place through the core component.
+ Components may depend on information provided by another components but
+ their internal logic works strictly independently from them.
+ Communication takes place exclusively through the core component.
  The following are Beagle’s key components and interfaces: 
 \end_layout
 
@@ -173,8 +173,8 @@ Measurement Tool
 \end_layout
 
 \begin_layout Standard
-Measurement Tools are responsible for all kinds of measurements that are
- needed to get the execution time of 
+Measurement Tools are responsible for all kinds of measurements which are
+ needed to determine the execution time of 
 \begin_inset ERT
 status open
 
@@ -200,7 +200,7 @@ gls{SEFF}
 
 \end_inset
 
- Branches and repetitions of 
+ Branches, and repetitions of 
 \begin_inset ERT
 status open
 
@@ -231,13 +231,13 @@ Gls{Kieker}
 \end_layout
 
 \begin_layout Subsection*
-Measurement Result Analyser
+Measurement Result Analyser
 \end_layout
 
 \begin_layout Standard
 Based on the measurement results, Measurement Result Analysers will suggest
- Evaluable Expressions that describe the parametric dependencies found in
- the results.
+ Evaluable Expressions which describe the parametric dependencies found
+ in the results.
  Typical implementations are regression tools.
 \end_layout
 
@@ -251,16 +251,9 @@ Proposed Expression Analysers try to improve the results of Measurement
  They usually try to combine proposed expressions to build a better one
  (in terms of Beagle’s Fitness Function).
  As different regression approaches usually have different advantages and
- shortcomings, combining their results may produce a more accurate expression
- because it contains 
-\begin_inset Quotes eld
-\end_inset
-
-more parts of the truth
-\begin_inset Quotes erd
-\end_inset
-
- 
+ shortcomings, combining their results is likely to produce a more accurate
+ expression because they together contain a bigger share of all aspects
+ of reality 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KrogmannPhD"
@@ -412,8 +405,8 @@ Gls{API}
 
 \end_inset
 
- is fixed) and which plugins users install can depend on the software they
- have available.
+ is fixed) and which plugins users install can depend on the software available
+ to them.
 \end_layout
 
 \end_body

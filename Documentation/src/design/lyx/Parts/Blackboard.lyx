@@ -88,8 +88,8 @@ key "buschmann1996patternoriented"
  elements, which SEFF elements should be measured, all measurement results
  and the final expression for each measurable SEFF element.
  It also stores individual information for each Measurement Tool, Measurement
- Result Analyser, Proposed Expression Analyser and the Final Judge (in the
- this section: 
+ Result Analyser, Proposed Expression Analyser, and the Final Judge (in
+ the this section: 
 \begin_inset Quotes eld
 \end_inset
 
@@ -97,36 +97,36 @@ the tools
 \begin_inset Quotes erd
 \end_inset
 
-), because these tools are not allowed to hold status information.
- The fact that all status information are stored on the Blackboard allows
- the serialisation of an analysis, as all elements on the blackboard are
- serialisable.
+) because these tools are not allowed to hold status information.
+ The fact that all status information is stored on the Blackboard allows
+ the serialisation of an analysis as elements on the blackboard are serialisable.
 \end_layout
 
 \begin_layout Standard
-The blackboard design also allows communication between the tools, without
- dependencies between them: Each tool contributes his knowledge to the blackboar
-d, when it can do so and may use information of other tools, but don't need
- to know about the tool, that contributed them.
- This enables adding and removing of tools without adapting the Beagle Core
- and developing them separately.
- Additional, it is easy to compare different combinations of tools to analyse
- the software.
+The blackboard design also allows communication between the tools without
+ dependencies between them: Each tool contributes its knowledge to the blackboar
+d if it is able to do so and may use information of other tools but doesn't
+ need to know about the tool which provided it.
+ This allows addition and removal of tools without adapting the Beagle Core
+ as well as developing them separately.
+ Additionally, it is easy to compare different combinations of tools to
+ analyse the software.
 \end_layout
 
 \begin_layout Standard
-As it makes no sense to run a tool that performs regression of the measurement
- results before any measurements have been made, the different kind of tools
- have a different priority.
- Therefore the vocabulary of the blackboard is divided in different layers
+As it makes no sense to run a tool performing regression of the measurement
+ results before any measurements have been made, the different kinds of
+ tools have a different priority.
+ Therefore the vocabulary of the blackboard is divided into different layers
  and the tools can only see some of them.
- On the bottom layer are the code sections and all tools can access them,
- on the highest level are the final expressions and only the final judge
+ On the bottom layer, there are the code sections and all tools can access
+ them.
+ On the highest level are the final expressions and only the final judge
  can access them.
  In between are the Measurement Result Analysers.
- They can access access the measurement results (and the code sections).
- On top of them are the Proposed Expressions Analysers, which can additionally
- access all already proposed Evaluable Expressions.
+ They can access the measurement results (and the code sections).
+ On top of them are the Proposed Expressions Analysers which additionally
+ can access all already proposed Evaluable Expressions.
 \end_layout
 
 \begin_layout Standard
