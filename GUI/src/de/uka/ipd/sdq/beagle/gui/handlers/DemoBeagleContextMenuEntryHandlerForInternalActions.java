@@ -1,16 +1,19 @@
 package de.uka.ipd.sdq.beagle.gui.handlers;
 
+import de.uka.ipd.sdq.beagle.gui.GuiController;
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart;
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Handles the context menu entries, that start an analysis of an internal action.
@@ -30,17 +33,23 @@ public class DemoBeagleContextMenuEntryHandlerForInternalActions extends Abstrac
 		String displayString = null;
 		if (guiObject instanceof InternalActionEditPart) {
 			final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) guiObject;
-			displayString = internalActionEditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel()
-					.toString();
+			displayString =
+				internalActionEditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();
 		} else {
 			assert guiObject instanceof InternalAction2EditPart;
 			final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) guiObject;
-			displayString = internalAction2EditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel()
-					.toString();
+			displayString =
+				internalAction2EditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();
 		}
-		MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
-				"Belive it, or not. But Beagle ist alive!\n" + "You want to analyse: A single component: "
-						+ displayString);
+
+		// prepare the list of components
+		final String component = displayString;
+		final List<String> components = new LinkedList<String>();
+		components.add(component);
+
+		// create a new GUI and open it
+		final GuiController guiController = new GuiController(components);
+		guiController.open();
 		return null;
 	}
 }
