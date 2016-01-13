@@ -10,37 +10,119 @@ package de.uka.ipd.sdq.beagle.core;
  *
  * <ul>
  *
- * <li> {@code CPU}: cycles performed on a CPU
+ * <li> {@link #RESOURCE_TYPE_CPU}
  *
- * <li>{@code CPU_MS}: milliseconds of computation performed on a CPU
+ * <li> {@link #RESOURCE_TYPE_CPU_MS}
  *
- * <li>{@code HDD_READ}: bytes read from a non-volatile storage
+ * <li> {@link #RESOURCE_TYPE_HDD_READ}
  *
- * <li> {@code HDD_READ_MS}: milliseconds of reading operations performed on a
- * non-volatile storage
+ * <li> {@link #RESOURCE_TYPE_HDD_READ_MS}
  *
- * <li> {@code HDD_WRITE}: bytes written to a non-volatile storage
+ * <li> {@link #RESOURCE_TYPE_HDD_WRITE}
  *
- * <li> {@code HDD_WRITE_MS}: milliseconds of writing operations performed on a
- * non-volatile storage
+ * <li> {@link #RESOURCE_TYPE_HDD_WRITE_MS}
  *
- * <li> {@code HDD}: bytes transfered to or from a non-volatile storage
+ * <li> {@link #RESOURCE_TYPE_HDD}
  *
- * <li> {@code HDD_MS}: milliseconds of reading or writing operations performed on a
- * non-volatile storage
+ * <li> {@link #RESOURCE_TYPE_HDD_MS}
  *
- * </ul>
+ * <li> {@link #RESOURCE_TYPE_NETWORK}
+ *
+ * <li> {@link #RESOURCE_TYPE_NETWORK_MS}
+ *
+ * </ul> Resource types should use the suffix {@code "_MS"} exactly when they should be
+ * measured device dependent in the time unit ms.
  *
  * @author Christoph Michelbach
  * @author Annika Berger
+ * @author Roman Langrehr
  *
  */
 public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 
 	/**
+	 * Common resource type for cycles performed on a CPU.
+	 */
+	public static final String RESOURCE_TYPE_CPU = "CPU";
+
+	/**
+	 * Common resource type for milliseconds of computation performed on a CPU.
+	 */
+	public static final String RESOURCE_TYPE_CPU_MS = "CPU_MS";
+
+	/**
+	 * Common resource type for bytes read from a non-volatile storage.
+	 */
+	public static final String RESOURCE_TYPE_HDD_READ = "HDD_READ";
+
+	/**
+	 * Common resource type for milliseconds of reading operations performed on a
+	 * non-volatile storage.
+	 */
+	public static final String RESOURCE_TYPE_HDD_READ_MS = "HDD_READ_MS";
+
+	/**
+	 * Common resource type for milliseconds of writing operations performed on a
+	 * non-volatile storage.
+	 */
+	public static final String RESOURCE_TYPE_HDD_WRITE = "HDD_WRITE";
+
+	/**
+	 * Common resource type for bytes transfered to or from a non-volatile storage.
+	 */
+	public static final String RESOURCE_TYPE_HDD_WRITE_MS = "HDD_WRITE_MS";
+
+	/**
+	 * Common resource type for bytes transfered to or from a non-volatile storage.
+	 */
+	public static final String RESOURCE_TYPE_HDD = "HDD";
+
+	/**
+	 * Common resource type for milliseconds of reading or writing operations performed on
+	 * a non-volatile storage.
+	 */
+	public static final String RESOURCE_TYPE_HDD_MS = "HDD_MS";
+
+	/**
+	 * Common resource type for bytes send or received over a network interface.
+	 */
+	public static final String RESOURCE_TYPE_NETWORK = "NETWORK";
+
+	/**
+	 * Common resource type for milliseconds spend for network operations.
+	 */
+	public static final String RESOURCE_TYPE_NETWORK_MS = "NETWORK_MS";
+
+	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
 	private static final long serialVersionUID = -8743471676122273889L;
+
+	/**
+	 * The type of resource that should be measured in this code section.
+	 */
+	private String resourceType;
+
+	/**
+	 * The code section for this resource demand.
+	 */
+	private CodeSection action;
+
+	/**
+	 * Creates a {@link ResourceDemandingInternalAction} for a specific resource type.
+	 *
+	 * @param resourceType The resource type of this internal action that should be
+	 *            measured. See class description for resource types, that should be used
+	 *            per convention.
+	 * @param action The code section for this resource demanding internal action. The
+	 *            first line of the code section is the first line of this internal action
+	 *            (inclusive). The last line of the code section is the last line of this
+	 *            internal action (inclusive).
+	 */
+	public ResourceDemandingInternalAction(final String resourceType, final CodeSection action) {
+		this.resourceType = resourceType;
+		this.action = action;
+	}
 
 	/**
 	 * Gets this internal action's <em>result type</em>.
@@ -49,16 +131,15 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	 *         never {@code null}.
 	 */
 	public String getResourceType() {
-		return null;
+		return this.resourceType;
 	}
 
 	/**
-	 * Sets this internal action’s <em>result type</em>.
+	 * Gets this internal action's <em>code section</em>.
 	 *
-	 * @param resourceType This internal actions's <em>result type</em>, as defined in the
-	 *            class description. May not be {@code null}.
-	 * @throws NullPointerException If {@code resourceType} is {@code null}.
+	 * @return the code section for this resource demand.
 	 */
-	public void setResourceType(final String resourceType) {
+	public CodeSection getAction() {
+		return this.action;
 	}
 }
