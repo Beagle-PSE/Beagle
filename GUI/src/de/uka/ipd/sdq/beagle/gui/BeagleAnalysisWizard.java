@@ -6,6 +6,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Shell;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -31,8 +32,9 @@ public class BeagleAnalysisWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		final List<WizardPage> wizardPages = new List<WizardPage>();
-
+		final List<WizardPage> wizardPages = new LinkedList<WizardPage>();
+		wizardPages.add(new SelectionOverviewWizardPage());
+		wizardPages.add(new TimeoutWizardPage());
 		final Iterator<WizardPage> iterator = wizardPages.iterator();
 
 		while (iterator.hasNext()) {
