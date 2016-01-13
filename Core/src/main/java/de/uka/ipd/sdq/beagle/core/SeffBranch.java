@@ -37,9 +37,16 @@ public class SeffBranch implements MeasurableSeffElement {
 	 *            ending as last line. And each time the beginning point was reached,
 	 *            exactly one code section of this branch gets executed immediately after
 	 *            that. Immediately after that, the ending point is reached. The set must
-	 *            contain at least {@code 2} code sections. Must not be {@code null}.
+	 *            contain at least {@code 2} code sections. Must not be {@code null}. May
+	 *            not contain {@code null} entries.
+	 * @throws IllegalArgumentException If {@code branches} has less than {@code 2}
+	 *             branches.
 	 */
 	public SeffBranch(final Set<CodeSection> branches) {
+		if (branches.size() <= 1) {
+			throw new IllegalArgumentException(
+				"The code section set for the SeffBranch had less than two code sections");
+		}
 		this.branches = branches;
 	}
 
@@ -55,7 +62,8 @@ public class SeffBranch implements MeasurableSeffElement {
 	 *         each time the beginning point was reached, exactly one code section of this
 	 *         branch gets executed immediately after that. Immediately after that, the
 	 *         ending point is reached. The set contains at least {@code 2} code sections.
-	 *         The set is never {@code null}.
+	 *         The set is never {@code null}. This set never contains {@code null}
+	 *         entries.
 	 */
 	public Set<CodeSection> getBranches() {
 		return this.branches;
