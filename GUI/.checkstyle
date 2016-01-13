@@ -4,7 +4,7 @@
   <local-check-config name="Beagle Prototype" location="/Beagle/config/checkstyle/Checkstyle Prototype.xml" type="project" description="">
     <additional-data name="protect-config-file" value="true"/>
   </local-check-config>
-  <fileset name="all" enabled="true" check-config-name="Beagle Prototype" local="true">
+  <fileset name="all" enabled="true" check-config-name="Beagle PSE Checkstyle" local="false">
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
 </fileset-config>
