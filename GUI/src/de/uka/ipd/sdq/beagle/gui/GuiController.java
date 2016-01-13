@@ -1,6 +1,9 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,7 +70,8 @@ public class GuiController {
 	/**
 	 * Opens the GUI, meaning that from the point of time this method is called, the user
 	 * can see and interact with it. Calls after the first call of this function (per
-	 * {@link GuiController} object) are ignored.
+	 * {@link GuiController} object) are ignored. Returns after the user closed the
+	 * wizard. This includes finished the wizard as well as aborting it in any way.
 	 */
 	public void open() {
 		this.engageWizard();
@@ -89,6 +93,11 @@ public class GuiController {
 				}
 			};
 
+			final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+
+			this.beagleAnalysisWizard = new BeagleAnalysisWizard(wizardFinished);
+			final WizardDialog wizardDialog = new WizardDialog(shell, this.beagleAnalysisWizard);
+			wizardDialog.open();
 		}
 	}
 
