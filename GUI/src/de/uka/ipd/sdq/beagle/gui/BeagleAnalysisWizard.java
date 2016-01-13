@@ -15,6 +15,7 @@ import java.util.List;
  * @author Christoph Michelbach
  */
 public class BeagleAnalysisWizard extends Wizard {
+
 	/**
 	 * The constructor of this class.
 	 */
@@ -30,9 +31,9 @@ public class BeagleAnalysisWizard extends Wizard {
 
 	@Override
 	public void addPages() {
-		List<WizardPage> wizardPages = new List<WizardPage>();
+		final List<WizardPage> wizardPages = new List<WizardPage>();
 
-		Iterator<WizardPage> iterator = wizardPages.iterator();
+		final Iterator<WizardPage> iterator = wizardPages.iterator();
 
 		while (iterator.hasNext()) {
 			addPage(iterator.next());
@@ -45,9 +46,9 @@ public class BeagleAnalysisWizard extends Wizard {
 		// TODO use timeout.getTimeout() when launching the analysis
 		final String dialogTitle = "Beagle Analysis is Running";
 		final String dialogMessage = "Beagle Analysis is running.";
-		final String[] buttonLabels = { "Abort", "Pause" };
+		final String[] buttonLabels = {"Abort", "Pause"};
 		final MessageDialog dialog = new MessageDialog(new Shell(), dialogTitle, null, dialogMessage,
-				MessageDialog.INFORMATION, buttonLabels, 0);
+			MessageDialog.INFORMATION, buttonLabels, 0);
 		final int buttonClick = dialog.open();
 
 		if (buttonClick == 0) {
