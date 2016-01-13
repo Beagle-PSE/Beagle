@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import java.util.List;
+
 /**
  * Stores all settings done by the user. This object starts out with default values set to
  * it.
@@ -7,6 +9,7 @@ package de.uka.ipd.sdq.beagle.gui;
  * @author Christoph Michelbach
  */
 public class UserConfiguration {
+
 	/**
 	 * Numeric value for "adaptive timeout".
 	 */
@@ -26,7 +29,7 @@ public class UserConfiguration {
 	/**
 	 * All components to measure.
 	 */
-	private String components;
+	private List<String> components;
 
 	/**
 	 * The timeout to be used. [-2 -> adaptive timeout] [-1 -> no timeout] [>= 0 ->
@@ -38,10 +41,9 @@ public class UserConfiguration {
 	 * Constructs a new {@link UserConfiguration} using {@code components} as the default
 	 * components to be measured.
 	 * 
-	 * @param components
-	 *            The default components to be measured.
+	 * @param components The default components to be measured.
 	 */
-	public UserConfiguration(final String components) {
+	public UserConfiguration(final List<String> components) {
 		this.components = components;
 	}
 
@@ -50,17 +52,16 @@ public class UserConfiguration {
 	 * 
 	 * @return The components to be measured.
 	 */
-	public String getComponents() {
+	public List<String> getComponents() {
 		return this.components;
 	}
 
 	/**
 	 * Sets the components to be measured to {@code components}.
 	 * 
-	 * @param components
-	 *            The components to be measured to {@code components}.
+	 * @param components The components to be measured to {@code components}.
 	 */
-	public void setComponents(final String components) {
+	public void setComponents(final List<String> components) {
 		this.components = components;
 	}
 
@@ -79,9 +80,8 @@ public class UserConfiguration {
 	 * Sets the timeout to be used to {@code timeout}. [-2 -> adaptive timeout] [-1 -> no
 	 * timeout] [>= 0 -> timeout in seconds]
 	 * 
-	 * @param timeout
-	 *            The timeout to be used to {@code timeout}. [-2 -> adaptive timeout] [-1
-	 *            -> no timeout] [>= 0 -> timeout in seconds]
+	 * @param timeout The timeout to be used to {@code timeout}. [-2 -> adaptive timeout]
+	 *            [-1 -> no timeout] [>= 0 -> timeout in seconds]
 	 */
 	public void setTimeout(final int timeout) {
 		this.timeout = timeout;

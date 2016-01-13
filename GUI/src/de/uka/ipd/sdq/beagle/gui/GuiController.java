@@ -2,17 +2,21 @@ package de.uka.ipd.sdq.beagle.gui;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 
+import java.util.List;
+
 /**
  * The class controlling the GUI.
  * 
  * @author Christoph Michelbach
  */
 public class GuiController {
+
 	/**
 	 * {@code true} if and only if the GUI has been opened (has been made visible to the
 	 * user).
 	 */
 	private boolean hasBeenOpened;
+
 	/**
 	 * The {@link UserConfiguration} this {@link GuiController} and therefore everything
 	 * linked to it uses.
@@ -34,10 +38,9 @@ public class GuiController {
 	 * Constructs a new {@link GuiController} using {@code components} as the default
 	 * components to be measured.
 	 * 
-	 * @param components
-	 *            The default components to be measured.
+	 * @param components The default components to be measured.
 	 */
-	public GuiController(final String components) {
+	public GuiController(final List<String> components) {
 		this.userConfiguration = new UserConfiguration(components);
 		this.hasBeenOpened = false;
 	}
