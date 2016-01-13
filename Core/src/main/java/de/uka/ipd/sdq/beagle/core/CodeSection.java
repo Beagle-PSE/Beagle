@@ -9,7 +9,13 @@ import java.io.Serializable;
  * first one. Code sections are immutable, meaning that once created, their attribute
  * cannot be changed.
  *
+ * <p>It must be sure that in each run of the project under analysis the first line of
+ * this code section is always executed before the last line and that the last line is
+ * always executed after the first line, if the program did not crash during execution.
+ * Otherwise the code section is not "valid".
+ *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 public class CodeSection implements Serializable {
 

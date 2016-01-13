@@ -109,19 +109,16 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	private CodeSection action;
 
 	/**
-	 * Creates a {@link ResourceDemandingInternalAction} for a specific resource type.
+	 * Creates a ResourceDemandingInternalAction for a specific resource type using a
+	 * given code section.
 	 *
 	 * @param resourceType The resource type of this internal action that should be
 	 *            measured. See class description for resource types, that should be used
 	 *            per convention. Must not be {@code null}. Must not be empty.
-	 * @param action The code section for this resource demanding internal action. The
+	 * @param action A valid code section for this resource demanding internal action. The
 	 *            first line of the code section marks the beginning of this internal
 	 *            action (inclusive). The last line of the code section marks the end of
-	 *            this internal action (inclusive). It must be sure that in each run of
-	 *            the project under analysis the first line of this code section is always
-	 *            executed before the last line and that the last line is always executed
-	 *            after the first line, if the program did not crash during execution.
-	 *            Must not be {@code null}.
+	 *            this internal action (inclusive). Must not be {@code null}.
 	 */
 	public ResourceDemandingInternalAction(final String resourceType, final CodeSection action) {
 		this.resourceType = resourceType;
@@ -141,13 +138,10 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	/**
 	 * Gets this internal action's <em>code section</em>.
 	 *
-	 * @return the code section for this resource demand. The first line of the code
+	 * @return the valid code section for this resource demand. The first line of the code
 	 *         section marks the beginning of this internal action (inclusive). The last
 	 *         line of the code section marks the end of this internal action (inclusive).
-	 *         It must be sure that in each run of the project under analysis the first
-	 *         line of this code section is always executed before the last line and that
-	 *         the last line is always executed after the first line, if the program did
-	 *         not crash during execution. Is never {@code null}.
+	 *         Is never {@code null}.
 	 */
 	public CodeSection getAction() {
 		return this.action;
