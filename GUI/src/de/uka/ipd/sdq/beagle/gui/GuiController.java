@@ -2,6 +2,8 @@ package de.uka.ipd.sdq.beagle.gui;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
@@ -59,35 +61,42 @@ public class GuiController {
 	 */
 	public GuiController(final List<String> components) {
 		this.userConfiguration = new UserConfiguration(components);
-		this.hasBeenOpened = false;
+		this.state = GuiControllerState.unopened;
 	}
 
 	/**
 	 * Opens the GUI, meaning that from the point of time this method is called, the user
-	 * can see and interact with it. Further calls to this function are ignored.
+	 * can see and interact with it. Calls after the first call of this function (per
+	 * {@link GuiController} object) are ignored.
 	 */
 	public void open() {
-		if (!this.hasBeenOpened) {
-			this.hasBeenOpened = true;
-			this.engageWizard();
-			// to do: start analysis here
-			this.engageDialog();
-		}
+		this.engageWizard();
 	}
 
 	/**
 	 * Opens up the wizard allowing the user to configure Beagle’s behaviour during the
-	 * analysis.
+	 * analysis. Calls after the first call of this function (per {@link GuiController}
+	 * object) are ignored.
 	 */
-	public void engageWizard() {
+	private void engageWizard() {
+		if (this.state == GuiControllerState.unopened) {
+			this.state = GuiControllerState.wizardOpen;
+			ActionListener wizardFinished = new ActionListener() {
 
+				@Override
+				public void actionPerformed(final ActionEvent wizardFinished) {
+					GuiController.this.engageDialog();
+				}
+			};
+
+		}
 	}
 
 	/**
 	 * Opens up the dialog displaying the actions "pause", "continue", and "abort" to the
 	 * user. These actions are regarding the analysis.
 	 */
-	public void engageDialog() {
+	private void engageDialog() {
 
 	}
 }
