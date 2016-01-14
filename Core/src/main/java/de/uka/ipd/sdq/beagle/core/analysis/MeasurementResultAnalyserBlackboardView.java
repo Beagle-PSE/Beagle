@@ -167,7 +167,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code loexternalCallParameterop}.
+	 * @return All measurement results reported for {@code externalCallParameter}.
 	 *         Changes to the returned set will not modify the blackboard content. Is
 	 *         never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
