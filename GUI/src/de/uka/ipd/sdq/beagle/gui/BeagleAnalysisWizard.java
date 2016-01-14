@@ -24,7 +24,7 @@ public class BeagleAnalysisWizard extends Wizard {
 
 	/**
 	 * Constructs a new {@link BeagleAnalysisWizard} which runs {@code wizardFinished}
-	 * when it finihes.
+	 * when it finishes.
 	 * 
 	 * @param wizardFinished The {@link ActionListener} which will be executed when the
 	 *            wizard finishes.

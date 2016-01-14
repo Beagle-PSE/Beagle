@@ -40,6 +40,11 @@ public class GuiController {
 	private GuiControllerState state;
 
 	/**
+	 * The shell the GUI plugin will use.
+	 */
+	private Shell shell;
+
+	/**
 	 * The {@link UserConfiguration} this {@link GuiController} and therefore everything
 	 * linked to it uses.
 	 */
@@ -65,6 +70,7 @@ public class GuiController {
 	public GuiController(final List<String> components) {
 		this.userConfiguration = new UserConfiguration(components);
 		this.state = GuiControllerState.unopened;
+		this.shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	}
 
 	/**
@@ -75,6 +81,7 @@ public class GuiController {
 	 */
 	public void open() {
 		this.engageWizard();
+		System.out.println("open() returned");
 	}
 
 	/**
@@ -93,10 +100,8 @@ public class GuiController {
 				}
 			};
 
-			final Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-
 			this.beagleAnalysisWizard = new BeagleAnalysisWizard(wizardFinished);
-			final WizardDialog wizardDialog = new WizardDialog(shell, this.beagleAnalysisWizard);
+			final WizardDialog wizardDialog = new WizardDialog(this.shell, this.beagleAnalysisWizard);
 			wizardDialog.open();
 		}
 	}
@@ -106,6 +111,19 @@ public class GuiController {
 	 * user. These actions are regarding the analysis.
 	 */
 	private void engageDialog() {
+		final String dialogTitle = "Beagle Analysis is Running";
+		final String dialogMessage = "Beagle Analysis is running.";
+		final String[] buttonLabels = {"Abort", "Pause"};
+		final MessageDialog dialog =
+			new MessageDialog(this.shell, dialogTitle, null, dialogMessage, MessageDialog.INFORMATION, buttonLabels, 0);
+		final int buttonClick = dialog.open();
 
+		if (buttonClick == 0) {
+			System.out.println("User clicked 'Abort'.");
+		}
+
+		if (buttonClick == 1) {
+			System.out.println("User clicked 'Pause'.");
+		}
 	}
 }
