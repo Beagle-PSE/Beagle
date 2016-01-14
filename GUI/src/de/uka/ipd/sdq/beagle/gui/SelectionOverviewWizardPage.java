@@ -6,6 +6,8 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
+import java.util.Iterator;
+
 /**
  * Page 1 of the wizard.
  * 
@@ -59,15 +61,16 @@ public class SelectionOverviewWizardPage extends WizardPage {
 		this.mainContainer.setLayout(layout);
 		layout.numColumns = MAIN_LAYOUT_NR_COLUMS;
 
-		final Label labelHead = new Label(this.mainContainer, SWT.NONE);
-		labelHead.setText("These components are selected for anaylsis:");
+		final Label labelHeader = new Label(this.mainContainer, SWT.NONE);
+		labelHeader.setText("These components are selected for anaylsis:");
 
-		final Label label1 = new Label(this.mainContainer, SWT.NONE);
-		label1.setText("    • Some Component");
-		final Label label2 = new Label(this.mainContainer, SWT.NONE);
-		label2.setText("    • Some Different Component");
-		final Label label3 = new Label(this.mainContainer, SWT.NONE);
-		label3.setText("    • And Another One");
+		final Iterator<String> iterator = this.userConfiguration.getComponents().iterator();
+		while (iterator.hasNext()) {
+			final String component = iterator.next();
+
+			final Label labelItem = new Label(this.mainContainer, SWT.NONE);
+			labelItem.setText("    • " + component);
+		}
 
 		// required to avoid an error in the system
 		setControl(this.mainContainer);
