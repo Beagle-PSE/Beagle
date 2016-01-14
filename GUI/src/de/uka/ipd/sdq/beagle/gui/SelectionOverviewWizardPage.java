@@ -30,17 +30,26 @@ public class SelectionOverviewWizardPage extends WizardPage {
 	private static final int MAIN_LAYOUT_NR_COLUMS = 1;
 
 	/**
+	 * The {@link UserConfiguration} this {@link SelectionOverviewWizardPage} uses.
+	 */
+	private final UserConfiguration userConfiguration;
+
+	/**
 	 * The main container.
 	 */
 	private Composite mainContainer;
 
 	/**
 	 * Constructor setting the tile and the description of this page.
+	 * 
+	 * @param userConfiguration The {@link UserConfiguration} this
+	 *            {@link SelectionOverviewWizardPage} will use.
 	 */
-	public SelectionOverviewWizardPage() {
+	public SelectionOverviewWizardPage(final UserConfiguration userConfiguration) {
 		super(TITLE);
 		setTitle(TITLE);
 		setDescription(DESCRIPTION);
+		this.userConfiguration = userConfiguration;
 	}
 
 	@Override

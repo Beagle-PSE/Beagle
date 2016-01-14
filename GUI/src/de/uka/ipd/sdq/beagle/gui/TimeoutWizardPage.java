@@ -63,6 +63,11 @@ public class TimeoutWizardPage extends WizardPage {
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
 
 	/**
+	 * The {@link UserConfiguration} this {@link TimeoutWizardPage} uses.
+	 */
+	private final UserConfiguration userConfiguration;
+
+	/**
 	 * A textbox for the timeout in seconds (if the timeout is set manually).
 	 */
 	private Text textboxTimeoutSeconds;
@@ -90,12 +95,16 @@ public class TimeoutWizardPage extends WizardPage {
 
 	/**
 	 * Constructor setting the tile and the introduction to this page.
+	 * 
+	 * @param userConfiguration The {@link UserConfiguration} this
+	 *            {@link TimeoutWizardPage} will use.
 	 */
-	public TimeoutWizardPage() {
+	public TimeoutWizardPage(final UserConfiguration userConfiguration) {
 		super(TITLE);
 		setTitle(TITLE);
 		setDescription(DESCRIPTION);
 		setControl(this.textboxTimeoutSeconds);
+		this.userConfiguration = userConfiguration;
 	}
 
 	@Override
@@ -149,7 +158,8 @@ public class TimeoutWizardPage extends WizardPage {
 					setPageComplete(false);
 				} else {
 					setPageComplete(true);
-					TimeoutWizardPage.this.timeout = Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
+					TimeoutWizardPage.this.timeout =
+						Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
 				}
 			}
 
@@ -219,8 +229,8 @@ public class TimeoutWizardPage extends WizardPage {
 			public void keyReleased(final KeyEvent keyEvent) {
 				// remove everything not a number
 				if (keyEvent.character < '0' || keyEvent.character > '9') {
-					TimeoutWizardPage.this.textboxTimeoutSeconds
-						.setText(TimeoutWizardPage.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
+					TimeoutWizardPage.this.textboxTimeoutSeconds.setText(
+						TimeoutWizardPage.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
 				}
 
 				if (TimeoutWizardPage.this.textboxTimeoutSeconds.getText().isEmpty()) {

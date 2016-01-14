@@ -18,6 +18,12 @@ import java.util.List;
 public class BeagleAnalysisWizard extends Wizard {
 
 	/**
+	 * The {@link UserConfiguration} this {@link BeagleAnalysisWizard} and therefore
+	 * everything linked to it uses.
+	 */
+	private final UserConfiguration userConfiguration;
+
+	/**
 	 * The {@link ActionListener} which will be executed when the wizard finishes.
 	 */
 	private ActionListener wizardFinished;
@@ -26,11 +32,15 @@ public class BeagleAnalysisWizard extends Wizard {
 	 * Constructs a new {@link BeagleAnalysisWizard} which runs {@code wizardFinished}
 	 * when it finishes.
 	 * 
+	 * @param userConfiguration The {@link UserConfiguration} this
+	 *            {@link BeagleAnalysisWizard} and therefore everything linked to it will
+	 *            use.
 	 * @param wizardFinished The {@link ActionListener} which will be executed when the
 	 *            wizard finishes.
 	 */
-	public BeagleAnalysisWizard(final ActionListener wizardFinished) {
+	public BeagleAnalysisWizard(final UserConfiguration userConfiguration, final ActionListener wizardFinished) {
 		super();
+		this.userConfiguration = userConfiguration;
 		this.wizardFinished = wizardFinished;
 		setNeedsProgressMonitor(true);
 	}
@@ -43,8 +53,8 @@ public class BeagleAnalysisWizard extends Wizard {
 	@Override
 	public void addPages() {
 		final List<WizardPage> wizardPages = new LinkedList<WizardPage>();
-		wizardPages.add(new SelectionOverviewWizardPage());
-		wizardPages.add(new TimeoutWizardPage());
+		wizardPages.add(new SelectionOverviewWizardPage(userConfiguration));
+		wizardPages.add(new TimeoutWizardPage(userConfiguration));
 		final Iterator<WizardPage> iterator = wizardPages.iterator();
 
 		while (iterator.hasNext()) {
