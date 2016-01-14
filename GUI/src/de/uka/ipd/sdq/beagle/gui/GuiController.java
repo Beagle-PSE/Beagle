@@ -48,7 +48,7 @@ public class GuiController {
 	 * The {@link UserConfiguration} this {@link GuiController} and therefore everything
 	 * linked to it uses.
 	 */
-	private UserConfiguration userConfiguration;
+	private final UserConfiguration userConfiguration;
 
 	/**
 	 * The wizard allowing the user to configure Beagle’s behaviour during the analysis.
@@ -100,7 +100,7 @@ public class GuiController {
 				}
 			};
 
-			this.beagleAnalysisWizard = new BeagleAnalysisWizard(wizardFinished);
+			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.userConfiguration, wizardFinished);
 			final WizardDialog wizardDialog = new WizardDialog(this.shell, this.beagleAnalysisWizard);
 			wizardDialog.open();
 		}
@@ -111,19 +111,57 @@ public class GuiController {
 	 * user. These actions are regarding the analysis.
 	 */
 	private void engageDialog() {
-		final String dialogTitle = "Beagle Analysis is Running";
-		final String dialogMessage = "Beagle Analysis is running.";
-		final String[] buttonLabels = {"Abort", "Pause"};
-		final MessageDialog dialog =
-			new MessageDialog(this.shell, dialogTitle, null, dialogMessage, MessageDialog.INFORMATION, buttonLabels, 0);
-		final int buttonClick = dialog.open();
+		final String dialogTitleRunning = "Beagle Analysis is Running";
+		final String dialogMessageRunning = "Beagle Analysis is running.";
+		final String[] buttonLabelsRunning = {"Abort", "Pause"};
 
-		if (buttonClick == 0) {
-			System.out.println("User clicked 'Abort'.");
+		final String dialogTitlePaused = "Beagle Analysis is Paused";
+		final String dialogMessagePaused = "Beagle Analysis is paused.";
+		final String[] buttonLabelsPaused = {"Abort", "Continue"};
+
+		boolean analysisRunning = false;
+		// equals a click on button "Continue" (continuing and starting the analysis
+		// always have the same behaviour regarding the dialog)
+		int buttonClick = 1;
+
+		while (buttonClick != 0) {
+			switch (buttonClick) {
+				case 1:
+					if (analysisRunning) {
+						// analysis has been paused by the user
+						analysisRunning = false;
+						System.out.println("User clicked 'Pause'.");
+						this.messageDialog = new MessageDialog(this.shell, dialogTitlePaused, null, dialogMessagePaused,
+							MessageDialog.INFORMATION, buttonLabelsPaused, 0);
+					} else {
+						// analysis has been started or continued by the user
+						analysisRunning = true;
+						this.messageDialog = new MessageDialog(this.shell, dialogTitleRunning, null,
+							dialogMessageRunning, MessageDialog.INFORMATION, buttonLabelsRunning, 0);
+					}
+					break;
+				default:
+					// what is done when no button has been clicked but the dialog has
+					// been closed in any different way
+
+					// just open the dialog again, so do nothing here
+					break;
+			}
+
+			buttonClick = this.messageDialog.open();
 		}
 
-		if (buttonClick == 1) {
-			System.out.println("User clicked 'Pause'.");
-		}
+		System.out.println("User clicked 'Abort'.");
+
 	}
+	/*
+	 * private class DialogPolling implements Runnable {
+	 * 
+	 * @Override public void run() { final int buttonClick =
+	 * GuiController.this.messageDialog.open();
+	 * 
+	 * if (buttonClick == 0) { System.out.println("User clicked 'Abort'."); }
+	 * 
+	 * if (buttonClick == 1) { System.out.println("User clicked 'Pause'."); } } }
+	 */
 }
