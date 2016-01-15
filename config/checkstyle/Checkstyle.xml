@@ -489,6 +489,7 @@
     </module>
     <module name="Indentation">
       <property name="severity" value="warning"/>
+      <property name="lineWrappingIndentation" value="1"/>
     </module>
     <module name="CommentsIndentation">
       <property name="severity" value="warning"/>
