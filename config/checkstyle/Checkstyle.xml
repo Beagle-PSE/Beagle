@@ -64,7 +64,7 @@
     </module>
     <module name="SummaryJavadoc">
       <property name="severity" value="warning"/>
-      <property name="forbiddenSummaryFragments" value="^[^\.]{0,20}\..*$"/>
+      <property name="forbiddenSummaryFragments" value="^[^\.]{0,10}\..*$"/>
       <message key="summary.javaDoc" value="Summary too short (min 20 letters)."/>
       <message key="summary.first.sentence" value="Javadoc incomplete: missing summary."/>
     </module>
