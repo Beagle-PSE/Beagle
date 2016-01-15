@@ -27,9 +27,15 @@ All points stated in this document apply to prototypes as well, with the followi
  
 ## Eclipse Plugins
 
- * The `MANIFEST.MF` of Eclipse plugins belongs into `src/main/resources/META-INF/MANIFEST.MF`. To point PDE to it, a new file containing the line
+ * The `MANIFEST.MF` of Eclipse plugins belongs to `src/main/resources/META-INF/MANIFEST.MF`. To point PDE to it, a new file containing the line
 ```
 BUNDLE_ROOT_PATH=src/main/resources
 ``` 
  must be created in `.settings/org.eclipse.pde.core.prefs`.
- * All dependencies must be defined exclusively in this file.
+ * The `build.properties` belongs to `src/main/resources/build.properties`. Its paths must be adapted accordingly, a default is:
+```
+source.. = ../java/
+output.. = ../../../bin/
+bin.includes = META-INF/
+```
+ * All dependencies must be defined exclusively in `src/main/resources/META-INF/MANIFEST.MF`.
