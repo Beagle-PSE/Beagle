@@ -3,6 +3,7 @@
  */
 ext.prototypeSubprojects = subprojects.findAll {it.name.startsWith('Prototype')}
 ext.javaSubprojects = subprojects.findAll {file("$it.projectDir/src/main/java").exists()}
+ext.eclipseSubprojects = subprojects.findAll {file("$it.projectDir/META-INF/MANIFEST.MF").exists()}
 
 allprojects {
 	// All subprojects have a build and clean task
