@@ -488,10 +488,6 @@
     </module>
     <module name="Indentation">
       <property name="severity" value="warning"/>
-      <property name="caseIndent" value="1"/>
-      <property name="throwsIndent" value="1"/>
-      <property name="arrayInitIndent" value="1"/>
-      <property name="lineWrappingIndentation" value="1"/>
     </module>
     <module name="CommentsIndentation">
       <property name="severity" value="warning"/>
