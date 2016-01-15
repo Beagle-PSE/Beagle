@@ -13,7 +13,7 @@ FileTree getAllInputFiles() {
 		if (result == null) {
 			result = srcTree
 		} else {
-			result.add(scrTree)
+			result = result.plus(srcTree)
 		}
 	}
 	return result
