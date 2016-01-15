@@ -1,6 +1,7 @@
 def base = file(".").toPath()
 
 include 'Core'
+include 'GUI'
 include 'Documentation'
 include 'Web Presence'
 
