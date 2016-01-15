@@ -34,7 +34,8 @@ public class CodeSection implements Serializable {
 	private static final long serialVersionUID = -1823330022448293103L;
 
 	/**
-	 * The java file which contains the {@link #startCodeLine} of this code section.
+	 * The java file which contains the {@link #startStatementNumber} of this code
+	 * section.
 	 */
 	private File startFile;
 
@@ -42,10 +43,10 @@ public class CodeSection implements Serializable {
 	 * The line index, starting with {@code 0} in the {@link #startFile}, of the first
 	 * line in this code section.
 	 */
-	private int startCodeLine;
+	private int startStatementNumber;
 
 	/**
-	 * The java file which contains the {@link #endCodeLine} of this code section.
+	 * The java file which contains the {@link #endStatementNumber} of this code section.
 	 */
 	private File endFile;
 
@@ -53,7 +54,7 @@ public class CodeSection implements Serializable {
 	 * The line index, starting with {@code 0} in the {@link #endFile}, of the last line
 	 * in this code section.
 	 */
-	private int endCodeLine;
+	private int endStatementNumber;
 
 	/**
 	 * Creates a code section that spans from the {@code startIndex}th statement in
@@ -72,7 +73,7 @@ public class CodeSection implements Serializable {
 	 * @throws IllegalArgumentException When {@code startFile.isFile()} or
 	 *             {@code endFile.isFile()} returned {@code false}.
 	 */
-	public CodeSection(final File startFile, final int startIndex, final File endFile, final int endIndex) {{
+	public CodeSection(final File startFile, final int startIndex, final File endFile, final int endIndex) {
 		if (!startFile.isFile()) {
 			throw new IllegalArgumentException("The given startFile is not a file");
 		}
@@ -80,23 +81,22 @@ public class CodeSection implements Serializable {
 			throw new IllegalArgumentException("The given endFile is not a file");
 		}
 		this.startFile = startFile;
-		this.startCodeLine = startCodeLine;
+		this.startStatementNumber = startIndex;
 		this.endFile = endFile;
-		this.endCodeLine = endCodeLine;
+		this.endStatementNumber = endIndex;
 	}
 
 	/**
 	 * Gets the file that contains this section’s first statement.
 	 *
 	 * @return The file containing this section’s first statement. Will never be
-	 *         {@code null} and {@code getStartFile().isFile()} always
-	 *         returns {@code true}.
+	 *         {@code null} and {@code getStartFile().isFile()} always returns
+	 *         {@code true}.
 	 */
 	public File getStartFile() {
 		return this.startFile;
 	}
 
-	
 	/**
 	 * Gets the index of the first statement in this code section. Counting starts at 0.
 	 * The number thus describes how many statements precede the section’s first statement
@@ -105,15 +105,14 @@ public class CodeSection implements Serializable {
 	 * @return The first statement’s index. A non-negative integer.
 	 */
 	public int getStartSectionIndex() {
-		return this.startCodeLine;
+		return this.startStatementNumber;
 	}
 
 	/**
 	 * Gets the file that contains this section’s last statement.
 	 *
 	 * @return The file containing this section’s last statement. Will never be
-	 *         {@code null} and {@code getEndFile().isFile()} always
-	 *         returns {@code true}.
+	 *         {@code null} and {@code getEndFile().isFile()} always returns {@code true}.
 	 */
 	public File getEndFile() {
 		return this.endFile;
@@ -127,7 +126,7 @@ public class CodeSection implements Serializable {
 	 * @return The last statement’s index. A non-negative integer.
 	 */
 	public int getEndSectionIndex() {
-		return this.endCodeLine;
+		return this.endStatementNumber;
 	}
 
 }
