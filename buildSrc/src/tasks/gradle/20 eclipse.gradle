@@ -1,0 +1,22 @@
+/**
+ * Tasks to build eclipse projects.
+ *
+ * @author Joshua Gleitze
+ */
+
+buildscript {
+	repositories {
+		mavenLocal()
+		jcenter()
+	}
+  
+	dependencies {
+		classpath group: 'org.akhikhl.wuff', name: 'wuff-plugin', version: '+'
+	}
+}
+
+import org.akhikhl.wuff.EclipseBundlePlugin
+ 
+configure(eclipseSubprojects) {
+	apply plugin: EclipseBundlePlugin
+}
