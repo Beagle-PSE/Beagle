@@ -1,9 +1,27 @@
 /**
  * Collections of subprojects. Useful for configure blocks: configure(prototypeSubprojects){}
  */
-ext.prototypeSubprojects = subprojects.findAll {it.name.startsWith('Prototype')}
-ext.javaSubprojects = subprojects.findAll {file("$it.projectDir/src/main/java").exists()}
-ext.eclipseSubprojects = subprojects.findAll {file("$it.projectDir/META-INF/MANIFEST.MF").exists()}
+/**
+ * Prototype subprojects. Detected by being in the 'Prototypes' subfolder
+ */
+ext.prototypeSubprojects = subprojects.findAll { project ->
+	project.name.startsWith('Prototype')
+}
+/**
+ * Java subprojects. Detected by having the 'src/main/java' folder.
+ */
+ext.javaSubprojects = subprojects.findAll { project ->
+	file("$project.projectDir/src/main/java").exists()
+}
+/**
+ * Eclipse Plugin subprojects. Detected by having 'org.eclipse.pde.PluginNature' in their
+ * .project file.
+ */
+ext.eclipseSubprojects = subprojects.findAll { project ->
+	file("$project.projectDir/.project").with { 
+		exists() && text.contains('org.eclipse.pde.PluginNature')
+	}
+}
 
 allprojects {
 	// All subprojects have a build and clean task
