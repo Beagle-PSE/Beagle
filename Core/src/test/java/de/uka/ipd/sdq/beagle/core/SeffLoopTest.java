@@ -4,16 +4,18 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
 /**
- * TODO Document this type.
+ * Tests {@link de.uka.ipd.sdq.beage.core.SeffLoop} and contains all test cases needed to
+ * check every method.
  * 
- * @author nika
+ * @author Annika Berger
  */
 public class SeffLoopTest {
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffLoop#SeffLoop(de.uka.ipd.sdq.beagle.core.CodeSection)}.
+	 * Test method for
+	 * {@link de.uka.ipd.sdq.beagle.core.SeffLoop#SeffLoop(de.uka.ipd.sdq.beagle.core.CodeSection)}
+	 * .
 	 */
 	@Test
 	public void testSeffLoop() {
@@ -21,10 +23,12 @@ public class SeffLoopTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffLoop#getLoopBody()}.
+	 * Asserts that all getters are working correctly.
+	 * 
+	 * <p>Tests {@link de.uka.ipd.sdq.beagle.core.SeffLoop#getLoopBody()}.
 	 */
 	@Test
-	public void testGetLoopBody() {
+	public void testGetters() {
 		fail("Not yet implemented");
 	}
 

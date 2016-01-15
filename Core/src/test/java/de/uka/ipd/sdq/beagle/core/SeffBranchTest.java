@@ -6,9 +6,10 @@ import org.junit.Test;
 
 
 /**
- * TODO Document this type.
+ * Tests {@link de.uka.ipd.sdq.beage.core.SeffBranch} and contains all test cases needed to
+ * check every method.
  * 
- * @author nika
+ * @author Annika Berger
  */
 public class SeffBranchTest {
 
@@ -21,10 +22,12 @@ public class SeffBranchTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#getBranches()}.
+	 * Asserts that all getters are working correctly.
+	 * 
+	 * <p>Test {@link de.uka.ipd.sdq.beagle.core.SeffBranch#getBranches()}.
 	 */
 	@Test
-	public void testGetBranches() {
+	public void testGetters() {
 		fail("Not yet implemented");
 	}
 
