@@ -23,12 +23,10 @@ public class SeffLoopTest {
 	}
 
 	/**
-	 * Asserts that all getters are working correctly.
-	 * 
-	 * <p>Tests {@link de.uka.ipd.sdq.beagle.core.SeffLoop#getLoopBody()}.
+	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffLoop#getLoopBody()}.
 	 */
 	@Test
-	public void testGetters() {
+	public void testGetLoopBody() {
 		fail("Not yet implemented");
 	}
 

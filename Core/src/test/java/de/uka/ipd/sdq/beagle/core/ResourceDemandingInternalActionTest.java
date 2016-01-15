@@ -5,8 +5,8 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction} and contains all
- * test cases needed to check every method.
+ * Tests {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction} and contains
+ * all test cases needed to check every method.
  * 
  * @author Annika Berger
  */
@@ -22,17 +22,24 @@ public class ResourceDemandingInternalActionTest {
 	}
 
 	/**
-	 * Asserts that all Getters are working correctly.
-	 * 
-	 * <p>Getters tested are
+	 * Test method for
 	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#getResourceType()}
-	 * and {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#getAction()}.
+	 * .
 	 * 
 	 */
 	@Test
-	public void testGetters() {
+	public void testGetResourceType() {
 		fail("Not yet implemented");
-		//implement Tests for getResourceType() and getAction().
+	}
+
+	/**
+	 * Test method for
+	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#getAction()}.
+	 * 
+	 */
+	@Test
+	public void testGetAction() {
+		fail("Not yet implemented");
 	}
 
 }

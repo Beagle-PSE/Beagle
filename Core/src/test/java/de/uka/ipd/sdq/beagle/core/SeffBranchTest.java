@@ -4,17 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
 /**
- * Tests {@link de.uka.ipd.sdq.beage.core.SeffBranch} and contains all test cases needed to
- * check every method.
+ * Tests {@link de.uka.ipd.sdq.beage.core.SeffBranch} and contains all test cases needed
+ * to check every method.
  * 
  * @author Annika Berger
  */
 public class SeffBranchTest {
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#SeffBranch(java.util.Set)}.
+	 * Test method for
+	 * {@link de.uka.ipd.sdq.beagle.core.SeffBranch#SeffBranch(java.util.Set)}.
 	 */
 	@Test
 	public void testSeffBranch() {
@@ -22,12 +22,10 @@ public class SeffBranchTest {
 	}
 
 	/**
-	 * Asserts that all getters are working correctly.
-	 * 
-	 * <p>Test {@link de.uka.ipd.sdq.beagle.core.SeffBranch#getBranches()}.
+	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#getBranches()}.
 	 */
 	@Test
-	public void testGetters() {
+	public void testGetBranches() {
 		fail("Not yet implemented");
 	}
 
