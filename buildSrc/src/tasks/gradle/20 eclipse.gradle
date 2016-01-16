@@ -76,6 +76,9 @@ configure(eclipseSubprojects) {
 		
 		eclipseVersion('4.5') {
 			sources {
+				/*
+				 * Configure all update sites to get dependency plugins from here.
+				 */
 				source updatesite("https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/")
 			}
 		}
