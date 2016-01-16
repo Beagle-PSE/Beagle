@@ -10,6 +10,7 @@ Beagle consists of multiple subprojects. Each is built using [gradle](http://gra
  `Core` | Beagle Core project. It contains the management logic necessary to analyse software for its dynamic properties. It defines an API for Analysers and Measurement Tools that provide information for the analysis. It does not contain any analysers.
  `Documentation` | Documentation project. Besides the LyX source files for the [main documentation PDF files](.), it contains various [Markdown](https://help.github.com/articles/markdown-basics/) files that cover various aspects.
  `Documentation/Meeting Minutes` | Minutes of team meetings.
+ `GUI` | Beagle’s graphical user interface. It is intentionally separated to assure Beagle Core remains independent from its user interface(s).
  `Prototypes` | Development of new features and integrations of new third party software are often started as prototypes. These serve as a “proof of concept” and show how to use a certain technology. Subfolders of the `Prototypes` folder are independent Java projects.
  `Web Presence` | Build logic, template and content files that create this web presence. 
  
@@ -25,4 +26,8 @@ Beagle consists of multiple subprojects. Each is built using [gradle](http://gra
 {{#> artefact link="Pull Request Acceptance Checklist.html" type="html"}}
 	{{#> title}}Pull Request Acceptance Checklist{{/title}}
 	{{#> description}}Criteria applied when reviewing GitHub Pull Requests.{{/description}}
+{{/artefact}}
+{{#> artefact link="Creating a Project.html" type="html"}}
+	{{#> title}}How to Create a Subproject{{/title}}
+	{{#> description}}Guide for developers wishing to create a new subproject for Beagle.{{/description}}
 {{/artefact}}
