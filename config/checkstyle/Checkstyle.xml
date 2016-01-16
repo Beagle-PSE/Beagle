@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: BeagleCheckstyle
+    Checkstyle-Configuration: Beagle Checkstyle
     Description: none
 -->
 <module name="Checker">
@@ -64,7 +64,7 @@
     </module>
     <module name="SummaryJavadoc">
       <property name="severity" value="warning"/>
-      <property name="forbiddenSummaryFragments" value="^[^\.]{0,20}\..*$"/>
+      <property name="forbiddenSummaryFragments" value="^[^\.]{0,10}\..*$"/>
       <message key="summary.javaDoc" value="Summary too short (min 20 letters)."/>
       <message key="summary.first.sentence" value="Javadoc incomplete: missing summary."/>
     </module>
@@ -140,6 +140,7 @@
     </module>
     <module name="AvoidStaticImport">
       <property name="severity" value="warning"/>
+      <property name="excludes" value="org.junit"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="IllegalImport">
@@ -238,6 +239,7 @@
     </module>
     <module name="EmptyLineSeparator">
       <property name="severity" value="warning"/>
+      <property name="tokens" value="PACKAGE_DEF,IMPORT,CLASS_DEF,INTERFACE_DEF,CTOR_DEF,METHOD_DEF,STATIC_INIT,INSTANCE_INIT,VARIABLE_DEF"/>
       <property name="allowNoEmptyLineBetweenFields" value="true"/>
       <property name="allowMultipleEmptyLines" value="false"/>
     </module>
@@ -487,9 +489,6 @@
     </module>
     <module name="Indentation">
       <property name="severity" value="warning"/>
-      <property name="caseIndent" value="1"/>
-      <property name="throwsIndent" value="1"/>
-      <property name="arrayInitIndent" value="1"/>
       <property name="lineWrappingIndentation" value="1"/>
     </module>
     <module name="CommentsIndentation">
