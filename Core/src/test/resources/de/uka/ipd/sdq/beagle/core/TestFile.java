@@ -1,5 +1,10 @@
+package de.uka.ipd.sdq.beagle.core;
+
 import java.util.Scanner;
 
+/*
+ * CHECKSTYLE:OFF
+ */
 public class TestFile {
 	public static void main(String[] args) {
 		// Benutzername und Passwort in der "Datenbank"

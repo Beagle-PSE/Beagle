@@ -13,21 +13,6 @@ import org.hamcrest.TypeSafeDiagnosingMatcher;
 public final class ExceptionThrownMatcher extends TypeSafeDiagnosingMatcher<ThrowingMethod> {
 
 	/**
-	 * The thrown exception’s expected class.
-	 */
-	private Class<? extends Exception> expectedExceptionClass;
-
-	/**
-	 * Creates this matcher expecting an instance of {@code exceptionClass} to be thrown.
-	 *
-	 * @param exceptionClass The expected class of the thrown exception. Should be as
-	 *            specific as possible, must not be {@code null}.
-	 */
-	private ExceptionThrownMatcher(final Class<? extends Exception> exceptionClass) {
-		this.expectedExceptionClass = exceptionClass;
-	}
-
-	/**
 	 * Creates a matcher matching if the examined method throws an exception that’s an
 	 * instance of {@code exceptionClass}.
 	 *
@@ -51,6 +36,21 @@ public final class ExceptionThrownMatcher extends TypeSafeDiagnosingMatcher<Thro
 	 */
 	public static Matcher<ThrowingMethod> throwsException(final Class<? extends Exception> exceptionClass) {
 		return new ExceptionThrownMatcher(exceptionClass);
+	}
+
+	/**
+	 * The thrown exception’s expected class.
+	 */
+	private final Class<? extends Exception> expectedExceptionClass;
+
+	/**
+	 * Creates this matcher expecting an instance of {@code exceptionClass} to be thrown.
+	 *
+	 * @param exceptionClass The expected class of the thrown exception. Should be as
+	 *            specific as possible, must not be {@code null}.
+	 */
+	private ExceptionThrownMatcher(final Class<? extends Exception> exceptionClass) {
+		this.expectedExceptionClass = exceptionClass;
 	}
 
 	@Override

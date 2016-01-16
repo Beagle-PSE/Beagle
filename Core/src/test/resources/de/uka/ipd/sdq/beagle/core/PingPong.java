@@ -1,3 +1,5 @@
+package de.uka.ipd.sdq.beagle.core;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
