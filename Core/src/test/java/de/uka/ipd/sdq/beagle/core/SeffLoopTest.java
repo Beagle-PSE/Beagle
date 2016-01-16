@@ -23,8 +23,7 @@ public class SeffLoopTest {
 	 */
 	@Test
 	public void testConstructor() {
-		final File file =
-			new File(SeffLoopTest.class.getResource("de.uka.ipd.sdq.beagle.core.TestFile.java").getPath());
+		final File file = new File(SeffLoopTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final CodeSection[] codeSections = {null, new CodeSection(file, startCodeLine, file, endCodeLine)
@@ -42,18 +41,15 @@ public class SeffLoopTest {
 	 */
 	@Test
 	public void testGetLoopBody() {
-		final File file =
-			new File(SeffLoopTest.class.getResource("de.uka.ipd.sdq.beagle.core.TestFile.java").getPath());
+		final File file = new File(SeffLoopTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final File file2 =
-			new File(SeffLoopTest.class.getResource("de.uka.ipd.sdq.beagle.core.PingPong.java").getPath());
+			new File(SeffLoopTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
 		final int startCodeLine2 = 60;
 		final int endCodeLine2 = 68;
 		final CodeSection[] codeSections = {new CodeSection(file, startCodeLine, file, endCodeLine),
-			new CodeSection(file2, startCodeLine2, file2, endCodeLine2)
-
-		};
+			new CodeSection(file2, startCodeLine2, file2, endCodeLine2)};
 		SeffLoop loop;
 		for (CodeSection codeSection : codeSections) {
 			loop = new SeffLoop(codeSection);
