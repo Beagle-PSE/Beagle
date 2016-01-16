@@ -40,7 +40,7 @@ public class SeffBranchTest {
 		assertThat("IllegalArgumentException expected for invalid input.", method,
 			throwsException(IllegalArgumentException.class));
 
-		final File file = new File(SeffLoopTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final File file = new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
@@ -62,7 +62,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testGetBranches() {
-		final File file = new File(SeffLoopTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final File file = new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
