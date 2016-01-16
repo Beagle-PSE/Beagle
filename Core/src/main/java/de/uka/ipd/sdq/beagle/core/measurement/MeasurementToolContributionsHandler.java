@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
-import de.uka.sdq.beagle.measurement.MeasurementTool;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
