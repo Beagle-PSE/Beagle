@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 /**
  * Represents a type of a measured resource, like CPU usage or HDD usage.
  *
@@ -100,5 +102,20 @@ public class ResourceDemandType {
 	 */
 	public boolean isNs() {
 		return this.isNs;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != getClass()) {
+			return false;
+		}
+		final ResourceDemandType other = (ResourceDemandType) object;
+		return new EqualsBuilder().append(this.name, other.name).append(this.isNs, other.isNs).isEquals();
 	}
 }

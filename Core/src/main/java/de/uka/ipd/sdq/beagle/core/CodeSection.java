@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 import java.io.File;
 import java.io.Serializable;
 
@@ -129,4 +131,20 @@ public class CodeSection implements Serializable {
 		return this.endStatementNumber;
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != getClass()) {
+			return false;
+		}
+		final CodeSection other = (CodeSection) object;
+		return new EqualsBuilder().append(this.startFile, other.startFile)
+			.append(this.startStatementNumber, other.startStatementNumber).append(this.endFile, other.endFile)
+			.append(this.endFile, other.endStatementNumber).isEquals();
+	}
 }

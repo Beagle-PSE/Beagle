@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 /**
  * Models an internal action demanding resources of a specific type when being executed.
  *
@@ -67,5 +69,21 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	 */
 	public CodeSection getAction() {
 		return this.action;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != getClass()) {
+			return false;
+		}
+		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;
+		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.resourceType, other.resourceType)
+			.append(this.action, other.action).isEquals();
 	}
 }
