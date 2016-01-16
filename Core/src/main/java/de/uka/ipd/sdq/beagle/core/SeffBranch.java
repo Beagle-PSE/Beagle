@@ -1,5 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.Set;
 
 /**
@@ -67,5 +70,27 @@ public class SeffBranch implements MeasurableSeffElement {
 	 */
 	public Set<CodeSection> getBranches() {
 		return this.branches;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != getClass()) {
+			return false;
+		}
+		final SeffBranch other = (SeffBranch) object;
+		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.branches, other.branches).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(21, 49).appendSuper(super.hashCode()).append(this.branches).toHashCode();
 	}
 }
