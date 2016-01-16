@@ -1,0 +1,86 @@
+/**
+ * Tasks to build eclipse projects.
+ *
+ * @author Joshua Gleitze
+ */
+
+buildscript {
+	repositories {
+		mavenLocal()
+		jcenter()
+	}
+  
+	dependencies {
+		classpath group: 'org.akhikhl.wuff', name: 'wuff-plugin', version: '+'
+        classpath group: 'de.undercouch', name: 'gradle-download-task', version: '+'
+        classpath group: 'org.apache.ivy', name: 'ivy', version: '+' 
+	}
+}
+
+import org.akhikhl.wuff.EclipseBundlePlugin
+import de.undercouch.gradle.tasks.download.DownloadTaskPlugin
+import org.apache.ivy.util.url.ApacheURLLister
+
+configure(eclipseSubprojects) {
+	repositories {
+		mavenLocal()
+		jcenter()
+	}
+	
+	apply plugin: EclipseBundlePlugin
+	apply plugin: DownloadTaskPlugin
+	
+	def lister = new ApacheURLLister()
+	def downloadUpdatesite
+	
+	/**
+	 * Recursivly downloads an update site.
+	 */
+	downloadUpdatesite = { URL url, destinationDir ->
+		file(destinationDir).mkdirs()
+		project.download {
+			src lister.listFiles(url)
+			dest destinationDir
+		}
+		for (folder in lister.listDirectories(url)) {
+			def destPart = url.toURI().relativize(folder.toURI()).toString()
+			downloadUpdatesite folder, "$destinationDir/$destPart" 
+		}
+	}
+
+	/**
+	 * Downloads an update site and provides a path to it to be used by wuff.
+	 * 
+	 * @param url The update site’s url.
+	 */
+	def updatesite = { url ->
+		// create a folder name out of the URL
+		def dirName = url.replaceAll("[^a-zA-Z0-9.-]", "_")
+		def wuffDir = project.wuff.wuffDir ?: System.getProperty('user.home') + '/.wuff'
+		
+		// imitate unpuzzle’s checksum mechanism
+		def checksumFile = file("$wuffDir/downloaded-checksums/${dirName}.md5")
+		checksumFile.parentFile.mkdirs()
+		def destinationDir = "$wuffDir/unpacked/$dirName"
+		
+		if (!checksumFile.exists() || !file(destinationDir).isDirectory()) {
+			downloadUpdatesite new URL(url), destinationDir
+			// unpuzzle’s dummy checksum
+			checksumFile.text = 'deadbea1'
+		}
+		return "file://$destinationDir"
+	}
+	
+	project.wuff {
+		selectedEclipseVersion = '4.5'
+		
+		eclipseVersion('4.5') {
+			sources {
+				/*
+				 * Configure all update sites to get dependency plugins from here.
+				 */
+				source updatesite("https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/")
+			}
+		}
+	}
+}

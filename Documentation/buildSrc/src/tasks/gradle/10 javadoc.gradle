@@ -4,11 +4,18 @@
  * @author Joshua Gleitze
  * @author Annika Berger
  */
- 
 
-FileTree getAllInputFiles() {
+/**
+ * Projects the Javadoc will be created for.
+ */
+def javadocSubprojects = javaSubprojects - prototypeSubprojects
+
+/**
+ * Return all main java files in the provided projects.
+ */
+FileTree inputFiles(projects) {
 	def result
-	rootProject.javaSubprojects.each { project ->
+	projects.each { project ->
 		def srcTree = fileTree("$project.projectDir/src/main/java").include("**/*.java")
 		if (result == null) {
 			result = srcTree
@@ -19,13 +26,27 @@ FileTree getAllInputFiles() {
 	return result
 }
 
+/**
+ * Merges all dependency configurations of the provided projects
+ */
+FileCollection classpath(projects) {
+	def classes = files()
+	projects.each { project ->
+		project.configurations.each { configuration ->	
+			classes += configuration
+		}
+	}
+	return classes
+}
+
 task javadoc(type: Javadoc) {
 	group 'Documentation'
 	description 'Generates Javadoc API documentation for the main source code.'
 	
-	source getAllInputFiles()
+	source inputFiles(javadocSubprojects)
 	destinationDir = file("$buildDir/javadoc")
-
+	
+	classpath = classpath javadocSubprojects
 	options.overview "$projectDir/src/javadoc/html/Overview.html"
 	options.encoding = "UTF-8"
 }
