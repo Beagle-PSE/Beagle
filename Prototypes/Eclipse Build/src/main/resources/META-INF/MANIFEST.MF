@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Eclipse_Build_Prototype
-Bundle-SymbolicName: Eclipse_Build_Prototype
-Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.core.resources,
- org.palladiosimulator.pcm,
- org.apache.commons.lang3
