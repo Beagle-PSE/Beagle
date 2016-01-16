@@ -1,0 +1,178 @@
+package de.uka.ipd.sdq.beagle.core.pcmconnection;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+
+/**	
+ *	This parser is a draft that can only provide proper functionality
+ *	if SoMoX does not change its naming convention for EntityNames.
+ *	It offers one method {@link PcmNameParser#parse} to
+ *	read out the {@link CodeSection CodeSections} in a given String.
+ *  Attention! This Parser can not read out as much as desired for the
+ *  {@link CodeSection}. For more information, read through the java-doc
+ *  of the method {@link parse}.
+ * @author Ansgar Spiegler
+ *
+ */
+public class PcmNameParser {
+
+	/**
+	 * "@position: " annotation in the entity name
+	 */
+	private final String AT_POSITION_COLON_SPACE = "@position: ";
+	/**
+	 * ".java" annotation in the entity name
+	 */
+	private final String DOT_JAVA = ".java";
+	/**
+	 * " from " annotation in the entity name
+	 */
+	private final String SPACE_FROM_SPACE = " from ";
+	/**
+	 * " to " annotation in the entity name
+	 */
+	private final String SPACE_TO_SPACE = " to ";
+	/**
+	 * " at " annotation in the entity name
+	 */
+	private final String SPACE_AT_SPACE = " at ";
+	
+	/**
+	 * The {@link CodeSection} that should be created.
+	 */
+	private CodeSection codeSection;
+	
+	/**
+	 * The position of " from " in the given String.
+	 */
+	private int fromOffset;
+	/**
+	 * The position of " to " in the given String.
+	 */
+	private int toOffset;
+	/**
+	 * The position of " at " in the given String.
+	 */
+	private int atOffset;
+	/**
+	 * The file that is created by the relative path between "@position: " and ".java".
+	 */
+	private File file;
+	
+	/**
+	 * The from-Position marking the sourceCode.
+	 */
+	private int fromPos;
+	/**
+	 * The to-Position marking the sourceCode.
+	 */
+	private int toPos;
+	/**
+	 * The at-Position marking the sourceCode.
+	 */
+	private int atPos;
+	
+	
+	/**
+	 *	Parsing a SoMoX-created String to get the annotated CodeSection.
+	 * @param entityName
+	 * 	SoMoX generated entityName. If not, this leads to undefined behaviour.
+	 * @return
+	 * May return
+	 * <li> {@code null}, if the String contains no file-path </li>
+	 * <li> {@link CodeSection}. Initialized with (file, firstOffset, file, secondOffset) OR
+	 * (file, firstOffset, file, -1) if there is no second Offset available.
+	 * Anyway, the first "file" and the second "file" are the same!
+	 * @throws FileNotFoundException 
+	 * 	When the file was not found at the given relative path.
+	 */
+	public CodeSection parse(final String entityName) throws FileNotFoundException {
+		
+		this.reset();
+		this.loadFile(entityName);
+		if (this.file == null) {
+			return null;
+		}
+		
+		
+		this.fromPos = entityName.indexOf(this.SPACE_FROM_SPACE);
+		this.toPos = entityName.indexOf(this.SPACE_TO_SPACE);
+		if (this.fromPos != -1 && this.toPos != -1) {
+			
+			this.fromOffset = Integer.parseInt(entityName.substring(this.fromPos + this.SPACE_FROM_SPACE.length(), this.toPos));
+			this.toOffset = Integer.parseInt(entityName.substring(this.toPos + this.SPACE_TO_SPACE.length(), 
+				entityName.length()));
+			
+			this.codeSection = new CodeSection(this.file, this.fromOffset, this.file, this.toOffset);
+
+			
+		} else {
+			this.atPos = entityName.indexOf(this.SPACE_AT_SPACE);
+			if (this.atPos != -1) {
+				this.atOffset = Integer.parseInt(entityName.substring(this.atPos + this.SPACE_AT_SPACE.length(),
+					entityName.length()));
+				
+				this.codeSection = new CodeSection(this.file, this.atOffset, this.file, -1);
+			}
+		}
+		
+		
+		
+		return this.codeSection;
+		
+	}
+	
+	/**
+	 * Tries to load the file, looking at the given substring between "@position: "
+	 * and ".java".
+	 * May set {@link file} to null if no file annotation was found.
+	 * Otherwise {@line file} is set to the .java file at the given position.
+	 * 
+	 * @param entityName
+	 * The full entityName.
+	 * 
+	 * @throws FileNotFoundException
+	 * Tries to load a file at the given path. If no valid file can be loaded at a given position, this exception is thrown.
+	 */
+	private void loadFile(final String entityName) throws FileNotFoundException {
+		String fileName;
+		final int position = entityName.indexOf(this.AT_POSITION_COLON_SPACE);
+		final int blockPos = entityName.indexOf(this.DOT_JAVA);
+		
+		if (position != -1 && blockPos != -1) {
+			fileName = entityName.substring(position + this.AT_POSITION_COLON_SPACE.length(), blockPos);
+			fileName = fileName.replace(".", "/");
+			fileName = fileName.concat(".java");
+			this.file = new File(fileName);
+			
+			if (!this.file.isFile()) {
+				throw new FileNotFoundException("The file \"" + fileName + "\" was not found.");
+				
+			}
+			
+		} else {
+			this.file = null;
+		}
+	}
+	
+	
+	/**
+	 * Reset/initializing step of all storing variables.
+	 *
+	 */
+	private void reset() {
+		this.codeSection = null;
+		
+		this.fromOffset = -1;
+		this.toOffset = -1;
+		this.atOffset = -1;
+		this.file = null;
+		
+		this.fromPos = -1;
+		this.toPos = -1;
+		this.atPos = -1;
+	}
+	
+}
