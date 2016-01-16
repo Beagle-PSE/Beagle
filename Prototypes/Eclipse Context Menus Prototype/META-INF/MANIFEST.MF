@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse_GUI_Protoype
+Bundle-SymbolicName: Eclipse_Context_Menus_Prototype;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.uka.ipd.sdq.beagle.prototypes.contextmenus.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.e4.ui.model.workbench;bundle-version="1.1.100.v20150407-1430",
+ org.eclipse.jdt.core;bundle-version="3.11.1",
+ org.eclipse.core.resources;bundle-version="3.10.1",
+ org.eclipse.core.expressions;bundle-version="3.5.0",
+ de.uka.ipd.sdq.pcm.gmf.repository;bundle-version="2.0.0",
+ org.eclipse.gmf.runtime.diagram.ui;bundle-version="1.8.0",
+ de.uka.ipd.sdq.pcm.gmf.seff;bundle-version="2.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
