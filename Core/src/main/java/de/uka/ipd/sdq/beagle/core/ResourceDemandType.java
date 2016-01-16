@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents a type of a measured resource, like CPU usage or HDD usage.
@@ -125,5 +126,10 @@ public class ResourceDemandType {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
 		return new HashCodeBuilder(27, 47).append(this.name).append(this.isNs).toHashCode();
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("name", this.name).append("isNs", this.isNs).toString();
 	}
 }

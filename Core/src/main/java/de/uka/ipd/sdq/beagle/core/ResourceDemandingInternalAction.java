@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Models an internal action demanding resources of a specific type when being executed.
@@ -94,5 +95,11 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 		// ideally different for each class
 		return new HashCodeBuilder(19, 41).appendSuper(super.hashCode()).append(this.resourceType).append(this.action)
 			.toHashCode();
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("resourceType", this.resourceType).append("action", this.action)
+			.toString();
 	}
 }

@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Set;
 
@@ -92,5 +93,10 @@ public class SeffBranch implements MeasurableSeffElement {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
 		return new HashCodeBuilder(21, 49).appendSuper(super.hashCode()).append(this.branches).toHashCode();
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("branches", this.branches).toString();
 	}
 }
