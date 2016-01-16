@@ -1,0 +1,30 @@
+/**
+ * Tasks to build the Design & Architecture Documentation
+ *
+ * @author Joshua Gleitze
+ */
+ 
+def rendersrc = fileTree("$projectDir/src").include('common/**').include('design/**')
+ 
+task designUml(type: UmletRenderTask) {
+	description 'Renders the UML Diagrams used by the Design and Architecture Specification.'
+	
+	from rendersrc
+	into "$buildDir/tmp/umletRender/design"
+}
+ 
+task design(type: LyXRenderTask) {
+	dependsOn designUml
+	
+	group 'Documentation'
+	description 'Renders the Design and Architecture Specification.'
+	
+	from rendersrc.plus(fileTree(designUml.dest).include("**/*.uxf.pdf"))
+	document "design/lyx/Design and Architecture.lyx"
+	into buildDir
+	
+	glossary true
+	bibliography true
+}
+
+build.dependsOn design

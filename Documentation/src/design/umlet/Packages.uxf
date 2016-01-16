@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>450</x>
+      <y>40</y>
+      <w>380</w>
+      <h>360</h>
+    </coordinates>
+    <panel_attributes>Evaluable Expressions
+--
+
+ +&lt;&lt;Interface&gt;&gt; Evaluable Expression
+ +Constant Expression
+ +Evaluable Variable
+ +Natural Logarithm Expression
+ +Exponential Function Expression
+ +Comparison Expression
+ +Sine Expression
+ +Substraction Expression
+ +Addition Expression
+ +Multiplication Expression
+ +If-Then-Else Expression
+ +Exponentation Expression
+ +Logarithm Expression
+ +Division Expression
+ +Evaluable Variable Assignment
+ +Expression Recursion Exception
+ +Undefined Expression Exception
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>510</y>
+      <w>440</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Analysis
+--
+
+ +&lt;&lt;Interface&gt;&gt; Measurement Result Analyser
+ +&lt;&lt;Interface&gt;&gt; Proposed Expression Analyser
+ +Measurement Result Analyser Blackboard View
+ +Read-Only Measurement Analyser Blackboard View
+ +Proposed Expression Analyser Blackboard View
+ +Read-Only Proposed Expression Analyser Blackboard View
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>910</w>
+      <h>720</h>
+    </coordinates>
+    <panel_attributes>Beagle Core
+--
+
+ +&lt;&lt;Interface&gt;&gt; BlackboardStorer
+ +&lt;&lt;Interface&gt;&gt; Measurable SEFF Element
+ +Analysis Controller
+ +Blackboard
+ +External Call Parameter
+ +Resource Demanding Internal Action
+ +SEFF Loop
+ +SEFF Branch
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>510</x>
+      <y>570</y>
+      <w>380</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Judge
+--
+
+ +&lt;&lt;Interface&gt;&gt; Final Judge
+ +&lt;&lt;Interface&gt;&gt; Evaluable Expression Fitness Function
+ +&lt;&lt;Interface&gt;&gt; Evaluable Expression Fitness Function Blackboard View
+ +Abstraction And Precision Fitness Function
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>10</x>
+      <y>200</y>
+      <w>370</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Measurement
+--
+
+ +&lt;&lt;Interface&gt;&gt; Measurement Tool
+ +Branch Decision Measurement Result
+ +Loop Repitition Count Measurement Result
+ +Measurement Controller
+ +Measurement Controller Blackboard View
+ +Measurement Order
+ +Parameter Change Measurement Result
+ +Read-Only Measurement Controller Blackboard View
+ +Resource Demand Measurement Result
+ +Parametrisation-Dependent Measurement Result 
+ +Parametrisation
+
+ 
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>510</x>
+      <y>420</y>
+      <w>310</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>PCM Connection
+--
+
+ +PCM Repository Blackboard Factory
+ +PCM Repository Writer
+ +PCM Beagle Mapping
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>0</x>
+      <y>730</y>
+      <w>820</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>GUI
+--
+
+ +Beagle Analysis Wizard
+ +GUI Controller
+ +Machine Selection Wizard Page
+ +Network Configuration Wizard Page
+ +Selection Overview Wizard Page
+ +Timeout Wizard Page
+ +User Configuration
+ +Beagle Controller
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>300</x>
+      <y>780</y>
+      <w>450</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Context Menus
+--
+
+ +Context Menu Entry Handler For Components
+ +Context Menu Entry Handler For Internal Actions
+ +Context Menu Entry Handler For Repositories
+halign=left
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

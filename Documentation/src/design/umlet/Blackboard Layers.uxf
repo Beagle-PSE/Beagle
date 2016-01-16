@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>180</y>
+      <w>290</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>halign=center
+
+
+Final Evaluable Expression
+
+
+--
+
+
+Proposed Evaluable Expressions
+
+
+--
+
+
+Measurement Results
+
+
+--
+
+
+Measurable SEFF Element</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>590</x>
+      <y>300</y>
+      <w>242</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+Measurement Result
+                   Analyser
+
+</panel_attributes>
+    <additional_attributes>30;30;150;30;150;100;30;100</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>590</x>
+      <y>200</y>
+      <w>214</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+  Final Jugde
+</panel_attributes>
+    <additional_attributes>30;30;150;30;150;100;30;100</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>70</x>
+      <y>260</y>
+      <w>280</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+   Proposed Expression 
+                 Analyser
+
+
+</panel_attributes>
+    <additional_attributes>260;30;110;30;110;80;260;80</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>80</x>
+      <y>370</y>
+      <w>270</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-                  
+                                 Measurement Tools
+
+</panel_attributes>
+    <additional_attributes>250;30;100;30;100;120;250;120</additional_attributes>
+  </element>
+</diagram>

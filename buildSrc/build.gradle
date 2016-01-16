@@ -1,5 +1,23 @@
-// Classes may define dependencies in dependencies.gradle files.
-fileTree("$projectDir/src/main/groovy").include('**/dependencies.gradle').each { file ->
-	apply from: file
-} 
+repositories {
+	mavenCentral()
+	jcenter()
+}
 
+allprojects {
+	apply plugin: 'groovy'
+
+	dependencies {
+    	compile gradleApi()
+    	compile localGroovy()
+	}
+
+	buildDir = rootProject.buildDir
+	
+	fileTree("$projectDir/src/main/groovy").include('**dependencies.gradle').each { file ->
+		project.apply from: file
+	}
+	
+	rootProject.dependencies {
+		runtime project
+	}
+}

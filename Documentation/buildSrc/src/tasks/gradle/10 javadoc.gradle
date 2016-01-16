@@ -1,0 +1,70 @@
+/**
+ * Tasks to render the javadoc of all java source projects.
+ *
+ * @author Joshua Gleitze
+ * @author Annika Berger
+ */
+
+/**
+ * Projects the Javadoc will be created for.
+ */
+def javadocSubprojects = javaSubprojects - prototypeSubprojects
+
+/**
+ * Return all main java files in the provided projects.
+ */
+FileTree inputFiles(projects) {
+	def result
+	projects.each { project ->
+		def srcTree = fileTree("$project.projectDir/src/main/java").include("**/*.java")
+		if (result == null) {
+			result = srcTree
+		} else {
+			result = result.plus(srcTree)
+		}
+	}
+	return result
+}
+
+/**
+ * Merges all dependency configurations of the provided projects
+ */
+FileCollection classpath(projects) {
+	def classes = files()
+	projects.each { project ->
+		project.configurations.each { configuration ->	
+			classes += configuration
+		}
+	}
+	return classes
+}
+
+task javadoc(type: Javadoc) {
+	group 'Documentation'
+	description 'Generates Javadoc API documentation for the main source code.'
+	
+	source inputFiles(javadocSubprojects)
+	destinationDir = file("$buildDir/javadoc")
+	
+	classpath = classpath javadocSubprojects
+	options.overview "$projectDir/src/javadoc/html/Overview.html"
+	options.encoding = "UTF-8"
+}
+ 
+def rendersrc = fileTree("$projectDir/src").include('common/**').include('javadoc/lyx/**')
+ 
+task glossary(type: LyXRenderTask) {
+	
+	group 'Documentation'
+	description 'Renders the Glossary.'
+	
+	from rendersrc
+	document "javadoc/lyx/Glossary.lyx"
+	into javadoc.destinationDir
+	
+	glossary true
+	bibliography true
+}
+
+build.dependsOn javadoc, glossary
+

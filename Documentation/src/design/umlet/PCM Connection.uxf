@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>20</zoom_level>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>460</y>
+      <w>1180</w>
+      <h>540</h>
+    </coordinates>
+    <panel_attributes>PCM Beagle Mapping
+--
+--
+  + get PCM ID of ( rdia: Resource Demanding Internal Action ): String
+  + get PCM ID of ( branch: SEFF Branch ): String
+  + get PCM ID of ( loop: SEFF Loop ): String
+  + get PCM ID of ( ecp: Excernal Call Parameter ): String
+
+ 
+  + has PCM ID of ( rdia: Resource Demanding Internal Action  ): boolean
+  + has PCM ID of ( branch: SEFF Branch ): boolean
+  + has PCM ID of ( loop: SEFF Loop ): boolean
+  + has PCM ID of ( ecp: Excernal Call Parameter ): boolean
+
+ 
+  + add PCM ID of ( rdia: Resource Demanding Internal Action, identifier: String )
+  + add PCM ID of ( branch: SEFF Branch, identifier: String )
+  + add PCM ID of ( loop: SEFF Loop, identifier: String )
+  + add PCM ID of ( ecp: External Call Parameter, identifier: String )
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>720</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>PCM Repository Writer
+--
+--
+
+  &lt;&lt;Create&gt;&gt; + construct (
+      blackboard: Blackboard )
+
+  + write to( repository: PCM repository files )
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>760</x>
+      <y>0</y>
+      <w>800</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>PCM Repository Blackboard Factory
+--
+--
+
+  &lt;&lt;Create&gt;&gt; + construct (
+      repository: PCM repository files )
+
+  + get blackboard for all elements() : Blackboard
+  + get blackboard for IDs( IDs: String) : Blackboard
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>160</y>
+      <w>100</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;.
+read</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>200</y>
+      <w>120</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;.
+write</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1280</x>
+      <y>440</y>
+      <w>660</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>template=Written Type
+&lt;&lt;Interface&gt;&gt;
+Blackboard Storer
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1340</x>
+      <y>200</y>
+      <w>260</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

@@ -1,0 +1,1911 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass sdqthesis
+\use_default_options true
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This file contains definitions of all terms and abbreviations.
+ Note that defining a term here does not automatically include it in the
+ document’s glossary.
+ It has to actually be referenced somewhere to be included there.
+\end_layout
+
+\begin_layout Plain Layout
+
+\emph on
+Make sure to define any abbreviation, technical or ambiguous term!
+\end_layout
+
+\begin_layout Plain Layout
+We are using user1 for genitive singular, and user2 for genitive plural
+ forms.
+ example:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% For glossaries documentation, refer to https://en.wikibooks.org/wiki/LaTeX/Gloss
+ary#Defining_terms
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%We are using user1 for genitive singular, and user2 for genitive plural
+ forms.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+%Example:
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% % The ID will be used when referencing this
+\end_layout
+
+\begin_layout Plain Layout
+
+% 
+\backslash
+newglossaryentry{ID}{
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	% The entry's printed name
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	name={name},
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	% description for the glossary
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+% 		description
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	},
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	% Plural form, if not formed by appending an "s"
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	plural={pluralform},
+\end_layout
+
+\begin_layout Plain Layout
+
+%     % Wort used to sort the entry, useful if name contains weird characters
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	sort={sortword},
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	% Define these only when needed:
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	user1={genitive singular form},
+\end_layout
+
+\begin_layout Plain Layout
+
+% 	user2={genitive plural form}
+\end_layout
+
+\begin_layout Plain Layout
+
+% } 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{SEFF condition}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={SEFF condition},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		conditions (like Java's  
+\backslash
+lstinline{if}, 
+\backslash
+lstinline{if}-
+\backslash
+lstinline{else} and 
+\backslash
+lstinline{switch}-
+\backslash
+lstinline{case} statements) which affect the calls a 
+\backslash
+gls{component} makes to other 
+\backslash
+glspl{component}.
+ Such conditions are---contrary to conditions that stay within an 
+\backslash
+gls{internal action}---modelled in the 
+\backslash
+glsuseri{component} 
+\backslash
+gls{SEFF}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={SEFF conditions's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={SEFF conditions'}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{SEFF loop}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={SEFF loop},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		loops (like Java's 
+\backslash
+lstinline{for}, 
+\backslash
+lstinline{while} and 
+\backslash
+lstinline{do}-
+\backslash
+lstinline{while} statement) which affect the calls a 
+\backslash
+gls{component} makes to other 
+\backslash
+glspl{component}.
+ Such loops are---contrary to loops that stay within an 
+\backslash
+gls{internal action}---modelled in the 
+\backslash
+glsuseri{component} 
+\backslash
+gls{SEFF}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={SEFF loop's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={SEFF loops'}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{code decorator}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={
+\backslash
+gls{PCM} source code decorator},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		realises links from the source code to the elements in the 
+\backslash
+gls{PCM} and the other way round.
+ 
+\backslash
+cite{KrogmannPhD}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		``a [software] unit of composition with contractually specified interfaces
+ and explicit context dependencies only.
+ A software component can be deployed independently and is subject to third-part
+y composition.'' 
+\backslash
+cite{ComponentSoftwareBook}
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		There is no equivalent of components in modern programming languages,
+ in particular, a component usually consists of multiple Java classes.
+ Components can be nested.
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={component's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={components'}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component-based software}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component-based software},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a software constituted of 
+\backslash
+glspl{component}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={component-based software's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={component-based softwares'}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component-based software architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component-based software architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a 
+\backslash
+gls{software architecture} utilising the concept of 
+\backslash
+gls{component-based software}, therefore taking advantage of the reusability
+ of its parts and preserving the same for newly created 
+\backslash
+glspl{component}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{resource demand}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={resource demand},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		how much of a certain resource---like 
+\backslash
+gls{CPU}, Network or hard disk drive---a 
+\backslash
+gls{component} needs to offer a certain functionality.
+ In the 
+\backslash
+gls{PCM}, resource demands are part of the 
+\backslash
+gls{SEFF}.
+ They are ideally specified platform independently, e.g.
+ by specifying required CPU cycles, megabytes to be read, etc.
+ If such information is not available, resource demands can be expressed
+ platform dependent, e.g.
+ in nanoseconds.
+ In this case, a certain degree of portability can still be achieved if
+ information about the used platforms' speed relative to each other is available.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{internal action}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={internal action},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		sequence of commands a 
+\backslash
+gls{component} executes without leaving its scope (e.g.
+ without calling other 
+\backslash
+glspl{component}).
+ Part of a 
+\backslash
+glsuseri{component} 
+\backslash
+gls{SEFF}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user2={internal actions'}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym[user1=PCM's]{PCM}{PCM}{
+\backslash
+gls{Palladio Component Model}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Palladio Component Model}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio Component Model},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a domain-specific modelling language (DSL) used by 
+\backslash
+gls{Palladio}.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quote}It is designed to enable early performance predictions for 
+\backslash
+glspl{software architecture} and is aligned with a component-based software
+ development process.
+ 
+\backslash
+cite{Kounev}
+\backslash
+end{quote} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Palladio}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Palladio},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		an approach to the predict 
+\backslash
+gls{QoS} properties of 
+\backslash
+glspl{component-based software architecture} with a special focus on performance
+ properties.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{SoMoX}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={SoMoX},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		``
+\backslash
+textbf{So}ftware 
+\backslash
+textbf{Mo}del e
+\backslash
+textbf{X}tractor'', a 
+\backslash
+gls{Palladio} plugin for static code analysis to re-engineer a 
+\backslash
+glsuseriii{software architecture} from its source code developed in 
+\backslash
+cite{KrogmannPhD}.
+ Constructs a 
+\backslash
+gls{PCM} instance including the reconstructed components and their 
+\backslash
+gls{SEFF}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={SoMoX'}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{software architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={software architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		the high-level structure and design of a 
+\backslash
+glsuserv{system} as well as the discipline of creating and documenting these.
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user3={software's architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user4={softwares' architecture}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{logical architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={logical architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		describes a 
+\backslash
+glsuseri{system} logical partitioning into 
+\backslash
+glspl{layer}, 
+\backslash
+glspl{subsystem}, and packages, and their communication with each other.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{deployment architecture}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={deployment architecture},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		describes in which hardware node each 
+\backslash
+gls{component} of a 
+\backslash
+gls{system} is deployed.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{system}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={system},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={system's},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		the useful whole created from diverse parts.
+ A system (usually) reflects the organizational structure that built it.
+ (Conway's law) 
+\backslash
+cite{conwaysLaw}
+\end_layout
+
+\begin_layout Plain Layout
+
+	},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user5={software system}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{GUI}{GUI}{Graphical User Interface}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{CTA}{CTA}{
+\backslash
+gls{Common Trace API}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Common Trace API}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Common Trace API},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		an API developed by NovaTec GmbH for measuring the time, specific code
+ sections need to be executed.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{subsystem}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={subsystem},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a self-contained 
+\backslash
+gls{system} within a larger 
+\backslash
+gls{system}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{layer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={layer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		describes conceptual separation in software.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{tier}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={tier},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		consists of a server or group of servers.
+ Tiers are physically separated from each other.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{component developer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={component developer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{quote}``[specifies] the functional and extra-functional properties
+ of their components.
+ They put the specification as well as the implementation in repositories,
+ where software architects can retrieve them.'' 
+\backslash
+cite{PalladioPaper}
+\backslash
+end{quote}
+\end_layout
+
+\begin_layout Plain Layout
+
+In the 
+\backslash
+gls{PCM}, component developers create 
+\backslash
+glspl{service effect specification} to define 
+\backslash
+glsuserii{component} behavioural properties and store modelling and implementati
+on artefacts in repositories.
+ 
+\backslash
+cite{PCMtechreport}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{software architect}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={software architect},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		developer role in the 
+\backslash
+gls{component-based software} development process.
+ Leads the development process by designing the 
+\backslash
+glsuseriii{software architecture} from existing or planned components and
+ interfaces.
+ Usually delegates the specification of required 
+\backslash
+glspl{component} to 
+\backslash
+glspl{component developer}.
+ Uses architectural styles and patterns, analyses architectural specifications,
+ and makes design decisions.
+ In the 
+\backslash
+gls{PCM}, software architects create the assembly model, specifying how
+ existing 
+\backslash
+glspl{component} are composed.
+ 
+\backslash
+cite{PCMtechreport}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{system deployer}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={system deployer},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		developer role in the 
+\backslash
+gls{component-based software} development process.
+ Specifies the resource environment and allocates 
+\backslash
+glspl{component} to resources.
+ Resources can both be hardware resources (CPU, hard disk, network connection)
+ and software resources (thread pool, database connection).
+ In the 
+\backslash
+gls{PCM}, system deployers create the resource environment specification,
+ modelling the resource environment and 
+\backslash
+gls{component} allocations.
+ 
+\backslash
+cite{PCMtechreport}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SEFF}{SEFF}{
+\backslash
+gls{service effect specification}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{service effect specification}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={service effect specification},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		description of a 
+\backslash
+glsuseri{component} behaviour in the 
+\backslash
+gls{PCM}.
+ SEFFs contain information about the 
+\backslash
+glsuseri{component} calls to other components as well as its 
+\backslash
+glspl{resource demand}.
+ This information is used to derive the component's performance for simulation
+ and prediction.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Kieker}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Kieker},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		
+\backslash
+begin{quote}``a Java-based application performance monitoring and dynamic
+ software analysis framework.'' 
+\backslash
+cite{KiekerPaper}
+\backslash
+end{quote} A 
+\backslash
+gls{measurement software} Beagle aims to support.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{measurement software}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={measurement software},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		software capable of measuring the time, given source code needs to execute
+ some task.
+ The software's results are usually returned in a time unit like nanoseconds.
+ Beagles interacts with such software through the 
+\backslash
+gls{CTA} and uses it to find 
+\backslash
+glspl{resource demand}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{JRE}{JRE}{
+\backslash
+gls{Java Runtime Environment}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Java Runtime Environment}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Java Runtime Environment},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a software set containing a Java Virtual Machine, a browser plugin, the
+ Java standard libraries, and a configuration tool.
+ The Java Virtual Machine it contains is needed to run Java applications
+ or applets.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{QoS}{QoS}{
+\backslash
+gls{quality of service}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{quality of service}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={quality of service},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		a software's extra-functional attributes, like performance, reliability,
+ maintainability or security.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{PCM Stochastic Expression Language}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={PCM Stochastic Expression Language},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		expression language used by the 
+\backslash
+gls{PCM} to define random variables.
+ These variables can for example be used to specify glspl{resource demand}.
+ Random variables can be defined using basic mathematic operations, common
+ stochastic distributions and interface parameters 
+\backslash
+cite{PCMtechreport}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{Beagle}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={Beagle},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		``
+\backslash
+textbf{BE}haviour 
+\backslash
+textbf{A}nalysis using 
+\backslash
+textbf{G}enetic 
+\backslash
+textbf{L}earning and 
+\backslash
+textbf{E}volution''.
+ Approach for dynamic analysis of source code in order to find its behavioural
+ attributes developed in 
+\backslash
+cite{KrogmannPhD}.
+ This project aims to implement Beagle.},
+\end_layout
+
+\begin_layout Plain Layout
+
+	user1={Beagle's}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{ByCounter}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={ByCounter},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		tool that instruments Java bytecode and executes it in order to count
+ how often each method and Java Byte Code instruction is called.
+ The resulting counts may serve as fine-grained, deployment-independent
+ information about the measured code's 
+\backslash
+glspl{resource demand} 
+\backslash
+cite{ByCounterPaper}.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{usage context}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={usage context},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		how a 
+\backslash
+gls{component} is used.
+ Includes the number, frequency and distribution of calls made the the 
+\backslash
+glsuseri{component} services.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{deployment context}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={deployment context},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		in which environment a 
+\backslash
+gls{component} runs.
+ Specifies which resources are available to the component.
+ Includes information like the performance of the hardware the component
+ runs on but also information about the software resources like the virtual
+ machine or thread pools.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newglossaryentry{assembly context}{
+\end_layout
+
+\begin_layout Plain Layout
+
+	name={assembly context},
+\end_layout
+
+\begin_layout Plain Layout
+
+	description={
+\end_layout
+
+\begin_layout Plain Layout
+
+		the 
+\backslash
+glspl{component} in conjuntion with a 
+\backslash
+gls{component}.
+ Specifies which 
+\backslash
+glspl{component} provide the 
+\backslash
+glsuseri{component} required interfaces.
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{SRS}{SRS}{Software Requirements Specification}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{CPU}{CPU}{Central Processing Unit}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{HDD}{HDD}{Hard Disk Drive}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{API}{API}{Application Programming Interface}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newacronym{RDIA}{RDIA}{
+\backslash
+glslink{resource demand}{Resource Demanding} 
+\backslash
+glslink{internal action}{Internal Action}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
