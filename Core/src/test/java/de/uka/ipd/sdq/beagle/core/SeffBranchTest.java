@@ -1,8 +1,11 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.*;
+
+import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
 
@@ -31,21 +34,26 @@ public class SeffBranchTest {
 	@Test
 	public void testConstructor() {
 		final Set<CodeSection> noCodeSections = new HashSet<CodeSection>();
-		SeffBranch branch = new SeffBranch(noCodeSections);
-		assertThat(branch.getBranches(), is(theInstance(noCodeSections)));
-		// Exception Expected (Illegal Argument)
+		ThrowingMethod method = () -> {
+			new SeffBranch(noCodeSections);
+		};
+		assertThat("IllegalArgumentException expected for invalid input.", method,
+			throwsException(IllegalArgumentException.class));
 
 		final File file = new File(SeffLoopTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
 		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
-		branch = new SeffBranch(codeSections);
+		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(theInstance(codeSections)));
 
 		codeSections.add(null);
-		branch = new SeffBranch(codeSections);
-		assertThat(branch.getBranches(), is(theInstance(codeSections)));
+		method = () -> {
+			new SeffBranch(codeSections);
+		};
+		assertThat("Null Pointer Exception expected as input contained null.", method,
+			throwsException(NullPointerException.class));
 
 	}
 
@@ -59,7 +67,7 @@ public class SeffBranchTest {
 		final int endCodeLine = 15;
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
 		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
-		SeffBranch branch = new SeffBranch(codeSections);
+		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(theInstance(codeSections)));
 	}
 

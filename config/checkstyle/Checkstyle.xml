@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: BeagleCheckstyle
+    Checkstyle-Configuration: Beagle Checkstyle
     Description: none
 -->
 <module name="Checker">
@@ -140,6 +140,7 @@
     </module>
     <module name="AvoidStaticImport">
       <property name="severity" value="warning"/>
+      <property name="excludes" value="de.uka.ipd.sdq.beagle.core.testutil.*"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="IllegalImport">

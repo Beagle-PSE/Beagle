@@ -18,7 +18,7 @@ public final class ExceptionThrownMatcher extends TypeSafeDiagnosingMatcher<Thro
 	private Class<? extends Exception> expectedExceptionClass;
 
 	/**
-	 * Creates this matcher excpecting an instance of {@code exceptionClass} to be thrown.
+	 * Creates this matcher expecting an instance of {@code exceptionClass} to be thrown.
 	 *
 	 * @param exceptionClass The expected class of the thrown exception. Should be as
 	 *            specific as possible, must not be {@code null}.
