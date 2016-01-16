@@ -13,14 +13,15 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
- * Handles the context menu entries, that start an analysis of the whole project.
+ * Handles the context menu entries, that start an analysis of an entire project.
  *
  * @author Roman Langrehr
  */
 public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHandler {
 
 	/**
-	 * RegEx for the file extensions, where the context menu entry should be displayed.
+	 * Regular Expression for file extensions for which the context menu entry should be
+	 * displayed.
 	 */
 	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
 
