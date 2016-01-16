@@ -29,9 +29,6 @@
                 <a href="http://www.jamopp.org/index.php/JaMoPP">JaMoPP</a>
             </li> 
             <li>
-                <a href="https://eclipse.org/papyrus/updates/index.php">Papyrus</a>
-            </li> 
-            <li>
                 SoMoX based on JaMoPP, as it can be checked out (SVN) from 
                 <a href="https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/">https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/</a>
                  (Credentials: 
@@ -53,6 +50,10 @@
             </li> 
             <li>
                 <a href="http://eclipse-cs.sourceforge.net/#!/">Checkstyle</a>
+            </li> 
+            <li>
+                <a href="http://umlet.com/">UMLet</a>
+                 (either as Eclipse plugin or as standalone)
             </li> 
         </ul> 
         <h2>Building &amp; Dependency Management</h2> 
@@ -112,34 +113,21 @@
                 <code>C:\Program Files (x86)\Umlet\Umlet.exe</code>
                  (Windows) or 
                 <code>/opt/Umlet/</code>
-                 (Linux). (If you want to put it somewhere else, you have to adopt 
-                <code>Render.bat</code>
-                 or 
-                <code>Render.sh</code>
-                .) (Required to build your project.)
+                 (Linux). (If you want to put it somewhere else, you have to adapt 
+                <code>UmletRenderTask.goovy</code>
+                 in the Documentation project’s 
+                <code>buildSrc</code>
+                 project.) UMLet is required to build the documentation.
             </li> 
-            <li>
-                If on Linux: Make 
-                <code>/opt/Umlet/umlet.sh</code>
-                 executable.
-            </li> 
-            <li>When you like to use UMLet as eclipse plugin, you can install this as well.</li> 
+            <li>If you like to use UMLet as eclipse plugin, you can install this as well. It makes editing the diagrams easier.</li> 
             <li>
                 Only commit the 
                 <code>.uxf</code>
                  files. When you want to embed them in LyX, refer to 
-                <code>My File.pdf</code>
+                <code>My File.uxf.pdf</code>
                 , these files will be generated during the build process. Please tick the checkbox “Keep aspect ratio” and insert a maximum width and heigth to keep the LyX preview working.
             </li> 
         </ul> 
-        <h3>Fonts (Design)</h3> 
-        <p>
-            The UML Diagrams of the design phase use 
-            <a href="https://github.com/adobe-fonts/source-sans-pro">Adobe Source Sans Pro</a>
-             and 
-            <a href="https://github.com/adobe-fonts/source-code-pro">Adobe Source Code Pro</a>
-            . Install them to your system as detailed. 
-        </p> 
         <h2>Continuous Integration</h2> 
         <p>Beagle uses Travis, a continuous integration service. It tests Pull Requests as well as all branches in the repository whenever changes occur.</p> 
         <p>You can enable Travis for your repository, too. This allows you to have automated tests for all your commits. It further generates all documentation documents for new commits. This is quite handy for pull requests, as you can simply post a link to the rendered file, making the reviewing process a whole lot easier.</p> 
