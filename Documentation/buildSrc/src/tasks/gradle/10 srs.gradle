@@ -1,0 +1,30 @@
+/**
+ * Tasks to build the Software Requirements Specification
+ *
+ * @author Joshua Gleitze
+ */
+ 
+def rendersrc = fileTree("$projectDir/src").include('common/**').include('srs/**')
+ 
+task srsUml(type: UmletRenderTask) {
+	description 'Renders the UML Diagrams used by the requirements specification.'
+	
+	from rendersrc
+	into "$buildDir/tmp/umletRender/srs"
+}
+ 
+task srs(type: LyXRenderTask) {
+	dependsOn srsUml
+	
+	group 'Documentation'
+	description 'Renders the Requirements Specification.'
+	
+	from rendersrc.plus(fileTree(srsUml.dest).include("**/*.uxf.pdf"))
+	document "srs/lyx/Requirements Specification.lyx"
+	into buildDir
+	
+	glossary true
+	bibliography true
+}
+
+build.dependsOn srs

@@ -1,0 +1,413 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass sdqthesis
+\use_default_options true
+\master ../Design and Architecture.lyx
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Architectural Overview
+\end_layout
+
+\begin_layout Standard
+This chapter gives an introduction to Beagle’s high level design.
+ The following chapters will describe conceptual details of different subsystems.
+ For the specification of single types, please refer to Beagle’s Javadoc
+ documentation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "javadoc"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Beagle consists of a core component and interfaces to external components.
+ Components may depend on information provided by another components but
+ their internal logic works strictly independently from them.
+ Communication takes place exclusively through the core component.
+ The following are Beagle’s key components and interfaces: 
+\end_layout
+
+\begin_layout Subsection*
+Core Component (Mediator Pattern)
+\end_layout
+
+\begin_layout Standard
+In order to manage and synchronise the requests and execution of different
+ jobs, Beagle is controlled by a core component.
+ The core component conducts the order of executable services, distributes
+ information and is responsible for class instantiation.
+ It contains all management logic required to perform dynamic analysis on
+ software and will offer a parameterised 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ at the end of a successful execution.
+ It does, however, not contain any logic to actually run measurements or
+ analyse parametric dependencies.
+ Instead, it depends on other components providing this functionality.
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Beagle Core Component.uxf.pdf
+	width 60text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Beagle Core Component
+\end_layout
+
+\end_inset
+
+The Beagle Core Component and its interfaces.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Measurement Tool
+\end_layout
+
+\begin_layout Standard
+Measurement Tools are responsible for all kinds of measurements which are
+ needed to determine the execution time of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{RDIA}
+\end_layout
+
+\end_inset
+
+, branch decisions of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Branches, and repetitions of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{SEFF}
+\end_layout
+
+\end_inset
+
+ Loops in regard to a certain parametrisation.
+ An adapter instructing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{Kieker}
+\end_layout
+
+\end_inset
+
+ will be the first class to implement this interface.
+\end_layout
+
+\begin_layout Subsection*
+Measurement Result Analyser
+\end_layout
+
+\begin_layout Standard
+Based on the measurement results, Measurement Result Analysers will suggest
+ Evaluable Expressions which describe the parametric dependencies found
+ in the results.
+ Typical implementations are regression tools.
+\end_layout
+
+\begin_layout Subsection*
+Proposed Expression Analyser
+\end_layout
+
+\begin_layout Standard
+Proposed Expression Analysers try to improve the results of Measurement
+ Result Analysers.
+ They usually try to combine proposed expressions to build a better one
+ (in terms of Beagle’s Fitness Function).
+ As different regression approaches usually have different advantages and
+ shortcomings, combining their results is likely to produce a more accurate
+ expression because they together contain a bigger share of all aspects
+ of reality 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "KrogmannPhD"
+
+\end_inset
+
+.
+ The genetic approach described by Krogmann would be implemented as a Proposed
+ Expression Analyser.
+\end_layout
+
+\begin_layout Subsection*
+Final Judge
+\end_layout
+
+\begin_layout Standard
+This class is responsible to decide which proposed evaluable expression
+ describes the measured results best and will be annotated in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+.
+ It also decides if more measurements should be done and when the final
+ solution is found.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Beagle Core.uxf.pdf
+	width 100text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Beagle Core Overview Class Diagram
+\end_layout
+
+\end_inset
+
+Class overview of Beagle Core.
+ For details about specific classes, refer to Beagle’s Javadoc 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "javadoc"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Packages.uxf.pdf
+	width 100text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Beagle Core Package Diagram
+\end_layout
+
+\end_inset
+
+Beagle Core’s separation into Packages.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Extension Points
+\end_layout
+
+\begin_layout Standard
+Measurement Tools, Measurement Expression Analysers and Proposed Expression
+ Analysers are connected to Beagle via Eclipse Extension Points.
+ This allows a flexible configuration of the used plugins after compilation.
+ Development of the plugins can take place independently (because the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Gls{API}
+\end_layout
+
+\end_inset
+
+ is fixed) and which plugins users install can depend on the software available
+ to them.
+\end_layout
+
+\end_body
+\end_document

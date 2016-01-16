@@ -1,0 +1,187 @@
+% This file was created with JabRef 2.11.1.
+% Encoding: UTF8
+
+
+@TechReport{srs,
+  Title                    = {Beagle---Software Requirements Specification},
+  Author                   = {Annika Berger and Joshua Gleitze and Roman Langrehr and Christoph Michelbach and Ansgar Spiegler and Michael Vogt},
+  Institution              = {Karlsruhe Intitute of Technology
+Department of Informatics
+Institute for Program Structures and Data Organization (IPD)},
+  Year                     = {2015},
+  Month                    = {November},
+  Url                      = {http://beagle-pse.github.io/Beagle/Requirements%20Specification.pdf}
+}
+
+@TechReport{javadoc,
+  Title                    = {Beagle—Javadoc},
+  Author                   = {Annika Berger and Joshua Gleitze and Roman Langrehr and Christoph Michelbach and Ansgar Spiegler and Michael Vogt},
+  Institution              = {Karlsruhe Intitute of Technology
+Department of Informatics
+Institute for Program Structures and Data Organization (IPD)},
+  Year                     = {2016},
+  Url                      = {http://beagle-pse.github.io/Beagle/javadoc/overview-summary.html}
+}
+
+@Article{conwaysLaw,
+  Title                    = {How Do Committees Invent?},
+  Author                   = {Melvin E. Conway},
+  Journal                  = {Datamation},
+  Year                     = {1968},
+  Month                    = {April},
+  Timestamp                = {2015-29-11 17:00},
+  Url                      = {http://www.melconway.com/Home/pdf/committees.pdf}
+}
+
+@InProceedings{KiekerPaper,
+  Title                    = {Kieker: A Framework for Application Performance Monitoring and Dynamic Software Analysis},
+  Author                   = {Andr{\'e} van Hoorn and Jan Waller and Wilhelm Hasselbring},
+  Booktitle                = {Proceedings of the 3rd joint ACM/SPEC International Conference on Performance Engineering (ICPE 2012)},
+  Year                     = {2012},
+  Month                    = {April},
+  Pages                    = {247--248},
+  Publisher                = {ACM},
+  Abstract                 = {Kieker is an extensible framework for monitoring and analyzing the runtime behavior of concurrent or distributed software systems. It provides measurement probes for application performance monitoring and control-flow tracing. Analysis plugins extract and visualize architectural models, augmented by quantitative observations. Configurable readers and writers allow Kieker to be used for online and online analysis. This paper reviews the Kieker framework focusing on its features, its provided extension points for custom components, as well the imposed monitoring overhead.},
+  Url                      = {http://eprints.uni-kiel.de/14418/}
+}
+
+@PhdThesis{Kounev,
+  Title                    = {Automated extraction of palladio component models from running enterprise Java applications},
+  Author                   = {Samuel Kounev},
+  School                   = {University of Wuerzburg},
+  Year                     = {2009},
+  Month                    = {October}
+}
+
+@PhdThesis{PalladioPaper,
+  Title                    = {Palladio Paper},
+  Author                   = {Koziolek, Heiko and Happe, Jens and Becker, Steffen and Reussner, Ralf},
+  Year                     = {2007},
+  Month                    = {April}
+}
+
+@PhdThesis{KrogmannPhD,
+  Title                    = {Reconstruction of Software Component Architectures and Behaviour Models using Static and Dynamic Analysis},
+  Author                   = {Klaus Krogmann},
+  School                   = {Karlsruhe Institute of Technology},
+  Year                     = {2011},
+  Abstract                 = {Model-Based Performance Prediction (MBPP, [BDIS04a]) is a software engineering
+discipline which systematically deals with the evaluation of software performance.
+MBPP’s central idea is to predict the performance of a software system based on
+performance models. MBPP can be applied at design-time to avoid bottlenecks when
+designing a software architecture but also for existing software systems. For existing
+software systems, one is interested in scalability analysis and resource sizing without
+actually buying expensive hardware and setting up the execution environment for each
+possible execution scenario. Additionally, when extending an existing software system
+by a new component, software performance models allow to estimate the impact of the
+extension and help avoiding the introduction of bottlenecks. Consider the example of a
+legacy accounting application: When extending such an application by a new reporting
+component, it should be estimated how the overall performance (e.g. response time)
+of the system is affected.
+Applying MBPP requires the presence of up-to-date software performance models.
+To reason on software architectures, these models must capture the architecture itself
+as well as the behaviour of each architecture component. Unfortunately, current reverse
+engineering techniques often aim at the static software architecture and understanding
+of software systems [CZvD + 09]. No approach reverse engineers software performance
+models at an architectural level which are required to enable software performance
+engineering. Thus, currently performance models must be created manually when
+aiming at the support of design decisions for software architectures.
+The contribution of this thesis is a new integrated reverse engineering approach for
+the reconstruction of parameterised software component architectures and software
+component behaviour models which can serve as software performance models due to
+the execution semantics of the target model. This approach allows reverse engineering
+behaviour models for each component’s service from code using static, dynamic, and
+statistical analysis techniques. For performance prediction, the Palladio Component
+Model Approach [BKR09] is used.
+The new reverse engineering approach reconstructs static architecture information
+(components, interfaces, and connectors) as well as a performance behaviour model
+capturing control and data flow for each provided service of a component. The reverse
+engineered models are semantically rich so they can serve for performance simulation
+approaches without requiring manual complements. Since these models are highly
+parameterised (avoiding constants) they not only help understanding the current state
+of a software system, the reverse engineered models help planning and changing a
+software system in an efficient way at the model level. The reverse engineered models
+support a large variety of design decisions at the model level with respect to their
+performance impact: architectural refactorings, exchanging components, extensions of
+legacy software systems (e.g. introducing new components), performance optimisations
+(e.g. introducing caches or distribution), sizing of the hardware environment (e.g.
+vvi
+required hardware to support 100 concurrent users for an existing application), and
+scalability analysis (up to how much load will an application scale until bottlenecks
+become crucial).
+For reverse engineering of software component architectures, the so-called “SoMoX”
+approach has been developed. It employs various source code metrics and combines
+them in a flexible way into detection strategies for architectural elements. At the same
+time, the detection strategies respect interdependencies among metrics. A graph-based
+hierarchical clustering approach then creates components and composite components
+including their interfaces and connectors. Behaviour models are reverse engineered
+by an approach (“Beagle”) combining static and dynamic source code analysis. The
+system under investigation is therefore executed by a test driver and monitored. Using
+the monitoring results as guide, a genetic programming approach combines results
+from static, dynamic, and statistical analysis to create the behaviour model which
+out-performs the results of each single analysis approach. To back up any reverse
+engineering results, trace models allow to identify the origins of each result model
+element.
+Unlike existing approaches, the reverse engineered models make no assumptions on
+either of the following so-called contexts of a software system or component:
+• Usage context. Neither the number of concurrent users nor their interaction with
+the software system or parameters are assumed to be fixed.
+• Assembly context. Neither the caller nor the callee of a component can generally
+be known to a component. Accordingly, no fixed connection to other components
+is assumed for a component.
+• Allocation context. For a component it cannot be known at design time, in
+which hardware and software environment it will be executed. For example,
+which version of a virtual machine, middleware, or processor serve for execution
+is not fixed. This is also reflected in the reverse engineered models.
+Additionally, existing approaches either focus on reverse engineering the architecture of
+a software system following a relaxed definition of a software component which contra-
+dicts use within simulation approaches (e.g. [SAG + 06, YGS + 04, RLvV06]) with focus
+on understanding of software systems [CZvD + 09] or deal with reverse engineering of
+not fully parameterised behaviour models (e.g. [HMWR99, IWF07, CW00, ZWL08,
+WHSB01]). No approach converges architecture and behaviour model reverse enginee-
+ring. Consequently, none of the above design decisions is supported.
+The approach presented in this thesis has been successfully validated in a total of 11
+industrial case studies and reference applications, including among others CoCoME,
+Palladio FileShare, SPECjvm2008, and SPECjbb2005 [CKK08, KKR10]. Models were
+reverse engineered with an overall precision of 78% and a recall of 89% when compared
+to reference architecture. Performance predictions based on the reverse engineered
+models deviated 12% in average and 30% in the worst case from measurements of the
+systems.}
+}
+
+@InProceedings{ByCounterPaper,
+  Title                    = {{ByCounter: Portable Runtime Counting of Bytecode Instructions and Method Invocations}},
+  Author                   = {Michael Kuperberg and Martin Krogmann and Ralf Reussner},
+  Booktitle                = {Proceedings of the 3rd International Workshop on Bytecode Semantics, Verification, Analysis and Transformation , Budapest, Hungary, 5th April 2008 (ETAPS 2008, 11th European Joint Conferences on Theory and Practice of Software)},
+  Year                     = {2008},
+  Abstract                 = {For bytecode-based applications, runtime instruction counts can be used as a platform-independent application execution metric, and also can serve as the basis for bytecode-based performance prediction. However, different instruction types have different execution durations, so they must be counted separately, and method invocations should be identified and counted because of their substantial contribution to the total application performance. For Java bytecode, most JVMs and profilers do not provide such functionality at all, and existing bytecode analysis frameworks require expensive JVM instrumentation for instruction-level counting. In this paper, we present ByCounter, a lightweight approach for exact runtime counting of executed bytecode instructions and method invocations. ByCounter significantly reduces total counting costs by instrumenting only the application bytecode and not the JVM, and it can be used without modifications on any JVM. We evaluate the presented approach by successfully applying it to multiple Java applications on different JVMs, and discuss the runtime costs of applying ByCounter to these cases.},
+  Keywords                 = {Java, bytecode, counting, portable, runtime, instrumentation, fine-grained},
+  Owner                    = {MichaelKuperberg},
+  Timestamp                = {2008.04.06}
+}
+
+@TechReport{PCMtechreport,
+  Title                    = {The Palladio Component Model},
+  Author                   = {Ralf Reussner and Steffen Becker and Erik Burger and Jens Happe and Michael Hauck and Anne Koziolek and Heiko Koziolek and Klaus Krogmann and Michael Kuperberg},
+  Institution              = {Karlsruhe Intitute of Technology
+Department of Informatics
+Institute for Program Structures and Data Organization (IPD)},
+  Year                     = {2011}
+}
+
+@Book{ComponentSoftwareBook,
+  Title                    = {Component Software: Beyond Object-Oriented Programming},
+  Author                   = {Szyperski, Clemens},
+  Publisher                = {Addison-Wesley Longman Publishing Co., Inc.},
+  Year                     = {2002},
+  Address                  = {Boston, MA, USA},
+  Edition                  = {2nd},
+  ISBN                     = {0201745720}
+}
+
+@Book{buschmann1996patternoriented,
+  Title                    = {Pattern Oriented Software Architecture - A System of Patterns},
+  Author                   = {Frank Buschmann and Regine Meunier and Hans Rohnert and Peter Sommerlad and Michael Stal},
+  Publisher                = {Wiley},
+  Year                     = {1996}
+}

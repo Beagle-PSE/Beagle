@@ -23,7 +23,7 @@ sudo apt-get install -qq lyx texlive-latex-base texlive-latex-recommended texliv
 
 # Copy the lyx layout file to the private lyx layouts folder
 mkdir -p ~/.lyx/layouts
-cp doc/Dependencies/sdqthesis.layout ~/.lyx/layouts
+cp Documentation/Dependencies/sdqthesis.layout ~/.lyx/layouts
 
 # Download the sdqthesis template, unzip it, copy the important content into the local texmf, run texhash
 texmf="/usr/share/texmf/tex/latex/sdqthesis"

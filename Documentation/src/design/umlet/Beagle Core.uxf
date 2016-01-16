@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>747</x>
+      <y>711</y>
+      <w>369</w>
+      <h>495</h>
+    </coordinates>
+    <panel_attributes>Blackboard
+--
+--
+
+  &lt;&lt;Create&gt;&gt; + construct (
+          rdias: Resource Demanding Internal Actions [*],
+          branches: SEFF Branch [*]
+          loops: SEFF Loop [*] )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>171</y>
+      <w>315</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>SEFF Branch
+--
+
+  branches: Code Section [2..*]
+ 
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>657</x>
+      <y>171</y>
+      <w>315</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>Resource Demanding Internal Action
+--
+  
+  action: Code Section
+  resource Type: String
+  
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>405</x>
+      <y>0</y>
+      <w>315</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Measurable SEFF Element
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>198</x>
+      <y>369</y>
+      <w>315</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>SEFF Loop
+--
+  
+  body: Code Section
+  
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>351</x>
+      <y>117</y>
+      <w>225</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>230.0;10.0;230.0;250.0;10.0;250.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>594</x>
+      <y>117</y>
+      <w>243</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;250.0;10.0;250.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>117</y>
+      <w>324</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>340.0;10.0;10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>963</x>
+      <y>207</y>
+      <w>180</w>
+      <h>522</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+r2=RDIAs {{unique}}
+m2=*
+m1=1</panel_attributes>
+    <additional_attributes>70.0;560.0;70.0;400.0;180.0;400.0;180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>207</x>
+      <y>450</y>
+      <w>666</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+r2=SEFF Loops {{unique}}
+m2=*
+m1=1</panel_attributes>
+    <additional_attributes>720.0;290.0;720.0;180.0;10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>198</y>
+      <w>801</w>
+      <h>531</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+r2=SEFF Branches {{unique}}
+m2=*
+m1=1</panel_attributes>
+    <additional_attributes>870.0;570.0;870.0;530.0;110.0;530.0;110.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>738</y>
+      <w>369</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=[Measurable SEFF Element]-&gt;
+m2=0..1
+r2=final expression
+m1=0..1
+</panel_attributes>
+    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>720</y>
+      <w>396</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Evaluable Expression
+--
+--
+
+  + receive ( visitor: Evaluable Expression Visitor)
+  
+  + evaluate( assignment: Evaluable Variable Assignment )
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>162</x>
+      <y>252</y>
+      <w>666</w>
+      <h>477</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+r2=SEFF Branches to be measured{{unique}}
+m2=*
+m1=1
+</panel_attributes>
+    <additional_attributes>720.0;510.0;720.0;440.0;10.0;440.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>450</y>
+      <w>522</w>
+      <h>279</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+r2=SEFF Loops to be measured {{unique}}
+m2=*
+m1=1</panel_attributes>
+    <additional_attributes>560.0;290.0;560.0;150.0;10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>684</x>
+      <y>270</y>
+      <w>432</w>
+      <h>459</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+r2=RDIAs to be measured {{unique}}
+m2=*
+m1=1</panel_attributes>
+    <additional_attributes>350.0;490.0;350.0;300.0;460.0;300.0;460.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>783</y>
+      <w>369</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=[Measurable SEFF Element]-&gt;
+m2=*
+r2=proposed expressions
+m1=0..1
+</panel_attributes>
+    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>891</y>
+      <w>378</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=[RDIAs]-&gt;
+m2=*
+r2=measurement results
+m1=1
+</panel_attributes>
+    <additional_attributes>380.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>891</y>
+      <w>324</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>valign=center
+Resource Demand Measurement Result</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>945</y>
+      <w>324</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>valign=center
+Loop Repitition Count Measurement Result</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>999</y>
+      <w>324</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>valign=center
+Branch Decision Measurement Result</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>945</y>
+      <w>378</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=[SEFF Branches]-&gt;
+m2=*
+r2=measurement results
+m1=1
+</panel_attributes>
+    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>999</y>
+      <w>378</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=[SEFF Loops]-&gt;
+m2=*
+r2=measurement results
+m1=1
+</panel_attributes>
+    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>414</x>
+      <y>1440</y>
+      <w>315</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>Analysis Controller
+--
+--
+
+  &lt;&lt;Create&gt;&gt; + construct (
+      blackboard: Blackboard )
+
+  + perform analysis ()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>1197</y>
+      <w>441</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+r1=- blackboard
+m2=0..1</panel_attributes>
+    <additional_attributes>400.0;10.0;400.0;220.0;10.0;220.0;10.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>1773</y>
+      <w>288</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Measurement Tool
+--
+--
+
+  + measure ( order: Measurement Order )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>1557</y>
+      <w>288</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>Measurement Controller
+--
+--
+
+  + can contribute ( 
+      blackboard: Blackboard ): boolean
+
+  + contribute ( blackboard: Blackboard)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>801</x>
+      <y>1701</y>
+      <w>324</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Measurement Result Analyser
+--
+--
+
+  + can contribute (
+          blackboard: Read-Only Measurement 
+                  Result Analyser Blackboard View ) 
+          : boolean
+
+  + contribute (
+          blackboard: Measurement Result
+                  Analyser Blackboard View )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>864</x>
+      <y>1458</y>
+      <w>252</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>Final Judge
+--
+--
+
+  + judge (
+          blackboard: Blackboard )
+          : boolean
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>315</x>
+      <y>1566</y>
+      <w>180</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=1
+m1=- measurement controller
+m2=*</panel_attributes>
+    <additional_attributes>10.0;80.0;170.0;80.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>675</x>
+      <y>1566</y>
+      <w>414</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..*
+r1=- measurement result analysers
+m2=*</panel_attributes>
+    <additional_attributes>250.0;150.0;250.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>432</x>
+      <y>1701</y>
+      <w>324</w>
+      <h>198</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Proposed Expression Analyser
+--
+--
+
+  + can contribute (
+          blackboard: Read-Only Proposed 
+                  Expression Blackboard View )
+          : boolean
+
+  + contribute (
+          blackboard: Proposed Expression
+                  Blackboard View )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>558</x>
+      <y>1566</y>
+      <w>207</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=*
+r1=- proposed expression analysers
+m2=*</panel_attributes>
+    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>1494</y>
+      <w>162</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+r1=- final judge
+m2=*</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1143</y>
+      <w>558</w>
+      <h>207</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+Evaluable Expression Fitness Function
+--
+--
+
+  + grade for ( rdia: Evaluable Expression, expression: Evaluable Expression, 
+          blackboard: Evaluable Expession Fitness Function Blackboard View )
+  + grade for ( branch: SEFF Branch, expression: Evaluable Expression,
+          blackboard: Evaluable Expession Fitness Function Blackboard View )
+  + grade for ( loop: SEFF Loop, expression: Evaluable Expression,
+          blackboard: Evaluable Expession Fitness Function Blackboard View )
+  + grade for ( parameter: External Call Parameter, expression: Evaluable Expression,
+          blackboard: Evaluable Expession Fitness Function Blackboard View )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>1152</y>
+      <w>216</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+r1=fitness function
+m1=1
+m2=*</panel_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>63</y>
+      <w>27</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>558</x>
+      <y>369</y>
+      <w>315</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>External Call Parameter
+--
+  
+  call: Code Section
+  index: Integer
+  
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>405</y>
+      <w>207</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+m2=*
+r2=External Call Parameters {{unique}}
+m1=1</panel_attributes>
+    <additional_attributes>100.0;340.0;100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>468</y>
+      <w>315</w>
+      <h>261</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;&lt;&lt;-
+m2=*
+r2=External Call Parameters to be measured {{unique}}
+m1=1</panel_attributes>
+    <additional_attributes>330.0;270.0;330.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>549</x>
+      <y>333</y>
+      <w>234</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;10.0;240.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>1053</y>
+      <w>324</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>valign=center
+Parameter Change Measurement Result</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>387</x>
+      <y>1053</y>
+      <w>378</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=[External Call Parameters]-&gt;
+m2=*
+r2=measurement results
+m1=1
+</panel_attributes>
+    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>90</x>
+      <y>1656</y>
+      <w>130</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1..*
+r1=-measurement tools
+m2=*</panel_attributes>
+    <additional_attributes>72;117;72;27</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>36</x>
+      <y>1989</y>
+      <w>288</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Abstract Measurement Tool
+--
+
+--
+
++ measure ( order: Measurement Order )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>99</x>
+      <y>1872</y>
+      <w>146</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>81;27;81;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>432</x>
+      <y>1989</y>
+      <w>324</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Abstract Proposed Expression Analyser
+--
+--
+
+  + can contribute (
+          blackboard: Read-Only Proposed 
+                  Expression Blackboard View )
+          : boolean
+
+  + contribute (
+          blackboard: Proposed Expression
+                  Blackboard View )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>513</x>
+      <y>1872</y>
+      <w>146</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>81;27;81;117</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Class</type>
+    <coordinates>
+      <x>801</x>
+      <y>1989</y>
+      <w>324</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+Abstract Measurement Result Analyser
+--
+--
+
+  + can contribute (
+          blackboard: Read-Only Measurement 
+                  Result Analyser Blackboard View ) 
+          : boolean
+
+  + contribute (
+          blackboard: Measurement Result
+                  Analyser Blackboard View )</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>900</x>
+      <y>1872</y>
+      <w>146</w>
+      <h>134</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+&lt;&lt;implements&gt;&gt;</panel_attributes>
+    <additional_attributes>81;27;81;117</additional_attributes>
+  </element>
+</diagram>
