@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Models loops (like Java’s for , while and do - while statement) which affect the calls
@@ -63,5 +64,10 @@ public class SeffLoop implements MeasurableSeffElement {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
 		return new HashCodeBuilder(19, 51).appendSuper(super.hashCode()).append(this.loopBody).toHashCode();
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("loopBody", this.loopBody).toString();
 	}
 }

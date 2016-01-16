@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.File;
 import java.io.Serializable;
@@ -155,5 +156,12 @@ public class CodeSection implements Serializable {
 		// ideally different for each class
 		return new HashCodeBuilder(23, 45).append(this.startFile).append(this.startStatementNumber).append(this.endFile)
 			.append(this.endStatementNumber).toHashCode();
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("startFile", this.startFile)
+			.append("startStatementNumber", this.startStatementNumber).append("endFile", this.endFile)
+			.append("endStatementNumber", this.endStatementNumber).toString();
 	}
 }
