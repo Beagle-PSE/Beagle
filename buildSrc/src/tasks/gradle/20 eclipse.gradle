@@ -37,7 +37,7 @@ configure(eclipseSubprojects) {
 	 * Recursivly downloads an update site.
 	 */
 	downloadUpdatesite = { URL url, destinationDir ->
-		mkdir destinationDir
+		file(destinationDir).mkdirs()
 		project.download {
 			src lister.listFiles(url)
 			dest destinationDir
@@ -58,8 +58,9 @@ configure(eclipseSubprojects) {
 		def dirName = url.replaceAll("[^a-zA-Z0-9.-]", "_")
 		def wuffDir = project.wuff.wuffDir ?: System.getProperty('user.home') + '/.wuff'
 		
-		// we imitate unpuzzle’s checksum mechanism
+		// imitate unpuzzle’s checksum mechanism
 		def checksumFile = file("$wuffDir/downloaded-checksums/${dirName}.md5")
+		checksumFile.parentFile.mkdirs()
 		def destinationDir = "$wuffDir/unpacked/$dirName"
 		
 		if (!checksumFile.exists() || !file(destinationDir).isDirectory()) {
