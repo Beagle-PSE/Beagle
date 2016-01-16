@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-<plugin>
-	<dependency id="org.eclipse.jface" url=""  />
-	<dependency id="org.eclipse.swt" url=""  />
-	<dependency id="org.eclipse.osgi" url=""  />
-	<dependency id="org.eclipse.core.commands" url=""  />
-	<dependency id="org.mod4j.org.eclipse.equinox" url=""  />
-</plugin>
