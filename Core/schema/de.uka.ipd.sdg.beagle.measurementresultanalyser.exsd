@@ -3,10 +3,10 @@
 <schema targetNamespace="Beagle Core" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="Beagle Core" id="de.uka.ipd.sdg.beagle.measurmenttool" name="MeasurementTool"/>
+         <meta.schema plugin="Beagle Core" id="de.uka.ipd.sdg.beagle.measurementresultanalyser" name="MeasurementResultAnalyser"/>
       </appinfo>
       <documentation>
-         The extension point for Beagle&apos;s measurement tools.
+         The extension point for Beagle&apos;s measurement result analyser.
       </documentation>
    </annotation>
 
@@ -18,7 +18,7 @@
       </annotation>
       <complexType>
          <choice minOccurs="1" maxOccurs="unbounded">
-            <element ref="MeasurementTool"/>
+            <element ref="MeasurementResultAnalyser"/>
          </choice>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,15 +47,15 @@
       </complexType>
    </element>
 
-   <element name="MeasurementTool">
+   <element name="MeasurementResultAnalyser">
       <complexType>
-         <attribute name="MeasurementToolClass" type="string" use="required">
+         <attribute name="MeasurementResultAnalyserClass" type="string" use="required">
             <annotation>
                <documentation>
                   
                </documentation>
                <appinfo>
-                  <meta.attribute kind="java" basedOn=":de.uka.sdq.beagle.measurement.MeasurementTool"/>
+                  <meta.attribute kind="java" basedOn=":de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser"/>
                </appinfo>
             </annotation>
          </attribute>

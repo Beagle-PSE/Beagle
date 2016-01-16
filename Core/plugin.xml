@@ -2,6 +2,8 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="de.uka.ipd.sdg.beagle.measurementtool" name="MeasurementTool" schema="schema/de.uka.ipd.sdg.beagle.measurementtool.exsd"/>
+   <extension-point id="de.uka.ipd.sdg.beagle.proposedexpressionanalyser" name="ProposedExpressionAnalyser" schema="schema/de.uka.ipd.sdg.beagle.proposedexpressionanalyser.exsd"/>
+   <extension-point id="de.uka.ipd.sdg.beagle.measurementresultanalyser" name="MeasurementResultAnalyser" schema="schema/de.uka.ipd.sdg.beagle.measurementresultanalyser.exsd"/>
 
    <extension
          point="org.eclipse.ui.commands">
