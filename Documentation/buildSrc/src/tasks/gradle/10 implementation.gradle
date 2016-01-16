@@ -1,0 +1,16 @@
+/**
+ * Tasks to build the Implementation Plan
+ *
+ * @author Joshua Gleitze
+ */
+ 
+task implementation(type: LyXRenderTask) {
+	group 'Documentation'
+	description 'Renders the Implementation Plan.'
+	
+	from files("$projectDir/src/implementation")
+	document "lyx/Implementation Plan.lyx"
+	into buildDir
+}
+
+build.dependsOn implementation

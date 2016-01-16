@@ -1,4 +1,5 @@
 *.class
+*.lnk
 
 # Build Folder
 build/
@@ -31,3 +32,4 @@ hs_err_pid*
 
 # Gradle
 .gradle/
+/bin/

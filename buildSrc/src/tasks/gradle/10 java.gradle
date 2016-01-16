@@ -5,13 +5,13 @@
  * @author Joshua Gleitze
  */
 
-allprojects {
+configure(javaSubprojects) {
 	apply plugin: 'java'
-}
  
-jar {
-    manifest {
-        attributes 'Implementation-Title': project.name,
-                   'Implementation-Version': project.version
-    }
+	jar {
+	    manifest {
+	        attributes 'Implementation-Title': project.name,
+	                   'Implementation-Version': project.version
+	    }
+	}
 }

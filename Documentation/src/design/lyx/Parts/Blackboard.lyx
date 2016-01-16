@@ -1,0 +1,335 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass sdqthesis
+\use_default_options true
+\master ../Design and Architecture.lyx
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Beagle’s Knowledge: The Blackboard
+\end_layout
+
+\begin_layout Standard
+The Beagle Core uses the Blackboard as described in 
+\begin_inset CommandInset citation
+LatexCommand cite
+after " Chapter 2.2"
+key "buschmann1996patternoriented"
+
+\end_inset
+
+.
+ The blackboard is the central data storage which stores all available SEFF
+ elements, which SEFF elements should be measured, all measurement results
+ and the final expression for each measurable SEFF element.
+ It also stores individual information for each Measurement Tool, Measurement
+ Result Analyser, Proposed Expression Analyser, and the Final Judge (in
+ the this section: 
+\begin_inset Quotes eld
+\end_inset
+
+the tools
+\begin_inset Quotes erd
+\end_inset
+
+) because these tools are not allowed to hold status information.
+ The fact that all status information is stored on the Blackboard allows
+ the serialisation of an analysis as elements on the blackboard are serialisable.
+\end_layout
+
+\begin_layout Standard
+The blackboard design also allows communication between the tools without
+ dependencies between them: Each tool contributes its knowledge to the blackboar
+d if it is able to do so and may use information of other tools but doesn't
+ need to know about the tool which provided it.
+ This allows addition and removal of tools without adapting the Beagle Core
+ as well as developing them separately.
+ Additionally, it is easy to compare different combinations of tools to
+ analyse the software.
+\end_layout
+
+\begin_layout Standard
+As it makes no sense to run a tool performing regression of the measurement
+ results before any measurements have been made, the different kinds of
+ tools have a different priority.
+ Therefore the vocabulary of the blackboard is divided into different layers
+ and the tools can only see some of them.
+ On the bottom layer, there are the code sections and all tools can access
+ them.
+ On the highest level are the final expressions and only the final judge
+ can access them.
+ In between are the Measurement Result Analysers.
+ They can access the measurement results (and the code sections).
+ On top of them are the Proposed Expressions Analysers which additionally
+ can access all already proposed Evaluable Expressions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Blackboard Layers.uxf.pdf
+	width 90text%
+	height 100pheight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Abstraction Layers on the Blackboard
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The tools contribute content of their highest level or the level above that:
+ Measurement Tools contribute measurement results, Measurement Result Analysers
+ and Proposed Expressions Analysers contribute 
+\begin_inset Quotes eld
+\end_inset
+
+proposed
+\begin_inset Quotes erd
+\end_inset
+
+ Evaluable Expressions and the Final Judge the 
+\begin_inset Quotes eld
+\end_inset
+
+final
+\begin_inset Quotes erd
+\end_inset
+
+ Evaluable Expressions, which will be added to the PCM.
+\end_layout
+
+\begin_layout Standard
+Each kind of tool has a different priority, contrary to their access level:
+ The Measurement Tools have the highest priority.
+ Only when no Measurement Tool can contribute something, a Measurement Result
+ Analysers is invoked and so on.
+ This ensures, that the layers a tool depends on, have already been filled
+ with the best, possible content.
+ E.g.
+ when a Proposed Expressions Analyser is invoked, all tools that could contribut
+e content for it and do not depend on the Proposed Expressions Analyser's
+ kind of results, the 
+\begin_inset Quotes eld
+\end_inset
+
+proposed
+\begin_inset Quotes erd
+\end_inset
+
+ evaluable expressions, have already done so.
+\end_layout
+
+\begin_layout Standard
+Typical Measurement Result Analysers are regression tools.
+ Proposed Expressions Analyser are, fore example, a tool that takes the
+ average of all available Evaluable Expressions or that builds new ones
+ for an genetic programming approach.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Blackboard.uxf.pdf
+	width 100text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Blackboard Class Diagram
+\end_layout
+
+\end_inset
+
+The Blackboard and its views.
+ The accessor methods are explicitly stated to visualise the view’s usage.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This concept is supported by the Blackboard views: To ensure that each tool
+ -- except the Final Judge -- can access only certain layers, they never
+ get access to the blackboard.
+ They only get a Blackboard View which provides the subset of the Blackboard's
+ methods they are allowed to use.
+ Each view can navigate to the blackboard and each method on the view delegates
+ to the equivalent method on the blackboard.
+ The outcome of this is, that each tool can only use the blackboard's method,
+ it is allowed to use.
+\end_layout
+
+\begin_layout Section
+Measurable SEFF Elements
+\end_layout
+
+\begin_layout Standard
+The blackboard distinguishes between measurable SEFF elements and SEFF elements
+ in general.
+ Tools access the set they need through their corresponding views.
+\end_layout
+
+\begin_layout Section
+Evaluable Expressions
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../umlet/Evaluable Expression.uxf.pdf
+	width 100text%
+	height 100theight%
+	keepAspectRatio
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Evaluable Expression Class Diagram
+\end_layout
+
+\end_inset
+
+The Evaluable Expression Interface and its implementations realise the Visitor
+ pattern.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

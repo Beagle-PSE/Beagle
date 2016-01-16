@@ -1,0 +1,1778 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass sdqthesis
+\use_default_options true
+\master ../Requirements Specification.lyx
+\maintain_unincluded_children false
+\language british
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Functional Requirements
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The main chapter of this document.
+ It states the functional requirements of our software.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Functional requirements shall be atomic (as in “cannot be split”), precise
+ (as in “not ambiguous”, use definitions and references increase precision),
+ measurable, testable and verifiable.
+\end_layout
+
+\begin_layout Plain Layout
+They shall be grouped by topics using sections and subsections.
+\end_layout
+
+\begin_layout Plain Layout
+Please make sure to apply the same logic as in the purpose section to split
+ between mandatory and optional.
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation for mandatory functionality is /F#/
+\end_layout
+
+\begin_layout Plain Layout
+Reference notation for nice to have functionality is /OF#/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ is called with valid 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input artefacts"
+
+\end_inset
+
+ (see p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "input artefacts"
+
+\end_inset
+
+), it must fulfil the following requirements:
+\end_layout
+
+\begin_layout Section
+Measurement
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F10/"
+
+\end_inset
+
+ Using the information provided in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines the sections in the source code to be measured in order to find
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{internal action}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+ Correctly determining these sections assures the measurement results do
+ not depend on the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{assembly context}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T20/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F20/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ conducts measurements of the sections found by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F10/"
+
+\end_inset
+
+ by utilising 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T210/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F30/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ uses existing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{measurement software}
+\end_layout
+
+\end_inset
+
+ for 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/F20/"
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T210/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Optional
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF10/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ approximately determines coherences between 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ interface parameters and their 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to find 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+ independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT30/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF20/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines the probability for each case to be taken in encountered 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF condition}
+\end_layout
+
+\end_inset
+
+.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT40/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF30/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF20/"
+
+\end_inset
+
+ depending on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface parameters.
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to express them independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT40/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF40/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines the probable number of repetitions in encountered 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{SEFF loop}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT40/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF50/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ determines 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF40/"
+
+\end_inset
+
+ depending on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ interface parameters.
+ This enables 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ to express them independent from the measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{usage context}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT40/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF60/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ runs benchmarks on hardware systems in order to provide information to
+ make its results transferable: Using the benchmark information, measurement
+ results can be transferred between different hardware systems when simulating
+ in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+.
+ This insures the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{resource demand}
+\end_layout
+
+\end_inset
+
+ independence from the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{deployment context}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF70/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ provides a functionality to stop measurements by an adaptive timeout when
+ enabled.
+ This means that it aborts a measurement when it exceeds a certain period
+ of time.
+ This timeout is adapted based on previous runs with the same or similar
+ arguments.
+ It is increased if these previous runs took a long time (as it is expected
+ that these measurements will take a long time, too) and decreased if they
+ took a short time to answer a request.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T60/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF80/"
+
+\end_inset
+
+ Users can disable the adaptive timeout described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF70/"
+
+\end_inset
+
+ and replace it with a set timeout or disable the timeout entirely.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T60/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Control
+\end_layout
+
+\begin_layout Paragraph
+Optional
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF100/"
+
+\end_inset
+
+ Users may choose whether 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ will analyse the entire source code or only parts of it.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF110/"
+
+\end_inset
+
+ Users may choose to re-analyse the source code or parts of it in order
+ to either gain more precision or to reflect on source code changes.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT60/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF120/"
+
+\end_inset
+
+ Users may launch and control a measurement running on another computer
+ over a network.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT90/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF130/"
+
+\end_inset
+
+ Users may pause and resume a measurement.
+ Pausing causes all analysis activity to stop.
+ Resuming continues the analysis from the beginning of the measurement it
+ was taking when it had been paused.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT70/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF140/"
+
+\end_inset
+
+ Users may resume a paused measurement (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+) even if 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ had been closed after pausing it.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT70/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF150/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ asserts that no input artefact (p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "/OD140/"
+
+\end_inset
+
+) has been changed between pausing (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF130/"
+
+\end_inset
+
+) and resuming (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF140/"
+
+\end_inset
+
+) an analysis to assure its result's integrity.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT70/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF160/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ results do not change, no matter how often the user chooses to pause and
+ resume the measurements.
+ Therefore 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ assures approximately constant measurement conditions, e.g.
+ by heating up the CPU with load before starting measurements when resuming.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT70/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF170/"
+
+\end_inset
+
+ If requested by the user, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ shuts down the computer it's running on after it finished a measurement.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OT80/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Result Annotation
+\end_layout
+
+\begin_layout Paragraph
+Mandatory
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F200/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ stores all its results in the software's 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+, see p.
+ 
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "result PCM"
+
+\end_inset
+
+).
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T40/"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F210/"
+
+\end_inset
+
+ The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ is a valid 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM}
+\end_layout
+
+\end_inset
+
+ instance.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F220/"
+
+\end_inset
+
+ As far as technically possible, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuseri{Beagle}
+\end_layout
+
+\end_inset
+
+ results can be read from the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ by a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Palladio}
+\end_layout
+
+\end_inset
+
+ installation without 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T220/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F230/"
+
+\end_inset
+
+ The 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "result PCM"
+
+\end_inset
+
+ contains all measured 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{component}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glsuserii{internal action}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+glspl{resource demand}
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F240/"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ does not remove any information from the 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "input PCM"
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/F250/"
+
+\end_inset
+
+ Measurement results are saved onto a persistent medium to avoid data loss.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Tested by 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/T50/"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Optional
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset CommandInset label
+LatexCommand label
+name "/OF200/"
+
+\end_inset
+
+ If 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{Beagle}
+\end_layout
+
+\end_inset
+
+ found parametrised results (e.g.
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF10/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF30/"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "/OF50/"
+
+\end_inset
+
+), they are expressed using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+gls{PCM Stochastic Expression Language}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
