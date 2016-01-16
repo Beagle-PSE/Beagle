@@ -3,9 +3,10 @@ package de.uka.ipd.sdq.beagle.core;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
@@ -129,6 +130,59 @@ public class ResourceDemandingInternalActionTest {
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
 		assertThat(rdia.getAction(), is(theInstance(secCodeSection)));
 
+	}
+
+	/**
+	 * Test method for
+	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#equals()}.
+	 *
+	 */
+	@Test
+	public void testEquals() {
+		final File file = new File(
+			ResourceDemandingInternalAction.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLine = 4;
+		final int endCodeLine = 15;
+		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
+		final ResourceDemandingInternalAction rdia1 =
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+
+		final File secFile = new File(
+			ResourceDemandingInternalAction.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+		final int startIndex = 60;
+		final int endIndex = 68;
+		final CodeSection secCodeSection = new CodeSection(secFile, startIndex, file, endIndex);
+		final ResourceDemandingInternalAction rdia =
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
+		assertThat(rdia.equals(rdia1), is(equalTo(false)));
+
+		final File fileB = new File(
+			ResourceDemandingInternalAction.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startIn = 4;
+		final int endIn = 15;
+		final CodeSection codeSec = new CodeSection(fileB, startIn, fileB, endIn);
+		final ResourceDemandingInternalAction rdia2 =
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSec);
+
+		assertThat(rdia1.equals(rdia2), is(equalTo(true)));
+	}
+
+	/**
+	 * Test method for
+	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#toString()}.
+	 *
+	 */
+	@Test
+	public void testToString() {
+		final File file = new File(
+			ResourceDemandingInternalAction.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLine = 4;
+		final int endCodeLine = 15;
+		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
+		final ResourceDemandingInternalAction rdia =
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+
+		assertThat(rdia.toString(), not(startsWith("ResourceDemandingInternalAction@")));
 	}
 
 }

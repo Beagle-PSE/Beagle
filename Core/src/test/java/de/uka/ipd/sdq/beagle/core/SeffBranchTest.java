@@ -1,7 +1,10 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.*;
 
@@ -69,6 +72,51 @@ public class SeffBranchTest {
 		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
 		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(theInstance(codeSections)));
+	}
+	
+	/**
+	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#equals()}.
+	 */
+	@Test
+	public void testEquals() {
+		final File file = new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLine = 4;
+		final int endCodeLine = 15;
+		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
+		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
+		final SeffBranch branch = new SeffBranch(codeSections);
+		
+		final File fileB = new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLineB = 4;
+		final int endCodeLineB = 15;
+		final Set<CodeSection> codeSectionsB = new HashSet<CodeSection>();
+		codeSections.add(new CodeSection(fileB, startCodeLineB, fileB, endCodeLineB));
+		final SeffBranch branchB = new SeffBranch(codeSectionsB);
+		
+		final File fileC = new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+		final int startCodeLineC = 4;
+		final int endCodeLineC = 15;
+		final Set<CodeSection> codeSectionsC = new HashSet<CodeSection>();
+		codeSections.add(new CodeSection(fileC, startCodeLineC, fileC, endCodeLineC));
+		final SeffBranch branchC = new SeffBranch(codeSectionsC);
+		
+		assertThat(branchC.equals(branch), is(equalTo(false)));
+		assertThat(branchB.equals(branch), is(equalTo(true)));
+	}
+	
+	/**
+	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#toString()}.
+	 */
+	@Test
+	public void testToString() {
+		final File file = new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLine = 4;
+		final int endCodeLine = 15;
+		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
+		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
+		final SeffBranch branch = new SeffBranch(codeSections);
+		
+		assertThat(branch.toString(), not(startsWith("SeffBranch@")));
 	}
 
 }

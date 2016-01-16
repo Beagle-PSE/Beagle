@@ -1,7 +1,10 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.*;
 
@@ -131,5 +134,45 @@ public class CodeSectionTest {
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
 		assertThat(codeSection.getEndSectionIndex(), is(theInstance(endIndex)));
 	}
+	
+	/**
+	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#equals()}.
+	 **/
+	@Test
+	public void testEquals() {
+		final File file =
+			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLine = 4;
+		final int endCodeLine = 15;
+		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
+
+		final File secFile = new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+		final int startIndex = 60;
+		final int endIndex = 68;
+		final CodeSection secCodeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
+		
+		final File fileA =
+			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLineA = 4;
+		final int endCodeLineA = 15;
+		final CodeSection codeSectionA = new CodeSection(fileA, startCodeLineA, fileA, endCodeLineA);
+		
+		assertThat(codeSection.equals(codeSectionA), is(equalTo(true)));
+	}
+	
+	/**
+	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#toString()}.
+	 **/
+	@Test
+	public void testToString() {
+		final File file =
+			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+		final int startCodeLine = 4;
+		final int endCodeLine = 15;
+		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
+		assertThat(codeSection.toString(), not(startsWith("CodeSection@")));
+	}
+	
+	
 
 }
