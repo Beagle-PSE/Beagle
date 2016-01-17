@@ -140,7 +140,6 @@
     </module>
     <module name="AvoidStaticImport">
       <property name="severity" value="warning"/>
-      <property name="excludes" value="org.junit.Assert.*,org.hamcrest.CoreMatcher.*"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="IllegalImport">
