@@ -40,6 +40,12 @@ public class GuiController {
 	private GuiControllerState state;
 
 	/**
+	 * {@code true} if the wizard finished successfully (user pressed "finish"};
+	 * {@code false} otherwise.
+	 */
+	private boolean wizardFinishedSuccessfully;
+
+	/**
 	 * The shell the GUI plugin will use.
 	 */
 	private Shell shell;
@@ -90,19 +96,29 @@ public class GuiController {
 	 * object) are ignored.
 	 */
 	private void engageWizard() {
+		this.wizardFinishedSuccessfully = false;
+
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
 			ActionListener wizardFinished = new ActionListener() {
 
 				@Override
 				public void actionPerformed(final ActionEvent wizardFinished) {
-					GuiController.this.engageDialog();
+					GuiController.this.wizardFinishedSuccessfully = true;
 				}
 			};
 
 			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.userConfiguration, wizardFinished);
 			final WizardDialog wizardDialog = new WizardDialog(this.shell, this.beagleAnalysisWizard);
+			this.state = GuiControllerState.wizardOpen;
 			wizardDialog.open();
+
+			if (this.wizardFinishedSuccessfully) {
+				this.state = GuiControllerState.dialogOpen;
+				GuiController.this.engageDialog();
+			} else {
+				this.state = GuiControllerState.terminated;
+			}
 		}
 	}
 
