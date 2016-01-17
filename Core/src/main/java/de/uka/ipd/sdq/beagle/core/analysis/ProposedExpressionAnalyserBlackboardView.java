@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.analysis;
 
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -30,10 +31,19 @@ import java.util.Set;
  * @author Christoph Michelbach
  * @author Michael Vogt
  */
-public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
+public abstract class ProposedExpressionAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
 
+	/**
+	 * Blackboard instance committed from the {@link AnalysisController}.
+	 */
 	private Blackboard blackboard;
 
+	/**
+	 * Set the blackboard instance from the {@link AnalysisController} to the private
+	 * blackboard attribute.
+	 *
+	 * @param blackboard The blackboard given from the {@link AnalysisController}.
+	 */
 	private ProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
 		this.blackboard = blackboard;
 	}
@@ -197,6 +207,11 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
+	 * @return All measruement results reported for {@code evaluableExpression}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(MeasurableSeffElement)
+	 * 
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		return this.blackboard.getProposedExpressionFor(element);

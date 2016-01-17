@@ -6,6 +6,7 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
@@ -58,7 +59,7 @@ public interface EvaluableExpressionFitnessFunctionBlackboardView {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
-	Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(SeffLoop loop);
+	Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(SeffLoop loop);
 
 	/**
 	 * Delegates to
@@ -67,9 +68,9 @@ public interface EvaluableExpressionFitnessFunctionBlackboardView {
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}.
-	 *         Changes to the returned set will not modify the blackboard content. Is
-	 *         never {@code null}.
+	 * @return All measurement results reported for {@code externalCallParameter}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
 	Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(ExternalCallParameter externalCallParameter);
