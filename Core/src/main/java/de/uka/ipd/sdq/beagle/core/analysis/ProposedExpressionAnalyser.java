@@ -15,6 +15,9 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
  * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this
  * interface.
  *
+ * <p>The proposed expression analysers added to the extension point need a public zero
+ * argument constructor for the instantiation.
+ *
  * @author Joshua Gleitze
  * @author Roman Langrehr
  */

@@ -9,8 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class handles the creation searching and loading of all available measurement
- * tools.
+ * This class handles the creation searching, loading and instantiation of all available
+ * measurement tools. The measurement tools need a public zero argument constructor for
+ * the instantiation.
  *
  * @author Roman Langrehr
  */
@@ -28,9 +29,10 @@ public class MeasurementToolContributionsHandler {
 	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME = "MeasurementToolClass";
 
 	/**
-	 * Scans the measurement tool extension point for available measurement tools.
+	 * Scans the measurement tools extension point for available measurement tools.
 	 *
-	 * @return All available measurement tools.
+	 * @return All available measurement tools. Each call returns new instances of the
+	 *         measurement tools.
 	 * @throws RuntimeException If an instance of an measurement tool could not be created
 	 *             for any reason, e.g. the measurement tool had no public zero argument
 	 *             constructor or if an {@code MeasurmentToolClass} provided via the
@@ -38,12 +40,6 @@ public class MeasurementToolContributionsHandler {
 	 */
 	public List<MeasurementTool> getAvailableMeasurmentTools() {
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
-		// final IExtensionPoint point =
-		// registry.getExtensionPoint(MEASUREMT_TOOL_EXTENSION_POINT_ID);
-		// if (point == null) {
-		// return null;
-		// }
-		// final IExtension[] extensions = point.getExtensions();
 		final List<MeasurementTool> measurementTools = new ArrayList<>();
 		final IConfigurationElement[] config =
 			registry.getConfigurationElementsFor(MEASUREMENT_TOOL_EXTENSION_POINT_ID);
