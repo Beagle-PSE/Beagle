@@ -87,7 +87,6 @@ public class GuiController {
 	 */
 	public void open() {
 		this.engageWizard();
-		System.out.println("open() returned");
 	}
 
 	/**
@@ -146,7 +145,7 @@ public class GuiController {
 					if (analysisRunning) {
 						// analysis has been paused by the user
 						analysisRunning = false;
-						System.out.println("User clicked 'Pause'.");
+
 						this.messageDialog = new MessageDialog(this.shell, dialogTitlePaused, null, dialogMessagePaused,
 							MessageDialog.INFORMATION, buttonLabelsPaused, 0);
 					} else {
@@ -166,9 +165,6 @@ public class GuiController {
 
 			buttonClick = this.messageDialog.open();
 		}
-
-		System.out.println("User clicked 'Abort'.");
-
 	}
 	/*
 	 * private class DialogPolling implements Runnable {
@@ -176,8 +172,8 @@ public class GuiController {
 	 * @Override public void run() { final int buttonClick =
 	 * GuiController.this.messageDialog.open();
 	 * 
-	 * if (buttonClick == 0) { System.out.println("User clicked 'Abort'."); }
+	 * if (buttonClick == 0) { Syste m.out.println("User clicked 'Abort'."); }
 	 * 
-	 * if (buttonClick == 1) { System.out.println("User clicked 'Pause'."); } } }
+	 * if (buttonClick == 1) { Syste m.out.println("User clicked 'Pause'."); } } }
 	 */
 }
