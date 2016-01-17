@@ -25,6 +25,31 @@ import java.util.Set;
 public class ReadOnlyMeasurementControllerBlackboardView {
 
 	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()}
+	 * .
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} which shall
+	 *         be measured. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
+	 */
+	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
+	 *
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
+	 */
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		return null;
+	}
+
+	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
 	 *
 	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
@@ -57,31 +82,6 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return null;
-	}
-
-	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()}
-	 * .
-	 *
-	 * @return All {@linkplain ExternalCallParameter external call parameters} which shall
-	 *         be measured. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
-	 */
-	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
-		return null;
-	}
-
-	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
-	 *
-	 * @return An object which holds and is responsible allows access to the fitness
-	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
-	 *         regarding their fitness.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
-	 */
-	public EvaluableExpressionFitnessFunction getFitnessFunction() {
 		return null;
 	}
 

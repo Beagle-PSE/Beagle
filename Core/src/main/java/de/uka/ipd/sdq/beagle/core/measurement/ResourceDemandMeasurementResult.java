@@ -38,16 +38,6 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	}
 
 	/**
-	 * Sets this result’s <em>result type</em>.
-	 *
-	 * @param resourceType This result’s <em>result type</em>, as defined in the class
-	 *            description. May not be {@code null}.
-	 * @throws NullPointerException If {@code resourceType} is {@code null}.
-	 */
-	public void setResourceType(final String resourceType) {
-	}
-
-	/**
 	 * Gets this result’s value.
 	 *
 	 * @return This result’s value: How much of the <em>resource type</em> was demanded. A
@@ -55,6 +45,16 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 */
 	public double getValue() {
 		return 0;
+	}
+
+	/**
+	 * Sets this result’s <em>result type</em>.
+	 *
+	 * @param resourceType This result’s <em>result type</em>, as defined in the class
+	 *            description. May not be {@code null}.
+	 * @throws NullPointerException If {@code resourceType} is {@code null}.
+	 */
+	public void setResourceType(final String resourceType) {
 	}
 
 	/**

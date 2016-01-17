@@ -3,37 +3,21 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 /**
  * Expression that executes a logarithm with defined expressions as base and
  * antilogarithm.
- * 
+ *
  * @author Annika Berger
  */
 public class LogarithmExpression implements EvaluableExpression {
 
-	/**
-	 * Set the base of the logarithm.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression which is supposed to be the base.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setBase(final EvaluableExpression expression) {
-
-	}
-
-	/**
-	 * Get the {@link EvaluableExpression} which is the base of the logarithm.
-	 *
-	 * @return the base of the logarithm.
-	 */
-	public EvaluableExpression getBase() {
-		return null;
-	}
-
-	/**
-	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
-	 * {@code LogarithmExpression}.
-	 *
-	 * @param expression to be the antilogarithm
-	 */
-	public void setAnitlogarithm(final EvaluableExpression expression) {
-
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
@@ -43,6 +27,15 @@ public class LogarithmExpression implements EvaluableExpression {
 	 * @return the antilogarithm expression.s
 	 */
 	public EvaluableExpression getAntilogarithm() {
+		return null;
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is the base of the logarithm.
+	 *
+	 * @return the base of the logarithm.
+	 */
+	public EvaluableExpression getBase() {
 		return null;
 	}
 
@@ -57,16 +50,23 @@ public class LogarithmExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
+	 * {@code LogarithmExpression}.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param expression to be the antilogarithm
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setAnitlogarithm(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Set the base of the logarithm.
+	 *
+	 * @param expression which is supposed to be the base.
+	 */
+	public void setBase(final EvaluableExpression expression) {
+
 	}
 
 }

@@ -2,19 +2,11 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * An {@link EvaluableExpression} having a constant value.
- * 
+ *
  * @author Annika Berger
  *
  */
 public final class ConstantExpression implements EvaluableExpression {
-
-	/**
-	 * Inizialises a new constant expression with a given {@code value}.
-	 * 
-	 * @param value The Constant value of this expression.
-	 */
-	private ConstantExpression(final double value) {
-	}
 
 	/**
 	 * Looks for the constant expression belonging to an input {@code value}.
@@ -26,15 +18,12 @@ public final class ConstantExpression implements EvaluableExpression {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Inizialises a new constant expression with a given {@code value}.
 	 *
-	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 * @param value The Constant value of this expression.
 	 */
-	@Override
-	public void receive(final EvaluableExpressionVisitor visitor) {
-
+	private ConstantExpression(final double value) {
 	}
 
 	/*
@@ -47,6 +36,17 @@ public final class ConstantExpression implements EvaluableExpression {
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return 0;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 */
+	@Override
+	public void receive(final EvaluableExpressionVisitor visitor) {
+
 	}
 
 }

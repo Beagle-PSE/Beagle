@@ -20,6 +20,45 @@ public class PcmBeagleMappings implements Serializable {
 	private static final long serialVersionUID = -2442979526968290433L;
 
 	/**
+	 * Stores the {@code identifier} used for {@code rdia} in the PCM repository.
+	 *
+	 * @param rdia A resource demanding internal action. Must not be {@code null}.
+	 * @param identifier The identifier used for {@code rdia} in the PCM repository. Must
+	 *            not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code rdia}. More formally: if
+	 *             {@code this.hasPcmIdOf(rdia) && !this.getPcmIdOf(rdia).equals(identifier)}
+	 */
+	public void addPcmIdOf(final ResourceDemandingInternalAction rdia, final String identifier) {
+	}
+
+	/**
+	 * Stores the {@code identifier} used for {@code branch} in the PCM repository.
+	 *
+	 * @param branch A SEFF branch. Must not be {@code null}.
+	 * @param identifier The identifier used for {@code branch} in the PCM repository.
+	 *            Must not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code branch}. More formally: if
+	 *             {@code this.hasPcmIdOf(branch) && !this.getPcmIdOf(branch).equals(identifier)}
+	 */
+	public void addPcmIdOf(final SeffBranch branch, final String identifier) {
+	}
+
+	/**
+	 * Stores the {@code identifier} used for {@code loop} in the PCM repository.
+	 *
+	 * @param loop A SEFF loop. Must not be {@code null}.
+	 * @param identifier The identifier used for {@code loop} in the PCM repository. Must
+	 *            not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code loop}. More formally: if
+	 *             {@code this.hasPcmIdOf(loop) && !this.getPcmIdOf(loop).equals(identifier)}
+	 */
+	public void addPcmIdOf(final SeffLoop loop, final String identifier) {
+	}
+
+	/**
 	 * Gets the identifier used for {@code rdia} in the PCM repository.
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
@@ -84,45 +123,6 @@ public class PcmBeagleMappings implements Serializable {
 	 */
 	public boolean hasPcmIdOf(final SeffLoop loop) {
 		return false;
-	}
-
-	/**
-	 * Stores the {@code identifier} used for {@code rdia} in the PCM repository.
-	 *
-	 * @param rdia A resource demanding internal action. Must not be {@code null}.
-	 * @param identifier The identifier used for {@code rdia} in the PCM repository. Must
-	 *            not be {@code null}.
-	 * @throws IllegalStateException If there is already another identifier assigned to
-	 *             {@code rdia}. More formally: if
-	 *             {@code this.hasPcmIdOf(rdia) && !this.getPcmIdOf(rdia).equals(identifier)}
-	 */
-	public void addPcmIdOf(final ResourceDemandingInternalAction rdia, final String identifier) {
-	}
-
-	/**
-	 * Stores the {@code identifier} used for {@code branch} in the PCM repository.
-	 *
-	 * @param branch A SEFF branch. Must not be {@code null}.
-	 * @param identifier The identifier used for {@code branch} in the PCM repository.
-	 *            Must not be {@code null}.
-	 * @throws IllegalStateException If there is already another identifier assigned to
-	 *             {@code branch}. More formally: if
-	 *             {@code this.hasPcmIdOf(branch) && !this.getPcmIdOf(branch).equals(identifier)}
-	 */
-	public void addPcmIdOf(final SeffBranch branch, final String identifier) {
-	}
-
-	/**
-	 * Stores the {@code identifier} used for {@code loop} in the PCM repository.
-	 *
-	 * @param loop A SEFF loop. Must not be {@code null}.
-	 * @param identifier The identifier used for {@code loop} in the PCM repository. Must
-	 *            not be {@code null}.
-	 * @throws IllegalStateException If there is already another identifier assigned to
-	 *             {@code loop}. More formally: if
-	 *             {@code this.hasPcmIdOf(loop) && !this.getPcmIdOf(loop).equals(identifier)}
-	 */
-	public void addPcmIdOf(final SeffLoop loop, final String identifier) {
 	}
 
 }

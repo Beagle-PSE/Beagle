@@ -2,32 +2,26 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that executes an if-then-else-statement based on its contained expressions.
- * 
+ *
  * @author Annika Berger
  */
 public class IfThenElseExpression implements EvaluableExpression {
 
-	/**
-	 * Get expression contained in if-statement.
-	 * 
-	 * @return if-Expression
-	 */
-	public EvaluableExpression getIfExpression() {
-		return null;
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} to be contained in the if statement.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param ifExpression The {@link EvaluableExpression} to be contained in the if
-	 *            statement.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setIfExpression(final EvaluableExpression ifExpression) {
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
 	 * Get expression contained in else-statement.
-	 * 
+	 *
 	 * @return else-Expression
 	 */
 	public EvaluableExpression getElseExpression() {
@@ -35,30 +29,21 @@ public class IfThenElseExpression implements EvaluableExpression {
 	}
 
 	/**
-	 * Set the {@link EvaluableExpression} to be contained in the else-statement.
+	 * Get expression contained in if-statement.
 	 *
-	 * @param elseExpression The {@link EvaluableExpression} to be contained in the
-	 *            else-statement.
+	 * @return if-Expression
 	 */
-	public void setElseExpression(final EvaluableExpression elseExpression) {
-	}
-
-	/**
-	 * Get expression contained in then-statement.
-	 * 
-	 * @return then-expression
-	 */
-	public EvaluableExpression getThenExpression() {
+	public EvaluableExpression getIfExpression() {
 		return null;
 	}
 
 	/**
-	 * Set the {@link EvaluableExpression} to be contained in the then-statement.
+	 * Get expression contained in then-statement.
 	 *
-	 * @param thenExpression The {@link EvaluableExpression} to be contained in the
-	 *            then-statement.
+	 * @return then-expression
 	 */
-	public void setThenExpression(final EvaluableExpression thenExpression) {
+	public EvaluableExpression getThenExpression() {
+		return null;
 	}
 
 	/*
@@ -72,16 +57,31 @@ public class IfThenElseExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set the {@link EvaluableExpression} to be contained in the else-statement.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param elseExpression The {@link EvaluableExpression} to be contained in the
+	 *            else-statement.
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setElseExpression(final EvaluableExpression elseExpression) {
+	}
+
+	/**
+	 * Set the {@link EvaluableExpression} to be contained in the if statement.
+	 *
+	 * @param ifExpression The {@link EvaluableExpression} to be contained in the if
+	 *            statement.
+	 */
+	public void setIfExpression(final EvaluableExpression ifExpression) {
+	}
+
+	/**
+	 * Set the {@link EvaluableExpression} to be contained in the then-statement.
+	 *
+	 * @param thenExpression The {@link EvaluableExpression} to be contained in the
+	 *            then-statement.
+	 */
+	public void setThenExpression(final EvaluableExpression thenExpression) {
 	}
 
 }

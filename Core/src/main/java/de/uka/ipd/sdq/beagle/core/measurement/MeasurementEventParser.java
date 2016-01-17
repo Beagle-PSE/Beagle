@@ -31,7 +31,8 @@ public class MeasurementEventParser implements MeasurementEventVisitor {
 	 * @param events The events to be parsed. Must not be {@code null} and all contained
 	 *            events must not be {@code null}.
 	 */
-	public MeasurementEventParser(final MeasurementEvent... events) {
+	public MeasurementEventParser(final Iterable<MeasurementEvent> events) {
+
 	}
 
 	/**
@@ -41,8 +42,21 @@ public class MeasurementEventParser implements MeasurementEventVisitor {
 	 * @param events The events to be parsed. Must not be {@code null} and all contained
 	 *            events must not be {@code null}.
 	 */
-	public MeasurementEventParser(final Iterable<MeasurementEvent> events) {
+	public MeasurementEventParser(final MeasurementEvent... events) {
+	}
 
+	/**
+	 * Gets all results that could be parsed from the input events for
+	 * {@code externalCallParameter}.
+	 *
+	 * @param externalCallParameter An external parameter to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results parsed for {@code externalCallParameter}. Is never
+	 *         {@code null}.
+	 */
+	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
+		final ExternalCallParameter externalCallParameter) {
+		return null;
 	}
 
 	/**
@@ -75,20 +89,6 @@ public class MeasurementEventParser implements MeasurementEventVisitor {
 	 * @return All measurement results parsed for {@code loop}. Is never {@code null}.
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		return null;
-	}
-
-	/**
-	 * Gets all results that could be parsed from the input events for
-	 * {@code externalCallParameter}.
-	 *
-	 * @param externalCallParameter An external parameter to get the measurement results
-	 *            of. Must not be {@code null}.
-	 * @return All measurement results parsed for {@code externalCallParameter}. Is never
-	 *         {@code null}.
-	 */
-	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
-		final ExternalCallParameter externalCallParameter) {
 		return null;
 	}
 

@@ -2,9 +2,9 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Assigns {@link EvaluableVariable EvaluableVariables} to values.
- * 
+ *
  * @author Annika Berger
- * 
+ *
  * @see EvaluableVariable
  *
  */
@@ -21,15 +21,6 @@ public class EvaluableVariableAssignment {
 	}
 
 	/**
-	 * Assigns a value to an evaluable variable.
-	 *
-	 * @param variable To which the value belongs.
-	 * @param value To be set.
-	 */
-	public void setValueFor(final EvaluableVariable variable, final double value) {
-	}
-
-	/**
 	 * Checks whether the {@code EvaluableVariable variable} has already a value assigned
 	 * or not.
 	 *
@@ -39,5 +30,14 @@ public class EvaluableVariableAssignment {
 	 */
 	public boolean isValueAssignedFor(final EvaluableVariable variable) {
 		return false;
+	}
+
+	/**
+	 * Assigns a value to an evaluable variable.
+	 *
+	 * @param variable To which the value belongs.
+	 * @param value To be set.
+	 */
+	public void setValueFor(final EvaluableVariable variable, final double value) {
 	}
 }

@@ -28,6 +28,18 @@ public class MultiplicationExpression implements EvaluableExpression {
 	public MultiplicationExpression(final EvaluableExpression... factors) {
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 */
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
+	}
+
 	/**
 	 * Gets all factors (expressions that will be multiplied on evaluation).
 	 *
@@ -45,17 +57,5 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
-	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
 	}
 }

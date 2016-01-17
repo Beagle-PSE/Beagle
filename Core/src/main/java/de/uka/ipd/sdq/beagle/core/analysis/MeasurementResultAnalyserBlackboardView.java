@@ -32,45 +32,26 @@ import java.util.Set;
 public class MeasurementResultAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
 
 	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addProposedExpressionFor(MeasurableSeffElement, EvaluableExpression)}
+	 * .
 	 *
-	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
-	 *         actions} known to Beagle. Changes to the returned set will not modify the
-	 *         blackboard content. Is never {@code null}.
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code element}’s
+	 *            measurement results. Must not be {@code null}.
 	 */
-	public Set<ResourceDemandingInternalAction> getAllRdias() {
-		return null;
-	}
-
-	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
-	 *
-	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
-	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 */
-	public Set<SeffBranch> getAllSeffBranches() {
-		return null;
-	}
-
-	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()}.
-	 *
-	 * @return all {@linkplain SeffLoop SEFF loops} known to Beagle. Changes to the
-	 *         returned set will not modify the blackboard content. Is never {@code null}.
-	 */
-	public Set<SeffLoop> getAllSeffLoops() {
-		return null;
+	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllExternalCallParameters()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredExternalCallParameters(Collection)}
+	 * .
 	 *
-	 * @return All {@linkplain ExternalCallParameter external call parameters} known to
-	 *         Beagle. Is never {@code null}.
+	 * @param parameters external call parameters that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
 	 */
-	public Set<ExternalCallParameter> getAllExternalCallParameters() {
-		return null;
+	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
 	}
 
 	/**
@@ -106,13 +87,74 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addToBeMeasuredExternalCallParameters(Collection)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllExternalCallParameters()}.
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} known to
+	 *         Beagle. Is never {@code null}.
+	 */
+	public Set<ExternalCallParameter> getAllExternalCallParameters() {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
+	 *
+	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} known to Beagle. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
+	 */
+	public Set<ResourceDemandingInternalAction> getAllRdias() {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
+	 *
+	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<SeffBranch> getAllSeffBranches() {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffLoops()}.
+	 *
+	 * @return all {@linkplain SeffLoop SEFF loops} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set<SeffLoop> getAllSeffLoops() {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
+	 *
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
+	 */
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		return null;
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)}
 	 * .
 	 *
-	 * @param parameters external call parameters that shall be measured. Must not be
-	 *            {@code null} and must be known to this blackboard.
+	 * @param externalCallParameter An external parameter to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results reported for {@code externalCallParameter}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
-	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+	@Override
+	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
+		final ExternalCallParameter externalCallParameter) {
+		return null;
 	}
 
 	/**
@@ -158,48 +200,6 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 */
 	@Override
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		return null;
-	}
-
-	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)}
-	 * .
-	 *
-	 * @param externalCallParameter An external parameter to get the measurement results
-	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}. Changes
-	 *         to the returned set will not modify the blackboard content. Is never
-	 *         {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
-	 */
-	@Override
-	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
-		final ExternalCallParameter externalCallParameter) {
-		return null;
-	}
-
-	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#addProposedExpressionFor(MeasurableSeffElement, EvaluableExpression)}
-	 * .
-	 *
-	 * @param element A SEFF element. Must not be {@code null}.
-	 * @param expression An evaluable expression proposed to describe {@code element}’s
-	 *            measurement results. Must not be {@code null}.
-	 */
-	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-	}
-
-	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
-	 *
-	 * @return An object which holds and is responsible allows access to the fitness
-	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
-	 *         regarding their fitness.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
-	 */
-	public EvaluableExpressionFitnessFunction getFitnessFunction() {
 		return null;
 	}
 

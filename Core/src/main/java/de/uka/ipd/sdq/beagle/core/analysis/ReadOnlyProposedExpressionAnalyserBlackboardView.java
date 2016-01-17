@@ -29,6 +29,17 @@ import java.util.Set;
 public class ReadOnlyProposedExpressionAnalyserBlackboardView {
 
 	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllExternalCallParameters()}.
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} known to
+	 *         Beagle. Is never {@code null}.
+	 */
+	public Set<ExternalCallParameter> getAllExternalCallParameters() {
+		return null;
+	}
+
+	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
 	 *
 	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
@@ -60,13 +71,31 @@ public class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	}
 
 	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllExternalCallParameters()}.
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
 	 *
-	 * @return All {@linkplain ExternalCallParameter external call parameters} known to
-	 *         Beagle. Is never {@code null}.
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
-	public Set<ExternalCallParameter> getAllExternalCallParameters() {
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		return null;
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)}
+	 * .
+	 *
+	 * @param externalCallParameter An external parameter to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results reported for {@code externalCallParameter}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
+	 */
+	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
+		final ExternalCallParameter externalCallParameter) {
 		return null;
 	}
 
@@ -115,41 +144,12 @@ public class ReadOnlyProposedExpressionAnalyserBlackboardView {
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)}
-	 * .
-	 *
-	 * @param externalCallParameter An external parameter to get the measurement results
-	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}. Changes
-	 *         to the returned set will not modify the blackboard content. Is never
-	 *         {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
-	 */
-	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
-		final ExternalCallParameter externalCallParameter) {
-		return null;
-	}
-
-	/**
-	 * Delegates to
 	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)}
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
 	 */
 	public void getProposedExpressionFor(final MeasurableSeffElement element) {
-	}
-
-	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
-	 *
-	 * @return An object which holds and is responsible allows access to the fitness
-	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
-	 *         regarding their fitness.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
-	 */
-	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		return null;
 	}
 
 	/**

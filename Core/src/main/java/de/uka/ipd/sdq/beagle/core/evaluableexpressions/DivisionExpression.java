@@ -2,19 +2,31 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that divides its contained dividend through its contained divisor.
- * 
+ *
  * @author Annika Berger
  *
  */
 public class DivisionExpression implements EvaluableExpression {
 
-	/**
-	 * Sets the {@link EvaluableExpression} which is the divisor.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression which is the divisor.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setDivisor(final EvaluableExpression expression) {
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
+	}
 
+	/**
+	 * Gets the dividend of the expression.
+	 *
+	 * @return This expression's dividend.
+	 */
+	public EvaluableExpression getDividend() {
+		return null;
 	}
 
 	/**
@@ -24,6 +36,17 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	public EvaluableExpression getDivisor() {
 		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 */
+	@Override
+	public void receive(final EvaluableExpressionVisitor visitor) {
+
 	}
 
 	/**
@@ -36,35 +59,12 @@ public class DivisionExpression implements EvaluableExpression {
 	}
 
 	/**
-	 * Gets the dividend of the expression.
+	 * Sets the {@link EvaluableExpression} which is the divisor.
 	 *
-	 * @return This expression's dividend.
+	 * @param expression which is the divisor.
 	 */
-	public EvaluableExpression getDividend() {
-		return null;
-	}
+	public void setDivisor(final EvaluableExpression expression) {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableExpressionVisitor)
-	 */
-	@Override
-	public void receive(final EvaluableExpressionVisitor visitor) {
-
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
-	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
 	}
 
 }

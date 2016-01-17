@@ -2,19 +2,22 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that executes a sine function on its contained expression.
- * 
+ *
  * @author Annika Berger
  *
  */
 public class SineExpression implements EvaluableExpression {
 
-	/**
-	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression The expression to be the argument.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setArgument(final EvaluableExpression expression) {
-
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
@@ -37,16 +40,13 @@ public class SineExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param expression The expression to be the argument.
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setArgument(final EvaluableExpression expression) {
+
 	}
 
 }

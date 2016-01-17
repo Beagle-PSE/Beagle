@@ -2,36 +2,21 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that potentises the given exponent to the given base.
- * 
+ *
  * @author Annika Berger
  */
 public class ExponentationExpression implements EvaluableExpression {
 
-	/**
-	 * Set an {@link EvaluableExpression} as exponent.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression This expression's exponent.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setExponent(final EvaluableExpression expression) {
-
-	}
-
-	/**
-	 * Set an {@link EvaluableExpression} as base.
-	 *
-	 * @param expression This expression's base.
-	 */
-	public void setBase(final EvaluableExpression expression) {
-
-	}
-
-	/**
-	 * Get the {@link EvaluableExpression} which is set as exponent.
-	 *
-	 * @return The expression's exponent.
-	 */
-	public EvaluableExpression getExponent() {
-		return null;
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
@@ -40,6 +25,15 @@ public class ExponentationExpression implements EvaluableExpression {
 	 * @return The expression's base.
 	 */
 	public EvaluableExpression getBase() {
+		return null;
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is set as exponent.
+	 *
+	 * @return The expression's exponent.
+	 */
+	public EvaluableExpression getExponent() {
 		return null;
 	}
 
@@ -54,16 +48,22 @@ public class ExponentationExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set an {@link EvaluableExpression} as base.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param expression This expression's base.
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setBase(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Set an {@link EvaluableExpression} as exponent.
+	 *
+	 * @param expression This expression's exponent.
+	 */
+	public void setExponent(final EvaluableExpression expression) {
+
 	}
 
 }

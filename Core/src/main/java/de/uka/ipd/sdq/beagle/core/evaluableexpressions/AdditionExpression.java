@@ -32,16 +32,6 @@ public class AdditionExpression implements EvaluableExpression {
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableExpressionVisitor)
-	 */
-	@Override
-	public void receive(final EvaluableExpressionVisitor visitor) {
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
 	 * @see
 	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
 	 * beagle. core.expressions.EvaluableVariableAssignment)
@@ -49,5 +39,15 @@ public class AdditionExpression implements EvaluableExpression {
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return 0;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 */
+	@Override
+	public void receive(final EvaluableExpressionVisitor visitor) {
 	}
 }

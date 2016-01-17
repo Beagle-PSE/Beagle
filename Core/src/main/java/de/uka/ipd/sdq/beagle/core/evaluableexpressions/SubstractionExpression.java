@@ -2,39 +2,22 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that subtracts a subtrahend from a minuend.
- * 
+ *
  * @author Annika Berger
  *
  */
 public class SubstractionExpression implements EvaluableExpression {
 
-	/**
-	 * Set an {@link EvaluableExpression} as substrahend of the
-	 * {@code SubstractionExpression}.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression The expression to be the substrahend.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setSubtrahend(final EvaluableExpression expression) {
-
-	}
-
-	/**
-	 * Get the {@link EvaluableExpression} which is the substrahend.
-	 *
-	 * @return This expression's substrahend.
-	 */
-	public EvaluableExpression getSubstrahend() {
-		return null;
-	}
-
-	/**
-	 * Set an {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}
-	 * .
-	 *
-	 * @param expression The expression to be the minuend.
-	 */
-	public void setMinuend(final EvaluableExpression expression) {
-
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
@@ -43,6 +26,15 @@ public class SubstractionExpression implements EvaluableExpression {
 	 * @return This expression's minuend.
 	 */
 	public EvaluableExpression getMinuend() {
+		return null;
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is the substrahend.
+	 *
+	 * @return This expression's substrahend.
+	 */
+	public EvaluableExpression getSubstrahend() {
 		return null;
 	}
 
@@ -57,16 +49,24 @@ public class SubstractionExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set an {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}
+	 * .
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param expression The expression to be the minuend.
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setMinuend(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Set an {@link EvaluableExpression} as substrahend of the
+	 * {@code SubstractionExpression}.
+	 *
+	 * @param expression The expression to be the substrahend.
+	 */
+	public void setSubtrahend(final EvaluableExpression expression) {
+
 	}
 
 }

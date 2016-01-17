@@ -2,42 +2,28 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that compares both its contained expressions.
- * 
+ *
  * @author Annika Berger
  *
  */
 public class ComparisonExpression implements EvaluableExpression {
 
-	/**
-	 * Set the {@link EvaluableExpression} which is supposed to be the smaller one in the
-	 * comparison.
-	 * 
-	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
-	 * smaller and {@code e2} as greater expression.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression which is supposed to be the smaller one
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setSmaller(final EvaluableExpression expression) {
-
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} which is supposed to be the greater one in the
-	 * comparison.
-	 * 
-	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
-	 * smaller and {@code e2} as greater expression.
-	 * 
-	 * @param expression which is supposed to be the greater one
-	 */
-	public void setGreater(final EvaluableExpression expression) {
-
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
 	 * Get the {@link EvaluableExpression} which is supposed to be the greater one in the
 	 * comparison.
-	 * 
+	 *
 	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
 	 * smaller and {@code e2} as greater expression.
 	 *
@@ -50,7 +36,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	/**
 	 * Get the {@link EvaluableExpression} which is supposed to be the smaller one in the
 	 * comparison.
-	 * 
+	 *
 	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
 	 * smaller and {@code e2} as greater expression.
 	 *
@@ -71,16 +57,30 @@ public class ComparisonExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set the {@link EvaluableExpression} which is supposed to be the greater one in the
+	 * comparison.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
+	 *
+	 * @param expression which is supposed to be the greater one
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setGreater(final EvaluableExpression expression) {
+
+	}
+
+	/**
+	 * Set the {@link EvaluableExpression} which is supposed to be the smaller one in the
+	 * comparison.
+	 *
+	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
+	 *
+	 * @param expression which is supposed to be the smaller one
+	 */
+	public void setSmaller(final EvaluableExpression expression) {
+
 	}
 
 }

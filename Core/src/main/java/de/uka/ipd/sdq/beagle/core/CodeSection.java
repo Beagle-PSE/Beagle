@@ -47,27 +47,6 @@ public class CodeSection implements Serializable {
 	}
 
 	/**
-	 * Gets the file that contains this section’s first statement.
-	 *
-	 * @return The file containing this section’s first statement. Will never be
-	 *         {@code null}.
-	 */
-	public File getStartFile() {
-		return null;
-	}
-
-	/**
-	 * Gets the index of the first statement in this code section. Counting starts at 0.
-	 * The number thus describes how many statements precede the section’s first statement
-	 * in the {@linkplain #getStartFile() start source code file}.
-	 *
-	 * @return The first statement’s index. A positive integer or 0.
-	 */
-	public int getStartSectionIndex() {
-		return 0;
-	}
-
-	/**
 	 * Gets the file that contains this section’s last statement.
 	 *
 	 * @return The file containing this section’s last statement. Will never be
@@ -85,6 +64,27 @@ public class CodeSection implements Serializable {
 	 * @return The last statement’s index. A positive integer or 0.
 	 */
 	public int getEndSectionIndex() {
+		return 0;
+	}
+
+	/**
+	 * Gets the file that contains this section’s first statement.
+	 *
+	 * @return The file containing this section’s first statement. Will never be
+	 *         {@code null}.
+	 */
+	public File getStartFile() {
+		return null;
+	}
+
+	/**
+	 * Gets the index of the first statement in this code section. Counting starts at 0.
+	 * The number thus describes how many statements precede the section’s first statement
+	 * in the {@linkplain #getStartFile() start source code file}.
+	 *
+	 * @return The first statement’s index. A positive integer or 0.
+	 */
+	public int getStartSectionIndex() {
 		return 0;
 	}
 

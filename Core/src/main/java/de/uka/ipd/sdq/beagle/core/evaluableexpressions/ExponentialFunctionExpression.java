@@ -2,19 +2,22 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that potentises the given exponent to the base e (Euler’s number).
- * 
+ *
  * @author Annika Berger
  *
  */
 public class ExponentialFunctionExpression implements EvaluableExpression {
 
-	/**
-	 * Set an {@link EvaluableExpression} as exponent.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression This expression's exponent.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setExponent(final EvaluableExpression expression) {
-
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
@@ -37,16 +40,13 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set an {@link EvaluableExpression} as exponent.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param expression This expression's exponent.
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setExponent(final EvaluableExpression expression) {
+
 	}
 
 }

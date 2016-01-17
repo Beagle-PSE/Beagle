@@ -2,10 +2,22 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * An {@link EvaluableExpression} representing a named variable.
- * 
+ *
  * @author Annika Berger
  */
 public class EvaluableVariable implements EvaluableExpression {
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 */
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
+	}
 
 	/**
 	 * Get this evaluable varibale's name.
@@ -14,14 +26,6 @@ public class EvaluableVariable implements EvaluableExpression {
 	 */
 	public String getName() {
 		return null;
-	}
-
-	/**
-	 * Names this evaluable variable.
-	 *
-	 * @param name This variable's name. Must not be {@code null}.
-	 */
-	public void setName(final String name) {
 	}
 
 	/*
@@ -34,16 +38,12 @@ public class EvaluableVariable implements EvaluableExpression {
 	public void receive(final EvaluableExpressionVisitor visitor) {
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Names this evaluable variable.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param name This variable's name. Must not be {@code null}.
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setName(final String name) {
 	}
 
 }

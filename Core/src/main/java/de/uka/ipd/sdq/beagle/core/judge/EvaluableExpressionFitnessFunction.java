@@ -20,6 +20,21 @@ public interface EvaluableExpressionFitnessFunction {
 
 	/**
 	 * Judges how well {@code expression} fits to describe the measurement results of
+	 * {@code parameter}.
+	 *
+	 * @param parameter An external call parameter.
+	 * @param expression A expression proposed to describe {@code parameter}’s measurement
+	 *            results.
+	 * @param blackboard Beagle’s blackboard instance.
+	 * @return A value judging how well {@code expression} fits to describe the
+	 *         measurement results of {@code parameter}. Will be a value between 0 and
+	 *         {@link Double#MAX_VALUE}. The lower the value, the better the fitness.
+	 */
+	double gradeFor(ExternalCallParameter parameter, EvaluableExpression expression,
+		EvaluableExpressionFitnessFunctionBlackboardView blackboard);
+
+	/**
+	 * Judges how well {@code expression} fits to describe the measurement results of
 	 * {@code rdia}.
 	 *
 	 * @param rdia A resource demanding internal action.
@@ -61,20 +76,5 @@ public interface EvaluableExpressionFitnessFunction {
 	 *         {@link Double#MAX_VALUE}. The lower the value, the better the fitness.
 	 */
 	double gradeFor(SeffLoop loop, EvaluableExpression expression,
-		EvaluableExpressionFitnessFunctionBlackboardView blackboard);
-
-	/**
-	 * Judges how well {@code expression} fits to describe the measurement results of
-	 * {@code parameter}.
-	 *
-	 * @param parameter An external call parameter.
-	 * @param expression A expression proposed to describe {@code parameter}’s measurement
-	 *            results.
-	 * @param blackboard Beagle’s blackboard instance.
-	 * @return A value judging how well {@code expression} fits to describe the
-	 *         measurement results of {@code parameter}. Will be a value between 0 and
-	 *         {@link Double#MAX_VALUE}. The lower the value, the better the fitness.
-	 */
-	double gradeFor(ExternalCallParameter parameter, EvaluableExpression expression,
 		EvaluableExpressionFitnessFunctionBlackboardView blackboard);
 }

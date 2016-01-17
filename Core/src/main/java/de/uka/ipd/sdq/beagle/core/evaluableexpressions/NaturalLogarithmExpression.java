@@ -8,14 +8,16 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  */
 public class NaturalLogarithmExpression implements EvaluableExpression {
 
-	/**
-	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
-	 * {@code LogarithmExpression}.
+	/*
+	 * (non-Javadoc)
 	 *
-	 * @param expression The expression to be the antilogarithm.
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
 	 */
-	public void setAnitlogarithm(final EvaluableExpression expression) {
-
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		return 0;
 	}
 
 	/**
@@ -39,16 +41,14 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
+	 * {@code LogarithmExpression}.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
-	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 * @param expression The expression to be the antilogarithm.
 	 */
-	@Override
-	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+	public void setAnitlogarithm(final EvaluableExpression expression) {
+
 	}
 
 }

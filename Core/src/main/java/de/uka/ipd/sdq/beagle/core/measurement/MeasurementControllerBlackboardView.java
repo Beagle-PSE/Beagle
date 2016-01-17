@@ -26,6 +26,79 @@ import java.util.Set;
 public class MeasurementControllerBlackboardView {
 
 	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(ExternalCallParameter, ParameterChangeMeasurementResult)}
+	 * .
+	 *
+	 * @param parameter An external call parameter which was measured. Must not be
+	 *            {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ExternalCallParameter parameter,
+		final ParameterChangeMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
+	 * .
+	 *
+	 * @param rdia A resource demanding internal action that was measured. Must not be
+	 *            {@code null} .
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+		final ResourceDemandMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(SeffBranch, BranchDecisionMeasurementResult)}
+	 * .
+	 *
+	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(SeffLoop, LoopRepetitionCountMeasurementResult)}
+	 * .
+	 *
+	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()}
+	 * .
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} which shall
+	 *         be measured. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
+	 */
+	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
+		return null;
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
+	 *
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
+	 */
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		return null;
+	}
+
+	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
 	 *
 	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
@@ -58,79 +131,6 @@ public class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return null;
-	}
-
-	/**
-	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()}
-	 * .
-	 *
-	 * @return All {@linkplain ExternalCallParameter external call parameters} which shall
-	 *         be measured. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
-	 */
-	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
-		return null;
-	}
-
-	/**
-	 * Delegates to
-	 * {@link Blackboard#addMeasurementResultFor(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
-	 * .
-	 *
-	 * @param rdia A resource demanding internal action that was measured. Must not be
-	 *            {@code null} .
-	 * @param results The result of that measurement. Must not be {@code null}.
-	 */
-	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
-		final ResourceDemandMeasurementResult results) {
-	}
-
-	/**
-	 * Delegates to
-	 * {@link Blackboard#addMeasurementResultFor(SeffLoop, LoopRepetitionCountMeasurementResult)}
-	 * .
-	 *
-	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
-	 * @param results The result of that measurement. Must not be {@code null}.
-	 */
-	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
-	}
-
-	/**
-	 * Delegates to
-	 * {@link Blackboard#addMeasurementResultFor(SeffBranch, BranchDecisionMeasurementResult)}
-	 * .
-	 *
-	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
-	 * @param results The result of that measurement. Must not be {@code null}.
-	 */
-	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
-	}
-
-	/**
-	 * Delegates to
-	 * {@link Blackboard#addMeasurementResultFor(ExternalCallParameter, ParameterChangeMeasurementResult)}
-	 * .
-	 *
-	 * @param parameter An external call parameter which was measured. Must not be
-	 *            {@code null}.
-	 * @param results The result of that measurement. Must not be {@code null}.
-	 */
-	public void addMeasurementResultFor(final ExternalCallParameter parameter,
-		final ParameterChangeMeasurementResult results) {
-	}
-
-	/**
-	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
-	 *
-	 * @return An object which holds and is responsible allows access to the fitness
-	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
-	 *         regarding their fitness.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
-	 */
-	public EvaluableExpressionFitnessFunction getFitnessFunction() {
 		return null;
 	}
 

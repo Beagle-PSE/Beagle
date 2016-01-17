@@ -34,14 +34,6 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public interface EvaluableExpression {
 
 	/**
-	 * Calls the appropriate overload of {@link EvaluableExpressionVisitor#visit} on
-	 * {@code visitor}. This implements the well-known <em>visitor pattern</em>.
-	 *
-	 * @param visitor The visitor wishing to visit this expression.
-	 */
-	void receive(EvaluableExpressionVisitor visitor);
-
-	/**
 	 * Calculates this expression’s value for the given {@code variableAssignments}.
 	 *
 	 * @param variableAssignments must assign a value to at least all
@@ -51,4 +43,12 @@ public interface EvaluableExpression {
 	 *             contain a valid assignment for a contained variable.
 	 */
 	double evaluate(EvaluableVariableAssignment variableAssignments);
+
+	/**
+	 * Calls the appropriate overload of {@link EvaluableExpressionVisitor#visit} on
+	 * {@code visitor}. This implements the well-known <em>visitor pattern</em>.
+	 *
+	 * @param visitor The visitor wishing to visit this expression.
+	 */
+	void receive(EvaluableExpressionVisitor visitor);
 }

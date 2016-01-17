@@ -3,7 +3,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 /**
  * Provides methods to visit all evaluable expressions. Implements the well known Visitor
  * Pattern.
- * 
+ *
  * @author Annika Berger
  * @see <a href="https://en.wikipedia.org/wiki/Visitor_pattern">The Visitor Pattern on
  *      Wikipedia</a>
@@ -17,20 +17,6 @@ public interface EvaluableExpressionVisitor {
 	 * @param expression The visited expression.
 	 */
 	void visit(AdditionExpression expression);
-
-	/**
-	 * Called if the visited expression is a {@link MultiplicationExpression}.
-	 *
-	 * @param expression The visited expression.
-	 */
-	void visit(MultiplicationExpression expression);
-
-	/**
-	 * Called if the visited expression is a {@link EvaluableVariable}.
-	 *
-	 * @param variable The visited expression.
-	 */
-	void visit(EvaluableVariable variable);
 
 	/**
 	 * Called if the visited expression is a {@link ComparisonExpression}.
@@ -52,6 +38,13 @@ public interface EvaluableExpressionVisitor {
 	 * @param expression The visited expression.
 	 */
 	void visit(DivisionExpression expression);
+
+	/**
+	 * Called if the visited expression is a {@link EvaluableVariable}.
+	 *
+	 * @param variable The visited expression.
+	 */
+	void visit(EvaluableVariable variable);
 
 	/**
 	 * Called if the visited expression is a {@link ExponentationExpression}.
@@ -80,6 +73,13 @@ public interface EvaluableExpressionVisitor {
 	 * @param expression The visited expression.
 	 */
 	void visit(LogarithmExpression expression);
+
+	/**
+	 * Called if the visited expression is a {@link MultiplicationExpression}.
+	 *
+	 * @param expression The visited expression.
+	 */
+	void visit(MultiplicationExpression expression);
 
 	/**
 	 * Called if the visited expression is a {@link NaturalLogarithmExpression}.
