@@ -24,6 +24,10 @@ to import existing, component-based software into [Palladio](http://www.palladio
 	{{#> title}}Implementation Plan{{/title}}
 	{{#> description}}Roadmap for Beagle’s implementation.{{/description}} 
 {{/artefact}}
+{{#> artefact link=paths.implementationReport type="pdf"}}
+	{{#> title}}Implementation Report{{/title}}
+	{{#> description}}Documentation of Beagle’s implementation.{{/description}} 
+{{/artefact}}
 ## Reports
 {{#> artefact link="coverage" type="html"}}
 	{{#> title}}Test Coverage{{/title}}
