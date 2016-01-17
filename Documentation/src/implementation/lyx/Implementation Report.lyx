@@ -1,0 +1,313 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass sdqthesis
+\begin_preamble
+% Rewrite the title template to fit our needs (as we're not writing a thesis,
+% some things simply make no sense.
+\renewcommand{\settitle}{%
+    \publishers{%
+    \large
+    \iflanguage{english}
+        {at the Department of Informatics}%
+        {an der Fakultät für Informatik}\\
+    \theinstitute\\[2em]
+    \begin{tabular}{l l}
+        \iflanguage{english}{Reviewer}{Erstgutachter}: & \thereviewerone\\
+        \iflanguage{english}{Advisor}{Betreuender Mitarbeiter}: &  \theadvisorone\\
+        % if there is no second advisor, do not output this line
+        \ifthenelse{\equal{\theadvisortwo}{}}{}{%
+            \iflanguage{english}{Second advisor}{Zweiter betreuender Mitarbeiter}: & \theadvisortwo\\
+        }
+    \end{tabular}
+    }
+}
+
+% Metadata
+\reviewerone{Jun.-Prof. Dr.-Ing. Anne Koziolek}
+\advisorone{M.Sc. Axel Busch}
+\advisortwo{M.Sc. Michael Langhammer}
+\settitle
+
+% \todo is deprecated!
+\renewcommand\todo{\errmessage{TODO tags are not supported anymore. Please use GitHub issues!}}
+
+% Packages for floating images
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage[all]{hypcap}
+
+% Make floats work batter with Koma book
+\usepackage{scrhack}
+
+% No page numbers for the title pages
+\pagenumbering{gobble}
+
+% Adding package bookmark improves bookmarks handling.
+% More features and faster updated bookmarks.
+\usepackage{bookmark}
+
+% Set the PDF metadata
+\hypersetup{
+    pdftitle={Beagle --- Implementation report},
+    pdfsubject={Beagle is a tool for automatic dynamic source code analysis in order to find resource demands of component based software’s components’ internal actions.},
+    pdfauthor={Annika Berger, Joshua Gleitze, Roman Langrehr, Christoph Michelbach, Ansgar Spiegler, Michael Vogt},
+    pdfkeywords={component based software, dynamic analysis, reverse engeneering, resource demands, SoMoX, Beagle, Palladio, Eclipse, Kieker},
+    pdfcreator={LyX, pdflatex},
+    pdfproducer={LaTeX},
+    hidelinks,
+    breaklinks
+}
+\end_preamble
+\options english,final
+\use_default_options true
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children false
+\language british
+\language_package auto
+\inputencoding utf8
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement tph
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\listings_params "basicstyle={\ttfamily},breaklines=true"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Beagle
+\end_layout
+
+\begin_layout Subtitle
+Implementation Report
+\end_layout
+
+\begin_layout Date
+14th of February 2016
+\end_layout
+
+\begin_layout Author
+Annika Berger, Joshua Gleitze, Roman Langrehr,
+\begin_inset Newline newline
+\end_inset
+
+Christoph Michelbach, Ansgar Spiegler, Michael Vogt
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Start the page numbering in roman numbers
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Don't add blank pages in the toc section
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KOMAoptions{open=any}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% If ever needed, describe separation hints here.
+\end_layout
+
+\begin_layout Plain Layout
+
+% For more details, see  http://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphen
+ation
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hyphenation{me-ta-mo-del} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% bookmark for toc
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pdfbookmark[section]{
+\backslash
+contentsname}{toc}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Start the main document (includes new numbering in arabic numbers)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+mainmatter
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Enabling to only start chapters on the right again.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+KOMAoptions{open=right}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Design changes
+\end_layout
+
+\begin_layout Chapter
+Implemented Tasks
+\end_layout
+
+\begin_layout Section
+Mandatory Tasks
+\end_layout
+
+\begin_layout Section
+Optional Taks
+\end_layout
+
+\begin_layout Chapter
+Delays
+\end_layout
+
+\begin_layout Chapter
+Unit Tests
+\end_layout
+
+\end_body
+\end_document
