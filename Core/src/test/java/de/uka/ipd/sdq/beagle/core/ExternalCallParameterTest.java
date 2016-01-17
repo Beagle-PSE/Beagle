@@ -26,15 +26,15 @@ public class ExternalCallParameterTest {
 	 * Test method for
 	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#ExternalCallParameter(de.uka.ipd.sdq.beagle.core.CodeSection, int)}
 	 * .
-	 * 
-	 * <p>Asserts that instanziation is positive for Code sections and a positive index,
+	 *
+	 * <p>Asserts that instantiation is positive for Code sections and a positive index,
 	 * while entering a negative index throws an exception.
 	 */
 	@Test
 	public void testExternalCallParameter() {
 		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
 		int index = 0;
-		for (CodeSection call : codeSections) {
+		for (final CodeSection call : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(call, index);
 			assertThat(externalCallP.getCallCodeSection(), is(theInstance(call)));
 			index++;
@@ -58,7 +58,7 @@ public class ExternalCallParameterTest {
 	@Test
 	public void testGetCallCodeSection() {
 		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, 1);
 			assertThat(externalCallP.getCallCodeSection(), is(equalTo(codeSection)));
 		}
@@ -72,7 +72,7 @@ public class ExternalCallParameterTest {
 	public void testGetIndex() {
 		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
 		final int[] indizes = {1, 6, 100, 0, 1000, 9949};
-		for (int index : indizes) {
+		for (final int index : indizes) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSections[0], index);
 			assertThat(externalCallP.getIndex(), is(equalTo(index)));
 		}
@@ -102,7 +102,7 @@ public class ExternalCallParameterTest {
 	@Test
 	public void testToString() {
 		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, 1);
 			assertThat(externalCallP.toString(), not(startsWith("ExternalCallParameter@")));
 		}
