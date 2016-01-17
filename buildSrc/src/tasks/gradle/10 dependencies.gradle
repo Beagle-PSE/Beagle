@@ -1,5 +1,7 @@
 /**
- * Enhancement for gradle’s dependencies task to download all dependencies neede by and project through it.
+ * Enhancement for gradle’s dependencies task to download all dependencies needed by any project.
+ *
+ * @author Joshua Gleitze
  */
  
 task alldependencies << {
