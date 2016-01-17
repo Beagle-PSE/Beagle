@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beage.core.SeffBranch} and contains all test cases needed
+ * Tests {@link de.uka.ipd.sdq.beagle.core.SeffBranch} and contains all test cases needed
  * to check every method.
  *
  * @author Annika Berger
@@ -74,7 +74,8 @@ public class SeffBranchTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#equals()}.
+	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#equals()} and
+	 * {@link de.uka.ipd.sdq.beagle.core.SeffBranch#hashCode()}.
 	 *
 	 * <p>Asserts that two SeffBranches inizialised with a Set containing the same code
 	 * sections are equal while inizialised with Sets containing different code sections
@@ -82,7 +83,7 @@ public class SeffBranchTest {
 	 * {@link CodeSectionFactory}.
 	 */
 	@Test
-	public void testEquals() {
+	public void testEqualsAndHashCode() {
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
 		final Set<CodeSection> codeSectionsC = new HashSet<>();
@@ -100,6 +101,7 @@ public class SeffBranchTest {
 			final SeffBranch branchC = new SeffBranch(codeSectionsC);
 
 			assertThat(branchB, is(equalTo(branchA)));
+			assertThat(branchB.hashCode(), is(equalTo(branchA.hashCode())));
 			assertThat(branchC, is(not(equalTo(branchA))));
 		} else {
 			fail("There have to be minimum three CodeSections in the CodeSectionFactory to test this method properly.");

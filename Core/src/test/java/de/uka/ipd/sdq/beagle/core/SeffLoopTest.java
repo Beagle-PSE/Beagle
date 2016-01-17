@@ -12,7 +12,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beage.core.SeffLoop} and contains all test cases needed to
+ * Tests {@link de.uka.ipd.sdq.beagle.core.SeffLoop} and contains all test cases needed to
  * check every method.
  *
  * @author Annika Berger
@@ -38,13 +38,14 @@ public class SeffLoopTest {
 	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffLoop#equals()}.
 	 */
 	@Test
-	public void testEquals() {
+	public void testEqualsAndHashCode() {
 		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
 		final SeffLoop loop = new SeffLoop(codeSections[0]);
 		final SeffLoop loopB = new SeffLoop(codeSections[1]);
 		final SeffLoop loopC = new SeffLoop(codeSections[0]);
 		assertThat(loop, is(not(equalTo(loopB))));
 		assertThat(loop, is(equalTo(loopC)));
+		assertThat(loop.hashCode(), is(equalTo(loopC.hashCode())));
 	}
 
 	/**

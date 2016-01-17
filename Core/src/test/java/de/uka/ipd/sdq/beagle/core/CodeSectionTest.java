@@ -15,7 +15,7 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beage.core.CodeSection} and contains all test cases needed
+ * Tests {@link de.uka.ipd.sdq.beagle.core.CodeSection} and contains all test cases needed
  * to check every method.
  *
  * @author Annika Berger
@@ -75,7 +75,7 @@ public class CodeSectionTest {
 	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#equals()}.
 	 **/
 	@Test
-	public void testEquals() {
+	public void testEqualsAndHashCode() {
 		final File file =
 			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
@@ -94,8 +94,9 @@ public class CodeSectionTest {
 		final int endCodeLineA = 15;
 		final CodeSection codeSectionA = new CodeSection(fileA, startCodeLineA, fileA, endCodeLineA);
 
-		assertThat(codeSection.equals(codeSectionA), is(equalTo(true)));
-		assertThat(codeSection.equals(secCodeSection), is(equalTo(false)));
+		assertThat(codeSection, is(equalTo(codeSectionA)));
+		assertThat(codeSection.hashCode(), is(equalTo(codeSectionA.hashCode())));
+		assertThat(codeSection, is(not(equalTo(secCodeSection))));
 	}
 
 	/**

@@ -14,7 +14,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction} and contains
+ * Tests {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction} and contains
  * all test cases needed to check every method.
  *
  * @author Annika Berger
@@ -23,11 +23,12 @@ public class ResourceDemandingInternalActionTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#equals()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#equals()} and
+	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#hashCode()}.
 	 *
 	 */
 	@Test
-	public void testEquals() {
+	public void testEqualsAndHashCode() {
 		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
 		final CodeSection codeSection = codeSections[0];
 		final ResourceDemandingInternalAction rdia =
@@ -42,12 +43,13 @@ public class ResourceDemandingInternalActionTest {
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSec);
 
 		assertThat(rdia, is(equalTo(rdia2)));
+		assertThat(rdia.hashCode(), is(equalTo(rdia2.hashCode())));
 		assertThat(rdia, is(not(equalTo(rdia1))));
 	}
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#getAction()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#getAction()}.
 	 *
 	 */
 	@Test
@@ -66,7 +68,7 @@ public class ResourceDemandingInternalActionTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#getResourceType()}
+	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#getResourceType()}
 	 * .
 	 *
 	 */
@@ -136,7 +138,7 @@ public class ResourceDemandingInternalActionTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beage.core.ResourceDemandingInternalAction#toString()}.
+	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#toString()}.
 	 *
 	 */
 	@Test

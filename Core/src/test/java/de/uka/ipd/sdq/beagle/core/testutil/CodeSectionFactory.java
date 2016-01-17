@@ -58,7 +58,7 @@ public final class CodeSectionFactory {
 	 */
 	public static CodeSection[] getAllCodeSections() {
 		final CodeSection[] codeSections =
-			{new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, TEST_FILE, TESTFILE_ENDINDEX),
+		{new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, TEST_FILE, TESTFILE_ENDINDEX),
 			new CodeSection(PINGPONG, PINGPONG_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX),
 			new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX)
 
