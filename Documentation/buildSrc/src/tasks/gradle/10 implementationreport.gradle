@@ -1,0 +1,16 @@
+/**
+ * Tasks to build the Implementation Report
+ *
+ * @author Roman Langrehr
+ */
+ 
+task implementationreport(type: LyXRenderTask) {
+	group 'Documentation'
+	description 'Renders the Implementation Report.'
+	
+	from files("$projectDir/src/implementation")
+	document "lyx/Implementation Report.lyx"
+	into buildDir
+}
+
+build.dependsOn implementationreport
