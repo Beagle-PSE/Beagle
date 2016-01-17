@@ -87,9 +87,8 @@ configure(javaSubprojects) {
 configure(javaSubprojects - prototypeSubprojects) {
 	qc.dependsOn verifyTestCoverage
 	
-	checkstyle {
-		configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle.xml")
-	}
+	checkstyleMain.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle.xml")
+	checkstyleTest.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle Test.xml")
 }
 
 configure(prototypeSubprojects.intersect(javaSubprojects)){
