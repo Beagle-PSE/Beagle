@@ -24,28 +24,28 @@ public class DemoBeagleContextMenuEntryHandlerForInternalActions extends Abstrac
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
-		final IStructuredSelection stucteredSelection = (IStructuredSelection) selection;
+		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
-		// prepare the list of components
-		final List<String> components = new LinkedList<String>();
-		for (final Object guiObject : stucteredSelection.toList()) {
+		// prepare the list of internal actions
+		final List<String> internalActions = new LinkedList<String>();
+		for (final Object clickObject : structuredSelection.toList()) {
 			String displayString = null;
-			if (guiObject instanceof InternalActionEditPart) {
-				final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) guiObject;
+			if (clickObject instanceof InternalActionEditPart) {
+				final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) clickObject;
 				displayString =
 					internalActionEditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();
 			} else {
-				assert guiObject instanceof InternalAction2EditPart;
-				final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) guiObject;
+				assert clickObject instanceof InternalAction2EditPart;
+				final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) clickObject;
 				displayString =
 					internalAction2EditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();
 			}
-			final String component = displayString;
-			components.add(component);
+			final String internalAction = displayString;
+			internalActions.add(internalAction);
 		}
 
 		// create a new GUI and open it
-		final GuiController guiController = new GuiController(components);
+		final GuiController guiController = new GuiController(internalActions);
 		guiController.open();
 		return null;
 	}

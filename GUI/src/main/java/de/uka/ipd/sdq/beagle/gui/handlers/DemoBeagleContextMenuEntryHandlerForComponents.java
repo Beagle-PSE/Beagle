@@ -25,15 +25,14 @@ public class DemoBeagleContextMenuEntryHandlerForComponents extends AbstractHand
 		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
-		final BasicComponentEditPart basicComponentEditPart =
-			(BasicComponentEditPart) structuredSelection.getFirstElement();
-
-		// prepare the list of components
-		final String component =
-			basicComponentEditPart.getPrimaryShape().getFigureBasicComponent_Name_LabelFigure().getText();
 		final List<String> components = new LinkedList<String>();
-		components.add(component);
-
+		for (final Object clickObject : structuredSelection.toList()) {
+			final BasicComponentEditPart basicComponentEditPart = (BasicComponentEditPart) clickObject;
+			// prepare the list of components
+			final String component =
+				basicComponentEditPart.getPrimaryShape().getFigureBasicComponent_Name_LabelFigure().getText();
+			components.add(component);
+		}
 		// create a new GUI and open it
 		final GuiController guiController = new GuiController(components);
 		guiController.open();
