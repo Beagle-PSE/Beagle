@@ -48,7 +48,7 @@ mkdir -p $SVN
 cd $SVN
 
 # Check out from SVN
-svn checkout $SVN_URL $SVN --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive 
+svn checkout $SVN_URL $SVN --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive --quiet
 
 # Remove all content - except the svn files
 find . -maxdepth 1 \! \( -name .svn -o -name . \) -exec rm -rf {} \;
@@ -63,7 +63,7 @@ rm -rf .git **/.gradle .gradle
 svn add . --force --non-interactive
 
 # Remove all removed files from the index (source: http://stackoverflow.com/questions/11066296/svn-delete-removed-files)
-svn st | grep '^!' | awk '{$1=""; print " --force \""substr($0,2)"@\"" }' | xargs svn delete
+svn st | grep '^!' | awk '{$1=""; print " --force \""substr($0,2)"@\"" }' | xargs --no-run-if-empty svn delete
 
 svn commit -m "Automatic Travis update from https://github.com/Beagle-PSE/Beagle.git" --username $SVN_USER --password "$SVN_PASSWORD" --non-interactive
 
