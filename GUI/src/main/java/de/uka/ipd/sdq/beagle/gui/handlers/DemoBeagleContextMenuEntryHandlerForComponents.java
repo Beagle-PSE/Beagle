@@ -8,7 +8,6 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import java.util.LinkedList;
@@ -25,9 +24,9 @@ public class DemoBeagleContextMenuEntryHandlerForComponents extends AbstractHand
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+
 		final BasicComponentEditPart basicComponentEditPart =
 			(BasicComponentEditPart) structuredSelection.getFirstElement();
-		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 
 		// prepare the list of components
 		final String component =
