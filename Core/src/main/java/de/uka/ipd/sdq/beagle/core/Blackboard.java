@@ -9,6 +9,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -66,6 +68,12 @@ public class Blackboard implements Serializable {
 	private EvaluableExpression finalExpression;
 
 	private EvaluableExpressionFitnessFunction fitnissFunction;
+
+	/**
+	 * Private data of tools, written through {@link #writeFor(Class, Serializable)}.
+	 */
+	private final Map<Class<? extends BlackboardStorer<? extends Serializable>>, Object> privateWrittenData =
+		new HashMap<>();
 
 	/**
 	 * Creates a new blackboard that can be used to analyse the given elements.
@@ -371,16 +379,26 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
-	 * Returns the final expression set for {@code element}. The return value of this
-	 * method may change if
-	 * {@link #setFinalExpressionFor(MeasurableSeffElement, EvaluableExpression)} is
-	 * called with the same {@code element} between calls to
-	 * {@code addProposedExpressionFor} with this element as parameter.
+	 * Reads data previously written for {@code writer} through
+	 * {@link #writeFor(Class, Serializable)}.
 	 *
-	 * @param element A SEFF element. Must not be {@code null}.
+	 * @param writer The class the desired data was written for. Must not be {@code null}.
+	 * @param <WRITTEN_TYPE> The type of the data to be read.
+	 * @return The data written in the last call to {@linkplain #writeFor} for
+	 *         {@code writer}. {@code null} if no data has been written for {@code writer}
+	 *         yet.
+	 * @see #writeFor(Class, Serializable)
 	 */
-	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
-		return finalExpression;
+	@SuppressWarnings("unchecked")
+	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
+		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
+		/*
+		 * This method performs a cast based on generics. While the cast can not be
+		 * checked by the JVM at runtime, type safety is assured by the signature of
+		 * {@link #writeFor}, which is the only metho writing data to {@link
+		 * #privateWrittenData}.
+		 */
+		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);
 	}
 
 	/**
@@ -425,6 +443,7 @@ public class Blackboard implements Serializable {
 	 */
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
+		this.privateWrittenData.put(writer, written);
 	}
 
 	/**
