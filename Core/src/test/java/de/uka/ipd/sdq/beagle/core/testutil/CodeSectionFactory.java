@@ -42,6 +42,14 @@ public final class CodeSectionFactory {
 	 * End Index of 'PingPong.java'.
 	 */
 	private static final int PINGPONG_ENDINDEX = 68;
+	
+	/**
+	 * Constructor, does not do anything.
+	 *
+	 */
+	private CodeSectionFactory() {
+
+	}
 
 	/**
 	 * Uses the in the class defined Files to create code section.
@@ -54,15 +62,8 @@ public final class CodeSectionFactory {
 				new CodeSection(PINGPONG, PINGPONG_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX)
 
 		};
-
 		return codeSections;
 	}
 
-	/**
-	 * Constructor, does not do anything.
-	 *
-	 */
-	private CodeSectionFactory() {
-
-	}
+	
 }

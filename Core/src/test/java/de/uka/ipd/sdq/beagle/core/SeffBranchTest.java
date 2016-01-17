@@ -78,7 +78,6 @@ public class SeffBranchTest {
 	public void testEquals() {
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
-		final Set<CodeSection> codeSectionsC = new HashSet<>();
 		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
 		if (codeSecs.length > 1) {
 			for (final CodeSection codeSection : codeSecs) {
@@ -86,13 +85,10 @@ public class SeffBranchTest {
 				codeSectionsB.add(codeSection);
 			}
 
-			codeSectionsC.add(codeSecs[0]);
 			final SeffBranch branch = new SeffBranch(codeSectionsA);
 			final SeffBranch branchB = new SeffBranch(codeSectionsB);
-			final SeffBranch branchC = new SeffBranch(codeSectionsC);
 
-			assertThat(branchC.equals(branch), is(equalTo(false)));
-			assertThat(branchB.equals(branch), is(equalTo(true)));
+			assertThat(branchB, is(equalTo(branch)));
 		} else {
 			fail("There have to be minimum two CodeSections in the CodeSectionFactory to test this method properly.");
 		}

@@ -34,26 +34,20 @@ public class CodeSectionTest {
 	@Test
 	public void testCodeSection() {
 		final File file =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
 		assertThat(codeSection.getStartFile(), is(theInstance(file)));
 
-		ThrowingMethod method = () -> {
-			new CodeSection(file, endCodeLine, file, startCodeLine);
-		};
-		assertThat("IllegalArgumentException expected for invalid input.", method,
-			throwsException(IllegalArgumentException.class));
-
 		final File notExistingFile =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/NotExisting.java").getPath());
-		method = () -> {
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/NotExisting.java").getPath());
+		ThrowingMethod method = () -> {
 			new CodeSection(notExistingFile, startCodeLine, notExistingFile, endCodeLine);
 		};
 		assertThat("IllegalArgumentException expected for invalid input.", method,
 			throwsException(IllegalArgumentException.class));
-		
+
 		final int invalidStartIndex = -4;
 		final int invalidEndIndex = -15;
 		final int invalidEndIndex2 = 300;
@@ -63,13 +57,13 @@ public class CodeSectionTest {
 		};
 		assertThat("IllegalArgumentException expected for invalid input (negativ start index).", method,
 			throwsException(IllegalArgumentException.class));
-		
+
 		method = () -> {
 			new CodeSection(file, startCodeLine, file, invalidEndIndex);
 		};
 		assertThat("IllegalArgumentException expected for invalid input (negativ end index).", method,
 			throwsException(IllegalArgumentException.class));
-		
+
 		method = () -> {
 			new CodeSection(file, startCodeLine, file, invalidEndIndex2);
 		};
@@ -83,19 +77,19 @@ public class CodeSectionTest {
 	@Test
 	public void testEquals() {
 		final File file =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
 
 		final File secFile =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").getPath());
 		final int startIndex = 60;
 		final int endIndex = 68;
 		final CodeSection secCodeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
 
 		final File fileA =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLineA = 4;
 		final int endCodeLineA = 15;
 		final CodeSection codeSectionA = new CodeSection(fileA, startCodeLineA, fileA, endCodeLineA);
@@ -110,14 +104,14 @@ public class CodeSectionTest {
 	@Test
 	public void testGetEndCodeLine() {
 		final File file =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
 		assertThat(codeSection.getEndSectionIndex(), is(endCodeLine));
 
 		final File secFile =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").getPath());
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
@@ -130,14 +124,14 @@ public class CodeSectionTest {
 	@Test
 	public void testGetEndFile() {
 		final File file =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
 		assertThat(codeSection.getEndFile(), is(theInstance(file)));
 
 		final File secFile =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").getPath());
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
@@ -153,14 +147,14 @@ public class CodeSectionTest {
 	@Test
 	public void testGetStartCodeLine() {
 		final File file =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
 		assertThat(codeSection.getStartSectionIndex(), is(startCodeLine));
 
 		final File secFile =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").getPath());
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
@@ -174,18 +168,18 @@ public class CodeSectionTest {
 	@Test
 	public void testGetStartFile() {
 		final File file =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
 		assertThat(codeSection.getStartFile(), is(theInstance(file)));
 
 		final File secFile =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").getPath());
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
-		assertThat(codeSection.getStartFile(), is(theInstance(file)));
+		assertThat(codeSection.getStartFile(), is(theInstance(secFile)));
 	}
 
 	/**
@@ -194,7 +188,7 @@ public class CodeSectionTest {
 	@Test
 	public void testToString() {
 		final File file =
-			new File(CodeSectionTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
+			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
