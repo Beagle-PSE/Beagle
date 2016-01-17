@@ -16,7 +16,7 @@ class HTMLFormatFilter extends BeagleWebFilter {
 	@Override
 	protected String getResultString() {
 		OutputSettings outputSettings = new OutputSettings()
-			.outline(true)
+			.outline(false)
 			.indentAmount(4)
 		return Jsoup.parse(this.inputString).outputSettings(outputSettings)
 	}
