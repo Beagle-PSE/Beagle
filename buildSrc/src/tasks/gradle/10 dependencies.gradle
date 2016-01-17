@@ -1,0 +1,13 @@
+/**
+ * Enhancement for gradle’s dependencies task to download all dependencies neede by and project through it.
+ */
+ 
+task alldependencies << {
+	subprojects.each { project ->
+		project.configurations.each { configuration ->
+			configuration.resolve()
+		}
+	}
+}
+
+project.tasks.getByName('dependencies').finalizedBy alldependencies
