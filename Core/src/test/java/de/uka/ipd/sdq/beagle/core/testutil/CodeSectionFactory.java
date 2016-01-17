@@ -42,7 +42,7 @@ public final class CodeSectionFactory {
 	 * End Index of 'PingPong.java'.
 	 */
 	private static final int PINGPONG_ENDINDEX = 68;
-	
+
 	/**
 	 * Constructor, does not do anything.
 	 *
@@ -59,11 +59,11 @@ public final class CodeSectionFactory {
 	public static CodeSection[] getAllCodeSections() {
 		final CodeSection[] codeSections =
 			{new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, TEST_FILE, TESTFILE_ENDINDEX),
-				new CodeSection(PINGPONG, PINGPONG_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX)
+			new CodeSection(PINGPONG, PINGPONG_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX),
+			new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX)
 
 		};
 		return codeSections;
 	}
 
-	
 }

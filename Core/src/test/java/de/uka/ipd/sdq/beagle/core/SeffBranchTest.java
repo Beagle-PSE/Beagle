@@ -49,13 +49,20 @@ public class SeffBranchTest {
 		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
 		codeSections.add(codeSecs[0]);
 
-		final SeffBranch branch = new SeffBranch(codeSections);
-		assertThat(branch.getBranches(), is(theInstance(codeSections)));
+		method = () -> {
+			new SeffBranch(codeSections);
+		};
+		assertThat("IllegalArgumentException expected for invalid input.", method,
+			throwsException(IllegalArgumentException.class));
 
-		for (int i = 1; i < codeSecs.length; i++) {
+		codeSections.add(codeSecs[1]);
+		final SeffBranch branch = new SeffBranch(codeSections);
+		final int amountBranches = 2;
+
+		for (int i = amountBranches; i < codeSecs.length; i++) {
 			codeSections.add(codeSecs[i]);
 		}
-		assertThat(branch.getBranches().size(), is(equalTo(1)));
+		assertThat(branch.getBranches().size(), is(equalTo(amountBranches)));
 
 		codeSections.add(null);
 		method = () -> {
@@ -78,19 +85,24 @@ public class SeffBranchTest {
 	public void testEquals() {
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
+		final Set<CodeSection> codeSectionsC = new HashSet<>();
 		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
-		if (codeSecs.length > 1) {
+		final int minAmount = 2;
+		if (codeSecs.length > minAmount) {
 			for (final CodeSection codeSection : codeSecs) {
 				codeSectionsA.add(codeSection);
 				codeSectionsB.add(codeSection);
 			}
-
-			final SeffBranch branch = new SeffBranch(codeSectionsA);
+			codeSectionsC.add(codeSecs[0]);
+			codeSectionsC.add(codeSecs[1]);
+			final SeffBranch branchA = new SeffBranch(codeSectionsA);
 			final SeffBranch branchB = new SeffBranch(codeSectionsB);
+			final SeffBranch branchC = new SeffBranch(codeSectionsC);
 
-			assertThat(branchB, is(equalTo(branch)));
+			assertThat(branchB, is(equalTo(branchA)));
+			assertThat(branchC, is(not(equalTo(branchA))));
 		} else {
-			fail("There have to be minimum two CodeSections in the CodeSectionFactory to test this method properly.");
+			fail("There have to be minimum three CodeSections in the CodeSectionFactory to test this method properly.");
 		}
 	}
 

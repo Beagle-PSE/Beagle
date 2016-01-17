@@ -43,8 +43,8 @@ public class SeffLoopTest {
 		final SeffLoop loop = new SeffLoop(codeSections[0]);
 		final SeffLoop loopB = new SeffLoop(codeSections[1]);
 		final SeffLoop loopC = new SeffLoop(codeSections[0]);
-		assertThat(loop.equals(loopB), is(equalTo(false)));
-		assertThat(loop.equals(loopC), is(equalTo(true)));
+		assertThat(loop, is(not(equalTo(loopB))));
+		assertThat(loop, is(equalTo(loopC)));
 	}
 
 	/**

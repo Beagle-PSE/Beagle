@@ -41,7 +41,7 @@ public class CodeSectionTest {
 		assertThat(codeSection.getStartFile(), is(theInstance(file)));
 
 		final File notExistingFile =
-			new File(CodeSectionTest.class.getResource("/de/uka/ipd/sdq/beagle/core/NotExisting.java").getPath());
+			new File("/de/uka/ipd/sdq/beagle/core/NotExisting.java");
 		ThrowingMethod method = () -> {
 			new CodeSection(notExistingFile, startCodeLine, notExistingFile, endCodeLine);
 		};

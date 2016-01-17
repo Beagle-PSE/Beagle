@@ -30,19 +30,19 @@ public class ResourceDemandingInternalActionTest {
 	public void testEquals() {
 		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
 		final CodeSection codeSection = codeSections[0];
-		final ResourceDemandingInternalAction rdia1 =
+		final ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
 
 		final CodeSection secCodeSection = codeSections[1];
-		final ResourceDemandingInternalAction rdia =
+		final ResourceDemandingInternalAction rdia1 =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
 
 		final CodeSection codeSec = codeSections[0];
 		final ResourceDemandingInternalAction rdia2 =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSec);
 
-		assertThat(rdia.equals(rdia1), is(equalTo(false)));
-		assertThat(rdia1.equals(rdia2), is(equalTo(true)));
+		assertThat(rdia, is(equalTo(rdia2)));
+		assertThat(rdia, is(not(equalTo(rdia1))));
 	}
 
 	/**
