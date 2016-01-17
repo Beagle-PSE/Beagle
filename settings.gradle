@@ -1,11 +1,12 @@
-def base = file(".").toPath()
+// All folders to look for projects in.
+def pwd = file('.').toPath()
+def lookupFolders = [file('.'), file('Prototypes')]
 
-include 'Core'
-include 'GUI'
-include 'Documentation'
-include 'Web Presence'
-
-file("Prototypes").eachDir() { dir ->
-	// get path in form of 'prototypes/ProjectName'
-	include base.relativize(dir.toPath()).toString()
+lookupFolders.each { base ->
+	// Include all folders having a .project file.
+	base.eachDir { project ->
+		if (new File(project, '.project').exists()) {
+			include pwd.relativize(project.toPath()).toString()
+		}
+	}
 }

@@ -1,2 +1,13 @@
-include '../Documentation/buildSrc'
-include '../Web Presence/buildSrc'
+// All folders to look for projects in.
+def pwd = file('.').toPath()
+def lookupFolders = [file('..'), file('../Prototypes')]
+
+lookupFolders.each { base ->
+	// Include the build logic of all folders having a .project file.
+	base.eachDir { project ->
+		def buildDir = new File(project, 'buildSrc')
+		if (new File(project, '.project').exists() && buildDir.exists()) {
+			include pwd.relativize(buildDir.toPath()).toString()
+		}
+	}
+}

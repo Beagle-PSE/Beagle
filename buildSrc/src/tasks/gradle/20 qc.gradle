@@ -84,7 +84,7 @@ configure(javaSubprojects) {
 	build.dependsOn jacocoTestReport
 }
 
-configure(javaSubprojects.minus(prototypeSubprojects)) {
+configure(javaSubprojects - prototypeSubprojects) {
 	qc.dependsOn verifyTestCoverage
 	
 	checkstyle {
