@@ -31,11 +31,11 @@ configure(eclipseSubprojects) {
 	apply plugin: DownloadTaskPlugin
 	
 	def lister = new ApacheURLLister()
-	def downloadUpdatesite
 	
 	/**
 	 * Recursivly downloads an update site.
 	 */
+	def downloadUpdatesite
 	downloadUpdatesite = { URL url, destinationDir ->
 		file(destinationDir).mkdirs()
 		project.download {
@@ -47,7 +47,7 @@ configure(eclipseSubprojects) {
 			downloadUpdatesite folder, "$destinationDir/$destPart" 
 		}
 	}
-
+	
 	/**
 	 * Downloads an update site and provides a path to it to be used by wuff.
 	 * 
@@ -77,10 +77,11 @@ configure(eclipseSubprojects) {
 		eclipseVersion('4.5') {
 			sources {
 				/*
-				 * Configure all update sites to get dependency plugins from here.
+				 * Define the needed update sites for ALL projects here!
 				 */
-				source updatesite("https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/")
+				source updatesite('https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/') // PCM
+				source updatesite('http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/gmp/updates/releases/') // required by Context Menu Prototype
 			}
 		}
-	}
+	} 
 }
