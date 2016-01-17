@@ -21,8 +21,8 @@ public class UserConfiguration {
 	private static final int NO_TIMEOUT = -1;
 
 	/**
-	 * The default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no timeout]
-	 * [>= 0 -> timeout in seconds]
+	 * The default setting for the timeout. [-2 → adaptive timeout] [-1 → no timeout] [>=
+	 * 0 → timeout in seconds]
 	 */
 	private static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
@@ -32,8 +32,8 @@ public class UserConfiguration {
 	private List<String> components;
 
 	/**
-	 * The timeout to be used. [-2 -> adaptive timeout] [-1 -> no timeout] [>= 0 ->
-	 * timeout in seconds]
+	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [>= 0 → timeout
+	 * in seconds]
 	 */
 	private int timeout;
 
@@ -66,22 +66,22 @@ public class UserConfiguration {
 	}
 
 	/**
-	 * Returns the timeout to be used. [-2 -> adaptive timeout] [-1 -> no timeout] [>= 0
-	 * -> timeout in seconds]
+	 * Returns the timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [>= 0 →
+	 * timeout in seconds]
 	 * 
-	 * @return The timeout to be used. [-2 -> adaptive timeout] [-1 -> no timeout] [>= 0
-	 *         -> timeout in seconds]
+	 * @return The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [>= 0 →
+	 *         timeout in seconds]
 	 */
 	public int getTimeout() {
 		return this.timeout;
 	}
 
 	/**
-	 * Sets the timeout to be used to {@code timeout}. [-2 -> adaptive timeout] [-1 -> no
-	 * timeout] [>= 0 -> timeout in seconds]
+	 * Sets the timeout to be used to {@code timeout}. [-2 → adaptive timeout] [-1 → no
+	 * timeout] [>= 0 → timeout in seconds]
 	 * 
-	 * @param timeout The timeout to be used to {@code timeout}. [-2 -> adaptive timeout]
-	 *            [-1 -> no timeout] [>= 0 -> timeout in seconds]
+	 * @param timeout The timeout to be used to {@code timeout}. [-2 → adaptive timeout]
+	 *            [-1 → no timeout] [>= 0 → timeout in seconds]
 	 */
 	public void setTimeout(final int timeout) {
 		this.timeout = timeout;

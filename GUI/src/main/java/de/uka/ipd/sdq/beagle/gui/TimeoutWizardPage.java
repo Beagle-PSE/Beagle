@@ -88,8 +88,8 @@ public class TimeoutWizardPage extends WizardPage {
 	private Composite upperContainer;
 
 	/**
-	 * Applies the default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no
-	 * timeout] [>= 0 -> timeout in seconds]
+	 * Applies the default setting for the timeout. [-2 → adaptive timeout] [-1 → no
+	 * timeout] [>= 0 → timeout in seconds]
 	 */
 	private int timeout = DEFAULT_TIMEOUT;
 
