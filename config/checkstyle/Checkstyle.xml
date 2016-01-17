@@ -140,7 +140,7 @@
     </module>
     <module name="AvoidStaticImport">
       <property name="severity" value="warning"/>
-      <property name="excludes" value="de.uka.ipd.sdq.beagle.core.testutil.*, org.junit.*, org.hamcrest.*"/>
+      <property name="excludes" value="de.uka.ipd.sdq.beagle.core.testutil.*,org.junit.*,org.hamcrest.*"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="IllegalImport">
