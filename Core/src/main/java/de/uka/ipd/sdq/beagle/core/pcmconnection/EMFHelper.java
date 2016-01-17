@@ -1,5 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
-
+//CHECKSTYLE:OFF
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
