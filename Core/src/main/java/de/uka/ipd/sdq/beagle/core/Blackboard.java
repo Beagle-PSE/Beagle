@@ -98,7 +98,7 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRdias() {
-		return rdias;
+		return this.rdias;
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getAllSeffBranches() {
-		return branches;
+		return this.branches;
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getAllSeffLoops() {
-		return loops;
+		return this.loops;
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class Blackboard implements Serializable {
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getAllExternalCallParameters() {
-		return externalCalls;
+		return this.externalCalls;
 	}
 
 	/**
@@ -141,7 +141,7 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		return rdiasToBeMeasured;
+		return this.rdiasToBeMeasured;
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		return branchesToBeMeasured;
+		return this.branchesToBeMeasured;
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return loopsToBeMeasured;
+		return this.loopsToBeMeasured;
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class Blackboard implements Serializable {
 	 *         be measured. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
-		return externalCallParameterToBeMeasured;
+		return this.externalCallParameterToBeMeasured;
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
-		rdiasToBeMeasured.addAll(rdias);
+		this.rdiasToBeMeasured.addAll(rdias);
 	}
 
 	/**
@@ -215,7 +215,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
-		branchesToBeMeasured.addAll(branches);
+		this.branchesToBeMeasured.addAll(branches);
 	}
 
 	/**
@@ -236,7 +236,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
-		loopsToBeMeasured.addAll(loops);
+		this.loopsToBeMeasured.addAll(loops);
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
-		externalCallParameterToBeMeasured.addAll(parameters);
+		this.externalCallParameterToBeMeasured.addAll(parameters);
 	}
 
 	/**
@@ -269,7 +269,7 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-		return rdiasMeasurementResult;
+		return this.rdiasMeasurementResult;
 	}
 
 	/**
@@ -281,7 +281,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
-		return branchDecisionMeasurementResult;
+		return this.branchDecisionMeasurementResult;
 	}
 
 	/**
@@ -293,7 +293,7 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		return loopRepititionCountMeasurementResult;
+		return this.loopRepititionCountMeasurementResult;
 	}
 
 	/**
@@ -308,7 +308,7 @@ public class Blackboard implements Serializable {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		return parameterChangeMeasurementResult;
+		return this.parameterChangeMeasurementResult;
 	}
 
 	/**
@@ -320,7 +320,7 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
-		rdiasMeasurementResult.add(results);
+		this.rdiasMeasurementResult.add(results);
 	}
 
 	/**
@@ -330,7 +330,7 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
-		branchDecisionMeasurementResult.add(results);
+		this.branchDecisionMeasurementResult.add(results);
 	}
 
 	/**
@@ -340,7 +340,7 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
-		loopRepititionCountMeasurementResult.add(results);
+		this.loopRepititionCountMeasurementResult.add(results);
 	}
 
 	/**
@@ -352,7 +352,7 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
-		parameterChangeMeasurementResult.add(results);
+		this.parameterChangeMeasurementResult.add(results);
 	}
 
 	/**
@@ -364,7 +364,7 @@ public class Blackboard implements Serializable {
 	 *         proposed for {@code element}.
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
-		return evaluableExpression;
+		return this.evaluableExpression;
 	}
 
 	/**
@@ -375,7 +375,7 @@ public class Blackboard implements Serializable {
 	 *            measurement results. Must not be {@code null}.
 	 */
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-		evaluableExpression.add(expression);
+		this.evaluableExpression.add(expression);
 	}
 
 	/**
@@ -386,9 +386,11 @@ public class Blackboard implements Serializable {
 	 * {@code addProposedExpressionFor} with this element as parameter.
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
+	 * @return The expression momentarily marked to be the final for {@code element}.
+	 *         {@code null} if no expression has been marked yet.
 	 */
 	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
-		return finalExpression;
+		return this.finalExpression;
 	}
 
 	/**
@@ -402,7 +404,7 @@ public class Blackboard implements Serializable {
 	 *            found.
 	 */
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-		finalExpression = expression;
+		this.finalExpression = expression;
 	}
 
 	/**
