@@ -118,7 +118,7 @@ public class ResourceDemandingInternalActionTest {
 		ThrowingMethod method = () -> {
 			new ResourceDemandingInternalAction(null, codeSection);
 		};
-		assertThat("NullPointerException for input null.", method, throwsException(NullPointerException.class));
+		assertThat("Resouce demand type must not be null.", method, throwsException(NullPointerException.class));
 
 		final CodeSection secCodeSection = codeSections[1];
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
@@ -133,7 +133,7 @@ public class ResourceDemandingInternalActionTest {
 		method = () -> {
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, null);
 		};
-		assertThat("NullPointerException for input null.", method, throwsException(NullPointerException.class));
+		assertThat("Code section must not be null.", method, throwsException(NullPointerException.class));
 	}
 
 	/**

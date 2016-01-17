@@ -43,14 +43,12 @@ public class ExternalCallParameterTest {
 		ThrowingMethod method = () -> {
 			new ExternalCallParameter(codeSections[0], -1);
 		};
-		assertThat("IllegalArgumentException expected for invalid input.", method,
-			throwsException(IllegalArgumentException.class));
+		assertThat("Index must not be negative.", method, throwsException(IllegalArgumentException.class));
 
 		method = () -> {
 			new ExternalCallParameter(null, 1);
 		};
-		assertThat("NullPointerException expected for invalid input (null).", method,
-			throwsException(NullPointerException.class));
+		assertThat("Code section must not be null.", method, throwsException(NullPointerException.class));
 	}
 
 	/**

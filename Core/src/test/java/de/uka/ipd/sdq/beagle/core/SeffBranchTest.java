@@ -42,7 +42,7 @@ public class SeffBranchTest {
 		ThrowingMethod method = () -> {
 			new SeffBranch(noCodeSections);
 		};
-		assertThat("IllegalArgumentException expected for invalid input.", method,
+		assertThat("Set must not be empty.", method,
 			throwsException(IllegalArgumentException.class));
 
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
@@ -52,7 +52,7 @@ public class SeffBranchTest {
 		method = () -> {
 			new SeffBranch(codeSections);
 		};
-		assertThat("IllegalArgumentException expected for invalid input.", method,
+		assertThat("Set must contain at least two code sections.", method,
 			throwsException(IllegalArgumentException.class));
 
 		codeSections.add(codeSecs[1]);
@@ -68,7 +68,7 @@ public class SeffBranchTest {
 		method = () -> {
 			new SeffBranch(codeSections);
 		};
-		assertThat("Null Pointer Exception expected as input contained null.", method,
+		assertThat("Set must not contain null.", method,
 			throwsException(NullPointerException.class));
 
 	}

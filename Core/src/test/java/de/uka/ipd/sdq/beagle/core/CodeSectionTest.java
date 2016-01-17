@@ -40,35 +40,36 @@ public class CodeSectionTest {
 		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
 		assertThat(codeSection.getStartFile(), is(theInstance(file)));
 
-		final File notExistingFile =
-			new File("/de/uka/ipd/sdq/beagle/core/NotExisting.java");
+		final File notExistingFile = new File("/de/uka/ipd/sdq/beagle/core/NotExisting.java");
 		ThrowingMethod method = () -> {
 			new CodeSection(notExistingFile, startCodeLine, notExistingFile, endCodeLine);
 		};
-		assertThat("IllegalArgumentException expected for invalid input.", method,
-			throwsException(IllegalArgumentException.class));
+		assertThat("File must exist.", method, throwsException(IllegalArgumentException.class));
 
 		final int invalidStartIndex = -4;
+		final int invalidStartIndex2 = 500;
 		final int invalidEndIndex = -15;
 		final int invalidEndIndex2 = 300;
 
 		method = () -> {
 			new CodeSection(file, invalidStartIndex, file, endCodeLine);
 		};
-		assertThat("IllegalArgumentException expected for invalid input (negativ start index).", method,
-			throwsException(IllegalArgumentException.class));
+		assertThat("Start index must not be negative.", method, throwsException(IllegalArgumentException.class));
 
 		method = () -> {
 			new CodeSection(file, startCodeLine, file, invalidEndIndex);
 		};
-		assertThat("IllegalArgumentException expected for invalid input (negativ end index).", method,
-			throwsException(IllegalArgumentException.class));
+		assertThat("End index must not be negative.", method, throwsException(IllegalArgumentException.class));
 
 		method = () -> {
 			new CodeSection(file, startCodeLine, file, invalidEndIndex2);
 		};
-		assertThat("IllegalArgumentException expected for invalid input.", method,
-			throwsException(IllegalArgumentException.class));
+		assertThat("End index must be within the file.", method, throwsException(IllegalArgumentException.class));
+
+		method = () -> {
+			new CodeSection(file, invalidStartIndex2, file, endCodeLine);
+		};
+		assertThat("Start index must be within the file.", method, throwsException(IllegalArgumentException.class));
 	}
 
 	/**
