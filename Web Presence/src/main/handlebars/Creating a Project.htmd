@@ -1,0 +1,41 @@
+{{setTitle "Creating a Project"}}
+
+# How to Create A Project
+
+Beagle is structured into different subprojects ([see the file overview](../Developers.html)). This guide details how to create a new project.
+
+## General
+ * All projects stick to [gradle’s conventional project structure](https://docs.gradle.org/current/userguide/java_plugin.html), regardless of the languages they use. This means that all source files belong into `src/$part/$language` where `$part` is the part of the subproject the files belong to (must be `main` if they belong to the project’s main part) and `$language` is the language the source files are written in.
+ * Any build logic belongs into a subproject of the subproject, in a folder called `buildSrc`
+     * gradle tasks belong into `buildScr/tasks/gradle`. Each build aspect belongs into its own file. Task files are named `$i $aspect.gradle` where `$i` is a two digit number to sort the files and `$aspect` should explain what kind of tasks are found in the file. Tasks will automatically be imported to the project’s build logic.
+      * build logic defined in java or groovy files belongs into `buildSrc/src/main/java` or `buildScr/src/main/groovy`, respectively. It will automatically be made available to the build task scripts. If the classes have dependencies, a file called `dependencies.gradle` is to be created, declaring these dependencies using [the gradle DSL](https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html) and adding them to the `compile` configuration.
+ 	
+## Java
+Java projects must be set up in Eclipse as follows:
+
+ * The Code Templates must be set to “project specific” and the configuration from `config/Code Templates.xml` must be used.
+ * The Formatter must be set to “project specific” and the configuration from `config/Formatter.xml` must be used.
+ * The Clean Up must be set to “project specific” and the configuration from `config/Clean Up.xml` must be used.
+ * The Import Order must be set to “project specific” and the configuration from `config/Beagle.importorder` must be used.
+ * Checkstyle must be enabled and a new *local*, *project relative* configuration, pointing to `config/checkstyle/Checkstyle.xml`, must be added and used.
+ 
+## Prototypes
+All points stated in this document apply to prototypes as well, with the following exceptions:
+
+ * Prototypes belong into the `Prototypes` subfolder.
+ * Prototype’s Checkstyle must be configured using `config/checkstyle/Checkstyle Prototype.xml`.
+ 
+## Eclipse Plugins
+
+ * The `MANIFEST.MF` of Eclipse plugins belongs to `src/main/resources/META-INF/MANIFEST.MF`. To point PDE to it, a new file containing the line
+```
+BUNDLE_ROOT_PATH=src/main/resources
+``` 
+ must be created in `.settings/org.eclipse.pde.core.prefs`.
+ * The `build.properties` belongs to `src/main/resources/build.properties`. Its paths must be adapted accordingly, a default is:
+```
+source.. = ../java/
+output.. = ../../../bin/
+bin.includes = META-INF/
+```
+ * All dependencies must be defined exclusively in `src/main/resources/META-INF/MANIFEST.MF`.
