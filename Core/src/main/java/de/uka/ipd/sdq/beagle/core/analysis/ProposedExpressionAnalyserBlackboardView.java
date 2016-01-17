@@ -210,7 +210,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 * @return All measruement results reported for {@code evaluableExpression}. Changes
 	 *         to the returned set will not modify the blackboard content. Is never
 	 *         {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(MeasurableSeffElement)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
 	 * 
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
