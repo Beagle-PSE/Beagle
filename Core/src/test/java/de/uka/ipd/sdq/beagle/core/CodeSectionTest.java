@@ -53,6 +53,28 @@ public class CodeSectionTest {
 		};
 		assertThat("IllegalArgumentException expected for invalid input.", method,
 			throwsException(IllegalArgumentException.class));
+		
+		final int invalidStartIndex = -4;
+		final int invalidEndIndex = -15;
+		final int invalidEndIndex2 = 300;
+
+		method = () -> {
+			new CodeSection(file, invalidStartIndex, file, endCodeLine);
+		};
+		assertThat("IllegalArgumentException expected for invalid input (negativ start index).", method,
+			throwsException(IllegalArgumentException.class));
+		
+		method = () -> {
+			new CodeSection(file, startCodeLine, file, invalidEndIndex);
+		};
+		assertThat("IllegalArgumentException expected for invalid input (negativ end index).", method,
+			throwsException(IllegalArgumentException.class));
+		
+		method = () -> {
+			new CodeSection(file, startCodeLine, file, invalidEndIndex2);
+		};
+		assertThat("IllegalArgumentException expected for invalid input.", method,
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -79,6 +101,7 @@ public class CodeSectionTest {
 		final CodeSection codeSectionA = new CodeSection(fileA, startCodeLineA, fileA, endCodeLineA);
 
 		assertThat(codeSection.equals(codeSectionA), is(equalTo(true)));
+		assertThat(codeSection.equals(secCodeSection), is(equalTo(false)));
 	}
 
 	/**
