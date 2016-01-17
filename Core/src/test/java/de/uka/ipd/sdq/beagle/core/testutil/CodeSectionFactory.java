@@ -9,47 +9,39 @@ import java.io.File;
  *
  * @author Annika Berger
  */
-public class CodeSectionFactory {
-
-	/**
-	 * Constructor, does not do anything.
-	 *
-	 */
-	private CodeSectionFactory() {
-
-	}
+public final class CodeSectionFactory {
 
 	/**
 	 * File for Test Class 'TestFile.java'.
 	 */
-	private final static File testFile =
+	private static final File TEST_FILE =
 		new File(CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
 
 	/**
 	 * File for Test Class 'PingPong.java'.
 	 */
-	private final static File pingPong =
+	private static final File PINGPONG =
 		new File(CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").getPath());
 
 	/**
 	 * Start Index of 'TestFile.java'.
 	 */
-	private final static int testFileStartIndex = 4;
+	private static final int TESTFILE_STARTINDEX = 4;
 
 	/**
 	 * End Index of 'TestFile.java'.
 	 */
-	private final static int testFileEndIndex = 15;
+	private static final int TESTFILE_ENDINDEX = 15;
 
 	/**
 	 * Start Index of 'PingPong.java'.
 	 */
-	private final static int pingPongStartIndex = 60;
+	private static final int PINGPONG_STARTINDEX = 60;
 
 	/**
 	 * End Index of 'PingPong.java'.
 	 */
-	private final static int pingPongEndIndex = 68;
+	private static final int PINGPONG_ENDINDEX = 68;
 
 	/**
 	 * Uses the in the class defined Files to create code section.
@@ -57,11 +49,20 @@ public class CodeSectionFactory {
 	 * @return array containing all defined code sections
 	 */
 	public static CodeSection[] getAllCodeSections() {
-		final CodeSection[] codeSections = {new CodeSection(testFile, testFileStartIndex, testFile, testFileEndIndex),
-			new CodeSection(pingPong, pingPongStartIndex, pingPong, pingPongEndIndex)
+		final CodeSection[] codeSections =
+			{new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, TEST_FILE, TESTFILE_ENDINDEX),
+				new CodeSection(PINGPONG, PINGPONG_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX)
 
 		};
 
 		return codeSections;
+	}
+
+	/**
+	 * Constructor, does not do anything.
+	 *
+	 */
+	private CodeSectionFactory() {
+
 	}
 }

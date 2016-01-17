@@ -22,7 +22,7 @@ public class SeffLoop implements MeasurableSeffElement {
 	/**
 	 * The code section representing the loop body.
 	 */
-	private CodeSection loopBody;
+	private final CodeSection loopBody;
 
 	/**
 	 * Creates a SeffBranch using a given code section for the loop's body.
@@ -34,16 +34,6 @@ public class SeffLoop implements MeasurableSeffElement {
 		this.loopBody = loopBody;
 	}
 
-	/**
-	 * Gives a valid code sections representing the body of this SeffBranch's loop.
-	 *
-	 * @return the loopBody A valid code sections representing the body of this
-	 *         SeffBranch's loop. Is never {@code null}.
-	 */
-	public CodeSection getLoopBody() {
-		return this.loopBody;
-	}
-
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {
@@ -52,11 +42,21 @@ public class SeffLoop implements MeasurableSeffElement {
 		if (object == this) {
 			return true;
 		}
-		if (object.getClass() != getClass()) {
+		if (object.getClass() != this.getClass()) {
 			return false;
 		}
 		final SeffLoop other = (SeffLoop) object;
 		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.loopBody, other.loopBody).isEquals();
+	}
+
+	/**
+	 * Gives a valid code sections representing the body of this SeffBranch's loop.
+	 *
+	 * @return the loopBody A valid code sections representing the body of this
+	 *         SeffBranch's loop. Is never {@code null}.
+	 */
+	public CodeSection getLoopBody() {
+		return this.loopBody;
 	}
 
 	@Override

@@ -41,24 +41,24 @@ public class CodeSection implements Serializable {
 	 * The java file which contains the {@link #startStatementNumber} of this code
 	 * section.
 	 */
-	private File startFile;
+	private final File startFile;
 
 	/**
 	 * The line index, starting with {@code 0} in the {@link #startFile}, of the first
 	 * line in this code section.
 	 */
-	private int startStatementNumber;
+	private final int startStatementNumber;
 
 	/**
 	 * The java file which contains the {@link #endStatementNumber} of this code section.
 	 */
-	private File endFile;
+	private final File endFile;
 
 	/**
 	 * The line index, starting with {@code 0} in the {@link #endFile}, of the last line
 	 * in this code section.
 	 */
-	private int endStatementNumber;
+	private final int endStatementNumber;
 
 	/**
 	 * Creates a code section that spans from the {@code startIndex}th statement in
@@ -90,26 +90,21 @@ public class CodeSection implements Serializable {
 		this.endStatementNumber = endIndex;
 	}
 
-	/**
-	 * Gets the file that contains this section’s first statement.
-	 *
-	 * @return The file containing this section’s first statement. Will never be
-	 *         {@code null} and {@code getStartFile().isFile()} always returns
-	 *         {@code true}.
-	 */
-	public File getStartFile() {
-		return this.startFile;
-	}
-
-	/**
-	 * Gets the index of the first statement in this code section. Counting starts at 0.
-	 * The number thus describes how many statements precede the section’s first statement
-	 * in the {@linkplain #getStartFile() start source code file}.
-	 *
-	 * @return The first statement’s index. A non-negative integer.
-	 */
-	public int getStartSectionIndex() {
-		return this.startStatementNumber;
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final CodeSection other = (CodeSection) object;
+		return new EqualsBuilder().append(this.startFile, other.startFile)
+			.append(this.startStatementNumber, other.startStatementNumber).append(this.endFile, other.endFile)
+			.append(this.endStatementNumber, other.endStatementNumber).isEquals();
 	}
 
 	/**
@@ -133,21 +128,26 @@ public class CodeSection implements Serializable {
 		return this.endStatementNumber;
 	}
 
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != getClass()) {
-			return false;
-		}
-		final CodeSection other = (CodeSection) object;
-		return new EqualsBuilder().append(this.startFile, other.startFile)
-			.append(this.startStatementNumber, other.startStatementNumber).append(this.endFile, other.endFile)
-			.append(this.endStatementNumber, other.endStatementNumber).isEquals();
+	/**
+	 * Gets the file that contains this section’s first statement.
+	 *
+	 * @return The file containing this section’s first statement. Will never be
+	 *         {@code null} and {@code getStartFile().isFile()} always returns
+	 *         {@code true}.
+	 */
+	public File getStartFile() {
+		return this.startFile;
+	}
+
+	/**
+	 * Gets the index of the first statement in this code section. Counting starts at 0.
+	 * The number thus describes how many statements precede the section’s first statement
+	 * in the {@linkplain #getStartFile() start source code file}.
+	 *
+	 * @return The first statement’s index. A non-negative integer.
+	 */
+	public int getStartSectionIndex() {
+		return this.startStatementNumber;
 	}
 
 	@Override

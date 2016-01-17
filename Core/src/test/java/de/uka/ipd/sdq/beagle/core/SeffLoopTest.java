@@ -7,6 +7,8 @@ import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
 
+import de.uka.ipd.sdq.beagle.core.testutil.CodeSectionFactory;
+
 import org.junit.Test;
 
 import java.io.File;
@@ -27,7 +29,7 @@ public class SeffLoopTest {
 	@Test
 	public void testConstructor() {
 
-		final CodeSection[] codeSections = CodeSectionFactory.
+		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
 		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
 			loop = new SeffLoop(codeSection);

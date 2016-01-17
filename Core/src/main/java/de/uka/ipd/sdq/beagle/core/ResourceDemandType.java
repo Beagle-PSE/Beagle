@@ -62,13 +62,13 @@ public class ResourceDemandType {
 	/**
 	 * A unique identifier for this resource type.
 	 */
-	private String name;
+	private final String name;
 
 	/**
 	 * Whether this resource type is measured machine dependent or not. If it is measured
 	 * machine dependent, the measurement unit must be {@code ns}.
 	 */
-	private boolean isNs;
+	private final boolean isNs;
 
 	/**
 	 * Creates a custom resource type.
@@ -84,6 +84,21 @@ public class ResourceDemandType {
 		this.isNs = isNs;
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final ResourceDemandType other = (ResourceDemandType) object;
+		return new EqualsBuilder().append(this.name, other.name).append(this.isNs, other.isNs).isEquals();
+	}
+
 	/**
 	 * Gives a name which is a unique identifier for this resource type. Is never
 	 * {@code null}.
@@ -95,6 +110,13 @@ public class ResourceDemandType {
 		return this.name;
 	}
 
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(27, 47).append(this.name).append(this.isNs).toHashCode();
+	}
+
 	/**
 	 * Whether this resource type is measured machine dependent or not. If it is measured
 	 * machine dependent, the measurement unit must be {@code ns}.
@@ -104,28 +126,6 @@ public class ResourceDemandType {
 	 */
 	public boolean isNs() {
 		return this.isNs;
-	}
-
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != getClass()) {
-			return false;
-		}
-		final ResourceDemandType other = (ResourceDemandType) object;
-		return new EqualsBuilder().append(this.name, other.name).append(this.isNs, other.isNs).isEquals();
-	}
-
-	@Override
-	public int hashCode() {
-		// you pick a hard-coded, randomly chosen, non-zero, odd number
-		// ideally different for each class
-		return new HashCodeBuilder(27, 47).append(this.name).append(this.isNs).toHashCode();
 	}
 
 	@Override

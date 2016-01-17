@@ -27,7 +27,7 @@ public class SeffBranch implements MeasurableSeffElement {
 	/**
 	 * All branches for this SeffBranch.
 	 */
-	private Set<CodeSection> branches;
+	private final Set<CodeSection> branches;
 
 	/**
 	 * Creates a SeffBranch using a given code section.
@@ -54,6 +54,21 @@ public class SeffBranch implements MeasurableSeffElement {
 		this.branches = branches;
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final SeffBranch other = (SeffBranch) object;
+		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.branches, other.branches).isEquals();
+	}
+
 	/**
 	 * Gives a set of valid code sections representing a branch of this SeffBranch.
 	 *
@@ -71,21 +86,6 @@ public class SeffBranch implements MeasurableSeffElement {
 	 */
 	public Set<CodeSection> getBranches() {
 		return this.branches;
-	}
-
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != getClass()) {
-			return false;
-		}
-		final SeffBranch other = (SeffBranch) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.branches, other.branches).isEquals();
 	}
 
 	@Override

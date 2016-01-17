@@ -28,12 +28,12 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	/**
 	 * The type of resource that should be measured in this code section.
 	 */
-	private ResourceDemandType resourceType;
+	private final ResourceDemandType resourceType;
 
 	/**
 	 * The code section for this resource demand.
 	 */
-	private CodeSection action;
+	private final CodeSection action;
 
 	/**
 	 * Creates a ResourceDemandingInternalAction for a specific resource type using a
@@ -51,14 +51,20 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 		this.action = action;
 	}
 
-	/**
-	 * Gets this internal action's <em>result type</em>.
-	 *
-	 * @return This result’s <em>result type</em>, as defined in the class description. Is
-	 *         never {@code null}.
-	 */
-	public ResourceDemandType getResourceType() {
-		return this.resourceType;
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;
+		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.resourceType, other.resourceType)
+			.append(this.action, other.action).isEquals();
 	}
 
 	/**
@@ -73,20 +79,14 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 		return this.action;
 	}
 
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != getClass()) {
-			return false;
-		}
-		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.resourceType, other.resourceType)
-			.append(this.action, other.action).isEquals();
+	/**
+	 * Gets this internal action's <em>result type</em>.
+	 *
+	 * @return This result’s <em>result type</em>, as defined in the class description. Is
+	 *         never {@code null}.
+	 */
+	public ResourceDemandType getResourceType() {
+		return this.resourceType;
 	}
 
 	@Override

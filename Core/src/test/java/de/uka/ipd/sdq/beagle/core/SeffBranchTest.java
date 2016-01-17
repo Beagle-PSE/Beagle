@@ -7,12 +7,13 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
+import de.uka.ipd.sdq.beagle.core.testutil.CodeSectionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
 
-import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,8 +32,9 @@ public class SeffBranchTest {
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown when the set of
 	 * {@link CodeSection} does not contain any CodeSections. Asserts that input Set of
 	 * {@link CodeSection} is the same instance as the one returned with
-	 * {@link SeffBranch#getBranches()}. Test behaviour of Constructor for a set
-	 * containing {@code null}.
+	 * {@link SeffBranch#getBranches()}. Tests behaviour of Constructor for a set
+	 * containing {@code null} and assures that changing the Set after inizialising a new
+	 * branch does not affect the Branch.
 	 */
 	@Test
 	public void testConstructor() {
@@ -43,14 +45,17 @@ public class SeffBranchTest {
 		assertThat("IllegalArgumentException expected for invalid input.", method,
 			throwsException(IllegalArgumentException.class));
 
-		final File file =
-			new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
-		final int startCodeLine = 4;
-		final int endCodeLine = 15;
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
-		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
+		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
+		codeSections.add(codeSecs[0]);
+
 		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(theInstance(codeSections)));
+
+		for (int i = 1; i < codeSecs.length; i++) {
+			codeSections.add(codeSecs[i]);
+		}
+		assertThat(branch.getBranches().size(), is(equalTo(1)));
 
 		codeSections.add(null);
 		method = () -> {
@@ -63,35 +68,34 @@ public class SeffBranchTest {
 
 	/**
 	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#equals()}.
+	 *
+	 * <p>Asserts that two SeffBranches inizialised with a Set containing the same code
+	 * sections are equal while inizialised with Sets containing different code sections
+	 * are different. This test fails if there is only one code section defined in the
+	 * {@link CodeSectionFactory}.
 	 */
 	@Test
 	public void testEquals() {
-		final File file =
-			new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
-		final int startCodeLine = 4;
-		final int endCodeLine = 15;
-		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
-		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
-		final SeffBranch branch = new SeffBranch(codeSections);
+		final Set<CodeSection> codeSectionsA = new HashSet<>();
+		final Set<CodeSection> codeSectionsB = new HashSet<>();
+		final Set<CodeSection> codeSectionsC = new HashSet<>();
+		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
+		if (codeSecs.length > 1) {
+			for (final CodeSection codeSection : codeSecs) {
+				codeSectionsA.add(codeSection);
+				codeSectionsB.add(codeSection);
+			}
 
-		final File fileB =
-			new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
-		final int startCodeLineB = 4;
-		final int endCodeLineB = 15;
-		final Set<CodeSection> codeSectionsB = new HashSet<CodeSection>();
-		codeSections.add(new CodeSection(fileB, startCodeLineB, fileB, endCodeLineB));
-		final SeffBranch branchB = new SeffBranch(codeSectionsB);
+			codeSectionsC.add(codeSecs[0]);
+			final SeffBranch branch = new SeffBranch(codeSectionsA);
+			final SeffBranch branchB = new SeffBranch(codeSectionsB);
+			final SeffBranch branchC = new SeffBranch(codeSectionsC);
 
-		final File fileC =
-			new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/PingPong.java").getPath());
-		final int startCodeLineC = 4;
-		final int endCodeLineC = 15;
-		final Set<CodeSection> codeSectionsC = new HashSet<CodeSection>();
-		codeSections.add(new CodeSection(fileC, startCodeLineC, fileC, endCodeLineC));
-		final SeffBranch branchC = new SeffBranch(codeSectionsC);
-
-		assertThat(branchC.equals(branch), is(equalTo(false)));
-		assertThat(branchB.equals(branch), is(equalTo(true)));
+			assertThat(branchC.equals(branch), is(equalTo(false)));
+			assertThat(branchB.equals(branch), is(equalTo(true)));
+		} else {
+			fail("There have to be minimum two CodeSections in the CodeSectionFactory to test this method properly.");
+		}
 	}
 
 	/**
@@ -99,12 +103,10 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testGetBranches() {
-		final File file =
-			new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
-		final int startCodeLine = 4;
-		final int endCodeLine = 15;
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
-		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
+		for (final CodeSection codeSection : CodeSectionFactory.getAllCodeSections()) {
+			codeSections.add(codeSection);
+		}
 		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(theInstance(codeSections)));
 	}
@@ -114,12 +116,10 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testToString() {
-		final File file =
-			new File(SeffBranchTest.class.getResource("de/uka/ipd/sdq/beale/core/TestFile.java").getPath());
-		final int startCodeLine = 4;
-		final int endCodeLine = 15;
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
-		codeSections.add(new CodeSection(file, startCodeLine, file, endCodeLine));
+		for (final CodeSection codeSection : CodeSectionFactory.getAllCodeSections()) {
+			codeSections.add(codeSection);
+		}
 		final SeffBranch branch = new SeffBranch(codeSections);
 
 		assertThat(branch.toString(), not(startsWith("SeffBranch@")));
