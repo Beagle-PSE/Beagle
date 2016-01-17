@@ -12,7 +12,7 @@ script:
   - gradle build qc
   
 after_failure:
-  - gradle web || gradle web --info --stacktrace
+  - gradle web
   
 after_success:
   - gradle cleanTmp
