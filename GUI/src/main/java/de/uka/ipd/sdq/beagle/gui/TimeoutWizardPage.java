@@ -41,8 +41,8 @@ public class TimeoutWizardPage extends WizardPage {
 	private static final int NO_TIMEOUT = -1;
 
 	/**
-	 * The default setting for the timeout. [-2 -> adaptive timeout] [-1 -> no timeout]
-	 * [>= 0 -> timeout in seconds]
+	 * The default setting for the timeout. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0
+	 * → timeout in seconds]
 	 */
 	private static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
@@ -89,7 +89,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 	/**
 	 * Applies the default setting for the timeout. [-2 → adaptive timeout] [-1 → no
-	 * timeout] [>= 0 → timeout in seconds]
+	 * timeout] [≥ 0 → timeout in seconds]
 	 */
 	private int timeout = DEFAULT_TIMEOUT;
 
