@@ -15,7 +15,7 @@ public final class CodeSectionFactory {
 	/**
 	 * File for Test Class 'TestFile.java'.
 	 */
-	private static final File TEST_FILE;
+	public static final File TEST_FILE;
 
 	static {
 		try {
@@ -31,7 +31,7 @@ public final class CodeSectionFactory {
 	/**
 	 * File for Test Class 'PingPong.java'.
 	 */
-	private static final File PINGPONG;
+	public static final File PINGPONG;
 
 	/**
 	 * Start Index of 'TestFile.java'.
