@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.gui;
+package de.uka.ipd.sdq.beagle.core;
 
 import java.util.List;
 

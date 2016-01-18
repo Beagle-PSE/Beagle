@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.BeagleController;
+import de.uka.ipd.sdq.beagle.core.UserConfiguration;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -185,7 +186,7 @@ public class GuiController {
 			 * different thread so the GUI remains responsive.
 			 */
 			public void run() {
-				BeagleController beagleController = new BeagleController();
+				BeagleController beagleController = new BeagleController(GuiController.this.userConfiguration);
 				beagleController.startAnalysis();
 
 				// when {@code beagleController.startAnalysis()} returns, close the dialog

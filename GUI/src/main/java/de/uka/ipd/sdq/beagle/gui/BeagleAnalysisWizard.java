@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import de.uka.ipd.sdq.beagle.core.UserConfiguration;
+
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 

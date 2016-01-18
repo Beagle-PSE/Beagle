@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import de.uka.ipd.sdq.beagle.core.UserConfiguration;
+
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
