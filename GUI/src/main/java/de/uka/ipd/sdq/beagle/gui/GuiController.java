@@ -171,9 +171,17 @@ public class GuiController {
 		}
 	}
 
+	/**
+	 * Calls {@link BeagleController} to start the analysis. This happens in a different
+	 * thread so the GUI remains responsive.
+	 */
 	private void startAnalysis() {
 		new Thread() {
 
+			/**
+			 * Calls {@link BeagleController} to start the analysis. This happens in a
+			 * different thread so the GUI remains responsive.
+			 */
 			public void run() {
 				BeagleController beagleController = new BeagleController();
 				beagleController.startAnalysis();
