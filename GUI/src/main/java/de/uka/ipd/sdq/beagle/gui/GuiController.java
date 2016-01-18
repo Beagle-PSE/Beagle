@@ -113,6 +113,10 @@ public class GuiController {
 			wizardDialog.open();
 
 			if (this.wizardFinishedSuccessfully) {
+				// if the wizard finished successfully, start the analysis ...
+				this.startAnalysis();
+
+				// ... and indicate it to the user
 				this.state = GuiControllerState.dialogOpen;
 				GuiController.this.engageDialog();
 			} else {
@@ -166,6 +170,21 @@ public class GuiController {
 			buttonClick = this.messageDialog.open();
 		}
 	}
+
+	private void startAnalysis() {
+		new Thread() {
+
+			public void run() {
+				BeagleController beagleController = new BeagleController();
+				beagleController.startAnalysis();
+
+				// when {@code beagleController.startAnalysis()} returns, close the dialog
+				GuiController.this.state = GuiControllerState.terminated;
+				GuiController.this.messageDialog.close();
+			}
+		}.start();
+	}
+
 	/*
 	 * private class DialogPolling implements Runnable {
 	 * 
