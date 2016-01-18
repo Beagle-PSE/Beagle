@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import de.uka.ipd.sdq.beagle.core.BeagleController;
+
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
