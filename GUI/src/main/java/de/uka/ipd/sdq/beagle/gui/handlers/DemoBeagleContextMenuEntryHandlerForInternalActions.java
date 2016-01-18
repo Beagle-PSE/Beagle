@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui.handlers;
 
 import de.uka.ipd.sdq.beagle.gui.GuiController;
+
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart;
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart;
 

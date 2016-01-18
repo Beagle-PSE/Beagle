@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui.handlers;
 
 import de.uka.ipd.sdq.beagle.gui.GuiController;
+
 import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
 
 import org.eclipse.core.commands.AbstractHandler;
