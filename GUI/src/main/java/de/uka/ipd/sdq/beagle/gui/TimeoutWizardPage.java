@@ -28,7 +28,8 @@ public class TimeoutWizardPage extends WizardPage {
 	/**
 	 * The description of this page.
 	 */
-	private static final String DESCRIPTION = "Blah blah ... a timeout can be used.";
+	private static final String DESCRIPTION =
+		"To avoid infinite loops or too long calculations, a timeout can be used. Please choose as you wish.";
 
 	/**
 	 * Numeric value for "adaptive timeout".
@@ -91,7 +92,7 @@ public class TimeoutWizardPage extends WizardPage {
 	 * Applies the default setting for the timeout. [-2 → adaptive timeout] [-1 → no
 	 * timeout] [≥ 0 → timeout in seconds]
 	 */
-	private int timeout = DEFAULT_TIMEOUT;
+	private int timeout;
 
 	/**
 	 * Constructor setting the tile and the introduction to this page.
@@ -105,6 +106,7 @@ public class TimeoutWizardPage extends WizardPage {
 		setDescription(DESCRIPTION);
 		setControl(this.textboxTimeoutSeconds);
 		this.userConfiguration = userConfiguration;
+		this.timeout = this.userConfiguration.getTimeout();
 	}
 
 	@Override
@@ -140,6 +142,7 @@ public class TimeoutWizardPage extends WizardPage {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutWizardPage.this.timeout = ADAPTIVE_TIMEOUT;
+				TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 			}
 
 			@Override
@@ -160,6 +163,8 @@ public class TimeoutWizardPage extends WizardPage {
 					setPageComplete(true);
 					TimeoutWizardPage.this.timeout =
 						Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
+					TimeoutWizardPage.this.userConfiguration.setTimeout(ADAPTIVE_TIMEOUT);
+					TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 				}
 			}
 
@@ -188,6 +193,7 @@ public class TimeoutWizardPage extends WizardPage {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutWizardPage.this.timeout = NO_TIMEOUT;
+				TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 			}
 
 			@Override

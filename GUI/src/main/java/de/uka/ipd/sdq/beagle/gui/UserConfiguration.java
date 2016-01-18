@@ -45,6 +45,7 @@ public class UserConfiguration {
 	 */
 	public UserConfiguration(final List<String> components) {
 		this.components = components;
+		this.timeout = DEFAULT_TIMEOUT;
 	}
 
 	/**
