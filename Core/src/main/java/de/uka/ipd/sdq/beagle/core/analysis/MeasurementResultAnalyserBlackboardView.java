@@ -11,6 +11,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
@@ -28,7 +29,7 @@ import java.util.Set;
  *
  * @author Christoph Michelbach
  */
-public class MeasurementResultAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
+public abstract class MeasurementResultAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
@@ -156,7 +157,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
 	@Override
-	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
 		return null;
 	}
 
@@ -167,9 +168,9 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}.
-	 *         Changes to the returned set will not modify the blackboard content. Is
-	 *         never {@code null}.
+	 * @return All measurement results reported for {@code externalCallParameter}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
 	@Override
@@ -213,6 +214,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *         {@code writer} yet.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)
 	 */
+	@Override
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		return null;
@@ -227,6 +229,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 * @param <WRITTEN_TYPE> {@code written}’s type.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)
 	 */
+	@Override
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 	}
