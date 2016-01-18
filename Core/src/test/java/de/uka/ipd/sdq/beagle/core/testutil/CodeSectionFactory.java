@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.testutil;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 
 import java.io.File;
+import java.net.URISyntaxException;
 
 /**
  * Builds CodeSections and provides a method to get all in one array.
@@ -14,14 +15,23 @@ public final class CodeSectionFactory {
 	/**
 	 * File for Test Class 'TestFile.java'.
 	 */
-	private static final File TEST_FILE =
-		new File(CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").getPath());
+	private static final File TEST_FILE;
+
+	static {
+		try {
+			TEST_FILE = new File(
+				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").toURI().getPath());
+			PINGPONG = new File(
+				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").toURI().getPath());
+		} catch (final URISyntaxException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	/**
 	 * File for Test Class 'PingPong.java'.
 	 */
-	private static final File PINGPONG =
-		new File(CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").getPath());
+	private static final File PINGPONG;
 
 	/**
 	 * Start Index of 'TestFile.java'.
@@ -58,9 +68,9 @@ public final class CodeSectionFactory {
 	 */
 	public static CodeSection[] getAllCodeSections() {
 		final CodeSection[] codeSections =
-		{new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, TEST_FILE, TESTFILE_ENDINDEX),
-			new CodeSection(PINGPONG, PINGPONG_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX),
-			new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX)
+			{new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, TEST_FILE, TESTFILE_ENDINDEX),
+				new CodeSection(PINGPONG, PINGPONG_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX),
+				new CodeSection(TEST_FILE, TESTFILE_STARTINDEX, PINGPONG, PINGPONG_ENDINDEX)
 
 		};
 		return codeSections;
