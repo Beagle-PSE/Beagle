@@ -69,16 +69,14 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 			return false;
 		}
 		final ExternalCallParameter other = (ExternalCallParameter) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.call, other.call)
-			.append(this.index, other.index).isEquals();
+		return new EqualsBuilder().append(this.call, other.call).append(this.index, other.index).isEquals();
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(49, 151).appendSuper(super.hashCode()).append(this.call).append(this.index)
-			.toHashCode();
+		return new HashCodeBuilder(49, 151).append(this.call).append(this.index).toHashCode();
 	}
 
 	@Override

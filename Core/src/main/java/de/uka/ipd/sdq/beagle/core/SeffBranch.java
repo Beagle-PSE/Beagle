@@ -66,7 +66,7 @@ public class SeffBranch implements MeasurableSeffElement {
 			return false;
 		}
 		final SeffBranch other = (SeffBranch) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.branches, other.branches).isEquals();
+		return new EqualsBuilder().append(this.branches, other.branches).isEquals();
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class SeffBranch implements MeasurableSeffElement {
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(21, 49).appendSuper(super.hashCode()).append(this.branches).toHashCode();
+		return new HashCodeBuilder(21, 49).append(this.branches).toHashCode();
 	}
 
 	@Override

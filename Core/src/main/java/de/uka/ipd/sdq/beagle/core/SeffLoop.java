@@ -46,7 +46,7 @@ public class SeffLoop implements MeasurableSeffElement {
 			return false;
 		}
 		final SeffLoop other = (SeffLoop) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.loopBody, other.loopBody).isEquals();
+		return new EqualsBuilder().append(this.loopBody, other.loopBody).isEquals();
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class SeffLoop implements MeasurableSeffElement {
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(19, 51).appendSuper(super.hashCode()).append(this.loopBody).toHashCode();
+		return new HashCodeBuilder(19, 51).append(this.loopBody).toHashCode();
 	}
 
 	@Override

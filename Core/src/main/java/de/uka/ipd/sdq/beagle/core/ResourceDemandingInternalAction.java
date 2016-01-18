@@ -63,8 +63,8 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 			return false;
 		}
 		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.resourceType, other.resourceType)
-			.append(this.action, other.action).isEquals();
+		return new EqualsBuilder().append(this.resourceType, other.resourceType).append(this.action, other.action)
+			.isEquals();
 	}
 
 	/**
@@ -93,8 +93,7 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(19, 41).appendSuper(super.hashCode()).append(this.resourceType).append(this.action)
-			.toHashCode();
+		return new HashCodeBuilder(19, 41).append(this.resourceType).append(this.action).toHashCode();
 	}
 
 	@Override
