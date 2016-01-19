@@ -14,12 +14,18 @@ public class ExpressionRecursionException extends RuntimeException {
 	private static final long serialVersionUID = -3704244273606345556L;
 
 	/**
+	 * The expression which was the cause of this exception.
+	 */
+	private EvaluableExpression selfContainedExpression;
+
+	/**
 	 * Creates an Exception for the fact that {@code selfContainedExpression}, contains
 	 * itself.
 	 *
 	 * @param selfContainedExpression an expression containing itself.
 	 */
 	public ExpressionRecursionException(final EvaluableExpression selfContainedExpression) {
+		this.selfContainedExpression = selfContainedExpression;
 	}
 
 	/**
@@ -28,7 +34,7 @@ public class ExpressionRecursionException extends RuntimeException {
 	 * @return the causing, self-contained expression.
 	 */
 	public EvaluableExpression getCausingExpression() {
-		return null;
+		return this.selfContainedExpression;
 	}
 
 }
