@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>LoopRepetitionCountMeasurementResult.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.measurement</a> &gt; <span class="el_source">LoopRepetitionCountMeasurementResult.java</span></div><h1>LoopRepetitionCountMeasurementResult.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.measurement;
+
+/**
+ * A result of counting repetitions of a loop. It expresses that a loop construct’s body
+ * was completely executed this count result’s times when the loop was being started with
+ * the given {@code Parameterisation}.
+ *
+ * @author Joshua Gleitze
+ */
+public class LoopRepetitionCountMeasurementResult extends ParameterisationDependentMeasurementResult {
+
+	/**
+	 * Creates a result for a loop measurement for which no parameterisation was recorded.
+	 */
+<span class="nc" id="L15">	public LoopRepetitionCountMeasurementResult() {</span>
+<span class="nc" id="L16">	}</span>
+
+	/**
+	 * Creates a result for a loop measurement.
+	 *
+	 * @param parameterisation The state of variables during measurement.
+	 */
+<span class="nc" id="L23">	public LoopRepetitionCountMeasurementResult(final Parameterisation parameterisation) {</span>
+<span class="nc" id="L24">	}</span>
+
+	/**
+	 * Gets the loop repetition count.
+	 *
+	 * @return How often the measured loop was executed. A positive Integer or 0.
+	 */
+	public int getCount() {
+<span class="nc" id="L32">		return 0;</span>
+	}
+
+	/**
+	 * Sets the loop repetition count.
+	 *
+	 * @param count How often the measured loop was executed. Must not be smaller than 0.
+	 * @throws IllegalArgumentException If {@code count &lt; 0}.
+	 */
+	public void setCount(final int count) {
+<span class="nc" id="L42">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

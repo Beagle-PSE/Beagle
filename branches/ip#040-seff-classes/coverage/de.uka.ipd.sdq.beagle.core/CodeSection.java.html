@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CodeSection.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">CodeSection.java</span></div><h1>CodeSection.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import java.io.File;
+import java.io.Serializable;
+
+/**
+ * Describes a section in examined software’s source code. Code sections may span multiple
+ * methods and types. They are defined by a start statement in one source code file and an
+ * end statement in another source code file that may or may not be the same as the first
+ * one. Code sections are immutable, meaning that once created, their attributes cannot be
+ * changed.
+ *
+ * &lt;p&gt;A code section must describe a continuous part of source code, meaning that the last
+ * statement in the section will always be executed if the first one was executed, given
+ * that no Exceptions occur. All statements that may potentially be executed after the
+ * first statement but before the last one are considered to be in the section. A code
+ * section is considered to have been “completely executed” if the section’s first and
+ * last statement was executed. This does generally not mean that all statements in the
+ * section were executed.
+ *
+ * &lt;p&gt;It must be sure that in each run of the project under analysis the first line of
+ * this code section is always executed before the last line and that the last line is
+ * always executed after the first line, if the program did not crash during execution.
+ * Otherwise the code section is not &quot;valid&quot;. This is not checked during runtime, because
+ * it would solve the halting problem.
+ *
+ * @author Joshua Gleitze
+ * @author Roman Langrehr
+ */
+public class CodeSection implements Serializable {
+
+	/**
+	 * Serialisation version UID, see {@link java.io.Serializable}.
+	 */
+	private static final long serialVersionUID = -1823330022448293103L;
+
+	/**
+	 * The java file which contains the {@link #startStatementNumber} of this code
+	 * section.
+	 */
+	private final File startFile;
+
+	/**
+	 * The line index, starting with {@code 0} in the {@link #startFile}, of the first
+	 * line in this code section.
+	 */
+	private final int startStatementNumber;
+
+	/**
+	 * The java file which contains the {@link #endStatementNumber} of this code section.
+	 */
+	private final File endFile;
+
+	/**
+	 * The line index, starting with {@code 0} in the {@link #endFile}, of the last line
+	 * in this code section.
+	 */
+	private final int endStatementNumber;
+
+	/**
+	 * Creates a code section that spans from the {@code startIndex}th statement in
+	 * {@code startFile} to the {@code endIndex}th statement in {@code endFile}.
+	 *
+	 * @param startFile The file containing this section’s first statement. Must not be
+	 *            {@code null} and {@link File#isFile() startFile.isFile()} must return
+	 *            {@code true}.
+	 * @param startIndex The index of the first statement in this section. Counting starts
+	 *            at 0.
+	 * @param endFile The file containing this section’s last statement. Must not be
+	 *            {@code null} and {@link File#isFile() endFile.isFile()} must return
+	 *            {@code true}.
+	 * @param endIndex The index of the last statement in this section. Counting starts at
+	 *            0.
+	 * @throws IllegalArgumentException When {@code startFile.isFile()} or
+	 *             {@code endFile.isFile()} returned {@code false}.
+	 * @throws RuntimeException When {@code startFile} or {@code endFile} could not be
+	 *             read;
+	 */
+<span class="fc" id="L84">	public CodeSection(final File startFile, final int startIndex, final File endFile, final int endIndex) {</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">		if (!startFile.isFile()) {</span>
+<span class="fc" id="L86">			throw new IllegalArgumentException(&quot;The given startFile is not a file.&quot;);</span>
+		}
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		if (!endFile.isFile()) {</span>
+<span class="nc" id="L89">			throw new IllegalArgumentException(&quot;The given endFile is not a file.&quot;);</span>
+		}
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		Validate.isTrue(startIndex &gt;= 0, &quot;The index must be non-neagtive, but was %d&quot;, startIndex);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">		Validate.isTrue(endIndex &gt;= 0, &quot;The index must be non-neagtive, but was %d&quot;, endIndex);</span>
+<span class="fc" id="L93">		final long endFileChars = this.countChars(startFile);</span>
+<span class="fc" id="L94">		final long startFileChars = this.countChars(endFile);</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">		Validate.isTrue(startIndex &lt; startFileChars,</span>
+<span class="fc" id="L96">			&quot;The index was not in the file range. It was %d, but file size was %d&quot;, startIndex, startFileChars);</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">		Validate.isTrue(endIndex &lt; startFileChars,</span>
+<span class="fc" id="L98">			&quot;The index was not in the file range. It was %d, but file size was %d&quot;, endIndex, endFileChars);</span>
+<span class="fc" id="L99">		this.startFile = startFile;</span>
+<span class="fc" id="L100">		this.startStatementNumber = startIndex;</span>
+<span class="fc" id="L101">		this.endFile = endFile;</span>
+<span class="fc" id="L102">		this.endStatementNumber = endIndex;</span>
+<span class="fc" id="L103">	}</span>
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">		if (object == null) {</span>
+<span class="nc" id="L108">			return false;</span>
+		}
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L111">			return true;</span>
+		}
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
+<span class="nc" id="L114">			return false;</span>
+		}
+<span class="fc" id="L116">		final CodeSection other = (CodeSection) object;</span>
+<span class="fc" id="L117">		return new EqualsBuilder().append(this.startFile, other.startFile)</span>
+<span class="fc" id="L118">			.append(this.startStatementNumber, other.startStatementNumber).append(this.endFile, other.endFile)</span>
+<span class="fc" id="L119">			.append(this.endStatementNumber, other.endStatementNumber).isEquals();</span>
+	}
+
+	/**
+	 * Gets the file that contains this section’s last statement.
+	 *
+	 * @return The file containing this section’s last statement. Will never be
+	 *         {@code null} and {@code getEndFile().isFile()} always returns {@code true}.
+	 */
+	public File getEndFile() {
+<span class="fc" id="L129">		return this.endFile;</span>
+	}
+
+	/**
+	 * Gets the index of the last statement in this code section. Counting starts at 0.
+	 * The number thus describes how many statements precede the section’s last statement
+	 * in the {@linkplain #getStartFile() end source code file}.
+	 *
+	 * @return The last statement’s index. A non-negative integer.
+	 */
+	public int getEndSectionIndex() {
+<span class="fc" id="L140">		return this.endStatementNumber;</span>
+	}
+
+	/**
+	 * Gets the file that contains this section’s first statement.
+	 *
+	 * @return The file containing this section’s first statement. Will never be
+	 *         {@code null} and {@code getStartFile().isFile()} always returns
+	 *         {@code true}.
+	 */
+	public File getStartFile() {
+<span class="fc" id="L151">		return this.startFile;</span>
+	}
+
+	/**
+	 * Gets the index of the first statement in this code section. Counting starts at 0.
+	 * The number thus describes how many statements precede the section’s first statement
+	 * in the {@linkplain #getStartFile() start source code file}.
+	 *
+	 * @return The first statement’s index. A non-negative integer.
+	 */
+	public int getStartSectionIndex() {
+<span class="fc" id="L162">		return this.startStatementNumber;</span>
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+<span class="fc" id="L169">		return new HashCodeBuilder(23, 45).append(this.startFile).append(this.startStatementNumber).append(this.endFile)</span>
+<span class="fc" id="L170">			.append(this.endStatementNumber).toHashCode();</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L175">		return new ToStringBuilder(this).append(&quot;startFile&quot;, this.startFile)</span>
+<span class="fc" id="L176">			.append(&quot;startStatementNumber&quot;, this.startStatementNumber).append(&quot;endFile&quot;, this.endFile)</span>
+<span class="fc" id="L177">			.append(&quot;endStatementNumber&quot;, this.endStatementNumber).toString();</span>
+	}
+
+	/**
+	 * Reads the number of chars in a text-file.
+	 *
+	 * @param file The file to read.
+	 * @return The number of bytes in this file.
+	 */
+	private long countChars(final File file) {
+<span class="fc" id="L187">		return file.length();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
