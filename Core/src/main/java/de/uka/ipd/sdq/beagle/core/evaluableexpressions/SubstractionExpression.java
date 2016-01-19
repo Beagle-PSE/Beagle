@@ -7,15 +7,26 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  *
  */
 public class SubstractionExpression implements EvaluableExpression {
+	
+	/**
+	 * The substrahend of the expression.
+	 */
+	private EvaluableExpression substrahend;
+	
+	/**
+	 * The minuend of the expressions.
+	 */
+	private EvaluableExpression minuend;
 
 	/**
-	 * Set an {@link EvaluableExpression} as substrahend of the
-	 * {@code SubstractionExpression}.
+	 * Builds an expression which returns the difference of substrahend and minuend.
 	 *
-	 * @param expression The expression to be the substrahend.
+	 * @param substrahend The substrahend of the expression.
+	 * @param minuend The minuend of the expression.
 	 */
-	public void setSubtrahend(final EvaluableExpression expression) {
-
+	public SubstractionExpression(final EvaluableExpression substrahend, final EvaluableExpression minuend) {
+		this.substrahend = substrahend;
+		this.minuend = minuend;
 	}
 
 	/**
@@ -24,17 +35,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	 * @return This expression's substrahend.
 	 */
 	public EvaluableExpression getSubstrahend() {
-		return null;
-	}
-
-	/**
-	 * Set an {@link EvaluableExpression} as minuend of the {@code SubstractionExpression}
-	 * .
-	 *
-	 * @param expression The expression to be the minuend.
-	 */
-	public void setMinuend(final EvaluableExpression expression) {
-
+		return this.substrahend;
 	}
 
 	/**
@@ -43,7 +44,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	 * @return This expression's minuend.
 	 */
 	public EvaluableExpression getMinuend() {
-		return null;
+		return this.minuend;
 	}
 
 	/*
@@ -54,7 +55,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -66,7 +67,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return this.minuend.evaluate(variableAssignments) - this.substrahend.evaluate(variableAssignments);
 	}
 
 }
