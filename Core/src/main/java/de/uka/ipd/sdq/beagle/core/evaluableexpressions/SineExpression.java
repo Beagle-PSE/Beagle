@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Expression that executes a sine function on its contained expression.
  * 
@@ -16,9 +20,10 @@ public class SineExpression implements EvaluableExpression {
 	/**
 	 * Builds an expression which returns the sine of the argument.
 	 *
-	 * @param argument The argument to  be used.
+	 * @param argument The argument to  be used. Must not be {@code null}.
 	 */
 	public SineExpression(final EvaluableExpression argument) {
+		Validate.notNull(argument);
 		this.argument = argument;
 	}
 
@@ -52,6 +57,33 @@ public class SineExpression implements EvaluableExpression {
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return Math.sin(this.argument.evaluate(variableAssignments));
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("(sin%s)", this.argument);
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final SineExpression other = (SineExpression) object;
+		return new EqualsBuilder().append(this.argument, other.argument).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(231, 233).append(this.argument).toHashCode();
 	}
 
 }

@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Expression that compares both its contained expressions.
  * 
@@ -30,6 +34,8 @@ public class ComparisonExpression implements EvaluableExpression {
 	 *            one in the comparison.
 	 */
 	public ComparisonExpression(final EvaluableExpression smaller, final EvaluableExpression greater) {
+		Validate.notNull(smaller);
+		Validate.notNull(greater);
 		this.smaller = smaller;
 		this.greater = greater;
 	}
@@ -85,6 +91,33 @@ public class ComparisonExpression implements EvaluableExpression {
 		} else {
 			return 0;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("(%s < %s)", this.smaller, this.greater);
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final ComparisonExpression other = (ComparisonExpression) object;
+		return new EqualsBuilder().append(this.smaller, other.smaller).append(this.greater, other.greater).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(839, 39901).append(this.smaller).append(this.greater).hashCode();
 	}
 
 }

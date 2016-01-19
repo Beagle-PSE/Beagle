@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Expression that divides its contained dividend through its contained divisor.
  * 
@@ -26,6 +30,8 @@ public class DivisionExpression implements EvaluableExpression {
 	 * @param dividend The expression being divided.
 	 */
 	public DivisionExpression(final EvaluableExpression divisor, final EvaluableExpression dividend) {
+		Validate.notNull(divisor);
+		Validate.notNull(dividend);
 		this.divisor = divisor;
 		this.dividend = dividend;
 	}
@@ -71,5 +77,31 @@ public class DivisionExpression implements EvaluableExpression {
 		final double quotient = this.dividend.evaluate(variableAssignments) / this.divisor.evaluate(variableAssignments);
 		return quotient;
 	}
+	
+	@Override
+	public String toString() {
+		return String.format("(%s / %s)", this.dividend, this.divisor);
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final DivisionExpression other = (DivisionExpression) object;
+		return new EqualsBuilder().append(this.dividend, other.dividend).append(this.divisor, other.divisor).isEquals();
+	}
 
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(195, 197).append(this.dividend).append(this.divisor).toHashCode();
+	}
 }

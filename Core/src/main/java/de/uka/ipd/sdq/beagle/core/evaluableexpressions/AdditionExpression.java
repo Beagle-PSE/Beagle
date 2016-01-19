@@ -1,6 +1,12 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Expression that sums up all its contained expressions.
@@ -12,7 +18,7 @@ public class AdditionExpression implements EvaluableExpression {
 	/**
 	 * All summands of this evaluable expression.
 	 */
-	private Collection<EvaluableExpression> summands;
+	private Set<EvaluableExpression> summands;
 
 	/**
 	 * Builds an expression that will return the sum of all {@code summands} on
@@ -22,7 +28,8 @@ public class AdditionExpression implements EvaluableExpression {
 	 *            must at least be 2.
 	 */
 	public AdditionExpression(final Collection<EvaluableExpression> summands) {
-		this.summands = summands;
+		Validate.noNullElements(summands);
+		this.summands = new HashSet<>(summands);
 	}
 
 	/**
@@ -33,6 +40,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 *            must at least be 2.
 	 */
 	public AdditionExpression(final EvaluableExpression... summands) {
+		Validate.noNullElements(summands);
 		for (EvaluableExpression summand : summands) {
 			this.summands.add(summand);
 		}
@@ -76,5 +84,45 @@ public class AdditionExpression implements EvaluableExpression {
 			result += value;
 		}
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder result = new StringBuilder();
+		result.append("(");
+		boolean first = true;
+		for (EvaluableExpression summand : this.summands) {
+			if (!first) {
+				result.append(" + ");
+			} else {
+				first = false;
+			}
+			result.append(summand.toString());
+		}
+		result.append(")");
+		return result.toString();
+
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final AdditionExpression other = (AdditionExpression) object;
+		return new EqualsBuilder().append(this.summands, other.summands).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(999, 393).append(this.summands).toHashCode();
 	}
 }

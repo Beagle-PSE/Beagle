@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Expression that potentises the given exponent to the base e (Euler’s number).
  * 
@@ -16,9 +20,10 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	/**
 	 * Builds an expression which returns e raised to the power of the exponent.
 	 *
-	 * @param exponent The expression which is the exponent of this expression.
+	 * @param exponent The expression which is the exponent of this expression. Must not be {@code null}.
 	 */
 	public ExponentialFunctionExpression(final EvaluableExpression exponent) {
+		Validate.notNull(exponent);
 		this.exponent = exponent;
 	}
 
@@ -52,6 +57,33 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return Math.pow(Math.E, this.exponent.evaluate(variableAssignments));
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("(e^%s)", this.exponent);
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final ExponentialFunctionExpression other = (ExponentialFunctionExpression) object;
+		return new EqualsBuilder().append(this.exponent, other.exponent).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(207, 209).append(this.exponent).toHashCode();
 	}
 
 }

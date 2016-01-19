@@ -25,6 +25,7 @@ public class ExpressionRecursionException extends RuntimeException {
 	 * @param selfContainedExpression an expression containing itself.
 	 */
 	public ExpressionRecursionException(final EvaluableExpression selfContainedExpression) {
+		super(String.format("Can not evaluate: expression %s containes itself!", selfContainedExpression));
 		this.selfContainedExpression = selfContainedExpression;
 	}
 
@@ -36,5 +37,6 @@ public class ExpressionRecursionException extends RuntimeException {
 	public EvaluableExpression getCausingExpression() {
 		return this.selfContainedExpression;
 	}
+
 
 }

@@ -1,6 +1,11 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Expression that multiplies all its contained expressions.
@@ -22,7 +27,8 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *            {@code factors.size()} must at least be 2.
 	 */
 	public MultiplicationExpression(final Collection<EvaluableExpression> factors) {
-		this.factors = factors;
+		Validate.noNullElements(factors);
+		this.factors = new HashSet<>(factors);
 	}
 
 	/**
@@ -32,6 +38,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *            {@code factors.length} must at least be 2.
 	 */
 	public MultiplicationExpression(final EvaluableExpression... factors) {
+		Validate.noNullElements(factors);
 		for (EvaluableExpression factor : factors) {
 			this.factors.add(factor);
 		}
@@ -71,5 +78,44 @@ public class MultiplicationExpression implements EvaluableExpression {
 			product *= factor.evaluate(variableAssignments);
 		}
 		return product;
+	}
+	
+	@Override
+	public String toString() {
+		final StringBuilder result = new StringBuilder();
+		result.append("(");
+		boolean first = true;
+		for (EvaluableExpression factor : this.factors) {
+			if (!first)  {
+				result.append(" * ");
+			} else {
+				first = false;
+			}
+			result.append(factor.toString());	
+		}
+		result.append(")");
+		return result.toString();
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final MultiplicationExpression other = (MultiplicationExpression) object;
+		return new EqualsBuilder().append(this.factors, other.factors).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(223, 225).append(this.factors).toHashCode();
 	}
 }

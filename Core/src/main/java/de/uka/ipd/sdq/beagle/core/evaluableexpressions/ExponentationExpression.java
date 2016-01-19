@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Expression that potentises the given exponent to the given base.
  * 
@@ -20,10 +24,12 @@ public class ExponentationExpression implements EvaluableExpression {
 	/**
 	 * Build an expression which returns the base raised to the power of the exponent.
 	 *
-	 * @param exponent The expression which is the exponent of this expression.
-	 * @param base The expression which is the base of this expression.
+	 * @param exponent The expression which is the exponent of this expression. Must not be {@code null}.
+	 * @param base The expression which is the base of this expression. Must not be {@code null}.
 	 */
 	public ExponentationExpression(final EvaluableExpression exponent, final EvaluableExpression base) {
+		Validate.notNull(exponent);
+		Validate.notNull(base);
 		this.exponent = exponent;
 		this.base = base;
 	}
@@ -66,7 +72,33 @@ public class ExponentationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return Math.pow(this.base.evaluate(variableAssignments), this.exponent.evaluate(variableAssignments));		
+		return Math.pow(this.base.evaluate(variableAssignments), this.exponent.evaluate(variableAssignments));
 	}
 
+	@Override
+	public String toString() {
+		return String.format("(%s^%s)", this.base, this.exponent);
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final ExponentationExpression other = (ExponentationExpression) object;
+		return new EqualsBuilder().append(this.base, other.base).append(this.exponent, other.exponent).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(203, 205).append(this.base).append(this.exponent).toHashCode();
+	}
 }

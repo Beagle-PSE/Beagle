@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * An {@link EvaluableExpression} representing a named variable.
  * 
@@ -18,6 +22,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	 * @param name The name of the variable.
 	 */
 	public EvaluableVariable(final String name) {
+		Validate.notNull(name);
 		this.name = name;
 	}
 
@@ -51,6 +56,33 @@ public class EvaluableVariable implements EvaluableExpression {
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return variableAssignments.getValueFor(this);
+	}
+	
+	@Override
+	public String toString() {
+		return this.name;
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final EvaluableVariable other = (EvaluableVariable) object;
+		return new EqualsBuilder().append(this.name, other.name).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(197, 199).append(this.name).toHashCode();
 	}
 
 }

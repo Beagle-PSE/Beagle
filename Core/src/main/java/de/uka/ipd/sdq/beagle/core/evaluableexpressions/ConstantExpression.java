@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +51,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	 * @return The constant expression belonging to the given {@code value}.
 	 */
 	public static ConstantExpression forValue(final double value) {
+		Validate.notNull(value);
 		if (constantExpressions.containsKey(value)) {
 			return constantExpressions.get(value);
 		} else {
@@ -77,5 +82,31 @@ public final class ConstantExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return this.value;
 	}
+	
+	@Override
+	public String toString() {
+		return String.valueOf(this.value);
+	}
+	
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final ConstantExpression other = (ConstantExpression) object;
+		return new EqualsBuilder().append(this.value, other.value).isEquals();
+	}
 
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(191, 193).append(this.value).toHashCode();
+	}
 }

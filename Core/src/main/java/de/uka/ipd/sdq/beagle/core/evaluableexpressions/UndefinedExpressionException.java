@@ -35,6 +35,7 @@ public class UndefinedExpressionException extends RuntimeException {
 	 */
 	public UndefinedExpressionException(final EvaluableVariableAssignment assignment,
 		final EvaluableVariable undefinedVariable) {
+		super(String.format("Can not evaluate: There is no value for %s defined in %s!", undefinedVariable, assignment));
 		this.assignment = assignment;
 		this.undefinedVariable = undefinedVariable;
 	}

@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Expression that executes an if-then-else-statement based on its contained expressions.
  * 
@@ -25,13 +29,16 @@ public class IfThenElseExpression implements EvaluableExpression {
 	/**
 	 * Builds an expression which returns .
 	 *
-	 * @param ifStatement The expression which contains the if-statement.
+	 * @param ifStatement The expression which contains the if-statement. Must not be {@code null}.
 	 * 
-	 * @param thenStatement The expression which contains the then-statement.
-	 * @param elseStatement The expression which contains the else-statement.
+	 * @param thenStatement The expression which contains the then-statement. Must not be {@code null}.
+	 * @param elseStatement The expression which contains the else-statement. Must not be {@code null}.
 	 */
 	public IfThenElseExpression(final EvaluableExpression ifStatement, final EvaluableExpression thenStatement,
 		final EvaluableExpression elseStatement) {
+		Validate.notNull(ifStatement);
+		Validate.notNull(thenStatement);
+		Validate.notNull(elseStatement);
 		this.ifStatement = ifStatement;
 		this.elseStatement = elseStatement;
 		this.thenStatement = thenStatement;
@@ -90,6 +97,35 @@ public class IfThenElseExpression implements EvaluableExpression {
 		} else {
 			return this.elseStatement.evaluate(variableAssignments);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("(%s ? %s : %s)", this.ifStatement, this.thenStatement, this.elseStatement);
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final IfThenElseExpression other = (IfThenElseExpression) object;
+		return new EqualsBuilder().append(this.ifStatement, other.ifStatement)
+			.append(this.thenStatement, other.thenStatement).append(this.elseStatement, other.elseStatement).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(215, 217).append(this.ifStatement).append(this.thenStatement)
+			.append(this.elseStatement).toHashCode();
 	}
 
 }
