@@ -1,5 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * An {@link EvaluableExpression} having a constant value.
  * 
@@ -9,11 +12,32 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public final class ConstantExpression implements EvaluableExpression {
 
 	/**
+	 * Hash map containing all existing constant expressions with their value as key.
+	 */
+	private static Map<Double, ConstantExpression> constantExpressions = new HashMap<Double, ConstantExpression>();
+
+	/**
+	 * The value of this constant expression.
+	 */
+	private double value;
+
+	/**
 	 * Inizialises a new constant expression with a given {@code value}.
 	 * 
 	 * @param value The Constant value of this expression.
 	 */
 	private ConstantExpression(final double value) {
+		this.value = value;
+		constantExpressions.put(value, this);
+	}
+
+	/**
+	 * Gets the value of this constant expression.
+	 *
+	 * @return The value mapped to the constant expression.
+	 */
+	public double getValue() {
+		return this.value;
 	}
 
 	/**
@@ -23,7 +47,12 @@ public final class ConstantExpression implements EvaluableExpression {
 	 * @return The constant expression belonging to the given {@code value}.
 	 */
 	public static ConstantExpression forValue(final double value) {
-		return null;
+		if (constantExpressions.containsKey(value)) {
+			return constantExpressions.get(value);
+		} else {
+			final ConstantExpression newConstant = new ConstantExpression(value);
+			return newConstant;
+		}
 	}
 
 	/*
@@ -34,7 +63,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -46,7 +75,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return this.value;
 	}
 
 }
