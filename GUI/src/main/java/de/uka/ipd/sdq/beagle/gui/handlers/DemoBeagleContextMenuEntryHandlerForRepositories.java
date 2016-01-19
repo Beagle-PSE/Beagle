@@ -28,6 +28,9 @@ public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHa
 	 */
 	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
 
+	/**
+	 * The ID stating that an entire repository is ought to be analysed.
+	 */
 	public static final String SPECIAL_ID_COMPLETE_REPOSITORY = "Analyse complete repository";
 
 	@Override
@@ -43,9 +46,9 @@ public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHa
 		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 
 		// create a new GUI and open it
-		final List<String> ids = new ArrayList<>();
-		ids.add(SPECIAL_ID_COMPLETE_REPOSITORY + " $" + clickedFilePath.toString());
-		final GuiController guiController = new GuiController(ids);
+		final List<String> toAnalyseIds = new ArrayList<>();
+		toAnalyseIds.add(SPECIAL_ID_COMPLETE_REPOSITORY + " $" + clickedFilePath.toString());
+		final GuiController guiController = new GuiController(toAnalyseIds);
 		guiController.open();
 		return null;
 	}
