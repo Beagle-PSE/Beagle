@@ -24,14 +24,14 @@ import java.util.List;
 public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHandler {
 
 	/**
-	 * RegEx for the file extensions, where the context menu entry should be displayed.
-	 */
-	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
-
-	/**
 	 * The ID stating that an entire repository is ought to be analysed.
 	 */
 	public static final String SPECIAL_ID_COMPLETE_REPOSITORY = "Analyse complete repository";
+
+	/**
+	 * RegEx for the file extensions, where the context menu entry should be displayed.
+	 */
+	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
