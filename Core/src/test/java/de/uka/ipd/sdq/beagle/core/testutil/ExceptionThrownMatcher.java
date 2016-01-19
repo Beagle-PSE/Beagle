@@ -37,9 +37,8 @@ public final class ExceptionThrownMatcher extends TypeSafeDiagnosingMatcher<Thro
 	 *
 	 * <code>
 	 *
-	 * assertThat("Error Message", () -> {
-	 * 		myInstance.myMethod(myArgument1, myArgument2);
-	 * }, throwsException(NullPointerException.class));
+	 * assertThat("Error Message", () -> myInstance.myMethod(myArgument1, myArgument2),
+	 * 		throwsException(NullPointerException.class));
 	 *
 	 * </code>
 	 *

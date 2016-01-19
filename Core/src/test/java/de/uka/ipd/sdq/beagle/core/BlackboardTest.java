@@ -1,10 +1,30 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 
+import de.uka.ipd.sdq.beagle.core.testutil.BlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.SeffBranchFactory;
+
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class BlackboardTest {
+
+	/**
+	 * A blackboard factory instance to easily obtain new blackboards from.
+	 */
+	private static final BlackboardFactory BLACKBOARD_FACTORY = new BlackboardFactory();
+
+	/**
+	 * A SeffBranch factory instance to easily obtain new SeffBranches from.
+	 */
+	private static final SeffBranchFactory SEFF_BRANCH_FACTORY = new SeffBranchFactory();
 
 	@Test
 	public void testBlackboard() {
@@ -62,13 +82,25 @@ public class BlackboardTest {
 	}
 
 	@Test
-	public void testAddToBeMeasuredSeffBranchesSeffBranchArray() {
-		fail("Not yet implemented");
-	}
+	public void testAddToBeMeasuredSeffBranches() {
+		final Set<SeffBranch> seffBranchesSetWithNull =
+			new HashSet<>(Arrays.asList(SEFF_BRANCH_FACTORY.getAllSeffBranches()));
+		seffBranchesSetWithNull.add(null);
+		final SeffBranch[] seffBranchesArrayWithNull =
+			ArrayUtils.add(SEFF_BRANCH_FACTORY.getAllSeffBranches(), 1, (SeffBranch) null);
 
-	@Test
-	public void testAddToBeMeasuredSeffBranchesCollectionOfSeffBranch() {
-		fail("Not yet implemented");
+		assertThat("Adding null to measured SEFF Branches must not be possible (Set)",
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffBranches(seffBranchesSetWithNull),
+			throwsException(NullPointerException.class));
+		assertThat("Adding null to measured SEFF Branches must not be possible (Array)",
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffBranches(seffBranchesArrayWithNull),
+			throwsException(NullPointerException.class));
+		assertThat("Passing null to addToBeMeasuredSeffBranches is forbidden (Set)",
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffBranches((Set<SeffBranch>) null),
+			throwsException(NullPointerException.class));
+		assertThat("Passing null to addToBeMeasuredSeffBranches is forbidden (Array)",
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffBranches((SeffBranch[]) null),
+			throwsException(NullPointerException.class));
 	}
 
 	@Test
@@ -165,5 +197,4 @@ public class BlackboardTest {
 	public void testReadFor() {
 		fail("Not yet implemented");
 	}
-
 }
