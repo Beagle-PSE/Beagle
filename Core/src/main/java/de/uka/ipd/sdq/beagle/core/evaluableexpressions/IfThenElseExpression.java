@@ -8,21 +8,43 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
+	 * The expression containing the if-statement.
+	 */
+	private EvaluableExpression ifStatement;
+
+	/**
+	 * The expression containing the else-statement.
+	 */
+	private EvaluableExpression elseStatement;
+
+	/**
+	 * The expression containing the then-statement.
+	 */
+	private EvaluableExpression thenStatement;
+
+	/**
+	 * Builds an expression which returns .
+	 *
+	 * @param ifStatement The expression which contains the if-statement.
+	 * 
+	 * @param thenStatement The expression which contains the then-statement.
+	 * @param elseStatement The expression which contains the else-statement.
+	 */
+	public IfThenElseExpression(final EvaluableExpression ifStatement, final EvaluableExpression thenStatement,
+		final EvaluableExpression elseStatement) {
+		this.ifStatement = ifStatement;
+		this.elseStatement = elseStatement;
+		this.thenStatement = thenStatement;
+
+	}
+
+	/**
 	 * Get expression contained in if-statement.
 	 * 
 	 * @return if-Expression
 	 */
-	public EvaluableExpression getIfExpression() {
-		return null;
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} to be contained in the if statement.
-	 *
-	 * @param ifExpression The {@link EvaluableExpression} to be contained in the if
-	 *            statement.
-	 */
-	public void setIfExpression(final EvaluableExpression ifExpression) {
+	public EvaluableExpression getIfStatement() {
+		return this.ifStatement;
 	}
 
 	/**
@@ -30,17 +52,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 * 
 	 * @return else-Expression
 	 */
-	public EvaluableExpression getElseExpression() {
-		return null;
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} to be contained in the else-statement.
-	 *
-	 * @param elseExpression The {@link EvaluableExpression} to be contained in the
-	 *            else-statement.
-	 */
-	public void setElseExpression(final EvaluableExpression elseExpression) {
+	public EvaluableExpression getElseStatement() {
+		return this.elseStatement;
 	}
 
 	/**
@@ -48,17 +61,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 * 
 	 * @return then-expression
 	 */
-	public EvaluableExpression getThenExpression() {
-		return null;
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} to be contained in the then-statement.
-	 *
-	 * @param thenExpression The {@link EvaluableExpression} to be contained in the
-	 *            then-statement.
-	 */
-	public void setThenExpression(final EvaluableExpression thenExpression) {
+	public EvaluableExpression getThenStatement() {
+		return this.thenStatement;
 	}
 
 	/*
@@ -69,7 +73,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -81,7 +85,11 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		if (this.ifStatement.evaluate(variableAssignments) == 0) {
+			return this.thenStatement.evaluate(variableAssignments);
+		} else {
+			return this.elseStatement.evaluate(variableAssignments);
+		}
 	}
 
 }
