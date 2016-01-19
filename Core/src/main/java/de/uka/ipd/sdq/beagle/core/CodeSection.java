@@ -6,8 +6,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -92,14 +90,8 @@ public class CodeSection implements Serializable {
 		}
 		Validate.isTrue(startIndex >= 0, "The index must be non-neagtive, but was %d", startIndex);
 		Validate.isTrue(endIndex >= 0, "The index must be non-neagtive, but was %d", endIndex);
-		long endFileChars;
-		long startFileChars;
-		try {
-			startFileChars = countChars(startFile);
-			endFileChars = countChars(endFile);
-		} catch (final IOException e) {
-			throw new RuntimeException(e);
-		}
+		final long endFileChars = this.countChars(startFile);
+		final long startFileChars = this.countChars(endFile);
 		Validate.isTrue(startIndex < startFileChars,
 			"The index was not in the file range. It was %d, but file size was %d", startIndex, startFileChars);
 		Validate.isTrue(endIndex < startFileChars,
@@ -185,8 +177,13 @@ public class CodeSection implements Serializable {
 			.append("endStatementNumber", this.endStatementNumber).toString();
 	}
 
-	private long countChars(final File file) throws IOException {
-		final FileReader reader = new FileReader(file);
-		return reader.skip(Long.MAX_VALUE);
+	/**
+	 * Reads the number of chars in a text-file.
+	 *
+	 * @param file The file to read.
+	 * @return The number of bytes in this file.
+	 */
+	private long countChars(final File file) {
+		return file.length();
 	}
 }
