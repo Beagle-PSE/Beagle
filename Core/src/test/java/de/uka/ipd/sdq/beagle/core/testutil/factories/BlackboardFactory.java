@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.testutil;
+package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 
