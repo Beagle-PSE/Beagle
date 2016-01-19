@@ -22,7 +22,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	private double value;
 
 	/**
-	 * Inizialises a new constant expression with a given {@code value}.
+	 * Builds an expression which returns the value of the expression.
 	 * 
 	 * @param value The Constant value of this expression.
 	 */

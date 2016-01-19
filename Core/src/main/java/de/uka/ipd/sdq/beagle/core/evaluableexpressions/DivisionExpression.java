@@ -9,12 +9,25 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class DivisionExpression implements EvaluableExpression {
 
 	/**
-	 * Sets the {@link EvaluableExpression} which is the divisor.
-	 *
-	 * @param expression which is the divisor.
+	 * The divisor of this division expression.
 	 */
-	public void setDivisor(final EvaluableExpression expression) {
+	private EvaluableExpression divisor;
 
+	/**
+	 * The dividend of this division expression.
+	 */
+	private EvaluableExpression dividend;
+
+	/**
+	 * Builds an expression which returns the quotient of a division using the given
+	 * divisor and dividend.
+	 *
+	 * @param divisor The expression dividing the other one.
+	 * @param dividend The expression being divided.
+	 */
+	public DivisionExpression(final EvaluableExpression divisor, final EvaluableExpression dividend) {
+		this.divisor = divisor;
+		this.dividend = dividend;
 	}
 
 	/**
@@ -23,16 +36,7 @@ public class DivisionExpression implements EvaluableExpression {
 	 * @return This expression's divisor.
 	 */
 	public EvaluableExpression getDivisor() {
-		return null;
-	}
-
-	/**
-	 * Sets the {@link EvaluableExpression} which is the dividend.
-	 *
-	 * @param expression which is the dividendF.
-	 */
-	public void setDividend(final EvaluableExpression expression) {
-
+		return this.divisor;
 	}
 
 	/**
@@ -41,7 +45,7 @@ public class DivisionExpression implements EvaluableExpression {
 	 * @return This expression's dividend.
 	 */
 	public EvaluableExpression getDividend() {
-		return null;
+		return this.dividend;
 	}
 
 	/*
@@ -52,7 +56,7 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -64,7 +68,8 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		final double quotient = this.dividend.evaluate(variableAssignments) / this.divisor.evaluate(variableAssignments);
+		return quotient;
 	}
 
 }
