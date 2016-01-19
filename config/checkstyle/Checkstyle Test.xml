@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Checkstyle for Tests
+    Checkstyle-Configuration: Beagle Checkstyle for Tests
     Description: none
 -->
 <module name="Checker">
@@ -349,10 +349,11 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="MagicNumber">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
       <property name="ignoreNumbers" value="-1, 0, 1"/>
       <property name="ignoreHashCodeMethod" value="true"/>
       <property name="constantWaiverParentToken" value="TYPECAST,METHOD_CALL,EXPR,ARRAY_INIT,UNARY_MINUS,UNARY_PLUS,ELIST,STAR,ASSIGN,PLUS,MINUS,DIV,LITERAL_NEW"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="MissingCtor">
       <property name="severity" value="ignore"/>
