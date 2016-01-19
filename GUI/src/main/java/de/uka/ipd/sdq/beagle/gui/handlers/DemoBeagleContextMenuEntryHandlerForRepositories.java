@@ -19,6 +19,7 @@ import java.util.List;
  * Handles the context menu entries, that start an analysis of the whole project.
  *
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHandler {
 

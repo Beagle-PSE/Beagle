@@ -18,6 +18,7 @@ import java.util.List;
  * Handles the context menu entries, that start an analysis of a component.
  *
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class DemoBeagleContextMenuEntryHandlerForComponents extends AbstractHandler {
 

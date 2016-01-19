@@ -19,6 +19,7 @@ import java.util.List;
  * Handles the context menu entries, that start an analysis of an internal action.
  *
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class DemoBeagleContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 

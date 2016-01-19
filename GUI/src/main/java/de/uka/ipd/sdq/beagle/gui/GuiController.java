@@ -116,12 +116,14 @@ public class GuiController {
 			wizardDialog.open();
 
 			if (this.wizardFinishedSuccessfully) {
-				// if the wizard finished successfully, start the analysis ...
-				this.startAnalysis();
 
-				// ... and indicate it to the user
+				// If the wizard finished successfully, indicate to the user that the
+				// analysis will start ...
 				this.state = GuiControllerState.dialogOpen;
 				GuiController.this.engageDialog();
+
+				// ... and let it actually start.
+				this.startAnalysis();
 			} else {
 				this.state = GuiControllerState.terminated;
 			}
