@@ -8,20 +8,26 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class EvaluableVariable implements EvaluableExpression {
 
 	/**
+	 * The name of the evaluable variable.
+	 */
+	private String name;
+
+	/**
+	 * Builds an evaluable variable with the given name.
+	 *
+	 * @param name The name of the variable.
+	 */
+	public EvaluableVariable(final String name) {
+		this.name = name;
+	}
+
+	/**
 	 * Get this evaluable varibale's name.
 	 *
 	 * @return The variable's name. Is never {@code null}.
 	 */
 	public String getName() {
-		return null;
-	}
-
-	/**
-	 * Names this evaluable variable.
-	 *
-	 * @param name This variable's name. Must not be {@code null}.
-	 */
-	public void setName(final String name) {
+		return this.name;
 	}
 
 	/*
@@ -32,6 +38,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		visitor.visit(this);
 	}
 
 	/*
@@ -43,7 +50,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return variableAssignments.getValueFor(this);
 	}
 
 }
