@@ -1,9 +1,11 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -52,7 +54,8 @@ public class SeffBranch implements MeasurableSeffElement {
 			throw new IllegalArgumentException(
 				"The code section set for the SeffBranch had less than two code sections");
 		}
-		this.branches = branches;
+		Validate.noNullElements(branches);
+		this.branches = new HashSet<>(branches);
 	}
 
 	@Override

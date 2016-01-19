@@ -5,7 +5,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
@@ -42,8 +41,7 @@ public class SeffBranchTest {
 		ThrowingMethod method = () -> {
 			new SeffBranch(noCodeSections);
 		};
-		assertThat("Set must not be empty.", method,
-			throwsException(IllegalArgumentException.class));
+		assertThat("Set must not be empty.", method, throwsException(IllegalArgumentException.class));
 
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
 		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
@@ -68,8 +66,7 @@ public class SeffBranchTest {
 		method = () -> {
 			new SeffBranch(codeSections);
 		};
-		assertThat("Set must not contain null.", method,
-			throwsException(NullPointerException.class));
+		assertThat("Set must not contain null.", method, throwsException(IllegalArgumentException.class));
 
 	}
 
@@ -118,7 +115,7 @@ public class SeffBranchTest {
 			codeSections.add(codeSection);
 		}
 		final SeffBranch branch = new SeffBranch(codeSections);
-		assertThat(branch.getBranches(), is(theInstance(codeSections)));
+		assertThat(branch.getBranches(), is(equalTo(codeSections)));
 	}
 
 	/**
