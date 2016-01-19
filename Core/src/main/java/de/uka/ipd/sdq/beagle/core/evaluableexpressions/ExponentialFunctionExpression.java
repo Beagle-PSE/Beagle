@@ -9,12 +9,17 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class ExponentialFunctionExpression implements EvaluableExpression {
 
 	/**
-	 * Set an {@link EvaluableExpression} as exponent.
-	 *
-	 * @param expression This expression's exponent.
+	 * The {@link EvaluableExpression} which is the exponent of this expression.
 	 */
-	public void setExponent(final EvaluableExpression expression) {
+	private EvaluableExpression exponent;
 
+	/**
+	 * Builds an expression which returns e raised to the power of the exponent.
+	 *
+	 * @param exponent The expression which is the exponent of this expression.
+	 */
+	public ExponentialFunctionExpression(final EvaluableExpression exponent) {
+		this.exponent = exponent;
 	}
 
 	/**
@@ -23,7 +28,7 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	 * @return The expression's exponent.
 	 */
 	public EvaluableExpression getExponent() {
-		return null;
+		return this.exponent;
 	}
 
 	/*
@@ -34,7 +39,7 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -46,7 +51,7 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return Math.pow(Math.E, this.exponent.evaluate(variableAssignments));
 	}
 
 }

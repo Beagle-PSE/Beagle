@@ -18,7 +18,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	private EvaluableExpression base;
 
 	/**
-	 * Build an expression which returns base raised to the power of the exponent.
+	 * Build an expression which returns the base raised to the power of the exponent.
 	 *
 	 * @param exponent The expression which is the exponent of this expression.
 	 * @param base The expression which is the base of this expression.
