@@ -8,11 +8,21 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  * @see EvaluableExpression
  */
 public class UndefinedExpressionException extends RuntimeException {
-
+	
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
 	private static final long serialVersionUID = -80875322029735423L;
+
+	/**
+	 * The variable missing in the assignment.
+	 */
+	private EvaluableVariable undefinedVariable;
+
+	/**
+	 * The assignment raising the exception.
+	 */
+	private EvaluableVariableAssignment assignment;
 
 	/**
 	 * Creates an exception for an encountered undefined variable. Describes the situation
@@ -25,6 +35,8 @@ public class UndefinedExpressionException extends RuntimeException {
 	 */
 	public UndefinedExpressionException(final EvaluableVariableAssignment assignment,
 		final EvaluableVariable undefinedVariable) {
+		this.assignment = assignment;
+		this.undefinedVariable = undefinedVariable;
 	}
 
 	/**
@@ -34,7 +46,7 @@ public class UndefinedExpressionException extends RuntimeException {
 	 * @return the causing assignment.
 	 */
 	public EvaluableVariableAssignment getCausingAssignment() {
-		return null;
+		return this.assignment;
 	}
 
 	/**
@@ -44,7 +56,7 @@ public class UndefinedExpressionException extends RuntimeException {
 	 * @return the missing variable.
 	 */
 	public EvaluableVariable getMissingVariable() {
-		return null;
+		return this.undefinedVariable;
 
 	}
 }
