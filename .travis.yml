@@ -9,10 +9,10 @@ install:
   - ./buildSrc/src/deploy/bash/Install\ Doc.sh
   
 script:
-  - gradle build qc || gradle build qc --info --stacktrace
+  - gradle build qc
   
 after_failure:
-  - gradle web || gradle web --info --stacktrace
+  - gradle web
   
 after_success:
   - gradle cleanTmp
