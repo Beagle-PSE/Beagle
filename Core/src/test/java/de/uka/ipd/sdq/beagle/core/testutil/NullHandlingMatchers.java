@@ -88,17 +88,6 @@ public final class NullHandlingMatchers {
 	}
 
 	/**
-	 * Creates a matcher that matches if the examined lambda does not accept {@code null}
-	 * as input. The examined lambda takes one argument and is expected to throw a
-	 * {@link NullPointerException} if the argument is {@code null}.
-	 *
-	 * @return A matcher, as described above.
-	 */
-	public static Matcher<Consumer<?>> notAcceptingNull() {
-		return THIZ.new NotAcceptingNullMatcher();
-	}
-
-	/**
 	 * Returns a copy of {@code list} that contains {@code null} at {@code index}.
 	 *
 	 * @param list A list.
@@ -183,34 +172,13 @@ public final class NullHandlingMatchers {
 			}
 
 			// feed null
-			if (!throwsException(NullPointerException.class).matches((ThrowingMethod) () -> consumer.accept(null))) {
+			if (!THROWS_NPE.matches((ThrowingMethod) () -> consumer.accept(null))) {
+				THROWS_NPE.describeMismatch(consumer, mismatchDescription);
+				mismatchDescription.appendText(" when passing null as argument");
 				matchedAll = false;
 			}
 
 			return matchedAll;
-		}
-	}
-
-	/**
-	 * The matcher for {@link NullHandlingMatchers#notAcceptingNull()}.
-	 *
-	 * @author Joshua Gleitze
-	 * @see NullHandlingMatchers#notAcceptingNull()
-	 */
-	private final class NotAcceptingNullMatcher extends TypeSafeDiagnosingMatcher<Consumer<?>> {
-
-		@Override
-		public void describeTo(final Description description) {
-			description.appendText("a method throwing a NullPointerExecption if its argument is null");
-		}
-
-		@Override
-		protected boolean matchesSafely(final Consumer<?> consumer, final Description mismatchDescription) {
-			if (!THROWS_NPE.matches((ThrowingMethod) () -> consumer.accept(null))) {
-				mismatchDescription.appendDescriptionOf(THROWS_NPE).appendText(" when passing null");
-				return false;
-			}
-			return true;
 		}
 	}
 }
