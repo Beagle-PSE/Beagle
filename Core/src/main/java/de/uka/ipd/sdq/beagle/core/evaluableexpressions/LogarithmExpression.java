@@ -9,12 +9,25 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class LogarithmExpression implements EvaluableExpression {
 
 	/**
-	 * Set the base of the logarithm.
-	 *
-	 * @param expression which is supposed to be the base.
+	 * The Base of the expression.
 	 */
-	public void setBase(final EvaluableExpression expression) {
+	private EvaluableExpression base;
 
+	/**
+	 * The antilogarithm of the expression.
+	 */
+	private EvaluableExpression antilogarith;
+
+	/**
+	 * Builds an expression which returns the result of logarithm of antilogarithm to the
+	 * base.
+	 *
+	 * @param base The base of the logarithm.
+	 * @param antilogarithm The antilogarithm of the expression.
+	 */
+	public LogarithmExpression(final EvaluableExpression base, final EvaluableExpression antilogarithm) {
+		this.antilogarith = antilogarithm;
+		this.base = base;
 	}
 
 	/**
@@ -23,17 +36,7 @@ public class LogarithmExpression implements EvaluableExpression {
 	 * @return the base of the logarithm.
 	 */
 	public EvaluableExpression getBase() {
-		return null;
-	}
-
-	/**
-	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
-	 * {@code LogarithmExpression}.
-	 *
-	 * @param expression to be the antilogarithm
-	 */
-	public void setAnitlogarithm(final EvaluableExpression expression) {
-
+		return this.base;
 	}
 
 	/**
@@ -43,7 +46,7 @@ public class LogarithmExpression implements EvaluableExpression {
 	 * @return the antilogarithm expression.s
 	 */
 	public EvaluableExpression getAntilogarithm() {
-		return null;
+		return this.antilogarith;
 	}
 
 	/*
@@ -54,7 +57,7 @@ public class LogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -66,7 +69,8 @@ public class LogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return Math.log(this.antilogarith.evaluate(variableAssignments))
+			/ Math.log(this.base.evaluate(variableAssignments));
 	}
 
 }
