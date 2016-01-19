@@ -9,12 +9,17 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class SineExpression implements EvaluableExpression {
 
 	/**
-	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
-	 *
-	 * @param expression The expression to be the argument.
+	 * The argument of the sine expression.
 	 */
-	public void setArgument(final EvaluableExpression expression) {
+	private EvaluableExpression argument;
 
+	/**
+	 * Builds an expression which returns the sine of the argument.
+	 *
+	 * @param argument The argument to  be used.
+	 */
+	public SineExpression(final EvaluableExpression argument) {
+		this.argument = argument;
 	}
 
 	/**
@@ -23,7 +28,7 @@ public class SineExpression implements EvaluableExpression {
 	 * @return The argument of the function.
 	 */
 	public EvaluableExpression getArgument() {
-		return null;
+		return this.argument;
 	}
 
 	/*
@@ -34,7 +39,7 @@ public class SineExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -46,7 +51,7 @@ public class SineExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return Math.sin(this.argument.evaluate(variableAssignments));
 	}
 
 }
