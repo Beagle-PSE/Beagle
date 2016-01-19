@@ -8,6 +8,11 @@ import java.util.Collection;
  * @author Joshua Gleitze
  */
 public class AdditionExpression implements EvaluableExpression {
+	
+	/**
+	 * All summands of this evaluable expression.
+	 */
+	private Collection<EvaluableExpression> summands;
 
 	/**
 	 * Builds an expression that will return the sum of all {@code summands} on
@@ -17,6 +22,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 *            must at least be 2.
 	 */
 	public AdditionExpression(final Collection<EvaluableExpression> summands) {
+		this.summands = summands;
 	}
 
 	/**
@@ -27,6 +33,10 @@ public class AdditionExpression implements EvaluableExpression {
 	 *            must at least be 2.
 	 */
 	public AdditionExpression(final EvaluableExpression... summands) {
+		for (EvaluableExpression summand : summands) {
+			this.summands.add(summand);
+		}
+		
 	}
 
 	/*
@@ -37,6 +47,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		visitor.visit(this);
 	}
 
 	/*
@@ -48,6 +59,12 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		double result = 0;
+		double value;
+		for (EvaluableExpression summand : this.summands) {
+			value = summand.evaluate(variableAssignments);
+			result += value;
+		}
+		return result;
 	}
 }
