@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -47,6 +48,8 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	 *            this internal action (inclusive). Must not be {@code null}.
 	 */
 	public ResourceDemandingInternalAction(final ResourceDemandType resourceType, final CodeSection action) {
+		Validate.notNull(resourceType);
+		Validate.notNull(action);
 		this.resourceType = resourceType;
 		this.action = action;
 	}

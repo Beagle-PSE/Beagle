@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -31,6 +32,7 @@ public class SeffLoop implements MeasurableSeffElement {
 	 *            loop. Must not be {@code null}.
 	 */
 	public SeffLoop(final CodeSection loopBody) {
+		Validate.notNull(loopBody);
 		this.loopBody = loopBody;
 	}
 

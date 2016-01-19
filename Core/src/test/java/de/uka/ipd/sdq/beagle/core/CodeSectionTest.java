@@ -47,9 +47,9 @@ public class CodeSectionTest {
 		assertThat("File must exist.", method, throwsException(IllegalArgumentException.class));
 
 		final int invalidStartIndex = -4;
-		final int invalidStartIndex2 = 500;
+		final int invalidStartIndex2 = 50000;
 		final int invalidEndIndex = -15;
-		final int invalidEndIndex2 = 300;
+		final int invalidEndIndex2 = 30000;
 
 		method = () -> {
 			new CodeSection(file, invalidStartIndex, file, endCodeLine);

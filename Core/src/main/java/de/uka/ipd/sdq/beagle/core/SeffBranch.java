@@ -40,9 +40,10 @@ public class SeffBranch implements MeasurableSeffElement {
 	 *            code section with the beginning line as first line and the line at the
 	 *            ending as last line. And each time the beginning point was reached,
 	 *            exactly one code section of this branch gets executed immediately after
-	 *            that. Immediately after that, the ending point is reached. The set must
-	 *            contain at least {@code 2} code sections. Must not be {@code null}. May
-	 *            not contain {@code null} entries.
+	 *            that. This is not checked during runtime, because it would solve the
+	 *            halting problem. Immediately after that, the ending point is reached.
+	 *            The set must contain at least {@code 2} code sections. Must not be
+	 *            {@code null}. May not contain {@code null} entries.
 	 * @throws IllegalArgumentException If {@code branches} has less than {@code 2}
 	 *             branches.
 	 */

@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -31,10 +32,12 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 	 * Creates a parameter of an external call.
 	 *
 	 * @param call The code section where the external call will be made. Must not be
-	 *            {@code null}
+	 *            {@code null}.
 	 * @param index The parameters index in the parameter list. Starting with {@code 0}.
 	 */
 	public ExternalCallParameter(final CodeSection call, final int index) {
+		Validate.isTrue(index >= 0, "The index must be non-neagtive, but was %d", index);
+		Validate.notNull(call);
 		this.call = call;
 		this.index = index;
 	}

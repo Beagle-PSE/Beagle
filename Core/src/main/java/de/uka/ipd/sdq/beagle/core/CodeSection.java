@@ -1,10 +1,13 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -25,7 +28,8 @@ import java.io.Serializable;
  * <p>It must be sure that in each run of the project under analysis the first line of
  * this code section is always executed before the last line and that the last line is
  * always executed after the first line, if the program did not crash during execution.
- * Otherwise the code section is not "valid".
+ * Otherwise the code section is not "valid". This is not checked during runtime, because
+ * it would solve the halting problem.
  *
  * @author Joshua Gleitze
  * @author Roman Langrehr
@@ -76,14 +80,30 @@ public class CodeSection implements Serializable {
 	 *            0.
 	 * @throws IllegalArgumentException When {@code startFile.isFile()} or
 	 *             {@code endFile.isFile()} returned {@code false}.
+	 * @throws RuntimeException When {@code startFile} or {@code endFile} could not be
+	 *             read;
 	 */
 	public CodeSection(final File startFile, final int startIndex, final File endFile, final int endIndex) {
 		if (!startFile.isFile()) {
-			throw new IllegalArgumentException("The given startFile is not a file");
+			throw new IllegalArgumentException("The given startFile is not a file.");
 		}
 		if (!endFile.isFile()) {
-			throw new IllegalArgumentException("The given endFile is not a file");
+			throw new IllegalArgumentException("The given endFile is not a file.");
 		}
+		Validate.isTrue(startIndex >= 0, "The index must be non-neagtive, but was %d", startIndex);
+		Validate.isTrue(endIndex >= 0, "The index must be non-neagtive, but was %d", endIndex);
+		long endFileChars;
+		long startFileChars;
+		try {
+			startFileChars = countChars(startFile);
+			endFileChars = countChars(endFile);
+		} catch (final IOException e) {
+			throw new RuntimeException(e);
+		}
+		Validate.isTrue(startIndex < startFileChars,
+			"The index was not in the file range. It was %d, but file size was %d", startIndex, startFileChars);
+		Validate.isTrue(endIndex < startFileChars,
+			"The index was not in the file range. It was %d, but file size was %d", endIndex, endFileChars);
 		this.startFile = startFile;
 		this.startStatementNumber = startIndex;
 		this.endFile = endFile;
@@ -163,5 +183,10 @@ public class CodeSection implements Serializable {
 		return new ToStringBuilder(this).append("startFile", this.startFile)
 			.append("startStatementNumber", this.startStatementNumber).append("endFile", this.endFile)
 			.append("endStatementNumber", this.endStatementNumber).toString();
+	}
+
+	private long countChars(final File file) throws IOException {
+		final FileReader reader = new FileReader(file);
+		return reader.skip(Long.MAX_VALUE);
 	}
 }
