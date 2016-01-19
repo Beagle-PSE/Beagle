@@ -1,5 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Assigns {@link EvaluableVariable EvaluableVariables} to values.
  * 
@@ -11,13 +14,18 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class EvaluableVariableAssignment {
 
 	/**
+	 * Contains all assignements of evaluable variables and their double value.
+	 */
+	private Map<EvaluableVariable, Double> assignement = new HashMap<EvaluableVariable, Double>();
+
+	/**
 	 * Gets the assigned value for the {@code EvaluableVariable variable}.
 	 *
 	 * @param variable Whose value is wanted.
 	 * @return The value for the given variable.
 	 */
 	public double getValueFor(final EvaluableVariable variable) {
-		return 0;
+		return this.assignement.get(variable);
 	}
 
 	/**
@@ -27,6 +35,7 @@ public class EvaluableVariableAssignment {
 	 * @param value To be set.
 	 */
 	public void setValueFor(final EvaluableVariable variable, final double value) {
+		this.assignement.put(variable, value);
 	}
 
 	/**
@@ -38,6 +47,9 @@ public class EvaluableVariableAssignment {
 	 *         {@code false}.
 	 */
 	public boolean isValueAssignedFor(final EvaluableVariable variable) {
+		if (this.assignement.containsKey(variable)) {
+			return true;
+		}
 		return false;
 	}
 }
