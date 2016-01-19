@@ -10,6 +10,11 @@ import java.util.Collection;
 public class MultiplicationExpression implements EvaluableExpression {
 
 	/**
+	 * All factors of this expression as collection.
+	 */
+	private Collection<EvaluableExpression> factors;
+
+	/**
 	 * Builds an expression that will return the product of all {@code factors} on
 	 * evaluation.
 	 *
@@ -17,6 +22,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *            {@code factors.size()} must at least be 2.
 	 */
 	public MultiplicationExpression(final Collection<EvaluableExpression> factors) {
+		this.factors = factors;
 	}
 
 	/**
@@ -26,6 +32,9 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *            {@code factors.length} must at least be 2.
 	 */
 	public MultiplicationExpression(final EvaluableExpression... factors) {
+		for (EvaluableExpression factor : factors) {
+			this.factors.add(factor);
+		}
 	}
 
 	/**
@@ -33,8 +42,8 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *
 	 * @return The expressions forming this expression’s product.
 	 */
-	public EvaluableExpression[] getFactors() {
-		return null;
+	public Collection<EvaluableExpression> getFactors() {
+		return this.factors;
 	}
 
 	/*
@@ -45,6 +54,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		visitor.visit(this);
 	}
 
 	/*
@@ -56,6 +66,10 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		double product = 1;
+		for (EvaluableExpression factor : this.factors) {
+			product *= factor.evaluate(variableAssignments);
+		}
+		return product;
 	}
 }
