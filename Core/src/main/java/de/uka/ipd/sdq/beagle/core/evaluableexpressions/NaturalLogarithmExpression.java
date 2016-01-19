@@ -9,13 +9,18 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class NaturalLogarithmExpression implements EvaluableExpression {
 
 	/**
-	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
-	 * {@code LogarithmExpression}.
-	 *
-	 * @param expression The expression to be the antilogarithm.
+	 * The antilogarithm of the expression.
 	 */
-	public void setAnitlogarithm(final EvaluableExpression expression) {
+	private EvaluableExpression antilogarithm;
 
+	/**
+	 * Builds an expression which returns the result of a logarithm of the antilogarithm
+	 * to the base.
+	 *
+	 * @param antilogarithm The antilogarithm for this expression.
+	 */
+	public NaturalLogarithmExpression(final EvaluableExpression antilogarithm) {
+		this.antilogarithm = antilogarithm;
 	}
 
 	/**
@@ -25,7 +30,7 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 * @return The antilogarithm expression.
 	 */
 	public EvaluableExpression getAntilogarithm() {
-		return null;
+		return this.antilogarithm;
 	}
 
 	/*
@@ -36,7 +41,7 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -48,7 +53,7 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return Math.log(this.antilogarithm.evaluate(variableAssignments));
 	}
 
 }
