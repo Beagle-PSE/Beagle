@@ -7,7 +7,6 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -41,13 +40,10 @@ public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHa
 		final IPath clickedFilePath = clickedFile.getFullPath();
 		assert clickedFilePath.getFileExtension().matches(FILE_EXTENSION_MATCHER);
 		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(window.getShell(), "Beagle is alive!",
-			"Belive it, or not. But Beagle ist alive!\n" + "You want to analyse: The whole repository: "
-				+ clickedFilePath.toString());
 
 		// create a new GUI and open it
 		final List<String> ids = new ArrayList<>();
-		ids.add(SPECIAL_ID_COMPLETE_REPOSITORY);
+		ids.add(SPECIAL_ID_COMPLETE_REPOSITORY + " $" + clickedFilePath.toString());
 		final GuiController guiController = new GuiController(ids);
 		guiController.open();
 		return null;
