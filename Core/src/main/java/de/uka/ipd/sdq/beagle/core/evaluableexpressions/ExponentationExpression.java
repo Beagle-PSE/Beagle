@@ -8,21 +8,24 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class ExponentationExpression implements EvaluableExpression {
 
 	/**
-	 * Set an {@link EvaluableExpression} as exponent.
-	 *
-	 * @param expression This expression's exponent.
+	 * The {@link EvaluableExpression} which is the exponent of this expression.
 	 */
-	public void setExponent(final EvaluableExpression expression) {
-
-	}
+	private EvaluableExpression exponent;
 
 	/**
-	 * Set an {@link EvaluableExpression} as base.
-	 *
-	 * @param expression This expression's base.
+	 * The {@link EvaluableExpression} which is the base of this expression.
 	 */
-	public void setBase(final EvaluableExpression expression) {
+	private EvaluableExpression base;
 
+	/**
+	 * Build an expression which returns base raised to the power of the exponent.
+	 *
+	 * @param exponent The expression which is the exponent of this expression.
+	 * @param base The expression which is the base of this expression.
+	 */
+	public ExponentationExpression(final EvaluableExpression exponent, final EvaluableExpression base) {
+		this.exponent = exponent;
+		this.base = base;
 	}
 
 	/**
@@ -31,7 +34,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	 * @return The expression's exponent.
 	 */
 	public EvaluableExpression getExponent() {
-		return null;
+		return this.exponent;
 	}
 
 	/**
@@ -40,7 +43,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	 * @return The expression's base.
 	 */
 	public EvaluableExpression getBase() {
-		return null;
+		return this.base;
 	}
 
 	/*
@@ -51,7 +54,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -63,7 +66,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		return Math.pow(this.base.evaluate(variableAssignments), this.exponent.evaluate(variableAssignments));		
 	}
 
 }
