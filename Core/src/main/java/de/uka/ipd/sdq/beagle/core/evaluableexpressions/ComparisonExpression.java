@@ -9,29 +9,29 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class ComparisonExpression implements EvaluableExpression {
 
 	/**
-	 * Set the {@link EvaluableExpression} which is supposed to be the smaller one in the
+	 * The {@link EvaluableExpression} which is supposed to be the smaller one in the
 	 * comparison.
-	 * 
-	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
-	 * smaller and {@code e2} as greater expression.
-	 *
-	 * @param expression which is supposed to be the smaller one
 	 */
-	public void setSmaller(final EvaluableExpression expression) {
-
-	}
+	private final EvaluableExpression smaller;
 
 	/**
-	 * Set the {@link EvaluableExpression} which is supposed to be the greater one in the
+	 * The {@link EvaluableExpression} which is supposed to be the greater one in the
 	 * comparison.
-	 * 
-	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
-	 * smaller and {@code e2} as greater expression.
-	 * 
-	 * @param expression which is supposed to be the greater one
 	 */
-	public void setGreater(final EvaluableExpression expression) {
+	private final EvaluableExpression greater;
 
+	/**
+	 * Builds an expression that will return '1' if the expression set as smaller is
+	 * smaller and '0' else.
+	 *
+	 * @param smaller The {@link EvaluableExpression} which is supposed to be the smaller
+	 *            one in the comparison.
+	 * @param greater The {@link EvaluableExpression} which is supposed to be the greater
+	 *            one in the comparison.
+	 */
+	public ComparisonExpression(final EvaluableExpression smaller, final EvaluableExpression greater) {
+		this.smaller = smaller;
+		this.greater = greater;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		visitor.visit(this);
 	}
 
 	/*
@@ -80,7 +80,11 @@ public class ComparisonExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		if (this.smaller.evaluate(variableAssignments) < this.greater.evaluate(variableAssignments)) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }

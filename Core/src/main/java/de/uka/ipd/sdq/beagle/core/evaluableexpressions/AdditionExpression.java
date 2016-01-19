@@ -8,7 +8,7 @@ import java.util.Collection;
  * @author Joshua Gleitze
  */
 public class AdditionExpression implements EvaluableExpression {
-	
+
 	/**
 	 * All summands of this evaluable expression.
 	 */
@@ -36,7 +36,17 @@ public class AdditionExpression implements EvaluableExpression {
 		for (EvaluableExpression summand : summands) {
 			this.summands.add(summand);
 		}
-		
+
+	}
+
+	/**
+	 * Get all evaluable expressions which are forming this expression's sum. There have
+	 * to be at least two.
+	 *
+	 * @return A collection of all summands of this addition expression.
+	 */
+	public Collection<EvaluableExpression> getSummands() {
+		return this.summands;
 	}
 
 	/*
