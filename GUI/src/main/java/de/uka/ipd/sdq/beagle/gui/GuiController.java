@@ -188,7 +188,7 @@ public class GuiController {
 			 * different thread so the GUI remains responsive.
 			 */
 			public void run() {
-				BeagleController beagleController = new BeagleController(GuiController.this.userConfiguration);
+				final BeagleController beagleController = new BeagleController(GuiController.this.userConfiguration);
 				beagleController.startAnalysis();
 
 				// when {@code beagleController.startAnalysis()} returns, close the dialog
