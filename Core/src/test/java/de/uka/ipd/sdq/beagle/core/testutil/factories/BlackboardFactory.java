@@ -17,6 +17,6 @@ public class BlackboardFactory {
 	 * @return A new blackboard instance, without any data on it.
 	 */
 	public Blackboard getEmpty() {
-		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>());
+		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>());
 	}
 }
