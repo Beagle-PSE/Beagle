@@ -12,10 +12,21 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpressio
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression;
 
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+>>>>>>> origin/master
 /**
  * Factory for prepared Evaluable Expression instances to be used by tests.
  *
  * @author Joshua Gleitze
+<<<<<<< HEAD
+=======
+ * @author Ansgar Spiegler
+>>>>>>> origin/master
  */
 public class EvaluableExpressionFactory {
 
@@ -43,4 +54,17 @@ public class EvaluableExpressionFactory {
 				new SineExpression()), new SubstractionExpression(), new NaturalLogarithmExpression()),
 			new SineExpression(), ConstantExpression.forValue(2)};
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * Creates a set of newly initialised evaluable expressions.
+	 *
+	 * @return 6 newly initialised evaluable expressions, covering a lot of different
+	 *         nesting cases.
+	 */
+	public Set<EvaluableExpression> getAllAsSet() {
+		return new HashSet<>(Arrays.asList(this.getAll()));
+	}
+>>>>>>> origin/master
 }
