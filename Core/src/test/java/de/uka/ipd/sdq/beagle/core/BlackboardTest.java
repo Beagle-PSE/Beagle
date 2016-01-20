@@ -86,6 +86,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testBlackboard() {
+		Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+			SEFF_LOOP_FACTORY.getAllAsSet());
+		assertThat("Blackboard constructor must not return null for a valid parameterisation!", null,
+			is(equalTo(null)));
+
 		fail("Not yet implemented");
 	}
 
@@ -419,7 +424,7 @@ public class BlackboardTest {
 	@Test
 	public void testSetFinalExpressionFor() {
 		assertThat("It must not be possible to set the final expression for null",
-			() -> emptyBlackboard.setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
+			() -> this.emptyBlackboard.setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 		// asserts that setting null for the final expression is possible
 		this.emptyBlackboard.setFinalExpressionFor(RDIA_FACTORY.getOne(), null);

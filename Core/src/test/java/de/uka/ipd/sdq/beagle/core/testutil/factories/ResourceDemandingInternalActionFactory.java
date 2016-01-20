@@ -2,21 +2,15 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 
-<<<<<<< HEAD
-=======
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
->>>>>>> origin/master
 /**
  * Factory for pre-initialised RDIAs to be used by tests.
  *
- * @author Joshua Gleitze
-<<<<<<< HEAD
-=======
- * @author Ansgar Spiegler
->>>>>>> origin/master
+ * @author Joshua Gleitze <<<<<<< HEAD =======
+ * @author Ansgar Spiegler >>>>>>> origin/master
  */
 public class ResourceDemandingInternalActionFactory {
 
@@ -30,15 +24,12 @@ public class ResourceDemandingInternalActionFactory {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * Creates an array of newly initialised seff branches.
+	 * <<<<<<< HEAD Creates an array of newly initialised seff branches.
 	 *
-	 * @return 3 newly initialised seff branches.
-=======
-	 * Creates an array of newly initialised rdias.
+	 * @return 3 newly initialised seff branches. ======= Creates an array of newly
+	 *         initialised rdias.
 	 *
-	 * @return 3 newly initialised rdias.
->>>>>>> origin/master
+	 * @return 3 newly initialised rdias. >>>>>>> origin/master
 	 */
 	public ResourceDemandingInternalAction[] getAll() {
 		// will be done right once the proper ResourceDemandingInternalAction constructor
@@ -46,8 +37,6 @@ public class ResourceDemandingInternalActionFactory {
 		return new ResourceDemandingInternalAction[] {new ResourceDemandingInternalAction(),
 			new ResourceDemandingInternalAction(), new ResourceDemandingInternalAction()};
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Creates a set of newly initialised rdias.
@@ -57,5 +46,4 @@ public class ResourceDemandingInternalActionFactory {
 	public Set<ResourceDemandingInternalAction> getAllAsSet() {
 		return new HashSet<>(Arrays.asList(this.getAll()));
 	}
->>>>>>> origin/master
 }

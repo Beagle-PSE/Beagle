@@ -2,21 +2,15 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 
-<<<<<<< HEAD
-=======
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
->>>>>>> origin/master
 /**
  * Factory for pre-initialised External Call Parameters to be used by tests.
  *
- * @author Joshua Gleitze
-<<<<<<< HEAD
-=======
- * @author Ansgar Spiegler
->>>>>>> origin/master
+ * @author Joshua Gleitze <<<<<<< HEAD =======
+ * @author Ansgar Spiegler >>>>>>> origin/master
  */
 public class ExternalCallParameterFactory {
 
@@ -39,8 +33,6 @@ public class ExternalCallParameterFactory {
 		return new ExternalCallParameter[] {new ExternalCallParameter(), new ExternalCallParameter(),
 			new ExternalCallParameter()};
 	}
-<<<<<<< HEAD
-=======
 
 	/**
 	 * Creates a set of newly initialised external call parameters.
@@ -51,5 +43,4 @@ public class ExternalCallParameterFactory {
 		return new HashSet<>(Arrays.asList(this.getAll()));
 	}
 
->>>>>>> origin/master
 }
