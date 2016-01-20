@@ -5,7 +5,6 @@ import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAccept
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
@@ -126,7 +125,7 @@ public class BlackboardTest {
 	@Test
 	public void testBlackboard() {
 		final Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-			SEFF_LOOP_FACTORY.getAllAsSet(), this.getEmptySetOfExternalCallParameter());
+			SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
 
 		assertThat("Blackboard constructor must not return null for a valid parameterisation!", blackboard,
 			is(notNullValue()));
@@ -305,6 +304,12 @@ public class BlackboardTest {
 				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
 				+ "be created after Blackboard instanciation!",
 			() -> this.emptyBlackboard.addToBeMeasuredRdias(rdiaSet), throwsException(IllegalArgumentException.class));
+		assertThat(
+			"Blackboard should not accept RDIAs to be measured, that are not stored in its RDIA-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredRdias(RDIA_FACTORY.getAll()),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -334,6 +339,12 @@ public class BlackboardTest {
 				+ "be created after Blackboard instanciation!",
 			() -> this.emptyBlackboard.addToBeMeasuredSeffBranches(seffBranchSet),
 			throwsException(IllegalArgumentException.class));
+		assertThat(
+			"Blackboard should not accept SeffBranches to be measured, that are not stored in its SeffBranch-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredSeffBranches(SEFF_BRANCH_FACTORY.getAll()),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -361,6 +372,12 @@ public class BlackboardTest {
 				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
 				+ "be created after Blackboard instanciation!",
 			() -> this.emptyBlackboard.addToBeMeasuredSeffLoops(seffLoopSet),
+			throwsException(IllegalArgumentException.class));
+		assertThat(
+			"Blackboard should not accept SeffLoops to be measured, that are not stored in its SeffLoop-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredSeffLoops(SEFF_LOOP_FACTORY.getAll()),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -392,6 +409,14 @@ public class BlackboardTest {
 				+ "be created after Blackboard instanciation!",
 			() -> this.emptyBlackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet),
 			throwsException(IllegalArgumentException.class));
+		assertThat(
+			"Blackboard should not accept ExternalCallParameters to be measured,"
+				+ "that are not stored in its ExternalCallParameter-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredExternalCallParameters(EXTERNAL_CALL_PARAMETER_FACTORY.getAll()),
+			throwsException(IllegalArgumentException.class));
+
 	}
 
 	/**
@@ -400,6 +425,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetMeasurementResultsForResourceDemandingInternalAction() {
+
+		final ResourceDemandingInternalAction rdia = null;
+		assertThat(
+			"It must not be possible to call getMeasurementResultsFor(ResourceDemandingInternalAction) for null as parameter",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(rdia), throwsException(NullPointerException.class));
 
 	}
 
@@ -410,7 +440,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetMeasurementResultsForSeffBranch() {
-		fail("Not yet implemented");
+
+		final SeffBranch seffBranch = null;
+		assertThat("It must not be possible to call getMeasurementResultsFor(SeffBranch) for null as parameter",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(seffBranch),
+			throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -419,7 +453,10 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetMeasurementResultsForSeffLoop() {
-		fail("Not yet implemented");
+
+		final SeffLoop seffLoop = null;
+		assertThat("It must not be possible to call getMeasurementResultsFor(SeffLoop) for null as parameter",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(seffLoop), throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -429,7 +466,12 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetMeasurementResultsForExternalCallParameter() {
-		fail("Not yet implemented");
+
+		final ExternalCallParameter externalCallParameter = null;
+		assertThat(
+			"It must not be possible to call getMeasurementResultsFor(externalCallParameter) for null as parameter",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(externalCallParameter),
+			throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -594,7 +636,8 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetFitnessFunction() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getFitnessFunction()",
+			this.emptyBlackboard.getFitnessFunction(), is(notNullValue()));
 	}
 
 	/**
@@ -603,7 +646,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testWriteFor() {
-		fail("Not yet implemented");
+
+		assertThat("It must not be possible to write on the Blackboard for null as a given parameter",
+			() -> this.emptyBlackboard.writeFor(null, String.class), throwsException(NullPointerException.class));
+		assertThat("It must not be possible to write on the Blackboard for null as a given parameter",
+			() -> this.emptyBlackboard.writeFor(null, null), throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -611,7 +658,9 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testReadFor() {
-		fail("Not yet implemented");
+		assertThat("It must not be possible to read on the Blackboard for null as a given parameter",
+			() -> this.emptyBlackboard.readFor(null), throwsException(NullPointerException.class));
+
 	}
 
 }
