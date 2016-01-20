@@ -129,10 +129,10 @@ public class TimeoutWizardPage extends WizardPage {
 		radioAdaptiveTimout.setText("Use an adaptive timeout.");
 
 		final Button radioSetTimout = new Button(this.upperContainer, SWT.RADIO);
-		radioSetTimout.setText("Use a set timout.");
+		radioSetTimout.setText("Use a set timeout.");
 
 		final Button radioNoTimeout = new Button(this.upperContainer, SWT.RADIO);
-		radioNoTimeout.setText("Don't use a timout.");
+		radioNoTimeout.setText("Don't use a timeout.");
 
 		radioAdaptiveTimout.setSelection(true);
 
