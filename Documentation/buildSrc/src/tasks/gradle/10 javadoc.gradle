@@ -49,6 +49,7 @@ task javadoc(type: Javadoc) {
 	classpath = classpath javadocSubprojects
 	options.overview "$projectDir/src/javadoc/html/Overview.html"
 	options.encoding = "UTF-8"
+	options.noTimestamp = true
 }
  
 def rendersrc = fileTree("$projectDir/src").include('common/**').include('javadoc/lyx/**')
