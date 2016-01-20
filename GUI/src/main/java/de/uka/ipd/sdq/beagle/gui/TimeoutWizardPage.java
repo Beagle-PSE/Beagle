@@ -58,7 +58,7 @@ public class TimeoutWizardPage extends WizardPage {
 	/**
 	 * The number of columns of the layout of the upper container.
 	 */
-	private static final int UPPER_LAYOUT_NR_COLUMS = 2;
+	private static final int UPPER_LAYOUT_NR_COLUMS = 1;
 
 	/**
 	 * The number of columns of the layout of the lower container.
@@ -126,16 +126,13 @@ public class TimeoutWizardPage extends WizardPage {
 		final GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 
 		final Button radioAdaptiveTimout = new Button(this.upperContainer, SWT.RADIO);
-		final Label lblRadioAdaptiveTimout = new Label(this.upperContainer, SWT.NONE);
-		lblRadioAdaptiveTimout.setText("Use an adaptive timeout.");
+		radioAdaptiveTimout.setText("Use an adaptive timeout.");
 
 		final Button radioSetTimout = new Button(this.upperContainer, SWT.RADIO);
-		final Label lblRadioSetTimout = new Label(this.upperContainer, SWT.NONE);
-		lblRadioSetTimout.setText("Use a set timout.");
+		radioSetTimout.setText("Use a set timout.");
 
 		final Button radioNoTimeout = new Button(this.upperContainer, SWT.RADIO);
-		final Label lblRadioNoTimeout = new Label(this.upperContainer, SWT.NONE);
-		lblRadioNoTimeout.setText("Don't use a timout.");
+		radioNoTimeout.setText("Don't use a timout.");
 
 		radioAdaptiveTimout.setSelection(true);
 
