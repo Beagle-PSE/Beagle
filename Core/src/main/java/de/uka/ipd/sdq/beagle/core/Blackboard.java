@@ -129,12 +129,14 @@ public class Blackboard implements Serializable {
 	 * @param rdias All resource demanding internal action to be known to analysers.
 	 * @param branches All SEFF branches to be known to analysers.
 	 * @param loops All SEFF loops to be known to analysers.
+	 * @param externalCalls All external call parameter to be known to analysers.
 	 */
 	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
-		final Set<SeffLoop> loops) {
+		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls) {
 		this.rdias = rdias;
 		this.branches = branches;
 		this.loops = loops;
+		this.externalCalls = externalCalls;
 	}
 
 	/**
