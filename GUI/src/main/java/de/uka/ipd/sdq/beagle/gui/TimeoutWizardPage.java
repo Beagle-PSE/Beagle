@@ -81,6 +81,30 @@ public class TimeoutWizardPage extends WizardPage {
 	private int timeout;
 
 	/**
+	 * The {@link SelectionListener} which will be called when the radio box indicating
+	 * that an adaptive timeout will be used gets selected.
+	 */
+	private SelectionListener radioAdaptiveTimeoutSelected;
+
+	/**
+	 * The {@link SelectionListener} which will be called when the radio box indicating
+	 * that a set timeout will be used gets selected.
+	 */
+	private SelectionListener radioSetTimeoutSelected;
+
+	/**
+	 * The {@link SelectionListener} which will be called when the radio box indicating
+	 * that a set timeout will be used is no longer selected.
+	 */
+	private SelectionListener radioSetTimeoutDeselected;
+
+	/**
+	 * The {@link SelectionListener} which will be called when the radio box indicating
+	 * that no timeout will be used gets selected.
+	 */
+	private SelectionListener radioNoTimeoutSelected;
+
+	/**
 	 * Constructor setting the tile and the introduction to this page.
 	 * 
 	 * @param userConfiguration The {@link UserConfiguration} this
@@ -93,11 +117,6 @@ public class TimeoutWizardPage extends WizardPage {
 		setControl(this.textboxTimeoutSeconds);
 		this.userConfiguration = userConfiguration;
 		this.timeout = this.userConfiguration.getTimeout();
-		
-		// correctly set the standard value for the timeout
-		switch(userConfiguration.getTimeout()) {
-			case 
-		}
 	}
 
 	@Override
@@ -125,11 +144,11 @@ public class TimeoutWizardPage extends WizardPage {
 
 		radioAdaptiveTimout.setSelection(true);
 
-		final SelectionListener radioAdaptiveTimeoutSelected = new SelectionListener() {
+		this.radioAdaptiveTimeoutSelected = new SelectionListener() {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = ADAPTIVE_TIMEOUT;
+				TimeoutWizardPage.this.timeout = UserConfiguration.ADAPTIVE_TIMEOUT;
 				TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 			}
 
@@ -139,7 +158,7 @@ public class TimeoutWizardPage extends WizardPage {
 			}
 		};
 
-		final SelectionListener radioSetTimeoutSelected = new SelectionListener() {
+		this.radioSetTimeoutSelected = new SelectionListener() {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
@@ -151,7 +170,7 @@ public class TimeoutWizardPage extends WizardPage {
 					setPageComplete(true);
 					TimeoutWizardPage.this.timeout =
 						Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
-					TimeoutWizardPage.this.userConfiguration.setTimeout(ADAPTIVE_TIMEOUT);
+					TimeoutWizardPage.this.userConfiguration.setTimeout(UserConfiguration.ADAPTIVE_TIMEOUT);
 					TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 				}
 			}
@@ -162,7 +181,7 @@ public class TimeoutWizardPage extends WizardPage {
 			}
 		};
 
-		final SelectionListener radioSetTimeoutDeselected = new SelectionListener() {
+		this.radioSetTimeoutDeselected = new SelectionListener() {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
@@ -176,11 +195,11 @@ public class TimeoutWizardPage extends WizardPage {
 			}
 		};
 
-		final SelectionListener radioNoTimeoutSelected = new SelectionListener() {
+		this.radioNoTimeoutSelected = new SelectionListener() {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = NO_TIMEOUT;
+				TimeoutWizardPage.this.timeout = UserConfiguration.NO_TIMEOUT;
 				TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 			}
 
@@ -190,13 +209,13 @@ public class TimeoutWizardPage extends WizardPage {
 			}
 		};
 
-		radioAdaptiveTimout.addSelectionListener(radioAdaptiveTimeoutSelected);
+		radioAdaptiveTimout.addSelectionListener(this.radioAdaptiveTimeoutSelected);
 
-		radioAdaptiveTimout.addSelectionListener(radioSetTimeoutDeselected);
-		radioSetTimout.addSelectionListener(radioSetTimeoutSelected);
-		radioNoTimeout.addSelectionListener(radioSetTimeoutDeselected);
+		radioAdaptiveTimout.addSelectionListener(this.radioSetTimeoutDeselected);
+		radioSetTimout.addSelectionListener(this.radioSetTimeoutSelected);
+		radioNoTimeout.addSelectionListener(this.radioSetTimeoutDeselected);
 
-		radioNoTimeout.addSelectionListener(radioNoTimeoutSelected);
+		radioNoTimeout.addSelectionListener(this.radioNoTimeoutSelected);
 
 		this.lowerContainer = new Composite(this.mainContainer, SWT.NONE);
 		final GridLayout lowerLayout = new GridLayout();
@@ -241,6 +260,31 @@ public class TimeoutWizardPage extends WizardPage {
 		setControl(this.upperContainer);
 
 		setPageComplete(true);
+
+		this.adaptPageToDefaultValues();
+	}
+
+	/**
+	 * Sets the content of this {@link WizardPage} to the default values defined in
+	 * {@link UserConfiguration}. Note that this method will not rely on
+	 * {@code DEFAULT_TIMEOUT} of {@link UserConfiguration} but instead will get the
+	 * timeout of the user {@link UserConfiguration} object associated with this
+	 * {@link WizardPage} so the visibility of this constant can be changed in the future.
+	 */
+	private void adaptPageToDefaultValues() {
+		switch (this.userConfiguration.getTimeout()) {
+			case UserConfiguration.ADAPTIVE_TIMEOUT:
+				// Nothing needs to be done because {@link TimeoutWizardPage} is written
+				// so this is the default.
+				break;
+			case UserConfiguration.NO_TIMEOUT:
+				this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
+				break;
+			default:
+				// will be chosen when a set timeout is default
+				this.radioSetTimeoutSelected.widgetSelected(new SelectionEvent(null));
+				break;
+		}
 	}
 
 	/**
