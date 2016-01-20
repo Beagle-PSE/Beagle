@@ -249,7 +249,7 @@
     </module>
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,LPAREN,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
+      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
     </module>
     <module name="ModifierOrder">
       <property name="severity" value="warning"/>

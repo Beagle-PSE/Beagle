@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Checkstyle for Tests
+    Checkstyle-Configuration: Beagle Checkstyle for Tests
     Description: none
 -->
 <module name="Checker">
@@ -250,7 +250,7 @@
     </module>
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,LPAREN,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
+      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
     </module>
     <module name="ModifierOrder">
       <property name="severity" value="warning"/>
