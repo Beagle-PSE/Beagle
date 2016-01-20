@@ -13,18 +13,18 @@ public class UserConfiguration {
 	/**
 	 * Numeric value for "adaptive timeout".
 	 */
-	private static final int ADAPTIVE_TIMEOUT = -2;
+	public static final int ADAPTIVE_TIMEOUT = -2;
 
 	/**
 	 * Numeric value for "no timeout".
 	 */
-	private static final int NO_TIMEOUT = -1;
+	public static final int NO_TIMEOUT = -1;
 
 	/**
 	 * The default setting for the timeout. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0
 	 * → timeout in seconds]
 	 */
-	private static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
+	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
 	/**
 	 * All components to measure.
