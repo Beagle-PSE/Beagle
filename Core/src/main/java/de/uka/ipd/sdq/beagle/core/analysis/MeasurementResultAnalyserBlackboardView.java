@@ -36,7 +36,7 @@ public abstract class MeasurementResultAnalyserBlackboardView implements Evaluab
 	/**
 	 * Blackboard instance committed from the {@link AnalysisController}.
 	 */
-	private Blackboard blackboard;
+	private final Blackboard blackboard;
 
 	/**
 	 * Set the blackboard instance from the {@link AnalysisController} to the private
@@ -44,7 +44,7 @@ public abstract class MeasurementResultAnalyserBlackboardView implements Evaluab
 	 *
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
-	private MeasurementResultAnalyserBlackboardView(final Blackboard blackboard) {
+	public MeasurementResultAnalyserBlackboardView(final Blackboard blackboard) {
 		this.blackboard = blackboard;
 	}
 
