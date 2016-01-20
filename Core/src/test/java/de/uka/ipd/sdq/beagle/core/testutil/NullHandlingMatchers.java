@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Matchers asserting that methods handle {@code null} correctly if it’s passed to them in
- * an array or collection argument.
+ * Matchers asserting that methods handle {@code null} correctly if its passed to them in
+ * an argument.
  *
  * @author Joshua Gleitze
  */
