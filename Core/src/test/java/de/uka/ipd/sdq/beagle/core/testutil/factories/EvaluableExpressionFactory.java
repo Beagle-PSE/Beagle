@@ -16,6 +16,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression;
  * Factory for prepared Evaluable Expression instances to be used by tests.
  *
  * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class EvaluableExpressionFactory {
 
