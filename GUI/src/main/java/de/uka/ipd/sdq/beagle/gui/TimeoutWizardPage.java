@@ -34,22 +34,6 @@ public class TimeoutWizardPage extends WizardPage {
 		"To avoid infinite loops or too long calculations, a timeout can be used. Please choose as you wish.";
 
 	/**
-	 * Numeric value for "adaptive timeout".
-	 */
-	private static final int ADAPTIVE_TIMEOUT = -2;
-
-	/**
-	 * Numeric value for "no timeout".
-	 */
-	private static final int NO_TIMEOUT = -1;
-
-	/**
-	 * The default setting for the timeout. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0
-	 * → timeout in seconds]
-	 */
-	private static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
-
-	/**
 	 * The number of columns of the layout of container which contains the entire content
 	 * of this page.
 	 */
@@ -109,6 +93,11 @@ public class TimeoutWizardPage extends WizardPage {
 		setControl(this.textboxTimeoutSeconds);
 		this.userConfiguration = userConfiguration;
 		this.timeout = this.userConfiguration.getTimeout();
+		
+		// correctly set the standard value for the timeout
+		switch(userConfiguration.getTimeout()) {
+			case 
+		}
 	}
 
 	@Override
