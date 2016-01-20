@@ -31,7 +31,7 @@ import java.util.Set;
  * @author Christoph Michelbach
  * @author Michael Vogt
  */
-public abstract class MeasurementResultAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
+public class MeasurementResultAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
 
 	/**
 	 * Blackboard instance committed from the {@link AnalysisController}.
