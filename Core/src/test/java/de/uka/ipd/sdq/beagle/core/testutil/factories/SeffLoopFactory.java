@@ -2,6 +2,10 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Factory for pre-initialised Seff Loops to be used by tests.
  *
@@ -26,5 +30,14 @@ public class SeffLoopFactory {
 	public SeffLoop[] getAll() {
 		// will be done right once the proper SeffBranch constructor is there.
 		return new SeffLoop[] {new SeffLoop(), new SeffLoop(), new SeffLoop()};
+	}
+
+	/**
+	 * Creates a set of newly initialised seff loops.
+	 *
+	 * @return 3 newly initialised seff loops.
+	 */
+	public Set<SeffLoop> getAllAsSet() {
+		return new HashSet<>(Arrays.asList(this.getAll()));
 	}
 }
