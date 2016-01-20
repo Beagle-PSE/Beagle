@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAcceptingNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
@@ -22,6 +23,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Tests for {@link Blackboard}.
@@ -81,17 +84,76 @@ public class BlackboardTest {
 	}
 
 	/**
+	 * Creates an empty SeffBranch-set.
+	 *
+	 * @return empty {@link SeffBranch} set.
+	 */
+	private Set<SeffBranch> getEmptySetOfSeffBranch() {
+		return new HashSet<SeffBranch>();
+	}
+
+	/**
+	 * Creates an empty SeffLoop-set.
+	 *
+	 * @return empty {@link SeffLoop} set.
+	 */
+	private Set<SeffLoop> getEmptySetOfSeffLoop() {
+		return new HashSet<SeffLoop>();
+	}
+
+	/**
+	 * Creates an empty RDIA-set.
+	 *
+	 * @return empty {@link ResourceDemandingInternalAction rdia} set.
+	 */
+	private Set<ResourceDemandingInternalAction> getEmptySetOfRdia() {
+		return new HashSet<ResourceDemandingInternalAction>();
+	}
+
+	/**
+	 * Creates an empty ExternalCallParameter-set.
+	 *
+	 * @return empty {@link ExternalCallParameter} set.
+	 */
+	private Set<ExternalCallParameter> getEmptySetOfExternalCallParameter() {
+		return new HashSet<ExternalCallParameter>();
+	}
+
+	/**
 	 * Test method for
 	 * {@link Blackboard#Blackboard(java.util.Set, java.util.Set, java.util.Set)} .
 	 */
 	@Test
 	public void testBlackboard() {
-		Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-			SEFF_LOOP_FACTORY.getAllAsSet());
-		assertThat("Blackboard constructor must not return null for a valid parameterisation!", null,
-			is(equalTo(null)));
+		final Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+			SEFF_LOOP_FACTORY.getAllAsSet(), this.getEmptySetOfExternalCallParameter());
 
-		fail("Not yet implemented");
+		assertThat("Blackboard constructor must not return null for a valid parameterisation!", blackboard,
+			is(notNullValue()));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			() -> new Blackboard(null, null, null, null), throwsException(NullPointerException.class));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			() -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+				SEFF_LOOP_FACTORY.getAllAsSet(), null),
+			throwsException(NullPointerException.class));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			() -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(), null,
+				EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
+			throwsException(NullPointerException.class));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			() -> new Blackboard(RDIA_FACTORY.getAllAsSet(), null, SEFF_LOOP_FACTORY.getAllAsSet(),
+				EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
+			throwsException(NullPointerException.class));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			() -> new Blackboard(null, SEFF_BRANCH_FACTORY.getAllAsSet(), SEFF_LOOP_FACTORY.getAllAsSet(),
+				EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
+			throwsException(NullPointerException.class));
+
 	}
 
 	/**
@@ -99,7 +161,17 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetAllRdias() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getAllRdias()", this.emptyBlackboard.getAllRdias(),
+			is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllRdias().isEmpty(),
+			is(true));
+
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Blackboard blackboard = new Blackboard(rdiaSet, this.getEmptySetOfSeffBranch(),
+			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
+		assertThat("Rdias on the blackboard should not change!", blackboard.getAllRdias().equals(rdiaSet), is(true));
+
 	}
 
 	/**
@@ -107,7 +179,18 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetAllSeffBranches() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getAllSeffBranches()",
+			this.emptyBlackboard.getAllSeffBranches(), is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllSeffBranches().isEmpty(),
+			is(true));
+
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), seffBranchSet,
+			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
+		assertThat("SeffBranches on the blackboard should not change!",
+			blackboard.getAllSeffBranches().equals(seffBranchSet), is(true));
+
 	}
 
 	/**
@@ -115,7 +198,18 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetAllSeffLoops() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getAllSeffLoops()", this.emptyBlackboard.getAllSeffLoops(),
+			is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any SeffLoops",
+			this.emptyBlackboard.getAllSeffLoops().isEmpty(), is(true));
+
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
+			seffLoopSet, this.getEmptySetOfExternalCallParameter());
+		assertThat("SeffLoops on the blackboard should not change!", blackboard.getAllSeffLoops().equals(seffLoopSet),
+			is(true));
+
 	}
 
 	/**
@@ -123,7 +217,18 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetAllExternalCallParameters() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getAllExternalCallParameters()",
+			this.emptyBlackboard.getAllExternalCallParameters(), is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any ExternalCallParameters",
+			this.emptyBlackboard.getAllExternalCallParameters().isEmpty(), is(true));
+
+		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
+			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
+		assertThat("ExternalCallParameters on the blackboard should not change!",
+			blackboard.getAllExternalCallParameters().equals(externalCallParameterSet), is(true));
+
 	}
 
 	/**
@@ -131,7 +236,13 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetRdiasToBeMeasured() {
-		fail("Not yet implemented");
+
+		assertThat("Blackboard should not return null for getRdiasToBeMeasured()",
+			this.emptyBlackboard.getRdiasToBeMeasured(), is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any RdiasToBeMeasured",
+			this.emptyBlackboard.getRdiasToBeMeasured().isEmpty(), is(true));
+
 	}
 
 	/**
@@ -139,7 +250,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetSeffBranchesToBeMeasured() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getSeffBranchesToBeMeasured()",
+			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any SeffBranchesToBeMeasured",
+			this.emptyBlackboard.getSeffBranchesToBeMeasured().isEmpty(), is(true));
 	}
 
 	/**
@@ -147,7 +262,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetSeffLoopsToBeMeasured() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getSeffLoopsToBeMeasured()",
+			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any SeffLoopsToBeMeasured",
+			this.emptyBlackboard.getSeffLoopsToBeMeasured().isEmpty(), is(true));
 	}
 
 	/**
@@ -155,7 +274,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetExternalCallParametersToBeMeasured() {
-		fail("Not yet implemented");
+		assertThat("Blackboard should not return null for getExternalCallParametersToBeMeasured()",
+			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(notNullValue()));
+
+		assertThat("Empty blackboard should not contain any ExternalCallParametersToBeMeasured",
+			this.emptyBlackboard.getExternalCallParametersToBeMeasured().isEmpty(), is(true));
 	}
 
 	/**
@@ -174,6 +297,14 @@ public class BlackboardTest {
 		assertThat(this.emptyBlackboard::addToBeMeasuredRdias, is(notAcceptingNull(RDIA_FACTORY.getAll())));
 		assertThat(this.emptyBlackboard::addToBeMeasuredRdias,
 			is(notAcceptingNull(Arrays.asList(RDIA_FACTORY.getAll()))));
+
+		final Set<ResourceDemandingInternalAction> rdiaSet = this.getEmptySetOfRdia();
+		rdiaSet.add(RDIA_FACTORY.getOne());
+		assertThat(
+			"Blackboard should not accept RDIAs to be measured, that are not stored in its RDIA-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredRdias(rdiaSet), throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -194,6 +325,15 @@ public class BlackboardTest {
 			is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAll())));
 		assertThat(this.emptyBlackboard::addToBeMeasuredSeffBranches,
 			is(notAcceptingNull(Arrays.asList(SEFF_BRANCH_FACTORY.getAll()))));
+
+		final Set<SeffBranch> seffBranchSet = this.getEmptySetOfSeffBranch();
+		seffBranchSet.add(SEFF_BRANCH_FACTORY.getOne());
+		assertThat(
+			"Blackboard should not accept SeffBranches to be measured, that are not stored in its SeffBranch-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredSeffBranches(seffBranchSet),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -213,6 +353,15 @@ public class BlackboardTest {
 		assertThat(this.emptyBlackboard::addToBeMeasuredSeffLoops, is(notAcceptingNull(SEFF_LOOP_FACTORY.getAll())));
 		assertThat(this.emptyBlackboard::addToBeMeasuredSeffLoops,
 			is(notAcceptingNull(Arrays.asList(SEFF_LOOP_FACTORY.getAll()))));
+
+		final Set<SeffLoop> seffLoopSet = this.getEmptySetOfSeffLoop();
+		seffLoopSet.add(SEFF_LOOP_FACTORY.getOne());
+		assertThat(
+			"Blackboard should not accept SeffLoops to be measured, that are not stored in its SeffLoop-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredSeffLoops(seffLoopSet),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -233,6 +382,16 @@ public class BlackboardTest {
 			is(notAcceptingNull(EXTERNAL_CALL_PARAMETER_FACTORY.getAll())));
 		assertThat(this.emptyBlackboard::addToBeMeasuredExternalCallParameters,
 			is(notAcceptingNull(Arrays.asList(EXTERNAL_CALL_PARAMETER_FACTORY.getAll()))));
+
+		final Set<ExternalCallParameter> externalCallParameterSet = this.getEmptySetOfExternalCallParameter();
+		externalCallParameterSet.add(EXTERNAL_CALL_PARAMETER_FACTORY.getOne());
+		assertThat(
+			"Blackboard should not accept ExternalCallParameters to be measured,"
+				+ "that are not stored in its ExternalCallParameter-set."
+				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
+				+ "be created after Blackboard instanciation!",
+			() -> this.emptyBlackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -241,7 +400,7 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetMeasurementResultsForResourceDemandingInternalAction() {
-		fail("Not yet implemented");
+
 	}
 
 	/**
