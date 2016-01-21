@@ -1,20 +1,20 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 /**
- * Missing Javadoc.
+ * Note: Designing this class is out of the project’s first iteration’s scope.
  *
  * @author Christoph Michelbach
  */
 public class ParameterChangeMeasurementResult extends ParameterisationDependentMeasurementResult {
 
 	/**
-	 * Missing Javadoc. uaeua
+	 * Missing Javadoc.
 	 */
 	public ParameterChangeMeasurementResult() {
 	}
 
 	/**
-	 * Missing Javadoc. ueuiae
+	 * Missing Javadoc.
 	 *
 	 * @param parameterisation Missing Javadoc.
 	 */
@@ -22,22 +22,11 @@ public class ParameterChangeMeasurementResult extends ParameterisationDependentM
 	}
 
 	/**
-	 * Missing Javadoc. uaeuiea
+	 * Missing Javadoc.
 	 *
 	 * @return Missing Javadoc.
 	 */
 	public int getCount() {
 		return 0;
-	}
-
-	/**
-	 * Missing Javadoc. uaeuliu
-	 *
-	 * @param count Missing Javadoc.
-	 * @throws IllegalArgumentException Missing Javadoc. Probably not actually this
-	 *             exception but I needed one.
-	 */
-	public void setCount(final int count) {
-		throw new IllegalArgumentException();
 	}
 }
