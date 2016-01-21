@@ -4,6 +4,8 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.Set;
 
 /**
@@ -32,7 +34,7 @@ public class MeasurementOrder {
 	private Set<CodeSection> executionSections;
 
 	/**
-	 * Launch configurations for the code under test. Must be at least {@code 0}.
+	 * Launch configurations for the code under test. Must contain at least one element.
 	 */
 	private Set<LaunchConfiguration> launchConfigurations;
 
@@ -45,15 +47,29 @@ public class MeasurementOrder {
 	/**
 	 * Create a measurement order for {@linkplain MeasurementTool MeasurementTools}.
 	 *
-	 * @param parameterValueSection
-	 * @param resourceDemandSections
-	 * @param executionSections
-	 * @param launchConfigurations
-	 * @param parameterCharacteriser
+	 * @param parameterValueSection The code sections where parameters need to be
+	 *            characterised. Must not be {@code null}. May not contain {@code null}
+	 *            elements.
+	 * @param resourceDemandSections The code sections, where all resource demands need to
+	 *            be captured. Must not be {@code null}. May not contain {@code null}
+	 *            elements.
+	 * @param executionSections The code sections, where an {@link MeasurementEvent}
+	 *            should be created each time it gets executed. Must not be {@code null}.
+	 *            May not contain {@code null} elements.
+	 * @param launchConfigurations Launch configurations for the code under test. Must
+	 *            contain at least one element. Must not be {@code null}. May not contain
+	 *            {@code null} elements.
+	 * @param parameterCharacteriser The parameter characteriser, that all measurement
+	 *            tools must use for parameter characterisation. Must not be {@code null}.
 	 */
 	public MeasurementOrder(final Set<CodeSection> parameterValueSection, final Set<CodeSection> resourceDemandSections,
 		final Set<CodeSection> executionSections, final Set<LaunchConfiguration> launchConfigurations,
 		final ParameterCharacteriser parameterCharacteriser) {
+		Validate.noNullElements(parameterValueSection);
+		Validate.noNullElements(resourceDemandSections);
+		Validate.noNullElements(resourceDemandSections);
+		Validate.noNullElements(executionSections);
+		Validate.notNull(parameterCharacteriser);
 		this.parameterValueSection = parameterValueSection;
 		this.resourceDemandSections = resourceDemandSections;
 		this.executionSections = executionSections;
@@ -62,45 +78,54 @@ public class MeasurementOrder {
 	}
 
 	/**
-	 * TODO describe “parameterValueSection”.
+	 * Gives the code sections where parameters need to be characterised.
 	 *
-	 * @return the parameterValueSection
+	 * @return the code sections where parameters need to be characterised. Is never
+	 *         {@code null}. Does not contain {@code null} elements.
 	 */
 	public Set<CodeSection> getParameterValueSection() {
 		return this.parameterValueSection;
 	}
 
 	/**
-	 * TODO describe “resourceDemandSections”.
+	 * Gives the code sections, where all resource demands need to be captured.
 	 *
-	 * @return the resourceDemandSections
+	 * @return the resourceDemandSections The code sections, where all resource demands
+	 *         need to be captured. Is never {@code null}. Does not contain {@code null}
+	 *         elements.
 	 */
 	public Set<CodeSection> getResourceDemandSections() {
 		return this.resourceDemandSections;
 	}
 
 	/**
-	 * TODO describe “executionSections”.
+	 * Gives the code sections, where an {@link MeasurementEvent} should be created each
+	 * time it gets executed.
 	 *
-	 * @return the executionSections
+	 * @return The code sections, where an {@link MeasurementEvent} should be created each
+	 *         time it gets executed. Is never {@code null}. Does not contain {@code null}
+	 *         elements.
 	 */
 	public Set<CodeSection> getExecutionSections() {
 		return this.executionSections;
 	}
 
 	/**
-	 * TODO describe “launchConfigurations”.
+	 * Gives launch configurations for the code under test. Contains at least one element.
 	 *
-	 * @return the launchConfigurations
+	 * @return Launch configurations for the code under test. Contains at least one
+	 *         element. Is never {@code null}. Does not contain {@code null} elements.
 	 */
 	public Set<LaunchConfiguration> getLaunchConfigurations() {
 		return this.launchConfigurations;
 	}
 
 	/**
-	 * TODO describe “parameterCharacteriser”.
+	 * Gives the parameter characteriser, that all measurement tools must use for
+	 * parameter characterisation.
 	 *
-	 * @return the parameterCharacteriser
+	 * @return the parameter characteriser, that all measurement tools must use for
+	 *         parameter characterisation. Is never {@code null}.
 	 */
 	public ParameterCharacteriser getParameterCharacteriser() {
 		return this.parameterCharacteriser;
