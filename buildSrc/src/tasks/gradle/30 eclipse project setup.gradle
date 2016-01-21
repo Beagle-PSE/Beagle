@@ -1,0 +1,31 @@
+/**
+ * Tasks setting up the Eclipse projects to reflect certain settings in gradle.
+ *
+ * @author Joshua Gleitze
+ */
+
+configure(javaSubprojects) {
+	apply plugin: 'eclipse'
+	
+	eclipse {
+		classpath {
+			// include only the test dependencies, because main dependencies are declared in MANIFEST.MF
+			minusConfigurations += [project.configurations.compile]
+			plusConfigurations += [project.configurations.testCompile]
+			
+			containers = []
+			
+			downloadJavadoc = true
+		}
+	}
+	
+	// These tasks do a lot of things with the eclipse files we don’t want. We delete them
+	// and define our own eclipse task that only enhances the classpath with test dependencies.
+	project.tasks.remove(project.tasks.eclipse)
+	project.tasks.remove(project.tasks.eclipseJdt)
+	project.tasks.remove(project.tasks.eclipseProject)
+	
+	project.task('eclipse') {
+		dependsOn project.tasks.eclipseClasspath
+	}
+}

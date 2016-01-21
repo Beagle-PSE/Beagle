@@ -17,9 +17,11 @@ Required Eclipse plugins are:
   * [UMLet](http://umlet.com/) (either as Eclipse plugin or as standalone)
   
 ## Building & Dependency Management
-The project is built using [Gradle](http://gradle.org/) 2.9. It can be downloaded [here](http://gradle.org/gradle-download/). Ubuntu users can use [this PPA](https://launchpad.net/~cwchien/+archive/ubuntu/gradle).
+The project is built using [Gradle](http://gradle.org/) 2.10. It can be downloaded [here](http://gradle.org/gradle-download/). Ubuntu users can use [this PPA](https://launchpad.net/~cwchien/+archive/ubuntu/gradle).
 
 We use the default commands: `gradle build` (or simply `gradle`) to test and build, `gradle test` to only run tests. Run `gradle tasks` to see all available tasks.
+
+Please run `gradle dependencies` now to install all required dependencies. This takes a while and can run in the background.
   
 ## Documentation
 
