@@ -35,7 +35,7 @@ public final class CodeSectionFactory {
 			// file.length gets the number of bytes, so it is an approximatation for the
 			// number of characters. 50 is subtracted to be sure to stay within the file.
 			final int startMaximum = (int) startFile.length() - 50;
-			final int endMaximum = (int) startFile.length() - 50;
+			final int endMaximum = (int) endFile.length() - 50;
 			codeSections[i] =
 				new CodeSection(startFile, (i + 10) * 111 % startMaximum, endFile, (i + 3) * 77 % endMaximum);
 		}

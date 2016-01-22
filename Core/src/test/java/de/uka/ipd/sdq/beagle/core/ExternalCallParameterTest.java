@@ -73,10 +73,10 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testGetIndex() {
-		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
+		final CodeSection codeSection = CODE_SECTION_FACTORY.getOne();
 		final int[] indizes = {1, 6, 100, 0, 1000, 9949};
 		for (final int index : indizes) {
-			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSections[0], index);
+			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, index);
 			assertThat(externalCallP.getIndex(), is(equalTo(index)));
 		}
 	}

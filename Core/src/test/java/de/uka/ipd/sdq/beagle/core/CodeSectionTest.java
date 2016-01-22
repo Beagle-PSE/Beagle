@@ -94,6 +94,15 @@ public class CodeSectionTest {
 			new CodeSection(files[0], invalidStartIndex2, files[0], validEndIndex);
 		};
 		assertThat("Start index must be within the file.", method, throwsException(IllegalArgumentException.class));
+		
+		method = () -> {
+			new CodeSection(null, validStartIndex, files[0], validEndIndex);
+		};
+		assertThat("StartFile must not be null.", method, throwsException(NullPointerException.class));
+		method = () -> {
+			new CodeSection(files[0], validStartIndex, null, validEndIndex);
+		};
+		assertThat("EndFile must not be null.", method, throwsException(NullPointerException.class));
 	}
 
 	/**

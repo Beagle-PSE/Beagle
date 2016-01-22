@@ -32,7 +32,7 @@ public class ResourceDemandTypeTest {
 		ThrowingMethod method = () -> {
 			new ResourceDemandType(null, true);
 		};
-		assertThat("Name must not be null.", method, throwsException(IllegalArgumentException.class));
+		assertThat("Name must not be null.", method, throwsException(NullPointerException.class));
 		
 		method = () -> {
 			new ResourceDemandType("", true);

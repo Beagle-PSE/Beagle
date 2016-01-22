@@ -74,6 +74,11 @@ public class SeffBranchTest {
 			new SeffBranch(codeSections);
 		};
 		assertThat("Set must not contain null.", method, throwsException(IllegalArgumentException.class));
+		
+		method = () -> {
+			new SeffBranch(null);
+		};
+		assertThat("Set must not be null.", method, throwsException(NullPointerException.class));
 
 	}
 
