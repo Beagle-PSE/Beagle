@@ -32,10 +32,6 @@ public class CodeSectionTest {
 	 * Test method for
 	 * {@link de.uka.ipd.sdq.beagle.core.CodeSection#CodeSection(java.io.File, int, java.io.File, int)}
 	 * .
-	 *
-	 * <p>Asserts that Constructor works for correct input, an IllegalArgumentException is
-	 * thrown if input for one of the files is no file or startIndex is greater than
-	 * endIndex.
 	 */
 	@Test
 	public void testCodeSection() {
@@ -47,9 +43,18 @@ public class CodeSectionTest {
 			final int startIndex = 23;
 			final int endIndex = maximum - 74;
 
-			final CodeSection codeSection = new CodeSection(file, startIndex, file, endIndex);
-			assertThat(codeSection.getStartFile(), is(theInstance(file)));
+			new CodeSection(file, startIndex, file, endIndex);
 		}
+
+		int startIndex = 4;
+		int endIndex = 18;
+		final CodeSection codeSection = new CodeSection(files[0], startIndex, files[0], endIndex);
+		startIndex = 10;
+		endIndex = 24;
+		assertThat("Changing start index after initialisation must not affect the code section.",
+			codeSection.getStartSectionIndex(), is(4));
+		assertThat("Changing end index after initialisation must not affect the code section.",
+			codeSection.getEndSectionIndex(), is(18));
 
 		final File notExistingFile = new File("/de/uka/ipd/sdq/beagle/core/NotExisting.java");
 		ThrowingMethod method = () -> {
@@ -115,10 +120,6 @@ public class CodeSectionTest {
 		assertThat(codeSections[0], is(not(equalTo(codeSections[2]))));
 		assertThat(codeSections[2], is(not(equalTo(codeSections[3]))));
 		assertThat(codeSections[3], is(not(equalTo(codeSections[4]))));
-		assertThat(codeSections[0].hashCode(), is(not(equalTo(codeSections[1].hashCode()))));
-		assertThat(codeSections[0].hashCode(), is(not(equalTo(codeSections[2].hashCode()))));
-		assertThat(codeSections[2].hashCode(), is(not(equalTo(codeSections[3].hashCode()))));
-		assertThat(codeSections[3].hashCode(), is(not(equalTo(codeSections[4].hashCode()))));
 	}
 
 	/**
@@ -129,7 +130,8 @@ public class CodeSectionTest {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final int[] endIndices = {7, 19, 34, 93, 83, 2};
 		for (int i = 0; i < endIndices.length; i++) {
-			final CodeSection codeSection = new CodeSection(files[i % files.length], 45, files[i % files.length], endIndices[i]);
+			final CodeSection codeSection =
+				new CodeSection(files[i % files.length], 45, files[i % files.length], endIndices[i]);
 			assertThat(codeSection.getEndSectionIndex(), is(endIndices[i]));
 		}
 	}
@@ -162,17 +164,12 @@ public class CodeSectionTest {
 	@Test
 	public void testGetStartCodeLine() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
-		final File file = files[0];
-		final int startCodeLine = 4;
-		final int endCodeLine = 15;
-		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
-		assertThat(codeSection.getStartSectionIndex(), is(startCodeLine));
-
-		final File secFile = files[1];
-		final int startIndex = 60;
-		final int endIndex = 68;
-		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
-		assertThat(codeSection.getStartSectionIndex(), is(theInstance(startIndex)));
+		final int[] startIndices = {7, 19, 34, 93, 83, 2};
+		for (int i = 0; i < startIndices.length; i++) {
+			final CodeSection codeSection =
+				new CodeSection(files[i % files.length], 45, files[i % files.length], startIndices[i]);
+			assertThat(codeSection.getEndSectionIndex(), is(startIndices[i]));
+		}
 	}
 
 	/**

@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -7,6 +8,7 @@ import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
 
+import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 
 import org.junit.Test;
@@ -30,13 +32,15 @@ public class SeffLoopTest {
 	 * .
 	 */
 	@Test
-	public void testConstructor() {
+	public void testSeffLoop() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
-			loop = new SeffLoop(codeSection);
-			assertThat(loop.getLoopBody(), is(theInstance(codeSection)));
+			new SeffLoop(codeSection);
 		}
+		final ThrowingMethod method = () -> {
+			new SeffLoop(null);
+		};
+		assertThat("Code section must not be null.", method, throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -44,10 +48,9 @@ public class SeffLoopTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
-		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final SeffLoop loop = new SeffLoop(codeSections[0]);
-		final SeffLoop loopB = new SeffLoop(codeSections[1]);
-		final SeffLoop loopC = new SeffLoop(codeSections[0]);
+		final SeffLoop loop = new SeffLoop(CODE_SECTION_FACTORY.getAll()[0]);
+		final SeffLoop loopB = new SeffLoop(CODE_SECTION_FACTORY.getAll()[1]);
+		final SeffLoop loopC = new SeffLoop(CODE_SECTION_FACTORY.getAll()[0]);
 		assertThat(loop, is(not(equalTo(loopB))));
 		assertThat(loop, is(equalTo(loopC)));
 		assertThat(loop.hashCode(), is(equalTo(loopC.hashCode())));

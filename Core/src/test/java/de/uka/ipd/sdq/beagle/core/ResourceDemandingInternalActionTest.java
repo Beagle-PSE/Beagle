@@ -20,7 +20,7 @@ import org.junit.Test;
  * @author Annika Berger
  */
 public class ResourceDemandingInternalActionTest {
-	
+
 	/**
 	 * A {@link CodeSectionFactory}, which is able to generate {@link CodeSection}s.
 	 */
@@ -35,21 +35,22 @@ public class ResourceDemandingInternalActionTest {
 	@Test
 	public void testEqualsAndHashCode() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final CodeSection codeSection = codeSections[0];
 		final ResourceDemandingInternalAction rdia =
-			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSections[0]);
 
-		final CodeSection secCodeSection = codeSections[1];
 		final ResourceDemandingInternalAction rdia1 =
-			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, codeSections[0]);
 
-		final CodeSection codeSec = codeSections[0];
 		final ResourceDemandingInternalAction rdia2 =
-			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSec);
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, CODE_SECTION_FACTORY.getAll()[0]);
+
+		final ResourceDemandingInternalAction rdia4 =
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSections[1]);
 
 		assertThat(rdia, is(equalTo(rdia2)));
 		assertThat(rdia.hashCode(), is(equalTo(rdia2.hashCode())));
 		assertThat(rdia, is(not(equalTo(rdia1))));
+		assertThat(rdia, is(not(equalTo(rdia4))));
 	}
 
 	/**
@@ -83,23 +84,23 @@ public class ResourceDemandingInternalActionTest {
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_CPU)));
+		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_CPU))));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_HDD)));
+		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_HDD))));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_NETWORK)));
+		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_NETWORK))));
 
 		final CodeSection secCodeSection = codeSections[1];
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_CPU_NS)));
+		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_CPU_NS))));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_HDD_NS)));
+		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_HDD_NS))));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS)));
+		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS))));
 	}
 
 	/**
@@ -110,30 +111,18 @@ public class ResourceDemandingInternalActionTest {
 	public void testResourceDemandingInternalAction() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
-		ResourceDemandingInternalAction rdia =
-			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_CPU)));
-
-		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_HDD)));
-
-		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_NETWORK)));
+		new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+		new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD, codeSection);
+		new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK, codeSection);
+		final CodeSection secCodeSection = codeSections[1];
+		new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
+		new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD_NS, secCodeSection);
+		new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, secCodeSection);
 
 		ThrowingMethod method = () -> {
 			new ResourceDemandingInternalAction(null, codeSection);
 		};
 		assertThat("Resouce demand type must not be null.", method, throwsException(NullPointerException.class));
-
-		final CodeSection secCodeSection = codeSections[1];
-		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_CPU_NS)));
-
-		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_HDD_NS)));
-
-		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS)));
 
 		method = () -> {
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, null);

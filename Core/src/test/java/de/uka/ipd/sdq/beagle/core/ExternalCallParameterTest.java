@@ -5,7 +5,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -32,7 +31,7 @@ public class ExternalCallParameterTest {
 	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#ExternalCallParameter(de.uka.ipd.sdq.beagle.core.CodeSection, int)}
 	 * .
 	 *
-	 * <p>Asserts that instantiation is positive for Code sections and a positive index,
+	 * <p>Asserts that instantiation is possible for Code sections and a positive index,
 	 * while entering a negative index throws an exception.
 	 */
 	@Test
@@ -40,8 +39,7 @@ public class ExternalCallParameterTest {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		int index = 0;
 		for (final CodeSection call : codeSections) {
-			final ExternalCallParameter externalCallP = new ExternalCallParameter(call, index);
-			assertThat(externalCallP.getCallCodeSection(), is(theInstance(call)));
+			new ExternalCallParameter(call, index);
 			index++;
 		}
 
@@ -90,14 +88,15 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testEqualsAndHashcode() {
-		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSections[0], 1);
-		final ExternalCallParameter externalCallP2 = new ExternalCallParameter(codeSections[0], 1);
-		final ExternalCallParameter externalCallP3 = new ExternalCallParameter(codeSections[1], 1);
+		final ExternalCallParameter externalCallP = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
+		final ExternalCallParameter externalCallP2 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
+		final ExternalCallParameter externalCallP3 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[1], 1);
+		final ExternalCallParameter externalCallP4 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 2);
 
 		assertThat(externalCallP, is(equalTo(externalCallP2)));
 		assertThat(externalCallP.hashCode(), is(equalTo(externalCallP2.hashCode())));
 		assertThat(externalCallP, is(not(equalTo(externalCallP3))));
+		assertThat(externalCallP2, is(not(equalTo(externalCallP4))));
 	}
 
 	/**

@@ -23,7 +23,7 @@ import java.util.Set;
  * @author Annika Berger
  */
 public class SeffBranchTest {
-	
+
 	/**
 	 * A {@link CodeSectionFactory}, which is able to generate {@link CodeSection}s.
 	 */
@@ -65,7 +65,9 @@ public class SeffBranchTest {
 		for (int i = amountBranches; i < codeSecs.length; i++) {
 			codeSections.add(codeSecs[i]);
 		}
-		assertThat(branch.getBranches().size(), is(equalTo(amountBranches)));
+		assertThat(
+			"Adding code sections after initialisation must not influence number of codesections in seff branch.",
+			branch.getBranches().size(), is(equalTo(amountBranches)));
 
 		codeSections.add(null);
 		method = () -> {
@@ -89,22 +91,27 @@ public class SeffBranchTest {
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
 		final Set<CodeSection> codeSectionsC = new HashSet<>();
-		final CodeSection[] codeSecs =  CODE_SECTION_FACTORY.getAll();
-		final int minAmount = 2;
-		if (codeSecs.length > minAmount) {
+		final Set<CodeSection> codeSectionsD = new HashSet<>();
+		final CodeSection[] codeSecs = CODE_SECTION_FACTORY.getAll();
+		if (codeSecs.length > 2) {
 			for (final CodeSection codeSection : codeSecs) {
 				codeSectionsA.add(codeSection);
 				codeSectionsB.add(codeSection);
 			}
-			codeSectionsC.add(codeSecs[0]);
-			codeSectionsC.add(codeSecs[1]);
+			codeSectionsC.add(CODE_SECTION_FACTORY.getAll()[0]);
+			codeSectionsC.add(CODE_SECTION_FACTORY.getAll()[1]);
+			codeSectionsD.add(CODE_SECTION_FACTORY.getAll()[codeSecs.length - 1]);
+			codeSectionsD.add(CODE_SECTION_FACTORY.getAll()[codeSecs.length - 2]);
+			
 			final SeffBranch branchA = new SeffBranch(codeSectionsA);
 			final SeffBranch branchB = new SeffBranch(codeSectionsB);
 			final SeffBranch branchC = new SeffBranch(codeSectionsC);
+			final SeffBranch branchD = new SeffBranch(codeSectionsD);
 
 			assertThat(branchB, is(equalTo(branchA)));
 			assertThat(branchB.hashCode(), is(equalTo(branchA.hashCode())));
 			assertThat(branchC, is(not(equalTo(branchA))));
+			assertThat(branchD, is(not(equalTo(branchC))));
 		} else {
 			fail("There have to be minimum three CodeSections in the CodeSectionFactory to test this method properly.");
 		}
@@ -115,7 +122,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testGetBranches() {
-		final Set<CodeSection> codeSections =  CODE_SECTION_FACTORY.getAllAsSet();
+		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(equalTo(codeSections)));
 	}
@@ -125,7 +132,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testToString() {
-		final Set<CodeSection> codeSections =  CODE_SECTION_FACTORY.getAllAsSet();
+		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final SeffBranch branch = new SeffBranch(codeSections);
 
 		assertThat(branch.toString(), not(startsWith("SeffBranch@")));
