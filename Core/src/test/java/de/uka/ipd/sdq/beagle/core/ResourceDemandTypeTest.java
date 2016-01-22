@@ -13,7 +13,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType} and contains all test cases needed
+ * Tests {@link ResourceDemandType} and contains all test cases needed
  * to check every method.
  *
  * @author Annika Berger

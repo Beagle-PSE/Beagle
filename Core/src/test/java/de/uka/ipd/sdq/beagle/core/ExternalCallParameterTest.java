@@ -14,7 +14,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter} and contains all test
+ * Tests {@link ExternalCallParameter} and contains all test
  * cases needed to check every method.
  *
  *
@@ -29,7 +29,7 @@ public class ExternalCallParameterTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#ExternalCallParameter(de.uka.ipd.sdq.beagle.core.CodeSection, int)}
+	 * {@link ExternalCallParameter#ExternalCallParameter(de.uka.ipd.sdq.beagle.core.CodeSection, int)}
 	 * .
 	 *
 	 * <p>Asserts that instantiation is possible for Code sections and a positive index,
@@ -57,7 +57,7 @@ public class ExternalCallParameterTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#getCallCodeSection()}.
+	 * {@link ExternalCallParameter#getCallCodeSection()}.
 	 */
 	@Test
 	public void testGetCallCodeSection() {
@@ -69,7 +69,7 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#getIndex()}
+	 * Test method for {@link ExternalCallParameter#getIndex()}
 	 * .
 	 */
 	@Test
@@ -86,8 +86,8 @@ public class ExternalCallParameterTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#equals(java.lang.Object)}
-	 * and {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#hashCode()}.
+	 * {@link ExternalCallParameter#equals(java.lang.Object)}
+	 * and {@link ExternalCallParameter#hashCode()}.
 	 */
 	@Test
 	public void testEqualsAndHashcode() {
@@ -104,7 +104,7 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#toString()}
+	 * Test method for {@link ExternalCallParameter#toString()}
 	 * .
 	 */
 	@Test
