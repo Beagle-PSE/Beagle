@@ -84,23 +84,23 @@ public class ResourceDemandingInternalActionTest {
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_CPU))));
+		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_CPU)));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_HDD))));
+		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_HDD)));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK, codeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_NETWORK))));
+		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_NETWORK)));
 
 		final CodeSection secCodeSection = codeSections[1];
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_CPU_NS))));
+		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_CPU_NS)));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_HDD_NS))));
+		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_HDD_NS)));
 
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, secCodeSection);
-		assertThat(rdia.getResourceType(), is(equalTo(theInstance(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS))));
+		assertThat(rdia.getResourceType(), is(equalTo(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS)));
 	}
 
 	/**
