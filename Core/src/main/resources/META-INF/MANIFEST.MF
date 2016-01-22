@@ -6,4 +6,6 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.hamcrest.core,
  org.junit,
- org.apache.commons.lang3
+ org.apache.commons.lang3,
+ org.eclipse.core.runtime
+Import-Package: org.eclipse.debug.core
