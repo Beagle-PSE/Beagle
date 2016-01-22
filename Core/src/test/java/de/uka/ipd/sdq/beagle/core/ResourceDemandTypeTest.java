@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertThat;
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
@@ -47,6 +48,7 @@ public class ResourceDemandTypeTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
+		assertThat(ResourceDemandType.RESOURCE_TYPE_CPU, hasDefaultEqualsProperties());
 		final ResourceDemandType test = new ResourceDemandType("test", true);
 		final ResourceDemandType testF = new ResourceDemandType("test", false);
 		final ResourceDemandType testT = new ResourceDemandType("test", true);

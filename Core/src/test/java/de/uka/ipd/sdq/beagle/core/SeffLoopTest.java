@@ -1,12 +1,13 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
@@ -48,6 +49,7 @@ public class SeffLoopTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
+		assertThat(new SeffLoop(CODE_SECTION_FACTORY.getOne()), hasDefaultEqualsProperties());
 		final SeffLoop loop = new SeffLoop(CODE_SECTION_FACTORY.getAll()[0]);
 		final SeffLoop loopB = new SeffLoop(CODE_SECTION_FACTORY.getAll()[1]);
 		final SeffLoop loopC = new SeffLoop(CODE_SECTION_FACTORY.getAll()[0]);

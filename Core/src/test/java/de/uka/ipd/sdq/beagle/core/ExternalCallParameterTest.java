@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -88,6 +89,7 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testEqualsAndHashcode() {
+		assertThat(new ExternalCallParameter(CODE_SECTION_FACTORY.getOne(), 3), hasDefaultEqualsProperties());
 		final ExternalCallParameter externalCallP = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
 		final ExternalCallParameter externalCallP2 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
 		final ExternalCallParameter externalCallP3 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[1], 1);

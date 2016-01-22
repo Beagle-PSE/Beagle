@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -34,6 +35,9 @@ public class ResourceDemandingInternalActionTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
+		assertThat(
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, CODE_SECTION_FACTORY.getOne()),
+			hasDefaultEqualsProperties());
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSections[0]);

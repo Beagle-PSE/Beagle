@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -119,6 +120,7 @@ public class CodeSectionTest {
 			new CodeSection(files[0], 7, files[0], 15), new CodeSection(files[0], 4, files[0], 15),
 			new CodeSection(files[0], 4, files[0], 25), new CodeSection(files[0], 7, files[0], 15)};
 
+		assertThat(codeSections[0], hasDefaultEqualsProperties());
 		assertThat(codeSections[0], is(equalTo(codeSections[0])));
 		assertThat(codeSections[2], is(equalTo(codeSections[5])));
 		assertThat(codeSections[5], is(equalTo(codeSections[2])));

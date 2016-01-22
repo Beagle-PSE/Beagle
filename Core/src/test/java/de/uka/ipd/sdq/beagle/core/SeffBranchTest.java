@@ -1,11 +1,12 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -93,6 +94,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
+		assertThat(new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet()), hasDefaultEqualsProperties());
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
 		final Set<CodeSection> codeSectionsC = new HashSet<>();
@@ -112,7 +114,7 @@ public class SeffBranchTest {
 			final SeffBranch branchB = new SeffBranch(codeSectionsB);
 			final SeffBranch branchC = new SeffBranch(codeSectionsC);
 			final SeffBranch branchD = new SeffBranch(codeSectionsD);
-
+			
 			assertThat(branchB, is(equalTo(branchA)));
 			assertThat(branchB.hashCode(), is(equalTo(branchA.hashCode())));
 			assertThat(branchC, is(not(equalTo(branchA))));
