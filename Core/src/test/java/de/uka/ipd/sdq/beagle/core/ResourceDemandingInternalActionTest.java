@@ -8,8 +8,8 @@ import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
 
-import de.uka.ipd.sdq.beagle.core.testutil.CodeSectionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 
 import org.junit.Test;
 
@@ -20,6 +20,11 @@ import org.junit.Test;
  * @author Annika Berger
  */
 public class ResourceDemandingInternalActionTest {
+	
+	/**
+	 * A {@link CodeSectionFactory}, which is able to generate {@link CodeSection}s.
+	 */
+	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
 	 * Test method for
@@ -29,7 +34,7 @@ public class ResourceDemandingInternalActionTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
 		final ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
@@ -54,7 +59,7 @@ public class ResourceDemandingInternalActionTest {
 	 */
 	@Test
 	public void testGetAction() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
@@ -74,7 +79,7 @@ public class ResourceDemandingInternalActionTest {
 	 */
 	@Test
 	public void testGetResourceType() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
@@ -103,7 +108,7 @@ public class ResourceDemandingInternalActionTest {
 	 */
 	@Test
 	public void testResourceDemandingInternalAction() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
@@ -143,7 +148,7 @@ public class ResourceDemandingInternalActionTest {
 	 */
 	@Test
 	public void testToString() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (CodeSection codeSection : codeSections) {
 			final ResourceDemandingInternalAction rdia =
 				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);

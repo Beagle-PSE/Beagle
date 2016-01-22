@@ -8,8 +8,8 @@ import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import de.uka.ipd.sdq.beagle.core.testutil.CodeSectionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 
 import org.junit.Test;
 
@@ -23,6 +23,11 @@ import java.util.Set;
  * @author Annika Berger
  */
 public class SeffBranchTest {
+	
+	/**
+	 * A {@link CodeSectionFactory}, which is able to generate {@link CodeSection}s.
+	 */
+	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
 	 * Test method for
@@ -44,7 +49,7 @@ public class SeffBranchTest {
 		assertThat("Set must not be empty.", method, throwsException(IllegalArgumentException.class));
 
 		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
-		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSecs = CODE_SECTION_FACTORY.getAll();
 		codeSections.add(codeSecs[0]);
 
 		method = () -> {
@@ -84,7 +89,7 @@ public class SeffBranchTest {
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
 		final Set<CodeSection> codeSectionsC = new HashSet<>();
-		final CodeSection[] codeSecs = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSecs =  CODE_SECTION_FACTORY.getAll();
 		final int minAmount = 2;
 		if (codeSecs.length > minAmount) {
 			for (final CodeSection codeSection : codeSecs) {
@@ -110,10 +115,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testGetBranches() {
-		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
-		for (final CodeSection codeSection : CodeSectionFactory.getAllCodeSections()) {
-			codeSections.add(codeSection);
-		}
+		final Set<CodeSection> codeSections =  CODE_SECTION_FACTORY.getAllAsSet();
 		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(equalTo(codeSections)));
 	}
@@ -123,10 +125,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testToString() {
-		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
-		for (final CodeSection codeSection : CodeSectionFactory.getAllCodeSections()) {
-			codeSections.add(codeSection);
-		}
+		final Set<CodeSection> codeSections =  CODE_SECTION_FACTORY.getAllAsSet();
 		final SeffBranch branch = new SeffBranch(codeSections);
 
 		assertThat(branch.toString(), not(startsWith("SeffBranch@")));

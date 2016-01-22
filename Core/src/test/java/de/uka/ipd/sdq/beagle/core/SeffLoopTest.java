@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
 
-import de.uka.ipd.sdq.beagle.core.testutil.CodeSectionFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 
 import org.junit.Test;
 
@@ -20,13 +20,18 @@ import org.junit.Test;
 public class SeffLoopTest {
 
 	/**
+	 * A {@link CodeSectionFactory}, which is able to generate {@link CodeSection}s.
+	 */
+	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
+
+	/**
 	 * Test method for
 	 * {@link de.uka.ipd.sdq.beagle.core.SeffLoop#SeffLoop(de.uka.ipd.sdq.beagle.core.CodeSection)}
 	 * .
 	 */
 	@Test
 	public void testConstructor() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
 			loop = new SeffLoop(codeSection);
@@ -39,7 +44,7 @@ public class SeffLoopTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final SeffLoop loop = new SeffLoop(codeSections[0]);
 		final SeffLoop loopB = new SeffLoop(codeSections[1]);
 		final SeffLoop loopC = new SeffLoop(codeSections[0]);
@@ -53,7 +58,7 @@ public class SeffLoopTest {
 	 */
 	@Test
 	public void testGetLoopBody() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
 			loop = new SeffLoop(codeSection);
@@ -66,7 +71,7 @@ public class SeffLoopTest {
 	 */
 	@Test
 	public void testToString() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
 			loop = new SeffLoop(codeSection);

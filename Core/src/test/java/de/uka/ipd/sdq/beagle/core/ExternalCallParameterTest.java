@@ -8,8 +8,8 @@ import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.CoreMatchers.theInstance;
 import static org.junit.Assert.assertThat;
 
-import de.uka.ipd.sdq.beagle.core.testutil.CodeSectionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 
 import org.junit.Test;
 
@@ -23,6 +23,11 @@ import org.junit.Test;
 public class ExternalCallParameterTest {
 
 	/**
+	 * A {@link CodeSectionFactory}, which is able to generate {@link CodeSection}s.
+	 */
+	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
+
+	/**
 	 * Test method for
 	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#ExternalCallParameter(de.uka.ipd.sdq.beagle.core.CodeSection, int)}
 	 * .
@@ -32,7 +37,7 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testExternalCallParameter() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		int index = 0;
 		for (final CodeSection call : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(call, index);
@@ -57,7 +62,7 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testGetCallCodeSection() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (final CodeSection codeSection : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, 1);
 			assertThat(externalCallP.getCallCodeSection(), is(equalTo(codeSection)));
@@ -70,7 +75,7 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testGetIndex() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final int[] indizes = {1, 6, 100, 0, 1000, 9949};
 		for (final int index : indizes) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSections[0], index);
@@ -85,7 +90,7 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testEqualsAndHashcode() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSections[0], 1);
 		final ExternalCallParameter externalCallP2 = new ExternalCallParameter(codeSections[0], 1);
 		final ExternalCallParameter externalCallP3 = new ExternalCallParameter(codeSections[1], 1);
@@ -101,7 +106,7 @@ public class ExternalCallParameterTest {
 	 */
 	@Test
 	public void testToString() {
-		final CodeSection[] codeSections = CodeSectionFactory.getAllCodeSections();
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (final CodeSection codeSection : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, 1);
 			assertThat(externalCallP.toString(), not(startsWith("ExternalCallParameter@")));
