@@ -23,19 +23,19 @@ public class FinalJudge {
 	 * If a generation is fitter than this value, evolution of evaluable expressions will
 	 * be stopped.
 	 */
-	private static final double fitnessε = 0.5d;
+	private static final double FITNESS_ε = 0.5d;
 
 	/**
 	 * IF the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
 	 * expressions will be stopped.
 	 */
-	private static final int maxNumberOfGenerationsPassed = 500;
+	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = 500;
 
 	/**
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
 	 * the application started so evolution of evaluable expressions will be continued.
 	 */
-	private static final long maxTimePassed = 3 * 24 * 3600;
+	private static final long MAX_TIME_PASSED = 3 * 24 * 3600;
 
 	/**
 	 * The number of generations passed. Will be the number of times a {@link FinalJugde}
