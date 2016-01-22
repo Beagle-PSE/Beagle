@@ -16,10 +16,10 @@ import java.io.Serializable;
  * first character in its source file. Code sections are immutable, meaning that once
  * created, their attributes cannot be changed.
  *
- * <p><p>A code section must describe a continuous part of source code, meaning that the
- * last statement in the section will always be executed if the first one was executed,
- * given that no Exceptions occur. Furthermore, if the last statement is not the same as
- * the first one, the last statement may only be executed after the first one was. All
+ * <p>A code section must describe a continuous part of source code, meaning that the last
+ * statement in the section will always be executed if the first one was executed, given
+ * that no Exceptions occur. Furthermore, if the last statement is not the same as the
+ * first one, the last statement may only be executed after the first one was. All
  * statements that may potentially be executed after the first statement but before the
  * last one are considered to be “in” the section. A code section is considered to have
  * been “completely executed” if the section’s first and last statement were executed.
@@ -86,8 +86,8 @@ public class CodeSection implements Serializable {
 		if (!endFile.isFile()) {
 			throw new IllegalArgumentException("The given endFile is not a file.");
 		}
-		Validate.isTrue(startIndex >= 0, "The index must be non-neagtive, but was %d", startIndex);
-		Validate.isTrue(endIndex >= 0, "The index must be non-neagtive, but was %d", endIndex);
+		Validate.isTrue(startIndex >= 0, "The startIndex must be non-neagtive, but was %d", startIndex);
+		Validate.isTrue(endIndex >= 0, "The endIndex must be non-neagtive, but was %d", endIndex);
 		final long startFileChars = this.countChars(startFile);
 		final long endFileChars = this.countChars(endFile);
 		Validate.isTrue(startIndex < startFileChars,
@@ -129,9 +129,9 @@ public class CodeSection implements Serializable {
 	}
 
 	/**
-	 * Gets the index of the last statement in this code section. Counting starts at 0.
-	 * The number thus describes how many statements precede the section’s last statement
-	 * in the {@linkplain #getStartFile() end source code file}.
+	 * Gets the index of the first character of the last statement in this code section.
+	 * Counting starts at 0. The number thus describes how many characters precede the
+	 * section’s last statement in the {@linkplain #getEndFile() end source code file}.
 	 *
 	 * @return The last statement’s index. A non-negative integer.
 	 */
@@ -177,12 +177,12 @@ public class CodeSection implements Serializable {
 	}
 
 	/**
-	 * Reads the number of chars in a text-file.
+	 * Reads the number of characters in a text-file.
 	 *
 	 * @param file The file to read.
 	 * @return The number of bytes in this file. The number of bytes is returned as this
 	 *         is, for most source code files, a good approximation for the number of
-	 *         chars and the files doesn't need to be read for this. This approximation
+	 *         characters and the files don't need to be read for this. This approximation
 	 *         never produces false errors.
 	 */
 	private long countChars(final File file) {
