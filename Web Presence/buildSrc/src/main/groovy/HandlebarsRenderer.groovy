@@ -1,5 +1,6 @@
 import com.github.jknack.handlebars.Handlebars
 import com.github.jknack.handlebars.io.FileTemplateLoader
+import com.github.jknack.handlebars.HandlebarsException
 	 
 /**
  * Handles rendering of handlebars template strings using the context provided. For each context,
@@ -47,6 +48,13 @@ public class HandlebarsRenderer {
 	  * @return	The rendered {@code template}.
 	  */
 	 public String render(final String template) {
-	 	return this.handlebars.compileInline(template).apply(context)
+	 	try {
+	 		return this.handlebars.compileInline(template).apply(context)
+	 	} catch (HandlebarsException hbeException) {
+	 		System.err.println ""
+	 		System.err.println "Render Error:"
+	 		System.err.println ""
+	 		System.err.println hbeException.message
+	 	}
 	 }
 }

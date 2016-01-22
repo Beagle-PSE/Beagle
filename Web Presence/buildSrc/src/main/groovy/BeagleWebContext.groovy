@@ -78,7 +78,7 @@ public class BeagleWebContext {
 		/**
 		 * Path to the css folder
 		 */
-		String css = relative project.copyWebAssets.cssdest
+		String css = relative project.copyWebTemplates.cssdest
 
 		/**
 		 * Path to the font folders.

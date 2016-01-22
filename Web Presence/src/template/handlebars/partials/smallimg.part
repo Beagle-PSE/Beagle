@@ -1,0 +1,9 @@
+{{!-- 
+	Shows a small version of an image and links to the full size version.
+	
+	src: path to the image
+	alt: the image’s alt-text
+--}}
+<a href="{{src}}">
+	<img src="{{src}}" alt="{{alt}}" class="small" />
+</a>
