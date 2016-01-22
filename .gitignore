@@ -19,6 +19,14 @@ hs_err_pid*
 # Eclipse workspace folder
 **/.metadata
 
+# Files PDE sometimes adds at the wrong location
+/*/build.properties
+/*/META-INF
+/*/plugin.xml
+/Prototypes/*/build.properties
+/Prototypes/*/META-INF
+/Prototypes/*/plugin.xml
+
 # LyX save files
 **/\#*\#
 
