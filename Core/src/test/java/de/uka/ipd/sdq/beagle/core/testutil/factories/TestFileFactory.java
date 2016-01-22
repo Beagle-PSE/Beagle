@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * Provides methods to get one, or more, Files which can be used to create e.g. a
  * {@link CodeSection}.
- * 
+ *
  * @author Annika Berger
  */
 public class TestFileFactory {
@@ -29,21 +29,23 @@ public class TestFileFactory {
 	 * @return all files as array
 	 */
 	public File[] getAll() {
-		File testFile;
+		final File testFile;
 		try {
 			testFile = new File(
 				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").toURI().getPath());
 		} catch (final URISyntaxException uriSyntaxException) {
 			throw new RuntimeException("Cannot find file called 'TestFile.java'");
 		}
-		File pingPongClass;
+		final File pingPongClass;
 		try {
 			pingPongClass = new File(
 				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").toURI().getPath());
 		} catch (final URISyntaxException uriSyntaxException) {
 			throw new RuntimeException("Cannot find file called 'PingPong.java'");
 		}
-		final File[] files = {testFile, pingPongClass };
+		final File[] files = {
+			testFile, pingPongClass
+		};
 		return files;
 	}
 

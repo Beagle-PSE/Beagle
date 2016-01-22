@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that potentises the given exponent to the base e (Euler’s number).
- * 
+ *
  * @author Annika Berger
  *
  */

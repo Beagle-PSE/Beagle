@@ -3,7 +3,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 /**
  * Expression that executes a logarithm with defined expressions as base and
  * antilogarithm.
- * 
+ *
  * @author Annika Berger
  */
 public class LogarithmExpression implements EvaluableExpression {

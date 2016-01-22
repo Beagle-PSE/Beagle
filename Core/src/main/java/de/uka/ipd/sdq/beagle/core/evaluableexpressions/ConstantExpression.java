@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * An {@link EvaluableExpression} having a constant value.
- * 
+ *
  * @author Annika Berger
  *
  */
@@ -10,7 +10,7 @@ public final class ConstantExpression implements EvaluableExpression {
 
 	/**
 	 * Inizialises a new constant expression with a given {@code value}.
-	 * 
+	 *
 	 * @param value The Constant value of this expression.
 	 */
 	private ConstantExpression(final double value) {

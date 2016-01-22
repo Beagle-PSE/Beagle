@@ -38,17 +38,18 @@ public class ResourceDemandingInternalActionFactory {
 	 */
 	public ResourceDemandingInternalAction[] getAll() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final ResourceDemandType[] types =
-		{ResourceDemandType.RESOURCE_TYPE_CPU, ResourceDemandType.RESOURCE_TYPE_CPU_NS,
+		final ResourceDemandType[] types = {
+			ResourceDemandType.RESOURCE_TYPE_CPU, ResourceDemandType.RESOURCE_TYPE_CPU_NS,
 			ResourceDemandType.RESOURCE_TYPE_HDD, ResourceDemandType.RESOURCE_TYPE_HDD_NS,
-			ResourceDemandType.RESOURCE_TYPE_NETWORK, ResourceDemandType.RESOURCE_TYPE_NETWORK_NS};
+			ResourceDemandType.RESOURCE_TYPE_NETWORK, ResourceDemandType.RESOURCE_TYPE_NETWORK_NS
+		};
 		final int numberOfInternalActions = codeSections.length;
 		final ResourceDemandingInternalAction[] internalActions =
 			new ResourceDemandingInternalAction[numberOfInternalActions];
 
 		for (int i = 0; i < numberOfInternalActions; i++) {
-			internalActions[i] = new ResourceDemandingInternalAction(types[i % types.length],
-				codeSections[i % codeSections.length]);
+			internalActions[i] =
+				new ResourceDemandingInternalAction(types[i % types.length], codeSections[i % codeSections.length]);
 		}
 
 		return internalActions;

@@ -39,7 +39,7 @@ public class ExternalCallParameterFactory {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final int numberOfParameters = codeSections.length;
 		final ExternalCallParameter[] externalCallParameters = new ExternalCallParameter[numberOfParameters];
-		
+
 		for (int i = 0; i < numberOfParameters; i++) {
 			externalCallParameters[i] = new ExternalCallParameter(codeSections[i % codeSections.length], i);
 		}

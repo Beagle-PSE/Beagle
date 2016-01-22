@@ -5,20 +5,37 @@ import org.hamcrest.DiagnosingMatcher;
 import org.hamcrest.Matcher;
 
 /**
- * Matcher that asserts that equals behaves correctly for {@code null}, same object and new object.
- * 
+ * Matcher that asserts that equals behaves correctly for {@code null}, same object and
+ * new object.
+ *
  * @author Annika Berger
  */
 public final class EqualsMatcher extends DiagnosingMatcher<Object> {
-	
+
+	/**
+	 * A matcher that matches if the examined object’s {@code equals} follows certain
+	 * default properties. The following attributes are asserted:
+	 * 
+	 * <ul>
+	 * 
+	 * <li>{@code equals} returns {@code false} for {@code null}
+	 * 
+	 * <li>{@code equals} returns {@code true} for the same instance
+	 * 
+	 * <li>{@code equals} return {@code false} for an object of another class
+	 *
+	 * </ul>
+	 * 
+	 * @return a matcher, as described above.
+	 */
 	public static Matcher<Object> hasDefaultEqualsProperties() {
 		return new EqualsMatcher();
 	}
 
 	@Override
-	public void describeTo(Description description) {
+	public void describeTo(final Description description) {
 		description.appendText("equals to follow standard contract");
-		
+
 	}
 
 	@Override

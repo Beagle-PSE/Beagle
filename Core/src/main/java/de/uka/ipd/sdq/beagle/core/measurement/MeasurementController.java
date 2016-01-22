@@ -3,8 +3,6 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 
-import java.util.Collection;
-
 /**
  * Controls which measurement tool is working.
  *
@@ -14,12 +12,6 @@ import java.util.Collection;
  * @see AnalysisController
  */
 public class MeasurementController {
-
-	/**
-	 * All measurement tools that can be used for measurements.
-	 */
-	@SuppressWarnings("unused")
-	private Collection<MeasurementTool> measurementTools;
 
 	/**
 	 * Determines whether a {@link MeasurementTool} can contribute to the
