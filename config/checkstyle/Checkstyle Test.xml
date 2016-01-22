@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Checkstyle for Tests
+    Checkstyle-Configuration: Beagle Checkstyle for Tests
     Description: none
 -->
 <module name="Checker">
@@ -208,7 +208,7 @@
     <module name="NoWhitespaceAfter">
       <property name="severity" value="warning"/>
       <property name="allowLineBreaks" value="false"/>
-      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS,GENERIC_START"/>
+      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS"/>
     </module>
     <module name="NoWhitespaceBefore">
       <property name="severity" value="warning"/>
@@ -250,7 +250,7 @@
     </module>
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,LPAREN,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
+      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
     </module>
     <module name="ModifierOrder">
       <property name="severity" value="warning"/>
@@ -349,10 +349,11 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="MagicNumber">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
       <property name="ignoreNumbers" value="-1, 0, 1"/>
       <property name="ignoreHashCodeMethod" value="true"/>
       <property name="constantWaiverParentToken" value="TYPECAST,METHOD_CALL,EXPR,ARRAY_INIT,UNARY_MINUS,UNARY_PLUS,ELIST,STAR,ASSIGN,PLUS,MINUS,DIV,LITERAL_NEW"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="MissingCtor">
       <property name="severity" value="ignore"/>
