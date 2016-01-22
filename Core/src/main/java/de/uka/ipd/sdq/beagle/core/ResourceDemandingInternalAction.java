@@ -41,7 +41,7 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	 * given code section.
 	 *
 	 * @param resourceType The resource type of this internal action that should be
-	 *            measured. Must not be {@code null}. Must not be empty.
+	 *            measured. Must not be {@code null}.
 	 * @param action A valid code section for this resource demanding internal action. The
 	 *            first line of the code section marks the beginning of this internal
 	 *            action (inclusive). The last line of the code section marks the end of
@@ -73,10 +73,10 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 	/**
 	 * Gets this internal action's <em>code section</em>.
 	 *
-	 * @return the valid code section for this resource demand. The first line of the code
-	 *         section marks the beginning of this internal action (inclusive). The last
-	 *         line of the code section marks the end of this internal action (inclusive).
-	 *         Is never {@code null}.
+	 * @return the valid code section for this resource demand. The first statement of the
+	 *         code section marks the beginning of this internal action (inclusive). The
+	 *         last statement of the code section marks the end of this internal action
+	 *         (inclusive). Is never {@code null}.
 	 */
 	public CodeSection getAction() {
 		return this.action;

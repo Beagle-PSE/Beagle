@@ -10,24 +10,22 @@ import java.io.Serializable;
 
 /**
  * Describes a section in examined software’s source code. Code sections may span multiple
- * methods and types. They are defined by a start statement in one source code file and an
- * end statement in another source code file that may or may not be the same as the first
- * one. Code sections are immutable, meaning that once created, their attributes cannot be
- * changed.
+ * methods, types and compilation units. They are defined by a start statement in one
+ * source code file and an end statement in another source code file that may or may not
+ * be the same as the first one. A statement is identified by the index of the statement’s
+ * first character in its source file. Code sections are immutable, meaning that once
+ * created, their attributes cannot be changed.
  *
- * <p>A code section must describe a continuous part of source code, meaning that the last
- * statement in the section will always be executed if the first one was executed, given
- * that no Exceptions occur. All statements that may potentially be executed after the
- * first statement but before the last one are considered to be in the section. A code
- * section is considered to have been “completely executed” if the section’s first and
- * last statement was executed. This does generally not mean that all statements in the
- * section were executed.
- *
- * <p>It must be sure that in each run of the project under analysis the first line of
- * this code section is always executed before the last line and that the last line is
- * always executed after the first line, if the program did not crash during execution.
- * Otherwise the code section is not "valid". This is not checked during runtime, because
- * it would solve the halting problem.
+ * <p><p>A code section must describe a continuous part of source code, meaning that the
+ * last statement in the section will always be executed if the first one was executed,
+ * given that no Exceptions occur. Furthermore, if the last statement is not the same as
+ * the first one, the last statement may only be executed after the first one was. All
+ * statements that may potentially be executed after the first statement but before the
+ * last one are considered to be “in” the section. A code section is considered to have
+ * been “completely executed” if the section’s first and last statement were executed.
+ * This does generally not mean that all statements in the section were executed. Code
+ * Sections no fulfilling these requirements must not be created. However, this is not
+ * checked at run time, because doing so would solve the halting problem.
  *
  * @author Joshua Gleitze
  * @author Roman Langrehr
@@ -46,8 +44,8 @@ public class CodeSection implements Serializable {
 	private final File startFile;
 
 	/**
-	 * The line index, starting with {@code 0} in the {@link #startFile}, of the first
-	 * line in this code section.
+	 * This code section’s first statement’s first character’s index in {@link #startFile}
+	 * , starting with {@code 0}.
 	 */
 	private final int startStatementNumber;
 
@@ -57,29 +55,29 @@ public class CodeSection implements Serializable {
 	private final File endFile;
 
 	/**
-	 * The line index, starting with {@code 0} in the {@link #endFile}, of the last line
-	 * in this code section.
+	 * This code section’s last statement’s first character’s index in {@link #endFile},
+	 * starting with {@code 0}.
 	 */
 	private final int endStatementNumber;
 
 	/**
-	 * Creates a code section that spans from the {@code startIndex}th statement in
-	 * {@code startFile} to the {@code endIndex}th statement in {@code endFile}.
+	 * Creates a code section that spans from the statements starting at
+	 * {@code startIndex} in {@code startFile} to the statement starting at
+	 * {@code endIndex} in {@code endFile}.
 	 *
 	 * @param startFile The file containing this section’s first statement. Must not be
 	 *            {@code null} and {@link File#isFile() startFile.isFile()} must return
 	 *            {@code true}.
-	 * @param startIndex The index of the first statement in this section. Counting starts
-	 *            at 0.
+	 * @param startIndex The index of this section’s first statement’s first character in
+	 *            {@code startFile}. Counting starts at {@code 0}.
 	 * @param endFile The file containing this section’s last statement. Must not be
 	 *            {@code null} and {@link File#isFile() endFile.isFile()} must return
 	 *            {@code true}.
-	 * @param endIndex The index of the last statement in this section. Counting starts at
-	 *            0.
+	 * @param endIndex The index of this section’s last statement’s first character in
+	 *            {@code endFile}. Counting starts at {@code 0}.
 	 * @throws IllegalArgumentException When {@code startFile.isFile()} or
 	 *             {@code endFile.isFile()} returned {@code false}.
-	 * @throws RuntimeException When {@code startFile} or {@code endFile} could not be
-	 *             read;
+	 * @throws RuntimeException If {@code startFile} or {@code endFile} cannot be read.
 	 */
 	public CodeSection(final File startFile, final int startIndex, final File endFile, final int endIndex) {
 		if (!startFile.isFile()) {
@@ -93,9 +91,10 @@ public class CodeSection implements Serializable {
 		final long endFileChars = this.countChars(startFile);
 		final long startFileChars = this.countChars(endFile);
 		Validate.isTrue(startIndex < startFileChars,
-			"The index was not in the file range. It was %d, but file size was %d", startIndex, startFileChars);
+			"The startIndex was not in the startFile. It was %d, but the file’s size was %d.", startIndex,
+			startFileChars);
 		Validate.isTrue(endIndex < startFileChars,
-			"The index was not in the file range. It was %d, but file size was %d", endIndex, endFileChars);
+			"The endIndex was not in the endFile. It was %d, but the file’s size was %d.", endIndex, endFileChars);
 		this.startFile = startFile;
 		this.startStatementNumber = startIndex;
 		this.endFile = endFile;
@@ -152,9 +151,9 @@ public class CodeSection implements Serializable {
 	}
 
 	/**
-	 * Gets the index of the first statement in this code section. Counting starts at 0.
-	 * The number thus describes how many statements precede the section’s first statement
-	 * in the {@linkplain #getStartFile() start source code file}.
+	 * Gets the index of the first character of the last statement in this code section.
+	 * Counting starts at 0. The number thus describes how many characters precede the
+	 * section’s last statement in the {@linkplain #getEndFile() end source code file}.
 	 *
 	 * @return The first statement’s index. A non-negative integer.
 	 */
@@ -181,7 +180,10 @@ public class CodeSection implements Serializable {
 	 * Reads the number of chars in a text-file.
 	 *
 	 * @param file The file to read.
-	 * @return The number of bytes in this file.
+	 * @return The number of bytes in this file. The number of bytes is returned as this
+	 *         is, for most source code files, a good approximation for the number of
+	 *         chars and the files doesn't need to be read for this. This approximation
+	 *         never produces false errors.
 	 */
 	private long countChars(final File file) {
 		return file.length();

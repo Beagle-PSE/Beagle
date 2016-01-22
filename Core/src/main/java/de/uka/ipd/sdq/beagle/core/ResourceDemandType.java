@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -74,12 +75,13 @@ public class ResourceDemandType {
 	 * Creates a custom resource type.
 	 *
 	 * @param name A name which is a unique identifier for this resource type. Must not be
-	 *            {@code null}.
+	 *            {@code null}, must not be empty.
 	 * @param isNs Whether this resource type is measured machine dependent or not. If it
-	 *            is measured machine dependent, the measurement unit must be {@code ns}.
+	 *            is measured machine dependent, the measurement unit must be {@code ns}
+	 *            (nanoseconds).
 	 */
 	public ResourceDemandType(final String name, final boolean isNs) {
-		super();
+		Validate.notEmpty(name);
 		this.name = name;
 		this.isNs = isNs;
 	}
@@ -104,7 +106,7 @@ public class ResourceDemandType {
 	 * {@code null}.
 	 *
 	 * @return a name which is a unique identifier for this resource type. Is never
-	 *         {@code null}.
+	 *         {@code null}, is never empty.
 	 */
 	public String getName() {
 		return this.name;
@@ -122,7 +124,8 @@ public class ResourceDemandType {
 	 * machine dependent, the measurement unit must be {@code ns}.
 	 *
 	 * @return the Whether this resource type is measured machine dependent or not. If it
-	 *         is measured machine dependent, the measurement unit must be {@code ns}.
+	 *         is measured machine dependent, the measurement unit is {@code ns}
+	 *         (nanoseconds).
 	 */
 	public boolean isNs() {
 		return this.isNs;
