@@ -3,8 +3,6 @@
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 
-import java.util.Collection;
-
 /**
  * Controls which measurement tool is working.
  *
@@ -13,13 +11,7 @@ import java.util.Collection;
  * @author Roman Langrehr
  * @see AnalysisController
  */
-<span class="nc" id="L16">public class MeasurementController {</span>
-
-	/**
-	 * All measurement tools that can be used for measurements.
-	 */
-	@SuppressWarnings(&quot;unused&quot;)
-	private Collection&lt;MeasurementTool&gt; measurementTools;
+<span class="nc" id="L14">public class MeasurementController {</span>
 
 	/**
 	 * Determines whether a {@link MeasurementTool} can contribute to the
@@ -31,7 +23,7 @@ import java.util.Collection;
 	 *         at least one new measurement result will be added.
 	 */
 	public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
-<span class="nc" id="L34">		return false;</span>
+<span class="nc" id="L26">		return false;</span>
 	}
 
 	/**
@@ -48,6 +40,6 @@ import java.util.Collection;
 	 */
 	public void measure(final MeasurementControllerBlackboardView blackboard) {
 		// implement method
-<span class="nc" id="L51">	}</span>
+<span class="nc" id="L43">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

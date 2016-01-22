@@ -60,14 +60,14 @@ public class SeffBranch implements MeasurableSeffElement {
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="pc bpc" id="L63" title="1 of 2 branches missed.">		if (object == null) {</span>
-<span class="nc" id="L64">			return false;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L64">			return false;</span>
 		}
-<span class="pc bpc" id="L66" title="1 of 2 branches missed.">		if (object == this) {</span>
-<span class="nc" id="L67">			return true;</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L67">			return true;</span>
 		}
-<span class="pc bpc" id="L69" title="1 of 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
-<span class="nc" id="L70">			return false;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L70">			return false;</span>
 		}
 <span class="fc" id="L72">		final SeffBranch other = (SeffBranch) object;</span>
 <span class="fc" id="L73">		return new EqualsBuilder().append(this.branches, other.branches).isEquals();</span>

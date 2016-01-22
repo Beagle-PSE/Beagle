@@ -167,9 +167,9 @@ import java.util.Set;
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}.
-	 *         Changes to the returned set will not modify the blackboard content. Is
-	 *         never {@code null}.
+	 * @return All measurement results reported for {@code externalCallParameter}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
 	@Override
@@ -213,9 +213,10 @@ import java.util.Set;
 	 *         {@code writer} yet.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)
 	 */
+	@Override
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="nc" id="L218">		return null;</span>
+<span class="nc" id="L219">		return null;</span>
 	}
 
 	/**
@@ -227,9 +228,10 @@ import java.util.Set;
 	 * @param &lt;WRITTEN_TYPE&gt; {@code written}’s type.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)
 	 */
+	@Override
 	public &lt;WRITTEN_TYPE extends Serializable&gt; void writeFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer, final WRITTEN_TYPE written) {
-<span class="nc" id="L232">	}</span>
+<span class="nc" id="L234">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

@@ -38,14 +38,14 @@ public class SeffLoop implements MeasurableSeffElement {
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">		if (object == null) {</span>
-<span class="nc" id="L42">			return false;</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L42">			return false;</span>
 		}
-<span class="pc bpc" id="L44" title="1 of 2 branches missed.">		if (object == this) {</span>
-<span class="nc" id="L45">			return true;</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L45">			return true;</span>
 		}
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
-<span class="nc" id="L48">			return false;</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L48">			return false;</span>
 		}
 <span class="fc" id="L50">		final SeffLoop other = (SeffLoop) object;</span>
 <span class="fc" id="L51">		return new EqualsBuilder().append(this.loopBody, other.loopBody).isEquals();</span>
