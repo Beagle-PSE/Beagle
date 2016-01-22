@@ -3,11 +3,11 @@ package de.uka.ipd.sdq.beagle.core.judge;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
-import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -70,10 +70,11 @@ public class FinalJudge {
 			return true;
 		}
 
+		EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
 		// determine the criteria which aren't CPU-intensive first
 
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
-		this.containsElementWithSufficientFitness(seffBranches, blackboard);
+		this.containsElementWithSufficientFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
 
 		return true;
 	}
@@ -86,7 +87,7 @@ public class FinalJudge {
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
 	 * {@code SE}.
 	 * 
-	 * @param <SE> The type of which all {@linkplain MeasurableSeffElement
+	 * @param <SeffElementType> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
 	 *
 	 * @param measurableSeffElements The set of {@linkplain MeasurableSeffElement
@@ -95,44 +96,37 @@ public class FinalJudge {
 	 * @return {@code true} if {@code measurableSeffElements} contains an element with
 	 *         sufficient fitness to stop evolution of evaluable expressions;
 	 *         {@code false} otherwise.
-	 * @throws ClassCastException Thrown if {@code measurableSeffElements} contains
-	 *             elements not of type {@code SE}.
 	 */
-	private <SE extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
-		final Set<SE> measurableSeffElements, final Blackboard blackboard) throws ClassCastException {
+	private <SeffElementType extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
+		final Set<SeffElementType> measurableSeffElements, final Blackboard blackboard,
+		TypedFitnessFunction<SeffElementType> fitnessFunction) {
 
-		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
+		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =
+			new ProposedExpressionAnalyserBlackboardView();
 
-		@SuppressWarnings("unchecked")
-		final Iterator<MeasurableSeffElement> measurableSeffElementsIterator =
-			(Iterator<MeasurableSeffElement>) measurableSeffElements.iterator();
-		while (measurableSeffElementsIterator.hasNext()) {
-			@SuppressWarnings("unchecked")
-			final MeasurableSeffElement currentMeasurableSeffElement = measurableSeffElementsIterator.next();
+		for (SeffElementType seffElement : measurableSeffElements) {
+			boolean foundOptimal = false;
 
-			final Set<EvaluableExpression> proposedExpressions =
-				blackboard.getProposedExpressionFor(currentMeasurableSeffElement);
-			final Iterator<EvaluableExpression> proposedExpressionsIterator = proposedExpressions.iterator();
-
-			boolean foundFittingEvaluableExpression = false;
-			while (proposedExpressionsIterator.hasNext()) {
-				final EvaluableExpression proposedExpression = proposedExpressionsIterator.next();
-
-				if (fitnessFunction.gradeFor((SE) currentMeasurableSeffElement, proposedExpression,
-					blackboard) < fitnessε) {
-					foundFittingEvaluableExpression = true;
-					break;
-				}
+			for (EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
+				final double fitnessValue =
+					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
+				foundOptimal = foundOptimal || fitnessValue < fitnessε;
 			}
 
 			// If a single MeasurableSeffElement to examine doesn't have a good enough
 			// EvaluableExpression to describe it, the set of MeasurableSeffElements
 			// doesn't have good enough EvaluableExpressions to describe it.
-			if (!foundFittingEvaluableExpression) {
+			if (!foundOptimal) {
 				return false;
 			}
 		}
 
 		return true;
+	}
+
+	private interface TypedFitnessFunction<SeffElementType extends MeasurableSeffElement> {
+
+		double gradeFor(SeffElementType seffElement, EvaluableExpression expression,
+			EvaluableExpressionFitnessFunctionBlackboardView blackboard);
 	}
 }
