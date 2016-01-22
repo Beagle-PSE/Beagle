@@ -88,8 +88,8 @@ public class CodeSection implements Serializable {
 		}
 		Validate.isTrue(startIndex >= 0, "The index must be non-neagtive, but was %d", startIndex);
 		Validate.isTrue(endIndex >= 0, "The index must be non-neagtive, but was %d", endIndex);
-		final long endFileChars = this.countChars(startFile);
-		final long startFileChars = this.countChars(endFile);
+		final long startFileChars = this.countChars(startFile);
+		final long endFileChars = this.countChars(endFile);
 		Validate.isTrue(startIndex < startFileChars,
 			"The startIndex was not in the startFile. It was %d, but the file’s size was %d.", startIndex,
 			startFileChars);
