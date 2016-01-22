@@ -142,7 +142,7 @@ public class ResourceDemandingInternalActionTest {
 	@Test
 	public void testToString() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			final ResourceDemandingInternalAction rdia =
 				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
 			assertThat(rdia.toString(), not(startsWith("ResourceDemandingInternalAction@")));

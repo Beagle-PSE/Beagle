@@ -75,7 +75,7 @@ public class SeffBranchTest {
 			new SeffBranch(codeSections);
 		};
 		assertThat("Set must not contain null.", method, throwsException(IllegalArgumentException.class));
-		
+
 		method = () -> {
 			new SeffBranch(null);
 		};
@@ -109,12 +109,12 @@ public class SeffBranchTest {
 			codeSectionsC.add(CODE_SECTION_FACTORY.getAll()[1]);
 			codeSectionsD.add(CODE_SECTION_FACTORY.getAll()[codeSecs.length - 1]);
 			codeSectionsD.add(CODE_SECTION_FACTORY.getAll()[codeSecs.length - 2]);
-			
+
 			final SeffBranch branchA = new SeffBranch(codeSectionsA);
 			final SeffBranch branchB = new SeffBranch(codeSectionsB);
 			final SeffBranch branchC = new SeffBranch(codeSectionsC);
 			final SeffBranch branchD = new SeffBranch(codeSectionsD);
-			
+
 			assertThat(branchB, is(equalTo(branchA)));
 			assertThat(branchB.hashCode(), is(equalTo(branchA.hashCode())));
 			assertThat(branchC, is(not(equalTo(branchA))));

@@ -1,12 +1,12 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.junit.Assert.assertThat;
-import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
@@ -34,7 +34,7 @@ public class ResourceDemandTypeTest {
 			new ResourceDemandType(null, true);
 		};
 		assertThat("Name must not be null.", method, throwsException(NullPointerException.class));
-		
+
 		method = () -> {
 			new ResourceDemandType("", true);
 		};
@@ -53,7 +53,7 @@ public class ResourceDemandTypeTest {
 		final ResourceDemandType testF = new ResourceDemandType("test", false);
 		final ResourceDemandType testT = new ResourceDemandType("test", true);
 		final ResourceDemandType newTest = new ResourceDemandType("newTest", true);
-		
+
 		assertThat(test, is(equalTo(testT)));
 		assertThat(test.hashCode(), is(equalTo(testT.hashCode())));
 		assertThat(test, is(not(equalTo(testF))));
@@ -69,7 +69,7 @@ public class ResourceDemandTypeTest {
 		final ResourceDemandType newTest = new ResourceDemandType("newTest", true);
 		assertThat(test.getName(), is("test"));
 		assertThat(newTest.getName(), is("newTest"));
-		
+
 	}
 
 	/**
