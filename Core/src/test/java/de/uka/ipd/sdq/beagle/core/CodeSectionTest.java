@@ -17,7 +17,7 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.CodeSection} and contains all test cases needed
+ * Tests {@link CodeSection} and contains all test cases needed
  * to check every method.
  *
  * @author Annika Berger
@@ -31,7 +31,7 @@ public class CodeSectionTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.CodeSection#CodeSection(java.io.File, int, java.io.File, int)}
+	 * {@link CodeSection#CodeSection(java.io.File, int, java.io.File, int)}
 	 * .
 	 */
 	@Test
@@ -107,7 +107,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#equals()}.
+	 * Test method for {@link CodeSection#equals()}.
 	 *
 	 * <p>Asserts that {@link CodeSection}s are equal if all parameters are the same and
 	 * that they are not equal if one of the parameter changes.
@@ -135,7 +135,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getEndCodeLine()}.
+	 * Test method for {@link CodeSection#getEndCodeLine()}.
 	 **/
 	@Test
 	public void testGetEndCodeLine() {
@@ -151,7 +151,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getEndCodeFile()}.
+	 * Test method for {@link CodeSection#getEndCodeFile()}.
 	 **/
 	@Test
 	public void testGetEndFile() {
@@ -173,7 +173,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getStartCodeLine()}.
+	 * Test method for {@link CodeSection#getStartCodeLine()}.
 	 **/
 	@Test
 	public void testGetStartCodeLine() {
@@ -189,7 +189,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getStartFile()}.
+	 * Test method for {@link CodeSection#getStartFile()}.
 	 *
 	 */
 	@Test
@@ -209,7 +209,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#toString()}.
+	 * Test method for {@link CodeSection#toString()}.
 	 **/
 	@Test
 	public void testToString() {

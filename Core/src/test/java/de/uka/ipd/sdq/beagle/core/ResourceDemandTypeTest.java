@@ -13,7 +13,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.SeffBranch} and contains all test cases needed
+ * Tests {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType} and contains all test cases needed
  * to check every method.
  *
  * @author Annika Berger
@@ -22,7 +22,7 @@ public class ResourceDemandTypeTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#ResourceDemandType(java.lang.String, boolean)}
+	 * {@link ResourceDemandType#ResourceDemandType(java.lang.String, boolean)}
 	 * .
 	 */
 	@Test
@@ -43,8 +43,8 @@ public class ResourceDemandTypeTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#equals(java.lang.Object)} and
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#hashCode()}.
+	 * {@link ResourceDemandType#equals(java.lang.Object)} and
+	 * {@link ResourceDemandType#hashCode()}.
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
@@ -61,7 +61,7 @@ public class ResourceDemandTypeTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#getName()}.
+	 * Test method for {@link ResourceDemandType#getName()}.
 	 */
 	@Test
 	public void testGetName() {
@@ -73,7 +73,7 @@ public class ResourceDemandTypeTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#isNs()}.
+	 * Test method for {@link ResourceDemandType#isNs()}.
 	 */
 	@Test
 	public void testIsNs() {
@@ -84,7 +84,7 @@ public class ResourceDemandTypeTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#toString()}.
+	 * Test method for {@link ResourceDemandType#toString()}.
 	 */
 	@Test
 	public void testToString() {

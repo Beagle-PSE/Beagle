@@ -42,6 +42,7 @@ public class SeffBranchFactory {
 		final SeffBranch[] seffBranches = new SeffBranch[numberOfBranches];
 		final Set<CodeSection> codeSectionSet = new HashSet<>(Arrays.asList(codeSections[0], codeSections[1]));
 
+		// This is creating as different as possible Sets to use for the seffBranches.
 		for (int i = 0; i < numberOfBranches; i++) {
 			seffBranches[i] = new SeffBranch(codeSectionSet);
 			codeSectionSet.add(codeSections[(2 * (i + 1)) % codeSections.length]);

@@ -15,7 +15,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.SeffLoop} and contains all test cases needed to
+ * Tests {@link SeffLoop} and contains all test cases needed to
  * check every method.
  *
  * @author Annika Berger
@@ -29,7 +29,7 @@ public class SeffLoopTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.SeffLoop#SeffLoop(de.uka.ipd.sdq.beagle.core.CodeSection)}
+	 * {@link SeffLoop#SeffLoop(CodeSection)}
 	 * .
 	 */
 	@Test
@@ -45,7 +45,7 @@ public class SeffLoopTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffLoop#equals()}.
+	 * Test method for {@link SeffLoop#equals()}.
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
@@ -59,7 +59,7 @@ public class SeffLoopTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffLoop#getLoopBody()}.
+	 * Test method for {@link SeffLoop#getLoopBody()}.
 	 */
 	@Test
 	public void testGetLoopBody() {
@@ -72,7 +72,7 @@ public class SeffLoopTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffLoop#toString()}.
+	 * Test method for {@link SeffLoop#toString()}.
 	 */
 	@Test
 	public void testToString() {

@@ -4,6 +4,8 @@ import de.uka.ipd.sdq.beagle.core.CodeSection;
 
 import java.io.File;
 import java.net.URISyntaxException;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -55,7 +57,7 @@ public class TestFileFactory {
 	 * @return all files as set
 	 */
 	public Set<File> getAllAsSet() {
-		return null;
+		return new HashSet<>(Arrays.asList(this.getAll()));
 	}
 
 }

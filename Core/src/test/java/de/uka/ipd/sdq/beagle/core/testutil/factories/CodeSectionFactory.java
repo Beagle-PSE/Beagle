@@ -56,7 +56,7 @@ public final class CodeSectionFactory {
 	/**
 	 * Gets one code section.
 	 *
-	 * @return first codesection in {@link CodeSectionFactory#getAll()}.
+	 * @return A newly instantiated Code Section (you may not make any assumptions about).
 	 */
 	public CodeSection getOne() {
 		return this.getAll()[0];
