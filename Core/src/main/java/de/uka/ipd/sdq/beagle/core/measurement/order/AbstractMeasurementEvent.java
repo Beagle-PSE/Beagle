@@ -15,7 +15,7 @@ public class AbstractMeasurementEvent implements MeasurementEvent {
 	 *
 	 * @see MeasurementEvent#getCodeSection()
 	 */
-	private CodeSection codeSection;
+	private final CodeSection codeSection;
 
 	/**
 	 * Creates an event for the measurement of {@code codeSection}.

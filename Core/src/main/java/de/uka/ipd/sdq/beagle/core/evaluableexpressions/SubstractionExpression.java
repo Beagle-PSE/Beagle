@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that subtracts a subtrahend from a minuend.
- * 
+ *
  * @author Annika Berger
  *
  */

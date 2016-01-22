@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * An {@link EvaluableExpression} representing a named variable.
- * 
+ *
  * @author Annika Berger
  */
 public class EvaluableVariable implements EvaluableExpression {

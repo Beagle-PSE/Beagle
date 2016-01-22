@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that potentises the given exponent to the given base.
- * 
+ *
  * @author Annika Berger
  */
 public class ExponentationExpression implements EvaluableExpression {

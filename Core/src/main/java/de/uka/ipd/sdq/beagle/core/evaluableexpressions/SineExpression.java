@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
  * Expression that executes a sine function on its contained expression.
- * 
+ *
  * @author Annika Berger
  *
  */

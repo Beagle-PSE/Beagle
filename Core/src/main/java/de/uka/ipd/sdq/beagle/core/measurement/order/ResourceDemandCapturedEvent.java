@@ -22,8 +22,7 @@ public class ResourceDemandCapturedEvent extends AbstractMeasurementEvent {
 	 * @param value The resource demand’s value, expressed in the unit implied by
 	 *            {@code type}. Must not be negative.
 	 */
-	public ResourceDemandCapturedEvent(final CodeSection codeSection, final String type,
-		final double value) {
+	public ResourceDemandCapturedEvent(final CodeSection codeSection, final String type, final double value) {
 		super(codeSection);
 	}
 
