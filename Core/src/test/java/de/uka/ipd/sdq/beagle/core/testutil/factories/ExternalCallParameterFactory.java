@@ -10,6 +10,7 @@ import java.util.Set;
  * Factory for pre-initialised External Call Parameters to be used by tests.
  *
  * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class ExternalCallParameterFactory {
 
