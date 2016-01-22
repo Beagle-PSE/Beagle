@@ -207,7 +207,7 @@
     <module name="NoWhitespaceAfter">
       <property name="severity" value="warning"/>
       <property name="allowLineBreaks" value="false"/>
-      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS,GENERIC_START"/>
+      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS"/>
     </module>
     <module name="NoWhitespaceBefore">
       <property name="severity" value="warning"/>
