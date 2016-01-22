@@ -115,7 +115,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public class <span class="typeNameLabel">AbstractMeasurementEvent</span>
+<pre>public abstract class <span class="typeNameLabel">AbstractMeasurementEvent</span>
 extends java.lang.Object
 implements <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEvent</a></pre>
 <div class="block">An abstract <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEvent</code></a>, already having a
@@ -197,7 +197,8 @@ implements <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measureme
 <div class="block">Creates an event for the measurement of <code>codeSection</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>codeSection</code> - The code section this event is being created for.</dd>
+<dd><code>codeSection</code> - The code section this event is being created for. Must not be
+            <code>null</code>.</dd>
 </dl>
 </li>
 </ul>
