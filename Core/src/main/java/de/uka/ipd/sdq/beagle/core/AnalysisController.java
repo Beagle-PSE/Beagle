@@ -5,6 +5,13 @@ import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
 
 /**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
+
+/**
  * Conducts a complete analysis of elements on a blackboard. Controls the
  * {@link MeasurementController}, {@link ProposedExpressionAnalyser ResultAnalysers} and
  * the {@link FinalJudge} to measure and analyse parametric dependencies.

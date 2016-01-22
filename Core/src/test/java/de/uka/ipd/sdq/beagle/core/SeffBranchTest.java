@@ -18,8 +18,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Tests {@link SeffBranch} and contains all test cases needed
- * to check every method.
+ * Tests {@link SeffBranch} and contains all test cases needed to check every method.
  *
  * @author Annika Berger
  */
@@ -31,8 +30,7 @@ public class SeffBranchTest {
 	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
-	 * Test method for
-	 * {@link SeffBranch#SeffBranch(java.util.Set)}.
+	 * Test method for {@link SeffBranch#SeffBranch(java.util.Set)}.
 	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown when the set of
 	 * {@link CodeSection} does not contain any CodeSections. Asserts that input Set of
@@ -84,8 +82,7 @@ public class SeffBranchTest {
 	}
 
 	/**
-	 * Test method for {@link SeffBranch#equals()} and
-	 * {@link SeffBranch#hashCode()}.
+	 * Test method for {@link SeffBranch#equals()} and {@link SeffBranch#hashCode()}.
 	 *
 	 * <p>Asserts that two SeffBranches inizialised with a Set containing the same code
 	 * sections are equal while inizialised with Sets containing different code sections

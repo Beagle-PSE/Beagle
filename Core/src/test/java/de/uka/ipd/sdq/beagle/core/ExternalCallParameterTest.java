@@ -14,8 +14,8 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link ExternalCallParameter} and contains all test
- * cases needed to check every method.
+ * Tests {@link ExternalCallParameter} and contains all test cases needed to check every
+ * method.
  *
  *
  * @author Annika Berger
@@ -56,8 +56,7 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link ExternalCallParameter#getCallCodeSection()}.
+	 * Test method for {@link ExternalCallParameter#getCallCodeSection()}.
 	 */
 	@Test
 	public void testGetCallCodeSection() {
@@ -69,8 +68,7 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for {@link ExternalCallParameter#getIndex()}
-	 * .
+	 * Test method for {@link ExternalCallParameter#getIndex()} .
 	 */
 	@Test
 	public void testGetIndex() {
@@ -85,9 +83,8 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link ExternalCallParameter#equals(java.lang.Object)}
-	 * and {@link ExternalCallParameter#hashCode()}.
+	 * Test method for {@link ExternalCallParameter#equals(java.lang.Object)} and
+	 * {@link ExternalCallParameter#hashCode()}.
 	 */
 	@Test
 	public void testEqualsAndHashcode() {
@@ -104,8 +101,7 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for {@link ExternalCallParameter#toString()}
-	 * .
+	 * Test method for {@link ExternalCallParameter#toString()} .
 	 */
 	@Test
 	public void testToString() {

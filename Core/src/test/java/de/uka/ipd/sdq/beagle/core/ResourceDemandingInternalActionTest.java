@@ -15,8 +15,8 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link ResourceDemandingInternalAction} and contains
- * all test cases needed to check every method.
+ * Tests {@link ResourceDemandingInternalAction} and contains all test cases needed to
+ * check every method.
  *
  * @author Annika Berger
  */
@@ -28,8 +28,7 @@ public class ResourceDemandingInternalActionTest {
 	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
-	 * Test method for
-	 * {@link ResourceDemandingInternalAction#equals()} and
+	 * Test method for {@link ResourceDemandingInternalAction#equals()} and
 	 * {@link ResourceDemandingInternalAction#hashCode()}.
 	 *
 	 */
@@ -58,8 +57,7 @@ public class ResourceDemandingInternalActionTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link ResourceDemandingInternalAction#getAction()}.
+	 * Test method for {@link ResourceDemandingInternalAction#getAction()}.
 	 *
 	 */
 	@Test
@@ -77,9 +75,7 @@ public class ResourceDemandingInternalActionTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link ResourceDemandingInternalAction#getResourceType()}
-	 * .
+	 * Test method for {@link ResourceDemandingInternalAction#getResourceType()} .
 	 *
 	 */
 	@Test
@@ -135,8 +131,7 @@ public class ResourceDemandingInternalActionTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link ResourceDemandingInternalAction#toString()}.
+	 * Test method for {@link ResourceDemandingInternalAction#toString()}.
 	 *
 	 */
 	@Test

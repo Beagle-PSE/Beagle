@@ -15,8 +15,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link SeffLoop} and contains all test cases needed to
- * check every method.
+ * Tests {@link SeffLoop} and contains all test cases needed to check every method.
  *
  * @author Annika Berger
  */
@@ -28,9 +27,7 @@ public class SeffLoopTest {
 	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
-	 * Test method for
-	 * {@link SeffLoop#SeffLoop(CodeSection)}
-	 * .
+	 * Test method for {@link SeffLoop#SeffLoop(CodeSection)} .
 	 */
 	@Test
 	public void testSeffLoop() {

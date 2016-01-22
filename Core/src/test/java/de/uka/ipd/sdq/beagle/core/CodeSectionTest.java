@@ -17,8 +17,7 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * Tests {@link CodeSection} and contains all test cases needed
- * to check every method.
+ * Tests {@link CodeSection} and contains all test cases needed to check every method.
  *
  * @author Annika Berger
  */
@@ -31,8 +30,7 @@ public class CodeSectionTest {
 
 	/**
 	 * Test method for
-	 * {@link CodeSection#CodeSection(java.io.File, int, java.io.File, int)}
-	 * .
+	 * {@link CodeSection#CodeSection(java.io.File, int, java.io.File, int)} .
 	 */
 	@Test
 	public void testCodeSection() {

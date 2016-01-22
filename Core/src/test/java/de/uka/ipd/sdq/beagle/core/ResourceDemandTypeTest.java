@@ -13,8 +13,8 @@ import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import org.junit.Test;
 
 /**
- * Tests {@link ResourceDemandType} and contains all test cases needed
- * to check every method.
+ * Tests {@link ResourceDemandType} and contains all test cases needed to check every
+ * method.
  *
  * @author Annika Berger
  */
@@ -22,8 +22,7 @@ public class ResourceDemandTypeTest {
 
 	/**
 	 * Test method for
-	 * {@link ResourceDemandType#ResourceDemandType(java.lang.String, boolean)}
-	 * .
+	 * {@link ResourceDemandType#ResourceDemandType(java.lang.String, boolean)} .
 	 */
 	@Test
 	public void testResourceDemandType() {
@@ -42,8 +41,7 @@ public class ResourceDemandTypeTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link ResourceDemandType#equals(java.lang.Object)} and
+	 * Test method for {@link ResourceDemandType#equals(java.lang.Object)} and
 	 * {@link ResourceDemandType#hashCode()}.
 	 */
 	@Test

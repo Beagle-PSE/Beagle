@@ -17,6 +17,12 @@ import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * View of the {@link Blackboard} designed to be used by {@link MeasurementResultAnalyser}
