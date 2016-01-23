@@ -8,7 +8,6 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class GuiController {
 	/**
 	 * Describes the state of the {@link GuiController}. {@link GuiController} goes
 	 * through the states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
-	 * {@code terminated} witch no way to go backwards but the option to skip states.
+	 * {@code terminated} which no way to go backwards but the option to skip states.
 	 * 
 	 * @author Christoph Michelbach
 	 */
@@ -32,7 +31,7 @@ public class GuiController {
 		/**
 		 * The states of an {@link GuiController}. {@link GuiController} goes through the
 		 * states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
-		 * {@code terminated} witch no way to go backwards but the option to skip states.
+		 * {@code terminated} which no way to go backwards but the option to skip states.
 		 */
 		unopened, wizardOpen, dialogOpen, terminated
 	};
@@ -40,7 +39,7 @@ public class GuiController {
 	/**
 	 * Describes the state of the {@link GuiController}. {@link GuiController} goes
 	 * through the states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
-	 * {@code terminated} witch no way to go backwards but the option to skip states.
+	 * {@code terminated} which no way to go backwards but the option to skip states.
 	 */
 	private GuiControllerState state;
 
@@ -104,13 +103,8 @@ public class GuiController {
 
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
-			ActionListener wizardFinished = new ActionListener() {
 
-				@Override
-				public void actionPerformed(final ActionEvent wizardFinished) {
-					GuiController.this.wizardFinishedSuccessfully = true;
-				}
-			};
+			final ActionListener wizardFinished = (event) -> this.wizardFinishedSuccessfully = true;
 
 			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.userConfiguration, wizardFinished);
 			final WizardDialog wizardDialog = new WizardDialog(this.shell, this.beagleAnalysisWizard);
@@ -122,7 +116,7 @@ public class GuiController {
 				// If the wizard finished successfully, indicate to the user that the
 				// analysis will start ...
 				this.state = GuiControllerState.dialogOpen;
-				GuiController.this.engageDialog();
+				this.engageDialog();
 
 				// ... and let it actually start.
 				this.startAnalysis();
@@ -199,15 +193,4 @@ public class GuiController {
 			}
 		}.start();
 	}
-
-	/*
-	 * private class DialogPolling implements Runnable {
-	 * 
-	 * @Override public void run() { final int buttonClick =
-	 * GuiController.this.messageDialog.open();
-	 * 
-	 * if (buttonClick == 0) { Syste m.out.println("User clicked 'Abort'."); }
-	 * 
-	 * if (buttonClick == 1) { Syste m.out.println("User clicked 'Pause'."); } } }
-	 */
 }
