@@ -47,7 +47,6 @@ public class BeagleAnalysisWizard extends Wizard {
 	@Override
 	public boolean performFinish() {
 		// open dialog
-		// TODO use timeout.getTimeout() when launching the analysis
 		final String dialogTitle = "Beagle Analysis is Running";
 		final String dialogMessage = "Beagle Analysis is running.";
 		final String[] buttonLabels = {"Abort", "Pause"};
@@ -56,14 +55,21 @@ public class BeagleAnalysisWizard extends Wizard {
 		final int buttonClick = dialog.open();
 
 		if (buttonClick == 0) {
-			System.out.println("User clicked 'Abort'.");
+			this.doSomething();
 		}
 
 		if (buttonClick == 1) {
-			System.out.println("User clicked 'Pause'.");
+			this.doSomething();
 		}
 
 		return true;
 	}
 
+	/**
+	 * Method for demonstrative purpose.
+	 *
+	 */
+	private void doSomething() {
+
+	}
 }
