@@ -22,7 +22,26 @@ configure(javaSubprojects) {
 			xml.enabled true
 			html.destination "$buildDir/reports/jacoco/html"
 		}
-	}
+		
+		// exclude all source files marked by 'COVERAGE:OFF' or 'JACOCO:OFF'
+		afterEvaluate {
+			classDirectories = files(classDirectories.files.collect { classDir ->
+				def base = classDir.toPath()
+	            def tree = fileTree(classDir)
+	            tree.exclude { spec ->
+	            	def classPath = base.relativize(spec.file.toPath()).toString()
+
+	            	if (classPath.endsWith('.class')) {
+	            		def sourcePath = classPath - '.class' + '.java'
+	            		def sourceFile = file("$project.projectDir/src/main/java/$sourcePath")
+	            		return sourceFile.text.contains('COVERAGE:OFF') || sourceFile.text.contains('JACOCO:OFF')
+	            	}
+	            	return false
+	            }
+	            return tree
+	        })
+		}
+	}	
 	
 	task verifyNoCheckstyleWarnings(dependsOn: check) {
 		description 'Throws if checkstyle warnings were found in a previous checkstyle run.'
