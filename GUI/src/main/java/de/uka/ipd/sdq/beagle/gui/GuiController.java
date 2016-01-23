@@ -13,7 +13,9 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
- * The class controlling the GUI.
+ * Controls the Graphical User Interface (GUI). One {@code GuiController} corresponds to
+ * exactly one instance of the GUI. Opening it several times is not possible. Note that
+ * it's possible for a GUI instance to exist while not being open.
  * 
  * @author Christoph Michelbach
  */

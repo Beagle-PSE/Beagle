@@ -12,8 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * The class setting up and controlling the wizard allowing the user to configure Beagle’s
- * behaviour during the analysis.
+ * Sets up and controls the wizard allowing the user to configure Beagle’s behaviour
+ * during the analysis.
  * 
  * @author Christoph Michelbach
  */

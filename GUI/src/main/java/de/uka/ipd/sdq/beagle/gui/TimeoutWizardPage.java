@@ -16,7 +16,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * Page 2 of the wizard.
+ * A page of {@link BeagleAnalysisWizard} allowing the user to choose between an adaptive
+ * timeout, a constant timeout, or no timeout at all.
  * 
  * @author Christoph Michelbach
  */
@@ -105,10 +106,12 @@ public class TimeoutWizardPage extends WizardPage {
 	private SelectionListener radioNoTimeoutSelected;
 
 	/**
-	 * Constructor setting the tile and the introduction to this page.
+	 * Constructs a new {@link TimeoutWizardPage} being linked to the given
+	 * {@code userConfiguration}.
 	 * 
 	 * @param userConfiguration The {@link UserConfiguration} this
-	 *            {@link TimeoutWizardPage} will use.
+	 *            {@link TimeoutWizardPage} will be permanently linked to. Changing the
+	 *            associated {@link UserConfiguration} is not possible.
 	 */
 	public TimeoutWizardPage(final UserConfiguration userConfiguration) {
 		super(TITLE);

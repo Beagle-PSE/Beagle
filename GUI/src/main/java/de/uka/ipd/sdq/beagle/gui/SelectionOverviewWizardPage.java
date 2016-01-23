@@ -11,7 +11,9 @@ import org.eclipse.swt.widgets.Label;
 import java.util.Iterator;
 
 /**
- * Page 1 of the wizard.
+ * A page of {@link BeagleAnalysisWizard} allowing the user to choose which of the
+ * components they selected will be be analysed. Leaving out some components is possible,
+ * adding new ones isn't.
  * 
  * @author Christoph Michelbach
  */
@@ -44,10 +46,12 @@ public class SelectionOverviewWizardPage extends WizardPage {
 	private Composite mainContainer;
 
 	/**
-	 * Constructor setting the tile and the description of this page.
-	 * 
+	 * Constructs a new {@link SelectionOverviewWizardPage} being linked to the given
+	 * {@code userConfiguration}.
+	 *
 	 * @param userConfiguration The {@link UserConfiguration} this
-	 *            {@link SelectionOverviewWizardPage} will use.
+	 *            {@link SelectionOverviewWizardPage} will be permanently linked to.
+	 *            Changing the associated {@link UserConfiguration} is not possible.
 	 */
 	public SelectionOverviewWizardPage(final UserConfiguration userConfiguration) {
 		super(TITLE);
