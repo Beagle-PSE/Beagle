@@ -6,4 +6,4 @@ de.uka.ipd.sdq.beagle.core.measurement
 de.uka.ipd.sdq.beagle.core.measurement.order
 de.uka.ipd.sdq.beagle.core.pcmconnection
 de.uka.ipd.sdq.beagle.gui
-de.uka.ipd.sdq.beagle.gui.handlers
+de.uka.ipd.sdq.beagle.gui.contextmenus
