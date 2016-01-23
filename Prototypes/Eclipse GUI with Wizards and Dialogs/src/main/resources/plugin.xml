@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.menus">
+         
+    <menuContribution locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+      <command
+            commandId="de.uka.ipd.sdq.beagle.startBeagle"
+            id="de.uka.ipd.sdq.beagle.fileExplorerContextMenuEntry"
+            label="Analyse with Beagle"
+            style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <or>
+            
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     ifEmpty="false"
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.extension"
+                           value="repository">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+            
+            
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     ifEmpty="false"
+                     operator="or">
+                  <adapt
+                        type="org.eclipse.core.resources.IResource">
+                     <test
+                           property="org.eclipse.core.resources.extension"
+                           value="repository_diagram">
+                     </test>
+                  </adapt>
+               </iterate>
+            </with>
+            </or>
+         </visibleWhen>
+      </command>
+    </menuContribution>
+    <menuContribution
+          allPopups="false"
+          locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+       <command
+             commandId="de.uka.ipd.sdq.beagle.startBeagleComponent"
+             id="de.uka.ipd.sdq.beagle.repositoryDiagramContextMenuEntry"
+             label="Analyse with Beagle"
+             style="push">
+            <visibleWhen>
+               <with variable="selection">
+                  	<iterate ifEmpty="false"> 
+                    	 <instanceof value="de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart"/>
+                	</iterate>
+                </with>
+            </visibleWhen>
+       </command>
+    </menuContribution>
+    <menuContribution
+          allPopups="false"
+          locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+       <command
+             commandId="de.uka.ipd.sdq.beagle.startBeagleInternalAction"
+             id="de.uka.ipd.sdq.beagle.repositoryDiagramContextMenuEntry"
+             label="Analyse with Beagle"
+             style="push">
+            <visibleWhen>
+	            <or>
+	               <with variable="selection">
+	                  	<iterate ifEmpty="false"> 
+	                    	 <instanceof value="de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart"/>
+	                	</iterate>
+	                </with>
+	                
+	               <with variable="selection">
+	                  	<iterate ifEmpty="false"> 
+	                    	 <instanceof value="de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart"/>
+	                	</iterate>
+	                </with>
+                </or>
+            </visibleWhen>
+       </command>
+    </menuContribution>
+    <menuContribution
+          locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+       <command
+             commandId="de.uka.ipd.sdq.beagle.startBeagle"
+             id="de.uka.ipd.sdq.beagle.projectExplorerContextMenuEntry"
+             label="Analyse with Beagle"
+             style="push">
+          <visibleWhen
+                checkEnabled="false">
+             <or>
+                <with
+                      variable="activeMenuSelection">
+                   <iterate
+                         ifEmpty="false"
+                         operator="or">
+                      <adapt
+                            type="org.eclipse.core.resources.IResource">
+                         <test
+                               property="org.eclipse.core.resources.extension"
+                               value="repository">
+                         </test>
+                      </adapt>
+                   </iterate>
+                </with>
+                <with
+                      variable="activeMenuSelection">
+                   <iterate
+                         ifEmpty="false"
+                         operator="or">
+                      <adapt
+                            type="org.eclipse.core.resources.IResource">
+                         <test
+                               property="org.eclipse.core.resources.extension"
+                               value="repository_diagram">
+                         </test>
+                      </adapt>
+                   </iterate>
+                </with>
+             </or>
+          </visibleWhen>
+       </command>
+    </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="de.uka.ipd.sdq.beagle.gui.handlers.DemoBeagleContextMenuEntryHandlerForRepositories"
+            id="de.uka.ipd.sdq.beagle.startBeagle"
+            name="Run Beagle">
+      </command>
+      <command
+            defaultHandler="de.uka.ipd.sdq.beagle.gui.handlers.DemoBeagleContextMenuEntryHandlerForComponents"
+            id="de.uka.ipd.sdq.beagle.startBeagleComponent"
+            name="Run Beagle for a single component.">
+      </command>
+      <command
+            defaultHandler="de.uka.ipd.sdq.beagle.gui.handlers.DemoBeagleContextMenuEntryHandlerForInternalActions"
+            id="de.uka.ipd.sdq.beagle.startBeagleInternalAction"
+            name="Run Beagle for a single resource demand.">
+      </command>
+   </extension>
+
+</plugin>

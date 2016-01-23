@@ -1,7 +1,8 @@
 package de.uka.ipd.sdq.beagle.prototypes.gui;
 
-import java.awt.GridLayout;
-
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
