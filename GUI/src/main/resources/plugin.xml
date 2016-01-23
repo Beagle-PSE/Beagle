@@ -136,17 +136,17 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            defaultHandler="de.uka.ipd.sdq.beagle.gui.handlers.DemoBeagleContextMenuEntryHandlerForRepositories"
+            defaultHandler="de.uka.ipd.sdq.beagle.gui.contextmenus.ContextMenuEntryHandlerForRepositories"
             id="de.uka.ipd.sdq.beagle.startBeagle"
             name="Run Beagle">
       </command>
       <command
-            defaultHandler="de.uka.ipd.sdq.beagle.gui.handlers.DemoBeagleContextMenuEntryHandlerForComponents"
+            defaultHandler="de.uka.ipd.sdq.beagle.gui.contextmenus.ContextMenuEntryHandlerForComponents"
             id="de.uka.ipd.sdq.beagle.startBeagleComponent"
             name="Run Beagle for a single component.">
       </command>
       <command
-            defaultHandler="de.uka.ipd.sdq.beagle.gui.handlers.DemoBeagleContextMenuEntryHandlerForInternalActions"
+            defaultHandler="de.uka.ipd.sdq.beagle.gui.contextmenus.ContextMenuEntryHandlerForInternalActions"
             id="de.uka.ipd.sdq.beagle.startBeagleInternalAction"
             name="Run Beagle for a single resource demand.">
       </command>
