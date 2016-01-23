@@ -27,7 +27,7 @@ public class SelectionOverviewWizardPage extends WizardPage {
 	/**
 	 * The description of this page.
 	 */
-	private static final String DESCRIPTION = "Make sure you want to anaylse the components listed below.";
+	private static final String DESCRIPTION = "Make sure you want to analyse the elements listed below.";
 
 	/**
 	 * The number of columns of the layout of container which contains the entire content
@@ -68,7 +68,7 @@ public class SelectionOverviewWizardPage extends WizardPage {
 		layout.numColumns = MAIN_LAYOUT_NR_COLUMS;
 
 		final Label labelHeader = new Label(this.mainContainer, SWT.NONE);
-		labelHeader.setText("These components are selected for anaylsis:");
+		labelHeader.setText("These elements are selected for analysis:");
 
 		final Iterator<String> iterator = this.userConfiguration.getComponents().iterator();
 		while (iterator.hasNext()) {
