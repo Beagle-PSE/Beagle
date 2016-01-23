@@ -14,8 +14,8 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tests {@link SeffBranch} and contains all test cases needed to check every method.
@@ -41,13 +41,13 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testConstructor() {
-		final Set<CodeSection> noCodeSections = new HashSet<CodeSection>();
+		final List<CodeSection> noCodeSections = new ArrayList<CodeSection>();
 		ThrowingMethod method = () -> {
 			new SeffBranch(noCodeSections);
 		};
 		assertThat("Set must not be empty.", method, throwsException(IllegalArgumentException.class));
 
-		final Set<CodeSection> codeSections = new HashSet<CodeSection>();
+		final List<CodeSection> codeSections = new ArrayList<CodeSection>();
 		final CodeSection[] codeSecs = CODE_SECTION_FACTORY.getAll();
 		codeSections.add(codeSecs[0]);
 
@@ -91,11 +91,11 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
-		assertThat(new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet()), hasDefaultEqualsProperties());
-		final Set<CodeSection> codeSectionsA = new HashSet<>();
-		final Set<CodeSection> codeSectionsB = new HashSet<>();
-		final Set<CodeSection> codeSectionsC = new HashSet<>();
-		final Set<CodeSection> codeSectionsD = new HashSet<>();
+		assertThat(new SeffBranch(CODE_SECTION_FACTORY.getAllAsList()), hasDefaultEqualsProperties());
+		final List<CodeSection> codeSectionsA = new ArrayList<>();
+		final List<CodeSection> codeSectionsB = new ArrayList<>();
+		final List<CodeSection> codeSectionsC = new ArrayList<>();
+		final List<CodeSection> codeSectionsD = new ArrayList<>();
 		final CodeSection[] codeSecs = CODE_SECTION_FACTORY.getAll();
 		if (codeSecs.length > 2) {
 			for (final CodeSection codeSection : codeSecs) {
@@ -126,7 +126,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testGetBranches() {
-		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
+		final List<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsList();
 		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(equalTo(codeSections)));
 	}
@@ -136,7 +136,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testToString() {
-		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
+		final List<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsList();
 		final SeffBranch branch = new SeffBranch(codeSections);
 
 		assertThat(branch.toString(), not(startsWith("SeffBranch@")));
