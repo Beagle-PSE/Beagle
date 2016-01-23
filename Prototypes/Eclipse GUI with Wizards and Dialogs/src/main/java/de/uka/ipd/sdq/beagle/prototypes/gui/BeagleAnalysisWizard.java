@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.prototypes.gui;
 
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.swt.widgets.Shell;
 
 /**

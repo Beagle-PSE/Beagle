@@ -1,6 +1,5 @@
 package de.uka.ipd.sdq.beagle.prototypes.gui;
 
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
