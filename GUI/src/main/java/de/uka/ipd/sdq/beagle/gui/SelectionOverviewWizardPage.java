@@ -75,7 +75,7 @@ public class SelectionOverviewWizardPage extends WizardPage {
 			final String component = iterator.next();
 
 			final Label labelItem = new Label(this.mainContainer, SWT.NONE);
-			labelItem.setText("    • " + component);
+			labelItem.setText("    • Component: " + component);
 		}
 
 		// required to avoid an error in the system

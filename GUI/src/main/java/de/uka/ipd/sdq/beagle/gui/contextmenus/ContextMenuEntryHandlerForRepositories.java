@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.gui.handlers;
+package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
 import de.uka.ipd.sdq.beagle.gui.GuiController;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * @author Roman Langrehr
  * @author Christoph Michelbach
  */
-public class DemoBeagleContextMenuEntryHandlerForRepositories extends AbstractHandler {
+public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 
 	/**
 	 * The ID stating that an entire repository is ought to be analysed.

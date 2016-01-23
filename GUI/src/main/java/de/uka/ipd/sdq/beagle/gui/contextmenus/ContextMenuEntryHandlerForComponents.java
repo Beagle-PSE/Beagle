@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.gui.handlers;
+package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
 import de.uka.ipd.sdq.beagle.gui.GuiController;
 
@@ -20,7 +20,7 @@ import java.util.List;
  * @author Roman Langrehr
  * @author Christoph Michelbach
  */
-public class DemoBeagleContextMenuEntryHandlerForComponents extends AbstractHandler {
+public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
