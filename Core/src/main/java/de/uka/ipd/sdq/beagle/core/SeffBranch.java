@@ -5,8 +5,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Models branches in a component's SEFF, originating from conditional constructs.
@@ -29,7 +29,7 @@ public class SeffBranch implements MeasurableSeffElement {
 	/**
 	 * All branches for this SeffBranch.
 	 */
-	private final Set<CodeSection> branches;
+	private final List<CodeSection> branches;
 
 	/**
 	 * Creates a SeffBranch using a given code section.
@@ -49,13 +49,13 @@ public class SeffBranch implements MeasurableSeffElement {
 	 * @throws IllegalArgumentException If {@code branches} has less than {@code 2}
 	 *             branches.
 	 */
-	public SeffBranch(final Set<CodeSection> branches) {
+	public SeffBranch(final List<CodeSection> branches) {
 		if (branches.size() <= 1) {
 			throw new IllegalArgumentException(
 				"The code section set for the SeffBranch had less than two code sections");
 		}
 		Validate.noNullElements(branches);
-		this.branches = new HashSet<>(branches);
+		this.branches = new ArrayList<>(branches);
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class SeffBranch implements MeasurableSeffElement {
 	 *         The set is never {@code null}. This set never contains {@code null}
 	 *         entries.
 	 */
-	public Set<CodeSection> getBranches() {
+	public List<CodeSection> getBranches() {
 		return this.branches;
 	}
 
