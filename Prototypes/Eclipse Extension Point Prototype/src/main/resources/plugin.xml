@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="de.uka.ipd.sdg.beagle.measurementtool" name="MeasurementTool" schema="schema/de.uka.ipd.sdg.beagle.measurementtool.exsd"/>
+   <extension-point id="de.uka.ipd.sdg.beagle.measurementtool" name="MeasurementTool" schema="/src/main/resources/schema/de.uka.ipd.sdg.beagle.measurementtool.exsd"/>
 
    <extension
          point="org.eclipse.ui.commands">
@@ -50,8 +50,7 @@
          <toolbar
                id="Hello_World_Command.toolbars.sampleToolbar">
             <command
-                  commandId="Hello_World_Command.commands.sampleCommand"
-                  icon="icons/sample.gif"
+                  commandId="de.uka.ipd.sdq.beagle.extensionpointprototype.commands.showMeasurmentTools"
                   id="Hello_World_Command.toolbars.sampleCommand">
             </command>
          </toolbar>
