@@ -1,13 +1,12 @@
 package de.uka.ipd.sdq.beagle.core.judge;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.RuntimeMXBean;
 import java.util.Set;
 
 /**
@@ -17,7 +16,7 @@ import java.util.Set;
  * 
  * @author Christoph Michelbach
  */
-public class FinalJudge {
+public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 	/**
 	 * If a generation is fitter than this value, evolution of evaluable expressions will
@@ -26,7 +25,7 @@ public class FinalJudge {
 	private static final double FITNESS_EPSILON = 0.5d;
 
 	/**
-	 * IF the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
+	 * If the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
 	 * expressions will be stopped.
 	 */
 	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = 500;
@@ -38,10 +37,29 @@ public class FinalJudge {
 	private static final long MAX_TIME_PASSED = 3 * 24 * 3600;
 
 	/**
-	 * The number of generations passed. Will be the number of times a {@link FinalJugde}
-	 * object received a call to {@link #judge(Blackboard)}.
+	 * If more generations than this have less than {@link #SIGNIFICANT_IMPROVEMENT}
+	 * relative improvement to the previously best value, evolution of evaluable
+	 * expressions will be stopped.
 	 */
-	private int numberOfGenerationsPassed;
+	private static final int MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT = 12;
+
+	/**
+	 * If more generations than
+	 * {@link #MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT} have less than
+	 * this much relative improvement to the previously best value, evolution of evaluable
+	 * expressions will be stopped.
+	 */
+	private static final double SIGNIFICANT_IMPROVEMENT = 0.005;
+
+	/**
+	 * Initialises the {@link FinalJudge} object. Call this method before starting
+	 * evolution of evaluable expressions to start counting the total time the entire
+	 * evolution of evaluable expressions takes.
+	 *
+	 */
+	public void init() {
+		this.startTime = System.currentTimeMillis();
+	}
 
 	/**
 	 * Implements the break condition for evolution of evaluable expressions. Decides
@@ -57,26 +75,21 @@ public class FinalJudge {
 
 		this.numberOfGenerationsPassed++;
 
-		if (this.numberOfGenerationsPassed > MAX_NUMBER_OF_GENERATIONS_PASSED) {
-			return true;
-		}
-
-		final RuntimeMXBean runtimeBean = ManagementFactory.getRuntimeMXBean();
-		final long startTime = runtimeBean.getStartTime() / 1000;
-
-		final long currentTime = System.currentTimeMillis();
-
-		if ((currentTime - startTime) > MAX_TIME_PASSED) {
+		// determine the criteria which aren't CPU-intensive first
+		if (this.numberOfGenerationsPassedTooHigh() || this.maxTimePassedTooHigh()) {
 			return true;
 		}
 
 		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
-		// determine the criteria which aren't CPU-intensive first
 
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
 		this.containsElementWithSufficientFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
 
-		return true;
+		if (this.numberOfGenerationsWithoutSignificantImprovementTooHigh()) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -126,6 +139,40 @@ public class FinalJudge {
 	}
 
 	/**
+	 * Determines whether the number of generations passed is too high.
+	 *
+	 * @return {@code true} if and only if the number of generations passed is greater
+	 *         than {@code MAX_NUMBER_OF_GENERATIONS_PASSED}.
+	 */
+	private boolean numberOfGenerationsPassedTooHigh() {
+		return this.numberOfGenerationsPassed > MAX_NUMBER_OF_GENERATIONS_PASSED;
+	}
+
+	/**
+	 * Determines whether the amount of time passed is too high.
+	 *
+	 * @return {@code true} if and only if the time passed is greater than
+	 *         {@code MAX_TIME_PASSED}.
+	 */
+	private boolean maxTimePassedTooHigh() {
+		final long currentTime = System.currentTimeMillis();
+
+		return (currentTime - this.startTime) > MAX_TIME_PASSED;
+	}
+
+	/**
+	 * Determines whether the number of generations passed without significant improvement
+	 * is too high.
+	 *
+	 * @return {@code true} if and only if the number of generations passed without
+	 *         significant improvement (see {@link #SIGNIFICANT_IMPROVEMENT}) is greater
+	 *         than {@link #MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT}.
+	 */
+	private boolean numberOfGenerationsWithoutSignificantImprovementTooHigh() {
+
+	}
+
+	/**
 	 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
 	 * specified {@code SEFF_ELEMENT_TYPE}.
 	 * 
@@ -150,4 +197,5 @@ public class FinalJudge {
 		double gradeFor(SEFF_ELEMENT_TYPE seffElement, EvaluableExpression expression,
 			EvaluableExpressionFitnessFunctionBlackboardView blackboard);
 	}
+
 }
