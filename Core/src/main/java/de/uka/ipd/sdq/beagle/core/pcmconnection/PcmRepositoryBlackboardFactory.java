@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -91,6 +92,11 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * SoMoX.
 	 */
 	private PcmNameParser nameParser;
+
+	/**
+	 * Integer with value 0.
+	 */
+	private final int zero = 0;
 
 	/**
 	 * Creates a factory that will search the provided PCM files for <em>PCM
@@ -396,10 +402,12 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * {@link ExternalCallActionImpl} to the {@link externalCallParameterSet}.
 	 *
 	 * @param externalAction SEFF-Action to add.
+	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
+	 *             found at the specified path in the repository-file.
 	 */
-	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
+	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) throws FileNotFoundException {
 		final CodeSection sectionTemp = this.nameParser.parse(externalAction.getEntityName());
-		final ExternalCallParameter temp = new ExternalCallParameter(sectionTemp);
+		final ExternalCallParameter temp = new ExternalCallParameter(sectionTemp, this.zero);
 		this.externalCallParameterSet.add(temp);
 	}
 
