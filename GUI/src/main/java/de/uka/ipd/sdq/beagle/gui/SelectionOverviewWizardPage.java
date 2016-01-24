@@ -7,8 +7,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.seff.InternalAction;
 
-import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose which of the
@@ -70,12 +72,19 @@ public class SelectionOverviewWizardPage extends WizardPage {
 		final Label labelHeader = new Label(this.mainContainer, SWT.NONE);
 		labelHeader.setText("These elements are selected for analysis:");
 
-		final Iterator<String> iterator = this.userConfiguration.getElements().iterator();
-		while (iterator.hasNext()) {
-			final String component = iterator.next();
+		final LinkedList<String> elements = new LinkedList<String>();
 
+		for (BasicComponent component : this.userConfiguration.getComponents()) {
+			elements.add("Component: " + component.getEntityName());
+		}
+
+		for (InternalAction internalAction : this.userConfiguration.getInternalActions()) {
+			elements.add("IA: " + internalAction.getEntityName());
+		}
+
+		for (String element : elements) {
 			final Label labelItem = new Label(this.mainContainer, SWT.NONE);
-			labelItem.setText("    • Component: " + component);
+			labelItem.setText("    • " + element);
 		}
 
 		// required to avoid an error in the system

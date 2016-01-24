@@ -1,5 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.seff.InternalAction;
+
 import java.util.List;
 
 /**
@@ -27,9 +30,14 @@ public class UserConfiguration {
 	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
 	/**
-	 * All elements to measure.
+	 * All components to measure.
 	 */
-	private List<String> elements;
+	private List<BasicComponent> components;
+
+	/**
+	 * All internal actions to measure.
+	 */
+	private List<InternalAction> internalActions;
 
 	/**
 	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
@@ -41,29 +49,49 @@ public class UserConfiguration {
 	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
-	 * @param elements The default elements to be measured.
+	 * @param components The default components to be measured.
+	 * @param internalActions The default internal actions to be measured.
 	 */
-	public UserConfiguration(final List<String> elements) {
-		this.elements = elements;
+	public UserConfiguration(final List<BasicComponent> components, final List<InternalAction> internalActions) {
+		this.components = components;
+		this.internalActions = internalActions;
 		this.timeout = DEFAULT_TIMEOUT;
 	}
 
 	/**
-	 * Returns the elements to be measured.
+	 * Returns the components to be measured.
 	 * 
-	 * @return The elements to be measured.
+	 * @return The components to be measured.
 	 */
-	public List<String> getElements() {
-		return this.elements;
+	public List<BasicComponent> getComponents() {
+		return this.components;
 	}
 
 	/**
-	 * Sets the elements to be measured to {@code elements}.
+	 * Sets the components to be measured to {@code elements}.
 	 * 
-	 * @param elements The elements to be measured to {@code elements}.
+	 * @param components The components to be measured.
 	 */
-	public void setElements(final List<String> components) {
-		this.elements = components;
+	public void setComponents(final List<BasicComponent> components) {
+		this.components = components;
+	}
+
+	/**
+	 * Returns the internal actions to be measured.
+	 * 
+	 * @return The internal actions to be measured.
+	 */
+	public List<InternalAction> getInternalActions() {
+		return this.internalActions;
+	}
+
+	/**
+	 * Sets the internal actions to be measured to {@code internalActions}.
+	 * 
+	 * @param internalActions The internalActions to be measured.
+	 */
+	public void setInternalActions(final List<InternalAction> internalActions) {
+		this.internalActions = internalActions;
 	}
 
 	/**

@@ -7,6 +7,8 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -76,9 +78,10 @@ public class GuiController {
 	 * components to be measured.
 	 * 
 	 * @param components The default components to be measured.
+	 * @param internalActions The default internal actions to be measured.
 	 */
-	public GuiController(final List<String> components) {
-		this.userConfiguration = new UserConfiguration(components);
+	public GuiController(final List<BasicComponent> components, final List<InternalAction> internalActions) {
+		this.userConfiguration = new UserConfiguration(components, internalActions);
 		this.state = GuiControllerState.unopened;
 		this.shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	}
