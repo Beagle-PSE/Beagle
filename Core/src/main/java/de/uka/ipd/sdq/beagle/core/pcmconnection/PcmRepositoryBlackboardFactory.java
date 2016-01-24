@@ -135,7 +135,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		this.nameParser = new PcmNameParser();
 
 		this.scanRepository(this.repository);
-		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet);
+		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet);
 	}
 
 	/**
@@ -165,8 +165,10 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *            written to the Blackboard.
 	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
 	 *         written on it. Will never be {@code null}.
+	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
+	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForIds(final Collection<String> identifiers) {
+	public Blackboard getBlackboardForIds(final Collection<String> identifiers) throws FileNotFoundException {
 
 		final Set<EObject> setOfIdentifiedObjects = new HashSet<EObject>();
 
@@ -240,8 +242,10 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *            written to the Blackboard.
 	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
 	 *         written on it. Will never be {@code null}.
+	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
+	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForIds(final String... identifiers) {
+	public Blackboard getBlackboardForIds(final String... identifiers) throws FileNotFoundException {
 		final Collection<String> identifierCollection = new LinkedList<String>();
 		for (String identifier : identifiers) {
 			identifierCollection.add(identifier);
@@ -388,7 +392,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * @param externalAction SEFF-Action to add.
 	 */
 	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
-		final CodeSection sectionTemp = PcmNameParser.parse(externalAction.getEntityName());
+		final CodeSection sectionTemp = this.nameParser.parse(externalAction.getEntityName());
 		final ExternalCallParameter temp = new ExternalCallParameter(sectionTemp);
 		this.externalCallParameterSet.add(temp);
 	}
