@@ -77,11 +77,21 @@ public class BlackboardTest {
 	private Blackboard emptyBlackboard;
 
 	/**
+	 * A new, filled Blackboard will be put in here before each test. Please note that it
+	 * should only be used in a test as long as it is not modified. If it was modified, a
+	 * new one should be created.
+	 *
+	 * @see BlackboardFactory#getEmpty()
+	 */
+	private Blackboard filledBlackboard;
+
+	/**
 	 * Puts a new, empty Blackboard into {{@link #emptyBlackboard}.
 	 */
 	@Before
 	public void createEmptyBlackboard() {
 		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		this.filledBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 	}
 
 	/**
@@ -161,7 +171,19 @@ public class BlackboardTest {
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllRdias()}.
+	 * Test method for {@link Blackboard#getAllRdias()}. Assert that <li> Blackboard does
+	 * not return {@code null} for getter-method
+	 * 
+	 * <ul>
+	 * 
+	 * <li> The Blackboard will not return {@code null} by any getter-method.
+	 * 
+	 * <li> Once set, SeffElements will not change.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetAllRdias() {
@@ -175,10 +197,27 @@ public class BlackboardTest {
 			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
 		assertThat("Rdias on the blackboard should not change!", blackboard.getAllRdias(), is(equalTo(rdiaSet)));
 
+		final Set<ResourceDemandingInternalAction> blackboardSet = blackboard.getAllRdias();
+		blackboardSet.removeAll(blackboardSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!", blackboard.getAllRdias(),
+			is(equalTo(rdiaSet)));
+
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllSeffBranches()}.
+	 * Test method for {@link Blackboard#getAllSeffBranches()}. Assert that <li>
+	 * Blackboard does not return {@code null} for getter-method
+	 * 
+	 * <ul>
+	 * 
+	 * <li> The Blackboard will not return {@code null} by any getter-method.
+	 * 
+	 * <li> Once set, SeffElements will not change.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetAllSeffBranches() {
@@ -194,10 +233,27 @@ public class BlackboardTest {
 		assertThat("SeffBranches on the blackboard should not change!", blackboard.getAllSeffBranches(),
 			is(equalTo(seffBranchSet)));
 
+		final Set<SeffBranch> blackboardSet = blackboard.getAllSeffBranches();
+		blackboardSet.removeAll(blackboardSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
+			blackboard.getAllSeffBranches(), is(equalTo(seffBranchSet)));
+
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllSeffLoops()}.
+	 * Test method for {@link Blackboard#getAllSeffLoops()}. Assert that <li> Blackboard
+	 * does not return {@code null} for getter-method
+	 * 
+	 * <ul>
+	 * 
+	 * <li> The Blackboard will not return {@code null} by any getter-method.
+	 * 
+	 * <li> Once set, SeffElements will not change.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetAllSeffLoops() {
@@ -213,10 +269,27 @@ public class BlackboardTest {
 		assertThat("SeffLoops on the blackboard should not change!", blackboard.getAllSeffLoops(),
 			is(equalTo(seffLoopSet)));
 
+		final Set<SeffLoop> blackboardSet = blackboard.getAllSeffLoops();
+		blackboardSet.removeAll(blackboardSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
+			blackboard.getAllSeffLoops(), is(equalTo(seffLoopSet)));
+
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllExternalCallParameters()}.
+	 * Test method for {@link Blackboard#getAllExternalCallParameters()}. Assert that <li>
+	 * Blackboard does not return {@code null} for getter-method
+	 * 
+	 * <ul>
+	 * 
+	 * <li> The Blackboard will not return {@code null} by any getter-method.
+	 * 
+	 * <li> Once set, SeffElements will not change.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetAllExternalCallParameters() {
@@ -228,14 +301,27 @@ public class BlackboardTest {
 
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
-			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
+			this.getEmptySetOfSeffLoop(), externalCallParameterSet);
 		assertThat("ExternalCallParameters on the blackboard should not change!",
 			blackboard.getAllExternalCallParameters(), is(equalTo(externalCallParameterSet)));
 
+		final Set<ExternalCallParameter> blackboardSet = blackboard.getAllExternalCallParameters();
+		blackboardSet.removeAll(blackboardSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
+			blackboard.getAllExternalCallParameters(), is(equalTo(externalCallParameterSet)));
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getRdiasToBeMeasured()}.
+	 * Test method for {@link Blackboard#getRdiasToBeMeasured()}. Assert That
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Getter does not return {@code null}.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetRdiasToBeMeasured() {
@@ -246,10 +332,26 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any RdiasToBeMeasured",
 			this.emptyBlackboard.getRdiasToBeMeasured(), is(empty()));
 
+		final Set<ResourceDemandingInternalAction> rdiaSet = this.filledBlackboard.getRdiasToBeMeasured();
+		final Set<ResourceDemandingInternalAction> clone = new HashSet<ResourceDemandingInternalAction>();
+		clone.addAll(rdiaSet);
+		rdiaSet.removeAll(rdiaSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
+			this.filledBlackboard.getRdiasToBeMeasured(), is(equalTo(clone)));
+
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getSeffBranchesToBeMeasured()}.
+	 * Test method for {@link Blackboard#getSeffBranchesToBeMeasured()}. Assert That
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Getter does not return {@code null}.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetSeffBranchesToBeMeasured() {
@@ -258,10 +360,26 @@ public class BlackboardTest {
 
 		assertThat("Empty blackboard should not contain any SeffBranchesToBeMeasured",
 			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(empty()));
+
+		final Set<SeffBranch> seffBranchSet = this.filledBlackboard.getSeffBranchesToBeMeasured();
+		final Set<SeffBranch> clone = new HashSet<SeffBranch>();
+		clone.addAll(seffBranchSet);
+		seffBranchSet.removeAll(seffBranchSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
+			this.filledBlackboard.getSeffBranchesToBeMeasured(), is(equalTo(clone)));
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getSeffLoopsToBeMeasured()}.
+	 * Test method for {@link Blackboard#getSeffLoopsToBeMeasured()}. Assert That
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Getter does not return {@code null}.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetSeffLoopsToBeMeasured() {
@@ -270,10 +388,27 @@ public class BlackboardTest {
 
 		assertThat("Empty blackboard should not contain any SeffLoopsToBeMeasured",
 			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(empty()));
+
+		final Set<SeffLoop> seffLoopSet = this.filledBlackboard.getSeffLoopsToBeMeasured();
+		final Set<SeffLoop> clone = new HashSet<SeffLoop>();
+		clone.addAll(seffLoopSet);
+		seffLoopSet.removeAll(seffLoopSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
+			this.filledBlackboard.getSeffLoopsToBeMeasured(), is(equalTo(clone)));
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getExternalCallParametersToBeMeasured()} .
+	 * Test method for {@link Blackboard#getExternalCallParametersToBeMeasured()}. Assert
+	 * That
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Getter does not return {@code null}.
+	 * 
+	 * <li> Manipulating the returned set will not affect the corresponding set on the
+	 * blackboard.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetExternalCallParametersToBeMeasured() {
@@ -282,6 +417,14 @@ public class BlackboardTest {
 
 		assertThat("Empty blackboard should not contain any ExternalCallParametersToBeMeasured",
 			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(empty()));
+
+		final Set<ExternalCallParameter> externalCallParameterSet =
+			this.filledBlackboard.getExternalCallParametersToBeMeasured();
+		final Set<ExternalCallParameter> clone = new HashSet<ExternalCallParameter>();
+		clone.addAll(externalCallParameterSet);
+		externalCallParameterSet.removeAll(externalCallParameterSet);
+		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
+			this.filledBlackboard.getExternalCallParametersToBeMeasured(), is(equalTo(clone)));
 	}
 
 	/**
