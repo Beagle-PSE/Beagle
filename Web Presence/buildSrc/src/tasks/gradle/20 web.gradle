@@ -97,8 +97,8 @@ task renderWebPages(type: Copy) {
 	eachFile compileAction
 }
 
-task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
-	description 'Copies web assets (scripts, stylesheets, …) into Beagle’s web presence.'
+task copyWebTemplates(type: Copy, dependsOn: copyWebFonts) {
+	description 'Copies web templates (scripts, stylesheets, …) into Beagle’s web presence.'
 	
 	ext {
 		cssdest = "$WEB_DEST/css"
@@ -107,9 +107,18 @@ task copyWebAssets(type: Copy, dependsOn: copyWebFonts) {
 	from "$projectDir/src/template"
 	include "css/**/*.css"
 	into WEB_DEST
+		
+	outputs.dir cssdest
 }
 
-task web(dependsOn: [renderWebPages, copyWebAssets, copyWebArtefacts]) {
+task copyWebAssets(type: Copy) {
+	description 'Copies web assets (images, …) into Beagle’s web presence.'
+
+	from "$projectDir/src/assets"
+	into WEB_DEST
+}
+
+task web(dependsOn: [renderWebPages, copyWebArtefacts, copyWebTemplates, copyWebAssets]) {
     group "Build"
     description "Builds Beagle’s web presence. Synonym of :Web Presence:build"
     

@@ -1,4 +1,10 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * A measurement result that may depend on the state of variables while executing the

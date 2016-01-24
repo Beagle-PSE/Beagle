@@ -1,8 +1,14 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * Expression that executes a sine function on its contained expression.
- * 
+ *
  * @author Annika Berger
  *
  */
