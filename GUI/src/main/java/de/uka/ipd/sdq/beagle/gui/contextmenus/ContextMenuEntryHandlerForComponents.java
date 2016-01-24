@@ -25,11 +25,17 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
+
+		// The cast is safe, because our context menus use IStructuredSelections.
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
 		final List<String> components = new LinkedList<String>();
 		for (final Object clickObject : structuredSelection.toList()) {
+
+			// This cast is safe because this context menu entry is only shown on
+			// BasicComponentEditParts
 			final BasicComponentEditPart basicComponentEditPart = (BasicComponentEditPart) clickObject;
+
 			// prepare the list of components
 			final String component =
 				basicComponentEditPart.getPrimaryShape().getFigureBasicComponent_Name_LabelFigure().getText();

@@ -26,18 +26,22 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
+
+		// The cast is safe, because our context menus use IStructuredSelections.
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
 		// prepare the list of internal actions
 		final List<String> internalActions = new LinkedList<String>();
 		for (final Object clickObject : structuredSelection.toList()) {
 			String displayString = null;
+
+			// Those casts are safe because this context menu entry is only shown on
+			// InternalActionEditParts and InternalAction2EditParts.
 			if (clickObject instanceof InternalActionEditPart) {
 				final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) clickObject;
 				displayString =
 					internalActionEditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();
 			} else {
-				assert clickObject instanceof InternalAction2EditPart;
 				final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) clickObject;
 				displayString =
 					internalAction2EditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();

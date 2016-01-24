@@ -9,7 +9,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import java.util.ArrayList;
@@ -36,14 +35,17 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final ISelection selection = HandlerUtil.getActiveMenuSelection(event);
+
+		// The cast is safe, because our context menus use IStructuredSelections.
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
 		final Object firstElement = structuredSelection.getFirstElement();
-		assert firstElement instanceof IFile;
+
+		// This cast is safe because this context menu entry is only shown on IFiles.
 		final IFile clickedFile = (IFile) firstElement;
+
 		final IPath clickedFilePath = clickedFile.getFullPath();
 		assert clickedFilePath.getFileExtension().matches(FILE_EXTENSION_MATCHER);
-		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
 
 		// create a new GUI and open it
 		final List<String> toAnalyseIds = new ArrayList<>();
