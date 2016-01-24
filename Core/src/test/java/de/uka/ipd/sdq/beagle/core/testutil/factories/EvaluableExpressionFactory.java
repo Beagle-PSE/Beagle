@@ -41,12 +41,14 @@ public class EvaluableExpressionFactory {
 	 */
 	public EvaluableExpression[] getAll() {
 		// will be done right when the evaluable variable constructors are there.
-		return new EvaluableExpression[] {new EvaluableVariable(), new ExponentationExpression(),
+		return new EvaluableExpression[] {
+			new EvaluableVariable(), new ExponentationExpression(),
 			new MultiplicationExpression(new IfThenElseExpression(), new ComparisonExpression(),
 				new EvaluableVariable()),
 			new AdditionExpression(new MultiplicationExpression(ConstantExpression.forValue(8), new EvaluableVariable(),
 				new SineExpression()), new SubstractionExpression(), new NaturalLogarithmExpression()),
-			new SineExpression(), ConstantExpression.forValue(2)};
+			new SineExpression(), ConstantExpression.forValue(2)
+		};
 	}
 
 	/**

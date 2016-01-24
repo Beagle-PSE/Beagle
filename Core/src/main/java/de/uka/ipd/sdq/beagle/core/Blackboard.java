@@ -14,6 +14,13 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
+
+/**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
  * {@link AnalysisController}, the Blackboard pattern from POSA I. The Blackboard’s
  * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SeffBranch},

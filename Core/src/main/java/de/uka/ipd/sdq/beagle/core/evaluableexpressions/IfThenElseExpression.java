@@ -1,15 +1,21 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * Expression that executes an if-then-else-statement based on its contained expressions.
- * 
+ *
  * @author Annika Berger
  */
 public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
 	 * Get expression contained in if-statement.
-	 * 
+	 *
 	 * @return if-Expression
 	 */
 	public EvaluableExpression getIfExpression() {
@@ -27,7 +33,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
 	 * Get expression contained in else-statement.
-	 * 
+	 *
 	 * @return else-Expression
 	 */
 	public EvaluableExpression getElseExpression() {
@@ -45,7 +51,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
 	 * Get expression contained in then-statement.
-	 * 
+	 *
 	 * @return then-expression
 	 */
 	public EvaluableExpression getThenExpression() {
