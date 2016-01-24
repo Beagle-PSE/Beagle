@@ -130,7 +130,7 @@ public class SeffBranchTest {
 		final SeffBranch branch = new SeffBranch(codeSections);
 		assertThat(branch.getBranches(), is(equalTo(codeSections)));
 
-		// make sure branchs are a copy.
+		// make sure branches are a copy.
 		final List<CodeSection> branches = branch.getBranches();
 		branches.add(CODE_SECTION_FACTORY.getOne());
 		assertThat("List returned must be a copy.", branch.getBranches(), is(equalTo(codeSections)));
