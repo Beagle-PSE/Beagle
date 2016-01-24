@@ -1,9 +1,15 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * Expression that executes a logarithm with defined expressions as base and
  * antilogarithm.
- * 
+ *
  * @author Annika Berger
  */
 public class LogarithmExpression implements EvaluableExpression {
