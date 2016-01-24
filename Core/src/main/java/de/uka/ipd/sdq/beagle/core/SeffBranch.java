@@ -6,9 +6,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Models branches in a component's SEFF, originating from conditional constructs.
@@ -78,20 +78,20 @@ public class SeffBranch implements MeasurableSeffElement {
 	/**
 	 * Gives a set of valid code sections representing a branch of this SeffBranch.
 	 *
-	 * @return A set of valid code sections representing a branch of this SeffBranch. They
-	 *         fulfil the following property: Two points of execution exist, the so called
-	 *         beginning and ending of this branch, with the following properties: When
-	 *         you would insert an (empty) code line at the beginning and an (empty) code
-	 *         line at the ending, those would form a valid code section with the
+	 * @return A list of valid code sections representing a branch of this SeffBranch.
+	 *         They fulfil the following property: Two points of execution exist, the so
+	 *         called beginning and ending of this branch, with the following properties:
+	 *         When you would insert an (empty) code line at the beginning and an (empty)
+	 *         code line at the ending, those would form a valid code section with the
 	 *         beginning line as first line and the line at the ending as last line. And
 	 *         each time the beginning point was reached, exactly one code section of this
 	 *         branch gets executed immediately after that. Immediately after that, the
 	 *         ending point is reached. The set contains at least {@code 2} code sections.
-	 *         The set is never {@code null}. This set never contains {@code null}
-	 *         entries.
+	 *         The list is never {@code null}. This list never contains {@code null}
+	 *         entries. Changes to the list are not reflected in the SeffBranch.
 	 */
 	public List<CodeSection> getBranches() {
-		return Collections.unmodifiableList(this.branches);
+		return new CopyOnWriteArrayList<>(this.branches);
 	}
 
 	@Override
