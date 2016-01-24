@@ -91,8 +91,10 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * elements</em>.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
+	 * @throws IllegalClassFormatException If input parameter does not represent a valid
+	 *             repository file.
 	 */
-	public PcmRepositoryBlackboardFactory(final String repositoryFileName) {
+	public PcmRepositoryBlackboardFactory(final String repositoryFileName) throws IllegalClassFormatException {
 		RepositoryFactory.eINSTANCE.createRepository();
 		// Not sure if this final declaration could lead to a problem.
 		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
@@ -121,8 +123,10 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *
 	 * @return A new blackboard having all translated <em>PCM elements</em> written on it.
 	 *         Will never be {@code null}.
+	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
+	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForAllElements() {
+	public Blackboard getBlackboardForAllElements() throws FileNotFoundException {
 		this.seffLoopSet = new HashSet<SeffLoop>();
 		this.seffBranchSet = new HashSet<SeffBranch>();
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
