@@ -15,17 +15,17 @@ public final class EqualsMatcher extends DiagnosingMatcher<Object> {
 	/**
 	 * A matcher that matches if the examined object’s {@code equals} follows certain
 	 * default properties. The following attributes are asserted:
-	 * 
+	 *
 	 * <ul>
-	 * 
-	 * <li>{@code equals} returns {@code false} for {@code null}
-	 * 
-	 * <li>{@code equals} returns {@code true} for the same instance
-	 * 
-	 * <li>{@code equals} return {@code false} for an object of another class
+	 *
+	 * <li>{@code equals} returns {@code false} for {@code null}.
+	 *
+	 * <li>{@code equals} returns {@code true} for the same instance.
+	 *
+	 * <li>{@code equals} returns {@code false} for an object of another class.
 	 *
 	 * </ul>
-	 * 
+	 *
 	 * @return a matcher, as described above.
 	 */
 	public static Matcher<Object> hasDefaultEqualsProperties() {
@@ -35,7 +35,6 @@ public final class EqualsMatcher extends DiagnosingMatcher<Object> {
 	@Override
 	public void describeTo(final Description description) {
 		description.appendText("equals to follow standard contract");
-
 	}
 
 	@Override
@@ -53,5 +52,4 @@ public final class EqualsMatcher extends DiagnosingMatcher<Object> {
 		}
 		return true;
 	}
-
 }
