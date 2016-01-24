@@ -3,7 +3,9 @@ package de.uka.ipd.sdq.beagle.core;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAcceptingNull;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
@@ -120,15 +122,15 @@ public class BlackboardTest {
 
 	/**
 	 * Test method for
-	 * {@link Blackboard#Blackboard(java.util.Set, java.util.Set, java.util.Set)} .
+	 * {@link Blackboard#Blackboard(java.util.Set, java.util.Set, java.util.Set)} . Assert
+	 * that:
+	 * 
+	 * <li> Constructor does not accept {@code null} parameters
+	 * 
+	 * <li> Constructor works with valid input
 	 */
 	@Test
 	public void testBlackboard() {
-		final Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-			SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
-
-		assertThat("Blackboard constructor must not return null for a valid parameterisation!", blackboard,
-			is(notNullValue()));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
 			() -> new Blackboard(null, null, null, null), throwsException(NullPointerException.class));
@@ -153,6 +155,9 @@ public class BlackboardTest {
 				EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
 			throwsException(NullPointerException.class));
 
+		new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(), SEFF_LOOP_FACTORY.getAllAsSet(),
+			EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+
 	}
 
 	/**
@@ -163,13 +168,12 @@ public class BlackboardTest {
 		assertThat("Blackboard should not return null for getAllRdias()", this.emptyBlackboard.getAllRdias(),
 			is(notNullValue()));
 
-		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllRdias().isEmpty(),
-			is(true));
+		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllRdias(), is(empty()));
 
 		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(rdiaSet, this.getEmptySetOfSeffBranch(),
 			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
-		assertThat("Rdias on the blackboard should not change!", blackboard.getAllRdias().equals(rdiaSet), is(true));
+		assertThat("Rdias on the blackboard should not change!", blackboard.getAllRdias(), is(equalTo(rdiaSet)));
 
 	}
 
@@ -181,14 +185,14 @@ public class BlackboardTest {
 		assertThat("Blackboard should not return null for getAllSeffBranches()",
 			this.emptyBlackboard.getAllSeffBranches(), is(notNullValue()));
 
-		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllSeffBranches().isEmpty(),
-			is(true));
+		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllSeffBranches(),
+			is(empty()));
 
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), seffBranchSet,
 			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
-		assertThat("SeffBranches on the blackboard should not change!",
-			blackboard.getAllSeffBranches().equals(seffBranchSet), is(true));
+		assertThat("SeffBranches on the blackboard should not change!", blackboard.getAllSeffBranches(),
+			is(equalTo(seffBranchSet)));
 
 	}
 
@@ -200,14 +204,14 @@ public class BlackboardTest {
 		assertThat("Blackboard should not return null for getAllSeffLoops()", this.emptyBlackboard.getAllSeffLoops(),
 			is(notNullValue()));
 
-		assertThat("Empty blackboard should not contain any SeffLoops",
-			this.emptyBlackboard.getAllSeffLoops().isEmpty(), is(true));
+		assertThat("Empty blackboard should not contain any SeffLoops", this.emptyBlackboard.getAllSeffLoops(),
+			is(empty()));
 
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
 			seffLoopSet, this.getEmptySetOfExternalCallParameter());
-		assertThat("SeffLoops on the blackboard should not change!", blackboard.getAllSeffLoops().equals(seffLoopSet),
-			is(true));
+		assertThat("SeffLoops on the blackboard should not change!", blackboard.getAllSeffLoops(),
+			is(equalTo(seffLoopSet)));
 
 	}
 
@@ -220,13 +224,13 @@ public class BlackboardTest {
 			this.emptyBlackboard.getAllExternalCallParameters(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any ExternalCallParameters",
-			this.emptyBlackboard.getAllExternalCallParameters().isEmpty(), is(true));
+			this.emptyBlackboard.getAllExternalCallParameters(), is(empty()));
 
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
 			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter());
 		assertThat("ExternalCallParameters on the blackboard should not change!",
-			blackboard.getAllExternalCallParameters().equals(externalCallParameterSet), is(true));
+			blackboard.getAllExternalCallParameters(), is(equalTo(externalCallParameterSet)));
 
 	}
 
@@ -240,7 +244,7 @@ public class BlackboardTest {
 			this.emptyBlackboard.getRdiasToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any RdiasToBeMeasured",
-			this.emptyBlackboard.getRdiasToBeMeasured().isEmpty(), is(true));
+			this.emptyBlackboard.getRdiasToBeMeasured(), is(empty()));
 
 	}
 
@@ -253,7 +257,7 @@ public class BlackboardTest {
 			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any SeffBranchesToBeMeasured",
-			this.emptyBlackboard.getSeffBranchesToBeMeasured().isEmpty(), is(true));
+			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(empty()));
 	}
 
 	/**
@@ -265,7 +269,7 @@ public class BlackboardTest {
 			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any SeffLoopsToBeMeasured",
-			this.emptyBlackboard.getSeffLoopsToBeMeasured().isEmpty(), is(true));
+			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(empty()));
 	}
 
 	/**
@@ -277,7 +281,7 @@ public class BlackboardTest {
 			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any ExternalCallParametersToBeMeasured",
-			this.emptyBlackboard.getExternalCallParametersToBeMeasured().isEmpty(), is(true));
+			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(empty()));
 	}
 
 	/**
