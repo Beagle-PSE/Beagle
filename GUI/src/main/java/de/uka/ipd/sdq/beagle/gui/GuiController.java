@@ -23,7 +23,7 @@ public class GuiController {
 	/**
 	 * Describes the state of the {@link GuiController}. {@link GuiController} goes
 	 * through the states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
-	 * {@code terminated} which no way to go backwards but the option to skip states.
+	 * {@code terminated} with no way to go backwards but the option to skip states.
 	 * 
 	 * @author Christoph Michelbach
 	 */
@@ -31,7 +31,7 @@ public class GuiController {
 		/**
 		 * The states of an {@link GuiController}. {@link GuiController} goes through the
 		 * states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
-		 * {@code terminated} which no way to go backwards but the option to skip states.
+		 * {@code terminated} with no way to go backwards but the option to skip states.
 		 */
 		unopened, wizardOpen, dialogOpen, terminated
 	};
