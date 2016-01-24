@@ -7,6 +7,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -127,14 +128,17 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testGetBranches() {
-		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final SeffBranch branch = new SeffBranch(codeSections);
-		assertThat(branch.getBranches(), is(equalTo(codeSections)));
+		final Set<CodeSection> codeSectionSet = CODE_SECTION_FACTORY.getAllAsSet();
+		final CodeSection testSection = CODE_SECTION_FACTORY.getOne();
+		codeSectionSet.remove(testSection);
+		final CodeSection[] codeSections = codeSectionSet.toArray(new CodeSection[codeSectionSet.size()]);
+		final SeffBranch branch = new SeffBranch(codeSectionSet);
+		assertThat(branch.getBranches(), contains(codeSections));
 
 		// make sure branches are a copy.
 		final List<CodeSection> branches = branch.getBranches();
-		branches.add(CODE_SECTION_FACTORY.getOne());
-		assertThat("List returned must be a copy.", branch.getBranches(), is(equalTo(codeSections)));
+		branches.add(testSection);
+		assertThat("List returned must be a copy.", branch.getBranches(), contains(codeSections));
 	}
 
 	/**
