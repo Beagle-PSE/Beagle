@@ -1,15 +1,15 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.gui.GuiController;
-
 import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.palladiosimulator.pcm.repository.BasicComponent;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,21 +29,21 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 		// The cast is safe, because our context menus use IStructuredSelections.
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
-		final List<String> components = new LinkedList<String>();
+		final List<BasicComponent> components = new LinkedList<BasicComponent>();
 		for (final Object clickObject : structuredSelection.toList()) {
 
-			// This cast is safe because this context menu entry is only shown on
+			// Those casts are safe because this context menu entry is only shown on
 			// BasicComponentEditParts
 			final BasicComponentEditPart basicComponentEditPart = (BasicComponentEditPart) clickObject;
 
 			// prepare the list of components
-			final String component =
-				basicComponentEditPart.getPrimaryShape().getFigureBasicComponent_Name_LabelFigure().getText();
-			components.add(component);
+			final BasicComponent basicComponent =
+				(BasicComponent) ((View) basicComponentEditPart.getModel()).getElement();
+			components.add(basicComponent);
 		}
 		// create a new GUI and open it
-		final GuiController guiController = new GuiController(components);
-		guiController.open();
+		// final GuiController guiController = new GuiController(components);
+		// guiController.open();
 
 		return null;
 	}

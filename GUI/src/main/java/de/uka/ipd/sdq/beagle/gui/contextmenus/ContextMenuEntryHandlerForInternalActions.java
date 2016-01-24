@@ -1,16 +1,16 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.gui.GuiController;
-
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart;
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,28 +31,27 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
 		// prepare the list of internal actions
-		final List<String> internalActions = new LinkedList<String>();
+		final List<InternalAction> internalActions = new LinkedList<InternalAction>();
 		for (final Object clickObject : structuredSelection.toList()) {
-			String displayString = null;
 
 			// Those casts are safe because this context menu entry is only shown on
 			// InternalActionEditParts and InternalAction2EditParts.
 			if (clickObject instanceof InternalActionEditPart) {
 				final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) clickObject;
-				displayString =
-					internalActionEditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();
+				final InternalAction internalAction =
+					(InternalAction) ((View) internalActionEditPart.getModel()).getElement();
+				internalActions.add(internalAction);
 			} else {
 				final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) clickObject;
-				displayString =
-					internalAction2EditPart.getPrimaryShape().getFigureInternalActionFigureNameLabel().toString();
+				final InternalAction internalAction =
+					(InternalAction) ((View) internalAction2EditPart.getModel()).getElement();
+				internalActions.add(internalAction);
 			}
-			final String internalAction = displayString;
-			internalActions.add(internalAction);
 		}
 
 		// create a new GUI and open it
-		final GuiController guiController = new GuiController(internalActions);
-		guiController.open();
+		// final GuiController guiController = new GuiController(internalActions);
+		// guiController.open();
 		return null;
 	}
 }
