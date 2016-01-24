@@ -460,6 +460,8 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
+	 * 
+	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
 	 *
 	 * </ul>
 	 */
@@ -471,17 +473,12 @@ public class BlackboardTest {
 
 		final Set<ResourceDemandingInternalAction> rdiaSet = this.getEmptySetOfRdia();
 		rdiaSet.add(RDIA_FACTORY.getOne());
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		this.emptyBlackboard.addToBeMeasuredRdias(rdiaSet);
 		assertThat(
-			"Blackboard should not accept RDIAs to be measured, that are not stored in its RDIA-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredRdias(rdiaSet), throwsException(IllegalArgumentException.class));
-		assertThat(
-			"Blackboard should not accept RDIAs to be measured, that are not stored in its RDIA-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredRdias(RDIA_FACTORY.getAll()),
-			throwsException(IllegalArgumentException.class));
+			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
+			this.emptyBlackboard.getRdiasToBeMeasured(), is(empty()));
+
 	}
 
 	/**
@@ -494,6 +491,7 @@ public class BlackboardTest {
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
 	 * 
+	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
 	 *
 	 * </ul>
 	 */
@@ -506,18 +504,11 @@ public class BlackboardTest {
 
 		final Set<SeffBranch> seffBranchSet = this.getEmptySetOfSeffBranch();
 		seffBranchSet.add(SEFF_BRANCH_FACTORY.getOne());
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		this.emptyBlackboard.addToBeMeasuredSeffBranches(seffBranchSet);
 		assertThat(
-			"Blackboard should not accept SeffBranches to be measured, that are not stored in its SeffBranch-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredSeffBranches(seffBranchSet),
-			throwsException(IllegalArgumentException.class));
-		assertThat(
-			"Blackboard should not accept SeffBranches to be measured, that are not stored in its SeffBranch-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredSeffBranches(SEFF_BRANCH_FACTORY.getAll()),
-			throwsException(IllegalArgumentException.class));
+			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
+			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(empty()));
 	}
 
 	/**
@@ -529,6 +520,8 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
+	 * 
+	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
 	 *
 	 * </ul>
 	 */
@@ -540,18 +533,11 @@ public class BlackboardTest {
 
 		final Set<SeffLoop> seffLoopSet = this.getEmptySetOfSeffLoop();
 		seffLoopSet.add(SEFF_LOOP_FACTORY.getOne());
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		this.emptyBlackboard.addToBeMeasuredSeffLoops(seffLoopSet);
 		assertThat(
-			"Blackboard should not accept SeffLoops to be measured, that are not stored in its SeffLoop-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredSeffLoops(seffLoopSet),
-			throwsException(IllegalArgumentException.class));
-		assertThat(
-			"Blackboard should not accept SeffLoops to be measured, that are not stored in its SeffLoop-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredSeffLoops(SEFF_LOOP_FACTORY.getAll()),
-			throwsException(IllegalArgumentException.class));
+			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
+			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(empty()));
 	}
 
 	/**
@@ -563,6 +549,8 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
+	 * 
+	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
 	 *
 	 * </ul>
 	 */
@@ -575,20 +563,11 @@ public class BlackboardTest {
 
 		final Set<ExternalCallParameter> externalCallParameterSet = this.getEmptySetOfExternalCallParameter();
 		externalCallParameterSet.add(EXTERNAL_CALL_PARAMETER_FACTORY.getOne());
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		this.emptyBlackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet);
 		assertThat(
-			"Blackboard should not accept ExternalCallParameters to be measured,"
-				+ "that are not stored in its ExternalCallParameter-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet),
-			throwsException(IllegalArgumentException.class));
-		assertThat(
-			"Blackboard should not accept ExternalCallParameters to be measured,"
-				+ "that are not stored in its ExternalCallParameter-set."
-				+ "Besides an Exception should be thrown, because Measurable Seff Elements should not"
-				+ "be created after Blackboard instanciation!",
-			() -> this.emptyBlackboard.addToBeMeasuredExternalCallParameters(EXTERNAL_CALL_PARAMETER_FACTORY.getAll()),
-			throwsException(IllegalArgumentException.class));
+			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
+			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(empty()));
 
 	}
 
