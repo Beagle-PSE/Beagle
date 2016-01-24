@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.gui.GuiController;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -50,8 +48,8 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		// create a new GUI and open it
 		final List<String> toAnalyseIds = new ArrayList<>();
 		toAnalyseIds.add(SPECIAL_ID_COMPLETE_REPOSITORY + " $" + clickedFilePath.toString());
-		final GuiController guiController = new GuiController(toAnalyseIds);
-		guiController.open();
+		// final GuiController guiController = new GuiController(toAnalyseIds);
+		// guiController.open();
 		return null;
 	}
 

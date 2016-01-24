@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
+import de.uka.ipd.sdq.beagle.gui.GuiController;
+
 import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -10,6 +12,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -42,8 +45,8 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 			components.add(basicComponent);
 		}
 		// create a new GUI and open it
-		// final GuiController guiController = new GuiController(components);
-		// guiController.open();
+		final GuiController guiController = new GuiController(components, new LinkedList<InternalAction>());
+		guiController.open();
 
 		return null;
 	}
