@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -162,9 +162,10 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#UserConfiguration-java.util.List-">UserConfiguration</a></span>(java.util.List&lt;java.lang.String&gt;&nbsp;components)</code>
-<div class="block">Constructs a new <a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core"><code>UserConfiguration</code></a> using <code>components</code> as the default
- components to be measured.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#UserConfiguration-java.util.List-java.util.List-">UserConfiguration</a></span>(java.util.List&lt;org.palladiosimulator.pcm.repository.BasicComponent&gt;&nbsp;components,
+                 java.util.List&lt;org.palladiosimulator.pcm.seff.InternalAction&gt;&nbsp;internalActions)</code>
+<div class="block">Constructs a new <a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core"><code>UserConfiguration</code></a> using <code>elements</code> as the default
+ elements to be measured.</div>
 </td>
 </tr>
 </table>
@@ -183,24 +184,36 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;org.palladiosimulator.pcm.repository.BasicComponent&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#getComponents--">getComponents</a></span>()</code>
 <div class="block">Returns the components to be measured.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.util.List&lt;org.palladiosimulator.pcm.seff.InternalAction&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#getInternalActions--">getInternalActions</a></span>()</code>
+<div class="block">Returns the internal actions to be measured.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#getTimeout--">getTimeout</a></span>()</code>
 <div class="block">Returns the timeout to be used.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#setComponents-java.util.List-">setComponents</a></span>(java.util.List&lt;java.lang.String&gt;&nbsp;components)</code>
-<div class="block">Sets the components to be measured to <code>components</code>.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#setComponents-java.util.List-">setComponents</a></span>(java.util.List&lt;org.palladiosimulator.pcm.repository.BasicComponent&gt;&nbsp;components)</code>
+<div class="block">Sets the components to be measured to <code>elements</code>.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#setInternalActions-java.util.List-">setInternalActions</a></span>(java.util.List&lt;org.palladiosimulator.pcm.seff.InternalAction&gt;&nbsp;internalActions)</code>
+<div class="block">Sets the internal actions to be measured to <code>internalActions</code>.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html#setTimeout-int-">setTimeout</a></span>(int&nbsp;timeout)</code>
 <div class="block">Sets the timeout to be used to <code>timeout</code>.</div>
@@ -279,18 +292,20 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="UserConfiguration-java.util.List-">
+<a name="UserConfiguration-java.util.List-java.util.List-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>UserConfiguration</h4>
-<pre>public&nbsp;UserConfiguration(java.util.List&lt;java.lang.String&gt;&nbsp;components)</pre>
-<div class="block">Constructs a new <a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core"><code>UserConfiguration</code></a> using <code>components</code> as the default
- components to be measured.</div>
+<pre>public&nbsp;UserConfiguration(java.util.List&lt;org.palladiosimulator.pcm.repository.BasicComponent&gt;&nbsp;components,
+                         java.util.List&lt;org.palladiosimulator.pcm.seff.InternalAction&gt;&nbsp;internalActions)</pre>
+<div class="block">Constructs a new <a href="../../../../../../de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core"><code>UserConfiguration</code></a> using <code>elements</code> as the default
+ elements to be measured.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>components</code> - The default components to be measured.</dd>
+<dd><code>internalActions</code> - The default internal actions to be measured.</dd>
 </dl>
 </li>
 </ul>
@@ -308,7 +323,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getComponents</h4>
-<pre>public&nbsp;java.util.List&lt;java.lang.String&gt;&nbsp;getComponents()</pre>
+<pre>public&nbsp;java.util.List&lt;org.palladiosimulator.pcm.repository.BasicComponent&gt;&nbsp;getComponents()</pre>
 <div class="block">Returns the components to be measured.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -322,11 +337,39 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setComponents</h4>
-<pre>public&nbsp;void&nbsp;setComponents(java.util.List&lt;java.lang.String&gt;&nbsp;components)</pre>
-<div class="block">Sets the components to be measured to <code>components</code>.</div>
+<pre>public&nbsp;void&nbsp;setComponents(java.util.List&lt;org.palladiosimulator.pcm.repository.BasicComponent&gt;&nbsp;components)</pre>
+<div class="block">Sets the components to be measured to <code>elements</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>components</code> - The components to be measured to <code>components</code>.</dd>
+<dd><code>components</code> - The components to be measured.</dd>
+</dl>
+</li>
+</ul>
+<a name="getInternalActions--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getInternalActions</h4>
+<pre>public&nbsp;java.util.List&lt;org.palladiosimulator.pcm.seff.InternalAction&gt;&nbsp;getInternalActions()</pre>
+<div class="block">Returns the internal actions to be measured.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The internal actions to be measured.</dd>
+</dl>
+</li>
+</ul>
+<a name="setInternalActions-java.util.List-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setInternalActions</h4>
+<pre>public&nbsp;void&nbsp;setInternalActions(java.util.List&lt;org.palladiosimulator.pcm.seff.InternalAction&gt;&nbsp;internalActions)</pre>
+<div class="block">Sets the internal actions to be measured to <code>internalActions</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>internalActions</code> - The internalActions to be measured.</dd>
 </dl>
 </li>
 </ul>
