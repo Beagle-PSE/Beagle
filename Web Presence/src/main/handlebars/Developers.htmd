@@ -27,6 +27,10 @@ Beagle consists of multiple subprojects. Each is built using [gradle](http://gra
 	{{#> title}}Pull Request Acceptance Checklist{{/title}}
 	{{#> description}}Criteria applied when reviewing GitHub Pull Requests.{{/description}}
 {{/artefact}}
+{{#> artefact link="Dependency Management.html" type="html"}}
+	{{#> title}}Dependency Management{{/title}}
+	{{#> description}}Explains how dependencies are handled for Beagle.{{/description}}
+{{/artefact}}
 {{#> artefact link="Creating a Project.html" type="html"}}
 	{{#> title}}How to Create a Subproject{{/title}}
 	{{#> description}}Guide for developers wishing to create a new subproject for Beagle.{{/description}}
