@@ -5,7 +5,6 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,7 +27,7 @@ public class SeffBranchFactory {
 	 * @return A newly instantiated seff branch (you may not make any assumptions about).
 	 */
 	public SeffBranch getOne() {
-		return new SeffBranch(CODE_SECTION_FACTORY.getAllAsList());
+		return new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet());
 	}
 
 	/**
@@ -41,7 +40,7 @@ public class SeffBranchFactory {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final int numberOfBranches = codeSections.length;
 		final SeffBranch[] seffBranches = new SeffBranch[numberOfBranches];
-		final List<CodeSection> codeSectionSet = Arrays.asList(codeSections[0], codeSections[1]);
+		final Set<CodeSection> codeSectionSet = new HashSet<>(Arrays.asList(codeSections[0], codeSections[1]));
 
 		// This is creating as different as possible Sets to use for the seffBranches.
 		for (int i = 0; i < numberOfBranches; i++) {

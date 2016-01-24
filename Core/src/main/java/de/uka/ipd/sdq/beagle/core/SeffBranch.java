@@ -7,6 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Models branches in a component's SEFF, originating from conditional constructs.
@@ -49,7 +50,7 @@ public class SeffBranch implements MeasurableSeffElement {
 	 * @throws IllegalArgumentException If {@code branches} has less than {@code 2}
 	 *             branches.
 	 */
-	public SeffBranch(final List<CodeSection> branches) {
+	public SeffBranch(final Set<CodeSection> branches) {
 		if (branches.size() <= 1) {
 			throw new IllegalArgumentException(
 				"The code section set for the SeffBranch had less than two code sections");
