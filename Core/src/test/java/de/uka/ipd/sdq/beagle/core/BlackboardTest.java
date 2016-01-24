@@ -135,12 +135,37 @@ public class BlackboardTest {
 	 * {@link Blackboard#Blackboard(java.util.Set, java.util.Set, java.util.Set)} . Assert
 	 * that:
 	 * 
-	 * <li> Constructor does not accept {@code null} parameters
+	 * <li> Constructor does neither accept {@code null} parameters nor {@code null}
+	 * within a Set
 	 * 
-	 * <li> Constructor works with valid input
+	 * <li> Constructor does not accept {@code null} parameters and throws a
+	 * NullPointerException
+	 * 
+	 * <li> Proper functionality for valid input
+	 * 
 	 */
 	@Test
 	public void testBlackboard() {
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			(rdias) -> new Blackboard(new HashSet<>(rdias), SEFF_BRANCH_FACTORY.getAllAsSet(),
+				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
+			is(notAcceptingNull(RDIA_FACTORY.getAllAsSet())));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			(seffBranches) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), new HashSet<>(seffBranches),
+				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
+			is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAllAsSet())));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			(seffLoops) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+				new HashSet<>(seffLoops), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
+			is(notAcceptingNull(SEFF_LOOP_FACTORY.getAllAsSet())));
+
+		assertThat("Blackboard constructur must not accept any measurable seff element = null",
+			(externalCallParameters) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+				SEFF_LOOP_FACTORY.getAllAsSet(), new HashSet<>(externalCallParameters)),
+			is(notAcceptingNull(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet())));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
 			() -> new Blackboard(null, null, null, null), throwsException(NullPointerException.class));
@@ -468,6 +493,7 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
+	 * 
 	 *
 	 * </ul>
 	 */
