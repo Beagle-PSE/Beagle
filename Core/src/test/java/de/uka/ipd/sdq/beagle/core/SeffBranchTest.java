@@ -128,7 +128,12 @@ public class SeffBranchTest {
 	public void testGetBranches() {
 		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final SeffBranch branch = new SeffBranch(codeSections);
-		assertThat(new HashSet<>(branch.getBranches()), is(equalTo(codeSections)));
+		assertThat(branch.getBranches(), is(equalTo(codeSections)));
+
+		// make sure branchs are a copy.
+		final List<CodeSection> branches = branch.getBranches();
+		branches.add(CODE_SECTION_FACTORY.getOne());
+		assertThat("List returned must be a copy.", branch.getBranches(), is(equalTo(codeSections)));
 	}
 
 	/**
