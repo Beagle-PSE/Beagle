@@ -27,9 +27,9 @@ public class UserConfiguration {
 	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
 	/**
-	 * All components to measure.
+	 * All elements to measure.
 	 */
-	private List<String> components;
+	private List<String> elements;
 
 	/**
 	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
@@ -38,32 +38,32 @@ public class UserConfiguration {
 	private int timeout;
 
 	/**
-	 * Constructs a new {@link UserConfiguration} using {@code components} as the default
-	 * components to be measured.
+	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
+	 * elements to be measured.
 	 * 
-	 * @param components The default components to be measured.
+	 * @param elements The default elements to be measured.
 	 */
-	public UserConfiguration(final List<String> components) {
-		this.components = components;
+	public UserConfiguration(final List<String> elements) {
+		this.elements = elements;
 		this.timeout = DEFAULT_TIMEOUT;
 	}
 
 	/**
-	 * Returns the components to be measured.
+	 * Returns the elements to be measured.
 	 * 
-	 * @return The components to be measured.
+	 * @return The elements to be measured.
 	 */
-	public List<String> getComponents() {
-		return this.components;
+	public List<String> getElements() {
+		return this.elements;
 	}
 
 	/**
-	 * Sets the components to be measured to {@code components}.
+	 * Sets the elements to be measured to {@code elements}.
 	 * 
-	 * @param components The components to be measured to {@code components}.
+	 * @param elements The elements to be measured to {@code elements}.
 	 */
-	public void setComponents(final List<String> components) {
-		this.components = components;
+	public void setElements(final List<String> components) {
+		this.elements = components;
 	}
 
 	/**

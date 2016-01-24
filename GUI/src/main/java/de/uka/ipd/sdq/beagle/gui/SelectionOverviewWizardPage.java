@@ -70,7 +70,7 @@ public class SelectionOverviewWizardPage extends WizardPage {
 		final Label labelHeader = new Label(this.mainContainer, SWT.NONE);
 		labelHeader.setText("These elements are selected for analysis:");
 
-		final Iterator<String> iterator = this.userConfiguration.getComponents().iterator();
+		final Iterator<String> iterator = this.userConfiguration.getElements().iterator();
 		while (iterator.hasNext()) {
 			final String component = iterator.next();
 
