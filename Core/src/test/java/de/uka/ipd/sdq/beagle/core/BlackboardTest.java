@@ -551,9 +551,23 @@ public class BlackboardTest {
 	/**
 	 * Test method for
 	 * {@link Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)} .
+	 * Assert that
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Does not return {@code null} for valid call parameters.
+	 * 
+	 * <li> Throws an exception for {@code null} as parameter.
+	 * 
+	 * </ul>
 	 */
 	@Test
 	public void testGetMeasurementResultsForResourceDemandingInternalAction() {
+
+		assertThat(
+			"Blackboard should not return null for valid input parameters in"
+				+ "getMeasurementResultsFor(ResourceDemandingInternalAction)",
+			this.filledBlackboard.getMeasurementResultsFor(RDIA_FACTORY.getOne()), is(notNullValue()));
 
 		final ResourceDemandingInternalAction rdia = null;
 		assertThat(
@@ -565,10 +579,23 @@ public class BlackboardTest {
 	/**
 	 * Test method for
 	 * {@link Blackboard#getMeasurementResultsFor(de.uka.ipd.sdq.beagle.core.SeffBranch)}
-	 * .
+	 * Assert that
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Does not return {@code null} for valid call parameters.
+	 * 
+	 * <li> Throws an exception for {@code null} as parameter.
+	 * 
+	 * </ul>
+	 * 
 	 */
 	@Test
 	public void testGetMeasurementResultsForSeffBranch() {
+
+		assertThat(
+			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffBranch)",
+			this.filledBlackboard.getMeasurementResultsFor(SEFF_BRANCH_FACTORY.getOne()), is(notNullValue()));
 
 		final SeffBranch seffBranch = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffBranch) for null as parameter",
@@ -583,6 +610,9 @@ public class BlackboardTest {
 	@Test
 	public void testGetMeasurementResultsForSeffLoop() {
 
+		assertThat("Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffLoop)",
+			this.filledBlackboard.getMeasurementResultsFor(SEFF_LOOP_FACTORY.getOne()), is(notNullValue()));
+
 		final SeffLoop seffLoop = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffLoop) for null as parameter",
 			() -> this.emptyBlackboard.getMeasurementResultsFor(seffLoop), throwsException(NullPointerException.class));
@@ -591,10 +621,24 @@ public class BlackboardTest {
 	/**
 	 * Test method for
 	 * {@link Blackboard#getMeasurementResultsFor(de.uka.ipd.sdq.beagle.core.ExternalCallParameter)}
-	 * .
+	 * Assert that
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Does not return {@code null} for valid call parameters.
+	 * 
+	 * <li> Throws an exception for {@code null} as parameter.
+	 * 
+	 * </ul>
+	 * 
 	 */
 	@Test
 	public void testGetMeasurementResultsForExternalCallParameter() {
+
+		assertThat(
+			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(ExternalCallParameter)",
+			this.filledBlackboard.getMeasurementResultsFor(EXTERNAL_CALL_PARAMETER_FACTORY.getOne()),
+			is(notNullValue()));
 
 		final ExternalCallParameter externalCallParameter = null;
 		assertThat(
@@ -609,6 +653,8 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
+	 * 
+	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
 	 *
@@ -616,12 +662,17 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
+
+		final ResourceDemandMeasurementResult rdiaResult = new ResourceDemandMeasurementResult();
+		this.filledBlackboard.addMeasurementResultFor(RDIA_FACTORY.getOne(), rdiaResult);
+
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new ResourceDemandMeasurementResult()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as measurement result",
 			() -> this.emptyBlackboard.addMeasurementResultFor(RDIA_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
+
 	}
 
 	/**
@@ -630,6 +681,8 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
+	 * 
+	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
 	 *
@@ -637,6 +690,10 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
+
+		final BranchDecisionMeasurementResult branchResult = new BranchDecisionMeasurementResult();
+		this.filledBlackboard.addMeasurementResultFor(SEFF_BRANCH_FACTORY.getOne(), branchResult);
+
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new BranchDecisionMeasurementResult()),
 			throwsException(NullPointerException.class));
@@ -651,6 +708,8 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
+	 * 
+	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
 	 *
@@ -658,6 +717,10 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
+
+		final LoopRepetitionCountMeasurementResult loopResult = new LoopRepetitionCountMeasurementResult();
+		this.filledBlackboard.addMeasurementResultFor(SEFF_LOOP_FACTORY.getOne(), loopResult);
+
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new LoopRepetitionCountMeasurementResult()),
 			throwsException(NullPointerException.class));
@@ -672,6 +735,8 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
+	 * 
+	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
 	 *
@@ -679,6 +744,10 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
+
+		final ParameterChangeMeasurementResult parameterResult = new ParameterChangeMeasurementResult();
+		this.filledBlackboard.addMeasurementResultFor(EXTERNAL_CALL_PARAMETER_FACTORY.getOne(), parameterResult);
+
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new ParameterChangeMeasurementResult()),
 			throwsException(NullPointerException.class));
@@ -692,6 +761,8 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
+	 * 
+	 * <li> Does not return {@code null} for valid call parameters.
 	 *
 	 * <li>{@code null} cannot be passed.
 	 *
@@ -699,6 +770,10 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetProposedExpressionFor() {
+
+		assertThat("Proposed Expression should not return null for valid input parameters!",
+			this.filledBlackboard.getProposedExpressionFor(RDIA_FACTORY.getOne()), is(notNullValue()));
+
 		assertThat("It must not be possible get proposed expressions for null",
 			() -> this.emptyBlackboard.getProposedExpressionFor(null), throwsException(NullPointerException.class));
 	}
@@ -709,6 +784,8 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
+	 * 
+	 * <li> No exceptions for valid inputs.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
 	 *
@@ -716,6 +793,9 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddProposedExpressionFor() {
+
+		this.filledBlackboard.addProposedExpressionFor(RDIA_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
+
 		assertThat("It must not be possible to add a proposed expression for null",
 			() -> this.emptyBlackboard.addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
@@ -729,6 +809,8 @@ public class BlackboardTest {
 	 * Asserts that:
 	 *
 	 * <ul>
+	 * 
+	 * <li>No exceptions for valid input.
 	 *
 	 * <li>{@code null} cannot be passed.
 	 *
@@ -736,6 +818,9 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetFinalExpressionFor() {
+
+		this.filledBlackboard.getFinalExpressionFor(SEFF_BRANCH_FACTORY.getOne());
+
 		assertThat("It must not be possible get the final expression for null",
 			() -> this.emptyBlackboard.getFinalExpressionFor(null), throwsException(NullPointerException.class));
 	}
@@ -747,12 +832,17 @@ public class BlackboardTest {
 	 *
 	 * <ul>
 	 *
+	 * <li> No exceptions for valid input parameters.
+	 *
 	 * <li>{@code null} can not be passed to one of the arguments.
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testSetFinalExpressionFor() {
+
+		this.filledBlackboard.setFinalExpressionFor(SEFF_LOOP_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
+
 		assertThat("It must not be possible to set the final expression for null",
 			() -> this.emptyBlackboard.setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
