@@ -6,6 +6,7 @@ import java.util.Scanner;
  * CHECKSTYLE:OFF
  */
 public class TestFile {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		// Benutzername und Passwort in der "Datenbank"
 		String benutzername = "Sonja";
@@ -25,6 +26,7 @@ public class TestFile {
 	 * @param benutzername
 	 * @return passwort, das der Benutzer eingegeben hat
 	 */
+	@SuppressWarnings("resource")
 	static String fragBenutzerPasswort(String benutzername){
 		System.out.println("Hallo " + benutzername + ". Bitte Passwort eingeben:");
 		Scanner sc = new Scanner(System.in);

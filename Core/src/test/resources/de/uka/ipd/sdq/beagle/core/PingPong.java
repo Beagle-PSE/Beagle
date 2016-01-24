@@ -7,13 +7,20 @@ import java.awt.Rectangle;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/*
+ * CHECKSTYLE:OFF
+ */
 public class PingPong extends JPanel implements Runnable {
+	private static final long serialVersionUID = 1L;
+
 	private final static int SCHRITTWEITE = 1;
 	
 	private JFrame frame;
 	private Rectangle ball;
 	
+	@SuppressWarnings("unused")
 	private int deltaX = SCHRITTWEITE;
+	@SuppressWarnings("unused")
 	private int deltaY = SCHRITTWEITE;
 	
 	PingPong() {
@@ -65,6 +72,7 @@ public class PingPong extends JPanel implements Runnable {
 		// ball.y = ... 
 	}
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		PingPong meinPingPongPanel = new PingPong();
 	}
