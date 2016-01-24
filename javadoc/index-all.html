@@ -330,8 +330,9 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#CodeSection-java.io.File-int-java.io.File-int-">CodeSection(File, int, File, int)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
 <dd>
-<div class="block">Creates a code section that spans from the <code>startIndex</code>th statement in
- <code>startFile</code> to the <code>endIndex</code>th statement in <code>endFile</code>.</div>
+<div class="block">Creates a code section that spans from the statements starting at
+ <code>startIndex</code> in <code>startFile</code> to the statement starting at
+ <code>endIndex</code> in <code>endFile</code>.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionExecutedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">CodeSectionExecutedEvent</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/measurement/order/package-summary.html">de.uka.ipd.sdq.beagle.core.measurement.order</a></dt>
 <dd>
@@ -438,6 +439,18 @@
 </a>
 <h2 class="title">E</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">EvaluableExpression</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expressions describing relations between <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariable</code></a>s and a
@@ -546,8 +559,10 @@
 <dd>
 <div class="block">A parameter of an external call.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#ExternalCallParameter--">ExternalCallParameter()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#ExternalCallParameter-de.uka.ipd.sdq.beagle.core.CodeSection-int-">ExternalCallParameter(CodeSection, int)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
+<dd>
+<div class="block">Creates a parameter of an external call.</div>
+</dd>
 </dl>
 <a name="I:F">
 <!--   -->
@@ -568,6 +583,10 @@
 </a>
 <h2 class="title">G</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#getAction--">getAction()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
+<dd>
+<div class="block">Gets this internal action's <em>code section</em>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getAllExternalCallParameters--">getAllExternalCallParameters()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyserBlackboardView</a></dt>
 <dd>
 <div class="block">Delegates to
@@ -691,9 +710,17 @@
 <div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
  elements</em> related to <code>ids</code> to it.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html#getBranches--">getBranches()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a></dt>
+<dd>
+<div class="block">Gives a set of valid code sections representing a branch of this SeffBranch.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html#getBranchIndex--">getBranchIndex()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a></dt>
 <dd>
 <div class="block">Gets the taken branch’s index.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#getCallCodeSection--">getCallCodeSection()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
+<dd>
+<div class="block">Gives the code section where the external call will be made.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/UndefinedExpressionException.html#getCausingAssignment--">getCausingAssignment()</a></span> - Method in exception de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/UndefinedExpressionException.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">UndefinedExpressionException</a></dt>
 <dd>
@@ -736,7 +763,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#getEndSectionIndex--">getEndSectionIndex()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
 <dd>
-<div class="block">Gets the index of the last statement in this code section.</div>
+<div class="block">Gets the index of the first character of the last statement in this code section.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#getExponent--">getExponent()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
 <dd>
@@ -809,6 +836,14 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getIfExpression--">getIfExpression()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
 <dd>
 <div class="block">Get expression contained in if-statement.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#getIndex--">getIndex()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
+<dd>
+<div class="block">Gives the parameters index in the parameter list.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html#getLoopBody--">getLoopBody()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a></dt>
+<dd>
+<div class="block">Gives a valid code sections representing the body of this SeffBranch's loop.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">getMeasurementResultsFor(ResourceDemandingInternalAction)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyserBlackboardView</a></dt>
 <dd>
@@ -967,6 +1002,10 @@
 <dd>
 <div class="block">Get this evaluable varibale's name.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#getName--">getName()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Gives a name which is a unique identifier for this resource type.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html#getParameterisation--">getParameterisation()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterisationDependentMeasurementResult</a></dt>
 <dd>
 <div class="block">Gets the parameterisation, describing variables’ state when measuring this result.</div>
@@ -1061,7 +1100,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#getStartSectionIndex--">getStartSectionIndex()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
 <dd>
-<div class="block">Gets the index of the first statement in this code section.</div>
+<div class="block">Gets the index of the first character of the last statement in this code section.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#getSubstrahend--">getSubstrahend()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
 <dd>
@@ -1121,6 +1160,18 @@
 </a>
 <h2 class="title">H</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#hasPcmIdOf-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">hasPcmIdOf(ResourceDemandingInternalAction)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a></dt>
 <dd>
 <div class="block">Query whether this mapping contains a PCM identifier for <code>rdia</code>.</div>
@@ -1145,6 +1196,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#IfThenElseExpression--">IfThenElseExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#isNs--">isNs()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Whether this resource type is measured machine dependent or not.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html#isValueAssignedFor-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-">isValueAssignedFor(EvaluableVariable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a></dt>
 <dd>
 <div class="block">Checks whether the <code>EvaluableVariable variable</code> has already a value assigned
@@ -1514,6 +1569,31 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">receive(EvaluableExpressionVisitor)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU">RESOURCE_TYPE_CPU</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Common resource type for cycles performed on a CPU.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU_NS">RESOURCE_TYPE_CPU_NS</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Common resource type for nanoseconds of computation performed on a CPU.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_HDD">RESOURCE_TYPE_HDD</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Common resource type for bytes transfered to or from a non-volatile storage.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_HDD_NS">RESOURCE_TYPE_HDD_NS</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Common resource type for nanoseconds of reading or writing operations performed on
+ a non-volatile storage.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_NETWORK">RESOURCE_TYPE_NETWORK</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Common resource type for bytes send or received over a network interface.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_NETWORK_NS">RESOURCE_TYPE_NETWORK_NS</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Common resource type for nanoseconds spend for network operations.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">ResourceDemandCapturedEvent</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/measurement/order/package-summary.html">de.uka.ipd.sdq.beagle.core.measurement.order</a></dt>
 <dd>
 <div class="block">An event for the fact that the amount of a certain resource a certain code section
@@ -1528,8 +1608,11 @@
 <dd>
 <div class="block">Models an internal action demanding resources of a specific type when being executed.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#ResourceDemandingInternalAction--">ResourceDemandingInternalAction()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#ResourceDemandingInternalAction-de.uka.ipd.sdq.beagle.core.ResourceDemandType-de.uka.ipd.sdq.beagle.core.CodeSection-">ResourceDemandingInternalAction(ResourceDemandType, CodeSection)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
+<dd>
+<div class="block">Creates a ResourceDemandingInternalAction for a specific resource type using a
+ given code section.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><span class="typeNameLink">ResourceDemandMeasurementResult</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/measurement/package-summary.html">de.uka.ipd.sdq.beagle.core.measurement</a></dt>
 <dd>
 <div class="block">A result of measuring resource demands of a code section.</div>
@@ -1543,6 +1626,14 @@
 <dd>
 <div class="block">Creates a result for a resource demand measurement.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">ResourceDemandType</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
+<dd>
+<div class="block">Represents a type of a measured resource, like CPU usage or HDD usage.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#ResourceDemandType-java.lang.String-boolean-">ResourceDemandType(String, boolean)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>
+<div class="block">Creates a custom resource type.</div>
+</dd>
 </dl>
 <a name="I:S">
 <!--   -->
@@ -1553,15 +1644,19 @@
 <dd>
 <div class="block">Models branches in a component's SEFF, originating from conditional constructs.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html#SeffBranch--">SeffBranch()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html#SeffBranch-java.util.Set-">SeffBranch(Set&lt;CodeSection&gt;)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a></dt>
+<dd>
+<div class="block">Creates a SeffBranch using a given code section.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">SeffLoop</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
 <div class="block">Models loops (like Java’s for , while and do - while statement) which affect the calls
  a component makes to other components.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html#SeffLoop--">SeffLoop()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html#SeffLoop-de.uka.ipd.sdq.beagle.core.CodeSection-">SeffLoop(CodeSection)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a></dt>
+<dd>
+<div class="block">Creates a SeffBranch using a given code section for the loop's body.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">SelectionOverviewWizardPage</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
 <dd>
 <div class="block">A page of <a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleAnalysisWizard</code></a> allowing the user to choose which of the
@@ -1653,10 +1748,6 @@
 <dd>
 <div class="block">Sets this result’s <em>result type</em>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#setResourceType-java.lang.String-">setResourceType(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
-<dd>
-<div class="block">Sets this internal action’s <em>result type</em>.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#setSmaller-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setSmaller(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
 <dd>
 <div class="block">Set the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is supposed to be the smaller one in the
@@ -1711,6 +1802,18 @@
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>TimeoutWizardPage</code></a> being linked to the given
  <code>userConfiguration</code>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:U">
 <!--   -->

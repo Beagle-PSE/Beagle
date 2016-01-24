@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -115,18 +115,22 @@ var activeTableTab = "activeTableTab";
 extends java.lang.Object
 implements java.io.Serializable</pre>
 <div class="block">Describes a section in examined software’s source code. Code sections may span multiple
- methods and types. They are defined by a start statement in one source code file and an
- end statement in another source code file that may or may not be the same as the first
- one. Code sections are immutable, meaning that once created, their attributes cannot be
- changed.
+ methods, types and compilation units. They are defined by a start statement in one
+ source code file and an end statement in another source code file that may or may not
+ be the same as the first one. A statement is identified by the index of the statement’s
+ first character in its source file. Code sections are immutable, meaning that once
+ created, their attributes cannot be changed.
 
  <p>A code section must describe a continuous part of source code, meaning that the last
  statement in the section will always be executed if the first one was executed, given
- that no Exceptions occur. All statements that may potentially be executed after the
- first statement but before the last one are considered to be in the section. A code
- section is considered to have been “completely executed” if the section’s first and
- last statement was executed. This does generally not mean that all statements in the
- section were executed.</div>
+ that no Exceptions occur. Furthermore, if the last statement is not the same as the
+ first one, the last statement may only be executed after the first one was. All
+ statements that may potentially be executed after the first statement but before the
+ last one are considered to be “in” the section. A code section is considered to have
+ been “completely executed” if the section’s first and last statement were executed.
+ This does generally not mean that all statements in the section were executed. Code
+ Sections no fulfilling these requirements must not be created. However, this is not
+ checked at run time, because doing so would solve the halting problem.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../serialized-form.html#de.uka.ipd.sdq.beagle.core.CodeSection">Serialized Form</a></dd>
@@ -153,8 +157,9 @@ implements java.io.Serializable</pre>
            int&nbsp;startIndex,
            java.io.File&nbsp;endFile,
            int&nbsp;endIndex)</code>
-<div class="block">Creates a code section that spans from the <code>startIndex</code>th statement in
- <code>startFile</code> to the <code>endIndex</code>th statement in <code>endFile</code>.</div>
+<div class="block">Creates a code section that spans from the statements starting at
+ <code>startIndex</code> in <code>startFile</code> to the statement starting at
+ <code>endIndex</code> in <code>endFile</code>.</div>
 </td>
 </tr>
 </table>
@@ -173,28 +178,40 @@ implements java.io.Serializable</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;object)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.io.File</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getEndFile--">getEndFile</a></span>()</code>
 <div class="block">Gets the file that contains this section’s last statement.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getEndSectionIndex--">getEndSectionIndex</a></span>()</code>
-<div class="block">Gets the index of the last statement in this code section.</div>
+<div class="block">Gets the index of the first character of the last statement in this code section.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.io.File</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getStartFile--">getStartFile</a></span>()</code>
 <div class="block">Gets the file that contains this section’s first statement.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getStartSectionIndex--">getStartSectionIndex</a></span>()</code>
-<div class="block">Gets the index of the first statement in this code section.</div>
+<div class="block">Gets the index of the first character of the last statement in this code section.</div>
 </td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -202,7 +219,7 @@ implements java.io.Serializable</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -228,20 +245,25 @@ implements java.io.Serializable</pre>
                    int&nbsp;startIndex,
                    java.io.File&nbsp;endFile,
                    int&nbsp;endIndex)</pre>
-<div class="block">Creates a code section that spans from the <code>startIndex</code>th statement in
- <code>startFile</code> to the <code>endIndex</code>th statement in <code>endFile</code>.</div>
+<div class="block">Creates a code section that spans from the statements starting at
+ <code>startIndex</code> in <code>startFile</code> to the statement starting at
+ <code>endIndex</code> in <code>endFile</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>startFile</code> - The file containing this section’s first statement. Must not be
             <code>null</code> and <code>startFile.isFile()</code> must return
             <code>true</code>.</dd>
-<dd><code>startIndex</code> - The index of the first statement in this section. Counting starts
-            at 0.</dd>
+<dd><code>startIndex</code> - The index of this section’s first statement’s first character in
+            <code>startFile</code>. Counting starts at <code>0</code>.</dd>
 <dd><code>endFile</code> - The file containing this section’s last statement. Must not be
             <code>null</code> and <code>endFile.isFile()</code> must return
             <code>true</code>.</dd>
-<dd><code>endIndex</code> - The index of the last statement in this section. Counting starts at
-            0.</dd>
+<dd><code>endIndex</code> - The index of this section’s last statement’s first character in
+            <code>endFile</code>. Counting starts at <code>0</code>.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalArgumentException</code> - When <code>startFile.isFile()</code> or
+             <code>endFile.isFile()</code> returned <code>false</code>.</dd>
+<dd><code>java.lang.RuntimeException</code> - If <code>startFile</code> or <code>endFile</code> cannot be read.</dd>
 </dl>
 </li>
 </ul>
@@ -253,34 +275,16 @@ implements java.io.Serializable</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getStartFile--">
+<a name="equals-java.lang.Object-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getStartFile</h4>
-<pre>public&nbsp;java.io.File&nbsp;getStartFile()</pre>
-<div class="block">Gets the file that contains this section’s first statement.</div>
+<h4>equals</h4>
+<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;object)</pre>
 <dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The file containing this section’s first statement. Will never be
-         <code>null</code>.</dd>
-</dl>
-</li>
-</ul>
-<a name="getStartSectionIndex--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getStartSectionIndex</h4>
-<pre>public&nbsp;int&nbsp;getStartSectionIndex()</pre>
-<div class="block">Gets the index of the first statement in this code section. Counting starts at 0.
- The number thus describes how many statements precede the section’s first statement
- in the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getStartFile--">start source code file</a>.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The first statement’s index. A positive integer or 0.</dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
@@ -295,23 +299,81 @@ implements java.io.Serializable</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The file containing this section’s last statement. Will never be
-         <code>null</code>.</dd>
+         <code>null</code> and <code>getEndFile().isFile()</code> always returns <code>true</code>.</dd>
 </dl>
 </li>
 </ul>
 <a name="getEndSectionIndex--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getEndSectionIndex</h4>
 <pre>public&nbsp;int&nbsp;getEndSectionIndex()</pre>
-<div class="block">Gets the index of the last statement in this code section. Counting starts at 0.
- The number thus describes how many statements precede the section’s last statement
- in the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getStartFile--">end source code file</a>.</div>
+<div class="block">Gets the index of the first character of the last statement in this code section.
+ Counting starts at 0. The number thus describes how many characters precede the
+ section’s last statement in the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getEndFile--">end source code file</a>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The last statement’s index. A positive integer or 0.</dd>
+<dd>The last statement’s index. A non-negative integer.</dd>
+</dl>
+</li>
+</ul>
+<a name="getStartFile--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStartFile</h4>
+<pre>public&nbsp;java.io.File&nbsp;getStartFile()</pre>
+<div class="block">Gets the file that contains this section’s first statement.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The file containing this section’s first statement. Will never be
+         <code>null</code> and <code>getStartFile().isFile()</code> always returns
+         <code>true</code>.</dd>
+</dl>
+</li>
+</ul>
+<a name="getStartSectionIndex--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStartSectionIndex</h4>
+<pre>public&nbsp;int&nbsp;getStartSectionIndex()</pre>
+<div class="block">Gets the index of the first character of the last statement in this code section.
+ Counting starts at 0. The number thus describes how many characters precede the
+ section’s last statement in the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html#getEndFile--">end source code file</a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The first statement’s index. A non-negative integer.</dd>
+</dl>
+</li>
+</ul>
+<a name="hashCode--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
