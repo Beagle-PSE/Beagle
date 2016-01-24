@@ -167,29 +167,6 @@ public class BlackboardTest {
 				SEFF_LOOP_FACTORY.getAllAsSet(), new HashSet<>(externalCallParameters)),
 			is(notAcceptingNull(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet())));
 
-		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			() -> new Blackboard(null, null, null, null), throwsException(NullPointerException.class));
-
-		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			() -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-				SEFF_LOOP_FACTORY.getAllAsSet(), null),
-			throwsException(NullPointerException.class));
-
-		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			() -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(), null,
-				EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
-			throwsException(NullPointerException.class));
-
-		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			() -> new Blackboard(RDIA_FACTORY.getAllAsSet(), null, SEFF_LOOP_FACTORY.getAllAsSet(),
-				EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
-			throwsException(NullPointerException.class));
-
-		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			() -> new Blackboard(null, SEFF_BRANCH_FACTORY.getAllAsSet(), SEFF_LOOP_FACTORY.getAllAsSet(),
-				EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet()),
-			throwsException(NullPointerException.class));
-
 		new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(), SEFF_LOOP_FACTORY.getAllAsSet(),
 			EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
 
