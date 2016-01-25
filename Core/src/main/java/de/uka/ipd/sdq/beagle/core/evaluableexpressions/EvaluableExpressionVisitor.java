@@ -1,8 +1,13 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
- * Provides methods to visit all evaluable expressions. Implements the well known Visitor
- * Pattern.
+ * Provides methods to visit any {@linkplain EvaluableExpression}. Implements the well
+ * known Visitor Pattern.
+ *
+ * <p>This interface defines {@code visit} methods {@linkplain EvaluableExpression
+ * EvaluableExpressions} call to register themselves at the visitor. These methods are not
+ * meant to be used by clients. Implementors will define methods designated to access
+ * their functionality for clients.
  *
  * @author Annika Berger
  * @see <a href="https://en.wikipedia.org/wiki/Visitor_pattern">The Visitor Pattern on
