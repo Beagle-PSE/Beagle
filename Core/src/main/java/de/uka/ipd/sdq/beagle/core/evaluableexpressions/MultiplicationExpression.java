@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
  * this class!
- * 
+ *
  * <p>COVERAGE:OFF
  */
 
@@ -10,8 +10,10 @@ import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.List;
 
 /**
  * Expression that multiplies all its contained expressions.
@@ -23,7 +25,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	/**
 	 * All factors of this expression as collection.
 	 */
-	private Collection<EvaluableExpression> factors;
+	private final List<EvaluableExpression> factors;
 
 	/**
 	 * Builds an expression that will return the product of all {@code factors} on
@@ -34,7 +36,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	public MultiplicationExpression(final Collection<EvaluableExpression> factors) {
 		Validate.noNullElements(factors);
-		this.factors = new HashSet<>(factors);
+		this.factors = new ArrayList<>(factors);
 	}
 
 	/**
@@ -45,9 +47,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	public MultiplicationExpression(final EvaluableExpression... factors) {
 		Validate.noNullElements(factors);
-		for (EvaluableExpression factor : factors) {
-			this.factors.add(factor);
-		}
+		this.factors = new ArrayList<>(Arrays.asList(factors));
 	}
 
 	/**
@@ -80,29 +80,29 @@ public class MultiplicationExpression implements EvaluableExpression {
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		double product = 1;
-		for (EvaluableExpression factor : this.factors) {
+		for (final EvaluableExpression factor : this.factors) {
 			product *= factor.evaluate(variableAssignments);
 		}
 		return product;
 	}
-	
+
 	@Override
 	public String toString() {
 		final StringBuilder result = new StringBuilder();
 		result.append("(");
 		boolean first = true;
-		for (EvaluableExpression factor : this.factors) {
-			if (!first)  {
+		for (final EvaluableExpression factor : this.factors) {
+			if (!first) {
 				result.append(" * ");
 			} else {
 				first = false;
 			}
-			result.append(factor.toString());	
+			result.append(factor.toString());
 		}
 		result.append(")");
 		return result.toString();
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {

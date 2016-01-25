@@ -4,9 +4,10 @@ import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Expression that sums up all its contained expressions.
@@ -18,7 +19,7 @@ public class AdditionExpression implements EvaluableExpression {
 	/**
 	 * All summands of this evaluable expression.
 	 */
-	private Set<EvaluableExpression> summands;
+	private final List<EvaluableExpression> summands;
 
 	/**
 	 * Builds an expression that will return the sum of all {@code summands} on
@@ -29,7 +30,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	public AdditionExpression(final Collection<EvaluableExpression> summands) {
 		Validate.noNullElements(summands);
-		this.summands = new HashSet<>(summands);
+		this.summands = new ArrayList<>(summands);
 	}
 
 	/**
@@ -41,10 +42,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	public AdditionExpression(final EvaluableExpression... summands) {
 		Validate.noNullElements(summands);
-		for (EvaluableExpression summand : summands) {
-			this.summands.add(summand);
-		}
-
+		this.summands = new ArrayList<>(Arrays.asList(summands));
 	}
 
 	/**
@@ -79,7 +77,7 @@ public class AdditionExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		double result = 0;
 		double value;
-		for (EvaluableExpression summand : this.summands) {
+		for (final EvaluableExpression summand : this.summands) {
 			value = summand.evaluate(variableAssignments);
 			result += value;
 		}
@@ -91,7 +89,7 @@ public class AdditionExpression implements EvaluableExpression {
 		final StringBuilder result = new StringBuilder();
 		result.append("(");
 		boolean first = true;
-		for (EvaluableExpression summand : this.summands) {
+		for (final EvaluableExpression summand : this.summands) {
 			if (!first) {
 				result.append(" + ");
 			} else {
