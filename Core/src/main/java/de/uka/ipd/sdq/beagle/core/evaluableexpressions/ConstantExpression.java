@@ -23,11 +23,11 @@ public final class ConstantExpression implements EvaluableExpression {
 	/**
 	 * The value of this constant expression.
 	 */
-	private double value;
+	private final double value;
 
 	/**
 	 * Builds an expression which returns the value of the expression.
-	 * 
+	 *
 	 * @param value The Constant value of this expression.
 	 */
 	private ConstantExpression(final double value) {
@@ -82,12 +82,12 @@ public final class ConstantExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return this.value;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.valueOf(this.value);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {

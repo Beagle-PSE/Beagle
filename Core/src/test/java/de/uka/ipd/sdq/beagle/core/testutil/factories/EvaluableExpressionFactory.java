@@ -3,10 +3,13 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
@@ -40,14 +43,33 @@ public class EvaluableExpressionFactory {
 	 *         nesting cases.
 	 */
 	public EvaluableExpression[] getAll() {
-		// will be done right when the evaluable variable constructors are there.
+		final EvaluableVariable varA = new EvaluableVariable("a");
+		final EvaluableVariable varB = new EvaluableVariable("b");
+		final EvaluableVariable varC = new EvaluableVariable("c");
+		final EvaluableVariable varX = new EvaluableVariable("x");
+
 		return new EvaluableExpression[] {
-			new EvaluableVariable(), new ExponentationExpression(),
-			new MultiplicationExpression(new IfThenElseExpression(), new ComparisonExpression(),
-				new EvaluableVariable()),
-			new AdditionExpression(new MultiplicationExpression(ConstantExpression.forValue(8), new EvaluableVariable(),
-				new SineExpression()), new SubstractionExpression(), new NaturalLogarithmExpression()),
-			new SineExpression(), ConstantExpression.forValue(2)
+			varA,
+
+			new ExponentationExpression(ConstantExpression.forValue(2),
+				new SubstractionExpression(new EvaluableVariable("n"), ConstantExpression.forValue(1))),
+
+			new MultiplicationExpression(new IfThenElseExpression(new ComparisonExpression(varA, varB), varA, varB),
+				new DivisionExpression(new NaturalLogarithmExpression(varC),
+					new NaturalLogarithmExpression(ConstantExpression.forValue(10))),
+				varC, new ExponentialFunctionExpression(varA),
+				new MultiplicationExpression(ConstantExpression.forValue(3), varA, varB),
+				ConstantExpression.forValue(11)),
+
+			new AdditionExpression(
+				new MultiplicationExpression(varA, new SineExpression(new MultiplicationExpression(varB,
+					ConstantExpression.forValue(2), ConstantExpression.forValue(Math.PI)))),
+
+				new SineExpression(new AdditionExpression(varX, ConstantExpression.forValue(Math.PI / 2)))),
+
+			new LogarithmExpression(varB, varX),
+
+			ConstantExpression.forValue(2)
 		};
 	}
 
