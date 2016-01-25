@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
  * this class!
- * 
+ *
  * <p>COVERAGE:OFF
  */
 
@@ -22,7 +22,7 @@ public class ExpressionRecursionException extends RuntimeException {
 	/**
 	 * The expression which was the cause of this exception.
 	 */
-	private EvaluableExpression selfContainedExpression;
+	private final EvaluableExpression selfContainedExpression;
 
 	/**
 	 * Creates an Exception for the fact that {@code selfContainedExpression}, contains
@@ -43,6 +43,4 @@ public class ExpressionRecursionException extends RuntimeException {
 	public EvaluableExpression getCausingExpression() {
 		return this.selfContainedExpression;
 	}
-
-
 }
