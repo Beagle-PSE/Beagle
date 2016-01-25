@@ -1,4 +1,10 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -6,7 +12,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that divides its contained dividend through its contained divisor.
- * 
+ *
  * @author Annika Berger
  *
  */
@@ -56,7 +62,7 @@ public class DivisionExpression implements EvaluableExpression {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
 	 * beagle. core.expressions.EvaluableExpressionVisitor)
 	 */
@@ -67,7 +73,7 @@ public class DivisionExpression implements EvaluableExpression {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
 	 * beagle. core.expressions.EvaluableVariableAssignment)

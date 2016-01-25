@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * An {@link EvaluableExpression} having a constant value.
- * 
+ *
  * @author Annika Berger
  *
  */

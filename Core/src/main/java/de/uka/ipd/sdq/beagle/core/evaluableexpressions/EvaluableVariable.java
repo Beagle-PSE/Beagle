@@ -5,8 +5,15 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * An {@link EvaluableExpression} representing a named variable.
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
  * 
+ * <p>COVERAGE:OFF
+ */
+
+/**
+ * An {@link EvaluableExpression} representing a named variable.
+ *
  * @author Annika Berger
  */
 public class EvaluableVariable implements EvaluableExpression {

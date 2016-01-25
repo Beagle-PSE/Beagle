@@ -18,11 +18,11 @@ public final class EqualsMatcher extends DiagnosingMatcher<Object> {
 	 *
 	 * <ul>
 	 *
-	 * <li>{@code equals} returns {@code false} for {@code null}
+	 * <li>{@code equals} returns {@code false} for {@code null}.
 	 *
-	 * <li>{@code equals} returns {@code true} for the same instance
+	 * <li>{@code equals} returns {@code true} for the same instance.
 	 *
-	 * <li>{@code equals} return {@code false} for an object of another class
+	 * <li>{@code equals} returns {@code false} for an object of another class.
 	 *
 	 * </ul>
 	 *

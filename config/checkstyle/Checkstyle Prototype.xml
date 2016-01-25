@@ -208,7 +208,7 @@
     <module name="NoWhitespaceAfter">
       <property name="severity" value="warning"/>
       <property name="allowLineBreaks" value="false"/>
-      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS"/>
+      <property name="tokens" value="BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS"/>
     </module>
     <module name="NoWhitespaceBefore">
       <property name="severity" value="warning"/>
@@ -533,6 +533,9 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="OperatorWrap"/>
+    <module name="NoWhitespaceAfter">
+      <property name="tokens" value="ARRAY_INIT"/>
+    </module>
   </module>
   <module name="JavadocPackage">
     <property name="severity" value="warning"/>
