@@ -92,6 +92,36 @@
 <dt>serialVersionUID:</dt>
 <dd>-1823330022448293103L</dd>
 </dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>startFile</h4>
+<pre>java.io.File startFile</pre>
+<div class="block">The java file which contains the <a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#startStatementNumber"><code>CodeSection.startStatementNumber</code></a> of this code
+ section.</div>
+</li>
+<li class="blockList">
+<h4>startStatementNumber</h4>
+<pre>int startStatementNumber</pre>
+<div class="block">This code section’s first statement’s first character’s index in <a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#startFile"><code>CodeSection.startFile</code></a>
+ , starting with <code>0</code>.</div>
+</li>
+<li class="blockList">
+<h4>endFile</h4>
+<pre>java.io.File endFile</pre>
+<div class="block">The java file which contains the <a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#endStatementNumber"><code>CodeSection.endStatementNumber</code></a> of this code section.</div>
+</li>
+<li class="blockListLast">
+<h4>endStatementNumber</h4>
+<pre>int endStatementNumber</pre>
+<div class="block">This code section’s last statement’s first character’s index in <a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#endFile"><code>CodeSection.endFile</code></a>,
+ starting with <code>0</code>.</div>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 <li class="blockList"><a name="de.uka.ipd.sdq.beagle.core.ExternalCallParameter">
 <!--   -->
@@ -101,6 +131,23 @@
 <dt>serialVersionUID:</dt>
 <dd>9085530983738219258L</dd>
 </dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>call</h4>
+<pre><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a> call</pre>
+<div class="block">The code section where the external call will be made.</div>
+</li>
+<li class="blockListLast">
+<h4>index</h4>
+<pre>int index</pre>
+<div class="block">The parameters index in the parameter list. Starting with <code>0</code>.</div>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 <li class="blockList"><a name="de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction">
 <!--   -->
@@ -110,6 +157,23 @@
 <dt>serialVersionUID:</dt>
 <dd>-8743471676122273889L</dd>
 </dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>resourceType</h4>
+<pre><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a> resourceType</pre>
+<div class="block">The type of resource that should be measured in this code section.</div>
+</li>
+<li class="blockListLast">
+<h4>action</h4>
+<pre><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a> action</pre>
+<div class="block">The code section for this resource demand.</div>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 <li class="blockList"><a name="de.uka.ipd.sdq.beagle.core.SeffBranch">
 <!--   -->
@@ -119,6 +183,18 @@
 <dt>serialVersionUID:</dt>
 <dd>-1525692970296450080L</dd>
 </dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockListLast">
+<h4>branches</h4>
+<pre>java.util.List&lt;E&gt; branches</pre>
+<div class="block">All branches for this SeffBranch.</div>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 <li class="blockList"><a name="de.uka.ipd.sdq.beagle.core.SeffLoop">
 <!--   -->
@@ -128,6 +204,18 @@
 <dt>serialVersionUID:</dt>
 <dd>116182090562332981L</dd>
 </dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockListLast">
+<h4>loopBody</h4>
+<pre><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a> loopBody</pre>
+<div class="block">The code section representing the loop body.</div>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 </li>
