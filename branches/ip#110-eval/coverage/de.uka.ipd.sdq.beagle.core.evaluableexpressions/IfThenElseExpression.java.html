@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that executes an if-then-else-statement based on its contained expressions.
- * 
+ *
  * @author Annika Berger
  */
 public class IfThenElseExpression implements EvaluableExpression {
@@ -14,62 +14,65 @@ public class IfThenElseExpression implements EvaluableExpression {
 	/**
 	 * The expression containing the if-statement.
 	 */
-	private EvaluableExpression ifStatement;
+	private final EvaluableExpression ifStatement;
 
 	/**
 	 * The expression containing the else-statement.
 	 */
-	private EvaluableExpression elseStatement;
+	private final EvaluableExpression elseStatement;
 
 	/**
 	 * The expression containing the then-statement.
 	 */
-	private EvaluableExpression thenStatement;
+	private final EvaluableExpression thenStatement;
 
 	/**
 	 * Builds an expression which returns .
 	 *
-	 * @param ifStatement The expression which contains the if-statement. Must not be {@code null}.
-	 * 
-	 * @param thenStatement The expression which contains the then-statement. Must not be {@code null}.
-	 * @param elseStatement The expression which contains the else-statement. Must not be {@code null}.
+	 * @param ifStatement The expression which contains the if-statement. Must not be
+	 *            {@code null}.
+	 *
+	 * @param thenStatement The expression which contains the then-statement. Must not be
+	 *            {@code null}.
+	 * @param elseStatement The expression which contains the else-statement. Must not be
+	 *            {@code null}.
 	 */
 	public IfThenElseExpression(final EvaluableExpression ifStatement, final EvaluableExpression thenStatement,
-<span class="nc" id="L38">		final EvaluableExpression elseStatement) {</span>
-<span class="nc" id="L39">		Validate.notNull(ifStatement);</span>
-<span class="nc" id="L40">		Validate.notNull(thenStatement);</span>
-<span class="nc" id="L41">		Validate.notNull(elseStatement);</span>
-<span class="nc" id="L42">		this.ifStatement = ifStatement;</span>
-<span class="nc" id="L43">		this.elseStatement = elseStatement;</span>
-<span class="nc" id="L44">		this.thenStatement = thenStatement;</span>
+<span class="nc" id="L41">		final EvaluableExpression elseStatement) {</span>
+<span class="nc" id="L42">		Validate.notNull(ifStatement);</span>
+<span class="nc" id="L43">		Validate.notNull(thenStatement);</span>
+<span class="nc" id="L44">		Validate.notNull(elseStatement);</span>
+<span class="nc" id="L45">		this.ifStatement = ifStatement;</span>
+<span class="nc" id="L46">		this.elseStatement = elseStatement;</span>
+<span class="nc" id="L47">		this.thenStatement = thenStatement;</span>
 
-<span class="nc" id="L46">	}</span>
+<span class="nc" id="L49">	}</span>
 
 	/**
 	 * Get expression contained in if-statement.
-	 * 
+	 *
 	 * @return if-Expression
 	 */
 	public EvaluableExpression getIfStatement() {
-<span class="nc" id="L54">		return this.ifStatement;</span>
+<span class="nc" id="L57">		return this.ifStatement;</span>
 	}
 
 	/**
 	 * Get expression contained in else-statement.
-	 * 
+	 *
 	 * @return else-Expression
 	 */
 	public EvaluableExpression getElseStatement() {
-<span class="nc" id="L63">		return this.elseStatement;</span>
+<span class="nc" id="L66">		return this.elseStatement;</span>
 	}
 
 	/**
 	 * Get expression contained in then-statement.
-	 * 
+	 *
 	 * @return then-expression
 	 */
 	public EvaluableExpression getThenStatement() {
-<span class="nc" id="L72">		return this.thenStatement;</span>
+<span class="nc" id="L75">		return this.thenStatement;</span>
 	}
 
 	/*
@@ -80,8 +83,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-<span class="nc" id="L83">		visitor.visit(this);</span>
-<span class="nc" id="L84">	}</span>
+<span class="nc" id="L86">		visitor.visit(this);</span>
+<span class="nc" id="L87">	}</span>
 
 	/*
 	 * (non-Javadoc)
@@ -92,40 +95,40 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-<span class="nc bnc" id="L95" title="All 2 branches missed.">		if (this.ifStatement.evaluate(variableAssignments) == 0) {</span>
-<span class="nc" id="L96">			return this.thenStatement.evaluate(variableAssignments);</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">		if (this.ifStatement.evaluate(variableAssignments) == 0) {</span>
+<span class="nc" id="L99">			return this.thenStatement.evaluate(variableAssignments);</span>
 		} else {
-<span class="nc" id="L98">			return this.elseStatement.evaluate(variableAssignments);</span>
+<span class="nc" id="L101">			return this.elseStatement.evaluate(variableAssignments);</span>
 		}
 	}
 
 	@Override
 	public String toString() {
-<span class="nc" id="L104">		return String.format(&quot;(%s ? %s : %s)&quot;, this.ifStatement, this.thenStatement, this.elseStatement);</span>
+<span class="nc" id="L107">		return String.format(&quot;(%s ? %s : %s)&quot;, this.ifStatement, this.thenStatement, this.elseStatement);</span>
 	}
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="nc bnc" id="L109" title="All 2 branches missed.">		if (object == null) {</span>
-<span class="nc" id="L110">			return false;</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">		if (object == null) {</span>
+<span class="nc" id="L113">			return false;</span>
 		}
-<span class="nc bnc" id="L112" title="All 2 branches missed.">		if (object == this) {</span>
-<span class="nc" id="L113">			return true;</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">		if (object == this) {</span>
+<span class="nc" id="L116">			return true;</span>
 		}
-<span class="nc bnc" id="L115" title="All 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
-<span class="nc" id="L116">			return false;</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
+<span class="nc" id="L119">			return false;</span>
 		}
-<span class="nc" id="L118">		final IfThenElseExpression other = (IfThenElseExpression) object;</span>
-<span class="nc" id="L119">		return new EqualsBuilder().append(this.ifStatement, other.ifStatement)</span>
-<span class="nc" id="L120">			.append(this.thenStatement, other.thenStatement).append(this.elseStatement, other.elseStatement).isEquals();</span>
+<span class="nc" id="L121">		final IfThenElseExpression other = (IfThenElseExpression) object;</span>
+<span class="nc" id="L122">		return new EqualsBuilder().append(this.ifStatement, other.ifStatement)</span>
+<span class="nc" id="L123">			.append(this.thenStatement, other.thenStatement).append(this.elseStatement, other.elseStatement).isEquals();</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="nc" id="L127">		return new HashCodeBuilder(215, 217).append(this.ifStatement).append(this.thenStatement)</span>
-<span class="nc" id="L128">			.append(this.elseStatement).toHashCode();</span>
+<span class="nc" id="L130">		return new HashCodeBuilder(215, 217).append(this.ifStatement).append(this.thenStatement)</span>
+<span class="nc" id="L131">			.append(this.elseStatement).toHashCode();</span>
 	}
 
 }
