@@ -16,8 +16,8 @@ import java.util.List;
  * EvaluableExpressions}. The class aims to reduce the number of an expressions’s inner
  * expressions on a best effort basis. It does not guarantee that it will find the
  * shortest version. In other words, if {@code |e|} describes the number of {@code e}’s
- * inner expressions + 1, {@code this.simplify(e)} will return an expression {@code e1},
- * such that {@code |e1| ≤ |e|} and for any {@link EvaluableVariableAssignment x}
+ * inner expressions, {@code this.simplify(e)} will return an expression {@code e1}, such
+ * that {@code |e1| ≤ |e|} and for any {@link EvaluableVariableAssignment} {@code x}
  * {@code e.evaluate(x) = e1.evaluate(x)}.
  *
  * @author Joshua Gleitze
