@@ -191,7 +191,7 @@ public class EvaluableExpressionSimplifier extends ModifyingEvaluableExpressionV
 			public void visit(final AdditionExpression expression) {
 				// the addition expression must be flat (⇔ contain no other
 				// AdditionExpression) at this point.
-				AdditionSimplifier.this.summands.addAll(expression.getSummands());
+				AdditionSimplifier.this.negativePart.addAll(expression.getSummands());
 			}
 
 			@Override

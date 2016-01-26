@@ -739,7 +739,7 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 
 		@Override
 		public void visit(final SubtractionExpression expression) {
-			this.visitInner(expression.getSubtrahend(), expression.getMinuend());
+			this.visitInner(expression.getMinuend(), expression.getSubtrahend());
 		}
 
 	}
