@@ -13,7 +13,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -52,7 +52,7 @@ public class EvaluableExpressionFactory {
 			varA,
 
 			new ExponentationExpression(ConstantExpression.forValue(2),
-				new SubstractionExpression(new EvaluableVariable("n"), ConstantExpression.forValue(1))),
+				new SubtractionExpression(new EvaluableVariable("n"), ConstantExpression.forValue(1))),
 
 			new MultiplicationExpression(new IfThenElseExpression(new ComparisonExpression(varA, varB), varA, varB),
 				new DivisionExpression(new NaturalLogarithmExpression(varC),

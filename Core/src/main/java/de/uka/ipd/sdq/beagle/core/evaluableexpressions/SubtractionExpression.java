@@ -10,12 +10,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * @author Annika Berger
  *
  */
-public class SubstractionExpression implements EvaluableExpression {
+public class SubtractionExpression implements EvaluableExpression {
 
 	/**
-	 * The substrahend of the expression.
+	 * The subtrahend of the expression.
 	 */
-	private final EvaluableExpression substrahend;
+	private final EvaluableExpression subtrahend;
 
 	/**
 	 * The minuend of the expressions.
@@ -23,25 +23,25 @@ public class SubstractionExpression implements EvaluableExpression {
 	private final EvaluableExpression minuend;
 
 	/**
-	 * Builds an expression which returns the difference of substrahend and minuend.
+	 * Builds an expression which returns the difference of subtrahend and minuend.
 	 *
-	 * @param substrahend The substrahend of the expression. Must not be {@code null}.
+	 * @param subtrahend The subtrahend of the expression. Must not be {@code null}.
 	 * @param minuend The minuend of the expression. Must not be {@code null}.
 	 */
-	public SubstractionExpression(final EvaluableExpression substrahend, final EvaluableExpression minuend) {
-		Validate.notNull(substrahend);
+	public SubtractionExpression(final EvaluableExpression minuend, final EvaluableExpression subtrahend) {
+		Validate.notNull(subtrahend);
 		Validate.notNull(minuend);
-		this.substrahend = substrahend;
+		this.subtrahend = subtrahend;
 		this.minuend = minuend;
 	}
 
 	/**
-	 * Get the {@link EvaluableExpression} which is the substrahend.
+	 * Get the {@link EvaluableExpression} which is the subtrahend.
 	 *
-	 * @return This expression's substrahend.
+	 * @return This expression's subtrahend.
 	 */
-	public EvaluableExpression getSubstrahend() {
-		return this.substrahend;
+	public EvaluableExpression getSubtrahend() {
+		return this.subtrahend;
 	}
 
 	/**
@@ -73,12 +73,12 @@ public class SubstractionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return this.minuend.evaluate(variableAssignments) - this.substrahend.evaluate(variableAssignments);
+		return this.minuend.evaluate(variableAssignments) - this.subtrahend.evaluate(variableAssignments);
 	}
 
 	@Override
 	public String toString() {
-		return String.format("(%s - %s)", this.minuend, this.substrahend);
+		return String.format("(%s - %s)", this.minuend, this.subtrahend);
 	}
 
 	@Override
@@ -92,8 +92,8 @@ public class SubstractionExpression implements EvaluableExpression {
 		if (object.getClass() != this.getClass()) {
 			return false;
 		}
-		final SubstractionExpression other = (SubstractionExpression) object;
-		return new EqualsBuilder().append(this.minuend, other.minuend).append(this.substrahend, other.substrahend)
+		final SubtractionExpression other = (SubtractionExpression) object;
+		return new EqualsBuilder().append(this.minuend, other.minuend).append(this.subtrahend, other.subtrahend)
 			.isEquals();
 	}
 
@@ -101,7 +101,7 @@ public class SubstractionExpression implements EvaluableExpression {
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(235, 237).append(this.minuend).append(this.substrahend).toHashCode();
+		return new HashCodeBuilder(235, 237).append(this.minuend).append(this.subtrahend).toHashCode();
 	}
 
 }
