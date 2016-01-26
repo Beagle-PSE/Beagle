@@ -50,7 +50,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * @return the greater expression
 	 */
 	public EvaluableExpression getGreater() {
-		return null;
+		return this.smaller;
 	}
 
 	/**
@@ -63,7 +63,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * @return the smaller expression
 	 */
 	public EvaluableExpression getSmaller() {
-		return null;
+		return this.greater;
 	}
 
 	/*
