@@ -4,9 +4,10 @@ import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Expression that sums up all its contained expressions.
@@ -18,7 +19,7 @@ public class AdditionExpression implements EvaluableExpression {
 	/**
 	 * All summands of this evaluable expression.
 	 */
-	private Set&lt;EvaluableExpression&gt; summands;
+	private final List&lt;EvaluableExpression&gt; summands;
 
 	/**
 	 * Builds an expression that will return the sum of all {@code summands} on
@@ -27,10 +28,10 @@ public class AdditionExpression implements EvaluableExpression {
 	 * @param summands The summands forming this expression’s sum. {@code summands.size()}
 	 *            must at least be 2.
 	 */
-<span class="nc" id="L30">	public AdditionExpression(final Collection&lt;EvaluableExpression&gt; summands) {</span>
-<span class="nc" id="L31">		Validate.noNullElements(summands);</span>
-<span class="nc" id="L32">		this.summands = new HashSet&lt;&gt;(summands);</span>
-<span class="nc" id="L33">	}</span>
+<span class="nc" id="L31">	public AdditionExpression(final Collection&lt;EvaluableExpression&gt; summands) {</span>
+<span class="nc" id="L32">		Validate.noNullElements(summands);</span>
+<span class="nc" id="L33">		this.summands = new ArrayList&lt;&gt;(summands);</span>
+<span class="nc" id="L34">	}</span>
 
 	/**
 	 * Builds an expression that will return the sum of all {@code summands} on
@@ -39,13 +40,10 @@ public class AdditionExpression implements EvaluableExpression {
 	 * @param summands The summands forming this expression’s sum. {@code summands.length}
 	 *            must at least be 2.
 	 */
-<span class="nc" id="L42">	public AdditionExpression(final EvaluableExpression... summands) {</span>
-<span class="nc" id="L43">		Validate.noNullElements(summands);</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">		for (EvaluableExpression summand : summands) {</span>
-<span class="nc" id="L45">			this.summands.add(summand);</span>
-		}
-
-<span class="nc" id="L48">	}</span>
+<span class="nc" id="L43">	public AdditionExpression(final EvaluableExpression... summands) {</span>
+<span class="nc" id="L44">		Validate.noNullElements(summands);</span>
+<span class="nc" id="L45">		this.summands = new ArrayList&lt;&gt;(Arrays.asList(summands));</span>
+<span class="nc" id="L46">	}</span>
 
 	/**
 	 * Get all evaluable expressions which are forming this expression's sum. There have
@@ -54,7 +52,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 * @return A collection of all summands of this addition expression.
 	 */
 	public Collection&lt;EvaluableExpression&gt; getSummands() {
-<span class="nc" id="L57">		return this.summands;</span>
+<span class="nc" id="L55">		return this.summands;</span>
 	}
 
 	/*
@@ -65,8 +63,8 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-<span class="nc" id="L68">		visitor.visit(this);</span>
-<span class="nc" id="L69">	}</span>
+<span class="nc" id="L66">		visitor.visit(this);</span>
+<span class="nc" id="L67">	}</span>
 
 	/*
 	 * (non-Javadoc)
@@ -77,53 +75,53 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-<span class="nc" id="L80">		double result = 0;</span>
+<span class="nc" id="L78">		double result = 0;</span>
 		double value;
-<span class="nc bnc" id="L82" title="All 2 branches missed.">		for (EvaluableExpression summand : this.summands) {</span>
-<span class="nc" id="L83">			value = summand.evaluate(variableAssignments);</span>
-<span class="nc" id="L84">			result += value;</span>
-<span class="nc" id="L85">		}</span>
-<span class="nc" id="L86">		return result;</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		for (final EvaluableExpression summand : this.summands) {</span>
+<span class="nc" id="L81">			value = summand.evaluate(variableAssignments);</span>
+<span class="nc" id="L82">			result += value;</span>
+<span class="nc" id="L83">		}</span>
+<span class="nc" id="L84">		return result;</span>
 	}
 
 	@Override
 	public String toString() {
-<span class="nc" id="L91">		final StringBuilder result = new StringBuilder();</span>
-<span class="nc" id="L92">		result.append(&quot;(&quot;);</span>
-<span class="nc" id="L93">		boolean first = true;</span>
-<span class="nc bnc" id="L94" title="All 2 branches missed.">		for (EvaluableExpression summand : this.summands) {</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">			if (!first) {</span>
-<span class="nc" id="L96">				result.append(&quot; + &quot;);</span>
+<span class="nc" id="L89">		final StringBuilder result = new StringBuilder();</span>
+<span class="nc" id="L90">		result.append(&quot;(&quot;);</span>
+<span class="nc" id="L91">		boolean first = true;</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		for (final EvaluableExpression summand : this.summands) {</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">			if (!first) {</span>
+<span class="nc" id="L94">				result.append(&quot; + &quot;);</span>
 			} else {
-<span class="nc" id="L98">				first = false;</span>
+<span class="nc" id="L96">				first = false;</span>
 			}
-<span class="nc" id="L100">			result.append(summand.toString());</span>
-<span class="nc" id="L101">		}</span>
-<span class="nc" id="L102">		result.append(&quot;)&quot;);</span>
-<span class="nc" id="L103">		return result.toString();</span>
+<span class="nc" id="L98">			result.append(summand.toString());</span>
+<span class="nc" id="L99">		}</span>
+<span class="nc" id="L100">		result.append(&quot;)&quot;);</span>
+<span class="nc" id="L101">		return result.toString();</span>
 
 	}
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="nc bnc" id="L109" title="All 2 branches missed.">		if (object == null) {</span>
-<span class="nc" id="L110">			return false;</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">		if (object == null) {</span>
+<span class="nc" id="L108">			return false;</span>
 		}
-<span class="nc bnc" id="L112" title="All 2 branches missed.">		if (object == this) {</span>
-<span class="nc" id="L113">			return true;</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">		if (object == this) {</span>
+<span class="nc" id="L111">			return true;</span>
 		}
-<span class="nc bnc" id="L115" title="All 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
-<span class="nc" id="L116">			return false;</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
+<span class="nc" id="L114">			return false;</span>
 		}
-<span class="nc" id="L118">		final AdditionExpression other = (AdditionExpression) object;</span>
-<span class="nc" id="L119">		return new EqualsBuilder().append(this.summands, other.summands).isEquals();</span>
+<span class="nc" id="L116">		final AdditionExpression other = (AdditionExpression) object;</span>
+<span class="nc" id="L117">		return new EqualsBuilder().append(this.summands, other.summands).isEquals();</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="nc" id="L126">		return new HashCodeBuilder(999, 393).append(this.summands).toHashCode();</span>
+<span class="nc" id="L124">		return new HashCodeBuilder(999, 393).append(this.summands).toHashCode();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
