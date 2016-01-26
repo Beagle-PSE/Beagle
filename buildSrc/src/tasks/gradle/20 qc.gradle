@@ -27,18 +27,29 @@ configure(javaSubprojects) {
 		afterEvaluate {
 			classDirectories = files(classDirectories.files.collect { classDir ->
 				def base = classDir.toPath()
-	            def tree = fileTree(classDir)
-	            tree.exclude { spec ->
+	            def excludedFiles = fileTree(classDir)
+	            excludedFiles.exclude { spec ->
 	            	def classPath = base.relativize(spec.file.toPath()).toString()
 
-	            	if (classPath.endsWith('.class')) {
-	            		def sourcePath = classPath - '.class' + '.java'
-	            		def sourceFile = file("$project.projectDir/src/main/java/$sourcePath")
-	            		return sourceFile.text.contains('COVERAGE:OFF') || sourceFile.text.contains('JACOCO:OFF')
+	            	if (!classPath.endsWith('.class')) {
+	            		return false
 	            	}
+	            	
+	            	def filePath = classPath - '.class'
+	            	filePath = filePath[0..filePath.indexOf('$')] - '$'
+            		def sourcePath = filePath + '.java'
+            		for (sourceDirectory in sourceDirectories) {
+            			def sourceFile = new File(sourceDirectory, sourcePath)
+            			if (!sourceFile.isFile()) {
+            				continue;
+            			} 
+            			if (sourceFile.text.contains('COVERAGE:OFF') || sourceFile.text.contains('JACOCO:OFF')) {
+            				return true;
+        				}
+            		}
 	            	return false
 	            }
-	            return tree
+	            return excludedFiles
 	        })
 		}
 	}	
