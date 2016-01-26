@@ -6,8 +6,9 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  *
  * <p>This interface defines {@code visit} methods {@linkplain EvaluableExpression
  * EvaluableExpressions} call to register themselves at the visitor. These methods are not
- * meant to be used by clients. Implementors will define methods designated to access
- * their functionality for clients.
+ * meant to be used by clients. Implementors are advised not to implement this interface
+ * directly, but to rather use a private nested class to do so. This will hide the visitor
+ * interface from clients.
  *
  * @author Annika Berger
  * @see <a href="https://en.wikipedia.org/wiki/Visitor_pattern">The Visitor Pattern on

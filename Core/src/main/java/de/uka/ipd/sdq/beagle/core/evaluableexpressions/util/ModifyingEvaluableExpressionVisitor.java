@@ -35,15 +35,84 @@ import java.util.Collection;
  * by a new expression of the same type containing the same inner expressions except for
  * the ones that were initially replaced.
  *
+ * <p>This class offers multiple hooks for implementors. All hooks are offered for each
+ * implementation of {@linkplain EvaluableExpression} as well as for a general
+ * {@link EvaluableExpression}, called for all implementations. The general hook will
+ * always be called before the specific one. Implementors do not have to call the
+ * {@code super} method on hooks. The following hooks are offered:
+ *
+ * <ul>
+ *
+ * <li>{@code at}: called when visiting an expression, before visiting its inner
+ * expressions.
+ *
+ * <li>{@code after}: called when leaving an expression, after visiting its inner
+ * expressions.
+ *
+ * </ul>
+ *
+ * <p>This visitor will start at the expression passed to
+ * {@link #modifyRecursively(EvaluableExpression)} and call the general {@code at} hook
+ * and the specific {@code at} hook. Afterwards, it will recursively visit all inner
+ * expressions and then call the general {@code after} and the specific {@code after}
+ * hook. It thus realises a depth-first traversal of the tree formed by each expression.
+ * If {@link #stopTraversal()} is called, the traversal will no longer visit inner
+ * expressions. Instead, it will go “up” the tree again, whilst calling the {@code after}
+ * hooks, until it reached the initial expression and then terminate. Given that no
+ * expression is thrown,the traversal of one expression tree that only contains pairwise
+ * different inner expressions has these properties:
+ *
+ * <ul>
+ *
+ * <li> the number of all called {@code at} hooks will equal the number of all called
+ * {@code after} hooks. However, the numbers may differ for a type of specific hooks
+ * because the expression was changed during the visit. For example
+ * {@link #atSubstraction} may be called on an expression that is replaced by an
+ * {@linkplain AdditionExpression} in this hook. Thus {@link #afterAddition} will be
+ * called instead of {@link #afterSubstraction} at this position when traversing upwards.
+ *
+ * <li> if for two expression {@code e1} and {@code e2}, {@code atExpression(e1)} was
+ * called before {@code atExpression(e2)} was, {@code afterExpression(e2)} will be called
+ * before {@code afterExpression(e1)} will be called.
+ *
+ * </ul>
+ *
+ * <p>Please note that evaluable expressions may often contain an instance of one
+ * evaluable expression multiple times. Replacements do however only apply to the current
+ * position in the traversal tree (and not all occurences of the currently visited
+ * expression).
+ *
+ * <p>This visitor is not thread safe. It may only be used to traverse one expression at a
+ * time, meaning that its results are undefined if
+ * {@link #modifyRecursively(EvaluableExpression)} is called when
+ * {@link #getTraversalDepth()} does not return {@code -1}. There is however no limitation
+ * on how many expression trees can be visited by an instance of this class.
+ *
  * @author Joshua Gleitze
  */
-public abstract class ModifyingEvaluableExpressionVisitor implements EvaluableExpressionVisitor {
+public abstract class ModifyingEvaluableExpressionVisitor {
 
 	/**
 	 * The momentarily visited expression. It can change multiple times at the same tree
 	 * node!
 	 */
 	private EvaluableExpression currentExpression;
+
+	/**
+	 * How deeply we have the traversed so far. Will be 0 at the root.
+	 */
+	private int depth;
+
+	/**
+	 * How many expressions we’ve seen so far. Will be 1 at the root.
+	 */
+	private int count;
+
+	/**
+	 * As long as this is true, we’ll traverse further. We’ll immediately stop to traverse
+	 * deeper as soon as this is false.
+	 */
+	private boolean doTraverse = true;
 
 	/**
 	 * The visitor handling the calls to the {@code at} hooks.
@@ -76,6 +145,9 @@ public abstract class ModifyingEvaluableExpressionVisitor implements EvaluableEx
 	 * accordingly.
 	 */
 	private void next() {
+		this.depth++;
+		this.count++;
+
 		// call at-hooks
 		this.atExpression(this.currentExpression);
 		this.currentExpression.receive(this.atHookHandler);
@@ -89,25 +161,111 @@ public abstract class ModifyingEvaluableExpressionVisitor implements EvaluableEx
 		// call after-hooks
 		this.afterExpression(this.currentExpression);
 		this.currentExpression.receive(this.afterHookHandler);
+		this.depth--;
 	}
 
+	/**
+	 * Starts visiting {@code expression}.
+	 *
+	 * @param expression The expression forming the root of the expression tree that shall
+	 *            be traversed. Must not be {@code null}.
+	 * @return The modified expression. This is the expression that was build to reflect
+	 *         all replacements. Will be {@code expression} if no substantial call to
+	 *         {@link #replaceCurrentExpressionWith(EvaluableExpression)} was made.
+	 */
 	protected EvaluableExpression modifyRecursively(final EvaluableExpression expression) {
 		Validate.notNull(expression, "Cannot traverse null.");
 
 		this.currentExpression = expression;
 		this.lastInnerExpressionIterator = null;
+		this.count = 0;
+		this.depth = -1;
+		this.doTraverse = true;
+
 		this.next();
 
 		return this.currentExpression;
 	}
 
+	/**
+	 * Replaces the currently visited expression with {@code expression} in the expression
+	 * tree. This will lead the traversal to continue in {@code expression} and all
+	 * expressions for which no {@code after} hooks have been called yet to be replaced by
+	 * an expression reflecting this replacement. A call to this method has no effect if
+	 * {@code expression} equals the momentarily visited expression.
+	 *
+	 * @param expression The new expression to be inserted at the point in the expression
+	 *            tree at which the current expression is found. Must not be {@code null}.
+	 *
+	 * @throws IllegalStateException If this visitor is currently not visiting an
+	 *             expression tree.
+	 */
 	protected void replaceCurrentExpressionWith(final EvaluableExpression expression) {
 		Validate.notNull(expression, "The current expression can only be replaced by a new one.");
+		Validate.validState(this.depth >= 0, "This visitor does no visit any expression in the moment. "
+			+ "Please call this method only from a visiting hook!");
+
+		if (this.currentExpression.equals(expression)) {
+			return;
+		}
 
 		this.currentExpression = expression;
 		if (this.lastInnerExpressionIterator != null) {
 			this.lastInnerExpressionIterator.notifyNew();
 		}
+	}
+
+	/**
+	 * Queries how many expressions have been visited during the momentary traversal. This
+	 * value is only reset when starting a new visit a new expression, it can thus be used
+	 * to determine how many expressions were visited after a traversal.
+	 *
+	 * @return The amount of called general {@code at} hooks since the last call of
+	 *         {@link #atFirstExpression}.
+	 */
+	protected int getVisitedCount() {
+		return this.count;
+	}
+
+	/**
+	 * Queries how “deep” the currently visited expression is in the visited tree.
+	 *
+	 * @return how many {@code at} hooks have been called - how many {@code after} hooks
+	 *         have been called - 1. Will be {@code 0} at the root expression and
+	 *         {@code -1} at the before and after a traversal.
+	 */
+	protected int getTraversalDepth() {
+		return this.depth;
+	}
+
+	/**
+	 * Stops visiting of inner expressions. As soon as this method is called, this visitor
+	 * will no longer visit inner expressions. This means that only {@code after} hooks of
+	 * already visited expressions will be called until the root is reached. This setting
+	 * persists only until the next call of
+	 * {@link #modifyRecursively(EvaluableExpression)} .
+	 */
+	protected void stopTraversal() {
+		this.doTraverse = false;
+	}
+
+	/**
+	 * Continues visiting of inner expressions after it has been stopped through
+	 * {@link #stopTraversal()}. This returns to the visitor’s default behaviour.
+	 */
+	protected void continueTraversal() {
+		this.doTraverse = true;
+	}
+
+	/**
+	 * Queries whether the visitor will visit inner expressions. Will return {@code true}
+	 * unless {@link #stopTraversal()} is called. The value will be reset when calling
+	 * {@link #modifyRecursively(EvaluableExpression)}.
+	 *
+	 * @return Whether inner expressions will be examined for the momentary tree.
+	 */
+	protected boolean willTraverse() {
+		return this.doTraverse;
 	}
 
 	/**
@@ -510,8 +668,9 @@ public abstract class ModifyingEvaluableExpressionVisitor implements EvaluableEx
 		private void visitInner(final EvaluableExpression... currentInnerExpressions) {
 			this.innerExpressions = currentInnerExpressions;
 
-			for (this.innerExpressionIndex =
-				0; this.innerExpressionIndex < this.innerExpressions.length; this.innerExpressionIndex++) {
+			// iterate over all as long as doTraverse is true.
+			for (this.innerExpressionIndex = 0; this.innerExpressionIndex < this.innerExpressions.length
+				&& ModifyingEvaluableExpressionVisitor.this.doTraverse; this.innerExpressionIndex++) {
 				ModifyingEvaluableExpressionVisitor.this.currentExpression =
 					this.innerExpressions[this.innerExpressionIndex];
 				ModifyingEvaluableExpressionVisitor.this.next();

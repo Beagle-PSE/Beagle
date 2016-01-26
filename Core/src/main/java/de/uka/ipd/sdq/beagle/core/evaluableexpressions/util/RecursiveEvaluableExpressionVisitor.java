@@ -16,6 +16,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpressio
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.Iterator;
 
 /**
@@ -38,13 +40,30 @@ import java.util.Iterator;
  *
  * </ul>
  *
- * <p>This visitor will start at an expression and call the general {@code at} hook and
+ * <p>This visitor will start at the expression passed to
+ * {@link #visitRecursively(EvaluableExpression)} and call the general {@code at} hook and
  * the specific {@code at} hook. Afterwards, it will recursively visit all inner
  * expressions and then call the general {@code after} and the specific {@code after}
  * hook. It thus realises a depth-first traversal of the tree formed by each expression.
  * If {@link #stopTraversal()} is called, the traversal will no longer visit inner
  * expressions. Instead, it will go “up” the tree again, whilst calling the {@code after}
- * hooks, until it reached the initial expression and then terminate.
+ * hooks, until it reached the initial expression and then terminate. Given that no
+ * expression is thrown,the traversal of one expression tree that only contains pairwise
+ * different inner expressions has these properties:
+ *
+ * <ul>
+ *
+ * <li> for each type, the number of called {@code at} hooks will equal the number of
+ * called {@code after} hooks.
+ *
+ * <li> if for two expression {@code e1} and {@code e2}, {@code atExpression(e1)} was
+ * called before {@code atExpression(e2)} was, {@code afterExpression(e2)} will be called
+ * before {@code afterExpression(e1)} will be called.
+ *
+ * </ul>
+ *
+ * <p>Please note that evaluable expressions may often contain an instance of one
+ * evaluable expression multiple times.
  *
  * <p>This visitor is not thread safe. It may only be used to traverse one expression at a
  * time, meaning that its results are undefined if
@@ -54,13 +73,12 @@ import java.util.Iterator;
  *
  * @author Joshua Gleitze
  */
-public abstract class RecursiveEvaluableExpressionVisitor implements EvaluableExpressionVisitor {
+public abstract class RecursiveEvaluableExpressionVisitor {
 
 	/**
-	 * As long as this is true, we’ll traverse further. We’ll immediately stop to traverse
-	 * deeper as soon as this is false.
+	 * The visitor actually doing the recursive visiting.
 	 */
-	private boolean doTraverse = true;
+	private final RecursiveWalker recursiveWalker = new RecursiveWalker();
 
 	/**
 	 * How deeply we have the traversed so far. Will be 0 at the root.
@@ -75,14 +93,16 @@ public abstract class RecursiveEvaluableExpressionVisitor implements EvaluableEx
 	/**
 	 * Starts visiting {@code expression} recursively.
 	 *
-	 * @param expression The expression that forms the root of tree this visitor shall
-	 *            traverse.
+	 * @param expression The expression that forms the root of the tree this visitor shall
+	 *            traverse. Must not be {@code null}.
 	 */
-	public void visitRecursively(final EvaluableExpression expression) {
+	protected void visitRecursively(final EvaluableExpression expression) {
+		Validate.notNull(expression, "Cannot visit null.");
+
 		this.depth = -1;
 		this.count = 0;
-		this.doTraverse = true;
-		expression.receive(this);
+		this.recursiveWalker.doTraverse = true;
+		expression.receive(this.recursiveWalker);
 	}
 
 	/**
@@ -115,7 +135,7 @@ public abstract class RecursiveEvaluableExpressionVisitor implements EvaluableEx
 	 * .
 	 */
 	protected void stopTraversal() {
-		this.doTraverse = false;
+		this.recursiveWalker.doTraverse = false;
 	}
 
 	/**
@@ -123,7 +143,7 @@ public abstract class RecursiveEvaluableExpressionVisitor implements EvaluableEx
 	 * {@link #stopTraversal()}. This returns to the visitor’s default behaviour.
 	 */
 	protected void continueTraversal() {
-		this.doTraverse = true;
+		this.recursiveWalker.doTraverse = true;
 	}
 
 	/**
@@ -134,7 +154,7 @@ public abstract class RecursiveEvaluableExpressionVisitor implements EvaluableEx
 	 * @return Whether inner expressions will be examined for the momentary tree.
 	 */
 	protected boolean willTraverse() {
-		return this.doTraverse;
+		return this.recursiveWalker.doTraverse;
 	}
 
 	/**
@@ -466,284 +486,302 @@ public abstract class RecursiveEvaluableExpressionVisitor implements EvaluableEx
 		// may be implemented by implementor.
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * The actual visitor passed to the expressions. Does the actual walking. Realised as
+	 * private nested class to hide the {@code visit} methods from clients.
 	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)
+	 * @author Joshua Gleitze
 	 */
-	@Override
-	public final void visit(final AdditionExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atAddition(expression);
+	private class RecursiveWalker implements EvaluableExpressionVisitor {
 
-		final Iterator<EvaluableExpression> innerExpressions = expression.getSummands().iterator();
-		while (this.doTraverse && innerExpressions.hasNext()) {
-			innerExpressions.next().receive(this);
+		/**
+		 * As long as this is true, we’ll traverse further. We’ll immediately stop to
+		 * traverse deeper as soon as this is false.
+		 */
+		private boolean doTraverse = true;
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)
+		 */
+		@Override
+		public final void visit(final AdditionExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atAddition(expression);
+
+			final Iterator<EvaluableExpression> innerExpressions = expression.getSummands().iterator();
+			while (this.doTraverse && innerExpressions.hasNext()) {
+				innerExpressions.next().receive(this);
+			}
+
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterAddition(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterAddition(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de
+		 * .uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression)
+		 */
+		@Override
+		public final void visit(final MultiplicationExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atMultiplication(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression)
-	 */
-	@Override
-	public final void visit(final MultiplicationExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atMultiplication(expression);
+			final Iterator<EvaluableExpression> innerExpressions = expression.getFactors().iterator();
+			while (this.doTraverse && innerExpressions.hasNext()) {
+				innerExpressions.next().receive(this);
+			}
 
-		final Iterator<EvaluableExpression> innerExpressions = expression.getFactors().iterator();
-		while (this.doTraverse && innerExpressions.hasNext()) {
-			innerExpressions.next().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterMultiplication(expression);
+
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterMultiplication(expression);
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable)
+		 */
+		@Override
+		public final void visit(final EvaluableVariable variable) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(variable);
+			RecursiveEvaluableExpressionVisitor.this.atVariable(variable);
 
-	}
+			// no inner expressions to visit
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable)
-	 */
-	@Override
-	public final void visit(final EvaluableVariable variable) {
-		this.atExpressionPrivate(variable);
-		this.atVariable(variable);
-
-		// no inner expressions to visit
-
-		this.afterExpressionPrivate(variable);
-		this.afterVariable(variable);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression)
-	 */
-	@Override
-	public final void visit(final ComparisonExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atComparison(expression);
-
-		if (this.doTraverse) {
-			expression.getSmaller().receive(this);
-		}
-		if (this.doTraverse) {
-			expression.getGreater().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(variable);
+			RecursiveEvaluableExpressionVisitor.this.afterVariable(variable);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterComparison(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression)
+		 */
+		@Override
+		public final void visit(final ComparisonExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atComparison(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression)
-	 */
-	@Override
-	public final void visit(final ConstantExpression constant) {
-		this.atExpressionPrivate(constant);
-		this.atConstant(constant);
+			if (this.doTraverse) {
+				expression.getSmaller().receive(this);
+			}
+			if (this.doTraverse) {
+				expression.getGreater().receive(this);
+			}
 
-		// no inner expressions to visit
-
-		this.afterExpressionPrivate(constant);
-		this.afterConstant(constant);
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression)
-	 */
-	@Override
-	public final void visit(final DivisionExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atDivision(expression);
-
-		if (this.doTraverse) {
-			expression.getDividend().receive(this);
-		}
-		if (this.doTraverse) {
-			expression.getDivisor().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterComparison(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterDivision(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression)
+		 */
+		@Override
+		public final void visit(final ConstantExpression constant) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(constant);
+			RecursiveEvaluableExpressionVisitor.this.atConstant(constant);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression)
-	 */
-	@Override
-	public final void visit(final ExponentationExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atExponentation(expression);
+			// no inner expressions to visit
 
-		if (this.doTraverse) {
-			expression.getBase().receive(this);
-		}
-		if (this.doTraverse) {
-			expression.getExponent().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(constant);
+			RecursiveEvaluableExpressionVisitor.this.afterConstant(constant);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterExponentation(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression)
+		 */
+		@Override
+		public final void visit(final DivisionExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atDivision(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression)
-	 */
-	@Override
-	public final void visit(final ExponentialFunctionExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atExponentialFunction(expression);
+			if (this.doTraverse) {
+				expression.getDividend().receive(this);
+			}
+			if (this.doTraverse) {
+				expression.getDivisor().receive(this);
+			}
 
-		if (this.doTraverse) {
-			expression.getExponent().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterDivision(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterExponentialFunction(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression)
+		 */
+		@Override
+		public final void visit(final ExponentationExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atExponentation(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression)
-	 */
-	@Override
-	public final void visit(final IfThenElseExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atIfThenElse(expression);
+			if (this.doTraverse) {
+				expression.getBase().receive(this);
+			}
+			if (this.doTraverse) {
+				expression.getExponent().receive(this);
+			}
 
-		if (this.doTraverse) {
-			expression.getIfStatement().receive(this);
-		}
-		if (this.doTraverse) {
-			expression.getThenStatement().receive(this);
-		}
-		if (this.doTraverse) {
-			expression.getElseStatement().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExponentation(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterIfThenElse(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de
+		 * .uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression)
+		 */
+		@Override
+		public final void visit(final ExponentialFunctionExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atExponentialFunction(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression)
-	 */
-	@Override
-	public final void visit(final LogarithmExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atLogarithm(expression);
+			if (this.doTraverse) {
+				expression.getExponent().receive(this);
+			}
 
-		if (this.doTraverse) {
-			expression.getBase().receive(this);
-		}
-		if (this.doTraverse) {
-			expression.getAntilogarithm().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExponentialFunction(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterLogarithm(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression)
+		 */
+		@Override
+		public final void visit(final IfThenElseExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atIfThenElse(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression)
-	 */
-	@Override
-	public final void visit(final NaturalLogarithmExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atNaturalLogarithm(expression);
+			if (this.doTraverse) {
+				expression.getIfStatement().receive(this);
+			}
+			if (this.doTraverse) {
+				expression.getThenStatement().receive(this);
+			}
+			if (this.doTraverse) {
+				expression.getElseStatement().receive(this);
+			}
 
-		if (this.doTraverse) {
-			expression.getAntilogarithm().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterIfThenElse(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterNaturalLogarithm(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression)
+		 */
+		@Override
+		public final void visit(final LogarithmExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atLogarithm(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression)
-	 */
-	@Override
-	public final void visit(final SineExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atSine(expression);
+			if (this.doTraverse) {
+				expression.getBase().receive(this);
+			}
+			if (this.doTraverse) {
+				expression.getAntilogarithm().receive(this);
+			}
 
-		if (this.doTraverse) {
-			expression.getArgument().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterLogarithm(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterSine(expression);
-	}
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de
+		 * .uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression)
+		 */
+		@Override
+		public final void visit(final NaturalLogarithmExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atNaturalLogarithm(expression);
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see
-	 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#visit(de
-	 * .uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression)
-	 */
-	@Override
-	public final void visit(final SubstractionExpression expression) {
-		this.atExpressionPrivate(expression);
-		this.atSubstraction(expression);
+			if (this.doTraverse) {
+				expression.getAntilogarithm().receive(this);
+			}
 
-		if (this.doTraverse) {
-			expression.getMinuend().receive(this);
-		}
-		if (this.doTraverse) {
-			expression.getSubstrahend().receive(this);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterNaturalLogarithm(expression);
 		}
 
-		this.afterExpressionPrivate(expression);
-		this.afterSubstraction(expression);
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression)
+		 */
+		@Override
+		public final void visit(final SineExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atSine(expression);
+
+			if (this.doTraverse) {
+				expression.getArgument().receive(this);
+			}
+
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterSine(expression);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression)
+		 */
+		@Override
+		public final void visit(final SubstractionExpression expression) {
+			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.atSubstraction(expression);
+
+			if (this.doTraverse) {
+				expression.getMinuend().receive(this);
+			}
+			if (this.doTraverse) {
+				expression.getSubstrahend().receive(this);
+			}
+
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterSubstraction(expression);
+		}
 	}
 
 }
