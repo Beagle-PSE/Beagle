@@ -14,7 +14,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 
 import org.apache.commons.lang3.Validate;
 
@@ -413,12 +413,12 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 	}
 
 	/**
-	 * Called when visiting a {@link SubstractionExpression}, before its inner expressions
+	 * Called when visiting a {@link SubtractionExpression}, before its inner expressions
 	 * will be visited.
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void atSubstraction(final SubstractionExpression expression) {
+	protected void atSubstraction(final SubtractionExpression expression) {
 		// may be implemented by implementor.
 	}
 
@@ -565,12 +565,12 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 	}
 
 	/**
-	 * Called when leaving a {@link SubstractionExpression}, after its inner expressions
+	 * Called when leaving a {@link SubtractionExpression}, after its inner expressions
 	 * were visited.
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void afterSubstraction(final SubstractionExpression expression) {
+	protected void afterSubstraction(final SubtractionExpression expression) {
 		// may be implemented by implementor.
 	}
 
@@ -738,8 +738,8 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 		}
 
 		@Override
-		public void visit(final SubstractionExpression expression) {
-			this.visitInner(expression.getSubstrahend(), expression.getMinuend());
+		public void visit(final SubtractionExpression expression) {
+			this.visitInner(expression.getSubtrahend(), expression.getMinuend());
 		}
 
 	}
@@ -850,8 +850,8 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 		}
 
 		@Override
-		public void visit(final SubstractionExpression expression) {
-			this.result = new SubstractionExpression(this.inner[0], this.inner[1]);
+		public void visit(final SubtractionExpression expression) {
+			this.result = new SubtractionExpression(this.inner[0], this.inner[1]);
 		}
 	}
 
@@ -924,7 +924,7 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 		}
 
 		@Override
-		public void visit(final SubstractionExpression expression) {
+		public void visit(final SubtractionExpression expression) {
 			ModifyingEvaluableExpressionVisitor.this.atSubstraction(expression);
 		}
 	}
@@ -998,7 +998,7 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 		}
 
 		@Override
-		public void visit(final SubstractionExpression expression) {
+		public void visit(final SubtractionExpression expression) {
 			ModifyingEvaluableExpressionVisitor.this.afterSubstraction(expression);
 		}
 	}

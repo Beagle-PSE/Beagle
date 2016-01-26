@@ -14,7 +14,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 
 import org.apache.commons.lang3.Validate;
 
@@ -325,12 +325,12 @@ public abstract class RecursiveEvaluableExpressionVisitor {
 	}
 
 	/**
-	 * Called when visiting a {@link SubstractionExpression}, before its inner expressions
+	 * Called when visiting a {@link SubtractionExpression}, before its inner expressions
 	 * will be visited.
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void atSubstraction(final SubstractionExpression expression) {
+	protected void atSubstraction(final SubtractionExpression expression) {
 		// may be implemented by implementor.
 	}
 
@@ -477,12 +477,12 @@ public abstract class RecursiveEvaluableExpressionVisitor {
 	}
 
 	/**
-	 * Called when leaving a {@link SubstractionExpression}, after its inner expressions
+	 * Called when leaving a {@link SubtractionExpression}, after its inner expressions
 	 * were visited.
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void afterSubstraction(final SubstractionExpression expression) {
+	protected void afterSubstraction(final SubtractionExpression expression) {
 		// may be implemented by implementor.
 	}
 
@@ -768,7 +768,7 @@ public abstract class RecursiveEvaluableExpressionVisitor {
 		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression)
 		 */
 		@Override
-		public final void visit(final SubstractionExpression expression) {
+		public final void visit(final SubtractionExpression expression) {
 			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
 			RecursiveEvaluableExpressionVisitor.this.atSubstraction(expression);
 
@@ -776,7 +776,7 @@ public abstract class RecursiveEvaluableExpressionVisitor {
 				expression.getMinuend().receive(this);
 			}
 			if (this.doTraverse) {
-				expression.getSubstrahend().receive(this);
+				expression.getSubtrahend().receive(this);
 			}
 
 			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
