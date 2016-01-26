@@ -1,8 +1,15 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 /**
- * An {@link EvaluableExpression} representing a named variable.
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
  * 
+ * <p>COVERAGE:OFF
+ */
+
+/**
+ * An {@link EvaluableExpression} representing a named variable.
+ *
  * @author Annika Berger
  */
 public class EvaluableVariable implements EvaluableExpression {

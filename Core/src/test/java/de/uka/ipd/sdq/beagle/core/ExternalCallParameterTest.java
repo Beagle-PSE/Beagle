@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -13,8 +14,8 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter} and contains all test
- * cases needed to check every method.
+ * Tests {@link ExternalCallParameter} and contains all test cases needed to check every
+ * method.
  *
  *
  * @author Annika Berger
@@ -28,7 +29,7 @@ public class ExternalCallParameterTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#ExternalCallParameter(de.uka.ipd.sdq.beagle.core.CodeSection, int)}
+	 * {@link ExternalCallParameter#ExternalCallParameter(de.uka.ipd.sdq.beagle.core.CodeSection, int)}
 	 * .
 	 *
 	 * <p>Asserts that instantiation is possible for Code sections and a positive index,
@@ -55,8 +56,7 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#getCallCodeSection()}.
+	 * Test method for {@link ExternalCallParameter#getCallCodeSection()}.
 	 */
 	@Test
 	public void testGetCallCodeSection() {
@@ -68,13 +68,14 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#getIndex()}
-	 * .
+	 * Test method for {@link ExternalCallParameter#getIndex()} .
 	 */
 	@Test
 	public void testGetIndex() {
 		final CodeSection codeSection = CODE_SECTION_FACTORY.getOne();
-		final int[] indizes = {1, 6, 100, 0, 1000, 9949};
+		final int[] indizes = {
+			1, 6, 100, 0, 1000, 9949
+		};
 		for (final int index : indizes) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, index);
 			assertThat(externalCallP.getIndex(), is(equalTo(index)));
@@ -82,12 +83,12 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#equals(java.lang.Object)}
-	 * and {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#hashCode()}.
+	 * Test method for {@link ExternalCallParameter#equals(java.lang.Object)} and
+	 * {@link ExternalCallParameter#hashCode()}.
 	 */
 	@Test
 	public void testEqualsAndHashcode() {
+		assertThat(new ExternalCallParameter(CODE_SECTION_FACTORY.getOne(), 3), hasDefaultEqualsProperties());
 		final ExternalCallParameter externalCallP = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
 		final ExternalCallParameter externalCallP2 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
 		final ExternalCallParameter externalCallP3 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[1], 1);
@@ -100,8 +101,7 @@ public class ExternalCallParameterTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ExternalCallParameter#toString()}
-	 * .
+	 * Test method for {@link ExternalCallParameter#toString()} .
 	 */
 	@Test
 	public void testToString() {

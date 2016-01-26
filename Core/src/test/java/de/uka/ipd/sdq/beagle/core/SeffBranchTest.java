@@ -1,11 +1,13 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -14,11 +16,11 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.SeffBranch} and contains all test cases needed
- * to check every method.
+ * Tests {@link SeffBranch} and contains all test cases needed to check every method.
  *
  * @author Annika Berger
  */
@@ -30,8 +32,7 @@ public class SeffBranchTest {
 	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.SeffBranch#SeffBranch(java.util.Set)}.
+	 * Test method for {@link SeffBranch#SeffBranch(java.util.Set)}.
 	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown when the set of
 	 * {@link CodeSection} does not contain any CodeSections. Asserts that input Set of
@@ -74,7 +75,7 @@ public class SeffBranchTest {
 			new SeffBranch(codeSections);
 		};
 		assertThat("Set must not contain null.", method, throwsException(IllegalArgumentException.class));
-		
+
 		method = () -> {
 			new SeffBranch(null);
 		};
@@ -83,8 +84,7 @@ public class SeffBranchTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#equals()} and
-	 * {@link de.uka.ipd.sdq.beagle.core.SeffBranch#hashCode()}.
+	 * Test method for {@link SeffBranch#equals()} and {@link SeffBranch#hashCode()}.
 	 *
 	 * <p>Asserts that two SeffBranches inizialised with a Set containing the same code
 	 * sections are equal while inizialised with Sets containing different code sections
@@ -93,6 +93,7 @@ public class SeffBranchTest {
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
+		assertThat(new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet()), hasDefaultEqualsProperties());
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
 		final Set<CodeSection> codeSectionsC = new HashSet<>();
@@ -107,7 +108,7 @@ public class SeffBranchTest {
 			codeSectionsC.add(CODE_SECTION_FACTORY.getAll()[1]);
 			codeSectionsD.add(CODE_SECTION_FACTORY.getAll()[codeSecs.length - 1]);
 			codeSectionsD.add(CODE_SECTION_FACTORY.getAll()[codeSecs.length - 2]);
-			
+
 			final SeffBranch branchA = new SeffBranch(codeSectionsA);
 			final SeffBranch branchB = new SeffBranch(codeSectionsB);
 			final SeffBranch branchC = new SeffBranch(codeSectionsC);
@@ -123,17 +124,25 @@ public class SeffBranchTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#getBranches()}.
+	 * Test method for {@link SeffBranch#getBranches()}.
 	 */
 	@Test
 	public void testGetBranches() {
-		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final SeffBranch branch = new SeffBranch(codeSections);
-		assertThat(branch.getBranches(), is(equalTo(codeSections)));
+		final Set<CodeSection> codeSectionSet = CODE_SECTION_FACTORY.getAllAsSet();
+		final CodeSection testSection = CODE_SECTION_FACTORY.getOne();
+		codeSectionSet.remove(testSection);
+		final CodeSection[] codeSections = codeSectionSet.toArray(new CodeSection[codeSectionSet.size()]);
+		final SeffBranch branch = new SeffBranch(codeSectionSet);
+		assertThat(branch.getBranches(), contains(codeSections));
+
+		// make sure branches are a copy.
+		final List<CodeSection> branches = branch.getBranches();
+		branches.add(testSection);
+		assertThat("List returned must be a copy.", branch.getBranches(), contains(codeSections));
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.SeffBranch#toString()}.
+	 * Test method for {@link SeffBranch#toString()}.
 	 */
 	@Test
 	public void testToString() {

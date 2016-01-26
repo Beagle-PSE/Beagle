@@ -21,12 +21,12 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 	/**
 	 * The code section where the external call will be made.
 	 */
-	private CodeSection call;
+	private final CodeSection call;
 
 	/**
 	 * The parameters index in the parameter list. Starting with {@code 0}.
 	 */
-	private int index;
+	private final int index;
 
 	/**
 	 * Creates a parameter of an external call.
@@ -68,7 +68,7 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 		if (object == this) {
 			return true;
 		}
-		if (object.getClass() != getClass()) {
+		if (object.getClass() != this.getClass()) {
 			return false;
 		}
 		final ExternalCallParameter other = (ExternalCallParameter) object;

@@ -17,6 +17,12 @@ import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * View of the {@link Blackboard} designed to be used by {@link MeasurementResultAnalyser}
@@ -167,9 +173,9 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}.
-	 *         Changes to the returned set will not modify the blackboard content. Is
-	 *         never {@code null}.
+	 * @return All measurement results reported for {@code externalCallParameter}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
 	@Override

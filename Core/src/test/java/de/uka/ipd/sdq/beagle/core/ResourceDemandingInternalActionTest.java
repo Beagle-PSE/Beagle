@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -14,8 +15,8 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction} and contains
- * all test cases needed to check every method.
+ * Tests {@link ResourceDemandingInternalAction} and contains all test cases needed to
+ * check every method.
  *
  * @author Annika Berger
  */
@@ -27,13 +28,15 @@ public class ResourceDemandingInternalActionTest {
 	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#equals()} and
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#hashCode()}.
+	 * Test method for {@link ResourceDemandingInternalAction#equals()} and
+	 * {@link ResourceDemandingInternalAction#hashCode()}.
 	 *
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
+		assertThat(
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, CODE_SECTION_FACTORY.getOne()),
+			hasDefaultEqualsProperties());
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSections[0]);
@@ -54,8 +57,7 @@ public class ResourceDemandingInternalActionTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#getAction()}.
+	 * Test method for {@link ResourceDemandingInternalAction#getAction()}.
 	 *
 	 */
 	@Test
@@ -73,9 +75,7 @@ public class ResourceDemandingInternalActionTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#getResourceType()}
-	 * .
+	 * Test method for {@link ResourceDemandingInternalAction#getResourceType()} .
 	 *
 	 */
 	@Test
@@ -131,14 +131,13 @@ public class ResourceDemandingInternalActionTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction#toString()}.
+	 * Test method for {@link ResourceDemandingInternalAction#toString()}.
 	 *
 	 */
 	@Test
 	public void testToString() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			final ResourceDemandingInternalAction rdia =
 				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
 			assertThat(rdia.toString(), not(startsWith("ResourceDemandingInternalAction@")));

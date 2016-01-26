@@ -64,7 +64,7 @@ public final class NullHandlingMatchers {
 			protected boolean matchesSafely(final Consumer<CONSUMED_TYPE[]> consumer,
 				final Description mismatchDescription) {
 				return listMatcher.matchesSafely(
-					(Collection<CONSUMED_TYPE> inputCollection) -> consumer.accept(inputCollection.toArray(null)),
+					(final Collection<CONSUMED_TYPE> inputCollection) -> consumer.accept(inputCollection.toArray(null)),
 					mismatchDescription);
 			}
 		};
@@ -163,7 +163,7 @@ public final class NullHandlingMatchers {
 				withNull(this.testValues, this.testValues.size() / 2), withNull(this.testValues));
 
 			// feed the lists containing null
-			for (List<CONSUMED_TYPE> testInputsWithNull : inputsWithNull) {
+			for (final List<CONSUMED_TYPE> testInputsWithNull : inputsWithNull) {
 				if (!THROWS_NPE.matches((ThrowingMethod) () -> consumer.accept(testInputsWithNull))) {
 					THROWS_NPE.describeMismatch(consumer, mismatchDescription);
 					mismatchDescription.appendText(" when passing null in the argument");

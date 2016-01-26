@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -16,8 +17,7 @@ import org.junit.Test;
 import java.io.File;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.CodeSection} and contains all test cases needed
- * to check every method.
+ * Tests {@link CodeSection} and contains all test cases needed to check every method.
  *
  * @author Annika Berger
  */
@@ -30,13 +30,12 @@ public class CodeSectionTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.CodeSection#CodeSection(java.io.File, int, java.io.File, int)}
-	 * .
+	 * {@link CodeSection#CodeSection(java.io.File, int, java.io.File, int)} .
 	 */
 	@Test
 	public void testCodeSection() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
-		for (File file : files) {
+		for (final File file : files) {
 			// file.length gets the number of bytes, so it is an approximatation for the
 			// number of characters. 50 is subtracted to be sure to stay within the file.
 			final int maximum = (int) file.length() - 50;
@@ -94,7 +93,7 @@ public class CodeSectionTest {
 			new CodeSection(files[0], invalidStartIndex2, files[0], validEndIndex);
 		};
 		assertThat("Start index must be within the file.", method, throwsException(IllegalArgumentException.class));
-		
+
 		method = () -> {
 			new CodeSection(null, validStartIndex, files[0], validEndIndex);
 		};
@@ -106,19 +105,21 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#equals()}.
-	 * 
+	 * Test method for {@link CodeSection#equals()}.
+	 *
 	 * <p>Asserts that {@link CodeSection}s are equal if all parameters are the same and
 	 * that they are not equal if one of the parameter changes.
 	 **/
 	@Test
 	public void testEqualsAndHashCode() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
-		final CodeSection[] codeSections =
-		{new CodeSection(files[0], 7, files[1], 15), new CodeSection(files[1], 7, files[1], 15),
+		final CodeSection[] codeSections = {
+			new CodeSection(files[0], 7, files[1], 15), new CodeSection(files[1], 7, files[1], 15),
 			new CodeSection(files[0], 7, files[0], 15), new CodeSection(files[0], 4, files[0], 15),
-			new CodeSection(files[0], 4, files[0], 25), new CodeSection(files[0], 7, files[0], 15)};
+			new CodeSection(files[0], 4, files[0], 25), new CodeSection(files[0], 7, files[0], 15)
+		};
 
+		assertThat(codeSections[0], hasDefaultEqualsProperties());
 		assertThat(codeSections[0], is(equalTo(codeSections[0])));
 		assertThat(codeSections[2], is(equalTo(codeSections[5])));
 		assertThat(codeSections[5], is(equalTo(codeSections[2])));
@@ -132,12 +133,14 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getEndCodeLine()}.
+	 * Test method for {@link CodeSection#getEndCodeLine()}.
 	 **/
 	@Test
 	public void testGetEndCodeLine() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
-		final int[] endIndices = {7, 19, 34, 93, 83, 2};
+		final int[] endIndices = {
+			7, 19, 34, 93, 83, 2
+		};
 		for (int i = 0; i < endIndices.length; i++) {
 			final CodeSection codeSection =
 				new CodeSection(files[i % files.length], 45, files[i % files.length], endIndices[i]);
@@ -146,7 +149,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getEndCodeFile()}.
+	 * Test method for {@link CodeSection#getEndCodeFile()}.
 	 **/
 	@Test
 	public void testGetEndFile() {
@@ -168,12 +171,14 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getStartCodeLine()}.
+	 * Test method for {@link CodeSection#getStartCodeLine()}.
 	 **/
 	@Test
 	public void testGetStartCodeLine() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
-		final int[] startIndices = {7, 19, 34, 93, 83, 2};
+		final int[] startIndices = {
+			7, 19, 34, 93, 83, 2
+		};
 		for (int i = 0; i < startIndices.length; i++) {
 			final CodeSection codeSection =
 				new CodeSection(files[i % files.length], 45, files[i % files.length], startIndices[i]);
@@ -182,7 +187,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#getStartFile()}.
+	 * Test method for {@link CodeSection#getStartFile()}.
 	 *
 	 */
 	@Test
@@ -202,7 +207,7 @@ public class CodeSectionTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.CodeSection#toString()}.
+	 * Test method for {@link CodeSection#toString()}.
 	 **/
 	@Test
 	public void testToString() {

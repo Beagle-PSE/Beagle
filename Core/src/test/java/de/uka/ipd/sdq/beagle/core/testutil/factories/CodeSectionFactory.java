@@ -3,8 +3,10 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -54,9 +56,19 @@ public final class CodeSectionFactory {
 	}
 
 	/**
+	 * Creates a set containing the code sections from {@link CodeSectionFactory#getAll()}
+	 * .
+	 *
+	 * @return code sections in a list.
+	 */
+	public List<CodeSection> getAllAsList() {
+		return new ArrayList<>(Arrays.asList(this.getAll()));
+	}
+
+	/**
 	 * Gets one code section.
 	 *
-	 * @return first codesection in {@link CodeSectionFactory#getAll()}.
+	 * @return A newly instantiated Code Section (you may not make any assumptions about).
 	 */
 	public CodeSection getOne() {
 		return this.getAll()[0];

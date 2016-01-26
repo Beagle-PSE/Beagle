@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -12,8 +13,8 @@ import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import org.junit.Test;
 
 /**
- * Tests {@link de.uka.ipd.sdq.beagle.core.SeffBranch} and contains all test cases needed
- * to check every method.
+ * Tests {@link ResourceDemandType} and contains all test cases needed to check every
+ * method.
  *
  * @author Annika Berger
  */
@@ -21,8 +22,7 @@ public class ResourceDemandTypeTest {
 
 	/**
 	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#ResourceDemandType(java.lang.String, boolean)}
-	 * .
+	 * {@link ResourceDemandType#ResourceDemandType(java.lang.String, boolean)} .
 	 */
 	@Test
 	public void testResourceDemandType() {
@@ -33,7 +33,7 @@ public class ResourceDemandTypeTest {
 			new ResourceDemandType(null, true);
 		};
 		assertThat("Name must not be null.", method, throwsException(NullPointerException.class));
-		
+
 		method = () -> {
 			new ResourceDemandType("", true);
 		};
@@ -41,17 +41,17 @@ public class ResourceDemandTypeTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#equals(java.lang.Object)} and
-	 * {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#hashCode()}.
+	 * Test method for {@link ResourceDemandType#equals(java.lang.Object)} and
+	 * {@link ResourceDemandType#hashCode()}.
 	 */
 	@Test
 	public void testEqualsAndHashCode() {
+		assertThat(ResourceDemandType.RESOURCE_TYPE_CPU, hasDefaultEqualsProperties());
 		final ResourceDemandType test = new ResourceDemandType("test", true);
 		final ResourceDemandType testF = new ResourceDemandType("test", false);
 		final ResourceDemandType testT = new ResourceDemandType("test", true);
 		final ResourceDemandType newTest = new ResourceDemandType("newTest", true);
-		
+
 		assertThat(test, is(equalTo(testT)));
 		assertThat(test.hashCode(), is(equalTo(testT.hashCode())));
 		assertThat(test, is(not(equalTo(testF))));
@@ -59,7 +59,7 @@ public class ResourceDemandTypeTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#getName()}.
+	 * Test method for {@link ResourceDemandType#getName()}.
 	 */
 	@Test
 	public void testGetName() {
@@ -67,11 +67,11 @@ public class ResourceDemandTypeTest {
 		final ResourceDemandType newTest = new ResourceDemandType("newTest", true);
 		assertThat(test.getName(), is("test"));
 		assertThat(newTest.getName(), is("newTest"));
-		
+
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#isNs()}.
+	 * Test method for {@link ResourceDemandType#isNs()}.
 	 */
 	@Test
 	public void testIsNs() {
@@ -82,7 +82,7 @@ public class ResourceDemandTypeTest {
 	}
 
 	/**
-	 * Test method for {@link de.uka.ipd.sdq.beagle.core.ResourceDemandType#toString()}.
+	 * Test method for {@link ResourceDemandType#toString()}.
 	 */
 	@Test
 	public void testToString() {
