@@ -56,14 +56,14 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">		if (object == null) {</span>
-<span class="nc" id="L60">			return false;</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L60">			return false;</span>
 		}
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">		if (object == this) {</span>
-<span class="nc" id="L63">			return true;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L63">			return true;</span>
 		}
-<span class="pc bpc" id="L65" title="1 of 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
-<span class="nc" id="L66">			return false;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L66">			return false;</span>
 		}
 <span class="fc" id="L68">		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;</span>
 <span class="fc" id="L69">		return new EqualsBuilder().append(this.resourceType, other.resourceType).append(this.action, other.action)</span>

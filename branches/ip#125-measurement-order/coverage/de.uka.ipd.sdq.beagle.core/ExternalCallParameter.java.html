@@ -21,12 +21,12 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 	/**
 	 * The code section where the external call will be made.
 	 */
-	private CodeSection call;
+	private final CodeSection call;
 
 	/**
 	 * The parameters index in the parameter list. Starting with {@code 0}.
 	 */
-	private int index;
+	private final int index;
 
 	/**
 	 * Creates a parameter of an external call.
@@ -62,14 +62,14 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="pc bpc" id="L65" title="1 of 2 branches missed.">		if (object == null) {</span>
-<span class="nc" id="L66">			return false;</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L66">			return false;</span>
 		}
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">		if (object == this) {</span>
-<span class="nc" id="L69">			return true;</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L69">			return true;</span>
 		}
-<span class="pc bpc" id="L71" title="1 of 2 branches missed.">		if (object.getClass() != getClass()) {</span>
-<span class="nc" id="L72">			return false;</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L72">			return false;</span>
 		}
 <span class="fc" id="L74">		final ExternalCallParameter other = (ExternalCallParameter) object;</span>
 <span class="fc" id="L75">		return new EqualsBuilder().append(this.call, other.call).append(this.index, other.index).isEquals();</span>
