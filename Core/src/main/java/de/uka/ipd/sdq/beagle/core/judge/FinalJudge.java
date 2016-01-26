@@ -51,6 +51,8 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 */
 	private static final double SIGNIFICANT_IMPROVEMENT = 0.005;
 
+	private FinalJudgeData data;
+
 	/**
 	 * Initialises the {@link FinalJudge} object. Call this method before starting
 	 * evolution of evaluable expressions to start counting the total time the entire
@@ -58,6 +60,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *
 	 */
 	public void init() {
+		this.loadData();
 		this.startTime = System.currentTimeMillis();
 	}
 
@@ -72,6 +75,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         stopped; {@code false} otherwise.
 	 */
 	boolean judge(final Blackboard blackboard) {
+		this.loadData();
+
+		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());
 
 		this.numberOfGenerationsPassed++;
 
@@ -90,6 +96,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		}
 
 		return false;
+	}
+
+	private void loadData() {
+
 	}
 
 	/**
