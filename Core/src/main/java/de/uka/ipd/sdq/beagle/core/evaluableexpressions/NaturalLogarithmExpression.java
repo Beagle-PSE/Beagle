@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,13 +15,14 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	/**
 	 * The antilogarithm of the expression.
 	 */
-	private EvaluableExpression antilogarithm;
+	private final EvaluableExpression antilogarithm;
 
 	/**
 	 * Builds an expression which returns the result of a logarithm of the antilogarithm
 	 * to the base.
 	 *
-	 * @param antilogarithm The antilogarithm for this expression. Must not be {@code null}.
+	 * @param antilogarithm The antilogarithm for this expression. Must not be
+	 *            {@code null}.
 	 */
 	public NaturalLogarithmExpression(final EvaluableExpression antilogarithm) {
 		Validate.notNull(antilogarithm);
@@ -66,12 +61,12 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return Math.log(this.antilogarithm.evaluate(variableAssignments));
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("(ln%s)", this.antilogarithm);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {

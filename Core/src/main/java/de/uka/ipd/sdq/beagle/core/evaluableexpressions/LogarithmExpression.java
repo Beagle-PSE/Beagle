@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,12 +15,12 @@ public class LogarithmExpression implements EvaluableExpression {
 	/**
 	 * The Base of the expression.
 	 */
-	private EvaluableExpression base;
+	private final EvaluableExpression base;
 
 	/**
 	 * The antilogarithm of the expression.
 	 */
-	private EvaluableExpression antilogarithm;
+	private final EvaluableExpression antilogarithm;
 
 	/**
 	 * Builds an expression which returns the result of logarithm of antilogarithm to the
@@ -84,12 +78,12 @@ public class LogarithmExpression implements EvaluableExpression {
 		return Math.log(this.antilogarithm.evaluate(variableAssignments))
 			/ Math.log(this.base.evaluate(variableAssignments));
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("(log_%s%s)", this.base, this.antilogarithm);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {
@@ -102,7 +96,8 @@ public class LogarithmExpression implements EvaluableExpression {
 			return false;
 		}
 		final LogarithmExpression other = (LogarithmExpression) object;
-		return new EqualsBuilder().append(this.base, other.base).append(this.antilogarithm, other.antilogarithm).isEquals();
+		return new EqualsBuilder().append(this.base, other.base).append(this.antilogarithm, other.antilogarithm)
+			.isEquals();
 	}
 
 	@Override

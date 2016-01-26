@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,12 +15,13 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	/**
 	 * The {@link EvaluableExpression} which is the exponent of this expression.
 	 */
-	private EvaluableExpression exponent;
+	private final EvaluableExpression exponent;
 
 	/**
 	 * Builds an expression which returns e raised to the power of the exponent.
 	 *
-	 * @param exponent The expression which is the exponent of this expression. Must not be {@code null}.
+	 * @param exponent The expression which is the exponent of this expression. Must not
+	 *            be {@code null}.
 	 */
 	public ExponentialFunctionExpression(final EvaluableExpression exponent) {
 		Validate.notNull(exponent);
@@ -64,12 +59,12 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return Math.pow(Math.E, this.exponent.evaluate(variableAssignments));
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("(e^%s)", this.exponent);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {

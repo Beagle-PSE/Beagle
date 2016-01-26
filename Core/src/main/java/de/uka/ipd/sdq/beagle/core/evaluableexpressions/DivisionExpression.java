@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,12 +15,12 @@ public class DivisionExpression implements EvaluableExpression {
 	/**
 	 * The divisor of this division expression.
 	 */
-	private EvaluableExpression divisor;
+	private final EvaluableExpression divisor;
 
 	/**
 	 * The dividend of this division expression.
 	 */
-	private EvaluableExpression dividend;
+	private final EvaluableExpression dividend;
 
 	/**
 	 * Builds an expression which returns the quotient of a division using the given
@@ -80,15 +74,16 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		final double quotient = this.dividend.evaluate(variableAssignments) / this.divisor.evaluate(variableAssignments);
+		final double quotient =
+			this.dividend.evaluate(variableAssignments) / this.divisor.evaluate(variableAssignments);
 		return quotient;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("(%s / %s)", this.dividend, this.divisor);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {

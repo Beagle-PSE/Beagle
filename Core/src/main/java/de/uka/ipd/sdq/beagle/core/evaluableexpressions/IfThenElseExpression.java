@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that executes an if-then-else-statement based on its contained expressions.
- * 
+ *
  * @author Annika Berger
  */
 public class IfThenElseExpression implements EvaluableExpression {
@@ -14,25 +14,28 @@ public class IfThenElseExpression implements EvaluableExpression {
 	/**
 	 * The expression containing the if-statement.
 	 */
-	private EvaluableExpression ifStatement;
+	private final EvaluableExpression ifStatement;
 
 	/**
 	 * The expression containing the else-statement.
 	 */
-	private EvaluableExpression elseStatement;
+	private final EvaluableExpression elseStatement;
 
 	/**
 	 * The expression containing the then-statement.
 	 */
-	private EvaluableExpression thenStatement;
+	private final EvaluableExpression thenStatement;
 
 	/**
 	 * Builds an expression which returns .
 	 *
-	 * @param ifStatement The expression which contains the if-statement. Must not be {@code null}.
-	 * 
-	 * @param thenStatement The expression which contains the then-statement. Must not be {@code null}.
-	 * @param elseStatement The expression which contains the else-statement. Must not be {@code null}.
+	 * @param ifStatement The expression which contains the if-statement. Must not be
+	 *            {@code null}.
+	 *
+	 * @param thenStatement The expression which contains the then-statement. Must not be
+	 *            {@code null}.
+	 * @param elseStatement The expression which contains the else-statement. Must not be
+	 *            {@code null}.
 	 */
 	public IfThenElseExpression(final EvaluableExpression ifStatement, final EvaluableExpression thenStatement,
 		final EvaluableExpression elseStatement) {
@@ -47,7 +50,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
 	 * Get expression contained in if-statement.
-	 * 
+	 *
 	 * @return if-Expression
 	 */
 	public EvaluableExpression getIfStatement() {
@@ -56,7 +59,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
 	 * Get expression contained in else-statement.
-	 * 
+	 *
 	 * @return else-Expression
 	 */
 	public EvaluableExpression getElseStatement() {
@@ -65,7 +68,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
 	 * Get expression contained in then-statement.
-	 * 
+	 *
 	 * @return then-expression
 	 */
 	public EvaluableExpression getThenStatement() {

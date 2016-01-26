@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -17,16 +11,16 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  *
  */
 public class SubstractionExpression implements EvaluableExpression {
-	
+
 	/**
 	 * The substrahend of the expression.
 	 */
-	private EvaluableExpression substrahend;
-	
+	private final EvaluableExpression substrahend;
+
 	/**
 	 * The minuend of the expressions.
 	 */
-	private EvaluableExpression minuend;
+	private final EvaluableExpression minuend;
 
 	/**
 	 * Builds an expression which returns the difference of substrahend and minuend.
@@ -81,12 +75,12 @@ public class SubstractionExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return this.minuend.evaluate(variableAssignments) - this.substrahend.evaluate(variableAssignments);
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("(%s - %s)", this.minuend, this.substrahend);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {
@@ -99,7 +93,8 @@ public class SubstractionExpression implements EvaluableExpression {
 			return false;
 		}
 		final SubstractionExpression other = (SubstractionExpression) object;
-		return new EqualsBuilder().append(this.minuend, other.minuend).append(this.substrahend, other.substrahend).isEquals();
+		return new EqualsBuilder().append(this.minuend, other.minuend).append(this.substrahend, other.substrahend)
+			.isEquals();
 	}
 
 	@Override

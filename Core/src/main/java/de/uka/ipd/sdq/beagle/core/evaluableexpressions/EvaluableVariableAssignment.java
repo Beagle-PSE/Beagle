@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -26,7 +20,7 @@ public class EvaluableVariableAssignment {
 	/**
 	 * Contains all assignements of evaluable variables and their double value.
 	 */
-	private Map<EvaluableVariable, Double> assignement = new HashMap<EvaluableVariable, Double>();
+	private final Map<EvaluableVariable, Double> assignement = new HashMap<EvaluableVariable, Double>();
 
 	/**
 	 * Gets the assigned value for the {@code EvaluableVariable variable}.
@@ -55,7 +49,8 @@ public class EvaluableVariableAssignment {
 	 * Checks whether the {@code EvaluableVariable variable} has already a value assigned
 	 * or not.
 	 *
-	 * @param variable Whose assignment status should be identified. Must not be {@code null}.
+	 * @param variable Whose assignment status should be identified. Must not be
+	 *            {@code null}.
 	 * @return {@code true} if a value is assigned for the given variable. Else it returns
 	 *         {@code false}.
 	 */
@@ -71,7 +66,7 @@ public class EvaluableVariableAssignment {
 	public String toString() {
 		final StringBuilder result = new StringBuilder();
 		boolean first = true;
-		for (EvaluableVariable variable : this.assignement.keySet()) {
+		for (final EvaluableVariable variable : this.assignement.keySet()) {
 			if (!first) {
 				result.append(", ");
 			} else {
@@ -97,7 +92,7 @@ public class EvaluableVariableAssignment {
 		final EqualsBuilder result = new EqualsBuilder();
 		// asserts that it is the same key set
 		result.append(this.assignement, other.assignement);
-		for (EvaluableVariable variable : this.assignement.keySet()) {
+		for (final EvaluableVariable variable : this.assignement.keySet()) {
 			result.append(this.getValueFor(variable), other.getValueFor(variable));
 		}
 		return result.isEquals();
@@ -109,7 +104,7 @@ public class EvaluableVariableAssignment {
 		// ideally different for each class
 		final HashCodeBuilder result = new HashCodeBuilder(199, 201);
 		result.append(this.assignement);
-		for (EvaluableVariable variable : this.assignement.keySet()) {
+		for (final EvaluableVariable variable : this.assignement.keySet()) {
 			result.append(this.getValueFor(variable));
 		}
 		return result.toHashCode();

@@ -5,13 +5,6 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
-
-/**
  * An {@link EvaluableExpression} representing a named variable.
  *
  * @author Annika Berger
@@ -21,7 +14,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	/**
 	 * The name of the evaluable variable.
 	 */
-	private String name;
+	private final String name;
 
 	/**
 	 * Builds an evaluable variable with the given name.
@@ -64,12 +57,12 @@ public class EvaluableVariable implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return variableAssignments.getValueFor(this);
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.name;
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {

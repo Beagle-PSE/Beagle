@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * Thrown if a {@link EvaluableExpression} is to be evaluated, but insufficient variable
@@ -14,7 +8,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  * @see EvaluableExpression
  */
 public class UndefinedExpressionException extends RuntimeException {
-	
+
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
 	 */
@@ -23,12 +17,12 @@ public class UndefinedExpressionException extends RuntimeException {
 	/**
 	 * The variable missing in the assignment.
 	 */
-	private EvaluableVariable undefinedVariable;
+	private final EvaluableVariable undefinedVariable;
 
 	/**
 	 * The assignment raising the exception.
 	 */
-	private EvaluableVariableAssignment assignment;
+	private final EvaluableVariableAssignment assignment;
 
 	/**
 	 * Creates an exception for an encountered undefined variable. Describes the situation
@@ -41,7 +35,8 @@ public class UndefinedExpressionException extends RuntimeException {
 	 */
 	public UndefinedExpressionException(final EvaluableVariableAssignment assignment,
 		final EvaluableVariable undefinedVariable) {
-		super(String.format("Can not evaluate: There is no value for %s defined in %s!", undefinedVariable, assignment));
+		super(
+			String.format("Can not evaluate: There is no value for %s defined in %s!", undefinedVariable, assignment));
 		this.assignment = assignment;
 		this.undefinedVariable = undefinedVariable;
 	}

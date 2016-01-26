@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -21,12 +15,12 @@ public class SineExpression implements EvaluableExpression {
 	/**
 	 * The argument of the sine expression.
 	 */
-	private EvaluableExpression argument;
+	private final EvaluableExpression argument;
 
 	/**
 	 * Builds an expression which returns the sine of the argument.
 	 *
-	 * @param argument The argument to  be used. Must not be {@code null}.
+	 * @param argument The argument to be used. Must not be {@code null}.
 	 */
 	public SineExpression(final EvaluableExpression argument) {
 		Validate.notNull(argument);
@@ -64,12 +58,12 @@ public class SineExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		return Math.sin(this.argument.evaluate(variableAssignments));
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("(sin%s)", this.argument);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {

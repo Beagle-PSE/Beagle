@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -20,18 +14,20 @@ public class ExponentationExpression implements EvaluableExpression {
 	/**
 	 * The {@link EvaluableExpression} which is the exponent of this expression.
 	 */
-	private EvaluableExpression exponent;
+	private final EvaluableExpression exponent;
 
 	/**
 	 * The {@link EvaluableExpression} which is the base of this expression.
 	 */
-	private EvaluableExpression base;
+	private final EvaluableExpression base;
 
 	/**
 	 * Build an expression which returns the base raised to the power of the exponent.
 	 *
-	 * @param exponent The expression which is the exponent of this expression. Must not be {@code null}.
-	 * @param base The expression which is the base of this expression. Must not be {@code null}.
+	 * @param exponent The expression which is the exponent of this expression. Must not
+	 *            be {@code null}.
+	 * @param base The expression which is the base of this expression. Must not be
+	 *            {@code null}.
 	 */
 	public ExponentationExpression(final EvaluableExpression exponent, final EvaluableExpression base) {
 		Validate.notNull(exponent);
@@ -85,7 +81,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	public String toString() {
 		return String.format("(%s^%s)", this.base, this.exponent);
 	}
-	
+
 	@Override
 	public boolean equals(final Object object) {
 		if (object == null) {
