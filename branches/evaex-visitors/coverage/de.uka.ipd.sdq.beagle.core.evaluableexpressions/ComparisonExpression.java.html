@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ComparisonExpression.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a> &gt; <span class="el_source">ComparisonExpression.java</span></div><h1>ComparisonExpression.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+/**
+ * Expression that compares both its contained expressions.
+ *
+ * @author Annika Berger
+ *
+ */
+public class ComparisonExpression implements EvaluableExpression {
+
+	/**
+	 * The {@link EvaluableExpression} which is supposed to be the smaller one in the
+	 * comparison.
+	 */
+	private final EvaluableExpression smaller;
+
+	/**
+	 * The {@link EvaluableExpression} which is supposed to be the greater one in the
+	 * comparison.
+	 */
+	private final EvaluableExpression greater;
+
+	/**
+	 * Builds an expression that will return '1' if the expression set as smaller is
+	 * smaller and '0' else.
+	 *
+	 * @param smaller The {@link EvaluableExpression} which is supposed to be the smaller
+	 *            one in the comparison.
+	 * @param greater The {@link EvaluableExpression} which is supposed to be the greater
+	 *            one in the comparison.
+	 */
+<span class="nc" id="L36">	public ComparisonExpression(final EvaluableExpression smaller, final EvaluableExpression greater) {</span>
+<span class="nc" id="L37">		Validate.notNull(smaller);</span>
+<span class="nc" id="L38">		Validate.notNull(greater);</span>
+<span class="nc" id="L39">		this.smaller = smaller;</span>
+<span class="nc" id="L40">		this.greater = greater;</span>
+<span class="nc" id="L41">	}</span>
+
+	/**
+	 * Get the {@link EvaluableExpression} which is supposed to be the greater one in the
+	 * comparison.
+	 *
+	 * &lt;p&gt;For example: if {@code e1 &lt; e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
+	 *
+	 * @return the greater expression
+	 */
+	public EvaluableExpression getGreater() {
+<span class="nc" id="L53">		return this.smaller;</span>
+	}
+
+	/**
+	 * Get the {@link EvaluableExpression} which is supposed to be the smaller one in the
+	 * comparison.
+	 *
+	 * &lt;p&gt;For example: if {@code e1 &lt; e2} should be expressed, {@code e1} is set as
+	 * smaller and {@code e2} as greater expression.
+	 *
+	 * @return the smaller expression
+	 */
+	public EvaluableExpression getSmaller() {
+<span class="nc" id="L66">		return this.greater;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 */
+	@Override
+	public void receive(final EvaluableExpressionVisitor visitor) {
+<span class="nc" id="L77">		visitor.visit(this);</span>
+<span class="nc" id="L78">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 */
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		if (this.smaller.evaluate(variableAssignments) &lt; this.greater.evaluate(variableAssignments)) {</span>
+<span class="nc" id="L90">			return 1;</span>
+		} else {
+<span class="nc" id="L92">			return 0;</span>
+		}
+	}
+
+	@Override
+	public String toString() {
+<span class="nc" id="L98">		return String.format(&quot;(%s &lt; %s)&quot;, this.smaller, this.greater);</span>
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="nc bnc" id="L103" title="All 2 branches missed.">		if (object == null) {</span>
+<span class="nc" id="L104">			return false;</span>
+		}
+<span class="nc bnc" id="L106" title="All 2 branches missed.">		if (object == this) {</span>
+<span class="nc" id="L107">			return true;</span>
+		}
+<span class="nc bnc" id="L109" title="All 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
+<span class="nc" id="L110">			return false;</span>
+		}
+<span class="nc" id="L112">		final ComparisonExpression other = (ComparisonExpression) object;</span>
+<span class="nc" id="L113">		return new EqualsBuilder().append(this.smaller, other.smaller).append(this.greater, other.greater).isEquals();</span>
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+<span class="nc" id="L120">		return new HashCodeBuilder(839, 39901).append(this.smaller).append(this.greater).hashCode();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
