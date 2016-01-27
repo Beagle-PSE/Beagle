@@ -35,6 +35,7 @@ import java.util.Set;
  * Tests for {@link Blackboard}.
  *
  * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class BlackboardTest {
 
