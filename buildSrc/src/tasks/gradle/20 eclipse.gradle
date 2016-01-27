@@ -81,6 +81,7 @@ configure(eclipseSubprojects) {
 				 */
 				source updatesite('https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/') // PCM
 				source updatesite('http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/gmp/updates/releases/') // required by Context Menu Prototype
+				source updatesite('http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/emf/updates/releases/') // EMF
 			}
 		}
 	} 

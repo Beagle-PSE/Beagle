@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
  * this class!
- * 
+ *
  * <p>COVERAGE:OFF
  */
 
@@ -213,7 +213,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		}
 
 		// Find for every "useful" object its content and extract it into the given Sets
-		for (EObject identifiedObject : setOfIdentifiedObjects) {
+		for (final EObject identifiedObject : setOfIdentifiedObjects) {
 			if (identifiedObject.getClass() == BasicComponentImpl.class) {
 				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) identifiedObject);
 			} else if (identifiedObject.getClass() == ResourceDemandingSEFFImpl.class) {
@@ -259,7 +259,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 */
 	public Blackboard getBlackboardForIds(final String... identifiers) throws FileNotFoundException {
 		final Collection<String> identifierCollection = new LinkedList<String>();
-		for (String identifier : identifiers) {
+		for (final String identifier : identifiers) {
 			identifierCollection.add(identifier);
 		}
 		return this.getBlackboardForIds(identifierCollection);
@@ -275,7 +275,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 */
 	private void scanRepository(final RepositoryImpl repositoryToScan) throws FileNotFoundException {
 		final EList<RepositoryComponent> componentList = repositoryToScan.getComponents__Repository();
-		for (RepositoryComponent component : componentList) {
+		for (final RepositoryComponent component : componentList) {
 			if (component.getClass() == BasicComponentImpl.class) {
 				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) component);
 			}
@@ -294,7 +294,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		throws FileNotFoundException {
 		final EList<ServiceEffectSpecification> seffList =
 			basicComponent.getServiceEffectSpecifications__BasicComponent();
-		for (ServiceEffectSpecification seff : seffList) {
+		for (final ServiceEffectSpecification seff : seffList) {
 			if (seff.getClass() == ResourceDemandingSEFFImpl.class) {
 				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) seff);
 			}
@@ -312,7 +312,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	private void extractResourceDemandingSEFFImplAndAddContentsToSet(final ResourceDemandingSEFFImpl rdSeff)
 		throws FileNotFoundException {
 		final EList<EObject> rdSeffContentList = rdSeff.eContents();
-		for (EObject rdSeffContent : rdSeffContentList) {
+		for (final EObject rdSeffContent : rdSeffContentList) {
 			this.extractBehaviourAndAddToSet(rdSeffContent);
 		}
 	}
@@ -355,7 +355,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 
 		final ResourceDemandingBehaviour rdBehave = loopAction.getBodyBehaviour_Loop();
 		final EList<AbstractAction> stepBehaviourList = rdBehave.getSteps_Behaviour();
-		for (AbstractAction stepBehaviour : stepBehaviourList) {
+		for (final AbstractAction stepBehaviour : stepBehaviourList) {
 			this.extractBehaviourAndAddToSet(stepBehaviour);
 		}
 	}
@@ -370,11 +370,12 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 */
 	private void extractBranchAction(final BranchActionImpl branchAction) throws FileNotFoundException {
 		final EList<AbstractBranchTransition> branchActionSpecificBranchList = branchAction.getBranches_Branch();
-		for (EObject branchActionSpecificBranch : branchActionSpecificBranchList) {
+		for (final EObject branchActionSpecificBranch : branchActionSpecificBranchList) {
 			final EList<EObject> specificBranchContentList = branchActionSpecificBranch.eContents();
-			for (EObject specificBranchContent : specificBranchContentList) {
+			for (final EObject specificBranchContent : specificBranchContentList) {
 				if (specificBranchContent.getClass() == ResourceDemandingBehaviourImpl.class) {
-					for (EObject stepBehaviour : ((ResourceDemandingBehaviourImpl) specificBranchContent).eContents()) {
+					for (final EObject stepBehaviour : ((ResourceDemandingBehaviourImpl) specificBranchContent)
+						.eContents()) {
 						this.extractBehaviourAndAddToSet(stepBehaviour);
 					}
 				}
