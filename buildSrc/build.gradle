@@ -13,7 +13,7 @@ allprojects {
 
 	buildDir = rootProject.buildDir
 	
-	fileTree("$projectDir/src/main/groovy").include('**dependencies.gradle').each { file ->
+	fileTree("$projectDir/src/main/groovy").include('**/dependencies.gradle').each { file ->
 		project.apply from: file
 	}
 	
