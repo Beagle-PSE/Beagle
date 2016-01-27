@@ -127,13 +127,8 @@ public class AdditionExpressionTest {
 
 	/**
 	 * Test method for {@link AdditionExpression#receive(EvaluableExpressionVisitor)}.
-	 * Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li>{@link EvaluableExpressionVisitor#visit(AdditionExpression)} is called.
-	 *
-	 * </ul>
+	 * Asserts that {@link EvaluableExpressionVisitor#visit(AdditionExpression)} is
+	 * called.
 	 */
 	@Test
 	public void testReceive() {
@@ -183,9 +178,8 @@ public class AdditionExpressionTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression#toString()}
-	 * .
+	 * Test method for {@link AdditionExpression#toString()}. Asserts that the method was
+	 * overridden.
 	 */
 	@Test
 	public void testToString() {
@@ -232,6 +226,5 @@ public class AdditionExpressionTest {
 			defaultFromCollection, is(equalTo(defaultReversed)));
 		assertThat("Equal expressions must have the same hashCode", defaultFromCollection.hashCode(),
 			is(defaultReversed.hashCode()));
-
 	}
 }

@@ -30,10 +30,11 @@ public class EvaluableExpressionFactory {
 	/**
 	 * Creates an new evaluable expression.
 	 *
-	 * @return An evaluable expression (you may not make any assumptions about).
+	 * @return An evaluable expression. You may not make any assumptions about it except
+	 *         that consecutive calls will create equal expressions.
 	 */
 	public EvaluableExpression getOne() {
-		return ConstantExpression.forValue(2);
+		return new EvaluableVariable("x");
 	}
 
 	/**
@@ -46,7 +47,7 @@ public class EvaluableExpressionFactory {
 		final EvaluableVariable varA = new EvaluableVariable("a");
 		final EvaluableVariable varB = new EvaluableVariable("b");
 		final EvaluableVariable varC = new EvaluableVariable("c");
-		final EvaluableVariable varX = new EvaluableVariable("x");
+		final EvaluableVariable varX = new EvaluableVariable("d");
 
 		return new EvaluableExpression[] {
 			varA,
