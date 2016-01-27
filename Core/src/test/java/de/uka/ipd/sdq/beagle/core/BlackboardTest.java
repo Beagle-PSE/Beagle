@@ -510,7 +510,7 @@ public class BlackboardTest {
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
 	 * 
-	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
 	 */
@@ -541,7 +541,7 @@ public class BlackboardTest {
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
 	 * 
-	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
 	 */
@@ -574,7 +574,7 @@ public class BlackboardTest {
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
 	 * 
-	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
 	 */
@@ -610,6 +610,8 @@ public class BlackboardTest {
 	 * 
 	 * <li> Throws an exception for {@code null} as parameter.
 	 * 
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
+	 * 
 	 * </ul>
 	 */
 	@Test
@@ -618,25 +620,32 @@ public class BlackboardTest {
 		assertThat(
 			"Blackboard should not return null for valid input parameters in"
 				+ "getMeasurementResultsFor(ResourceDemandingInternalAction)",
-			this.filledBlackboard.getMeasurementResultsFor(RDIA_FACTORY.getOne()), is(notNullValue()));
+			this.filledBlackboard.getMeasurementResultsFor(this.filledBlackboard.getAllRdias().iterator().next()),
+			is(notNullValue()));
 
 		final ResourceDemandingInternalAction rdia = null;
 		assertThat(
 			"It must not be possible to call getMeasurementResultsFor(ResourceDemandingInternalAction) for null as parameter",
 			() -> this.emptyBlackboard.getMeasurementResultsFor(rdia), throwsException(NullPointerException.class));
 
+		final ResourceDemandingInternalAction rdiaTwo = RDIA_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(rdiaTwo),
+			throwsException(IllegalArgumentException.class));
+
 	}
 
 	/**
-	 * Test method for
-	 * {@link Blackboard#getMeasurementResultsFor(de.uka.ipd.sdq.beagle.core.SeffBranch)}
-	 * Assert that
+	 * Test method for {@link Blackboard#getMeasurementResultsFor(SeffBranch)} Assert that
 	 * 
 	 * <ul>
 	 * 
 	 * <li> Does not return {@code null} for valid call parameters.
 	 * 
 	 * <li> Throws an exception for {@code null} as parameter.
+	 * 
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 * 
 	 * </ul>
 	 * 
@@ -646,32 +655,56 @@ public class BlackboardTest {
 
 		assertThat(
 			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffBranch)",
-			this.filledBlackboard.getMeasurementResultsFor(SEFF_BRANCH_FACTORY.getOne()), is(notNullValue()));
+			this.filledBlackboard.getMeasurementResultsFor(
+				this.filledBlackboard.getAllSeffBranches().iterator().next()),
+			is(notNullValue()));
 
 		final SeffBranch seffBranch = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffBranch) for null as parameter",
 			() -> this.emptyBlackboard.getMeasurementResultsFor(seffBranch),
 			throwsException(NullPointerException.class));
+
+		final SeffBranch seffBranchTwo = SEFF_BRANCH_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(seffBranchTwo),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
-	 * Test method for
-	 * {@link Blackboard#getMeasurementResultsFor(de.uka.ipd.sdq.beagle.core.SeffLoop)} .
+	 * Test method for {@link Blackboard#getMeasurementResultsFor(SeffLoop)} . Assert that
+	 * 
+	 * <ul>
+	 * 
+	 * <li> Does not return {@code null} for valid call parameters.
+	 * 
+	 * <li> Throws an exception for {@code null} as parameter.
+	 * 
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
+	 * 
+	 * </ul>
+	 * 
 	 */
 	@Test
 	public void testGetMeasurementResultsForSeffLoop() {
 
 		assertThat("Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffLoop)",
-			this.filledBlackboard.getMeasurementResultsFor(SEFF_LOOP_FACTORY.getOne()), is(notNullValue()));
+			this.filledBlackboard.getMeasurementResultsFor(this.filledBlackboard.getAllSeffLoops().iterator().next()),
+			is(notNullValue()));
 
 		final SeffLoop seffLoop = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffLoop) for null as parameter",
 			() -> this.emptyBlackboard.getMeasurementResultsFor(seffLoop), throwsException(NullPointerException.class));
+
+		final SeffLoop seffLoopTwo = SEFF_LOOP_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(seffLoopTwo),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
-	 * Test method for
-	 * {@link Blackboard#getMeasurementResultsFor(de.uka.ipd.sdq.beagle.core.ExternalCallParameter)}
+	 * Test method for {@link Blackboard#getMeasurementResultsFor(ExternalCallParameter)}
 	 * Assert that
 	 * 
 	 * <ul>
@@ -679,6 +712,8 @@ public class BlackboardTest {
 	 * <li> Does not return {@code null} for valid call parameters.
 	 * 
 	 * <li> Throws an exception for {@code null} as parameter.
+	 * 
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 * 
 	 * </ul>
 	 * 
@@ -688,7 +723,8 @@ public class BlackboardTest {
 
 		assertThat(
 			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(ExternalCallParameter)",
-			this.filledBlackboard.getMeasurementResultsFor(EXTERNAL_CALL_PARAMETER_FACTORY.getOne()),
+			this.filledBlackboard.getMeasurementResultsFor(
+				this.filledBlackboard.getAllExternalCallParameters().iterator().next()),
 			is(notNullValue()));
 
 		final ExternalCallParameter externalCallParameter = null;
@@ -696,11 +732,17 @@ public class BlackboardTest {
 			"It must not be possible to call getMeasurementResultsFor(externalCallParameter) for null as parameter",
 			() -> this.emptyBlackboard.getMeasurementResultsFor(externalCallParameter),
 			throwsException(NullPointerException.class));
+
+		final ExternalCallParameter externalCallParameterTwo = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
+			() -> this.emptyBlackboard.getMeasurementResultsFor(externalCallParameterTwo),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
 	 * Test method for
-	 * {@link Blackboard#addMeasurementResultFor(ResourceDemandingInternalAction, de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultFor(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -708,6 +750,9 @@ public class BlackboardTest {
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
+	 * 
+	 * <li>Adding measurementResult for unknown Elements throws an
+	 * IllegalArgumentException
 	 *
 	 * </ul>
 	 */
@@ -715,7 +760,8 @@ public class BlackboardTest {
 	public void testAddMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
 
 		final ResourceDemandMeasurementResult rdiaResult = new ResourceDemandMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(RDIA_FACTORY.getOne(), rdiaResult);
+		this.filledBlackboard.addMeasurementResultFor(this.filledBlackboard.getAllRdias().iterator().next(),
+			rdiaResult);
 
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new ResourceDemandMeasurementResult()),
@@ -724,11 +770,16 @@ public class BlackboardTest {
 			() -> this.emptyBlackboard.addMeasurementResultFor(RDIA_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
 
+		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to add measurement results to unknown elements!",
+			() -> this.emptyBlackboard.addMeasurementResultFor(rdia, rdiaResult),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
 	 * Test method for
-	 * {@link Blackboard#addMeasurementResultFor(SeffBranch, de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultFor(SeffBranch, BranchDecisionMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -736,6 +787,9 @@ public class BlackboardTest {
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
+	 * 
+	 * <li>Adding measurementResult for unknown Elements throws an
+	 * IllegalArgumentException
 	 *
 	 * </ul>
 	 */
@@ -743,7 +797,8 @@ public class BlackboardTest {
 	public void testAddMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
 
 		final BranchDecisionMeasurementResult branchResult = new BranchDecisionMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(SEFF_BRANCH_FACTORY.getOne(), branchResult);
+		this.filledBlackboard.addMeasurementResultFor(this.filledBlackboard.getAllSeffBranches().iterator().next(),
+			branchResult);
 
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new BranchDecisionMeasurementResult()),
@@ -751,11 +806,17 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add null as measurement result",
 			() -> this.emptyBlackboard.addMeasurementResultFor(SEFF_BRANCH_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
+
+		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to add measurement results to unknown elements!",
+			() -> this.emptyBlackboard.addMeasurementResultFor(seffBranch, branchResult),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
 	 * Test method for
-	 * {@link Blackboard#addMeasurementResultFor(SeffLoop, de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultFor(SeffLoop, LoopRepetitionCountMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -763,6 +824,9 @@ public class BlackboardTest {
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
+	 * 
+	 * <li>Adding measurementResult for unknown Elements throws an
+	 * IllegalArgumentException
 	 *
 	 * </ul>
 	 */
@@ -770,7 +834,8 @@ public class BlackboardTest {
 	public void testAddMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
 
 		final LoopRepetitionCountMeasurementResult loopResult = new LoopRepetitionCountMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(SEFF_LOOP_FACTORY.getOne(), loopResult);
+		this.filledBlackboard.addMeasurementResultFor(this.filledBlackboard.getAllSeffLoops().iterator().next(),
+			loopResult);
 
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new LoopRepetitionCountMeasurementResult()),
@@ -778,11 +843,17 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add null as measurement result",
 			() -> this.emptyBlackboard.addMeasurementResultFor(SEFF_LOOP_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
+
+		final SeffLoop seffLoop = SEFF_LOOP_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to add measurement results to unknown elements!",
+			() -> this.emptyBlackboard.addMeasurementResultFor(seffLoop, loopResult),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
 	 * Test method for
-	 * {@link Blackboard#addMeasurementResultFor(ExternalCallParameter, de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult)}
+	 * {@link Blackboard#addMeasurementResultFor(ExternalCallParameter, ParameterChangeMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -790,6 +861,9 @@ public class BlackboardTest {
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
+	 * 
+	 * <li>Adding measurementResult for unknown Elements throws an
+	 * IllegalArgumentException
 	 *
 	 * </ul>
 	 */
@@ -797,7 +871,8 @@ public class BlackboardTest {
 	public void testAddMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
 
 		final ParameterChangeMeasurementResult parameterResult = new ParameterChangeMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(EXTERNAL_CALL_PARAMETER_FACTORY.getOne(), parameterResult);
+		this.filledBlackboard.addMeasurementResultFor(
+			this.filledBlackboard.getAllExternalCallParameters().iterator().next(), parameterResult);
 
 		assertThat("It must not be possible to add a measurement result for null",
 			() -> this.emptyBlackboard.addMeasurementResultFor(null, new ParameterChangeMeasurementResult()),
@@ -805,6 +880,12 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add null as measurement result",
 			() -> this.emptyBlackboard.addMeasurementResultFor(EXTERNAL_CALL_PARAMETER_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
+
+		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to add measurement results to unknown elements!",
+			() -> this.emptyBlackboard.addMeasurementResultFor(ecpElement, parameterResult),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
