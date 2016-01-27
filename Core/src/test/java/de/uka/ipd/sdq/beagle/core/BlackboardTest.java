@@ -5,6 +5,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAccept
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -894,25 +895,54 @@ public class BlackboardTest {
 	 *
 	 * <ul>
 	 * 
+	 * <li>The data written through addProposedExpressionFor is returned by this method.
+	 * 
 	 * <li> Does not return {@code null} for valid call parameters.
 	 *
 	 * <li>{@code null} cannot be passed.
+	 * 
+	 * <li>Asking for an unknown SeffElement will cause an IllegalArgumentException
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testGetProposedExpressionFor() {
 
+		final ResourceDemandingInternalAction rdia = this.filledBlackboard.getAllRdias().iterator().next();
+		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
+		this.filledBlackboard.addProposedExpressionFor(rdia, evaEx);
+
+		assertThat("Proposed Expression should return an expression that have been added by \"addProposedExpression\"",
+			this.filledBlackboard.getProposedExpressionFor(rdia), contains(evaEx));
+
 		assertThat("Proposed Expression should not return null for valid input parameters!",
-			this.filledBlackboard.getProposedExpressionFor(RDIA_FACTORY.getOne()), is(notNullValue()));
+			this.filledBlackboard.getProposedExpressionFor(this.filledBlackboard.getAllRdias().iterator().next()),
+			is(notNullValue()));
+		assertThat(
+			"Proposed Expression should not return null for valid input parameters!", this.filledBlackboard
+				.getProposedExpressionFor(this.filledBlackboard.getAllSeffBranches().iterator().next()),
+			is(notNullValue()));
+		assertThat("Proposed Expression should not return null for valid input parameters!",
+			this.filledBlackboard.getProposedExpressionFor(this.filledBlackboard.getAllSeffLoops().iterator().next()),
+			is(notNullValue()));
+		assertThat(
+			"Proposed Expression should not return null for valid input parameters!", this.filledBlackboard
+				.getProposedExpressionFor(this.filledBlackboard.getAllExternalCallParameters().iterator().next()),
+			is(notNullValue()));
 
 		assertThat("It must not be possible get proposed expressions for null",
 			() -> this.emptyBlackboard.getProposedExpressionFor(null), throwsException(NullPointerException.class));
+
+		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to ask for proposed Expressions of unknown elements!",
+			() -> this.emptyBlackboard.getProposedExpressionFor(ecpElement),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
 	 * Test method for
-	 * {@link Blackboard#addProposedExpressionFor(MeasurableSeffElement, de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression)}
+	 * {@link Blackboard#addProposedExpressionFor(MeasurableSeffElement, EvaluableExpression)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -920,13 +950,24 @@ public class BlackboardTest {
 	 * <li> No exceptions for valid inputs.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
+	 * 
+	 * <li> Adding proposed expressions to unknown elements should cause an
+	 * IllegalArgumentException
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testAddProposedExpressionFor() {
 
-		this.filledBlackboard.addProposedExpressionFor(RDIA_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
+		this.filledBlackboard.addProposedExpressionFor(this.filledBlackboard.getAllRdias().iterator().next(),
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
+		this.filledBlackboard.addProposedExpressionFor(this.filledBlackboard.getAllSeffBranches().iterator().next(),
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
+		this.filledBlackboard.addProposedExpressionFor(this.filledBlackboard.getAllSeffLoops().iterator().next(),
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
+		this.filledBlackboard.addProposedExpressionFor(
+			this.filledBlackboard.getAllExternalCallParameters().iterator().next(),
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat("It must not be possible to add a proposed expression for null",
 			() -> this.emptyBlackboard.addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
@@ -934,6 +975,12 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add null as a proposed expression",
 			() -> this.emptyBlackboard.addProposedExpressionFor(SEFF_BRANCH_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
+
+		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to add an proposed Expression to unknown elements!",
+			() -> this.emptyBlackboard.addProposedExpressionFor(ecpElement, EVALUABLE_EXPRESSION_FACTORY.getOne()),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -942,24 +989,45 @@ public class BlackboardTest {
 	 *
 	 * <ul>
 	 * 
+	 * <li> An earlier call
+	 * 
+	 * <li> Null should be returned for not yet annotated FinalExpressions
+	 * 
 	 * <li>No exceptions for valid input.
 	 *
 	 * <li>{@code null} cannot be passed.
+	 * 
+	 * <li> Throwing IllegalArgumentException if seffElement is not on the Blackboard
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testGetFinalExpressionFor() {
 
+		final ResourceDemandingInternalAction rdia = this.filledBlackboard.getAllRdias().iterator().next();
+		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
+		this.filledBlackboard.setFinalExpressionFor(rdia, evaEx);
+		assertThat("GetFinalExpressionFor should return setted expression by \"setFinalExpressionFor\"",
+			this.filledBlackboard.getFinalExpressionFor(rdia), is(evaEx));
+
+		assertThat("Null should be returned for not yet annotated FinalExpressions!",
+			this.emptyBlackboard.getFinalExpressionFor(SEFF_BRANCH_FACTORY.getOne()), nullValue());
+
 		this.filledBlackboard.getFinalExpressionFor(SEFF_BRANCH_FACTORY.getOne());
 
 		assertThat("It must not be possible get the final expression for null",
 			() -> this.emptyBlackboard.getFinalExpressionFor(null), throwsException(NullPointerException.class));
+
+		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to ask for a final Expression of unknown elements!",
+			() -> this.emptyBlackboard.getFinalExpressionFor(seffBranch),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
 	 * Test method for
-	 * {@link Blackboard#setFinalExpressionFor(MeasurableSeffElement, de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression)}
+	 * {@link Blackboard#setFinalExpressionFor(MeasurableSeffElement, EvaluableExpression)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -967,19 +1035,28 @@ public class BlackboardTest {
 	 * <li> No exceptions for valid input parameters.
 	 *
 	 * <li>{@code null} can not be passed to one of the arguments.
+	 * 
+	 * <li> Throwing IllegalArgumentException if seffElement is not on the Blackboard
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testSetFinalExpressionFor() {
 
-		this.filledBlackboard.setFinalExpressionFor(SEFF_LOOP_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
+		this.filledBlackboard.setFinalExpressionFor(this.filledBlackboard.getAllRdias().iterator().next(),
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat("It must not be possible to set the final expression for null",
 			() -> this.emptyBlackboard.setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 		// asserts that setting null for the final expression is possible
 		this.emptyBlackboard.setFinalExpressionFor(RDIA_FACTORY.getOne(), null);
+
+		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
+		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		assertThat("It must not be possible to ask for a final Expression of unknown elements!",
+			() -> this.emptyBlackboard.setFinalExpressionFor(seffBranch, EVALUABLE_EXPRESSION_FACTORY.getOne()),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
