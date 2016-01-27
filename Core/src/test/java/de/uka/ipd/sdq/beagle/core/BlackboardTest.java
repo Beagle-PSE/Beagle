@@ -6,6 +6,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.theInstance;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -144,22 +145,22 @@ public class BlackboardTest {
 	 * Test method for
 	 * {@link Blackboard#Blackboard(java.util.Set, java.util.Set, java.util.Set)} . Assert
 	 * that:
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Modifying the set the blackboard was created with does not modify the
 	 * blackboard content
-	 * 
+	 *
 	 * <li> Constructor does neither accept {@code null} parameters nor {@code null}
 	 * within a Set
-	 * 
+	 *
 	 * <li> Constructor does not accept {@code null} parameters and throws a
 	 * NullPointerException
-	 * 
+	 *
 	 * <li> Proper functionality for valid input
-	 * 
+	 *
 	 * </ul>
-	 * 
+	 *
 	 */
 	@Test
 	public void testBlackboard() {
@@ -217,16 +218,16 @@ public class BlackboardTest {
 	/**
 	 * Test method for {@link Blackboard#getAllRdias()}. Assert that Blackboard does not
 	 * return {@code null} for getter-method
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> The Blackboard will not return {@code null} by any getter-method.
-	 * 
+	 *
 	 * <li> Once set, SeffElements will not change.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -251,16 +252,16 @@ public class BlackboardTest {
 	/**
 	 * Test method for {@link Blackboard#getAllSeffBranches()}. Assert that Blackboard
 	 * does not return {@code null} for getter-method
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> The Blackboard will not return {@code null} by any getter-method.
-	 * 
+	 *
 	 * <li> Once set, SeffElements will not change.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -287,16 +288,16 @@ public class BlackboardTest {
 	/**
 	 * Test method for {@link Blackboard#getAllSeffLoops()}. Assert that Blackboard does
 	 * not return {@code null} for getter-method
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> The Blackboard will not return {@code null} by any getter-method.
-	 * 
+	 *
 	 * <li> Once set, SeffElements will not change.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -323,16 +324,16 @@ public class BlackboardTest {
 	/**
 	 * Test method for {@link Blackboard#getAllExternalCallParameters()}. Assert that
 	 * Blackboard does not return {@code null} for getter-method
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> The Blackboard will not return {@code null} by any getter-method.
-	 * 
+	 *
 	 * <li> Once set, SeffElements will not change.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -357,14 +358,14 @@ public class BlackboardTest {
 
 	/**
 	 * Test method for {@link Blackboard#getRdiasToBeMeasured()}. Assert That
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Getter does not return {@code null}.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -387,14 +388,14 @@ public class BlackboardTest {
 
 	/**
 	 * Test method for {@link Blackboard#getSeffBranchesToBeMeasured()}. Assert That
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Getter does not return {@code null}.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -415,14 +416,14 @@ public class BlackboardTest {
 
 	/**
 	 * Test method for {@link Blackboard#getSeffLoopsToBeMeasured()}. Assert That
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Getter does not return {@code null}.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -444,14 +445,14 @@ public class BlackboardTest {
 	/**
 	 * Test method for {@link Blackboard#getExternalCallParametersToBeMeasured()}. Assert
 	 * That
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Getter does not return {@code null}.
-	 * 
+	 *
 	 * <li> Manipulating the returned set will not affect the corresponding set on the
 	 * blackboard.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -479,7 +480,7 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
@@ -511,7 +512,7 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
@@ -542,7 +543,7 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
@@ -575,7 +576,7 @@ public class BlackboardTest {
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
@@ -605,15 +606,15 @@ public class BlackboardTest {
 	 * Test method for
 	 * {@link Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)} .
 	 * Assert that
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Does not return {@code null} for valid call parameters.
-	 * 
+	 *
 	 * <li> Throws an exception for {@code null} as parameter.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
-	 * 
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -640,17 +641,17 @@ public class BlackboardTest {
 
 	/**
 	 * Test method for {@link Blackboard#getMeasurementResultsFor(SeffBranch)} Assert that
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Does not return {@code null} for valid call parameters.
-	 * 
+	 *
 	 * <li> Throws an exception for {@code null} as parameter.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
-	 * 
+	 *
 	 * </ul>
-	 * 
+	 *
 	 */
 	@Test
 	public void testGetMeasurementResultsForSeffBranch() {
@@ -675,17 +676,17 @@ public class BlackboardTest {
 
 	/**
 	 * Test method for {@link Blackboard#getMeasurementResultsFor(SeffLoop)} . Assert that
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Does not return {@code null} for valid call parameters.
-	 * 
+	 *
 	 * <li> Throws an exception for {@code null} as parameter.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
-	 * 
+	 *
 	 * </ul>
-	 * 
+	 *
 	 */
 	@Test
 	public void testGetMeasurementResultsForSeffLoop() {
@@ -708,17 +709,17 @@ public class BlackboardTest {
 	/**
 	 * Test method for {@link Blackboard#getMeasurementResultsFor(ExternalCallParameter)}
 	 * Assert that
-	 * 
+	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> Does not return {@code null} for valid call parameters.
-	 * 
+	 *
 	 * <li> Throws an exception for {@code null} as parameter.
-	 * 
+	 *
 	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
-	 * 
+	 *
 	 * </ul>
-	 * 
+	 *
 	 */
 	@Test
 	public void testGetMeasurementResultsForExternalCallParameter() {
@@ -748,11 +749,11 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
-	 * 
+	 *
 	 * <li>Adding measurementResult for unknown Elements throws an
 	 * IllegalArgumentException
 	 *
@@ -785,11 +786,11 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
-	 * 
+	 *
 	 * <li>Adding measurementResult for unknown Elements throws an
 	 * IllegalArgumentException
 	 *
@@ -822,11 +823,11 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
-	 * 
+	 *
 	 * <li>Adding measurementResult for unknown Elements throws an
 	 * IllegalArgumentException
 	 *
@@ -859,11 +860,11 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li>Accepting for valid input parameters.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
-	 * 
+	 *
 	 * <li>Adding measurementResult for unknown Elements throws an
 	 * IllegalArgumentException
 	 *
@@ -895,13 +896,13 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li>The data written through addProposedExpressionFor is returned by this method.
-	 * 
+	 *
 	 * <li> Does not return {@code null} for valid call parameters.
 	 *
 	 * <li>{@code null} cannot be passed.
-	 * 
+	 *
 	 * <li>Asking for an unknown SeffElement will cause an IllegalArgumentException
 	 *
 	 * </ul>
@@ -947,11 +948,11 @@ public class BlackboardTest {
 	 * . Asserts that:
 	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> No exceptions for valid inputs.
 	 *
 	 * <li>{@code null} cannot be passed as any argument.
-	 * 
+	 *
 	 * <li> Adding proposed expressions to unknown elements should cause an
 	 * IllegalArgumentException
 	 *
@@ -989,15 +990,15 @@ public class BlackboardTest {
 	 * Asserts that:
 	 *
 	 * <ul>
-	 * 
+	 *
 	 * <li> An earlier call
-	 * 
+	 *
 	 * <li> Null should be returned for not yet annotated FinalExpressions
-	 * 
+	 *
 	 * <li>No exceptions for valid input.
 	 *
 	 * <li>{@code null} cannot be passed.
-	 * 
+	 *
 	 * <li> Throwing IllegalArgumentException if seffElement is not on the Blackboard
 	 *
 	 * </ul>
@@ -1036,7 +1037,7 @@ public class BlackboardTest {
 	 * <li> No exceptions for valid input parameters.
 	 *
 	 * <li>{@code null} can not be passed to one of the arguments.
-	 * 
+	 *
 	 * <li> Throwing IllegalArgumentException if seffElement is not on the Blackboard
 	 *
 	 * </ul>
@@ -1070,26 +1071,62 @@ public class BlackboardTest {
 	}
 
 	/**
-	 * Test method for {@link Blackboard#writeFor(java.lang.Class, java.io.Serializable)}
-	 * .
+	 * Test method for {@link Blackboard#writeFor(java.lang.Class, java.io.Serializable)}.
+	 * Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li>{@code null} can be written
+	 *
+	 * <li>The writer cannot be {@code null}
+	 *
+	 * </ul>
 	 */
 	@Test
 	public void testWriteFor() {
+		assertThat("It must not be possible to write on the Blackboard for null as a given parameter",
+			() -> this.emptyBlackboard.writeFor(null, "null"), throwsException(NullPointerException.class));
 
-		assertThat("It must not be possible to write on the Blackboard for null as a given parameter",
-			() -> this.emptyBlackboard.writeFor(null, String.class), throwsException(NullPointerException.class));
-		assertThat("It must not be possible to write on the Blackboard for null as a given parameter",
-			() -> this.emptyBlackboard.writeFor(null, null), throwsException(NullPointerException.class));
+		this.emptyBlackboard.writeFor(TestStorer.class, "test");
+		this.emptyBlackboard.writeFor(TestStorer.class, null);
 	}
 
 	/**
-	 * Test method for {@link Blackboard#readFor(java.lang.Class)}.
+	 * Test method for {@link Blackboard#readFor(java.lang.Class)}. Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li>Initially, {@code null} is stored for every class
+	 *
+	 * <li>written data is returned
+	 *
+	 * <li>the writer cannot be {@code null}
+	 *
+	 * </ul>
 	 */
 	@Test
 	public void testReadFor() {
 		assertThat("It must not be possible to read on the Blackboard for null as a given parameter",
 			() -> this.emptyBlackboard.readFor(null), throwsException(NullPointerException.class));
 
+		assertThat("null must be returned if nothing was written", this.emptyBlackboard.readFor(TestStorer.class),
+			is(nullValue()));
+
+		final String testString = "test";
+		this.emptyBlackboard.writeFor(TestStorer.class, testString);
+		assertThat("Written data must be returned", this.emptyBlackboard.readFor(TestStorer.class),
+			is(theInstance(testString)));
+
+		this.emptyBlackboard.writeFor(TestStorer.class, null);
+		assertThat("Written data must be returned", this.emptyBlackboard.readFor(TestStorer.class), is(nullValue()));
+	}
+
+	/**
+	 * Test {@link BlackboardStorer}.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class TestStorer implements BlackboardStorer<String> {
 	}
 
 }
