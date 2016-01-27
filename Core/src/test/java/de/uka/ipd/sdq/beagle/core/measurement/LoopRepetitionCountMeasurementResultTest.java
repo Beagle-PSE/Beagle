@@ -23,6 +23,9 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * Test method for
 	 * {@link LoopRepetitionCountMeasurementResult#LoopRepetitionCountMeasurementResult(int)}
 	 * .
+	 * 
+	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
+	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
 	public void testLoopRepetitionCountMeasurementResultInt() {
@@ -32,7 +35,7 @@ public class LoopRepetitionCountMeasurementResultTest {
 		new LoopRepetitionCountMeasurementResult(count1);
 		final int negativeValue = -2;
 		final ThrowingMethod method = () -> {
-			new ResourceDemandMeasurementResult(negativeValue);
+			new LoopRepetitionCountMeasurementResult(negativeValue);
 		};
 		assertThat("Count must be non-negative.", method, throwsException(IllegalArgumentException.class));
 	}
@@ -41,6 +44,10 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * Test method for
 	 * {@link LoopRepetitionCountMeasurementResult#LoopRepetitionCountMeasurementResult(Parameterisation, int)}
 	 * .
+	 * 
+	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
+	 * smaller than 0 and an {@link NullPointerException} is thrown if the
+	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
 	public void testLoopRepetitionCountMeasurementResultParameterisationInt() {
@@ -51,17 +58,20 @@ public class LoopRepetitionCountMeasurementResultTest {
 		new LoopRepetitionCountMeasurementResult(count1);
 		final int negativeValue = -2;
 		ThrowingMethod method = () -> {
-			new ResourceDemandMeasurementResult(parameterisation, negativeValue);
+			new LoopRepetitionCountMeasurementResult(parameterisation, negativeValue);
 		};
 		assertThat("Count must be non-negative.", method, throwsException(IllegalArgumentException.class));
 		method = () -> {
-			new ResourceDemandMeasurementResult(null, count);
+			new LoopRepetitionCountMeasurementResult(null, count);
 		};
 		assertThat("Parameterisation must not be null.", method, throwsException(NullPointerException.class));
 	}
 
 	/**
-	 * Test method for {@link LoopRepetitionCountMeasurementResult#getCount()} .
+	 * Test method for {@link LoopRepetitionCountMeasurementResult#getCount()}.
+	 * 
+	 * <p>Asserts that correct results are returned for the value and that changing the
+	 * count after instantiation does not change the output value.
 	 */
 	@Test
 	public void testGetCount() {
