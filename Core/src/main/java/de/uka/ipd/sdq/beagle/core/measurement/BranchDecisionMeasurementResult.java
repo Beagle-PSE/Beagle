@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
  * this class!
- * 
+ *
  * <p>COVERAGE:OFF
  */
 
@@ -14,8 +14,6 @@ import org.apache.commons.lang3.Validate;
  * A result of measuring which branch is taken in a branching source code construct. This
  * result expresses that the result’s “indexth” branch was taken when a branching
  * construct was executed with the given {@link Parameterisation}.
- *
- * TODO: make branch use list, not set, cause of index!!!
  *
  * @author Joshua Gleitze
  * @author Roman Langrehr
