@@ -20,7 +20,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 * The minimum number of summands needed to create a correct expression.
 	 */
 	private static final int MIN_FACTORS = 2;
-	
+
 	/**
 	 * All factors of this expression as collection.
 	 */
@@ -35,8 +35,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	public MultiplicationExpression(final Collection<EvaluableExpression> factors) {
 		Validate.noNullElements(factors);
-		Validate.isTrue(factors.size() >= MIN_FACTORS, "The expression must contain at least %d factors.",
-			MIN_FACTORS);
+		Validate.isTrue(factors.size() >= MIN_FACTORS, "The expression must contain at least %d factors.", MIN_FACTORS);
 		this.factors = new ArrayList<>(factors);
 	}
 
@@ -56,7 +55,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 * @return The expressions forming this expression’s product.
 	 */
 	public Collection<EvaluableExpression> getFactors() {
-		return this.factors;
+		return new ArrayList<>(this.factors);
 	}
 
 	/*
