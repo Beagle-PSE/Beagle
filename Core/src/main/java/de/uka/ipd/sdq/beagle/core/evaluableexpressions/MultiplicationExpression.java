@@ -17,6 +17,11 @@ import java.util.List;
 public class MultiplicationExpression implements EvaluableExpression {
 
 	/**
+	 * The minimum number of summands needed to create a correct expression.
+	 */
+	private static final int MIN_FACTORS = 2;
+	
+	/**
 	 * All factors of this expression as collection.
 	 */
 	private final List<EvaluableExpression> factors;
@@ -30,6 +35,8 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	public MultiplicationExpression(final Collection<EvaluableExpression> factors) {
 		Validate.noNullElements(factors);
+		Validate.isTrue(factors.size() >= MIN_FACTORS, "The expression must contain at least %d factors.",
+			MIN_FACTORS);
 		this.factors = new ArrayList<>(factors);
 	}
 
@@ -40,8 +47,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 *            {@code factors.length} must at least be 2.
 	 */
 	public MultiplicationExpression(final EvaluableExpression... factors) {
-		Validate.noNullElements(factors);
-		this.factors = new ArrayList<>(Arrays.asList(factors));
+		this(Arrays.asList(factors));
 	}
 
 	/**

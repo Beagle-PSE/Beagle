@@ -18,6 +18,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFactory;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -73,7 +74,7 @@ public class AdditionExpressionTest {
 		new AdditionExpression(EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
 
 		final EvaluableExpression[] testInput = EVALUABLE_EXPRESSION_FACTORY.getAll();
-		final List<EvaluableExpression> listInput = Arrays.asList(testInput);
+		final List<EvaluableExpression> listInput = new ArrayList<>(Arrays.asList(testInput));
 		final EvaluableExpression[] arrayInput = ArrayUtils.clone(testInput);
 		assert !testInput[0].equals(EVALUABLE_EXPRESSION_FACTORY.getOne());
 
@@ -153,7 +154,7 @@ public class AdditionExpressionTest {
 	 * <li>The method passes the received {@link EvaluableVariableAssignment} to its inner
 	 * expressions
 	 *
-	 * <li>The method calulates the sum of its inner expressions’ values.
+	 * <li>The method calculates the sum of its inner expressions’ values.
 	 *
 	 * </ul>
 	 */

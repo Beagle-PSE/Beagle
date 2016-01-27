@@ -31,6 +31,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	 * @param value The Constant value of this expression.
 	 */
 	private ConstantExpression(final double value) {
+		Validate.notNull(value);
 		this.value = value;
 		constantExpressions.put(value, this);
 	}
