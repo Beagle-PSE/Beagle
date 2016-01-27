@@ -83,12 +83,12 @@ public class ResourceDemandMeasurementResultTest {
 
 		assertThat(result1.getValue(), is(equalTo(value)));
 		assertThat(result2.getValue(), is(equalTo(value2)));
-		assertThat(resultWithParameterisation, is(equalTo(value)));
+		assertThat(resultWithParameterisation.getValue(), is(equalTo(value)));
 		value = 4.5;
 		assertThat("The returned value must not be influenced by a later change.", result1.getValue(),
 			is(not(equalTo(value))));
-		assertThat("The returned value must not be influenced by a later change.", result2.getValue(),
-			is(not(equalTo(value2))));
+		assertThat("The returned value must not be influenced by a later change.", resultWithParameterisation.getValue(),
+			is(not(equalTo(value))));
 
 	}
 

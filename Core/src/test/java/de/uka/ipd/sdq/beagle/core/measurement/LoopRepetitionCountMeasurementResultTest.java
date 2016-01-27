@@ -85,11 +85,11 @@ public class LoopRepetitionCountMeasurementResultTest {
 
 		assertThat(result.getCount(), is(equalTo(count)));
 		assertThat(result1.getCount(), is(equalTo(count1)));
-		assertThat(resultWithP, is(equalTo(count)));
+		assertThat(resultWithP.getCount(), is(equalTo(count)));
 		count = 4;
 		assertThat("The returned value must not be influenced by a later change.", result.getCount(),
 			is(not(equalTo(count))));
-		assertThat("The returned value must not be influenced by a later change.", result1.getCount(),
+		assertThat("The returned value must not be influenced by a later change.", resultWithP.getCount(),
 			is(not(equalTo(count))));
 	}
 

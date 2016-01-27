@@ -84,11 +84,11 @@ public class BranchDecisionMeasurementResultTest {
 
 		assertThat(result.getBranchIndex(), is(equalTo(branchIndex)));
 		assertThat(result1.getBranchIndex(), is(equalTo(branchIndex1)));
-		assertThat(resultWithP, is(equalTo(branchIndex)));
+		assertThat(resultWithP.getBranchIndex(), is(equalTo(branchIndex)));
 		branchIndex = 4;
 		assertThat("The returned index must not be influenced by a later change.", result.getBranchIndex(),
 			is(not(equalTo(branchIndex))));
-		assertThat("The returned index must not be influenced by a later change.", result1.getBranchIndex(),
+		assertThat("The returned index must not be influenced by a later change.", resultWithP.getBranchIndex(),
 			is(not(equalTo(branchIndex))));
 	}
 
