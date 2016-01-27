@@ -11,7 +11,7 @@ Main dependencies are the ones that are required to compile and run the producti
 Dependencies defined in the `MANIFEST.MF` must come from an update site. If a declared dependency is not provided by any update site yet, add an appropriate update site to `Beagle/buildSrc/src/tasks/gradle/20 eclipse plugins.gradle`.
 
 ## Test Dependencies
-Test dependencies are the ones only required by test code, but not on the user’s machine. They are not declared in the `MANIFEST.MF` but in `Beagle/buildSrc/src/tasks/gradle/20 test.gradle`. Make sure to run `gradle eclipse` and to check in the modified `.classpath` files after adding a dependency there.
+Test dependencies are the ones only required by test code, but not on the user’s machine. They are not declared in `MANIFEST.MF` but in `Beagle/buildSrc/src/tasks/gradle/20 test.gradle`. Dependencies defined in gradle are imported through the Buildship plugin into Eclipse. [See the Development Setup document](Development Setup.html) for details on the setup.
 
 ## Build Dependencies
 Build dependencies are the ones required by build code. Tasks can define them in the task file itself. Code in a project’s `buildSrc/src/main/groovy` folder may add a `dependencies.gradle` file and declare dependencies there.

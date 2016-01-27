@@ -32,10 +32,10 @@ All points stated in this document apply to prototypes as well, with the followi
 BUNDLE_ROOT_PATH=src/main/resources
 ``` 
  must be created in `.settings/org.eclipse.pde.core.prefs`.
- * The `build.properties` belongs to `src/main/resources/build.properties`. Its paths must be adapted accordingly, a default is:
+ * `plugin.xml` belongs to `src/main/resources/plugin.xml`.
+ * `build.properties` belongs to `src/main/resources/build.properties`. Its paths must be adapted accordingly, a default is:
 ```
 source.. = ../java/
 output.. = ../../../bin/
 bin.includes = META-INF/
 ```
- * All dependencies must be defined exclusively in `src/main/resources/META-INF/MANIFEST.MF`.
