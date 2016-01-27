@@ -1,10 +1,16 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * Assigns {@link EvaluableVariable EvaluableVariables} to values.
- * 
+ *
  * @author Annika Berger
- * 
+ *
  * @see EvaluableVariable
  *
  */
