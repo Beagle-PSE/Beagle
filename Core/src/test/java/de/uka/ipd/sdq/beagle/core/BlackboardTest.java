@@ -3,6 +3,8 @@ package de.uka.ipd.sdq.beagle.core;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAcceptingNull;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -14,6 +16,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
@@ -66,6 +69,11 @@ public class BlackboardTest {
 	 * An {@link EvaluableExpression} factory to easily obtain new instances from.
 	 */
 	private static final EvaluableExpressionFactory EVALUABLE_EXPRESSION_FACTORY = new EvaluableExpressionFactory();
+
+	/**
+	 * An {@link CodeSectionFactory} factory to easily obtain new instances from.
+	 */
+	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
 	 * A new, empty Blackboard will be put in here before each test. Please note that it
@@ -135,6 +143,11 @@ public class BlackboardTest {
 	 * {@link Blackboard#Blackboard(java.util.Set, java.util.Set, java.util.Set)} . Assert
 	 * that:
 	 * 
+	 * <ul>
+	 * 
+	 * <li> Modifying the set the blackboard was created with does not modify the
+	 * blackboard content
+	 * 
 	 * <li> Constructor does neither accept {@code null} parameters nor {@code null}
 	 * within a Set
 	 * 
@@ -143,9 +156,36 @@ public class BlackboardTest {
 	 * 
 	 * <li> Proper functionality for valid input
 	 * 
+	 * </ul>
+	 * 
 	 */
 	@Test
 	public void testBlackboard() {
+
+		// Checking if later modification of the given sets to the Blackboard does not
+		// change the Blackboard sets.
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet);
+		final ResourceDemandingInternalAction rdiaToAdd =
+			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, CODE_SECTION_FACTORY.getOne());
+		final SeffBranch seffBranchToAdd = new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet());
+		final SeffLoop seffLoopToAdd = new SeffLoop(CODE_SECTION_FACTORY.getOne());
+		final ExternalCallParameter ecpToAdd = new ExternalCallParameter(CODE_SECTION_FACTORY.getOne(), 0);
+		rdiaSet.add(rdiaToAdd);
+		seffBranchSet.add(seffBranchToAdd);
+		seffLoopSet.add(seffLoopToAdd);
+		ecpSet.add(ecpToAdd);
+		assertThat("Blackboard should create a copy from the given Sets to the constructor",
+			blackboardTemp.getAllRdias(), not(contains(rdiaToAdd)));
+		assertThat("Blackboard should create a copy from the given Sets to the constructor",
+			blackboardTemp.getAllSeffBranches(), not(contains(seffBranchToAdd)));
+		assertThat("Blackboard should create a copy from the given Sets to the constructor",
+			blackboardTemp.getAllSeffLoops(), not(contains(seffLoopToAdd)));
+		assertThat("Blackboard should create a copy from the given Sets to the constructor",
+			blackboardTemp.getAllExternalCallParameters(), not(contains(ecpToAdd)));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
 			(rdias) -> new Blackboard(new HashSet<>(rdias), SEFF_BRANCH_FACTORY.getAllAsSet(),
