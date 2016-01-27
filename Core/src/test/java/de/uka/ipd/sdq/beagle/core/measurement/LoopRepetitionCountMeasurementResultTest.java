@@ -1,6 +1,13 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
-import static org.junit.Assert.fail;
+import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
+
+import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
 
@@ -19,7 +26,15 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 */
 	@Test
 	public void testLoopRepetitionCountMeasurementResultInt() {
-		fail("Not yet implemented");
+		final int count = 0;
+		new LoopRepetitionCountMeasurementResult(count);
+		final int count1 = 3;
+		new LoopRepetitionCountMeasurementResult(count1);
+		final int negativeValue = -2;
+		final ThrowingMethod method = () -> {
+			new ResourceDemandMeasurementResult(negativeValue);
+		};
+		assertThat("Count must be non-negative.", method, throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -29,17 +44,43 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 */
 	@Test
 	public void testLoopRepetitionCountMeasurementResultParameterisationInt() {
-		fail("Not yet implemented");
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		final int count = 0;
+		new LoopRepetitionCountMeasurementResult(count);
+		final int count1 = 3;
+		new LoopRepetitionCountMeasurementResult(count1);
+		final int negativeValue = -2;
+		ThrowingMethod method = () -> {
+			new ResourceDemandMeasurementResult(parameterisation, negativeValue);
+		};
+		assertThat("Count must be non-negative.", method, throwsException(IllegalArgumentException.class));
+		method = () -> {
+			new ResourceDemandMeasurementResult(null, count);
+		};
+		assertThat("Parameterisation must not be null.", method, throwsException(NullPointerException.class));
 	}
 
 	/**
-	 * Test method for
-	 * {@link LoopRepetitionCountMeasurementResult#getCount()}
-	 * .
+	 * Test method for {@link LoopRepetitionCountMeasurementResult#getCount()} .
 	 */
 	@Test
 	public void testGetCount() {
-		fail("Not yet implemented");
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		int count = 0;
+		final LoopRepetitionCountMeasurementResult result = new LoopRepetitionCountMeasurementResult(count);
+		final int count1 = 3;
+		final LoopRepetitionCountMeasurementResult result1 = new LoopRepetitionCountMeasurementResult(count1);
+		final LoopRepetitionCountMeasurementResult resultWithP =
+			new LoopRepetitionCountMeasurementResult(parameterisation, count);
+
+		assertThat(result.getCount(), is(equalTo(count)));
+		assertThat(result1.getCount(), is(equalTo(count1)));
+		assertThat(resultWithP, is(equalTo(count)));
+		count = 4;
+		assertThat("The returned value must not be influenced by a later change.", result.getCount(),
+			is(not(equalTo(count))));
+		assertThat("The returned value must not be influenced by a later change.", result1.getCount(),
+			is(not(equalTo(count))));
 	}
 
 }
