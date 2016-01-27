@@ -21,22 +21,24 @@ public class BlackboardFactory {
 	 * A {@link ResourceDemandingInternalAction} factory to easily obtain new instances
 	 * from.
 	 */
-	private final ResourceDemandingInternalActionFactory RDIA_FACTORY = new ResourceDemandingInternalActionFactory();
+	private static final ResourceDemandingInternalActionFactory RDIA_FACTORY =
+		new ResourceDemandingInternalActionFactory();
 
 	/**
 	 * A {@link SeffBranch} factory to easily obtain new instances from.
 	 */
-	private final SeffBranchFactory SEFF_BRANCH_FACTORY = new SeffBranchFactory();
+	private static final SeffBranchFactory SEFF_BRANCH_FACTORY = new SeffBranchFactory();
 
 	/**
 	 * A {@link SeffLoop} factory to easily obtain new instances from.
 	 */
-	private final SeffLoopFactory SEFF_LOOP_FACTORY = new SeffLoopFactory();
+	private static final SeffLoopFactory SEFF_LOOP_FACTORY = new SeffLoopFactory();
 
 	/**
 	 * A {@link ExternalCallParameter} factory to easily obtain new instances from.
 	 */
-	private final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY = new ExternalCallParameterFactory();
+	private static final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY =
+		new ExternalCallParameterFactory();
 
 	/**
 	 * Creates a new blackboard with nothing written on it.
@@ -54,14 +56,13 @@ public class BlackboardFactory {
 	 * @return A new blackboard instance with data.
 	 */
 	public Blackboard getWithToBeMeasuredContent() {
-		final Set<ResourceDemandingInternalAction> rdiaSet = this.RDIA_FACTORY.getAllAsSet();
-		final Set<SeffBranch> seffBranchSet = this.SEFF_BRANCH_FACTORY.getAllAsSet();
-		final Set<SeffLoop> seffLoopSet = this.SEFF_LOOP_FACTORY.getAllAsSet();
-		final Set<ExternalCallParameter> externalCallParameterSet = this.EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 
-		final Blackboard blackboard =
-			new Blackboard(this.RDIA_FACTORY.getAllAsSet(), this.SEFF_BRANCH_FACTORY.getAllAsSet(),
-				this.SEFF_LOOP_FACTORY.getAllAsSet(), this.EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+		final Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+			SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
 		blackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet);
 		blackboard.addToBeMeasuredRdias(rdiaSet);
 		blackboard.addToBeMeasuredSeffBranches(seffBranchSet);
