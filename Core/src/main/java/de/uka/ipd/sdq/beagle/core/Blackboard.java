@@ -7,6 +7,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.Validate;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,7 +18,7 @@ import java.util.Set;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
  * this class!
- * 
+ *
  * <p>COVERAGE:OFF
  */
 
@@ -49,22 +51,22 @@ public class Blackboard implements Serializable {
 	/**
 	 * {@code rdias} all resource demanding internal actions.
 	 */
-	private Set<ResourceDemandingInternalAction> rdias;
+	private final Set<ResourceDemandingInternalAction> rdias;
 
 	/**
 	 * {@code branches} all SEFF branches.
 	 */
-	private Set<SeffBranch> branches;
+	private final Set<SeffBranch> branches;
 
 	/**
 	 * {@code loops} all SEFF Loops.
 	 */
-	private Set<SeffLoop> loops;
+	private final Set<SeffLoop> loops;
 
 	/**
 	 * {@code externalCalls} all external call parameter.
 	 */
-	private Set<ExternalCallParameter> externalCalls;
+	private final Set<ExternalCallParameter> externalCalls;
 
 	/**
 	 * {@code rdiasToBeMeasured} all resource demanding internal actions which are to be
@@ -501,9 +503,11 @@ public class Blackboard implements Serializable {
 	 * @param writer The class the data should be written for. Must not be {@code null}.
 	 * @param written The data to write.
 	 * @param <WRITTEN_TYPE> {@code written}’s type.
+	 * @see #readFor(Class)
 	 */
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
+		Validate.notNull(writer);
 		this.privateWrittenData.put(writer, written);
 	}
 
@@ -521,10 +525,11 @@ public class Blackboard implements Serializable {
 	@SuppressWarnings("unchecked")
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
+		Validate.notNull(writer);
 		/*
-		 * This method performs a cast based on generics. While the cast can not be
-		 * checked by the JVM at runtime, type safety is assured by the signature of
-		 * {@link #writeFor}, which is the only metho writing data to {@link
+		 * This performs a cast based on generics. While the cast can not be checked by
+		 * the JVM at runtime, type safety is assured by the signature of {@link
+		 * #writeFor}, which is the only method writing data to {@link
 		 * #privateWrittenData}.
 		 */
 		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);
