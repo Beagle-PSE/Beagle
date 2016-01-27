@@ -5,6 +5,13 @@ import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
 
 /**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
+
+/**
  * Conducts a complete analysis of elements on a blackboard. Controls the
  * {@link MeasurementController}, {@link ProposedExpressionAnalyser ResultAnalysers} and
  * the {@link FinalJudge} to measure and analyse parametric dependencies.
@@ -44,14 +51,6 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
  * @see Blackboard
  */
 public class AnalysisController {
-
-	/**
-	 * This controller's blackboard, passed to all interacting jobs to communicate. Any
-	 * data exchange in any action invoked by this controller must happen exclusively via
-	 * this {@link Blackboard} instance.
-	 */
-	@SuppressWarnings("unused")
-	private final Blackboard blackboard = null;
 
 	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.

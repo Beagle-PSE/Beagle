@@ -1,4 +1,10 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * Thrown if a {@link EvaluableExpression} is to be evaluated, but insufficient variable
