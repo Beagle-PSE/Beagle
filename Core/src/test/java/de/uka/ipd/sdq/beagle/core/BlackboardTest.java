@@ -25,11 +25,11 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalAc
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -77,33 +77,6 @@ public class BlackboardTest {
 	 * An {@link CodeSectionFactory} factory to easily obtain new instances from.
 	 */
 	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
-
-	/**
-	 * A new, empty Blackboard will be put in here before each test. Please note that it
-	 * should only be used in a test as long as it is not modified. If it was modified, a
-	 * new one should be created.
-	 *
-	 * @see BlackboardFactory#getEmpty()
-	 */
-	private Blackboard emptyBlackboard;
-
-	/**
-	 * A new, filled Blackboard will be put in here before each test. Please note that it
-	 * should only be used in a test as long as it is not modified. If it was modified, a
-	 * new one should be created.
-	 *
-	 * @see BlackboardFactory#getEmpty()
-	 */
-	private Blackboard filledBlackboard;
-
-	/**
-	 * Puts a new, empty Blackboard into {{@link #emptyBlackboard}.
-	 */
-	@Before
-	public void createEmptyBlackboard() {
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
-		this.filledBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
-	}
 
 	/**
 	 * Creates an empty SeffBranch-set.
@@ -163,7 +136,7 @@ public class BlackboardTest {
 	 *
 	 */
 	@Test
-	public void testBlackboard() {
+	public void testConstructor() {
 
 		// Checking if later modification of the given sets to the Blackboard does not
 		// change the Blackboard sets.
@@ -232,10 +205,11 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetAllRdias() {
-		assertThat("Blackboard should not return null for getAllRdias()", this.emptyBlackboard.getAllRdias(),
+		assertThat("Blackboard should not return null for getAllRdias()", BLACKBOARD_FACTORY.getEmpty().getAllRdias(),
 			is(notNullValue()));
 
-		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllRdias(), is(empty()));
+		assertThat("Empty blackboard should not contain any Rdias", BLACKBOARD_FACTORY.getEmpty().getAllRdias(),
+			is(empty()));
 
 		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(rdiaSet, this.getEmptySetOfSeffBranch(),
@@ -267,9 +241,9 @@ public class BlackboardTest {
 	@Test
 	public void testGetAllSeffBranches() {
 		assertThat("Blackboard should not return null for getAllSeffBranches()",
-			this.emptyBlackboard.getAllSeffBranches(), is(notNullValue()));
+			BLACKBOARD_FACTORY.getEmpty().getAllSeffBranches(), is(notNullValue()));
 
-		assertThat("Empty blackboard should not contain any Rdias", this.emptyBlackboard.getAllSeffBranches(),
+		assertThat("Empty blackboard should not contain any Rdias", BLACKBOARD_FACTORY.getEmpty().getAllSeffBranches(),
 			is(empty()));
 
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
@@ -302,10 +276,10 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetAllSeffLoops() {
-		assertThat("Blackboard should not return null for getAllSeffLoops()", this.emptyBlackboard.getAllSeffLoops(),
-			is(notNullValue()));
+		assertThat("Blackboard should not return null for getAllSeffLoops()",
+			BLACKBOARD_FACTORY.getEmpty().getAllSeffLoops(), is(notNullValue()));
 
-		assertThat("Empty blackboard should not contain any SeffLoops", this.emptyBlackboard.getAllSeffLoops(),
+		assertThat("Empty blackboard should not contain any SeffLoops", BLACKBOARD_FACTORY.getEmpty().getAllSeffLoops(),
 			is(empty()));
 
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
@@ -339,10 +313,10 @@ public class BlackboardTest {
 	@Test
 	public void testGetAllExternalCallParameters() {
 		assertThat("Blackboard should not return null for getAllExternalCallParameters()",
-			this.emptyBlackboard.getAllExternalCallParameters(), is(notNullValue()));
+			BLACKBOARD_FACTORY.getEmpty().getAllExternalCallParameters(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any ExternalCallParameters",
-			this.emptyBlackboard.getAllExternalCallParameters(), is(empty()));
+			BLACKBOARD_FACTORY.getEmpty().getAllExternalCallParameters(), is(empty()));
 
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
@@ -372,17 +346,18 @@ public class BlackboardTest {
 	public void testGetRdiasToBeMeasured() {
 
 		assertThat("Blackboard should not return null for getRdiasToBeMeasured()",
-			this.emptyBlackboard.getRdiasToBeMeasured(), is(notNullValue()));
+			BLACKBOARD_FACTORY.getEmpty().getRdiasToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any RdiasToBeMeasured",
-			this.emptyBlackboard.getRdiasToBeMeasured(), is(empty()));
+			BLACKBOARD_FACTORY.getEmpty().getRdiasToBeMeasured(), is(empty()));
 
-		final Set<ResourceDemandingInternalAction> rdiaSet = this.filledBlackboard.getRdiasToBeMeasured();
+		final Set<ResourceDemandingInternalAction> rdiaSet =
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getRdiasToBeMeasured();
 		final Set<ResourceDemandingInternalAction> clone = new HashSet<ResourceDemandingInternalAction>();
 		clone.addAll(rdiaSet);
 		rdiaSet.removeAll(rdiaSet);
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			this.filledBlackboard.getRdiasToBeMeasured(), is(equalTo(clone)));
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getRdiasToBeMeasured(), is(equalTo(clone)));
 
 	}
 
@@ -401,17 +376,18 @@ public class BlackboardTest {
 	@Test
 	public void testGetSeffBranchesToBeMeasured() {
 		assertThat("Blackboard should not return null for getSeffBranchesToBeMeasured()",
-			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(notNullValue()));
+			BLACKBOARD_FACTORY.getEmpty().getSeffBranchesToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any SeffBranchesToBeMeasured",
-			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(empty()));
+			BLACKBOARD_FACTORY.getEmpty().getSeffBranchesToBeMeasured(), is(empty()));
 
-		final Set<SeffBranch> seffBranchSet = this.filledBlackboard.getSeffBranchesToBeMeasured();
+		final Set<SeffBranch> seffBranchSet =
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffBranchesToBeMeasured();
 		final Set<SeffBranch> clone = new HashSet<SeffBranch>();
 		clone.addAll(seffBranchSet);
 		seffBranchSet.removeAll(seffBranchSet);
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			this.filledBlackboard.getSeffBranchesToBeMeasured(), is(equalTo(clone)));
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffBranchesToBeMeasured(), is(equalTo(clone)));
 	}
 
 	/**
@@ -429,17 +405,17 @@ public class BlackboardTest {
 	@Test
 	public void testGetSeffLoopsToBeMeasured() {
 		assertThat("Blackboard should not return null for getSeffLoopsToBeMeasured()",
-			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(notNullValue()));
+			BLACKBOARD_FACTORY.getEmpty().getSeffLoopsToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any SeffLoopsToBeMeasured",
-			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(empty()));
+			BLACKBOARD_FACTORY.getEmpty().getSeffLoopsToBeMeasured(), is(empty()));
 
-		final Set<SeffLoop> seffLoopSet = this.filledBlackboard.getSeffLoopsToBeMeasured();
+		final Set<SeffLoop> seffLoopSet = BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffLoopsToBeMeasured();
 		final Set<SeffLoop> clone = new HashSet<SeffLoop>();
 		clone.addAll(seffLoopSet);
 		seffLoopSet.removeAll(seffLoopSet);
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			this.filledBlackboard.getSeffLoopsToBeMeasured(), is(equalTo(clone)));
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffLoopsToBeMeasured(), is(equalTo(clone)));
 	}
 
 	/**
@@ -458,18 +434,19 @@ public class BlackboardTest {
 	@Test
 	public void testGetExternalCallParametersToBeMeasured() {
 		assertThat("Blackboard should not return null for getExternalCallParametersToBeMeasured()",
-			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(notNullValue()));
+			BLACKBOARD_FACTORY.getEmpty().getExternalCallParametersToBeMeasured(), is(notNullValue()));
 
 		assertThat("Empty blackboard should not contain any ExternalCallParametersToBeMeasured",
-			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(empty()));
+			BLACKBOARD_FACTORY.getEmpty().getExternalCallParametersToBeMeasured(), is(empty()));
 
 		final Set<ExternalCallParameter> externalCallParameterSet =
-			this.filledBlackboard.getExternalCallParametersToBeMeasured();
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getExternalCallParametersToBeMeasured();
 		final Set<ExternalCallParameter> clone = new HashSet<ExternalCallParameter>();
 		clone.addAll(externalCallParameterSet);
 		externalCallParameterSet.removeAll(externalCallParameterSet);
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			this.filledBlackboard.getExternalCallParametersToBeMeasured(), is(equalTo(clone)));
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getExternalCallParametersToBeMeasured(),
+			is(equalTo(clone)));
 	}
 
 	/**
@@ -497,9 +474,8 @@ public class BlackboardTest {
 
 		final Set<ResourceDemandingInternalAction> rdiaSetTwo = this.getEmptySetOfRdia();
 		rdiaSetTwo.add(RDIA_FACTORY.getOne());
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
-			() -> this.emptyBlackboard.addToBeMeasuredRdias(rdiaSetTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredRdias(rdiaSetTwo),
 			throwsException(IllegalArgumentException.class));
 
 	}
@@ -530,9 +506,8 @@ public class BlackboardTest {
 
 		final Set<SeffBranch> seffBranchSetTwo = this.getEmptySetOfSeffBranch();
 		seffBranchSetTwo.add(SEFF_BRANCH_FACTORY.getOne());
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
-			() -> this.emptyBlackboard.addToBeMeasuredSeffBranches(seffBranchSetTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffBranches(seffBranchSetTwo),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -561,9 +536,8 @@ public class BlackboardTest {
 
 		final Set<SeffLoop> seffLoopSetTwo = this.getEmptySetOfSeffLoop();
 		seffLoopSetTwo.add(SEFF_LOOP_FACTORY.getOne());
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
-			() -> this.emptyBlackboard.addToBeMeasuredSeffLoops(seffLoopSetTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffLoops(seffLoopSetTwo),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -595,9 +569,8 @@ public class BlackboardTest {
 
 		final Set<ExternalCallParameter> externalCallParameterSetTwo = this.getEmptySetOfExternalCallParameter();
 		externalCallParameterSetTwo.add(EXTERNAL_CALL_PARAMETER_FACTORY.getOne());
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
-			() -> this.emptyBlackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSetTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredExternalCallParameters(externalCallParameterSetTwo),
 			throwsException(IllegalArgumentException.class));
 
 	}
@@ -623,18 +596,19 @@ public class BlackboardTest {
 		assertThat(
 			"Blackboard should not return null for valid input parameters in"
 				+ "getMeasurementResultsFor(ResourceDemandingInternalAction)",
-			this.filledBlackboard.getMeasurementResultsFor(this.filledBlackboard.getAllRdias().iterator().next()),
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getMeasurementResultsFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllRdias().iterator().next()),
 			is(notNullValue()));
 
 		final ResourceDemandingInternalAction rdia = null;
 		assertThat(
 			"It must not be possible to call getMeasurementResultsFor(ResourceDemandingInternalAction) for null as parameter",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(rdia), throwsException(NullPointerException.class));
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(rdia),
+			throwsException(NullPointerException.class));
 
 		final ResourceDemandingInternalAction rdiaTwo = RDIA_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(rdiaTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(rdiaTwo),
 			throwsException(IllegalArgumentException.class));
 
 	}
@@ -658,19 +632,18 @@ public class BlackboardTest {
 
 		assertThat(
 			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffBranch)",
-			this.filledBlackboard.getMeasurementResultsFor(
-				this.filledBlackboard.getAllSeffBranches().iterator().next()),
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getMeasurementResultsFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffBranches().iterator().next()),
 			is(notNullValue()));
 
 		final SeffBranch seffBranch = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffBranch) for null as parameter",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(seffBranch),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffBranch),
 			throwsException(NullPointerException.class));
 
 		final SeffBranch seffBranchTwo = SEFF_BRANCH_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(seffBranchTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffBranchTwo),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -692,17 +665,18 @@ public class BlackboardTest {
 	public void testGetMeasurementResultsForSeffLoop() {
 
 		assertThat("Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffLoop)",
-			this.filledBlackboard.getMeasurementResultsFor(this.filledBlackboard.getAllSeffLoops().iterator().next()),
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getMeasurementResultsFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffLoops().iterator().next()),
 			is(notNullValue()));
 
 		final SeffLoop seffLoop = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffLoop) for null as parameter",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(seffLoop), throwsException(NullPointerException.class));
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffLoop),
+			throwsException(NullPointerException.class));
 
 		final SeffLoop seffLoopTwo = SEFF_LOOP_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(seffLoopTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffLoopTwo),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -726,20 +700,19 @@ public class BlackboardTest {
 
 		assertThat(
 			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(ExternalCallParameter)",
-			this.filledBlackboard.getMeasurementResultsFor(
-				this.filledBlackboard.getAllExternalCallParameters().iterator().next()),
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getMeasurementResultsFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllExternalCallParameters().iterator().next()),
 			is(notNullValue()));
 
 		final ExternalCallParameter externalCallParameter = null;
 		assertThat(
 			"It must not be possible to call getMeasurementResultsFor(externalCallParameter) for null as parameter",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(externalCallParameter),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(externalCallParameter),
 			throwsException(NullPointerException.class));
 
 		final ExternalCallParameter externalCallParameterTwo = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> this.emptyBlackboard.getMeasurementResultsFor(externalCallParameterTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(externalCallParameterTwo),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -762,21 +735,20 @@ public class BlackboardTest {
 	@Test
 	public void testAddMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
 
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final ResourceDemandMeasurementResult rdiaResult = new ResourceDemandMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(this.filledBlackboard.getAllRdias().iterator().next(),
-			rdiaResult);
+		testBlackboard.addMeasurementResultFor(testBlackboard.getAllRdias().iterator().next(), rdiaResult);
 
 		assertThat("It must not be possible to add a measurement result for null",
-			() -> this.emptyBlackboard.addMeasurementResultFor(null, new ResourceDemandMeasurementResult()),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(null, new ResourceDemandMeasurementResult()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as measurement result",
-			() -> this.emptyBlackboard.addMeasurementResultFor(RDIA_FACTORY.getOne(), null),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(RDIA_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
 
 		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add measurement results to unknown elements!",
-			() -> this.emptyBlackboard.addMeasurementResultFor(rdia, rdiaResult),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(rdia, rdiaResult),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -800,20 +772,19 @@ public class BlackboardTest {
 	public void testAddMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
 
 		final BranchDecisionMeasurementResult branchResult = new BranchDecisionMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(this.filledBlackboard.getAllSeffBranches().iterator().next(),
-			branchResult);
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		testBlackboard.addMeasurementResultFor(testBlackboard.getAllSeffBranches().iterator().next(), branchResult);
 
 		assertThat("It must not be possible to add a measurement result for null",
-			() -> this.emptyBlackboard.addMeasurementResultFor(null, new BranchDecisionMeasurementResult()),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(null, new BranchDecisionMeasurementResult()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as measurement result",
-			() -> this.emptyBlackboard.addMeasurementResultFor(SEFF_BRANCH_FACTORY.getOne(), null),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(SEFF_BRANCH_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
 
 		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add measurement results to unknown elements!",
-			() -> this.emptyBlackboard.addMeasurementResultFor(seffBranch, branchResult),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(seffBranch, branchResult),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -836,21 +807,21 @@ public class BlackboardTest {
 	@Test
 	public void testAddMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
 
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final LoopRepetitionCountMeasurementResult loopResult = new LoopRepetitionCountMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(this.filledBlackboard.getAllSeffLoops().iterator().next(),
-			loopResult);
+		testBlackboard.addMeasurementResultFor(testBlackboard.getAllSeffLoops().iterator().next(), loopResult);
 
-		assertThat("It must not be possible to add a measurement result for null",
-			() -> this.emptyBlackboard.addMeasurementResultFor(null, new LoopRepetitionCountMeasurementResult()),
+		assertThat(
+			"It must not be possible to add a measurement result for null", () -> BLACKBOARD_FACTORY.getEmpty()
+				.addMeasurementResultFor(null, new LoopRepetitionCountMeasurementResult()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as measurement result",
-			() -> this.emptyBlackboard.addMeasurementResultFor(SEFF_LOOP_FACTORY.getOne(), null),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(SEFF_LOOP_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
 
 		final SeffLoop seffLoop = SEFF_LOOP_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add measurement results to unknown elements!",
-			() -> this.emptyBlackboard.addMeasurementResultFor(seffLoop, loopResult),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(seffLoop, loopResult),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -873,21 +844,21 @@ public class BlackboardTest {
 	@Test
 	public void testAddMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
 
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final ParameterChangeMeasurementResult parameterResult = new ParameterChangeMeasurementResult();
-		this.filledBlackboard.addMeasurementResultFor(
-			this.filledBlackboard.getAllExternalCallParameters().iterator().next(), parameterResult);
+		testBlackboard.addMeasurementResultFor(testBlackboard.getAllExternalCallParameters().iterator().next(),
+			parameterResult);
 
 		assertThat("It must not be possible to add a measurement result for null",
-			() -> this.emptyBlackboard.addMeasurementResultFor(null, new ParameterChangeMeasurementResult()),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(null, new ParameterChangeMeasurementResult()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as measurement result",
-			() -> this.emptyBlackboard.addMeasurementResultFor(EXTERNAL_CALL_PARAMETER_FACTORY.getOne(), null),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(EXTERNAL_CALL_PARAMETER_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
 
 		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to add measurement results to unknown elements!",
-			() -> this.emptyBlackboard.addMeasurementResultFor(ecpElement, parameterResult),
+			() -> BLACKBOARD_FACTORY.getEmpty().addMeasurementResultFor(ecpElement, parameterResult),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -909,36 +880,39 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testGetProposedExpressionFor() {
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
-		final ResourceDemandingInternalAction rdia = this.filledBlackboard.getAllRdias().iterator().next();
+		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
 		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
-		this.filledBlackboard.addProposedExpressionFor(rdia, evaEx);
+		testBlackboard.addProposedExpressionFor(rdia, evaEx);
 
 		assertThat("Proposed Expression should return an expression that have been added by \"addProposedExpression\"",
-			this.filledBlackboard.getProposedExpressionFor(rdia), contains(evaEx));
+			testBlackboard.getProposedExpressionFor(rdia), contains(evaEx));
 
 		assertThat("Proposed Expression should not return null for valid input parameters!",
-			this.filledBlackboard.getProposedExpressionFor(this.filledBlackboard.getAllRdias().iterator().next()),
-			is(notNullValue()));
-		assertThat(
-			"Proposed Expression should not return null for valid input parameters!", this.filledBlackboard
-				.getProposedExpressionFor(this.filledBlackboard.getAllSeffBranches().iterator().next()),
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getProposedExpressionFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllRdias().iterator().next()),
 			is(notNullValue()));
 		assertThat("Proposed Expression should not return null for valid input parameters!",
-			this.filledBlackboard.getProposedExpressionFor(this.filledBlackboard.getAllSeffLoops().iterator().next()),
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getProposedExpressionFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffBranches().iterator().next()),
 			is(notNullValue()));
-		assertThat(
-			"Proposed Expression should not return null for valid input parameters!", this.filledBlackboard
-				.getProposedExpressionFor(this.filledBlackboard.getAllExternalCallParameters().iterator().next()),
+		assertThat("Proposed Expression should not return null for valid input parameters!",
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getProposedExpressionFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffLoops().iterator().next()),
+			is(notNullValue()));
+		assertThat("Proposed Expression should not return null for valid input parameters!",
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getProposedExpressionFor(
+				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllExternalCallParameters().iterator().next()),
 			is(notNullValue()));
 
 		assertThat("It must not be possible get proposed expressions for null",
-			() -> this.emptyBlackboard.getProposedExpressionFor(null), throwsException(NullPointerException.class));
+			() -> BLACKBOARD_FACTORY.getEmpty().getProposedExpressionFor(null),
+			throwsException(NullPointerException.class));
 
 		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to ask for proposed Expressions of unknown elements!",
-			() -> this.emptyBlackboard.getProposedExpressionFor(ecpElement),
+			() -> BLACKBOARD_FACTORY.getEmpty().getProposedExpressionFor(ecpElement),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -960,28 +934,30 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddProposedExpressionFor() {
-
-		this.filledBlackboard.addProposedExpressionFor(this.filledBlackboard.getAllRdias().iterator().next(),
+		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllRdias().iterator().next(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne());
-		this.filledBlackboard.addProposedExpressionFor(this.filledBlackboard.getAllSeffBranches().iterator().next(),
+		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffBranches().iterator().next(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne());
-		this.filledBlackboard.addProposedExpressionFor(this.filledBlackboard.getAllSeffLoops().iterator().next(),
+		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffLoops().iterator().next(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne());
-		this.filledBlackboard.addProposedExpressionFor(
-			this.filledBlackboard.getAllExternalCallParameters().iterator().next(),
+		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
+			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllExternalCallParameters().iterator().next(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat("It must not be possible to add a proposed expression for null",
-			() -> this.emptyBlackboard.addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
+			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as a proposed expression",
-			() -> this.emptyBlackboard.addProposedExpressionFor(SEFF_BRANCH_FACTORY.getOne(), null),
+			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(SEFF_BRANCH_FACTORY.getOne(), null),
 			throwsException(NullPointerException.class));
 
 		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
-		assertThat("It must not be possible to add an proposed Expression to unknown elements!",
-			() -> this.emptyBlackboard.addProposedExpressionFor(ecpElement, EVALUABLE_EXPRESSION_FACTORY.getOne()),
+		assertThat(
+			"It must not be possible to add an proposed Expression to unknown elements!", () -> BLACKBOARD_FACTORY
+				.getEmpty().addProposedExpressionFor(ecpElement, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -999,31 +975,32 @@ public class BlackboardTest {
 	 *
 	 * <li>{@code null} cannot be passed.
 	 *
-	 * <li> Throwing IllegalArgumentException if seffElement is not on the Blackboard
+	 * <li> Throwing an {@link IllegalArgumentException} if seffElement is not on the
+	 * Blackboard
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testGetFinalExpressionFor() {
+		Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
-		final ResourceDemandingInternalAction rdia = this.filledBlackboard.getAllRdias().iterator().next();
+		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
 		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
-		this.filledBlackboard.setFinalExpressionFor(rdia, evaEx);
+		testBlackboard.setFinalExpressionFor(rdia, evaEx);
 		assertThat("GetFinalExpressionFor should return setted expression by \"setFinalExpressionFor\"",
-			this.filledBlackboard.getFinalExpressionFor(rdia), is(evaEx));
+			testBlackboard.getFinalExpressionFor(rdia), is(theInstance(evaEx)));
 
+		testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		assertThat("Null should be returned for not yet annotated FinalExpressions!",
-			this.emptyBlackboard.getFinalExpressionFor(SEFF_BRANCH_FACTORY.getOne()), nullValue());
-
-		this.filledBlackboard.getFinalExpressionFor(SEFF_BRANCH_FACTORY.getOne());
+			testBlackboard.getFinalExpressionFor(testBlackboard.getAllSeffBranches().iterator().next()), nullValue());
 
 		assertThat("It must not be possible get the final expression for null",
-			() -> this.emptyBlackboard.getFinalExpressionFor(null), throwsException(NullPointerException.class));
+			() -> BLACKBOARD_FACTORY.getEmpty().getFinalExpressionFor(null),
+			throwsException(NullPointerException.class));
 
 		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
 		assertThat("It must not be possible to ask for a final Expression of unknown elements!",
-			() -> this.emptyBlackboard.getFinalExpressionFor(seffBranch),
+			() -> BLACKBOARD_FACTORY.getEmpty().getFinalExpressionFor(seffBranch),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -1038,26 +1015,28 @@ public class BlackboardTest {
 	 *
 	 * <li>{@code null} can not be passed to one of the arguments.
 	 *
-	 * <li> Throwing IllegalArgumentException if seffElement is not on the Blackboard
+	 * <li> Throwing an {@link IllegalArgumentException} if seffElement is not on the
+	 * Blackboard
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testSetFinalExpressionFor() {
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Iterator<ResourceDemandingInternalAction> rdias = testBlackboard.getAllRdias().iterator();
 
-		this.filledBlackboard.setFinalExpressionFor(this.filledBlackboard.getAllRdias().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getOne());
+		testBlackboard.setFinalExpressionFor(rdias.next(), EVALUABLE_EXPRESSION_FACTORY.getOne());
+		// asserts that setting null for the final expression is possible
+		testBlackboard.setFinalExpressionFor(rdias.next(), null);
 
 		assertThat("It must not be possible to set the final expression for null",
-			() -> this.emptyBlackboard.setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
+			() -> BLACKBOARD_FACTORY.getEmpty().setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
-		// asserts that setting null for the final expression is possible
-		this.emptyBlackboard.setFinalExpressionFor(RDIA_FACTORY.getOne(), null);
 
 		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
-		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
-		assertThat("It must not be possible to ask for a final Expression of unknown elements!",
-			() -> this.emptyBlackboard.setFinalExpressionFor(seffBranch, EVALUABLE_EXPRESSION_FACTORY.getOne()),
+		assertThat(
+			"It must not be possible to ask for a final Expression of unknown elements!", () -> BLACKBOARD_FACTORY
+				.getEmpty().setFinalExpressionFor(seffBranch, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -1067,7 +1046,7 @@ public class BlackboardTest {
 	@Test
 	public void testGetFitnessFunction() {
 		assertThat("Blackboard should not return null for getFitnessFunction()",
-			this.emptyBlackboard.getFitnessFunction(), is(notNullValue()));
+			BLACKBOARD_FACTORY.getEmpty().getFitnessFunction(), is(notNullValue()));
 	}
 
 	/**
@@ -1085,10 +1064,11 @@ public class BlackboardTest {
 	@Test
 	public void testWriteFor() {
 		assertThat("It must not be possible to write on the Blackboard for null as a given parameter",
-			() -> this.emptyBlackboard.writeFor(null, "null"), throwsException(NullPointerException.class));
+			() -> BLACKBOARD_FACTORY.getEmpty().writeFor(null, "null"), throwsException(NullPointerException.class));
 
-		this.emptyBlackboard.writeFor(TestStorer.class, "test");
-		this.emptyBlackboard.writeFor(TestStorer.class, null);
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getEmpty();
+		testBlackboard.writeFor(TestStorer.class, "test");
+		testBlackboard.writeFor(TestStorer.class, null);
 	}
 
 	/**
@@ -1107,18 +1087,20 @@ public class BlackboardTest {
 	@Test
 	public void testReadFor() {
 		assertThat("It must not be possible to read on the Blackboard for null as a given parameter",
-			() -> this.emptyBlackboard.readFor(null), throwsException(NullPointerException.class));
+			() -> BLACKBOARD_FACTORY.getEmpty().readFor(null), throwsException(NullPointerException.class));
 
-		assertThat("null must be returned if nothing was written", this.emptyBlackboard.readFor(TestStorer.class),
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getEmpty();
+
+		assertThat("null must be returned if nothing was written", testBlackboard.readFor(TestStorer.class),
 			is(nullValue()));
 
 		final String testString = "test";
-		this.emptyBlackboard.writeFor(TestStorer.class, testString);
-		assertThat("Written data must be returned", this.emptyBlackboard.readFor(TestStorer.class),
+		testBlackboard.writeFor(TestStorer.class, testString);
+		assertThat("Written data must be returned", testBlackboard.readFor(TestStorer.class),
 			is(theInstance(testString)));
 
-		this.emptyBlackboard.writeFor(TestStorer.class, null);
-		assertThat("Written data must be returned", this.emptyBlackboard.readFor(TestStorer.class), is(nullValue()));
+		testBlackboard.writeFor(TestStorer.class, null);
+		assertThat("Written data must be returned", testBlackboard.readFor(TestStorer.class), is(nullValue()));
 	}
 
 	/**
