@@ -213,8 +213,8 @@ public class BlackboardTest {
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllRdias()}. Assert that <li> Blackboard does
-	 * not return {@code null} for getter-method
+	 * Test method for {@link Blackboard#getAllRdias()}. Assert that Blackboard does not
+	 * return {@code null} for getter-method
 	 * 
 	 * <ul>
 	 * 
@@ -247,8 +247,8 @@ public class BlackboardTest {
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllSeffBranches()}. Assert that <li>
-	 * Blackboard does not return {@code null} for getter-method
+	 * Test method for {@link Blackboard#getAllSeffBranches()}. Assert that Blackboard
+	 * does not return {@code null} for getter-method
 	 * 
 	 * <ul>
 	 * 
@@ -283,8 +283,8 @@ public class BlackboardTest {
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllSeffLoops()}. Assert that <li> Blackboard
-	 * does not return {@code null} for getter-method
+	 * Test method for {@link Blackboard#getAllSeffLoops()}. Assert that Blackboard does
+	 * not return {@code null} for getter-method
 	 * 
 	 * <ul>
 	 * 
@@ -319,7 +319,7 @@ public class BlackboardTest {
 	}
 
 	/**
-	 * Test method for {@link Blackboard#getAllExternalCallParameters()}. Assert that <li>
+	 * Test method for {@link Blackboard#getAllExternalCallParameters()}. Assert that
 	 * Blackboard does not return {@code null} for getter-method
 	 * 
 	 * <ul>
@@ -471,38 +471,40 @@ public class BlackboardTest {
 
 	/**
 	 * Test method for {@link Blackboard#addToBeMeasuredRdias(java.util.Collection)} and
-	 * {@link Blackboard#addToBeMeasuredRdias(de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction[])}
-	 * . Asserts that:
+	 * {@link Blackboard#addToBeMeasuredRdias(ResourceDemandingInternalAction[])} .
+	 * Asserts that:
 	 *
 	 * <ul>
 	 *
 	 * <li>{@code null} cannot be passed as or in the argument.
 	 * 
-	 * <li>Unknown MeasurableSeffElements will be ignored by adding as ToBeMeasured.
+	 * <li>Unknown MeasurableSeffElements throw an IllegalArgumentException.
 	 *
 	 * </ul>
 	 */
 	@Test
 	public void testAddToBeMeasuredRdias() {
-		assertThat(this.emptyBlackboard::addToBeMeasuredRdias, is(notAcceptingNull(RDIA_FACTORY.getAll())));
-		assertThat(this.emptyBlackboard::addToBeMeasuredRdias,
-			is(notAcceptingNull(Arrays.asList(RDIA_FACTORY.getAll()))));
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet);
+		assertThat(blackboardTemp::addToBeMeasuredRdias, is(notAcceptingNull(RDIA_FACTORY.getAll())));
+		assertThat(blackboardTemp::addToBeMeasuredRdias, is(notAcceptingNull(Arrays.asList(RDIA_FACTORY.getAll()))));
 
-		final Set<ResourceDemandingInternalAction> rdiaSet = this.getEmptySetOfRdia();
-		rdiaSet.add(RDIA_FACTORY.getOne());
+		final Set<ResourceDemandingInternalAction> rdiaSetTwo = this.getEmptySetOfRdia();
+		rdiaSetTwo.add(RDIA_FACTORY.getOne());
 		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
-		this.emptyBlackboard.addToBeMeasuredRdias(rdiaSet);
-		assertThat(
-			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
-			this.emptyBlackboard.getRdiasToBeMeasured(), is(empty()));
+		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
+			() -> this.emptyBlackboard.addToBeMeasuredRdias(rdiaSetTwo),
+			throwsException(IllegalArgumentException.class));
 
 	}
 
 	/**
 	 * Test method for
 	 * {@link Blackboard#addToBeMeasuredSeffBranches(java.util.Collection)} and
-	 * {@link Blackboard#addToBeMeasuredSeffBranches(de.uka.ipd.sdq.beagle.core.SeffBranch[])}
-	 * . Asserts that:
+	 * {@link Blackboard#addToBeMeasuredSeffBranches(SeffBranch[])} . Asserts that:
 	 *
 	 * <ul>
 	 *
@@ -514,25 +516,26 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddToBeMeasuredSeffBranches() {
-		assertThat(this.emptyBlackboard::addToBeMeasuredSeffBranches,
-			is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAll())));
-		assertThat(this.emptyBlackboard::addToBeMeasuredSeffBranches,
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet);
+		assertThat(blackboardTemp::addToBeMeasuredSeffBranches, is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAll())));
+		assertThat(blackboardTemp::addToBeMeasuredSeffBranches,
 			is(notAcceptingNull(Arrays.asList(SEFF_BRANCH_FACTORY.getAll()))));
 
-		final Set<SeffBranch> seffBranchSet = this.getEmptySetOfSeffBranch();
-		seffBranchSet.add(SEFF_BRANCH_FACTORY.getOne());
+		final Set<SeffBranch> seffBranchSetTwo = this.getEmptySetOfSeffBranch();
+		seffBranchSetTwo.add(SEFF_BRANCH_FACTORY.getOne());
 		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
-		this.emptyBlackboard.addToBeMeasuredSeffBranches(seffBranchSet);
-		assertThat(
-			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
-			this.emptyBlackboard.getSeffBranchesToBeMeasured(), is(empty()));
+		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
+			() -> this.emptyBlackboard.addToBeMeasuredSeffBranches(seffBranchSetTwo),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
-	 * Test method for
-	 * {@link Blackboard#addToBeMeasuredSeffLoops(de.uka.ipd.sdq.beagle.core.SeffLoop[])}
-	 * and {@link Blackboard#addToBeMeasuredSeffLoops(java.util.Collection)}. Asserts
-	 * that:
+	 * Test method for {@link Blackboard#addToBeMeasuredSeffLoops(SeffLoop[])} and
+	 * {@link Blackboard#addToBeMeasuredSeffLoops(java.util.Collection)}. Asserts that:
 	 *
 	 * <ul>
 	 *
@@ -544,17 +547,21 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddToBeMeasuredSeffLoops() {
-		assertThat(this.emptyBlackboard::addToBeMeasuredSeffLoops, is(notAcceptingNull(SEFF_LOOP_FACTORY.getAll())));
-		assertThat(this.emptyBlackboard::addToBeMeasuredSeffLoops,
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet);
+		assertThat(blackboardTemp::addToBeMeasuredSeffLoops, is(notAcceptingNull(SEFF_LOOP_FACTORY.getAll())));
+		assertThat(blackboardTemp::addToBeMeasuredSeffLoops,
 			is(notAcceptingNull(Arrays.asList(SEFF_LOOP_FACTORY.getAll()))));
 
-		final Set<SeffLoop> seffLoopSet = this.getEmptySetOfSeffLoop();
-		seffLoopSet.add(SEFF_LOOP_FACTORY.getOne());
+		final Set<SeffLoop> seffLoopSetTwo = this.getEmptySetOfSeffLoop();
+		seffLoopSetTwo.add(SEFF_LOOP_FACTORY.getOne());
 		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
-		this.emptyBlackboard.addToBeMeasuredSeffLoops(seffLoopSet);
-		assertThat(
-			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
-			this.emptyBlackboard.getSeffLoopsToBeMeasured(), is(empty()));
+		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
+			() -> this.emptyBlackboard.addToBeMeasuredSeffLoops(seffLoopSetTwo),
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -573,18 +580,22 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void testAddToBeMeasuredExternalCallParameters() {
-		assertThat(this.emptyBlackboard::addToBeMeasuredExternalCallParameters,
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet);
+		assertThat(blackboardTemp::addToBeMeasuredExternalCallParameters,
 			is(notAcceptingNull(EXTERNAL_CALL_PARAMETER_FACTORY.getAll())));
-		assertThat(this.emptyBlackboard::addToBeMeasuredExternalCallParameters,
+		assertThat(blackboardTemp::addToBeMeasuredExternalCallParameters,
 			is(notAcceptingNull(Arrays.asList(EXTERNAL_CALL_PARAMETER_FACTORY.getAll()))));
 
-		final Set<ExternalCallParameter> externalCallParameterSet = this.getEmptySetOfExternalCallParameter();
-		externalCallParameterSet.add(EXTERNAL_CALL_PARAMETER_FACTORY.getOne());
+		final Set<ExternalCallParameter> externalCallParameterSetTwo = this.getEmptySetOfExternalCallParameter();
+		externalCallParameterSetTwo.add(EXTERNAL_CALL_PARAMETER_FACTORY.getOne());
 		this.emptyBlackboard = BLACKBOARD_FACTORY.getEmpty();
-		this.emptyBlackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet);
-		assertThat(
-			"Blackboard should not safe MeasurableSeffElements as \"toBeMeasured\", which are not contained in its sets!",
-			this.emptyBlackboard.getExternalCallParametersToBeMeasured(), is(empty()));
+		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
+			() -> this.emptyBlackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSetTwo),
+			throwsException(IllegalArgumentException.class));
 
 	}
 
