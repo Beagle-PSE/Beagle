@@ -1,14 +1,17 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
+import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
+
+import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
 
@@ -27,7 +30,8 @@ public class ParameterisationDependentMeasurementResultTest {
 	 */
 	@Test
 	public void testParameterisationDependentMeasurementResult() {
-		fail("Not yet implemented");
+		new ParameterisationDependentMeasurementResult() {
+		};
 	}
 
 	/**
@@ -37,16 +41,34 @@ public class ParameterisationDependentMeasurementResultTest {
 	 */
 	@Test
 	public void testParameterisationDependentMeasurementResultParameterisation() {
-		fail("Not yet implemented");
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		new ParameterisationDependentMeasurementResult(parameterisation) {
+		};
+		final ThrowingMethod method = () -> {
+			new ParameterisationDependentMeasurementResult(null) {
+			};
+		};
+		assertThat("Parameterisation must not be null.", method, throwsException(NullPointerException.class));
 	}
 
 	/**
 	 * Test method for
 	 * {@link ParameterisationDependentMeasurementResult#getParameterisation()} .
+	 * 
+	 * <p>Asserts that correct parameterisation is returned for valid parameterisation and
+	 * that {@code null} is returned if no parameterisation is defined.
 	 */
 	@Test
 	public void testGetParameterisation() {
-		fail("Not yet implemented");
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		final ParameterisationDependentMeasurementResult measurementResult =
+			new ParameterisationDependentMeasurementResult(parameterisation) {
+			};
+		assertThat(measurementResult.getParameterisation(), is(parameterisation));
+		final ParameterisationDependentMeasurementResult measurementResultWithoutParamerterisation =
+			new ParameterisationDependentMeasurementResult() {
+			};
+		assertThat(measurementResultWithoutParamerterisation.getParameterisation(), is(nullValue()));
 	}
 
 	/**
