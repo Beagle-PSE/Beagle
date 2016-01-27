@@ -79,7 +79,7 @@ public class SelectionOverviewWizardPage extends WizardPage {
 		}
 
 		for (InternalAction internalAction : this.userConfiguration.getInternalActions()) {
-			elements.add("IA: " + internalAction.getEntityName());
+			elements.add("Internal Action: " + internalAction.getEntityName());
 		}
 
 		for (String element : elements) {
