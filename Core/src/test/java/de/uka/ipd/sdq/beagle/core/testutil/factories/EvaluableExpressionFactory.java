@@ -19,8 +19,8 @@ import java.util.Set;
 /**
  * Factory for prepared Evaluable Expression instances to be used by tests.
  *
- * @author Joshua Gleitze <<<<<<< HEAD =======
- * @author Ansgar Spiegler >>>>>>> origin/master
+ * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class EvaluableExpressionFactory {
 
