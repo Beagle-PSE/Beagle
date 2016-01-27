@@ -18,7 +18,7 @@
         <h3>Update Sites</h3> 
         <p>Dependencies defined in the <code>MANIFEST.MF</code> must come from an update site. If a declared dependency is not provided by any update site yet, add an appropriate update site to <code>Beagle/buildSrc/src/tasks/gradle/20 eclipse plugins.gradle</code>.</p> 
         <h2>Test Dependencies</h2> 
-        <p>Test dependencies are the ones only required by test code, but not on the user’s machine. They are not declared in the <code>MANIFEST.MF</code> but in <code>Beagle/buildSrc/src/tasks/gradle/20 test.gradle</code>. Make sure to run <code>gradle eclipse</code> and to check in the modified <code>.classpath</code> files after adding a dependency there.</p> 
+        <p>Test dependencies are the ones only required by test code, but not on the user’s machine. They are not declared in <code>MANIFEST.MF</code> but in <code>Beagle/buildSrc/src/tasks/gradle/20 test.gradle</code>. Dependencies defined in gradle are imported through the Buildship plugin into Eclipse. [See the Development Setup document](Development Setup.html) for details on the setup.</p> 
         <h2>Build Dependencies</h2> 
         <p>Build dependencies are the ones required by build code. Tasks can define them in the task file itself. Code in a project’s <code>buildSrc/src/main/groovy</code> folder may add a <code>dependencies.gradle</code> file and declare dependencies there.</p>  
     </body>
