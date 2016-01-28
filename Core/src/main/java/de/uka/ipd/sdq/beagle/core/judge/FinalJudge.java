@@ -51,6 +51,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 */
 	private static final double SIGNIFICANT_IMPROVEMENT = 0.005;
 
+	/**
+	 * Stores all status of this {@link FinalJudge} object.
+	 */
 	private FinalJudgeData data;
 
 	/**
@@ -61,7 +64,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 */
 	public void init() {
 		this.loadData();
-		this.startTime = System.currentTimeMillis();
+		this.data.setStartTime(System.currentTimeMillis());
 	}
 
 	/**
@@ -79,7 +82,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());
 
-		this.numberOfGenerationsPassed++;
+		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
 
 		// determine the criteria which aren't CPU-intensive first
 		if (this.numberOfGenerationsPassedTooHigh() || this.maxTimePassedTooHigh()) {
@@ -155,7 +158,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         than {@code MAX_NUMBER_OF_GENERATIONS_PASSED}.
 	 */
 	private boolean numberOfGenerationsPassedTooHigh() {
-		return this.numberOfGenerationsPassed > MAX_NUMBER_OF_GENERATIONS_PASSED;
+		return this.data.getNumberOfGenerationsPassed() > MAX_NUMBER_OF_GENERATIONS_PASSED;
 	}
 
 	/**
@@ -167,7 +170,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	private boolean maxTimePassedTooHigh() {
 		final long currentTime = System.currentTimeMillis();
 
-		return (currentTime - this.startTime) > MAX_TIME_PASSED;
+		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
 	}
 
 	/**
