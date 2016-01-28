@@ -8,9 +8,9 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
+import de.uka.ipd.sdq.beagle.core.testutil.ParameterisationMock;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
@@ -87,11 +87,21 @@ public class ParameterisationDependentMeasurementResultTest {
 	 */
 	@Test
 	public void testEqualsObject() {
-		final Parameterisation parameterisation1 = mock(Parameterisation.class);
-		final Parameterisation parameterisation2 = mock(Parameterisation.class);
-		final Parameterisation parameterisation3 = mock(Parameterisation.class);
-		given(parameterisation1.equals(parameterisation2)).willReturn(true);
-		given(parameterisation2.equals(parameterisation3)).willReturn(false);
+		/*
+		 * This simulates parameterisation1.equals(paramertisation2) returns true, while
+		 * parameterisation3.equals(parameterisation4) returns false.
+		 * 
+		 * <p>Following measurementResultP1 should be equals to measurementResultP2 while
+		 * measurementResultP3 and measurementResultP4 are not equal.
+		 */
+		final ParameterisationMock parameterisation1 = new ParameterisationMock();
+		final ParameterisationMock parameterisation2 = new ParameterisationMock();
+		final ParameterisationMock parameterisation3 = new ParameterisationMock();
+		final ParameterisationMock parameterisation4 = new ParameterisationMock();
+		parameterisation1.setEquals(true);
+		parameterisation2.setEquals(true);
+		parameterisation3.setEquals(false);
+		parameterisation4.setEquals(false);
 		final ParameterisationDependentMeasurementResult measurementResult =
 			new ParameterisationDependentMeasurementResult() {
 			};
@@ -104,11 +114,14 @@ public class ParameterisationDependentMeasurementResultTest {
 		final ParameterisationDependentMeasurementResult measurementResultP3 =
 			new ParameterisationDependentMeasurementResult(parameterisation3) {
 			};
+		final ParameterisationDependentMeasurementResult measurementResultP4 =
+			new ParameterisationDependentMeasurementResult(parameterisation4) {
+			};
 		assertThat(measurementResult, hasDefaultEqualsProperties());
 		assertThat(measurementResult, is(not(equalTo(measurementResultP1))));
 		assertThat(measurementResultP1, is(equalTo(measurementResultP2)));
 		assertThat(measurementResultP1.hashCode(), is(equalTo(measurementResultP2.hashCode())));
-		assertThat(measurementResultP2, is(not(equalTo(measurementResultP3))));
+		assertThat(measurementResultP3, is(not(equalTo(measurementResultP4))));
 	}
 
 	/**
