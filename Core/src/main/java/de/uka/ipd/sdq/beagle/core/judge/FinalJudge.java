@@ -78,7 +78,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         stopped; {@code false} otherwise.
 	 */
 	boolean judge(final Blackboard blackboard) {
-		this.loadData();
+		this.loadData(blackboard);
 
 		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());
 
@@ -101,8 +101,19 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		return false;
 	}
 
-	private void loadData() {
+	/**
+	 * Loads the data stored for this object from the {@link Blackboard}.
+	 *
+	 * @param blackboard The {@link Blackboard} to use.
+	 * @throws IllegalStateException Thrown if this method is called before
+	 *             {@link #init()}.
+	 */
+	private void loadData(final Blackboard blackboard) throws IllegalStateException {
+		this.data = blackboard.readFor(this.getClass());
 
+		if (this.data == null) {
+			throw new IllegalStateException("loadData(Blackboard) cannot be called on FinalJudge before init().");
+		}
 	}
 
 	/**
