@@ -91,9 +91,9 @@ public class ExponentationExpressionTest {
 	 *
 	 * <ul>
 	 *
-	 * <li> The method passes the assignment to the inner expressions
+	 * <li>The method passes the assignment to the inner expressions
 	 *
-	 * <li> It returns the {@code base} to the power of the {@code exponent}.
+	 * <li>It returns the {@code base} to the power of the {@code exponent}.
 	 *
 	 * <li>{@code NaN} and infinity values are handled like specified in IEEE 754.
 	 *
