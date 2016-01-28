@@ -148,6 +148,7 @@ public class MultiplicationExpressionTest {
 		final MultiplicationExpression testExpression =
 			new MultiplicationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 
+		assertThat(() -> testExpression.receive(null), throwsException(NullPointerException.class));
 		testExpression.receive(mockVisitor);
 
 		then(mockVisitor).should().visit(same(testExpression));
@@ -167,6 +168,8 @@ public class MultiplicationExpressionTest {
 	 *
 	 * <li>{@code NaN} and infinity values are handled like specified in IEEE 754.
 	 *
+	 * <li>Passing {@code null} throws an exception.
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -179,6 +182,8 @@ public class MultiplicationExpressionTest {
 		final MultiplicationExpression testExpressionTwo = new MultiplicationExpression(firstMock, secondMock);
 		final MultiplicationExpression testExpressionFour =
 			new MultiplicationExpression(firstMock, secondMock, thirdMock, fourthMock);
+
+		assertThat(() -> testExpressionFour.evaluate(null), throwsException(NullPointerException.class));
 
 		given(firstMock.evaluate(same(assignment))).willReturn(10d);
 		given(secondMock.evaluate(same(assignment))).willReturn(3d);

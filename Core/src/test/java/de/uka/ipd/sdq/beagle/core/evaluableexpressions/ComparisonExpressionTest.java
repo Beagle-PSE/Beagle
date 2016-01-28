@@ -61,10 +61,10 @@ public class ComparisonExpressionTest {
 	 */
 	@Test
 	public void testGetGreater() {
-		final EvaluableExpression testExpression = EVALUABLE_EXPRESSION_FACTORY.getOne();
+		final EvaluableExpression greater = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor",
-			new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), testExpression).getGreater(),
-			is(theInstance(testExpression)));
+			new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), greater).getGreater(),
+			is(theInstance(greater)));
 	}
 
 	/**
@@ -73,10 +73,10 @@ public class ComparisonExpressionTest {
 	 */
 	@Test
 	public void testGetSmaller() {
-		final EvaluableExpression testExpression = EVALUABLE_EXPRESSION_FACTORY.getOne();
+		final EvaluableExpression smaller = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor",
-			new ComparisonExpression(testExpression, EVALUABLE_EXPRESSION_FACTORY.getOne()).getSmaller(),
-			is(theInstance(testExpression)));
+			new ComparisonExpression(smaller, EVALUABLE_EXPRESSION_FACTORY.getOne()).getSmaller(),
+			is(theInstance(smaller)));
 	}
 
 	/**
@@ -90,6 +90,7 @@ public class ComparisonExpressionTest {
 		final ComparisonExpression testExpression =
 			new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 
+		assertThat(() -> testExpression.receive(null), throwsException(NullPointerException.class));
 		testExpression.receive(mockVisitor);
 
 		then(mockVisitor).should().visit(same(testExpression));
@@ -109,7 +110,9 @@ public class ComparisonExpressionTest {
 	 *
 	 * <li> It doesn’t return 0 if {@code smaller < greater}
 	 *
-	 * <li> Infinity is handled while {@code NaN} in any expression leads to {@code NaN}
+	 * <li>{@code NaN} and infinity values are handled like specified in IEEE 754.
+	 *
+	 * <li>Passing {@code null} throws an exception.
 	 *
 	 * </ul>
 	 */
@@ -119,6 +122,8 @@ public class ComparisonExpressionTest {
 		final EvaluableExpression greater = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = mock(EvaluableVariableAssignment.class);
 		final ComparisonExpression testedExpression = new ComparisonExpression(smaller, greater);
+
+		assertThat(() -> testedExpression.evaluate(null), throwsException(NullPointerException.class));
 
 		given(smaller.evaluate(same(assignment))).willReturn(-1d);
 		given(greater.evaluate(same(assignment))).willReturn(0d);

@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
+import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -51,6 +52,7 @@ public class ConstantExpressionTest {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final ConstantExpression testExpression = ConstantExpression.forValue(3);
 
+		assertThat(() -> testExpression.receive(null), throwsException(NullPointerException.class));
 		testExpression.receive(mockVisitor);
 
 		then(mockVisitor).should().visit(same(testExpression));
@@ -62,6 +64,7 @@ public class ConstantExpressionTest {
 	 */
 	@Test
 	public void testEvaluate() {
+		assertThat(() -> ConstantExpression.forValue(-100).evaluate(null), throwsException(NullPointerException.class));
 		assertThat(ConstantExpression.forValue(5).evaluate(new EvaluableVariableAssignment()), is(5d));
 	}
 
