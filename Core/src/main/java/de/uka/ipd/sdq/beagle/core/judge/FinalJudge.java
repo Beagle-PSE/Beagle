@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.judge;
 
+import static org.junit.Assert.assertNotNull;
+
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
@@ -60,10 +62,15 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * Initialises the {@link FinalJudge} object. Call this method before starting
 	 * evolution of evaluable expressions to start counting the total time the entire
 	 * evolution of evaluable expressions takes.
+	 * 
+	 * @param blackboard The {@link Blackboard} to store the data of this
+	 *            {@link FinalJudge} on. Must not be {@code null}.
 	 *
 	 */
-	public void init() {
-		this.loadData();
+	public void init(final Blackboard blackboard) {
+		assertNotNull(blackboard);
+		this.loadData(blackboard);
+
 		this.data.setStartTime(System.currentTimeMillis());
 	}
 
@@ -73,11 +80,13 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * fittest evaluable expression, the number of generations passed, the time passed,
 	 * and the relative improvement of a generation.
 	 *
-	 * @param blackboard The {@link Blackboard} this {@link FinalJudge} operates on.
+	 * @param blackboard The {@link Blackboard} this {@link FinalJudge} operates on. Must
+	 *            not be {@code null}.
 	 * @return {@code true} to indicate that evolution of evaluable expressions will be
 	 *         stopped; {@code false} otherwise.
 	 */
 	boolean judge(final Blackboard blackboard) {
+		assertNotNull(blackboard);
 		this.loadData(blackboard);
 
 		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());
@@ -104,11 +113,13 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	/**
 	 * Loads the data stored for this object from the {@link Blackboard}.
 	 *
-	 * @param blackboard The {@link Blackboard} to use.
+	 * @param blackboard The {@link Blackboard} to use. Must not be {@code null}.
 	 * @throws IllegalStateException Thrown if this method is called before
 	 *             {@link #init()}.
 	 */
 	private void loadData(final Blackboard blackboard) throws IllegalStateException {
+		assertNotNull(blackboard);
+
 		this.data = blackboard.readFor(this.getClass());
 
 		if (this.data == null) {
@@ -126,11 +137,12 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * 
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
+	 *            Must not be {@code null}.
 	 *
 	 * @param measurableSeffElements The set of {@linkplain MeasurableSeffElement
-	 *            measurable SEFF elements} to operate on.
-	 * @param blackboard The {@link Blackboard} to operate on.
-	 * @param fitnessFunction The fitness function to use.
+	 *            measurable SEFF elements} to operate on. Must not be {@code null}.
+	 * @param blackboard The {@link Blackboard} to operate on. Must not be {@code null}.
+	 * @param fitnessFunction The fitness function to use. Must not be {@code null}.
 	 * @return {@code true} if {@code measurableSeffElements} contains an element with
 	 *         sufficient fitness to stop evolution of evaluable expressions;
 	 *         {@code false} otherwise.
@@ -138,6 +150,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
 		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements, final Blackboard blackboard,
 		final TypedFitnessFunction<SEFF_ELEMENT_TYPE> fitnessFunction) {
+		assertNotNull(measurableSeffElements);
+		assertNotNull(blackboard);
+		assertNotNull(fitnessFunction);
 
 		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =
 			new ProposedExpressionAnalyserBlackboardView();
@@ -210,10 +225,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
 		 * specified {@code SEFF_ELEMENT_TYPE}.
 		 * 
-		 * @param seffElement A SEFF element.
+		 * @param seffElement A SEFF element. Must not be {@code null}.
 		 * @param expression An expression proposed to describe {@code seffElement}’s
-		 *            measurement results.
-		 * @param blackboard Beagle’s blackboard instance.
+		 *            measurement results. Must not be {@code null}.
+		 * @param blackboard Beagle’s blackboard instance. Must not be {@code null}.
 		 * @return A value judging how well {@code expression} fits to describe the
 		 *         corresponding measurement results. Will be a value between 0 and
 		 *         {@link Double#MAX_VALUE}. The lower the value, the better the fitness.
