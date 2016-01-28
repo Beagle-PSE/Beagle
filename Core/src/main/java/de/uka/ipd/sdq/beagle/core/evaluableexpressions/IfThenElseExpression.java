@@ -97,7 +97,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 		Validate.notNull(variableAssignments);
-		if (this.ifStatement.evaluate(variableAssignments) == 0) {
+		if (this.ifStatement.evaluate(variableAssignments) != 0) {
 			return this.thenStatement.evaluate(variableAssignments);
 		} else {
 			return this.elseStatement.evaluate(variableAssignments);

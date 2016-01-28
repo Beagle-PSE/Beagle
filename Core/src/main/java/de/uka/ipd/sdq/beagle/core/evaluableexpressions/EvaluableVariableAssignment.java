@@ -20,7 +20,7 @@ public class EvaluableVariableAssignment {
 	/**
 	 * Contains all assignements of evaluable variables and their double value.
 	 */
-	private final Map<EvaluableVariable, Double> assignement = new HashMap<EvaluableVariable, Double>();
+	private final Map<EvaluableVariable, Double> assignment = new HashMap<EvaluableVariable, Double>();
 
 	/**
 	 * Gets the assigned value for the {@code EvaluableVariable variable}.
@@ -30,7 +30,10 @@ public class EvaluableVariableAssignment {
 	 */
 	public double getValueFor(final EvaluableVariable variable) {
 		Validate.notNull(variable);
-		return this.assignement.get(variable);
+		if (!this.assignment.containsKey(variable)) {
+			throw new UndefinedExpressionException(this, variable);
+		}
+		return this.assignment.get(variable);
 	}
 
 	/**
@@ -42,7 +45,7 @@ public class EvaluableVariableAssignment {
 	 */
 	public void setValueFor(final EvaluableVariable variable, final double value) {
 		Validate.notNull(variable);
-		this.assignement.put(variable, value);
+		this.assignment.put(variable, value);
 	}
 
 	/**
@@ -56,7 +59,7 @@ public class EvaluableVariableAssignment {
 	 */
 	public boolean isValueAssignedFor(final EvaluableVariable variable) {
 		Validate.notNull(variable);
-		if (this.assignement.containsKey(variable)) {
+		if (this.assignment.containsKey(variable)) {
 			return true;
 		}
 		return false;
@@ -66,7 +69,7 @@ public class EvaluableVariableAssignment {
 	public String toString() {
 		final StringBuilder result = new StringBuilder();
 		boolean first = true;
-		for (final EvaluableVariable variable : this.assignement.keySet()) {
+		for (final EvaluableVariable variable : this.assignment.keySet()) {
 			if (!first) {
 				result.append(", ");
 			} else {
@@ -91,8 +94,8 @@ public class EvaluableVariableAssignment {
 		final EvaluableVariableAssignment other = (EvaluableVariableAssignment) object;
 		final EqualsBuilder result = new EqualsBuilder();
 		// asserts that it is the same key set
-		result.append(this.assignement, other.assignement);
-		for (final EvaluableVariable variable : this.assignement.keySet()) {
+		result.append(this.assignment, other.assignment);
+		for (final EvaluableVariable variable : this.assignment.keySet()) {
 			result.append(this.getValueFor(variable), other.getValueFor(variable));
 		}
 		return result.isEquals();
@@ -103,8 +106,8 @@ public class EvaluableVariableAssignment {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
 		final HashCodeBuilder result = new HashCodeBuilder(199, 201);
-		result.append(this.assignement);
-		for (final EvaluableVariable variable : this.assignement.keySet()) {
+		result.append(this.assignment);
+		for (final EvaluableVariable variable : this.assignment.keySet()) {
 			result.append(this.getValueFor(variable));
 		}
 		return result.toHashCode();
