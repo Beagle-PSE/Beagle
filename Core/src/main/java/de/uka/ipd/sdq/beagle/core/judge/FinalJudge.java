@@ -9,6 +9,7 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
+import java.util.HashMap;
 import java.util.Set;
 
 /**
@@ -69,6 +70,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 */
 	public void init(final Blackboard blackboard) {
 		assertNotNull(blackboard);
+
+		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());
+
 		this.loadData(blackboard);
 
 		this.data.setStartTime(System.currentTimeMillis());
@@ -89,8 +93,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		assertNotNull(blackboard);
 		this.loadData(blackboard);
 
-		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());
-
 		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
 
 		// determine the criteria which aren't CPU-intensive first
@@ -101,7 +103,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
 
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
-		this.containsElementWithSufficientFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+
+		this.containsElementWithSufficientFitness(seffBranches);
 
 		if (this.numberOfGenerationsWithoutSignificantImprovementTooHigh()) {
 			return true;
@@ -120,7 +124,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	private void loadData(final Blackboard blackboard) throws IllegalStateException {
 		assertNotNull(blackboard);
 
-		this.data = blackboard.readFor(this.getClass());
+		this.data = blackboard.readFor(FinalJudge.class);
 
 		if (this.data == null) {
 			throw new IllegalStateException("loadData(Blackboard) cannot be called on FinalJudge before init().");
@@ -128,9 +132,8 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	}
 
 	/**
-	 * Determines whether a set of {@linkplain MeasurableSeffElement measurable SEFF
-	 * elements} contains an element with sufficient fitness to stop evolution of
-	 * evaluable expressions.
+	 * Measures the fitness of all {@linkplain MeasurableSeffElement measurable SEFF
+	 * elements}.
 	 * 
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
 	 * {@code SE}.
@@ -147,24 +150,61 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         sufficient fitness to stop evolution of evaluable expressions;
 	 *         {@code false} otherwise.
 	 */
-	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
+	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean measureFitness(
 		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements, final Blackboard blackboard,
 		final TypedFitnessFunction<SEFF_ELEMENT_TYPE> fitnessFunction) {
 		assertNotNull(measurableSeffElements);
 		assertNotNull(blackboard);
 		assertNotNull(fitnessFunction);
 
+		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
+
 		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =
 			new ProposedExpressionAnalyserBlackboardView();
 
 		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
-			boolean foundOptimal = false;
 
 			for (EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
 				final double fitnessValue =
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
-				foundOptimal = foundOptimal || fitnessValue < FITNESS_EPSILON;
+
+				// store the measurement result
+				currentFitnessValues.put(seffElement, fitnessValue);
 			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Determines whether a set of {@linkplain MeasurableSeffElement measurable SEFF
+	 * elements} contains an element with sufficient fitness to stop evolution of
+	 * evaluable expressions.
+	 * 
+	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
+	 * {@code SE}.
+	 * 
+	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
+	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
+	 *            Must not be {@code null}.
+	 *
+	 * @param measurableSeffElements The set of {@linkplain MeasurableSeffElement
+	 *            measurable SEFF elements} to operate on. Must not be {@code null}.
+	 * @return {@code true} if {@code measurableSeffElements} contains an element with
+	 *         sufficient fitness to stop evolution of evaluable expressions;
+	 *         {@code false} otherwise.
+	 */
+	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
+		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements) {
+		assertNotNull(measurableSeffElements);
+
+		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
+
+		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
+			boolean foundOptimal = false;
+
+			final double fitnessValue = currentFitnessValues.get(seffElement);
+			foundOptimal = foundOptimal || fitnessValue < FITNESS_EPSILON;
 
 			// If a single MeasurableSeffElement to examine doesn't have a good enough
 			// EvaluableExpression to describe it, the set of MeasurableSeffElements
@@ -208,6 +248,18 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         than {@link #MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT}.
 	 */
 	private boolean numberOfGenerationsWithoutSignificantImprovementTooHigh() {
+		return this.data
+			.getNumberOfGenerationsWithoutSignificantImprovementPassed() > MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
+	}
+
+	/**
+	 * Evaluates the relative improvement to the latest
+	 * {@linkplain FinalJudgeData#getFitnessBaseline() fitness baseline}.
+	 *
+	 * @return {@code true} if the relative improvement to the latest baseline is
+	 *         sufficient; {@code false} otherwise.
+	 */
+	private boolean evalueteRelativeImprovement() {
 
 	}
 

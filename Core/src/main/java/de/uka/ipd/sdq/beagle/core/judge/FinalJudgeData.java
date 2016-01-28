@@ -1,8 +1,10 @@
 package de.uka.ipd.sdq.beagle.core.judge;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * Stores all data of {@link FinalJudge}.
@@ -28,6 +30,25 @@ public class FinalJudgeData implements Serializable {
 	 * {@link #SIGNIFICANT_IMPROVEMENT} passed.
 	 */
 	private int numberOfGenerationsWithoutSignificantImprovementPassed;
+
+	/**
+	 * Maps {@link MeasurableSeffElement}s to the fitness value of their best known
+	 * evaluable expression.
+	 */
+	private HashMap<MeasurableSeffElement, Double> currentFitnessValues = new HashMap<MeasurableSeffElement, Double>();
+
+	/**
+	 * The latest fitness value which came with good enough improvement to set
+	 * {@link #numberOfGenerationsWithoutSignificantImprovementPassed} to {@code 0}.
+	 */
+	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;
+
+	/**
+	 * The latest version of {@link #currentFitnessValues} which came with good enough
+	 * improvement to set {@link #numberOfGenerationsWithoutSignificantImprovementPassed}
+	 * to {@code 0}.
+	 */
+	private HashMap<MeasurableSeffElement, Double> fitnessBaseline = new HashMap<MeasurableSeffElement, Double>();
 
 	/**
 	 * Returns {@code startTime}.
@@ -84,5 +105,32 @@ public class FinalJudgeData implements Serializable {
 		final int numberOfGenerationsWithoutSignificantImprovementPassed) {
 		this.numberOfGenerationsWithoutSignificantImprovementPassed =
 			numberOfGenerationsWithoutSignificantImprovementPassed;
+	}
+
+	/**
+	 * Returns {@code fitnessBaselineValue}.
+	 * 
+	 * @return The {@code fitnessBaselineValue}.
+	 */
+	public double getFitnessBaseline() {
+		return this.fitnessBaselineValue;
+	}
+
+	/**
+	 * Sets {@code fitnessBaselineValue}.
+	 *
+	 * @param fitnessBaselineValue The {@code fitnessBaselineValue} to set.
+	 */
+	public void setFitnessBaseline(final double fitnessBaselineValue) {
+		this.fitnessBaselineValue = fitnessBaselineValue;
+	}
+
+	/**
+	 * Returns {@link currentFitnessValues}.
+	 * 
+	 * @return The {@link currentFitnessValues}.
+	 */
+	public HashMap<MeasurableSeffElement, Double> getCurrentFitnessValues() {
+		return this.currentFitnessValues;
 	}
 }
