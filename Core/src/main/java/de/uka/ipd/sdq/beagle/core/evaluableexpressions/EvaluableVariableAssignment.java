@@ -36,12 +36,12 @@ public class EvaluableVariableAssignment {
 	/**
 	 * Assigns a value to an evaluable variable.
 	 *
-	 * @param variable To which the value belongs. Must not be {@code null}.
-	 * @param value To be set. Must not be {@code null}.
+	 * @param variable The variable for which the value shall be set. Must not be
+	 *            {@code null}.
+	 * @param value The value to be set.
 	 */
 	public void setValueFor(final EvaluableVariable variable, final double value) {
 		Validate.notNull(variable);
-		Validate.notNull(value);
 		this.assignement.put(variable, value);
 	}
 
