@@ -45,6 +45,7 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -57,6 +58,7 @@ public class ExponentialFunctionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		return Math.pow(Math.E, this.exponent.evaluate(variableAssignments));
 	}
 

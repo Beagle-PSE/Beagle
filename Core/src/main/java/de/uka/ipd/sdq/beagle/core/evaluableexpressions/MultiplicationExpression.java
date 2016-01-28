@@ -66,6 +66,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -78,6 +79,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		double product = 1;
 		for (final EvaluableExpression factor : this.factors) {
 			product *= factor.evaluate(variableAssignments);

@@ -63,6 +63,7 @@ public class LogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -75,6 +76,7 @@ public class LogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		return Math.log(this.antilogarithm.evaluate(variableAssignments))
 			/ Math.log(this.base.evaluate(variableAssignments));
 	}

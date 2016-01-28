@@ -69,6 +69,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -81,6 +82,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		double result = 0;
 		double value;
 		for (final EvaluableExpression summand : this.summands) {

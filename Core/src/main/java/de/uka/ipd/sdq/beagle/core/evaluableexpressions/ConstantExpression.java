@@ -69,6 +69,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -81,6 +82,7 @@ public final class ConstantExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		return this.value;
 	}
 

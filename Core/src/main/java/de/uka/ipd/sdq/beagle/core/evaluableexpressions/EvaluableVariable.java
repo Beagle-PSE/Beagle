@@ -23,6 +23,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	 */
 	public EvaluableVariable(final String name) {
 		Validate.notNull(name);
+		Validate.notEmpty(name);
 		this.name = name;
 	}
 
@@ -43,6 +44,7 @@ public class EvaluableVariable implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -55,6 +57,10 @@ public class EvaluableVariable implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
+		if (!variableAssignments.isValueAssignedFor(this)) {
+			throw new UndefinedExpressionException(variableAssignments, this);
+		}
 		return variableAssignments.getValueFor(this);
 	}
 

@@ -62,6 +62,7 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -74,6 +75,7 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		final double quotient =
 			this.dividend.evaluate(variableAssignments) / this.divisor.evaluate(variableAssignments);
 		return quotient;
