@@ -26,10 +26,10 @@ public class DivisionExpression implements EvaluableExpression {
 	 * Builds an expression which returns the quotient of a division using the given
 	 * divisor and dividend.
 	 *
-	 * @param divisor The expression dividing the other one.
 	 * @param dividend The expression being divided.
+	 * @param divisor The expression dividing the other one.
 	 */
-	public DivisionExpression(final EvaluableExpression divisor, final EvaluableExpression dividend) {
+	public DivisionExpression(final EvaluableExpression dividend, final EvaluableExpression divisor) {
 		Validate.notNull(divisor);
 		Validate.notNull(dividend);
 		this.divisor = divisor;
