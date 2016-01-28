@@ -26,6 +26,10 @@ public class DownloadUpdateSites implements Plugin<Project> {
 	void apply(Project project) {
 		project.extensions.create "updatesites", UpdateSitesConfigurationExtension, this
 		this.project = project
+		project.afterEvaluate {
+			downloadSites()
+			tellWuff()
+		}
 	}
 	
 	/**
@@ -43,9 +47,25 @@ public class DownloadUpdateSites implements Plugin<Project> {
 					// unpuzzle’s dummy checksum
 					updateSite.checksumFile.text = 'deadbea1'
 				}
+				
 			}
 		}
     }
+    
+    /**
+     * Tells wuff about the sites
+     */
+    def tellWuff() {
+    	this.sites.each { updateSite ->
+			project.wuff {
+				eclipseVersion(selectedEclipseVersion) {
+					sources {
+						source "file://$updateSite.destinationFolder"
+					}
+				}
+			}
+		}
+	}
     
     /**
      * Adds {@code url} to the sites to be downloaded. 
@@ -62,15 +82,6 @@ public class DownloadUpdateSites implements Plugin<Project> {
 		
 		// queue the site to be downloaded
 		this.sites.add new UpdateSite(url: new URL(url), destinationFolder: destinationDir, checksumFile: checksumFile)
-		
-		// tell wuff about the downloaded folder
-		project.wuff {
-			eclipseVersion(selectedEclipseVersion) {
-				sources {
-					source "file://$destinationDir"
-				}
-			}
-		}
 	}
 	
 	/**
@@ -131,13 +142,6 @@ public class UpdateSitesConfigurationExtension {
 	 */
 	def from(String url) {
 		pluginInstance.add url
-	}
-	
-	/**
-	 * Makes the plugin perform the actual download.
-	 */
-	def download() {
-		pluginInstance.downloadSites()
 	}
 }
 	

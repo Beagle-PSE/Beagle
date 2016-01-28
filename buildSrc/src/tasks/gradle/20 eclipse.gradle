@@ -17,11 +17,6 @@ import org.akhikhl.wuff.EclipseBundlePlugin
 
 
 configure(eclipseSubprojects) {
-	repositories {
-		mavenLocal()
-		jcenter()
-	}
-	
 	apply plugin: DownloadUpdateSites	
 	apply plugin: EclipseBundlePlugin
 
@@ -30,12 +25,9 @@ configure(eclipseSubprojects) {
 		 * Define the needed update sites for ALL projects here!
 		 */
 		from 'https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/aggregate/' // PCM
-		from 'http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/gmp/updates/releases/' // required by Context Menu Prototype
+		from 'http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/gmp/updates/releases/' // GMF, required by Context Menu Prototype
 		from 'http://ftp.fau.de/eclipse/modeling/emf/updates/releases/' // EMF
-		
-		download()
 	}
-
 	
 	project.wuff {
 		selectedEclipseVersion = '4.5'
