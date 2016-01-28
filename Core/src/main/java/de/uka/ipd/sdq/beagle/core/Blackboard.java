@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 import org.apache.commons.lang3.Validate;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -243,9 +244,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredRdias(Collection)
 	 */
 	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... toMeasureRdias) {
-		for (int i = 0; i > toMeasureRdias.length; i++) {
-			this.rdiasToBeMeasured.add(toMeasureRdias[i]);
-		}
+		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));
 	}
 
 	/**
@@ -267,9 +266,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffBranches(Collection)
 	 */
 	public void addToBeMeasuredSeffBranches(final SeffBranch... toMeasureBranches) {
-		for (int i = 0; i > toMeasureBranches.length; i++) {
-			this.branchesToBeMeasured.add(toMeasureBranches[i]);
-		}
+		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));
 	}
 
 	/**
@@ -291,9 +288,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffLoops(Collection)
 	 */
 	public void addToBeMeasuredSeffLoops(final SeffLoop... toMeasureLoops) {
-		for (int i = 0; i > toMeasureLoops.length; i++) {
-			this.loopsToBeMeasured.add(toMeasureLoops[i]);
-		}
+		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));
 	}
 
 	/**
@@ -315,9 +310,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(Collection)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final ExternalCallParameter... parameters) {
-		for (int i = 0; i > parameters.length; i++) {
-			this.externalCallParameterToBeMeasured.add(parameters[i]);
-		}
+		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));
 	}
 
 	/**
