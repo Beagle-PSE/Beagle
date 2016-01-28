@@ -8,6 +8,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notANumber;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.same;
@@ -163,6 +165,8 @@ public class MultiplicationExpressionTest {
 	 *
 	 * <li>The method calculates the product of its inner expressions’ values.
 	 *
+	 * <li>{@code NaN} and infinity values are handled like specified in IEEE 754.
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -178,15 +182,28 @@ public class MultiplicationExpressionTest {
 
 		given(firstMock.evaluate(same(assignment))).willReturn(10d);
 		given(secondMock.evaluate(same(assignment))).willReturn(3d);
-
 		assertThat(testExpressionTwo.evaluate(assignment), is(30d));
 
 		given(firstMock.evaluate(same(assignment))).willReturn(1d);
 		given(secondMock.evaluate(same(assignment))).willReturn(2d);
 		given(thirdMock.evaluate(same(assignment))).willReturn(4d);
 		given(fourthMock.evaluate(same(assignment))).willReturn(-.5d);
-
 		assertThat(testExpressionFour.evaluate(assignment), is(-4d));
+
+		given(secondMock.evaluate(same(assignment))).willReturn(Double.NaN);
+		assertThat(testExpressionFour.evaluate(assignment), is(notANumber()));
+
+		given(secondMock.evaluate(same(assignment))).willReturn(Double.POSITIVE_INFINITY);
+		assertThat(testExpressionTwo.evaluate(assignment), is(Double.POSITIVE_INFINITY));
+
+		given(secondMock.evaluate(same(assignment))).willReturn(Double.NEGATIVE_INFINITY);
+		assertThat(testExpressionTwo.evaluate(assignment), is(Double.NEGATIVE_INFINITY));
+
+		given(fourthMock.evaluate(same(assignment))).willReturn(Double.POSITIVE_INFINITY);
+		assertThat(testExpressionTwo.evaluate(assignment), is(Double.NEGATIVE_INFINITY));
+
+		given(firstMock.evaluate(same(assignment))).willReturn(Double.NEGATIVE_INFINITY);
+		assertThat(testExpressionTwo.evaluate(assignment), is(Double.POSITIVE_INFINITY));
 	}
 
 	/**
@@ -213,7 +230,7 @@ public class MultiplicationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsObject() {
+	public void testEqualsAndHashCode() {
 		final MultiplicationExpression defaultOne = new MultiplicationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 		final MultiplicationExpression defaultTwo = new MultiplicationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 		final MultiplicationExpression defaultFromCollection =
@@ -221,6 +238,8 @@ public class MultiplicationExpressionTest {
 		final EvaluableExpression[] reversed = EVALUABLE_EXPRESSION_FACTORY.getAll();
 		ArrayUtils.reverse(reversed);
 		final MultiplicationExpression defaultReversed = new MultiplicationExpression(reversed);
+		final MultiplicationExpression different =
+			new MultiplicationExpression(ArrayUtils.remove(EVALUABLE_EXPRESSION_FACTORY.getAll(), 0));
 
 		assertThat(defaultOne, hasDefaultEqualsProperties());
 		assertThat("Two expressions with equal inner expressions should be equal", defaultOne, is(equalTo(defaultTwo)));
@@ -237,6 +256,8 @@ public class MultiplicationExpressionTest {
 			defaultFromCollection, is(equalTo(defaultReversed)));
 		assertThat("Equal expressions must have the same hashCode", defaultFromCollection.hashCode(),
 			is(defaultReversed.hashCode()));
+		assertThat("Expressions with different inner expressions must not be equal", defaultOne,
+			is(not(equalTo(different))));
 	}
 
 }

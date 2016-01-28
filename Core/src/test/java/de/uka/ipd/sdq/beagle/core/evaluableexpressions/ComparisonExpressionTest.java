@@ -109,6 +109,8 @@ public class ComparisonExpressionTest {
 	 *
 	 * <li> It doesn’t return 0 if {@code smaller < greater}
 	 *
+	 * <li> Infinity is handled while {@code NaN} in any expression leads to {@code NaN}
+	 *
 	 * </ul>
 	 */
 	@Test
@@ -129,6 +131,26 @@ public class ComparisonExpressionTest {
 		given(smaller.evaluate(same(assignment))).willReturn(10d);
 		given(greater.evaluate(same(assignment))).willReturn(6d);
 		assertThat(testedExpression.evaluate(assignment), is(0d));
+
+		given(smaller.evaluate(same(assignment))).willReturn(Double.NaN);
+		given(greater.evaluate(same(assignment))).willReturn(6d);
+		assertThat(testedExpression.evaluate(assignment), is(0d));
+
+		given(smaller.evaluate(same(assignment))).willReturn(6d);
+		given(greater.evaluate(same(assignment))).willReturn(Double.NaN);
+		assertThat(testedExpression.evaluate(assignment), is(0d));
+
+		given(smaller.evaluate(same(assignment))).willReturn(Double.NaN);
+		given(greater.evaluate(same(assignment))).willReturn(Double.NaN);
+		assertThat(testedExpression.evaluate(assignment), is(0d));
+
+		given(smaller.evaluate(same(assignment))).willReturn(Double.NEGATIVE_INFINITY);
+		given(greater.evaluate(same(assignment))).willReturn(6d);
+		assertThat(testedExpression.evaluate(assignment), is(not(0d)));
+
+		given(smaller.evaluate(same(assignment))).willReturn(10d);
+		given(greater.evaluate(same(assignment))).willReturn(Double.POSITIVE_INFINITY);
+		assertThat(testedExpression.evaluate(assignment), is(not(0d)));
 	}
 
 	/**
@@ -175,11 +197,11 @@ public class ComparisonExpressionTest {
 		assertThat("Two expressions with equal inner expressions should be equal", equalOne, is(equalTo(equalTwo)));
 		assertThat("Equal expressions must have the same hashCode", equalOne.hashCode(), is(equalTwo.hashCode()));
 		assertThat("Two expressions with different inner expressions should not be equal", equalOne,
-			is(equalTo(otherOne)));
+			is(not(equalTo(otherOne))));
 		assertThat("Two expressions with different inner expressions should not be equal", equalOne,
-			is(equalTo(otherTwo)));
+			is(not(equalTo(otherTwo))));
 		assertThat("Two expressions with different inner expressions should not be equal", equalOne,
-			is(equalTo(otherThree)));
+			is(not(equalTo(otherThree))));
 	}
 
 }
