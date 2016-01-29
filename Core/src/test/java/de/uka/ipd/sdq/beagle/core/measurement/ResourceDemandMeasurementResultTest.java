@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -90,6 +91,23 @@ public class ResourceDemandMeasurementResultTest {
 		assertThat("The returned value must not be influenced by a later change.", resultWithParameterisation.getValue(),
 			is(not(equalTo(value))));
 
+	}
+	
+	/**
+	 * Test method for {@link ResourceDemandMeasurementResult#toString()} .
+	 */
+	@Test
+	public void testToString() {
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		final double value = 2.3;
+		final ResourceDemandMeasurementResult measurementResult =
+			new ResourceDemandMeasurementResult(value) {
+			};
+		final ResourceDemandMeasurementResult measurementResultP =
+			new ResourceDemandMeasurementResult(parameterisation, value) {
+			};
+		assertThat(measurementResult.toString(), not(startsWith("ResourceDemandMeasurementResult@")));
+		assertThat(measurementResultP.toString(), not(startsWith("ResourceDemandMeasurementResult@")));
 	}
 
 }

@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -91,6 +92,23 @@ public class LoopRepetitionCountMeasurementResultTest {
 			is(not(equalTo(count))));
 		assertThat("The returned value must not be influenced by a later change.", resultWithP.getCount(),
 			is(not(equalTo(count))));
+	}
+	
+	/**
+	 * Test method for {@link LoopRepetitionCountMeasurementResult#toString()} .
+	 */
+	@Test
+	public void testToString() {
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		final int value = 2;
+		final LoopRepetitionCountMeasurementResult measurementResult =
+			new LoopRepetitionCountMeasurementResult(value) {
+			};
+		final LoopRepetitionCountMeasurementResult measurementResultP =
+			new LoopRepetitionCountMeasurementResult(parameterisation, value) {
+			};
+		assertThat(measurementResult.toString(), not(startsWith("LoopRepetitionCountMeasurementResult@")));
+		assertThat(measurementResultP.toString(), not(startsWith("LoopRepetitionCountMeasurementResult@")));
 	}
 
 }
