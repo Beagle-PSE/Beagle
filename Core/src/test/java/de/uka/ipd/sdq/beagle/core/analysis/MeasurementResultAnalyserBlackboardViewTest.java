@@ -10,6 +10,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.same;
 import static org.mockito.Mockito.mock;
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -444,6 +445,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 */
 	@Test
 	public void testEquals() {
+		assertThat(this.testedView, hasDefaultEqualsProperties());
 		// Creating equal view to the existing one
 		final MeasurementResultAnalyserBlackboardView secondView =
 			new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
