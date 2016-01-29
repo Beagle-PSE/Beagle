@@ -34,14 +34,15 @@ public class BranchDecisionMeasurementResult extends ParameterisationDependentMe
 	}
 
 	/**
-	 * Creates a result for a branch measurement.
+	 * Creates a result for a parameterised branch measurement.
 	 *
 	 * @param parameterisation The state of variables during measurement.
 	 * @param branchIndex The index of the branch in the associated {@link SeffBranch}'s
 	 *            branch list that was executed.
 	 */
 	public BranchDecisionMeasurementResult(final Parameterisation parameterisation, final int branchIndex) {
-		Validate.isTrue(this.branchIndex >= 0, "The measured branch index was negative: %d", this.branchIndex);
+		super(parameterisation);
+		Validate.isTrue(branchIndex >= 0, "The measured branch index was negative: %d", this.branchIndex);
 		this.branchIndex = branchIndex;
 	}
 

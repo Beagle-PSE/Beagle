@@ -29,12 +29,13 @@ public class LoopRepetitionCountMeasurementResult extends ParameterisationDepend
 	}
 
 	/**
-	 * Creates a result for a loop measurement.
+	 * Creates a result for a parameterised loop measurement.
 	 *
 	 * @param parameterisation The state of variables during measurement.
 	 * @param count How many times the loop's body was executed. May not be negative.
 	 */
 	public LoopRepetitionCountMeasurementResult(final Parameterisation parameterisation, final int count) {
+		super(parameterisation);
 		Validate.isTrue(count >= 0, "The measured loop count value was negative: %d", count);
 		this.count = count;
 	}

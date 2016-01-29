@@ -39,7 +39,7 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	}
 
 	/**
-	 * Creates a result for a resource demand measurement.
+	 * Creates a result for a parameterised resource demand measurement.
 	 *
 	 * @param parameterisation The state of variables during measurement.
 	 *
