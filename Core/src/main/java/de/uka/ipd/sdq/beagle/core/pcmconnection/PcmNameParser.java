@@ -88,8 +88,8 @@ public class PcmNameParser {
 	 * 
 	 * @param entityName SoMoX generated entityName. If not, this leads to undefined
 	 *            behaviour.
-	 * @return May return <li> {@code null}, if the String contains no file-path </li>
-	 *         <li> {@link CodeSection}. Initialized with (file, firstOffset, file,
+	 * @return May return {@code null}, if the String contains no file-path 
+	 *          {@link CodeSection}. Initialized with (file, firstOffset, file,
 	 *         secondOffset) OR (file, firstOffset, file, -1) if there is no second Offset
 	 *         available. Anyway, the first "file" and the second "file" are the same!
 	 * @throws FileNotFoundException When the file was not found at the given relative
