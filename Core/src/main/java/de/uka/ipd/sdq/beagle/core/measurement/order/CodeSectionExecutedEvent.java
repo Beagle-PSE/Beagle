@@ -22,4 +22,9 @@ public class CodeSectionExecutedEvent extends AbstractMeasurementEvent {
 		super(codeSection);
 	}
 
+	@Override
+	public void recive(final MeasurementEventVisitor visitor) {
+		visitor.visit(this);
+	}
+
 }

@@ -18,4 +18,9 @@ public class ParameterValueCapturedEvent extends AbstractMeasurementEvent {
 	protected ParameterValueCapturedEvent(final CodeSection codeSection) {
 		super(codeSection);
 	}
+
+	@Override
+	public void recive(final MeasurementEventVisitor visitor) {
+		visitor.visit(this);
+	}
 }
