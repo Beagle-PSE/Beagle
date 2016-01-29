@@ -1,10 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A result of counting repetitions of a loop. It expresses that a loop construct’s body
@@ -12,21 +9,35 @@ package de.uka.ipd.sdq.beagle.core.measurement;
  * the given {@code Parameterisation}.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 public class LoopRepetitionCountMeasurementResult extends ParameterisationDependentMeasurementResult {
 
 	/**
-	 * Creates a result for a loop measurement for which no parameterisation was recorded.
+	 * How many times the loop's body was executed.
 	 */
-	public LoopRepetitionCountMeasurementResult() {
+	private int count;
+
+	/**
+	 * Creates a result for a loop measurement for which no parameterisation was recorded.
+	 *
+	 * @param count How many times the loop's body was executed. May not be negative.
+	 */
+	public LoopRepetitionCountMeasurementResult(final int count) {
+		Validate.isTrue(count >= 0, "The measured loop count value was negative: %d", count);
+		this.count = count;
 	}
 
 	/**
-	 * Creates a result for a loop measurement.
+	 * Creates a result for a parameterised loop measurement.
 	 *
 	 * @param parameterisation The state of variables during measurement.
+	 * @param count How many times the loop's body was executed. May not be negative.
 	 */
-	public LoopRepetitionCountMeasurementResult(final Parameterisation parameterisation) {
+	public LoopRepetitionCountMeasurementResult(final Parameterisation parameterisation, final int count) {
+		super(parameterisation);
+		Validate.isTrue(count >= 0, "The measured loop count value was negative: %d", count);
+		this.count = count;
 	}
 
 	/**
@@ -35,15 +46,11 @@ public class LoopRepetitionCountMeasurementResult extends ParameterisationDepend
 	 * @return How often the measured loop was executed. A positive Integer or 0.
 	 */
 	public int getCount() {
-		return 0;
+		return this.count;
 	}
 
-	/**
-	 * Sets the loop repetition count.
-	 *
-	 * @param count How often the measured loop was executed. Must not be smaller than 0.
-	 * @throws IllegalArgumentException If {@code count < 0}.
-	 */
-	public void setCount(final int count) {
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("count", this.count).toString();
 	}
 }
