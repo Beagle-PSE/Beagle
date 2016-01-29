@@ -1,8 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -48,28 +46,6 @@ public abstract class ParameterisationDependentMeasurementResult {
 	 */
 	public Parameterisation getParameterisation() {
 		return this.parameterisation;
-	}
-
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != this.getClass()) {
-			return false;
-		}
-		final ParameterisationDependentMeasurementResult other = (ParameterisationDependentMeasurementResult) object;
-		return new EqualsBuilder().append(this.parameterisation, other.parameterisation).isEquals();
-	}
-
-	@Override
-	public int hashCode() {
-		// you pick a hard-coded, randomly chosen, non-zero, odd number
-		// ideally different for each class
-		return new HashCodeBuilder(41, 63).append(this.parameterisation).toHashCode();
 	}
 
 	@Override
