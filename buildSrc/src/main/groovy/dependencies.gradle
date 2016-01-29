@@ -1,0 +1,10 @@
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	compile group: 'org.codehaus.gpars', name: 'gpars', version: '1.2+'
+	compile group: 'org.apache.ivy', name: 'ivy', version: '+'
+	compile group: 'de.undercouch', name: 'gradle-download-task', version: '+'
+}
