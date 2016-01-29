@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A result of measuring resource demands of a code section. The result expresses that a
@@ -60,5 +61,10 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 */
 	public double getValue() {
 		return this.value;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("value", this.value).toString();
 	}
 }

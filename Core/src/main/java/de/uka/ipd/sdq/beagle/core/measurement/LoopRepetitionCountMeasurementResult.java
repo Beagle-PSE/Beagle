@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A result of counting repetitions of a loop. It expresses that a loop construct’s body
@@ -45,5 +46,10 @@ public class LoopRepetitionCountMeasurementResult extends ParameterisationDepend
 	 */
 	public int getCount() {
 		return this.count;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).append("count", this.count).toString();
 	}
 }
