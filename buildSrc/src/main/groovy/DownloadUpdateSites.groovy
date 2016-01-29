@@ -57,10 +57,11 @@ public class DownloadUpdateSites implements Plugin<Project> {
      */
     def tellWuff() {
     	this.sites.each { updateSite ->
+    		String destinationDir = updateSite.destinationFolder.absolutePath.replace('\\', '/')
 			project.wuff {
 				eclipseVersion(selectedEclipseVersion) {
 					sources {
-						source "file://$updateSite.destinationFolder"
+						source "file://$destinationDir"
 					}
 				}
 			}
