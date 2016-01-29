@@ -9,6 +9,8 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.HashMap;
 import java.util.Set;
 
@@ -69,7 +71,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *
 	 */
 	public void init(final Blackboard blackboard) {
-		assertNotNull(blackboard);
+		Validate.notNull(blackboard);
 
 		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());
 
@@ -90,7 +92,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         stopped; {@code false} otherwise.
 	 */
 	boolean judge(final Blackboard blackboard) {
-		assertNotNull(blackboard);
+		Validate.notNull(blackboard);
 		this.loadData(blackboard);
 
 		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
@@ -153,9 +155,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean measureFitness(
 		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements, final Blackboard blackboard,
 		final TypedFitnessFunction<SEFF_ELEMENT_TYPE> fitnessFunction) {
-		assertNotNull(measurableSeffElements);
-		assertNotNull(blackboard);
-		assertNotNull(fitnessFunction);
 
 		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
