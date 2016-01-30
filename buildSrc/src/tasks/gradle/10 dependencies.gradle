@@ -1,9 +1,25 @@
 /**
- * Enhancement for gradle’s dependencies task to download all dependencies needed by any project.
+ * Configurations for Beagle’s dependency management.
  *
  * @author Joshua Gleitze
  */
- 
+
+configure(javaSubprojects) {
+
+	// special dependency configurations for those defined in dependencies.gradle files
+	configurations {
+		production
+		tests
+	}
+	
+	// import dependencies defined in dependencies.gradle
+	def dependenciesDeclaration = file("$projectDir/dependencies.gradle")
+	if (dependenciesDeclaration.exists()) {
+		apply from: dependenciesDeclaration
+	}
+}
+	
+
 task alldependencies << {
 	subprojects.each { project ->
 		project.configurations.each { configuration ->

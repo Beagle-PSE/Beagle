@@ -2,16 +2,15 @@
 
 # Dependency Management
 
-## Main Dependencies
-Main dependencies are the ones that are required to compile and run the production source code. Because Beagle is an Eclipse plugin, these dependencies are defined in a project’s `src/main/resources/META-INF/MANIFEST.MF` file. Eclipse offers a convenient visual editor for editing dependencies.
+Every Java project can add a `dependencies.gradle` file in its top most folder. In it, it may declare its dependencies using [gradle’s syntax]. The special dependency configurations `production` and `tests` must be used. These dependencies will also automatically be imported through Buildship into Eclipse.
+
+## Eclipse Plugin Dependencies
+An Eclipse Project’s dependencies on other Eclipse Plugins are declared in `src/main/resources/META-INF/MANIFEST.MF`. Eclipse offers a convenient visual editor for editing it.
 
 *Heads up*: Due to a limitation in `wuff`, the gradle plugin that builds the Eclipse projects, dependencies in the `MANIFEST.MF` must not declare a version! As Eclipse usually adds a version requirement, it must be removed manually.
 
 ### Update Sites
 Dependencies defined in the `MANIFEST.MF` must come from an update site. If a declared dependency is not provided by any update site yet, add an appropriate update site to `Beagle/buildSrc/src/tasks/gradle/20 eclipse plugins.gradle`.
-
-## Test Dependencies
-Test dependencies are the ones only required by test code, but not on the user’s machine. They are not declared in `MANIFEST.MF` but in `Beagle/buildSrc/src/tasks/gradle/20 test.gradle`. Dependencies defined in gradle are imported through the Buildship plugin into Eclipse. [See the Development Setup document](Development Setup.html) for details on the setup.
 
 ## Build Dependencies
 Build dependencies are the ones required by build code. Tasks can define them in the task file itself. Code in a project’s `buildSrc/src/main/groovy` folder may add a `dependencies.gradle` file and declare dependencies there.
