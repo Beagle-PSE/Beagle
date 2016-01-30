@@ -138,6 +138,11 @@ public final class NullHandlingMatchers {
 		extends TypeSafeDiagnosingMatcher<Consumer<Collection<CONSUMED_TYPE>>> {
 
 		/**
+		 * Description of what was expected.
+		 */
+		private String expectedDescription;
+
+		/**
 		 * A list of values that are accepted by the examined lambda.
 		 */
 		private final List<CONSUMED_TYPE> testValues;
@@ -156,8 +161,7 @@ public final class NullHandlingMatchers {
 
 		@Override
 		public void describeTo(final Description description) {
-			description.appendText("a method throwing a NullPointerException"
-				+ " if an element in its argument or the argument itself is null");
+			description.appendText(this.expectedDescription);
 		}
 
 		@Override
@@ -166,6 +170,7 @@ public final class NullHandlingMatchers {
 			ThrowingMethod nullApplied;
 
 			// feed null
+			this.expectedDescription = "a method throwing a NullPointerException if a passed collection is null";
 			nullApplied = () -> consumer.accept(null);
 			if (!THROWS_NPE.matches(nullApplied)) {
 				THROWS_NPE.describeMismatch(nullApplied, mismatchDescription);
@@ -177,6 +182,8 @@ public final class NullHandlingMatchers {
 			final List<List<CONSUMED_TYPE>> inputsWithNull = Arrays.asList(withNull(this.testValues, 0),
 				withNull(this.testValues, this.testValues.size() / 2), withNull(this.testValues));
 
+			this.expectedDescription =
+				"a method throwing an IllegalArgumentException if a passed collection contains null";
 			// feed the lists containing null
 			for (final List<CONSUMED_TYPE> testInputsWithNull : inputsWithNull) {
 				nullApplied = () -> consumer.accept(testInputsWithNull);
