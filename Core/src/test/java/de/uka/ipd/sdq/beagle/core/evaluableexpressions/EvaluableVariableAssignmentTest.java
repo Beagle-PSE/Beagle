@@ -7,7 +7,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.number.IsNaN.notANumber;
 
 import org.junit.Test;
@@ -47,7 +46,8 @@ public class EvaluableVariableAssignmentTest {
 
 		assertThat("setting for null must not be possible!", () -> testAssignment.setValueFor(null, 14),
 			throwsException(NullPointerException.class));
-		assertThat(testAssignment.getValueFor(testVariable), is(nullValue()));
+		assertThat("undefined variables do not have a value.", () -> testAssignment.getValueFor(testVariable),
+			throwsException(IllegalArgumentException.class));
 		testAssignment.setValueFor(testVariable, 14);
 		assertThat(testAssignment.getValueFor(testVariable), is(14d));
 		testAssignment.setValueFor(testVariable, -9);

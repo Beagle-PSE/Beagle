@@ -31,7 +31,7 @@ public class EvaluableVariableAssignment {
 	public double getValueFor(final EvaluableVariable variable) {
 		Validate.notNull(variable);
 		if (!this.assignment.containsKey(variable)) {
-			throw new UndefinedExpressionException(this, variable);
+			throw new IllegalArgumentException("There is no value defined for " + variable.toString());
 		}
 		return this.assignment.get(variable);
 	}

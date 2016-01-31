@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.collections4.MultiSet;
+import org.apache.commons.collections4.multiset.HashMultiSet;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -7,7 +9,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Expression that sums up all its contained expressions.
@@ -24,7 +25,7 @@ public class AdditionExpression implements EvaluableExpression {
 	/**
 	 * All summands of this evaluable expression.
 	 */
-	private final List<EvaluableExpression> summands;
+	private final MultiSet<EvaluableExpression> summands;
 
 	/**
 	 * Builds an expression that will return the sum of all {@code summands} on
@@ -37,7 +38,7 @@ public class AdditionExpression implements EvaluableExpression {
 		Validate.noNullElements(summands);
 		Validate.isTrue(summands.size() >= MIN_SUMMANDS, "The expression must contain at least %d summands.",
 			MIN_SUMMANDS);
-		this.summands = new ArrayList<>(summands);
+		this.summands = new HashMultiSet<>(summands);
 	}
 
 	/**

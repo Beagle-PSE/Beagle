@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.collections4.MultiSet;
+import org.apache.commons.collections4.multiset.HashMultiSet;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -7,7 +9,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Expression that multiplies all its contained expressions.
@@ -24,7 +25,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	/**
 	 * All factors of this expression as collection.
 	 */
-	private final List<EvaluableExpression> factors;
+	private final MultiSet<EvaluableExpression> factors;
 
 	/**
 	 * Builds an expression that will return the product of all {@code factors} on
@@ -36,7 +37,7 @@ public class MultiplicationExpression implements EvaluableExpression {
 	public MultiplicationExpression(final Collection<EvaluableExpression> factors) {
 		Validate.noNullElements(factors);
 		Validate.isTrue(factors.size() >= MIN_FACTORS, "The expression must contain at least %d factors.", MIN_FACTORS);
-		this.factors = new ArrayList<>(factors);
+		this.factors = new HashMultiSet<>(factors);
 	}
 
 	/**
