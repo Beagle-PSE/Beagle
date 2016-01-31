@@ -10,10 +10,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  * and/or maximum amount of contained evaluable expressions. An expression can be
  * evaluated by calling {@link #evaluate(EvaluableVariableAssignment)}.
  *
- * <p>Note that expressions may not contain themselves. Any operation on an expression
- * which contains itself or anyhow contains an expression containing itself has undefined
- * behaviour. An {@link ExpressionRecursionException} may be thrown to indicate this
- * situation.
+ * <p>Note that expressions cannot not contain themselves.
  *
  * <p>Implementations are encouraged to override {@link Object#equals(Object)} and
  * {@link Object#hashCode()} to fulfill the following: If for two evaluable expressions
