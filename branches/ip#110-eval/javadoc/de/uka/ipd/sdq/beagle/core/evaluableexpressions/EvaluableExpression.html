@@ -113,10 +113,7 @@ var activeTableTab = "activeTableTab";
  and/or maximum amount of contained evaluable expressions. An expression can be
  evaluated by calling <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-"><code>evaluate(EvaluableVariableAssignment)</code></a>.
 
- <p>Note that expressions may not contain themselves. Any operation on an expression
- which contains itself or anyhow contains an expression containing itself has undefined
- behaviour. An <code>ExpressionRecursionException</code> may be thrown to indicate this
- situation.
+ <p>Note that expressions cannot not contain themselves.
 
  <p>Implementations are encouraged to override <code>Object.equals(Object)</code> and
  <code>Object.hashCode()</code> to fulfill the following: If for two evaluable expressions
