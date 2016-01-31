@@ -1,0 +1,9 @@
+dependencies {
+	// Production dependencies
+	production group: 'org.apache.commons', name: 'commons-lang3', version: '3.4+'
+	
+	// Test dependencies
+	tests group: 'junit', name: 'junit', version: '4.+'
+	tests group: 'org.hamcrest', name: 'hamcrest-library', version: '1.+'
+	tests group: 'org.mockito', name: 'mockito-core', version: '1.+'
+}
