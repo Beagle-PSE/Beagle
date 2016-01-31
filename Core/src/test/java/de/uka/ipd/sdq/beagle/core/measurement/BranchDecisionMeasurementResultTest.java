@@ -53,9 +53,9 @@ public class BranchDecisionMeasurementResultTest {
 	public void testBranchDecisionMeasurementResultParameterisationInt() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int branchIndex = 0;
-		new BranchDecisionMeasurementResult(branchIndex);
+		new BranchDecisionMeasurementResult(parameterisation, branchIndex);
 		final int branchIndex1 = 3;
-		new BranchDecisionMeasurementResult(branchIndex1);
+		new BranchDecisionMeasurementResult(parameterisation, branchIndex1);
 		final int negativeValue = -2;
 		ThrowingMethod method = () -> {
 			new BranchDecisionMeasurementResult(parameterisation, negativeValue);
@@ -76,7 +76,7 @@ public class BranchDecisionMeasurementResultTest {
 	@Test
 	public void testGetBranchIndex() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
-		int branchIndex = 0;
+		final int branchIndex = 0;
 		final BranchDecisionMeasurementResult result = new BranchDecisionMeasurementResult(branchIndex);
 		final int branchIndex1 = 3;
 		final BranchDecisionMeasurementResult result1 = new BranchDecisionMeasurementResult(branchIndex1);
@@ -86,11 +86,6 @@ public class BranchDecisionMeasurementResultTest {
 		assertThat(result.getBranchIndex(), is(equalTo(branchIndex)));
 		assertThat(result1.getBranchIndex(), is(equalTo(branchIndex1)));
 		assertThat(resultWithP.getBranchIndex(), is(equalTo(branchIndex)));
-		branchIndex = 4;
-		assertThat("The returned index must not be influenced by a later change.", result.getBranchIndex(),
-			is(not(equalTo(branchIndex))));
-		assertThat("The returned index must not be influenced by a later change.", resultWithP.getBranchIndex(),
-			is(not(equalTo(branchIndex))));
 	}
 	
 	/**
