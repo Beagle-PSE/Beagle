@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.CodeSection;
  * not completely execute it.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 public class CodeSectionExecutedEvent extends AbstractMeasurementEvent {
 

@@ -5,6 +5,7 @@ package de.uka.ipd.sdq.beagle.core.measurement.order;
  * sequence of different such events. Implements the well known visitor pattern.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 public interface MeasurementEventVisitor {
 

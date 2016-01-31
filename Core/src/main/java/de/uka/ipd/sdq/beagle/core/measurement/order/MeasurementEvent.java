@@ -11,6 +11,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
  * attributes cannot be changed.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 public interface MeasurementEvent {
 
