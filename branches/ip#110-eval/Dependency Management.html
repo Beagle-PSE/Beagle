@@ -12,13 +12,12 @@
     </head> 
     <body> 
         <h1>Dependency Management</h1> 
-        <h2>Main Dependencies</h2> 
-        <p>Main dependencies are the ones that are required to compile and run the production source code. Because Beagle is an Eclipse plugin, these dependencies are defined in a project’s <code>src/main/resources/META-INF/MANIFEST.MF</code> file. Eclipse offers a convenient visual editor for editing dependencies.</p> 
+        <p>Every Java project can add a <code>dependencies.gradle</code> file in its top most folder. In it, it may declare its dependencies using [gradle’s syntax]. The special dependency configurations <code>production</code> and <code>tests</code> must be used. These dependencies will also automatically be imported through Buildship into Eclipse.</p> 
+        <h2>Eclipse Plugin Dependencies</h2> 
+        <p>An Eclipse Project’s dependencies on other Eclipse Plugins are declared in <code>src/main/resources/META-INF/MANIFEST.MF</code>. Eclipse offers a convenient visual editor for editing it.</p> 
         <p><em>Heads up</em>: Due to a limitation in <code>wuff</code>, the gradle plugin that builds the Eclipse projects, dependencies in the <code>MANIFEST.MF</code> must not declare a version! As Eclipse usually adds a version requirement, it must be removed manually.</p> 
         <h3>Update Sites</h3> 
         <p>Dependencies defined in the <code>MANIFEST.MF</code> must come from an update site. If a declared dependency is not provided by any update site yet, add an appropriate update site to <code>Beagle/buildSrc/src/tasks/gradle/20 eclipse plugins.gradle</code>.</p> 
-        <h2>Test Dependencies</h2> 
-        <p>Test dependencies are the ones only required by test code, but not on the user’s machine. They are not declared in the <code>MANIFEST.MF</code> but in <code>Beagle/buildSrc/src/tasks/gradle/20 test.gradle</code>. Make sure to run <code>gradle eclipse</code> and to check in the modified <code>.classpath</code> files after adding a dependency there.</p> 
         <h2>Build Dependencies</h2> 
         <p>Build dependencies are the ones required by build code. Tasks can define them in the task file itself. Code in a project’s <code>buildSrc/src/main/groovy</code> folder may add a <code>dependencies.gradle</code> file and declare dependencies there.</p>  
     </body>
