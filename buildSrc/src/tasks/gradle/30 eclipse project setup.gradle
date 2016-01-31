@@ -15,7 +15,6 @@ configure(javaSubprojects) {
 	configurations.compile.extendsFrom configurations.production
 	configurations.testCompile.extendsFrom configurations.tests
 
-	println project.configurations
 	// we only want to export the test dependencies to Eclipse.
 	eclipse {
 		classpath {
