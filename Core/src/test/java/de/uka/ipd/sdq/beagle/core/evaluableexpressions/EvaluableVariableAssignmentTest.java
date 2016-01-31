@@ -7,8 +7,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.notANumber;
 import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.number.IsNaN.notANumber;
 
 import org.junit.Test;
 
