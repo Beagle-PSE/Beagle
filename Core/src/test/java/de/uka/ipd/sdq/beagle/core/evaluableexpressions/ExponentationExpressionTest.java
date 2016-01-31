@@ -183,10 +183,10 @@ public class ExponentationExpressionTest {
 		assertThat(equalOne, hasDefaultEqualsProperties());
 		assertThat("expressions with equal base and exponent should be equal", equalOne, is(equalTo(equalTwo)));
 		assertThat(equalOne.hashCode(), is(equalTwo.hashCode()));
-		assertThat("expressions with different bases should not be equal", equalOne, is(not(equalTo(differentBase))));
-		assertThat("expressions with different exponents should not be equal", equalOne,
+		assertThat("expressions with different bases must not be equal", equalOne, is(not(equalTo(differentBase))));
+		assertThat("expressions with different exponents must not be equal", equalOne,
 			is(not(equalTo(differentExponent))));
-		assertThat("expressions with different bases and exponents should not be equal", equalOne,
+		assertThat("expressions with different bases and exponents must not be equal", equalOne,
 			is(not(equalTo(swapped))));
 	}
 

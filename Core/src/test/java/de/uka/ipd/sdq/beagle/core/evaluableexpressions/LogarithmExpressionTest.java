@@ -108,8 +108,7 @@ public class LogarithmExpressionTest {
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
 		final LogarithmExpression testedExpression = new LogarithmExpression(base, antilogarithm);
 
-		// assertThat(() -> testedExpression.evaluate(null),
-		// throwsException(NullPointerException.class));
+		assertThat(() -> testedExpression.evaluate(null), throwsException(NullPointerException.class));
 
 		given(base.evaluate(same(assignment))).willReturn(2d);
 		given(antilogarithm.evaluate(same(assignment))).willReturn(256d);
@@ -183,10 +182,10 @@ public class LogarithmExpressionTest {
 		assertThat(equalOne, hasDefaultEqualsProperties());
 		assertThat("expressions with equal base and antilogarithm should be equal", equalOne, is(equalTo(equalTwo)));
 		assertThat(equalOne.hashCode(), is(equalTwo.hashCode()));
-		assertThat("expressions with different base should not be equal", equalOne, is(not(equalTo(differentBase))));
-		assertThat("expressions with different antilogarithm should not be equal", equalOne,
+		assertThat("expressions with different base must not be equal", equalOne, is(not(equalTo(differentBase))));
+		assertThat("expressions with different antilogarithm must not be equal", equalOne,
 			is(not(equalTo(differentAntilogarithm))));
-		assertThat("expressions with different base and antilogarithm should not be equal", equalOne,
+		assertThat("expressions with different base and antilogarithm must not be equal", equalOne,
 			is(not(equalTo(swapped))));
 	}
 

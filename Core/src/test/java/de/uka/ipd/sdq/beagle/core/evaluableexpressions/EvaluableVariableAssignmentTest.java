@@ -110,7 +110,10 @@ public class EvaluableVariableAssignmentTest {
 	 */
 	@Test
 	public void testToString() {
-		assertThat(new EvaluableVariableAssignment(), hasOverriddenToString());
+		final EvaluableVariableAssignment testedAssignment = new EvaluableVariableAssignment();
+		testedAssignment.setValueFor(new EvaluableVariable("x"), 2d);
+		testedAssignment.setValueFor(new EvaluableVariable("y"), 8d);
+		assertThat(testedAssignment, hasOverriddenToString());
 	}
 
 	/**

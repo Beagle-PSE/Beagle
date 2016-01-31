@@ -139,7 +139,7 @@ public class NaturalLogarithmExpressionTest {
 		assertThat(equalOne, hasDefaultEqualsProperties());
 		assertThat("two expressions with an equal antilogarithm must be equal", equalOne, is(equalTo(equalTwo)));
 		assertThat(equalOne.hashCode(), is(equalTwo.hashCode()));
-		assertThat("two expressions with different antilogarithmsmust not be equal", equalOne,
+		assertThat("two expressions with different antilogarithms must not be equal", equalOne,
 			is(not(equalTo(different))));
 	}
 

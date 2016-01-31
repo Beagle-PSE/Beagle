@@ -201,11 +201,11 @@ public class ComparisonExpressionTest {
 
 		assertThat("Two expressions with equal inner expressions should be equal", equalOne, is(equalTo(equalTwo)));
 		assertThat("Equal expressions must have the same hashCode", equalOne.hashCode(), is(equalTwo.hashCode()));
-		assertThat("Two expressions with different inner expressions should not be equal", equalOne,
+		assertThat("Two expressions with different inner expressions must not be equal", equalOne,
 			is(not(equalTo(otherOne))));
-		assertThat("Two expressions with different inner expressions should not be equal", equalOne,
+		assertThat("Two expressions with different inner expressions must not be equal", equalOne,
 			is(not(equalTo(otherTwo))));
-		assertThat("Two expressions with different inner expressions should not be equal", equalOne,
+		assertThat("Two expressions with different inner expressions must not be equal", equalOne,
 			is(not(equalTo(otherThree))));
 	}
 

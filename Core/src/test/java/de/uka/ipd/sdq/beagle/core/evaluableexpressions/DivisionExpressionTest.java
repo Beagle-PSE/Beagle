@@ -170,11 +170,11 @@ public class DivisionExpressionTest {
 		assertThat(equalOne, hasDefaultEqualsProperties());
 		assertThat("expressions with equal divisor and divident should be equal", equalOne, is(equalTo(equalTwo)));
 		assertThat(equalOne.hashCode(), is(equalTwo.hashCode()));
-		assertThat("expressions with different dividents should not be equal", equalOne,
+		assertThat("expressions with different dividents must not be equal", equalOne,
 			is(not(equalTo(differentDivident))));
-		assertThat("expressions with different divisors should not be equal", equalOne,
+		assertThat("expressions with different divisors must not be equal", equalOne,
 			is(not(equalTo(differentDivisor))));
-		assertThat("expressions with different dividends and divisiors should not be equal", equalOne,
+		assertThat("expressions with different dividends and divisiors must not be equal", equalOne,
 			is(not(equalTo(swapped))));
 	}
 
