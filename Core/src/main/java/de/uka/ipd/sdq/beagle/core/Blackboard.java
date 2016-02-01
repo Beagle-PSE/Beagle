@@ -8,6 +8,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -125,7 +127,7 @@ public class Blackboard implements Serializable {
 	 * {@code fitnissFunction} is the function to get a better evaluable expression
 	 * result.
 	 */
-	private EvaluableExpressionFitnessFunction fitnissFunction;
+	private EvaluableExpressionFitnessFunction fitnessFunction;
 
 	/**
 	 * Private data of tools, written through {@link #writeFor(Class, Serializable)}.
@@ -143,10 +145,34 @@ public class Blackboard implements Serializable {
 	 */
 	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
 		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls) {
+		Validate.notNull(rdias);
+		Validate.notNull(branches);
+		Validate.notNull(loops);
+		Validate.notNull(externalCalls);
+		Validate.noNullElements(rdias);
+		Validate.noNullElements(branches);
+		Validate.noNullElements(loops);
+		Validate.noNullElements(externalCalls);
 		this.rdias = rdias;
 		this.branches = branches;
 		this.loops = loops;
 		this.externalCalls = externalCalls;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final Blackboard other = (Blackboard) object;
+		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)
+			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();
 	}
 
 	/**
@@ -481,7 +507,7 @@ public class Blackboard implements Serializable {
 	 *         regarding their fitness.
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		return this.fitnissFunction;
+		return this.fitnessFunction;
 	}
 
 	/**
@@ -526,5 +552,13 @@ public class Blackboard implements Serializable {
 		 * #privateWrittenData}.
 		 */
 		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(13, 31).append(this.rdias).append(this.branches).append(this.loops)
+			.append(this.externalCalls).toHashCode();
 	}
 }
