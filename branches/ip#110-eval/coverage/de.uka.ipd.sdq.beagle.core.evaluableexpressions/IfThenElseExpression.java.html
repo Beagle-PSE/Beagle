@@ -98,8 +98,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
 <span class="fc" id="L99">		Validate.notNull(variableAssignments);</span>
 <span class="fc" id="L100">		final double resultIf = this.ifStatement.evaluate(variableAssignments);</span>
-<span class="pc bpc" id="L101" title="1 of 2 branches missed.">		if (resultIf == Double.NaN) {</span>
-<span class="nc" id="L102">			return Double.NaN;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">		if (Double.isNaN(resultIf)) {</span>
+<span class="fc" id="L102">			return Double.NaN;</span>
 		}
 <span class="fc bfc" id="L104" title="All 2 branches covered.">		if (resultIf != FALSE) {</span>
 <span class="fc" id="L105">			return this.thenStatement.evaluate(variableAssignments);</span>
