@@ -29,6 +29,11 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  * @author Joshua Gleitze
  */
 public interface EvaluableExpression {
+	
+	/**
+	 * The used value to express {@code true} as double.
+	 */
+	double FALSE = 0;
 
 	/**
 	 * Calls the appropriate overload of {@link EvaluableExpressionVisitor#visit} on
