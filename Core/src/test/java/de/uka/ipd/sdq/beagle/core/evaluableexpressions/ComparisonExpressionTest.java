@@ -18,7 +18,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFactory;
 import org.junit.Test;
 
 /**
- * Tests for {@link ConstantExpression}.
+ * Tests for {@link ComparisonExpression}.
  *
  * @author Joshua Gleitze
  */
@@ -127,35 +127,35 @@ public class ComparisonExpressionTest {
 
 		given(smaller.evaluate(same(assignment))).willReturn(-1d);
 		given(greater.evaluate(same(assignment))).willReturn(0d);
-		assertThat(testedExpression.evaluate(assignment), is(not(0d)));
+		assertThat(testedExpression.evaluate(assignment), is(not(EvaluableExpression.FALSE)));
 
 		given(smaller.evaluate(same(assignment))).willReturn(5d);
 		given(greater.evaluate(same(assignment))).willReturn(5d);
-		assertThat(testedExpression.evaluate(assignment), is(0d));
+		assertThat(testedExpression.evaluate(assignment), is(EvaluableExpression.FALSE));
 
 		given(smaller.evaluate(same(assignment))).willReturn(10d);
 		given(greater.evaluate(same(assignment))).willReturn(6d);
-		assertThat(testedExpression.evaluate(assignment), is(0d));
+		assertThat(testedExpression.evaluate(assignment), is(EvaluableExpression.FALSE));
 
 		given(smaller.evaluate(same(assignment))).willReturn(Double.NaN);
 		given(greater.evaluate(same(assignment))).willReturn(6d);
-		assertThat(testedExpression.evaluate(assignment), is(0d));
+		assertThat(testedExpression.evaluate(assignment), is(EvaluableExpression.FALSE));
 
 		given(smaller.evaluate(same(assignment))).willReturn(6d);
 		given(greater.evaluate(same(assignment))).willReturn(Double.NaN);
-		assertThat(testedExpression.evaluate(assignment), is(0d));
+		assertThat(testedExpression.evaluate(assignment), is(EvaluableExpression.FALSE));
 
 		given(smaller.evaluate(same(assignment))).willReturn(Double.NaN);
 		given(greater.evaluate(same(assignment))).willReturn(Double.NaN);
-		assertThat(testedExpression.evaluate(assignment), is(0d));
+		assertThat(testedExpression.evaluate(assignment), is(EvaluableExpression.FALSE));
 
 		given(smaller.evaluate(same(assignment))).willReturn(Double.NEGATIVE_INFINITY);
 		given(greater.evaluate(same(assignment))).willReturn(6d);
-		assertThat(testedExpression.evaluate(assignment), is(not(0d)));
+		assertThat(testedExpression.evaluate(assignment), is(not(EvaluableExpression.FALSE)));
 
 		given(smaller.evaluate(same(assignment))).willReturn(10d);
 		given(greater.evaluate(same(assignment))).willReturn(Double.POSITIVE_INFINITY);
-		assertThat(testedExpression.evaluate(assignment), is(not(0d)));
+		assertThat(testedExpression.evaluate(assignment), is(not(EvaluableExpression.FALSE)));
 	}
 
 	/**

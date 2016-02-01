@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.theInstance;
+import static org.hamcrest.number.IsNaN.notANumber;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.same;
@@ -127,7 +128,7 @@ public class IfThenElseExpressionTest {
 
 		assertThat(() -> testedExpression.evaluate(null), throwsException(NullPointerException.class));
 
-		given(ifExpression.evaluate(same(assignment))).willReturn(0d);
+		given(ifExpression.evaluate(same(assignment))).willReturn(EvaluableExpression.FALSE);
 		given(thenExpression.evaluate(same(assignment))).willReturn(3d);
 		given(elseExpression.evaluate(same(assignment))).willReturn(5d);
 		assertThat(testedExpression.evaluate(assignment), is(5d));
@@ -140,7 +141,7 @@ public class IfThenElseExpressionTest {
 		given(ifExpression.evaluate(same(assignment))).willReturn(Double.NaN);
 		given(thenExpression.evaluate(same(assignment))).willReturn(3d);
 		given(elseExpression.evaluate(same(assignment))).willReturn(5d);
-		assertThat(testedExpression.evaluate(assignment), is(3d));
+		assertThat(testedExpression.evaluate(assignment), is(notANumber()));
 	}
 
 	/**
