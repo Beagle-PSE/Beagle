@@ -227,6 +227,7 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
+		Validate.notNull(this.rdiasToBeMeasured);
 		return this.rdiasToBeMeasured;
 	}
 
@@ -238,6 +239,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
+		Validate.notNull(this.branchesToBeMeasured);
 		return this.branchesToBeMeasured;
 	}
 
@@ -248,6 +250,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
+		Validate.notNull(this.loopsToBeMeasured);
 		return this.loopsToBeMeasured;
 	}
 
@@ -259,6 +262,7 @@ public class Blackboard implements Serializable {
 	 *         be measured. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
+		Validate.notNull(this.externalCallParameterToBeMeasured);
 		return this.externalCallParameterToBeMeasured;
 	}
 
@@ -270,6 +274,8 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredRdias(Collection)
 	 */
 	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... toMeasureRdias) {
+		Validate.notNull(toMeasureRdias);
+		Validate.noNullElements(toMeasureRdias);
 		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));
 	}
 
@@ -281,6 +287,7 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> toMeasureRdias) {
+		Validate.noNullElements(toMeasureRdias);
 		this.rdiasToBeMeasured.addAll(toMeasureRdias);
 	}
 
@@ -292,6 +299,8 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffBranches(Collection)
 	 */
 	public void addToBeMeasuredSeffBranches(final SeffBranch... toMeasureBranches) {
+		Validate.notNull(toMeasureBranches);
+		Validate.noNullElements(toMeasureBranches);
 		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));
 	}
 
@@ -303,6 +312,8 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> toMeasureBranches) {
+		Validate.notNull(toMeasureBranches);
+		Validate.noNullElements(toMeasureBranches);
 		this.branchesToBeMeasured.addAll(toMeasureBranches);
 	}
 
@@ -314,6 +325,8 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffLoops(Collection)
 	 */
 	public void addToBeMeasuredSeffLoops(final SeffLoop... toMeasureLoops) {
+		Validate.notNull(toMeasureLoops);
+		Validate.noNullElements(toMeasureLoops);
 		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));
 	}
 
@@ -325,6 +338,8 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> toMeasureLoops) {
+		Validate.notNull(toMeasureLoops);
+		Validate.noNullElements(toMeasureLoops);
 		this.loopsToBeMeasured.addAll(toMeasureLoops);
 	}
 
@@ -336,6 +351,8 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(Collection)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final ExternalCallParameter... parameters) {
+		Validate.notNull(parameters);
+		Validate.noNullElements(parameters);
 		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));
 	}
 
@@ -347,6 +364,8 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+		Validate.notNull(parameters);
+		Validate.noNullElements(parameters);
 		this.externalCallParameterToBeMeasured.addAll(parameters);
 	}
 
@@ -359,6 +378,7 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		Validate.notNull(this.rdiasMeasurementResult);
 		return this.rdiasMeasurementResult;
 	}
 
@@ -371,6 +391,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
+		Validate.notNull(this.branchDecisionMeasurementResult);
 		return this.branchDecisionMeasurementResult;
 	}
 
@@ -383,6 +404,7 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+		Validate.notNull(this.loopRepititionCountMeasurementResult);
 		return this.loopRepititionCountMeasurementResult;
 	}
 
@@ -398,6 +420,7 @@ public class Blackboard implements Serializable {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
+		Validate.notNull(this.parameterChangeMeasurementResult);
 		return this.parameterChangeMeasurementResult;
 	}
 
@@ -410,6 +433,7 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
+		Validate.notNull(results);
 		this.rdiasMeasurementResult.add(results);
 	}
 
@@ -420,6 +444,7 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+		Validate.notNull(results);
 		this.branchDecisionMeasurementResult.add(results);
 	}
 
@@ -430,6 +455,7 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+		Validate.notNull(results);
 		this.loopRepititionCountMeasurementResult.add(results);
 	}
 
@@ -442,6 +468,7 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
+		Validate.notNull(results);
 		this.parameterChangeMeasurementResult.add(results);
 	}
 
@@ -454,6 +481,7 @@ public class Blackboard implements Serializable {
 	 *         proposed for {@code element}.
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
+		Validate.notNull(this.evaluableExpression);
 		return this.evaluableExpression;
 	}
 
@@ -465,6 +493,7 @@ public class Blackboard implements Serializable {
 	 *            measurement results. Must not be {@code null}.
 	 */
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+		Validate.notNull(expression);
 		this.evaluableExpression.add(expression);
 	}
 
@@ -480,6 +509,7 @@ public class Blackboard implements Serializable {
 	 *         {@code null} if no expression has been marked yet.
 	 */
 	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
+		Validate.notNull(this.finalExpression);
 		return this.finalExpression;
 	}
 
@@ -494,6 +524,7 @@ public class Blackboard implements Serializable {
 	 *            found.
 	 */
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+		Validate.notNull(expression);
 		this.finalExpression = expression;
 	}
 
@@ -507,6 +538,7 @@ public class Blackboard implements Serializable {
 	 *         regarding their fitness.
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		Validate.notNull(this.fitnessFunction);
 		return this.fitnessFunction;
 	}
 
