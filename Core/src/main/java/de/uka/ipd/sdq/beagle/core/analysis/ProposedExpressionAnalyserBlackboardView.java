@@ -16,6 +16,10 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
@@ -54,6 +58,18 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 		this.blackboard = blackboard;
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final ProposedExpressionAnalyserBlackboardView other = (ProposedExpressionAnalyserBlackboardView) object;
+		return new EqualsBuilder().append(this.blackboard, other.blackboard).isEquals();
+	}
+
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
 	 *
@@ -62,6 +78,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRdias() {
+		Validate.notNull(this.blackboard.getAllRdias());
 		return this.blackboard.getAllRdias();
 	}
 
@@ -72,6 +89,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getAllSeffBranches() {
+		Validate.notNull(this.blackboard.getAllSeffBranches());
 		return this.blackboard.getAllSeffBranches();
 	}
 
@@ -82,6 +100,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getAllSeffLoops() {
+		Validate.notNull(this.blackboard.getAllSeffLoops());
 		return this.blackboard.getAllSeffLoops();
 	}
 
@@ -93,6 +112,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getAllExternalCallParameters() {
+		Validate.notNull(this.blackboard.getAllExternalCallParameters());
 		return this.blackboard.getAllExternalCallParameters();
 	}
 
@@ -104,6 +124,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            be {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
+		Validate.noNullElements(rdias);
 		this.blackboard.addToBeMeasuredRdias(rdias);
 	}
 
@@ -116,6 +137,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            must be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
+		Validate.noNullElements(branches);
 		this.blackboard.addToBeMeasuredSeffBranches(branches);
 	}
 
@@ -127,6 +149,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
+		Validate.noNullElements(loops);
 		this.blackboard.addToBeMeasuredSeffLoops(loops);
 	}
 
@@ -139,6 +162,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+		Validate.noNullElements(parameters);
 		this.blackboard.addToBeMeasuredExternalCallParameters(parameters);
 	}
 
@@ -156,6 +180,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 */
 	@Override
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		Validate.notNull(this.blackboard.getMeasurementResultsFor(rdia));
 		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
@@ -171,6 +196,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 */
 	@Override
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
+		Validate.notNull(this.blackboard.getMeasurementResultsFor(branch));
 		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
@@ -186,6 +212,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 */
 	@Override
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+		Validate.notNull(this.blackboard.getMeasurementResultsFor(loop));
 		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
@@ -204,6 +231,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	@Override
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
+		Validate.notNull(this.blackboard.getMeasurementResultsFor(externalCallParameter));
 		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 
@@ -220,6 +248,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 * 
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
+		Validate.notNull(this.blackboard.getProposedExpressionFor(element));
 		return this.blackboard.getProposedExpressionFor(element);
 	}
 
@@ -232,6 +261,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		Validate.notNull(this.blackboard.getFitnessFunction());
 		return this.blackboard.getFitnessFunction();
 	}
 
@@ -265,6 +295,13 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 		this.blackboard.writeFor(writer, written);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(51, 15).append(this.blackboard).toHashCode();
 	}
 
 }
