@@ -16,6 +16,9 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
@@ -46,6 +49,18 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 */
 	public MeasurementResultAnalyserBlackboardView(final Blackboard blackboard) {
 		this.blackboard = blackboard;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final MeasurementResultAnalyserBlackboardView other = (MeasurementResultAnalyserBlackboardView) object;
+		return new EqualsBuilder().append(this.blackboard, other.blackboard).isEquals();
 	}
 
 	/**
@@ -256,6 +271,13 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 		this.blackboard.writeFor(writer, written);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(17, 71).append(this.blackboard).toHashCode();
 	}
 
 }
