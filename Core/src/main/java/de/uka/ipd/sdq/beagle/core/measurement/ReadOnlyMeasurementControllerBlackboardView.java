@@ -6,6 +6,7 @@ package de.uka.ipd.sdq.beagle.core.measurement;
  * <p>COVERAGE:OFF
  */
 
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -27,8 +28,24 @@ import java.util.Set;
  * parameters}, reading, and the fitness function.
  *
  * @author Christoph Michelbach
+ * @author Michael Vogt
  */
-public class ReadOnlyMeasurementControllerBlackboardView {
+public final class ReadOnlyMeasurementControllerBlackboardView {
+
+	/**
+	 * Blackboard instance committed from the {@link AnalysisController}.
+	 */
+	private Blackboard blackboard;
+
+	/**
+	 * Set the blackboard instance from the {@link AnalysisController} to the private
+	 * blackboard attribute.
+	 *
+	 * @param blackboard The blackboard given from the {@link AnalysisController}.
+	 */
+	private ReadOnlyMeasurementControllerBlackboardView(final Blackboard blackboard) {
+		this.blackboard = blackboard;
+	}
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
@@ -39,7 +56,7 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		return null;
+		return this.blackboard.getAllRdias();
 	}
 
 	/**
@@ -51,7 +68,7 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		return null;
+		return this.blackboard.getAllSeffBranches();
 	}
 
 	/**
@@ -63,7 +80,7 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return null;
+		return this.blackboard.getAllSeffLoops();
 	}
 
 	/**
@@ -75,8 +92,8 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	 *         be measured. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
-	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
-		return null;
+	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
+		return this.blackboard.getAllExternalCallParameters();
 	}
 
 	/**
@@ -88,7 +105,7 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		return null;
+		return this.blackboard.getFitnessFunction();
 	}
 
 	/**
@@ -104,6 +121,6 @@ public class ReadOnlyMeasurementControllerBlackboardView {
 	 */
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		return null;
+		return this.blackboard.readFor(writer);
 	}
 }
