@@ -17,6 +17,10 @@ import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -47,6 +51,18 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 		this.blackboard = blackboard;
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final ReadOnlyMeasurementControllerBlackboardView other = (ReadOnlyMeasurementControllerBlackboardView) object;
+		return new EqualsBuilder().append(this.blackboard, other.blackboard).isEquals();
+	}
+
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
 	 *
@@ -56,6 +72,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllRdias());
 		return this.blackboard.getAllRdias();
 	}
 
@@ -68,6 +85,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllSeffBranches());
 		return this.blackboard.getAllSeffBranches();
 	}
 
@@ -80,6 +98,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllSeffLoops());
 		return this.blackboard.getAllSeffLoops();
 	}
 
@@ -93,6 +112,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllExternalCallParameters());
 		return this.blackboard.getAllExternalCallParameters();
 	}
 
@@ -105,6 +125,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		Validate.notNull(this.blackboard.getFitnessFunction());
 		return this.blackboard.getFitnessFunction();
 	}
 
@@ -122,5 +143,12 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		return this.blackboard.readFor(writer);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(97, 79).append(this.blackboard).toHashCode();
 	}
 }
