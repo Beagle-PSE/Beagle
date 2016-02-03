@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -142,16 +143,9 @@ public class Blackboard implements Serializable {
 	 * @param branches All SEFF branches to be known to analysers.
 	 * @param loops All SEFF loops to be known to analysers.
 	 * @param externalCalls All external call parameter to be known to analysers.
-	 * @param rdiasToBeMeasured All resource demanding internal action to be measured.
-	 * @param seffBranch All SEFF branches to be measured.
-	 * @param loopsToBeMeasured All SEFF loops to be measured.
-	 * @param externalCallParameterToBeMeasured All external call parameter to be
-	 *            measured.
 	 */
 	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
-		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls,
-		final Set<ResourceDemandingInternalAction> rdiasToBeMeasured, final Set<SeffBranch> seffBranch,
-		final Set<SeffLoop> loopsToBeMeasured, final Set<ExternalCallParameter> externalCallParameterToBeMeasured) {
+		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls) {
 		Validate.notNull(rdias);
 		Validate.notNull(branches);
 		Validate.notNull(loops);
@@ -164,6 +158,17 @@ public class Blackboard implements Serializable {
 		this.branches = branches;
 		this.loops = loops;
 		this.externalCalls = externalCalls;
+
+		this.rdiasToBeMeasured = new HashSet<>();
+		this.branchesToBeMeasured = new HashSet<>();
+		this.loopsToBeMeasured = new HashSet<>();
+		this.externalCallParameterToBeMeasured = new HashSet<>();
+
+		this.rdiasMeasurementResult = new HashSet<>();
+		this.branchDecisionMeasurementResult = new HashSet<>();
+		this.loopRepititionCountMeasurementResult = new HashSet<>();
+		this.parameterChangeMeasurementResult = new HashSet<>();
+
 	}
 
 	@Override
@@ -385,6 +390,7 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		Validate.notNull(rdia);
 		Validate.notNull(this.rdiasMeasurementResult);
 		return this.rdiasMeasurementResult;
 	}
