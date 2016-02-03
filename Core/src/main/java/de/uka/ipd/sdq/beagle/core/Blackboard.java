@@ -142,9 +142,16 @@ public class Blackboard implements Serializable {
 	 * @param branches All SEFF branches to be known to analysers.
 	 * @param loops All SEFF loops to be known to analysers.
 	 * @param externalCalls All external call parameter to be known to analysers.
+	 * @param rdiasToBeMeasured All resource demanding internal action to be measured.
+	 * @param seffBranch All SEFF branches to be measured.
+	 * @param loopsToBeMeasured All SEFF loops to be measured.
+	 * @param externalCallParameterToBeMeasured All external call parameter to be
+	 *            measured.
 	 */
 	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
-		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls) {
+		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls,
+		final Set<ResourceDemandingInternalAction> rdiasToBeMeasured, final Set<SeffBranch> seffBranch,
+		final Set<SeffLoop> loopsToBeMeasured, final Set<ExternalCallParameter> externalCallParameterToBeMeasured) {
 		Validate.notNull(rdias);
 		Validate.notNull(branches);
 		Validate.notNull(loops);
