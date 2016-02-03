@@ -17,6 +17,10 @@ import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -48,6 +52,18 @@ public final class MeasurementControllerBlackboardView {
 		this.blackboard = blackboard;
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;
+		return new EqualsBuilder().append(this.blackboard, other.blackboard).isEquals();
+	}
+
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
 	 *
@@ -57,6 +73,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllRdias());
 		return this.blackboard.getAllRdias();
 	}
 
@@ -69,6 +86,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllSeffBranches());
 		return this.blackboard.getAllSeffBranches();
 	}
 
@@ -81,6 +99,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllSeffLoops());
 		return this.blackboard.getAllSeffLoops();
 	}
 
@@ -93,8 +112,9 @@ public final class MeasurementControllerBlackboardView {
 	 *         be measured. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
-	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
-		return this.blackboard.getAllSeffLoops();
+	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
+		Validate.notNull(this.blackboard.getAllExternalCallParameters());
+		return this.blackboard.getAllExternalCallParameters();
 	}
 
 	/**
@@ -108,6 +128,7 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(rdia, results);
 	}
 
@@ -120,6 +141,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(loop, results);
 	}
 
@@ -132,6 +154,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(branch, results);
 	}
 
@@ -146,6 +169,7 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(parameter, results);
 	}
 
@@ -158,6 +182,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+		Validate.notNull(this.blackboard.getFitnessFunction());
 		return this.blackboard.getFitnessFunction();
 	}
 
@@ -189,5 +214,12 @@ public final class MeasurementControllerBlackboardView {
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 		this.blackboard.writeFor(writer, written);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(33, 55).append(this.blackboard).toHashCode();
 	}
 }
