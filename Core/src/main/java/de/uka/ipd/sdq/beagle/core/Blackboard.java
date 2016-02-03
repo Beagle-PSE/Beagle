@@ -187,6 +187,22 @@ public class Blackboard implements Serializable {
 			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final Blackboard other = (Blackboard) object;
+		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)
+			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();
+	}
+
 	/**
 	 * All {@linkplain ResourceDemandingInternalAction resource demanding internal
 	 * actions} known to Beagle.
