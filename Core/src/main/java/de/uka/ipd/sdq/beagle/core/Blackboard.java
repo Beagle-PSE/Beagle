@@ -1,6 +1,8 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
@@ -158,6 +160,21 @@ public class Blackboard implements Serializable {
 		this.branchDecisionMeasurementResult = new HashSet<>();
 		this.loopRepititionCountMeasurementResult = new HashSet<>();
 		this.parameterChangeMeasurementResult = new HashSet<>();
+		this.evaluableExpression = new HashSet<>();
+		this.finalExpression = new EvaluableExpression() {
+
+			@Override
+			public void receive(final EvaluableExpressionVisitor visitor) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		};
 		this.fitnessFunction = new EvaluableExpressionFitnessFunction() {
 
 			@Override
@@ -421,6 +438,7 @@ public class Blackboard implements Serializable {
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
 		Validate.notNull(rdia);
+		Validate.isTrue(this.rdias.contains(rdia));
 		Validate.notNull(this.rdiasMeasurementResult);
 		return this.rdiasMeasurementResult;
 	}
@@ -434,6 +452,8 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
+		Validate.notNull(branch);
+		Validate.isTrue(this.branches.contains(branch));
 		Validate.notNull(this.branchDecisionMeasurementResult);
 		return this.branchDecisionMeasurementResult;
 	}
@@ -447,6 +467,8 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+		Validate.notNull(loop);
+		Validate.isTrue(this.loops.contains(loop));
 		Validate.notNull(this.loopRepititionCountMeasurementResult);
 		return this.loopRepititionCountMeasurementResult;
 	}
@@ -463,6 +485,8 @@ public class Blackboard implements Serializable {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
+		Validate.notNull(externalCallParameter);
+		Validate.isTrue(this.externalCalls.contains(externalCallParameter));
 		Validate.notNull(this.parameterChangeMeasurementResult);
 		return this.parameterChangeMeasurementResult;
 	}
@@ -532,6 +556,7 @@ public class Blackboard implements Serializable {
 	 *         proposed for {@code element}.
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
+		Validate.notNull(element);
 		Validate.notNull(this.evaluableExpression);
 		return this.evaluableExpression;
 	}
@@ -544,6 +569,7 @@ public class Blackboard implements Serializable {
 	 *            measurement results. Must not be {@code null}.
 	 */
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+		Validate.notNull(element);
 		Validate.notNull(expression);
 		this.evaluableExpression.add(expression);
 	}
@@ -560,6 +586,7 @@ public class Blackboard implements Serializable {
 	 *         {@code null} if no expression has been marked yet.
 	 */
 	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
+		Validate.notNull(element);
 		Validate.notNull(this.finalExpression);
 		return this.finalExpression;
 	}
@@ -575,6 +602,7 @@ public class Blackboard implements Serializable {
 	 *            found.
 	 */
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+		Validate.notNull(element);
 		Validate.notNull(expression);
 		this.finalExpression = expression;
 	}
