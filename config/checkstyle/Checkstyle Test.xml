@@ -546,6 +546,11 @@
       <property name="severity" value="warning"/>
       <property name="tokens" value="ARRAY_INIT"/>
     </module>
+    <module name="MethodName">
+      <property name="severity" value="warning"/>
+      <property name="format" value="^[^t][^e][^s][^t].*$|^.{1,3}$"/>
+      <message key="name.invalidPattern" value="Please don’t start test methods with &quot;test&quot;. Call them like the method under test instead."/>
+    </module>
   </module>
   <module name="JavadocPackage">
     <property name="severity" value="ignore"/>
