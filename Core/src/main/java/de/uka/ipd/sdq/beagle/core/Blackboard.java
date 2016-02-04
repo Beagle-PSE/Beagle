@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
@@ -18,13 +19,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- *
- * <p>COVERAGE:OFF
- */
 
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
@@ -164,23 +158,37 @@ public class Blackboard implements Serializable {
 		this.branchDecisionMeasurementResult = new HashSet<>();
 		this.loopRepititionCountMeasurementResult = new HashSet<>();
 		this.parameterChangeMeasurementResult = new HashSet<>();
+		this.fitnessFunction = new EvaluableExpressionFitnessFunction() {
 
-	}
+			@Override
+			public double gradeFor(final ExternalCallParameter parameter, final EvaluableExpression expression,
+				final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
 
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != this.getClass()) {
-			return false;
-		}
-		final Blackboard other = (Blackboard) object;
-		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)
-			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();
+			@Override
+			public double gradeFor(final SeffLoop loop, final EvaluableExpression expression,
+				final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+
+			@Override
+			public double gradeFor(final SeffBranch branch, final EvaluableExpression expression,
+				final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+
+			@Override
+			public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
+				final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		};
+
 	}
 
 	@Override
