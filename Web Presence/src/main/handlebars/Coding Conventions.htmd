@@ -9,7 +9,7 @@
 For example, a method may return useable, but false values. Defensive programming would check the input arguments and throw an exception and prevent the programmer from continuing with false values.
  * Defensive programming is verfied with JUnit test cases.
  * Getters exposing internal collections should return copy-on-write versions to prevent modification of internals and providing easy use of the returned collection. This behaviour needs to be documented.
- * It is highly recommended to use [the Apache Commons](https://commons.apache.org/) wherever applicable. Especially parameter checks, `equals(Object)` and `hashCode()` should be implemented using them (see [`Validator`](https://commons.apache.org/proper/commons-validator/) and [`lang3.builder`](https://commons.apache.org/proper/commons-lang/javadocs/api-release/index.html)). 
+ * It is highly recommended to use [the Apache Commons](https://commons.apache.org/) wherever applicable. Especially parameter checks, `equals(Object)` and `hashCode()` should be implemented using them (see [`lang3.Validate`](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/Validate.html) and [`lang3.builder.*`](https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/builder/package-summary.html)). 
 
 ## Prototypes
  * Prototypes don't need Unit Tests

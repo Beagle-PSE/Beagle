@@ -59,6 +59,10 @@ public class BeagleWebContext {
 		 * Path to the implementation plan PDF.
 		 */
 		String implementationPlan = relative project.copyWebArtefacts.implementationPlanDest
+		/** 
+		 * Path to the implementation report PDF.
+		 */
+		String implementationReport = relative project.copyWebArtefacts.implementationReportDest
 		/**
 		 * Path to the javadoc folder.
 		 */
@@ -74,7 +78,7 @@ public class BeagleWebContext {
 		/**
 		 * Path to the css folder
 		 */
-		String css = relative project.copyWebAssets.cssdest
+		String css = relative project.copyWebTemplates.cssdest
 
 		/**
 		 * Path to the font folders.

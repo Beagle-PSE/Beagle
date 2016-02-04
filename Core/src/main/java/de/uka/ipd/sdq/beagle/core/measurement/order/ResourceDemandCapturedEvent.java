@@ -1,4 +1,10 @@
 package de.uka.ipd.sdq.beagle.core.measurement.order;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
@@ -22,8 +28,7 @@ public class ResourceDemandCapturedEvent extends AbstractMeasurementEvent {
 	 * @param value The resource demand’s value, expressed in the unit implied by
 	 *            {@code type}. Must not be negative.
 	 */
-	public ResourceDemandCapturedEvent(final CodeSection codeSection, final String type,
-		final double value) {
+	public ResourceDemandCapturedEvent(final CodeSection codeSection, final String type, final double value) {
 		super(codeSection);
 	}
 

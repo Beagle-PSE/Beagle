@@ -1,6 +1,12 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
 import java.util.Collection;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ * 
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * Expression that sums up all its contained expressions.

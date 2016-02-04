@@ -2,7 +2,7 @@
 
 # Development setup
 
-Development is done in [Eclipse Mars for RCP and RAP Developers](http://www.eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/mars1).
+Development is done in [Eclipse Mars for RCP and RAP Developers](http://www.eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/mars1). Please work through this guide to correctly set up your development environment.
 
 ## Eclipse plugins
 
@@ -13,14 +13,25 @@ Required Eclipse plugins are:
  * SoMoX based on JaMoPP, as it can be checked out (SVN) from [https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/](https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/) (Credentials: `anonymous:anonymous`)
      * import all SoMoX projects into your working space (consider using a Working Set to group them)
      * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
-  * [Checkstyle] (http://eclipse-cs.sourceforge.net/#!/)
+  * [Checkstyle](http://eclipse-cs.sourceforge.net/#!/)
   * [UMLet](http://umlet.com/) (either as Eclipse plugin or as standalone)
   
 ## Building & Dependency Management
-The project is built using [Gradle](http://gradle.org/) 2.9. It can be downloaded [here](http://gradle.org/gradle-download/). Ubuntu users can use [this PPA](https://launchpad.net/~cwchien/+archive/ubuntu/gradle).
+The project is built using [Gradle](http://gradle.org/) 2.10. It can be downloaded [here](http://gradle.org/gradle-download/). Ubuntu users can use [this PPA](https://launchpad.net/~cwchien/+archive/ubuntu/gradle).
 
 We use the default commands: `gradle build` (or simply `gradle`) to test and build, `gradle test` to only run tests. Run `gradle tasks` to see all available tasks.
-  
+
+## Importing the Projects
+
+Please import the *root* project through Buildship into Eclipse. Make sure to select “Specific Gradle version: 2.10”. This will import all subprojects as well:
+
+ {{> smallimg src="image/gradle-import/01.png" alt="Select File -> Import…"}}
+ {{> smallimg src="image/gradle-import/02.png" alt="Select Gradle Project"}}
+ {{> smallimg src="image/gradle-import/03.png" alt="Hit Next"}}
+ {{> smallimg src="image/gradle-import/04.png" alt="Select the Beagle root project"}}
+ {{> smallimg src="image/gradle-import/05.png" alt="Specify gradle 2.10"}}
+ {{> smallimg src="image/gradle-import/06.png" alt="Check the settings and hit Finish"}}
+
 ## Documentation
 
 ### LyX

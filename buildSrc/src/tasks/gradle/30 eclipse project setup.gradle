@@ -1,0 +1,26 @@
+/**
+ * Defininitions configuring gradle’s integration into Eclipse.
+ *
+ * @author Joshua Gleitze
+ */
+
+configure(javaSubprojects) {
+	apply plugin: 'eclipse'
+	
+	configurations {
+		production
+		tests
+	}
+	
+	configurations.compile.extendsFrom configurations.production
+	configurations.testCompile.extendsFrom configurations.tests
+
+	// we only want to export the test dependencies to Eclipse.
+	eclipse {
+		classpath {
+			minusConfigurations += [project.configurations.compile]
+			plusConfigurations += [project.configurations.tests, project.configurations.production]
+		}
+	}
+}
+

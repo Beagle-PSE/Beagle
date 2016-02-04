@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: BeagleCheckstyle for Prototypes
+    Checkstyle-Configuration: Beagle Checkstyle for Prototypes
     Description: none
 -->
 <module name="Checker">
@@ -79,56 +79,57 @@
     </module>
     <module name="AbstractClassName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][A-Za-z]{3,}$"/>
+      <property name="format" value="^[A-ZΑ-Ω][A-ZΑ-Ωa-zα-ω]{3,}$"/>
       <property name="ignoreModifier" value="true"/>
     </module>
     <module name="ClassTypeParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z]+(_[A-Z]+)*$"/>
+      <property name="format" value="^[A-ZΑ-Ω]+(_[A-ZΑ-Ω]+)*$"/>
     </module>
     <module name="ConstantName">
       <property name="severity" value="warning"/>
+      <property name="format" value="^[A-ZΑ-Ω][A-ZΑ-Ω0-9]*(_[A-ZΑ-Ω0-9]+)*$"/>
     </module>
     <module name="LocalFinalVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
+      <property name="format" value="^[a-zα-ω][a-zα-ωA-ZΑ-Ω0-9]{3,}$"/>
     </module>
     <module name="LocalVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
+      <property name="format" value="^[a-zα-ω][a-zα-ωA-ZΑ-Ω0-9]{3,}$"/>
       <property name="allowOneCharVarInForLoop" value="true"/>
     </module>
     <module name="MemberName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
+      <property name="format" value="^[a-zα-ω][a-zα-ωA-ZΑ-Ω0-9]{3,}$"/>
     </module>
     <module name="MethodName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{2,}$"/>
+      <property name="format" value="^[a-zα-ω][a-zα-ωA-ZΑ-Ω0-9]{2,}$"/>
     </module>
     <module name="MethodTypeParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z]+(_[A-Z]+)*$"/>
+      <property name="format" value="^[A-ZΑ-Ω]+(_[A-ZΑ-Ω]+)*$"/>
     </module>
     <module name="InterfaceTypeParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z]+(_[A-Z]+)*$"/>
+      <property name="format" value="^[A-ZΑ-Ω]+(_[A-ZΑ-Ω]+)*$"/>
     </module>
     <module name="PackageName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z]{2,}(\.[a-z]{2,})*$"/>
+      <property name="format" value="^[a-zα-ω]{2,}(\.[a-zα-ω]{2,})*$"/>
     </module>
     <module name="ParameterName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
+      <property name="format" value="^[a-zα-ω][a-zα-ωA-ZΑ-Ω0-9]{3,}$"/>
     </module>
     <module name="StaticVariableName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[a-z][a-zA-Z0-9]{3,}$"/>
+      <property name="format" value="^[a-zα-ω][a-zα-ωA-ZΑ-Ω0-9]{3,}$"/>
     </module>
     <module name="TypeName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-Z][a-zA-Z0-9]{7,}$|^Main$"/>
+      <property name="format" value="^[A-ZΑ-Ω][a-zα-ωA-ZΑ-Ω0-9]{7,}$|^Main$"/>
     </module>
     <module name="AbbreviationAsWordInName">
       <property name="severity" value="warning"/>
@@ -207,7 +208,7 @@
     <module name="NoWhitespaceAfter">
       <property name="severity" value="warning"/>
       <property name="allowLineBreaks" value="false"/>
-      <property name="tokens" value="ARRAY_INIT,BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS,GENERIC_START"/>
+      <property name="tokens" value="BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS"/>
     </module>
     <module name="NoWhitespaceBefore">
       <property name="severity" value="warning"/>
@@ -249,7 +250,7 @@
     </module>
     <module name="SeparatorWrap">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,LPAREN,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
+      <property name="tokens" value="COMMA,SEMI,ELLIPSIS,RPAREN,ARRAY_DECLARATOR,RBRACK"/>
     </module>
     <module name="ModifierOrder">
       <property name="severity" value="warning"/>
@@ -532,6 +533,9 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="OperatorWrap"/>
+    <module name="NoWhitespaceAfter">
+      <property name="tokens" value="ARRAY_INIT"/>
+    </module>
   </module>
   <module name="JavadocPackage">
     <property name="severity" value="warning"/>

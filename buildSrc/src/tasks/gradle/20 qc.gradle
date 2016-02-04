@@ -22,7 +22,37 @@ configure(javaSubprojects) {
 			xml.enabled true
 			html.destination "$buildDir/reports/jacoco/html"
 		}
-	}
+		
+		// exclude all source files marked by 'COVERAGE:OFF' or 'JACOCO:OFF'
+		afterEvaluate {
+			classDirectories = files(classDirectories.files.collect { classDir ->
+				def base = classDir.toPath()
+	            def excludedFiles = fileTree(classDir)
+	            excludedFiles.exclude { spec ->
+	            	def classPath = base.relativize(spec.file.toPath()).toString()
+
+	            	if (!classPath.endsWith('.class')) {
+	            		return false
+	            	}
+	            	
+	            	def filePath = classPath - '.class'
+	            	filePath = filePath[0..filePath.indexOf('$')] - '$'
+            		def sourcePath = filePath + '.java'
+            		for (sourceDirectory in sourceDirectories) {
+            			def sourceFile = new File(sourceDirectory, sourcePath)
+            			if (!sourceFile.isFile()) {
+            				continue;
+            			} 
+            			if (sourceFile.text.contains('COVERAGE:OFF') || sourceFile.text.contains('JACOCO:OFF')) {
+            				return true;
+        				}
+            		}
+	            	return false
+	            }
+	            return excludedFiles
+	        })
+		}
+	}	
 	
 	task verifyNoCheckstyleWarnings(dependsOn: check) {
 		description 'Throws if checkstyle warnings were found in a previous checkstyle run.'
@@ -87,9 +117,8 @@ configure(javaSubprojects) {
 configure(javaSubprojects - prototypeSubprojects) {
 	qc.dependsOn verifyTestCoverage
 	
-	checkstyle {
-		configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle.xml")
-	}
+	checkstyleMain.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle.xml")
+	checkstyleTest.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle Test.xml")
 }
 
 configure(prototypeSubprojects.intersect(javaSubprojects)){
