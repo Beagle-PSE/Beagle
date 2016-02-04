@@ -19,6 +19,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterValueCapturedEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.collections4.IteratorUtils;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -74,7 +75,7 @@ public class MeasurementEventParser {
 	 */
 	public MeasurementEventParser(final Iterable<MeasurementEvent> events) {
 		Validate.noNullElements(events);
-		// measurementEvents=IteratorUtils.toList(events);
+		this.measurementEvents = IteratorUtils.toList(events);
 		this.createCodeSectionMapping();
 	}
 
@@ -262,19 +263,11 @@ public class MeasurementEventParser {
 
 		@Override
 		public void visit(final CodeSectionExecutedEvent codeSectionExecutedEvent) {
-			// We don't care about them.
 		}
 
 		@Override
 		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
-			// Check if this measurement event is for the correct resource type.
-			if (resourceDemandCapturedEvent.getType() == this.seffBranch.getResourceType()) {
-				// Check if it has a realistic value.
-				if (resourceDemandCapturedEvent.getValue() >= 0) {
-					this.branchDecisionMeasurementResults
-						.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));
-				}
-			}
+			// We don't care about them.
 		}
 
 		@Override
