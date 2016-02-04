@@ -476,8 +476,7 @@ public class Blackboard implements Serializable {
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
 		Validate.notNull(results);
-		Validate.isTrue(this.rdias.contains(results),
-			"results may only contain elements that are already on the blackboard");
+		Validate.isTrue(this.rdias.contains(rdia), "rdia must already be on the blackboard");
 		this.rdiasMeasurementResult.add(results);
 	}
 
@@ -489,6 +488,7 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
 		Validate.notNull(results);
+		Validate.isTrue(this.branches.contains(branch), "branch must already be on the blackboard");
 		this.branchDecisionMeasurementResult.add(results);
 	}
 
@@ -500,6 +500,7 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
 		Validate.notNull(results);
+		Validate.isTrue(this.loops.contains(loop), "loop must already be on the blackboard");
 		this.loopRepititionCountMeasurementResult.add(results);
 	}
 
@@ -513,6 +514,7 @@ public class Blackboard implements Serializable {
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
 		Validate.notNull(results);
+		Validate.isTrue(this.externalCalls.contains(parameter), "parameter must already be on the blackboard");
 		this.parameterChangeMeasurementResult.add(results);
 	}
 
