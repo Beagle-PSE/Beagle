@@ -18,13 +18,13 @@ import java.util.List;
 public class MeasurementToolContributionsHandler {
 
 	/**
-	 * The extension point id for the measurement tools.
+	 * The extension point id for {@linkplain MeasurementTool MeasurementTools}.
 	 */
-	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdg.beagle.measurementtool";
+	public static final String MEASUREMENT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdg.beagle.measurementtool";
 
 	/**
-	 * The property name of the extension point for the measurement tools for the
-	 * {@link MeasurementTool} implementations.
+	 * The property name of the extension point for {@linkplain MeasurementTool}
+	 * implementations.
 	 */
 	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME = "MeasurementToolClass";
 

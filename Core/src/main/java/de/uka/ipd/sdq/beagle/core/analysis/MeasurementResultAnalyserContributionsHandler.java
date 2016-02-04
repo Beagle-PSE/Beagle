@@ -18,16 +18,17 @@ import java.util.List;
 public class MeasurementResultAnalyserContributionsHandler {
 
 	/**
-	 * The extension point id for the measurement result analysers.
+	 * The extension point id for {@linkplain MeasurementResultAnalyser
+	 * MeasurementResultAnalysers}.
 	 */
-	private static final String MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_ID =
+	public static final String MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_ID =
 		"de.uka.ipd.sdg.beagle.measurementresultanalyser";
 
 	/**
-	 * The property name of the extension point for the measurement result analysers for
-	 * the {@link MeasurementResultAnalyser} implementations.
+	 * The property name of the extension point for {@linkplain MeasurementResultAnalyser}
+	 * implementations.
 	 */
-	private static final String MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME =
+	public static final String MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME =
 		"MeasurementResultAnalyserClass";
 
 	/**

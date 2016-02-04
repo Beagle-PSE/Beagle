@@ -18,16 +18,17 @@ import java.util.List;
 public class ProposedExpressionAnalyserContributionsHandler {
 
 	/**
-	 * The extension point id for the proposed expression result analysers.
+	 * The extension point id for {@linkplain ProposedExpressionAnalyser
+	 * ProposedExpressionAnalysers}.
 	 */
-	private static final String PROPOSED_EXPRESSION_ANALYSERS_EXTENSION_POINT_ID =
+	public static final String PROPOSED_EXPRESSION_ANALYSERS_EXTENSION_POINT_ID =
 		"de.uka.ipd.sdg.beagle.proposedexpressionanalyser";
 
 	/**
-	 * The property name of the extension point for the proposed expression analysers for
-	 * the {@link ProposedExpressionAnalyser} implementations.
+	 * The property name of the extension point for
+	 * {@linkplain ProposedExpressionAnalyser} implementations.
 	 */
-	private static final String PROPOSED_EXPRESSION_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME =
+	public static final String PROPOSED_EXPRESSION_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME =
 		"ProposedExpressionAnalyserClass";
 
 	/**
