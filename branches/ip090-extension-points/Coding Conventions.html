@@ -21,7 +21,7 @@
                 </blockquote></li> 
             <li>Defensive programming is verfied with JUnit test cases.</li> 
             <li>Getters exposing internal collections should return copy-on-write versions to prevent modification of internals and providing easy use of the returned collection. This behaviour needs to be documented.</li> 
-            <li>It is highly recommended to use <a href="https://commons.apache.org/">the Apache Commons</a> wherever applicable. Especially parameter checks, <code>equals(Object)</code> and <code>hashCode()</code> should be implemented using them (see <a href="https://commons.apache.org/proper/commons-validator/"><code>Validator</code></a> and <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-release/index.html"><code>lang3.builder</code></a>).</li> 
+            <li>It is highly recommended to use <a href="https://commons.apache.org/">the Apache Commons</a> wherever applicable. Especially parameter checks, <code>equals(Object)</code> and <code>hashCode()</code> should be implemented using them (see <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/Validate.html"><code>lang3.Validate</code></a> and <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/builder/package-summary.html"><code>lang3.builder.*</code></a>).</li> 
         </ul> 
         <h2>Prototypes</h2> 
         <ul> 

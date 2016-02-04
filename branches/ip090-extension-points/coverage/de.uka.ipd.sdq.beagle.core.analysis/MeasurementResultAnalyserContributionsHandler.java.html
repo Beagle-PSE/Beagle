@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MeasurementResultAnalyserContributionsHandler.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.analysis</a> &gt; <span class="el_source">MeasurementResultAnalyserContributionsHandler.java</span></div><h1>MeasurementResultAnalyserContributionsHandler.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.analysis;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * This class handles the creation searching and loading of all available measurement
+ * result analysers. The measurement result analysers need a public zero argument
+ * constructor for the instantiation.
+ *
+ * @author Roman Langrehr
+ */
+<span class="nc" id="L18">public class MeasurementResultAnalyserContributionsHandler {</span>
+
+	/**
+	 * The extension point id for {@linkplain MeasurementResultAnalyser
+	 * MeasurementResultAnalysers}.
+	 */
+	public static final String MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_ID =
+		&quot;de.uka.ipd.sdq.beagle.measurementresultanalyser&quot;;
+
+	/**
+	 * The property name of the extension point for {@linkplain MeasurementResultAnalyser}
+	 * implementations.
+	 */
+	public static final String MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME =
+		&quot;MeasurementResultAnalyserClass&quot;;
+
+	/**
+	 * Scans the measurement result analysers extension point for available measurement
+	 * result analysers.
+	 *
+	 * @return All available measurement result analysers. Each call returns new instances
+	 *         of the measurement result analysers.
+	 * @throws RuntimeException If an instance of an measurement result analyser could not
+	 *             be created for any reason, e.g. the measurement result analyser had no
+	 *             public zero argument constructor or if an
+	 *             {@code MeasurmentResultAnalyserClass} provided via the extension point
+	 *             was not implementing {@link MeasurementResultAnalyser}.
+	 */
+	public List&lt;MeasurementResultAnalyser&gt; getAvailableMeasurmentResultAnalysers() {
+<span class="nc" id="L47">		final IExtensionRegistry registry = Platform.getExtensionRegistry();</span>
+<span class="nc" id="L48">		final List&lt;MeasurementResultAnalyser&gt; measurementResultAnalysers = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L49">		final IConfigurationElement[] config =</span>
+<span class="nc" id="L50">			registry.getConfigurationElementsFor(MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_ID);</span>
+		try {
+<span class="nc bnc" id="L52" title="All 2 branches missed.">			for (final IConfigurationElement element : config) {</span>
+<span class="nc" id="L53">				final Object object =</span>
+<span class="nc" id="L54">					element.createExecutableExtension(MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME);</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">				if (object instanceof MeasurementResultAnalyser) {</span>
+<span class="nc" id="L56">					measurementResultAnalysers.add((MeasurementResultAnalyser) object);</span>
+				} else {
+<span class="nc" id="L58">					throw new RuntimeException(</span>
+						&quot;A class provided via the measurement result analyser extension point was not implementing the&quot;
+<span class="nc" id="L60">							+ &quot;interface \&quot;MeasurementResultAnalyser\&quot;: &quot; + object.getClass().getName() + &quot; in package &quot;</span>
+<span class="nc" id="L61">							+ object.getClass().getPackage().getName());</span>
+				}
+			}
+<span class="nc" id="L64">		} catch (final CoreException exception) {</span>
+<span class="nc" id="L65">			throw new RuntimeException(exception);</span>
+<span class="nc" id="L66">		}</span>
+<span class="nc" id="L67">		return measurementResultAnalysers;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
