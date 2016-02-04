@@ -36,7 +36,7 @@ public class ExternalCallParameterTest {
 	 * while entering a negative index throws an exception.
 	 */
 	@Test
-	public void testExternalCallParameter() {
+	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		int index = 0;
 		for (final CodeSection call : codeSections) {
@@ -59,7 +59,7 @@ public class ExternalCallParameterTest {
 	 * Test method for {@link ExternalCallParameter#getCallCodeSection()}.
 	 */
 	@Test
-	public void testGetCallCodeSection() {
+	public void getCallCodeSection() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (final CodeSection codeSection : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, 1);
@@ -71,7 +71,7 @@ public class ExternalCallParameterTest {
 	 * Test method for {@link ExternalCallParameter#getIndex()} .
 	 */
 	@Test
-	public void testGetIndex() {
+	public void getIndex() {
 		final CodeSection codeSection = CODE_SECTION_FACTORY.getOne();
 		final int[] indizes = {
 			1, 6, 100, 0, 1000, 9949
@@ -87,7 +87,7 @@ public class ExternalCallParameterTest {
 	 * {@link ExternalCallParameter#hashCode()}.
 	 */
 	@Test
-	public void testEqualsAndHashcode() {
+	public void equalsAndHashcode() {
 		assertThat(new ExternalCallParameter(CODE_SECTION_FACTORY.getOne(), 3), hasDefaultEqualsProperties());
 		final ExternalCallParameter externalCallP = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
 		final ExternalCallParameter externalCallP2 = new ExternalCallParameter(CODE_SECTION_FACTORY.getAll()[0], 1);
@@ -104,7 +104,7 @@ public class ExternalCallParameterTest {
 	 * Test method for {@link ExternalCallParameter#toString()} .
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (final CodeSection codeSection : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, 1);
