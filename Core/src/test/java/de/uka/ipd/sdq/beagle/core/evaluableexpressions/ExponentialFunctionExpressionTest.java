@@ -37,7 +37,7 @@ public class ExponentialFunctionExpressionTest {
 	 * . Asserts that construction is possible and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		assertThat(() -> new ExponentialFunctionExpression(null), throwsException(NullPointerException.class));
 		new ExponentialFunctionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne());
 	}
@@ -47,7 +47,7 @@ public class ExponentialFunctionExpressionTest {
 	 * the exponent from the constructor is returned.
 	 */
 	@Test
-	public void testGetExponent() {
+	public void getExponent() {
 		final EvaluableExpression exponent = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the exponent from the constructor",
 			new ExponentialFunctionExpression(exponent).getExponent(), is(theInstance(exponent)));
@@ -60,7 +60,7 @@ public class ExponentialFunctionExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final ExponentialFunctionExpression testedExpression =
 			new ExponentialFunctionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -89,7 +89,7 @@ public class ExponentialFunctionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression exponent = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
 		final ExponentialFunctionExpression testedExpression = new ExponentialFunctionExpression(exponent);
@@ -111,7 +111,7 @@ public class ExponentialFunctionExpressionTest {
 	 * method was overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new ExponentialFunctionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne()), hasOverriddenToString());
 	}
 
@@ -128,7 +128,7 @@ public class ExponentialFunctionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final ExponentialFunctionExpression equalOne =
 			new ExponentialFunctionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0]);
 		final ExponentialFunctionExpression equalTwo =

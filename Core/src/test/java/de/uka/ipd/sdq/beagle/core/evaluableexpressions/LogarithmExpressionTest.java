@@ -37,7 +37,7 @@ public class LogarithmExpressionTest {
 	 * . Asserts that construction is possible and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		new LogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat(() -> new LogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), null),
@@ -51,7 +51,7 @@ public class LogarithmExpressionTest {
 	 * in the constructor is returned.
 	 */
 	@Test
-	public void testGetBase() {
+	public void getBase() {
 		final EvaluableExpression base = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat(new LogarithmExpression(base, EVALUABLE_EXPRESSION_FACTORY.getOne()).getBase(),
 			is(theInstance(base)));
@@ -62,7 +62,7 @@ public class LogarithmExpressionTest {
 	 * antilogarithm passed in the constructor is returned. .
 	 */
 	@Test
-	public void testGetAntilogarithm() {
+	public void getAntilogarithm() {
 		final EvaluableExpression antilogarithm = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat(new LogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), antilogarithm).getAntilogarithm(),
 			is(theInstance(antilogarithm)));
@@ -74,7 +74,7 @@ public class LogarithmExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final LogarithmExpression testedExpression =
 			new LogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -102,7 +102,7 @@ public class LogarithmExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression base = mock(EvaluableExpression.class);
 		final EvaluableExpression antilogarithm = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
@@ -148,7 +148,7 @@ public class LogarithmExpressionTest {
 	 * overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(
 			new LogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			hasOverriddenToString());
@@ -167,7 +167,7 @@ public class LogarithmExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final LogarithmExpression equalOne =
 			new LogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0], EVALUABLE_EXPRESSION_FACTORY.getAll()[1]);
 		final LogarithmExpression equalTwo =

@@ -37,7 +37,7 @@ public class IfThenElseExpressionTest {
 	 * . Asserts that construction is possible and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		new IfThenElseExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne());
 		assertThat(() -> new IfThenElseExpression(null, EVALUABLE_EXPRESSION_FACTORY.getOne(),
@@ -53,7 +53,7 @@ public class IfThenElseExpressionTest {
 	 * expression passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetIfStatement() {
+	public void getIfStatement() {
 		final EvaluableExpression ifExpression = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat(
 			"should return the instance passed in the constructor", new IfThenElseExpression(ifExpression,
@@ -66,7 +66,7 @@ public class IfThenElseExpressionTest {
 	 * else expression passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetElseStatement() {
+	public void getElseStatement() {
 		final EvaluableExpression elseExpression = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor",
 			new IfThenElseExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne(),
@@ -79,7 +79,7 @@ public class IfThenElseExpressionTest {
 	 * then expression passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetThenStatement() {
+	public void getThenStatement() {
 		final EvaluableExpression thenExpression = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor",
 			new IfThenElseExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), thenExpression,
@@ -93,7 +93,7 @@ public class IfThenElseExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final IfThenElseExpression testedExpression = new IfThenElseExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -118,7 +118,7 @@ public class IfThenElseExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression ifExpression = mock(EvaluableExpression.class);
 		final EvaluableExpression thenExpression = mock(EvaluableExpression.class);
 		final EvaluableExpression elseExpression = mock(EvaluableExpression.class);
@@ -149,7 +149,7 @@ public class IfThenElseExpressionTest {
 	 * was overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new IfThenElseExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne()), hasOverriddenToString());
 	}
@@ -168,7 +168,7 @@ public class IfThenElseExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final IfThenElseExpression equalOne = new IfThenElseExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0],
 			EVALUABLE_EXPRESSION_FACTORY.getAll()[1], EVALUABLE_EXPRESSION_FACTORY.getAll()[2]);
 		final IfThenElseExpression equalTwo = new IfThenElseExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0],

@@ -26,7 +26,7 @@ public class ConstantExpressionTest {
 	 * returns the passed value.
 	 */
 	@Test
-	public void testGetValue() {
+	public void getValue() {
 		assertThat(ConstantExpression.forValue(0).getValue(), is(0d));
 	}
 
@@ -35,7 +35,7 @@ public class ConstantExpressionTest {
 	 * method realises the flyweight pattern.
 	 */
 	@Test
-	public void testForValue() {
+	public void forValue() {
 		assertThat("The flyweight must always return the same instance for the same vaule",
 			ConstantExpression.forValue(4), is(theInstance(ConstantExpression.forValue(4))));
 		assertThat("The flyweight must return different instances for different vaules",
@@ -48,7 +48,7 @@ public class ConstantExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final ConstantExpression testExpression = ConstantExpression.forValue(3);
 
@@ -63,7 +63,7 @@ public class ConstantExpressionTest {
 	 * Asserts that the constant’s value is returned.
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		assertThat(() -> ConstantExpression.forValue(-100).evaluate(null), throwsException(NullPointerException.class));
 		assertThat(ConstantExpression.forValue(5).evaluate(new EvaluableVariableAssignment()), is(5d));
 	}
@@ -73,7 +73,7 @@ public class ConstantExpressionTest {
 	 * overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(ConstantExpression.forValue(-13), hasOverriddenToString());
 	}
 
@@ -82,7 +82,7 @@ public class ConstantExpressionTest {
 	 * {@link ComparisonExpression#hashCode()}.
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		assertThat(ConstantExpression.forValue(5), hasDefaultEqualsProperties());
 		assertThat(ConstantExpression.forValue(7), is(equalTo(ConstantExpression.forValue(7))));
 		assertThat(ConstantExpression.forValue(9).hashCode(), is(ConstantExpression.forValue(9).hashCode()));

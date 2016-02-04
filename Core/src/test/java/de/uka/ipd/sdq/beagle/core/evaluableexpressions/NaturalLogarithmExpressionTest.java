@@ -37,7 +37,7 @@ public class NaturalLogarithmExpressionTest {
 	 * . Asserts that construction is possible and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		assertThat(() -> new NaturalLogarithmExpression(null), throwsException(NullPointerException.class));
 		new NaturalLogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne());
 	}
@@ -47,7 +47,7 @@ public class NaturalLogarithmExpressionTest {
 	 * the instance from the constructor is returned.
 	 */
 	@Test
-	public void testGetAntilogarithm() {
+	public void getAntilogarithm() {
 		final EvaluableExpression antilogarithm = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the antilogarithm from the constructor",
 			new NaturalLogarithmExpression(antilogarithm).getAntilogarithm(), is(theInstance(antilogarithm)));
@@ -60,7 +60,7 @@ public class NaturalLogarithmExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final NaturalLogarithmExpression testedExpression =
 			new NaturalLogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -89,7 +89,7 @@ public class NaturalLogarithmExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression antilogarithm = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
 		final NaturalLogarithmExpression testedExpression = new NaturalLogarithmExpression(antilogarithm);
@@ -111,7 +111,7 @@ public class NaturalLogarithmExpressionTest {
 	 * method was overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new NaturalLogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getOne()), hasOverriddenToString());
 	}
 
@@ -128,7 +128,7 @@ public class NaturalLogarithmExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsObject() {
+	public void equalsObject() {
 		final NaturalLogarithmExpression equalOne =
 			new NaturalLogarithmExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0]);
 		final NaturalLogarithmExpression equalTwo =

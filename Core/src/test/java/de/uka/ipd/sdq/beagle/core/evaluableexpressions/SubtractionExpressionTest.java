@@ -37,7 +37,7 @@ public class SubtractionExpressionTest {
 	 * . Asserts that construction is possible and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		new SubtractionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat(() -> new SubtractionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), null),
@@ -51,7 +51,7 @@ public class SubtractionExpressionTest {
 	 * instance passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetSubtrahend() {
+	public void getSubtrahend() {
 		final EvaluableExpression subtrahend = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat(new SubtractionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), subtrahend).getSubtrahend(),
 			is(theInstance(subtrahend)));
@@ -62,7 +62,7 @@ public class SubtractionExpressionTest {
 	 * instance passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetMinuend() {
+	public void getMinuend() {
 		final EvaluableExpression minuend = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat(new SubtractionExpression(minuend, EVALUABLE_EXPRESSION_FACTORY.getOne()).getMinuend(),
 			is(theInstance(minuend)));
@@ -74,7 +74,7 @@ public class SubtractionExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final SubtractionExpression testedExpression =
 			new SubtractionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -102,7 +102,7 @@ public class SubtractionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression minuend = mock(EvaluableExpression.class);
 		final EvaluableExpression subtrahend = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
@@ -152,7 +152,7 @@ public class SubtractionExpressionTest {
 	 * was overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(
 			new SubtractionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			hasOverriddenToString());
@@ -170,7 +170,7 @@ public class SubtractionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsObject() {
+	public void equalsObject() {
 		final SubtractionExpression equalOne = new SubtractionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0],
 			EVALUABLE_EXPRESSION_FACTORY.getAll()[1]);
 		final SubtractionExpression equalTwo = new SubtractionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0],

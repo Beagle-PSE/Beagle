@@ -23,7 +23,7 @@ public class EvaluableVariableAssignmentTest {
 	 * Asserts that construction is possible.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		new EvaluableVariableAssignment();
 	}
 
@@ -40,7 +40,7 @@ public class EvaluableVariableAssignmentTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetValueFor() {
+	public void getValueFor() {
 		final EvaluableVariableAssignment testAssignment = new EvaluableVariableAssignment();
 		final EvaluableVariable testVariable = new EvaluableVariable("foo");
 
@@ -71,7 +71,7 @@ public class EvaluableVariableAssignmentTest {
 	 * </ul>
 	 */
 	@Test
-	public void testSetValueFor() {
+	public void setValueFor() {
 		final EvaluableVariableAssignment testAssignment = new EvaluableVariableAssignment();
 		final EvaluableVariable testVariable = new EvaluableVariable("foo");
 
@@ -88,7 +88,7 @@ public class EvaluableVariableAssignmentTest {
 	 * that results are correct and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testIsValueAssignedFor() {
+	public void isValueAssignedFor() {
 		final EvaluableVariableAssignment testAssignment = new EvaluableVariableAssignment();
 		final EvaluableVariable testVariable = new EvaluableVariable("foo");
 
@@ -109,7 +109,7 @@ public class EvaluableVariableAssignmentTest {
 	 * method is overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final EvaluableVariableAssignment testedAssignment = new EvaluableVariableAssignment();
 		testedAssignment.setValueFor(new EvaluableVariable("x"), 2d);
 		testedAssignment.setValueFor(new EvaluableVariable("y"), 8d);
@@ -129,7 +129,7 @@ public class EvaluableVariableAssignmentTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final EvaluableVariableAssignment equalOne = new EvaluableVariableAssignment();
 		final EvaluableVariableAssignment equalTwo = new EvaluableVariableAssignment();
 		final EvaluableVariableAssignment reversed = new EvaluableVariableAssignment();

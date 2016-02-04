@@ -28,7 +28,7 @@ public class EvaluableVariableTest {
 	 * passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		new EvaluableVariable("foo");
 
 		assertThat(() -> new EvaluableVariable(null), throwsException(NullPointerException.class));
@@ -40,7 +40,7 @@ public class EvaluableVariableTest {
 	 * in the constructor is returned.
 	 */
 	@Test
-	public void testGetName() {
+	public void getName() {
 		assertThat("The name from the constructor should be returned!", new EvaluableVariable("foo").getName(),
 			is("foo"));
 	}
@@ -50,7 +50,7 @@ public class EvaluableVariableTest {
 	 * Asserts that {@link EvaluableExpressionVisitor#visit(EvaluableVariable)} is called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final EvaluableVariable testedExpression = new EvaluableVariable("foo");
 
@@ -76,7 +76,7 @@ public class EvaluableVariableTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
 		final EvaluableVariable testedVariable = new EvaluableVariable("x");
 
@@ -102,7 +102,7 @@ public class EvaluableVariableTest {
 	 * overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new EvaluableVariable("foo"), hasOverriddenToString());
 	}
 
@@ -112,7 +112,7 @@ public class EvaluableVariableTest {
 	 * implemented accordingly.
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final EvaluableVariable equalOne = new EvaluableVariable("equal");
 		final EvaluableVariable equalTwo = new EvaluableVariable(new String("equal"));
 		final EvaluableVariable different = new EvaluableVariable("different");

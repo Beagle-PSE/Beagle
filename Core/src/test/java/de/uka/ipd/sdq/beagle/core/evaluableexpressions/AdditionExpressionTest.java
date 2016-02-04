@@ -55,7 +55,7 @@ public class AdditionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		assertThat("It must not be possible to create with null", AdditionExpression::new,
 			is(notAcceptingNull(EVALUABLE_EXPRESSION_FACTORY.getAll())));
 		assertThat("It must not be possible to create with null", AdditionExpression::new,
@@ -104,7 +104,7 @@ public class AdditionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetSummands() {
+	public void getSummands() {
 		final EvaluableExpression[] testInput = EVALUABLE_EXPRESSION_FACTORY.getAll();
 		assertThat("The getters should return all expressions (from array)",
 			new AdditionExpression(testInput).getSummands(), containsInAnyOrder(testInput));
@@ -133,7 +133,7 @@ public class AdditionExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final AdditionExpression testExpression = new AdditionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 
@@ -161,7 +161,7 @@ public class AdditionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression firstMock = mock(EvaluableExpression.class);
 		final EvaluableExpression secondMock = mock(EvaluableExpression.class);
 		final EvaluableExpression thirdMock = mock(EvaluableExpression.class);
@@ -201,7 +201,7 @@ public class AdditionExpressionTest {
 	 * overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new AdditionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()), hasOverriddenToString());
 	}
 
@@ -221,7 +221,7 @@ public class AdditionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final AdditionExpression defaultOne = new AdditionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 		final AdditionExpression defaultTwo = new AdditionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 		final AdditionExpression defaultFromCollection =

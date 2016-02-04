@@ -44,7 +44,7 @@ public class ComparisonExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat("Creating with null must not be possible",
@@ -60,7 +60,7 @@ public class ComparisonExpressionTest {
 	 * expression from the constructor is returned.
 	 */
 	@Test
-	public void testGetGreater() {
+	public void getGreater() {
 		final EvaluableExpression greater = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor",
 			new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), greater).getGreater(),
@@ -72,7 +72,7 @@ public class ComparisonExpressionTest {
 	 * expression from the constructor is returned. .
 	 */
 	@Test
-	public void testGetSmaller() {
+	public void getSmaller() {
 		final EvaluableExpression smaller = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor",
 			new ComparisonExpression(smaller, EVALUABLE_EXPRESSION_FACTORY.getOne()).getSmaller(),
@@ -85,7 +85,7 @@ public class ComparisonExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final ComparisonExpression testExpression =
 			new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -117,7 +117,7 @@ public class ComparisonExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression smaller = mock(EvaluableExpression.class);
 		final EvaluableExpression greater = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = mock(EvaluableVariableAssignment.class);
@@ -163,7 +163,7 @@ public class ComparisonExpressionTest {
 	 * was overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final ComparisonExpression testExpression =
 			new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 		assertThat(testExpression, hasOverriddenToString());
@@ -183,7 +183,7 @@ public class ComparisonExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final ComparisonExpression testExpression =
 			new ComparisonExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 		assertThat(testExpression, hasDefaultEqualsProperties());

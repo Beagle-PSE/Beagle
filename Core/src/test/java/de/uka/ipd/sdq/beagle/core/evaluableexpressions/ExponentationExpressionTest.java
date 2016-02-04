@@ -37,7 +37,7 @@ public class ExponentationExpressionTest {
 	 * . Asserts that construction is possible and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		assertThat(() -> new ExponentationExpression(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 		assertThat(() -> new ExponentationExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), null),
@@ -50,7 +50,7 @@ public class ExponentationExpressionTest {
 	 * exponent passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetExponent() {
+	public void getExponent() {
 		final EvaluableExpression exponent = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat(new ExponentationExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), exponent).getExponent(),
 			is(theInstance(exponent)));
@@ -61,7 +61,7 @@ public class ExponentationExpressionTest {
 	 * passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetBase() {
+	public void getBase() {
 		final EvaluableExpression base = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat(new ExponentationExpression(base, EVALUABLE_EXPRESSION_FACTORY.getOne()).getBase(),
 			is(theInstance(base)));
@@ -73,7 +73,7 @@ public class ExponentationExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final ExponentationExpression testExpression =
 			new ExponentationExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -102,7 +102,7 @@ public class ExponentationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression base = mock(EvaluableExpression.class);
 		final EvaluableExpression exponent = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
@@ -148,7 +148,7 @@ public class ExponentationExpressionTest {
 	 * was overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(
 			new ExponentationExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			hasOverriddenToString());
@@ -168,7 +168,7 @@ public class ExponentationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsObject() {
+	public void equalsObject() {
 		final ExponentationExpression equalOne = new ExponentationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0],
 			EVALUABLE_EXPRESSION_FACTORY.getAll()[1]);
 		final ExponentationExpression equalTwo = new ExponentationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0],

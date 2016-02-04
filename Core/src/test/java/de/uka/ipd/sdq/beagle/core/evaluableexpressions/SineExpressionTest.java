@@ -36,7 +36,7 @@ public class SineExpressionTest {
 	 * that construction is possible and {@code null} cannot be passed.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		assertThat(() -> new SineExpression(null), throwsException(NullPointerException.class));
 		new SineExpression(EVALUABLE_EXPRESSION_FACTORY.getOne());
 	}
@@ -46,7 +46,7 @@ public class SineExpressionTest {
 	 * passed in the constructor is returned.
 	 */
 	@Test
-	public void testGetArgument() {
+	public void getArgument() {
 		final EvaluableExpression argument = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the argument from the constructor", new SineExpression(argument).getArgument(),
 			is(theInstance(argument)));
@@ -57,7 +57,7 @@ public class SineExpressionTest {
 	 * that {@link EvaluableExpressionVisitor#visit(SineExpression)} is called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final SineExpression testedExpression = new SineExpression(EVALUABLE_EXPRESSION_FACTORY.getOne());
 
@@ -84,7 +84,7 @@ public class SineExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression argument = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
 		final SineExpression testedExpression = new SineExpression(argument);
@@ -112,7 +112,7 @@ public class SineExpressionTest {
 	 * overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new SineExpression(EVALUABLE_EXPRESSION_FACTORY.getOne()), hasOverriddenToString());
 	}
 
@@ -128,7 +128,7 @@ public class SineExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsObject() {
+	public void equalsObject() {
 		final SineExpression equalOne = new SineExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0]);
 		final SineExpression equalTwo = new SineExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0]);
 		final SineExpression different = new SineExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[1]);

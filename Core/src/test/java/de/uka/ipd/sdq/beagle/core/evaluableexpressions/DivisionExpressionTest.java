@@ -36,7 +36,7 @@ public class DivisionExpressionTest {
 	 * . Asserts that {@code null} cannot be passed and creation is possible.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		new DivisionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat(() -> new DivisionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), null),
@@ -50,7 +50,7 @@ public class DivisionExpressionTest {
 	 * divisor.
 	 */
 	@Test
-	public void testGetDivisor() {
+	public void getDivisor() {
 		final EvaluableExpression divisor = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor!",
 			new DivisionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), divisor).getDivisor(),
@@ -62,7 +62,7 @@ public class DivisionExpressionTest {
 	 * the dividend.
 	 */
 	@Test
-	public void testGetDividend() {
+	public void getDividend() {
 		final EvaluableExpression dividend = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		assertThat("should return the instance passed in the constructor!",
 			new DivisionExpression(dividend, EVALUABLE_EXPRESSION_FACTORY.getOne()).getDividend(),
@@ -75,7 +75,7 @@ public class DivisionExpressionTest {
 	 * called.
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final DivisionExpression testedExpression =
 			new DivisionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -103,7 +103,7 @@ public class DivisionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression dividend = mock(EvaluableExpression.class);
 		final EvaluableExpression divisor = mock(EvaluableExpression.class);
 		final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
@@ -137,7 +137,7 @@ public class DivisionExpressionTest {
 	 * overridden.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new DivisionExpression(EVALUABLE_EXPRESSION_FACTORY.getOne(), EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			hasOverriddenToString());
 	}
@@ -155,7 +155,7 @@ public class DivisionExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final DivisionExpression equalOne =
 			new DivisionExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()[0], EVALUABLE_EXPRESSION_FACTORY.getAll()[1]);
 		final DivisionExpression equalTwo =

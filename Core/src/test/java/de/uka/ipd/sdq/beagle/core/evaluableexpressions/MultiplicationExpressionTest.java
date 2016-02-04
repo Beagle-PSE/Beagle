@@ -58,7 +58,7 @@ public class MultiplicationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		assertThat("It must not be possible to create with null", MultiplicationExpression::new,
 			is(notAcceptingNull(EVALUABLE_EXPRESSION_FACTORY.getAll())));
 		assertThat("It must not be possible to create with null", MultiplicationExpression::new,
@@ -107,7 +107,7 @@ public class MultiplicationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetFactors() {
+	public void getFactors() {
 		final EvaluableExpression[] testInput = EVALUABLE_EXPRESSION_FACTORY.getAll();
 		assertThat("The getters should return all expressions (from array)",
 			new MultiplicationExpression(testInput).getFactors(), containsInAnyOrder(testInput));
@@ -143,7 +143,7 @@ public class MultiplicationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testReceive() {
+	public void receive() {
 		final EvaluableExpressionVisitor mockVisitor = mock(EvaluableExpressionVisitor.class);
 		final MultiplicationExpression testExpression =
 			new MultiplicationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
@@ -173,7 +173,7 @@ public class MultiplicationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEvaluate() {
+	public void evaluate() {
 		final EvaluableExpression firstMock = mock(EvaluableExpression.class);
 		final EvaluableExpression secondMock = mock(EvaluableExpression.class);
 		final EvaluableExpression thirdMock = mock(EvaluableExpression.class);
@@ -215,7 +215,7 @@ public class MultiplicationExpressionTest {
 	 * Test method for {@link MultiplicationExpression#toString()}.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		assertThat(new MultiplicationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll()), hasOverriddenToString());
 	}
 
@@ -235,7 +235,7 @@ public class MultiplicationExpressionTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final MultiplicationExpression defaultOne = new MultiplicationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 		final MultiplicationExpression defaultTwo = new MultiplicationExpression(EVALUABLE_EXPRESSION_FACTORY.getAll());
 		final MultiplicationExpression defaultFromCollection =
