@@ -22,7 +22,7 @@ public class ProposedExpressionAnalyserContributionsHandler {
 	 * ProposedExpressionAnalysers}.
 	 */
 	public static final String PROPOSED_EXPRESSION_ANALYSERS_EXTENSION_POINT_ID =
-		"de.uka.ipd.sdg.beagle.proposedexpressionanalyser";
+		"de.uka.ipd.sdq.beagle.proposedexpressionanalyser";
 
 	/**
 	 * The property name of the extension point for

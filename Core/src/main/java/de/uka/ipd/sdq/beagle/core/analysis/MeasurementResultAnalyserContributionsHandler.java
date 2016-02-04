@@ -22,7 +22,7 @@ public class MeasurementResultAnalyserContributionsHandler {
 	 * MeasurementResultAnalysers}.
 	 */
 	public static final String MEASUREMENT_RESULT_ANALYSERS_EXTENSION_POINT_ID =
-		"de.uka.ipd.sdg.beagle.measurementresultanalyser";
+		"de.uka.ipd.sdq.beagle.measurementresultanalyser";
 
 	/**
 	 * The property name of the extension point for {@linkplain MeasurementResultAnalyser}

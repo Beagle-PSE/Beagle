@@ -20,7 +20,7 @@ public class MeasurementToolContributionsHandler {
 	/**
 	 * The extension point id for {@linkplain MeasurementTool MeasurementTools}.
 	 */
-	public static final String MEASUREMENT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdg.beagle.measurementtool";
+	public static final String MEASUREMENT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdq.beagle.measurementtool";
 
 	/**
 	 * The property name of the extension point for {@linkplain MeasurementTool}
