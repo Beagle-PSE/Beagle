@@ -145,7 +145,9 @@ public class MeasurementEventParserTest {
 		final Set<MeasurementEvent> measurementEvents = new HashSet<>();
 		final ResourceDemandingInternalAction[] rdias = RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY.getAll();
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final SeffBranch branch = SEFF_BRANCH_FACTORY.getOne();
+		final SeffBranch branch = SEFF_BRANCH_FACTORY.getOne();  
+		
+		// BRANCH DECISION MEASUREMENT RESULT
 
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 0.3));
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 3.3));
