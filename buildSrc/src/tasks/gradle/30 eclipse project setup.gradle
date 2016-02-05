@@ -18,8 +18,10 @@ configure(javaSubprojects) {
 	// we only want to export the test dependencies to Eclipse.
 	eclipse {
 		classpath {
-			minusConfigurations += [project.configurations.compile]
-			plusConfigurations += [project.configurations.tests, project.configurations.production]
+			plusConfigurations = [project.configurations.tests, project.configurations.production]
+			
+			downloadSources true
+			downloadJavadoc true
 		}
 	}
 }
