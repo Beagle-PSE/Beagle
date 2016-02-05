@@ -35,6 +35,12 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Testing the {@link ProposedExpressionAnalyserBlackboardView}.
+ * 
+ * @author Joshua Gleitze
+ * @author Ansgar Spiegler
+ */
 public class ProposedExpressionAnalyserBlackboardViewTest {
 
 	/**
