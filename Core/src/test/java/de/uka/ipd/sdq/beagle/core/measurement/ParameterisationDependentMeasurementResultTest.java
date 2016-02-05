@@ -5,9 +5,9 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ParameterisationMock;
@@ -18,7 +18,7 @@ import org.junit.Test;
 /**
  * Tests {@link ParameterisationDependentMeasurementResult} and contains all test cases
  * needed to check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class ParameterisationDependentMeasurementResultTest {
@@ -54,7 +54,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	/**
 	 * Test method for
 	 * {@link ParameterisationDependentMeasurementResult#getParameterisation()} .
-	 * 
+	 *
 	 * <p>Asserts that correct parameterisation is returned for valid parameterisation and
 	 * that {@code null} is returned if no parameterisation is defined.
 	 */
@@ -75,13 +75,13 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * Test method for
 	 * {@link ParameterisationDependentMeasurementResult#equals(java.lang.Object)} and
 	 * {@link ParameterisationDependentMeasurementResult#hashCode()}.
-	 * 
+	 *
 	 * <p>Asserts that equals has the default properties, a
 	 * {@link ParameterisationDependentMeasurementResult} with {@link Parameterisation} is
 	 * not equal to one without, and that if the {@link Parameterisation} is (not) equal
 	 * to the one of the other {@link ParameterisationDependentMeasurementResult} these
 	 * are (not) equal to.
-	 * 
+	 *
 	 * <p>Asserts that if the {@link ParameterisationDependentMeasurementResult} are equal
 	 * the hashCode is the same.
 	 */
@@ -90,7 +90,7 @@ public class ParameterisationDependentMeasurementResultTest {
 		/*
 		 * This simulates parameterisation1.equals(paramertisation2) returns true, while
 		 * parameterisation3.equals(parameterisation4) returns false.
-		 * 
+		 *
 		 * <p>Following measurementResultP1 should be equals to measurementResultP2 while
 		 * measurementResultP3 and measurementResultP4 are not equal.
 		 */

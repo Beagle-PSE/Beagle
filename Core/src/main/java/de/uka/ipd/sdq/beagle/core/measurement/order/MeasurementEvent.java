@@ -28,5 +28,5 @@ public interface MeasurementEvent {
 	 *
 	 * @param visitor The visitor, where the visit method should be called.
 	 */
-	void recive(MeasurementEventVisitor visitor);
+	void receive(MeasurementEventVisitor visitor);
 }

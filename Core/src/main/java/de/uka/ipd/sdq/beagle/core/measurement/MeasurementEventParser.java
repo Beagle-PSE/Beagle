@@ -103,7 +103,7 @@ public class MeasurementEventParser {
 				resourceDemandMeasurementResults);
 		for (final Integer index : this.codeSectionMapping.get(resourceDemandingInternalAction.getAction())) {
 			final MeasurementEvent measurementEvent = this.measurementEvents.get(index);
-			measurementEvent.recive(resourceDemandingInternalActionMeasurementEventVisitor);
+			measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);
 		}
 		return resourceDemandMeasurementResults;
 

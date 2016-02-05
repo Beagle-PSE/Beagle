@@ -24,7 +24,7 @@ public class CodeSectionExecutedEvent extends AbstractMeasurementEvent {
 	}
 
 	@Override
-	public void recive(final MeasurementEventVisitor visitor) {
+	public void receive(final MeasurementEventVisitor visitor) {
 		visitor.visit(this);
 	}
 
