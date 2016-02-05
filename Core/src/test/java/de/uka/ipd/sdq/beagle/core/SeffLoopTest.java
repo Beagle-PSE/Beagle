@@ -30,7 +30,7 @@ public class SeffLoopTest {
 	 * Test method for {@link SeffLoop#SeffLoop(CodeSection)} .
 	 */
 	@Test
-	public void testSeffLoop() {
+	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (final CodeSection codeSection : codeSections) {
 			new SeffLoop(codeSection);
@@ -45,7 +45,7 @@ public class SeffLoopTest {
 	 * Test method for {@link SeffLoop#equals()}.
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		assertThat(new SeffLoop(CODE_SECTION_FACTORY.getOne()), hasDefaultEqualsProperties());
 		final SeffLoop loop = new SeffLoop(CODE_SECTION_FACTORY.getAll()[0]);
 		final SeffLoop loopB = new SeffLoop(CODE_SECTION_FACTORY.getAll()[1]);
@@ -59,7 +59,7 @@ public class SeffLoopTest {
 	 * Test method for {@link SeffLoop#getLoopBody()}.
 	 */
 	@Test
-	public void testGetLoopBody() {
+	public void getLoopBody() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
@@ -72,7 +72,7 @@ public class SeffLoopTest {
 	 * Test method for {@link SeffLoop#toString()}.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
