@@ -5,8 +5,8 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.CoreMatchers.theInstance;
+import static org.hamcrest.core.IsSame.sameInstance;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -158,16 +158,16 @@ public class CodeSectionTest {
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
-		assertThat(codeSection.getEndFile(), is(theInstance(file)));
+		assertThat(codeSection.getEndFile(), is(sameInstance(file)));
 
 		final File secFile = files[1];
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
-		assertThat(codeSection.getEndFile(), is(theInstance(secFile)));
+		assertThat(codeSection.getEndFile(), is(sameInstance(secFile)));
 
 		codeSection = new CodeSection(file, startCodeLine, secFile, endIndex);
-		assertThat(codeSection.getEndFile(), is(theInstance(secFile)));
+		assertThat(codeSection.getEndFile(), is(sameInstance(secFile)));
 	}
 
 	/**
@@ -197,13 +197,13 @@ public class CodeSectionTest {
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
-		assertThat(codeSection.getStartFile(), is(theInstance(file)));
+		assertThat(codeSection.getStartFile(), is(sameInstance(file)));
 
 		final File secFile = files[1];
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
-		assertThat(codeSection.getStartFile(), is(theInstance(secFile)));
+		assertThat(codeSection.getStartFile(), is(sameInstance(secFile)));
 	}
 
 	/**
