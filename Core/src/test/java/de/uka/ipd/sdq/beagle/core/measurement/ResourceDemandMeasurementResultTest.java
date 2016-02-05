@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * Tests {@link ResourceDemandMeasurementResult} and contains all test cases needed to
  * check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class ResourceDemandMeasurementResultTest {
@@ -23,12 +23,12 @@ public class ResourceDemandMeasurementResultTest {
 	/**
 	 * Test method for
 	 * {@link ResourceDemandMeasurementResult#ResourceDemandMeasurementResult(double)}.
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testResourceDemandMeasurementResultDouble() {
+	public void constructor() {
 		final double value = 2.3;
 		new ResourceDemandMeasurementResult(value);
 		final double value2 = 0;
@@ -45,13 +45,13 @@ public class ResourceDemandMeasurementResultTest {
 	 * Test method for
 	 * {@link ResourceDemandMeasurementResult#ResourceDemandMeasurementResult(Parameterisation, double)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0 and an {@link NullPointerException} is thrown if the
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testResourceDemandMeasurementResultParameterisationDouble() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final double value = 2.3;
 		new ResourceDemandMeasurementResult(parameterisation, value);
@@ -68,12 +68,12 @@ public class ResourceDemandMeasurementResultTest {
 
 	/**
 	 * Test method for {@link ResourceDemandMeasurementResult#getValue()}.
-	 * 
+	 *
 	 * <p>Asserts that correct results are returned for the value and that changing the
 	 * value after instantiation does not change the output value.
 	 */
 	@Test
-	public void testGetValue() {
+	public void getValue() {
 		final double value = 2.3;
 		final ResourceDemandMeasurementResult result1 = new ResourceDemandMeasurementResult(value);
 		final double value2 = 0;
@@ -86,17 +86,16 @@ public class ResourceDemandMeasurementResultTest {
 		assertThat(result2.getValue(), is(equalTo(value2)));
 		assertThat(resultWithParameterisation.getValue(), is(equalTo(value)));
 	}
-	
+
 	/**
 	 * Test method for {@link ResourceDemandMeasurementResult#toString()} .
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final double value = 2.3;
-		final ResourceDemandMeasurementResult measurementResult =
-			new ResourceDemandMeasurementResult(value) {
-			};
+		final ResourceDemandMeasurementResult measurementResult = new ResourceDemandMeasurementResult(value) {
+		};
 		final ResourceDemandMeasurementResult measurementResultP =
 			new ResourceDemandMeasurementResult(parameterisation, value) {
 			};

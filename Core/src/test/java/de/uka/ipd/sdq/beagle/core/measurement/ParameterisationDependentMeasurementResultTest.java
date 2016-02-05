@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * Tests {@link ParameterisationDependentMeasurementResult} and contains all test cases
  * needed to check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class ParameterisationDependentMeasurementResultTest {
@@ -26,7 +26,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * .
 	 */
 	@Test
-	public void testParameterisationDependentMeasurementResult() {
+	public void constructor() {
 		new ParameterisationDependentMeasurementResult() {
 		};
 	}
@@ -37,7 +37,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * .
 	 */
 	@Test
-	public void testParameterisationDependentMeasurementResultParameterisation() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		new ParameterisationDependentMeasurementResult(parameterisation) {
 		};
@@ -51,12 +51,12 @@ public class ParameterisationDependentMeasurementResultTest {
 	/**
 	 * Test method for
 	 * {@link ParameterisationDependentMeasurementResult#getParameterisation()} .
-	 * 
+	 *
 	 * <p>Asserts that correct parameterisation is returned for valid parameterisation and
 	 * that {@code null} is returned if no parameterisation is defined.
 	 */
 	@Test
-	public void testGetParameterisation() {
+	public void getParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final ParameterisationDependentMeasurementResult measurementResult =
 			new ParameterisationDependentMeasurementResult(parameterisation) {
@@ -72,7 +72,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * Test method for {@link ParameterisationDependentMeasurementResult#toString()} .
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final ParameterisationDependentMeasurementResult measurementResult =
 			new ParameterisationDependentMeasurementResult() {

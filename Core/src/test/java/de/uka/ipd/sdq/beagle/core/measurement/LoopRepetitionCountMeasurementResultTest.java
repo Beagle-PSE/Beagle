@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * Tests {@link LoopRepetitionCountMeasurementResult} and contains all test cases needed
  * to check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class LoopRepetitionCountMeasurementResultTest {
@@ -24,12 +24,12 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * Test method for
 	 * {@link LoopRepetitionCountMeasurementResult#LoopRepetitionCountMeasurementResult(int)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testLoopRepetitionCountMeasurementResultInt() {
+	public void constructor() {
 		final int count = 0;
 		new LoopRepetitionCountMeasurementResult(count);
 		final int count1 = 3;
@@ -45,13 +45,13 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * Test method for
 	 * {@link LoopRepetitionCountMeasurementResult#LoopRepetitionCountMeasurementResult(Parameterisation, int)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0 and an {@link NullPointerException} is thrown if the
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testLoopRepetitionCountMeasurementResultParameterisationInt() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int count = 0;
 		new LoopRepetitionCountMeasurementResult(parameterisation, count);
@@ -70,12 +70,12 @@ public class LoopRepetitionCountMeasurementResultTest {
 
 	/**
 	 * Test method for {@link LoopRepetitionCountMeasurementResult#getCount()}.
-	 * 
+	 *
 	 * <p>Asserts that correct results are returned for the value and that changing the
 	 * count after instantiation does not change the output value.
 	 */
 	@Test
-	public void testGetCount() {
+	public void getCount() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int count = 0;
 		final LoopRepetitionCountMeasurementResult result = new LoopRepetitionCountMeasurementResult(count);
@@ -88,17 +88,16 @@ public class LoopRepetitionCountMeasurementResultTest {
 		assertThat(result1.getCount(), is(equalTo(count1)));
 		assertThat(resultWithP.getCount(), is(equalTo(count)));
 	}
-	
+
 	/**
 	 * Test method for {@link LoopRepetitionCountMeasurementResult#toString()} .
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int value = 2;
-		final LoopRepetitionCountMeasurementResult measurementResult =
-			new LoopRepetitionCountMeasurementResult(value) {
-			};
+		final LoopRepetitionCountMeasurementResult measurementResult = new LoopRepetitionCountMeasurementResult(value) {
+		};
 		final LoopRepetitionCountMeasurementResult measurementResultP =
 			new LoopRepetitionCountMeasurementResult(parameterisation, value) {
 			};

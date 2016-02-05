@@ -15,7 +15,7 @@ import org.junit.Test;
 /**
  * Tests {@link BranchDecisionMeasurementResult} and contains all test cases needed to
  * check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class BranchDecisionMeasurementResultTest {
@@ -23,12 +23,12 @@ public class BranchDecisionMeasurementResultTest {
 	/**
 	 * Test method for
 	 * {@link BranchDecisionMeasurementResult#BranchDecisionMeasurementResult(int)}.
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testBranchDecisionMeasurementResultInt() {
+	public void constructor() {
 		final int branchIndex = 0;
 		new BranchDecisionMeasurementResult(branchIndex);
 		final int branchIndex1 = 3;
@@ -44,13 +44,13 @@ public class BranchDecisionMeasurementResultTest {
 	 * Test method for
 	 * {@link BranchDecisionMeasurementResult#BranchDecisionMeasurementResult(Parameterisation, int)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0 and an {@link NullPointerException} is thrown if the
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testBranchDecisionMeasurementResultParameterisationInt() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int branchIndex = 0;
 		new BranchDecisionMeasurementResult(parameterisation, branchIndex);
@@ -69,12 +69,12 @@ public class BranchDecisionMeasurementResultTest {
 
 	/**
 	 * Test method for {@link BranchDecisionMeasurementResult#getBranchIndex()}.
-	 * 
+	 *
 	 * <p>Asserts that correct results are returned for the value and that changing the
 	 * index after instantiation does not change the output value.
 	 */
 	@Test
-	public void testGetBranchIndex() {
+	public void getBranchIndex() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int branchIndex = 0;
 		final BranchDecisionMeasurementResult result = new BranchDecisionMeasurementResult(branchIndex);
@@ -87,17 +87,16 @@ public class BranchDecisionMeasurementResultTest {
 		assertThat(result1.getBranchIndex(), is(equalTo(branchIndex1)));
 		assertThat(resultWithP.getBranchIndex(), is(equalTo(branchIndex)));
 	}
-	
+
 	/**
 	 * Test method for {@link BranchDecisionMeasurementResult#toString()} .
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int value = 2;
-		final BranchDecisionMeasurementResult measurementResult =
-			new BranchDecisionMeasurementResult(value) {
-			};
+		final BranchDecisionMeasurementResult measurementResult = new BranchDecisionMeasurementResult(value) {
+		};
 		final BranchDecisionMeasurementResult measurementResultP =
 			new BranchDecisionMeasurementResult(parameterisation, value) {
 			};
