@@ -33,7 +33,7 @@ public class ResourceDemandingInternalActionTest {
 	 *
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		assertThat(
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, CODE_SECTION_FACTORY.getOne()),
 			hasDefaultEqualsProperties());
@@ -61,7 +61,7 @@ public class ResourceDemandingInternalActionTest {
 	 *
 	 */
 	@Test
-	public void testGetAction() {
+	public void getAction() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
@@ -79,7 +79,7 @@ public class ResourceDemandingInternalActionTest {
 	 *
 	 */
 	@Test
-	public void testGetResourceType() {
+	public void getResourceType() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
@@ -108,7 +108,7 @@ public class ResourceDemandingInternalActionTest {
 	 *
 	 */
 	@Test
-	public void testResourceDemandingInternalAction() {
+	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		final CodeSection codeSection = codeSections[0];
 		new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
@@ -135,7 +135,7 @@ public class ResourceDemandingInternalActionTest {
 	 *
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (final CodeSection codeSection : codeSections) {
 			final ResourceDemandingInternalAction rdia =
