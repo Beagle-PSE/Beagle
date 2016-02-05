@@ -14,7 +14,7 @@ import org.junit.Test;
 /**
  * Tests {@link ResourceDemandMeasurementResult} and contains all test cases needed to
  * check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class ResourceDemandMeasurementResultTest {
@@ -22,7 +22,7 @@ public class ResourceDemandMeasurementResultTest {
 	/**
 	 * Test method for
 	 * {@link ResourceDemandMeasurementResult#ResourceDemandMeasurementResult(double)}.
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
@@ -44,7 +44,7 @@ public class ResourceDemandMeasurementResultTest {
 	 * Test method for
 	 * {@link ResourceDemandMeasurementResult#ResourceDemandMeasurementResult(Parameterisation, double)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0 and an {@link NullPointerException} is thrown if the
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
@@ -67,7 +67,7 @@ public class ResourceDemandMeasurementResultTest {
 
 	/**
 	 * Test method for {@link ResourceDemandMeasurementResult#getValue()}.
-	 * 
+	 *
 	 * <p>Asserts that correct results are returned for the value and that changing the
 	 * value after instantiation does not change the output value.
 	 */

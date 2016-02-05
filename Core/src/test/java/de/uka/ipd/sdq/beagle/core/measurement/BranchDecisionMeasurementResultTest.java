@@ -14,7 +14,7 @@ import org.junit.Test;
 /**
  * Tests {@link BranchDecisionMeasurementResult} and contains all test cases needed to
  * check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class BranchDecisionMeasurementResultTest {
@@ -22,7 +22,7 @@ public class BranchDecisionMeasurementResultTest {
 	/**
 	 * Test method for
 	 * {@link BranchDecisionMeasurementResult#BranchDecisionMeasurementResult(int)}.
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
@@ -43,7 +43,7 @@ public class BranchDecisionMeasurementResultTest {
 	 * Test method for
 	 * {@link BranchDecisionMeasurementResult#BranchDecisionMeasurementResult(Parameterisation, int)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that an {@link IllegalArgumentException} is thrown if the value is
 	 * smaller than 0 and an {@link NullPointerException} is thrown if the
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
@@ -68,7 +68,7 @@ public class BranchDecisionMeasurementResultTest {
 
 	/**
 	 * Test method for {@link BranchDecisionMeasurementResult#getBranchIndex()}.
-	 * 
+	 *
 	 * <p>Asserts that correct results are returned for the value and that changing the
 	 * index after instantiation does not change the output value.
 	 */

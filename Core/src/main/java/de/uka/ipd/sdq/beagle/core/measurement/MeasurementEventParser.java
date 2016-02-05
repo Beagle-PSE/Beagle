@@ -17,6 +17,7 @@ import org.apache.commons.collections4.IteratorUtils;
 import org.apache.commons.lang3.Validate;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +48,7 @@ public class MeasurementEventParser {
 	 * Maps for each code sections to all occurrences of measurement events for this code
 	 * section in {@link #measurementEvents}.
 	 */
-	private Map<CodeSection, Set<Integer>> codeSectionMapping;
+	private Map<CodeSection, Set<Integer>> codeSectionMapping = new HashMap<>();
 
 	/**
 	 * Creates a parser to parse {@code events}. The events must be provided in
