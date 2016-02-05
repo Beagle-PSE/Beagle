@@ -2,6 +2,9 @@ package de.uka.ipd.sdq.beagle.core.measurement.order;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.BDDMockito.same;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
@@ -42,7 +45,12 @@ public class CodeSectionExecutedEventTest {
 	 */
 	@Test
 	public void receive() {
-		
+		final CodeSection codeSection = CODE_SECTION_FACTORY.getOne();
+		final MeasurementEventVisitor mockVisitor = mock(MeasurementEventVisitor.class);
+		final CodeSectionExecutedEvent event = new CodeSectionExecutedEvent(codeSection);
+		assertThat(() -> event.receive(null), throwsException(NullPointerException.class));
+		event.receive(mockVisitor);
+		then(mockVisitor).should().visit(same(event));
 	}
 
 }
