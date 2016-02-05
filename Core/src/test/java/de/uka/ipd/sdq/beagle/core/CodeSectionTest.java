@@ -5,8 +5,8 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.CoreMatchers.theInstance;
+import static org.hamcrest.core.IsSame.sameInstance;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -33,7 +33,7 @@ public class CodeSectionTest {
 	 * {@link CodeSection#CodeSection(java.io.File, int, java.io.File, int)} .
 	 */
 	@Test
-	public void testCodeSection() {
+	public void constructor() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		for (final File file : files) {
 			// file.length gets the number of bytes, so it is an approximatation for the
@@ -111,7 +111,7 @@ public class CodeSectionTest {
 	 * that they are not equal if one of the parameter changes.
 	 **/
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final CodeSection[] codeSections = {
 			new CodeSection(files[0], 7, files[1], 15), new CodeSection(files[1], 7, files[1], 15),
@@ -136,7 +136,7 @@ public class CodeSectionTest {
 	 * Test method for {@link CodeSection#getEndCodeLine()}.
 	 **/
 	@Test
-	public void testGetEndCodeLine() {
+	public void getEndCodeLine() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final int[] endIndices = {
 			7, 19, 34, 93, 83, 2
@@ -152,29 +152,29 @@ public class CodeSectionTest {
 	 * Test method for {@link CodeSection#getEndCodeFile()}.
 	 **/
 	@Test
-	public void testGetEndFile() {
+	public void getEndFile() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
-		assertThat(codeSection.getEndFile(), is(theInstance(file)));
+		assertThat(codeSection.getEndFile(), is(sameInstance(file)));
 
 		final File secFile = files[1];
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
-		assertThat(codeSection.getEndFile(), is(theInstance(secFile)));
+		assertThat(codeSection.getEndFile(), is(sameInstance(secFile)));
 
 		codeSection = new CodeSection(file, startCodeLine, secFile, endIndex);
-		assertThat(codeSection.getEndFile(), is(theInstance(secFile)));
+		assertThat(codeSection.getEndFile(), is(sameInstance(secFile)));
 	}
 
 	/**
 	 * Test method for {@link CodeSection#getStartCodeLine()}.
 	 **/
 	@Test
-	public void testGetStartCodeLine() {
+	public void getStartCodeLine() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final int[] startIndices = {
 			7, 19, 34, 93, 83, 2
@@ -191,26 +191,26 @@ public class CodeSectionTest {
 	 *
 	 */
 	@Test
-	public void testGetStartFile() {
+	public void getStartFile() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
-		assertThat(codeSection.getStartFile(), is(theInstance(file)));
+		assertThat(codeSection.getStartFile(), is(sameInstance(file)));
 
 		final File secFile = files[1];
 		final int startIndex = 60;
 		final int endIndex = 68;
 		codeSection = new CodeSection(secFile, startIndex, secFile, endIndex);
-		assertThat(codeSection.getStartFile(), is(theInstance(secFile)));
+		assertThat(codeSection.getStartFile(), is(sameInstance(secFile)));
 	}
 
 	/**
 	 * Test method for {@link CodeSection#toString()}.
 	 **/
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final File file = TEST_FILE_FACTORY.getOne();
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
