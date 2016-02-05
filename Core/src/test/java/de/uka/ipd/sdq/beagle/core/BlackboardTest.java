@@ -136,7 +136,7 @@ public class BlackboardTest {
 	 *
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 
 		// Checking if later modification of the given sets to the Blackboard does not
 		// change the Blackboard sets.
@@ -204,7 +204,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetAllRdias() {
+	public void getAllRdias() {
 		assertThat("Blackboard should not return null for getAllRdias()", BLACKBOARD_FACTORY.getEmpty().getAllRdias(),
 			is(notNullValue()));
 
@@ -239,7 +239,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetAllSeffBranches() {
+	public void getAllSeffBranches() {
 		assertThat("Blackboard should not return null for getAllSeffBranches()",
 			BLACKBOARD_FACTORY.getEmpty().getAllSeffBranches(), is(notNullValue()));
 
@@ -275,7 +275,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetAllSeffLoops() {
+	public void getAllSeffLoops() {
 		assertThat("Blackboard should not return null for getAllSeffLoops()",
 			BLACKBOARD_FACTORY.getEmpty().getAllSeffLoops(), is(notNullValue()));
 
@@ -311,7 +311,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetAllExternalCallParameters() {
+	public void getAllExternalCallParameters() {
 		assertThat("Blackboard should not return null for getAllExternalCallParameters()",
 			BLACKBOARD_FACTORY.getEmpty().getAllExternalCallParameters(), is(notNullValue()));
 
@@ -343,7 +343,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetRdiasToBeMeasured() {
+	public void getRdiasToBeMeasured() {
 
 		assertThat("Blackboard should not return null for getRdiasToBeMeasured()",
 			BLACKBOARD_FACTORY.getEmpty().getRdiasToBeMeasured(), is(notNullValue()));
@@ -374,7 +374,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetSeffBranchesToBeMeasured() {
+	public void getSeffBranchesToBeMeasured() {
 		assertThat("Blackboard should not return null for getSeffBranchesToBeMeasured()",
 			BLACKBOARD_FACTORY.getEmpty().getSeffBranchesToBeMeasured(), is(notNullValue()));
 
@@ -403,7 +403,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetSeffLoopsToBeMeasured() {
+	public void getSeffLoopsToBeMeasured() {
 		assertThat("Blackboard should not return null for getSeffLoopsToBeMeasured()",
 			BLACKBOARD_FACTORY.getEmpty().getSeffLoopsToBeMeasured(), is(notNullValue()));
 
@@ -432,7 +432,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetExternalCallParametersToBeMeasured() {
+	public void getExternalCallParametersToBeMeasured() {
 		assertThat("Blackboard should not return null for getExternalCallParametersToBeMeasured()",
 			BLACKBOARD_FACTORY.getEmpty().getExternalCallParametersToBeMeasured(), is(notNullValue()));
 
@@ -463,7 +463,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredRdias() {
+	public void addToBeMeasuredRdias() {
 		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
@@ -494,7 +494,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredSeffBranches() {
+	public void addToBeMeasuredSeffBranches() {
 		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
@@ -524,7 +524,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredSeffLoops() {
+	public void addToBeMeasuredSeffLoops() {
 		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
@@ -556,7 +556,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredExternalCallParameters() {
+	public void addToBeMeasuredExternalCallParameters() {
 		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
@@ -591,7 +591,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetMeasurementResultsForResourceDemandingInternalAction() {
+	public void getMeasurementResultsForResourceDemandingInternalAction() {
 
 		assertThat(
 			"Blackboard should not return null for valid input parameters in"
@@ -628,7 +628,7 @@ public class BlackboardTest {
 	 *
 	 */
 	@Test
-	public void testGetMeasurementResultsForSeffBranch() {
+	public void getMeasurementResultsForSeffBranch() {
 
 		assertThat(
 			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffBranch)",
@@ -662,7 +662,7 @@ public class BlackboardTest {
 	 *
 	 */
 	@Test
-	public void testGetMeasurementResultsForSeffLoop() {
+	public void getMeasurementResultsForSeffLoop() {
 
 		assertThat("Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffLoop)",
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getMeasurementResultsFor(
@@ -696,7 +696,7 @@ public class BlackboardTest {
 	 *
 	 */
 	@Test
-	public void testGetMeasurementResultsForExternalCallParameter() {
+	public void getMeasurementResultsForExternalCallParameter() {
 
 		assertThat(
 			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(ExternalCallParameter)",
@@ -733,7 +733,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
+	public void addMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
 
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final ResourceDemandMeasurementResult rdiaResult = new ResourceDemandMeasurementResult();
@@ -769,7 +769,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
+	public void addMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
 
 		final BranchDecisionMeasurementResult branchResult = new BranchDecisionMeasurementResult();
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
@@ -805,7 +805,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
+	public void addMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
 
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final LoopRepetitionCountMeasurementResult loopResult = new LoopRepetitionCountMeasurementResult();
@@ -842,7 +842,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
+	public void addMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
 
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final ParameterChangeMeasurementResult parameterResult = new ParameterChangeMeasurementResult();
@@ -879,7 +879,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetProposedExpressionFor() {
+	public void getProposedExpressionFor() {
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
 		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
@@ -933,7 +933,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddProposedExpressionFor() {
+	public void addProposedExpressionFor() {
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllRdias().iterator().next(),
 			EVALUABLE_EXPRESSION_FACTORY.getOne());
@@ -981,7 +981,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetFinalExpressionFor() {
+	public void getFinalExpressionFor() {
 		Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
 		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
@@ -1021,7 +1021,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testSetFinalExpressionFor() {
+	public void setFinalExpressionFor() {
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final Iterator<ResourceDemandingInternalAction> rdias = testBlackboard.getAllRdias().iterator();
 
@@ -1044,7 +1044,7 @@ public class BlackboardTest {
 	 * Test method for {@link Blackboard#getFitnessFunction()}.
 	 */
 	@Test
-	public void testGetFitnessFunction() {
+	public void getFitnessFunction() {
 		assertThat("Blackboard should not return null for getFitnessFunction()",
 			BLACKBOARD_FACTORY.getEmpty().getFitnessFunction(), is(notNullValue()));
 	}
@@ -1062,7 +1062,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testWriteFor() {
+	public void writeFor() {
 		assertThat("It must not be possible to write on the Blackboard for null as a given parameter",
 			() -> BLACKBOARD_FACTORY.getEmpty().writeFor(null, "null"), throwsException(NullPointerException.class));
 
@@ -1085,7 +1085,7 @@ public class BlackboardTest {
 	 * </ul>
 	 */
 	@Test
-	public void testReadFor() {
+	public void readFor() {
 		assertThat("It must not be possible to read on the Blackboard for null as a given parameter",
 			() -> BLACKBOARD_FACTORY.getEmpty().readFor(null), throwsException(NullPointerException.class));
 
