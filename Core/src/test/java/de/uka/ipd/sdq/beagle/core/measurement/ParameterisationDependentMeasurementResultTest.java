@@ -29,7 +29,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * .
 	 */
 	@Test
-	public void testParameterisationDependentMeasurementResult() {
+	public void parameterisationDependentMeasurementResult() {
 		new ParameterisationDependentMeasurementResult() {
 		};
 	}
@@ -40,7 +40,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * .
 	 */
 	@Test
-	public void testParameterisationDependentMeasurementResultParameterisation() {
+	public void parameterisationDependentMeasurementResultParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		new ParameterisationDependentMeasurementResult(parameterisation) {
 		};
@@ -59,7 +59,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * that {@code null} is returned if no parameterisation is defined.
 	 */
 	@Test
-	public void testGetParameterisation() {
+	public void getParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final ParameterisationDependentMeasurementResult measurementResult =
 			new ParameterisationDependentMeasurementResult(parameterisation) {
@@ -86,7 +86,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * the hashCode is the same.
 	 */
 	@Test
-	public void testEqualsObject() {
+	public void equalsObject() {
 		/*
 		 * This simulates parameterisation1.equals(paramertisation2) returns true, while
 		 * parameterisation3.equals(parameterisation4) returns false.
@@ -128,7 +128,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * Test method for {@link ParameterisationDependentMeasurementResult#toString()} .
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final ParameterisationDependentMeasurementResult measurementResult =
 			new ParameterisationDependentMeasurementResult() {

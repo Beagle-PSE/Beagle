@@ -27,7 +27,7 @@ public class ResourceDemandMeasurementResultTest {
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testResourceDemandMeasurementResultDouble() {
+	public void resourceDemandMeasurementResultDouble() {
 		final double value = 2.3;
 		new ResourceDemandMeasurementResult(value);
 		final double value2 = 0;
@@ -50,7 +50,7 @@ public class ResourceDemandMeasurementResultTest {
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testResourceDemandMeasurementResultParameterisationDouble() {
+	public void resourceDemandMeasurementResultParameterisationDouble() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final double value = 2.3;
 		new ResourceDemandMeasurementResult(parameterisation, value);
@@ -72,7 +72,7 @@ public class ResourceDemandMeasurementResultTest {
 	 * value after instantiation does not change the output value.
 	 */
 	@Test
-	public void testGetValue() {
+	public void getValue() {
 		double value = 2.3;
 		final ResourceDemandMeasurementResult result1 = new ResourceDemandMeasurementResult(value);
 		final double value2 = 0;
@@ -87,8 +87,8 @@ public class ResourceDemandMeasurementResultTest {
 		value = 4.5;
 		assertThat("The returned value must not be influenced by a later change.", result1.getValue(),
 			is(not(equalTo(value))));
-		assertThat("The returned value must not be influenced by a later change.", resultWithParameterisation.getValue(),
-			is(not(equalTo(value))));
+		assertThat("The returned value must not be influenced by a later change.",
+			resultWithParameterisation.getValue(), is(not(equalTo(value))));
 
 	}
 

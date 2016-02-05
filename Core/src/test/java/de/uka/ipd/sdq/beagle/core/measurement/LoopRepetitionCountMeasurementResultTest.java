@@ -28,7 +28,7 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testLoopRepetitionCountMeasurementResultInt() {
+	public void loopRepetitionCountMeasurementResultInt() {
 		final int count = 0;
 		new LoopRepetitionCountMeasurementResult(count);
 		final int count1 = 3;
@@ -50,7 +50,7 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testLoopRepetitionCountMeasurementResultParameterisationInt() {
+	public void loopRepetitionCountMeasurementResultParameterisationInt() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int count = 0;
 		new LoopRepetitionCountMeasurementResult(count);
@@ -74,7 +74,7 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * count after instantiation does not change the output value.
 	 */
 	@Test
-	public void testGetCount() {
+	public void getCount() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		int count = 0;
 		final LoopRepetitionCountMeasurementResult result = new LoopRepetitionCountMeasurementResult(count);

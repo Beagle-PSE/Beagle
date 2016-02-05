@@ -27,7 +27,7 @@ public class BranchDecisionMeasurementResultTest {
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testBranchDecisionMeasurementResultInt() {
+	public void branchDecisionMeasurementResultInt() {
 		final int branchIndex = 0;
 		new BranchDecisionMeasurementResult(branchIndex);
 		final int branchIndex1 = 3;
@@ -49,7 +49,7 @@ public class BranchDecisionMeasurementResultTest {
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void testBranchDecisionMeasurementResultParameterisationInt() {
+	public void branchDecisionMeasurementResultParameterisationInt() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int branchIndex = 0;
 		new BranchDecisionMeasurementResult(branchIndex);
@@ -73,7 +73,7 @@ public class BranchDecisionMeasurementResultTest {
 	 * index after instantiation does not change the output value.
 	 */
 	@Test
-	public void testGetBranchIndex() {
+	public void getBranchIndex() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		int branchIndex = 0;
 		final BranchDecisionMeasurementResult result = new BranchDecisionMeasurementResult(branchIndex);
