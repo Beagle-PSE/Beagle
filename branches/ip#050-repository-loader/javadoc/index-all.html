@@ -575,6 +575,11 @@
 <dd>
 <div class="block">Creates a parameter of an external call.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#extractBehaviourAndAddToSet-org.eclipse.emf.ecore.EObject-">extractBehaviourAndAddToSet(EObject)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositorySeffExtractor</a></dt>
+<dd>
+<div class="block">Extracts the specified SEFF-elements <code>InternalActionImpl</code>,
+ <code>ExternalCallActionImpl</code>, <code>BranchActionImpl</code> and <code>LoopAction</code>.</div>
+</dd>
 </dl>
 <a name="I:F">
 <!--   -->
@@ -712,12 +717,22 @@
 <div class="block">Builds a new blackboard and writes the Beagle objects representing all found
  <em>PCM elements</em> to it.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-">getBlackboardForAllElements(RepositoryImpl)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
+<dd>
+<div class="block">Builds a new blackboard and writes the Beagle objects representing all found
+ <em>PCM elements</em> to it.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#getBlackboardForIds-java.util.Collection-">getBlackboardForIds(Collection&lt;String&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
 <dd>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
  elements</em> related to <code>ids</code> to it.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#getBlackboardForIds-java.lang.String...-">getBlackboardForIds(String...)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
+<dd>
+<div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
+ elements</em> related to <code>ids</code> to it.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-">getBlackboardForIds(RepositoryImpl, Collection&lt;String&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
 <dd>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
  elements</em> related to <code>ids</code> to it.</div>
@@ -1481,6 +1496,21 @@
 <dd>
 <div class="block">Creates a factory that will search the provided PCM files for <em>PCM
  elements</em>.</div>
+</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmRepositoryExtractor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">Extracting a given Pcm repository.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#PcmRepositoryExtractor--">PcmRepositoryExtractor()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmRepositorySeffExtractor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">Extractor class for SEFFElements.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-">PcmRepositorySeffExtractor(Set&lt;SeffLoop&gt;, Set&lt;SeffBranch&gt;, Set&lt;ResourceDemandingInternalAction&gt;, Set&lt;ExternalCallParameter&gt;)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositorySeffExtractor</a></dt>
+<dd>
+<div class="block">Constructor needs access to the real sets (no copy!), manipulating them by adding
+ all extracted SeffElements.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriter.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmRepositoryWriter</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
 <dd>
