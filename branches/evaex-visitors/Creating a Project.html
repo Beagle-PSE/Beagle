@@ -41,11 +41,11 @@
         <ul> 
             <li> <p>The <code>MANIFEST.MF</code> of Eclipse plugins belongs to <code>src/main/resources/META-INF/MANIFEST.MF</code>. To point PDE to it, a new file containing the line</p> <pre><code>BUNDLE_ROOT_PATH=src/main/resources
 </code></pre> must be created in <code>.settings/org.eclipse.pde.core.prefs</code>.</li> 
-            <li> <p>The <code>build.properties</code> belongs to <code>src/main/resources/build.properties</code>. Its paths must be adapted accordingly, a default is:</p> <pre><code>source.. = ../java/
+            <li><code>plugin.xml</code> belongs to <code>src/main/resources/plugin.xml</code>.</li> 
+            <li> <p><code>build.properties</code> belongs to <code>src/main/resources/build.properties</code>. Its paths must be adapted accordingly, a default is:</p> <pre><code>source.. = ../java/
 output.. = ../../../bin/
 bin.includes = META-INF/
 </code></pre></li> 
-            <li>All dependencies must be defined exclusively in <code>src/main/resources/META-INF/MANIFEST.MF</code>.</li> 
         </ul>  
     </body>
 </html>
