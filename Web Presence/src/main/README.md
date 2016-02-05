@@ -5,7 +5,7 @@ Source files of Beagle’s web presence.
 ```
 gradle web
 ```
-will build the web presence into `build/web`. Note that the task copies in artefacts built previously but does not build these artefacts on its own. Run `gradle build web` to generate the web presence and generate all artefacts to be published beforehand.
+will build the web presence into `Web Presence/build`. Note that the task copies in artefacts built previously but does not build these artefacts on its own. Run `gradle build web` to generate the web presence and generate all artefacts to be published beforehand.
 
 ## File Overview
 
@@ -26,3 +26,6 @@ Contains the handlebars partials available to templates. All partials must have 
 
 ### `src/web/css`
 Css files for the web presence. Only plain CSS is supported. Usage of CSS 3 is encouraged. If used features are essential to the layout, they should have a support in Germany that’s >= 90%, as indicated by [caniuse.com](http://caniuse.com/).
+
+### `src/assets`
+Assets (static files) for the web presence. The folder will be copied into the web presence without modification.
