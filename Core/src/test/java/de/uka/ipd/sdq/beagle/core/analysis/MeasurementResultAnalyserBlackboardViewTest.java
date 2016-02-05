@@ -119,7 +119,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetAllRdias() {
+	public void getAllRdias() {
 		final Set<ResourceDemandingInternalAction> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getAllRdias()).willReturn(testInstance);
 
@@ -140,7 +140,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetAllSeffBranches() {
+	public void getAllSeffBranches() {
 		final Set<SeffBranch> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getAllSeffBranches()).willReturn(testInstance);
 
@@ -161,7 +161,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetAllSeffLoops() {
+	public void getAllSeffLoops() {
 		final Set<SeffLoop> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getAllSeffLoops()).willReturn(testInstance);
 
@@ -183,7 +183,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetAllExternalCallParameters() {
+	public void getAllExternalCallParameters() {
 		final Set<ExternalCallParameter> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getAllExternalCallParameters()).willReturn(testInstance);
 
@@ -204,7 +204,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredRdias() {
+	public void addToBeMeasuredRdias() {
 		final Set<ResourceDemandingInternalAction> addedRdias = RDIA_FACTORY.getAllAsSet();
 
 		this.testedView.addToBeMeasuredRdias(addedRdias);
@@ -223,7 +223,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredSeffBranches() {
+	public void addToBeMeasuredSeffBranches() {
 		final Set<SeffBranch> addedSeffBranches = SEFF_BRANCH_FACTORY.getAllAsSet();
 
 		this.testedView.addToBeMeasuredSeffBranches(addedSeffBranches);
@@ -242,7 +242,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredSeffLoops() {
+	public void addToBeMeasuredSeffLoops() {
 		final Set<SeffLoop> addedSeffLoops = SEFF_LOOP_FACTORY.getAllAsSet();
 
 		this.testedView.addToBeMeasuredSeffLoops(addedSeffLoops);
@@ -261,7 +261,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddToBeMeasuredExternalCallParameters() {
+	public void addToBeMeasuredExternalCallParameters() {
 		final Set<ExternalCallParameter> addedExternalCallParameter = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 
 		this.testedView.addToBeMeasuredExternalCallParameters(addedExternalCallParameter);
@@ -280,7 +280,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetMeasurementResultsForResourceDemandingInternalAction() {
+	public void getMeasurementResultsForResourceDemandingInternalAction() {
 		final Set<ResourceDemandMeasurementResult> testInstance = new HashSet<>();
 		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
 		given(this.mockedBlackboard.getMeasurementResultsFor(rdia)).willReturn(testInstance);
@@ -302,7 +302,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetMeasurementResultsForSeffBranch() {
+	public void getMeasurementResultsForSeffBranch() {
 		final Set<BranchDecisionMeasurementResult> testInstance = new HashSet<>();
 		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
 		given(this.mockedBlackboard.getMeasurementResultsFor(seffBranch)).willReturn(testInstance);
@@ -324,7 +324,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetMeasurementResultsForSeffLoop() {
+	public void getMeasurementResultsForSeffLoop() {
 		final Set<LoopRepetitionCountMeasurementResult> testInstance = new HashSet<>();
 		final SeffLoop seffLoop = SEFF_LOOP_FACTORY.getOne();
 		given(this.mockedBlackboard.getMeasurementResultsFor(seffLoop)).willReturn(testInstance);
@@ -346,7 +346,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetMeasurementResultsForExternalCallParameter() {
+	public void getMeasurementResultsForExternalCallParameter() {
 		final Set<ParameterChangeMeasurementResult> testInstance = new HashSet<>();
 		final ExternalCallParameter externalCallParameter = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
 		given(this.mockedBlackboard.getMeasurementResultsFor(externalCallParameter)).willReturn(testInstance);
@@ -369,7 +369,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddProposedExpressionFor() {
+	public void addProposedExpressionFor() {
 
 		final MeasurableSeffElement seffElement = SEFF_BRANCH_FACTORY.getOne();
 		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
@@ -390,7 +390,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetFitnessFunction() {
+	public void getFitnessFunction() {
 		final EvaluableExpressionFitnessFunction fitnessFunction = FITNESS_FUNCTION_FACTORY.getOne();
 		given(this.mockedBlackboard.getFitnessFunction()).willReturn(fitnessFunction);
 
@@ -400,12 +400,12 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	}
 
 	@Test
-	public void testReadFor() {
+	public void readFor() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testWriteFor() {
+	public void writeFor() {
 		fail("Not yet implemented");
 	}
 
@@ -420,7 +420,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testHashCode() {
+	public void hashCodeT() {
 		// Creating equal view to the existing one
 		final MeasurementResultAnalyserBlackboardView secondView =
 			new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
@@ -443,7 +443,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testEquals() {
+	public void equalsT() {
 		// Creating equal view to the existing one
 		final MeasurementResultAnalyserBlackboardView secondView =
 			new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
@@ -475,7 +475,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final String standardRepresentation = this.testedView.getClass().getName() + "@" + this.testedView.hashCode();
 		assertThat("toString should be overwritten by a meaningful representation of this object!",
 			standardRepresentation, not(equalTo(this.testedView.toString())));

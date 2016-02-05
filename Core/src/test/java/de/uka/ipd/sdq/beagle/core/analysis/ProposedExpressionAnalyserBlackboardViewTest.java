@@ -12,97 +12,97 @@ public class ProposedExpressionAnalyserBlackboardViewTest {
 	}
 
 	@Test
-	public void testGetAllRdias() {
+	public void getAllRdias() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetAllSeffBranches() {
+	public void getAllSeffBranches() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetAllSeffLoops() {
+	public void getAllSeffLoops() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetAllExternalCallParameters() {
+	public void getAllExternalCallParameters() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddToBeMeasuredRdias() {
+	public void addToBeMeasuredRdias() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddToBeMeasuredSeffBranches() {
+	public void addToBeMeasuredSeffBranches() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddToBeMeasuredSeffLoops() {
+	public void addToBeMeasuredSeffLoops() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddToBeMeasuredExternalCallParameters() {
+	public void addToBeMeasuredExternalCallParameters() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetMeasurementResultsForResourceDemandingInternalAction() {
+	public void getMeasurementResultsForResourceDemandingInternalAction() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetMeasurementResultsForSeffBranch() {
+	public void getMeasurementResultsForSeffBranch() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetMeasurementResultsForSeffLoop() {
+	public void getMeasurementResultsForSeffLoop() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetMeasurementResultsForExternalCallParameter() {
+	public void getMeasurementResultsForExternalCallParameter() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetProposedExpressionFor() {
+	public void getProposedExpressionFor() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetFitnessFunction() {
+	public void getFitnessFunction() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testReadFor() {
+	public void readFor() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testWriteFor() {
+	public void writeFor() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testHashCode() {
+	public void hashCodeT() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testEquals() {
+	public void equalsT() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		fail("Not yet implemented");
 	}
 
