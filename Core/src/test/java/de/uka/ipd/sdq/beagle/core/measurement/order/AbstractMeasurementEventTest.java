@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.measurement.order;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -36,21 +36,21 @@ public class AbstractMeasurementEventTest {
 
 				@Override
 				public void receive(final MeasurementEventVisitor visitor) {
-					
+
 				}
 			};
 		}
-		
+
 		ThrowingMethod method = () -> {
 			new AbstractMeasurementEvent(null) {
-				
+
 				@Override
 				public void receive(final MeasurementEventVisitor visitor) {
-					
+
 				}
 			};
 		};
-		
+
 		assertThat("Code Section must not be null.", method, throwsException(NullPointerException.class));
 	}
 
@@ -59,7 +59,36 @@ public class AbstractMeasurementEventTest {
 	 */
 	@Test
 	public void getCodeSection() {
-		fail("Not yet implemented");
+		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
+		for (CodeSection codeSection : codeSections) {
+			AbstractMeasurementEvent event = new AbstractMeasurementEvent(codeSection) {
+
+				@Override
+				public void receive(final MeasurementEventVisitor visitor) {
+
+				}
+			};
+
+			assertThat(event.getCodeSection(), is(codeSection));
+		}
+
+		CodeSection codeSection = CODE_SECTION_FACTORY.getOne();
+		final CodeSection copiedSection = codeSection;
+		AbstractMeasurementEvent event = new AbstractMeasurementEvent(codeSection) {
+
+			@Override
+			public void receive(final MeasurementEventVisitor visitor) {
+
+			}
+		};
+		int index = 0;
+		while (codeSection.equals(codeSections[index])) {
+			index++;
+		}
+		codeSection = codeSections[index];
+		assertThat("Changing code section afterwards must not take effect on returned code section",
+			event.getCodeSection(), is(copiedSection));
+
 	}
 
 }
