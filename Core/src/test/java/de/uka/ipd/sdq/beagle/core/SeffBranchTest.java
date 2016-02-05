@@ -42,7 +42,7 @@ public class SeffBranchTest {
 	 * branch does not affect the Branch.
 	 */
 	@Test
-	public void testConstructor() {
+	public void constructor() {
 		final Set<CodeSection> noCodeSections = new HashSet<CodeSection>();
 		ThrowingMethod method = () -> {
 			new SeffBranch(noCodeSections);
@@ -92,7 +92,7 @@ public class SeffBranchTest {
 	 * {@link CodeSectionFactory}.
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		assertThat(new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet()), hasDefaultEqualsProperties());
 		final Set<CodeSection> codeSectionsA = new HashSet<>();
 		final Set<CodeSection> codeSectionsB = new HashSet<>();
@@ -127,7 +127,7 @@ public class SeffBranchTest {
 	 * Test method for {@link SeffBranch#getBranches()}.
 	 */
 	@Test
-	public void testGetBranches() {
+	public void getBranches() {
 		final Set<CodeSection> codeSectionSet = CODE_SECTION_FACTORY.getAllAsSet();
 		final CodeSection testSection = CODE_SECTION_FACTORY.getOne();
 		codeSectionSet.remove(testSection);
@@ -145,7 +145,7 @@ public class SeffBranchTest {
 	 * Test method for {@link SeffBranch#toString()}.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final SeffBranch branch = new SeffBranch(codeSections);
 
