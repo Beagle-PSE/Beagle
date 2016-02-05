@@ -5,7 +5,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
