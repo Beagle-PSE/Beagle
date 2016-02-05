@@ -27,40 +27,23 @@ import java.util.Collection;
  * differs from the initial one in some details.
  *
  * <p>This visitor follows the same traversal strategy as
- * {@link RecursiveEvaluableExpressionVisitor}. However, implementors may call
- * {@link #replaceCurrentExpressionWith(EvaluableExpression)} in any hook. This will
- * replace the currently visited expression and continue traversal in the replacement.
- * Replacing an expression will lead to a replacement of all expressions that have the
- * replaced expression as an inner expression. These “parent” expressions will be replaced
- * by a new expression of the same type containing the same inner expressions except for
- * the ones that were initially replaced.
- *
- * <p>This class offers multiple hooks for implementors. All hooks are offered for each
- * implementation of {@linkplain EvaluableExpression} as well as for a general
- * {@link EvaluableExpression}, called for all implementations. The general hook will
- * always be called before the specific one. Implementors do not have to call the
- * {@code super} method on hooks. The following hooks are offered:
- *
- * <ul>
- *
- * <li>{@code at}: called when visiting an expression, before visiting its inner
- * expressions.
- *
- * <li>{@code after}: called when leaving an expression, after visiting its inner
- * expressions.
- *
- * </ul>
+ * {@link RecursiveEvaluableExpressionVisitor}. This means it will perform a depth-first
+ * traversal on the tree formed by the expression passed to {@link #modifyRecursively}.
+ * Implementors may call {@link #replaceCurrentExpressionWith(EvaluableExpression)} in any
+ * hook. This will replace the currently visited expression and continue traversal in the
+ * replacement. Replacing an expression will lead to a replacement of all expressions that
+ * have the replaced expression as an inner expression. These “parent” expressions will be
+ * replaced by a new expression of the same type containing the same inner expressions
+ * except for the ones that were initially replaced.
  *
  * <p>This visitor will start at the expression passed to
- * {@link #modifyRecursively(EvaluableExpression)} and call the general {@code at} hook
- * and the specific {@code at} hook. Afterwards, it will recursively visit all inner
- * expressions and then call the general {@code after} and the specific {@code after}
- * hook. It thus realises a depth-first traversal of the tree formed by each expression.
- * If {@link #stopTraversal()} is called, the traversal will no longer visit inner
- * expressions. Instead, it will go “up” the tree again, whilst calling the {@code after}
- * hooks, until it reached the initial expression and then terminate. Given that no
- * expression is thrown,the traversal of one expression tree that only contains pairwise
- * different inner expressions has these properties:
+ * {@link #modifyRecursively(EvaluableExpression)} and call the according {@code at} hook.
+ * Afterwards, it will recursively visit all inner expressions and then call the
+ * {@code after} hook. If {@link #stopTraversal()} is called, the traversal will no longer
+ * visit inner expressions. Instead, it will go “up” the tree again, whilst calling the
+ * {@code after} hooks, until it reached the initial expression and then terminate. Given
+ * that no expression is thrown,the traversal of one expression tree that only contains
+ * pairwise different inner expressions has these properties:
  *
  * <ul>
  *
@@ -89,8 +72,9 @@ import java.util.Collection;
  * on how many expression trees can be visited by an instance of this class.
  *
  * @author Joshua Gleitze
+ * @see ExpressionTreeWalker
  */
-public abstract class ModifyingEvaluableExpressionVisitor {
+public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTreeWalker {
 
 	/**
 	 * The momentarily visited expression. It can change multiple times at the same tree
@@ -149,7 +133,7 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 		this.count++;
 
 		// call at-hooks
-		this.atExpression(this.currentExpression);
+		this.atOther(this.currentExpression);
 		this.currentExpression.receive(this.atHookHandler);
 
 		// visit inner expressions
@@ -159,7 +143,7 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 		this.lastInnerExpressionIterator = oldInnerExpressionIterator;
 
 		// call after-hooks
-		this.afterExpression(this.currentExpression);
+		this.afterOther(this.currentExpression);
 		this.currentExpression.receive(this.afterHookHandler);
 		this.depth--;
 	}
@@ -220,8 +204,8 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 	 * value is only reset when starting a new visit a new expression, it can thus be used
 	 * to determine how many expressions were visited after a traversal.
 	 *
-	 * @return The amount of called general {@code at} hooks since the last call of
-	 *         {@link #atFirstExpression}.
+	 * @return The amount of visited expressions since the last call to
+	 *         {@link #modifyRecursively(EvaluableExpression)}.
 	 */
 	protected int getVisitedCount() {
 		return this.count;
@@ -266,312 +250,6 @@ public abstract class ModifyingEvaluableExpressionVisitor {
 	 */
 	protected boolean willTraverse() {
 		return this.doTraverse;
-	}
-
-	/**
-	 * Called when visiting any {@link EvaluableExpression}. Will be called before its
-	 * inner expressions will be visited and before it specific {@code at*} hook will be
-	 * called.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atExpression(final EvaluableExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting an expression and the amount of ever called {@code after}
-	 * hooks equals the amount of called {@code at} hooks. {@code expression} can thus be
-	 * regarded as the “root” of the momentary traversed expression tree. This hook will
-	 * be called before the general and specific hook will be called for this expression.
-	 *
-	 * @param expression The first expression of the expression tree that will now be
-	 *            traversed.
-	 */
-	protected void atFirstExpression(final EvaluableExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting an {@link AdditionExpression}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atAddition(final AdditionExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link MultiplicationExpression}, before its inner
-	 * expressions will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atMultiplication(final MultiplicationExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting an {@link EvaluableVariable}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atVariable(final EvaluableVariable expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link ComparisonExpression}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atComparison(final ComparisonExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link ConstantExpression}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atConstant(final ConstantExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link DivisionExpression}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atDivision(final DivisionExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting an {@link ExponentationExpression}, before its inner
-	 * expressions will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atExponentation(final ExponentationExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting an {@link ExponentialFunctionExpression}, before its inner
-	 * expressions will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atExponentialFunction(final ExponentialFunctionExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting an {@link IfThenElseExpression}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atIfThenElse(final IfThenElseExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link LogarithmExpression}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atLogarithm(final LogarithmExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link NaturalLogarithmExpression}, before its inner
-	 * expressions will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atNaturalLogarithm(final NaturalLogarithmExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link SineExpression}, before its inner expressions will be
-	 * visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atSine(final SineExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when visiting a {@link SubtractionExpression}, before its inner expressions
-	 * will be visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void atSubstraction(final SubtractionExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving any {@link EvaluableExpression}. Will be called after its inner
-	 * expressions were visited and before it specific {@code after*} hook will be called.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterExpression(final EvaluableExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving an expression and the (amount of ever called {@code after} - 1)
-	 * hooks equals the amount of called {@code at} hooks. {@code expression} can thus be
-	 * regarded as the “root” of the momentary traversed expression tree. This hook will
-	 * be called after the general and specific hook were called for this expression.
-	 *
-	 * @param expression The first expression of the expression tree that was traversed.
-	 */
-	protected void afterFirstExpression(final EvaluableExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving an {@link AdditionExpression}, after its inner expressions were
-	 * visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterAddition(final AdditionExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link MultiplicationExpression}, after its inner expressions
-	 * were visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterMultiplication(final MultiplicationExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving an {@link EvaluableVariable}, after its inner expressions were
-	 * visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterVariable(final EvaluableVariable expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link ComparisonExpression}, after its inner expressions
-	 * were visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterComparison(final ComparisonExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link ConstantExpression}, after its inner expressions were
-	 * visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterConstant(final ConstantExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link DivisionExpression}, after its inner expressions were
-	 * visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterDivision(final DivisionExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving an {@link ExponentationExpression}, after its inner expressions
-	 * were visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterExponentation(final ExponentationExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving an {@link ExponentialFunctionExpression}, after its inner
-	 * expressions were visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterExponentialFunction(final ExponentialFunctionExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving an {@link IfThenElseExpression}, after its inner expressions
-	 * were visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterIfThenElse(final IfThenElseExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link LogarithmExpression}, after its inner expressions were
-	 * visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterLogarithm(final LogarithmExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link NaturalLogarithmExpression}, after its inner
-	 * expressions were visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterNaturalLogarithm(final NaturalLogarithmExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link SineExpression}, after its inner expressions will be
-	 * visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterSine(final SineExpression expression) {
-		// may be implemented by implementor.
-	}
-
-	/**
-	 * Called when leaving a {@link SubtractionExpression}, after its inner expressions
-	 * were visited.
-	 *
-	 * @param expression The momentary visited expression.
-	 */
-	protected void afterSubstraction(final SubtractionExpression expression) {
-		// may be implemented by implementor.
 	}
 
 	/**
