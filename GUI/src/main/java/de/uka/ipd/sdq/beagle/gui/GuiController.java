@@ -80,9 +80,11 @@ public class GuiController {
 	 * 
 	 * @param components The default components to be measured.
 	 * @param internalActions The default internal actions to be measured.
+	 * @param repositoryFile The repository file to be analysed or {@code null} if there
+	 *            is none.
 	 */
 	public GuiController(final List<BasicComponent> components, final List<InternalAction> internalActions,
-		File repositoryFile) {
+		final File repositoryFile) {
 		this.userConfiguration = new UserConfiguration(components, internalActions, repositoryFile);
 		this.state = GuiControllerState.unopened;
 		this.shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();

@@ -52,7 +52,7 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		// final List<File> toAnalyseIds = new ArrayList<>();
 		// toAnalyseIds.add(new File(clickedFilePath.toString()));
 
-		File fileToAnalyse = new File(clickedFilePath.toString());
+		final File fileToAnalyse = new File(clickedFilePath.toString());
 
 		// create a new GUI and open it
 		final GuiController guiController =

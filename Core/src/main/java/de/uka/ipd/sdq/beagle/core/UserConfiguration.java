@@ -55,8 +55,10 @@ public class UserConfiguration {
 	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
-	 * @param components The default components to be measured.
-	 * @param internalActions The default internal actions to be measured.
+	 * @param components The default components to be analysed.
+	 * @param internalActions The default internal actions to be analysed.
+	 * @param repositoryFile The repository file to be analysed or {@code null} if there
+	 *            is none.
 	 */
 	public UserConfiguration(final List<BasicComponent> components, final List<InternalAction> internalActions,
 		final File repositoryFile) {
