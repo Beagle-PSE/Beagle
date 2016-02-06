@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -121,6 +121,21 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></h3>
+<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html#FALSE">FALSE</a></code></li>
+</ul>
+</li>
+</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -133,7 +148,10 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#ExponentationExpression--">ExponentationExpression</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#ExponentationExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">ExponentationExpression</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;base,
+                       <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;exponent)</code>
+<div class="block">Build an expression which returns the base raised to the power of the exponent.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -151,41 +169,41 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;object)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">evaluate</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a>&nbsp;variableAssignments)</code>
 <div class="block">Calculates this expression’s value for the given <code>variableAssignments</code>.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#getBase--">getBase</a></span>()</code>
 <div class="block">Get the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is set as base.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#getExponent--">getExponent</a></span>()</code>
 <div class="block">Get the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is set as exponent.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">receive</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressionVisitor</a>&nbsp;visitor)</code>
 <div class="block">Calls the appropriate overload of <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression-"><code>EvaluableExpressionVisitor.visit(de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)</code></a> on
  <code>visitor</code>.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#setBase-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setBase</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;expression)</code>
-<div class="block">Set an <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as base.</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#setExponent-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setExponent</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;expression)</code>
-<div class="block">Set an <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as exponent.</div>
-</td>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -193,7 +211,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -209,13 +227,22 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="ExponentationExpression--">
+<a name="ExponentationExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ExponentationExpression</h4>
-<pre>public&nbsp;ExponentationExpression()</pre>
+<pre>public&nbsp;ExponentationExpression(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;base,
+                               <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;exponent)</pre>
+<div class="block">Build an expression which returns the base raised to the power of the exponent.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>exponent</code> - The expression which is the exponent of this expression. Must not
+            be <code>null</code>.</dd>
+<dd><code>base</code> - The expression which is the base of this expression. Must not be
+            <code>null</code>.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -226,34 +253,6 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="setExponent-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setExponent</h4>
-<pre>public&nbsp;void&nbsp;setExponent(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;expression)</pre>
-<div class="block">Set an <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as exponent.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>expression</code> - This expression's exponent.</dd>
-</dl>
-</li>
-</ul>
-<a name="setBase-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setBase</h4>
-<pre>public&nbsp;void&nbsp;setBase(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;expression)</pre>
-<div class="block">Set an <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as base.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>expression</code> - This expression's base.</dd>
-</dl>
-</li>
-</ul>
 <a name="getExponent--">
 <!--   -->
 </a>
@@ -303,7 +302,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <a name="evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>evaluate</h4>
 <pre>public&nbsp;double&nbsp;evaluate(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a>&nbsp;variableAssignments)</pre>
@@ -317,6 +316,45 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
             <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariable</code></a>s contained in this expression.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value for the given assignments.</dd>
+</dl>
+</li>
+</ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="equals-java.lang.Object-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;object)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="hashCode--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>

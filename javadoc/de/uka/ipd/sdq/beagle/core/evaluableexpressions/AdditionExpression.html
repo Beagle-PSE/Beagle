@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -121,6 +121,21 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></h3>
+<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html#FALSE">FALSE</a></code></li>
+</ul>
+</li>
+</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -160,17 +175,35 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;object)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">evaluate</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a>&nbsp;variableAssignments)</code>
 <div class="block">Calculates this expression’s value for the given <code>variableAssignments</code>.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.Collection&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#getSummands--">getSummands</a></span>()</code>
+<div class="block">Get all evaluable expressions which are forming this expression's sum.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">receive</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressionVisitor</a>&nbsp;visitor)</code>
 <div class="block">Calls the appropriate overload of <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression-"><code>EvaluableExpressionVisitor.visit(de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)</code></a> on
  <code>visitor</code>.</div>
 </td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -178,7 +211,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -234,6 +267,21 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getSummands--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSummands</h4>
+<pre>public&nbsp;java.util.Collection&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&gt;&nbsp;getSummands()</pre>
+<div class="block">Get all evaluable expressions which are forming this expression's sum. There have
+ to be at least two.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A collection of all summands of this addition expression.</dd>
+</dl>
+</li>
+</ul>
 <a name="receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">
 <!--   -->
 </a>
@@ -255,7 +303,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <a name="evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>evaluate</h4>
 <pre>public&nbsp;double&nbsp;evaluate(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a>&nbsp;variableAssignments)</pre>
@@ -269,6 +317,45 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
             <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariable</code></a>s contained in this expression.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value for the given assignments.</dd>
+</dl>
+</li>
+</ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="equals-java.lang.Object-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;object)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="hashCode--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
