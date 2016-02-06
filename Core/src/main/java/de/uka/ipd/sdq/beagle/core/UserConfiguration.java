@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -40,6 +41,11 @@ public class UserConfiguration {
 	private List<InternalAction> internalActions;
 
 	/**
+	 * The repository file or {@code null} if there is none.
+	 */
+	private File repositoryFile;
+
+	/**
 	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
 	 * seconds]
 	 */
@@ -52,9 +58,11 @@ public class UserConfiguration {
 	 * @param components The default components to be measured.
 	 * @param internalActions The default internal actions to be measured.
 	 */
-	public UserConfiguration(final List<BasicComponent> components, final List<InternalAction> internalActions) {
+	public UserConfiguration(final List<BasicComponent> components, final List<InternalAction> internalActions,
+		final File repositoryFile) {
 		this.components = components;
 		this.internalActions = internalActions;
+		this.repositoryFile = repositoryFile;
 		this.timeout = DEFAULT_TIMEOUT;
 	}
 
@@ -114,6 +122,15 @@ public class UserConfiguration {
 	 */
 	public void setTimeout(final int timeout) {
 		this.timeout = timeout;
+	}
+
+	/**
+	 * Returns the repository file or {@code nulll} if there is none.
+	 *
+	 * @return the repository file or {@code nulll} if there is none.
+	 */
+	public File getRepositoryFile() {
+		return this.repositoryFile;
 	}
 
 }
