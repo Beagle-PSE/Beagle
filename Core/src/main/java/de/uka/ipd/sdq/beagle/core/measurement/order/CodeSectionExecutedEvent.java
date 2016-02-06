@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.measurement.order;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 
@@ -16,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.CodeSection;
  * not completely execute it.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 public class CodeSectionExecutedEvent extends AbstractMeasurementEvent {
 
@@ -26,6 +21,11 @@ public class CodeSectionExecutedEvent extends AbstractMeasurementEvent {
 	 */
 	public CodeSectionExecutedEvent(final CodeSection codeSection) {
 		super(codeSection);
+	}
+
+	@Override
+	public void receive(final MeasurementEventVisitor visitor) {
+		visitor.visit(this);
 	}
 
 }
