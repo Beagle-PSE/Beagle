@@ -74,6 +74,10 @@ public class SelectionOverviewWizardPage extends WizardPage {
 
 		final LinkedList<String> elements = new LinkedList<String>();
 
+		if (this.userConfiguration.getRepositoryFile() != null) {
+			elements.add("Repository: " + this.userConfiguration.getRepositoryFile().getAbsolutePath());
+		}
+
 		for (BasicComponent component : this.userConfiguration.getComponents()) {
 			elements.add("Component: " + component.getEntityName());
 		}
