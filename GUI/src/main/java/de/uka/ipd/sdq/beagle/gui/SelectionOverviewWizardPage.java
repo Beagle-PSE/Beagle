@@ -74,16 +74,16 @@ public class SelectionOverviewWizardPage extends WizardPage {
 
 		final LinkedList<String> elements = new LinkedList<String>();
 
-		if (this.userConfiguration.getRepositoryFile() != null) {
+		if ((this.userConfiguration.getComponents() != null) && (this.userConfiguration.getInternalActions() != null)) {
+			for (BasicComponent component : this.userConfiguration.getComponents()) {
+				elements.add("Component: " + component.getEntityName());
+			}
+
+			for (InternalAction internalAction : this.userConfiguration.getInternalActions()) {
+				elements.add("Internal Action: " + internalAction.getEntityName());
+			}
+		} else {
 			elements.add("Repository: " + this.userConfiguration.getRepositoryFile().getAbsolutePath());
-		}
-
-		for (BasicComponent component : this.userConfiguration.getComponents()) {
-			elements.add("Component: " + component.getEntityName());
-		}
-
-		for (InternalAction internalAction : this.userConfiguration.getInternalActions()) {
-			elements.add("Internal Action: " + internalAction.getEntityName());
 		}
 
 		for (String element : elements) {
