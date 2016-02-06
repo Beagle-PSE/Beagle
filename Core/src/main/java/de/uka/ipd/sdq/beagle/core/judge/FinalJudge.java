@@ -106,15 +106,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
 		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
 
-		return this.evaluateRelativeImprovement();
-
-		this.containsElementWithSufficientFitness(seffBranches);
-
-		if (this.numberOfGenerationsWithoutSignificantImprovementTooHigh()) {
-			return true;
-		}
-
-		return false;
+		return !this.evaluateRelativeImprovement();
 	}
 
 	/**
@@ -194,6 +186,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         sufficient fitness to stop evolution of evaluable expressions;
 	 *         {@code false} otherwise.
 	 */
+	@SuppressWarnings("unused")
+	// May be needed to make future adaptations of this class
+	// easier.
 	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
 		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements) {
 		Validate.notNull(measurableSeffElements);
@@ -237,19 +232,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final long currentTime = System.currentTimeMillis();
 
 		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
-	}
-
-	/**
-	 * Determines whether the number of generations passed without significant improvement
-	 * is too high.
-	 *
-	 * @return {@code true} if and only if the number of generations passed without
-	 *         significant improvement (see {@link #SIGNIFICANT_IMPROVEMENT}) is greater
-	 *         than {@link #MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT}.
-	 */
-	private boolean numberOfGenerationsWithoutSignificantImprovementTooHigh() {
-		return this.data
-			.getNumberOfGenerationsWithoutSignificantImprovementPassed() > MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
 	}
 
 	/**
