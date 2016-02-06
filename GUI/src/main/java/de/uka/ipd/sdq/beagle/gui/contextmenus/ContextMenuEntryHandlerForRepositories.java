@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
+import de.uka.ipd.sdq.beagle.gui.GuiController;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -8,9 +10,11 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.seff.InternalAction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.util.LinkedList;
 
 /**
  * Handles the context menu entries, that start an analysis of the whole project.
@@ -45,11 +49,15 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		final IPath clickedFilePath = clickedFile.getFullPath();
 		assert clickedFilePath.getFileExtension().matches(FILE_EXTENSION_MATCHER);
 
+		// final List<File> toAnalyseIds = new ArrayList<>();
+		// toAnalyseIds.add(new File(clickedFilePath.toString()));
+
+		File fileToAnalyse = new File(clickedFilePath.toString());
+
 		// create a new GUI and open it
-		final List<String> toAnalyseIds = new ArrayList<>();
-		toAnalyseIds.add(SPECIAL_ID_COMPLETE_REPOSITORY + " $" + clickedFilePath.toString());
-		// final GuiController guiController = new GuiController(toAnalyseIds);
-		// guiController.open();
+		final GuiController guiController =
+			new GuiController(new LinkedList<BasicComponent>(), new LinkedList<InternalAction>(), fileToAnalyse);
+		guiController.open();
 		return null;
 	}
 
