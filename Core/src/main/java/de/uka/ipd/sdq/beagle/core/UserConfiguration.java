@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.Validate;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
@@ -31,17 +32,19 @@ public class UserConfiguration {
 	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
 	/**
-	 * All components to measure.
+	 * All components to measure or {@code null} to indicate that everything in
+	 * {@code repositoryFile} should be analysed.
 	 */
 	private List<BasicComponent> components;
 
 	/**
-	 * All internal actions to measure.
+	 * All internal actions to measure or {@code null} to indicate that everything in
+	 * {@code repositoryFile} should be analysed.
 	 */
 	private List<InternalAction> internalActions;
 
 	/**
-	 * The repository file or {@code null} if there is none.
+	 * The repository file.
 	 */
 	private File repositoryFile;
 
@@ -55,13 +58,16 @@ public class UserConfiguration {
 	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
-	 * @param components The default components to be analysed.
-	 * @param internalActions The default internal actions to be analysed.
-	 * @param repositoryFile The repository file to be analysed or {@code null} if there
-	 *            is none.
+	 * @param components The default components to be measured or {@code null} to indicate
+	 *            that everything in {@code repositoryFile} should be analysed.
+	 * @param internalActions The default internal actions to be measured or {@code null}
+	 *            to indicate that everything in {@code repositoryFile} should be
+	 *            analysed.
+	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
 	public UserConfiguration(final List<BasicComponent> components, final List<InternalAction> internalActions,
 		final File repositoryFile) {
+		Validate.notNull(repositoryFile);
 		this.components = components;
 		this.internalActions = internalActions;
 		this.repositoryFile = repositoryFile;
