@@ -5,7 +5,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -25,7 +25,7 @@ public class ResourceDemandTypeTest {
 	 * {@link ResourceDemandType#ResourceDemandType(java.lang.String, boolean)} .
 	 */
 	@Test
-	public void testResourceDemandType() {
+	public void constructor() {
 		new ResourceDemandType("nsTrue", true);
 		new ResourceDemandType("nsFalse", false);
 
@@ -45,7 +45,7 @@ public class ResourceDemandTypeTest {
 	 * {@link ResourceDemandType#hashCode()}.
 	 */
 	@Test
-	public void testEqualsAndHashCode() {
+	public void equalsAndHashCode() {
 		assertThat(ResourceDemandType.RESOURCE_TYPE_CPU, hasDefaultEqualsProperties());
 		final ResourceDemandType test = new ResourceDemandType("test", true);
 		final ResourceDemandType testF = new ResourceDemandType("test", false);
@@ -62,7 +62,7 @@ public class ResourceDemandTypeTest {
 	 * Test method for {@link ResourceDemandType#getName()}.
 	 */
 	@Test
-	public void testGetName() {
+	public void getName() {
 		final ResourceDemandType test = new ResourceDemandType("test", true);
 		final ResourceDemandType newTest = new ResourceDemandType("newTest", true);
 		assertThat(test.getName(), is("test"));
@@ -74,7 +74,7 @@ public class ResourceDemandTypeTest {
 	 * Test method for {@link ResourceDemandType#isNs()}.
 	 */
 	@Test
-	public void testIsNs() {
+	public void isNs() {
 		final ResourceDemandType testF = new ResourceDemandType("test", false);
 		final ResourceDemandType testT = new ResourceDemandType("test", true);
 		assertThat(testF.isNs(), is(false));
@@ -85,7 +85,7 @@ public class ResourceDemandTypeTest {
 	 * Test method for {@link ResourceDemandType#toString()}.
 	 */
 	@Test
-	public void testToString() {
+	public void toStringT() {
 		final ResourceDemandType type = new ResourceDemandType("test", true);
 		assertThat(type.toString(), not(startsWith("ResourceDemandType@")));
 	}
