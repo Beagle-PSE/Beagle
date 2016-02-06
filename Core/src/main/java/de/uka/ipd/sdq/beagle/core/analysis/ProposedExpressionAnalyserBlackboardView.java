@@ -22,6 +22,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
@@ -247,7 +248,8 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
 	 * 
 	 */
-	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
+	public Map<MeasurableSeffElement, Set<EvaluableExpression>> getProposedExpressionFor(
+		final MeasurableSeffElement element) {
 		Validate.notNull(this.blackboard.getProposedExpressionFor(element));
 		return this.blackboard.getProposedExpressionFor(element);
 	}
