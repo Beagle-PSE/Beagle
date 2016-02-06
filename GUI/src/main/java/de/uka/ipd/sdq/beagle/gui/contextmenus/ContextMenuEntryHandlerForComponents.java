@@ -45,7 +45,7 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 			components.add(basicComponent);
 		}
 		// create a new GUI and open it
-		final GuiController guiController = new GuiController(components, new LinkedList<InternalAction>());
+		final GuiController guiController = new GuiController(components, new LinkedList<InternalAction>(), null);
 		guiController.open();
 
 		return null;

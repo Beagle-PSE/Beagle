@@ -53,7 +53,7 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		}
 
 		// create a new GUI and open it
-		final GuiController guiController = new GuiController(new LinkedList<BasicComponent>(), internalActions);
+		final GuiController guiController = new GuiController(new LinkedList<BasicComponent>(), internalActions, null);
 		guiController.open();
 		return null;
 	}
