@@ -27,6 +27,7 @@ This manual test check if the GUI works.
         a field to 'Analyse with Beagle' must be avariable.
     21 By click 'Analyse with Beagle' a window for adjustments must appear
         with the overview that the hole model should be analysed.
+    22 By navigating for or back the adjustments they allready made should not disapear.
 
 
 
