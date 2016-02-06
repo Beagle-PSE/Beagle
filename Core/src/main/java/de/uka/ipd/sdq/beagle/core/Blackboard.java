@@ -511,11 +511,10 @@ public class Blackboard implements Serializable {
 	 * @return A set of all {@linkplain EvaluableExpression evaluable expressions}
 	 *         proposed for {@code element}.
 	 */
-	public Map<MeasurableSeffElement, Set<EvaluableExpression>> getProposedExpressionFor(
-		final MeasurableSeffElement element) {
+	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);
 		Validate.notNull(this.evaluableExpressions);
-		return this.evaluableExpressions;
+		return this.evaluableExpressions.get(element);
 	}
 
 	/**
@@ -525,11 +524,10 @@ public class Blackboard implements Serializable {
 	 * @param expression An evaluable expression proposed to describe {@code element}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void addProposedExpressionFor(final MeasurableSeffElement element,
-		final Set<EvaluableExpression> expression) {
+	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 		Validate.notNull(element);
 		Validate.notNull(expression);
-		this.evaluableExpressions.put(element, expression);
+		this.evaluableExpressions.get(element).add(expression);
 	}
 
 	/**
@@ -543,10 +541,10 @@ public class Blackboard implements Serializable {
 	 * @return The expression momentarily marked to be the final for {@code element}.
 	 *         {@code null} if no expression has been marked yet.
 	 */
-	public Map<MeasurableSeffElement, EvaluableExpression> getFinalExpressionFor(final MeasurableSeffElement element) {
+	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);
 		Validate.notNull(this.finalExpressions);
-		return this.finalExpressions;
+		return this.finalExpressions.get(element);
 	}
 
 	/**
