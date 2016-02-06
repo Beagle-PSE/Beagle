@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.judge;
 
-import static org.junit.Assert.assertNotNull;
-
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
@@ -124,7 +122,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *             {@link #init()}.
 	 */
 	private void loadData(final Blackboard blackboard) throws IllegalStateException {
-		assertNotNull(blackboard);
+		Validate.notNull(blackboard);
 
 		this.data = blackboard.readFor(FinalJudge.class);
 
@@ -195,7 +193,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 */
 	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
 		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements) {
-		assertNotNull(measurableSeffElements);
+		Validate.notNull(measurableSeffElements);
 
 		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
