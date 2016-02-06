@@ -23,7 +23,7 @@ public class ExceptionThrowingFailureHandler extends FailureHandler {
 	}
 
 	@Override
-	public void handle(final FailureReport report) {
+	public <RECOVER_TYPE> RECOVER_TYPE handle(final FailureReport<RECOVER_TYPE> report) {
 		String failureDescription = String.format("%s reported a failure!", this.clientName);
 		if (report.getFailureCause() == null && report.getFailureMessage() != null) {
 			failureDescription += "\n\n" + report.getFailureMessage();
