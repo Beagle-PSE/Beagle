@@ -248,10 +248,11 @@ extends java.lang.Object</pre>
 <dd>All available measurement tools. Each call returns new instances of the
          measurement tools.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.RuntimeException</code> - If an instance of an measurement tool could not be created
-             for any reason, e.g. the measurement tool had no public zero argument
-             constructor or if an <code>MeasurmentToolClass</code> provided via the
-             extension point was not implementing <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementTool</code></a>.</dd>
+<dd><code>java.lang.RuntimeException</code> - If an instance of any measurement tool could not be
+             created for any reason, e.g. because the measurement tool has no public
+             zero argument constructor or because a <code>MeasurmentToolClass</code>
+             provided via the extension point is not implementing
+             <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementTool</code></a>.</dd>
 </dl>
 </li>
 </ul>
