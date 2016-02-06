@@ -125,9 +125,9 @@ public class UserConfiguration {
 	}
 
 	/**
-	 * Returns the repository file or {@code nulll} if there is none.
+	 * Returns the repository file or {@code null} if there is none.
 	 *
-	 * @return the repository file or {@code nulll} if there is none.
+	 * @return the repository file or {@code null} if there is none.
 	 */
 	public File getRepositoryFile() {
 		return this.repositoryFile;
