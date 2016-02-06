@@ -17,6 +17,8 @@ import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
+import org.apache.commons.lang3.Validate;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -45,6 +47,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
 	public MeasurementControllerBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
 	}
 
@@ -108,6 +111,8 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
+		Validate.notNull(rdia);
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(rdia, results);
 	}
 
@@ -120,6 +125,8 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+		Validate.notNull(loop);
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(loop, results);
 	}
 
@@ -132,6 +139,8 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+		Validate.notNull(branch);
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(branch, results);
 	}
 
@@ -146,6 +155,8 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
+		Validate.notNull(parameter);
+		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(parameter, results);
 	}
 

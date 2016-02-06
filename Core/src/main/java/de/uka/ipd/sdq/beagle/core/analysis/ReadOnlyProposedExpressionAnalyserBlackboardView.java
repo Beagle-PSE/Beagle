@@ -15,6 +15,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.Validate;
+
 import java.io.Serializable;
 import java.util.Set;
 /**
@@ -49,6 +51,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
 	public ReadOnlyProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
 	}
 

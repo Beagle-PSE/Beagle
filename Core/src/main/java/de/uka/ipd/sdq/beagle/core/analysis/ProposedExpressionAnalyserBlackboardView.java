@@ -16,6 +16,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.Validate;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
@@ -51,6 +53,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
 	public ProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
 	}
 
@@ -104,6 +107,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            be {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
+		Validate.notNull(rdias);
 		this.blackboard.addToBeMeasuredRdias(rdias);
 	}
 
@@ -116,6 +120,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            must be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
+		Validate.notNull(branches);
 		this.blackboard.addToBeMeasuredSeffBranches(branches);
 	}
 
@@ -127,6 +132,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
+		Validate.notNull(loops);
 		this.blackboard.addToBeMeasuredSeffLoops(loops);
 	}
 
@@ -139,6 +145,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *            {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+		Validate.notNull(parameters);
 		this.blackboard.addToBeMeasuredExternalCallParameters(parameters);
 	}
 

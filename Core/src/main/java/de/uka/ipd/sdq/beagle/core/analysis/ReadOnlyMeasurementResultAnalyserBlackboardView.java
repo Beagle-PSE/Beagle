@@ -52,6 +52,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
 	public ReadOnlyMeasurementResultAnalyserBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
 	}
 

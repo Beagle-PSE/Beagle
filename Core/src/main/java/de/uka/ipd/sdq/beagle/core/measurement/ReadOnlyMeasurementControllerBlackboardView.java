@@ -17,6 +17,8 @@ import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
+import org.apache.commons.lang3.Validate;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -44,6 +46,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
 	public ReadOnlyMeasurementControllerBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
 	}
 

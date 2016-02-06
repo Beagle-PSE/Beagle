@@ -16,6 +16,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -54,6 +55,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
 	public MeasurementResultAnalyserBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
 	}
 
@@ -119,6 +121,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            be {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
+		Validate.notNull(rdias);
 		this.blackboard.addToBeMeasuredRdias(rdias);
 	}
 
@@ -131,6 +134,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            must be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
+		Validate.notNull(branches);
 		this.blackboard.addToBeMeasuredSeffBranches(branches);
 	}
 
@@ -142,6 +146,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
+		Validate.notNull(loops);
 		this.blackboard.addToBeMeasuredSeffLoops(loops);
 	}
 
@@ -154,6 +159,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+		Validate.notNull(parameters);
 		this.blackboard.addToBeMeasuredExternalCallParameters(parameters);
 	}
 
@@ -232,6 +238,8 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            measurement results. Must not be {@code null}.
 	 */
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+		Validate.notNull(element);
+		Validate.notNull(expression);
 		this.blackboard.addProposedExpressionFor(element, expression);
 	}
 
