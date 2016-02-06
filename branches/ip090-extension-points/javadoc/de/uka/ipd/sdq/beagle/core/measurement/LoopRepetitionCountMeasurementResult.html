@@ -135,13 +135,14 @@ extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Par
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult--">LoopRepetitionCountMeasurementResult</a></span>()</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult-int-">LoopRepetitionCountMeasurementResult</a></span>(int&nbsp;count)</code>
 <div class="block">Creates a result for a loop measurement for which no parameterisation was recorded.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-">LoopRepetitionCountMeasurementResult</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Parameterisation.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">Parameterisation</a>&nbsp;parameterisation)</code>
-<div class="block">Creates a result for a loop measurement.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-int-">LoopRepetitionCountMeasurementResult</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Parameterisation.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">Parameterisation</a>&nbsp;parameterisation,
+                                    int&nbsp;count)</code>
+<div class="block">Creates a result for a parameterised loop measurement.</div>
 </td>
 </tr>
 </table>
@@ -166,10 +167,8 @@ extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Par
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#setCount-int-">setCount</a></span>(int&nbsp;count)</code>
-<div class="block">Sets the loop repetition count.</div>
-</td>
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -184,7 +183,7 @@ extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Par
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -200,27 +199,33 @@ extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Par
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="LoopRepetitionCountMeasurementResult--">
+<a name="LoopRepetitionCountMeasurementResult-int-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>LoopRepetitionCountMeasurementResult</h4>
-<pre>public&nbsp;LoopRepetitionCountMeasurementResult()</pre>
+<pre>public&nbsp;LoopRepetitionCountMeasurementResult(int&nbsp;count)</pre>
 <div class="block">Creates a result for a loop measurement for which no parameterisation was recorded.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>count</code> - How many times the loop's body was executed. May not be negative.</dd>
+</dl>
 </li>
 </ul>
-<a name="LoopRepetitionCountMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-">
+<a name="LoopRepetitionCountMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>LoopRepetitionCountMeasurementResult</h4>
-<pre>public&nbsp;LoopRepetitionCountMeasurementResult(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Parameterisation.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">Parameterisation</a>&nbsp;parameterisation)</pre>
-<div class="block">Creates a result for a loop measurement.</div>
+<pre>public&nbsp;LoopRepetitionCountMeasurementResult(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Parameterisation.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">Parameterisation</a>&nbsp;parameterisation,
+                                            int&nbsp;count)</pre>
+<div class="block">Creates a result for a parameterised loop measurement.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>parameterisation</code> - The state of variables during measurement.</dd>
+<dd><code>count</code> - How many times the loop's body was executed. May not be negative.</dd>
 </dl>
 </li>
 </ul>
@@ -246,19 +251,16 @@ extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Par
 </dl>
 </li>
 </ul>
-<a name="setCount-int-">
+<a name="toString--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>setCount</h4>
-<pre>public&nbsp;void&nbsp;setCount(int&nbsp;count)</pre>
-<div class="block">Sets the loop repetition count.</div>
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
 <dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>count</code> - How often the measured loop was executed. Must not be smaller than 0.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalArgumentException</code> - If <code>count &lt; 0</code>.</dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html#toString--">toString</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterisationDependentMeasurementResult</a></code></dd>
 </dl>
 </li>
 </ul>
