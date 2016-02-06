@@ -75,36 +75,44 @@ public class UserConfiguration {
 	}
 
 	/**
-	 * Returns the components to be measured.
+	 * Returns the components to be measured or {@code null} to indicate that everything
+	 * in {@code repositoryFile} should be analysed.
 	 * 
-	 * @return The components to be measured.
+	 * @return The components to be measured or {@code null} to indicate that everything
+	 *         in {@code repositoryFile} should be analysed.
 	 */
 	public List<BasicComponent> getComponents() {
 		return this.components;
 	}
 
 	/**
-	 * Sets the components to be measured to {@code elements}.
+	 * Sets the components to be measured to {@code elements}. {@code null} to indicate
+	 * that everything in {@code repositoryFile} should be analysed.
 	 * 
-	 * @param components The components to be measured.
+	 * @param components The components to be measured or {@code null} to indicate that
+	 *            everything in {@code repositoryFile} should be analysed.
 	 */
 	public void setComponents(final List<BasicComponent> components) {
 		this.components = components;
 	}
 
 	/**
-	 * Returns the internal actions to be measured.
+	 * Returns the internal actions to be measured or {@code null} to indicate that
+	 * everything in {@code repositoryFile} should be analysed.
 	 * 
-	 * @return The internal actions to be measured.
+	 * @return The internal actions to be measured or {@code null} to indicate that
+	 *         everything in {@code repositoryFile} should be analysed.
 	 */
 	public List<InternalAction> getInternalActions() {
 		return this.internalActions;
 	}
 
 	/**
-	 * Sets the internal actions to be measured to {@code internalActions}.
+	 * Sets the internal actions to be measured to {@code internalActions}. {@code null}
+	 * to indicate that everything in {@code repositoryFile} should be analysed.
 	 * 
-	 * @param internalActions The internalActions to be measured.
+	 * @param internalActions The internalActions to be measured or {@code null} to
+	 *            indicate that everything in {@code repositoryFile} should be analysed.
 	 */
 	public void setInternalActions(final List<InternalAction> internalActions) {
 		this.internalActions = internalActions;
@@ -133,9 +141,9 @@ public class UserConfiguration {
 	}
 
 	/**
-	 * Returns the repository file or {@code null} if there is none.
+	 * Returns the repository file.
 	 *
-	 * @return the repository file or {@code null} if there is none.
+	 * @return the repository file.
 	 */
 	public File getRepositoryFile() {
 		return this.repositoryFile;
