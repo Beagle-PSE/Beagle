@@ -12,7 +12,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link CodeSectionExecutedEvent} and contains all test cases needed to check
+ * Tests {@link CodeSectionEnteredEvent} and contains all test cases needed to check
  * every method.
  * 
  * @author Annika Berger
@@ -27,27 +27,27 @@ public class CodeSectionExecutedEventTest {
 
 	/**
 	 * Test method for
-	 * {@link CodeSectionExecutedEvent#CodeSectionExecutedEvent(CodeSection)}.
+	 * {@link CodeSectionEnteredEvent#CodeSectionExecutedEvent(CodeSection)}.
 	 */
 	@Test
 	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (CodeSection codeSection : codeSections) {
-			new CodeSectionExecutedEvent(codeSection);
+			new CodeSectionEnteredEvent(codeSection);
 		}
 
-		assertThat("Code section must not be null", () -> new CodeSectionExecutedEvent(null),
+		assertThat("Code section must not be null", () -> new CodeSectionEnteredEvent(null),
 			throwsException(NullPointerException.class));
 	}
 
 	/**
-	 * Test method for {@link CodeSectionExecutedEvent#receive(MeasurementEventVisitor)}.
+	 * Test method for {@link CodeSectionEnteredEvent#receive(MeasurementEventVisitor)}.
 	 */
 	@Test
 	public void receive() {
 		final CodeSection codeSection = CODE_SECTION_FACTORY.getOne();
 		final MeasurementEventVisitor mockVisitor = mock(MeasurementEventVisitor.class);
-		final CodeSectionExecutedEvent event = new CodeSectionExecutedEvent(codeSection);
+		final CodeSectionEnteredEvent event = new CodeSectionEnteredEvent(codeSection);
 		assertThat(() -> event.receive(null), throwsException(NullPointerException.class));
 		event.receive(mockVisitor);
 		then(mockVisitor).should().visit(same(event));

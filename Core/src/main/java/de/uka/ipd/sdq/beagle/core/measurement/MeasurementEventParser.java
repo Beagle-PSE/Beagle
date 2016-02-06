@@ -6,7 +6,8 @@ import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
-import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionExecutedEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterValueCapturedEvent;
@@ -20,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  * Parses {@linkplain MeasurementEvent MeasurementEvents} in order to generate
@@ -119,16 +121,20 @@ public class MeasurementEventParser {
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
 		final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults = new HashSet<>();
-		final Set<Integer> codeSectionEventsForThisBranch = new HashSet<>();
+
+		// Assemble all measurement events, that could fit for this branch according to
+		// their code section.
+		final Set<MeasurementEvent> codeSectionEventsForThisBranch = new HashSet<>();
 		for (final CodeSection possibilyPickedBranch : branch.getBranches()) {
 			for (final Integer index : this.codeSectionMapping.get(possibilyPickedBranch)) {
-				codeSectionEventsForThisBranch.add(index);
+				codeSectionEventsForThisBranch.add(this.measurementEvents.get(index));
 			}
 		}
 
-		for (final Integer pickedBranch : codeSectionEventsForThisBranch) {
-			final int branchIndex = branch.getBranches().indexOf(this.measurementEvents.get(pickedBranch));
-			branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
+		final SeffBranchMeasurementEventVisitor seffBranchMeasurementEventVisitor =
+			new SeffBranchMeasurementEventVisitor(branch, branchDecisionMeasurementResults);
+		for (final MeasurementEvent measurementEvent : codeSectionEventsForThisBranch) {
+			measurementEvent.receive(seffBranchMeasurementEventVisitor);
 		}
 		return branchDecisionMeasurementResults;
 	}
@@ -142,7 +148,14 @@ public class MeasurementEventParser {
 	 *         Contains never {@code null} elements.
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		return null;
+		final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults = new HashSet<>();
+		final SeffLoopMeasurementEventVisitor seffLoopMeasurementEventVisitor =
+			new SeffLoopMeasurementEventVisitor(loop, loopRepetitionCountMeasurementResults);
+		for (final Integer index : this.codeSectionMapping.get(loop.getLoopBody())) {
+			this.measurementEvents.get(index).receive(seffLoopMeasurementEventVisitor);
+		}
+		seffLoopMeasurementEventVisitor.finalise();
+		return loopRepetitionCountMeasurementResults;
 	}
 
 	/**
@@ -199,7 +212,12 @@ public class MeasurementEventParser {
 		}
 
 		@Override
-		public void visit(final CodeSectionExecutedEvent codeSectionExecutedEvent) {
+		public void visit(final CodeSectionEnteredEvent codeSectionExecutedEvent) {
+			// We don't care about them.
+		}
+
+		@Override
+		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
 			// We don't care about them.
 		}
 
@@ -218,6 +236,228 @@ public class MeasurementEventParser {
 		@Override
 		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
 			// We don't care about them.
+		}
+	}
+
+	/**
+	 * A {@link MeasurementEventVisitor} for a specific {@link SeffBranch}.
+	 *
+	 *
+	 * @author Roman Langrehr
+	 */
+	private class SeffBranchMeasurementEventVisitor implements MeasurementEventVisitor {
+
+		/**
+		 * The {@link SeffBranch} where we want to know the new measurement results.
+		 */
+		private final SeffBranch branch;
+
+		/**
+		 * The set, where the {@linkplain ResourceDemandMeasurementResult
+		 * ResourceDemandMeasurementResults} should be added.
+		 */
+		private final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults;
+
+		/**
+		 * Creates a visitor for a specific {@link SeffBranch}.
+		 *
+		 * @param branch The {@link SeffBranch} where we want to know the new measurement
+		 *            results.
+		 * @param branchDecisionMeasurementResults The set, where the
+		 *            {@linkplain BranchDecisionMeasurementResult
+		 *            BranchDecisionMeasurementResults} should be added.
+		 */
+		SeffBranchMeasurementEventVisitor(final SeffBranch branch,
+			final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults) {
+			this.branch = branch;
+			this.branchDecisionMeasurementResults = branchDecisionMeasurementResults;
+		}
+
+		@Override
+		public void visit(final CodeSectionEnteredEvent codeSectionExecutedEvent) {
+			final int branchIndex = this.branch.getBranches().indexOf(codeSectionExecutedEvent.getCodeSection());
+			if (branchIndex != -1) {
+				this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
+			}
+		}
+
+		@Override
+		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
+			// We don't care about them, because we defined a SeffBranch to bexecuted,
+			// exactly when it was entered.
+		}
+
+		@Override
+		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
+			// We don't care about them.
+		}
+
+		@Override
+		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
+			// We don't care about them.
+		}
+	}
+
+	/**
+	 * A {@link MeasurementEventVisitor} for a specific {@link SeffLoop}.
+	 *
+	 * <p>You must call {@linkplain MeasurementEvent#receive(MeasurementEventVisitor)
+	 * receive} on the {@linkplain MeasurementEvent MeasurementEvents} in the correct
+	 * order!
+	 *
+	 * @author Roman Langrehr
+	 */
+	private class SeffLoopMeasurementEventVisitor implements MeasurementEventVisitor {
+
+		/**
+		 * The {@link SeffBranch} where we want to know the new measurement results.
+		 */
+		private final SeffLoop loop;
+
+		/**
+		 * The set, where the {@linkplain ResourceDemandMeasurementResult
+		 * ResourceDemandMeasurementResults} should be added.
+		 */
+		private final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults;
+
+		/**
+		 * The number of loops measured in the current sequence of measurement events for
+		 * one loop body. The stack contains all
+		 */
+		private Stack<LoopExecutionCounter> currentLoopCounts;
+
+		/**
+		 * Creates a visitor for a specific {@link SeffLoop}.
+		 *
+		 * @param loop The {@link SeffLoop} where we want to know the new measurement
+		 *            results.
+		 * @param loopRepetitionCountMeasurementResults The set, where the
+		 *            {@linkplain BranchDecisionMeasurementResult
+		 *            BranchDecisionMeasurementResults} should be added.
+		 */
+		SeffLoopMeasurementEventVisitor(final SeffLoop loop,
+			final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults) {
+			this.loop = loop;
+			this.loopRepetitionCountMeasurementResults = loopRepetitionCountMeasurementResults;
+			this.currentLoopCounts = new Stack<>();
+		}
+
+		@Override
+		public void visit(final CodeSectionEnteredEvent codeSectionEnteredEvent) {
+			if (codeSectionEnteredEvent.getCodeSection().equals(this.loop.getLoopBody())) {
+				if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {
+					// The current branch was not finished before a this, so we have a
+					// recursive call, or there is no current execution of this loop.
+					this.currentLoopCounts.push(new LoopExecutionCounter());
+				}
+				assert !this.currentLoopCounts.peek().isOpen;
+				if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
+					|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
+						+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
+					// We have not continous loop body executions, so we create a new
+					// execution event.
+					this.loopFinished();
+					this.currentLoopCounts.push(new LoopExecutionCounter());
+				}
+				this.currentLoopCounts.peek().numberOfExecutions++;
+				this.currentLoopCounts.peek().isOpen = true;
+			}
+		}
+
+		@Override
+		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
+			if (codeSectionLeftEvent.getCodeSection().equals(this.loop.getLoopBody())) {
+				if (!this.currentLoopCounts.isEmpty()) {
+					if (this.currentLoopCounts.peek().isOpen) {
+						// The current execution is finished.
+						this.currentLoopCounts.peek().isOpen = false;
+						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
+							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
+					} else {
+						// The current execution is already finished, so we need to close
+						// the one "below" that.
+
+						// The actual closing
+						this.loopFinished();
+
+						// The invariant for this stack
+						assert this.currentLoopCounts.peek().isOpen;
+						// allows us to just close the next layer.
+						this.currentLoopCounts.peek().isOpen = false;
+						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
+							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
+					}
+				}
+				// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
+				// event without an CodeSectionEnteredEvent and ignore this.
+			}
+		}
+
+		@Override
+		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
+			// We don't care about them.
+		}
+
+		@Override
+		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
+			// We don't care about them.
+		}
+
+		/**
+		 * This method must be called after the last measurement event was visited,
+		 * because otherwise the resulting {@code loopRepetitionCountMeasurementResults}
+		 * may be incomplete.
+		 */
+		public void finalise() {
+			// Close all open executions. There {@link CodeSectionLeftEvent} is missing.
+			while (!this.currentLoopCounts.isEmpty()) {
+				this.loopFinished();
+			}
+		}
+
+		/**
+		 * Pops the top of {@link #currentLoopCounts} and adds the
+		 * {@link LoopRepetitionCountMeasurementResult} for this execution.
+		 */
+		private void loopFinished() {
+			this.loopRepetitionCountMeasurementResults
+				.add(new LoopRepetitionCountMeasurementResult(this.currentLoopCounts.pop().numberOfExecutions));
+		}
+
+		/**
+		 * Container for the information needed to save the state of an loop execution.
+		 *
+		 * @author Roman Langrehr
+		 */
+		private class LoopExecutionCounter {
+
+			/**
+			 * How many times the loop was executed.
+			 */
+			private int numberOfExecutions;
+
+			/**
+			 * Whether the last execution of the loop body was not finished. (An
+			 * {@link CodeSectionEnteredEvent} was parsed, but not the corresponding
+			 * {@link CodeSectionLeftEvent}.
+			 */
+			private boolean isOpen;
+
+			/**
+			 * If {@link #isOpen} is {@code false}, this field is the index of the last
+			 * CodeSectionLeftEvent of an loop body for this branch or {@code -1}, if no
+			 * CodeSectionLeftEvent was parsed for this loop execution.
+			 */
+			private int lastCodeSectionLeftEventIndex;
+
+			/**
+			 * Creates a new, empty LoopExecutionCounter.
+			 */
+			LoopExecutionCounter() {
+				this.numberOfExecutions = 0;
+				this.isOpen = false;
+				this.lastCodeSectionLeftEventIndex = -1;
+			}
 		}
 	}
 }
