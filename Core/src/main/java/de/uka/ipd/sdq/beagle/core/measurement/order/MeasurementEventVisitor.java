@@ -10,11 +10,18 @@ package de.uka.ipd.sdq.beagle.core.measurement.order;
 public interface MeasurementEventVisitor {
 
 	/**
-	 * Called if the visited measurement event is a {@link CodeSectionExecutedEvent}.
+	 * Called if the visited measurement event is a {@link CodeSectionEnteredEvent}.
 	 *
-	 * @param codeSectionExecutedEvent the visited measurement event
+	 * @param codeSectionEnteredEvent the visited measurement event
 	 */
-	void visit(CodeSectionExecutedEvent codeSectionExecutedEvent);
+	void visit(CodeSectionEnteredEvent codeSectionEnteredEvent);
+
+	/**
+	 * Called if the visited measurement event is a {@link CodeSectionLeftEvent}.
+	 *
+	 * @param codeSectionLeftEvent the visited measurement event
+	 */
+	void visit(CodeSectionLeftEvent codeSectionLeftEvent);
 
 	/**
 	 * Called if the visited measurement event is a {@link ResourceDemandCapturedEvent}.
