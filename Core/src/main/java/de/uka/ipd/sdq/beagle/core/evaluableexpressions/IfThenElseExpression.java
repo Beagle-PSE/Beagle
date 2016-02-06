@@ -1,10 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that executes an if-then-else-statement based on its contained expressions.
@@ -14,21 +12,49 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class IfThenElseExpression implements EvaluableExpression {
 
 	/**
+	 * The expression containing the if-statement.
+	 */
+	private final EvaluableExpression ifStatement;
+
+	/**
+	 * The expression containing the else-statement.
+	 */
+	private final EvaluableExpression elseStatement;
+
+	/**
+	 * The expression containing the then-statement.
+	 */
+	private final EvaluableExpression thenStatement;
+
+	/**
+	 * Builds an expression which returns .
+	 *
+	 * @param ifStatement The expression which contains the if-statement. Must not be
+	 *            {@code null}.
+	 *
+	 * @param thenStatement The expression which contains the then-statement. Must not be
+	 *            {@code null}.
+	 * @param elseStatement The expression which contains the else-statement. Must not be
+	 *            {@code null}.
+	 */
+	public IfThenElseExpression(final EvaluableExpression ifStatement, final EvaluableExpression thenStatement,
+		final EvaluableExpression elseStatement) {
+		Validate.notNull(ifStatement);
+		Validate.notNull(thenStatement);
+		Validate.notNull(elseStatement);
+		this.ifStatement = ifStatement;
+		this.elseStatement = elseStatement;
+		this.thenStatement = thenStatement;
+
+	}
+
+	/**
 	 * Get expression contained in if-statement.
 	 *
 	 * @return if-Expression
 	 */
-	public EvaluableExpression getIfExpression() {
-		return null;
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} to be contained in the if statement.
-	 *
-	 * @param ifExpression The {@link EvaluableExpression} to be contained in the if
-	 *            statement.
-	 */
-	public void setIfExpression(final EvaluableExpression ifExpression) {
+	public EvaluableExpression getIfStatement() {
+		return this.ifStatement;
 	}
 
 	/**
@@ -36,17 +62,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 *
 	 * @return else-Expression
 	 */
-	public EvaluableExpression getElseExpression() {
-		return null;
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} to be contained in the else-statement.
-	 *
-	 * @param elseExpression The {@link EvaluableExpression} to be contained in the
-	 *            else-statement.
-	 */
-	public void setElseExpression(final EvaluableExpression elseExpression) {
+	public EvaluableExpression getElseStatement() {
+		return this.elseStatement;
 	}
 
 	/**
@@ -54,17 +71,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 *
 	 * @return then-expression
 	 */
-	public EvaluableExpression getThenExpression() {
-		return null;
-	}
-
-	/**
-	 * Set the {@link EvaluableExpression} to be contained in the then-statement.
-	 *
-	 * @param thenExpression The {@link EvaluableExpression} to be contained in the
-	 *            then-statement.
-	 */
-	public void setThenExpression(final EvaluableExpression thenExpression) {
+	public EvaluableExpression getThenStatement() {
+		return this.thenStatement;
 	}
 
 	/*
@@ -75,7 +83,8 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		Validate.notNull(visitor);
+		visitor.visit(this);
 	}
 
 	/*
@@ -87,7 +96,45 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		Validate.notNull(variableAssignments);
+		final double resultIf = this.ifStatement.evaluate(variableAssignments);
+		if (Double.isNaN(resultIf)) {
+			return Double.NaN;
+		}
+		if (resultIf != FALSE) {
+			return this.thenStatement.evaluate(variableAssignments);
+		} else {
+			return this.elseStatement.evaluate(variableAssignments);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("(%s ? %s : %s)", this.ifStatement, this.thenStatement, this.elseStatement);
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final IfThenElseExpression other = (IfThenElseExpression) object;
+		return new EqualsBuilder().append(this.ifStatement, other.ifStatement)
+			.append(this.thenStatement, other.thenStatement).append(this.elseStatement, other.elseStatement).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(215, 217).append(this.ifStatement).append(this.thenStatement)
+			.append(this.elseStatement).toHashCode();
 	}
 
 }

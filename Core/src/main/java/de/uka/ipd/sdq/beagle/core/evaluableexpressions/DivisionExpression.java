@@ -1,10 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that divides its contained dividend through its contained divisor.
@@ -15,12 +13,27 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class DivisionExpression implements EvaluableExpression {
 
 	/**
-	 * Sets the {@link EvaluableExpression} which is the divisor.
-	 *
-	 * @param expression which is the divisor.
+	 * The divisor of this division expression.
 	 */
-	public void setDivisor(final EvaluableExpression expression) {
+	private final EvaluableExpression divisor;
 
+	/**
+	 * The dividend of this division expression.
+	 */
+	private final EvaluableExpression dividend;
+
+	/**
+	 * Builds an expression which returns the quotient of a division using the given
+	 * divisor and dividend.
+	 *
+	 * @param dividend The expression being divided.
+	 * @param divisor The expression dividing the other one.
+	 */
+	public DivisionExpression(final EvaluableExpression dividend, final EvaluableExpression divisor) {
+		Validate.notNull(divisor);
+		Validate.notNull(dividend);
+		this.divisor = divisor;
+		this.dividend = dividend;
 	}
 
 	/**
@@ -29,16 +42,7 @@ public class DivisionExpression implements EvaluableExpression {
 	 * @return This expression's divisor.
 	 */
 	public EvaluableExpression getDivisor() {
-		return null;
-	}
-
-	/**
-	 * Sets the {@link EvaluableExpression} which is the dividend.
-	 *
-	 * @param expression which is the dividendF.
-	 */
-	public void setDividend(final EvaluableExpression expression) {
-
+		return this.divisor;
 	}
 
 	/**
@@ -47,7 +51,7 @@ public class DivisionExpression implements EvaluableExpression {
 	 * @return This expression's dividend.
 	 */
 	public EvaluableExpression getDividend() {
-		return null;
+		return this.dividend;
 	}
 
 	/*
@@ -58,7 +62,8 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		Validate.notNull(visitor);
+		visitor.visit(this);
 	}
 
 	/*
@@ -70,7 +75,36 @@ public class DivisionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		Validate.notNull(variableAssignments);
+		final double quotient =
+			this.dividend.evaluate(variableAssignments) / this.divisor.evaluate(variableAssignments);
+		return quotient;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("(%s / %s)", this.dividend, this.divisor);
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final DivisionExpression other = (DivisionExpression) object;
+		return new EqualsBuilder().append(this.dividend, other.dividend).append(this.divisor, other.divisor).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(195, 197).append(this.dividend).append(this.divisor).toHashCode();
+	}
 }

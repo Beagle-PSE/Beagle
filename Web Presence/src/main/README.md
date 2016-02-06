@@ -1,5 +1,5 @@
-# Beagle’s web presence
-Source files of Beagle’s web presence.
+# Beagle’s Web Presence
+Source files of [Beagle’s web presence](http://beagle-pse.github.io/Beagle/).
 
 ## Building
 ```

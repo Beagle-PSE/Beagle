@@ -1,10 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A result of measuring which branch is taken in a branching source code construct. This
@@ -12,22 +11,39 @@ package de.uka.ipd.sdq.beagle.core.measurement;
  * construct was executed with the given {@link Parameterisation}.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 public class BranchDecisionMeasurementResult extends ParameterisationDependentMeasurementResult {
 
 	/**
+	 * The index of the branch in the associated {@link SeffBranch}'s branch list that was
+	 * executed.
+	 */
+	private int branchIndex;
+
+	/**
 	 * Creates a result for a branch measurement for which no parameterisation was
 	 * recorded.
+	 *
+	 * @param branchIndex The index of the branch in the associated {@link SeffBranch}'s
+	 *            branch list that was executed.
 	 */
-	public BranchDecisionMeasurementResult() {
+	public BranchDecisionMeasurementResult(final int branchIndex) {
+		Validate.isTrue(branchIndex >= 0, "The measured branch index was negative: %d", branchIndex);
+		this.branchIndex = branchIndex;
 	}
 
 	/**
-	 * Creates a result for a branch measurement.
+	 * Creates a result for a parameterised branch measurement.
 	 *
 	 * @param parameterisation The state of variables during measurement.
+	 * @param branchIndex The index of the branch in the associated {@link SeffBranch}'s
+	 *            branch list that was executed.
 	 */
-	public BranchDecisionMeasurementResult(final Parameterisation parameterisation) {
+	public BranchDecisionMeasurementResult(final Parameterisation parameterisation, final int branchIndex) {
+		super(parameterisation);
+		Validate.isTrue(branchIndex >= 0, "The measured branch index was negative: %d", this.branchIndex);
+		this.branchIndex = branchIndex;
 	}
 
 	/**
@@ -37,16 +53,12 @@ public class BranchDecisionMeasurementResult extends ParameterisationDependentMe
 	 *         a positive Integer or 0.
 	 */
 	public int getBranchIndex() {
-		return 0;
+		return this.branchIndex;
 	}
 
-	/**
-	 * Gets the taken branch’s index.
-	 *
-	 * @param branchIndex The index of the branch that was taken. Counting starts at 0,
-	 *            thus, it must not be smaller than 0.
-	 * @throws IllegalArgumentException If {@code branchIndex < 0}.
-	 */
-	public void setBranchIndex(final int branchIndex) {
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this).appendSuper(super.toString()).append("branch index", this.branchIndex)
+			.toString();
 	}
 }
