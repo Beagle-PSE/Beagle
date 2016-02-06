@@ -26,7 +26,7 @@ public class FinalJudgeData implements Serializable {
 
 	/**
 	 * The number of generations passed. Will be the number of times a {@link FinalJugde}
-	 * object received a call to {@link #judge(Blackboard)}.
+	 * object received a call to {@link FinalJugde#judge(Blackboard)}.
 	 */
 	private int numberOfGenerationsPassed;
 
