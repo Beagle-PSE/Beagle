@@ -15,7 +15,6 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
  * <p>There is always at most one measurement tool working.
  *
  * @author Roman Langrehr
- * @author Christoph Michelbach
  * @see AnalysisController
  */
 public class MeasurementController {
