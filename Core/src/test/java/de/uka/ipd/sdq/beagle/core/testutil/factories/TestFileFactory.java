@@ -34,14 +34,14 @@ public class TestFileFactory {
 		final File testFile;
 		try {
 			testFile = new File(
-				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java").toURI().getPath());
+				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/TestFile.java2").toURI().getPath());
 		} catch (final URISyntaxException uriSyntaxException) {
 			throw new RuntimeException("Cannot find file called 'TestFile.java'");
 		}
 		final File pingPongClass;
 		try {
 			pingPongClass = new File(
-				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java").toURI().getPath());
+				CodeSectionFactory.class.getResource("/de/uka/ipd/sdq/beagle/core/PingPong.java2").toURI().getPath());
 		} catch (final URISyntaxException uriSyntaxException) {
 			throw new RuntimeException("Cannot find file called 'PingPong.java'");
 		}
