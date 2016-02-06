@@ -451,7 +451,7 @@ public class MeasurementEventParser {
 			private int lastCodeSectionLeftEventIndex;
 
 			/**
-			 * Creates an new, empty LoopExecutionCounter.
+			 * Creates a new, empty LoopExecutionCounter.
 			 */
 			LoopExecutionCounter() {
 				this.numberOfExecutions = 0;

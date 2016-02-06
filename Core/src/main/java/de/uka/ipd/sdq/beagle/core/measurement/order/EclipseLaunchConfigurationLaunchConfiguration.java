@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.measurement.order;
 
+import org.apache.commons.lang3.Validate;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
@@ -24,6 +25,7 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	 *            launched to execute the code under test.
 	 */
 	public EclipseLaunchConfigurationLaunchConfiguration(final ILaunchConfiguration launchConfiguration) {
+		Validate.notNull(launchConfiguration);
 		this.launchConfiguration = launchConfiguration;
 	}
 

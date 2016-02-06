@@ -41,6 +41,8 @@ public class ResourceDemandCapturedEvent extends AbstractMeasurementEvent {
 		super(codeSection);
 		Validate.notNull(type);
 		Validate.isTrue(value >= 0, "The measured resources value must be non-neagtive, but was %d", value);
+		this.type = type;
+		this.value = value;
 	}
 
 	/**

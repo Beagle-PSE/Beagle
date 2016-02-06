@@ -6,6 +6,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 
 import org.apache.commons.lang3.Validate;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -69,11 +70,12 @@ public class MeasurementOrder {
 		Validate.noNullElements(resourceDemandSections);
 		Validate.noNullElements(resourceDemandSections);
 		Validate.noNullElements(executionSections);
+		Validate.noNullElements(launchConfigurations);
 		Validate.notNull(parameterCharacteriser);
-		this.parameterValueSection = parameterValueSection;
-		this.resourceDemandSections = resourceDemandSections;
-		this.executionSections = executionSections;
-		this.launchConfigurations = launchConfigurations;
+		this.parameterValueSection = new HashSet<>(parameterValueSection);
+		this.resourceDemandSections = new HashSet<>(resourceDemandSections);
+		this.executionSections = new HashSet<>(executionSections);
+		this.launchConfigurations = new HashSet<>(launchConfigurations);
 		this.parameterCharacteriser = parameterCharacteriser;
 	}
 
