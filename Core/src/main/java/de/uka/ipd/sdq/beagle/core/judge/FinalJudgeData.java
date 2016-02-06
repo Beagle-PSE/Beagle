@@ -44,13 +44,6 @@ public class FinalJudgeData implements Serializable {
 	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;
 
 	/**
-	 * The latest version of {@link #currentFitnessValues} which came with good enough
-	 * improvement to set {@link #numberOfGenerationsWithoutSignificantImprovementPassed}
-	 * to {@code 0}.
-	 */
-	private HashMap<MeasurableSeffElement, Double> fitnessBaseline = new HashMap<MeasurableSeffElement, Double>();
-
-	/**
 	 * Returns {@code startTime}.
 	 * 
 	 * @return The {@code startTime}.
@@ -112,7 +105,7 @@ public class FinalJudgeData implements Serializable {
 	 * 
 	 * @return The {@code fitnessBaselineValue}.
 	 */
-	public double getFitnessBaseline() {
+	public double getFitnessBaselineValue() {
 		return this.fitnessBaselineValue;
 	}
 
@@ -121,7 +114,7 @@ public class FinalJudgeData implements Serializable {
 	 *
 	 * @param fitnessBaselineValue The {@code fitnessBaselineValue} to set.
 	 */
-	public void setFitnessBaseline(final double fitnessBaselineValue) {
+	public void setFitnessBaselineValue(final double fitnessBaselineValue) {
 		this.fitnessBaselineValue = fitnessBaselineValue;
 	}
 
