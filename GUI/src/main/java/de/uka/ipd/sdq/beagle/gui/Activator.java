@@ -3,6 +3,12 @@ package de.uka.ipd.sdq.beagle.gui;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+/*
+ * This is a default, generated class. It thus does not need to be tested by unit tests.
+ *
+ * COVERAGE:OFF
+ */
+
 /**
  * The activator class controls the plug-in life cycle.
  *

@@ -11,10 +11,17 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * reasonably be tested by automated unit tests.
+ *
+ * COVERAGE:OFF
+ */
+
 /**
  * Sets up and controls the wizard allowing the user to configure Beagle’s behaviour
  * during the analysis.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class BeagleAnalysisWizard extends Wizard {
@@ -28,12 +35,12 @@ public class BeagleAnalysisWizard extends Wizard {
 	/**
 	 * The {@link ActionListener} which will be executed when the wizard finishes.
 	 */
-	private ActionListener wizardFinished;
+	private final ActionListener wizardFinished;
 
 	/**
 	 * Constructs a new {@link BeagleAnalysisWizard} which runs {@code wizardFinished}
 	 * when it finishes.
-	 * 
+	 *
 	 * @param userConfiguration The {@link UserConfiguration} this
 	 *            {@link BeagleAnalysisWizard} and therefore everything linked to it will
 	 *            use.
@@ -44,7 +51,7 @@ public class BeagleAnalysisWizard extends Wizard {
 		super();
 		this.userConfiguration = userConfiguration;
 		this.wizardFinished = wizardFinished;
-		setNeedsProgressMonitor(true);
+		this.setNeedsProgressMonitor(true);
 	}
 
 	@Override
@@ -60,7 +67,7 @@ public class BeagleAnalysisWizard extends Wizard {
 		final Iterator<WizardPage> iterator = wizardPages.iterator();
 
 		while (iterator.hasNext()) {
-			addPage(iterator.next());
+			this.addPage(iterator.next());
 		}
 	}
 

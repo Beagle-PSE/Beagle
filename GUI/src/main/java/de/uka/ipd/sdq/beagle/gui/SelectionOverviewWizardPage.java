@@ -12,11 +12,18 @@ import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.util.LinkedList;
 
+/*
+ * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * reasonably be tested by automated unit tests.
+ *
+ * COVERAGE:OFF
+ */
+
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose which of the
  * components they selected will be be analysed. Leaving out some components is possible,
  * adding new ones isn't.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class SelectionOverviewWizardPage extends WizardPage {
@@ -57,8 +64,8 @@ public class SelectionOverviewWizardPage extends WizardPage {
 	 */
 	public SelectionOverviewWizardPage(final UserConfiguration userConfiguration) {
 		super(TITLE);
-		setTitle(TITLE);
-		setDescription(DESCRIPTION);
+		this.setTitle(TITLE);
+		this.setDescription(DESCRIPTION);
 		this.userConfiguration = userConfiguration;
 	}
 
@@ -75,24 +82,24 @@ public class SelectionOverviewWizardPage extends WizardPage {
 		final LinkedList<String> elements = new LinkedList<String>();
 
 		if ((this.userConfiguration.getComponents() != null) && (this.userConfiguration.getInternalActions() != null)) {
-			for (BasicComponent component : this.userConfiguration.getComponents()) {
+			for (final BasicComponent component : this.userConfiguration.getComponents()) {
 				elements.add("Component: " + component.getEntityName());
 			}
 
-			for (InternalAction internalAction : this.userConfiguration.getInternalActions()) {
+			for (final InternalAction internalAction : this.userConfiguration.getInternalActions()) {
 				elements.add("Internal Action: " + internalAction.getEntityName());
 			}
 		} else {
 			elements.add("Repository: " + this.userConfiguration.getRepositoryFile().getAbsolutePath());
 		}
 
-		for (String element : elements) {
+		for (final String element : elements) {
 			final Label labelItem = new Label(this.mainContainer, SWT.NONE);
 			labelItem.setText("    • " + element);
 		}
 
 		// required to avoid an error in the system
-		setControl(this.mainContainer);
-		setPageComplete(true);
+		this.setControl(this.mainContainer);
+		this.setPageComplete(true);
 	}
 }

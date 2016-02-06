@@ -16,11 +16,18 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
+/*
+ * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * reasonably be tested by automated unit tests.
+ *
+ * COVERAGE:OFF
+ */
+
 /**
  * Controls the Graphical User Interface (GUI). One {@code GuiController} corresponds to
  * exactly one instance of the GUI. Opening it several times is not possible. Note that
  * it's possible for a GUI instance to exist while not being open.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class GuiController {
@@ -29,7 +36,7 @@ public class GuiController {
 	 * Describes the state of the {@link GuiController}. {@link GuiController} goes
 	 * through the states {@code unopened} → {@code wizardOpen} → {@code dialogOpen} →
 	 * {@code terminated} with no way to go backwards but the option to skip states.
-	 * 
+	 *
 	 * @author Christoph Michelbach
 	 */
 	private enum GuiControllerState {
@@ -57,7 +64,7 @@ public class GuiController {
 	/**
 	 * The shell the GUI plugin will use.
 	 */
-	private Shell shell;
+	private final Shell shell;
 
 	/**
 	 * The {@link UserConfiguration} this {@link GuiController} and therefore everything
@@ -79,7 +86,7 @@ public class GuiController {
 	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
 	 * components to be measured.
-	 * 
+	 *
 	 * @param componentsParam The default components to be measured or {@code null} to
 	 *            indicate that everything in {@code repositoryFile} should be analysed.
 	 * @param internalActionsParam The default internal actions to be measured or
@@ -211,6 +218,7 @@ public class GuiController {
 			 * Calls {@link BeagleController} to start the analysis. This happens in a
 			 * different thread so the GUI remains responsive.
 			 */
+			@Override
 			public void run() {
 				final BeagleController beagleController = new BeagleController(GuiController.this.userConfiguration);
 				beagleController.startAnalysis();

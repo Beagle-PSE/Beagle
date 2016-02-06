@@ -15,10 +15,17 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+/*
+ * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * reasonably be tested by automated unit tests.
+ *
+ * COVERAGE:OFF
+ */
+
 /**
  * A page of {@link BeagleAnalysisWizard} allowing the user to choose between an adaptive
  * timeout, a constant timeout, or no timeout at all.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class TimeoutWizardPage extends WizardPage {
@@ -108,16 +115,16 @@ public class TimeoutWizardPage extends WizardPage {
 	/**
 	 * Constructs a new {@link TimeoutWizardPage} being linked to the given
 	 * {@code userConfiguration}.
-	 * 
+	 *
 	 * @param userConfiguration The {@link UserConfiguration} this
 	 *            {@link TimeoutWizardPage} will be permanently linked to. Changing the
 	 *            associated {@link UserConfiguration} is not possible.
 	 */
 	public TimeoutWizardPage(final UserConfiguration userConfiguration) {
 		super(TITLE);
-		setTitle(TITLE);
-		setDescription(DESCRIPTION);
-		setControl(this.textboxTimeoutSeconds);
+		this.setTitle(TITLE);
+		this.setDescription(DESCRIPTION);
+		this.setControl(this.textboxTimeoutSeconds);
 		this.userConfiguration = userConfiguration;
 		this.timeout = this.userConfiguration.getTimeout();
 	}
@@ -168,9 +175,9 @@ public class TimeoutWizardPage extends WizardPage {
 				TimeoutWizardPage.this.textboxTimeoutSeconds.setEnabled(true);
 
 				if (TimeoutWizardPage.this.textboxTimeoutSeconds.getText().isEmpty()) {
-					setPageComplete(false);
+					TimeoutWizardPage.this.setPageComplete(false);
 				} else {
-					setPageComplete(true);
+					TimeoutWizardPage.this.setPageComplete(true);
 					TimeoutWizardPage.this.timeout =
 						Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
 					TimeoutWizardPage.this.userConfiguration.setTimeout(UserConfiguration.ADAPTIVE_TIMEOUT);
@@ -189,7 +196,7 @@ public class TimeoutWizardPage extends WizardPage {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutWizardPage.this.textboxTimeoutSeconds.setEnabled(false);
-				setPageComplete(true);
+				TimeoutWizardPage.this.setPageComplete(true);
 			}
 
 			@Override
@@ -250,9 +257,9 @@ public class TimeoutWizardPage extends WizardPage {
 				}
 
 				if (TimeoutWizardPage.this.textboxTimeoutSeconds.getText().isEmpty()) {
-					setPageComplete(false);
+					TimeoutWizardPage.this.setPageComplete(false);
 				} else {
-					setPageComplete(true);
+					TimeoutWizardPage.this.setPageComplete(true);
 				}
 			}
 		});
@@ -260,9 +267,9 @@ public class TimeoutWizardPage extends WizardPage {
 		this.textboxTimeoutSeconds.setLayoutData(gridData);
 
 		// required to avoid an error in the system
-		setControl(this.upperContainer);
+		this.setControl(this.upperContainer);
 
-		setPageComplete(true);
+		this.setPageComplete(true);
 
 		this.adaptPageToDefaultValues();
 	}
@@ -292,7 +299,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 	/**
 	 * Returns the timeout chosen by the user.
-	 * 
+	 *
 	 * @return the timeout chosen by the user.
 	 */
 	public int getTimeout() {

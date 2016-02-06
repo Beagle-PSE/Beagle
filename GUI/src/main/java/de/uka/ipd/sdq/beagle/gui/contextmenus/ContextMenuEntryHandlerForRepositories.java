@@ -16,6 +16,13 @@ import org.palladiosimulator.pcm.seff.InternalAction;
 import java.io.File;
 import java.util.LinkedList;
 
+/*
+ * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * reasonably be tested by automated unit tests.
+ *
+ * COVERAGE:OFF
+ */
+
 /**
  * Handles the context menu entries, that start an analysis of the whole project.
  *
