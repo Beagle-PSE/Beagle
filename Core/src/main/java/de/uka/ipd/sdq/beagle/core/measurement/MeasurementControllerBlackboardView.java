@@ -44,7 +44,7 @@ public final class MeasurementControllerBlackboardView {
 	 *
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
-	private MeasurementControllerBlackboardView(final Blackboard blackboard) {
+	public MeasurementControllerBlackboardView(final Blackboard blackboard) {
 		this.blackboard = blackboard;
 	}
 

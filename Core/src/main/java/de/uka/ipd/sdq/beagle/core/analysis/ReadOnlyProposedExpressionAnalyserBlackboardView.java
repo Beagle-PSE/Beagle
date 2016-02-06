@@ -48,7 +48,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 *
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
-	private ReadOnlyProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
+	public ReadOnlyProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
 		this.blackboard = blackboard;
 	}
 

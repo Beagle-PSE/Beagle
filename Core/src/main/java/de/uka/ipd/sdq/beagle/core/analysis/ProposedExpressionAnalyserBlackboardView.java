@@ -50,7 +50,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 *
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
-	private ProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
+	public ProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
 		this.blackboard = blackboard;
 	}
 

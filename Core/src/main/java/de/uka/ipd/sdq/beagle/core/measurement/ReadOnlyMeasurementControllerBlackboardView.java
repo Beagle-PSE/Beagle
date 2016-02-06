@@ -43,7 +43,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 *
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
-	private ReadOnlyMeasurementControllerBlackboardView(final Blackboard blackboard) {
+	public ReadOnlyMeasurementControllerBlackboardView(final Blackboard blackboard) {
 		this.blackboard = blackboard;
 	}
 
