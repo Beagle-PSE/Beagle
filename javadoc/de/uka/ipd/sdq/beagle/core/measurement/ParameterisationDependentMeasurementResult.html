@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -166,13 +166,17 @@ extends java.lang.Object</pre>
 <div class="block">Gets the parameterisation, describing variables’ state when measuring this result.</div>
 </td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html#toString--">toString</a></span>()</code>&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -209,7 +213,8 @@ extends java.lang.Object</pre>
 <div class="block">Creates a result for a code section measurement.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>parameterisation</code> - The state of variables during the measurement.</dd>
+<dd><code>parameterisation</code> - The state of variables during the measurement. Must not be
+            <code>null</code>.</dd>
 </dl>
 </li>
 </ul>
@@ -224,7 +229,7 @@ extends java.lang.Object</pre>
 <a name="getParameterisation--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getParameterisation</h4>
 <pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/Parameterisation.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">Parameterisation</a>&nbsp;getParameterisation()</pre>
@@ -233,6 +238,19 @@ extends java.lang.Object</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The parameterisation, or <code>null</code> if no parameterisation was recorded
          when measuring this result.</dd>
+</dl>
+</li>
+</ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
