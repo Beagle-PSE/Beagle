@@ -110,6 +110,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 *      ResourceDemandingInternalAction)
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		Validate.notNull(rdia);
 		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
@@ -124,6 +125,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
+		Validate.notNull(branch);
 		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
@@ -138,6 +140,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+		Validate.notNull(loop);
 		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
@@ -155,6 +158,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
+		Validate.notNull(externalCallParameter);
 		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 
@@ -166,6 +170,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @param element A SEFF element. Must not be {@code null}.
 	 */
 	public void getProposedExpressionFor(final MeasurableSeffElement element) {
+		Validate.notNull(element);
 	}
 
 	/**

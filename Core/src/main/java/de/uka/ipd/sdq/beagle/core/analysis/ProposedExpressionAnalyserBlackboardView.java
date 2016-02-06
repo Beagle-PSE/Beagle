@@ -163,6 +163,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 */
 	@Override
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		Validate.notNull(rdia);
 		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
@@ -178,6 +179,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 */
 	@Override
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
+		Validate.notNull(branch);
 		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
@@ -193,6 +195,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	 */
 	@Override
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+		Validate.notNull(loop);
 		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
@@ -211,6 +214,7 @@ public abstract class ProposedExpressionAnalyserBlackboardView implements Evalua
 	@Override
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
+		Validate.notNull(externalCallParameter);
 		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 

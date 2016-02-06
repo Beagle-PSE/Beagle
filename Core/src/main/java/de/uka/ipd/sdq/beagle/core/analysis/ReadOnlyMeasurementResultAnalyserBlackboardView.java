@@ -128,6 +128,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *      ResourceDemandingInternalAction)
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+		Validate.notNull(rdia);
 		Validate.notNull(this.blackboard.getMeasurementResultsFor(rdia));
 		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
@@ -143,6 +144,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
+		Validate.notNull(branch);
 		Validate.notNull(this.blackboard.getMeasurementResultsFor(branch));
 		return this.blackboard.getMeasurementResultsFor(branch);
 	}
@@ -158,6 +160,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+		Validate.notNull(loop);
 		Validate.notNull(this.blackboard.getMeasurementResultsFor(loop));
 		return this.blackboard.getMeasurementResultsFor(loop);
 	}
@@ -176,6 +179,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
+		Validate.notNull(externalCallParameter);
 		Validate.notNull(this.blackboard.getMeasurementResultsFor(externalCallParameter));
 		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
