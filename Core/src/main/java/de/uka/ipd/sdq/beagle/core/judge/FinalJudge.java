@@ -250,7 +250,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		int numberOfCountedElements = 0;
 		double totalDeviation = 0;
 		for (Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
-			final MeasurableSeffElement seffElement = entry.getKey();
 			final double fitness = entry.getValue();
 
 			if (fitness != 0) {
