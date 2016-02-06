@@ -5,6 +5,7 @@ import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -58,21 +59,33 @@ public class UserConfiguration {
 	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
-	 * @param components The default components to be measured or {@code null} to indicate
-	 *            that everything in {@code repositoryFile} should be analysed.
-	 * @param internalActions The default internal actions to be measured or {@code null}
-	 *            to indicate that everything in {@code repositoryFile} should be
-	 *            analysed.
+	 * @param componentsParam The default components to be measured or {@code null} to
+	 *            indicate that everything in {@code repositoryFile} should be analysed.
+	 * @param internalActionsParam The default internal actions to be measured or
+	 *            {@code null} to indicate that everything in {@code repositoryFile}
+	 *            should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
-	public UserConfiguration(final List&lt;BasicComponent&gt; components, final List&lt;InternalAction&gt; internalActions,
-<span class="nc" id="L69">		final File repositoryFile) {</span>
-<span class="nc" id="L70">		Validate.notNull(repositoryFile);</span>
-<span class="nc" id="L71">		this.components = components;</span>
-<span class="nc" id="L72">		this.internalActions = internalActions;</span>
-<span class="nc" id="L73">		this.repositoryFile = repositoryFile;</span>
-<span class="nc" id="L74">		this.timeout = DEFAULT_TIMEOUT;</span>
-<span class="nc" id="L75">	}</span>
+	public UserConfiguration(final List&lt;BasicComponent&gt; componentsParam,
+<span class="nc" id="L70">		final List&lt;InternalAction&gt; internalActionsParam, final File repositoryFile) {</span>
+<span class="nc" id="L71">		Validate.notNull(repositoryFile);</span>
+
+<span class="nc" id="L73">		List&lt;BasicComponent&gt; componentsA = componentsParam;</span>
+<span class="nc" id="L74">		List&lt;InternalAction&gt; internalActionsA = internalActionsParam;</span>
+
+<span class="nc bnc" id="L76" title="All 6 branches missed.">		if ((componentsA == null) ^ (internalActionsA == null)) {</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">			if (componentsA == null) {</span>
+<span class="nc" id="L78">				componentsA = new LinkedList&lt;BasicComponent&gt;();</span>
+			} else {
+<span class="nc" id="L80">				internalActionsA = new LinkedList&lt;InternalAction&gt;();</span>
+			}
+		}
+
+<span class="nc" id="L84">		this.components = componentsA;</span>
+<span class="nc" id="L85">		this.internalActions = internalActionsA;</span>
+<span class="nc" id="L86">		this.repositoryFile = repositoryFile;</span>
+<span class="nc" id="L87">		this.timeout = DEFAULT_TIMEOUT;</span>
+<span class="nc" id="L88">	}</span>
 
 	/**
 	 * Returns the components to be measured or {@code null} to indicate that everything
@@ -82,7 +95,7 @@ public class UserConfiguration {
 	 *         in {@code repositoryFile} should be analysed.
 	 */
 	public List&lt;BasicComponent&gt; getComponents() {
-<span class="nc" id="L85">		return this.components;</span>
+<span class="nc" id="L98">		return this.components;</span>
 	}
 
 	/**
@@ -93,8 +106,8 @@ public class UserConfiguration {
 	 *            everything in {@code repositoryFile} should be analysed.
 	 */
 	public void setComponents(final List&lt;BasicComponent&gt; components) {
-<span class="nc" id="L96">		this.components = components;</span>
-<span class="nc" id="L97">	}</span>
+<span class="nc" id="L109">		this.components = components;</span>
+<span class="nc" id="L110">	}</span>
 
 	/**
 	 * Returns the internal actions to be measured or {@code null} to indicate that
@@ -104,7 +117,7 @@ public class UserConfiguration {
 	 *         everything in {@code repositoryFile} should be analysed.
 	 */
 	public List&lt;InternalAction&gt; getInternalActions() {
-<span class="nc" id="L107">		return this.internalActions;</span>
+<span class="nc" id="L120">		return this.internalActions;</span>
 	}
 
 	/**
@@ -115,8 +128,8 @@ public class UserConfiguration {
 	 *            indicate that everything in {@code repositoryFile} should be analysed.
 	 */
 	public void setInternalActions(final List&lt;InternalAction&gt; internalActions) {
-<span class="nc" id="L118">		this.internalActions = internalActions;</span>
-<span class="nc" id="L119">	}</span>
+<span class="nc" id="L131">		this.internalActions = internalActions;</span>
+<span class="nc" id="L132">	}</span>
 
 	/**
 	 * Returns the timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 →
@@ -126,7 +139,7 @@ public class UserConfiguration {
 	 *         timeout in seconds]
 	 */
 	public int getTimeout() {
-<span class="nc" id="L129">		return this.timeout;</span>
+<span class="nc" id="L142">		return this.timeout;</span>
 	}
 
 	/**
@@ -137,8 +150,8 @@ public class UserConfiguration {
 	 *            [-1 → no timeout] [≥ 0 → timeout in seconds]
 	 */
 	public void setTimeout(final int timeout) {
-<span class="nc" id="L140">		this.timeout = timeout;</span>
-<span class="nc" id="L141">	}</span>
+<span class="nc" id="L153">		this.timeout = timeout;</span>
+<span class="nc" id="L154">	}</span>
 
 	/**
 	 * Returns the repository file.
@@ -146,7 +159,7 @@ public class UserConfiguration {
 	 * @return the repository file.
 	 */
 	public File getRepositoryFile() {
-<span class="nc" id="L149">		return this.repositoryFile;</span>
+<span class="nc" id="L162">		return this.repositoryFile;</span>
 	}
 
 }
