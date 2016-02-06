@@ -119,16 +119,20 @@ public class MeasurementEventParser {
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
 		final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults = new HashSet<>();
-		final Set<Integer> codeSectionEventsForThisBranch = new HashSet<>();
+
+		// Assemble all measurmenent events, that could fit for this branch according to
+		// their code section.
+		final Set<MeasurementEvent> codeSectionEventsForThisBranch = new HashSet<>();
 		for (final CodeSection possibilyPickedBranch : branch.getBranches()) {
 			for (final Integer index : this.codeSectionMapping.get(possibilyPickedBranch)) {
-				codeSectionEventsForThisBranch.add(index);
+				codeSectionEventsForThisBranch.add(this.measurementEvents.get(index));
 			}
 		}
 
-		for (final Integer pickedBranch : codeSectionEventsForThisBranch) {
-			final int branchIndex = branch.getBranches().indexOf(this.measurementEvents.get(pickedBranch));
-			branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
+		final SeffBranchMeasurementEventVisitor seffBranchMeasurementEventVisitor =
+			new SeffBranchMeasurementEventVisitor(branch, branchDecisionMeasurementResults);
+		for (final MeasurementEvent measurementEvent : codeSectionEventsForThisBranch) {
+			measurementEvent.receive(seffBranchMeasurementEventVisitor);
 		}
 		return branchDecisionMeasurementResults;
 	}
@@ -213,6 +217,59 @@ public class MeasurementEventParser {
 						.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));
 				}
 			}
+		}
+
+		@Override
+		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
+			// We don't care about them.
+		}
+	}
+
+	/**
+	 * A {@link MeasurementEventVisitor} for a specific {@link SeffBranch}.
+	 *
+	 *
+	 * @author Roman Langrehr
+	 */
+	private class SeffBranchMeasurementEventVisitor implements MeasurementEventVisitor {
+
+		/**
+		 * The {@link SeffBranch} where we want to know the new measurement results.
+		 */
+		private final SeffBranch branch;
+
+		/**
+		 * The set, where the {@linkplain ResourceDemandMeasurementResult
+		 * ResourceDemandMeasurementResults} should be added.
+		 */
+		private final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults;
+
+		/**
+		 * Creates a visitor for a specific {@link SeffBranch}.
+		 *
+		 * @param branch The {@link SeffBranch} where we want to know the new measurement
+		 *            results.
+		 * @param branchDecisionMeasurementResults The set, where the
+		 *            {@linkplain BranchDecisionMeasurementResult
+		 *            BranchDecisionMeasurementResults} should be added.
+		 */
+		SeffBranchMeasurementEventVisitor(final SeffBranch branch,
+			final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults) {
+			this.branch = branch;
+			this.branchDecisionMeasurementResults = branchDecisionMeasurementResults;
+		}
+
+		@Override
+		public void visit(final CodeSectionExecutedEvent codeSectionExecutedEvent) {
+			final int branchIndex = this.branch.getBranches().indexOf(codeSectionExecutedEvent.getCodeSection());
+			if (branchIndex != -1) {
+				this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
+			}
+		}
+
+		@Override
+		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
+			// We don't care about them.
 		}
 
 		@Override
