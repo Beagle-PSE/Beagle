@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExpressionRecursionException.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -121,6 +121,21 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></h3>
+<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html#FALSE">FALSE</a></code></li>
+</ul>
+</li>
+</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -133,7 +148,11 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#IfThenElseExpression--">IfThenElseExpression</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#IfThenElseExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">IfThenElseExpression</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;ifStatement,
+                    <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;thenStatement,
+                    <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;elseStatement)</code>
+<div class="block">Builds an expression which returns .</div>
+</td>
 </tr>
 </table>
 </li>
@@ -151,53 +170,47 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;object)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">evaluate</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a>&nbsp;variableAssignments)</code>
 <div class="block">Calculates this expression’s value for the given <code>variableAssignments</code>.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getElseExpression--">getElseExpression</a></span>()</code>
-<div class="block">Get expression contained in else-statement.</div>
-</td>
-</tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getIfExpression--">getIfExpression</a></span>()</code>
-<div class="block">Get expression contained in if-statement.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getElseStatement--">getElseStatement</a></span>()</code>
+<div class="block">Get expression contained in else-statement.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getThenExpression--">getThenExpression</a></span>()</code>
-<div class="block">Get expression contained in then-statement.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getIfStatement--">getIfStatement</a></span>()</code>
+<div class="block">Get expression contained in if-statement.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getThenStatement--">getThenStatement</a></span>()</code>
+<div class="block">Get expression contained in then-statement.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">receive</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressionVisitor</a>&nbsp;visitor)</code>
 <div class="block">Calls the appropriate overload of <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression-"><code>EvaluableExpressionVisitor.visit(de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)</code></a> on
  <code>visitor</code>.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#setElseExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setElseExpression</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;elseExpression)</code>
-<div class="block">Set the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the else-statement.</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#setIfExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setIfExpression</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;ifExpression)</code>
-<div class="block">Set the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the if statement.</div>
-</td>
-</tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#setThenExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setThenExpression</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;thenExpression)</code>
-<div class="block">Set the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the then-statement.</div>
-</td>
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -205,7 +218,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -221,13 +234,25 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="IfThenElseExpression--">
+<a name="IfThenElseExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>IfThenElseExpression</h4>
-<pre>public&nbsp;IfThenElseExpression()</pre>
+<pre>public&nbsp;IfThenElseExpression(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;ifStatement,
+                            <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;thenStatement,
+                            <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;elseStatement)</pre>
+<div class="block">Builds an expression which returns .</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>ifStatement</code> - The expression which contains the if-statement. Must not be
+            <code>null</code>.</dd>
+<dd><code>thenStatement</code> - The expression which contains the then-statement. Must not be
+            <code>null</code>.</dd>
+<dd><code>elseStatement</code> - The expression which contains the else-statement. Must not be
+            <code>null</code>.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -238,13 +263,13 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getIfExpression--">
+<a name="getIfStatement--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getIfExpression</h4>
-<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;getIfExpression()</pre>
+<h4>getIfStatement</h4>
+<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;getIfStatement()</pre>
 <div class="block">Get expression contained in if-statement.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -252,28 +277,13 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 </dl>
 </li>
 </ul>
-<a name="setIfExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">
+<a name="getElseStatement--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setIfExpression</h4>
-<pre>public&nbsp;void&nbsp;setIfExpression(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;ifExpression)</pre>
-<div class="block">Set the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the if statement.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>ifExpression</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the if
-            statement.</dd>
-</dl>
-</li>
-</ul>
-<a name="getElseExpression--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getElseExpression</h4>
-<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;getElseExpression()</pre>
+<h4>getElseStatement</h4>
+<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;getElseStatement()</pre>
 <div class="block">Get expression contained in else-statement.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -281,47 +291,17 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 </dl>
 </li>
 </ul>
-<a name="setElseExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">
+<a name="getThenStatement--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setElseExpression</h4>
-<pre>public&nbsp;void&nbsp;setElseExpression(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;elseExpression)</pre>
-<div class="block">Set the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the else-statement.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>elseExpression</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the
-            else-statement.</dd>
-</dl>
-</li>
-</ul>
-<a name="getThenExpression--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getThenExpression</h4>
-<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;getThenExpression()</pre>
+<h4>getThenStatement</h4>
+<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;getThenStatement()</pre>
 <div class="block">Get expression contained in then-statement.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>then-expression</dd>
-</dl>
-</li>
-</ul>
-<a name="setThenExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setThenExpression</h4>
-<pre>public&nbsp;void&nbsp;setThenExpression(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;thenExpression)</pre>
-<div class="block">Set the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the then-statement.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>thenExpression</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the
-            then-statement.</dd>
 </dl>
 </li>
 </ul>
@@ -346,7 +326,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <a name="evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>evaluate</h4>
 <pre>public&nbsp;double&nbsp;evaluate(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a>&nbsp;variableAssignments)</pre>
@@ -360,6 +340,45 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
             <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariable</code></a>s contained in this expression.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value for the given assignments.</dd>
+</dl>
+</li>
+</ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="equals-java.lang.Object-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;object)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
+<a name="hashCode--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
@@ -390,7 +409,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExpressionRecursionException.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
