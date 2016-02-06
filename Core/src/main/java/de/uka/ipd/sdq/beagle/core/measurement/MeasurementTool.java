@@ -22,7 +22,7 @@ import java.util.List;
 public interface MeasurementTool {
 
 	/**
-	 * Executes an measurement. This method should return after the complete measurement
+	 * Executes a measurement. This method should return after the complete measurement
 	 * finished.
 	 *
 	 * @param measurementOrder Container for the information, what to measure and the
