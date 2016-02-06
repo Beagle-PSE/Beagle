@@ -303,14 +303,14 @@
 <dd>
 <div class="block">A result of measuring which branch is taken in a branching source code construct.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html#BranchDecisionMeasurementResult--">BranchDecisionMeasurementResult()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html#BranchDecisionMeasurementResult-int-">BranchDecisionMeasurementResult(int)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a></dt>
 <dd>
 <div class="block">Creates a result for a branch measurement for which no parameterisation was
  recorded.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html#BranchDecisionMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-">BranchDecisionMeasurementResult(Parameterisation)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html#BranchDecisionMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-int-">BranchDecisionMeasurementResult(Parameterisation, int)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a></dt>
 <dd>
-<div class="block">Creates a result for a branch measurement.</div>
+<div class="block">Creates a result for a parameterised branch measurement.</div>
 </dd>
 </dl>
 <a name="I:C">
@@ -355,8 +355,11 @@
 <dd>
 <div class="block">Expression that compares both its contained expressions.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#ComparisonExpression--">ComparisonExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#ComparisonExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">ComparisonExpression(EvaluableExpression, EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
+<dd>
+<div class="block">Builds an expression that will return '1' if the expression set as smaller is
+ smaller and '0' else.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">ConstantExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">An <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> having a constant value.</div>
@@ -448,8 +451,11 @@
 <dd>
 <div class="block">Expression that divides its contained dividend through its contained divisor.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#DivisionExpression--">DivisionExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#DivisionExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">DivisionExpression(EvaluableExpression, EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
+<dd>
+<div class="block">Builds an expression which returns the quotient of a division using the given
+ divisor and dividend.</div>
+</dd>
 </dl>
 <a name="I:E">
 <!--   -->
@@ -457,6 +463,34 @@
 <h2 class="title">E</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">AdditionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ConstantExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariable</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentialFunctionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">LogarithmExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">MultiplicationExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">NaturalLogarithmExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
 <dd>&nbsp;</dd>
@@ -491,8 +525,10 @@
 <dd>
 <div class="block">An <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> representing a named variable.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html#EvaluableVariable--">EvaluableVariable()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariable</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html#EvaluableVariable-java.lang.String-">EvaluableVariable(String)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariable</a></dt>
+<dd>
+<div class="block">Builds an evaluable variable with the given name.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">EvaluableVariableAssignment</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Assigns <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariables</code></a> to values.</div>
@@ -527,7 +563,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">evaluate(EvaluableVariableAssignment)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">evaluate(EvaluableVariableAssignment)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">evaluate(EvaluableVariableAssignment)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForComponents.html#execute-org.eclipse.core.commands.ExecutionEvent-">execute(ExecutionEvent)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForComponents.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForComponents</a></dt>
 <dd>&nbsp;</dd>
@@ -539,22 +575,17 @@
 <dd>
 <div class="block">Expression that potentises the given exponent to the given base.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#ExponentationExpression--">ExponentationExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#ExponentationExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">ExponentationExpression(EvaluableExpression, EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
+<dd>
+<div class="block">Build an expression which returns the base raised to the power of the exponent.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">ExponentialFunctionExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that potentises the given exponent to the base e (Euler’s number).</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html#ExponentialFunctionExpression--">ExponentialFunctionExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentialFunctionExpression</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExpressionRecursionException.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">ExpressionRecursionException</span></a> - Exception in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html#ExponentialFunctionExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">ExponentialFunctionExpression(EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentialFunctionExpression</a></dt>
 <dd>
-<div class="block">Might be thrown if a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> contains itself.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExpressionRecursionException.html#ExpressionRecursionException-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">ExpressionRecursionException(EvaluableExpression)</a></span> - Constructor for exception de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExpressionRecursionException.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExpressionRecursionException</a></dt>
-<dd>
-<div class="block">Creates an Exception for the fact that <code>selfContainedExpression</code>, contains
- itself.</div>
+<div class="block">Builds an expression which returns e raised to the power of the exponent.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">ExternalCallParameter</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
@@ -570,6 +601,10 @@
 </a>
 <h2 class="title">F</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html#FALSE">FALSE</a></span> - Static variable in interface de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></dt>
+<dd>
+<div class="block">The used value to express <code>true</code> as double.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="interface in de.uka.ipd.sdq.beagle.core.judge"><span class="typeNameLink">FinalJudge</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/judge/package-summary.html">de.uka.ipd.sdq.beagle.core.judge</a></dt>
 <dd>
 <div class="block">TODO Document this type.</div>
@@ -728,10 +763,6 @@
 <div class="block">The assignment that caused this exception by not assigning a value to
  <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/UndefinedExpressionException.html#getMissingVariable--"><code>UndefinedExpressionException.getMissingVariable()</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExpressionRecursionException.html#getCausingExpression--">getCausingExpression()</a></span> - Method in exception de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExpressionRecursionException.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExpressionRecursionException</a></dt>
-<dd>
-<div class="block">The expression which contains itself and raised this exception.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/order/AbstractMeasurementEvent.html#getCodeSection--">getCodeSection()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.order.<a href="de/uka/ipd/sdq/beagle/core/measurement/order/AbstractMeasurementEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">AbstractMeasurementEvent</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html#getCodeSection--">getCodeSection()</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.measurement.order.<a href="de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEvent</a></dt>
@@ -763,7 +794,7 @@
 <dd>
 <div class="block">Gets the divisor of the expression.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getElseExpression--">getElseExpression()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getElseStatement--">getElseStatement()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
 <dd>
 <div class="block">Get expression contained in else-statement.</div>
 </dd>
@@ -843,7 +874,7 @@
 <div class="block">Get the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is supposed to be the greater one in the
  comparison.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getIfExpression--">getIfExpression()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getIfStatement--">getIfStatement()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
 <dd>
 <div class="block">Get expression contained in if-statement.</div>
 </dd>
@@ -1004,7 +1035,7 @@
 <div class="block">Gets all results that could be parsed from the input events for
  <code>externalCallParameter</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#getMinuend--">getMinuend()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#getMinuend--">getMinuend()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
 <dd>
 <div class="block">Get the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is the minuend.</div>
 </dd>
@@ -1071,10 +1102,6 @@
 <dd>
 <div class="block">Returns the repository file.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#getResourceType--">getResourceType()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
-<dd>
-<div class="block">Gets this result’s <em>result type</em>.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#getResourceType--">getResourceType()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
 <dd>
 <div class="block">Gets this internal action's <em>result type</em>.</div>
@@ -1121,11 +1148,15 @@
 <dd>
 <div class="block">Gets the index of the first character of the last statement in this code section.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#getSubstrahend--">getSubstrahend()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#getSubtrahend--">getSubtrahend()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
 <dd>
-<div class="block">Get the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is the substrahend.</div>
+<div class="block">Get the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is the subtrahend.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getThenExpression--">getThenExpression()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#getSummands--">getSummands()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">AdditionExpression</a></dt>
+<dd>
+<div class="block">Get all evaluable expressions which are forming this expression's sum.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#getThenStatement--">getThenStatement()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
 <dd>
 <div class="block">Get expression contained in then-statement.</div>
 </dd>
@@ -1136,6 +1167,10 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html#getTimeout--">getTimeout()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">TimeoutWizardPage</a></dt>
 <dd>
 <div class="block">Returns the timeout chosen by the user.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html#getValue--">getValue()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ConstantExpression</a></dt>
+<dd>
+<div class="block">Gets the value of this constant expression.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#getValue--">getValue()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
 <dd>
@@ -1192,6 +1227,34 @@
 <dl>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">AdditionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ConstantExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariable</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentialFunctionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">LogarithmExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">MultiplicationExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">NaturalLogarithmExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#hashCode--">hashCode()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
@@ -1224,8 +1287,10 @@
 <dd>
 <div class="block">Expression that executes an if-then-else-statement based on its contained expressions.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#IfThenElseExpression--">IfThenElseExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#IfThenElseExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">IfThenElseExpression(EvaluableExpression, EvaluableExpression, EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
+<dd>
+<div class="block">Builds an expression which returns .</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#isNs--">isNs()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
 <div class="block">Whether this resource type is measured machine dependent or not.</div>
@@ -1254,19 +1319,22 @@
 <div class="block">Expression that executes a logarithm with defined expressions as base and
  antilogarithm.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html#LogarithmExpression--">LogarithmExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">LogarithmExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html#LogarithmExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">LogarithmExpression(EvaluableExpression, EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">LogarithmExpression</a></dt>
+<dd>
+<div class="block">Builds an expression which returns the result of logarithm of antilogarithm to the
+ base.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><span class="typeNameLink">LoopRepetitionCountMeasurementResult</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/measurement/package-summary.html">de.uka.ipd.sdq.beagle.core.measurement</a></dt>
 <dd>
 <div class="block">A result of counting repetitions of a loop.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult--">LoopRepetitionCountMeasurementResult()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult-int-">LoopRepetitionCountMeasurementResult(int)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a></dt>
 <dd>
 <div class="block">Creates a result for a loop measurement for which no parameterisation was recorded.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-">LoopRepetitionCountMeasurementResult(Parameterisation)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#LoopRepetitionCountMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-int-">LoopRepetitionCountMeasurementResult(Parameterisation, int)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a></dt>
 <dd>
-<div class="block">Creates a result for a loop measurement.</div>
+<div class="block">Creates a result for a parameterised loop measurement.</div>
 </dd>
 </dl>
 <a name="I:M">
@@ -1366,8 +1434,11 @@
 <dd>
 <div class="block">Expression that executes the natural logarithmic function.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html#NaturalLogarithmExpression--">NaturalLogarithmExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">NaturalLogarithmExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html#NaturalLogarithmExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">NaturalLogarithmExpression(EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">NaturalLogarithmExpression</a></dt>
+<dd>
+<div class="block">Builds an expression which returns the result of a logarithm of the antilogarithm
+ to the base.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html#NO_TIMEOUT">NO_TIMEOUT</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core">UserConfiguration</a></dt>
 <dd>
 <div class="block">Numeric value for "no timeout".</div>
@@ -1391,7 +1462,7 @@
 <dl>
 <dt><a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><span class="typeNameLink">ParameterChangeMeasurementResult</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/measurement/package-summary.html">de.uka.ipd.sdq.beagle.core.measurement</a></dt>
 <dd>
-<div class="block">Missing Javadoc.</div>
+<div class="block">Note: Designing this class is out of the project’s first iteration’s scope.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html#ParameterChangeMeasurementResult--">ParameterChangeMeasurementResult()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterChangeMeasurementResult</a></dt>
 <dd>
@@ -1569,7 +1640,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">receive(EvaluableExpressionVisitor)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">receive(EvaluableExpressionVisitor)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#receive-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor-">receive(EvaluableExpressionVisitor)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU">RESOURCE_TYPE_CPU</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
@@ -1619,14 +1690,14 @@
 <dd>
 <div class="block">A result of measuring resource demands of a code section.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#ResourceDemandMeasurementResult--">ResourceDemandMeasurementResult()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#ResourceDemandMeasurementResult-double-">ResourceDemandMeasurementResult(double)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
 <dd>
 <div class="block">Creates a result for a resource demand measurement for which no parameterisation
  was recorded.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#ResourceDemandMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-">ResourceDemandMeasurementResult(Parameterisation)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#ResourceDemandMeasurementResult-de.uka.ipd.sdq.beagle.core.measurement.Parameterisation-double-">ResourceDemandMeasurementResult(Parameterisation, double)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
 <dd>
-<div class="block">Creates a result for a resource demand measurement.</div>
+<div class="block">Creates a result for a parameterised resource demand measurement.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">ResourceDemandType</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
@@ -1669,116 +1740,22 @@
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>SelectionOverviewWizardPage</code></a> being linked to the given
  <code>userConfiguration</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html#setAnitlogarithm-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setAnitlogarithm(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">LogarithmExpression</a></dt>
-<dd>
-<div class="block">Set a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be the antilogarithm, or parameter of the
- <code>LogarithmExpression</code>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html#setAnitlogarithm-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setAnitlogarithm(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">NaturalLogarithmExpression</a></dt>
-<dd>
-<div class="block">Set a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be the antilogarithm, or parameter of the
- <code>LogarithmExpression</code>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#setArgument-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setArgument(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
-<dd>
-<div class="block">Set an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be the argument of the sine function.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#setBase-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setBase(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
-<dd>
-<div class="block">Set an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as base.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html#setBase-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setBase(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">LogarithmExpression</a></dt>
-<dd>
-<div class="block">Set the base of the logarithm.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html#setBranchIndex-int-">setBranchIndex(int)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a></dt>
-<dd>
-<div class="block">Gets the taken branch’s index.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html#setComponents-java.util.List-">setComponents(List&lt;BasicComponent&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core">UserConfiguration</a></dt>
 <dd>
 <div class="block">Sets the components to be measured to <code>elements</code>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#setCount-int-">setCount(int)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a></dt>
-<dd>
-<div class="block">Sets the loop repetition count.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html#setCount-int-">setCount(int)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterChangeMeasurementResult</a></dt>
-<dd>
-<div class="block">Missing Javadoc.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#setDividend-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setDividend(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
-<dd>
-<div class="block">Sets the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is the dividend.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#setDivisor-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setDivisor(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
-<dd>
-<div class="block">Sets the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is the divisor.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#setElseExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setElseExpression(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
-<dd>
-<div class="block">Set the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the else-statement.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#setExponent-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setExponent(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
-<dd>
-<div class="block">Set an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as exponent.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html#setExponent-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setExponent(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentialFunctionExpression</a></dt>
-<dd>
-<div class="block">Set an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as exponent.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#setFinalExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setFinalExpressionFor(MeasurableSeffElement, EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></dt>
 <dd>
 <div class="block">Sets <code>expression</code> as the final description of <code>element</code>’s measurement
  results.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#setGreater-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setGreater(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
-<dd>
-<div class="block">Set the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is supposed to be the greater one in the
- comparison.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#setIfExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setIfExpression(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
-<dd>
-<div class="block">Set the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the if statement.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html#setInternalActions-java.util.List-">setInternalActions(List&lt;InternalAction&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core">UserConfiguration</a></dt>
 <dd>
 <div class="block">Sets the internal actions to be measured to <code>internalActions</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#setMinuend-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setMinuend(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
-<dd>
-<div class="block">Set an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as minuend of the <code>SubstractionExpression</code>
- .</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html#setName-java.lang.String-">setName(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariable</a></dt>
-<dd>
-<div class="block">Names this evaluable variable.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#setResourceType-java.lang.String-">setResourceType(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
-<dd>
-<div class="block">Sets this result’s <em>result type</em>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#setSmaller-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setSmaller(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
-<dd>
-<div class="block">Set the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is supposed to be the smaller one in the
- comparison.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#setSubtrahend-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setSubtrahend(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
-<dd>
-<div class="block">Set an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> as substrahend of the
- <code>SubstractionExpression</code>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#setThenExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setThenExpression(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
-<dd>
-<div class="block">Set the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to be contained in the then-statement.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html#setTimeout-int-">setTimeout(int)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core">UserConfiguration</a></dt>
 <dd>
 <div class="block">Sets the timeout to be used to <code>timeout</code>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#setValue-double-">setValue(double)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
-<dd>
-<div class="block">Sets this result’s value.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html#setValueFor-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-double-">setValueFor(EvaluableVariable, double)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a></dt>
 <dd>
@@ -1788,8 +1765,10 @@
 <dd>
 <div class="block">Expression that executes a sine function on its contained expression.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#SineExpression--">SineExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#SineExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">SineExpression(EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
+<dd>
+<div class="block">Builds an expression which returns the sine of the argument.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html#SPECIAL_ID_COMPLETE_REPOSITORY">SPECIAL_ID_COMPLETE_REPOSITORY</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForRepositories</a></dt>
 <dd>
 <div class="block">The ID stating that an entire repository is ought to be analysed.</div>
@@ -1802,12 +1781,14 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#stop-org.osgi.framework.BundleContext-">stop(BundleContext)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">SubstractionExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">SubtractionExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that subtracts a subtrahend from a minuend.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html#SubstractionExpression--">SubstractionExpression()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubstractionExpression</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#SubtractionExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">SubtractionExpression(EvaluableExpression, EvaluableExpression)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
+<dd>
+<div class="block">Builds an expression which returns the difference of subtrahend and minuend.</div>
+</dd>
 </dl>
 <a name="I:T">
 <!--   -->
@@ -1826,7 +1807,43 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">AdditionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ComparisonExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ConstantExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariable</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentationExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ExponentialFunctionExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">IfThenElseExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">LogarithmExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">MultiplicationExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">NaturalLogarithmExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SineExpression</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterisationDependentMeasurementResult</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a></dt>
 <dd>&nbsp;</dd>
@@ -1914,9 +1931,9 @@
 <dd>
 <div class="block">Called if the visited expression is a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SineExpression</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression-">visit(SubstractionExpression)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressionVisitor</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression-">visit(SubtractionExpression)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressionVisitor</a></dt>
 <dd>
-<div class="block">Called if the visited expression is a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubstractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SubstractionExpression</code></a>.</div>
+<div class="block">Called if the visited expression is a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SubtractionExpression</code></a>.</div>
 </dd>
 </dl>
 <a name="I:W">
