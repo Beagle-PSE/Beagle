@@ -8,6 +8,9 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
+
+import java.util.Set;
 
 /**
  * Controls which measurement tool is working.
@@ -20,6 +23,20 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 public class MeasurementController {
 
 	/**
+	 * All {@link MeasurementTool}s this {@link MeasurementController} knows.
+	 */
+	private Set<MeasurementTool> measurementTools;
+
+	/**
+	 * Constructs a new {@link MeasurementController}.
+	 *
+	 * @param measurementTools The {@link MeasurementTool}s to use.
+	 */
+	public MeasurementController(final Set<MeasurementTool> measurementTools) {
+		this.measurementTools = measurementTools;
+	}
+
+	/**
 	 * Determines whether a {@link MeasurementTool} can contribute to the
 	 * {@link Blackboard}.
 	 *
@@ -29,6 +46,11 @@ public class MeasurementController {
 	 *         at least one new measurement result will be added.
 	 */
 	public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
+		for (MeasurementTool measurementTool : this.measurementTools) {
+			if (measurementTool.canMeasure(blackboard)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -45,6 +67,10 @@ public class MeasurementController {
 	 * @param blackboard The blackboard.
 	 */
 	public void measure(final MeasurementControllerBlackboardView blackboard) {
-		// implement method
+		for (MeasurementTool measurementTool : this.measurementTools) {
+			final MeasurementOrder measurementOrder = new MeasurementOrder();
+
+			measurementTool.measure(measurementOrder);
+		}
 	}
 }
