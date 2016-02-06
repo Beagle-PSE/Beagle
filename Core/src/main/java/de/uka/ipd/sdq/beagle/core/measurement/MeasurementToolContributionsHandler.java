@@ -8,10 +8,19 @@ import org.eclipse.core.runtime.Platform;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * This class cannot reasonably be tested through unit tests. It uses an API that’s
+ * offered through a static method of a final, byte-code signed class. Automatically
+ * testing the class would require inadequate effort and would likely mainly test the
+ * Eclipse API. This class is tested manually.
+ *
+ * COVERAGE:OFF
+ */
+
 /**
- * This class handles the creation searching, loading and instantiation of all available
- * measurement tools. The measurement tools need a public zero argument constructor for
- * the instantiation.
+ * Handles creation searching, loading and instantiation of all available measurement
+ * tools. They are loaded through Eclipse’s extension point API. The measurement tools
+ * need a public zero argument constructor for the instantiation.
  *
  * @author Roman Langrehr
  */
