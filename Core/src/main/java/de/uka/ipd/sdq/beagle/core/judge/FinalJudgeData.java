@@ -14,6 +14,11 @@ import java.util.HashMap;
 public class FinalJudgeData implements Serializable {
 
 	/**
+	 * serialVersionUID to make sure serialisation works fine.
+	 */
+	private static final long serialVersionUID = 9038094699907524618L;
+
+	/**
 	 * The millisecond timestamp of the point in time when evolution of evaluable
 	 * expressions started or {@code -1} to indicate that this field isn't initialised.
 	 */
