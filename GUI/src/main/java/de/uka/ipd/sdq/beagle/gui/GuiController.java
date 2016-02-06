@@ -11,6 +11,7 @@ import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -80,8 +81,9 @@ public class GuiController {
 	 * @param components The default components to be measured.
 	 * @param internalActions The default internal actions to be measured.
 	 */
-	public GuiController(final List<BasicComponent> components, final List<InternalAction> internalActions) {
-		this.userConfiguration = new UserConfiguration(components, internalActions);
+	public GuiController(final List<BasicComponent> components, final List<InternalAction> internalActions,
+		File repositoryFile) {
+		this.userConfiguration = new UserConfiguration(components, internalActions, repositoryFile);
 		this.state = GuiControllerState.unopened;
 		this.shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	}
@@ -136,11 +138,15 @@ public class GuiController {
 	private void engageDialog() {
 		final String dialogTitleRunning = "Beagle Analysis is Running";
 		final String dialogMessageRunning = "Beagle Analysis is running.";
-		final String[] buttonLabelsRunning = {"Abort", "Pause"};
+		final String[] buttonLabelsRunning = {
+			"Abort", "Pause"
+		};
 
 		final String dialogTitlePaused = "Beagle Analysis is Paused";
 		final String dialogMessagePaused = "Beagle Analysis is paused.";
-		final String[] buttonLabelsPaused = {"Abort", "Continue"};
+		final String[] buttonLabelsPaused = {
+			"Abort", "Continue"
+		};
 
 		boolean analysisRunning = false;
 		// equals a click on button "Continue" (continuing and starting the analysis
