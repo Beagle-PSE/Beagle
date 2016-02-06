@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Eclipse_GUI
-Bundle-SymbolicName: Beagle_GUI;singleton:=true
+Bundle-Name: Beagle GUI
+Bundle-SymbolicName: de.uka.ipd.sdq.beagle.gui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.uka.ipd.sdq.beagle.gui.Activator
 Require-Bundle: org.eclipse.ui,
