@@ -3,6 +3,11 @@ package de.uka.ipd.sdq.beagle.core;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser;
 import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementControllerBlackboardView;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+import de.uka.ipd.sdq.beagle.core.measurement.ReadOnlyMeasurementControllerBlackboardView;
+
+import java.util.Set;
 
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
@@ -46,6 +51,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
  *
  * @author Roman Langrehr
  * @author Joshua Gleitze
+ * @author Christoph Michelbach
  *
  * @see MeasurementController
  * @see Blackboard
@@ -53,12 +59,24 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
 public class AnalysisController {
 
 	/**
+	 * The {@link Blackboard} this {@link AnalysisController} knows and uses.
+	 */
+	private Blackboard blackboard;
+
+	/**
+	 * The {@link MeasurementController} this {@link AnalysisController} knows and uses.
+	 */
+	private MeasurementController measurementController;
+
+	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
 	 *
 	 * @param blackboard A blackboard having everything to be analysed written on it.
+	 * @param measurementTools The {@link MeasurementTool}s to use.
 	 */
-	public AnalysisController(final Blackboard blackboard) {
-
+	public AnalysisController(final Blackboard blackboard, final Set<MeasurementTool> measurementTools) {
+		this.blackboard = blackboard;
+		this.measurementController = new MeasurementController(measurementTools);
 	}
 
 	/**
@@ -66,5 +84,13 @@ public class AnalysisController {
 	 * judging. See the class description for more details on the analysis process.
 	 */
 	public void performAnalysis() {
+		final ReadOnlyMeasurementControllerBlackboardView readOnlyMeasurementControllerBlackboardView =
+			new ReadOnlyMeasurementControllerBlackboardView();
+		if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {
+			final MeasurementControllerBlackboardView measurementControllerBlackboardView =
+				new MeasurementControllerBlackboardView();
+			this.measurementController.measure(measurementControllerBlackboardView);
+		}
+
 	}
 }
