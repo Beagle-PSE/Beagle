@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FinalJudge.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.judge</a> &gt; <span class="el_source">FinalJudge.java</span></div><h1>FinalJudge.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.judge;
+
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Implements the break condition for evolution of evaluable expressions and decides which
+ * proposed evaluable expression describes the measured result best and will be annotated
+ * in the PCM.
+ * 
+ * @author Christoph Michelbach
+ */
+<span class="nc" id="L23">public class FinalJudge implements BlackboardStorer&lt;FinalJudgeData&gt; {</span>
+
+	/**
+	 * If a generation is fitter than this value, evolution of evaluable expressions will
+	 * be stopped.
+	 */
+	private static final double FITNESS_EPSILON = 0.5d;
+
+	/**
+	 * If the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
+	 * expressions will be stopped.
+	 */
+	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = 500;
+
+	/**
+	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
+	 * the application started so evolution of evaluable expressions will be continued.
+	 */
+	private static final long MAX_TIME_PASSED = 3 * 24 * 3600;
+
+	/**
+	 * If more generations than this have less than {@link #SIGNIFICANT_IMPROVEMENT}
+	 * relative improvement to the previously best value, evolution of evaluable
+	 * expressions will be stopped.
+	 */
+	private static final int MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT = 12;
+
+	/**
+	 * If more generations than
+	 * {@link #MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT} have less than
+	 * this much relative improvement to the previously best value, evolution of evaluable
+	 * expressions will be stopped.
+	 */
+	private static final double SIGNIFICANT_IMPROVEMENT = 0.005;
+
+	/**
+	 * Stores all status of this {@link FinalJudge} object.
+	 */
+	private FinalJudgeData data;
+
+	/**
+	 * Initialises the {@link FinalJudge} object. Call this method before starting
+	 * evolution of evaluable expressions to start counting the total time the entire
+	 * evolution of evaluable expressions takes.
+	 * 
+	 * @param blackboard The {@link Blackboard} to store the data of this
+	 *            {@link FinalJudge} on. Must not be {@code null}.
+	 *
+	 */
+	public void init(final Blackboard blackboard) {
+<span class="nc" id="L73">		Validate.notNull(blackboard);</span>
+
+<span class="nc" id="L75">		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());</span>
+
+<span class="nc" id="L77">		this.loadData(blackboard);</span>
+
+<span class="nc" id="L79">		this.data.setStartTime(System.currentTimeMillis());</span>
+<span class="nc" id="L80">	}</span>
+
+	/**
+	 * Implements the break condition for evolution of evaluable expressions. Decides
+	 * whether evolution will be continued or stopped depending on the fitness of the
+	 * fittest evaluable expression, the number of generations passed, the time passed,
+	 * and the relative improvement of a generation.
+	 *
+	 * @param blackboard The {@link Blackboard} this {@link FinalJudge} operates on. Must
+	 *            not be {@code null}.
+	 * @return {@code true} to indicate that evolution of evaluable expressions will be
+	 *         stopped; {@code false} otherwise.
+	 */
+	boolean judge(final Blackboard blackboard) {
+<span class="nc" id="L94">		Validate.notNull(blackboard);</span>
+<span class="nc" id="L95">		this.loadData(blackboard);</span>
+
+<span class="nc" id="L97">		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);</span>
+
+		// determine the criteria which aren't CPU-intensive first
+<span class="nc bnc" id="L100" title="All 4 branches missed.">		if (this.numberOfGenerationsPassedTooHigh() || this.maxTimePassedTooHigh()) {</span>
+<span class="nc" id="L101">			return true;</span>
+		}
+
+<span class="nc" id="L104">		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();</span>
+
+<span class="nc" id="L106">		final Set&lt;SeffBranch&gt; seffBranches = blackboard.getSeffBranchesToBeMeasured();</span>
+<span class="nc" id="L107">		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);</span>
+
+<span class="nc bnc" id="L109" title="All 2 branches missed.">		return !this.evaluateRelativeImprovement();</span>
+	}
+
+	/**
+	 * Loads the data stored for this object from the {@link Blackboard}.
+	 *
+	 * @param blackboard The {@link Blackboard} to use. Must not be {@code null}.
+	 * @throws IllegalStateException Thrown if this method is called before
+	 *             {@link #init()}.
+	 */
+	private void loadData(final Blackboard blackboard) throws IllegalStateException {
+<span class="nc" id="L120">		Validate.notNull(blackboard);</span>
+
+<span class="nc" id="L122">		this.data = blackboard.readFor(FinalJudge.class);</span>
+
+<span class="nc bnc" id="L124" title="All 2 branches missed.">		if (this.data == null) {</span>
+<span class="nc" id="L125">			throw new IllegalStateException(&quot;loadData(Blackboard) cannot be called on FinalJudge before init().&quot;);</span>
+		}
+<span class="nc" id="L127">	}</span>
+
+	/**
+	 * Measures the fitness of all {@linkplain MeasurableSeffElement measurable SEFF
+	 * elements}.
+	 * 
+	 * &lt;p/&gt; CAUTION: All elements of {@code measurableSeffElements} have to be of type
+	 * {@code SE}.
+	 * 
+	 * @param &lt;SEFF_ELEMENT_TYPE&gt; The type of which all {@linkplain MeasurableSeffElement
+	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
+	 *            Must not be {@code null}.
+	 *
+	 * @param measurableSeffElements The set of {@linkplain MeasurableSeffElement
+	 *            measurable SEFF elements} to operate on. Must not be {@code null}.
+	 * @param blackboard The {@link Blackboard} to operate on. Must not be {@code null}.
+	 * @param fitnessFunction The fitness function to use. Must not be {@code null}.
+	 * @return {@code true} if {@code measurableSeffElements} contains an element with
+	 *         sufficient fitness to stop evolution of evaluable expressions;
+	 *         {@code false} otherwise.
+	 */
+	private &lt;SEFF_ELEMENT_TYPE extends MeasurableSeffElement&gt; boolean measureFitness(
+		final Set&lt;SEFF_ELEMENT_TYPE&gt; measurableSeffElements, final Blackboard blackboard,
+		final TypedFitnessFunction&lt;SEFF_ELEMENT_TYPE&gt; fitnessFunction) {
+
+<span class="nc" id="L152">		final HashMap&lt;MeasurableSeffElement, Double&gt; currentFitnessValues = this.data.getCurrentFitnessValues();</span>
+
+<span class="nc" id="L154">		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =</span>
+			new ProposedExpressionAnalyserBlackboardView();
+
+<span class="nc bnc" id="L157" title="All 2 branches missed.">		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {</span>
+
+<span class="nc bnc" id="L159" title="All 2 branches missed.">			for (EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {</span>
+<span class="nc" id="L160">				final double fitnessValue =</span>
+<span class="nc" id="L161">					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);</span>
+
+				// store the measurement result
+<span class="nc" id="L164">				currentFitnessValues.put(seffElement, fitnessValue);</span>
+<span class="nc" id="L165">			}</span>
+<span class="nc" id="L166">		}</span>
+
+<span class="nc" id="L168">		return true;</span>
+	}
+
+	/**
+	 * Determines whether a set of {@linkplain MeasurableSeffElement measurable SEFF
+	 * elements} contains an element with sufficient fitness to stop evolution of
+	 * evaluable expressions.
+	 * 
+	 * &lt;p/&gt; CAUTION: All elements of {@code measurableSeffElements} have to be of type
+	 * {@code SE}.
+	 * 
+	 * @param &lt;SEFF_ELEMENT_TYPE&gt; The type of which all {@linkplain MeasurableSeffElement
+	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
+	 *            Must not be {@code null}.
+	 *
+	 * @param measurableSeffElements The set of {@linkplain MeasurableSeffElement
+	 *            measurable SEFF elements} to operate on. Must not be {@code null}.
+	 * @return {@code true} if {@code measurableSeffElements} contains an element with
+	 *         sufficient fitness to stop evolution of evaluable expressions;
+	 *         {@code false} otherwise.
+	 */
+	@SuppressWarnings(&quot;unused&quot;)
+	// May be needed to make future adaptations of this class
+	// easier.
+	private &lt;SEFF_ELEMENT_TYPE extends MeasurableSeffElement&gt; boolean containsElementWithSufficientFitness(
+		final Set&lt;SEFF_ELEMENT_TYPE&gt; measurableSeffElements) {
+<span class="nc" id="L194">		Validate.notNull(measurableSeffElements);</span>
+
+<span class="nc" id="L196">		final HashMap&lt;MeasurableSeffElement, Double&gt; currentFitnessValues = this.data.getCurrentFitnessValues();</span>
+
+<span class="nc bnc" id="L198" title="All 2 branches missed.">		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {</span>
+<span class="nc" id="L199">			boolean foundOptimal = false;</span>
+
+<span class="nc" id="L201">			final double fitnessValue = currentFitnessValues.get(seffElement);</span>
+<span class="nc bnc" id="L202" title="All 4 branches missed.">			foundOptimal = foundOptimal || fitnessValue &lt; FITNESS_EPSILON;</span>
+
+			// If a single MeasurableSeffElement to examine doesn't have a good enough
+			// EvaluableExpression to describe it, the set of MeasurableSeffElements
+			// doesn't have good enough EvaluableExpressions to describe it.
+<span class="nc bnc" id="L207" title="All 2 branches missed.">			if (!foundOptimal) {</span>
+<span class="nc" id="L208">				return false;</span>
+			}
+<span class="nc" id="L210">		}</span>
+
+<span class="nc" id="L212">		return true;</span>
+	}
+
+	/**
+	 * Determines whether the number of generations passed is too high.
+	 *
+	 * @return {@code true} if and only if the number of generations passed is greater
+	 *         than {@code MAX_NUMBER_OF_GENERATIONS_PASSED}.
+	 */
+	private boolean numberOfGenerationsPassedTooHigh() {
+<span class="nc bnc" id="L222" title="All 2 branches missed.">		return this.data.getNumberOfGenerationsPassed() &gt; MAX_NUMBER_OF_GENERATIONS_PASSED;</span>
+	}
+
+	/**
+	 * Determines whether the amount of time passed is too high.
+	 *
+	 * @return {@code true} if and only if the time passed is greater than
+	 *         {@code MAX_TIME_PASSED}.
+	 */
+	private boolean maxTimePassedTooHigh() {
+<span class="nc" id="L232">		final long currentTime = System.currentTimeMillis();</span>
+
+<span class="nc bnc" id="L234" title="All 2 branches missed.">		return (currentTime - this.data.getStartTime()) &gt; MAX_TIME_PASSED;</span>
+	}
+
+	/**
+	 * Evaluates the relative improvement to the latest
+	 * {@linkplain FinalJudgeData#getFitnessBaseline() fitness baseline}.
+	 *
+	 * @return {@code true} if the relative improvement to the latest baseline is
+	 *         sufficient to continue the analysis or there still can be tries without
+	 *         sufficient improvement; {@code false} otherwise.
+	 */
+	private boolean evaluateRelativeImprovement() {
+<span class="nc" id="L246">		final double fitnessBaselineValue = this.data.getFitnessBaselineValue();</span>
+<span class="nc" id="L247">		final HashMap&lt;MeasurableSeffElement, Double&gt; currentFitnessValues = this.data.getCurrentFitnessValues();</span>
+
+		// Perfect matched aren't counted.
+<span class="nc" id="L250">		int numberOfCountedElements = 0;</span>
+<span class="nc" id="L251">		double totalDeviation = 0;</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">		for (Map.Entry&lt;MeasurableSeffElement, Double&gt; entry : currentFitnessValues.entrySet()) {</span>
+<span class="nc" id="L253">			final double fitness = entry.getValue();</span>
+
+<span class="nc bnc" id="L255" title="All 2 branches missed.">			if (fitness != 0) {</span>
+<span class="nc" id="L256">				numberOfCountedElements++;</span>
+<span class="nc" id="L257">				totalDeviation += fitness;</span>
+			}
+<span class="nc" id="L259">		}</span>
+
+<span class="nc" id="L261">		final double overallFitniss = totalDeviation / numberOfCountedElements;</span>
+<span class="nc" id="L262">		final double relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;</span>
+<span class="nc bnc" id="L263" title="All 2 branches missed.">		if (relativeImprovement &gt; SIGNIFICANT_IMPROVEMENT) {</span>
+			// There was significant improvement so note the new value and set the number
+			// of generations without significant improvement passed back to 0.
+<span class="nc" id="L266">			this.data.setFitnessBaselineValue(overallFitniss);</span>
+<span class="nc" id="L267">			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(0);</span>
+<span class="nc" id="L268">			return true;</span>
+		} else {
+			// Without significant improvement, first note this fact and then check
+			// whether this was the last try without success.
+<span class="nc" id="L272">			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(</span>
+<span class="nc" id="L273">				this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed() + 1);</span>
+<span class="nc" id="L274">			return this.data</span>
+<span class="nc bnc" id="L275" title="All 2 branches missed.">				.getNumberOfGenerationsWithoutSignificantImprovementPassed() &lt;= MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;</span>
+		}
+	}
+
+	/**
+	 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
+	 * specified {@code SEFF_ELEMENT_TYPE}.
+	 * 
+	 * @author Christoph Michelbach
+	 * @param &lt;SEFF_ELEMENT_TYPE&gt; The type of which all {@linkplain MeasurableSeffElement
+	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
+	 */
+	private interface TypedFitnessFunction&lt;SEFF_ELEMENT_TYPE extends MeasurableSeffElement&gt; {
+
+		/**
+		 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
+		 * specified {@code SEFF_ELEMENT_TYPE}.
+		 * 
+		 * @param seffElement A SEFF element. Must not be {@code null}.
+		 * @param expression An expression proposed to describe {@code seffElement}’s
+		 *            measurement results. Must not be {@code null}.
+		 * @param blackboard Beagle’s blackboard instance. Must not be {@code null}.
+		 * @return A value judging how well {@code expression} fits to describe the
+		 *         corresponding measurement results. Will be a value between 0 and
+		 *         {@link Double#MAX_VALUE}. The lower the value, the better the fitness.
+		 */
+		double gradeFor(SEFF_ELEMENT_TYPE seffElement, EvaluableExpression expression,
+			EvaluableExpressionFitnessFunctionBlackboardView blackboard);
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

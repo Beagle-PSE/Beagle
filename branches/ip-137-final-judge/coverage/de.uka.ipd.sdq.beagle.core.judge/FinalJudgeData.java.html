@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FinalJudgeData.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.judge</a> &gt; <span class="el_source">FinalJudgeData.java</span></div><h1>FinalJudgeData.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.judge;
+
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+
+import java.io.Serializable;
+import java.util.HashMap;
+
+/**
+ * Stores all data of {@link FinalJudge}.
+ * 
+ * @author Christoph Michelbach
+ */
+<span class="nc" id="L14">public class FinalJudgeData implements Serializable {</span>
+
+	/**
+	 * serialVersionUID to make sure serialisation works fine.
+	 */
+	private static final long serialVersionUID = 9038094699907524618L;
+
+	/**
+	 * The millisecond timestamp of the point in time when evolution of evaluable
+	 * expressions started or {@code -1} to indicate that this field isn't initialised.
+	 */
+<span class="nc" id="L25">	private long startTime = -1;</span>
+
+	/**
+	 * The number of generations passed. Will be the number of times a {@link FinalJugde}
+	 * object received a call to {@link FinalJugde#judge(Blackboard)}.
+	 */
+	private int numberOfGenerationsPassed;
+
+	/**
+	 * The number of generations with significant improvement (see
+	 * {@link #SIGNIFICANT_IMPROVEMENT} passed.
+	 */
+	private int numberOfGenerationsWithoutSignificantImprovementPassed;
+
+	/**
+	 * Maps {@link MeasurableSeffElement}s to the fitness value of their best known
+	 * evaluable expression.
+	 */
+<span class="nc" id="L43">	private HashMap&lt;MeasurableSeffElement, Double&gt; currentFitnessValues = new HashMap&lt;MeasurableSeffElement, Double&gt;();</span>
+
+	/**
+	 * The latest fitness value which came with good enough improvement to set
+	 * {@link #numberOfGenerationsWithoutSignificantImprovementPassed} to {@code 0}.
+	 */
+<span class="nc" id="L49">	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;</span>
+
+	/**
+	 * Returns {@code startTime}.
+	 * 
+	 * @return The {@code startTime}.
+	 */
+	public long getStartTime() {
+<span class="nc" id="L57">		return this.startTime;</span>
+	}
+
+	/**
+	 * Sets {@code startTime}.
+	 *
+	 * @param startTime The {@code startTime} to set.
+	 */
+	public void setStartTime(final long startTime) {
+<span class="nc" id="L66">		this.startTime = startTime;</span>
+<span class="nc" id="L67">	}</span>
+
+	/**
+	 * Returns {@code numberOfGenerationsPassed}.
+	 * 
+	 * @return The {@code numberOfGenerationsPassed}.
+	 */
+	public int getNumberOfGenerationsPassed() {
+<span class="nc" id="L75">		return this.numberOfGenerationsPassed;</span>
+	}
+
+	/**
+	 * Returns {@code numberOfGenerationsPassed}.
+	 *
+	 * @param numberOfGenerationsPassed The {@code numberOfGenerationsPassed} to set.
+	 */
+	public void setNumberOfGenerationsPassed(final int numberOfGenerationsPassed) {
+<span class="nc" id="L84">		this.numberOfGenerationsPassed = numberOfGenerationsPassed;</span>
+<span class="nc" id="L85">	}</span>
+
+	/**
+	 * Returns {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
+	 * 
+	 * @return The {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
+	 */
+	public int getNumberOfGenerationsWithoutSignificantImprovementPassed() {
+<span class="nc" id="L93">		return this.numberOfGenerationsWithoutSignificantImprovementPassed;</span>
+	}
+
+	/**
+	 * Sets {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
+	 *
+	 * @param numberOfGenerationsWithoutSignificantImprovementPassed The
+	 *            {@code numberOfGenerationsWithoutSignificantImprovementPassed} to set.
+	 */
+	public void setNumberOfGenerationsWithoutSignificantImprovementPassed(
+		final int numberOfGenerationsWithoutSignificantImprovementPassed) {
+<span class="nc" id="L104">		this.numberOfGenerationsWithoutSignificantImprovementPassed =</span>
+			numberOfGenerationsWithoutSignificantImprovementPassed;
+<span class="nc" id="L106">	}</span>
+
+	/**
+	 * Returns {@code fitnessBaselineValue}.
+	 * 
+	 * @return The {@code fitnessBaselineValue}.
+	 */
+	public double getFitnessBaselineValue() {
+<span class="nc" id="L114">		return this.fitnessBaselineValue;</span>
+	}
+
+	/**
+	 * Sets {@code fitnessBaselineValue}.
+	 *
+	 * @param fitnessBaselineValue The {@code fitnessBaselineValue} to set.
+	 */
+	public void setFitnessBaselineValue(final double fitnessBaselineValue) {
+<span class="nc" id="L123">		this.fitnessBaselineValue = fitnessBaselineValue;</span>
+<span class="nc" id="L124">	}</span>
+
+	/**
+	 * Returns {@link currentFitnessValues}.
+	 * 
+	 * @return The {@link currentFitnessValues}.
+	 */
+	public HashMap&lt;MeasurableSeffElement, Double&gt; getCurrentFitnessValues() {
+<span class="nc" id="L132">		return this.currentFitnessValues;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
