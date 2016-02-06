@@ -18,4 +18,6 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 public interface MeasurementTool {
 
 	void measure(MeasurementOrder measurements);
+
+	boolean canMeasure(ReadOnlyMeasurementControllerBlackboardView blackboard);
 }
