@@ -3,18 +3,12 @@ package de.uka.ipd.sdq.beagle.gui;
 import de.uka.ipd.sdq.beagle.core.BeagleController;
 import de.uka.ipd.sdq.beagle.core.UserConfiguration;
 
-import org.apache.commons.lang3.Validate;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-import org.palladiosimulator.pcm.repository.BasicComponent;
-import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.LinkedList;
-import java.util.List;
 
 /*
  * This class is involved in creating a Graphical User Interface. Its funtionality cannot
@@ -86,30 +80,12 @@ public class GuiController {
 	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
 	 * components to be measured.
-	 *
-	 * @param componentsParam The default components to be measured or {@code null} to
-	 *            indicate that everything in {@code repositoryFile} should be analysed.
-	 * @param internalActionsParam The default internal actions to be measured or
-	 *            {@code null} to indicate that everything in {@code repositoryFile}
-	 *            should be analysed.
-	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 * 
+	 * @param userConfiguration The {@link UserConfiguration} to use.
 	 */
-	public GuiController(final List<BasicComponent> componentsParam, final List<InternalAction> internalActionsParam,
-		final File repositoryFile) {
-		Validate.notNull(repositoryFile);
+	public GuiController(final UserConfiguration userConfiguration) {
 
-		List<BasicComponent> components = componentsParam;
-		List<InternalAction> internalActions = internalActionsParam;
-
-		if ((components == null) ^ (internalActions == null)) {
-			if (components == null) {
-				components = new LinkedList<BasicComponent>();
-			} else {
-				internalActions = new LinkedList<InternalAction>();
-			}
-		}
-
-		this.userConfiguration = new UserConfiguration(components, internalActions, repositoryFile);
+		this.userConfiguration = userConfiguration;
 		this.state = GuiControllerState.unopened;
 		this.shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	}

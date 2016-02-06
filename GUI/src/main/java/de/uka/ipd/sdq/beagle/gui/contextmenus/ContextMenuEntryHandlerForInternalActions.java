@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
+import de.uka.ipd.sdq.beagle.core.UserConfiguration;
 import de.uka.ipd.sdq.beagle.gui.GuiController;
 
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart;
@@ -60,7 +61,9 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		}
 
 		// create a new GUI and open it
-		final GuiController guiController = new GuiController(new LinkedList<BasicComponent>(), internalActions, null);
+		final UserConfiguration userConfiguration =
+			new UserConfiguration(new LinkedList<BasicComponent>(), internalActions, null);
+		final GuiController guiController = new GuiController(userConfiguration);
 		guiController.open();
 		return null;
 	}

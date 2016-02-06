@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
+import de.uka.ipd.sdq.beagle.core.UserConfiguration;
 import de.uka.ipd.sdq.beagle.gui.GuiController;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -62,8 +63,9 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		final File fileToAnalyse = new File(clickedFilePath.toString());
 
 		// create a new GUI and open it
-		final GuiController guiController =
-			new GuiController(new LinkedList<BasicComponent>(), new LinkedList<InternalAction>(), fileToAnalyse);
+		final UserConfiguration userConfiguration =
+			new UserConfiguration(new LinkedList<BasicComponent>(), new LinkedList<InternalAction>(), fileToAnalyse);
+		final GuiController guiController = new GuiController(userConfiguration);
 		guiController.open();
 		return null;
 	}

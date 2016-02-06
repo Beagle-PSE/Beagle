@@ -5,6 +5,7 @@ import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -58,18 +59,30 @@ public class UserConfiguration {
 	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
-	 * @param components The default components to be measured or {@code null} to indicate
-	 *            that everything in {@code repositoryFile} should be analysed.
-	 * @param internalActions The default internal actions to be measured or {@code null}
-	 *            to indicate that everything in {@code repositoryFile} should be
-	 *            analysed.
+	 * @param componentsParam The default components to be measured or {@code null} to
+	 *            indicate that everything in {@code repositoryFile} should be analysed.
+	 * @param internalActionsParam The default internal actions to be measured or
+	 *            {@code null} to indicate that everything in {@code repositoryFile}
+	 *            should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
-	public UserConfiguration(final List<BasicComponent> components, final List<InternalAction> internalActions,
-		final File repositoryFile) {
+	public UserConfiguration(final List<BasicComponent> componentsParam,
+		final List<InternalAction> internalActionsParam, final File repositoryFile) {
 		Validate.notNull(repositoryFile);
-		this.components = components;
-		this.internalActions = internalActions;
+
+		List<BasicComponent> componentsA = componentsParam;
+		List<InternalAction> internalActionsA = internalActionsParam;
+
+		if ((componentsA == null) ^ (internalActionsA == null)) {
+			if (componentsA == null) {
+				componentsA = new LinkedList<BasicComponent>();
+			} else {
+				internalActionsA = new LinkedList<InternalAction>();
+			}
+		}
+
+		this.components = componentsA;
+		this.internalActions = internalActionsA;
 		this.repositoryFile = repositoryFile;
 		this.timeout = DEFAULT_TIMEOUT;
 	}
