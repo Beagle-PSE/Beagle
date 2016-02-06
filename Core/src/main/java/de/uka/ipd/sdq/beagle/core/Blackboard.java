@@ -115,7 +115,7 @@ public class Blackboard implements Serializable {
 	/**
 	 * {@code finalExpression} is the final expression.
 	 */
-	private Map<MeasurableSeffElement, Set<EvaluableExpression>> finalExpressions;
+	private Map<MeasurableSeffElement, EvaluableExpression> finalExpressions;
 
 	/**
 	 * {@code fitnissFunction} is the function to get a better evaluable expression
@@ -543,8 +543,7 @@ public class Blackboard implements Serializable {
 	 * @return The expression momentarily marked to be the final for {@code element}.
 	 *         {@code null} if no expression has been marked yet.
 	 */
-	public Map<MeasurableSeffElement, Set<EvaluableExpression>> getFinalExpressionFor(
-		final MeasurableSeffElement element) {
+	public Map<MeasurableSeffElement, EvaluableExpression> getFinalExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);
 		Validate.notNull(this.finalExpressions);
 		return this.finalExpressions;
@@ -563,7 +562,7 @@ public class Blackboard implements Serializable {
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final Set<EvaluableExpression> expression) {
 		Validate.notNull(element);
 		Validate.notNull(expression);
-		this.finalExpressions.put(element, expression);
+		this.finalExpressions.get(element);
 	}
 
 	/**
