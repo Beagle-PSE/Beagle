@@ -42,10 +42,11 @@ public class MeasurementToolContributionsHandler {
 	 *
 	 * @return All available measurement tools. Each call returns new instances of the
 	 *         measurement tools.
-	 * @throws RuntimeException If an instance of an measurement tool could not be created
-	 *             for any reason, e.g. the measurement tool had no public zero argument
-	 *             constructor or if an {@code MeasurmentToolClass} provided via the
-	 *             extension point was not implementing {@link MeasurementTool}.
+	 * @throws RuntimeException If an instance of any measurement tool could not be
+	 *             created for any reason, e.g. because the measurement tool has no public
+	 *             zero argument constructor or because a {@code MeasurmentToolClass}
+	 *             provided via the extension point is not implementing
+	 *             {@link MeasurementTool}.
 	 */
 	public List<MeasurementTool> getAvailableMeasurmentTools() {
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();

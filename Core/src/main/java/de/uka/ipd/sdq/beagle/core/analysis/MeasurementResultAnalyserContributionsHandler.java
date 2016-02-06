@@ -46,11 +46,11 @@ public class MeasurementResultAnalyserContributionsHandler {
 	 *
 	 * @return All available measurement result analysers. Each call returns new instances
 	 *         of the measurement result analysers.
-	 * @throws RuntimeException If an instance of an measurement result analyser could not
-	 *             be created for any reason, e.g. the measurement result analyser had no
-	 *             public zero argument constructor or if an
+	 * @throws RuntimeException If an instance of any measurement result analyser could
+	 *             not be created for any reason, e.g. because the measurement result
+	 *             analyser has no public zero argument constructor or because a
 	 *             {@code MeasurmentResultAnalyserClass} provided via the extension point
-	 *             was not implementing {@link MeasurementResultAnalyser}.
+	 *             is not implementing {@link MeasurementResultAnalyser}.
 	 */
 	public List<MeasurementResultAnalyser> getAvailableMeasurmentResultAnalysers() {
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();

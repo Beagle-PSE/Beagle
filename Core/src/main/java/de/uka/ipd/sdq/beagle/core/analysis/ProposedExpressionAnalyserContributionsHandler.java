@@ -46,11 +46,11 @@ public class ProposedExpressionAnalyserContributionsHandler {
 	 *
 	 * @return All available proposed expression analysers. Each call returns new
 	 *         instances of the proposed expression analysers.
-	 * @throws RuntimeException If an instance of an proposed expression analyser could
-	 *             not be created for any reason, e.g. the proposed expression analyser
-	 *             had no public zero argument constructor or if an
+	 * @throws RuntimeException If an instance of any proposed expression analyser could
+	 *             not be created for any reason, e.g. because the proposed expression
+	 *             analyser has no public zero argument constructor or because a
 	 *             {@code ProposedExpressionAnalyserClass} provided via the extension
-	 *             point was not implementing {@link ProposedExpressionAnalyser}.
+	 *             point is not implementing {@link ProposedExpressionAnalyser}.
 	 */
 	public List<ProposedExpressionAnalyser> getAvailableProposedExpressionAnalysers() {
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();

@@ -5,7 +5,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
  * this class!
- * 
+ *
  * <p>COVERAGE:OFF
  */
 
@@ -21,8 +21,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
  * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this
  * interface.
  *
- * <p>The measurement result analysers added to the extension point need a public zero
- * argument constructor for the instantiation.
+ * <p>Measurement result analysers need a public zero argument constructor for the
+ * instantiation, because they are loaded through eclipse extension points.
  *
  * @author Joshua Gleitze
  * @author Roman Langrehr
