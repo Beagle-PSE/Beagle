@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import org.apache.commons.lang3.Validate;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -104,6 +105,8 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
 		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+
+		return this.evaluateRelativeImprovement();
 
 		this.containsElementWithSufficientFitness(seffBranches);
 
@@ -254,10 +257,42 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * {@linkplain FinalJudgeData#getFitnessBaseline() fitness baseline}.
 	 *
 	 * @return {@code true} if the relative improvement to the latest baseline is
-	 *         sufficient; {@code false} otherwise.
+	 *         sufficient to continue the analysis or there still can be tries without
+	 *         sufficient improvement; {@code false} otherwise.
 	 */
-	private boolean evalueteRelativeImprovement() {
+	private boolean evaluateRelativeImprovement() {
+		final double fitnessBaselineValue = this.data.getFitnessBaselineValue();
+		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
+		// Perfect matched aren't counted.
+		int numberOfCountedElements = 0;
+		double totalDeviation = 0;
+		for (Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
+			final MeasurableSeffElement seffElement = entry.getKey();
+			final double fitness = entry.getValue();
+
+			if (fitness != 0) {
+				numberOfCountedElements++;
+				totalDeviation += fitness;
+			}
+		}
+
+		final double overallFitniss = totalDeviation / numberOfCountedElements;
+		final double relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;
+		if (relativeImprovement > SIGNIFICANT_IMPROVEMENT) {
+			// There was significant improvement so note the new value and set the number
+			// of generations without significant improvement passed back to 0.
+			this.data.setFitnessBaselineValue(overallFitniss);
+			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(0);
+			return true;
+		} else {
+			// Without significant improvement, first note this fact and then check
+			// whether this was the last try without success.
+			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(
+				this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed() + 1);
+			return this.data
+				.getNumberOfGenerationsWithoutSignificantImprovementPassed() <= MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
+		}
 	}
 
 	/**
