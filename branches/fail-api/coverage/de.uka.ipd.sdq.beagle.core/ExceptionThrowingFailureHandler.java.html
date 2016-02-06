@@ -23,7 +23,7 @@ public class ExceptionThrowingFailureHandler extends FailureHandler {
 <span class="nc" id="L23">	}</span>
 
 	@Override
-	public void handle(final FailureReport report) {
+	public &lt;RECOVER_TYPE&gt; RECOVER_TYPE handle(final FailureReport&lt;RECOVER_TYPE&gt; report) {
 <span class="nc" id="L27">		String failureDescription = String.format(&quot;%s reported a failure!&quot;, this.clientName);</span>
 <span class="nc bnc" id="L28" title="All 4 branches missed.">		if (report.getFailureCause() == null &amp;&amp; report.getFailureMessage() != null) {</span>
 <span class="nc" id="L29">			failureDescription += &quot;\n\n&quot; + report.getFailureMessage();</span>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -91,29 +91,33 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">de.uka.ipd.sdq.beagle.core</div>
-<h2 title="Class FailureReport" class="title">Class FailureReport</h2>
+<h2 title="Class FailureReport" class="title">Class FailureReport&lt;RECOVER_TYPE&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>de.uka.ipd.sdq.beagle.core.FailureReport</li>
+<li>de.uka.ipd.sdq.beagle.core.FailureReport&lt;RECOVER_TYPE&gt;</li>
 </ul>
 </li>
 </ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>RECOVER_TYPE</code> - The return type of the recover functions.</dd>
+</dl>
 <hr>
 <br>
-<pre>public class <span class="typeNameLabel">FailureReport</span>
+<pre>public class <span class="typeNameLabel">FailureReport&lt;RECOVER_TYPE&gt;</span>
 extends java.lang.Object</pre>
 <div class="block">Information about a failure that occurred while running Beagle. Besides a message and
  information about the causing (or indicating) exception, a failure report may continue
  information on how to recover from a failure. The failure reported through this report
  is considered non-recoverable until a recover function has be set through
- <a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#recoverable--"><code>recoverable()</code></a>, <a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.lang.Runnable-"><code>retryWith(java.lang.Runnable)</code></a> or <a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.lang.Runnable-"><code>continueWith(java.lang.Runnable)</code></a>.</div>
+ <a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#recoverable--"><code>recoverable()</code></a>, <a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.util.function.Supplier-"><code>retryWith(java.util.function.Supplier&lt;RECOVER_TYPE&gt;)</code></a> or <a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.util.function.Supplier-"><code>continueWith(java.util.function.Supplier&lt;RECOVER_TYPE&gt;)</code></a>.</div>
 </li>
 </ul>
 </div>
@@ -150,60 +154,74 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></code></td>
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#cause-java.lang.Exception-">cause</a></span>(java.lang.Exception&nbsp;cause)</code>
 <div class="block">Supplies the exception that caused or indicated the failure.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></code></td>
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.lang.Runnable-">continueWith</a></span>(java.lang.Runnable&nbsp;continueAt)</code>
 <div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
  .</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>java.lang.Runnable</code></td>
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.util.function.Supplier-">continueWith</a></span>(java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;continueAt)</code>
+<div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
+ .</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#getContinueRoutine--">getContinueRoutine</a></span>()</code>
 <div class="block">Gets the function that lets Beagle continue the analysis by skipping the failed
  action.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.Exception</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#getFailureCause--">getFailureCause</a></span>()</code>
 <div class="block">Gets the exception that caused or indicated the reported failure.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#getFailureMessage--">getFailureMessage</a></span>()</code>
 <div class="block">Gets the report’s failure description.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.lang.Runnable</code></td>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#getRetryRoutine--">getRetryRoutine</a></span>()</code>
 <div class="block">Gets the function that lets Beagle retry the failed failed action.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></code></td>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#message-java.lang.String-java.lang.Object...-">message</a></span>(java.lang.String&nbsp;message,
        java.lang.Object...&nbsp;values)</code>
 <div class="block">Supplies a message describing the failure.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></code></td>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#recoverable--">recoverable</a></span>()</code>
 <div class="block">Reports that the failure is recoverable by continuing the normal control flow after
  the failure handling.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></code></td>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.lang.Runnable-">retryWith</a></span>(java.lang.Runnable&nbsp;retryAt)</code>
+<div class="block">Reports that the failure is recoverable by retrying the failed action by running
+ <code>retryAt</code>.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.util.function.Supplier-">retryWith</a></span>(java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;retryAt)</code>
 <div class="block">Reports that the failure is recoverable by retrying the failed action by running
  <code>retryAt</code>.</div>
 </td>
@@ -253,8 +271,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>message</h4>
-<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&nbsp;message(java.lang.String&nbsp;message,
-                             java.lang.Object...&nbsp;values)</pre>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;message(java.lang.String&nbsp;message,
+                                           java.lang.Object...&nbsp;values)</pre>
 <div class="block">Supplies a message describing the failure. The message will be evaluated through
  <code>String.format(String, Object...)</code>.</div>
 <dl>
@@ -273,7 +291,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>cause</h4>
-<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&nbsp;cause(java.lang.Exception&nbsp;cause)</pre>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;cause(java.lang.Exception&nbsp;cause)</pre>
 <div class="block">Supplies the exception that caused or indicated the failure. If no message has been
  set on this report yet, the report’s message will be set to
  <code>cause.getMessage()</code>. A new report’s cause is <code>null</code>.</div>
@@ -291,10 +309,30 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>recoverable</h4>
-<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&nbsp;recoverable()</pre>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;recoverable()</pre>
 <div class="block">Reports that the failure is recoverable by continuing the normal control flow after
- the failure handling.</div>
+ the failure handling. The failure reporter will receive <code>null</code> as the result
+ of handling this report.</div>
 <dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>this</code>.</dd>
+</dl>
+</li>
+</ul>
+<a name="continueWith-java.util.function.Supplier-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>continueWith</h4>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;continueWith(java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;continueAt)</pre>
+<div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
+ .</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>continueAt</code> - A function defining how to continue while skipping the failed
+            action. Supplies the value the failure reporter should use instead of
+            the one that was expected to be generated skipped action.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd><code>this</code>.</dd>
 </dl>
@@ -306,13 +344,33 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>continueWith</h4>
-<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&nbsp;continueWith(java.lang.Runnable&nbsp;continueAt)</pre>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;continueWith(java.lang.Runnable&nbsp;continueAt)</pre>
 <div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
- .</div>
+ . The failure reporter will receive <code>null</code> as the result of handling this
+ report.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>continueAt</code> - A runnable defining how to continue while skipping the failed
             action.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>this</code>.</dd>
+</dl>
+</li>
+</ul>
+<a name="retryWith-java.util.function.Supplier-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>retryWith</h4>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;retryWith(java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;retryAt)</pre>
+<div class="block">Reports that the failure is recoverable by retrying the failed action by running
+ <code>retryAt</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>retryAt</code> - A function defining how to retry the failed action. Supplies the
+            value the reporter should use instead of the one that was expected to be
+            generated by the failed action.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd><code>this</code>.</dd>
 </dl>
@@ -324,9 +382,10 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>retryWith</h4>
-<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&nbsp;retryWith(java.lang.Runnable&nbsp;retryAt)</pre>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a>&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;retryWith(java.lang.Runnable&nbsp;retryAt)</pre>
 <div class="block">Reports that the failure is recoverable by retrying the failed action by running
- <code>retryAt</code>.</div>
+ <code>retryAt</code>. The failure reporter will receive <code>null</code> as the result of
+ handling this report.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>retryAt</code> - A runnable defining how to retry the failed action.</dd>
@@ -375,7 +434,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getContinueRoutine</h4>
-<pre>public&nbsp;java.lang.Runnable&nbsp;getContinueRoutine()</pre>
+<pre>public&nbsp;java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;getContinueRoutine()</pre>
 <div class="block">Gets the function that lets Beagle continue the analysis by skipping the failed
  action.</div>
 <dl>
@@ -394,7 +453,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getRetryRoutine</h4>
-<pre>public&nbsp;java.lang.Runnable&nbsp;getRetryRoutine()</pre>
+<pre>public&nbsp;java.util.function.Supplier&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt;&nbsp;getRetryRoutine()</pre>
 <div class="block">Gets the function that lets Beagle retry the failed failed action.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>

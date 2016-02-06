@@ -378,6 +378,11 @@
 <dd>
 <div class="block">Continues the analysis if it is paused.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.util.function.Supplier-">continueWith(Supplier&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
+ .</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.lang.Runnable-">continueWith(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
 <dd>
 <div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
@@ -597,7 +602,7 @@
 <div class="block">Interface for factories creating the handlers for failures that shall be used by
  Beagle.</div>
 </dd>
-<dt><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">FailureReport</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
+<dt><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">FailureReport</span></a>&lt;<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt; - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
 <div class="block">Information about a failure that occurred while running Beagle.</div>
 </dd>
@@ -1223,9 +1228,9 @@
 </a>
 <h2 class="title">H</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.FailureReport-">handle(FailureReport)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">ExceptionThrowingFailureHandler</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.FailureReport-">handle(FailureReport&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">ExceptionThrowingFailureHandler</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.FailureReport-">handle(FailureReport)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.FailureReport-">handle(FailureReport&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a></dt>
 <dd>
 <div class="block">Reports a failure to this handler and makes it take action.</div>
 </dd>
@@ -1711,6 +1716,11 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#ResourceDemandType-java.lang.String-boolean-">ResourceDemandType(String, boolean)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
 <div class="block">Creates a custom resource type.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.util.function.Supplier-">retryWith(Supplier&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Reports that the failure is recoverable by retrying the failed action by running
+ <code>retryAt</code>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.lang.Runnable-">retryWith(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
 <dd>
