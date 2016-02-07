@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.instrument.IllegalClassFormatException;
 
 /**
  * Tests for {@link PcmRepositoryBlackboardFactory}.
@@ -43,7 +42,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * impossible path cannot be passed.
 	 */
 	@Test
-	public void pcmRepositoryBlackboardFactory() throws IllegalClassFormatException {
+	public void pcmRepositoryBlackboardFactory() {
 		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null),
 			throwsException(NullPointerException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory((File) null), throwsException(NullPointerException.class));
