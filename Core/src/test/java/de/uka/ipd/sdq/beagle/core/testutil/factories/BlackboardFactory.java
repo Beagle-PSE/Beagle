@@ -6,12 +6,7 @@ import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
-import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
-import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
-import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
-import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -48,7 +43,8 @@ public class BlackboardFactory {
 		new ExternalCallParameterFactory();
 
 	/**
-	 * A {@link EvaluableExpression} factory to easily obtain new instances from.
+	 * A {@link EvaluableExpressionFitnessFunction} factory to easily obtain new instances
+	 * from.
 	 */
 	private static final EvaluableExpressionFitnessFunctionFactory EVA_EX_FACTORY =
 		new EvaluableExpressionFitnessFunctionFactory();
