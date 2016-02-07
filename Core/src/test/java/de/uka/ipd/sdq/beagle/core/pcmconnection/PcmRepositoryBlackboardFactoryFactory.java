@@ -13,7 +13,8 @@ public class PcmRepositoryBlackboardFactoryFactory {
 	 * @return A valid {@link PcmRepositoryBlackboardFactory} object.
 	 */
 	public PcmRepositoryBlackboardFactory getValidInstance() {
-		return new PcmRepositoryBlackboardFactory("/sth");
+		return new PcmRepositoryBlackboardFactory(
+			"/Beagle Core/src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository");
 	}
 
 }
