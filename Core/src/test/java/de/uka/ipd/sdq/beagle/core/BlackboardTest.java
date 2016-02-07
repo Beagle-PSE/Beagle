@@ -996,7 +996,7 @@ public class BlackboardTest {
 		Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
 		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
-		final Set<EvaluableExpression> evaEx = EVALUABLE_EXPRESSION_FACTORY.getAllAsSet();
+		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		testBlackboard.setFinalExpressionFor(rdia, evaEx);
 		assertThat("GetFinalExpressionFor should return setted expression by \"setFinalExpressionFor\"",
 			testBlackboard.getFinalExpressionFor(rdia), is(theInstance(evaEx)));
@@ -1036,18 +1036,18 @@ public class BlackboardTest {
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final Iterator<ResourceDemandingInternalAction> rdias = testBlackboard.getAllRdias().iterator();
 
-		testBlackboard.setFinalExpressionFor(rdias.next(), EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+		testBlackboard.setFinalExpressionFor(rdias.next(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 		// asserts that setting null for the final expression is possible
 		testBlackboard.setFinalExpressionFor(rdias.next(), null);
 
 		assertThat("It must not be possible to set the final expression for null",
-			() -> BLACKBOARD_FACTORY.getEmpty().setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+			() -> BLACKBOARD_FACTORY.getEmpty().setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 
 		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
 		assertThat(
 			"It must not be possible to ask for a final Expression of unknown elements!", () -> BLACKBOARD_FACTORY
-				.getEmpty().setFinalExpressionFor(seffBranch, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+				.getEmpty().setFinalExpressionFor(seffBranch, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(IllegalArgumentException.class));
 	}
 

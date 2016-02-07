@@ -524,10 +524,11 @@ public class Blackboard implements Serializable {
 	 * @param expression An evaluable expression proposed to describe {@code element}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+	public void addProposedExpressionFor(final MeasurableSeffElement element,
+		final Set<EvaluableExpression> expression) {
 		Validate.notNull(element);
 		Validate.notNull(expression);
-		this.evaluableExpressions.get(element).add(expression);
+		this.evaluableExpressions.get(element).addAll(expression);
 	}
 
 	/**
@@ -557,7 +558,7 @@ public class Blackboard implements Serializable {
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionFor(final MeasurableSeffElement element, final Set<EvaluableExpression> expression) {
+	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 		Validate.notNull(element);
 		Validate.notNull(expression);
 		this.finalExpressions.get(element);
