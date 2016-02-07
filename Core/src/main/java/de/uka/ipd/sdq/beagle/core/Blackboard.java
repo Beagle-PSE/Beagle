@@ -215,8 +215,6 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		Validate.notNull(this.rdiasToBeMeasured);
-		Validate.isTrue(this.rdias.containsAll(this.rdiasToBeMeasured));
 		return this.rdiasToBeMeasured;
 	}
 
@@ -228,7 +226,6 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		Validate.notNull(this.branchesToBeMeasured);
 		return this.branchesToBeMeasured;
 	}
 
@@ -239,7 +236,6 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		Validate.notNull(this.loopsToBeMeasured);
 		return this.loopsToBeMeasured;
 	}
 
@@ -251,7 +247,6 @@ public class Blackboard implements Serializable {
 	 *         be measured. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
-		Validate.notNull(this.externalCallParameterToBeMeasured);
 		return this.externalCallParameterToBeMeasured;
 	}
 
