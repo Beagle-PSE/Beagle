@@ -313,11 +313,9 @@ public class MeasurementEventParserTest {
 		measurementEvents.add(new CodeSectionLeftEvent(loops[1].getLoopBody()));
 		parser = new MeasurementEventParser(measurementEvents);
 		results = parser.getMeasurementResultsFor(loops[0]);
-		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
-		assertThat(resultValues, containsInAnyOrder(0));
+		assertThat(results, is(empty()));
 		results = parser.getMeasurementResultsFor(loops[1]);
-		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
-		assertThat(resultValues, containsInAnyOrder(0));
+		assertThat(results, is(empty()));
 	}
 
 	/**
