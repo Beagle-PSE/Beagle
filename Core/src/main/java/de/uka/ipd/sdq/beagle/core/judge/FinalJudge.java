@@ -3,7 +3,9 @@ package de.uka.ipd.sdq.beagle.core.judge;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
@@ -30,9 +32,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 	/**
 	 * If the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
-	 * expressions will be stopped.
+	 * expressions will be stopped. {@code -1} for no limit.
 	 */
-	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = 500;
+	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = -1;
 
 	/**
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
@@ -96,15 +98,13 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
 
-		// determine the criteria which aren't CPU-intensive first
-		if (this.numberOfGenerationsPassedTooHigh() || this.maxTimePassedTooHigh()) {
+		// Determine the criteria which aren't CPU-intensive first.
+		if (this.numberOfGenerationsPassedTooHigh() || this.timePassedTooHigh()) {
 			return true;
 		}
 
-		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
-
-		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
-		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+		// Take the measurements.
+		this.measure(blackboard);
 
 		return !this.evaluateRelativeImprovement();
 	}
@@ -124,6 +124,24 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		if (this.data == null) {
 			throw new IllegalStateException("loadData(Blackboard) cannot be called on FinalJudge before init().");
 		}
+	}
+
+	/**
+	 * Measures all seff branches, seff loops, and rdias to measure on the
+	 * {@link Blackboard}.
+	 *
+	 * @param blackboard The {@link Blackboard} to use.
+	 */
+	private void measure(final Blackboard blackboard) {
+		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
+
+		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
+		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
+		final Set<ResourceDemandingInternalAction> rdias = blackboard.getRdiasToBeMeasured();
+
+		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(seffLoops, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(rdias, blackboard, fitnessFunction::gradeFor);
 	}
 
 	/**
@@ -219,6 +237,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         than {@code MAX_NUMBER_OF_GENERATIONS_PASSED}.
 	 */
 	private boolean numberOfGenerationsPassedTooHigh() {
+		if (MAX_NUMBER_OF_GENERATIONS_PASSED == -1) {
+			return false;
+		}
+
 		return this.data.getNumberOfGenerationsPassed() > MAX_NUMBER_OF_GENERATIONS_PASSED;
 	}
 
@@ -228,7 +250,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * @return {@code true} if and only if the time passed is greater than
 	 *         {@code MAX_TIME_PASSED}.
 	 */
-	private boolean maxTimePassedTooHigh() {
+	private boolean timePassedTooHigh() {
 		final long currentTime = System.currentTimeMillis();
 
 		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
