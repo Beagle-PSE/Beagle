@@ -30,9 +30,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 	/**
 	 * If the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
-	 * expressions will be stopped.
+	 * expressions will be stopped. {@code -1} for no limit.
 	 */
-	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = 500;
+	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = -1;
 
 	/**
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
@@ -97,7 +97,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
 
 		// determine the criteria which aren't CPU-intensive first
-		if (this.numberOfGenerationsPassedTooHigh() || this.maxTimePassedTooHigh()) {
+		if (this.numberOfGenerationsPassedTooHigh() || this.timePassedTooHigh()) {
 			return true;
 		}
 
@@ -219,6 +219,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         than {@code MAX_NUMBER_OF_GENERATIONS_PASSED}.
 	 */
 	private boolean numberOfGenerationsPassedTooHigh() {
+		if (MAX_NUMBER_OF_GENERATIONS_PASSED == -1) {
+			return false;
+		}
+
 		return this.data.getNumberOfGenerationsPassed() > MAX_NUMBER_OF_GENERATIONS_PASSED;
 	}
 
@@ -228,7 +232,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * @return {@code true} if and only if the time passed is greater than
 	 *         {@code MAX_TIME_PASSED}.
 	 */
-	private boolean maxTimePassedTooHigh() {
+	private boolean timePassedTooHigh() {
 		final long currentTime = System.currentTimeMillis();
 
 		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
