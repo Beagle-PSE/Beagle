@@ -25,14 +25,14 @@ public class FinalJudgeData implements Serializable {
 	private long startTime = -1;
 
 	/**
-	 * The number of generations passed. Will be the number of times a {@link FinalJugde}
-	 * object received a call to {@link FinalJugde#judge(Blackboard)}.
+	 * The number of generations passed. Will be the number of times a {@link FinalJudge}
+	 * received a call to {@link FinalJudge#judge(Blackboard)}.
 	 */
 	private int numberOfGenerationsPassed;
 
 	/**
 	 * The number of generations with significant improvement (see
-	 * {@link #SIGNIFICANT_IMPROVEMENT} passed.
+	 * {@code FinalJugde#SIGNIFICANT_IMPROVEMENT} passed.
 	 */
 	private int numberOfGenerationsWithoutSignificantImprovementPassed;
 
@@ -44,7 +44,7 @@ public class FinalJudgeData implements Serializable {
 
 	/**
 	 * The latest fitness value which came with good enough improvement to set
-	 * {@link #numberOfGenerationsWithoutSignificantImprovementPassed} to {@code 0}.
+	 * {@code numberOfGenerationsWithoutSignificantImprovementPassed} to {@code 0}.
 	 */
 	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;
 
