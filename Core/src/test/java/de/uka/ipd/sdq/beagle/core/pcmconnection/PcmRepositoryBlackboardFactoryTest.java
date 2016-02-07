@@ -93,6 +93,22 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
+		final HashSet<String> collection = new HashSet<String>();
+		collection.add("");
+
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
+			throwsException(IllegalArgumentException.class));
+	}
+
+	/**
+	 * Test method for
+	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])} .
+	 */
+	@Test
+	public void getBlackboardForIdsStringArray() {
+		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
+			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
 			throwsException(IllegalArgumentException.class));
 
@@ -115,14 +131,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_TooShortId"), is(emptyBlackboard));
 
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("IllegalId"), is(emptyBlackboard));
-	}
-
-	/**
-	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])} .
-	 */
-	@Test
-	public void getBlackboardForIdsStringArray() {
 	}
 
 }
