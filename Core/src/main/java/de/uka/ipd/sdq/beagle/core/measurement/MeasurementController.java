@@ -16,6 +16,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,9 +41,13 @@ public class MeasurementController {
 	/**
 	 * Constructs a new {@link MeasurementController}.
 	 *
-	 * @param measurementTools The {@link MeasurementTool}s to use.
+	 * @param measurementTools The {@link MeasurementTool}s to use. Must not be
+	 *            {@code null} and cannot contain {@code null}.
 	 */
 	public MeasurementController(final Set<MeasurementTool> measurementTools) {
+		Validate.notNull(measurementTools);
+		Validate.noNullElements(measurementTools);
+
 		this.measurementTools = measurementTools;
 	}
 
@@ -49,12 +55,14 @@ public class MeasurementController {
 	 * Determines whether a {@link MeasurementTool} can contribute to the
 	 * {@link Blackboard}.
 	 *
-	 * @param blackboard The blackboard.
+	 * @param blackboard The blackboard. Must not be {@code null}.
 	 * @return Whether a {@link MeasurementTool} can measure something which is marked as
 	 *         'to be measured'. When {@code true} is returned, this is no guarantee that
 	 *         at least one new measurement result will be added.
 	 */
 	public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
+		Validate.notNull(blackboard);
+
 		for (MeasurementTool measurementTool : this.measurementTools) {
 			if (measurementTool.canMeasure(blackboard)) {
 				return true;
@@ -73,9 +81,11 @@ public class MeasurementController {
 	 * before and the {@link Blackboard} wasn't changed between this call. Otherwise the
 	 * behaviour of this method is undefined.
 	 *
-	 * @param blackboard The blackboard.
+	 * @param blackboard The blackboard. Must not be {@code null}.
 	 */
 	public void measure(final MeasurementControllerBlackboardView blackboard) {
+		Validate.notNull(blackboard);
+
 		// Read from the blackboard.
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
 		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
