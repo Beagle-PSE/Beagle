@@ -258,11 +258,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredRdias(Collection)
 	 */
 	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... toMeasureRdias) {
-<span class="nc" id="L261">		Validate.noNullElements(toMeasureRdias);</span>
-<span class="nc" id="L262">		Validate.isTrue(this.rdias.containsAll(Arrays.asList(toMeasureRdias)),</span>
+<span class="fc" id="L261">		Validate.noNullElements(toMeasureRdias);</span>
+<span class="fc" id="L262">		Validate.isTrue(this.rdias.containsAll(Arrays.asList(toMeasureRdias)),</span>
 			&quot;toMeasureRdias may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L264">		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));</span>
-<span class="nc" id="L265">	}</span>
+<span class="fc" id="L264">		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));</span>
+<span class="fc" id="L265">	}</span>
 
 	/**
 	 * Reports that {@code rdias} shall be measured for its resource demands.
@@ -286,11 +286,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffBranches(Collection)
 	 */
 	public void addToBeMeasuredSeffBranches(final SeffBranch... toMeasureBranches) {
-<span class="nc" id="L289">		Validate.noNullElements(toMeasureBranches);</span>
-<span class="nc" id="L290">		Validate.isTrue(this.branches.containsAll(Arrays.asList(toMeasureBranches)),</span>
+<span class="fc" id="L289">		Validate.noNullElements(toMeasureBranches);</span>
+<span class="fc" id="L290">		Validate.isTrue(this.branches.containsAll(Arrays.asList(toMeasureBranches)),</span>
 			&quot;toMeasureBranches may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L292">		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));</span>
-<span class="nc" id="L293">	}</span>
+<span class="fc" id="L292">		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));</span>
+<span class="fc" id="L293">	}</span>
 
 	/**
 	 * Reports that {@code branches} shall be measured for its branch decisions.
@@ -314,11 +314,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffLoops(Collection)
 	 */
 	public void addToBeMeasuredSeffLoops(final SeffLoop... toMeasureLoops) {
-<span class="nc" id="L317">		Validate.noNullElements(toMeasureLoops);</span>
-<span class="nc" id="L318">		Validate.isTrue(this.loops.containsAll(Arrays.asList(toMeasureLoops)),</span>
+<span class="fc" id="L317">		Validate.noNullElements(toMeasureLoops);</span>
+<span class="fc" id="L318">		Validate.isTrue(this.loops.containsAll(Arrays.asList(toMeasureLoops)),</span>
 			&quot;toMeasureLoops may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L320">		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));</span>
-<span class="nc" id="L321">	}</span>
+<span class="fc" id="L320">		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));</span>
+<span class="fc" id="L321">	}</span>
 
 	/**
 	 * Reports that {@code loops} shall be measured for its repetitions.
@@ -342,11 +342,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(Collection)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final ExternalCallParameter... parameters) {
-<span class="nc" id="L345">		Validate.noNullElements(parameters);</span>
-<span class="nc" id="L346">		Validate.isTrue(this.externalCalls.containsAll(Arrays.asList(parameters)),</span>
+<span class="fc" id="L345">		Validate.noNullElements(parameters);</span>
+<span class="fc" id="L346">		Validate.isTrue(this.externalCalls.containsAll(Arrays.asList(parameters)),</span>
 			&quot;parameters may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L348">		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));</span>
-<span class="nc" id="L349">	}</span>
+<span class="fc" id="L348">		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));</span>
+<span class="fc" id="L349">	}</span>
 
 	/**
 	 * Reports that {@code parameters} shall be measured.
