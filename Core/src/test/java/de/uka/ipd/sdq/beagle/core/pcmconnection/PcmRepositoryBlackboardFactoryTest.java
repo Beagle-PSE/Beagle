@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
@@ -73,6 +74,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
 		assertThat(result, is(notNullValue()));
+
+		assertThat(result.getAllRdias().size(), is(not(0)));
+		assertThat(result.getAllSeffBranches().size(), is(not(0)));
+		assertThat(result.getAllSeffLoops().size(), is(not(0)));
 	}
 
 	/**
