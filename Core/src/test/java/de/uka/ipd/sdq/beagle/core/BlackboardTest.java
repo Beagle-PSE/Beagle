@@ -890,10 +890,8 @@ public class BlackboardTest {
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
 		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
-		final Set<EvaluableExpression> evaExSet = new HashSet<EvaluableExpression>();
 		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
-		evaExSet.add(evaEx);
-		testBlackboard.addProposedExpressionFor(rdia, evaExSet);
+		testBlackboard.addProposedExpressionFor(rdia, evaEx);
 
 		assertThat("Proposed Expression should return an expression that have been added by \"addProposedExpression\"",
 			testBlackboard.getProposedExpressionFor(rdia), contains(evaEx));
@@ -947,19 +945,19 @@ public class BlackboardTest {
 		evaEx.add(EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllRdias().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffBranches().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffLoops().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllExternalCallParameters().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat("It must not be possible to add a proposed expression for null",
-			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as a proposed expression",
 			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(SEFF_BRANCH_FACTORY.getOne(), null),
@@ -968,7 +966,7 @@ public class BlackboardTest {
 		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
 		assertThat(
 			"It must not be possible to add an proposed Expression to unknown elements!", () -> BLACKBOARD_FACTORY
-				.getEmpty().addProposedExpressionFor(ecpElement, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+				.getEmpty().addProposedExpressionFor(ecpElement, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(IllegalArgumentException.class));
 	}
 
