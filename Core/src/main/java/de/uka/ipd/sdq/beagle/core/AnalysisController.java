@@ -121,9 +121,9 @@ public class AnalysisController {
 	 */
 	public void performAnalysis() {
 		final ReadOnlyMeasurementControllerBlackboardView readOnlyMeasurementControllerBlackboardView =
-			new ReadOnlyMeasurementControllerBlackboardView();
+			new ReadOnlyMeasurementControllerBlackboardView(this.blackboard);
 		final MeasurementControllerBlackboardView measurementControllerBlackboardView =
-			new MeasurementControllerBlackboardView();
+			new MeasurementControllerBlackboardView(this.blackboard);
 
 		final FinalJudge finalJudge = new FinalJudge();
 		finalJudge.init(this.blackboard);
@@ -148,9 +148,9 @@ public class AnalysisController {
 	 */
 	private boolean chooseRandomMeasurementResultAnalyserToContribute() {
 		final ReadOnlyMeasurementResultAnalyserBlackboardView readOnlyMeasurementResultAnalyserBlackboardView =
-			new ReadOnlyMeasurementResultAnalyserBlackboardView();
+			new ReadOnlyMeasurementResultAnalyserBlackboardView(this.blackboard);
 		final MeasurementResultAnalyserBlackboardView measurementResultAnalyserBlackboardView =
-			new MeasurementResultAnalyserBlackboardView();
+			new MeasurementResultAnalyserBlackboardView(this.blackboard);
 
 		final Set<MeasurementResultAnalyser> measurementResultAnalysersAbleToContribute =
 			new HashSet<MeasurementResultAnalyser>();
@@ -194,9 +194,9 @@ public class AnalysisController {
 	 */
 	private boolean chooseRandomPropesedExpressionAnalyserToContribute() {
 		final ReadOnlyProposedExpressionAnalyserBlackboardView readOnlyProposedExpressionAnalyserBlackboardView =
-			new ReadOnlyProposedExpressionAnalyserBlackboardView();
+			new ReadOnlyProposedExpressionAnalyserBlackboardView(this.blackboard);
 		final ProposedExpressionAnalyserBlackboardView proposedExpressionAnalyserBlackboardView =
-			new ProposedExpressionAnalyserBlackboardView();
+			new ProposedExpressionAnalyserBlackboardView(this.blackboard);
 
 		final Set<ProposedExpressionAnalyser> proposedExpressionAnalysersAbleToContribute =
 			new HashSet<ProposedExpressionAnalyser>();
