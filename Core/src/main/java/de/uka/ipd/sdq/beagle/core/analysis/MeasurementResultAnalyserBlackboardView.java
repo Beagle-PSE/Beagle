@@ -231,8 +231,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 * @param expression An evaluable expression proposed to describe {@code element}’s
 	 *            measurement results. Must not be {@code null}.
 	 */
-	public void addProposedExpressionFor(final MeasurableSeffElement element,
-		final Set<EvaluableExpression> expression) {
+	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 		this.blackboard.addProposedExpressionFor(element, expression);
 	}
 
