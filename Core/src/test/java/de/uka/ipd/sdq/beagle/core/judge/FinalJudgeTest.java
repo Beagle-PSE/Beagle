@@ -98,7 +98,8 @@ public class FinalJudgeTest {
 	 * of improvement.
 	 */
 	@Test
-	public void doesNotEndWhileTheresImprovement() {
+	public void doesNotEndWhileThereIsImprovement() {
+		final int numberOfIterations = 1000;
 		final double startValue = Double.MAX_VALUE;
 		final EvaluableExpressionFitnessFunction mockFitnessFunction = mock(EvaluableExpressionFitnessFunction.class);
 		this.testBlackboard = BLACKBOARD_FACTORY.setFitnessFunction(this.testBlackboard, mockFitnessFunction);
@@ -112,11 +113,13 @@ public class FinalJudgeTest {
 		given(mockFitnessFunction.gradeFor(any(ResourceDemandingInternalAction.class), any(), any()))
 			.will(answerWithBigChange);
 
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i <= numberOfIterations / this.allSeffElements.size(); i++) {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
 				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(i));
 
-				assertThat("The final judge must not end the analysis while there’s still great improvement",
+				assertThat(
+					String.format("The final judge must not end the analysis while there’s still great improvement "
+						+ "(stopped after %d iterations)", i),
 					this.testedJudge.judge(this.testBlackboard), is(true));
 			}
 		}
@@ -148,8 +151,8 @@ public class FinalJudgeTest {
 		for (int i = 0; i < 500; i++) {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
 				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(i));
-				this.testedJudge.judge(this.testBlackboard);
 			}
+			this.testedJudge.judge(this.testBlackboard);
 		}
 		assertThat("The final judge must end the analysis if the results do not improve significantly",
 			this.testedJudge.judge(this.testBlackboard), is(false));
@@ -160,8 +163,8 @@ public class FinalJudgeTest {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
 				final EvaluableExpression newProposedExpression = ConstantExpression.forValue(i);
 				this.testBlackboard.addProposedExpressionFor(seffElement, newProposedExpression);
-				new FinalJudge().judge(this.testBlackboard);
 			}
+			new FinalJudge().judge(this.testBlackboard);
 		}
 		assertThat("Ending the analysis must be done statelessly", new FinalJudge().judge(this.testBlackboard),
 			is(false));
