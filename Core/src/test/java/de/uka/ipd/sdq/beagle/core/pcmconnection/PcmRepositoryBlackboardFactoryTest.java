@@ -12,7 +12,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * Tests for {@link PcmRepositoryBlackboardFactory}.
@@ -89,7 +88,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
-			throwsException(FileNotFoundException.class));
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
@@ -101,7 +100,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
-			throwsException(FileNotFoundException.class));
+			throwsException(IllegalArgumentException.class));
 	}
 
 }
