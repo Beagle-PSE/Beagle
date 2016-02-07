@@ -17,7 +17,7 @@ import java.util.Set;
  * Implements the break condition for evolution of evaluable expressions and decides which
  * proposed evaluable expression describes the measured result best and will be annotated
  * in the PCM.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
@@ -64,7 +64,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * Initialises the {@link FinalJudge} object. Call this method before starting
 	 * evolution of evaluable expressions to start counting the total time the entire
 	 * evolution of evaluable expressions takes.
-	 * 
+	 *
 	 * @param blackboard The {@link Blackboard} to store the data of this
 	 *            {@link FinalJudge} on. Must not be {@code null}.
 	 *
@@ -129,10 +129,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	/**
 	 * Measures the fitness of all {@linkplain MeasurableSeffElement measurable SEFF
 	 * elements}.
-	 * 
+	 *
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
 	 * {@code SE}.
-	 * 
+	 *
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
 	 *            Must not be {@code null}.
@@ -154,9 +154,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =
 			new ProposedExpressionAnalyserBlackboardView();
 
-		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
+		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
 
-			for (EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
+			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
 				final double fitnessValue =
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
 
@@ -172,10 +172,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * Determines whether a set of {@linkplain MeasurableSeffElement measurable SEFF
 	 * elements} contains an element with sufficient fitness to stop evolution of
 	 * evaluable expressions.
-	 * 
+	 *
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
 	 * {@code SE}.
-	 * 
+	 *
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
 	 *            Must not be {@code null}.
@@ -195,7 +195,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
-		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
+		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
 			boolean foundOptimal = false;
 
 			final double fitnessValue = currentFitnessValues.get(seffElement);
@@ -249,7 +249,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		// Perfect matched aren't counted.
 		int numberOfCountedElements = 0;
 		double totalDeviation = 0;
-		for (Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
+		for (final Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
 			final double fitness = entry.getValue();
 
 			if (fitness != 0) {
@@ -271,15 +271,17 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 			// whether this was the last try without success.
 			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(
 				this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed() + 1);
-			return this.data
-				.getNumberOfGenerationsWithoutSignificantImprovementPassed() <= MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
+			// @formatter:off
+			return this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed()
+				<= MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
+			// @formatter:on
 		}
 	}
 
 	/**
 	 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
 	 * specified {@code SEFF_ELEMENT_TYPE}.
-	 * 
+	 *
 	 * @author Christoph Michelbach
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
@@ -289,7 +291,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		/**
 		 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
 		 * specified {@code SEFF_ELEMENT_TYPE}.
-		 * 
+		 *
 		 * @param seffElement A SEFF element. Must not be {@code null}.
 		 * @param expression An expression proposed to describe {@code seffElement}’s
 		 *            measurement results. Must not be {@code null}.
