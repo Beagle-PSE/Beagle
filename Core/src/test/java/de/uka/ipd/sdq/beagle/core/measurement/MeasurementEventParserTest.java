@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAcceptingNull;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
@@ -13,10 +12,10 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
-import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.MeasurementEventFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
@@ -24,7 +23,9 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -58,13 +59,6 @@ public class MeasurementEventParserTest {
 	 */
 	private static final ResourceDemandingInternalActionFactory RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY =
 		new ResourceDemandingInternalActionFactory();
-
-	/**
-	 * A {@link ExternalCallParameterFactory}, which is able to generate
-	 * {@link ExternalCallParameter}s.
-	 */
-	private static final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY =
-		new ExternalCallParameterFactory();
 
 	/**
 	 * A {@link CodeSectionFactory}, which is able to generate {@link CodeSection}s.
@@ -103,7 +97,7 @@ public class MeasurementEventParserTest {
 	 */
 	@Test
 	public void getMeasurementResultsForResourceDemandingInternalAction() {
-		final Set<MeasurementEvent> measurementEvents = new HashSet<>();
+		final List<MeasurementEvent> measurementEvents = new ArrayList<>();
 		final ResourceDemandingInternalAction[] rdias = RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY.getAll();
 
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 0.3));
@@ -120,15 +114,15 @@ public class MeasurementEventParserTest {
 		final MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
 
 		Set<ResourceDemandMeasurementResult> results = parser.getMeasurementResultsFor(rdias[0]);
-		Set<Double> resultValues = results.stream().map((result) -> result.getValue()).collect(Collectors.toSet());
+		List<Double> resultValues = results.stream().map((result) -> result.getValue()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(0.3, 3.3, 4.5));
 
 		results = parser.getMeasurementResultsFor(rdias[1]);
-		resultValues = results.stream().map((result) -> result.getValue()).collect(Collectors.toSet());
+		resultValues = results.stream().map((result) -> result.getValue()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(3.4, 3.3));
 
 		results = parser.getMeasurementResultsFor(rdias[2]);
-		resultValues = results.stream().map((result) -> result.getValue()).collect(Collectors.toSet());
+		resultValues = results.stream().map((result) -> result.getValue()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(4.5, 0.6, 6.9, 1.5));
 
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[3].getAction(), rdias[3].getResourceType(), 2.2));
@@ -143,7 +137,7 @@ public class MeasurementEventParserTest {
 	 */
 	@Test
 	public void getMeasurementResultsForSeffBranch() {
-		final Set<MeasurementEvent> measurementEvents = new HashSet<>();
+		List<MeasurementEvent> measurementEvents = new ArrayList<>();
 		final SeffBranch[] branches = SEFF_BRANCH_FACTORY.getAll();
 
 		MeasurementEventParser parser =
@@ -152,11 +146,39 @@ public class MeasurementEventParserTest {
 			assertThat("There are no Measurement Events for Seff Branches.", parser.getMeasurementResultsFor(branch),
 				is(empty()));
 		}
-		
+
+		parser = new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllCodeSectionLeftEvents());
+		for (SeffBranch branch : branches) {
+			assertThat("CodeSectionLeftEvents should be ignored.", parser.getMeasurementResultsFor(branch),
+				is(empty()));
+		}
+
+		measurementEvents = new ArrayList<>();
 		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
 		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(0)));
 		parser = new MeasurementEventParser(measurementEvents);
-		assertThat(parser.getMeasurementResultsFor(branches[0]), contains(branches[0].getBranches().get(0)));
+		Set<BranchDecisionMeasurementResult> results = parser.getMeasurementResultsFor(branches[0]);
+		List<Integer> resultValues =
+			results.stream().map((result) -> result.getBranchIndex()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(0));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(0)));
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(0)));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(branches[0]);
+		resultValues = results.stream().map((result) -> result.getBranchIndex()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(0, 0));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(0)));
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(1)));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(branches[0]);
+		resultValues = results.stream().map((result) -> result.getBranchIndex()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(0, 1));
 	}
 
 	/**
@@ -166,15 +188,123 @@ public class MeasurementEventParserTest {
 	 */
 	@Test
 	public void getMeasurementResultsForSeffLoop() {
-		//final Set<MeasurementEvent> measurementEvents = new HashSet<>();
+		List<MeasurementEvent> measurementEvents = new ArrayList<>();
 		final SeffLoop[] loops = SEFF_LOOP_FACTORY.getAll();
-
-		final MeasurementEventParser parser =
+		MeasurementEventParser parser =
 			new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllResourceDemandCapturedEvents());
 		for (SeffLoop loop : loops) {
 			assertThat("There are no Measurement Events for Seff Loops.", parser.getMeasurementResultsFor(loop),
 				is(empty()));
 		}
+
+		parser = new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllCodeSectionLeftEvents());
+		for (SeffLoop loop : loops) {
+			assertThat("Only CodeSectionLeftEvents should not be counted.", parser.getMeasurementResultsFor(loop),
+				is(empty()));
+		}
+
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		Set<LoopRepetitionCountMeasurementResult> results = parser.getMeasurementResultsFor(loops[0]);
+		List<Integer> resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(2));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(2));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1, 1));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[1].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[1].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+		results = parser.getMeasurementResultsFor(loops[1]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[1].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[1].getLoopBody()));
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[1].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[1].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+		results = parser.getMeasurementResultsFor(loops[1]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1, 1));
+
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[1].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		measurementEvents.add(new CodeSectionLeftEvent(loops[1].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[0]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(0));
+		results = parser.getMeasurementResultsFor(loops[1]);
+		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(0));
 	}
 
 	/**
