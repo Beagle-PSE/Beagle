@@ -3,7 +3,9 @@ package de.uka.ipd.sdq.beagle.core.judge;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
@@ -96,15 +98,13 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
 
-		// determine the criteria which aren't CPU-intensive first
+		// Determine the criteria which aren't CPU-intensive first.
 		if (this.numberOfGenerationsPassedTooHigh() || this.timePassedTooHigh()) {
 			return true;
 		}
 
-		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
-
-		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
-		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+		// Take the measurements.
+		this.measure(blackboard);
 
 		return !this.evaluateRelativeImprovement();
 	}
@@ -124,6 +124,24 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		if (this.data == null) {
 			throw new IllegalStateException("loadData(Blackboard) cannot be called on FinalJudge before init().");
 		}
+	}
+
+	/**
+	 * Measures all seff branches, seff loops, and rdias to measure on the
+	 * {@link Blackboard}.
+	 *
+	 * @param blackboard The {@link Blackboard} to use.
+	 */
+	private void measure(final Blackboard blackboard) {
+		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
+
+		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
+		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
+		final Set<ResourceDemandingInternalAction> rdias = blackboard.getRdiasToBeMeasured();
+
+		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(seffLoops, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(rdias, blackboard, fitnessFunction::gradeFor);
 	}
 
 	/**
