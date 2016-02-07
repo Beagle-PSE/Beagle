@@ -7,6 +7,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.MeasurementControllerBlackboardVie
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 import de.uka.ipd.sdq.beagle.core.measurement.ReadOnlyMeasurementControllerBlackboardView;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.Set;
 
 /**
@@ -71,10 +73,16 @@ public class AnalysisController {
 	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
 	 *
-	 * @param blackboard A blackboard having everything to be analysed written on it.
-	 * @param measurementTools The {@link MeasurementTool}s to use.
+	 * @param blackboard A blackboard having everything to be analysed written on it. Must
+	 *            not be {@code null}.
+	 * @param measurementTools The {@link MeasurementTool}s to use. Must not be
+	 *            {@code null} and must not contain {@code null}.
 	 */
 	public AnalysisController(final Blackboard blackboard, final Set<MeasurementTool> measurementTools) {
+		Validate.notNull(blackboard);
+		Validate.notNull(measurementTools);
+		Validate.noNullElements(measurementTools);
+
 		this.blackboard = blackboard;
 		this.measurementController = new MeasurementController(measurementTools);
 	}

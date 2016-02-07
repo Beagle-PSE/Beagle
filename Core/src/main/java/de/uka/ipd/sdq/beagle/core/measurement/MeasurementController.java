@@ -42,7 +42,7 @@ public class MeasurementController {
 	 * Constructs a new {@link MeasurementController}.
 	 *
 	 * @param measurementTools The {@link MeasurementTool}s to use. Must not be
-	 *            {@code null} and cannot contain {@code null}.
+	 *            {@code null} and must not contain {@code null}.
 	 */
 	public MeasurementController(final Set<MeasurementTool> measurementTools) {
 		Validate.notNull(measurementTools);
