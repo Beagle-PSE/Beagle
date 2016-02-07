@@ -1,0 +1,44 @@
+{{setTitle "Writing Documentation"}}
+
+# Writing Documentation
+
+The Requirements Specification, Design document and other documents are written using LyX. Most of its usage is intuitive and should not require explanation. The documents are equiped with notes and comments to make writing as easy as possible. Nevertheless, some points shall be outlined:
+
+## Glossary
+To build our glossary, we use the `glossaries` package, which is superior to all other glossary building packages. Unfortunately, it’s not supported by LyX.
+
+### Documentation 
+Please refer to the [excellent glossaries article on WikiBooks](https://en.wikibooks.org/wiki/LaTeX/Glossary) for documentation of the `glossaries` package.
+
+## Definitions
+All definitions of terms and abbreviations are done in `Documentation/src/common/lyx/Terms and Definitions.lyx`.
+
+_Make sure to include any technical or ambiguous term in the definition file!_
+
+## References 
+To include references to defined terms, hit `Ctrl+L` (⇔ include LaTeX environment) and type the appropriate (referencing command)(https://en.wikibooks.org/wiki/LaTeX/Glossary#Using_defined_terms).
+
+_Make sure to always reference defined terms!_
+
+## BiBTeX
+
+### Add a New Bibliography Entry
+All Bibliography entries are stored in the file [Requirements Specification.bib](/Requirements Specification.bib). To add an entry, you have multiple options:
+
+ * Just edit the file.
+ * Use [JabRef](http://sourceforge.net/projects/jabref/files/jabref/2.11.1/), a GUI tool for BiBTeX
+ * Copy BiBTeX Code from sites like [Google Books](https://books.google.de/)
+ 
+ 
+### Cite
+To cite use LyX: Insert -> Citation
+
+## UML
+We use [UMLet](http://umlet.com/) to generate UML diagrams for the documentation. Only commit `.uxf` files. When you want to embed them in LyX, refer to `My File.uxf.pdf`, these files will be generated during the build process. Please tick the checkbox "Keep aspect ratio" and insert a maximum width and heigth to keep the LyX preview working.
+
+## Building
+Please note that the LyX preview builds will differ from the correct output. To make a true build, run
+```
+gradle :Documentation:build
+```
+in the Beagle project (“top”) directory. The files will be rendered to `Documentation/build/`. They will also be built by `gradle build`.
