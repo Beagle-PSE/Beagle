@@ -5,13 +5,13 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.theInstance;
-import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.same;
 import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
@@ -395,14 +395,51 @@ public class ProposedExpressionAnalyserBlackboardViewTest {
 			is(theInstance(fitnessFunction)));
 	}
 
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
+	 * 
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard.
+	 *
+	 * </ul>
+	 *
+	 */
 	@Test
 	public void readFor() {
-		fail("Not yet implemented");
+		final String onBoard = new String();
+		given(this.mockedBlackboard.readFor(TestStorer.class)).willReturn(onBoard);
+		
+		final String result = this.testedView.readFor(TestStorer.class);
+		assertThat("The testedView should return the stored content it obtained from the blackboad", result,
+			is(theInstance(onBoard)));
 	}
 
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#writeFor(writer, String)}
+	 * . Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The call is delegated to the blackboard.
+	 *
+	 * </ul>
+	 */
 	@Test
 	public void writeFor() {
-		fail("Not yet implemented");
+		final String writeOnBoard = new String();
+		this.testedView.writeFor(TestStorer.class, writeOnBoard);
+		then(this.mockedBlackboard).should().writeFor(same(TestStorer.class), same(writeOnBoard));
+	}
+	
+	/**
+	 * Test {@link BlackboardStorer}.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class TestStorer implements BlackboardStorer<String> {
 	}
 
 	/**
