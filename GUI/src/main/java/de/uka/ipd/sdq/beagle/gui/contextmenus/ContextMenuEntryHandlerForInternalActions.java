@@ -16,6 +16,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 
 		// prepare the list of internal actions
 		final List<InternalAction> internalActions = new LinkedList<InternalAction>();
+		String fileName = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
 			// Those casts are safe because this context menu entry is only shown on
@@ -51,18 +53,20 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 				final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) clickObject;
 				final InternalAction internalAction =
 					(InternalAction) ((View) internalActionEditPart.getModel()).getElement();
+				fileName = internalAction.eResource().getURI().toFileString();
 				internalActions.add(internalAction);
 			} else {
 				final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) clickObject;
 				final InternalAction internalAction =
 					(InternalAction) ((View) internalAction2EditPart.getModel()).getElement();
+				fileName = internalAction.eResource().getURI().toFileString();
 				internalActions.add(internalAction);
 			}
 		}
 
 		// create a new GUI and open it
 		final UserConfiguration userConfiguration =
-			new UserConfiguration(new LinkedList<BasicComponent>(), internalActions, null);
+			new UserConfiguration(new LinkedList<BasicComponent>(), internalActions, new File(fileName));
 		final GuiController guiController = new GuiController(userConfiguration);
 		guiController.open();
 		return null;
