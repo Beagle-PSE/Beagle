@@ -1,9 +1,15 @@
 package de.uka.ipd.sdq.beagle.core;
+/**
+ * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
+ * this class!
+ *
+ * <p>COVERAGE:OFF
+ */
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
  * pause, continue, and abort an Analysis.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class BeagleController {
