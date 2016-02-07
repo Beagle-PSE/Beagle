@@ -76,16 +76,19 @@ public class MeasurementController {
 	 * @param blackboard The blackboard.
 	 */
 	public void measure(final MeasurementControllerBlackboardView blackboard) {
+		// Read from the blackboard.
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
 		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
 		final Set<ResourceDemandingInternalAction> rdias = blackboard.getRdiasToBeMeasured();
 
+		// Initialise everything needed to create a measurement order.
 		final Set<CodeSection> parameterValueSection = new HashSet<CodeSection>();
 		final Set<CodeSection> resourceDemandSections = new HashSet<CodeSection>();
 		final Set<CodeSection> executionSections = new HashSet<CodeSection>();
 		final Set<LaunchConfiguration> launchConfigurations = new HashSet<LaunchConfiguration>();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
+		// Fill {@code executionSections}.
 		for (SeffBranch seffBranch : seffBranches) {
 			final List<CodeSection> codeSections = seffBranch.getBranches();
 
@@ -94,6 +97,19 @@ public class MeasurementController {
 			}
 		}
 
+		// Fill {@code parameterValueSection}.
+		for (SeffLoop seffLoop : seffLoops) {
+			final CodeSection codeSection = seffLoop.getLoopBody();
+			parameterValueSection.add(codeSection);
+		}
+
+		// Fill {@code resourceDemandSections}.
+		for (ResourceDemandingInternalAction rdia : rdias) {
+			final CodeSection codeSection = rdia.getAction();
+			resourceDemandSections.add(codeSection);
+		}
+
+		// Give every measurement tool a measurement order.
 		for (MeasurementTool measurementTool : this.measurementTools) {
 			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection,
 				resourceDemandSections, executionSections, launchConfigurations, parameterCharacteriser);
