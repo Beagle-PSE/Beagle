@@ -96,8 +96,8 @@ public final class MeasurementControllerBlackboardView {
 	 *         be measured. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
-	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
-		return this.blackboard.getAllSeffLoops();
+	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
+		return this.blackboard.getAllExternalCallParameters();
 	}
 
 	/**

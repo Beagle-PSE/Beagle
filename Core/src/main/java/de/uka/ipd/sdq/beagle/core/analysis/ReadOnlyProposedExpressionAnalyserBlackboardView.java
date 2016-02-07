@@ -169,8 +169,9 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
 	 */
-	public void getProposedExpressionFor(final MeasurableSeffElement element) {
+	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);
+		return this.blackboard.getProposedExpressionFor(element);
 	}
 
 	/**

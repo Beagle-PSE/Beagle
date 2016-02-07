@@ -39,7 +39,7 @@ import java.util.Set;
  * @author Christoph Michelbach
  * @author Michael Vogt
  */
-public abstract class ProposedExpressionAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
+public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
 
 	/**
 	 * Blackboard instance committed from the {@link AnalysisController}.
