@@ -13,8 +13,6 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.instrument.IllegalClassFormatException;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Tests for {@link PcmRepositoryBlackboardFactory}.
@@ -43,15 +41,12 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * and PcmRepositoryBlackboardFactory#PcmRepositoryBlackboardFactory(String)}. Asserts
 	 * that creation is possible and {@code null} or an empty string or otherwise
 	 * impossible path cannot be passed.
-	 * 
-	 * @throws IllegalClassFormatException Just let the test fail for this one.
 	 */
 	@Test
 	public void pcmRepositoryBlackboardFactory() throws IllegalClassFormatException {
 		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null),
 			throwsException(NullPointerException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory((Set<File>) null),
-			throwsException(NullPointerException.class));
+		assertThat(() -> new PcmRepositoryBlackboardFactory((File) null), throwsException(NullPointerException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory(""), throwsException(IllegalArgumentException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory("."), throwsException(IllegalArgumentException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory(".."), throwsException(IllegalArgumentException.class));
@@ -64,9 +59,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		};
 
 		for (File impossibleRepositoryFile : impossibleRepositoryFiles) {
-			final HashSet<File> hashSet = new HashSet<File>();
-			hashSet.add(impossibleRepositoryFile);
-			assertThat(() -> new PcmRepositoryBlackboardFactory(hashSet),
+			assertThat(() -> new PcmRepositoryBlackboardFactory(impossibleRepositoryFile),
 				throwsException(IllegalArgumentException.class));
 		}
 	}
