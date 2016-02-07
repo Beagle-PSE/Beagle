@@ -14,9 +14,9 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
+import org.hamcrest.Matcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,6 +42,16 @@ public class FinalJudgeTest {
 	private static final BlackboardFactory BLACKBOARD_FACTORY = new BlackboardFactory();
 
 	/**
+	 * Matcher for the fact that the judge ends the analysis.
+	 */
+	private static final Matcher<Boolean> ENDS_ANALYSIS = is(true);
+
+	/**
+	 * Matcher for the fact that the judge does not end the analysis.
+	 */
+	private static final Matcher<Boolean> CONTINUES_ANALYSIS = is(false);
+
+	/**
 	 * The Final Judge under test.
 	 */
 	private FinalJudge testedJudge;
@@ -62,7 +72,7 @@ public class FinalJudgeTest {
 	@Before
 	public void createObjects() {
 		this.testedJudge = new FinalJudge();
-		this.testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		this.testBlackboard = BLACKBOARD_FACTORY.getWithFewElements();
 		this.allSeffElements = new HashSet<>();
 		this.allSeffElements.addAll(this.testBlackboard.getAllExternalCallParameters());
 		this.allSeffElements.addAll(this.testBlackboard.getAllRdias());
@@ -87,10 +97,10 @@ public class FinalJudgeTest {
 		given(System.currentTimeMillis()).willReturn(daysToWait * 24L * 60L * 60L * 1000L);
 
 		assertThat("The final judge should end the analysis if it lasts too long",
-			this.testedJudge.judge(this.testBlackboard), is(false));
+			this.testedJudge.judge(this.testBlackboard), ENDS_ANALYSIS);
 
 		assertThat("The test for running to long should be performed statelessly",
-			new FinalJudge().judge(this.testBlackboard), is(false));
+			new FinalJudge().judge(this.testBlackboard), ENDS_ANALYSIS);
 	}
 
 	/**
@@ -120,7 +130,7 @@ public class FinalJudgeTest {
 				assertThat(
 					String.format("The final judge must not end the analysis while there’s still great improvement "
 						+ "(stopped after %d iterations)", i),
-					this.testedJudge.judge(this.testBlackboard), is(true));
+					this.testedJudge.judge(this.testBlackboard), CONTINUES_ANALYSIS);
 			}
 		}
 	}
@@ -155,18 +165,17 @@ public class FinalJudgeTest {
 			this.testedJudge.judge(this.testBlackboard);
 		}
 		assertThat("The final judge must end the analysis if the results do not improve significantly",
-			this.testedJudge.judge(this.testBlackboard), is(false));
+			this.testedJudge.judge(this.testBlackboard), ENDS_ANALYSIS);
 
 		this.createObjects();
-		this.testedJudge.init(this.testBlackboard);
+		new FinalJudge().init(this.testBlackboard);
 		for (int i = 0; i < 500; i++) {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
-				final EvaluableExpression newProposedExpression = ConstantExpression.forValue(i);
-				this.testBlackboard.addProposedExpressionFor(seffElement, newProposedExpression);
+				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(i));
 			}
 			new FinalJudge().judge(this.testBlackboard);
 		}
 		assertThat("Ending the analysis must be done statelessly", new FinalJudge().judge(this.testBlackboard),
-			is(false));
+			ENDS_ANALYSIS);
 	}
 }
