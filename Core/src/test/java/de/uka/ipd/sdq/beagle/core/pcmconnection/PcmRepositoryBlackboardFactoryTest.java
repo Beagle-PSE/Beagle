@@ -2,13 +2,16 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.fail;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
-import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.Blackboard;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.instrument.IllegalClassFormatException;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +24,20 @@ import java.util.Set;
 public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
+	 * A factory which creates instances of {@link PcmRepositoryBlackboardFactory}.
+	 */
+	private static PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory;
+
+	/**
+	 * Ran before every method in this class.
+	 */
+	@BeforeClass
+	public static void beforeClass() {
+		PcmRepositoryBlackboardFactoryTest.pcmRepositoryBlackboardFactoryFactory =
+			new PcmRepositoryBlackboardFactoryFactory();
+	}
+
+	/**
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#PcmRepositoryBlackboardFactory(java.util.Set)
 	 * and PcmRepositoryBlackboardFactory#PcmRepositoryBlackboardFactory(String)}. Asserts
@@ -30,9 +47,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * @throws IllegalClassFormatException Just let the test fail for this one.
 	 */
 	@Test
-	public void constructor() throws IllegalClassFormatException {
-		new PcmRepositoryBlackboardFactory("");
-
+	public void pcmRepositoryBlackboardFactory() throws IllegalClassFormatException {
 		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null),
 			throwsException(NullPointerException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory((Set<File>) null),
@@ -62,7 +77,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void getBlackboardForAllElements() {
-		fail("Not yet implemented");
+		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
+			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
+		assertThat(result, is(notNullValue()));
 	}
 
 	/**
@@ -71,7 +89,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
-		fail("Not yet implemented");
+		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
+			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
+			throwsException(FileNotFoundException.class));
 	}
 
 	/**
@@ -80,7 +101,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void getBlackboardForIdsStringArray() {
-		fail("Not yet implemented");
+		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
+			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
+			throwsException(FileNotFoundException.class));
 	}
 
 }
