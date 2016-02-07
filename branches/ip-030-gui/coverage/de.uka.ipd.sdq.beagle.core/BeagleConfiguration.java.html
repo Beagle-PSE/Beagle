@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>UserConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">UserConfiguration.java</span></div><h1>UserConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BeagleConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">BeagleConfiguration.java</span></div><h1>BeagleConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.Validate;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -12,7 +12,7 @@ import java.util.List;
  * 
  * @author Christoph Michelbach
  */
-public class UserConfiguration {
+public class BeagleConfiguration {
 
 	/**
 	 * Numeric value for &quot;adaptive timeout&quot;.
@@ -48,14 +48,14 @@ public class UserConfiguration {
 	private int timeout;
 
 	/**
-	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
+	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
-<span class="nc" id="L58">	public UserConfiguration(final List&lt;Entity&gt; elements, final File repositoryFile) {</span>
+<span class="nc" id="L58">	public BeagleConfiguration(final List&lt;Entity&gt; elements, final File repositoryFile) {</span>
 <span class="nc" id="L59">		Validate.notNull(repositoryFile);</span>
 
 <span class="nc" id="L61">		this.elements = elements;</span>
