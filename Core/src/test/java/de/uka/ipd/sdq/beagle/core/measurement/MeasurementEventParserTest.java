@@ -18,13 +18,14 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.MeasurementEventFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
-import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -42,11 +43,6 @@ public class MeasurementEventParserTest {
 	 * {@link MeasurementEvent}s.
 	 */
 	private static final MeasurementEventFactory MEASUREMENT_EVENT_FACTORY = new MeasurementEventFactory();
-
-	/**
-	 * A {@link SeffBranchFactory}, which is able to generate {@link SeffBranch}s.
-	 */
-	private static final SeffBranchFactory SEFF_BRANCH_FACTORY = new SeffBranchFactory();
 
 	/**
 	 * A {@link SeffLoopFactory}, which is able to generate {@link SeffLoops}s.
@@ -138,7 +134,22 @@ public class MeasurementEventParserTest {
 	@Test
 	public void getMeasurementResultsForSeffBranch() {
 		List<MeasurementEvent> measurementEvents = new ArrayList<>();
-		final SeffBranch[] branches = SEFF_BRANCH_FACTORY.getAll();
+		final Iterator<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet().iterator();
+		final CodeSection[][] allSections = {
+			new CodeSection[4], new CodeSection[2]
+		};
+
+		for (CodeSection[] sections : allSections) {
+			for (int i = 0; i < sections.length; i++) {
+				sections[i] = codeSections.next();
+				codeSections.remove();
+			}
+		}
+
+		final SeffBranch[] branches = new SeffBranch[allSections.length];
+		for (int b = 0; b < branches.length; b++) {
+			branches[b] = new SeffBranch(new HashSet<>(Arrays.asList(allSections[b])));
+		}
 
 		MeasurementEventParser parser =
 			new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllResourceDemandCapturedEvents());
@@ -179,7 +190,7 @@ public class MeasurementEventParserTest {
 		results = parser.getMeasurementResultsFor(branches[0]);
 		resultValues = results.stream().map((result) -> result.getBranchIndex()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(0, 1));
-		
+
 		measurementEvents = new ArrayList<>();
 		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(0)));
 		measurementEvents.add(new CodeSectionEnteredEvent(branches[1].getBranches().get(1)));
