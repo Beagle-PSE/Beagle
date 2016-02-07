@@ -8,11 +8,12 @@ Development is done in [Eclipse Mars for RCP and RAP Developers](http://www.ecli
 
 Required Eclipse plugins are:
 
- * Palladio (Update Site: [https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/](https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/))
+ * Palladio (Update Site: https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/)
  * [JaMoPP](http://www.jamopp.org/index.php/JaMoPP)
- * SoMoX based on JaMoPP, as it can be checked out (SVN) from [https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/](https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/) (Credentials: `anonymous:anonymous`)
-     * import all SoMoX projects into your working space (consider using a Working Set to group them)
-     * Close the projects `org.eclipse.gmt.modisco.java.edit`, `org.eclipse.gmt.modisco.omg.kdm.edit`, `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
+ * PCM for Vitruvius, as it can be checked out (SVN) from https://svnserver.informatik.kit.edu/i43/svn/code/Palladio/Core/branches/PCM_for_Vitruvius  (Credentials: `anonymous:anonymous`). Import it into your Eclipse workspace.
+ * SoMoX based on JaMoPP, as it can be checked out (SVN) from https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/ (Credentials: `anonymous:anonymous`).
+     * import all SoMoX projects into your Eclipse workspace (consider using a Working Set to group them). *Don’t* check “search for nested projects” when importing, but only import the projects at the top level.
+     * Close the projects `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
   * [Checkstyle](http://eclipse-cs.sourceforge.net/#!/)
   * [UMLet](http://umlet.com/) (either as Eclipse plugin or as standalone)
   
