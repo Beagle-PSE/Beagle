@@ -16,6 +16,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -53,6 +55,19 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	public ReadOnlyProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
 		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final ReadOnlyProposedExpressionAnalyserBlackboardView other =
+			(ReadOnlyProposedExpressionAnalyserBlackboardView) object;
+		return new EqualsBuilder().append(this.blackboard, other.blackboard).isEquals();
 	}
 
 	/**
@@ -200,6 +215,13 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
 		return this.blackboard.readFor(writer);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(351, 531).append(this.blackboard).toHashCode();
 	}
 
 }
