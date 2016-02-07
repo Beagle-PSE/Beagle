@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -158,6 +158,12 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <div class="block">Initialises the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> object.</div>
 </td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#judge-de.uka.ipd.sdq.beagle.core.Blackboard-">judge</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</code>
+<div class="block">Implements the break condition for evolution of evaluable expressions.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -200,7 +206,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <a name="init-de.uka.ipd.sdq.beagle.core.Blackboard-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>init</h4>
 <pre>public&nbsp;void&nbsp;init(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</pre>
@@ -211,6 +217,27 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>blackboard</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> to store the data of this
             <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> on. Must not be <code>null</code>.</dd>
+</dl>
+</li>
+</ul>
+<a name="judge-de.uka.ipd.sdq.beagle.core.Blackboard-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>judge</h4>
+<pre>public&nbsp;boolean&nbsp;judge(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</pre>
+<div class="block">Implements the break condition for evolution of evaluable expressions. Decides
+ whether evolution will be continued or stopped depending on the fitness of the
+ fittest evaluable expression, the number of generations passed, the time passed,
+ and the relative improvement of a generation.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>blackboard</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> this <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> operates on. Must
+            not be <code>null</code>.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> to indicate that evolution of evaluable expressions will be
+         stopped; <code>false</code> otherwise.</dd>
 </dl>
 </li>
 </ul>
