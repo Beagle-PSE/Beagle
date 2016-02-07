@@ -13,7 +13,6 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -156,8 +155,7 @@ public class BlackboardFactory {
 				.getProposedExpressionFor(seffElement)) {
 				targetBlackboard.addProposedExpressionFor(seffElement, proposedExpression);
 			}
-			targetBlackboard.setFinalExpressionFor(seffElement,
-				new HashSet<>(Arrays.asList(sourceBlackboard.getFinalExpressionFor(seffElement))));
+			targetBlackboard.setFinalExpressionFor(seffElement, sourceBlackboard.getFinalExpressionFor(seffElement));
 		}
 	}
 }
