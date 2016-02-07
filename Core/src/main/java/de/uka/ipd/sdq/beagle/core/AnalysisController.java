@@ -168,7 +168,10 @@ public class AnalysisController {
 			final int chosenResultAnalyser = new Random().nextInt((maximum - minimum) + 1) + minimum;
 
 			int count = 1;
-			for (MeasurementResultAnalyser measurementResultAnalyserAbleToContribute : measurementResultAnalysersAbleToContribute) {
+			// @formatter:off
+			for (MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
+				: measurementResultAnalysersAbleToContribute) {
+				// @formatter:on
 				if (count == chosenResultAnalyser) {
 					measurementResultAnalyserAbleToContribute.contribute(measurementResultAnalyserBlackboardView);
 					return true;
@@ -211,7 +214,10 @@ public class AnalysisController {
 			final int chosenProposedExpressionAnalyser = new Random().nextInt((maximum - minimum) + 1) + minimum;
 
 			int count = 1;
-			for (ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute : proposedExpressionAnalysersAbleToContribute) {
+			// @formatter:off
+			for (ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute
+				: proposedExpressionAnalysersAbleToContribute) {
+				// @formatter:on
 				if (count == chosenProposedExpressionAnalyser) {
 					proposedExpressionAnalyserAbleToContribute.contribute(proposedExpressionAnalyserBlackboardView);
 					return true;
