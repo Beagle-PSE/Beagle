@@ -11,8 +11,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.palladiosimulator.pcm.repository.BasicComponent;
-import org.palladiosimulator.pcm.seff.InternalAction;
+import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -60,8 +59,7 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		final File fileToAnalyse = new File(clickedFilePath.toString());
 
 		// create a new GUI and open it
-		final UserConfiguration userConfiguration =
-			new UserConfiguration(new LinkedList<BasicComponent>(), new LinkedList<InternalAction>(), fileToAnalyse);
+		final UserConfiguration userConfiguration = new UserConfiguration(new LinkedList<Entity>(), fileToAnalyse);
 		final GuiController guiController = new GuiController(userConfiguration);
 		guiController.open();
 		return null;

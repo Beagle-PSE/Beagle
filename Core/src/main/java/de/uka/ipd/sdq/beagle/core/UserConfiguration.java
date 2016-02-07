@@ -1,11 +1,9 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.Validate;
-import org.palladiosimulator.pcm.repository.BasicComponent;
-import org.palladiosimulator.pcm.seff.InternalAction;
+import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -33,16 +31,10 @@ public class UserConfiguration {
 	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
 	/**
-	 * All components to measure or {@code null} to indicate that everything in
+	 * All elements to measure or {@code null} to indicate that everything in
 	 * {@code repositoryFile} should be analysed.
 	 */
-	private List<BasicComponent> components;
-
-	/**
-	 * All internal actions to measure or {@code null} to indicate that everything in
-	 * {@code repositoryFile} should be analysed.
-	 */
-	private List<InternalAction> internalActions;
+	private List<Entity> elements;
 
 	/**
 	 * The repository file.
@@ -59,76 +51,38 @@ public class UserConfiguration {
 	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
-	 * @param componentsParam The default components to be measured or {@code null} to
-	 *            indicate that everything in {@code repositoryFile} should be analysed.
-	 * @param internalActionsParam The default internal actions to be measured or
-	 *            {@code null} to indicate that everything in {@code repositoryFile}
-	 *            should be analysed.
+	 * @param elements The elements to be measured or {@code null} to indicate that
+	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
-	public UserConfiguration(final List<BasicComponent> componentsParam,
-		final List<InternalAction> internalActionsParam, final File repositoryFile) {
+	public UserConfiguration(final List<Entity> elements, final File repositoryFile) {
 		Validate.notNull(repositoryFile);
 
-		List<BasicComponent> componentsA = componentsParam;
-		List<InternalAction> internalActionsA = internalActionsParam;
-
-		if ((componentsA == null) ^ (internalActionsA == null)) {
-			if (componentsA == null) {
-				componentsA = new LinkedList<BasicComponent>();
-			} else {
-				internalActionsA = new LinkedList<InternalAction>();
-			}
-		}
-
-		this.components = componentsA;
-		this.internalActions = internalActionsA;
+		this.elements = elements;
 		this.repositoryFile = repositoryFile;
 		this.timeout = DEFAULT_TIMEOUT;
 	}
 
 	/**
-	 * Returns the components to be measured or {@code null} to indicate that everything
-	 * in {@code repositoryFile} should be analysed.
+	 * Returns the elements to be measured or {@code null} to indicate that everything in
+	 * {@code repositoryFile} should be analysed.
 	 * 
-	 * @return The components to be measured or {@code null} to indicate that everything
-	 *         in {@code repositoryFile} should be analysed.
+	 * @return The elements to be measured or {@code null} to indicate that everything in
+	 *         {@code repositoryFile} should be analysed.
 	 */
-	public List<BasicComponent> getComponents() {
-		return this.components;
+	public List<Entity> getElements() {
+		return this.elements;
 	}
 
 	/**
-	 * Sets the components to be measured to {@code elements}. {@code null} to indicate
-	 * that everything in {@code repositoryFile} should be analysed.
-	 * 
-	 * @param components The components to be measured or {@code null} to indicate that
-	 *            everything in {@code repositoryFile} should be analysed.
-	 */
-	public void setComponents(final List<BasicComponent> components) {
-		this.components = components;
-	}
-
-	/**
-	 * Returns the internal actions to be measured or {@code null} to indicate that
+	 * Sets the elements to be measured to {@code elements}. {@code null} to indicate that
 	 * everything in {@code repositoryFile} should be analysed.
 	 * 
-	 * @return The internal actions to be measured or {@code null} to indicate that
-	 *         everything in {@code repositoryFile} should be analysed.
+	 * @param elements The elements to be measured or {@code null} to indicate that
+	 *            everything in {@code repositoryFile} should be analysed.
 	 */
-	public List<InternalAction> getInternalActions() {
-		return this.internalActions;
-	}
-
-	/**
-	 * Sets the internal actions to be measured to {@code internalActions}. {@code null}
-	 * to indicate that everything in {@code repositoryFile} should be analysed.
-	 * 
-	 * @param internalActions The internalActions to be measured or {@code null} to
-	 *            indicate that everything in {@code repositoryFile} should be analysed.
-	 */
-	public void setInternalActions(final List<InternalAction> internalActions) {
-		this.internalActions = internalActions;
+	public void setElements(final List<Entity> elements) {
+		this.elements = elements;
 	}
 
 	/**

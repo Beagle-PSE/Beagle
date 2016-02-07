@@ -12,8 +12,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.repository.BasicComponent;
-import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -41,7 +41,7 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 		// The cast is safe, because our context menus use IStructuredSelections.
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
-		final List<BasicComponent> components = new LinkedList<BasicComponent>();
+		final List<Entity> components = new LinkedList<Entity>();
 		final String fileName = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
@@ -56,8 +56,7 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 			components.add(basicComponent);
 		}
 		// create a new GUI and open it
-		final UserConfiguration userConfiguration =
-			new UserConfiguration(components, new LinkedList<InternalAction>(), new File(fileName));
+		final UserConfiguration userConfiguration = new UserConfiguration(components, new File(fileName));
 		final GuiController guiController = new GuiController(userConfiguration);
 		guiController.open();
 

@@ -7,8 +7,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.palladiosimulator.pcm.repository.BasicComponent;
-import org.palladiosimulator.pcm.seff.InternalAction;
+import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.util.LinkedList;
 
@@ -81,13 +80,9 @@ public class SelectionOverviewWizardPage extends WizardPage {
 
 		final LinkedList<String> elements = new LinkedList<String>();
 
-		if ((this.userConfiguration.getComponents() != null) && (this.userConfiguration.getInternalActions() != null)) {
-			for (final BasicComponent component : this.userConfiguration.getComponents()) {
-				elements.add("Component: " + component.getEntityName());
-			}
-
-			for (final InternalAction internalAction : this.userConfiguration.getInternalActions()) {
-				elements.add("Internal Action: " + internalAction.getEntityName());
+		if (this.userConfiguration.getElements() != null) {
+			for (final Entity element : this.userConfiguration.getElements()) {
+				elements.add(element.eClass().getName() + ": " + element.getEntityName());
 			}
 		} else {
 			elements.add("Repository: " + this.userConfiguration.getRepositoryFile().getAbsolutePath());

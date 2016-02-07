@@ -13,7 +13,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
 import java.io.File;
@@ -43,7 +43,7 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
 		// prepare the list of internal actions
-		final List<InternalAction> internalActions = new LinkedList<InternalAction>();
+		final List<Entity> internalActions = new LinkedList<Entity>();
 		String fileName = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
@@ -65,8 +65,7 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		}
 
 		// create a new GUI and open it
-		final UserConfiguration userConfiguration =
-			new UserConfiguration(new LinkedList<BasicComponent>(), internalActions, new File(fileName));
+		final UserConfiguration userConfiguration = new UserConfiguration(internalActions, new File(fileName));
 		final GuiController guiController = new GuiController(userConfiguration);
 		guiController.open();
 		return null;
