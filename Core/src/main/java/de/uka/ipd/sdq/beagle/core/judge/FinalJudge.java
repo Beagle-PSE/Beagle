@@ -3,7 +3,9 @@ package de.uka.ipd.sdq.beagle.core.judge;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
@@ -17,7 +19,7 @@ import java.util.Set;
  * Implements the break condition for evolution of evaluable expressions and decides which
  * proposed evaluable expression describes the measured result best and will be annotated
  * in the PCM.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
@@ -27,12 +29,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * be stopped.
 	 */
 	private static final double FITNESS_EPSILON = 0.5d;
-
-	/**
-	 * If the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
-	 * expressions will be stopped.
-	 */
-	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = 500;
 
 	/**
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
@@ -64,7 +60,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * Initialises the {@link FinalJudge} object. Call this method before starting
 	 * evolution of evaluable expressions to start counting the total time the entire
 	 * evolution of evaluable expressions takes.
-	 * 
+	 *
 	 * @param blackboard The {@link Blackboard} to store the data of this
 	 *            {@link FinalJudge} on. Must not be {@code null}.
 	 *
@@ -96,15 +92,13 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
 
-		// determine the criteria which aren't CPU-intensive first
-		if (this.numberOfGenerationsPassedTooHigh() || this.maxTimePassedTooHigh()) {
+		// Determine the criteria which aren't CPU-intensive first.
+		if (this.timePassedTooHigh()) {
 			return true;
 		}
 
-		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
-
-		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
-		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+		// Take the measurements.
+		this.measure(blackboard);
 
 		return !this.evaluateRelativeImprovement();
 	}
@@ -127,12 +121,30 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	}
 
 	/**
+	 * Measures all seff branches, seff loops, and rdias to measure on the
+	 * {@link Blackboard}.
+	 *
+	 * @param blackboard The {@link Blackboard} to use.
+	 */
+	private void measure(final Blackboard blackboard) {
+		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
+
+		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
+		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
+		final Set<ResourceDemandingInternalAction> rdias = blackboard.getRdiasToBeMeasured();
+
+		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(seffLoops, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(rdias, blackboard, fitnessFunction::gradeFor);
+	}
+
+	/**
 	 * Measures the fitness of all {@linkplain MeasurableSeffElement measurable SEFF
 	 * elements}.
-	 * 
+	 *
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
 	 * {@code SE}.
-	 * 
+	 *
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
 	 *            Must not be {@code null}.
@@ -154,9 +166,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =
 			new ProposedExpressionAnalyserBlackboardView();
 
-		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
+		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
 
-			for (EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
+			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
 				final double fitnessValue =
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
 
@@ -172,10 +184,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * Determines whether a set of {@linkplain MeasurableSeffElement measurable SEFF
 	 * elements} contains an element with sufficient fitness to stop evolution of
 	 * evaluable expressions.
-	 * 
+	 *
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
 	 * {@code SE}.
-	 * 
+	 *
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
 	 *            Must not be {@code null}.
@@ -195,7 +207,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
-		for (SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
+		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
 			boolean foundOptimal = false;
 
 			final double fitnessValue = currentFitnessValues.get(seffElement);
@@ -213,22 +225,12 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	}
 
 	/**
-	 * Determines whether the number of generations passed is too high.
-	 *
-	 * @return {@code true} if and only if the number of generations passed is greater
-	 *         than {@code MAX_NUMBER_OF_GENERATIONS_PASSED}.
-	 */
-	private boolean numberOfGenerationsPassedTooHigh() {
-		return this.data.getNumberOfGenerationsPassed() > MAX_NUMBER_OF_GENERATIONS_PASSED;
-	}
-
-	/**
 	 * Determines whether the amount of time passed is too high.
 	 *
 	 * @return {@code true} if and only if the time passed is greater than
 	 *         {@code MAX_TIME_PASSED}.
 	 */
-	private boolean maxTimePassedTooHigh() {
+	private boolean timePassedTooHigh() {
 		final long currentTime = System.currentTimeMillis();
 
 		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
@@ -249,7 +251,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		// Perfect matched aren't counted.
 		int numberOfCountedElements = 0;
 		double totalDeviation = 0;
-		for (Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
+		for (final Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
 			final double fitness = entry.getValue();
 
 			if (fitness != 0) {
@@ -271,15 +273,17 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 			// whether this was the last try without success.
 			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(
 				this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed() + 1);
-			return this.data
-				.getNumberOfGenerationsWithoutSignificantImprovementPassed() <= MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
+			// @formatter:off
+			return this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed()
+				<= MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
+			// @formatter:on
 		}
 	}
 
 	/**
 	 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
 	 * specified {@code SEFF_ELEMENT_TYPE}.
-	 * 
+	 *
 	 * @author Christoph Michelbach
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
@@ -289,7 +293,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		/**
 		 * Provides the method {@code EvaluableExpressionFitnessFunction#gradeFor} for a
 		 * specified {@code SEFF_ELEMENT_TYPE}.
-		 * 
+		 *
 		 * @param seffElement A SEFF element. Must not be {@code null}.
 		 * @param expression An expression proposed to describe {@code seffElement}’s
 		 *            measurement results. Must not be {@code null}.
