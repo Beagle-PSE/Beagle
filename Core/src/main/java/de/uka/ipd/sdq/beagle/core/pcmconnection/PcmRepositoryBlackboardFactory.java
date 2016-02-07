@@ -120,7 +120,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *
 	 * <li>If {@code id} describes a <em>PCM element</em>, it will be selected.
 	 *
-	 * <li>Any other ID will be silently ignored.
+	 * <li>Any different ID will be silently ignored.
 	 *
 	 * </ul>
 	 *
