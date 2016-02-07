@@ -54,6 +54,11 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *             repository file.
 	 */
 	public PcmRepositoryBlackboardFactory(final String repositoryFileName) throws IllegalClassFormatException {
+		
+		if (repositoryFileName == null) {
+			throw new NullPointerException();
+		}
+		
 		RepositoryFactory.eINSTANCE.createRepository();
 		// Not sure if this final declaration could lead to a problem.
 		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
@@ -66,14 +71,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		this.repository = (RepositoryImpl) eObject;
 	}
 
-	/**
-	 * Creates a factory that will search the provided PCM files for <em>PCM
-	 * elements</em>.
-	 *
-	 * @param pcmRepositoryFiles PCM repository files.
-	 */
-	public PcmRepositoryBlackboardFactory(final Set<File> pcmRepositoryFiles) {
-	}
+
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing all found
