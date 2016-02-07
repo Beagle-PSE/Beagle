@@ -8,8 +8,11 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -68,6 +71,13 @@ public class MeasurementController {
 	 * @param blackboard The blackboard.
 	 */
 	public void measure(final MeasurementControllerBlackboardView blackboard) {
+		Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
+		for (SeffBranch seffBranch : seffBranches) {
+			List<CodeSection> codeSections = seffBranch.getBranches();
+			for (CodeSection codeSection : codeSections) {
+
+			}
+		}
 		for (MeasurementTool measurementTool : this.measurementTools) {
 			final MeasurementOrder measurementOrder = new MeasurementOrder();
 
