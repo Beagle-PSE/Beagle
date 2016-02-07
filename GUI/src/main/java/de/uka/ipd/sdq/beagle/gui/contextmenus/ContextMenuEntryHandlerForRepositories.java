@@ -57,9 +57,6 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		final IPath clickedFilePath = clickedFile.getFullPath();
 		assert clickedFilePath.getFileExtension().matches(FILE_EXTENSION_MATCHER);
 
-		// final List<File> toAnalyseIds = new ArrayList<>();
-		// toAnalyseIds.add(new File(clickedFilePath.toString()));
-
 		final File fileToAnalyse = new File(clickedFilePath.toString());
 
 		// create a new GUI and open it
