@@ -7,11 +7,16 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.HashSet;
 
 /**
  * Tests for {@link PcmRepositoryBlackboardFactory}.
@@ -91,16 +96,25 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
 			throwsException(IllegalArgumentException.class));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"), is(not(null)));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"), is(not(null)));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"),
-			is(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild")));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g")));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"),
-			is(not(pcmRepositoryBlackboardFactory.getBlackboardForIds("Brain"))));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(not(pcmRepositoryBlackboardFactory.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g"))));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"),
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
 			is(not(pcmRepositoryBlackboardFactory.getBlackboardForAllElements())));
+
+		final Blackboard emptyBlackboard = new Blackboard(new HashSet<ResourceDemandingInternalAction>(),
+			new HashSet<SeffBranch>(), new HashSet<SeffLoop>(), new HashSet<ExternalCallParameter>());
+
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_SomeIdWhichDosntExistA"), is(emptyBlackboard));
+
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_TooShortId"), is(emptyBlackboard));
+
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("IllegalId"), is(emptyBlackboard));
 	}
 
 	/**
@@ -109,10 +123,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void getBlackboardForIdsStringArray() {
-		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
-			throwsException(IllegalArgumentException.class));
 	}
 
 }
