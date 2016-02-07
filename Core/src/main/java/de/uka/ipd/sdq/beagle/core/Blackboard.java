@@ -45,17 +45,17 @@ public class Blackboard implements Serializable {
 	private static final long serialVersionUID = 6382577321150787599L;
 
 	/**
-	 * All measurable SEFF elements.
+	 * All measurable SEFF Elements.
 	 */
 	private final Set<MeasurableSeffElement> allSeffElements = new HashSet<>();
 
 	/**
-	 * All resource demanding internal actions.
+	 * All Resource Demanding Internal Actions.
 	 */
 	private final Set<ResourceDemandingInternalAction> rdias;
 
 	/**
-	 * All SEFF branches.
+	 * All SEFF Branches.
 	 */
 	private final Set<SeffBranch> branches;
 
@@ -65,7 +65,7 @@ public class Blackboard implements Serializable {
 	private final Set<SeffLoop> loops;
 
 	/**
-	 * All external call parameter.
+	 * All External Call Parameter.
 	 */
 	private final Set<ExternalCallParameter> externalCalls;
 
