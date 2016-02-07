@@ -58,16 +58,20 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		if (repositoryFileName == null) {
 			throw new NullPointerException();
 		}
-		
+
+		final File test = new File(repositoryFileName);
+		if (!test.isFile()) {
+			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
+		}
+
 		RepositoryFactory.eINSTANCE.createRepository();
 		// Not sure if this final declaration could lead to a problem.
 		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
-		final EObject eObject = EMFHelper.loadFromXMIFile(repositoryFileName, ePackage);
 
+		final EObject eObject = EMFHelper.loadFromXMIFile(repositoryFileName, ePackage);
 		if (!(eObject.getClass() == RepositoryImpl.class)) {
 			throw new IllegalArgumentException();
 		}
-
 		this.repository = (RepositoryImpl) eObject;
 	}
 
