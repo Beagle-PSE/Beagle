@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.analysis;
 
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -14,6 +15,9 @@ import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -34,8 +38,37 @@ import java.util.Set;
  * fitness function.
  *
  * @author Christoph Michelbach
+ * @author Michael Vogt
  */
 public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpressionFitnessFunctionBlackboardView {
+
+	/**
+	 * Blackboard instance committed from the {@link AnalysisController}.
+	 */
+	private Blackboard blackboard;
+
+	/**
+	 * Set the blackboard instance from the {@link AnalysisController} to the private
+	 * blackboard attribute.
+	 *
+	 * @param blackboard The blackboard given from the {@link AnalysisController}.
+	 */
+	public ProposedExpressionAnalyserBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
+		this.blackboard = blackboard;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final ProposedExpressionAnalyserBlackboardView other = (ProposedExpressionAnalyserBlackboardView) object;
+		return this.blackboard == other.blackboard;
+	}
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
@@ -45,7 +78,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRdias() {
-		return null;
+		return this.blackboard.getAllRdias();
 	}
 
 	/**
@@ -55,7 +88,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getAllSeffBranches() {
-		return null;
+		return this.blackboard.getAllSeffBranches();
 	}
 
 	/**
@@ -65,7 +98,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getAllSeffLoops() {
-		return null;
+		return this.blackboard.getAllSeffLoops();
 	}
 
 	/**
@@ -76,7 +109,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getAllExternalCallParameters() {
-		return null;
+		return this.blackboard.getAllExternalCallParameters();
 	}
 
 	/**
@@ -87,6 +120,8 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            be {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
+		Validate.notNull(rdias);
+		this.blackboard.addToBeMeasuredRdias(rdias);
 	}
 
 	/**
@@ -98,6 +133,8 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            must be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
+		Validate.notNull(branches);
+		this.blackboard.addToBeMeasuredSeffBranches(branches);
 	}
 
 	/**
@@ -108,6 +145,8 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
+		Validate.notNull(loops);
+		this.blackboard.addToBeMeasuredSeffLoops(loops);
 	}
 
 	/**
@@ -119,22 +158,26 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+		Validate.notNull(parameters);
+		this.blackboard.addToBeMeasuredExternalCallParameters(parameters);
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor( ResourceDemandingInternalAction)}
 	 * .
 	 *
 	 * @param rdia An resource demanding internal action to get the measurement results
 	 *            of. Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(
+	 *      ResourceDemandingInternalAction)
 	 */
 	@Override
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-		return null;
+		Validate.notNull(rdia);
+		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
 	/**
@@ -149,7 +192,8 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 */
 	@Override
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
-		return null;
+		Validate.notNull(branch);
+		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
 	/**
@@ -164,7 +208,8 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 */
 	@Override
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		return null;
+		Validate.notNull(loop);
+		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
 	/**
@@ -174,15 +219,16 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}. Changes
-	 *         to the returned set will not modify the blackboard content. Is never
-	 *         {@code null}.
+	 * @return All measurement results reported for {@code loexternalCallParameterop}.
+	 *         Changes to the returned set will not modify the blackboard content. Is
+	 *         never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
 	@Override
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		return null;
+		Validate.notNull(externalCallParameter);
+		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 
 	/**
@@ -191,8 +237,14 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
+	 * @return All measruement results reported for {@code evaluableExpression}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
+	 * 
 	 */
-	public void getProposedExpressionFor(final MeasurableSeffElement element) {
+	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
+		return this.blackboard.getProposedExpressionFor(element);
 	}
 
 	/**
@@ -204,7 +256,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		return null;
+		return this.blackboard.getFitnessFunction();
 	}
 
 	/**
@@ -221,7 +273,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	@Override
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		return null;
+		return this.blackboard.readFor(writer);
 	}
 
 	/**
@@ -236,6 +288,14 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	@Override
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
+		this.blackboard.writeFor(writer, written);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(435, 453).append(this.blackboard).toHashCode();
 	}
 
 }
