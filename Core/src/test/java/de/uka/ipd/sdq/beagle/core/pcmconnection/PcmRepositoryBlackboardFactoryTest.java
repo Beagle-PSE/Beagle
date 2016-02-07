@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.measurement;
+package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
