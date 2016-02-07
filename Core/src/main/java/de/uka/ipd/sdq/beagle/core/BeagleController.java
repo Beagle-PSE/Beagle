@@ -15,12 +15,12 @@ package de.uka.ipd.sdq.beagle.core;
 public class BeagleController {
 
 	/**
-	 * Constructs a new {@code BeagleController} with the given {@link UserConfiguration}.
+	 * Constructs a new {@code BeagleController} with the given {@link BeagleConfiguration}.
 	 *
-	 * @param userConfiguration The {@link UserConfiguration} this BeagleController has
+	 * @param beagleConfiguration The {@link BeagleConfiguration} this BeagleController has
 	 *            permanently. It cannot be changed.
 	 */
-	public BeagleController(final UserConfiguration userConfiguration) {
+	public BeagleController(final BeagleConfiguration beagleConfiguration) {
 
 	}
 

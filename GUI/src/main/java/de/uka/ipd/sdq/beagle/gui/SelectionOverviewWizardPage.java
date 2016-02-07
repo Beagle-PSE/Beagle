@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui;
 
-import de.uka.ipd.sdq.beagle.core.UserConfiguration;
+import de.uka.ipd.sdq.beagle.core.BeagleConfiguration;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -44,9 +44,9 @@ public class SelectionOverviewWizardPage extends WizardPage {
 	private static final int MAIN_LAYOUT_NR_COLUMS = 1;
 
 	/**
-	 * The {@link UserConfiguration} this {@link SelectionOverviewWizardPage} uses.
+	 * The {@link BeagleConfiguration} this {@link SelectionOverviewWizardPage} uses.
 	 */
-	private final UserConfiguration userConfiguration;
+	private final BeagleConfiguration beagleConfiguration;
 
 	/**
 	 * The main container.
@@ -55,17 +55,17 @@ public class SelectionOverviewWizardPage extends WizardPage {
 
 	/**
 	 * Constructs a new {@link SelectionOverviewWizardPage} being linked to the given
-	 * {@code userConfiguration}.
+	 * {@code beagleConfiguration}.
 	 *
-	 * @param userConfiguration The {@link UserConfiguration} this
+	 * @param beagleConfiguration The {@link BeagleConfiguration} this
 	 *            {@link SelectionOverviewWizardPage} will be permanently linked to.
-	 *            Changing the associated {@link UserConfiguration} is not possible.
+	 *            Changing the associated {@link BeagleConfiguration} is not possible.
 	 */
-	public SelectionOverviewWizardPage(final UserConfiguration userConfiguration) {
+	public SelectionOverviewWizardPage(final BeagleConfiguration beagleConfiguration) {
 		super(TITLE);
 		this.setTitle(TITLE);
 		this.setDescription(DESCRIPTION);
-		this.userConfiguration = userConfiguration;
+		this.beagleConfiguration = beagleConfiguration;
 	}
 
 	@Override
@@ -80,12 +80,12 @@ public class SelectionOverviewWizardPage extends WizardPage {
 
 		final LinkedList<String> elements = new LinkedList<String>();
 
-		if (this.userConfiguration.getElements() != null) {
-			for (final Entity element : this.userConfiguration.getElements()) {
+		if (this.beagleConfiguration.getElements() != null) {
+			for (final Entity element : this.beagleConfiguration.getElements()) {
 				elements.add(element.eClass().getName() + ": " + element.getEntityName());
 			}
 		} else {
-			elements.add("Repository: " + this.userConfiguration.getRepositoryFile().getAbsolutePath());
+			elements.add("Repository: " + this.beagleConfiguration.getRepositoryFile().getAbsolutePath());
 		}
 
 		for (final String element : elements) {

@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.core.UserConfiguration;
+import de.uka.ipd.sdq.beagle.core.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.gui.GuiController;
 
 import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
@@ -56,8 +56,8 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 			components.add(basicComponent);
 		}
 		// create a new GUI and open it
-		final UserConfiguration userConfiguration = new UserConfiguration(components, new File(fileName));
-		final GuiController guiController = new GuiController(userConfiguration);
+		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(components, new File(fileName));
+		final GuiController guiController = new GuiController(beagleConfiguration);
 		guiController.open();
 
 		return null;

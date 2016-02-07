@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.BeagleController;
-import de.uka.ipd.sdq.beagle.core.UserConfiguration;
+import de.uka.ipd.sdq.beagle.core.BeagleConfiguration;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -61,10 +61,10 @@ public class GuiController {
 	private final Shell shell;
 
 	/**
-	 * The {@link UserConfiguration} this {@link GuiController} and therefore everything
+	 * The {@link BeagleConfiguration} this {@link GuiController} and therefore everything
 	 * linked to it uses.
 	 */
-	private final UserConfiguration userConfiguration;
+	private final BeagleConfiguration beagleConfiguration;
 
 	/**
 	 * The wizard allowing the user to configure Beagle’s behaviour during the analysis.
@@ -81,11 +81,11 @@ public class GuiController {
 	 * Constructs a new {@link GuiController} using {@code components} as the default
 	 * components to be measured.
 	 * 
-	 * @param userConfiguration The {@link UserConfiguration} to use.
+	 * @param beagleConfiguration The {@link BeagleConfiguration} to use.
 	 */
-	public GuiController(final UserConfiguration userConfiguration) {
+	public GuiController(final BeagleConfiguration beagleConfiguration) {
 
-		this.userConfiguration = userConfiguration;
+		this.beagleConfiguration = beagleConfiguration;
 		this.state = GuiControllerState.unopened;
 		this.shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 	}
@@ -113,7 +113,7 @@ public class GuiController {
 
 			final ActionListener wizardFinished = (event) -> this.wizardFinishedSuccessfully = true;
 
-			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.userConfiguration, wizardFinished);
+			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.beagleConfiguration, wizardFinished);
 			final WizardDialog wizardDialog = new WizardDialog(this.shell, this.beagleAnalysisWizard);
 			this.state = GuiControllerState.wizardOpen;
 			wizardDialog.open();
@@ -196,7 +196,7 @@ public class GuiController {
 			 */
 			@Override
 			public void run() {
-				final BeagleController beagleController = new BeagleController(GuiController.this.userConfiguration);
+				final BeagleController beagleController = new BeagleController(GuiController.this.beagleConfiguration);
 				beagleController.startAnalysis();
 
 				// when {@code beagleController.startAnalysis()} returns, close the dialog

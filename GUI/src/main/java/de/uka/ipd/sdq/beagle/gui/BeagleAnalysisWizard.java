@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui;
 
-import de.uka.ipd.sdq.beagle.core.UserConfiguration;
+import de.uka.ipd.sdq.beagle.core.BeagleConfiguration;
 
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
@@ -27,10 +27,10 @@ import java.util.List;
 public class BeagleAnalysisWizard extends Wizard {
 
 	/**
-	 * The {@link UserConfiguration} this {@link BeagleAnalysisWizard} and therefore
+	 * The {@link BeagleConfiguration} this {@link BeagleAnalysisWizard} and therefore
 	 * everything linked to it uses.
 	 */
-	private final UserConfiguration userConfiguration;
+	private final BeagleConfiguration beagleConfiguration;
 
 	/**
 	 * The {@link ActionListener} which will be executed when the wizard finishes.
@@ -41,15 +41,15 @@ public class BeagleAnalysisWizard extends Wizard {
 	 * Constructs a new {@link BeagleAnalysisWizard} which runs {@code wizardFinished}
 	 * when it finishes.
 	 *
-	 * @param userConfiguration The {@link UserConfiguration} this
+	 * @param beagleConfiguration The {@link BeagleConfiguration} this
 	 *            {@link BeagleAnalysisWizard} and therefore everything linked to it will
 	 *            use.
 	 * @param wizardFinished The {@link ActionListener} which will be executed when the
 	 *            wizard finishes.
 	 */
-	public BeagleAnalysisWizard(final UserConfiguration userConfiguration, final ActionListener wizardFinished) {
+	public BeagleAnalysisWizard(final BeagleConfiguration beagleConfiguration, final ActionListener wizardFinished) {
 		super();
-		this.userConfiguration = userConfiguration;
+		this.beagleConfiguration = beagleConfiguration;
 		this.wizardFinished = wizardFinished;
 		this.setNeedsProgressMonitor(true);
 	}
@@ -62,8 +62,8 @@ public class BeagleAnalysisWizard extends Wizard {
 	@Override
 	public void addPages() {
 		final List<WizardPage> wizardPages = new LinkedList<WizardPage>();
-		wizardPages.add(new SelectionOverviewWizardPage(this.userConfiguration));
-		wizardPages.add(new TimeoutWizardPage(this.userConfiguration));
+		wizardPages.add(new SelectionOverviewWizardPage(this.beagleConfiguration));
+		wizardPages.add(new TimeoutWizardPage(this.beagleConfiguration));
 		final Iterator<WizardPage> iterator = wizardPages.iterator();
 
 		while (iterator.hasNext()) {

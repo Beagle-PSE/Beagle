@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui;
 
-import de.uka.ipd.sdq.beagle.core.UserConfiguration;
+import de.uka.ipd.sdq.beagle.core.BeagleConfiguration;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -58,9 +58,9 @@ public class TimeoutWizardPage extends WizardPage {
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
 
 	/**
-	 * The {@link UserConfiguration} this {@link TimeoutWizardPage} uses.
+	 * The {@link BeagleConfiguration} this {@link TimeoutWizardPage} uses.
 	 */
-	private final UserConfiguration userConfiguration;
+	private final BeagleConfiguration beagleConfiguration;
 
 	/**
 	 * A textbox for the timeout in seconds (if the timeout is set manually).
@@ -114,19 +114,19 @@ public class TimeoutWizardPage extends WizardPage {
 
 	/**
 	 * Constructs a new {@link TimeoutWizardPage} being linked to the given
-	 * {@code userConfiguration}.
+	 * {@code beagleConfiguration}.
 	 *
-	 * @param userConfiguration The {@link UserConfiguration} this
+	 * @param beagleConfiguration The {@link BeagleConfiguration} this
 	 *            {@link TimeoutWizardPage} will be permanently linked to. Changing the
-	 *            associated {@link UserConfiguration} is not possible.
+	 *            associated {@link BeagleConfiguration} is not possible.
 	 */
-	public TimeoutWizardPage(final UserConfiguration userConfiguration) {
+	public TimeoutWizardPage(final BeagleConfiguration beagleConfiguration) {
 		super(TITLE);
 		this.setTitle(TITLE);
 		this.setDescription(DESCRIPTION);
 		this.setControl(this.textboxTimeoutSeconds);
-		this.userConfiguration = userConfiguration;
-		this.timeout = this.userConfiguration.getTimeout();
+		this.beagleConfiguration = beagleConfiguration;
+		this.timeout = this.beagleConfiguration.getTimeout();
 	}
 
 	@Override
@@ -158,8 +158,8 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = UserConfiguration.ADAPTIVE_TIMEOUT;
-				TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutWizardPage.this.timeout = BeagleConfiguration.ADAPTIVE_TIMEOUT;
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 			}
 
 			@Override
@@ -180,8 +180,8 @@ public class TimeoutWizardPage extends WizardPage {
 					TimeoutWizardPage.this.setPageComplete(true);
 					TimeoutWizardPage.this.timeout =
 						Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
-					TimeoutWizardPage.this.userConfiguration.setTimeout(UserConfiguration.ADAPTIVE_TIMEOUT);
-					TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+					TimeoutWizardPage.this.beagleConfiguration.setTimeout(BeagleConfiguration.ADAPTIVE_TIMEOUT);
+					TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 				}
 			}
 
@@ -209,8 +209,8 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = UserConfiguration.NO_TIMEOUT;
-				TimeoutWizardPage.this.userConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutWizardPage.this.timeout = BeagleConfiguration.NO_TIMEOUT;
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
 			}
 
 			@Override
@@ -276,18 +276,18 @@ public class TimeoutWizardPage extends WizardPage {
 
 	/**
 	 * Sets the content of this {@link WizardPage} to the default values defined in
-	 * {@link UserConfiguration}. Note that this method will not rely on
-	 * {@code DEFAULT_TIMEOUT} of {@link UserConfiguration} but instead will get the
-	 * timeout of the user {@link UserConfiguration} object associated with this
+	 * {@link BeagleConfiguration}. Note that this method will not rely on
+	 * {@code DEFAULT_TIMEOUT} of {@link BeagleConfiguration} but instead will get the
+	 * timeout of the user {@link BeagleConfiguration} object associated with this
 	 * {@link WizardPage} so the visibility of this constant can be changed in the future.
 	 */
 	private void adaptPageToDefaultValues() {
-		switch (this.userConfiguration.getTimeout()) {
-			case UserConfiguration.ADAPTIVE_TIMEOUT:
+		switch (this.beagleConfiguration.getTimeout()) {
+			case BeagleConfiguration.ADAPTIVE_TIMEOUT:
 				// Nothing needs to be done because {@link TimeoutWizardPage} is written
 				// so this is the default.
 				break;
-			case UserConfiguration.NO_TIMEOUT:
+			case BeagleConfiguration.NO_TIMEOUT:
 				this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
 				break;
 			default:

@@ -12,7 +12,7 @@ import java.util.List;
  * 
  * @author Christoph Michelbach
  */
-public class UserConfiguration {
+public class BeagleConfiguration {
 
 	/**
 	 * Numeric value for "adaptive timeout".
@@ -48,14 +48,14 @@ public class UserConfiguration {
 	private int timeout;
 
 	/**
-	 * Constructs a new {@link UserConfiguration} using {@code elements} as the default
+	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 * 
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
-	public UserConfiguration(final List<Entity> elements, final File repositoryFile) {
+	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile) {
 		Validate.notNull(repositoryFile);
 
 		this.elements = elements;
