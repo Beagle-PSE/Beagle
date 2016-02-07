@@ -18,6 +18,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -49,6 +51,18 @@ public final class MeasurementControllerBlackboardView {
 	public MeasurementControllerBlackboardView(final Blackboard blackboard) {
 		Validate.notNull(blackboard);
 		this.blackboard = blackboard;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;
+		return new EqualsBuilder().append(this.blackboard, other.blackboard).isEquals();
 	}
 
 	/**
@@ -200,5 +214,12 @@ public final class MeasurementControllerBlackboardView {
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 		this.blackboard.writeFor(writer, written);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();
 	}
 }
