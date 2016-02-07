@@ -104,9 +104,12 @@ public class MeasurementEventParser {
 		final ResourceDemandingInternalActionMeasurementEventVisitor resourceDemandingInternalActionMeasurementEventVisitor =
 			new ResourceDemandingInternalActionMeasurementEventVisitor(resourceDemandingInternalAction,
 				resourceDemandMeasurementResults);
-		for (final Integer index : this.codeSectionMapping.get(resourceDemandingInternalAction.getAction())) {
-			final MeasurementEvent measurementEvent = this.measurementEvents.get(index);
-			measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);
+		final Set<Integer> indices = this.codeSectionMapping.get(resourceDemandingInternalAction.getAction());
+		if (indices != null) {
+			for (final Integer index : indices) {
+				final MeasurementEvent measurementEvent = this.measurementEvents.get(index);
+				measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);
+			}
 		}
 		return resourceDemandMeasurementResults;
 
@@ -127,8 +130,11 @@ public class MeasurementEventParser {
 		// their code section.
 		final Set<MeasurementEvent> codeSectionEventsForThisBranch = new HashSet<>();
 		for (final CodeSection possibilyPickedBranch : branch.getBranches()) {
-			for (final Integer index : this.codeSectionMapping.get(possibilyPickedBranch)) {
-				codeSectionEventsForThisBranch.add(this.measurementEvents.get(index));
+			final Set<Integer> indices = this.codeSectionMapping.get(possibilyPickedBranch);
+			if (indices != null) {
+				for (final Integer index : indices) {
+					codeSectionEventsForThisBranch.add(this.measurementEvents.get(index));
+				}
 			}
 		}
 
@@ -152,8 +158,11 @@ public class MeasurementEventParser {
 		final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults = new HashSet<>();
 		final SeffLoopMeasurementEventVisitor seffLoopMeasurementEventVisitor =
 			new SeffLoopMeasurementEventVisitor(loop, loopRepetitionCountMeasurementResults);
-		for (final Integer index : this.codeSectionMapping.get(loop.getLoopBody())) {
-			this.measurementEvents.get(index).receive(seffLoopMeasurementEventVisitor);
+		final Set<Integer> indices = this.codeSectionMapping.get(loop.getLoopBody());
+		if (indices != null) {
+			for (final Integer index : indices) {
+				this.measurementEvents.get(index).receive(seffLoopMeasurementEventVisitor);
+			}
 		}
 		seffLoopMeasurementEventVisitor.finalise();
 		return loopRepetitionCountMeasurementResults;
