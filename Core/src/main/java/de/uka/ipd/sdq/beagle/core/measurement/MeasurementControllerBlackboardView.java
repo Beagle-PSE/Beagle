@@ -74,7 +74,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		return this.blackboard.getAllRdias();
+		return this.blackboard.getRdiasToBeMeasured();
 	}
 
 	/**
@@ -86,7 +86,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		return this.blackboard.getAllSeffBranches();
+		return this.blackboard.getSeffBranchesToBeMeasured();
 	}
 
 	/**
@@ -98,7 +98,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return this.blackboard.getAllSeffLoops();
+		return this.blackboard.getSeffLoopsToBeMeasured();
 	}
 
 	/**
@@ -111,7 +111,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
-		return this.blackboard.getAllExternalCallParameters();
+		return this.blackboard.getExternalCallParametersToBeMeasured();
 	}
 
 	/**
