@@ -18,7 +18,6 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
@@ -61,7 +60,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 			return true;
 		}
 		final ReadOnlyMeasurementControllerBlackboardView other = (ReadOnlyMeasurementControllerBlackboardView) object;
-		return new EqualsBuilder().append(this.blackboard, other.blackboard).isEquals();
+		return this.blackboard == other.blackboard;
 	}
 
 	/**
