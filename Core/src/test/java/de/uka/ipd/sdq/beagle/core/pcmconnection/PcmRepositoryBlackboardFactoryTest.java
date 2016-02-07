@@ -87,8 +87,20 @@ public class PcmRepositoryBlackboardFactoryTest {
 	public void getBlackboardForIdsCollectionOfString() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
 			throwsException(IllegalArgumentException.class));
+
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"), is(not(null)));
+
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"),
+			is(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild")));
+
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"),
+			is(not(pcmRepositoryBlackboardFactory.getBlackboardForIds("Brain"))));
+
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("Grandchild"),
+			is(not(pcmRepositoryBlackboardFactory.getBlackboardForAllElements())));
 	}
 
 	/**
