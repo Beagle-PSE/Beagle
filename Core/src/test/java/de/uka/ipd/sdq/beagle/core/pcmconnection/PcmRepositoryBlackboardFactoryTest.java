@@ -131,6 +131,16 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_TooShortId"), is(emptyBlackboard));
 
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("IllegalId"), is(emptyBlackboard));
+
+		final Blackboard blackboardForIds =
+			pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g", "_FaSO4LnqEeWVlphM5rov7g");
+
+		assertThat(blackboardForIds.getAllSeffLoops().size(), is(not(0)));
+
+		for (SeffLoop seffLoop : blackboardForIds.getAllSeffLoops()) {
+			// How do i figure out whether this is correct?
+			seffLoop.getLoopBody().getStartFile();
+		}
 	}
 
 }
