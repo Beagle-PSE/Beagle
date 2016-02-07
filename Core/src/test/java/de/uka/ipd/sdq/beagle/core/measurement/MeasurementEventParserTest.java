@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAcceptingNull;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
@@ -45,7 +46,7 @@ public class MeasurementEventParserTest {
 	 * A {@link SeffBranchFactory}, which is able to generate {@link SeffBranch}s.
 	 */
 	private static final SeffBranchFactory SEFF_BRANCH_FACTORY = new SeffBranchFactory();
-	
+
 	/**
 	 * A {@link SeffLoopFactory}, which is able to generate {@link SeffLoops}s.
 	 */
@@ -57,7 +58,7 @@ public class MeasurementEventParserTest {
 	 */
 	private static final ResourceDemandingInternalActionFactory RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY =
 		new ResourceDemandingInternalActionFactory();
-	
+
 	/**
 	 * A {@link ExternalCallParameterFactory}, which is able to generate
 	 * {@link ExternalCallParameter}s.
@@ -114,7 +115,8 @@ public class MeasurementEventParserTest {
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[2].getAction(), rdias[2].getResourceType(), 0.6));
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[2].getAction(), rdias[2].getResourceType(), 6.9));
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[2].getAction(), rdias[2].getResourceType(), 1.5));
-
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneCodeSectionEnteredEvent());
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneCodeSectionLeftEvent());
 		final MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
 
 		Set<ResourceDemandMeasurementResult> results = parser.getMeasurementResultsFor(rdias[0]);
@@ -132,7 +134,6 @@ public class MeasurementEventParserTest {
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[3].getAction(), rdias[3].getResourceType(), 2.2));
 		assertThat("Adding Events after inizialisation must not have an effect on returned results",
 			parser.getMeasurementResultsFor(rdias[3]), is(empty()));
-
 	}
 
 	/**
@@ -143,20 +144,19 @@ public class MeasurementEventParserTest {
 	@Test
 	public void getMeasurementResultsForSeffBranch() {
 		final Set<MeasurementEvent> measurementEvents = new HashSet<>();
-		final ResourceDemandingInternalAction[] rdias = RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY.getAll();
-		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final SeffBranch branch = SEFF_BRANCH_FACTORY.getOne();  
-		
-		// BRANCH DECISION MEASUREMENT RESULT
+		final SeffBranch[] branches = SEFF_BRANCH_FACTORY.getAll();
 
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 0.3));
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 3.3));
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 4.5));
-		measurementEvents.add(new CodeSectionEnteredEvent(codeSections[0]));
-		measurementEvents.add(new CodeSectionEnteredEvent(codeSections[1]));
-		final MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
-		assertThat("There are no Measurement Events for Seff Branches.", parser.getMeasurementResultsFor(branch),
-			is(empty()));
+		MeasurementEventParser parser =
+			new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllResourceDemandCapturedEvents());
+		for (SeffBranch branch : branches) {
+			assertThat("There are no Measurement Events for Seff Branches.", parser.getMeasurementResultsFor(branch),
+				is(empty()));
+		}
+		
+		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(0)));
+		parser = new MeasurementEventParser(measurementEvents);
+		assertThat(parser.getMeasurementResultsFor(branches[0]), contains(branches[0].getBranches().get(0)));
 	}
 
 	/**
@@ -166,19 +166,15 @@ public class MeasurementEventParserTest {
 	 */
 	@Test
 	public void getMeasurementResultsForSeffLoop() {
-		final Set<MeasurementEvent> measurementEvents = new HashSet<>();
-		final ResourceDemandingInternalAction[] rdias = RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY.getAll();
-		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final SeffLoop loop = SEFF_LOOP_FACTORY.getOne();
+		//final Set<MeasurementEvent> measurementEvents = new HashSet<>();
+		final SeffLoop[] loops = SEFF_LOOP_FACTORY.getAll();
 
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 0.3));
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 3.3));
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 4.5));
-		measurementEvents.add(new CodeSectionEnteredEvent(codeSections[0]));
-		measurementEvents.add(new CodeSectionEnteredEvent(codeSections[1]));
-		final MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
-		assertThat("There are no Measurement Events for Seff Loops.", parser.getMeasurementResultsFor(loop),
-			is(empty()));
+		final MeasurementEventParser parser =
+			new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllResourceDemandCapturedEvents());
+		for (SeffLoop loop : loops) {
+			assertThat("There are no Measurement Events for Seff Loops.", parser.getMeasurementResultsFor(loop),
+				is(empty()));
+		}
 	}
 
 	/**
@@ -188,18 +184,15 @@ public class MeasurementEventParserTest {
 	@Test
 	public void getMeasurementResultsForExternalCallParameter() {
 		final Set<MeasurementEvent> measurementEvents = new HashSet<>();
-		final ResourceDemandingInternalAction[] rdias = RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY.getAll();
-		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		final ExternalCallParameter parameter = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
-
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 0.3));
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 3.3));
-		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 4.5));
-		measurementEvents.add(new CodeSectionEnteredEvent(codeSections[0]));
-		measurementEvents.add(new CodeSectionEnteredEvent(codeSections[1]));
+		measurementEvents.addAll(MEASUREMENT_EVENT_FACTORY.getAllAsSet());
 		final MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
-		assertThat("There are no Measurement Events for External Call Parameters.", parser.getMeasurementResultsFor(parameter),
-			is(empty()));
+
+		ExternalCallParameter parameter;
+		for (CodeSection codeSection : CODE_SECTION_FACTORY.getAll()) {
+			parameter = new ExternalCallParameter(codeSection, 2);
+			assertThat("There should be no measurement results for ExternalCallParameters.",
+				parser.getMeasurementResultsFor(parameter), is(empty()));
+		}
 	}
 
 }
