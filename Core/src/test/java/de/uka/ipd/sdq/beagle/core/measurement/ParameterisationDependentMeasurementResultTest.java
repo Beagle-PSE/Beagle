@@ -90,9 +90,6 @@ public class ParameterisationDependentMeasurementResultTest {
 		/*
 		 * This simulates parameterisation1.equals(paramertisation2) returns true, while
 		 * parameterisation3.equals(parameterisation4) returns false.
-		 *
-		 * <p>Following measurementResultP1 should be equals to measurementResultP2 while
-		 * measurementResultP3 and measurementResultP4 are not equal.
 		 */
 		final ParameterisationMock parameterisation1 = new ParameterisationMock();
 		final ParameterisationMock parameterisation2 = new ParameterisationMock();
@@ -117,10 +114,10 @@ public class ParameterisationDependentMeasurementResultTest {
 		final ParameterisationDependentMeasurementResult measurementResultP4 =
 			new ParameterisationDependentMeasurementResult(parameterisation4) {
 			};
+
 		assertThat(measurementResult, hasDefaultEqualsProperties());
 		assertThat(measurementResult, is(not(equalTo(measurementResultP1))));
-		assertThat(measurementResultP1, is(equalTo(measurementResultP2)));
-		assertThat(measurementResultP1.hashCode(), is(equalTo(measurementResultP2.hashCode())));
+		assertThat(measurementResultP1, is(not(equalTo(measurementResultP2))));
 		assertThat(measurementResultP3, is(not(equalTo(measurementResultP4))));
 	}
 
