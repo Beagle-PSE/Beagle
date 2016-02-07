@@ -13,6 +13,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
@@ -75,11 +76,12 @@ public class BlackboardTest {
 	private static final EvaluableExpressionFactory EVALUABLE_EXPRESSION_FACTORY = new EvaluableExpressionFactory();
 
 	/**
-	 * An {@link EvaluableExpressionFitnessFunction} factory to easily obtain new instances from.
+	 * An {@link EvaluableExpressionFitnessFunction} factory to easily obtain new
+	 * instances from.
 	 */
 	private static final EvaluableExpressionFitnessFunctionFactory EVA_EX_FACTORY =
 		new EvaluableExpressionFitnessFunctionFactory();
-	
+
 	/**
 	 * An {@link CodeSectionFactory} factory to easily obtain new instances from.
 	 */
@@ -151,7 +153,8 @@ public class BlackboardTest {
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
-		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		final Blackboard blackboardTemp =
+			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		final ResourceDemandingInternalAction rdiaToAdd =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, CODE_SECTION_FACTORY.getOne());
 		final SeffBranch seffBranchToAdd = new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet());
@@ -172,12 +175,14 @@ public class BlackboardTest {
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
 			(rdias) -> new Blackboard(new HashSet<>(rdias), SEFF_BRANCH_FACTORY.getAllAsSet(),
-				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(), EVA_EX_FACTORY.getOne()),
+				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(),
+				EVA_EX_FACTORY.getOne()),
 			is(notAcceptingNull(RDIA_FACTORY.getAllAsSet())));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
 			(seffBranches) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), new HashSet<>(seffBranches),
-				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(), EVA_EX_FACTORY.getOne()),
+				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(),
+				EVA_EX_FACTORY.getOne()),
 			is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAllAsSet())));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
@@ -475,7 +480,8 @@ public class BlackboardTest {
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
-		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		final Blackboard blackboardTemp =
+			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredRdias, is(notAcceptingNull(RDIA_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredRdias, is(notAcceptingNull(Arrays.asList(RDIA_FACTORY.getAll()))));
 
@@ -506,7 +512,8 @@ public class BlackboardTest {
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
-		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		final Blackboard blackboardTemp =
+			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredSeffBranches, is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredSeffBranches,
 			is(notAcceptingNull(Arrays.asList(SEFF_BRANCH_FACTORY.getAll()))));
@@ -536,7 +543,8 @@ public class BlackboardTest {
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
-		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		final Blackboard blackboardTemp =
+			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredSeffLoops, is(notAcceptingNull(SEFF_LOOP_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredSeffLoops,
 			is(notAcceptingNull(Arrays.asList(SEFF_LOOP_FACTORY.getAll()))));
@@ -568,7 +576,8 @@ public class BlackboardTest {
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
-		final Blackboard blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		final Blackboard blackboardTemp =
+			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredExternalCallParameters,
 			is(notAcceptingNull(EXTERNAL_CALL_PARAMETER_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredExternalCallParameters,
@@ -888,12 +897,9 @@ public class BlackboardTest {
 	@Test
 	public void getProposedExpressionFor() {
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
-
 		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
-		final Set<EvaluableExpression> evaExSet = new HashSet<EvaluableExpression>();
 		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
-		evaExSet.add(evaEx);
-		testBlackboard.addProposedExpressionFor(rdia, evaExSet);
+		testBlackboard.addProposedExpressionFor(rdia, evaEx);
 
 		assertThat("Proposed Expression should return an expression that have been added by \"addProposedExpression\"",
 			testBlackboard.getProposedExpressionFor(rdia), contains(evaEx));
@@ -947,19 +953,19 @@ public class BlackboardTest {
 		evaEx.add(EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllRdias().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffBranches().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffLoops().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 		BLACKBOARD_FACTORY.getWithToBeMeasuredContent().addProposedExpressionFor(
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllExternalCallParameters().iterator().next(),
-			EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+			EVALUABLE_EXPRESSION_FACTORY.getOne());
 
 		assertThat("It must not be possible to add a proposed expression for null",
-			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 		assertThat("It must not be possible to add null as a proposed expression",
 			() -> BLACKBOARD_FACTORY.getEmpty().addProposedExpressionFor(SEFF_BRANCH_FACTORY.getOne(), null),
@@ -968,7 +974,7 @@ public class BlackboardTest {
 		final ExternalCallParameter ecpElement = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
 		assertThat(
 			"It must not be possible to add an proposed Expression to unknown elements!", () -> BLACKBOARD_FACTORY
-				.getEmpty().addProposedExpressionFor(ecpElement, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+				.getEmpty().addProposedExpressionFor(ecpElement, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(IllegalArgumentException.class));
 	}
 
@@ -996,7 +1002,7 @@ public class BlackboardTest {
 		Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
 		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
-		final Set<EvaluableExpression> evaEx = EVALUABLE_EXPRESSION_FACTORY.getAllAsSet();
+		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		testBlackboard.setFinalExpressionFor(rdia, evaEx);
 		assertThat("GetFinalExpressionFor should return setted expression by \"setFinalExpressionFor\"",
 			testBlackboard.getFinalExpressionFor(rdia), is(theInstance(evaEx)));
@@ -1036,18 +1042,18 @@ public class BlackboardTest {
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		final Iterator<ResourceDemandingInternalAction> rdias = testBlackboard.getAllRdias().iterator();
 
-		testBlackboard.setFinalExpressionFor(rdias.next(), EVALUABLE_EXPRESSION_FACTORY.getAllAsSet());
+		testBlackboard.setFinalExpressionFor(rdias.next(), EVALUABLE_EXPRESSION_FACTORY.getOne());
 		// asserts that setting null for the final expression is possible
 		testBlackboard.setFinalExpressionFor(rdias.next(), null);
 
 		assertThat("It must not be possible to set the final expression for null",
-			() -> BLACKBOARD_FACTORY.getEmpty().setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+			() -> BLACKBOARD_FACTORY.getEmpty().setFinalExpressionFor(null, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(NullPointerException.class));
 
 		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
 		assertThat(
 			"It must not be possible to ask for a final Expression of unknown elements!", () -> BLACKBOARD_FACTORY
-				.getEmpty().setFinalExpressionFor(seffBranch, EVALUABLE_EXPRESSION_FACTORY.getAllAsSet()),
+				.getEmpty().setFinalExpressionFor(seffBranch, EVALUABLE_EXPRESSION_FACTORY.getOne()),
 			throwsException(IllegalArgumentException.class));
 	}
 
