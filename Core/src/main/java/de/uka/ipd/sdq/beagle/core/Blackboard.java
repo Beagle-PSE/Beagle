@@ -8,7 +8,6 @@ import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
@@ -162,22 +161,6 @@ public class Blackboard implements Serializable {
 		for (final MeasurableSeffElement element : this.allSeffElements) {
 			this.proposedExpressions.put(element, new HashSet<>());
 		}
-	}
-
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != this.getClass()) {
-			return false;
-		}
-		final Blackboard other = (Blackboard) object;
-		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)
-			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();
 	}
 
 	/**
