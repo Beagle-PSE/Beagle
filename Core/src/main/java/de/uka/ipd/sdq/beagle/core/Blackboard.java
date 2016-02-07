@@ -8,7 +8,6 @@ import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
@@ -46,85 +45,82 @@ public class Blackboard implements Serializable {
 	private static final long serialVersionUID = 6382577321150787599L;
 
 	/**
-	 * {@code allSeffElements} all measurable SEFF elements.
+	 * All measurable SEFF Elements.
 	 */
 	private final Set<MeasurableSeffElement> allSeffElements = new HashSet<>();
 
 	/**
-	 * {@code rdias} all resource demanding internal actions.
+	 * All Resource Demanding Internal Actions.
 	 */
 	private final Set<ResourceDemandingInternalAction> rdias;
 
 	/**
-	 * {@code branches} all SEFF branches.
+	 * All SEFF Branches.
 	 */
 	private final Set<SeffBranch> branches;
 
 	/**
-	 * {@code loops} all SEFF Loops.
+	 * All SEFF Loops.
 	 */
 	private final Set<SeffLoop> loops;
 
 	/**
-	 * {@code externalCalls} all external call parameter.
+	 * All External Call Parameter.
 	 */
 	private final Set<ExternalCallParameter> externalCalls;
 
 	/**
-	 * {@code rdiasToBeMeasured} all resource demanding internal actions which are to be
-	 * measured.
+	 * All resource demanding internal actions which are to be measured.
 	 */
 	private Set<ResourceDemandingInternalAction> rdiasToBeMeasured = new HashSet<>();
 
 	/**
-	 * {@code branchesToBeMeasured} all SEFF branches which are to be measured.
+	 * All SEFF branches which are to be measured.
 	 */
 	private Set<SeffBranch> branchesToBeMeasured = new HashSet<>();
 
 	/**
-	 * {@code loopsToBeMeasured} all SEFF loops which are to be count.
+	 * All SEFF loops which are to be count.
 	 */
 	private Set<SeffLoop> loopsToBeMeasured = new HashSet<>();
 
 	/**
-	 * {@code externalCallParameterToBeMeasured} all external call parameter which are to
-	 * be measured.
+	 * All external call parameter which are to be measured.
 	 */
 	private Set<ExternalCallParameter> externalCallParameterToBeMeasured = new HashSet<>();
 
 	/**
-	 * {@code rdiasMeasurementResult} all resource demanding internal results.
+	 * All resource demanding internal results.
 	 */
 	private Set<ResourceDemandMeasurementResult> rdiasMeasurementResult = new HashSet<>();
 
 	/**
-	 * {@code branchDecisionMeasurementResult} all SEFF branches results.
+	 * All SEFF branches results.
 	 */
 	private Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResult = new HashSet<>();
 
 	/**
-	 * {@code loopRepititionCountMeasurementResult} all SEFF loop count results.
+	 * All SEFF loop count results.
 	 */
 	private Set<LoopRepetitionCountMeasurementResult> loopRepititionCountMeasurementResult = new HashSet<>();
 
 	/**
-	 * {@code parameterChangeMeasurementResult} all parameter change results.
+	 * All parameter change results.
 	 */
 	private Set<ParameterChangeMeasurementResult> parameterChangeMeasurementResult = new HashSet<>();
 
 	/**
-	 * {@code evaluableExpression} all evaluable expressions.
+	 * All evaluable expressions.
 	 */
 	private Map<MeasurableSeffElement, Set<EvaluableExpression>> proposedExpressions = new HashMap<>();
 
 	/**
-	 * {@code finalExpression} is the final expression.
+	 * Is the final expression.
 	 */
 	private Map<MeasurableSeffElement, EvaluableExpression> finalExpressions = new HashMap<>();
 
 	/**
-	 * {@code fitnissFunction} is the function to get a better evaluable expression
-	 * result.
+	 * Is the function to get a better evaluable expression result.
 	 */
 	private EvaluableExpressionFitnessFunction fitnessFunction;
 
@@ -165,22 +161,6 @@ public class Blackboard implements Serializable {
 		for (final MeasurableSeffElement element : this.allSeffElements) {
 			this.proposedExpressions.put(element, new HashSet<>());
 		}
-	}
-
-	@Override
-	public boolean equals(final Object object) {
-		if (object == null) {
-			return false;
-		}
-		if (object == this) {
-			return true;
-		}
-		if (object.getClass() != this.getClass()) {
-			return false;
-		}
-		final Blackboard other = (Blackboard) object;
-		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)
-			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();
 	}
 
 	/**
@@ -235,8 +215,6 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		Validate.notNull(this.rdiasToBeMeasured);
-		Validate.isTrue(this.rdias.containsAll(this.rdiasToBeMeasured));
 		return this.rdiasToBeMeasured;
 	}
 
@@ -248,7 +226,6 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		Validate.notNull(this.branchesToBeMeasured);
 		return this.branchesToBeMeasured;
 	}
 
@@ -259,7 +236,6 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		Validate.notNull(this.loopsToBeMeasured);
 		return this.loopsToBeMeasured;
 	}
 
@@ -271,7 +247,6 @@ public class Blackboard implements Serializable {
 	 *         be measured. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
-		Validate.notNull(this.externalCallParameterToBeMeasured);
 		return this.externalCallParameterToBeMeasured;
 	}
 

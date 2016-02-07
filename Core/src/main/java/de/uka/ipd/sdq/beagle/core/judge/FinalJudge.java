@@ -164,7 +164,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
 		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =
-			new ProposedExpressionAnalyserBlackboardView();
+			new ProposedExpressionAnalyserBlackboardView(blackboard);
 
 		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
 
