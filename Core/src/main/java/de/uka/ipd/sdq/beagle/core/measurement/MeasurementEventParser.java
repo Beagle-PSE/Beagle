@@ -170,7 +170,7 @@ public class MeasurementEventParser {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		return null;
+		return new HashSet<>();
 	}
 
 	/**
