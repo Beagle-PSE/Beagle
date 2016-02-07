@@ -5,6 +5,7 @@ import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,15 +41,21 @@ public class BlackboardFactory {
 	private static final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY =
 		new ExternalCallParameterFactory();
 
-	private static final EvaluableExpressionFitnessFunctionFactory EVA_EX_FACTORY = new EvaluableExpressionFitnessFunctionFactory();
-	
+	/**
+	 * A {@link EvaluableExpressionFitnessFunction} factory to easily obtain new instances
+	 * from.
+	 */
+	private static final EvaluableExpressionFitnessFunctionFactory EVA_EX_FACTORY =
+		new EvaluableExpressionFitnessFunctionFactory();
+
 	/**
 	 * Creates a new blackboard with nothing written on it.
 	 *
 	 * @return A new blackboard instance, without any data on it.
 	 */
 	public Blackboard getEmpty() {
-		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(), EVA_EX_FACTORY.getOne());
+		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
+			EVA_EX_FACTORY.getOne());
 	}
 
 	/**
