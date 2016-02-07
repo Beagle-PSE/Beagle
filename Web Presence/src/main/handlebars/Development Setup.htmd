@@ -35,20 +35,75 @@ Please import the *root* project through Buildship into Eclipse. Make sure to se
 
 ## Documentation
 
-### LyX
-Parts of the documentation are written in LaTeX using [LyX](http://www.lyx.org/). Some documents require special classes or layout files, like the [System Requirements Specification](Requirements Specification/README.md).
+Parts of the documentation are written in LaTeX using [LyX](http://www.lyx.org/).
+
+### Installation
+In order to render PDFs, the following steps need to be performed.
+
+Ubuntu users can try to run the deployment install script at `buildSrc/src/deploy/bash/Install Doc.sh`, which will execute all installation steps detailed below. Please note thatwhile the script offers great convenience, it was written to be used on a continuous integration server and might hence make settings that are not optimal for a private computer.
+ 
+You’ll obviously first need to install LyX and LaTeX.
+
+#### Install the SDQ Template
+
+  * Download the [SDQ thesis template](https://sdqweb.ipd.kit.edu/wiki/File:Ausarbeitungs-Vorlage_SDQ_2014.zip) and install it according to your LaTeX distribution.
+    * On Ubuntu: 
+         * copy the unzipped folder’s _contents_ to `/usr/share/texmf/tex/latex/sdqthesis`. For example: 
+         ```
+         sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis`)
+         ```
+         * run `sudo texhash`
+      
+    * On Windows (with MiKTeX):
+        * copy the unzipped folder’s _contents_ to `C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\sdqthesis`.
+        * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
+      
+    * You may remove the files `thesis.tex` and `thesis.bib` as well as the subfolder `sections`.
+    
+    
+  * Install the LyX layout file from `Documentation/Dependencies/sqthesis.layout`.
+      * copy the file to your personal layout folder (Ubuntu: `~/.lyx/layouts`, Windows: `C:\Users\[User]\AppData\Roaming\LyX2.1\layouts`
+      * Open LyX and run `Tools -> Reconfigure`
+      * Restart LyX to use the template
+	  
+	
+
+#### Install Required Packages
+A (small!) subset of the required LaTeX packages are:
+
+  * KOMAscript book (`scrbook`)
+  * Default packages like `inputenc`, `fontenc`, etc.
+  * Linux Libertine Font (`libertine` and `newtxmath`)
+  * Adobe Source Sans Pro Font (`sourcesanspro`)
+  * Bera Mono Font (`beramono`)
+  * Microtype (`microtype`)
+  * Enumitem (`enumitem`)
+  * Break citations (`breakcites`)
+  * xindy (`xindy`)
+  
+If you care for the full list, look it up yourself in `sdqthesis.cls`.
+
+##### Ubuntu
+All required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-extra`, `xindy`, `texlive-bibtex-extra` and `texlive-lang-german` debian packages (you'll likely have most of them installed already):
+```
+sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german texlive-bibtex-extra xindy
+```
+
+##### Windows
+On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically. However, you need to install Perl: [ActivePerl](http://www.activestate.com/activeperl/downloads). Make sure the checkbox "Add Perl to PATH", which appeares during the installation process, is checked.
+
+
+### Install UMLet
+ * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and move it to `C:\Program Files (x86)\Umlet\Umlet.exe` (Windows) or `/opt/Umlet/` (Linux). (If you want to put it somewhere else, you have to adapt `UmletRenderTask.goovy` in the Documentation project’s `buildSrc` project.) UMLet is required to build the documentation.
+ * If you like to use UMLet as eclipse plugin, you can install this as well. It makes editing the diagrams easier.
+
 
 #### Spell checking
 You may need to set the language in `Tools -> Settings -> Language Settings -> Language` to `en` to get English spell checking.
 
 ### Markdown
-Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). The Eclipse [GitHub Flavored Markdown viewer plugin for Eclipse](https://marketplace.eclipse.org/content/github-flavored-markdown-viewer-plugin-eclipse) helps writing it. (_Hint:_ Don’t give the plugin your GitHub credentials. [Create a personal access token](https://github.com/settings/tokens) and change the API URL in the plugin’s settings: `https://api.github.com/?access_token=PERSONAL_ACCESS_TOKEN`)
+Other parts are written in plain [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). The Eclipse [GitHub Flavored Markdown viewer plugin for Eclipse](https://marketplace.eclipse.org/content/github-flavored-markdown-viewer-plugin-eclipse) helps writing it. (*Hint:* Don’t give the plugin your GitHub credentials. [Create a personal access token](https://github.com/settings/tokens) and change the API URL in the plugin’s settings: `https://api.github.com/?access_token=PERSONAL_ACCESS_TOKEN`)
 
-### UML (Software Requirements Specification)
-
- * Install the [UMLet standalone](http://www.umlet.com/changes.htm). Extract the zip file and move it to `C:\Program Files (x86)\Umlet\Umlet.exe` (Windows) or `/opt/Umlet/` (Linux). (If you want to put it somewhere else, you have to adapt `UmletRenderTask.goovy` in the Documentation project’s `buildSrc` project.) UMLet is required to build the documentation.
- * If you like to use UMLet as eclipse plugin, you can install this as well. It makes editing the diagrams easier.
- * Only commit the `.uxf` files. When you want to embed them in LyX, refer to `My File.uxf.pdf`, these files will be generated during the build process. Please tick the checkbox "Keep aspect ratio" and insert a maximum width and heigth to keep the LyX preview working.
  
 ## Continuous Integration
 Beagle uses Travis, a continuous integration service. It tests Pull Requests as well as all branches in the repository whenever changes occur.

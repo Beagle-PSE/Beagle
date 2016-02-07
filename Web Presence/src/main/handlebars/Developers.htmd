@@ -19,6 +19,10 @@ Beagle consists of multiple subprojects. Each is built using [gradle](http://gra
 	{{#> title}}Development Tools Setup{{/title}}
 	{{#> description}}Beagle uses various tools for development. This is a detailed guide to set them up and get started.{{/description}}
 {{/artefact}}
+{{#> artefact link="Writing Documentation.html" type="html"}}
+	{{#> title}}Writing Documentation{{/title}}
+	{{#> description}}Guides to write documentation documents for Beagle.{{/description}}
+{{/artefact}}
 {{#> artefact link="Coding Conventions.html" type="html"}}
 	{{#> title}}Coding Conventions{{/title}}
 	{{#> description}}Defines best practices for Java Code.{{/description}}
