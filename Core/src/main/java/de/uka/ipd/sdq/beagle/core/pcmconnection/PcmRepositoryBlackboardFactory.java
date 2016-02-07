@@ -53,7 +53,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * @throws IllegalClassFormatException If input parameter does not represent a valid
 	 *             repository file.
 	 */
-	public PcmRepositoryBlackboardFactory(final String repositoryFileName) throws IllegalClassFormatException {
+	public PcmRepositoryBlackboardFactory(final String repositoryFileName) {
 		
 		if (repositoryFileName == null) {
 			throw new NullPointerException();
@@ -65,13 +65,21 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		final EObject eObject = EMFHelper.loadFromXMIFile(repositoryFileName, ePackage);
 
 		if (!(eObject.getClass() == RepositoryImpl.class)) {
-			throw new IllegalClassFormatException();
+			throw new IllegalArgumentException();
 		}
 
 		this.repository = (RepositoryImpl) eObject;
 	}
 
-
+	/**
+	 * Creates a factory that will search the provided PCM file for <em>PCM
+	 * elements</em>.
+	 *
+	 * @param pcmRepositoryFiles PCM repository file.
+	 */
+	public PcmRepositoryBlackboardFactory(final File pcmRepositoryFiles) {
+		this(pcmRepositoryFiles.getAbsolutePath());
+	}
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing all found
