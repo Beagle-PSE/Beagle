@@ -7,16 +7,17 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Set;
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Central and only storage of all knowledge gained by Beagle. Implements, together with
@@ -34,6 +35,7 @@ import java.util.Set;
  * @author Christoph Michelbach
  * @author Joshua Gleitze
  * @author Roman Langrehr
+ * @author Michael Vogt
  * @see AnalysisController
  */
 public class Blackboard implements Serializable {
@@ -44,14 +46,138 @@ public class Blackboard implements Serializable {
 	private static final long serialVersionUID = 6382577321150787599L;
 
 	/**
+	 * {@code rdias} all resource demanding internal actions.
+	 */
+	private final Set<ResourceDemandingInternalAction> rdias;
+
+	/**
+	 * {@code branches} all SEFF branches.
+	 */
+	private final Set<SeffBranch> branches;
+
+	/**
+	 * {@code loops} all SEFF Loops.
+	 */
+	private final Set<SeffLoop> loops;
+
+	/**
+	 * {@code externalCalls} all external call parameter.
+	 */
+	private final Set<ExternalCallParameter> externalCalls;
+
+	/**
+	 * {@code rdiasToBeMeasured} all resource demanding internal actions which are to be
+	 * measured.
+	 */
+	private Set<ResourceDemandingInternalAction> rdiasToBeMeasured;
+
+	/**
+	 * {@code branchesToBeMeasured} all SEFF branches which are to be measured.
+	 */
+	private Set<SeffBranch> branchesToBeMeasured;
+
+	/**
+	 * {@code loopsToBeMeasured} all SEFF loops which are to be count.
+	 */
+	private Set<SeffLoop> loopsToBeMeasured;
+
+	/**
+	 * {@code externalCallParameterToBeMeasured} all external call parameter which are to
+	 * be measured.
+	 */
+	private Set<ExternalCallParameter> externalCallParameterToBeMeasured;
+
+	/**
+	 * {@code rdiasMeasurementResult} all resource demanding internal results.
+	 */
+	private Set<ResourceDemandMeasurementResult> rdiasMeasurementResult;
+
+	/**
+	 * {@code branchDecisionMeasurementResult} all SEFF branches results.
+	 */
+	private Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResult;
+
+	/**
+	 * {@code loopRepititionCountMeasurementResult} all SEFF loop count results.
+	 */
+	private Set<LoopRepetitionCountMeasurementResult> loopRepititionCountMeasurementResult;
+
+	/**
+	 * {@code parameterChangeMeasurementResult} all parameter change results.
+	 */
+	private Set<ParameterChangeMeasurementResult> parameterChangeMeasurementResult;
+
+	/**
+	 * {@code evaluableExpression} all evaluable expressions.
+	 */
+	private Map<MeasurableSeffElement, Set<EvaluableExpression>> evaluableExpressions;
+
+	/**
+	 * {@code finalExpression} is the final expression.
+	 */
+	private Map<MeasurableSeffElement, EvaluableExpression> finalExpressions;
+
+	/**
+	 * {@code fitnissFunction} is the function to get a better evaluable expression
+	 * result.
+	 */
+	private EvaluableExpressionFitnessFunction fitnessFunction;
+
+	/**
+	 * Private data of tools, written through {@link #writeFor(Class, Serializable)}.
+	 */
+	private final Map<Class<? extends BlackboardStorer<? extends Serializable>>, Object> privateWrittenData =
+		new HashMap<>();
+
+	/**
 	 * Creates a new blackboard that can be used to analyse the given elements.
 	 *
 	 * @param rdias All resource demanding internal action to be known to analysers.
 	 * @param branches All SEFF branches to be known to analysers.
 	 * @param loops All SEFF loops to be known to analysers.
+	 * @param externalCalls All external call parameter to be known to analysers.
+	 * @param fitnessFunction The function to get better evaluable expression results.
 	 */
 	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
-		final Set<SeffLoop> loops) {
+		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls,
+		final EvaluableExpressionFitnessFunction fitnessFunction) {
+		Validate.noNullElements(rdias);
+		Validate.noNullElements(branches);
+		Validate.noNullElements(loops);
+		Validate.noNullElements(externalCalls);
+		Validate.notNull(fitnessFunction);
+		this.rdias = rdias;
+		this.branches = branches;
+		this.loops = loops;
+		this.externalCalls = externalCalls;
+		this.fitnessFunction = fitnessFunction;
+
+		this.rdiasToBeMeasured = new HashSet<>();
+		this.branchesToBeMeasured = new HashSet<>();
+		this.loopsToBeMeasured = new HashSet<>();
+		this.externalCallParameterToBeMeasured = new HashSet<>();
+
+		this.rdiasMeasurementResult = new HashSet<>();
+		this.branchDecisionMeasurementResult = new HashSet<>();
+		this.loopRepititionCountMeasurementResult = new HashSet<>();
+		this.parameterChangeMeasurementResult = new HashSet<>();
+
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final Blackboard other = (Blackboard) object;
+		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)
+			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();
 	}
 
 	/**
@@ -63,7 +189,7 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRdias() {
-		return null;
+		return this.rdias;
 	}
 
 	/**
@@ -73,7 +199,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getAllSeffBranches() {
-		return null;
+		return this.branches;
 	}
 
 	/**
@@ -83,7 +209,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getAllSeffLoops() {
-		return null;
+		return this.loops;
 	}
 
 	/**
@@ -94,7 +220,7 @@ public class Blackboard implements Serializable {
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getAllExternalCallParameters() {
-		return null;
+		return this.externalCalls;
 	}
 
 	/**
@@ -106,7 +232,9 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		return null;
+		Validate.notNull(this.rdiasToBeMeasured);
+		Validate.isTrue(this.rdias.containsAll(this.rdiasToBeMeasured));
+		return this.rdiasToBeMeasured;
 	}
 
 	/**
@@ -117,7 +245,8 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		return null;
+		Validate.notNull(this.branchesToBeMeasured);
+		return this.branchesToBeMeasured;
 	}
 
 	/**
@@ -127,7 +256,8 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return null;
+		Validate.notNull(this.loopsToBeMeasured);
+		return this.loopsToBeMeasured;
 	}
 
 	/**
@@ -138,67 +268,92 @@ public class Blackboard implements Serializable {
 	 *         be measured. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
-		return null;
+		Validate.notNull(this.externalCallParameterToBeMeasured);
+		return this.externalCallParameterToBeMeasured;
 	}
 
 	/**
 	 * Reports that {@code rdias} shall be measured for its resource demands.
 	 *
-	 * @param rdias Resource demanding internal actions that shall be measured. Must not
-	 *            be {@code null} and must be known to this blackboard.
+	 * @param toMeasureRdias Resource demanding internal actions that shall be measured.
+	 *            Must not be {@code null} and must be known to this blackboard.
 	 * @see #addToBeMeasuredRdias(Collection)
 	 */
-	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... rdias) {
+	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... toMeasureRdias) {
+		Validate.noNullElements(toMeasureRdias);
+		Validate.isTrue(this.rdias.containsAll(Arrays.asList(toMeasureRdias)),
+			"toMeasureRdias may only contain elements that are already on the blackboard");
+		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));
 	}
 
 	/**
 	 * Reports that {@code rdias} shall be measured for its resource demands.
 	 *
-	 * @param rdias Resource demanding internal actions that shall be measured. Must not
-	 *            be {@code null} and must be known to this blackboard.
+	 * @param toMeasureRdias Resource demanding internal actions that shall be measured.
+	 *            Must not be {@code null} and must be known to this blackboard.
 	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
 	 */
-	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
+	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> toMeasureRdias) {
+		Validate.noNullElements(toMeasureRdias);
+		Validate.isTrue(this.rdias.containsAll(toMeasureRdias),
+			"toMeasureRdias may only contain elements that are already on the blackboard");
+		this.rdiasToBeMeasured.addAll(toMeasureRdias);
 	}
 
 	/**
 	 * Reports that {@code branches} shall be measured for its branch decisions.
 	 *
-	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
-	 *            must be known to this blackboard.
+	 * @param toMeasureBranches SEFF branches that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
 	 * @see #addToBeMeasuredSeffBranches(Collection)
 	 */
-	public void addToBeMeasuredSeffBranches(final SeffBranch... branches) {
+	public void addToBeMeasuredSeffBranches(final SeffBranch... toMeasureBranches) {
+		Validate.noNullElements(toMeasureBranches);
+		Validate.isTrue(this.branches.containsAll(Arrays.asList(toMeasureBranches)),
+			"toMeasureBranches may only contain elements that are already on the blackboard");
+		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));
 	}
 
 	/**
 	 * Reports that {@code branches} shall be measured for its branch decisions.
 	 *
-	 * @param branches SEFF branches that shall be measured. Must not be {@code null} and
-	 *            must be known to this blackboard.
+	 * @param toMeasureBranches SEFF branches that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
 	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
 	 */
-	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
+	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> toMeasureBranches) {
+		Validate.noNullElements(toMeasureBranches);
+		Validate.isTrue(this.branches.containsAll(toMeasureBranches),
+			"toMeasureBranches may only contain elements that are already on the blackboard");
+		this.branchesToBeMeasured.addAll(toMeasureBranches);
 	}
 
 	/**
 	 * Reports that {@code loops} shall be measured for its repetitions.
 	 *
-	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
-	 *            be known to this blackboard.
+	 * @param toMeasureLoops SEFF Loops that shall be measured. Must not be {@code null}
+	 *            and must be known to this blackboard.
 	 * @see #addToBeMeasuredSeffLoops(Collection)
 	 */
-	public void addToBeMeasuredSeffLoops(final SeffLoop... loops) {
+	public void addToBeMeasuredSeffLoops(final SeffLoop... toMeasureLoops) {
+		Validate.noNullElements(toMeasureLoops);
+		Validate.isTrue(this.loops.containsAll(Arrays.asList(toMeasureLoops)),
+			"toMeasureLoops may only contain elements that are already on the blackboard");
+		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));
 	}
 
 	/**
 	 * Reports that {@code loops} shall be measured for its repetitions.
 	 *
-	 * @param loops SEFF Loops that shall be measured. Must not be {@code null} and must
-	 *            be known to this blackboard.
+	 * @param toMeasureLoops SEFF Loops that shall be measured. Must not be {@code null}
+	 *            and must be known to this blackboard.
 	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
 	 */
-	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
+	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> toMeasureLoops) {
+		Validate.noNullElements(toMeasureLoops);
+		Validate.isTrue(this.loops.containsAll(toMeasureLoops),
+			"toMeasureLoops may only contain elements that are already on the blackboard");
+		this.loopsToBeMeasured.addAll(toMeasureLoops);
 	}
 
 	/**
@@ -209,6 +364,10 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(Collection)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final ExternalCallParameter... parameters) {
+		Validate.noNullElements(parameters);
+		Validate.isTrue(this.externalCalls.containsAll(Arrays.asList(parameters)),
+			"parameters may only contain elements that are already on the blackboard");
+		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));
 	}
 
 	/**
@@ -219,6 +378,10 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
+		Validate.noNullElements(parameters);
+		Validate.isTrue(this.externalCalls.containsAll(parameters),
+			"parameters may only contain elements that are already on the blackboard");
+		this.externalCallParameterToBeMeasured.addAll(parameters);
 	}
 
 	/**
@@ -230,7 +393,10 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-		return null;
+		Validate.notNull(rdia);
+		Validate.isTrue(this.rdias.contains(rdia));
+		Validate.notNull(this.rdiasMeasurementResult);
+		return this.rdiasMeasurementResult;
 	}
 
 	/**
@@ -242,7 +408,10 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
-		return null;
+		Validate.notNull(branch);
+		Validate.isTrue(this.branches.contains(branch));
+		Validate.notNull(this.branchDecisionMeasurementResult);
+		return this.branchDecisionMeasurementResult;
 	}
 
 	/**
@@ -254,7 +423,10 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		return null;
+		Validate.notNull(loop);
+		Validate.isTrue(this.loops.contains(loop));
+		Validate.notNull(this.loopRepititionCountMeasurementResult);
+		return this.loopRepititionCountMeasurementResult;
 	}
 
 	/**
@@ -269,7 +441,10 @@ public class Blackboard implements Serializable {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		return null;
+		Validate.notNull(externalCallParameter);
+		Validate.isTrue(this.externalCalls.contains(externalCallParameter));
+		Validate.notNull(this.parameterChangeMeasurementResult);
+		return this.parameterChangeMeasurementResult;
 	}
 
 	/**
@@ -281,6 +456,10 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
+		Validate.notNull(rdia);
+		Validate.notNull(results);
+		Validate.isTrue(this.rdias.contains(rdia), "rdia must already be on the blackboard");
+		this.rdiasMeasurementResult.add(results);
 	}
 
 	/**
@@ -290,6 +469,10 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+		Validate.notNull(branch);
+		Validate.notNull(results);
+		Validate.isTrue(this.branches.contains(branch), "branch must already be on the blackboard");
+		this.branchDecisionMeasurementResult.add(results);
 	}
 
 	/**
@@ -299,6 +482,10 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+		Validate.notNull(loop);
+		Validate.notNull(results);
+		Validate.isTrue(this.loops.contains(loop), "loop must already be on the blackboard");
+		this.loopRepititionCountMeasurementResult.add(results);
 	}
 
 	/**
@@ -310,6 +497,10 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
+		Validate.notNull(parameter);
+		Validate.notNull(results);
+		Validate.isTrue(this.externalCalls.contains(parameter), "parameter must already be on the blackboard");
+		this.parameterChangeMeasurementResult.add(results);
 	}
 
 	/**
@@ -321,7 +512,9 @@ public class Blackboard implements Serializable {
 	 *         proposed for {@code element}.
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
-		return null;
+		Validate.notNull(element);
+		Validate.notNull(this.evaluableExpressions);
+		return this.evaluableExpressions.get(element);
 	}
 
 	/**
@@ -332,6 +525,9 @@ public class Blackboard implements Serializable {
 	 *            measurement results. Must not be {@code null}.
 	 */
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+		Validate.notNull(element);
+		Validate.notNull(expression);
+		this.evaluableExpressions.get(element).add(expression);
 	}
 
 	/**
@@ -342,8 +538,13 @@ public class Blackboard implements Serializable {
 	 * {@code addProposedExpressionFor} with this element as parameter.
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
+	 * @return The expression momentarily marked to be the final for {@code element}.
+	 *         {@code null} if no expression has been marked yet.
 	 */
-	public void getFinalExpressionFor(final MeasurableSeffElement element) {
+	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
+		Validate.notNull(element);
+		Validate.notNull(this.finalExpressions);
+		return this.finalExpressions.get(element);
 	}
 
 	/**
@@ -356,7 +557,10 @@ public class Blackboard implements Serializable {
 	 *            results. May be {@code null} to describe that no suitable expression was
 	 *            found.
 	 */
-	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+	public void setFinalExpressionFor(final MeasurableSeffElement element, final Set<EvaluableExpression> expression) {
+		Validate.notNull(element);
+		Validate.notNull(expression);
+		this.finalExpressions.get(element);
 	}
 
 	/**
@@ -369,7 +573,8 @@ public class Blackboard implements Serializable {
 	 *         regarding their fitness.
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		return null;
+		Validate.notNull(this.fitnessFunction);
+		return this.fitnessFunction;
 	}
 
 	/**
@@ -384,9 +589,12 @@ public class Blackboard implements Serializable {
 	 * @param writer The class the data should be written for. Must not be {@code null}.
 	 * @param written The data to write.
 	 * @param <WRITTEN_TYPE> {@code written}’s type.
+	 * @see #readFor(Class)
 	 */
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
+		Validate.notNull(writer);
+		this.privateWrittenData.put(writer, written);
 	}
 
 	/**
@@ -400,8 +608,24 @@ public class Blackboard implements Serializable {
 	 *         yet.
 	 * @see #writeFor(Class, Serializable)
 	 */
+	@SuppressWarnings("unchecked")
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		return null;
+		Validate.notNull(writer);
+		/*
+		 * This performs a cast based on generics. While the cast can not be checked by
+		 * the JVM at runtime, type safety is assured by the signature of {@link
+		 * #writeFor}, which is the only method writing data to {@link
+		 * #privateWrittenData}.
+		 */
+		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(13, 31).append(this.rdias).append(this.branches).append(this.loops)
+			.append(this.externalCalls).toHashCode();
 	}
 }
