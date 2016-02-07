@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
-import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionExecutedEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 
@@ -48,7 +48,7 @@ public final class MeasurementEventFactory {
 		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<MeasurementEvent> events = new HashSet<>();
 		for (CodeSection codeSection : codeSections) {
-			events.add(new CodeSectionExecutedEvent(codeSection));
+			events.add(new CodeSectionEnteredEvent(codeSection));
 
 			events.add(new ResourceDemandCapturedEvent(codeSection, ResourceDemandType.RESOURCE_TYPE_CPU, 2.3));
 		}
