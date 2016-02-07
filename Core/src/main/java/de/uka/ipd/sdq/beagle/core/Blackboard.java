@@ -512,7 +512,7 @@ public class Blackboard implements Serializable {
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);
-		Validate.isTrue(this.proposedExpressions.containsKey(element));
+		Validate.isTrue(this.allSeffElements.contains(element), "element must already be on the blackboard");
 		return this.proposedExpressions.get(element);
 	}
 
@@ -526,7 +526,7 @@ public class Blackboard implements Serializable {
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 		Validate.notNull(element);
 		Validate.notNull(expression);
-		Validate.isTrue(this.proposedExpressions.containsKey(element), "expression must already be on the blackboard");
+		Validate.isTrue(this.allSeffElements.contains(element), "element must already be on the blackboard");
 		this.proposedExpressions.get(element).add(expression);
 	}
 
@@ -543,7 +543,7 @@ public class Blackboard implements Serializable {
 	 */
 	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);
-		Validate.isTrue(this.finalExpressions.containsKey(element));
+		Validate.isTrue(this.allSeffElements.contains(element), "element must already be on the blackboard");
 		return this.finalExpressions.get(element);
 	}
 
@@ -559,7 +559,7 @@ public class Blackboard implements Serializable {
 	 */
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
 		Validate.notNull(element);
-		Validate.isTrue(this.finalExpressions.containsValue(expression));
+		Validate.isTrue(this.allSeffElements.contains(element), "element must already be on the blackboard");
 		this.finalExpressions.put(element, expression);
 	}
 
