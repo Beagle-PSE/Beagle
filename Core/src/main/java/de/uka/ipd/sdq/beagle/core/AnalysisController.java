@@ -205,7 +205,7 @@ public class AnalysisController {
 		}
 
 		if (proposedExpressionAnalysersAbleToContribute.size() != 0) {
-			// Choose a measurement result analyser at random.
+			// Choose a proposed expression analyser at random.
 			final int minimum = 1;
 			final int maximum = proposedExpressionAnalysersAbleToContribute.size();
 			final int chosenProposedExpressionAnalyser = new Random().nextInt((maximum - minimum) + 1) + minimum;
