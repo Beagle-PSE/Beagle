@@ -90,7 +90,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * @return {@code true} to indicate that evolution of evaluable expressions will be
 	 *         stopped; {@code false} otherwise.
 	 */
-	boolean judge(final Blackboard blackboard) {
+	public boolean judge(final Blackboard blackboard) {
 		Validate.notNull(blackboard);
 		this.loadData(blackboard);
 
