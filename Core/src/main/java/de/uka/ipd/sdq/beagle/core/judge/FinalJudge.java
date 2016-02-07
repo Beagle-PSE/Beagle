@@ -31,12 +31,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	private static final double FITNESS_EPSILON = 0.5d;
 
 	/**
-	 * If the current generation is #maxNumberOfGenerationsPassed, evolution of evaluable
-	 * expressions will be stopped. {@code -1} for no limit.
-	 */
-	private static final int MAX_NUMBER_OF_GENERATIONS_PASSED = -1;
-
-	/**
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
 	 * the application started so evolution of evaluable expressions will be continued.
 	 */
@@ -99,7 +93,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
 
 		// Determine the criteria which aren't CPU-intensive first.
-		if (this.numberOfGenerationsPassedTooHigh() || this.timePassedTooHigh()) {
+		if (this.timePassedTooHigh()) {
 			return true;
 		}
 
@@ -228,20 +222,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Determines whether the number of generations passed is too high.
-	 *
-	 * @return {@code true} if and only if the number of generations passed is greater
-	 *         than {@code MAX_NUMBER_OF_GENERATIONS_PASSED}.
-	 */
-	private boolean numberOfGenerationsPassedTooHigh() {
-		if (MAX_NUMBER_OF_GENERATIONS_PASSED == -1) {
-			return false;
-		}
-
-		return this.data.getNumberOfGenerationsPassed() > MAX_NUMBER_OF_GENERATIONS_PASSED;
 	}
 
 	/**
