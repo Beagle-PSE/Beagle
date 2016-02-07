@@ -1,10 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that executes the natural logarithmic function. The antilogarithm is a
@@ -15,13 +13,20 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class NaturalLogarithmExpression implements EvaluableExpression {
 
 	/**
-	 * Set a {@link EvaluableExpression} to be the antilogarithm, or parameter of the
-	 * {@code LogarithmExpression}.
-	 *
-	 * @param expression The expression to be the antilogarithm.
+	 * The antilogarithm of the expression.
 	 */
-	public void setAnitlogarithm(final EvaluableExpression expression) {
+	private final EvaluableExpression antilogarithm;
 
+	/**
+	 * Builds an expression which returns the result of a logarithm of the antilogarithm
+	 * to the base.
+	 *
+	 * @param antilogarithm The antilogarithm for this expression. Must not be
+	 *            {@code null}.
+	 */
+	public NaturalLogarithmExpression(final EvaluableExpression antilogarithm) {
+		Validate.notNull(antilogarithm);
+		this.antilogarithm = antilogarithm;
 	}
 
 	/**
@@ -31,7 +36,7 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 * @return The antilogarithm expression.
 	 */
 	public EvaluableExpression getAntilogarithm() {
-		return null;
+		return this.antilogarithm;
 	}
 
 	/*
@@ -42,7 +47,8 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		Validate.notNull(visitor);
+		visitor.visit(this);
 	}
 
 	/*
@@ -54,7 +60,35 @@ public class NaturalLogarithmExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		Validate.notNull(variableAssignments);
+		return Math.log(this.antilogarithm.evaluate(variableAssignments));
+	}
+
+	@Override
+	public String toString() {
+		return String.format("(ln%s)", this.antilogarithm);
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final NaturalLogarithmExpression other = (NaturalLogarithmExpression) object;
+		return new EqualsBuilder().append(this.antilogarithm, other.antilogarithm).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(227, 229).append(this.antilogarithm).toHashCode();
 	}
 
 }
