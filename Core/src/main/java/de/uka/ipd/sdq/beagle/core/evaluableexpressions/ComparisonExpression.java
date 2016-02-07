@@ -1,10 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that compares both its contained expressions.
@@ -13,31 +11,39 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  *
  */
 public class ComparisonExpression implements EvaluableExpression {
+	
+	
+	/**
+	 * The used value to express {@code true} as double.
+	 */
+	private static final double TRUE = 1.0;
 
 	/**
-	 * Set the {@link EvaluableExpression} which is supposed to be the smaller one in the
+	 * The {@link EvaluableExpression} which is supposed to be the smaller one in the
 	 * comparison.
-	 *
-	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
-	 * smaller and {@code e2} as greater expression.
-	 *
-	 * @param expression which is supposed to be the smaller one
 	 */
-	public void setSmaller(final EvaluableExpression expression) {
-
-	}
+	private final EvaluableExpression smaller;
 
 	/**
-	 * Set the {@link EvaluableExpression} which is supposed to be the greater one in the
+	 * The {@link EvaluableExpression} which is supposed to be the greater one in the
 	 * comparison.
-	 *
-	 * <p>For example: if {@code e1 < e2} should be expressed, {@code e1} is set as
-	 * smaller and {@code e2} as greater expression.
-	 *
-	 * @param expression which is supposed to be the greater one
 	 */
-	public void setGreater(final EvaluableExpression expression) {
+	private final EvaluableExpression greater;
 
+	/**
+	 * Builds an expression that will return '1' if the expression set as smaller is
+	 * smaller and '0' else.
+	 *
+	 * @param smaller The {@link EvaluableExpression} which is supposed to be the smaller
+	 *            one in the comparison.
+	 * @param greater The {@link EvaluableExpression} which is supposed to be the greater
+	 *            one in the comparison.
+	 */
+	public ComparisonExpression(final EvaluableExpression smaller, final EvaluableExpression greater) {
+		Validate.notNull(smaller);
+		Validate.notNull(greater);
+		this.smaller = smaller;
+		this.greater = greater;
 	}
 
 	/**
@@ -50,7 +56,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * @return the greater expression
 	 */
 	public EvaluableExpression getGreater() {
-		return null;
+		return this.greater;
 	}
 
 	/**
@@ -63,7 +69,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * @return the smaller expression
 	 */
 	public EvaluableExpression getSmaller() {
-		return null;
+		return this.smaller;
 	}
 
 	/*
@@ -74,7 +80,8 @@ public class ComparisonExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		Validate.notNull(visitor);
+		visitor.visit(this);
 	}
 
 	/*
@@ -86,7 +93,39 @@ public class ComparisonExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		Validate.notNull(variableAssignments);
+		if (this.smaller.evaluate(variableAssignments) < this.greater.evaluate(variableAssignments)) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return String.format("(%s < %s)", this.smaller, this.greater);
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final ComparisonExpression other = (ComparisonExpression) object;
+		return new EqualsBuilder().append(this.smaller, other.smaller).append(this.greater, other.greater).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(839, 39901).append(this.smaller).append(this.greater).hashCode();
 	}
 
 }

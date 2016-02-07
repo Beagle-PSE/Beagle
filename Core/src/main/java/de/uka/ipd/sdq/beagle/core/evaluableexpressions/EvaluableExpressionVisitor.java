@@ -96,9 +96,9 @@ public interface EvaluableExpressionVisitor {
 	void visit(SineExpression expression);
 
 	/**
-	 * Called if the visited expression is a {@link SubstractionExpression}.
+	 * Called if the visited expression is a {@link SubtractionExpression}.
 	 *
 	 * @param expression The visited expression.
 	 */
-	void visit(SubstractionExpression expression);
+	void visit(SubtractionExpression expression);
 }

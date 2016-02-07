@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * Thrown if a {@link EvaluableExpression} is to be evaluated, but insufficient variable
@@ -21,6 +15,16 @@ public class UndefinedExpressionException extends RuntimeException {
 	private static final long serialVersionUID = -80875322029735423L;
 
 	/**
+	 * The variable missing in the assignment.
+	 */
+	private final EvaluableVariable undefinedVariable;
+
+	/**
+	 * The assignment raising the exception.
+	 */
+	private final EvaluableVariableAssignment assignment;
+
+	/**
 	 * Creates an exception for an encountered undefined variable. Describes the situation
 	 * that an {@link EvaluableExpression} containing {@code undefinedVariable} was tried
 	 * to be {@link EvaluableExpression#evaluate}d, but the passed {@code assignment} did
@@ -31,6 +35,10 @@ public class UndefinedExpressionException extends RuntimeException {
 	 */
 	public UndefinedExpressionException(final EvaluableVariableAssignment assignment,
 		final EvaluableVariable undefinedVariable) {
+		super(
+			String.format("Can not evaluate: There is no value for %s defined in %s!", undefinedVariable, assignment));
+		this.assignment = assignment;
+		this.undefinedVariable = undefinedVariable;
 	}
 
 	/**
@@ -40,7 +48,7 @@ public class UndefinedExpressionException extends RuntimeException {
 	 * @return the causing assignment.
 	 */
 	public EvaluableVariableAssignment getCausingAssignment() {
-		return null;
+		return this.assignment;
 	}
 
 	/**
@@ -50,7 +58,7 @@ public class UndefinedExpressionException extends RuntimeException {
 	 * @return the missing variable.
 	 */
 	public EvaluableVariable getMissingVariable() {
-		return null;
+		return this.undefinedVariable;
 
 	}
 }

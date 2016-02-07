@@ -1,10 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Expression that executes a sine function on its contained expression.
@@ -15,12 +13,18 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 public class SineExpression implements EvaluableExpression {
 
 	/**
-	 * Set an {@link EvaluableExpression} to be the argument of the sine function.
-	 *
-	 * @param expression The expression to be the argument.
+	 * The argument of the sine expression.
 	 */
-	public void setArgument(final EvaluableExpression expression) {
+	private final EvaluableExpression argument;
 
+	/**
+	 * Builds an expression which returns the sine of the argument.
+	 *
+	 * @param argument The argument to be used. Must not be {@code null}.
+	 */
+	public SineExpression(final EvaluableExpression argument) {
+		Validate.notNull(argument);
+		this.argument = argument;
 	}
 
 	/**
@@ -29,7 +33,7 @@ public class SineExpression implements EvaluableExpression {
 	 * @return The argument of the function.
 	 */
 	public EvaluableExpression getArgument() {
-		return null;
+		return this.argument;
 	}
 
 	/*
@@ -40,7 +44,8 @@ public class SineExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
-
+		Validate.notNull(visitor);
+		visitor.visit(this);
 	}
 
 	/*
@@ -52,7 +57,35 @@ public class SineExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		return 0;
+		Validate.notNull(variableAssignments);
+		return Math.sin(this.argument.evaluate(variableAssignments));
+	}
+
+	@Override
+	public String toString() {
+		return String.format("(sin%s)", this.argument);
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final SineExpression other = (SineExpression) object;
+		return new EqualsBuilder().append(this.argument, other.argument).isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(231, 233).append(this.argument).toHashCode();
 	}
 
 }

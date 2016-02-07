@@ -8,7 +8,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Models branches in a component's SEFF, originating from conditional constructs.
@@ -91,7 +90,7 @@ public class SeffBranch implements MeasurableSeffElement {
 	 *         entries. Changes to the list are not reflected in the SeffBranch.
 	 */
 	public List<CodeSection> getBranches() {
-		return new CopyOnWriteArrayList<>(this.branches);
+		return new ArrayList<>(this.branches);
 	}
 
 	@Override
