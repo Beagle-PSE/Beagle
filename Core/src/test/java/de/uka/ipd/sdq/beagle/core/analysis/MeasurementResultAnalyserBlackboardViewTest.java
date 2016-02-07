@@ -369,10 +369,10 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddProposedExpressionFor() {
+	public void addProposedExpressionFor() {
 
 		final MeasurableSeffElement seffElement = SEFF_BRANCH_FACTORY.getOne();
-		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
+		final Set<EvaluableExpression> evaEx = EVALUABLE_EXPRESSION_FACTORY.getAllAsSet();
 
 		this.testedView.addProposedExpressionFor(seffElement, evaEx);
 		then(this.mockedBlackboard).should().addProposedExpressionFor(same(seffElement), same(evaEx));
@@ -390,7 +390,7 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testGetFitnessFunction() {
+	public void getFitnessFunction() {
 		final EvaluableExpressionFitnessFunction fitnessFunction = FITNESS_FUNCTION_FACTORY.getOne();
 		given(this.mockedBlackboard.getFitnessFunction()).willReturn(fitnessFunction);
 
@@ -400,12 +400,12 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	}
 
 	@Test
-	public void testReadFor() {
+	public void readFor() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testWriteFor() {
+	public void writeFor() {
 		fail("Not yet implemented");
 	}
 

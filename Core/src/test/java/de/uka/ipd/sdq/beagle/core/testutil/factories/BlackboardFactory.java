@@ -40,13 +40,15 @@ public class BlackboardFactory {
 	private static final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY =
 		new ExternalCallParameterFactory();
 
+	private static final EvaluableExpressionFitnessFunctionFactory EVA_EX_FACTORY = new EvaluableExpressionFitnessFunctionFactory();
+	
 	/**
 	 * Creates a new blackboard with nothing written on it.
 	 *
 	 * @return A new blackboard instance, without any data on it.
 	 */
 	public Blackboard getEmpty() {
-		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>());
+		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(), EVA_EX_FACTORY.getOne());
 	}
 
 	/**
@@ -62,7 +64,7 @@ public class BlackboardFactory {
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 
 		final Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-			SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+			SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(), EVA_EX_FACTORY.getOne());
 		blackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet);
 		blackboard.addToBeMeasuredRdias(rdiaSet);
 		blackboard.addToBeMeasuredSeffBranches(seffBranchSet);
