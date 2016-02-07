@@ -46,92 +46,89 @@ public class Blackboard implements Serializable {
 	private static final long serialVersionUID = 6382577321150787599L;
 
 	/**
-	 * {@code allSeffElements} all measurable SEFF elements.
+	 * All measurable SEFF elements.
 	 */
 <span class="fc" id="L51">	private final Set&lt;MeasurableSeffElement&gt; allSeffElements = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code rdias} all resource demanding internal actions.
+	 * All resource demanding internal actions.
 	 */
 	private final Set&lt;ResourceDemandingInternalAction&gt; rdias;
 
 	/**
-	 * {@code branches} all SEFF branches.
+	 * All SEFF branches.
 	 */
 	private final Set&lt;SeffBranch&gt; branches;
 
 	/**
-	 * {@code loops} all SEFF Loops.
+	 * All SEFF Loops.
 	 */
 	private final Set&lt;SeffLoop&gt; loops;
 
 	/**
-	 * {@code externalCalls} all external call parameter.
+	 * All external call parameter.
 	 */
 	private final Set&lt;ExternalCallParameter&gt; externalCalls;
 
 	/**
-	 * {@code rdiasToBeMeasured} all resource demanding internal actions which are to be
-	 * measured.
+	 * All resource demanding internal actions which are to be measured.
 	 */
-<span class="fc" id="L77">	private Set&lt;ResourceDemandingInternalAction&gt; rdiasToBeMeasured = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L76">	private Set&lt;ResourceDemandingInternalAction&gt; rdiasToBeMeasured = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code branchesToBeMeasured} all SEFF branches which are to be measured.
+	 * All SEFF branches which are to be measured.
 	 */
-<span class="fc" id="L82">	private Set&lt;SeffBranch&gt; branchesToBeMeasured = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L81">	private Set&lt;SeffBranch&gt; branchesToBeMeasured = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code loopsToBeMeasured} all SEFF loops which are to be count.
+	 * All SEFF loops which are to be count.
 	 */
-<span class="fc" id="L87">	private Set&lt;SeffLoop&gt; loopsToBeMeasured = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L86">	private Set&lt;SeffLoop&gt; loopsToBeMeasured = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code externalCallParameterToBeMeasured} all external call parameter which are to
-	 * be measured.
+	 * All external call parameter which are to be measured.
 	 */
-<span class="fc" id="L93">	private Set&lt;ExternalCallParameter&gt; externalCallParameterToBeMeasured = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L91">	private Set&lt;ExternalCallParameter&gt; externalCallParameterToBeMeasured = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code rdiasMeasurementResult} all resource demanding internal results.
+	 * All resource demanding internal results.
 	 */
-<span class="fc" id="L98">	private Set&lt;ResourceDemandMeasurementResult&gt; rdiasMeasurementResult = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L96">	private Set&lt;ResourceDemandMeasurementResult&gt; rdiasMeasurementResult = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code branchDecisionMeasurementResult} all SEFF branches results.
+	 * All SEFF branches results.
 	 */
-<span class="fc" id="L103">	private Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResult = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L101">	private Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResult = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code loopRepititionCountMeasurementResult} all SEFF loop count results.
+	 * All SEFF loop count results.
 	 */
-<span class="fc" id="L108">	private Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepititionCountMeasurementResult = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L106">	private Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepititionCountMeasurementResult = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code parameterChangeMeasurementResult} all parameter change results.
+	 * All parameter change results.
 	 */
-<span class="fc" id="L113">	private Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResult = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L111">	private Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResult = new HashSet&lt;&gt;();</span>
 
 	/**
-	 * {@code evaluableExpression} all evaluable expressions.
+	 * All evaluable expressions.
 	 */
-<span class="fc" id="L118">	private Map&lt;MeasurableSeffElement, Set&lt;EvaluableExpression&gt;&gt; proposedExpressions = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L116">	private Map&lt;MeasurableSeffElement, Set&lt;EvaluableExpression&gt;&gt; proposedExpressions = new HashMap&lt;&gt;();</span>
 
 	/**
-	 * {@code finalExpression} is the final expression.
+	 * Is the final expression.
 	 */
-<span class="fc" id="L123">	private Map&lt;MeasurableSeffElement, EvaluableExpression&gt; finalExpressions = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L121">	private Map&lt;MeasurableSeffElement, EvaluableExpression&gt; finalExpressions = new HashMap&lt;&gt;();</span>
 
 	/**
-	 * {@code fitnissFunction} is the function to get a better evaluable expression
-	 * result.
+	 * Is the function to get a better evaluable expression result.
 	 */
 	private EvaluableExpressionFitnessFunction fitnessFunction;
 
 	/**
 	 * Private data of tools, written through {@link #writeFor(Class, Serializable)}.
 	 */
-<span class="fc" id="L134">	private final Map&lt;Class&lt;? extends BlackboardStorer&lt;? extends Serializable&gt;&gt;, Object&gt; privateWrittenData =</span>
+<span class="fc" id="L131">	private final Map&lt;Class&lt;? extends BlackboardStorer&lt;? extends Serializable&gt;&gt;, Object&gt; privateWrittenData =</span>
 		new HashMap&lt;&gt;();
 
 	/**
@@ -145,42 +142,42 @@ public class Blackboard implements Serializable {
 	 */
 	public Blackboard(final Set&lt;ResourceDemandingInternalAction&gt; rdias, final Set&lt;SeffBranch&gt; branches,
 		final Set&lt;SeffLoop&gt; loops, final Set&lt;ExternalCallParameter&gt; externalCalls,
-<span class="fc" id="L148">		final EvaluableExpressionFitnessFunction fitnessFunction) {</span>
-<span class="fc" id="L149">		Validate.noNullElements(rdias);</span>
-<span class="fc" id="L150">		Validate.noNullElements(branches);</span>
-<span class="fc" id="L151">		Validate.noNullElements(loops);</span>
-<span class="fc" id="L152">		Validate.noNullElements(externalCalls);</span>
-<span class="fc" id="L153">		Validate.notNull(fitnessFunction);</span>
-<span class="fc" id="L154">		this.rdias = rdias;</span>
-<span class="fc" id="L155">		this.branches = branches;</span>
-<span class="fc" id="L156">		this.loops = loops;</span>
-<span class="fc" id="L157">		this.externalCalls = externalCalls;</span>
-<span class="fc" id="L158">		this.fitnessFunction = fitnessFunction;</span>
+<span class="fc" id="L145">		final EvaluableExpressionFitnessFunction fitnessFunction) {</span>
+<span class="fc" id="L146">		Validate.noNullElements(rdias);</span>
+<span class="fc" id="L147">		Validate.noNullElements(branches);</span>
+<span class="fc" id="L148">		Validate.noNullElements(loops);</span>
+<span class="fc" id="L149">		Validate.noNullElements(externalCalls);</span>
+<span class="fc" id="L150">		Validate.notNull(fitnessFunction);</span>
+<span class="fc" id="L151">		this.rdias = rdias;</span>
+<span class="fc" id="L152">		this.branches = branches;</span>
+<span class="fc" id="L153">		this.loops = loops;</span>
+<span class="fc" id="L154">		this.externalCalls = externalCalls;</span>
+<span class="fc" id="L155">		this.fitnessFunction = fitnessFunction;</span>
 
-<span class="fc" id="L160">		this.allSeffElements.addAll(rdias);</span>
-<span class="fc" id="L161">		this.allSeffElements.addAll(branches);</span>
-<span class="fc" id="L162">		this.allSeffElements.addAll(loops);</span>
-<span class="fc" id="L163">		this.allSeffElements.addAll(externalCalls);</span>
+<span class="fc" id="L157">		this.allSeffElements.addAll(rdias);</span>
+<span class="fc" id="L158">		this.allSeffElements.addAll(branches);</span>
+<span class="fc" id="L159">		this.allSeffElements.addAll(loops);</span>
+<span class="fc" id="L160">		this.allSeffElements.addAll(externalCalls);</span>
 
-<span class="fc bfc" id="L165" title="All 2 branches covered.">		for (final MeasurableSeffElement element : this.allSeffElements) {</span>
-<span class="fc" id="L166">			this.proposedExpressions.put(element, new HashSet&lt;&gt;());</span>
-<span class="fc" id="L167">		}</span>
-<span class="fc" id="L168">	}</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">		for (final MeasurableSeffElement element : this.allSeffElements) {</span>
+<span class="fc" id="L163">			this.proposedExpressions.put(element, new HashSet&lt;&gt;());</span>
+<span class="fc" id="L164">		}</span>
+<span class="fc" id="L165">	}</span>
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="nc bnc" id="L172" title="All 2 branches missed.">		if (object == null) {</span>
-<span class="nc" id="L173">			return false;</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">		if (object == null) {</span>
+<span class="nc" id="L170">			return false;</span>
 		}
-<span class="nc bnc" id="L175" title="All 2 branches missed.">		if (object == this) {</span>
-<span class="nc" id="L176">			return true;</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">		if (object == this) {</span>
+<span class="nc" id="L173">			return true;</span>
 		}
-<span class="nc bnc" id="L178" title="All 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
-<span class="nc" id="L179">			return false;</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">		if (object.getClass() != this.getClass()) {</span>
+<span class="nc" id="L176">			return false;</span>
 		}
-<span class="nc" id="L181">		final Blackboard other = (Blackboard) object;</span>
-<span class="nc" id="L182">		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)</span>
-<span class="nc" id="L183">			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();</span>
+<span class="nc" id="L178">		final Blackboard other = (Blackboard) object;</span>
+<span class="nc" id="L179">		return new EqualsBuilder().append(this.rdias, other.rdias).append(this.branches, other.branches)</span>
+<span class="nc" id="L180">			.append(this.loops, other.loops).append(this.externalCalls, other.externalCalls).isEquals();</span>
 	}
 
 	/**
@@ -192,7 +189,7 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;ResourceDemandingInternalAction&gt; getAllRdias() {
-<span class="fc" id="L195">		return this.rdias;</span>
+<span class="fc" id="L192">		return this.rdias;</span>
 	}
 
 	/**
@@ -202,7 +199,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;SeffBranch&gt; getAllSeffBranches() {
-<span class="fc" id="L205">		return this.branches;</span>
+<span class="fc" id="L202">		return this.branches;</span>
 	}
 
 	/**
@@ -212,7 +209,7 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;SeffLoop&gt; getAllSeffLoops() {
-<span class="fc" id="L215">		return this.loops;</span>
+<span class="fc" id="L212">		return this.loops;</span>
 	}
 
 	/**
@@ -223,7 +220,7 @@ public class Blackboard implements Serializable {
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set&lt;ExternalCallParameter&gt; getAllExternalCallParameters() {
-<span class="fc" id="L226">		return this.externalCalls;</span>
+<span class="fc" id="L223">		return this.externalCalls;</span>
 	}
 
 	/**
@@ -235,9 +232,9 @@ public class Blackboard implements Serializable {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;ResourceDemandingInternalAction&gt; getRdiasToBeMeasured() {
-<span class="fc" id="L238">		Validate.notNull(this.rdiasToBeMeasured);</span>
-<span class="fc" id="L239">		Validate.isTrue(this.rdias.containsAll(this.rdiasToBeMeasured));</span>
-<span class="fc" id="L240">		return this.rdiasToBeMeasured;</span>
+<span class="fc" id="L235">		Validate.notNull(this.rdiasToBeMeasured);</span>
+<span class="fc" id="L236">		Validate.isTrue(this.rdias.containsAll(this.rdiasToBeMeasured));</span>
+<span class="fc" id="L237">		return this.rdiasToBeMeasured;</span>
 	}
 
 	/**
@@ -248,8 +245,8 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;SeffBranch&gt; getSeffBranchesToBeMeasured() {
-<span class="fc" id="L251">		Validate.notNull(this.branchesToBeMeasured);</span>
-<span class="fc" id="L252">		return this.branchesToBeMeasured;</span>
+<span class="fc" id="L248">		Validate.notNull(this.branchesToBeMeasured);</span>
+<span class="fc" id="L249">		return this.branchesToBeMeasured;</span>
 	}
 
 	/**
@@ -259,8 +256,8 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;SeffLoop&gt; getSeffLoopsToBeMeasured() {
-<span class="fc" id="L262">		Validate.notNull(this.loopsToBeMeasured);</span>
-<span class="fc" id="L263">		return this.loopsToBeMeasured;</span>
+<span class="fc" id="L259">		Validate.notNull(this.loopsToBeMeasured);</span>
+<span class="fc" id="L260">		return this.loopsToBeMeasured;</span>
 	}
 
 	/**
@@ -271,8 +268,8 @@ public class Blackboard implements Serializable {
 	 *         be measured. Is never {@code null}.
 	 */
 	public Set&lt;ExternalCallParameter&gt; getExternalCallParametersToBeMeasured() {
-<span class="fc" id="L274">		Validate.notNull(this.externalCallParameterToBeMeasured);</span>
-<span class="fc" id="L275">		return this.externalCallParameterToBeMeasured;</span>
+<span class="fc" id="L271">		Validate.notNull(this.externalCallParameterToBeMeasured);</span>
+<span class="fc" id="L272">		return this.externalCallParameterToBeMeasured;</span>
 	}
 
 	/**
@@ -283,11 +280,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredRdias(Collection)
 	 */
 	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... toMeasureRdias) {
-<span class="nc" id="L286">		Validate.noNullElements(toMeasureRdias);</span>
-<span class="nc" id="L287">		Validate.isTrue(this.rdias.containsAll(Arrays.asList(toMeasureRdias)),</span>
+<span class="nc" id="L283">		Validate.noNullElements(toMeasureRdias);</span>
+<span class="nc" id="L284">		Validate.isTrue(this.rdias.containsAll(Arrays.asList(toMeasureRdias)),</span>
 			&quot;toMeasureRdias may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L289">		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));</span>
-<span class="nc" id="L290">	}</span>
+<span class="nc" id="L286">		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));</span>
+<span class="nc" id="L287">	}</span>
 
 	/**
 	 * Reports that {@code rdias} shall be measured for its resource demands.
@@ -297,11 +294,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
 	 */
 	public void addToBeMeasuredRdias(final Collection&lt;ResourceDemandingInternalAction&gt; toMeasureRdias) {
-<span class="fc" id="L300">		Validate.noNullElements(toMeasureRdias);</span>
-<span class="fc" id="L301">		Validate.isTrue(this.rdias.containsAll(toMeasureRdias),</span>
+<span class="fc" id="L297">		Validate.noNullElements(toMeasureRdias);</span>
+<span class="fc" id="L298">		Validate.isTrue(this.rdias.containsAll(toMeasureRdias),</span>
 			&quot;toMeasureRdias may only contain elements that are already on the blackboard&quot;);
-<span class="fc" id="L303">		this.rdiasToBeMeasured.addAll(toMeasureRdias);</span>
-<span class="fc" id="L304">	}</span>
+<span class="fc" id="L300">		this.rdiasToBeMeasured.addAll(toMeasureRdias);</span>
+<span class="fc" id="L301">	}</span>
 
 	/**
 	 * Reports that {@code branches} shall be measured for its branch decisions.
@@ -311,11 +308,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffBranches(Collection)
 	 */
 	public void addToBeMeasuredSeffBranches(final SeffBranch... toMeasureBranches) {
-<span class="nc" id="L314">		Validate.noNullElements(toMeasureBranches);</span>
-<span class="nc" id="L315">		Validate.isTrue(this.branches.containsAll(Arrays.asList(toMeasureBranches)),</span>
+<span class="nc" id="L311">		Validate.noNullElements(toMeasureBranches);</span>
+<span class="nc" id="L312">		Validate.isTrue(this.branches.containsAll(Arrays.asList(toMeasureBranches)),</span>
 			&quot;toMeasureBranches may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L317">		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));</span>
-<span class="nc" id="L318">	}</span>
+<span class="nc" id="L314">		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));</span>
+<span class="nc" id="L315">	}</span>
 
 	/**
 	 * Reports that {@code branches} shall be measured for its branch decisions.
@@ -325,11 +322,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection&lt;SeffBranch&gt; toMeasureBranches) {
-<span class="fc" id="L328">		Validate.noNullElements(toMeasureBranches);</span>
-<span class="fc" id="L329">		Validate.isTrue(this.branches.containsAll(toMeasureBranches),</span>
+<span class="fc" id="L325">		Validate.noNullElements(toMeasureBranches);</span>
+<span class="fc" id="L326">		Validate.isTrue(this.branches.containsAll(toMeasureBranches),</span>
 			&quot;toMeasureBranches may only contain elements that are already on the blackboard&quot;);
-<span class="fc" id="L331">		this.branchesToBeMeasured.addAll(toMeasureBranches);</span>
-<span class="fc" id="L332">	}</span>
+<span class="fc" id="L328">		this.branchesToBeMeasured.addAll(toMeasureBranches);</span>
+<span class="fc" id="L329">	}</span>
 
 	/**
 	 * Reports that {@code loops} shall be measured for its repetitions.
@@ -339,11 +336,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffLoops(Collection)
 	 */
 	public void addToBeMeasuredSeffLoops(final SeffLoop... toMeasureLoops) {
-<span class="nc" id="L342">		Validate.noNullElements(toMeasureLoops);</span>
-<span class="nc" id="L343">		Validate.isTrue(this.loops.containsAll(Arrays.asList(toMeasureLoops)),</span>
+<span class="nc" id="L339">		Validate.noNullElements(toMeasureLoops);</span>
+<span class="nc" id="L340">		Validate.isTrue(this.loops.containsAll(Arrays.asList(toMeasureLoops)),</span>
 			&quot;toMeasureLoops may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L345">		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));</span>
-<span class="nc" id="L346">	}</span>
+<span class="nc" id="L342">		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));</span>
+<span class="nc" id="L343">	}</span>
 
 	/**
 	 * Reports that {@code loops} shall be measured for its repetitions.
@@ -353,11 +350,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection&lt;SeffLoop&gt; toMeasureLoops) {
-<span class="fc" id="L356">		Validate.noNullElements(toMeasureLoops);</span>
-<span class="fc" id="L357">		Validate.isTrue(this.loops.containsAll(toMeasureLoops),</span>
+<span class="fc" id="L353">		Validate.noNullElements(toMeasureLoops);</span>
+<span class="fc" id="L354">		Validate.isTrue(this.loops.containsAll(toMeasureLoops),</span>
 			&quot;toMeasureLoops may only contain elements that are already on the blackboard&quot;);
-<span class="fc" id="L359">		this.loopsToBeMeasured.addAll(toMeasureLoops);</span>
-<span class="fc" id="L360">	}</span>
+<span class="fc" id="L356">		this.loopsToBeMeasured.addAll(toMeasureLoops);</span>
+<span class="fc" id="L357">	}</span>
 
 	/**
 	 * Reports that {@code parameters} shall be measured.
@@ -367,11 +364,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(Collection)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final ExternalCallParameter... parameters) {
-<span class="nc" id="L370">		Validate.noNullElements(parameters);</span>
-<span class="nc" id="L371">		Validate.isTrue(this.externalCalls.containsAll(Arrays.asList(parameters)),</span>
+<span class="nc" id="L367">		Validate.noNullElements(parameters);</span>
+<span class="nc" id="L368">		Validate.isTrue(this.externalCalls.containsAll(Arrays.asList(parameters)),</span>
 			&quot;parameters may only contain elements that are already on the blackboard&quot;);
-<span class="nc" id="L373">		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));</span>
-<span class="nc" id="L374">	}</span>
+<span class="nc" id="L370">		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));</span>
+<span class="nc" id="L371">	}</span>
 
 	/**
 	 * Reports that {@code parameters} shall be measured.
@@ -381,11 +378,11 @@ public class Blackboard implements Serializable {
 	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection&lt;ExternalCallParameter&gt; parameters) {
-<span class="fc" id="L384">		Validate.noNullElements(parameters);</span>
-<span class="fc" id="L385">		Validate.isTrue(this.externalCalls.containsAll(parameters),</span>
+<span class="fc" id="L381">		Validate.noNullElements(parameters);</span>
+<span class="fc" id="L382">		Validate.isTrue(this.externalCalls.containsAll(parameters),</span>
 			&quot;parameters may only contain elements that are already on the blackboard&quot;);
-<span class="fc" id="L387">		this.externalCallParameterToBeMeasured.addAll(parameters);</span>
-<span class="fc" id="L388">	}</span>
+<span class="fc" id="L384">		this.externalCallParameterToBeMeasured.addAll(parameters);</span>
+<span class="fc" id="L385">	}</span>
 
 	/**
 	 * Gets all results yet measured for the resource demands of {@code rdia}.
@@ -396,9 +393,9 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;ResourceDemandMeasurementResult&gt; getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-<span class="fc" id="L399">		Validate.notNull(rdia);</span>
-<span class="fc" id="L400">		Validate.isTrue(this.rdias.contains(rdia));</span>
-<span class="fc" id="L401">		return this.rdiasMeasurementResult;</span>
+<span class="fc" id="L396">		Validate.notNull(rdia);</span>
+<span class="fc" id="L397">		Validate.isTrue(this.rdias.contains(rdia));</span>
+<span class="fc" id="L398">		return this.rdiasMeasurementResult;</span>
 	}
 
 	/**
@@ -410,9 +407,9 @@ public class Blackboard implements Serializable {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;BranchDecisionMeasurementResult&gt; getMeasurementResultsFor(final SeffBranch branch) {
-<span class="fc" id="L413">		Validate.notNull(branch);</span>
-<span class="fc" id="L414">		Validate.isTrue(this.branches.contains(branch));</span>
-<span class="fc" id="L415">		return this.branchDecisionMeasurementResult;</span>
+<span class="fc" id="L410">		Validate.notNull(branch);</span>
+<span class="fc" id="L411">		Validate.isTrue(this.branches.contains(branch));</span>
+<span class="fc" id="L412">		return this.branchDecisionMeasurementResult;</span>
 	}
 
 	/**
@@ -424,9 +421,9 @@ public class Blackboard implements Serializable {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;LoopRepetitionCountMeasurementResult&gt; getMeasurementResultsFor(final SeffLoop loop) {
-<span class="fc" id="L427">		Validate.notNull(loop);</span>
-<span class="fc" id="L428">		Validate.isTrue(this.loops.contains(loop));</span>
-<span class="fc" id="L429">		return this.loopRepititionCountMeasurementResult;</span>
+<span class="fc" id="L424">		Validate.notNull(loop);</span>
+<span class="fc" id="L425">		Validate.isTrue(this.loops.contains(loop));</span>
+<span class="fc" id="L426">		return this.loopRepititionCountMeasurementResult;</span>
 	}
 
 	/**
@@ -441,9 +438,9 @@ public class Blackboard implements Serializable {
 	 */
 	public Set&lt;ParameterChangeMeasurementResult&gt; getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-<span class="fc" id="L444">		Validate.notNull(externalCallParameter);</span>
-<span class="fc" id="L445">		Validate.isTrue(this.externalCalls.contains(externalCallParameter));</span>
-<span class="fc" id="L446">		return this.parameterChangeMeasurementResult;</span>
+<span class="fc" id="L441">		Validate.notNull(externalCallParameter);</span>
+<span class="fc" id="L442">		Validate.isTrue(this.externalCalls.contains(externalCallParameter));</span>
+<span class="fc" id="L443">		return this.parameterChangeMeasurementResult;</span>
 	}
 
 	/**
@@ -455,11 +452,11 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
-<span class="fc" id="L458">		Validate.notNull(rdia);</span>
-<span class="fc" id="L459">		Validate.notNull(results);</span>
-<span class="fc" id="L460">		Validate.isTrue(this.rdias.contains(rdia), &quot;rdia must already be on the blackboard&quot;);</span>
-<span class="fc" id="L461">		this.rdiasMeasurementResult.add(results);</span>
-<span class="fc" id="L462">	}</span>
+<span class="fc" id="L455">		Validate.notNull(rdia);</span>
+<span class="fc" id="L456">		Validate.notNull(results);</span>
+<span class="fc" id="L457">		Validate.isTrue(this.rdias.contains(rdia), &quot;rdia must already be on the blackboard&quot;);</span>
+<span class="fc" id="L458">		this.rdiasMeasurementResult.add(results);</span>
+<span class="fc" id="L459">	}</span>
 
 	/**
 	 * Adds a measurement result for the provided {@code branch}.
@@ -468,11 +465,11 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
-<span class="fc" id="L471">		Validate.notNull(branch);</span>
-<span class="fc" id="L472">		Validate.notNull(results);</span>
-<span class="fc" id="L473">		Validate.isTrue(this.branches.contains(branch), &quot;branch must already be on the blackboard&quot;);</span>
-<span class="fc" id="L474">		this.branchDecisionMeasurementResult.add(results);</span>
-<span class="fc" id="L475">	}</span>
+<span class="fc" id="L468">		Validate.notNull(branch);</span>
+<span class="fc" id="L469">		Validate.notNull(results);</span>
+<span class="fc" id="L470">		Validate.isTrue(this.branches.contains(branch), &quot;branch must already be on the blackboard&quot;);</span>
+<span class="fc" id="L471">		this.branchDecisionMeasurementResult.add(results);</span>
+<span class="fc" id="L472">	}</span>
 
 	/**
 	 * Adds a measurement result for the provided {@code loop}.
@@ -481,11 +478,11 @@ public class Blackboard implements Serializable {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
-<span class="fc" id="L484">		Validate.notNull(loop);</span>
-<span class="fc" id="L485">		Validate.notNull(results);</span>
-<span class="fc" id="L486">		Validate.isTrue(this.loops.contains(loop), &quot;loop must already be on the blackboard&quot;);</span>
-<span class="fc" id="L487">		this.loopRepititionCountMeasurementResult.add(results);</span>
-<span class="fc" id="L488">	}</span>
+<span class="fc" id="L481">		Validate.notNull(loop);</span>
+<span class="fc" id="L482">		Validate.notNull(results);</span>
+<span class="fc" id="L483">		Validate.isTrue(this.loops.contains(loop), &quot;loop must already be on the blackboard&quot;);</span>
+<span class="fc" id="L484">		this.loopRepititionCountMeasurementResult.add(results);</span>
+<span class="fc" id="L485">	}</span>
 
 	/**
 	 * Adds a measurement result for the provided {@code loop}.
@@ -496,11 +493,11 @@ public class Blackboard implements Serializable {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
-<span class="fc" id="L499">		Validate.notNull(parameter);</span>
-<span class="fc" id="L500">		Validate.notNull(results);</span>
-<span class="fc" id="L501">		Validate.isTrue(this.externalCalls.contains(parameter), &quot;parameter must already be on the blackboard&quot;);</span>
-<span class="fc" id="L502">		this.parameterChangeMeasurementResult.add(results);</span>
-<span class="fc" id="L503">	}</span>
+<span class="fc" id="L496">		Validate.notNull(parameter);</span>
+<span class="fc" id="L497">		Validate.notNull(results);</span>
+<span class="fc" id="L498">		Validate.isTrue(this.externalCalls.contains(parameter), &quot;parameter must already be on the blackboard&quot;);</span>
+<span class="fc" id="L499">		this.parameterChangeMeasurementResult.add(results);</span>
+<span class="fc" id="L500">	}</span>
 
 	/**
 	 * Returns a set of all {@linkplain EvaluableExpression evaluable expressions}
@@ -511,9 +508,9 @@ public class Blackboard implements Serializable {
 	 *         proposed for {@code element}.
 	 */
 	public Set&lt;EvaluableExpression&gt; getProposedExpressionFor(final MeasurableSeffElement element) {
-<span class="fc" id="L514">		Validate.notNull(element);</span>
-<span class="fc" id="L515">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
-<span class="fc" id="L516">		return this.proposedExpressions.get(element);</span>
+<span class="fc" id="L511">		Validate.notNull(element);</span>
+<span class="fc" id="L512">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L513">		return this.proposedExpressions.get(element);</span>
 	}
 
 	/**
@@ -524,11 +521,11 @@ public class Blackboard implements Serializable {
 	 *            measurement results. Must not be {@code null}.
 	 */
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-<span class="fc" id="L527">		Validate.notNull(element);</span>
-<span class="fc" id="L528">		Validate.notNull(expression);</span>
-<span class="fc" id="L529">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
-<span class="fc" id="L530">		this.proposedExpressions.get(element).add(expression);</span>
-<span class="fc" id="L531">	}</span>
+<span class="fc" id="L524">		Validate.notNull(element);</span>
+<span class="fc" id="L525">		Validate.notNull(expression);</span>
+<span class="fc" id="L526">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L527">		this.proposedExpressions.get(element).add(expression);</span>
+<span class="fc" id="L528">	}</span>
 
 	/**
 	 * Returns the final expression set for {@code element}. The return value of this
@@ -542,9 +539,9 @@ public class Blackboard implements Serializable {
 	 *         {@code null} if no expression has been marked yet.
 	 */
 	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
-<span class="fc" id="L545">		Validate.notNull(element);</span>
-<span class="fc" id="L546">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
-<span class="fc" id="L547">		return this.finalExpressions.get(element);</span>
+<span class="fc" id="L542">		Validate.notNull(element);</span>
+<span class="fc" id="L543">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L544">		return this.finalExpressions.get(element);</span>
 	}
 
 	/**
@@ -558,10 +555,10 @@ public class Blackboard implements Serializable {
 	 *            found.
 	 */
 	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-<span class="fc" id="L561">		Validate.notNull(element);</span>
-<span class="fc" id="L562">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
-<span class="fc" id="L563">		this.finalExpressions.put(element, expression);</span>
-<span class="fc" id="L564">	}</span>
+<span class="fc" id="L558">		Validate.notNull(element);</span>
+<span class="fc" id="L559">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L560">		this.finalExpressions.put(element, expression);</span>
+<span class="fc" id="L561">	}</span>
 
 	/**
 	 * Returns an object which holds and is responsible allows access to the fitness
@@ -573,7 +570,7 @@ public class Blackboard implements Serializable {
 	 *         regarding their fitness.
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-<span class="fc" id="L576">		return this.fitnessFunction;</span>
+<span class="fc" id="L573">		return this.fitnessFunction;</span>
 	}
 
 	/**
@@ -592,9 +589,9 @@ public class Blackboard implements Serializable {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; void writeFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer, final WRITTEN_TYPE written) {
-<span class="fc" id="L595">		Validate.notNull(writer);</span>
-<span class="fc" id="L596">		this.privateWrittenData.put(writer, written);</span>
-<span class="fc" id="L597">	}</span>
+<span class="fc" id="L592">		Validate.notNull(writer);</span>
+<span class="fc" id="L593">		this.privateWrittenData.put(writer, written);</span>
+<span class="fc" id="L594">	}</span>
 
 	/**
 	 * Reads data previously written for {@code writer} through
@@ -610,22 +607,22 @@ public class Blackboard implements Serializable {
 	@SuppressWarnings(&quot;unchecked&quot;)
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="fc" id="L613">		Validate.notNull(writer);</span>
+<span class="fc" id="L610">		Validate.notNull(writer);</span>
 		/*
 		 * This performs a cast based on generics. While the cast can not be checked by
 		 * the JVM at runtime, type safety is assured by the signature of {@link
 		 * #writeFor}, which is the only method writing data to {@link
 		 * #privateWrittenData}.
 		 */
-<span class="fc" id="L620">		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);</span>
+<span class="fc" id="L617">		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="nc" id="L627">		return new HashCodeBuilder(13, 31).append(this.rdias).append(this.branches).append(this.loops)</span>
-<span class="nc" id="L628">			.append(this.externalCalls).toHashCode();</span>
+<span class="nc" id="L624">		return new HashCodeBuilder(13, 31).append(this.rdias).append(this.branches).append(this.loops)</span>
+<span class="nc" id="L625">			.append(this.externalCalls).toHashCode();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
