@@ -179,6 +179,19 @@ public class MeasurementEventParserTest {
 		results = parser.getMeasurementResultsFor(branches[0]);
 		resultValues = results.stream().map((result) -> result.getBranchIndex()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(0, 1));
+		
+		measurementEvents = new ArrayList<>();
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(0)));
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[1].getBranches().get(1)));
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[1].getBranches().get(0)));
+		measurementEvents.add(new CodeSectionEnteredEvent(branches[0].getBranches().get(1)));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(branches[0]);
+		resultValues = results.stream().map((result) -> result.getBranchIndex()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(0, 1));
+		results = parser.getMeasurementResultsFor(branches[1]);
+		resultValues = results.stream().map((result) -> result.getBranchIndex()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(0, 1));
 	}
 
 	/**
