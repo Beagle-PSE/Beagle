@@ -30,15 +30,14 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * A factory which creates instances of {@link PcmRepositoryBlackboardFactory}.
 	 */
-	private static PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory;
+	private PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory;
 
 	/**
 	 * Ran before every method in this class.
 	 */
 	@BeforeClass
-	public static void beforeClass() {
-		PcmRepositoryBlackboardFactoryTest.pcmRepositoryBlackboardFactoryFactory =
-			new PcmRepositoryBlackboardFactoryFactory();
+	public void beforeClass() {
+		this.pcmRepositoryBlackboardFactoryFactory = new PcmRepositoryBlackboardFactoryFactory();
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForAllElements() throws FileNotFoundException {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			this.pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
 		assertThat(result, is(notNullValue()));
 
@@ -94,7 +93,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			this.pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
 		final HashSet<String> collection = new HashSet<String>();
 		collection.add("");
@@ -111,7 +110,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForIdsStringArray() throws FileNotFoundException {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			this.pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
 			throwsException(IllegalArgumentException.class));
