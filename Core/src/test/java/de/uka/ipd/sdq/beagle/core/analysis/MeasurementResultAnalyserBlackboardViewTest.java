@@ -5,7 +5,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.theInstance;
-import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.same;
@@ -108,6 +107,81 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 		this.testedView = new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
 	}
 
+	
+	
+	/**
+	 * Test method for {@link MeasurementResultAnalyserBlackboardView#hashCode()} .
+	 * Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The hash code is the same for equal view.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void hashCodeT() {
+		// Creating equal view to the existing one
+		final MeasurementResultAnalyserBlackboardView secondView =
+			new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
+		assertThat("Two equal MeasurementResultAnalyserBlackboardViews should have the same hashCode!",
+			secondView.hashCode(), is(equalTo(this.testedView.hashCode())));
+	}
+
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#equals(MeasurementResultAnalyserBlackboardView)}
+	 * . Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> Two different views containing the same Blackboard reference are equal
+	 * 
+	 * <li> Two different views containing equal Blackboards that have not the same
+	 * reference, are not equal.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void equalsT() {
+		// Creating equal view to the existing one
+		final MeasurementResultAnalyserBlackboardView secondView =
+			new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
+		assertThat(
+			"Two MeasurementResultAnalyserBlackboardViews should be equal when they have the same blackboard instance!",
+			secondView, is(equalTo(this.testedView)));
+
+		// Equals for two views should only return true, if the views have exactly the
+		// same blackboard reference!
+		final Blackboard blackboardEmptyOne = BLACKBOARD_FACTORY.getEmpty();
+		final Blackboard blackboardEmptyTwo = BLACKBOARD_FACTORY.getEmpty();
+		final MeasurementResultAnalyserBlackboardView emptyViewOne =
+			new MeasurementResultAnalyserBlackboardView(blackboardEmptyOne);
+		final MeasurementResultAnalyserBlackboardView emptyViewTwo =
+			new MeasurementResultAnalyserBlackboardView(blackboardEmptyTwo);
+
+		assertThat("Two MeasurementResultAnalyserBlackboardViews should not be equal,"
+			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
+	}
+
+	/**
+	 * Test method for {@link MeasurementResultAnalyserBlackboardView#toString} . Asserts
+	 * that:
+	 *
+	 * <ul>
+	 *
+	 * <li> toString does not return the standard String as defined in Object.class.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void toStringT() {
+		final String standardRepresentation = this.testedView.getClass().getName() + "@" + this.testedView.hashCode();
+		assertThat("toString should be overwritten by a meaningful representation of this object!",
+			standardRepresentation, not(equalTo(this.testedView.toString())));
+	}
+	
+	
 	/**
 	 * Test method for {@link MeasurementResultAnalyserBlackboardView#getAllRdias()}.
 	 * Asserts that:
@@ -447,76 +521,6 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	private final class TestStorer implements BlackboardStorer<String> {
 	}
 
-	/**
-	 * Test method for {@link MeasurementResultAnalyserBlackboardView#hashCode()} .
-	 * Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The hash code is the same for equal view.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void hashCodeT() {
-		// Creating equal view to the existing one
-		final MeasurementResultAnalyserBlackboardView secondView =
-			new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
-		assertThat("Two equal MeasurementResultAnalyserBlackboardViews should have the same hashCode!",
-			secondView.hashCode(), is(equalTo(this.testedView.hashCode())));
-	}
 
-	/**
-	 * Test method for
-	 * {@link MeasurementResultAnalyserBlackboardView#equals(MeasurementResultAnalyserBlackboardView)}
-	 * . Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> Two different views containing the same Blackboard reference are equal
-	 * 
-	 * <li> Two different views containing equal Blackboards that have not the same
-	 * reference, are not equal.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void equalsT() {
-		// Creating equal view to the existing one
-		final MeasurementResultAnalyserBlackboardView secondView =
-			new MeasurementResultAnalyserBlackboardView(this.mockedBlackboard);
-		assertThat(
-			"Two MeasurementResultAnalyserBlackboardViews should be equal when they have the same blackboard instance!",
-			secondView, is(equalTo(this.testedView)));
-
-		// Equals for two views should only return true, if the views have exactly the
-		// same blackboard reference!
-		final Blackboard blackboardEmptyOne = BLACKBOARD_FACTORY.getEmpty();
-		final Blackboard blackboardEmptyTwo = BLACKBOARD_FACTORY.getEmpty();
-		final MeasurementResultAnalyserBlackboardView emptyViewOne =
-			new MeasurementResultAnalyserBlackboardView(blackboardEmptyOne);
-		final MeasurementResultAnalyserBlackboardView emptyViewTwo =
-			new MeasurementResultAnalyserBlackboardView(blackboardEmptyTwo);
-
-		assertThat("Two MeasurementResultAnalyserBlackboardViews should not be equal,"
-			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
-	}
-
-	/**
-	 * Test method for {@link MeasurementResultAnalyserBlackboardView#toString} . Asserts
-	 * that:
-	 *
-	 * <ul>
-	 *
-	 * <li> toString does not return the standard String as defined in Object.class.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void toStringT() {
-		final String standardRepresentation = this.testedView.getClass().getName() + "@" + this.testedView.hashCode();
-		assertThat("toString should be overwritten by a meaningful representation of this object!",
-			standardRepresentation, not(equalTo(this.testedView.toString())));
-	}
 
 }

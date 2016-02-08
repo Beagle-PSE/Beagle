@@ -13,7 +13,6 @@ import static org.mockito.Mockito.mock;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
-import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -101,6 +100,80 @@ public class MeasurementControllerBlackboardViewTest {
 		this.testedView = new MeasurementControllerBlackboardView(this.mockedBlackboard);
 	}
 
+	
+	/**
+	 * Test method for {@link MeasurementControllerBlackboardView#hashCode()} . Asserts
+	 * that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The hash code is the same for equal view.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void hashCodeT() {
+		// Creating equal view to the existing one
+		final MeasurementControllerBlackboardView secondView =
+			new MeasurementControllerBlackboardView(this.mockedBlackboard);
+		assertThat("Two equal MeasurementControllerBlackboardViews should have the same hashCode!",
+			secondView.hashCode(), is(equalTo(this.testedView.hashCode())));
+	}
+
+	/**
+	 * Test method for
+	 * {@link MeasurementControllerBlackboardView#equals(MeasurementControllerBlackboardView)}
+	 * . Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> Two different views containing the same Blackboard reference are equal
+	 * 
+	 * <li> Two different views containing equal Blackboards that have not the same
+	 * reference, are not equal.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void equalsT() {
+		// Creating equal view to the existing one
+		final MeasurementControllerBlackboardView secondView =
+			new MeasurementControllerBlackboardView(this.mockedBlackboard);
+		assertThat(
+			"Two MeasurementControllerBlackboardViews should be equal when they have the same blackboard instance!",
+			secondView, is(equalTo(this.testedView)));
+
+		// Equals for two views should only return true, if the views have exactly the
+		// same blackboard reference!
+		final Blackboard blackboardEmptyOne = BLACKBOARD_FACTORY.getEmpty();
+		final Blackboard blackboardEmptyTwo = BLACKBOARD_FACTORY.getEmpty();
+		final MeasurementControllerBlackboardView emptyViewOne =
+			new MeasurementControllerBlackboardView(blackboardEmptyOne);
+		final MeasurementControllerBlackboardView emptyViewTwo =
+			new MeasurementControllerBlackboardView(blackboardEmptyTwo);
+
+		assertThat("Two MeasurementControllerBlackboardViews should not be equal,"
+			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
+	}
+
+	/**
+	 * Test method for {@link MeasurementControllerBlackboardView#toString} . Asserts
+	 * that:
+	 *
+	 * <ul>
+	 *
+	 * <li> toString does not return the standard String as defined in Object.class.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void toStringT() {
+		final String standardRepresentation = this.testedView.getClass().getName() + "@" + this.testedView.hashCode();
+		assertThat("toString should be overwritten by a meaningful representation of this object!",
+			standardRepresentation, not(equalTo(this.testedView.toString())));
+	}
+	
+	
 	/**
 	 * Test method for {@link MeasurementControllerBlackboardView#getRdiasToBeMeasured()}.
 	 * Asserts that:
@@ -113,7 +186,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetRdiasToBeMeasured() {
+	public void getRdiasToBeMeasured() {
 		final Set<ResourceDemandingInternalAction> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getRdiasToBeMeasured()).willReturn(testInstance);
 
@@ -135,7 +208,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetSeffBranchesToBeMeasured() {
+	public void getSeffBranchesToBeMeasured() {
 		final Set<SeffBranch> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getSeffBranchesToBeMeasured()).willReturn(testInstance);
 
@@ -157,7 +230,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetSeffLoopsToBeMeasured() {
+	public void getSeffLoopsToBeMeasured() {
 		final Set<SeffLoop> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getSeffLoopsToBeMeasured()).willReturn(testInstance);
 
@@ -179,7 +252,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 *
 	 */
 	@Test
-	public void testGetExternalCallParametersToBeMeasured() {
+	public void getExternalCallParametersToBeMeasured() {
 		final Set<ExternalCallParameter> testInstance = new HashSet<>();
 		given(this.mockedBlackboard.getExternalCallParametersToBeMeasured()).willReturn(testInstance);
 
@@ -190,7 +263,8 @@ public class MeasurementControllerBlackboardViewTest {
 
 	/**
 	 * Test method for
-	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement, MesasurableSeffElementMeasurementResult)}
+	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
+	 * MesasurableSeffElementMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -200,7 +274,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
+	public void addMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
 		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
 		final ResourceDemandMeasurementResult results = new ResourceDemandMeasurementResult(2.5);
 
@@ -210,7 +284,8 @@ public class MeasurementControllerBlackboardViewTest {
 
 	/**
 	 * Test method for
-	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement, MesasurableSeffElementMeasurementResult)}
+	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
+	 * MesasurableSeffElementMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -220,7 +295,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
+	public void addMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
 		final SeffLoop seffLoop = SEFF_LOOP_FACTORY.getOne();
 		final LoopRepetitionCountMeasurementResult results = new LoopRepetitionCountMeasurementResult(2);
 
@@ -230,7 +305,8 @@ public class MeasurementControllerBlackboardViewTest {
 
 	/**
 	 * Test method for
-	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement, MesasurableSeffElementMeasurementResult)}
+	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
+	 * MesasurableSeffElementMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -240,7 +316,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
+	public void addMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
 		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
 		final BranchDecisionMeasurementResult results = new BranchDecisionMeasurementResult(2);
 
@@ -250,7 +326,8 @@ public class MeasurementControllerBlackboardViewTest {
 
 	/**
 	 * Test method for
-	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement, MesasurableSeffElementMeasurementResult)}
+	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
+	 * MesasurableSeffElementMeasurementResult)}
 	 * . Asserts that:
 	 *
 	 * <ul>
@@ -260,7 +337,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 * </ul>
 	 */
 	@Test
-	public void testAddMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
+	public void addMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
 		final ExternalCallParameter exParam = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
 		final ParameterChangeMeasurementResult results = new ParameterChangeMeasurementResult();
 
@@ -335,76 +412,6 @@ public class MeasurementControllerBlackboardViewTest {
 	private final class TestStorer implements BlackboardStorer<String> {
 	}
 
-	/**
-	 * Test method for {@link MeasurementControllerBlackboardView#hashCode()} . Asserts
-	 * that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The hash code is the same for equal view.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void hashCodeT() {
-		// Creating equal view to the existing one
-		final MeasurementControllerBlackboardView secondView =
-			new MeasurementControllerBlackboardView(this.mockedBlackboard);
-		assertThat("Two equal MeasurementControllerBlackboardViews should have the same hashCode!",
-			secondView.hashCode(), is(equalTo(this.testedView.hashCode())));
-	}
 
-	/**
-	 * Test method for
-	 * {@link MeasurementControllerBlackboardView#equals(MeasurementControllerBlackboardView)}
-	 * . Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> Two different views containing the same Blackboard reference are equal
-	 * 
-	 * <li> Two different views containing equal Blackboards that have not the same
-	 * reference, are not equal.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void equalsT() {
-		// Creating equal view to the existing one
-		final MeasurementControllerBlackboardView secondView =
-			new MeasurementControllerBlackboardView(this.mockedBlackboard);
-		assertThat(
-			"Two MeasurementControllerBlackboardViews should be equal when they have the same blackboard instance!",
-			secondView, is(equalTo(this.testedView)));
-
-		// Equals for two views should only return true, if the views have exactly the
-		// same blackboard reference!
-		final Blackboard blackboardEmptyOne = BLACKBOARD_FACTORY.getEmpty();
-		final Blackboard blackboardEmptyTwo = BLACKBOARD_FACTORY.getEmpty();
-		final MeasurementControllerBlackboardView emptyViewOne =
-			new MeasurementControllerBlackboardView(blackboardEmptyOne);
-		final MeasurementControllerBlackboardView emptyViewTwo =
-			new MeasurementControllerBlackboardView(blackboardEmptyTwo);
-
-		assertThat("Two MeasurementControllerBlackboardViews should not be equal,"
-			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
-	}
-
-	/**
-	 * Test method for {@link MeasurementControllerBlackboardView#toString} . Asserts
-	 * that:
-	 *
-	 * <ul>
-	 *
-	 * <li> toString does not return the standard String as defined in Object.class.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void toStringT() {
-		final String standardRepresentation = this.testedView.getClass().getName() + "@" + this.testedView.hashCode();
-		assertThat("toString should be overwritten by a meaningful representation of this object!",
-			standardRepresentation, not(equalTo(this.testedView.toString())));
-	}
 
 }

@@ -67,146 +67,7 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 		this.testedView = new ReadOnlyMeasurementControllerBlackboardView(this.mockedBlackboard);
 	}
 
-	/**
-	 * Test method for
-	 * {@link ReadOnlyMeasurementControllerBlackboardView#getRdiasToBeMeasured()}. Asserts
-	 * that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The tested view returns the instance it obtained from the blackboard
-	 *
-	 * </ul>
-	 *
-	 */
-	@Test
-	public void testGetRdiasToBeMeasured() {
-		final Set<ResourceDemandingInternalAction> testInstance = new HashSet<>();
-		given(this.mockedBlackboard.getRdiasToBeMeasured()).willReturn(testInstance);
-
-		final Set<ResourceDemandingInternalAction> result = this.testedView.getRdiasToBeMeasured();
-		assertThat("The testedView should return the instance it obtained from the blackboad", result,
-			is(theInstance(testInstance)));
-	}
-
-	/**
-	 * Test method for
-	 * {@link ReadOnlyMeasurementControllerBlackboardView#getSeffBranchesToBeMeasured()}.
-	 * Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The tested view returns the instance it obtained from the blackboard
-	 *
-	 * </ul>
-	 *
-	 */
-	@Test
-	public void testGetSeffBranchesToBeMeasured() {
-		final Set<SeffBranch> testInstance = new HashSet<>();
-		given(this.mockedBlackboard.getSeffBranchesToBeMeasured()).willReturn(testInstance);
-
-		final Set<SeffBranch> result = this.testedView.getSeffBranchesToBeMeasured();
-		assertThat("The testedView should return the instance it obtained from the blackboad", result,
-			is(theInstance(testInstance)));
-	}
-
-	/**
-	 * Test method for
-	 * {@link ReadOnlyMeasurementControllerBlackboardView#getSeffLoopsToBeMeasured()}.
-	 * Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The tested view returns the instance it obtained from the blackboard
-	 *
-	 * </ul>
-	 *
-	 */
-	@Test
-	public void testGetSeffLoopsToBeMeasured() {
-		final Set<SeffLoop> testInstance = new HashSet<>();
-		given(this.mockedBlackboard.getSeffLoopsToBeMeasured()).willReturn(testInstance);
-
-		final Set<SeffLoop> result = this.testedView.getSeffLoopsToBeMeasured();
-		assertThat("The testedView should return the instance it obtained from the blackboad", result,
-			is(theInstance(testInstance)));
-	}
-
-	/**
-	 * Test method for
-	 * {@link ReadOnlyMeasurementControllerBlackboardView#getExternalCallParametersToBeMeasured()}
-	 * . Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The tested view returns the instance it obtained from the blackboard
-	 *
-	 * </ul>
-	 *
-	 */
-	@Test
-	public void testGetExternalCallParametersToBeMeasured() {
-		final Set<ExternalCallParameter> testInstance = new HashSet<>();
-		given(this.mockedBlackboard.getExternalCallParametersToBeMeasured()).willReturn(testInstance);
-
-		final Set<ExternalCallParameter> result = this.testedView.getExternalCallParametersToBeMeasured();
-		assertThat("The testedView should return the instance it obtained from the blackboad", result,
-			is(theInstance(testInstance)));
-	}
-
-	/**
-	 * Test method for
-	 * {@link ReadOnlyMeasurementControllerBlackboardView#getGetFitnessFunction()} .
-	 * Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The tested view returns the instance it obtained from the blackboard.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void getFitnessFunction() {
-		final EvaluableExpressionFitnessFunction fitnessFunction = FITNESS_FUNCTION_FACTORY.getOne();
-		given(this.mockedBlackboard.getFitnessFunction()).willReturn(fitnessFunction);
-
-		final EvaluableExpressionFitnessFunction result = this.testedView.getFitnessFunction();
-		assertThat("The testedView should return the Fitness Function instance it obtained from the blackboad", result,
-			is(theInstance(fitnessFunction)));
-	}
-
-	/**
-	 * Test method for
-	 * {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
-	 * 
-	 * <ul>
-	 *
-	 * <li> The tested view returns the instance it obtained from the blackboard.
-	 *
-	 * </ul>
-	 *
-	 */
-	@Test
-	public void readFor() {
-		final String onBoard = new String();
-		given(this.mockedBlackboard.readFor(TestStorer.class)).willReturn(onBoard);
-		
-		final String result = this.testedView.readFor(TestStorer.class);
-		assertThat("The testedView should return the stored content it obtained from the blackboad", result,
-			is(theInstance(onBoard)));
-	}
-
-
 	
-	/**
-	 * Test {@link BlackboardStorer}.
-	 *
-	 * @author Joshua Gleitze
-	 */
-	private final class TestStorer implements BlackboardStorer<String> {
-	}
-
 	/**
 	 * Test method for {@link ReadOnlyMeasurementControllerBlackboardView#hashCode()} .
 	 * Asserts that:
@@ -278,5 +139,147 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 		assertThat("toString should be overwritten by a meaningful representation of this object!",
 			standardRepresentation, not(equalTo(this.testedView.toString())));
 	}
+	
+	/**
+	 * Test method for
+	 * {@link ReadOnlyMeasurementControllerBlackboardView#getRdiasToBeMeasured()}. Asserts
+	 * that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard
+	 *
+	 * </ul>
+	 *
+	 */
+	@Test
+	public void getRdiasToBeMeasured() {
+		final Set<ResourceDemandingInternalAction> testInstance = new HashSet<>();
+		given(this.mockedBlackboard.getRdiasToBeMeasured()).willReturn(testInstance);
+
+		final Set<ResourceDemandingInternalAction> result = this.testedView.getRdiasToBeMeasured();
+		assertThat("The testedView should return the instance it obtained from the blackboad", result,
+			is(theInstance(testInstance)));
+	}
+
+	/**
+	 * Test method for
+	 * {@link ReadOnlyMeasurementControllerBlackboardView#getSeffBranchesToBeMeasured()}.
+	 * Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard
+	 *
+	 * </ul>
+	 *
+	 */
+	@Test
+	public void getSeffBranchesToBeMeasured() {
+		final Set<SeffBranch> testInstance = new HashSet<>();
+		given(this.mockedBlackboard.getSeffBranchesToBeMeasured()).willReturn(testInstance);
+
+		final Set<SeffBranch> result = this.testedView.getSeffBranchesToBeMeasured();
+		assertThat("The testedView should return the instance it obtained from the blackboad", result,
+			is(theInstance(testInstance)));
+	}
+
+	/**
+	 * Test method for
+	 * {@link ReadOnlyMeasurementControllerBlackboardView#getSeffLoopsToBeMeasured()}.
+	 * Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard
+	 *
+	 * </ul>
+	 *
+	 */
+	@Test
+	public void getSeffLoopsToBeMeasured() {
+		final Set<SeffLoop> testInstance = new HashSet<>();
+		given(this.mockedBlackboard.getSeffLoopsToBeMeasured()).willReturn(testInstance);
+
+		final Set<SeffLoop> result = this.testedView.getSeffLoopsToBeMeasured();
+		assertThat("The testedView should return the instance it obtained from the blackboad", result,
+			is(theInstance(testInstance)));
+	}
+
+	/**
+	 * Test method for
+	 * {@link ReadOnlyMeasurementControllerBlackboardView#getExternalCallParametersToBeMeasured()}
+	 * . Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard
+	 *
+	 * </ul>
+	 *
+	 */
+	@Test
+	public void getExternalCallParametersToBeMeasured() {
+		final Set<ExternalCallParameter> testInstance = new HashSet<>();
+		given(this.mockedBlackboard.getExternalCallParametersToBeMeasured()).willReturn(testInstance);
+
+		final Set<ExternalCallParameter> result = this.testedView.getExternalCallParametersToBeMeasured();
+		assertThat("The testedView should return the instance it obtained from the blackboad", result,
+			is(theInstance(testInstance)));
+	}
+
+	/**
+	 * Test method for
+	 * {@link ReadOnlyMeasurementControllerBlackboardView#getGetFitnessFunction()} .
+	 * Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void getFitnessFunction() {
+		final EvaluableExpressionFitnessFunction fitnessFunction = FITNESS_FUNCTION_FACTORY.getOne();
+		given(this.mockedBlackboard.getFitnessFunction()).willReturn(fitnessFunction);
+
+		final EvaluableExpressionFitnessFunction result = this.testedView.getFitnessFunction();
+		assertThat("The testedView should return the Fitness Function instance it obtained from the blackboad", result,
+			is(theInstance(fitnessFunction)));
+	}
+
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
+	 * 
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard.
+	 *
+	 * </ul>
+	 *
+	 */
+	@Test
+	public void readFor() {
+		final String onBoard = new String();
+		given(this.mockedBlackboard.readFor(TestStorer.class)).willReturn(onBoard);
+		
+		final String result = this.testedView.readFor(TestStorer.class);
+		assertThat("The testedView should return the stored content it obtained from the blackboad", result,
+			is(theInstance(onBoard)));
+	}
+
+
+	
+	/**
+	 * Test {@link BlackboardStorer}.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class TestStorer implements BlackboardStorer<String> {
+	}
+
+
 
 }

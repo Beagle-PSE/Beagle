@@ -101,6 +101,78 @@ public class ProposedExpressionAnalyserBlackboardViewTest {
 	}
 
 	/**
+	 * Test method for {@link ProposedExpressionAnalyserBlackboardView#hashCode()} .
+	 * Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The hash code is the same for equal view.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void hashCodeT() {
+		// Creating equal view to the existing one
+		final ProposedExpressionAnalyserBlackboardView secondView =
+			new ProposedExpressionAnalyserBlackboardView(this.mockedBlackboard);
+		assertThat("Two equal ProposedExpressionAnalyserBlackboardViews should have the same hashCode!",
+			secondView.hashCode(), is(equalTo(this.testedView.hashCode())));
+	}
+
+	/**
+	 * Test method for
+	 * {@link ProposedExpressionAnalyserBlackboardView#equals(ProposedExpressionAnalyserBlackboardView)}
+	 * . Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> Two different views containing the same Blackboard reference are equal
+	 * 
+	 * <li> Two different views containing equal Blackboards that have not the same
+	 * reference, are not equal.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void equalsT() {
+		// Creating equal view to the existing one
+		final ProposedExpressionAnalyserBlackboardView secondView =
+			new ProposedExpressionAnalyserBlackboardView(this.mockedBlackboard);
+		assertThat(
+			"Two ProposedExpressionAnalyserBlackboardViews should be equal when they have the same blackboard instance!",
+			secondView, is(equalTo(this.testedView)));
+
+		// Equals for two views should only return true, if the views have exactly the
+		// same blackboard reference!
+		final Blackboard blackboardEmptyOne = BLACKBOARD_FACTORY.getEmpty();
+		final Blackboard blackboardEmptyTwo = BLACKBOARD_FACTORY.getEmpty();
+		final ProposedExpressionAnalyserBlackboardView emptyViewOne =
+			new ProposedExpressionAnalyserBlackboardView(blackboardEmptyOne);
+		final ProposedExpressionAnalyserBlackboardView emptyViewTwo =
+			new ProposedExpressionAnalyserBlackboardView(blackboardEmptyTwo);
+
+		assertThat("Two ProposedExpressionAnalyserBlackboardViews should not be equal,"
+			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
+	}
+
+	/**
+	 * Test method for {@link ProposedExpressionAnalyserBlackboardView#toString} . Asserts
+	 * that:
+	 *
+	 * <ul>
+	 *
+	 * <li> toString does not return the standard String as defined in Object.class.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void toStringT() {
+		final String standardRepresentation = this.testedView.getClass().getName() + "@" + this.testedView.hashCode();
+		assertThat("toString should be overwritten by a meaningful representation of this object!",
+			standardRepresentation, not(equalTo(this.testedView.toString())));
+	}
+	
+	/**
 	 * Test method for {@link ProposedExpressionAnalyserBlackboardView#getAllRdias()}.
 	 * Asserts that:
 	 *
@@ -442,76 +514,6 @@ public class ProposedExpressionAnalyserBlackboardViewTest {
 	private final class TestStorer implements BlackboardStorer<String> {
 	}
 
-	/**
-	 * Test method for {@link ProposedExpressionAnalyserBlackboardView#hashCode()} .
-	 * Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> The hash code is the same for equal view.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void hashCodeT() {
-		// Creating equal view to the existing one
-		final ProposedExpressionAnalyserBlackboardView secondView =
-			new ProposedExpressionAnalyserBlackboardView(this.mockedBlackboard);
-		assertThat("Two equal ProposedExpressionAnalyserBlackboardViews should have the same hashCode!",
-			secondView.hashCode(), is(equalTo(this.testedView.hashCode())));
-	}
 
-	/**
-	 * Test method for
-	 * {@link ProposedExpressionAnalyserBlackboardView#equals(ProposedExpressionAnalyserBlackboardView)}
-	 * . Asserts that:
-	 *
-	 * <ul>
-	 *
-	 * <li> Two different views containing the same Blackboard reference are equal
-	 * 
-	 * <li> Two different views containing equal Blackboards that have not the same
-	 * reference, are not equal.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void equalsT() {
-		// Creating equal view to the existing one
-		final ProposedExpressionAnalyserBlackboardView secondView =
-			new ProposedExpressionAnalyserBlackboardView(this.mockedBlackboard);
-		assertThat(
-			"Two ProposedExpressionAnalyserBlackboardViews should be equal when they have the same blackboard instance!",
-			secondView, is(equalTo(this.testedView)));
-
-		// Equals for two views should only return true, if the views have exactly the
-		// same blackboard reference!
-		final Blackboard blackboardEmptyOne = BLACKBOARD_FACTORY.getEmpty();
-		final Blackboard blackboardEmptyTwo = BLACKBOARD_FACTORY.getEmpty();
-		final ProposedExpressionAnalyserBlackboardView emptyViewOne =
-			new ProposedExpressionAnalyserBlackboardView(blackboardEmptyOne);
-		final ProposedExpressionAnalyserBlackboardView emptyViewTwo =
-			new ProposedExpressionAnalyserBlackboardView(blackboardEmptyTwo);
-
-		assertThat("Two ProposedExpressionAnalyserBlackboardViews should not be equal,"
-			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
-	}
-
-	/**
-	 * Test method for {@link ProposedExpressionAnalyserBlackboardView#toString} . Asserts
-	 * that:
-	 *
-	 * <ul>
-	 *
-	 * <li> toString does not return the standard String as defined in Object.class.
-	 *
-	 * </ul>
-	 */
-	@Test
-	public void toStringT() {
-		final String standardRepresentation = this.testedView.getClass().getName() + "@" + this.testedView.hashCode();
-		assertThat("toString should be overwritten by a meaningful representation of this object!",
-			standardRepresentation, not(equalTo(this.testedView.toString())));
-	}
 
 }
