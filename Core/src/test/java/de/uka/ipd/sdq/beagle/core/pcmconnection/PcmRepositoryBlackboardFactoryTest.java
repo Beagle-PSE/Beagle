@@ -17,6 +17,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashSet;
 
 /**
@@ -72,9 +73,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForAllElements()} .
+	 * @throws FileNotFoundException if a source code file can not be resolved
 	 */
 	@Test
-	public void getBlackboardForAllElements() {
+	public void getBlackboardForAllElements() throws FileNotFoundException {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
@@ -104,9 +106,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])} .
+	 * @throws FileNotFoundException if a source code file can not be resolved
 	 */
 	@Test
-	public void getBlackboardForIdsStringArray() {
+	public void getBlackboardForIdsStringArray() throws FileNotFoundException {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
