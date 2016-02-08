@@ -83,6 +83,98 @@
 <dt>serialVersionUID:</dt>
 <dd>6382577321150787599L</dd>
 </dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>allSeffElements</h4>
+<pre>java.util.Set&lt;E&gt; allSeffElements</pre>
+<div class="block">All measurable SEFF Elements.</div>
+</li>
+<li class="blockList">
+<h4>rdias</h4>
+<pre>java.util.Set&lt;E&gt; rdias</pre>
+<div class="block">All Resource Demanding Internal Actions.</div>
+</li>
+<li class="blockList">
+<h4>branches</h4>
+<pre>java.util.Set&lt;E&gt; branches</pre>
+<div class="block">All SEFF Branches.</div>
+</li>
+<li class="blockList">
+<h4>loops</h4>
+<pre>java.util.Set&lt;E&gt; loops</pre>
+<div class="block">All SEFF Loops.</div>
+</li>
+<li class="blockList">
+<h4>externalCalls</h4>
+<pre>java.util.Set&lt;E&gt; externalCalls</pre>
+<div class="block">All External Call Parameter.</div>
+</li>
+<li class="blockList">
+<h4>rdiasToBeMeasured</h4>
+<pre>java.util.Set&lt;E&gt; rdiasToBeMeasured</pre>
+<div class="block">All resource demanding internal actions which are to be measured.</div>
+</li>
+<li class="blockList">
+<h4>branchesToBeMeasured</h4>
+<pre>java.util.Set&lt;E&gt; branchesToBeMeasured</pre>
+<div class="block">All SEFF branches which are to be measured.</div>
+</li>
+<li class="blockList">
+<h4>loopsToBeMeasured</h4>
+<pre>java.util.Set&lt;E&gt; loopsToBeMeasured</pre>
+<div class="block">All SEFF loops which are to be count.</div>
+</li>
+<li class="blockList">
+<h4>externalCallParameterToBeMeasured</h4>
+<pre>java.util.Set&lt;E&gt; externalCallParameterToBeMeasured</pre>
+<div class="block">All external call parameter which are to be measured.</div>
+</li>
+<li class="blockList">
+<h4>rdiasMeasurementResult</h4>
+<pre>java.util.Set&lt;E&gt; rdiasMeasurementResult</pre>
+<div class="block">All resource demanding internal results.</div>
+</li>
+<li class="blockList">
+<h4>branchDecisionMeasurementResult</h4>
+<pre>java.util.Set&lt;E&gt; branchDecisionMeasurementResult</pre>
+<div class="block">All SEFF branches results.</div>
+</li>
+<li class="blockList">
+<h4>loopRepititionCountMeasurementResult</h4>
+<pre>java.util.Set&lt;E&gt; loopRepititionCountMeasurementResult</pre>
+<div class="block">All SEFF loop count results.</div>
+</li>
+<li class="blockList">
+<h4>parameterChangeMeasurementResult</h4>
+<pre>java.util.Set&lt;E&gt; parameterChangeMeasurementResult</pre>
+<div class="block">All parameter change results.</div>
+</li>
+<li class="blockList">
+<h4>proposedExpressions</h4>
+<pre>java.util.Map&lt;K,V&gt; proposedExpressions</pre>
+<div class="block">All evaluable expressions.</div>
+</li>
+<li class="blockList">
+<h4>finalExpressions</h4>
+<pre>java.util.Map&lt;K,V&gt; finalExpressions</pre>
+<div class="block">Is the final expression.</div>
+</li>
+<li class="blockList">
+<h4>fitnessFunction</h4>
+<pre><a href="de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a> fitnessFunction</pre>
+<div class="block">Is the function to get a better evaluable expression result.</div>
+</li>
+<li class="blockListLast">
+<h4>privateWrittenData</h4>
+<pre>java.util.Map&lt;K,V&gt; privateWrittenData</pre>
+<div class="block">Private data of tools, written through <a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#writeFor-java.lang.Class-WRITTEN_TYPE-"><code>Blackboard.writeFor(Class, Serializable)</code></a>.</div>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 <li class="blockList"><a name="de.uka.ipd.sdq.beagle.core.CodeSection">
 <!--   -->
