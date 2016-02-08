@@ -496,7 +496,7 @@ public class BlackboardTest {
 		
 		blackboardTemp =
 			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
-		blackboardTemp.addToBeMeasuredRdias(RDIA_FACTORY.getAll());
+		blackboardTemp.addToBeMeasuredRdias(rdiaSet.toArray(new ResourceDemandingInternalAction[0]));
 	}
 
 	/**
