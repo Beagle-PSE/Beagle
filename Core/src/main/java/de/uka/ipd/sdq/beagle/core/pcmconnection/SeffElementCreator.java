@@ -46,13 +46,14 @@ public class SeffElementCreator {
 	 * @return CodeSection with all information extracted by SourceCodeDecorator
 	 * @throws IllegalArgumentException Thrown when an ID is not found or does not represent a MeasurableSeff
 	 */
-	private CodeSection getCodeSecotionForId(final String identity) throws IllegalArgumentException {
+	private CodeSection getCodeSectionForId(final String identity) throws IllegalArgumentException {
 		final int pseudoSection1 = 1;
 		final int pseudoSection2 = 2;
 		final File pseudoFile = new File("src/main/resources/pseudoFile.md");
 		return new CodeSection(pseudoFile, pseudoSection1, pseudoFile, pseudoSection2);
 			
 	}
+	
 	
 	/**
 	 * Creates an {@link ExternalCallParameter} for a given ID. Assert that identity fits to SeffType.
@@ -61,7 +62,7 @@ public class SeffElementCreator {
 	 * @return ExternalCallParameter element
 	 */
 	public ExternalCallParameter getExternalCallParameterForId(final String identity) {
-		final CodeSection codeSection = this.getCodeSecotionForId(identity);
+		final CodeSection codeSection = this.getCodeSectionForId(identity);
 		return new ExternalCallParameter(codeSection, this.zero);
 	}
 	
@@ -69,12 +70,17 @@ public class SeffElementCreator {
 	 * Creates a {@link SeffBranch} for a given ID. Assert that identity fits to SeffType.
 	 *
 	 * @param identity The identity of the SeffBranch
-	 * @return SeffBranch element
+	 * @return SeffBranch element containing a set of at least 2 CodeSections
 	 */
 	public SeffBranch getSeffBranchForId(final String identity) {
 		final Set<CodeSection> sectionSet = new HashSet<CodeSection>();
-		sectionSet.add(this.getCodeSecotionForId(identity));
-		sectionSet.add(null);
+		sectionSet.add(this.getCodeSectionForId(identity));
+		
+		final int pseudoSection5 = 5;
+		final int pseudoSection6 = 6;
+		final File pseudoFile = new File("src/main/resources/pseudoFile.md");
+		
+		sectionSet.add(new CodeSection(pseudoFile, pseudoSection5, pseudoFile, pseudoSection6));
 		return new SeffBranch(sectionSet);
 	}
 	
@@ -85,7 +91,7 @@ public class SeffElementCreator {
 	 * @return SeffLoop element
 	 */
 	public SeffLoop getSeffLoopForId(final String identity) {
-		final CodeSection codeSection = this.getCodeSecotionForId(identity);
+		final CodeSection codeSection = this.getCodeSectionForId(identity);
 		return new SeffLoop(codeSection);
 	}
 	
@@ -98,7 +104,7 @@ public class SeffElementCreator {
 	 * @return ResourceDemandingInternalAction element
 	 */
 	public ResourceDemandingInternalAction getRDIAForId(final String identity) {
-		final CodeSection codeSection = this.getCodeSecotionForId(identity);
+		final CodeSection codeSection = this.getCodeSectionForId(identity);
 		//final CodeSection sectionTemp = this.nameParser.parse(internalAction.getEntityName());
 		return new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
 
