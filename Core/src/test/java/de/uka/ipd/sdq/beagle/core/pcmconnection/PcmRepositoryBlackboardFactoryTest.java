@@ -12,8 +12,8 @@ import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -30,16 +30,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * A factory which creates instances of {@link PcmRepositoryBlackboardFactory}.
 	 */
-	private static PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory;
-
-	/**
-	 * Ran before every method in this class.
-	 */
-	@BeforeClass
-	public static void beforeClass() {
-		PcmRepositoryBlackboardFactoryTest.pcmRepositoryBlackboardFactoryFactory =
-			new PcmRepositoryBlackboardFactoryFactory();
-	}
+	private static PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory =
+		new PcmRepositoryBlackboardFactoryFactory();
 
 	/**
 	 * Test method for
@@ -100,8 +92,11 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final HashSet<String> collection = new HashSet<String>();
 		collection.add("");
 
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
-			throwsException(IllegalArgumentException.class));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
+			is(new BlackboardFactory().getEmpty()));
+
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String) null),
+			throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -115,8 +110,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
-			throwsException(IllegalArgumentException.class));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(""), is(new BlackboardFactory().getEmpty()));
+
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String[]) null),
+			throwsException(NullPointerException.class));
 
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"), is(not(nullValue())));
 
