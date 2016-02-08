@@ -158,24 +158,34 @@ public class FinalJudgeTest {
 		given(mockFitnessFunction.gradeFor(any(ResourceDemandingInternalAction.class), any(), any()))
 			.will(answerWithLittleChange);
 
+		// the value the final judge returned the last time it was called
+		boolean decision = false;
 		for (int i = 0; i < 500; i++) {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
 				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(i));
 			}
-			this.testedJudge.judge(this.testBlackboard);
+			decision = this.testedJudge.judge(this.testBlackboard);
+			if (decision) {
+				break;
+			}
 		}
-		assertThat("The final judge must end the analysis if the results do not improve significantly",
-			this.testedJudge.judge(this.testBlackboard), ENDS_ANALYSIS);
+		assertThat("The final judge must end the analysis if the results do not improve significantly", decision,
+			is(ENDS_ANALYSIS));
 
 		this.createObjects();
 		new FinalJudge().init(this.testBlackboard);
+
+		// the value the final judge returned the last time it was called
+		decision = false;
 		for (int i = 0; i < 500; i++) {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
 				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(i));
 			}
-			new FinalJudge().judge(this.testBlackboard);
+			decision = new FinalJudge().judge(this.testBlackboard);
+			if (decision) {
+				break;
+			}
 		}
-		assertThat("Ending the analysis must be done statelessly", new FinalJudge().judge(this.testBlackboard),
-			ENDS_ANALYSIS);
+		assertThat("Ending the analysis must be done statelessly", decision, is(ENDS_ANALYSIS));
 	}
 }
