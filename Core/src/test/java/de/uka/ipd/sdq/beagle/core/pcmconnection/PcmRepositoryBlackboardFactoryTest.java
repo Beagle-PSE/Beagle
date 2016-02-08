@@ -36,7 +36,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * Ran before every method in this class.
 	 */
 	@BeforeClass
-	public void beforeClass() {
+	public static void beforeClass() {
 		this.pcmRepositoryBlackboardFactoryFactory = new PcmRepositoryBlackboardFactoryFactory();
 	}
 
@@ -72,6 +72,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForAllElements()} .
+	 * 
 	 * @throws FileNotFoundException if a source code file can not be resolved
 	 */
 	@Test
@@ -105,6 +106,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])} .
+	 * 
 	 * @throws FileNotFoundException if a source code file can not be resolved
 	 */
 	@Test
