@@ -30,14 +30,15 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * A factory which creates instances of {@link PcmRepositoryBlackboardFactory}.
 	 */
-	private PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory;
+	private static PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory;
 
 	/**
 	 * Ran before every method in this class.
 	 */
 	@BeforeClass
 	public static void beforeClass() {
-		this.pcmRepositoryBlackboardFactoryFactory = new PcmRepositoryBlackboardFactoryFactory();
+		PcmRepositoryBlackboardFactoryTest.pcmRepositoryBlackboardFactoryFactory =
+			new PcmRepositoryBlackboardFactoryFactory();
 	}
 
 	/**
@@ -78,7 +79,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForAllElements() throws FileNotFoundException {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			this.pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
 		assertThat(result, is(notNullValue()));
 
@@ -94,7 +95,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			this.pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
 		final HashSet<String> collection = new HashSet<String>();
 		collection.add("");
@@ -112,7 +113,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForIdsStringArray() throws FileNotFoundException {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			this.pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
 			throwsException(IllegalArgumentException.class));
