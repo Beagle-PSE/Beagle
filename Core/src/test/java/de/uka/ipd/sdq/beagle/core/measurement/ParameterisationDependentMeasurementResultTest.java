@@ -69,56 +69,6 @@ public class ParameterisationDependentMeasurementResultTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link ParameterisationDependentMeasurementResult#equals(java.lang.Object)} and
-	 * {@link ParameterisationDependentMeasurementResult#hashCode()}.
-	 *
-	 * <p>Asserts that equals has the default properties, a
-	 * {@link ParameterisationDependentMeasurementResult} with {@link Parameterisation} is
-	 * not equal to one without, and that if the {@link Parameterisation} is (not) equal
-	 * to the one of the other {@link ParameterisationDependentMeasurementResult} these
-	 * are (not) equal to.
-	 *
-	 * <p>Asserts that if the {@link ParameterisationDependentMeasurementResult} are equal
-	 * the hashCode is the same.
-	 */
-	@Test
-	public void equalsObject() {
-		/*
-		 * This simulates parameterisation1.equals(paramertisation2) returns true, while
-		 * parameterisation3.equals(parameterisation4) returns false.
-		 */
-		final ParameterisationMock parameterisation1 = new ParameterisationMock();
-		final ParameterisationMock parameterisation2 = new ParameterisationMock();
-		final ParameterisationMock parameterisation3 = new ParameterisationMock();
-		final ParameterisationMock parameterisation4 = new ParameterisationMock();
-		parameterisation1.setEquals(true);
-		parameterisation2.setEquals(true);
-		parameterisation3.setEquals(false);
-		parameterisation4.setEquals(false);
-		final ParameterisationDependentMeasurementResult measurementResult =
-			new ParameterisationDependentMeasurementResult() {
-			};
-		final ParameterisationDependentMeasurementResult measurementResultP1 =
-			new ParameterisationDependentMeasurementResult(parameterisation1) {
-			};
-		final ParameterisationDependentMeasurementResult measurementResultP2 =
-			new ParameterisationDependentMeasurementResult(parameterisation2) {
-			};
-		final ParameterisationDependentMeasurementResult measurementResultP3 =
-			new ParameterisationDependentMeasurementResult(parameterisation3) {
-			};
-		final ParameterisationDependentMeasurementResult measurementResultP4 =
-			new ParameterisationDependentMeasurementResult(parameterisation4) {
-			};
-
-		assertThat(measurementResult, hasDefaultEqualsProperties());
-		assertThat(measurementResult, is(not(equalTo(measurementResultP1))));
-		assertThat(measurementResultP1, is(not(equalTo(measurementResultP2))));
-		assertThat(measurementResultP3, is(not(equalTo(measurementResultP4))));
-	}
-
-	/**
 	 * Test method for {@link ParameterisationDependentMeasurementResult#toString()} .
 	 */
 	@Test
