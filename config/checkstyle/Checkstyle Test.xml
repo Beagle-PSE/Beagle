@@ -159,7 +159,6 @@
     </module>
     <module name="UnusedImports">
       <property name="severity" value="warning"/>
-      <property name="processJavadoc" value="true"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ImportControl">
@@ -477,14 +476,16 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="CyclomaticComplexity">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="JavaNCSS">
       <property name="severity" value="warning"/>
       <property name="methodMaximum" value="150"/>
     </module>
     <module name="NPathComplexity">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ArrayTypeStyle">
       <property name="severity" value="error"/>
@@ -516,7 +517,8 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="ClassFanOutComplexity">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="DescendantToken">
       <property name="severity" value="ignore"/>
