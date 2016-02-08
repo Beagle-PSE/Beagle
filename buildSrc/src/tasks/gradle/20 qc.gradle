@@ -14,7 +14,7 @@ configure(javaSubprojects) {
 	}
 	 
 	checkstyle {
-		toolVersion = "6.11"
+		toolVersion = "6.15"
 	}
 	
 	jacocoTestReport {
