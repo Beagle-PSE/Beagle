@@ -73,8 +73,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;ResourceDemandingInternalAction&gt; getAllRdias() {
-<span class="fc" id="L76">		Validate.notNull(this.blackboard.getAllRdias());</span>
-<span class="fc" id="L77">		return this.blackboard.getAllRdias();</span>
+<span class="fc" id="L76">		return this.blackboard.getAllRdias();</span>
 	}
 
 	/**
@@ -84,8 +83,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;SeffBranch&gt; getAllSeffBranches() {
-<span class="fc" id="L87">		Validate.notNull(this.blackboard.getAllSeffBranches());</span>
-<span class="fc" id="L88">		return this.blackboard.getAllSeffBranches();</span>
+<span class="fc" id="L86">		return this.blackboard.getAllSeffBranches();</span>
 	}
 
 	/**
@@ -95,8 +93,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set&lt;SeffLoop&gt; getAllSeffLoops() {
-<span class="fc" id="L98">		Validate.notNull(this.blackboard.getAllSeffLoops());</span>
-<span class="fc" id="L99">		return this.blackboard.getAllSeffLoops();</span>
+<span class="fc" id="L96">		return this.blackboard.getAllSeffLoops();</span>
 	}
 
 	/**
@@ -107,8 +104,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set&lt;ExternalCallParameter&gt; getAllExternalCallParameters() {
-<span class="fc" id="L110">		Validate.notNull(this.blackboard.getAllExternalCallParameters());</span>
-<span class="fc" id="L111">		return this.blackboard.getAllExternalCallParameters();</span>
+<span class="fc" id="L107">		return this.blackboard.getAllExternalCallParameters();</span>
 	}
 
 	/**
@@ -124,9 +120,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *      ResourceDemandingInternalAction)
 	 */
 	public Set&lt;ResourceDemandMeasurementResult&gt; getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-<span class="fc" id="L127">		Validate.notNull(rdia);</span>
-<span class="fc" id="L128">		Validate.notNull(this.blackboard.getMeasurementResultsFor(rdia));</span>
-<span class="fc" id="L129">		return this.blackboard.getMeasurementResultsFor(rdia);</span>
+<span class="fc" id="L123">		return this.blackboard.getMeasurementResultsFor(rdia);</span>
 	}
 
 	/**
@@ -140,9 +134,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
 	public Set&lt;BranchDecisionMeasurementResult&gt; getMeasurementResultsFor(final SeffBranch branch) {
-<span class="fc" id="L143">		Validate.notNull(branch);</span>
-<span class="fc" id="L144">		Validate.notNull(this.blackboard.getMeasurementResultsFor(branch));</span>
-<span class="fc" id="L145">		return this.blackboard.getMeasurementResultsFor(branch);</span>
+<span class="fc" id="L137">		return this.blackboard.getMeasurementResultsFor(branch);</span>
 	}
 
 	/**
@@ -156,9 +148,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
 	public Set&lt;LoopRepetitionCountMeasurementResult&gt; getMeasurementResultsFor(final SeffLoop loop) {
-<span class="fc" id="L159">		Validate.notNull(loop);</span>
-<span class="fc" id="L160">		Validate.notNull(this.blackboard.getMeasurementResultsFor(loop));</span>
-<span class="fc" id="L161">		return this.blackboard.getMeasurementResultsFor(loop);</span>
+<span class="fc" id="L151">		return this.blackboard.getMeasurementResultsFor(loop);</span>
 	}
 
 	/**
@@ -175,9 +165,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 */
 	public Set&lt;ParameterChangeMeasurementResult&gt; getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-<span class="fc" id="L178">		Validate.notNull(externalCallParameter);</span>
-<span class="fc" id="L179">		Validate.notNull(this.blackboard.getMeasurementResultsFor(externalCallParameter));</span>
-<span class="fc" id="L180">		return this.blackboard.getMeasurementResultsFor(externalCallParameter);</span>
+<span class="fc" id="L168">		return this.blackboard.getMeasurementResultsFor(externalCallParameter);</span>
 	}
 
 	/**
@@ -189,8 +177,7 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-<span class="fc" id="L192">		Validate.notNull(this.blackboard.getFitnessFunction());</span>
-<span class="fc" id="L193">		return this.blackboard.getFitnessFunction();</span>
+<span class="fc" id="L180">		return this.blackboard.getFitnessFunction();</span>
 	}
 
 	/**
@@ -206,14 +193,14 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="fc" id="L209">		return this.blackboard.readFor(writer);</span>
+<span class="fc" id="L196">		return this.blackboard.readFor(writer);</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L216">		return new HashCodeBuilder(35, 53).append(this.blackboard).toHashCode();</span>
+<span class="fc" id="L203">		return new HashCodeBuilder(35, 53).append(this.blackboard).toHashCode();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

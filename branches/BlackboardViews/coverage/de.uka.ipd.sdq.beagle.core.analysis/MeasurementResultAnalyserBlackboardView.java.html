@@ -117,9 +117,8 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            be {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredRdias(final Collection&lt;ResourceDemandingInternalAction&gt; rdias) {
-<span class="fc" id="L120">		Validate.notNull(rdias);</span>
-<span class="fc" id="L121">		this.blackboard.addToBeMeasuredRdias(rdias);</span>
-<span class="fc" id="L122">	}</span>
+<span class="fc" id="L120">		this.blackboard.addToBeMeasuredRdias(rdias);</span>
+<span class="fc" id="L121">	}</span>
 
 	/**
 	 * Delegates to
@@ -130,9 +129,8 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            must be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection&lt;SeffBranch&gt; branches) {
-<span class="fc" id="L133">		Validate.notNull(branches);</span>
-<span class="fc" id="L134">		this.blackboard.addToBeMeasuredSeffBranches(branches);</span>
-<span class="fc" id="L135">	}</span>
+<span class="fc" id="L132">		this.blackboard.addToBeMeasuredSeffBranches(branches);</span>
+<span class="fc" id="L133">	}</span>
 
 	/**
 	 * Delegates to
@@ -142,9 +140,8 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection&lt;SeffLoop&gt; loops) {
-<span class="fc" id="L145">		Validate.notNull(loops);</span>
-<span class="fc" id="L146">		this.blackboard.addToBeMeasuredSeffLoops(loops);</span>
-<span class="fc" id="L147">	}</span>
+<span class="fc" id="L143">		this.blackboard.addToBeMeasuredSeffLoops(loops);</span>
+<span class="fc" id="L144">	}</span>
 
 	/**
 	 * Delegates to
@@ -155,9 +152,8 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection&lt;ExternalCallParameter&gt; parameters) {
-<span class="fc" id="L158">		Validate.notNull(parameters);</span>
-<span class="fc" id="L159">		this.blackboard.addToBeMeasuredExternalCallParameters(parameters);</span>
-<span class="fc" id="L160">	}</span>
+<span class="fc" id="L155">		this.blackboard.addToBeMeasuredExternalCallParameters(parameters);</span>
+<span class="fc" id="L156">	}</span>
 
 	/**
 	 * Delegates to
@@ -173,8 +169,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 */
 	@Override
 	public Set&lt;ResourceDemandMeasurementResult&gt; getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-<span class="fc" id="L176">		Validate.notNull(rdia);</span>
-<span class="fc" id="L177">		return this.blackboard.getMeasurementResultsFor(rdia);</span>
+<span class="fc" id="L172">		return this.blackboard.getMeasurementResultsFor(rdia);</span>
 	}
 
 	/**
@@ -189,8 +184,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 */
 	@Override
 	public Set&lt;BranchDecisionMeasurementResult&gt; getMeasurementResultsFor(final SeffBranch branch) {
-<span class="fc" id="L192">		Validate.notNull(branch);</span>
-<span class="fc" id="L193">		return this.blackboard.getMeasurementResultsFor(branch);</span>
+<span class="fc" id="L187">		return this.blackboard.getMeasurementResultsFor(branch);</span>
 	}
 
 	/**
@@ -205,8 +199,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 */
 	@Override
 	public Set&lt;LoopRepetitionCountMeasurementResult&gt; getMeasurementResultsFor(final SeffLoop loop) {
-<span class="fc" id="L208">		Validate.notNull(loop);</span>
-<span class="fc" id="L209">		return this.blackboard.getMeasurementResultsFor(loop);</span>
+<span class="fc" id="L202">		return this.blackboard.getMeasurementResultsFor(loop);</span>
 	}
 
 	/**
@@ -224,8 +217,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	@Override
 	public Set&lt;ParameterChangeMeasurementResult&gt; getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-<span class="fc" id="L227">		Validate.notNull(externalCallParameter);</span>
-<span class="fc" id="L228">		return this.blackboard.getMeasurementResultsFor(externalCallParameter);</span>
+<span class="fc" id="L220">		return this.blackboard.getMeasurementResultsFor(externalCallParameter);</span>
 	}
 
 	/**
@@ -238,10 +230,8 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 *            measurement results. Must not be {@code null}.
 	 */
 	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
-<span class="fc" id="L241">		Validate.notNull(element);</span>
-<span class="fc" id="L242">		Validate.notNull(expression);</span>
-<span class="fc" id="L243">		this.blackboard.addProposedExpressionFor(element, expression);</span>
-<span class="fc" id="L244">	}</span>
+<span class="fc" id="L233">		this.blackboard.addProposedExpressionFor(element, expression);</span>
+<span class="fc" id="L234">	}</span>
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
@@ -252,7 +242,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-<span class="fc" id="L255">		return this.blackboard.getFitnessFunction();</span>
+<span class="fc" id="L245">		return this.blackboard.getFitnessFunction();</span>
 	}
 
 	/**
@@ -269,7 +259,7 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	@Override
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="fc" id="L272">		return this.blackboard.readFor(writer);</span>
+<span class="fc" id="L262">		return this.blackboard.readFor(writer);</span>
 	}
 
 	/**
@@ -284,14 +274,14 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 	@Override
 	public &lt;WRITTEN_TYPE extends Serializable&gt; void writeFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer, final WRITTEN_TYPE written) {
-<span class="fc" id="L287">		this.blackboard.writeFor(writer, written);</span>
-<span class="fc" id="L288">	}</span>
+<span class="fc" id="L277">		this.blackboard.writeFor(writer, written);</span>
+<span class="fc" id="L278">	}</span>
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L294">		return new HashCodeBuilder(17, 71).append(this.blackboard).toHashCode();</span>
+<span class="fc" id="L284">		return new HashCodeBuilder(17, 71).append(this.blackboard).toHashCode();</span>
 	}
 
 }

@@ -121,10 +121,8 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
-<span class="fc" id="L124">		Validate.notNull(rdia);</span>
-<span class="fc" id="L125">		Validate.notNull(results);</span>
-<span class="fc" id="L126">		this.blackboard.addMeasurementResultFor(rdia, results);</span>
-<span class="fc" id="L127">	}</span>
+<span class="fc" id="L124">		this.blackboard.addMeasurementResultFor(rdia, results);</span>
+<span class="fc" id="L125">	}</span>
 
 	/**
 	 * Delegates to
@@ -135,10 +133,8 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
-<span class="fc" id="L138">		Validate.notNull(loop);</span>
-<span class="fc" id="L139">		Validate.notNull(results);</span>
-<span class="fc" id="L140">		this.blackboard.addMeasurementResultFor(loop, results);</span>
-<span class="fc" id="L141">	}</span>
+<span class="fc" id="L136">		this.blackboard.addMeasurementResultFor(loop, results);</span>
+<span class="fc" id="L137">	}</span>
 
 	/**
 	 * Delegates to
@@ -149,10 +145,8 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
-<span class="fc" id="L152">		Validate.notNull(branch);</span>
-<span class="fc" id="L153">		Validate.notNull(results);</span>
-<span class="fc" id="L154">		this.blackboard.addMeasurementResultFor(branch, results);</span>
-<span class="fc" id="L155">	}</span>
+<span class="fc" id="L148">		this.blackboard.addMeasurementResultFor(branch, results);</span>
+<span class="fc" id="L149">	}</span>
 
 	/**
 	 * Delegates to
@@ -165,10 +159,8 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
-<span class="fc" id="L168">		Validate.notNull(parameter);</span>
-<span class="fc" id="L169">		Validate.notNull(results);</span>
-<span class="fc" id="L170">		this.blackboard.addMeasurementResultFor(parameter, results);</span>
-<span class="fc" id="L171">	}</span>
+<span class="fc" id="L162">		this.blackboard.addMeasurementResultFor(parameter, results);</span>
+<span class="fc" id="L163">	}</span>
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
@@ -179,7 +171,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-<span class="fc" id="L182">		return this.blackboard.getFitnessFunction();</span>
+<span class="fc" id="L174">		return this.blackboard.getFitnessFunction();</span>
 	}
 
 	/**
@@ -195,7 +187,7 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="fc" id="L198">		return this.blackboard.readFor(writer);</span>
+<span class="fc" id="L190">		return this.blackboard.readFor(writer);</span>
 	}
 
 	/**
@@ -209,14 +201,14 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; void writeFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer, final WRITTEN_TYPE written) {
-<span class="fc" id="L212">		this.blackboard.writeFor(writer, written);</span>
-<span class="fc" id="L213">	}</span>
+<span class="fc" id="L204">		this.blackboard.writeFor(writer, written);</span>
+<span class="fc" id="L205">	}</span>
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L219">		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();</span>
+<span class="fc" id="L211">		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

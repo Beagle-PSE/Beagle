@@ -121,8 +121,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 *      ResourceDemandingInternalAction)
 	 */
 	public Set&lt;ResourceDemandMeasurementResult&gt; getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-<span class="fc" id="L124">		Validate.notNull(rdia);</span>
-<span class="fc" id="L125">		return this.blackboard.getMeasurementResultsFor(rdia);</span>
+<span class="fc" id="L124">		return this.blackboard.getMeasurementResultsFor(rdia);</span>
 	}
 
 	/**
@@ -136,8 +135,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
 	public Set&lt;BranchDecisionMeasurementResult&gt; getMeasurementResultsFor(final SeffBranch branch) {
-<span class="fc" id="L139">		Validate.notNull(branch);</span>
-<span class="fc" id="L140">		return this.blackboard.getMeasurementResultsFor(branch);</span>
+<span class="fc" id="L138">		return this.blackboard.getMeasurementResultsFor(branch);</span>
 	}
 
 	/**
@@ -151,8 +149,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
 	public Set&lt;LoopRepetitionCountMeasurementResult&gt; getMeasurementResultsFor(final SeffLoop loop) {
-<span class="fc" id="L154">		Validate.notNull(loop);</span>
-<span class="fc" id="L155">		return this.blackboard.getMeasurementResultsFor(loop);</span>
+<span class="fc" id="L152">		return this.blackboard.getMeasurementResultsFor(loop);</span>
 	}
 
 	/**
@@ -169,8 +166,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 */
 	public Set&lt;ParameterChangeMeasurementResult&gt; getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-<span class="fc" id="L172">		Validate.notNull(externalCallParameter);</span>
-<span class="fc" id="L173">		return this.blackboard.getMeasurementResultsFor(externalCallParameter);</span>
+<span class="fc" id="L169">		return this.blackboard.getMeasurementResultsFor(externalCallParameter);</span>
 	}
 
 	/**
@@ -186,8 +182,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 *
 	 */
 	public Set&lt;EvaluableExpression&gt; getProposedExpressionFor(final MeasurableSeffElement element) {
-<span class="fc" id="L189">		Validate.notNull(element);</span>
-<span class="fc" id="L190">		return this.blackboard.getProposedExpressionFor(element);</span>
+<span class="fc" id="L185">		return this.blackboard.getProposedExpressionFor(element);</span>
 	}
 
 	/**
@@ -199,7 +194,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-<span class="fc" id="L202">		return this.blackboard.getFitnessFunction();</span>
+<span class="fc" id="L197">		return this.blackboard.getFitnessFunction();</span>
 	}
 
 	/**
@@ -215,14 +210,14 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="fc" id="L218">		return this.blackboard.readFor(writer);</span>
+<span class="fc" id="L213">		return this.blackboard.readFor(writer);</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L225">		return new HashCodeBuilder(351, 531).append(this.blackboard).toHashCode();</span>
+<span class="fc" id="L220">		return new HashCodeBuilder(351, 531).append(this.blackboard).toHashCode();</span>
 	}
 
 }
