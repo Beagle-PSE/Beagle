@@ -182,6 +182,11 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
+	 * 
+	 * @return All proposed expressions for {@code measurebleSeffElements} Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
+	 * 
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);
