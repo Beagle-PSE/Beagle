@@ -53,8 +53,18 @@ public class BlackboardFactory {
 	 * A {@link EvaluableExpressionFitnessFunction} factory to easily obtain new instances
 	 * from.
 	 */
-	private static final EvaluableExpressionFitnessFunctionFactory EVA_EX_FACTORY =
+	private static final EvaluableExpressionFitnessFunctionFactory FITNESS_FUNCTION_FACTORY =
 		new EvaluableExpressionFitnessFunctionFactory();
+
+	/**
+	 * A {@link EvaluableExpression} factory to easily obtain new instances from.
+	 */
+	private static final EvaluableExpressionFactory EVALUABLE_EXPRESSION_FACTORY = new EvaluableExpressionFactory();
+
+	/**
+	 * A Meausurement result factory to easily obtain new instances from.
+	 */
+	private static final MeasurementResultFactory MEAUSUREMENT_RESULT_FACTORY = new MeasurementResultFactory();
 
 	/**
 	 * Creates a new blackboard with nothing written on it.
@@ -63,7 +73,7 @@ public class BlackboardFactory {
 	 */
 	public Blackboard getEmpty() {
 		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
-			EVA_EX_FACTORY.getOne());
+			FITNESS_FUNCTION_FACTORY.getOne());
 	}
 
 	/**
@@ -78,14 +88,87 @@ public class BlackboardFactory {
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 
-		final Blackboard blackboard = new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-			SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(), EVA_EX_FACTORY.getOne());
+		final Blackboard blackboard = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, externalCallParameterSet,
+			FITNESS_FUNCTION_FACTORY.getOne());
 		blackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet);
 		blackboard.addToBeMeasuredRdias(rdiaSet);
 		blackboard.addToBeMeasuredSeffBranches(seffBranchSet);
 		blackboard.addToBeMeasuredSeffLoops(seffLoopSet);
 
 		return blackboard;
+	}
+
+	/**
+	 * Creates a new blackboard, filled with all possible data.
+	 *
+	 * @return A new blackboard instance with data.
+	 */
+	public Blackboard getFull() {
+		final Blackboard blackboard = this.getWithToBeMeasuredContent();
+
+		Iterator<ResourceDemandingInternalAction> blackboardRdias = blackboard.getAllRdias().iterator();
+		for (final ResourceDemandMeasurementResult meausurementResult : MEAUSUREMENT_RESULT_FACTORY.getRdiaResults()) {
+			blackboard.addMeasurementResultFor(blackboardRdias.next(), meausurementResult);
+			if (!blackboardRdias.hasNext()) {
+				blackboardRdias = blackboard.getAllRdias().iterator();
+			}
+		}
+
+		Iterator<SeffLoop> blackboardLoops = blackboard.getAllSeffLoops().iterator();
+		for (final LoopRepetitionCountMeasurementResult meausurementResult : MEAUSUREMENT_RESULT_FACTORY
+			.getLoopResults()) {
+			blackboard.addMeasurementResultFor(blackboardLoops.next(), meausurementResult);
+			if (!blackboardLoops.hasNext()) {
+				blackboardLoops = blackboard.getAllSeffLoops().iterator();
+			}
+		}
+
+		Iterator<SeffBranch> blackboardBranches = blackboard.getAllSeffBranches().iterator();
+		for (final BranchDecisionMeasurementResult meausurementResult : MEAUSUREMENT_RESULT_FACTORY
+			.getBranchResults()) {
+			blackboard.addMeasurementResultFor(blackboardBranches.next(), meausurementResult);
+			if (!blackboardBranches.hasNext()) {
+				blackboardBranches = blackboard.getAllSeffBranches().iterator();
+			}
+		}
+
+		Iterator<ExternalCallParameter> blackboardParameters = blackboard.getAllExternalCallParameters().iterator();
+		for (final ParameterChangeMeasurementResult meausurementResult : MEAUSUREMENT_RESULT_FACTORY
+			.getParameterResults()) {
+			blackboard.addMeasurementResultFor(blackboardParameters.next(), meausurementResult);
+			if (!blackboardParameters.hasNext()) {
+				blackboardParameters = blackboard.getAllExternalCallParameters().iterator();
+			}
+		}
+
+		boolean first = true;
+		for (final EvaluableExpression expression : EVALUABLE_EXPRESSION_FACTORY.getAll()) {
+			for (final MeasurableSeffElement seffElement : this.getAllSeffElements(blackboard)) {
+				blackboard.addProposedExpressionFor(seffElement, expression);
+			}
+			if (first) {
+				for (final MeasurableSeffElement seffElement : this.getAllSeffElements(blackboard)) {
+					blackboard.setFinalExpressionFor(seffElement, expression);
+				}
+				first = false;
+			}
+		}
+		return blackboard;
+	}
+
+	/**
+	 * Joins all Seff Elements stored on a blackboard.
+	 *
+	 * @param blackboard A blackboard to get seff elements from
+	 * @return All seff elements stored on {@code blackboard}.
+	 */
+	public Set<MeasurableSeffElement> getAllSeffElements(final Blackboard blackboard) {
+		final Set<MeasurableSeffElement> result = new HashSet<>();
+		result.addAll(blackboard.getAllExternalCallParameters());
+		result.addAll(blackboard.getAllRdias());
+		result.addAll(blackboard.getAllSeffBranches());
+		result.addAll(blackboard.getAllSeffLoops());
+		return result;
 	}
 
 	/**
