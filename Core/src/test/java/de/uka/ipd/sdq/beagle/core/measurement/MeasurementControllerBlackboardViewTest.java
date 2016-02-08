@@ -32,7 +32,7 @@ import java.util.Set;
 
 /**
  * Testing the {@link MeasurementControllerBlackboardView}.
- * 
+ *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
  */
@@ -89,7 +89,7 @@ public class MeasurementControllerBlackboardViewTest {
 	/**
 	 * Initializes {@link #mockedBlackboard} with Mockit and creates a new
 	 * {@link #testedView} of it.
-	 * 
+	 *
 	 * @throws Exception Non specified exception because every exception in the following
 	 *             test cases result in
 	 */
@@ -99,7 +99,6 @@ public class MeasurementControllerBlackboardViewTest {
 		this.testedView = new MeasurementControllerBlackboardView(this.mockedBlackboard);
 	}
 
-	
 	/**
 	 * Test method for {@link MeasurementControllerBlackboardView#hashCode()} . Asserts
 	 * that:
@@ -127,7 +126,7 @@ public class MeasurementControllerBlackboardViewTest {
 	 * <ul>
 	 *
 	 * <li> Two different views containing the same Blackboard reference are equal
-	 * 
+	 *
 	 * <li> Two different views containing equal Blackboards that have not the same
 	 * reference, are not equal.
 	 *
@@ -171,8 +170,7 @@ public class MeasurementControllerBlackboardViewTest {
 		assertThat("toString should be overwritten by a meaningful representation of this object!",
 			standardRepresentation, not(equalTo(this.testedView.toString())));
 	}
-	
-	
+
 	/**
 	 * Test method for {@link MeasurementControllerBlackboardView#getRdiasToBeMeasured()}.
 	 * Asserts that:
@@ -261,10 +259,12 @@ public class MeasurementControllerBlackboardViewTest {
 	}
 
 	/**
+	 * // @formatter:off
 	 * Test method for
 	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
-	 * MesasurableSeffElementMeasurementResult)}
-	 * . Asserts that:
+	 * MesasurableSeffElementMeasurementResult)}.
+	 * // @formatter:on
+	 * Asserts that:
 	 *
 	 * <ul>
 	 *
@@ -283,9 +283,11 @@ public class MeasurementControllerBlackboardViewTest {
 
 	/**
 	 * Test method for
+	 * // @formatter:off
 	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
-	 * MesasurableSeffElementMeasurementResult)}
-	 * . Asserts that:
+	 * MesasurableSeffElementMeasurementResult)}.
+	 * // @formatter:on
+	 * Asserts that:
 	 *
 	 * <ul>
 	 *
@@ -303,10 +305,12 @@ public class MeasurementControllerBlackboardViewTest {
 	}
 
 	/**
+	 * // @formatter:off
 	 * Test method for
 	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
-	 * MesasurableSeffElementMeasurementResult)}
-	 * . Asserts that:
+	 * MesasurableSeffElementMeasurementResult)}.
+	 * // @formatter:on
+	 * Asserts that:
 	 *
 	 * <ul>
 	 *
@@ -324,10 +328,12 @@ public class MeasurementControllerBlackboardViewTest {
 	}
 
 	/**
+	 * // @formatter:off
 	 * Test method for
 	 * {@link MeasurementControllerBlackboardView#addMeasurementResultFor(MeasurableSeffElement,
-	 * MesasurableSeffElementMeasurementResult)}
-	 * . Asserts that:
+	 * MesasurableSeffElementMeasurementResult)}.
+	 * // @formatter:on
+	 * Asserts that:
 	 *
 	 * <ul>
 	 *
@@ -365,9 +371,8 @@ public class MeasurementControllerBlackboardViewTest {
 	}
 
 	/**
-	 * Test method for
-	 * {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
-	 * 
+	 * Test method for {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
+	 *
 	 * <ul>
 	 *
 	 * <li> The tested view returns the instance it obtained from the blackboard.
@@ -379,7 +384,7 @@ public class MeasurementControllerBlackboardViewTest {
 	public void readFor() {
 		final String onBoard = new String();
 		given(this.mockedBlackboard.readFor(TestStorer.class)).willReturn(onBoard);
-		
+
 		final String result = this.testedView.readFor(TestStorer.class);
 		assertThat("The testedView should return the stored content it obtained from the blackboad", result,
 			is(theInstance(onBoard)));
@@ -387,8 +392,8 @@ public class MeasurementControllerBlackboardViewTest {
 
 	/**
 	 * Test method for
-	 * {@link MeasurementResultAnalyserBlackboardView#writeFor(writer, String)}
-	 * . Asserts that:
+	 * {@link MeasurementResultAnalyserBlackboardView#writeFor(writer, String)} . Asserts
+	 * that:
 	 *
 	 * <ul>
 	 *
@@ -402,7 +407,7 @@ public class MeasurementControllerBlackboardViewTest {
 		this.testedView.writeFor(TestStorer.class, writeOnBoard);
 		then(this.mockedBlackboard).should().writeFor(same(TestStorer.class), same(writeOnBoard));
 	}
-	
+
 	/**
 	 * Test {@link BlackboardStorer}.
 	 *
@@ -410,7 +415,4 @@ public class MeasurementControllerBlackboardViewTest {
 	 */
 	private final class TestStorer implements BlackboardStorer<String> {
 	}
-
-
-
 }

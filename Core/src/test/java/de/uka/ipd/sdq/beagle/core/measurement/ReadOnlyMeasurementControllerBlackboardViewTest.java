@@ -26,7 +26,7 @@ import java.util.Set;
 
 /**
  * Testing the {@link ReadOnlyMeasurementControllerBlackboardView}.
- * 
+ *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
  */
@@ -56,7 +56,7 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 	/**
 	 * Initializes {@link #mockedBlackboard} with Mockit and creates a new
 	 * {@link #testedView} of it.
-	 * 
+	 *
 	 * @throws Exception Non specified exception because every exception in the following
 	 *             test cases result in
 	 */
@@ -66,7 +66,6 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 		this.testedView = new ReadOnlyMeasurementControllerBlackboardView(this.mockedBlackboard);
 	}
 
-	
 	/**
 	 * Test method for {@link ReadOnlyMeasurementControllerBlackboardView#hashCode()} .
 	 * Asserts that:
@@ -94,7 +93,7 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 	 * <ul>
 	 *
 	 * <li> Two different views containing the same Blackboard reference are equal
-	 * 
+	 *
 	 * <li> Two different views containing equal Blackboards that have not the same
 	 * reference, are not equal.
 	 *
@@ -138,7 +137,7 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 		assertThat("toString should be overwritten by a meaningful representation of this object!",
 			standardRepresentation, not(equalTo(this.testedView.toString())));
 	}
-	
+
 	/**
 	 * Test method for
 	 * {@link ReadOnlyMeasurementControllerBlackboardView#getRdiasToBeMeasured()}. Asserts
@@ -250,8 +249,9 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 
 	/**
 	 * Test method for
-	 * {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
-	 * 
+	 * {@link de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView#readFor()}
+	 * . Asserts
+	 *
 	 * <ul>
 	 *
 	 * <li> The tested view returns the instance it obtained from the blackboard.
@@ -263,14 +263,12 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 	public void readFor() {
 		final String onBoard = new String();
 		given(this.mockedBlackboard.readFor(TestStorer.class)).willReturn(onBoard);
-		
+
 		final String result = this.testedView.readFor(TestStorer.class);
 		assertThat("The testedView should return the stored content it obtained from the blackboad", result,
 			is(theInstance(onBoard)));
 	}
 
-
-	
 	/**
 	 * Test {@link BlackboardStorer}.
 	 *
@@ -278,7 +276,4 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 	 */
 	private final class TestStorer implements BlackboardStorer<String> {
 	}
-
-
-
 }
