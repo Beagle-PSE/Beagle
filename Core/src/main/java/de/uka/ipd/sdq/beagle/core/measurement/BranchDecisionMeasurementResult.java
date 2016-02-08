@@ -58,6 +58,7 @@ public class BranchDecisionMeasurementResult extends ParameterisationDependentMe
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("branch index", this.branchIndex).toString();
+		return new ToStringBuilder(this).appendSuper(super.toString()).append("branch index", this.branchIndex)
+			.toString();
 	}
 }

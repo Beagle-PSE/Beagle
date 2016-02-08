@@ -51,6 +51,6 @@ public class LoopRepetitionCountMeasurementResult extends ParameterisationDepend
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("count", this.count).toString();
+		return new ToStringBuilder(this).appendSuper(super.toString()).append("count", this.count).toString();
 	}
 }

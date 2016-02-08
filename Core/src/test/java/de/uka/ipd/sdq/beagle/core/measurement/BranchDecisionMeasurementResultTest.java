@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -27,7 +28,7 @@ public class BranchDecisionMeasurementResultTest {
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void branchDecisionMeasurementResultInt() {
+	public void constructor() {
 		final int branchIndex = 0;
 		new BranchDecisionMeasurementResult(branchIndex);
 		final int branchIndex1 = 3;
@@ -49,12 +50,12 @@ public class BranchDecisionMeasurementResultTest {
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void branchDecisionMeasurementResultParameterisationInt() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int branchIndex = 0;
-		new BranchDecisionMeasurementResult(branchIndex);
+		new BranchDecisionMeasurementResult(parameterisation, branchIndex);
 		final int branchIndex1 = 3;
-		new BranchDecisionMeasurementResult(branchIndex1);
+		new BranchDecisionMeasurementResult(parameterisation, branchIndex1);
 		final int negativeValue = -2;
 		ThrowingMethod method = () -> {
 			new BranchDecisionMeasurementResult(parameterisation, negativeValue);
@@ -75,7 +76,7 @@ public class BranchDecisionMeasurementResultTest {
 	@Test
 	public void getBranchIndex() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
-		int branchIndex = 0;
+		final int branchIndex = 0;
 		final BranchDecisionMeasurementResult result = new BranchDecisionMeasurementResult(branchIndex);
 		final int branchIndex1 = 3;
 		final BranchDecisionMeasurementResult result1 = new BranchDecisionMeasurementResult(branchIndex1);
@@ -85,11 +86,22 @@ public class BranchDecisionMeasurementResultTest {
 		assertThat(result.getBranchIndex(), is(equalTo(branchIndex)));
 		assertThat(result1.getBranchIndex(), is(equalTo(branchIndex1)));
 		assertThat(resultWithP.getBranchIndex(), is(equalTo(branchIndex)));
-		branchIndex = 4;
-		assertThat("The returned index must not be influenced by a later change.", result.getBranchIndex(),
-			is(not(equalTo(branchIndex))));
-		assertThat("The returned index must not be influenced by a later change.", resultWithP.getBranchIndex(),
-			is(not(equalTo(branchIndex))));
+	}
+
+	/**
+	 * Test method for {@link BranchDecisionMeasurementResult#toString()} .
+	 */
+	@Test
+	public void toStringT() {
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		final int value = 2;
+		final BranchDecisionMeasurementResult measurementResult = new BranchDecisionMeasurementResult(value) {
+		};
+		final BranchDecisionMeasurementResult measurementResultP =
+			new BranchDecisionMeasurementResult(parameterisation, value) {
+			};
+		assertThat(measurementResult.toString(), not(startsWith("BranchDecisionMeasurementResult@")));
+		assertThat(measurementResultP.toString(), not(startsWith("BranchDecisionMeasurementResult@")));
 	}
 
 }

@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -28,7 +29,7 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void loopRepetitionCountMeasurementResultInt() {
+	public void constructor() {
 		final int count = 0;
 		new LoopRepetitionCountMeasurementResult(count);
 		final int count1 = 3;
@@ -50,12 +51,12 @@ public class LoopRepetitionCountMeasurementResultTest {
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void loopRepetitionCountMeasurementResultParameterisationInt() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final int count = 0;
-		new LoopRepetitionCountMeasurementResult(count);
+		new LoopRepetitionCountMeasurementResult(parameterisation, count);
 		final int count1 = 3;
-		new LoopRepetitionCountMeasurementResult(count1);
+		new LoopRepetitionCountMeasurementResult(parameterisation, count1);
 		final int negativeValue = -2;
 		ThrowingMethod method = () -> {
 			new LoopRepetitionCountMeasurementResult(parameterisation, negativeValue);
@@ -76,7 +77,7 @@ public class LoopRepetitionCountMeasurementResultTest {
 	@Test
 	public void getCount() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
-		int count = 0;
+		final int count = 0;
 		final LoopRepetitionCountMeasurementResult result = new LoopRepetitionCountMeasurementResult(count);
 		final int count1 = 3;
 		final LoopRepetitionCountMeasurementResult result1 = new LoopRepetitionCountMeasurementResult(count1);
@@ -86,11 +87,22 @@ public class LoopRepetitionCountMeasurementResultTest {
 		assertThat(result.getCount(), is(equalTo(count)));
 		assertThat(result1.getCount(), is(equalTo(count1)));
 		assertThat(resultWithP.getCount(), is(equalTo(count)));
-		count = 4;
-		assertThat("The returned value must not be influenced by a later change.", result.getCount(),
-			is(not(equalTo(count))));
-		assertThat("The returned value must not be influenced by a later change.", resultWithP.getCount(),
-			is(not(equalTo(count))));
+	}
+
+	/**
+	 * Test method for {@link LoopRepetitionCountMeasurementResult#toString()} .
+	 */
+	@Test
+	public void toStringT() {
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		final int value = 2;
+		final LoopRepetitionCountMeasurementResult measurementResult = new LoopRepetitionCountMeasurementResult(value) {
+		};
+		final LoopRepetitionCountMeasurementResult measurementResultP =
+			new LoopRepetitionCountMeasurementResult(parameterisation, value) {
+			};
+		assertThat(measurementResult.toString(), not(startsWith("LoopRepetitionCountMeasurementResult@")));
+		assertThat(measurementResultP.toString(), not(startsWith("LoopRepetitionCountMeasurementResult@")));
 	}
 
 }

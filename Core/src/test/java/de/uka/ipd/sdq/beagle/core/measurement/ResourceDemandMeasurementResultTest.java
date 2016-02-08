@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -27,7 +28,7 @@ public class ResourceDemandMeasurementResultTest {
 	 * smaller than 0. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void resourceDemandMeasurementResultDouble() {
+	public void constructor() {
 		final double value = 2.3;
 		new ResourceDemandMeasurementResult(value);
 		final double value2 = 0;
@@ -50,7 +51,7 @@ public class ResourceDemandMeasurementResultTest {
 	 * parameterisation is null. Asserts that there are no exceptions for valid inputs.
 	 */
 	@Test
-	public void resourceDemandMeasurementResultParameterisationDouble() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		final double value = 2.3;
 		new ResourceDemandMeasurementResult(parameterisation, value);
@@ -73,7 +74,7 @@ public class ResourceDemandMeasurementResultTest {
 	 */
 	@Test
 	public void getValue() {
-		double value = 2.3;
+		final double value = 2.3;
 		final ResourceDemandMeasurementResult result1 = new ResourceDemandMeasurementResult(value);
 		final double value2 = 0;
 		final ResourceDemandMeasurementResult result2 = new ResourceDemandMeasurementResult(value2);
@@ -84,12 +85,22 @@ public class ResourceDemandMeasurementResultTest {
 		assertThat(result1.getValue(), is(equalTo(value)));
 		assertThat(result2.getValue(), is(equalTo(value2)));
 		assertThat(resultWithParameterisation.getValue(), is(equalTo(value)));
-		value = 4.5;
-		assertThat("The returned value must not be influenced by a later change.", result1.getValue(),
-			is(not(equalTo(value))));
-		assertThat("The returned value must not be influenced by a later change.",
-			resultWithParameterisation.getValue(), is(not(equalTo(value))));
+	}
 
+	/**
+	 * Test method for {@link ResourceDemandMeasurementResult#toString()} .
+	 */
+	@Test
+	public void toStringT() {
+		final Parameterisation parameterisation = mock(Parameterisation.class);
+		final double value = 2.3;
+		final ResourceDemandMeasurementResult measurementResult = new ResourceDemandMeasurementResult(value) {
+		};
+		final ResourceDemandMeasurementResult measurementResultP =
+			new ResourceDemandMeasurementResult(parameterisation, value) {
+			};
+		assertThat(measurementResult.toString(), not(startsWith("ResourceDemandMeasurementResult@")));
+		assertThat(measurementResultP.toString(), not(startsWith("ResourceDemandMeasurementResult@")));
 	}
 
 }

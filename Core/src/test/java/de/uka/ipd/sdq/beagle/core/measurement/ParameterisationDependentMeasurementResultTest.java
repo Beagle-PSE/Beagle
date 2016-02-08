@@ -1,16 +1,13 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
-import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.mockito.Mockito.mock;
 
-import de.uka.ipd.sdq.beagle.core.testutil.ParameterisationMock;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
@@ -29,7 +26,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * .
 	 */
 	@Test
-	public void parameterisationDependentMeasurementResult() {
+	public void constructor() {
 		new ParameterisationDependentMeasurementResult() {
 		};
 	}
@@ -40,7 +37,7 @@ public class ParameterisationDependentMeasurementResultTest {
 	 * .
 	 */
 	@Test
-	public void parameterisationDependentMeasurementResultParameterisation() {
+	public void constructorWithParameterisation() {
 		final Parameterisation parameterisation = mock(Parameterisation.class);
 		new ParameterisationDependentMeasurementResult(parameterisation) {
 		};

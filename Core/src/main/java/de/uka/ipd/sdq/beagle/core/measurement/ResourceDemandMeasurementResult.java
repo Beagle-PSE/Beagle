@@ -65,6 +65,6 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("value", this.value).toString();
+		return new ToStringBuilder(this).appendSuper(super.toString()).append("value", this.value).toString();
 	}
 }
