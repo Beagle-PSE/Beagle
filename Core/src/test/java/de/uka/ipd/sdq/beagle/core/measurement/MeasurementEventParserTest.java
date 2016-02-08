@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.is;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -282,6 +283,8 @@ public class MeasurementEventParserTest {
 		measurementEvents = new ArrayList<>();
 		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
 		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
+		measurementEvents.add(
+			new ResourceDemandCapturedEvent(CODE_SECTION_FACTORY.getOne(), ResourceDemandType.RESOURCE_TYPE_CPU, 42));
 		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
 		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
 		parser = new MeasurementEventParser(measurementEvents);
