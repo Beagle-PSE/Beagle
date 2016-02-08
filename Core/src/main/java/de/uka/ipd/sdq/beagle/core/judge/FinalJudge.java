@@ -169,6 +169,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
 
+			// Give every seffElement the default fitness {@code Double.MAX_VALUE}.
+			currentFitnessValues.put(seffElement, Double.MAX_VALUE);
+
+			// Then let it attain a better fitness if possible.
 			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
 				final double fitnessValue =
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
