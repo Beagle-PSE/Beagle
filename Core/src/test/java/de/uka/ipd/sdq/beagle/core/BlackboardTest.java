@@ -4,7 +4,6 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAcceptingNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.theInstance;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
@@ -19,10 +18,10 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
-import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.MeasurementResultFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
@@ -83,9 +82,9 @@ public class BlackboardTest {
 		new EvaluableExpressionFitnessFunctionFactory();
 
 	/**
-	 * An {@link CodeSectionFactory} factory to easily obtain new instances from.
+	 * A Meausurement result factory to easily obtain new instances from.
 	 */
-	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
+	private static final MeasurementResultFactory MEAUSUREMENT_RESULT_FACTORY = new MeasurementResultFactory();
 
 	/**
 	 * Creates an empty SeffBranch-set.
@@ -149,50 +148,51 @@ public class BlackboardTest {
 
 		// Checking if later modification of the given sets to the Blackboard does not
 		// change the Blackboard sets.
-		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
-		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
-		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
-		final Set<ExternalCallParameter> ecpSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Set<ResourceDemandingInternalAction> rdias = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranches = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoops = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> callParameters = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+
+		final Set<ResourceDemandingInternalAction> rdiasTemp = new HashSet<>(rdias);
+		final Set<SeffBranch> seffBranchesTemp = new HashSet<>(seffBranches);
+		final Set<SeffLoop> seffLoopsTemp = new HashSet<>(seffLoops);
+		final Set<ExternalCallParameter> callParametersTemp = new HashSet<>(callParameters);
+
 		final Blackboard blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
-		final ResourceDemandingInternalAction rdiaToAdd =
-			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, CODE_SECTION_FACTORY.getOne());
-		final SeffBranch seffBranchToAdd = new SeffBranch(CODE_SECTION_FACTORY.getAllAsSet());
-		final SeffLoop seffLoopToAdd = new SeffLoop(CODE_SECTION_FACTORY.getOne());
-		final ExternalCallParameter ecpToAdd = new ExternalCallParameter(CODE_SECTION_FACTORY.getOne(), 0);
-		rdiaSet.add(rdiaToAdd);
-		seffBranchSet.add(seffBranchToAdd);
-		seffLoopSet.add(seffLoopToAdd);
-		ecpSet.add(ecpToAdd);
+			new Blackboard(rdiasTemp, seffBranchesTemp, seffLoopsTemp, callParametersTemp, EVA_EX_FACTORY.getOne());
+		rdiasTemp.remove(rdiasTemp.iterator().next());
+		seffBranchesTemp.remove(seffBranchesTemp.iterator().next());
+		seffLoopsTemp.remove(seffLoopsTemp.iterator().next());
+		callParametersTemp.remove(callParametersTemp.iterator().next());
 		assertThat("Blackboard should create a copy from the given Sets to the constructor",
-			blackboardTemp.getAllRdias(), not(contains(rdiaToAdd)));
+			blackboardTemp.getAllRdias(), is(equalTo(rdias)));
 		assertThat("Blackboard should create a copy from the given Sets to the constructor",
-			blackboardTemp.getAllSeffBranches(), not(contains(seffBranchToAdd)));
+			blackboardTemp.getAllSeffBranches(), is(equalTo(seffBranches)));
 		assertThat("Blackboard should create a copy from the given Sets to the constructor",
-			blackboardTemp.getAllSeffLoops(), not(contains(seffLoopToAdd)));
+			blackboardTemp.getAllSeffLoops(), is(equalTo(seffLoops)));
 		assertThat("Blackboard should create a copy from the given Sets to the constructor",
-			blackboardTemp.getAllExternalCallParameters(), not(contains(ecpToAdd)));
+			blackboardTemp.getAllExternalCallParameters(), is(equalTo(callParameters)));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			(rdias) -> new Blackboard(new HashSet<>(rdias), SEFF_BRANCH_FACTORY.getAllAsSet(),
+			(rdiaColl) -> new Blackboard(new HashSet<>(rdiaColl), SEFF_BRANCH_FACTORY.getAllAsSet(),
 				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(),
 				EVA_EX_FACTORY.getOne()),
 			is(notAcceptingNull(RDIA_FACTORY.getAllAsSet())));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			(seffBranches) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), new HashSet<>(seffBranches),
+			(branchColl) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), new HashSet<>(branchColl),
 				SEFF_LOOP_FACTORY.getAllAsSet(), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(),
 				EVA_EX_FACTORY.getOne()),
 			is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAllAsSet())));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			(seffLoops) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-				new HashSet<>(seffLoops), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(), EVA_EX_FACTORY.getOne()),
+			(loopColl) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+				new HashSet<>(loopColl), EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet(), EVA_EX_FACTORY.getOne()),
 			is(notAcceptingNull(SEFF_LOOP_FACTORY.getAllAsSet())));
 
 		assertThat("Blackboard constructur must not accept any measurable seff element = null",
-			(externalCallParameters) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
-				SEFF_LOOP_FACTORY.getAllAsSet(), new HashSet<>(externalCallParameters), EVA_EX_FACTORY.getOne()),
+			(paramColl) -> new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(),
+				SEFF_LOOP_FACTORY.getAllAsSet(), new HashSet<>(paramColl), EVA_EX_FACTORY.getOne()),
 			is(notAcceptingNull(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet())));
 
 		new Blackboard(RDIA_FACTORY.getAllAsSet(), SEFF_BRANCH_FACTORY.getAllAsSet(), SEFF_LOOP_FACTORY.getAllAsSet(),
@@ -223,15 +223,15 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any Rdias", BLACKBOARD_FACTORY.getEmpty().getAllRdias(),
 			is(empty()));
 
-		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
-		final Blackboard blackboard = new Blackboard(rdiaSet, this.getEmptySetOfSeffBranch(),
+		final Set<ResourceDemandingInternalAction> rdias = RDIA_FACTORY.getAllAsSet();
+		final Blackboard blackboard = new Blackboard(rdias, this.getEmptySetOfSeffBranch(),
 			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter(), EVA_EX_FACTORY.getOne());
-		assertThat("Rdias on the blackboard should not change!", blackboard.getAllRdias(), is(equalTo(rdiaSet)));
+		assertThat("Rdias on the blackboard should not change!", blackboard.getAllRdias(), is(equalTo(rdias)));
 
 		final Set<ResourceDemandingInternalAction> blackboardSet = blackboard.getAllRdias();
-		blackboardSet.removeAll(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!", blackboard.getAllRdias(),
-			is(equalTo(rdiaSet)));
+			is(equalTo(rdias)));
 
 	}
 
@@ -258,16 +258,16 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any Rdias", BLACKBOARD_FACTORY.getEmpty().getAllSeffBranches(),
 			is(empty()));
 
-		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
-		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), seffBranchSet,
+		final Set<SeffBranch> seffBranches = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), seffBranches,
 			this.getEmptySetOfSeffLoop(), this.getEmptySetOfExternalCallParameter(), EVA_EX_FACTORY.getOne());
 		assertThat("SeffBranches on the blackboard should not change!", blackboard.getAllSeffBranches(),
-			is(equalTo(seffBranchSet)));
+			is(equalTo(seffBranches)));
 
 		final Set<SeffBranch> blackboardSet = blackboard.getAllSeffBranches();
-		blackboardSet.removeAll(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			blackboard.getAllSeffBranches(), is(equalTo(seffBranchSet)));
+			blackboard.getAllSeffBranches(), is(equalTo(seffBranches)));
 
 	}
 
@@ -294,16 +294,16 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any SeffLoops", BLACKBOARD_FACTORY.getEmpty().getAllSeffLoops(),
 			is(empty()));
 
-		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoops = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
-			seffLoopSet, this.getEmptySetOfExternalCallParameter(), EVA_EX_FACTORY.getOne());
+			seffLoops, this.getEmptySetOfExternalCallParameter(), EVA_EX_FACTORY.getOne());
 		assertThat("SeffLoops on the blackboard should not change!", blackboard.getAllSeffLoops(),
-			is(equalTo(seffLoopSet)));
+			is(equalTo(seffLoops)));
 
 		final Set<SeffLoop> blackboardSet = blackboard.getAllSeffLoops();
-		blackboardSet.removeAll(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			blackboard.getAllSeffLoops(), is(equalTo(seffLoopSet)));
+			blackboard.getAllSeffLoops(), is(equalTo(seffLoops)));
 
 	}
 
@@ -330,16 +330,16 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any ExternalCallParameters",
 			BLACKBOARD_FACTORY.getEmpty().getAllExternalCallParameters(), is(empty()));
 
-		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> externalCallParameters = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 		final Blackboard blackboard = new Blackboard(this.getEmptySetOfRdia(), this.getEmptySetOfSeffBranch(),
-			this.getEmptySetOfSeffLoop(), externalCallParameterSet, EVA_EX_FACTORY.getOne());
+			this.getEmptySetOfSeffLoop(), externalCallParameters, EVA_EX_FACTORY.getOne());
 		assertThat("ExternalCallParameters on the blackboard should not change!",
-			blackboard.getAllExternalCallParameters(), is(equalTo(externalCallParameterSet)));
+			blackboard.getAllExternalCallParameters(), is(equalTo(externalCallParameters)));
 
 		final Set<ExternalCallParameter> blackboardSet = blackboard.getAllExternalCallParameters();
-		blackboardSet.removeAll(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			blackboard.getAllExternalCallParameters(), is(equalTo(externalCallParameterSet)));
+			blackboard.getAllExternalCallParameters(), is(equalTo(externalCallParameters)));
 	}
 
 	/**
@@ -363,13 +363,13 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any RdiasToBeMeasured",
 			BLACKBOARD_FACTORY.getEmpty().getRdiasToBeMeasured(), is(empty()));
 
-		final Set<ResourceDemandingInternalAction> rdiaSet =
-			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getRdiasToBeMeasured();
-		final Set<ResourceDemandingInternalAction> clone = new HashSet<ResourceDemandingInternalAction>();
-		clone.addAll(rdiaSet);
-		rdiaSet.removeAll(rdiaSet);
+		final Blackboard testedBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Set<ResourceDemandingInternalAction> blackboardSet = testedBlackboard.getRdiasToBeMeasured();
+		final Set<ResourceDemandingInternalAction> rdiasToBeMeasured =
+			new HashSet<ResourceDemandingInternalAction>(blackboardSet);
+		blackboardSet.remove(rdiasToBeMeasured.iterator().next());
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getRdiasToBeMeasured(), is(equalTo(clone)));
+			testedBlackboard.getRdiasToBeMeasured(), is(equalTo(rdiasToBeMeasured)));
 
 	}
 
@@ -393,13 +393,12 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any SeffBranchesToBeMeasured",
 			BLACKBOARD_FACTORY.getEmpty().getSeffBranchesToBeMeasured(), is(empty()));
 
-		final Set<SeffBranch> seffBranchSet =
-			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffBranchesToBeMeasured();
-		final Set<SeffBranch> clone = new HashSet<SeffBranch>();
-		clone.addAll(seffBranchSet);
-		seffBranchSet.removeAll(seffBranchSet);
+		final Blackboard testedBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Set<SeffBranch> blackboardSet = testedBlackboard.getSeffBranchesToBeMeasured();
+		final Set<SeffBranch> branchesToBeMeasured = new HashSet<SeffBranch>(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffBranchesToBeMeasured(), is(equalTo(clone)));
+			testedBlackboard.getSeffBranchesToBeMeasured(), is(equalTo(branchesToBeMeasured)));
 	}
 
 	/**
@@ -422,12 +421,12 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any SeffLoopsToBeMeasured",
 			BLACKBOARD_FACTORY.getEmpty().getSeffLoopsToBeMeasured(), is(empty()));
 
-		final Set<SeffLoop> seffLoopSet = BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffLoopsToBeMeasured();
-		final Set<SeffLoop> clone = new HashSet<SeffLoop>();
-		clone.addAll(seffLoopSet);
-		seffLoopSet.removeAll(seffLoopSet);
+		final Blackboard testedBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Set<SeffLoop> blackboardSet = testedBlackboard.getSeffLoopsToBeMeasured();
+		final Set<SeffLoop> loopsToBeMeasured = new HashSet<SeffLoop>(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getSeffLoopsToBeMeasured(), is(equalTo(clone)));
+			testedBlackboard.getSeffLoopsToBeMeasured(), is(equalTo(loopsToBeMeasured)));
 	}
 
 	/**
@@ -451,14 +450,12 @@ public class BlackboardTest {
 		assertThat("Empty blackboard should not contain any ExternalCallParametersToBeMeasured",
 			BLACKBOARD_FACTORY.getEmpty().getExternalCallParametersToBeMeasured(), is(empty()));
 
-		final Set<ExternalCallParameter> externalCallParameterSet =
-			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getExternalCallParametersToBeMeasured();
-		final Set<ExternalCallParameter> clone = new HashSet<ExternalCallParameter>();
-		clone.addAll(externalCallParameterSet);
-		externalCallParameterSet.removeAll(externalCallParameterSet);
+		final Blackboard testedBlackboard = BLACKBOARD_FACTORY.getFull();
+		final Set<ExternalCallParameter> blackboardSet = testedBlackboard.getExternalCallParametersToBeMeasured();
+		final Set<ExternalCallParameter> parametersToBeMeasured = new HashSet<ExternalCallParameter>(blackboardSet);
+		blackboardSet.removeAll(blackboardSet);
 		assertThat("Blackboard getter-methods should return copies of Sets, not their own!",
-			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getExternalCallParametersToBeMeasured(),
-			is(equalTo(clone)));
+			testedBlackboard.getExternalCallParametersToBeMeasured(), is(equalTo(parametersToBeMeasured)));
 	}
 
 	/**
@@ -483,8 +480,7 @@ public class BlackboardTest {
 		Blackboard blackboardTemp =
 			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredRdias(rdiaSet);
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredRdias, is(notAcceptingNull(RDIA_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredRdias, is(notAcceptingNull(Arrays.asList(RDIA_FACTORY.getAll()))));
 
@@ -493,9 +489,8 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
 			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredRdias(rdiaSetTwo),
 			throwsException(IllegalArgumentException.class));
-		
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredRdias(rdiaSet.toArray(new ResourceDemandingInternalAction[0]));
 	}
 
@@ -521,8 +516,7 @@ public class BlackboardTest {
 		Blackboard blackboardTemp =
 			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredSeffBranches(seffBranchSet);
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredSeffBranches, is(notAcceptingNull(SEFF_BRANCH_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredSeffBranches,
 			is(notAcceptingNull(Arrays.asList(SEFF_BRANCH_FACTORY.getAll()))));
@@ -532,9 +526,8 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
 			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffBranches(seffBranchSetTwo),
 			throwsException(IllegalArgumentException.class));
-		
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredSeffBranches(seffBranchSet.toArray(new SeffBranch[0]));
 	}
 
@@ -559,8 +552,7 @@ public class BlackboardTest {
 		Blackboard blackboardTemp =
 			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredSeffLoops(seffLoopSet);
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredSeffLoops, is(notAcceptingNull(SEFF_LOOP_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredSeffLoops,
 			is(notAcceptingNull(Arrays.asList(SEFF_LOOP_FACTORY.getAll()))));
@@ -570,9 +562,8 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
 			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredSeffLoops(seffLoopSetTwo),
 			throwsException(IllegalArgumentException.class));
-		
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredSeffLoops(seffLoopSet.toArray(new SeffLoop[0]));
 	}
 
@@ -599,8 +590,7 @@ public class BlackboardTest {
 		Blackboard blackboardTemp =
 			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredExternalCallParameters(ecpSet);
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		assertThat(blackboardTemp::addToBeMeasuredExternalCallParameters,
 			is(notAcceptingNull(EXTERNAL_CALL_PARAMETER_FACTORY.getAll())));
 		assertThat(blackboardTemp::addToBeMeasuredExternalCallParameters,
@@ -611,9 +601,8 @@ public class BlackboardTest {
 		assertThat("It must not be possible to add unknown elements to the Blackboard Measurement sets!",
 			() -> BLACKBOARD_FACTORY.getEmpty().addToBeMeasuredExternalCallParameters(externalCallParameterSetTwo),
 			throwsException(IllegalArgumentException.class));
-		
-		blackboardTemp =
-			new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
+
+		blackboardTemp = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, ecpSet, EVA_EX_FACTORY.getOne());
 		blackboardTemp.addToBeMeasuredExternalCallParameters(ecpSet.toArray(new ExternalCallParameter[0]));
 	}
 
@@ -642,17 +631,31 @@ public class BlackboardTest {
 				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllRdias().iterator().next()),
 			is(notNullValue()));
 
-		final ResourceDemandingInternalAction rdia = null;
 		assertThat(
 			"It must not be possible to call getMeasurementResultsFor(ResourceDemandingInternalAction) for null as parameter",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(rdia),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor((ResourceDemandingInternalAction) null),
 			throwsException(NullPointerException.class));
 
-		final ResourceDemandingInternalAction rdiaTwo = RDIA_FACTORY.getOne();
+		final ResourceDemandingInternalAction anyRdia = RDIA_FACTORY.getOne();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(rdiaTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(anyRdia),
 			throwsException(IllegalArgumentException.class));
 
+		Blackboard testedBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Iterator<ResourceDemandingInternalAction> rdias = testedBlackboard.getAllRdias().iterator();
+		ResourceDemandingInternalAction rdia = rdias.next();
+		final ResourceDemandMeasurementResult result = MEAUSUREMENT_RESULT_FACTORY.getRdiaResults()[0];
+		testedBlackboard.addMeasurementResultFor(rdia, result);
+		assertThat(testedBlackboard.getMeasurementResultsFor(rdia), contains(result));
+		assertThat(testedBlackboard.getMeasurementResultsFor(rdias.next()), is(empty()));
+
+		testedBlackboard = BLACKBOARD_FACTORY.getFull();
+		rdia = testedBlackboard.getAllRdias().iterator().next();
+		final Set<ResourceDemandMeasurementResult> blackboardSet = testedBlackboard.getMeasurementResultsFor(rdia);
+		final Set<ResourceDemandMeasurementResult> results = new HashSet<>(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
+		assertThat("The blackboard must return copies of its sets!", testedBlackboard.getMeasurementResultsFor(rdia),
+			is(equalTo(results)));
 	}
 
 	/**
@@ -671,22 +674,37 @@ public class BlackboardTest {
 	 */
 	@Test
 	public void getMeasurementResultsForSeffBranch() {
-
 		assertThat(
 			"Blackboard should not return null for valid input parameters in getMeasurementResultsFor(SeffBranch)",
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getMeasurementResultsFor(
 				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffBranches().iterator().next()),
 			is(notNullValue()));
 
-		final SeffBranch seffBranch = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffBranch) for null as parameter",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffBranch),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor((SeffBranch) null),
 			throwsException(NullPointerException.class));
 
-		final SeffBranch seffBranchTwo = SEFF_BRANCH_FACTORY.getOne();
+		final SeffBranch anySeffBranch = SEFF_BRANCH_FACTORY.getOne();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffBranchTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(anySeffBranch),
 			throwsException(IllegalArgumentException.class));
+
+		Blackboard testedBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Iterator<SeffBranch> branches = testedBlackboard.getAllSeffBranches().iterator();
+		SeffBranch seffBranch = branches.next();
+		final BranchDecisionMeasurementResult result = MEAUSUREMENT_RESULT_FACTORY.getBranchResults()[0];
+		testedBlackboard.addMeasurementResultFor(seffBranch, result);
+		assertThat(testedBlackboard.getMeasurementResultsFor(seffBranch), contains(result));
+		assertThat(testedBlackboard.getMeasurementResultsFor(branches.next()), is(empty()));
+
+		testedBlackboard = BLACKBOARD_FACTORY.getFull();
+		seffBranch = testedBlackboard.getAllSeffBranches().iterator().next();
+		final Set<BranchDecisionMeasurementResult> blackboardSet =
+			testedBlackboard.getMeasurementResultsFor(seffBranch);
+		final Set<BranchDecisionMeasurementResult> results = new HashSet<>(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
+		assertThat("The blackboard must return copies of its sets!",
+			testedBlackboard.getMeasurementResultsFor(seffBranch), is(equalTo(results)));
 	}
 
 	/**
@@ -711,15 +729,31 @@ public class BlackboardTest {
 				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllSeffLoops().iterator().next()),
 			is(notNullValue()));
 
-		final SeffLoop seffLoop = null;
 		assertThat("It must not be possible to call getMeasurementResultsFor(SeffLoop) for null as parameter",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffLoop),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor((SeffLoop) null),
 			throwsException(NullPointerException.class));
 
-		final SeffLoop seffLoopTwo = SEFF_LOOP_FACTORY.getOne();
+		final SeffLoop anySeffLoop = SEFF_LOOP_FACTORY.getOne();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(seffLoopTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(anySeffLoop),
 			throwsException(IllegalArgumentException.class));
+
+		Blackboard testedBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Iterator<SeffLoop> loops = testedBlackboard.getAllSeffLoops().iterator();
+		SeffLoop seffLoop = loops.next();
+		final LoopRepetitionCountMeasurementResult result = MEAUSUREMENT_RESULT_FACTORY.getLoopResults()[0];
+		testedBlackboard.addMeasurementResultFor(seffLoop, result);
+		assertThat(testedBlackboard.getMeasurementResultsFor(seffLoop), contains(result));
+		assertThat(testedBlackboard.getMeasurementResultsFor(loops.next()), is(empty()));
+
+		testedBlackboard = BLACKBOARD_FACTORY.getFull();
+		seffLoop = testedBlackboard.getAllSeffLoops().iterator().next();
+		final Set<LoopRepetitionCountMeasurementResult> blackboardSet =
+			testedBlackboard.getMeasurementResultsFor(seffLoop);
+		final Set<LoopRepetitionCountMeasurementResult> results = new HashSet<>(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
+		assertThat("The blackboard must return copies of its sets!",
+			testedBlackboard.getMeasurementResultsFor(seffLoop), is(equalTo(results)));
 	}
 
 	/**
@@ -746,16 +780,32 @@ public class BlackboardTest {
 				BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getAllExternalCallParameters().iterator().next()),
 			is(notNullValue()));
 
-		final ExternalCallParameter externalCallParameter = null;
 		assertThat(
 			"It must not be possible to call getMeasurementResultsFor(externalCallParameter) for null as parameter",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(externalCallParameter),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor((ExternalCallParameter) null),
 			throwsException(NullPointerException.class));
 
-		final ExternalCallParameter externalCallParameterTwo = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
+		final ExternalCallParameter anyExternalCallParameter = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
 		assertThat("It must not be possible to ask for unknown elements on the Blackboard Measurement Result sets!",
-			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(externalCallParameterTwo),
+			() -> BLACKBOARD_FACTORY.getEmpty().getMeasurementResultsFor(anyExternalCallParameter),
 			throwsException(IllegalArgumentException.class));
+
+		Blackboard testedBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		final Iterator<ExternalCallParameter> parameters = testedBlackboard.getAllExternalCallParameters().iterator();
+		ExternalCallParameter externalCallParameter = parameters.next();
+		final ParameterChangeMeasurementResult result = MEAUSUREMENT_RESULT_FACTORY.getParameterResults()[0];
+		testedBlackboard.addMeasurementResultFor(externalCallParameter, result);
+		assertThat(testedBlackboard.getMeasurementResultsFor(externalCallParameter), contains(result));
+		assertThat(testedBlackboard.getMeasurementResultsFor(parameters.next()), is(empty()));
+
+		testedBlackboard = BLACKBOARD_FACTORY.getFull();
+		externalCallParameter = testedBlackboard.getAllExternalCallParameters().iterator().next();
+		final Set<ParameterChangeMeasurementResult> blackboardSet =
+			testedBlackboard.getMeasurementResultsFor(externalCallParameter);
+		final Set<ParameterChangeMeasurementResult> results = new HashSet<>(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
+		assertThat("The blackboard must return copies of its sets!",
+			testedBlackboard.getMeasurementResultsFor(externalCallParameter), is(equalTo(results)));
 	}
 
 	/**
@@ -923,12 +973,14 @@ public class BlackboardTest {
 	@Test
 	public void getProposedExpressionFor() {
 		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
-		final ResourceDemandingInternalAction rdia = testBlackboard.getAllRdias().iterator().next();
+		final Iterator<ResourceDemandingInternalAction> rdias = testBlackboard.getAllRdias().iterator();
+		final ResourceDemandingInternalAction rdia = rdias.next();
 		final EvaluableExpression evaEx = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		testBlackboard.addProposedExpressionFor(rdia, evaEx);
 
 		assertThat("Proposed Expression should return an expression that have been added by \"addProposedExpression\"",
 			testBlackboard.getProposedExpressionFor(rdia), contains(evaEx));
+		assertThat(testBlackboard.getProposedExpressionFor(rdias.next()), is(empty()));
 
 		assertThat("Proposed Expression should not return null for valid input parameters!",
 			BLACKBOARD_FACTORY.getWithToBeMeasuredContent().getProposedExpressionFor(
@@ -955,6 +1007,14 @@ public class BlackboardTest {
 		assertThat("It must not be possible to ask for proposed Expressions of unknown elements!",
 			() -> BLACKBOARD_FACTORY.getEmpty().getProposedExpressionFor(ecpElement),
 			throwsException(IllegalArgumentException.class));
+
+		final Blackboard testedBlackboard = BLACKBOARD_FACTORY.getFull();
+		final MeasurableSeffElement seffElement = testedBlackboard.getAllExternalCallParameters().iterator().next();
+		final Set<EvaluableExpression> blackboardSet = testedBlackboard.getProposedExpressionFor(seffElement);
+		final Set<EvaluableExpression> expressions = new HashSet<>(blackboardSet);
+		blackboardSet.remove(blackboardSet.iterator().next());
+		assertThat("The blackboard must return copies", testedBlackboard.getProposedExpressionFor(seffElement),
+			is(equalTo(expressions)));
 	}
 
 	/**
