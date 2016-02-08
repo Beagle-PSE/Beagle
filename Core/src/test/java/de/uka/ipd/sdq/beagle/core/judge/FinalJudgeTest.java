@@ -134,7 +134,7 @@ public class FinalJudgeTest {
 
 				assertThat(
 					String.format("The final judge must not end the analysis while there’s still great improvement "
-						+ "(stopped after %d iterations)", i),
+						+ "(stopped after %d iterations)", i * this.allSeffElements.size()),
 					this.testedJudge.judge(this.testBlackboard), CONTINUES_ANALYSIS);
 			}
 		}
