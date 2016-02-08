@@ -6,12 +6,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
+ * ****************************EXTINCT************************************************************
  * This parser is a draft that can only provide proper functionality if SoMoX does not
  * change its naming convention for EntityNames. It offers one method
  * {@link PcmNameParser#parse} to read out the {@link CodeSection CodeSections} in a given
  * String. Attention! This Parser can not read out as much as desired for the
  * {@link CodeSection}. For more information, read through the java-doc of the method
  * {@link parse}.
+ * ***********************************************************************************************
+ * No more usage of this class is made so far.
  * 
  * @author Ansgar Spiegler
  *
