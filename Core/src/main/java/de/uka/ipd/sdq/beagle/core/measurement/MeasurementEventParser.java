@@ -364,7 +364,7 @@ public class MeasurementEventParser {
 				if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
 					|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
 						+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
-					// We have not continous loop body executions, so we create a new
+					// We have not continuous loop body executions, so we create a new
 					// execution event.
 					this.loopFinished();
 					this.currentLoopCounts.push(new LoopExecutionCounter());
@@ -390,12 +390,14 @@ public class MeasurementEventParser {
 						// The actual closing
 						this.loopFinished();
 
-						// The invariant for this stack
-						assert this.currentLoopCounts.peek().isOpen;
-						// allows us to just close the next layer.
-						this.currentLoopCounts.peek().isOpen = false;
-						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
-							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
+						if (!this.currentLoopCounts.isEmpty()) {
+							// The invariant for this stack
+							assert this.currentLoopCounts.peek().isOpen;
+							// allows us to just close the next layer.
+							this.currentLoopCounts.peek().isOpen = false;
+							this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
+								MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
+						}
 					}
 				}
 				// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
