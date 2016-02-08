@@ -11,7 +11,7 @@ import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 public class EvaluableExpressionFitnessFunctionFactory {
 
 	/**
-	 * Creates a new FitnessFunction
+	 * Creates a new FitnessFunction.
 	 * 
 	 * @return EvaluableExpressionFitnessFunction. You may not make any assumptions about
 	 *         it.
