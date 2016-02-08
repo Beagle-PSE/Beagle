@@ -17,7 +17,6 @@ import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.instrument.IllegalClassFormatException;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -49,7 +48,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * elements</em>.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
-	 * @throws IllegalClassFormatException If input parameter does not represent a valid
+	 * @throws IllegalArgumentException If input parameter does not represent a valid
 	 *             repository file.
 	 */
 	public PcmRepositoryBlackboardFactory(final String repositoryFileName) {
