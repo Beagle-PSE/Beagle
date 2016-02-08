@@ -6,9 +6,16 @@ import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -82,6 +89,17 @@ public class BlackboardFactory {
 	}
 
 	/**
+	 * Creates a new blackboard, filled only with few measurable seff elements.
+	 *
+	 * @return A new blackboard instance with few data.
+	 */
+	public Blackboard getWithFewElements() {
+		return new Blackboard(some(RDIA_FACTORY.getAll(), 2), some(SEFF_BRANCH_FACTORY.getAll(), 2),
+			some(SEFF_LOOP_FACTORY.getAll(), 2), some(EXTERNAL_CALL_PARAMETER_FACTORY.getAll(), 2),
+			EVA_EX_FACTORY.getOne());
+	}
+
+	/**
 	 * Creates a copy of the provided Blackboard that has the provided fitness function
 	 * set.
 	 *
@@ -96,6 +114,37 @@ public class BlackboardFactory {
 			sourceBlackboard.getAllSeffLoops(), sourceBlackboard.getAllExternalCallParameters(), fitnessFunction);
 		this.copyAll(sourceBlackboard, copy);
 		return copy;
+	}
+
+	/**
+	 * Extracts {@code count} elements from an array.
+	 *
+	 * @param inputArray The array to get the elements from. Must contain at least
+	 *            {@code count} elements.
+	 * @param count How many elements the returned set should contain.
+	 * @param <T> The elements’ type.
+	 * @return A subset of {@code inputArray} containing {@code count} elements.
+	 */
+	private static <T> Set<T> some(final T[] inputArray, final int count) {
+		return some(Arrays.asList(inputArray), count);
+	}
+
+	/**
+	 * Extracts {@code count} elements from a set.
+	 *
+	 * @param inputSet The array to get the elements from. Must contain at least
+	 *            {@code count} elements.
+	 * @param count How many elements the returned set should contain.
+	 * @param <T> The elements’ type.
+	 * @return A subset of {@code inputSet} containing {@code count} elements.
+	 */
+	private static <T> Set<T> some(final Iterable<T> inputSet, final int count) {
+		final Set<T> result = new HashSet<>();
+		final Iterator<T> inputIterator = inputSet.iterator();
+		for (int c = 0; c < count; c++) {
+			result.add(inputIterator.next());
+		}
+		return result;
 	}
 
 	/**

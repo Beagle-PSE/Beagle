@@ -34,7 +34,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
 	 * the application started so evolution of evaluable expressions will be continued.
 	 */
-	private static final long MAX_TIME_PASSED = 3 * 24 * 3600;
+	private static final long MAX_TIME_PASSED = 3 * 24 * 3600 * 1000;
 
 	/**
 	 * If more generations than this have less than {@link #SIGNIFICANT_IMPROVEMENT}
@@ -260,8 +260,20 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 			}
 		}
 
-		final double overallFitniss = totalDeviation / numberOfCountedElements;
-		final double relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;
+		final double overallFitniss;
+		if (numberOfCountedElements == 0) {
+			overallFitniss = 0;
+		} else {
+			overallFitniss = totalDeviation / numberOfCountedElements;
+		}
+
+		final double relativeImprovement;
+		if (fitnessBaselineValue == 0) {
+			relativeImprovement = 0;
+		} else {
+			relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;
+		}
+
 		if (relativeImprovement > SIGNIFICANT_IMPROVEMENT) {
 			// There was significant improvement so note the new value and set the number
 			// of generations without significant improvement passed back to 0.

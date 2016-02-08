@@ -8,7 +8,6 @@ import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -593,13 +592,5 @@ public class Blackboard implements Serializable {
 		 * #privateWrittenData}.
 		 */
 		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);
-	}
-
-	@Override
-	public int hashCode() {
-		// you pick a hard-coded, randomly chosen, non-zero, odd number
-		// ideally different for each class
-		return new HashCodeBuilder(13, 31).append(this.rdias).append(this.branches).append(this.loops)
-			.append(this.externalCalls).toHashCode();
 	}
 }
