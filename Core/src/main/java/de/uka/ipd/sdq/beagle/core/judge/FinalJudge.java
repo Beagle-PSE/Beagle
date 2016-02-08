@@ -129,9 +129,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	private void measure(final Blackboard blackboard) {
 		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
 
-		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
-		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
-		final Set<ResourceDemandingInternalAction> rdias = blackboard.getRdiasToBeMeasured();
+		final Set<SeffBranch> seffBranches = blackboard.getAllSeffBranches();
+		final Set<SeffLoop> seffLoops = blackboard.getAllSeffLoops();
+		final Set<ResourceDemandingInternalAction> rdias = blackboard.getAllRdias();
 
 		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
 		this.measureFitness(seffLoops, blackboard, fitnessFunction::gradeFor);
