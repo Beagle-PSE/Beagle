@@ -154,8 +154,11 @@ public class MeasurementControllerBlackboardViewTest {
 		assertThat("Two MeasurementControllerBlackboardViews should not be equal,"
 			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
 		
-		assertThat("The Equals function should work properly for null, same instances and other objects",
-			emptyViewOne, EqualsMatcher.hasDefaultEqualsProperties());
+		assertThat("An blackboardview is never equal to null",
+			emptyViewOne, not(equalTo(null)));
+		
+		assertThat("The same blackboardview reference should return TRUE for equals()",
+			emptyViewOne, is(equalTo(emptyViewOne)));
 	}
 
 	/**
