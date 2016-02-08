@@ -148,9 +148,11 @@ implements java.io.Serializable</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#Blackboard-java.util.Set-java.util.Set-java.util.Set-">Blackboard</a></span>(java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;rdias,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#Blackboard-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">Blackboard</a></span>(java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;rdias,
           java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;branches,
-          java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;loops)</code>
+          java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;loops,
+          java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&gt;&nbsp;externalCalls,
+          <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)</code>
 <div class="block">Creates a new blackboard that can be used to analyse the given elements.</div>
 </td>
 </tr>
@@ -218,37 +220,37 @@ implements java.io.Serializable</pre>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredRdias-java.util.Collection-">addToBeMeasuredRdias</a></span>(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;rdias)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredRdias-java.util.Collection-">addToBeMeasuredRdias</a></span>(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;toMeasureRdias)</code>
 <div class="block">Reports that <code>rdias</code> shall be measured for its resource demands.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredRdias-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction...-">addToBeMeasuredRdias</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>...&nbsp;rdias)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredRdias-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction...-">addToBeMeasuredRdias</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>...&nbsp;toMeasureRdias)</code>
 <div class="block">Reports that <code>rdias</code> shall be measured for its resource demands.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffBranches-java.util.Collection-">addToBeMeasuredSeffBranches</a></span>(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;branches)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffBranches-java.util.Collection-">addToBeMeasuredSeffBranches</a></span>(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;toMeasureBranches)</code>
 <div class="block">Reports that <code>branches</code> shall be measured for its branch decisions.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffBranches-de.uka.ipd.sdq.beagle.core.SeffBranch...-">addToBeMeasuredSeffBranches</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>...&nbsp;branches)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffBranches-de.uka.ipd.sdq.beagle.core.SeffBranch...-">addToBeMeasuredSeffBranches</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>...&nbsp;toMeasureBranches)</code>
 <div class="block">Reports that <code>branches</code> shall be measured for its branch decisions.</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffLoops-java.util.Collection-">addToBeMeasuredSeffLoops</a></span>(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;loops)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffLoops-java.util.Collection-">addToBeMeasuredSeffLoops</a></span>(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;toMeasureLoops)</code>
 <div class="block">Reports that <code>loops</code> shall be measured for its repetitions.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffLoops-de.uka.ipd.sdq.beagle.core.SeffLoop...-">addToBeMeasuredSeffLoops</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>...&nbsp;loops)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffLoops-de.uka.ipd.sdq.beagle.core.SeffLoop...-">addToBeMeasuredSeffLoops</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>...&nbsp;toMeasureLoops)</code>
 <div class="block">Reports that <code>loops</code> shall be measured for its repetitions.</div>
 </td>
 </tr>
@@ -286,7 +288,7 @@ implements java.io.Serializable</pre>
 </td>
 </tr>
 <tr id="i18" class="altColor">
-<td class="colFirst"><code>void</code></td>
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getFinalExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-">getFinalExpressionFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/MeasurableSeffElement.html" title="interface in de.uka.ipd.sdq.beagle.core">MeasurableSeffElement</a>&nbsp;element)</code>
 <div class="block">Returns the final expression set for <code>element</code>.</div>
 </td>
@@ -395,7 +397,7 @@ implements java.io.Serializable</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Blackboard-java.util.Set-java.util.Set-java.util.Set-">
+<a name="Blackboard-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -403,13 +405,17 @@ implements java.io.Serializable</pre>
 <h4>Blackboard</h4>
 <pre>public&nbsp;Blackboard(java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;rdias,
                   java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;branches,
-                  java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;loops)</pre>
+                  java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;loops,
+                  java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&gt;&nbsp;externalCalls,
+                  <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)</pre>
 <div class="block">Creates a new blackboard that can be used to analyse the given elements.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>rdias</code> - All resource demanding internal action to be known to analysers.</dd>
 <dd><code>branches</code> - All SEFF branches to be known to analysers.</dd>
 <dd><code>loops</code> - All SEFF loops to be known to analysers.</dd>
+<dd><code>externalCalls</code> - All external call parameter to be known to analysers.</dd>
+<dd><code>fitnessFunction</code> - The function to get better evaluable expression results.</dd>
 </dl>
 </li>
 </ul>
@@ -554,12 +560,12 @@ implements java.io.Serializable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToBeMeasuredRdias</h4>
-<pre>public&nbsp;void&nbsp;addToBeMeasuredRdias(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>...&nbsp;rdias)</pre>
+<pre>public&nbsp;void&nbsp;addToBeMeasuredRdias(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>...&nbsp;toMeasureRdias)</pre>
 <div class="block">Reports that <code>rdias</code> shall be measured for its resource demands.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>rdias</code> - Resource demanding internal actions that shall be measured. Must not
-            be <code>null</code> and must be known to this blackboard.</dd>
+<dd><code>toMeasureRdias</code> - Resource demanding internal actions that shall be measured.
+            Must not be <code>null</code> and must be known to this blackboard.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredRdias-java.util.Collection-"><code>addToBeMeasuredRdias(Collection)</code></a></dd>
 </dl>
@@ -571,12 +577,12 @@ implements java.io.Serializable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToBeMeasuredRdias</h4>
-<pre>public&nbsp;void&nbsp;addToBeMeasuredRdias(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;rdias)</pre>
+<pre>public&nbsp;void&nbsp;addToBeMeasuredRdias(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;toMeasureRdias)</pre>
 <div class="block">Reports that <code>rdias</code> shall be measured for its resource demands.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>rdias</code> - Resource demanding internal actions that shall be measured. Must not
-            be <code>null</code> and must be known to this blackboard.</dd>
+<dd><code>toMeasureRdias</code> - Resource demanding internal actions that shall be measured.
+            Must not be <code>null</code> and must be known to this blackboard.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredRdias-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction...-"><code>addToBeMeasuredRdias(ResourceDemandingInternalAction...)</code></a></dd>
 </dl>
@@ -588,12 +594,12 @@ implements java.io.Serializable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToBeMeasuredSeffBranches</h4>
-<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffBranches(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>...&nbsp;branches)</pre>
+<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffBranches(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>...&nbsp;toMeasureBranches)</pre>
 <div class="block">Reports that <code>branches</code> shall be measured for its branch decisions.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>branches</code> - SEFF branches that shall be measured. Must not be <code>null</code> and
-            must be known to this blackboard.</dd>
+<dd><code>toMeasureBranches</code> - SEFF branches that shall be measured. Must not be
+            <code>null</code> and must be known to this blackboard.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffBranches-java.util.Collection-"><code>addToBeMeasuredSeffBranches(Collection)</code></a></dd>
 </dl>
@@ -605,12 +611,12 @@ implements java.io.Serializable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToBeMeasuredSeffBranches</h4>
-<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffBranches(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;branches)</pre>
+<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffBranches(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;toMeasureBranches)</pre>
 <div class="block">Reports that <code>branches</code> shall be measured for its branch decisions.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>branches</code> - SEFF branches that shall be measured. Must not be <code>null</code> and
-            must be known to this blackboard.</dd>
+<dd><code>toMeasureBranches</code> - SEFF branches that shall be measured. Must not be
+            <code>null</code> and must be known to this blackboard.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffBranches-de.uka.ipd.sdq.beagle.core.SeffBranch...-"><code>addToBeMeasuredSeffBranches(SeffBranch...)</code></a></dd>
 </dl>
@@ -622,12 +628,12 @@ implements java.io.Serializable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToBeMeasuredSeffLoops</h4>
-<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffLoops(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>...&nbsp;loops)</pre>
+<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffLoops(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>...&nbsp;toMeasureLoops)</pre>
 <div class="block">Reports that <code>loops</code> shall be measured for its repetitions.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>loops</code> - SEFF Loops that shall be measured. Must not be <code>null</code> and must
-            be known to this blackboard.</dd>
+<dd><code>toMeasureLoops</code> - SEFF Loops that shall be measured. Must not be <code>null</code>
+            and must be known to this blackboard.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffLoops-java.util.Collection-"><code>addToBeMeasuredSeffLoops(Collection)</code></a></dd>
 </dl>
@@ -639,12 +645,12 @@ implements java.io.Serializable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>addToBeMeasuredSeffLoops</h4>
-<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffLoops(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;loops)</pre>
+<pre>public&nbsp;void&nbsp;addToBeMeasuredSeffLoops(java.util.Collection&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;toMeasureLoops)</pre>
 <div class="block">Reports that <code>loops</code> shall be measured for its repetitions.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>loops</code> - SEFF Loops that shall be measured. Must not be <code>null</code> and must
-            be known to this blackboard.</dd>
+<dd><code>toMeasureLoops</code> - SEFF Loops that shall be measured. Must not be <code>null</code>
+            and must be known to this blackboard.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#addToBeMeasuredSeffLoops-de.uka.ipd.sdq.beagle.core.SeffLoop...-"><code>addToBeMeasuredSeffLoops(SeffLoop...)</code></a></dd>
 </dl>
@@ -865,7 +871,7 @@ implements java.io.Serializable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getFinalExpressionFor</h4>
-<pre>public&nbsp;void&nbsp;getFinalExpressionFor(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/MeasurableSeffElement.html" title="interface in de.uka.ipd.sdq.beagle.core">MeasurableSeffElement</a>&nbsp;element)</pre>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;getFinalExpressionFor(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/MeasurableSeffElement.html" title="interface in de.uka.ipd.sdq.beagle.core">MeasurableSeffElement</a>&nbsp;element)</pre>
 <div class="block">Returns the final expression set for <code>element</code>. The return value of this
  method may change if
  <a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#setFinalExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-"><code>setFinalExpressionFor(MeasurableSeffElement, EvaluableExpression)</code></a> is
@@ -874,6 +880,9 @@ implements java.io.Serializable</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>element</code> - A SEFF element. Must not be <code>null</code>.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The expression momentarily marked to be the final for <code>element</code>.
+         <code>null</code> if no expression has been marked yet.</dd>
 </dl>
 </li>
 </ul>
@@ -938,6 +947,8 @@ implements java.io.Serializable</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>writer</code> - The class the data should be written for. Must not be <code>null</code>.</dd>
 <dd><code>written</code> - The data to write.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#readFor-java.lang.Class-"><code>readFor(Class)</code></a></dd>
 </dl>
 </li>
 </ul>
