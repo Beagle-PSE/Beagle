@@ -53,8 +53,11 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 <span class="fc bfc" id="L53" title="All 2 branches covered.">		if (object == this) {</span>
 <span class="fc" id="L54">			return true;</span>
 		}
-<span class="fc" id="L56">		final ReadOnlyMeasurementControllerBlackboardView other = (ReadOnlyMeasurementControllerBlackboardView) object;</span>
-<span class="fc bfc" id="L57" title="All 2 branches covered.">		return this.blackboard == other.blackboard;</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">		if (object.getClass() != ReadOnlyMeasurementControllerBlackboardView.class) {</span>
+<span class="fc" id="L57">			return false;</span>
+		}
+<span class="fc" id="L59">		final ReadOnlyMeasurementControllerBlackboardView other = (ReadOnlyMeasurementControllerBlackboardView) object;</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		return this.blackboard == other.blackboard;</span>
 	}
 
 	/**
@@ -66,7 +69,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set&lt;ResourceDemandingInternalAction&gt; getRdiasToBeMeasured() {
-<span class="fc" id="L69">		return this.blackboard.getRdiasToBeMeasured();</span>
+<span class="fc" id="L72">		return this.blackboard.getRdiasToBeMeasured();</span>
 	}
 
 	/**
@@ -78,7 +81,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set&lt;SeffBranch&gt; getSeffBranchesToBeMeasured() {
-<span class="fc" id="L81">		return this.blackboard.getSeffBranchesToBeMeasured();</span>
+<span class="fc" id="L84">		return this.blackboard.getSeffBranchesToBeMeasured();</span>
 	}
 
 	/**
@@ -90,7 +93,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set&lt;SeffLoop&gt; getSeffLoopsToBeMeasured() {
-<span class="fc" id="L93">		return this.blackboard.getSeffLoopsToBeMeasured();</span>
+<span class="fc" id="L96">		return this.blackboard.getSeffLoopsToBeMeasured();</span>
 	}
 
 	/**
@@ -103,7 +106,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
 	public Set&lt;ExternalCallParameter&gt; getExternalCallParametersToBeMeasured() {
-<span class="fc" id="L106">		return this.blackboard.getExternalCallParametersToBeMeasured();</span>
+<span class="fc" id="L109">		return this.blackboard.getExternalCallParametersToBeMeasured();</span>
 	}
 
 	/**
@@ -115,7 +118,7 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-<span class="fc" id="L118">		return this.blackboard.getFitnessFunction();</span>
+<span class="fc" id="L121">		return this.blackboard.getFitnessFunction();</span>
 	}
 
 	/**
@@ -131,14 +134,14 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="fc" id="L134">		return this.blackboard.readFor(writer);</span>
+<span class="fc" id="L137">		return this.blackboard.readFor(writer);</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L141">		return new HashCodeBuilder(135, 153).append(this.blackboard).toHashCode();</span>
+<span class="fc" id="L144">		return new HashCodeBuilder(135, 153).append(this.blackboard).toHashCode();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
