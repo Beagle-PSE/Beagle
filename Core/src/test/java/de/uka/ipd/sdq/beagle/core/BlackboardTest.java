@@ -12,7 +12,6 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
-import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
