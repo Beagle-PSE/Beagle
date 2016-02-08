@@ -70,8 +70,11 @@ cd "$pubdir"
 # Remove all content - except the git files and the branches folder
 find . -maxdepth 1 \! \( -name .git -o -name . -o -name branches \) -exec rm -rf {} \;
 
-# Requirements specification
+# Copy in the content
 cp -r "$BASE/Web Presence/build"/* .
+
+# Keep gh-pages from considering some resources as "special" and hiding them
+touch .nojekyll
 
 ###
 
