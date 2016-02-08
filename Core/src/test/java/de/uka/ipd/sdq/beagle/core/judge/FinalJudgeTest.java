@@ -18,11 +18,11 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
 import org.hamcrest.Matcher;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.stubbing.Answer;
 import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,8 +32,7 @@ import java.util.Set;
  *
  * @author Joshua Gleitze
  */
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(System.class)
+@PrepareForTest(FinalJudge.class)
 public class FinalJudgeTest {
 
 	/**
@@ -50,6 +49,12 @@ public class FinalJudgeTest {
 	 * Matcher for the fact that the judge does not end the analysis.
 	 */
 	private static final Matcher<Boolean> CONTINUES_ANALYSIS = is(false);
+
+	/**
+	 * Rule loading PowerMock (to mock static methods).
+	 */
+	@Rule
+	public PowerMockRule loadPowerMock = new PowerMockRule();
 
 	/**
 	 * The Final Judge under test.
@@ -188,4 +193,5 @@ public class FinalJudgeTest {
 		}
 		assertThat("Ending the analysis must be done statelessly", decision, is(ENDS_ANALYSIS));
 	}
+
 }
