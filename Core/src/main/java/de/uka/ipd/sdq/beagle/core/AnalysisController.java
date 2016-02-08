@@ -107,8 +107,10 @@ public class AnalysisController {
 		Validate.notNull(blackboard);
 		Validate.notNull(measurementTools);
 		Validate.notNull(measurementResultAnalysers);
+		Validate.notNull(proposedExpressionAnalysers);
 		Validate.noNullElements(measurementTools);
 		Validate.noNullElements(measurementResultAnalysers);
+		Validate.noNullElements(proposedExpressionAnalysers);
 
 		this.blackboard = blackboard;
 		this.measurementController = new MeasurementController(measurementTools);
