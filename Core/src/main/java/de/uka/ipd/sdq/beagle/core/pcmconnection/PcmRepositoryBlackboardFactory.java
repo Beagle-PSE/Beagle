@@ -95,7 +95,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *             found at the specified path in the repository-file.
 	 */
 	public Blackboard getBlackboardForAllElements() throws FileNotFoundException {
-
+		this.pcmExtractor = new PcmRepositoryExtractor();
 		return this.pcmExtractor.getBlackboardForAllElements(this.repository);
 
 	}
@@ -131,7 +131,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *             found at the specified path in the repository-file.
 	 */
 	public Blackboard getBlackboardForIds(final Collection<String> identifiers) throws FileNotFoundException {
-
+		this.pcmExtractor = new PcmRepositoryExtractor();
 		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);
 
 	}
