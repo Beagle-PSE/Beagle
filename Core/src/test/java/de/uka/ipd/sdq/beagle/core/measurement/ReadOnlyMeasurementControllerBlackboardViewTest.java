@@ -5,15 +5,16 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.theInstance;
-import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
@@ -175,9 +176,35 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 			is(theInstance(fitnessFunction)));
 	}
 
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
+	 * 
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard.
+	 *
+	 * </ul>
+	 *
+	 */
 	@Test
-	public void testReadFor() {
-		fail("Not yet implemented");
+	public void readFor() {
+		final String onBoard = new String();
+		given(this.mockedBlackboard.readFor(TestStorer.class)).willReturn(onBoard);
+		
+		final String result = this.testedView.readFor(TestStorer.class);
+		assertThat("The testedView should return the stored content it obtained from the blackboad", result,
+			is(theInstance(onBoard)));
+	}
+
+
+	
+	/**
+	 * Test {@link BlackboardStorer}.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class TestStorer implements BlackboardStorer<String> {
 	}
 
 	/**

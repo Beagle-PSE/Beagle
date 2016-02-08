@@ -18,6 +18,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -51,6 +52,18 @@ public final class MeasurementControllerBlackboardView {
 		this.blackboard = blackboard;
 	}
 
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;
+		return this.blackboard == other.blackboard;
+	}
+
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
 	 *
@@ -60,7 +73,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		return this.blackboard.getAllRdias();
+		return this.blackboard.getRdiasToBeMeasured();
 	}
 
 	/**
@@ -72,7 +85,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		return this.blackboard.getAllSeffBranches();
+		return this.blackboard.getSeffBranchesToBeMeasured();
 	}
 
 	/**
@@ -84,7 +97,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return this.blackboard.getAllSeffLoops();
+		return this.blackboard.getSeffLoopsToBeMeasured();
 	}
 
 	/**
@@ -97,7 +110,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
 	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
-		return this.blackboard.getAllExternalCallParameters();
+		return this.blackboard.getExternalCallParametersToBeMeasured();
 	}
 
 	/**
@@ -200,5 +213,12 @@ public final class MeasurementControllerBlackboardView {
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
 		this.blackboard.writeFor(writer, written);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();
 	}
 }

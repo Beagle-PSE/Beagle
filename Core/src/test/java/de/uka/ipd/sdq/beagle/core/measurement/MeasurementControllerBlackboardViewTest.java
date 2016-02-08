@@ -5,22 +5,26 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.theInstance;
-import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.same;
 import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +46,26 @@ public class MeasurementControllerBlackboardViewTest {
 	 */
 	private static final ResourceDemandingInternalActionFactory RDIA_FACTORY =
 		new ResourceDemandingInternalActionFactory();
+
+	/**
+	 * A {@link ResourceDemandingInternalAction} factory to easily obtain new instances
+	 * from.
+	 */
+	/**
+	 * A {@link SeffBranch} factory to easily obtain new instances from.
+	 */
+	private static final SeffBranchFactory SEFF_BRANCH_FACTORY = new SeffBranchFactory();
+
+	/**
+	 * A {@link SeffLoop} factory to easily obtain new instances from.
+	 */
+	private static final SeffLoopFactory SEFF_LOOP_FACTORY = new SeffLoopFactory();
+
+	/**
+	 * An {@link ExternalCallParameter} factory to easily obtain new instances from.
+	 */
+	private static final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY =
+		new ExternalCallParameterFactory();
 
 	/**
 	 * A {@link SeffBranch} factory to easily obtain new instances from.
@@ -178,7 +202,7 @@ public class MeasurementControllerBlackboardViewTest {
 	@Test
 	public void testAddMeasurementResultForResourceDemandingInternalActionResourceDemandMeasurementResult() {
 		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
-		final ResourceDemandMeasurementResult results = new ResourceDemandMeasurementResult();
+		final ResourceDemandMeasurementResult results = new ResourceDemandMeasurementResult(2.5);
 
 		this.testedView.addMeasurementResultFor(rdia, results);
 		then(this.mockedBlackboard).should().addMeasurementResultFor(same(rdia), same(results));
@@ -197,11 +221,11 @@ public class MeasurementControllerBlackboardViewTest {
 	 */
 	@Test
 	public void testAddMeasurementResultForSeffLoopLoopRepetitionCountMeasurementResult() {
-		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
-		final ResourceDemandMeasurementResult results = new ResourceDemandMeasurementResult();
+		final SeffLoop seffLoop = SEFF_LOOP_FACTORY.getOne();
+		final LoopRepetitionCountMeasurementResult results = new LoopRepetitionCountMeasurementResult(2);
 
-		this.testedView.addMeasurementResultFor(rdia, results);
-		then(this.mockedBlackboard).should().addMeasurementResultFor(same(rdia), same(results));
+		this.testedView.addMeasurementResultFor(seffLoop, results);
+		then(this.mockedBlackboard).should().addMeasurementResultFor(same(seffLoop), same(results));
 	}
 
 	/**
@@ -217,11 +241,11 @@ public class MeasurementControllerBlackboardViewTest {
 	 */
 	@Test
 	public void testAddMeasurementResultForSeffBranchBranchDecisionMeasurementResult() {
-		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
-		final ResourceDemandMeasurementResult results = new ResourceDemandMeasurementResult();
+		final SeffBranch seffBranch = SEFF_BRANCH_FACTORY.getOne();
+		final BranchDecisionMeasurementResult results = new BranchDecisionMeasurementResult(2);
 
-		this.testedView.addMeasurementResultFor(rdia, results);
-		then(this.mockedBlackboard).should().addMeasurementResultFor(same(rdia), same(results));
+		this.testedView.addMeasurementResultFor(seffBranch, results);
+		then(this.mockedBlackboard).should().addMeasurementResultFor(same(seffBranch), same(results));
 	}
 
 	/**
@@ -237,11 +261,11 @@ public class MeasurementControllerBlackboardViewTest {
 	 */
 	@Test
 	public void testAddMeasurementResultForExternalCallParameterParameterChangeMeasurementResult() {
-		final ResourceDemandingInternalAction rdia = RDIA_FACTORY.getOne();
-		final ResourceDemandMeasurementResult results = new ResourceDemandMeasurementResult();
+		final ExternalCallParameter exParam = EXTERNAL_CALL_PARAMETER_FACTORY.getOne();
+		final ParameterChangeMeasurementResult results = new ParameterChangeMeasurementResult();
 
-		this.testedView.addMeasurementResultFor(rdia, results);
-		then(this.mockedBlackboard).should().addMeasurementResultFor(same(rdia), same(results));
+		this.testedView.addMeasurementResultFor(exParam, results);
+		then(this.mockedBlackboard).should().addMeasurementResultFor(same(exParam), same(results));
 	}
 
 	/**
@@ -264,14 +288,51 @@ public class MeasurementControllerBlackboardViewTest {
 			is(theInstance(fitnessFunction)));
 	}
 
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#readFor()} . Asserts
+	 * 
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard.
+	 *
+	 * </ul>
+	 *
+	 */
 	@Test
-	public void testReadFor() {
-		fail("Not yet implemented");
+	public void readFor() {
+		final String onBoard = new String();
+		given(this.mockedBlackboard.readFor(TestStorer.class)).willReturn(onBoard);
+		
+		final String result = this.testedView.readFor(TestStorer.class);
+		assertThat("The testedView should return the stored content it obtained from the blackboad", result,
+			is(theInstance(onBoard)));
 	}
 
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#writeFor(writer, String)}
+	 * . Asserts that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The call is delegated to the blackboard.
+	 *
+	 * </ul>
+	 */
 	@Test
-	public void testWriteFor() {
-		fail("Not yet implemented");
+	public void writeFor() {
+		final String writeOnBoard = new String();
+		this.testedView.writeFor(TestStorer.class, writeOnBoard);
+		then(this.mockedBlackboard).should().writeFor(same(TestStorer.class), same(writeOnBoard));
+	}
+	
+	/**
+	 * Test {@link BlackboardStorer}.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class TestStorer implements BlackboardStorer<String> {
 	}
 
 	/**
