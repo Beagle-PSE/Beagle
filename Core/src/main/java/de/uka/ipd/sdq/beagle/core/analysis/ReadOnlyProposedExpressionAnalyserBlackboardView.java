@@ -20,12 +20,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Set;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * Read-only view of the {@link Blackboard} designed to be used by
@@ -182,11 +176,11 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
-	 * 
+	 *
 	 * @return All proposed expressions for {@code measurebleSeffElements} Changes to the
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
-	 * 
+	 *
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		Validate.notNull(element);

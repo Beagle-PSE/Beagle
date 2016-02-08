@@ -22,12 +22,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * View of the {@link Blackboard} designed to be used by {@link MeasurementResultAnalyser}
@@ -241,7 +235,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *         to the returned set will not modify the blackboard content. Is never
 	 *         {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
-	 * 
+	 *
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		return this.blackboard.getProposedExpressionFor(element);
