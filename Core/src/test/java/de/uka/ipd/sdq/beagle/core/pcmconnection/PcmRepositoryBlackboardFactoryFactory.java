@@ -14,7 +14,7 @@ public class PcmRepositoryBlackboardFactoryFactory {
 	 */
 	public PcmRepositoryBlackboardFactory getValidInstance() {
 		return new PcmRepositoryBlackboardFactory(
-			"/Beagle Core/src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository");
+			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository");
 	}
 
 }
