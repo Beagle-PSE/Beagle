@@ -139,7 +139,7 @@ public class MeasurementEventParserTest {
 			new CodeSection[4], new CodeSection[2]
 		};
 
-		for (CodeSection[] sections : allSections) {
+		for (final CodeSection[] sections : allSections) {
 			for (int i = 0; i < sections.length; i++) {
 				sections[i] = codeSections.next();
 				codeSections.remove();
@@ -153,13 +153,13 @@ public class MeasurementEventParserTest {
 
 		MeasurementEventParser parser =
 			new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllResourceDemandCapturedEvents());
-		for (SeffBranch branch : branches) {
+		for (final SeffBranch branch : branches) {
 			assertThat("There are no Measurement Events for Seff Branches.", parser.getMeasurementResultsFor(branch),
 				is(empty()));
 		}
 
 		parser = new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllCodeSectionLeftEvents());
-		for (SeffBranch branch : branches) {
+		for (final SeffBranch branch : branches) {
 			assertThat("CodeSectionLeftEvents should be ignored.", parser.getMeasurementResultsFor(branch),
 				is(empty()));
 		}
@@ -216,13 +216,13 @@ public class MeasurementEventParserTest {
 		final SeffLoop[] loops = SEFF_LOOP_FACTORY.getAll();
 		MeasurementEventParser parser =
 			new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllResourceDemandCapturedEvents());
-		for (SeffLoop loop : loops) {
+		for (final SeffLoop loop : loops) {
 			assertThat("There are no Measurement Events for Seff Loops.", parser.getMeasurementResultsFor(loop),
 				is(empty()));
 		}
 
 		parser = new MeasurementEventParser(MEASUREMENT_EVENT_FACTORY.getAllCodeSectionLeftEvents());
-		for (SeffLoop loop : loops) {
+		for (final SeffLoop loop : loops) {
 			assertThat("Only CodeSectionLeftEvents should not be counted.", parser.getMeasurementResultsFor(loop),
 				is(empty()));
 		}
@@ -247,7 +247,7 @@ public class MeasurementEventParserTest {
 		parser = new MeasurementEventParser(measurementEvents);
 		results = parser.getMeasurementResultsFor(loops[0]);
 		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
-		assertThat(resultValues, containsInAnyOrder(2));
+		assertThat(resultValues, containsInAnyOrder(1));
 
 		measurementEvents = new ArrayList<>();
 		measurementEvents.add(new CodeSectionLeftEvent(loops[0].getLoopBody()));
@@ -342,7 +342,7 @@ public class MeasurementEventParserTest {
 		final MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
 
 		ExternalCallParameter parameter;
-		for (CodeSection codeSection : CODE_SECTION_FACTORY.getAll()) {
+		for (final CodeSection codeSection : CODE_SECTION_FACTORY.getAll()) {
 			parameter = new ExternalCallParameter(codeSection, 2);
 			assertThat("There should be no measurement results for ExternalCallParameters.",
 				parser.getMeasurementResultsFor(parameter), is(empty()));
