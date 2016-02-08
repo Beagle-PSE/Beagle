@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
-import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -21,7 +20,6 @@ import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 
 import java.io.FileNotFoundException;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -56,16 +54,20 @@ public class PcmRepositorySeffExtractor {
 	 */
 	private final Set<ExternalCallParameter> externalCallParameterSet;
 
+	/* ******************EXTINCT*********************************************
 	/**
 	 * The {@link PcmNameParser} that is needed for parsing the EntityNames created by
 	 * SoMoX.
 	 */
-	private PcmNameParser nameParser;
-
+	//private PcmNameParser nameParser;
+	//***********************************************************************
+	
 	/**
-	 * Integer with value 0.
+	 * The {@link SeffElementCreator} that is needed to create a valid CodeSection for
+	 * MeasurableSeff elements.
 	 */
-	private final int zero = 0;
+	private SeffElementCreator seffElementCreator;
+
 
 	/**
 	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
@@ -83,6 +85,8 @@ public class PcmRepositorySeffExtractor {
 		this.seffBranchSet = seffBranchSet;
 		this.rdiaSet = rdiaSet;
 		this.externalCallParameterSet = externalCallParameterSet;
+		
+		this.seffElementCreator = new SeffElementCreator();
 	}
 
 	/**
@@ -160,10 +164,8 @@ public class PcmRepositorySeffExtractor {
 	 *             found at the specified path in the repository-file.
 	 */
 	private void addInternalActionToSet(final InternalActionImpl internalAction) throws FileNotFoundException {
-		final CodeSection sectionTemp = this.nameParser.parse(internalAction.getEntityName());
-		final ResourceDemandingInternalAction temp =
-			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, sectionTemp);
-		this.rdiaSet.add(temp);
+		final ResourceDemandingInternalAction rdia = this.seffElementCreator.getRDIAForId(internalAction.getId());
+		this.rdiaSet.add(rdia);
 	}
 
 	/**
@@ -175,9 +177,8 @@ public class PcmRepositorySeffExtractor {
 	 *             found at the specified path in the repository-file.
 	 */
 	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) throws FileNotFoundException {
-		final CodeSection sectionTemp = this.nameParser.parse(externalAction.getEntityName());
-		final ExternalCallParameter temp = new ExternalCallParameter(sectionTemp, this.zero);
-		this.externalCallParameterSet.add(temp);
+		final ExternalCallParameter exCallParam = this.seffElementCreator.getExternalCallParameterForId(externalAction.getId());
+		this.externalCallParameterSet.add(exCallParam);
 	}
 
 	/**
@@ -189,11 +190,8 @@ public class PcmRepositorySeffExtractor {
 	 *             found at the specified path in the repository-file.
 	 */
 	private void addBranchActionToSet(final BranchActionImpl branchAction) throws FileNotFoundException {
-		final Set<CodeSection> sectionSet = new HashSet<CodeSection>();
-		sectionSet.add(this.nameParser.parse(branchAction.getEntityName()));
-		sectionSet.add(null);
-		final SeffBranch temp = new SeffBranch(sectionSet);
-		this.seffBranchSet.add(temp);
+		final SeffBranch seffBranch = this.seffElementCreator.getSeffBranchForId(branchAction.getId());
+		this.seffBranchSet.add(seffBranch);
 	}
 
 	/**
@@ -205,9 +203,10 @@ public class PcmRepositorySeffExtractor {
 	 *             found at the specified path in the repository-file.
 	 */
 	private void addLoopActionToSet(final LoopActionImpl loopAction) throws FileNotFoundException {
-		final CodeSection sectionTemp = this.nameParser.parse(loopAction.getEntityName());
-		final SeffLoop temp = new SeffLoop(sectionTemp);
-		this.seffLoopSet.add(temp);
+		final SeffLoop seffLoop = this.seffElementCreator.getSeffLoopForId(loopAction.getId());
+		this.seffLoopSet.add(seffLoop);
 	}
+	
+
 
 }

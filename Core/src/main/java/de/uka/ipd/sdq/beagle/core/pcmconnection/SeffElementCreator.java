@@ -18,10 +18,11 @@ import java.util.Set;
  * class will replace the {@link PcmNameParser}. In contrast to the older class
  * this one does not depend on the EntityName of SEFF-Elements, but rather on
  * an adapter or interface to Somox' SourceCodeDecorator.
+ * Besides it contains the logic to create all MeasurableSeff Elements out of a given ID.
  * 
  * @author Ansgar Spiegler
  */
-public class CodeSectionMapper {
+public class SeffElementCreator {
 
 
 	/**
@@ -33,7 +34,7 @@ public class CodeSectionMapper {
 	 * This constructor will need an association to Somox' sourceCodeDecotor as soon
 	 * as a working solution exists.
 	 */
-	public CodeSectionMapper() {
+	public SeffElementCreator() {
 		
 	}
 	
