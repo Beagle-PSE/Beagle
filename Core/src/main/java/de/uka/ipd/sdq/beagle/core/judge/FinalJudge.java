@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core.judge;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
@@ -12,9 +13,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import org.apache.commons.lang3.Validate;
 
 import java.util.HashMap;
-import java.util.Map.Entry;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Implements the break condition for evolution of evaluable expressions and decides which
@@ -24,6 +23,12 @@ import java.util.stream.Collectors;
  * @author Christoph Michelbach
  */
 public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
+
+	/**
+	 * Fitness values bigger than this number will be set to this number and therefore
+	 * will not be considered as the values they truly are. This includes infinity.
+	 */
+	public static final double MAX_CONSIDERED_FITNESS_VALUE = Math.pow(10, 30);
 
 	/**
 	 * If a generation is fitter than this value, evolution of evaluable expressions will
@@ -133,10 +138,12 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final Set<SeffBranch> seffBranches = blackboard.getAllSeffBranches();
 		final Set<SeffLoop> seffLoops = blackboard.getAllSeffLoops();
 		final Set<ResourceDemandingInternalAction> rdias = blackboard.getAllRdias();
+		final Set<ExternalCallParameter> extCallParameters = blackboard.getAllExternalCallParameters();
 
 		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
 		this.measureFitness(seffLoops, blackboard, fitnessFunction::gradeFor);
 		this.measureFitness(rdias, blackboard, fitnessFunction::gradeFor);
+		this.measureFitness(extCallParameters, blackboard, fitnessFunction::gradeFor);
 	}
 
 	/**
@@ -170,7 +177,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
 
 			// Give every seffElement the default fitness {@code Double.MAX_VALUE}.
-			currentFitnessValues.put(seffElement, Double.MAX_VALUE);
+			currentFitnessValues.put(seffElement, MAX_CONSIDERED_FITNESS_VALUE);
 
 			// Then let it attain a better fitness if possible.
 			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
@@ -178,7 +185,14 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
 
 				// store the measurement result
-				currentFitnessValues.put(seffElement, fitnessValue);
+				if (fitnessValue < currentFitnessValues.get(seffElement)) {
+					if (fitnessValue > MAX_CONSIDERED_FITNESS_VALUE) {
+						currentFitnessValues.put(seffElement, MAX_CONSIDERED_FITNESS_VALUE);
+
+					} else {
+						currentFitnessValues.put(seffElement, fitnessValue);
+					}
+				}
 			}
 		}
 
@@ -253,12 +267,9 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final double fitnessBaselineValue = this.data.getFitnessBaselineValue();
 		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
-		// Perfect matched aren't counted.
-		final Set<Entry<MeasurableSeffElement, Double>> notPerfectEntries = currentFitnessValues.entrySet().stream()
-			.filter((entry) -> entry.getValue() > 0).collect(Collectors.toSet());
-		final int numberOfCountedElements = notPerfectEntries.size();
-		final double overallFitniss =
-			notPerfectEntries.stream().mapToDouble((entry) -> entry.getValue() / numberOfCountedElements).sum();
+		final int numberOfCountedElements = currentFitnessValues.size();
+		final double overallFitniss = currentFitnessValues.entrySet().stream()
+			.mapToDouble((entry) -> entry.getValue() / numberOfCountedElements).sum();
 
 		final double relativeImprovement;
 		if (fitnessBaselineValue == 0) {
