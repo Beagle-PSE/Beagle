@@ -57,6 +57,9 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 		if (object == this) {
 			return true;
 		}
+		if (object.getClass() != ReadOnlyMeasurementResultAnalyserBlackboardView.class) {
+			return false;
+		}
 		final ReadOnlyMeasurementResultAnalyserBlackboardView other =
 			(ReadOnlyMeasurementResultAnalyserBlackboardView) object;
 		return this.blackboard == other.blackboard;

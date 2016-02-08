@@ -53,6 +53,9 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 		if (object == this) {
 			return true;
 		}
+		if (object.getClass() != ReadOnlyMeasurementControllerBlackboardView.class) {
+			return false;
+		}
 		final ReadOnlyMeasurementControllerBlackboardView other = (ReadOnlyMeasurementControllerBlackboardView) object;
 		return this.blackboard == other.blackboard;
 	}

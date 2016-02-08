@@ -8,6 +8,7 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
@@ -53,6 +54,9 @@ public final class MeasurementControllerBlackboardView {
 		}
 		if (object == this) {
 			return true;
+		}
+		if (object.getClass() != MeasurementControllerBlackboardView.class) {
+			return false;
 		}
 		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;
 		return this.blackboard == other.blackboard;

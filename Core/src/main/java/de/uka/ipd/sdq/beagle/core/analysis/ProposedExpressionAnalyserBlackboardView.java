@@ -60,6 +60,9 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 		if (object == this) {
 			return true;
 		}
+		if (object.getClass() != ProposedExpressionAnalyserBlackboardView.class) {
+			return false;
+		}
 		final ProposedExpressionAnalyserBlackboardView other = (ProposedExpressionAnalyserBlackboardView) object;
 		return this.blackboard == other.blackboard;
 	}

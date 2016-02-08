@@ -60,6 +60,9 @@ public class MeasurementResultAnalyserBlackboardView implements EvaluableExpress
 		if (object == this) {
 			return true;
 		}
+		if (object.getClass() != MeasurementResultAnalyserBlackboardView.class) {
+			return false;
+		}
 		final MeasurementResultAnalyserBlackboardView other = (MeasurementResultAnalyserBlackboardView) object;
 		return this.blackboard == other.blackboard;
 	}

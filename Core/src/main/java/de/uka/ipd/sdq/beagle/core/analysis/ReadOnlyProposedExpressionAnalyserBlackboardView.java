@@ -58,6 +58,9 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 		if (object == this) {
 			return true;
 		}
+		if (object.getClass() != ReadOnlyProposedExpressionAnalyserBlackboardView.class) {
+			return false;
+		}
 		final ReadOnlyProposedExpressionAnalyserBlackboardView other =
 			(ReadOnlyProposedExpressionAnalyserBlackboardView) object;
 		return this.blackboard == other.blackboard;
