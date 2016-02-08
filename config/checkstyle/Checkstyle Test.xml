@@ -175,9 +175,10 @@
       <property name="max" value="30"/>
     </module>
     <module name="ExecutableStatementCount">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
       <property name="max" value="100"/>
       <property name="tokens" value="INSTANCE_INIT,STATIC_INIT,METHOD_DEF,CTOR_DEF"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="LineLength">
       <property name="severity" value="warning"/>
@@ -185,7 +186,8 @@
       <property name="tabWidth" value="4"/>
     </module>
     <module name="MethodLength">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ParameterNumber">
       <property name="severity" value="warning"/>
@@ -567,7 +569,8 @@
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
   <module name="FileLength">
-    <property name="severity" value="warning"/>
+    <property name="severity" value="ignore"/>
+    <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
   </module>
   <module name="FileTabCharacter">
     <property name="severity" value="ignore"/>
