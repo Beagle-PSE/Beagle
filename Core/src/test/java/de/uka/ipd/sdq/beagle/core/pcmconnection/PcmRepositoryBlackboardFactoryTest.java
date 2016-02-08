@@ -51,8 +51,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void pcmRepositoryBlackboardFactory() {
 		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null),
-			throwsException(NullPointerException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory((File) null), throwsException(NullPointerException.class));
+			throwsException(IllegalArgumentException.class));
+		assertThat(() -> new PcmRepositoryBlackboardFactory((File) null),
+			throwsException(IllegalArgumentException.class));
+
 		assertThat(() -> new PcmRepositoryBlackboardFactory(""), throwsException(IllegalArgumentException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory("."), throwsException(IllegalArgumentException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory(".."), throwsException(IllegalArgumentException.class));
