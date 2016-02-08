@@ -159,7 +159,6 @@
     </module>
     <module name="UnusedImports">
       <property name="severity" value="warning"/>
-      <property name="processJavadoc" value="true"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ImportControl">
@@ -518,7 +517,8 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="ClassFanOutComplexity">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="DescendantToken">
       <property name="severity" value="ignore"/>
