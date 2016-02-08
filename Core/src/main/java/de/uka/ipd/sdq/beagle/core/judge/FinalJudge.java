@@ -34,7 +34,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
 	 * the application started so evolution of evaluable expressions will be continued.
 	 */
-	private static final long MAX_TIME_PASSED = 3 * 24 * 3600;
+	private static final long MAX_TIME_PASSED = 3 * 24 * 3600 * 1000;
 
 	/**
 	 * If more generations than this have less than {@link #SIGNIFICANT_IMPROVEMENT}
