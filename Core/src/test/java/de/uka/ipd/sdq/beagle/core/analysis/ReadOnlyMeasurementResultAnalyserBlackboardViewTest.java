@@ -19,6 +19,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
@@ -150,6 +151,9 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardViewTest {
 
 		assertThat("Two ReadOnlyMeasurementResultAnalyserBlackboardViews should not be equal,"
 			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
+		
+		assertThat("The Equals function should work properly for null, same instances and other objects",
+			emptyViewOne, EqualsMatcher.hasDefaultEqualsProperties());
 	}
 
 	/**

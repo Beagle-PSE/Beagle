@@ -15,6 +15,7 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 
@@ -119,6 +120,9 @@ public class ReadOnlyMeasurementControllerBlackboardViewTest {
 
 		assertThat("Two ReadOnlyMeasurementControllerBlackboardViews should not be equal,"
 			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
+		
+		assertThat("The Equals function should work properly for null, same instances and other objects",
+			emptyViewOne, EqualsMatcher.hasDefaultEqualsProperties());
 	}
 
 	/**
