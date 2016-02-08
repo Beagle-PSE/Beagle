@@ -12,8 +12,9 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import org.apache.commons.lang3.Validate;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Implements the break condition for evolution of evaluable expressions and decides which
@@ -249,23 +250,11 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
 		// Perfect matched aren't counted.
-		int numberOfCountedElements = 0;
-		double totalDeviation = 0;
-		for (final Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
-			final double fitness = entry.getValue();
-
-			if (fitness != 0) {
-				numberOfCountedElements++;
-				totalDeviation += fitness;
-			}
-		}
-
-		final double overallFitniss;
-		if (numberOfCountedElements == 0) {
-			overallFitniss = 0;
-		} else {
-			overallFitniss = totalDeviation / numberOfCountedElements;
-		}
+		final Set<Entry<MeasurableSeffElement, Double>> notPerfectEntries = currentFitnessValues.entrySet().stream()
+			.filter((entry) -> entry.getValue() > 0).collect(Collectors.toSet());
+		final int numberOfCountedElements = notPerfectEntries.size();
+		final double overallFitniss =
+			notPerfectEntries.stream().mapToDouble((entry) -> entry.getValue() / numberOfCountedElements).sum();
 
 		final double relativeImprovement;
 		if (fitnessBaselineValue == 0) {
