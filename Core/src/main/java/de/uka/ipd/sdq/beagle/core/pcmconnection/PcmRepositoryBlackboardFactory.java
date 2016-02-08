@@ -20,7 +20,6 @@ import java.io.FileNotFoundException;
 import java.lang.instrument.IllegalClassFormatException;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.Set;
 
 /**
  * Creates {@link Blackboard} instances suitable to analyse elements from a PCM
