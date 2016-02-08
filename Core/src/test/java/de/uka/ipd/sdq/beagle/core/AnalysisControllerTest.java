@@ -2,15 +2,25 @@ package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Matchers.anyObject;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
+import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
+import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExtensionPointToolsFactory;
 
 import org.junit.Test;
+import org.mockito.InOrder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -113,7 +123,48 @@ public class AnalysisControllerTest {
 				EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
 		};
 		assertThat("Set must not contain null.", method7, throwsException(IllegalArgumentException.class));
+	}
 
+	/**
+	 * Tests {@link AnalysisController#performAnalysis()}. Asserts that all tools are used
+	 * in the correct order.
+	 *
+	 */
+	@Test
+	public void performAnalysis() {
+		final MeasurementTool mockedMeasurementTool1 = mock(MeasurementTool.class);
+		final MeasurementTool mockedMeasurementTool2 = mock(MeasurementTool.class);
+		final MeasurementTool mockedMeasurementTool3 = mock(MeasurementTool.class);
+		final MeasurementResultAnalyser mockedMeasurementResultAnalyser1 = mock(MeasurementResultAnalyser.class);
+		final MeasurementResultAnalyser mockedMeasurementResultAnalyser2 = mock(MeasurementResultAnalyser.class);
+		final MeasurementResultAnalyser mockedMeasurementResultAnalyser3 = mock(MeasurementResultAnalyser.class);
+		final ProposedExpressionAnalyser mockedProposedExpressionAnalyser1 = mock(ProposedExpressionAnalyser.class);
+		final ProposedExpressionAnalyser mockedProposedExpressionAnalyser2 = mock(ProposedExpressionAnalyser.class);
+		final ProposedExpressionAnalyser mockedProposedExpressionAnalyser3 = mock(ProposedExpressionAnalyser.class);
+		final FinalJudge mockedFinalJudge = mock(FinalJudge.class);
+
+		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
+		oneMeasurementTool.add(mockedMeasurementTool1);
+		final Set<MeasurementResultAnalyser> oneMeasurementResultAnalyser = new HashSet<>();
+		oneMeasurementResultAnalyser.add(mockedMeasurementResultAnalyser1);
+		final Set<ProposedExpressionAnalyser> oneProposedExpressionAnalyser = new HashSet<>();
+		oneProposedExpressionAnalyser.add(mockedProposedExpressionAnalyser1);
+
+		// Test, where no one wants to contribute.
+		final Blackboard blackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		when(mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard))).thenReturn(false);
+		when(mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard))).thenReturn(false);
+
+		final AnalysisController analysisController = new AnalysisController(blackboard, oneMeasurementTool,
+			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
+		analysisController.performAnalysis();
+		verify(mockedMeasurementResultAnalyser1, never()).contribute(anyObject());
+		verify(mockedProposedExpressionAnalyser1, never()).contribute(anyObject());
+		final InOrder inOrder = inOrder(mockedFinalJudge);
+		inOrder.verify(mockedFinalJudge).init(blackboard);
+		inOrder.verify(mockedFinalJudge).judge(blackboard);
 	}
 
 }
