@@ -27,7 +27,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * Fitness values bigger than this number will be set to this number and therefore
 	 * will not be considered as the values they truly are. This includes infinity.
 	 */
-	public static final double MAX_CONSIDERED_FITNESS_VALUE = 10E250d;
+	public static final double MAX_CONSIDERED_FITNESS_VALUE = 1E250d;
 
 	/**
 	 * If a proposed expression is fitter than this value, it will be considered
@@ -179,7 +179,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
 				final double fitnessValue =
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
-				if (fitnessValue < fittest) {
+				if (fitnessValue <= fittest) {
 					fittest = fitnessValue;
 					bestExpression = proposedExpression;
 				}
