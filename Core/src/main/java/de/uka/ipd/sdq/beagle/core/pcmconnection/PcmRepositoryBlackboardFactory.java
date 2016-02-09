@@ -55,13 +55,12 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * @param repositoryFileName PCM repository to load from.
 	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
 	 *            with
-	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
-	 *             file
 	 * @throws IllegalArgumentException If input parameter does not represent a valid
-	 *             repository file.
+	 *             repository file or if repositoryFileName can not be resolved to a valid
+	 *             file
 	 */
 	public PcmRepositoryBlackboardFactory(final String repositoryFileName,
-		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
+		final EvaluableExpressionFitnessFunction fitnessFunction) {
 
 		if (fitnessFunction == null || repositoryFileName == null) {
 			throw new NullPointerException();
@@ -71,7 +70,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 
 		final File test = new File(repositoryFileName);
 		if (!test.isFile()) {
-			throw new FileNotFoundException("No file found at: " + repositoryFileName);
+			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
 		}
 
 		RepositoryFactory.eINSTANCE.createRepository();
