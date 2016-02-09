@@ -9,6 +9,7 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -36,7 +37,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	/**
 	 * The repository where this class should extract all its information from.
 	 */
-	private RepositoryImpl repository;
+	private final RepositoryImpl repository;
 
 	/**
 	 * Instance of helper class, extracting a given repository.
@@ -44,22 +45,34 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	private PcmRepositoryExtractor pcmExtractor;
 
 	/**
+	 * The fitnessFucntion to initialize the blackboard with.
+	 */
+	private final EvaluableExpressionFitnessFunction fitnessFunction;
+
+	/**
 	 * Creates a factory that will search the provided PCM files for <em>PCM
 	 * elements</em>.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
+	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
+	 *            with
+	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
+	 *             file
 	 * @throws IllegalArgumentException If input parameter does not represent a valid
 	 *             repository file.
 	 */
-	public PcmRepositoryBlackboardFactory(final String repositoryFileName) {
-		
-		if (repositoryFileName == null) {
+	public PcmRepositoryBlackboardFactory(final String repositoryFileName,
+		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
+
+		if (this.fitnessFunction == null || repositoryFileName == null) {
 			throw new NullPointerException();
 		}
 
+		this.fitnessFunction = fitnessFunction;
+
 		final File test = new File(repositoryFileName);
 		if (!test.isFile()) {
-			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
+			throw new FileNotFoundException("No file found at: " + repositoryFileName);
 		}
 
 		RepositoryFactory.eINSTANCE.createRepository();
@@ -74,13 +87,17 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	}
 
 	/**
-	 * Creates a factory that will search the provided PCM file for <em>PCM
-	 * elements</em>.
+	 * Creates a factory that will search the provided PCM file for <em>PCM elements</em>.
 	 *
 	 * @param pcmRepositoryFiles PCM repository file.
+	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
+	 *            with
+	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
+	 *             file
 	 */
-	public PcmRepositoryBlackboardFactory(final File pcmRepositoryFiles) {
-		this(pcmRepositoryFiles.getAbsolutePath());
+	public PcmRepositoryBlackboardFactory(final File pcmRepositoryFiles,
+		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
+		this(pcmRepositoryFiles.getAbsolutePath(), fitnessFunction);
 	}
 
 	/**
@@ -94,7 +111,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *             found at the specified path in the repository-file.
 	 */
 	public Blackboard getBlackboardForAllElements() throws FileNotFoundException {
-		this.pcmExtractor = new PcmRepositoryExtractor();
+		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
 		return this.pcmExtractor.getBlackboardForAllElements(this.repository);
 
 	}
@@ -130,7 +147,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *             found at the specified path in the repository-file.
 	 */
 	public Blackboard getBlackboardForIds(final Collection<String> identifiers) throws FileNotFoundException {
-		this.pcmExtractor = new PcmRepositoryExtractor();
+		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
 		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);
 
 	}

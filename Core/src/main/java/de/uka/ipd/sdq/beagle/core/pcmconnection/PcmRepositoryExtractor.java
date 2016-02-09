@@ -6,6 +6,7 @@ import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
@@ -62,6 +63,20 @@ public class PcmRepositoryExtractor {
 	private PcmRepositorySeffExtractor pcmSeffExtractor;
 
 	/**
+	 * The fitnessFucntion to initialize the blackboard with.
+	 */
+	private final EvaluableExpressionFitnessFunction fitnessFunction;
+
+	/**
+	 * Constructor needs EvaluableExpressionFitnessFunction.
+	 *
+	 * @param fitnessFunction The fitnessFucntion to initialize the blackboard with
+	 */
+	public PcmRepositoryExtractor(final EvaluableExpressionFitnessFunction fitnessFunction) {
+		this.fitnessFunction = fitnessFunction;
+	}
+
+	/**
 	 * Builds a new blackboard and writes the Beagle objects representing all found
 	 * <em>PCM elements</em> to it. Only <em>PCM elements</em> that fulfil the
 	 * restrictions described in the class description will be written.
@@ -81,7 +96,8 @@ public class PcmRepositoryExtractor {
 			this.externalCallParameterSet);
 
 		this.scanRepository(repository);
-		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet);
+		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet,
+			this.fitnessFunction);
 	}
 
 	/**
@@ -129,7 +145,8 @@ public class PcmRepositoryExtractor {
 
 		if (identifiers.contains(repository.getId())) {
 			this.scanRepository(repository);
-			return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet);
+			return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet,
+				this.fitnessFunction);
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -160,7 +177,8 @@ public class PcmRepositoryExtractor {
 		}
 
 		// Add the sets to the blackboard and return
-		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet);
+		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet,
+			this.fitnessFunction);
 	}
 
 	/**
