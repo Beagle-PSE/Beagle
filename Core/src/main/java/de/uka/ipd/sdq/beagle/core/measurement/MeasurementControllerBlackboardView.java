@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
@@ -59,6 +53,9 @@ public final class MeasurementControllerBlackboardView {
 		}
 		if (object == this) {
 			return true;
+		}
+		if (object.getClass() != MeasurementControllerBlackboardView.class) {
+			return false;
 		}
 		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;
 		return this.blackboard == other.blackboard;
@@ -124,8 +121,6 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
-		Validate.notNull(rdia);
-		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(rdia, results);
 	}
 
@@ -138,8 +133,6 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
-		Validate.notNull(loop);
-		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(loop, results);
 	}
 
@@ -152,8 +145,6 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
-		Validate.notNull(branch);
-		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(branch, results);
 	}
 
@@ -168,8 +159,6 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
-		Validate.notNull(parameter);
-		Validate.notNull(results);
 		this.blackboard.addMeasurementResultFor(parameter, results);
 	}
 

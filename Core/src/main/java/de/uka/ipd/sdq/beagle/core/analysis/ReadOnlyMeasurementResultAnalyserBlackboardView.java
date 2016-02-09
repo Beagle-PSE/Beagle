@@ -19,12 +19,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Set;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * Read-only view of the {@link Blackboard} designed to be used by
@@ -63,6 +57,9 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 		if (object == this) {
 			return true;
 		}
+		if (object.getClass() != ReadOnlyMeasurementResultAnalyserBlackboardView.class) {
+			return false;
+		}
 		final ReadOnlyMeasurementResultAnalyserBlackboardView other =
 			(ReadOnlyMeasurementResultAnalyserBlackboardView) object;
 		return this.blackboard == other.blackboard;
@@ -76,7 +73,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRdias() {
-		Validate.notNull(this.blackboard.getAllRdias());
 		return this.blackboard.getAllRdias();
 	}
 
@@ -87,7 +83,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getAllSeffBranches() {
-		Validate.notNull(this.blackboard.getAllSeffBranches());
 		return this.blackboard.getAllSeffBranches();
 	}
 
@@ -98,7 +93,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getAllSeffLoops() {
-		Validate.notNull(this.blackboard.getAllSeffLoops());
 		return this.blackboard.getAllSeffLoops();
 	}
 
@@ -110,7 +104,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getAllExternalCallParameters() {
-		Validate.notNull(this.blackboard.getAllExternalCallParameters());
 		return this.blackboard.getAllExternalCallParameters();
 	}
 
@@ -127,8 +120,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *      ResourceDemandingInternalAction)
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-		Validate.notNull(rdia);
-		Validate.notNull(this.blackboard.getMeasurementResultsFor(rdia));
 		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
@@ -143,8 +134,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
-		Validate.notNull(branch);
-		Validate.notNull(this.blackboard.getMeasurementResultsFor(branch));
 		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
@@ -159,8 +148,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		Validate.notNull(loop);
-		Validate.notNull(this.blackboard.getMeasurementResultsFor(loop));
 		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
@@ -178,8 +165,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		Validate.notNull(externalCallParameter);
-		Validate.notNull(this.blackboard.getMeasurementResultsFor(externalCallParameter));
 		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 
@@ -192,7 +177,6 @@ public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		Validate.notNull(this.blackboard.getFitnessFunction());
 		return this.blackboard.getFitnessFunction();
 	}
 

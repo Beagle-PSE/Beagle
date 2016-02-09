@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core.judge;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
@@ -11,8 +12,6 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 import org.apache.commons.lang3.Validate;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -25,10 +24,17 @@ import java.util.Set;
 public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 	/**
-	 * If a generation is fitter than this value, evolution of evaluable expressions will
-	 * be stopped.
+	 * Fitness values bigger than this number will be set to this number and therefore
+	 * will not be considered as the values they truly are. This includes infinity.
 	 */
-	private static final double FITNESS_EPSILON = 0.5d;
+	public static final double MAX_CONSIDERED_FITNESS_VALUE = 1E250d;
+
+	/**
+	 * If a proposed expression is fitter than this value, it will be considered
+	 * “perfect”, e.g. no further evolution of the element the expression was proposed for
+	 * is needed.
+	 */
+	private static final double PERFECT_FITNESS = 0.5E-10d;
 
 	/**
 	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
@@ -49,7 +55,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * this much relative improvement to the previously best value, evolution of evaluable
 	 * expressions will be stopped.
 	 */
-	private static final double SIGNIFICANT_IMPROVEMENT = 0.005;
+	private static final double SIGNIFICANT_IMPROVEMENT = 0.06;
 
 	/**
 	 * Stores all status of this {@link FinalJudge} object.
@@ -89,18 +95,20 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	public boolean judge(final Blackboard blackboard) {
 		Validate.notNull(blackboard);
 		this.loadData(blackboard);
+		this.data.newGeneration();
 
-		this.data.setNumberOfGenerationsPassed(this.data.getNumberOfGenerationsPassed() + 1);
+		boolean willReturnTrue = false;
 
 		// Determine the criteria which aren't CPU-intensive first.
 		if (this.timePassedTooHigh()) {
-			return true;
+			// We are now destined to return {@code true}.
+			willReturnTrue = true;
 		}
 
 		// Take the measurements.
-		this.measure(blackboard);
+		this.measureAllFitnessAndAddToBlackboard(blackboard);
 
-		return !this.evaluateRelativeImprovement();
+		return willReturnTrue || this.allElementsArePerfect() || !this.sufficientRelativeImprovement();
 	}
 
 	/**
@@ -121,26 +129,30 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	}
 
 	/**
-	 * Measures all seff branches, seff loops, and rdias to measure on the
-	 * {@link Blackboard}.
+	 * Measures the fitness of all seff branches, seff loops, rdias, and external call
+	 * parameters on the {@link Blackboard} and for each seff element adds the expression
+	 * describing it best to the blackboard.
 	 *
 	 * @param blackboard The {@link Blackboard} to use.
 	 */
-	private void measure(final Blackboard blackboard) {
+	private void measureAllFitnessAndAddToBlackboard(final Blackboard blackboard) {
 		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
 
-		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
-		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
-		final Set<ResourceDemandingInternalAction> rdias = blackboard.getRdiasToBeMeasured();
+		final Set<SeffBranch> seffBranches = blackboard.getAllSeffBranches();
+		final Set<SeffLoop> seffLoops = blackboard.getAllSeffLoops();
+		final Set<ResourceDemandingInternalAction> rdias = blackboard.getAllRdias();
+		final Set<ExternalCallParameter> extCallParameters = blackboard.getAllExternalCallParameters();
 
-		this.measureFitness(seffBranches, blackboard, fitnessFunction::gradeFor);
-		this.measureFitness(seffLoops, blackboard, fitnessFunction::gradeFor);
-		this.measureFitness(rdias, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddToBlackboard(seffBranches, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddToBlackboard(seffLoops, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddToBlackboard(rdias, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddToBlackboard(extCallParameters, blackboard, fitnessFunction::gradeFor);
 	}
 
 	/**
 	 * Measures the fitness of all {@linkplain MeasurableSeffElement measurable SEFF
-	 * elements}.
+	 * elements} and for each seff element adds the expression describing it best to the
+	 * blackboard.
 	 *
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
 	 * {@code SE}.
@@ -157,71 +169,48 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         sufficient fitness to stop evolution of evaluable expressions;
 	 *         {@code false} otherwise.
 	 */
-	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean measureFitness(
+	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean measureFitnessAndAddToBlackboard(
 		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements, final Blackboard blackboard,
 		final TypedFitnessFunction<SEFF_ELEMENT_TYPE> fitnessFunction) {
-
-		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
 
 		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =
 			new ProposedExpressionAnalyserBlackboardView(blackboard);
 
 		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
-
+			double fittest = MAX_CONSIDERED_FITNESS_VALUE;
+			EvaluableExpression bestExpression = null;
+			// Then let it attain a better fitness if possible.
 			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
 				final double fitnessValue =
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
+				// This has to be smaller-than (not smaller) because {@code fittest}
+				// starts out as {@code MAX_CONSIDERED_FITNESS_VALUE}, not higher.
+				if (fitnessValue <= fittest) {
+					fittest = fitnessValue;
+					bestExpression = proposedExpression;
+				}
 
-				// store the measurement result
-				currentFitnessValues.put(seffElement, fitnessValue);
 			}
+
+			this.data.addFittestValue(fittest);
+
+			// Add the best expression to the blackboard.
+			blackboard.setFinalExpressionFor(seffElement, bestExpression);
 		}
 
 		return true;
 	}
 
 	/**
-	 * Determines whether a set of {@linkplain MeasurableSeffElement measurable SEFF
-	 * elements} contains an element with sufficient fitness to stop evolution of
-	 * evaluable expressions.
+	 * Determines whether all seff elements on the Blackboard have a perfect expression
+	 * proposed. This means that one of the element’s proposed expressions has a fitness
+	 * value that’s below or equal to {@link #PERFECT_FITNESS}.
 	 *
-	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
-	 * {@code SE}.
-	 *
-	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
-	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
-	 *            Must not be {@code null}.
-	 *
-	 * @param measurableSeffElements The set of {@linkplain MeasurableSeffElement
-	 *            measurable SEFF elements} to operate on. Must not be {@code null}.
-	 * @return {@code true} if {@code measurableSeffElements} contains an element with
-	 *         sufficient fitness to stop evolution of evaluable expressions;
-	 *         {@code false} otherwise.
+	 * @return {@code true} if all {@code measurableSeffElements} have an expression
+	 *         proposed, such that its fitness is below or equal {@link #PERFECT_FITNESS}.
 	 */
-	@SuppressWarnings("unused")
-	// May be needed to make future adaptations of this class
-	// easier.
-	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean containsElementWithSufficientFitness(
-		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements) {
-		Validate.notNull(measurableSeffElements);
-
-		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
-
-		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {
-			boolean foundOptimal = false;
-
-			final double fitnessValue = currentFitnessValues.get(seffElement);
-			foundOptimal = foundOptimal || fitnessValue < FITNESS_EPSILON;
-
-			// If a single MeasurableSeffElement to examine doesn't have a good enough
-			// EvaluableExpression to describe it, the set of MeasurableSeffElements
-			// doesn't have good enough EvaluableExpressions to describe it.
-			if (!foundOptimal) {
-				return false;
-			}
-		}
-
-		return true;
+	private boolean allElementsArePerfect() {
+		return this.data.getFittestValues().allMatch(fitnessValue -> fitnessValue <= PERFECT_FITNESS);
 	}
 
 	/**
@@ -232,7 +221,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 */
 	private boolean timePassedTooHigh() {
 		final long currentTime = System.currentTimeMillis();
-
 		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
 	}
 
@@ -242,37 +230,15 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *
 	 * @return {@code true} if the relative improvement to the latest baseline is
 	 *         sufficient to continue the analysis or there still can be tries without
-	 *         sufficient improvement; {@code false} otherwise.
+	 *         significant improvement; {@code false} otherwise.
 	 */
-	private boolean evaluateRelativeImprovement() {
+	private boolean sufficientRelativeImprovement() {
 		final double fitnessBaselineValue = this.data.getFitnessBaselineValue();
-		final HashMap<MeasurableSeffElement, Double> currentFitnessValues = this.data.getCurrentFitnessValues();
+		final double overallFitniss = this.data.getFittestValues().average().orElse(0);
 
-		// Perfect matched aren't counted.
-		int numberOfCountedElements = 0;
-		double totalDeviation = 0;
-		for (final Map.Entry<MeasurableSeffElement, Double> entry : currentFitnessValues.entrySet()) {
-			final double fitness = entry.getValue();
-
-			if (fitness != 0) {
-				numberOfCountedElements++;
-				totalDeviation += fitness;
-			}
-		}
-
-		final double overallFitniss;
-		if (numberOfCountedElements == 0) {
-			overallFitniss = 0;
-		} else {
-			overallFitniss = totalDeviation / numberOfCountedElements;
-		}
-
-		final double relativeImprovement;
-		if (fitnessBaselineValue == 0) {
-			relativeImprovement = 0;
-		} else {
-			relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;
-		}
+		// This never is a division by zero because if it was, we’d already exited the
+		// final judge before entering this method.
+		final double relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;
 
 		if (relativeImprovement > SIGNIFICANT_IMPROVEMENT) {
 			// There was significant improvement so note the new value and set the number
@@ -317,5 +283,4 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		double gradeFor(SEFF_ELEMENT_TYPE seffElement, EvaluableExpression expression,
 			EvaluableExpressionFitnessFunctionBlackboardView blackboard);
 	}
-
 }

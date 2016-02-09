@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
@@ -58,6 +52,9 @@ public final class ReadOnlyMeasurementControllerBlackboardView {
 		}
 		if (object == this) {
 			return true;
+		}
+		if (object.getClass() != ReadOnlyMeasurementControllerBlackboardView.class) {
+			return false;
 		}
 		final ReadOnlyMeasurementControllerBlackboardView other = (ReadOnlyMeasurementControllerBlackboardView) object;
 		return this.blackboard == other.blackboard;

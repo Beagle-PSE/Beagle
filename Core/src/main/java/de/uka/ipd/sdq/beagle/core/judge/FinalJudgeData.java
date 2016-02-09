@@ -1,17 +1,17 @@
 package de.uka.ipd.sdq.beagle.core.judge;
 
-import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import org.apache.commons.collections4.MultiSet;
+import org.apache.commons.collections4.multiset.HashMultiSet;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.stream.DoubleStream;
 
 /**
  * Stores all data of {@link FinalJudge}.
- * 
+ *
  * @author Christoph Michelbach
  */
-public class FinalJudgeData implements Serializable {
+class FinalJudgeData implements Serializable {
 
 	/**
 	 * serialVersionUID to make sure serialisation works fine.
@@ -25,22 +25,15 @@ public class FinalJudgeData implements Serializable {
 	private long startTime = -1;
 
 	/**
-	 * The number of generations passed. Will be the number of times a {@link FinalJudge}
-	 * received a call to {@link FinalJudge#judge(Blackboard)}.
-	 */
-	private int numberOfGenerationsPassed;
-
-	/**
 	 * The number of generations with significant improvement (see
 	 * {@code FinalJugde#SIGNIFICANT_IMPROVEMENT} passed.
 	 */
 	private int numberOfGenerationsWithoutSignificantImprovementPassed;
 
 	/**
-	 * Maps {@link MeasurableSeffElement}s to the fitness value of their best known
-	 * evaluable expression.
+	 * Contains the fittest value of each seff element (no mapping needed).
 	 */
-	private HashMap<MeasurableSeffElement, Double> currentFitnessValues = new HashMap<MeasurableSeffElement, Double>();
+	private MultiSet<Double> fittestValues;
 
 	/**
 	 * The latest fitness value which came with good enough improvement to set
@@ -50,7 +43,7 @@ public class FinalJudgeData implements Serializable {
 
 	/**
 	 * Returns {@code startTime}.
-	 * 
+	 *
 	 * @return The {@code startTime}.
 	 */
 	public long getStartTime() {
@@ -67,26 +60,8 @@ public class FinalJudgeData implements Serializable {
 	}
 
 	/**
-	 * Returns {@code numberOfGenerationsPassed}.
-	 * 
-	 * @return The {@code numberOfGenerationsPassed}.
-	 */
-	public int getNumberOfGenerationsPassed() {
-		return this.numberOfGenerationsPassed;
-	}
-
-	/**
-	 * Returns {@code numberOfGenerationsPassed}.
-	 *
-	 * @param numberOfGenerationsPassed The {@code numberOfGenerationsPassed} to set.
-	 */
-	public void setNumberOfGenerationsPassed(final int numberOfGenerationsPassed) {
-		this.numberOfGenerationsPassed = numberOfGenerationsPassed;
-	}
-
-	/**
 	 * Returns {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
-	 * 
+	 *
 	 * @return The {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
 	 */
 	public int getNumberOfGenerationsWithoutSignificantImprovementPassed() {
@@ -107,11 +82,19 @@ public class FinalJudgeData implements Serializable {
 
 	/**
 	 * Returns {@code fitnessBaselineValue}.
-	 * 
+	 *
 	 * @return The {@code fitnessBaselineValue}.
 	 */
 	public double getFitnessBaselineValue() {
 		return this.fitnessBaselineValue;
+	}
+
+	/**
+	 * Announces that a new generation is being judged. Increments the number of passed
+	 * generations and sets the fittest values to an empty set.
+	 */
+	public void newGeneration() {
+		this.fittestValues = new HashMultiSet<>();
 	}
 
 	/**
@@ -124,11 +107,22 @@ public class FinalJudgeData implements Serializable {
 	}
 
 	/**
-	 * Returns {@link currentFitnessValues}.
-	 * 
-	 * @return The {@link currentFitnessValues}.
+	 * Adds {@code value} to the collection of the fittest value.
+	 *
+	 * @param value The fittest value of a seff element.
 	 */
-	public HashMap<MeasurableSeffElement, Double> getCurrentFitnessValues() {
-		return this.currentFitnessValues;
+	public void addFittestValue(final double value) {
+		this.fittestValues.add(value);
+	}
+
+	/**
+	 * Returns the fittest values of this generation.
+	 *
+	 * @return The fittness values of the fittest proposed expressions of the momentary
+	 *         generation. The stream will contain as many {@code double}s as there are
+	 *         seff elements on the blackboard.
+	 */
+	public DoubleStream getFittestValues() {
+		return this.fittestValues.stream().mapToDouble(value -> value);
 	}
 }

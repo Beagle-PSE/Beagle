@@ -179,7 +179,7 @@ public class BlackboardFactory {
 	public Blackboard getWithFewElements() {
 		return new Blackboard(some(RDIA_FACTORY.getAll(), 2), some(SEFF_BRANCH_FACTORY.getAll(), 2),
 			some(SEFF_LOOP_FACTORY.getAll(), 2), some(EXTERNAL_CALL_PARAMETER_FACTORY.getAll(), 2),
-			EVA_EX_FACTORY.getOne());
+			FITNESS_FUNCTION_FACTORY.getOne());
 	}
 
 	/**
