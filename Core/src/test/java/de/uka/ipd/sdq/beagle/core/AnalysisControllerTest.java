@@ -3,7 +3,9 @@ package de.uka.ipd.sdq.beagle.core;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.anyObject;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.notNull;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
@@ -11,7 +13,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
@@ -295,6 +299,68 @@ public class AnalysisControllerTest {
 		verify(this.mockedMeasurementTool1, never()).measure(anyObject());
 		verify(this.mockedMeasurementTool2, never()).measure(anyObject());
 		verify(this.mockedMeasurementTool3, never()).measure(anyObject());
+
+		// Verify that everybody can contribute, if he wants.
+		this.resetMocks();
+		final Blackboard blackboard3 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard3))).thenReturn(true);
+		when(this.mockedMeasurementResultAnalyser2
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard3))).thenReturn(true);
+		when(this.mockedMeasurementResultAnalyser3
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard3))).thenReturn(true);
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard3))).thenReturn(true);
+		when(this.mockedProposedExpressionAnalyser2
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard3))).thenReturn(true);
+		when(this.mockedProposedExpressionAnalyser3
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard3))).thenReturn(true);
+
+		final AnalysisController analysisController4 = new AnalysisController(blackboard3, allMeasurementTools,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController4.performAnalysis();
+		verify(this.mockedMeasurementResultAnalyser1, atLeastOnce())
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard3)));
+		verify(this.mockedMeasurementResultAnalyser2, atLeastOnce())
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard3)));
+		verify(this.mockedMeasurementResultAnalyser3, atLeastOnce())
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard3)));
+		verify(this.mockedProposedExpressionAnalyser1, atLeastOnce())
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard3)));
+		verify(this.mockedProposedExpressionAnalyser2, atLeastOnce())
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard3)));
+		verify(this.mockedProposedExpressionAnalyser3, atLeastOnce())
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard3)));
+
+		this.resetMocks();
+		final Blackboard blackboard4 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard4))).thenReturn(true);
+		when(this.mockedMeasurementResultAnalyser2
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard4))).thenReturn(false);
+		when(this.mockedMeasurementResultAnalyser3
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard4))).thenReturn(true);
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard4))).thenReturn(true);
+		when(this.mockedProposedExpressionAnalyser2
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard4))).thenReturn(false);
+		when(this.mockedProposedExpressionAnalyser3
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard4))).thenReturn(true);
+
+		final AnalysisController analysisController5 = new AnalysisController(blackboard4, allMeasurementTools,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController5.performAnalysis();
+		verify(this.mockedMeasurementResultAnalyser1, atLeastOnce())
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard4)));
+		verify(this.mockedMeasurementResultAnalyser2, never()).contribute(anyObject());
+		verify(this.mockedMeasurementResultAnalyser3, atLeastOnce())
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard4)));
+		verify(this.mockedProposedExpressionAnalyser1, atLeastOnce())
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard4)));
+		verify(this.mockedProposedExpressionAnalyser2, never()).contribute(anyObject());
+		verify(this.mockedProposedExpressionAnalyser3, atLeastOnce())
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard4)));
+
 	}
 
 	/**
