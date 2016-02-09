@@ -11,11 +11,11 @@ import java.util.List;
  * Beagle. The class defines meaningful default values for all its settings.
  *
  * &lt;p&gt;The configuration has two states: A &lt;em&gt;set up&lt;/em&gt; state, during which values may
- * be modified but cannot be read, and a &lt;em&gt;finalised&lt;/em&gt; state, in which it is
- * immutable and can only be used to obtain values. The transition from the &lt;em&gt;set
- * up&lt;/em&gt; state to the &lt;em&gt;finalised&lt;/em&gt; state is done through {@link #finalise()}. The
- * inverse transition is not possible. Trying to perform an action that is not allowed for
- * the momentary state results in an {@link IllegalStateException} being thrown.
+ * be modified and a &lt;em&gt;finalised&lt;/em&gt; state, in which the configuration is immutable and
+ * can only be used to obtain values. The transition from the &lt;em&gt;set up&lt;/em&gt; state to the
+ * &lt;em&gt;finalised&lt;/em&gt; state is done through {@link #finalise()}. The inverse transition is
+ * not possible. Trying to perform an action that is not allowed for the momentary state
+ * results in an {@link IllegalStateException} being thrown.
  *
  * @author Christoph Michelbach
  * @author Joshua Gleitze
@@ -70,17 +70,13 @@ import java.util.List;
 
 	/**
 	 * Returns the elements to be measured or {@code null} to indicate that everything in
-	 * the {@linkplain #getRepositoryFile() repository file} should be analysed. This
-	 * operation is only allowed in the &lt;em&gt;finalised&lt;/em&gt; state.
+	 * the {@linkplain #getRepositoryFile() repository file} should be analysed.
 	 *
 	 * @return The elements to be measured or {@code null} to indicate that everything in
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             &lt;em&gt;finalised&lt;/em&gt; state.
 	 */
 	public List&lt;Entity&gt; getElements() {
-<span class="nc" id="L82">		Validate.validState(this.finalised, &quot;querying values is only allowed if this configuration is finalised&quot;);</span>
-<span class="nc" id="L83">		return this.elements;</span>
+<span class="nc" id="L79">		return this.elements;</span>
 	}
 
 	/**
@@ -97,14 +93,14 @@ import java.util.List;
 	 * @see #getElements()
 	 */
 	public void setElements(final List&lt;Entity&gt; elements) {
-<span class="nc bnc" id="L100" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="nc" id="L102">		this.elements = elements;</span>
-<span class="nc" id="L103">	}</span>
+<span class="nc" id="L98">		this.elements = elements;</span>
+<span class="nc" id="L99">	}</span>
 
 	/**
-	 * Returns the timeout to be used. This operation is only allowed in the
-	 * &lt;em&gt;finalised&lt;/em&gt; state.
+	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
+	 * keep trying to find results while no perfect results were found.
 	 *
 	 * &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
 	 *
@@ -119,12 +115,9 @@ import java.util.List;
 	 * &lt;/table&gt;
 	 *
 	 * @return The timeout that will be used by Beagle.
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             &lt;em&gt;finalised&lt;/em&gt; state.
 	 */
 	public int getTimeout() {
-<span class="nc" id="L126">		Validate.validState(this.finalised, &quot;querying values is only allowed if this configuration is finalised&quot;);</span>
-<span class="nc" id="L127">		return this.timeout;</span>
+<span class="nc" id="L120">		return this.timeout;</span>
 	}
 
 	/**
@@ -149,22 +142,18 @@ import java.util.List;
 	 *             state.
 	 */
 	public void setTimeout(final int timeout) {
-<span class="nc bnc" id="L152" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="nc" id="L154">		this.timeout = timeout;</span>
-<span class="nc" id="L155">	}</span>
+<span class="nc" id="L147">		this.timeout = timeout;</span>
+<span class="nc" id="L148">	}</span>
 
 	/**
-	 * Returns the repository file that contains all elements that shall be analysed. This
-	 * operation is only allowed in the &lt;em&gt;finalised&lt;/em&gt; state.
+	 * Returns the repository file that contains all elements that shall be analysed.
 	 *
 	 * @return The repository file Beagle will operate on.
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             &lt;em&gt;finalised&lt;/em&gt; state.
 	 */
 	public File getRepositoryFile() {
-<span class="nc" id="L166">		Validate.validState(this.finalised, &quot;querying values is only allowed if this configuration is finalised&quot;);</span>
-<span class="nc" id="L167">		return this.repositoryFile;</span>
+<span class="nc" id="L156">		return this.repositoryFile;</span>
 	}
 
 	/**
@@ -178,11 +167,11 @@ import java.util.List;
 	 *             state.
 	 */
 	public void setRepositoryFile(final File repositoryFile) {
-<span class="nc bnc" id="L181" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="nc" id="L183">		Validate.notNull(repositoryFile);</span>
-<span class="nc" id="L184">		this.repositoryFile = repositoryFile;</span>
-<span class="nc" id="L185">	}</span>
+<span class="nc" id="L172">		Validate.notNull(repositoryFile);</span>
+<span class="nc" id="L173">		this.repositoryFile = repositoryFile;</span>
+<span class="nc" id="L174">	}</span>
 
 	/**
 	 * Queries wether this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state.
@@ -191,7 +180,7 @@ import java.util.List;
 	 *         {@code false} if it’s in the &lt;em&gt;set up&lt;/em&gt; state.
 	 */
 	public boolean isFinal() {
-<span class="nc" id="L194">		return this.finalised;</span>
+<span class="nc" id="L183">		return this.finalised;</span>
 	}
 
 	/**
@@ -200,22 +189,17 @@ import java.util.List;
 	 * &lt;em&gt;finalised&lt;/em&gt; state has no effect.
 	 */
 	public void finalise() {
-<span class="nc" id="L203">		this.finalised = true;</span>
-<span class="nc" id="L204">	}</span>
+<span class="nc" id="L192">		this.finalised = true;</span>
+<span class="nc" id="L193">	}</span>
 
 	/**
-	 * Queries the provider responsible to get the source files Beagle shall analyse. This
-	 * operation is only allowed in the &lt;em&gt;finalised&lt;/em&gt; state.
+	 * Queries the provider responsible to get the source files Beagle shall analyse.
 	 *
 	 *
 	 * @return The provider of source files.
-	 *
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             &lt;em&gt;finalised&lt;/em&gt; state.
 	 */
 	public SourceCodeFileProvider getFileProvider() {
-<span class="nc" id="L217">		Validate.validState(this.finalised, &quot;querying values is only allowed if this configuration is finalised&quot;);</span>
-<span class="nc" id="L218">		return this.fileProvider;</span>
+<span class="nc" id="L202">		return this.fileProvider;</span>
 	}
 
 	/**
@@ -227,11 +211,11 @@ import java.util.List;
 	 *             state.
 	 */
 	public void setFileProvider(final SourceCodeFileProvider fileProvider) {
-<span class="nc bnc" id="L230" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="nc" id="L232">		Validate.notNull(fileProvider);</span>
-<span class="nc" id="L233">		this.fileProvider = fileProvider;</span>
-<span class="nc" id="L234">	}</span>
+<span class="nc" id="L216">		Validate.notNull(fileProvider);</span>
+<span class="nc" id="L217">		this.fileProvider = fileProvider;</span>
+<span class="nc" id="L218">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

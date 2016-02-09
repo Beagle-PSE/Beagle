@@ -113,11 +113,11 @@ extends java.lang.Object</pre>
  Beagle. The class defines meaningful default values for all its settings.
 
  <p>The configuration has two states: A <em>set up</em> state, during which values may
- be modified but cannot be read, and a <em>finalised</em> state, in which it is
- immutable and can only be used to obtain values. The transition from the <em>set
- up</em> state to the <em>finalised</em> state is done through <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#finalise--"><code>finalise()</code></a>. The
- inverse transition is not possible. Trying to perform an action that is not allowed for
- the momentary state results in an <code>IllegalStateException</code> being thrown.</div>
+ be modified and a <em>finalised</em> state, in which the configuration is immutable and
+ can only be used to obtain values. The transition from the <em>set up</em> state to the
+ <em>finalised</em> state is done through <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#finalise--"><code>finalise()</code></a>. The inverse transition is
+ not possible. Trying to perform an action that is not allowed for the momentary state
+ results in an <code>IllegalStateException</code> being thrown.</div>
 </li>
 </ul>
 </div>
@@ -347,15 +347,11 @@ extends java.lang.Object</pre>
 <h4>getElements</h4>
 <pre>public&nbsp;java.util.List&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;getElements()</pre>
 <div class="block">Returns the elements to be measured or <code>null</code> to indicate that everything in
- the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getRepositoryFile--">repository file</a> should be analysed. This
- operation is only allowed in the <em>finalised</em> state.</div>
+ the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getRepositoryFile--">repository file</a> should be analysed.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The elements to be measured or <code>null</code> to indicate that everything in
          the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getRepositoryFile--">repository file</a> should be analysed.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code> - If this configuration is not in the
-             <em>finalised</em> state.</dd>
 </dl>
 </li>
 </ul>
@@ -389,8 +385,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getTimeout</h4>
 <pre>public&nbsp;int&nbsp;getTimeout()</pre>
-<div class="block">Returns the timeout to be used. This operation is only allowed in the
- <em>finalised</em> state.
+<div class="block">Returns the timeout to be used. The timeout describes the minimum time Beagle shall
+ keep trying to find results while no perfect results were found.
 
  <table> <caption>timeout value description</caption>
 
@@ -406,9 +402,6 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The timeout that will be used by Beagle.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code> - If this configuration is not in the
-             <em>finalised</em> state.</dd>
 </dl>
 </li>
 </ul>
@@ -450,14 +443,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getRepositoryFile</h4>
 <pre>public&nbsp;java.io.File&nbsp;getRepositoryFile()</pre>
-<div class="block">Returns the repository file that contains all elements that shall be analysed. This
- operation is only allowed in the <em>finalised</em> state.</div>
+<div class="block">Returns the repository file that contains all elements that shall be analysed.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The repository file Beagle will operate on.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code> - If this configuration is not in the
-             <em>finalised</em> state.</dd>
 </dl>
 </li>
 </ul>
@@ -514,14 +503,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getFileProvider</h4>
 <pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;getFileProvider()</pre>
-<div class="block">Queries the provider responsible to get the source files Beagle shall analyse. This
- operation is only allowed in the <em>finalised</em> state.</div>
+<div class="block">Queries the provider responsible to get the source files Beagle shall analyse.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The provider of source files.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code> - If this configuration is not in the
-             <em>finalised</em> state.</dd>
 </dl>
 </li>
 </ul>
