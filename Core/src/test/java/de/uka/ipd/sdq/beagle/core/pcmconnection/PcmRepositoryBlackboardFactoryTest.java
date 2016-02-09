@@ -22,7 +22,6 @@ import org.eclipse.net4j.util.collection.Pair;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -133,12 +132,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
 	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForAllElements()} .
-	 * 
-	 * @throws FileNotFoundException if a source code file can not be resolved
+	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForAllElements()}.
 	 */
 	@Test
-	public void getBlackboardForAllElements() throws FileNotFoundException {
+	public void getBlackboardForAllElements() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
@@ -151,7 +148,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
 	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.util.Collection)} .
+	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.util.Collection)}.
 	 */
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
@@ -170,12 +167,11 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
 	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])} .
+	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])}.
 	 * 
-	 * @throws FileNotFoundException if a source code file can not be resolved
 	 */
 	@Test
-	public void getBlackboardForIdsStringArray() throws FileNotFoundException {
+	public void getBlackboardForIdsStringArray() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
