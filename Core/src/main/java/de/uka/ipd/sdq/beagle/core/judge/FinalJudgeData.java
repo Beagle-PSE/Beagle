@@ -13,7 +13,7 @@ import java.util.stream.DoubleStream;
  *
  * @author Christoph Michelbach
  */
-public class FinalJudgeData implements Serializable {
+class FinalJudgeData implements Serializable {
 
 	/**
 	 * serialVersionUID to make sure serialisation works fine.
