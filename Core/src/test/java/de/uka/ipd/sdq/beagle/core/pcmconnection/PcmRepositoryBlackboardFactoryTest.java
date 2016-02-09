@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.BlackboardSeffElementsMatcher.areEqualRegardingSeffElements;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -158,8 +159,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final HashSet<String> collection = new HashSet<String>();
 		collection.add("");
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
-			is(new BlackboardFactory().getEmpty()));
+		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
+			new BlackboardFactory().getEmpty()), areEqualRegardingSeffElements());
 
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String) null),
 			throwsException(NullPointerException.class));
