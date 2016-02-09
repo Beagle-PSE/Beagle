@@ -182,6 +182,8 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {
 				final double fitnessValue =
 					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);
+				// This has to be smaller-than (not smaller) because {@code fittest}
+				// starts out as {@code MAX_CONSIDERED_FITNESS_VALUE}, not higher.
 				if (fitnessValue <= fittest) {
 					fittest = fitnessValue;
 					bestExpression = proposedExpression;
