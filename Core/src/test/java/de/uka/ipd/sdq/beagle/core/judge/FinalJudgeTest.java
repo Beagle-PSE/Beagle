@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.judge;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
@@ -128,19 +129,25 @@ public class FinalJudgeTest {
 	@Test
 	public void endsWhenRunningTooLong() {
 		final int daysToWait = 5;
+		final EvaluableExpression testExpression = EVALUABLE_EXPRESSION_FACTORY.getOne();
+		final SeffBranch seffElement = this.testBlackboard.getAllSeffBranches().iterator().next();
 
 		// “go ahead in time” by mocking {@link System#currentTimeMillis}.
 		mockStatic(System.class);
 		given(System.currentTimeMillis()).willReturn(0L);
+		given(this.mockFitnessFunction.gradeFor(any(SeffBranch.class), any(), any())).willReturn(3d);
 
 		this.testedJudge.init(this.testBlackboard);
 
 		given(System.currentTimeMillis()).willReturn(daysToWait * 24L * 60L * 60L * 1000L);
 
+		this.testBlackboard.addProposedExpressionFor(seffElement, testExpression);
 		assertThat("The final judge should end the analysis if it lasts too long",
 			this.testedJudge.judge(this.testBlackboard), ENDS_ANALYSIS);
 		assertThat("The test for running to long should be performed statelessly",
 			new FinalJudge().judge(this.testBlackboard), ENDS_ANALYSIS);
+		assertThat("Must propose the fittest expression", this.testBlackboard.getFinalExpressionFor(seffElement),
+			is(testExpression));
 	}
 
 	/**
@@ -173,6 +180,8 @@ public class FinalJudgeTest {
 					String.format("The final judge must not end the analysis while there’s still great improvement "
 						+ "(stopped after %d iterations)", i * this.allSeffElements.size()),
 					this.testedJudge.judge(this.testBlackboard), CONTINUES_ANALYSIS);
+				assertThat("Must always select the best expression",
+					this.testBlackboard.getFinalExpressionFor(seffElement), is(ConstantExpression.forValue(i)));
 			}
 		}
 	}
@@ -201,9 +210,10 @@ public class FinalJudgeTest {
 
 		// the value the final judge returned the last time it was called
 		boolean decision = false;
-		for (int i = 0; i < 500; i++) {
+		int iteration;
+		for (iteration = 0; iteration < 500; iteration++) {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
-				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(i));
+				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(iteration));
 			}
 			decision = this.testedJudge.judge(this.testBlackboard);
 			if (decision) {
@@ -212,15 +222,19 @@ public class FinalJudgeTest {
 		}
 		assertThat("The final judge must end the analysis if the results do not improve significantly", decision,
 			is(ENDS_ANALYSIS));
+		for (final MeasurableSeffElement seffElement : this.allSeffElements) {
+			assertThat("Must propose the best expression even if stopping the analysis",
+				this.testBlackboard.getFinalExpressionFor(seffElement), is(ConstantExpression.forValue(iteration)));
+		}
 
 		this.createObjects();
 		new FinalJudge().init(this.testBlackboard);
 
 		// the value the final judge returned the last time it was called
 		decision = false;
-		for (int i = 0; i < 500; i++) {
+		for (iteration = 0; iteration < 500; iteration++) {
 			for (final MeasurableSeffElement seffElement : this.allSeffElements) {
-				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(i));
+				this.testBlackboard.addProposedExpressionFor(seffElement, ConstantExpression.forValue(iteration));
 			}
 			decision = new FinalJudge().judge(this.testBlackboard);
 			if (decision) {
@@ -228,6 +242,10 @@ public class FinalJudgeTest {
 			}
 		}
 		assertThat("Ending the analysis must be done statelessly", decision, is(ENDS_ANALYSIS));
+		for (final MeasurableSeffElement seffElement : this.allSeffElements) {
+			assertThat("Must select the best expression", this.testBlackboard.getFinalExpressionFor(seffElement),
+				is(ConstantExpression.forValue(iteration)));
+		}
 	}
 
 	/**
@@ -247,6 +265,10 @@ public class FinalJudgeTest {
 			.willReturn(0d);
 		assertThat("The final judge should end the analysis if everything is perfect",
 			this.testedJudge.judge(this.testBlackboard), ENDS_ANALYSIS);
+		for (final MeasurableSeffElement seffElemet : this.allSeffElements) {
+			assertThat("Must select the best expression", this.testBlackboard.getFinalExpressionFor(seffElemet),
+				is(not(nullValue())));
+		}
 	}
 
 	/**
@@ -270,6 +292,7 @@ public class FinalJudgeTest {
 
 		this.testBlackboard.addProposedExpressionFor(seffElements[1], testExpressions[1]);
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[1]), eq(testExpressions[1]), any())).willReturn(24d);
+		this.testedJudge.judge(this.testBlackboard);
 		assertThat("The final judge should select the fittest expression",
 			this.testBlackboard.getFinalExpressionFor(seffElements[0]), is(testExpressions[0]));
 		assertThat("The final judge should select the fittest expression",
@@ -281,6 +304,7 @@ public class FinalJudgeTest {
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[0]), eq(testExpressions[2]), any())).willReturn(48d);
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[0]), eq(testExpressions[3]), any())).willReturn(6d);
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[0]), eq(testExpressions[4]), any())).willReturn(12d);
+		this.testedJudge.judge(this.testBlackboard);
 		assertThat("The final judge should select the fittest expression",
 			this.testBlackboard.getFinalExpressionFor(seffElements[0]), is(testExpressions[3]));
 		assertThat("The final judge should select the fittest expression",
