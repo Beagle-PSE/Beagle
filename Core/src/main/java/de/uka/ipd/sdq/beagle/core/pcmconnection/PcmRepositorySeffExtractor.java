@@ -159,7 +159,10 @@ public class PcmRepositorySeffExtractor {
 	private void addInternalActionToSet(final InternalActionImpl internalAction) {
 		try {
 			final CodeSection codeSection = this.nameParser.parse(internalAction.getEntityName());
-			this.rdiaSet.add(new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection));
+			if (codeSection != null) {
+				this.rdiaSet
+					.add(new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection));
+			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			fileNotFoundE.printStackTrace();
 		}
@@ -175,7 +178,9 @@ public class PcmRepositorySeffExtractor {
 	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
 		try {
 			final CodeSection codeSection = this.nameParser.parse(externalAction.getEntityName());
-			this.externalCallParameterSet.add(new ExternalCallParameter(codeSection, this.zero));
+			if (codeSection != null) {
+				this.externalCallParameterSet.add(new ExternalCallParameter(codeSection, this.zero));
+			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			fileNotFoundE.printStackTrace();
 		}
@@ -193,8 +198,10 @@ public class PcmRepositorySeffExtractor {
 		try {
 			final Set<CodeSection> codeSectionSet = new HashSet<CodeSection>();
 			final CodeSection codeSection = this.nameParser.parse(branchAction.getEntityName());
-			codeSectionSet.add(codeSection);
-			this.seffBranchSet.add(new SeffBranch(codeSectionSet));
+			if (codeSection != null) {
+				codeSectionSet.add(codeSection);
+				this.seffBranchSet.add(new SeffBranch(codeSectionSet));
+			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			fileNotFoundE.printStackTrace();
 		}
@@ -209,7 +216,9 @@ public class PcmRepositorySeffExtractor {
 	private void addLoopActionToSet(final LoopActionImpl loopAction) {
 		try {
 			final CodeSection codeSection = this.nameParser.parse(loopAction.getEntityName());
-			this.seffLoopSet.add(new SeffLoop(codeSection));
+			if (codeSection != null) {
+				this.seffLoopSet.add(new SeffLoop(codeSection));
+			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			fileNotFoundE.printStackTrace();
 		}
