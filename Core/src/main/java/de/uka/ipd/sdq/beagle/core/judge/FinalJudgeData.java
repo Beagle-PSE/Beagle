@@ -39,7 +39,7 @@ public class FinalJudgeData implements Serializable {
 	private int numberOfGenerationsWithoutSignificantImprovementPassed;
 
 	/**
-	 * Contains the fittest value of each seff element.
+	 * Contains the fittest value of each seff element (no mapping needed).
 	 */
 	private MultiSet<Double> fittestValues;
 
