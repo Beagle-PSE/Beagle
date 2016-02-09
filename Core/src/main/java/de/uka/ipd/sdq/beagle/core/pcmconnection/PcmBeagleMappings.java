@@ -19,6 +19,7 @@ import java.util.HashMap;
  * PCM repository.
  *
  * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class PcmBeagleMappings implements Serializable {
 
@@ -27,12 +28,28 @@ public class PcmBeagleMappings implements Serializable {
 	 */
 	private static final long serialVersionUID = -2442979526968290433L;
 
+	/**
+	 * The HashMap for {@link ResourceDemaningInternalAction} storing all IDs as values
+	 * for one specific SeffElement.
+	 */
 	private HashMap<ResourceDemandingInternalAction, String> rdiaMap;
 
+	/**
+	 * The HashMap for {@link SeffBranch} storing all IDs as values for one specific
+	 * SeffElement.
+	 */
 	private HashMap<SeffBranch, String> seffBranchMap;
 
+	/**
+	 * The HashMap for {@link SeffLoop} storing all IDs as values for one specific
+	 * SeffElement.
+	 */
 	private HashMap<SeffLoop, String> seffLoopMap;
 
+	/**
+	 * The HashMap for {@link ExternalCallParameter} storing all IDs as values for one
+	 * specific SeffElement.
+	 */
 	private HashMap<ExternalCallParameter, String> ecpMap;
 
 	/**
@@ -176,6 +193,10 @@ public class PcmBeagleMappings implements Serializable {
 		if (rdia == null || identifier == null) {
 			throw new NullPointerException("Parameter of getPcmIdOf should not be null!");
 		}
+		if (this.hasPcmIdOf(rdia) && !this.getPcmIdOf(rdia).equals(identifier)) {
+			throw new IllegalStateException();
+		}
+		this.rdiaMap.put(rdia, identifier);
 	}
 
 	/**
@@ -192,6 +213,10 @@ public class PcmBeagleMappings implements Serializable {
 		if (branch == null || identifier == null) {
 			throw new NullPointerException("Parameter of getPcmIdOf should not be null!");
 		}
+		if (this.hasPcmIdOf(branch) && !this.getPcmIdOf(branch).equals(identifier)) {
+			throw new IllegalStateException();
+		}
+		this.seffBranchMap.put(branch, identifier);
 	}
 
 	/**
@@ -208,6 +233,10 @@ public class PcmBeagleMappings implements Serializable {
 		if (loop == null || identifier == null) {
 			throw new NullPointerException("Parameter of getPcmIdOf should not be null!");
 		}
+		if (this.hasPcmIdOf(loop) && !this.getPcmIdOf(loop).equals(identifier)) {
+			throw new IllegalStateException();
+		}
+		this.seffLoopMap.put(loop, identifier);
 	}
 
 	/**
@@ -224,6 +253,10 @@ public class PcmBeagleMappings implements Serializable {
 		if (externalCallParameter == null || identifier == null) {
 			throw new NullPointerException("Parameter of getPcmIdOf should not be null!");
 		}
+		if (this.hasPcmIdOf(externalCallParameter) && !this.getPcmIdOf(externalCallParameter).equals(identifier)) {
+			throw new IllegalStateException();
+		}
+		this.ecpMap.put(externalCallParameter, identifier);
 	}
 
 }
