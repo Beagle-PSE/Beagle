@@ -63,7 +63,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	public PcmRepositoryBlackboardFactory(final String repositoryFileName,
 		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
 
-		if (this.fitnessFunction == null || repositoryFileName == null) {
+		if (fitnessFunction == null || repositoryFileName == null) {
 			throw new NullPointerException();
 		}
 
