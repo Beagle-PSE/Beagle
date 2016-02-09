@@ -3,9 +3,10 @@ package de.uka.ipd.sdq.beagle.core;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.anyObject;
-import static org.mockito.Mockito.inOrder;
+import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -13,14 +14,14 @@ import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser;
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
-import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExtensionPointToolsFactory;
 
 import org.junit.Test;
-import org.mockito.InOrder;
+import org.mockito.Matchers;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,6 +42,60 @@ public class AnalysisControllerTest {
 	 * A default {@link ExtensionPointToolsFactory} for the tests.
 	 */
 	private static final ExtensionPointToolsFactory EXTENSION_POINT_FACTORY = new ExtensionPointToolsFactory();
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedMeasurementTool1)}.
+	 */
+	private final MeasurementTool mockedMeasurementTool1 = mock(MeasurementTool.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedMeasurementTool2)}.
+	 */
+	private final MeasurementTool mockedMeasurementTool2 = mock(MeasurementTool.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedMeasurementTool3)}.
+	 */
+	private final MeasurementTool mockedMeasurementTool3 = mock(MeasurementTool.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedMeasurementResultAnalyser1)}.
+	 */
+	private final MeasurementResultAnalyser mockedMeasurementResultAnalyser1 = mock(MeasurementResultAnalyser.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedMeasurementResultAnalyser2)}.
+	 */
+	private final MeasurementResultAnalyser mockedMeasurementResultAnalyser2 = mock(MeasurementResultAnalyser.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedMeasurementResultAnalyser3)}.
+	 */
+	private final MeasurementResultAnalyser mockedMeasurementResultAnalyser3 = mock(MeasurementResultAnalyser.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedProposedExpressionAnalyser1)}.
+	 */
+	private final ProposedExpressionAnalyser mockedProposedExpressionAnalyser1 = mock(ProposedExpressionAnalyser.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedProposedExpressionAnalyser2)}.
+	 */
+	private final ProposedExpressionAnalyser mockedProposedExpressionAnalyser2 = mock(ProposedExpressionAnalyser.class);
+
+	/**
+	 * A mock for {@link MeasurementTool}. Should be reseted before each use with
+	 * {@code reset(mockedProposedExpressionAnalyser3)}.
+	 */
+	private final ProposedExpressionAnalyser mockedProposedExpressionAnalyser3 = mock(ProposedExpressionAnalyser.class);
 
 	/**
 	 * Tests
@@ -123,6 +178,47 @@ public class AnalysisControllerTest {
 				EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
 		};
 		assertThat("Set must not contain null.", method7, throwsException(IllegalArgumentException.class));
+
+		// Immutable tests
+		// Immutability is verified by calls to {@link
+		final Blackboard blackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		// AnalysisController#performAnalysis()}.
+		this.resetMocks();
+		final Set<MeasurementTool> allMeasurementTools = new HashSet<>();
+		allMeasurementTools.add(this.mockedMeasurementTool1);
+		allMeasurementTools.add(this.mockedMeasurementTool2);
+		allMeasurementTools.add(this.mockedMeasurementTool3);
+		final Set<MeasurementResultAnalyser> allMeasurementResultAnalysers = new HashSet<>();
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser1);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser2);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser3);
+		final Set<ProposedExpressionAnalyser> allProposedExpressionAnalysers = new HashSet<>();
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser1);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser2);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser3);
+		new AnalysisController(blackboard, allMeasurementTools, allMeasurementResultAnalysers,
+			allProposedExpressionAnalysers);
+		final Set<MeasurementTool> originalMeasurementTools = new HashSet<>(allMeasurementTools);
+		final Set<MeasurementResultAnalyser> originalMeasurementResultAnalysers =
+			new HashSet<>(allMeasurementResultAnalysers);
+		final Set<ProposedExpressionAnalyser> originalProposedExpressionAnalysers =
+			new HashSet<>(allProposedExpressionAnalysers);
+		allMeasurementTools.clear();
+		allMeasurementResultAnalysers.clear();
+		allProposedExpressionAnalysers.clear();
+
+		// Assert that the measurement tools were asked.
+		for (final MeasurementTool measurementTool : originalMeasurementTools) {
+			verify(measurementTool).measure((MeasurementOrder) notNull());
+		}
+		for (final MeasurementResultAnalyser measurementResultAnalyser : originalMeasurementResultAnalysers) {
+			verify(measurementResultAnalyser)
+				.canContribute(Matchers.eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard)));
+		}
+		for (final ProposedExpressionAnalyser proposedExpressionAnalyser : originalProposedExpressionAnalysers) {
+			verify(proposedExpressionAnalyser)
+				.canContribute(Matchers.eq(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard)));
+		}
 	}
 
 	/**
@@ -132,39 +228,110 @@ public class AnalysisControllerTest {
 	 */
 	@Test
 	public void performAnalysis() {
-		final MeasurementTool mockedMeasurementTool1 = mock(MeasurementTool.class);
-		final MeasurementTool mockedMeasurementTool2 = mock(MeasurementTool.class);
-		final MeasurementTool mockedMeasurementTool3 = mock(MeasurementTool.class);
-		final MeasurementResultAnalyser mockedMeasurementResultAnalyser1 = mock(MeasurementResultAnalyser.class);
-		final MeasurementResultAnalyser mockedMeasurementResultAnalyser2 = mock(MeasurementResultAnalyser.class);
-		final MeasurementResultAnalyser mockedMeasurementResultAnalyser3 = mock(MeasurementResultAnalyser.class);
-		final ProposedExpressionAnalyser mockedProposedExpressionAnalyser1 = mock(ProposedExpressionAnalyser.class);
-		final ProposedExpressionAnalyser mockedProposedExpressionAnalyser2 = mock(ProposedExpressionAnalyser.class);
-		final ProposedExpressionAnalyser mockedProposedExpressionAnalyser3 = mock(ProposedExpressionAnalyser.class);
-		final FinalJudge mockedFinalJudge = mock(FinalJudge.class);
-
 		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
-		oneMeasurementTool.add(mockedMeasurementTool1);
+		oneMeasurementTool.add(this.mockedMeasurementTool1);
 		final Set<MeasurementResultAnalyser> oneMeasurementResultAnalyser = new HashSet<>();
-		oneMeasurementResultAnalyser.add(mockedMeasurementResultAnalyser1);
+		oneMeasurementResultAnalyser.add(this.mockedMeasurementResultAnalyser1);
 		final Set<ProposedExpressionAnalyser> oneProposedExpressionAnalyser = new HashSet<>();
-		oneProposedExpressionAnalyser.add(mockedProposedExpressionAnalyser1);
+		oneProposedExpressionAnalyser.add(this.mockedProposedExpressionAnalyser1);
 
 		// Test, where no one wants to contribute.
+		this.resetMocks();
 		final Blackboard blackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
-		when(mockedMeasurementResultAnalyser1
+		when(this.mockedMeasurementResultAnalyser1
 			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard))).thenReturn(false);
-		when(mockedProposedExpressionAnalyser1
+		when(this.mockedProposedExpressionAnalyser1
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard))).thenReturn(false);
 
 		final AnalysisController analysisController = new AnalysisController(blackboard, oneMeasurementTool,
 			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
 		analysisController.performAnalysis();
-		verify(mockedMeasurementResultAnalyser1, never()).contribute(anyObject());
-		verify(mockedProposedExpressionAnalyser1, never()).contribute(anyObject());
-		final InOrder inOrder = inOrder(mockedFinalJudge);
-		inOrder.verify(mockedFinalJudge).init(blackboard);
-		inOrder.verify(mockedFinalJudge).judge(blackboard);
+		verify(this.mockedMeasurementResultAnalyser1, never()).contribute(anyObject());
+		verify(this.mockedProposedExpressionAnalyser1, never()).contribute(anyObject());
+
+		this.resetMocks();
+		final Set<MeasurementTool> allMeasurementTools = new HashSet<>();
+		allMeasurementTools.add(this.mockedMeasurementTool1);
+		allMeasurementTools.add(this.mockedMeasurementTool2);
+		allMeasurementTools.add(this.mockedMeasurementTool3);
+		final Set<MeasurementResultAnalyser> allMeasurementResultAnalysers = new HashSet<>();
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser1);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser2);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser3);
+		final Set<ProposedExpressionAnalyser> allProposedExpressionAnalysers = new HashSet<>();
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser1);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser2);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser3);
+		final Blackboard blackboard2 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard2))).thenReturn(false);
+		when(this.mockedMeasurementResultAnalyser2
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard2))).thenReturn(false);
+		when(this.mockedMeasurementResultAnalyser3
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard2))).thenReturn(false);
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard2))).thenReturn(false);
+		when(this.mockedProposedExpressionAnalyser2
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard2))).thenReturn(false);
+		when(this.mockedProposedExpressionAnalyser3
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard2))).thenReturn(false);
+
+		final AnalysisController analysisController2 = new AnalysisController(blackboard2, allMeasurementTools,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController2.performAnalysis();
+		verify(this.mockedMeasurementResultAnalyser1, never()).contribute(anyObject());
+		verify(this.mockedMeasurementResultAnalyser2, never()).contribute(anyObject());
+		verify(this.mockedMeasurementResultAnalyser3, never()).contribute(anyObject());
+		verify(this.mockedProposedExpressionAnalyser1, never()).contribute(anyObject());
+		verify(this.mockedProposedExpressionAnalyser2, never()).contribute(anyObject());
+		verify(this.mockedProposedExpressionAnalyser3, never()).contribute(anyObject());
+
+		// Assert that MeasurementTool#measure is not called, when the blackboard is empty
+		// (-> nothing to measure).
+		this.resetMocks();
+		final AnalysisController analysisController3 = new AnalysisController(BLACKBOARD_FACTORY.getEmpty(),
+			allMeasurementTools, allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController3.performAnalysis();
+		verify(this.mockedMeasurementTool1, never()).measure(anyObject());
+		verify(this.mockedMeasurementTool2, never()).measure(anyObject());
+		verify(this.mockedMeasurementTool3, never()).measure(anyObject());
 	}
 
+	/**
+	 * Resets the following mocks.
+	 *
+	 * <li>
+	 *
+	 * <ul> {@link #mockedMeasurementTool1} </ul>
+	 *
+	 * <ul> {@link #mockedMeasurementTool2} </ul>
+	 *
+	 * <ul> {@link #mockedMeasurementTool3} </ul>
+	 *
+	 * <ul> {@link #mockedMeasurementResultAnalyser1} </ul>
+	 *
+	 * <ul> {@link #mockedMeasurementResultAnalyser2} </ul>
+	 *
+	 * <ul> {@link #mockedMeasurementResultAnalyser3} </ul>
+	 *
+	 * <ul> {@link #mockedProposedExpressionAnalyser1} </ul>
+	 *
+	 * <ul> {@link #mockedProposedExpressionAnalyser2} </ul>
+	 *
+	 * <ul> {@link #mockedProposedExpressionAnalyser3} </ul>
+	 *
+	 * </li>
+	 *
+	 */
+	private void resetMocks() {
+		reset(this.mockedMeasurementTool1);
+		reset(this.mockedMeasurementTool2);
+		reset(this.mockedMeasurementTool3);
+		reset(this.mockedMeasurementResultAnalyser1);
+		reset(this.mockedMeasurementResultAnalyser2);
+		reset(this.mockedMeasurementResultAnalyser3);
+		reset(this.mockedProposedExpressionAnalyser1);
+		reset(this.mockedProposedExpressionAnalyser2);
+		reset(this.mockedProposedExpressionAnalyser3);
+	}
 }
