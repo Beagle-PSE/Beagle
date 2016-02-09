@@ -11,11 +11,11 @@ import java.util.List;
  * Beagle. The class defines meaningful default values for all its settings.
  *
  * <p>The configuration has two states: A <em>set up</em> state, during which values may
- * be modified but cannot be read, and a <em>finalised</em> state, in which it is
- * immutable and can only be used to obtain values. The transition from the <em>set
- * up</em> state to the <em>finalised</em> state is done through {@link #finalise()}. The
- * inverse transition is not possible. Trying to perform an action that is not allowed for
- * the momentary state results in an {@link IllegalStateException} being thrown.
+ * be modified and a <em>finalised</em> state, in which the configuration is immutable and
+ * can only be used to obtain values. The transition from the <em>set up</em> state to the
+ * <em>finalised</em> state is done through {@link #finalise()}. The inverse transition is
+ * not possible. Trying to perform an action that is not allowed for the momentary state
+ * results in an {@link IllegalStateException} being thrown.
  *
  * @author Christoph Michelbach
  * @author Joshua Gleitze
@@ -70,16 +70,12 @@ public class BeagleConfiguration {
 
 	/**
 	 * Returns the elements to be measured or {@code null} to indicate that everything in
-	 * the {@linkplain #getRepositoryFile() repository file} should be analysed. This
-	 * operation is only allowed in the <em>finalised</em> state.
+	 * the {@linkplain #getRepositoryFile() repository file} should be analysed.
 	 *
 	 * @return The elements to be measured or {@code null} to indicate that everything in
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             <em>finalised</em> state.
 	 */
 	public List<Entity> getElements() {
-		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
 		return this.elements;
 	}
 
@@ -103,8 +99,8 @@ public class BeagleConfiguration {
 	}
 
 	/**
-	 * Returns the timeout to be used. This operation is only allowed in the
-	 * <em>finalised</em> state.
+	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
+	 * keep trying to find results while no perfect results were found.
 	 *
 	 * <table> <caption>timeout value description</caption>
 	 *
@@ -119,11 +115,8 @@ public class BeagleConfiguration {
 	 * </table>
 	 *
 	 * @return The timeout that will be used by Beagle.
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             <em>finalised</em> state.
 	 */
 	public int getTimeout() {
-		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
 		return this.timeout;
 	}
 
@@ -155,15 +148,11 @@ public class BeagleConfiguration {
 	}
 
 	/**
-	 * Returns the repository file that contains all elements that shall be analysed. This
-	 * operation is only allowed in the <em>finalised</em> state.
+	 * Returns the repository file that contains all elements that shall be analysed.
 	 *
 	 * @return The repository file Beagle will operate on.
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             <em>finalised</em> state.
 	 */
 	public File getRepositoryFile() {
-		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
 		return this.repositoryFile;
 	}
 
@@ -204,17 +193,12 @@ public class BeagleConfiguration {
 	}
 
 	/**
-	 * Queries the provider responsible to get the source files Beagle shall analyse. This
-	 * operation is only allowed in the <em>finalised</em> state.
+	 * Queries the provider responsible to get the source files Beagle shall analyse.
 	 *
 	 *
 	 * @return The provider of source files.
-	 *
-	 * @throws IllegalStateException If this configuration is not in the
-	 *             <em>finalised</em> state.
 	 */
 	public SourceCodeFileProvider getFileProvider() {
-		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
 		return this.fileProvider;
 	}
 
