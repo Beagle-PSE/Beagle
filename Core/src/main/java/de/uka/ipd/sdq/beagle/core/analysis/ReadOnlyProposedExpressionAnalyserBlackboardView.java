@@ -20,12 +20,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Set;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * Read-only view of the {@link Blackboard} designed to be used by
@@ -63,6 +57,9 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 		}
 		if (object == this) {
 			return true;
+		}
+		if (object.getClass() != ReadOnlyProposedExpressionAnalyserBlackboardView.class) {
+			return false;
 		}
 		final ReadOnlyProposedExpressionAnalyserBlackboardView other =
 			(ReadOnlyProposedExpressionAnalyserBlackboardView) object;
@@ -124,7 +121,6 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 *      ResourceDemandingInternalAction)
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-		Validate.notNull(rdia);
 		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
@@ -139,7 +135,6 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
-		Validate.notNull(branch);
 		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
@@ -154,7 +149,6 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		Validate.notNull(loop);
 		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
@@ -172,7 +166,6 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		Validate.notNull(externalCallParameter);
 		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 
@@ -182,9 +175,13 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	 * .
 	 *
 	 * @param element A SEFF element. Must not be {@code null}.
+	 *
+	 * @return All proposed expressions for {@code measurebleSeffElements} Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
+	 *
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
-		Validate.notNull(element);
 		return this.blackboard.getProposedExpressionFor(element);
 	}
 
