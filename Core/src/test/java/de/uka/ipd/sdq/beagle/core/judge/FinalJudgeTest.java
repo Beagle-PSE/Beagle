@@ -150,9 +150,7 @@ public class FinalJudgeTest {
 	@Test
 	public void doesNotEndWhileThereIsImprovement() {
 		final int numberOfIterations = 100;
-		// selecting a value to base 2 significantly improves this tests’ performance.
-		final double startValue =
-			Math.pow(2, Math.floor(Math.log(FinalJudge.MAX_CONSIDERED_FITNESS_VALUE) / Math.log(2)));
+		final double startValue = FinalJudge.MAX_CONSIDERED_FITNESS_VALUE;
 
 		this.testedJudge.init(this.testBlackboard);
 
