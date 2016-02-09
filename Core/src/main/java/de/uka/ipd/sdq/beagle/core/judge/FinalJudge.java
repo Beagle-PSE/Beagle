@@ -189,9 +189,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 			this.data.addFittestValue(fittest);
 
 			// Add the best expression to the blackboard.
-			if (bestExpression != null) {
-				blackboard.addProposedExpressionFor(seffElement, bestExpression);
-			}
+			blackboard.setFinalExpressionFor(seffElement, bestExpression);
 		}
 
 		return true;
