@@ -51,5 +51,6 @@ zipnameumlet="$tmpdir/umlet.zip"
 wget -qO- -O $zipnameumlet $umlet && sudo unzip $zipnameumlet -d /opt
 sudo chown -R $USER /opt/Umlet
 chmod +x /opt/Umlet/umlet.sh
+mkdir ~/UMLet
 
 rm -rf $tmpdir
