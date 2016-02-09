@@ -20,8 +20,8 @@ public final class BlackboardSeffElementsMatcher extends DiagnosingMatcher<Objec
 	 *
 	 * @return A matcher as described above.
 	 */
-	public static Matcher<Object> hasDefaultEqualsProperties() {
-		return new EqualsMatcher();
+	public static Matcher<Object> areEqualRegardingSeffElements() {
+		return new BlackboardSeffElementsMatcher();
 	}
 
 	@Override
