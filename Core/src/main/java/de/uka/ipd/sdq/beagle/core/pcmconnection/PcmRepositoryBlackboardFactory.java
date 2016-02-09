@@ -141,6 +141,14 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *         written on it. Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForIds(final Collection<String> identifiers) {
+		if (identifiers == null) {
+			throw new NullPointerException();
+		}
+		for (String identifier : identifiers) {
+			if (identifier == null) {
+				throw new NullPointerException();
+			}
+		}
 		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
 		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);
 
@@ -175,6 +183,14 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *         written on it. Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForIds(final String... identifiers) {
+		if (identifiers == null) {
+			throw new NullPointerException();
+		}
+		for (String identifier : identifiers) {
+			if (identifier == null) {
+				throw new NullPointerException();
+			}
+		}
 		final Collection<String> identifierCollection = new LinkedList<String>();
 		for (final String identifier : identifiers) {
 			identifierCollection.add(identifier);
