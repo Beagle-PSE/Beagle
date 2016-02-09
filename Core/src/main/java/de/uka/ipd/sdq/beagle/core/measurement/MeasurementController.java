@@ -63,12 +63,13 @@ public class MeasurementController {
 	public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
 		Validate.notNull(blackboard);
 
-		for (MeasurementTool measurementTool : this.measurementTools) {
-			if (measurementTool.canMeasure(blackboard)) {
-				return true;
-			}
-		}
-		return false;
+		int elementsToBeMeasuredInTotal = 0;
+		elementsToBeMeasuredInTotal += blackboard.getSeffBranchesToBeMeasured().size();
+		elementsToBeMeasuredInTotal += blackboard.getSeffLoopsToBeMeasured().size();
+		elementsToBeMeasuredInTotal += blackboard.getRdiasToBeMeasured().size();
+		elementsToBeMeasuredInTotal += blackboard.getExternalCallParametersToBeMeasured().size();
+
+		return elementsToBeMeasuredInTotal != 0;
 	}
 
 	/**
