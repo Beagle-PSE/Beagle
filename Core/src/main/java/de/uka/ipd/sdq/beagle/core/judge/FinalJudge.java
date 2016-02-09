@@ -106,7 +106,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		}
 
 		// Take the measurements.
-		this.measure(blackboard);
+		this.measureAllFitnessAndAddToBlackboard(blackboard);
 
 		return willReturnTrue || this.allElementsArePerfect() || !this.sufficientRelativeImprovement();
 	}
@@ -130,11 +130,12 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 	/**
 	 * Measures the fitness of all seff branches, seff loops, rdias, and external call
-	 * parameters on the {@link Blackboard}.
+	 * parameters on the {@link Blackboard} and for each seff element adds the expression
+	 * describing it best to the blackboard.
 	 *
 	 * @param blackboard The {@link Blackboard} to use.
 	 */
-	private void measure(final Blackboard blackboard) {
+	private void measureAllFitnessAndAddToBlackboard(final Blackboard blackboard) {
 		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
 
 		final Set<SeffBranch> seffBranches = blackboard.getAllSeffBranches();
