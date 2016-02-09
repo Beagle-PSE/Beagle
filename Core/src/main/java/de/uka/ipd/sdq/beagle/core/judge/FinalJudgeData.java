@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.judge;
 
-import de.uka.ipd.sdq.beagle.core.Blackboard;
-
 import org.apache.commons.collections4.MultiSet;
 import org.apache.commons.collections4.multiset.HashMultiSet;
 
@@ -25,12 +23,6 @@ class FinalJudgeData implements Serializable {
 	 * expressions started or {@code -1} to indicate that this field isn't initialised.
 	 */
 	private long startTime = -1;
-
-	/**
-	 * The number of generations passed. Will be the number of times a {@link FinalJudge}
-	 * received a call to {@link FinalJudge#judge(Blackboard)}.
-	 */
-	private int numberOfGenerationsPassed;
 
 	/**
 	 * The number of generations with significant improvement (see
@@ -68,15 +60,6 @@ class FinalJudgeData implements Serializable {
 	}
 
 	/**
-	 * Returns {@code numberOfGenerationsPassed}.
-	 *
-	 * @return The {@code numberOfGenerationsPassed}.
-	 */
-	public int getNumberOfGenerationsPassed() {
-		return this.numberOfGenerationsPassed;
-	}
-
-	/**
 	 * Returns {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
 	 *
 	 * @return The {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
@@ -111,7 +94,6 @@ class FinalJudgeData implements Serializable {
 	 * generations and sets the fittest values to an empty set.
 	 */
 	public void newGeneration() {
-		this.numberOfGenerationsPassed++;
 		this.fittestValues = new HashMultiSet<>();
 	}
 
