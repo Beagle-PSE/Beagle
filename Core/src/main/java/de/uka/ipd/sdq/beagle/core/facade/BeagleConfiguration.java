@@ -10,6 +10,13 @@ import java.util.List;
  * Configures a whole execution of Beagle. Therefore contains all values needed to set up
  * Beagle. The class defines meaningful default values for all its settings.
  *
+ * <p>The configuration has two states: A <em>set up</em> state, during which values may
+ * be modified but cannot be read, and a <em>finalised</em> state, in which it is
+ * immutable and can only be used to obtain values. The transition from the <em>set
+ * up</em> state to the <em>finalised</em> state is done through {@link #finalise()}. The
+ * inverse transition is not possible. Trying to perform an action that is not allowed for
+ * the momentary state results in an {@link IllegalStateException} being thrown.
+ *
  * @author Christoph Michelbach
  * @author Joshua Gleitze
  */
@@ -43,7 +50,7 @@ public class BeagleConfiguration {
 	/**
 	 * The repository file.
 	 */
-	private final File repositoryFile;
+	private File repositoryFile;
 
 	/**
 	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
@@ -52,48 +59,52 @@ public class BeagleConfiguration {
 	private int timeout;
 
 	/**
-	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
-	 * elements to be measured.
-	 *
-	 * @param elements The elements to be measured or {@code null} to indicate that
-	 *            everything in {@code repositoryFile} should be analysed.
-	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 * The provider of the source files to be analysed.
 	 */
-	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile) {
-		Validate.notNull(repositoryFile);
+	private SourceCodeFileProvider fileProvider;
 
-		this.elements = elements;
-		this.repositoryFile = repositoryFile;
-		this.timeout = DEFAULT_TIMEOUT;
-	}
+	/**
+	 * Whether this configuration is in the <em>finalised</em> state.
+	 */
+	private boolean finalised;
 
 	/**
 	 * Returns the elements to be measured or {@code null} to indicate that everything in
-	 * the {@linkplain #getRepositoryFile() repository file} should be analysed.
+	 * the {@linkplain #getRepositoryFile() repository file} should be analysed. This
+	 * operation is only allowed in the <em>finalised</em> state.
 	 *
 	 * @return The elements to be measured or {@code null} to indicate that everything in
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
+	 * @throws IllegalStateException If this configuration is not in the
+	 *             <em>finalised</em> state.
 	 */
 	public List<Entity> getElements() {
+		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
 		return this.elements;
 	}
 
 	/**
 	 * Sets the elements to be measured to {@code elements}. {@code null} indicates that
 	 * everything in the {@linkplain #getRepositoryFile() repository file} should be
-	 * analysed.
+	 * analysed. This operation is only allowed in the <em>set up</em> state.
+	 *
 	 *
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in the {@linkplain #getRepositoryFile() repository file}
 	 *            should be analysed.
+	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
+	 *             state.
 	 * @see #getElements()
 	 */
 	public void setElements(final List<Entity> elements) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
 		this.elements = elements;
 	}
 
 	/**
-	 * Returns the timeout to be used.
+	 * Returns the timeout to be used. This operation is only allowed in the
+	 * <em>finalised</em> state.
 	 *
 	 * <table> <caption>timeout value description</caption>
 	 *
@@ -108,14 +119,18 @@ public class BeagleConfiguration {
 	 * </table>
 	 *
 	 * @return The timeout that will be used by Beagle.
+	 * @throws IllegalStateException If this configuration is not in the
+	 *             <em>finalised</em> state.
 	 */
 	public int getTimeout() {
+		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
 		return this.timeout;
 	}
 
 	/**
 	 * Sets the timeout to be used to {@code timeout}. The timeout describes the minimum
 	 * time Beagle shall keep trying to find results while no perfect results were found.
+	 * This operation is only allowed in the <em>set up</em> state.
 	 *
 	 * <table> <caption>timeout value description</caption>
 	 *
@@ -130,18 +145,92 @@ public class BeagleConfiguration {
 	 * </table>
 	 *
 	 * @param timeout The timeout to be used by Beagle.
+	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
+	 *             state.
 	 */
 	public void setTimeout(final int timeout) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
 		this.timeout = timeout;
 	}
 
 	/**
-	 * Returns the repository file that contains all elements that shall be analysed.
+	 * Returns the repository file that contains all elements that shall be analysed. This
+	 * operation is only allowed in the <em>finalised</em> state.
 	 *
 	 * @return The repository file Beagle will operate on.
+	 * @throws IllegalStateException If this configuration is not in the
+	 *             <em>finalised</em> state.
 	 */
 	public File getRepositoryFile() {
+		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
 		return this.repositoryFile;
+	}
+
+	/**
+	 * Sets the repository file containing the elements Beagle shall analyse. This
+	 * operation is only allowed in the <em>set up</em> state.
+	 *
+	 *
+	 * @param repositoryFile The pcm repository file containing all elements Beagle shall
+	 *            analyse. Must not be {@code null}.
+	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
+	 *             state.
+	 */
+	public void setRepositoryFile(final File repositoryFile) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
+		Validate.notNull(repositoryFile);
+		this.repositoryFile = repositoryFile;
+	}
+
+	/**
+	 * Queries wether this configuration is in the <em>finalised</em> state.
+	 *
+	 * @return {@code true} if this configuration is in the <em>finalised</em> state,
+	 *         {@code false} if it’s in the <em>set up</em> state.
+	 */
+	public boolean isFinal() {
+		return this.finalised;
+	}
+
+	/**
+	 * Finalises this configuration, thus transitioning it into the <em>finalised</em>
+	 * state. Calling this method when this configuration alread is in the
+	 * <em>finalised</em> state has no effect.
+	 */
+	public void finalise() {
+		this.finalised = true;
+	}
+
+	/**
+	 * Queries the provider responsible to get the source files Beagle shall analyse. This
+	 * operation is only allowed in the <em>finalised</em> state.
+	 *
+	 *
+	 * @return The provider of source files.
+	 *
+	 * @throws IllegalStateException If this configuration is not in the
+	 *             <em>finalised</em> state.
+	 */
+	public SourceCodeFileProvider getFileProvider() {
+		Validate.validState(this.finalised, "querying values is only allowed if this configuration is finalised");
+		return this.fileProvider;
+	}
+
+	/**
+	 * Sets the provider responsible to get the source files Beagle shall analyse.
+	 *
+	 * @param fileProvider The provider of source files. Must not be {@code null}.
+	 *
+	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
+	 *             state.
+	 */
+	public void setFileProvider(final SourceCodeFileProvider fileProvider) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
+		Validate.notNull(fileProvider);
+		this.fileProvider = fileProvider;
 	}
 
 }
