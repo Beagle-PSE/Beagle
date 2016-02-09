@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
+import static org.junit.Assert.fail;
+
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 
@@ -24,13 +26,17 @@ public class PcmRepositoryBlackboardFactoryFactory {
 	 * Returns a valid {@link PcmRepositoryBlackboardFactory} object.
 	 *
 	 * @return A valid {@link PcmRepositoryBlackboardFactory} object.
-	 * @throws FileNotFoundException When Constructor of
-	 *             {@link PcmRepositoryBlackboardFactory} does not get a valid file
 	 */
-	public PcmRepositoryBlackboardFactory getValidInstance() throws FileNotFoundException {
-		return new PcmRepositoryBlackboardFactory(
-			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository",
-			PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne());
+	public PcmRepositoryBlackboardFactory getValidInstance() {
+		try {
+			return new PcmRepositoryBlackboardFactory(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository",
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne());
+		} catch (final FileNotFoundException exception) {
+			fail(exception.getMessage());
+		}
+
+		return null;
 	}
 
 }
