@@ -83,7 +83,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		 * @return The fitness value.
 		 */
 		private double determineValue(final MeasurableSeffElement element, final EvaluableExpression expression) {
-			final Pair<MeasurableSeffElement, EvaluableExpression> pair = new Pair<>(parameter, expression);
+			final Pair<MeasurableSeffElement, EvaluableExpression> pair = new Pair<>(element, expression);
 			if (this.store.containsKey(pair)) {
 				return this.store.get(pair);
 			} else {
