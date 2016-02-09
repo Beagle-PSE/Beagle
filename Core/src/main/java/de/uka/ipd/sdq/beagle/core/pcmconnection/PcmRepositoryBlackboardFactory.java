@@ -8,7 +8,6 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
-import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import org.eclipse.emf.ecore.EObject;
@@ -107,10 +106,8 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *
 	 * @return A new blackboard having all translated <em>PCM elements</em> written on it.
 	 *         Will never be {@code null}.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForAllElements() throws FileNotFoundException {
+	public Blackboard getBlackboardForAllElements() {
 		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
 		return this.pcmExtractor.getBlackboardForAllElements(this.repository);
 
@@ -143,10 +140,8 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *            written to the Blackboard.
 	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
 	 *         written on it. Will never be {@code null}.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForIds(final Collection<String> identifiers) throws FileNotFoundException {
+	public Blackboard getBlackboardForIds(final Collection<String> identifiers) {
 		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
 		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);
 
@@ -179,10 +174,8 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *            written to the Blackboard.
 	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
 	 *         written on it. Will never be {@code null}.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForIds(final String... identifiers) throws FileNotFoundException {
+	public Blackboard getBlackboardForIds(final String... identifiers) {
 		final Collection<String> identifierCollection = new LinkedList<String>();
 		for (final String identifier : identifiers) {
 			identifierCollection.add(identifier);

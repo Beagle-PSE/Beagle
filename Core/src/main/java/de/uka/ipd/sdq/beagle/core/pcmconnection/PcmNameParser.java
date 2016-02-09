@@ -6,15 +6,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
- * ****************************EXTINCT************************************************************
- * This parser is a draft that can only provide proper functionality if SoMoX does not
- * change its naming convention for EntityNames. It offers one method
+ * ****************************EXTINCT****************************************************
+ * ******** This parser is a draft that can only provide proper functionality if SoMoX
+ * does not change its naming convention for EntityNames. It offers one method
  * {@link PcmNameParser#parse} to read out the {@link CodeSection CodeSections} in a given
  * String. Attention! This Parser can not read out as much as desired for the
  * {@link CodeSection}. For more information, read through the java-doc of the method
  * {@link parse}.
- * ***********************************************************************************************
- * No more usage of this class is made so far.
+ * ***************************************************************************************
+ * ******** No more usage of this class is made so far.
  * 
  * @author Ansgar Spiegler
  *
@@ -91,8 +91,8 @@ public class PcmNameParser {
 	 * 
 	 * @param entityName SoMoX generated entityName. If not, this leads to undefined
 	 *            behaviour.
-	 * @return May return {@code null}, if the String contains no file-path 
-	 *          {@link CodeSection}. Initialized with (file, firstOffset, file,
+	 * @return May return {@code null}, if the String contains no file-path
+	 *         {@link CodeSection}. Initialized with (file, firstOffset, file,
 	 *         secondOffset) OR (file, firstOffset, file, -1) if there is no second Offset
 	 *         available. Anyway, the first "file" and the second "file" are the same!
 	 * @throws FileNotFoundException When the file was not found at the given relative

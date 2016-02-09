@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -20,6 +21,7 @@ import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -54,20 +56,16 @@ public class PcmRepositorySeffExtractor {
 	 */
 	private final Set<ExternalCallParameter> externalCallParameterSet;
 
-	/* ******************EXTINCT*********************************************
+	/**
+	 * Integer with value 0.
+	 */
+	private final int zero = 0;
+
 	/**
 	 * The {@link PcmNameParser} that is needed for parsing the EntityNames created by
 	 * SoMoX.
 	 */
-	//private PcmNameParser nameParser;
-	//***********************************************************************
-	
-	/**
-	 * The {@link SeffElementCreator} that is needed to create a valid CodeSection for
-	 * MeasurableSeff elements.
-	 */
-	private SeffElementCreator seffElementCreator;
-
+	private final PcmNameParser nameParser;
 
 	/**
 	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
@@ -85,8 +83,8 @@ public class PcmRepositorySeffExtractor {
 		this.seffBranchSet = seffBranchSet;
 		this.rdiaSet = rdiaSet;
 		this.externalCallParameterSet = externalCallParameterSet;
-		
-		this.seffElementCreator = new SeffElementCreator();
+
+		this.nameParser = new PcmNameParser();
 	}
 
 	/**
@@ -95,10 +93,9 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 * @param eObject Expecting a {@link ResourceDemandingBehaviour} or any eObject that
 	 *            has a concrete SEFF-Type.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
+	 * 
 	 */
-	public void extractBehaviourAndAddToSet(final EObject eObject) throws FileNotFoundException {
+	public void extractBehaviourAndAddToSet(final EObject eObject) {
 		if (eObject.getClass() == InternalActionImpl.class) {
 			this.addInternalActionToSet((InternalActionImpl) eObject);
 		} else if (eObject.getClass() == ExternalCallActionImpl.class) {
@@ -117,10 +114,8 @@ public class PcmRepositorySeffExtractor {
 	 * calling the extraction of its containing {@link ResourceDemandingBehaviour}.
 	 *
 	 * @param loopAction Action to extract.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	private void extractLoopAction(final LoopActionImpl loopAction) throws FileNotFoundException {
+	private void extractLoopAction(final LoopActionImpl loopAction) {
 		// MISSING CODE FOR MAPPING ELEMENT
 		// final PCMRandomVariable loopVariable =
 		// loopAction.getIterationCount_LoopAction();
@@ -137,10 +132,8 @@ public class PcmRepositorySeffExtractor {
 	 * calling the extraction of its containing {@link ResourceDemandingBehaviour}.
 	 *
 	 * @param branchAction Action to extract.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	private void extractBranchAction(final BranchActionImpl branchAction) throws FileNotFoundException {
+	private void extractBranchAction(final BranchActionImpl branchAction) {
 		final EList<AbstractBranchTransition> branchActionSpecificBranchList = branchAction.getBranches_Branch();
 		for (final EObject branchActionSpecificBranch : branchActionSpecificBranchList) {
 			final EList<EObject> specificBranchContentList = branchActionSpecificBranch.eContents();
@@ -157,15 +150,19 @@ public class PcmRepositorySeffExtractor {
 
 	/**
 	 * Adding a new {@link ResourceDemandingInternalAction} based on a
-	 * {@link InternalActionImpl} to the {@link rdiaSet}.
+	 * {@link InternalActionImpl} to the {@link rdiaSet}. Fails silently if file from
+	 * EntityName not found!
 	 *
 	 * @param internalAction SEFF-Action to add.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
+	 * 
 	 */
-	private void addInternalActionToSet(final InternalActionImpl internalAction) throws FileNotFoundException {
-		final ResourceDemandingInternalAction rdia = this.seffElementCreator.getRDIAForId(internalAction.getId());
-		this.rdiaSet.add(rdia);
+	private void addInternalActionToSet(final InternalActionImpl internalAction) {
+		try {
+			final CodeSection codeSection = this.nameParser.parse(internalAction.getEntityName());
+			this.rdiaSet.add(new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection));
+		} catch (final FileNotFoundException fileNotFoundE) {
+			fileNotFoundE.printStackTrace();
+		}
 	}
 
 	/**
@@ -173,40 +170,49 @@ public class PcmRepositorySeffExtractor {
 	 * {@link ExternalCallActionImpl} to the {@link externalCallParameterSet}.
 	 *
 	 * @param externalAction SEFF-Action to add.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
+	 * 
 	 */
-	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) throws FileNotFoundException {
-		final ExternalCallParameter exCallParam = this.seffElementCreator.getExternalCallParameterForId(externalAction.getId());
-		this.externalCallParameterSet.add(exCallParam);
+	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
+		try {
+			final CodeSection codeSection = this.nameParser.parse(externalAction.getEntityName());
+			this.externalCallParameterSet.add(new ExternalCallParameter(codeSection, this.zero));
+		} catch (final FileNotFoundException fileNotFoundE) {
+			fileNotFoundE.printStackTrace();
+		}
+
 	}
 
 	/**
 	 * Adding a new {@link SeffBranch} based on a {@link BranchActionImpl} to the
-	 * {@link seffBranchSet}.
+	 * {@link seffBranchSet}. Fails silently if file from EntityName not found!
 	 *
 	 * @param branchAction SEFF-Action to add.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
+	 * 
 	 */
-	private void addBranchActionToSet(final BranchActionImpl branchAction) throws FileNotFoundException {
-		final SeffBranch seffBranch = this.seffElementCreator.getSeffBranchForId(branchAction.getId());
-		this.seffBranchSet.add(seffBranch);
+	private void addBranchActionToSet(final BranchActionImpl branchAction) {
+		try {
+			final Set<CodeSection> codeSectionSet = new HashSet<CodeSection>();
+			final CodeSection codeSection = this.nameParser.parse(branchAction.getEntityName());
+			codeSectionSet.add(codeSection);
+			this.seffBranchSet.add(new SeffBranch(codeSectionSet));
+		} catch (final FileNotFoundException fileNotFoundE) {
+			fileNotFoundE.printStackTrace();
+		}
 	}
 
 	/**
 	 * Adding a new {@link SeffLoop} based on a {@link LoopActionImpl} to the
-	 * {@link seffLoopSet}.
+	 * {@link seffLoopSet}. Fails silently if file from EntityName not found!
 	 *
 	 * @param loopAction SEFF-Action to add.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	private void addLoopActionToSet(final LoopActionImpl loopAction) throws FileNotFoundException {
-		final SeffLoop seffLoop = this.seffElementCreator.getSeffLoopForId(loopAction.getId());
-		this.seffLoopSet.add(seffLoop);
+	private void addLoopActionToSet(final LoopActionImpl loopAction) {
+		try {
+			final CodeSection codeSection = this.nameParser.parse(loopAction.getEntityName());
+			this.seffLoopSet.add(new SeffLoop(codeSection));
+		} catch (final FileNotFoundException fileNotFoundE) {
+			fileNotFoundE.printStackTrace();
+		}
 	}
-	
-
 
 }

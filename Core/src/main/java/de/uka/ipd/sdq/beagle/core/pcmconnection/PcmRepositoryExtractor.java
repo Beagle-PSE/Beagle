@@ -1,7 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
@@ -19,7 +18,6 @@ import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingSEFFImpl;
 
-import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -84,10 +82,8 @@ public class PcmRepositoryExtractor {
 	 * @param repository The repository to look up.
 	 * @return A new blackboard having all translated <em>PCM elements</em> written on it.
 	 *         Will never be {@code null}.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForAllElements(final RepositoryImpl repository) throws FileNotFoundException {
+	public Blackboard getBlackboardForAllElements(final RepositoryImpl repository) {
 		this.seffLoopSet = new HashSet<SeffLoop>();
 		this.seffBranchSet = new HashSet<SeffBranch>();
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
@@ -128,11 +124,8 @@ public class PcmRepositoryExtractor {
 	 *            written to the Blackboard.
 	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
 	 *         written on it. Will never be {@code null}.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	public Blackboard getBlackboardForIds(final RepositoryImpl repository, final Collection<String> identifiers)
-		throws FileNotFoundException {
+	public Blackboard getBlackboardForIds(final RepositoryImpl repository, final Collection<String> identifiers) {
 
 		final Set<EObject> setOfIdentifiedObjects = new HashSet<EObject>();
 
@@ -186,10 +179,8 @@ public class PcmRepositoryExtractor {
 	 * extracts all needed content into the storing sets.
 	 *
 	 * @param repositoryToScan The repository to read from.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	private void scanRepository(final RepositoryImpl repositoryToScan) throws FileNotFoundException {
+	private void scanRepository(final RepositoryImpl repositoryToScan) {
 		final EList<RepositoryComponent> componentList = repositoryToScan.getComponents__Repository();
 		for (final RepositoryComponent component : componentList) {
 			if (component.getClass() == BasicComponentImpl.class) {
@@ -203,11 +194,8 @@ public class PcmRepositoryExtractor {
 	 * to methods that save all needed SEFF-elements into the sets.
 	 *
 	 * @param basicComponent Component of the Repository.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	private void extractBasicComponentAndAddContentsToSet(final BasicComponentImpl basicComponent)
-		throws FileNotFoundException {
+	private void extractBasicComponentAndAddContentsToSet(final BasicComponentImpl basicComponent) {
 		final EList<ServiceEffectSpecification> seffList =
 			basicComponent.getServiceEffectSpecifications__BasicComponent();
 		for (final ServiceEffectSpecification seff : seffList) {
@@ -222,11 +210,8 @@ public class PcmRepositoryExtractor {
 	 * Recursive calls to methods that save all needed SEFF-elements into the sets.
 	 *
 	 * @param rdSeff rdSeff of the Repository.
-	 * @throws FileNotFoundException If the file for creating {@link CodeSection} was not
-	 *             found at the specified path in the repository-file.
 	 */
-	private void extractResourceDemandingSEFFImplAndAddContentsToSet(final ResourceDemandingSEFFImpl rdSeff)
-		throws FileNotFoundException {
+	private void extractResourceDemandingSEFFImplAndAddContentsToSet(final ResourceDemandingSEFFImpl rdSeff) {
 		final EList<EObject> rdSeffContentList = rdSeff.eContents();
 		for (final EObject rdSeffContent : rdSeffContentList) {
 			this.pcmSeffExtractor.extractBehaviourAndAddToSet(rdSeffContent);
