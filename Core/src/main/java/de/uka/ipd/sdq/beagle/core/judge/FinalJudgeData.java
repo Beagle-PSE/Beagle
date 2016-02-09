@@ -90,7 +90,7 @@ class FinalJudgeData implements Serializable {
 	}
 
 	/**
-	 * Anounces that a new generation is being judged. Increments the number of passed
+	 * Announces that a new generation is being judged. Increments the number of passed
 	 * generations and sets the fittest values to an empty set.
 	 */
 	public void newGeneration() {
