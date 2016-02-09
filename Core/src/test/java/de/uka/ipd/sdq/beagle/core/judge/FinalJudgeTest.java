@@ -263,16 +263,16 @@ public class FinalJudgeTest {
 		this.testBlackboard.addProposedExpressionFor(seffElements[0], testExpressions[0]);
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[0]), eq(testExpressions[0]), any())).willReturn(12d);
 		this.testedJudge.judge(this.testBlackboard);
-		assertThat("The final judge should propose the fittest expression",
+		assertThat("The final judge should select the fittest expression",
 			this.testBlackboard.getFinalExpressionFor(seffElements[0]), is(testExpressions[0]));
-		assertThat("The final judge should not ‘cross-propose’ expressions",
+		assertThat("The final judge should not ‘cross-select’ expressions",
 			this.testBlackboard.getFinalExpressionFor(seffElements[1]), is(nullValue()));
 
 		this.testBlackboard.addProposedExpressionFor(seffElements[1], testExpressions[1]);
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[1]), eq(testExpressions[1]), any())).willReturn(24d);
-		assertThat("The final judge should propose the fittest expression",
+		assertThat("The final judge should select the fittest expression",
 			this.testBlackboard.getFinalExpressionFor(seffElements[0]), is(testExpressions[0]));
-		assertThat("The final judge should propose the fittest expression",
+		assertThat("The final judge should select the fittest expression",
 			this.testBlackboard.getFinalExpressionFor(seffElements[1]), is(testExpressions[1]));
 
 		this.testBlackboard.addProposedExpressionFor(seffElements[0], testExpressions[2]);
@@ -281,9 +281,9 @@ public class FinalJudgeTest {
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[0]), eq(testExpressions[2]), any())).willReturn(48d);
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[0]), eq(testExpressions[3]), any())).willReturn(6d);
 		given(this.mockFitnessFunction.gradeFor(eq(seffElements[0]), eq(testExpressions[4]), any())).willReturn(12d);
-		assertThat("The final judge should propose the fittest expression",
+		assertThat("The final judge should select the fittest expression",
 			this.testBlackboard.getFinalExpressionFor(seffElements[0]), is(testExpressions[3]));
-		assertThat("The final judge should propose the fittest expression",
+		assertThat("The final judge should select the fittest expression",
 			this.testBlackboard.getFinalExpressionFor(seffElements[1]), is(testExpressions[1]));
 	}
 }
