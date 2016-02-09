@@ -129,6 +129,7 @@ public class FinalJudgeTest {
 	public void endsWhenRunningTooLong() {
 		final int daysToWait = 5;
 
+		// “go ahead in time” by mocking {@link System#currentTimeMillis}.
 		mockStatic(System.class);
 		given(System.currentTimeMillis()).willReturn(0L);
 
@@ -138,7 +139,6 @@ public class FinalJudgeTest {
 
 		assertThat("The final judge should end the analysis if it lasts too long",
 			this.testedJudge.judge(this.testBlackboard), ENDS_ANALYSIS);
-
 		assertThat("The test for running to long should be performed statelessly",
 			new FinalJudge().judge(this.testBlackboard), ENDS_ANALYSIS);
 	}
@@ -150,10 +150,14 @@ public class FinalJudgeTest {
 	@Test
 	public void doesNotEndWhileThereIsImprovement() {
 		final int numberOfIterations = 100;
+		// selecting a value to base 2 significantly improves this tests’ performance.
 		final double startValue =
 			Math.pow(2, Math.floor(Math.log(FinalJudge.MAX_CONSIDERED_FITNESS_VALUE) / Math.log(2)));
+
 		this.testedJudge.init(this.testBlackboard);
 
+		// each expression that’s new for an element will have half of the previous
+		// fitness value.
 		final Answer<Double> answerWithBigChange =
 			(info) -> startValue * Math.pow(2, -info.getArgumentAt(1, ConstantExpression.class).getValue());
 		given(this.mockFitnessFunction.gradeFor(any(SeffBranch.class), any(), any())).will(answerWithBigChange);
@@ -186,6 +190,8 @@ public class FinalJudgeTest {
 		final double startValue = 100d;
 		this.testedJudge.init(this.testBlackboard);
 
+		// each expression that’s new for an element will have 99,9% of the previous
+		// fitness value.
 		final Answer<Double> answerWithLittleChange =
 			(info) -> startValue * Math.pow(0.999, info.getArgumentAt(1, ConstantExpression.class).getValue());
 		given(this.mockFitnessFunction.gradeFor(any(SeffBranch.class), any(), any())).will(answerWithLittleChange);
