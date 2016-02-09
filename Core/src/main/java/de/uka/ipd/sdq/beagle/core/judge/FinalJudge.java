@@ -97,15 +97,18 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		this.loadData(blackboard);
 		this.data.newGeneration();
 
+		boolean willReturnTrue = false;
+
 		// Determine the criteria which aren't CPU-intensive first.
 		if (this.timePassedTooHigh()) {
-			return true;
+			// We are now destined to return {@code true}.
+			willReturnTrue = true;
 		}
 
 		// Take the measurements.
 		this.measure(blackboard);
 
-		return this.allElementsArePerfect() || !this.sufficientRelativeImprovement();
+		return willReturnTrue || this.allElementsArePerfect() || !this.sufficientRelativeImprovement();
 	}
 
 	/**
