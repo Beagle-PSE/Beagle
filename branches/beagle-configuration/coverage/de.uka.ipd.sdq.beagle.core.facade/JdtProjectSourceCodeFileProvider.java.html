@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>JdtProjectSourceCodeFileProvider.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.facade</a> &gt; <span class="el_source">JdtProjectSourceCodeFileProvider.java</span></div><h1>JdtProjectSourceCodeFileProvider.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.facade;
+
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaModelException;
+
+import java.io.File;
+
+/**
+ * Provides source files from source folders of Eclipse Java Projects.
+ *
+ * @author Joshua Gleitze
+ */
+public class JdtProjectSourceCodeFileProvider implements SourceCodeFileProvider {
+
+	/**
+	 * The java project to get the source files from.
+	 */
+	private final IJavaProject jdtProject;
+
+	/**
+	 * Creates a provider returning source files from the provided {@code project}’s
+	 * source folders.
+	 *
+	 * @param project A Java project to return the source files from.
+	 */
+<span class="nc" id="L27">	public JdtProjectSourceCodeFileProvider(final IJavaProject project) {</span>
+<span class="nc" id="L28">		this.jdtProject = project;</span>
+<span class="nc" id="L29">	}</span>
+
+	@Override
+	public File getSourceFile(final String fullyQualifiedJavaPath) {
+		try {
+<span class="nc" id="L34">			final IType type = this.jdtProject.findType(fullyQualifiedJavaPath);</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">			if (type != null) {</span>
+<span class="nc" id="L36">				return type.getCompilationUnit().getPath().toFile();</span>
+			}
+<span class="nc" id="L38">		} catch (final JavaModelException didNotWork) {</span>
+<span class="nc" id="L39">			return null;</span>
+<span class="nc" id="L40">		}</span>
+<span class="nc" id="L41">		return null;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

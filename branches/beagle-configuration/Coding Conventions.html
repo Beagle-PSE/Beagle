@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head> 
+        <meta charset="utf-8"> 
+        <title>Beagle—Coding Conventions</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="fonts/cm-sans/cmun-sans.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-serif/cmun-serif.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-typewriter/cmun-typewriter.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css" type="text/css"> 
+        <link rel="stylesheet" href="css/index.css" type="text/css"> 
+    </head> 
+    <body> 
+        <h1>Coding Conventions</h1> 
+        <h2>Production Code</h2> 
+        <ul> 
+            <li>Every method must be checked by at least one JUnit Test.</li> 
+            <li> <p>We program defensively:</p> 
+                <blockquote> 
+                    <p>‘defensive programming’ describes a way programming giving users of an API detailed error messages when they use it wrong, for instance (but not limited to) by checking input arguments. This might lead to less bugs. For example, a method may return useable, but false values. Defensive programming would check the input arguments and throw an exception and prevent the programmer from continuing with false values.</p> 
+                </blockquote></li> 
+            <li>Defensive programming is verfied with JUnit test cases.</li> 
+            <li>Getters exposing internal collections should return copy-on-write versions to prevent modification of internals and providing easy use of the returned collection. This behaviour needs to be documented.</li> 
+            <li>It is highly recommended to use <a href="https://commons.apache.org/">the Apache Commons</a> wherever applicable. Especially parameter checks, <code>equals(Object)</code> and <code>hashCode()</code> should be implemented using them (see <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/Validate.html"><code>lang3.Validate</code></a> and <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/builder/package-summary.html"><code>lang3.builder.*</code></a>).</li> 
+        </ul> 
+        <h2>Prototypes</h2> 
+        <ul> 
+            <li>Prototypes don’t need Unit Tests</li> 
+            <li>Prototypes don’t need to be documented as well as the normal source code.</li> 
+        </ul> 
+        <h2>Javadoc Style Convention</h2> 
+        <p>All parts of the Javadoc are written as full sentences, including that they begin with a capital letter and end with a full stop.</p> 
+        <h3>Naming Convention</h3> 
+        <ul> 
+            <li>Class names are written in UpperCamelCase <a href="https://google.github.io/styleguide/javaguide.html#s5.3-camel-case">as defined by Google</a>(<a href="https://web.archive.org/web/20151208081251/https://google.github.io/styleguide/javaguide.html#s5.3-camel-case">archived</a>) and have a minimum length of 3 characters.</li> 
+            <li>Method names are written in lowerCamelCase <a href="https://google.github.io/styleguide/javaguide.html#s5.3-camel-case">as defined by Google</a>(<a href="https://web.archive.org/web/20151208081251/https://google.github.io/styleguide/javaguide.html#s5.3-camel-case">archived</a>) and have a minimum length of 3 characters.</li> 
+            <li>Attributes are written in lowerCamelCase <a href="https://google.github.io/styleguide/javaguide.html#s5.3-camel-case">as defined by Google</a>(<a href="https://web.archive.org/web/20151208081251/https://google.github.io/styleguide/javaguide.html#s5.3-camel-case">archived</a>) and have a minimum length of 3 characters.</li> 
+            <li>Package names are written in lowercase and have a minimum length of 2 characters per part.</li> 
+        </ul> 
+        <h3>Use of Acronyms</h3> 
+        <ul> 
+            <li>Only acronyms used in the SRS are permitted.</li> 
+            <li>Acronyms are treated as normal words and are spelled as specified in <code>Naming Convention</code>. They are not capitalised.</li> 
+        </ul> 
+        <h3>Tags</h3> 
+        <ul> 
+            <li><code>@param</code> and <code>@returns</code> tags have to state their value ranges if they refer to primitive data types as well as stating whether they can be <code>null</code> and the meaning of them being <code>null</code> if they refer to object data types.</li> 
+            <li>Unnecessarily stating the package when using <code>{@link}</code> or <code>{@see}</code> tags is forbidden.</li> 
+        </ul>  
+    </body>
+</html>
