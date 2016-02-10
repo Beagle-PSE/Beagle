@@ -10,7 +10,6 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor;
-import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterValueCapturedEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 
 import org.apache.commons.collections4.IteratorUtils;
@@ -192,7 +191,7 @@ public class MeasurementEventParser {
 	 *
 	 * @author Roman Langrehr
 	 */
-	private class ResourceDemandingInternalActionMeasurementEventVisitor implements MeasurementEventVisitor {
+	private class ResourceDemandingInternalActionMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
 
 		/**
 		 * The {@link ResourceDemandingInternalAction} where we want to know the new
@@ -222,16 +221,6 @@ public class MeasurementEventParser {
 		}
 
 		@Override
-		public void visit(final CodeSectionEnteredEvent codeSectionExecutedEvent) {
-			// We don't care about them.
-		}
-
-		@Override
-		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
-			// We don't care about them.
-		}
-
-		@Override
 		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
 			// Check if this measurement event is for the correct resource type.
 			if (resourceDemandCapturedEvent.getType() == this.resourceDemandingInternalAction.getResourceType()) {
@@ -239,20 +228,14 @@ public class MeasurementEventParser {
 					.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));
 			}
 		}
-
-		@Override
-		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
-			// We don't care about them.
-		}
 	}
 
 	/**
 	 * A {@link MeasurementEventVisitor} for a specific {@link SeffBranch}.
 	 *
-	 *
 	 * @author Roman Langrehr
 	 */
-	private class SeffBranchMeasurementEventVisitor implements MeasurementEventVisitor {
+	private class SeffBranchMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
 
 		/**
 		 * The {@link SeffBranch} where we want to know the new measurement results.
@@ -286,21 +269,8 @@ public class MeasurementEventParser {
 			this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
 		}
 
-		@Override
-		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
-			// We don't care about them, because we defined a SeffBranch to bexecuted,
-			// exactly when it was entered.
-		}
-
-		@Override
-		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
-			// We don't care about them.
-		}
-
-		@Override
-		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
-			// We don't care about them.
-		}
+		// We don't care about CodeSectionLeftEvents, because we defined a SeffBranch to
+		// be executed, exactly when it was entered.
 	}
 
 	/**
@@ -312,7 +282,7 @@ public class MeasurementEventParser {
 	 *
 	 * @author Roman Langrehr
 	 */
-	private class SeffLoopMeasurementEventVisitor implements MeasurementEventVisitor {
+	private class SeffLoopMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
 
 		/**
 		 * The {@link SeffBranch} where we want to know the new measurement results.
@@ -354,7 +324,8 @@ public class MeasurementEventParser {
 				// recursive call, or there is no current execution of this loop.
 				this.currentLoopCounts.push(new LoopExecutionCounter());
 			}
-			//assert !this.currentLoopCounts.peek().isOpen;
+			// commented out, because the test coverage tool has problems with assert.
+			// assert !this.currentLoopCounts.peek().isOpen;
 			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
 				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
 					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
@@ -384,7 +355,9 @@ public class MeasurementEventParser {
 
 					if (!this.currentLoopCounts.isEmpty()) {
 						// The invariant for this stack
-						//assert this.currentLoopCounts.peek().isOpen;
+						// commented out, because the test coverage tool has problems with
+						// assert.
+						// assert this.currentLoopCounts.peek().isOpen;
 						// allows us to just close the next layer.
 						this.currentLoopCounts.peek().isOpen = false;
 						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
@@ -394,16 +367,6 @@ public class MeasurementEventParser {
 			}
 			// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
 			// event without an CodeSectionEnteredEvent and ignore this.
-		}
-
-		@Override
-		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
-			// We don't care about them.
-		}
-
-		@Override
-		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
-			// We don't care about them.
 		}
 
 		/**
