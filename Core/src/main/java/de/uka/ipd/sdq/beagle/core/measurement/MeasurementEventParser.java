@@ -235,11 +235,8 @@ public class MeasurementEventParser {
 		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
 			// Check if this measurement event is for the correct resource type.
 			if (resourceDemandCapturedEvent.getType() == this.resourceDemandingInternalAction.getResourceType()) {
-				// Check if it has a realistic value.
-				if (resourceDemandCapturedEvent.getValue() >= 0) {
-					this.resourceDemandMeasurementResults
-						.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));
-				}
+				this.resourceDemandMeasurementResults
+					.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));
 			}
 		}
 
@@ -286,9 +283,7 @@ public class MeasurementEventParser {
 		@Override
 		public void visit(final CodeSectionEnteredEvent codeSectionExecutedEvent) {
 			final int branchIndex = this.branch.getBranches().indexOf(codeSectionExecutedEvent.getCodeSection());
-			if (branchIndex != -1) {
-				this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
-			}
+			this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
 		}
 
 		@Override
@@ -354,55 +349,51 @@ public class MeasurementEventParser {
 
 		@Override
 		public void visit(final CodeSectionEnteredEvent codeSectionEnteredEvent) {
-			if (codeSectionEnteredEvent.getCodeSection().equals(this.loop.getLoopBody())) {
-				if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {
-					// The current branch was not finished before a this, so we have a
-					// recursive call, or there is no current execution of this loop.
-					this.currentLoopCounts.push(new LoopExecutionCounter());
-				}
-				assert !this.currentLoopCounts.peek().isOpen;
-				if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
-					|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
-						+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
-					// We have not continuous loop body executions, so we create a new
-					// execution event.
-					this.loopFinished();
-					this.currentLoopCounts.push(new LoopExecutionCounter());
-				}
-				this.currentLoopCounts.peek().numberOfExecutions++;
-				this.currentLoopCounts.peek().isOpen = true;
+			if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {
+				// The current branch was not finished before a this, so we have a
+				// recursive call, or there is no current execution of this loop.
+				this.currentLoopCounts.push(new LoopExecutionCounter());
 			}
+			assert !this.currentLoopCounts.peek().isOpen;
+			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
+				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
+					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
+				// We have not continuous loop body executions, so we create a new
+				// execution event.
+				this.loopFinished();
+				this.currentLoopCounts.push(new LoopExecutionCounter());
+			}
+			this.currentLoopCounts.peek().numberOfExecutions++;
+			this.currentLoopCounts.peek().isOpen = true;
 		}
 
 		@Override
 		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
-			if (codeSectionLeftEvent.getCodeSection().equals(this.loop.getLoopBody())) {
-				if (!this.currentLoopCounts.isEmpty()) {
-					if (this.currentLoopCounts.peek().isOpen) {
-						// The current execution is finished.
+			if (!this.currentLoopCounts.isEmpty()) {
+				if (this.currentLoopCounts.peek().isOpen) {
+					// The current execution is finished.
+					this.currentLoopCounts.peek().isOpen = false;
+					this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
+						MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
+				} else {
+					// The current execution is already finished, so we need to close
+					// the one "below" that.
+
+					// The actual closing
+					this.loopFinished();
+
+					if (!this.currentLoopCounts.isEmpty()) {
+						// The invariant for this stack
+						assert this.currentLoopCounts.peek().isOpen;
+						// allows us to just close the next layer.
 						this.currentLoopCounts.peek().isOpen = false;
 						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
 							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
-					} else {
-						// The current execution is already finished, so we need to close
-						// the one "below" that.
-
-						// The actual closing
-						this.loopFinished();
-
-						if (!this.currentLoopCounts.isEmpty()) {
-							// The invariant for this stack
-							assert this.currentLoopCounts.peek().isOpen;
-							// allows us to just close the next layer.
-							this.currentLoopCounts.peek().isOpen = false;
-							this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
-								MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
-						}
 					}
 				}
-				// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
-				// event without an CodeSectionEnteredEvent and ignore this.
 			}
+			// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
+			// event without an CodeSectionEnteredEvent and ignore this.
 		}
 
 		@Override
