@@ -29,7 +29,7 @@ public class PcmBeagleMappings implements Serializable {
 	private static final long serialVersionUID = -2442979526968290433L;
 
 	/**
-	 * The HashMap for {@link ResourceDemaningInternalAction} storing all IDs as values
+	 * The HashMap for {@link ResourceDemandingInternalAction} storing all IDs as values
 	 * for one specific SeffElement.
 	 */
 	private HashMap<ResourceDemandingInternalAction, String> rdiaMap;
