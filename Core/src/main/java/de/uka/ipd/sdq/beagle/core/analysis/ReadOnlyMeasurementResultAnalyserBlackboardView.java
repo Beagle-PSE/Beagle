@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.analysis;
 
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -13,14 +14,11 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.io.Serializable;
 import java.util.Set;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * Read-only view of the {@link Blackboard} designed to be used by
@@ -31,8 +29,41 @@ import java.util.Set;
  * .
  *
  * @author Christoph Michelbach
+ * @author Michael Vogt
  */
-public class ReadOnlyMeasurementResultAnalyserBlackboardView {
+public final class ReadOnlyMeasurementResultAnalyserBlackboardView {
+
+	/**
+	 * Blackboard instance committed from the {@link AnalysisController}.
+	 */
+	private Blackboard blackboard;
+
+	/**
+	 * Set the blackboard instance from the {@link AnalysisController} to the private
+	 * blackboard attribute.
+	 *
+	 * @param blackboard The blackboard given from the {@link AnalysisController}.
+	 */
+	public ReadOnlyMeasurementResultAnalyserBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
+		this.blackboard = blackboard;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != ReadOnlyMeasurementResultAnalyserBlackboardView.class) {
+			return false;
+		}
+		final ReadOnlyMeasurementResultAnalyserBlackboardView other =
+			(ReadOnlyMeasurementResultAnalyserBlackboardView) object;
+		return this.blackboard == other.blackboard;
+	}
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getAllSeffBranches()}.
@@ -42,7 +73,7 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         blackboard content. Is never {@code null}.
 	 */
 	public Set<ResourceDemandingInternalAction> getAllRdias() {
-		return null;
+		return this.blackboard.getAllRdias();
 	}
 
 	/**
@@ -52,7 +83,7 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffBranch> getAllSeffBranches() {
-		return null;
+		return this.blackboard.getAllSeffBranches();
 	}
 
 	/**
@@ -62,7 +93,7 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         returned set will not modify the blackboard content. Is never {@code null}.
 	 */
 	public Set<SeffLoop> getAllSeffLoops() {
-		return null;
+		return this.blackboard.getAllSeffLoops();
 	}
 
 	/**
@@ -73,22 +104,23 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         Beagle. Is never {@code null}.
 	 */
 	public Set<ExternalCallParameter> getAllExternalCallParameters() {
-		return null;
+		return this.blackboard.getAllExternalCallParameters();
 	}
 
 	/**
 	 * Delegates to
-	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)}
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor( ResourceDemandingInternalAction)}
 	 * .
 	 *
 	 * @param rdia An resource demanding internal action to get the measurement results
 	 *            of. Must not be {@code null}.
 	 * @return All measurement results reported for {@code rdia}. Changes to the returned
 	 *         set will not modify the blackboard content. Is never {@code null}.
-	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ResourceDemandingInternalAction)
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(
+	 *      ResourceDemandingInternalAction)
 	 */
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-		return null;
+		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
 	/**
@@ -102,7 +134,7 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffBranch)
 	 */
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
-		return null;
+		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
 	/**
@@ -115,8 +147,8 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *         set will not modify the blackboard content. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(SeffLoop)
 	 */
-	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		return null;
+	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
+		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
 	/**
@@ -126,14 +158,14 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 *
 	 * @param externalCallParameter An external parameter to get the measurement results
 	 *            of. Must not be {@code null}.
-	 * @return All measurement results reported for {@code externalCallParameter}. Changes
-	 *         to the returned set will not modify the blackboard content. Is never
-	 *         {@code null}.
+	 * @return All measurement results reported for {@code loexternalCallParameterop}.
+	 *         Changes to the returned set will not modify the blackboard content. Is
+	 *         never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getMeasurementResultsFor(ExternalCallParameter)
 	 */
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		return null;
+		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 
 	/**
@@ -145,7 +177,7 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		return null;
+		return this.blackboard.getFitnessFunction();
 	}
 
 	/**
@@ -161,7 +193,13 @@ public class ReadOnlyMeasurementResultAnalyserBlackboardView {
 	 */
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		return null;
+		return this.blackboard.readFor(writer);
 	}
 
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(35, 53).append(this.blackboard).toHashCode();
+	}
 }
