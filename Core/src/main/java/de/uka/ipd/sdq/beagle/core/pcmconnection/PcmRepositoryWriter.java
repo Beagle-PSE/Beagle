@@ -10,6 +10,12 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.palladiosimulator.pcm.repository.RepositoryFactory;
+import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
 
@@ -27,6 +33,8 @@ public class PcmRepositoryWriter {
 	 * Blackboard to get Mapping from.
 	 */
 	private final Blackboard blackboard;
+
+	private final Set<ResourceDemandingInternalAction>
 
 	/**
 	 * Creates a writer to write the results written on {@code blackboard} back to a PCM
@@ -52,5 +60,29 @@ public class PcmRepositoryWriter {
 	 *            blackboard was initially created for.
 	 */
 	public void writeTo(final File repositoryFile) {
+
+		if (repositoryFile == null) {
+			throw new NullPointerException();
+		}
+
+		RepositoryFactory.eINSTANCE.createRepository();
+		// Not sure if this final declaration could lead to a problem.
+		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
+
+		final EObject eObject = EMFHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);
+		if (!(eObject.getClass() == RepositoryImpl.class)) {
+			throw new IllegalArgumentException("File is not a repository!");
+		}
+		final RepositoryImpl repository = (RepositoryImpl) eObject;
+		
+		for (ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
+			EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);
+			if (evaEx != null) {
+				
+			}
+		}
+		this.blackboard.getf
 	}
+
+	private void annotateEvaExTo()
 }
