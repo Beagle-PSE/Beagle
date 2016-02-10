@@ -242,7 +242,7 @@ public class MeasurementEventParserTest {
 		results = parser.getMeasurementResultsFor(loops[0]);
 		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(1));
-		
+
 		measurementEvents = new ArrayList<>();
 		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
 		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
@@ -255,7 +255,7 @@ public class MeasurementEventParserTest {
 		parser = new MeasurementEventParser(measurementEvents);
 		results = parser.getMeasurementResultsFor(loops[0]);
 		resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
-		assertThat(resultValues, containsInAnyOrder(4));
+		assertThat(resultValues, containsInAnyOrder(1, 1, 1, 1));
 
 		measurementEvents = new ArrayList<>();
 		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
