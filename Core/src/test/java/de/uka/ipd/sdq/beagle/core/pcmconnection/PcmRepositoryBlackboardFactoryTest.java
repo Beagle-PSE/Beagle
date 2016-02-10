@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -19,10 +21,21 @@ import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.net4j.util.collection.Pair;
 import org.junit.Test;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -121,6 +134,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(() -> new PcmRepositoryBlackboardFactory("\0", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
 
+		given(EMFHelper.loadFromXMIFile(any(), any())).willReturn(new SomeInvalidObject());
+		assertThat(() -> pcmRepositoryBlackboardFactoryFactory.getValidInstance(),
+			throwsException(IllegalArgumentException.class));
+
 		final File[] impossibleRepositoryFiles = {
 			new File(""), new File("."), new File(".."), new File("/"), new File("/tmp"), new File("\0")
 		};
@@ -129,6 +146,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 			assertThat(() -> new PcmRepositoryBlackboardFactory(impossibleRepositoryFile, this.fitnessFunction),
 				throwsException(IllegalArgumentException.class));
 		}
+
+		// final PcmRepositoryBlackboardFactory mockedPcmRepositoryBlackboardFactory =
+		// mock(PcmRepositoryBlackboardFactory.class);
+
 	}
 
 	/**
@@ -241,4 +262,122 @@ public class PcmRepositoryBlackboardFactoryTest {
 		Blackboard appSensorBlackboard = appSensorBlackboardFactory.getBlackboardForAllElements();
 	}
 
+	/**
+	 * Non-Javadoc.
+	 * 
+	 * @author Christoph Michelbach
+	 */
+	private class SomeInvalidObject implements EObject {
+
+		@Override
+		public EList<Adapter> eAdapters() {
+
+			return null;
+		}
+
+		@Override
+		public boolean eDeliver() {
+
+			return false;
+		}
+
+		@Override
+		public void eSetDeliver(final boolean deliver) {
+
+		}
+
+		@Override
+		public void eNotify(final Notification notification) {
+
+		}
+
+		@Override
+		public EClass eClass() {
+
+			return null;
+		}
+
+		@Override
+		public Resource eResource() {
+
+			return null;
+		}
+
+		@Override
+		public EObject eContainer() {
+
+			return null;
+		}
+
+		@Override
+		public EStructuralFeature eContainingFeature() {
+
+			return null;
+		}
+
+		@Override
+		public EReference eContainmentFeature() {
+
+			return null;
+		}
+
+		@Override
+		public EList<EObject> eContents() {
+
+			return null;
+		}
+
+		@Override
+		public TreeIterator<EObject> eAllContents() {
+
+			return null;
+		}
+
+		@Override
+		public boolean eIsProxy() {
+
+			return false;
+		}
+
+		@Override
+		public EList<EObject> eCrossReferences() {
+
+			return null;
+		}
+
+		@Override
+		public Object eGet(final EStructuralFeature feature) {
+
+			return null;
+		}
+
+		@Override
+		public Object eGet(final EStructuralFeature feature, final boolean resolve) {
+
+			return null;
+		}
+
+		@Override
+		public void eSet(final EStructuralFeature feature, final Object newValue) {
+
+		}
+
+		@Override
+		public boolean eIsSet(final EStructuralFeature feature) {
+
+			return false;
+		}
+
+		@Override
+		public void eUnset(final EStructuralFeature feature) {
+
+		}
+
+		@Override
+		public Object eInvoke(final EOperation operation, final EList<?> arguments) throws InvocationTargetException {
+
+			return null;
+		}
+
+	}
 }

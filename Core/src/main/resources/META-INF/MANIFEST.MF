@@ -9,3 +9,4 @@ Require-Bundle: org.apache.commons.lang3,
  org.eclipse.emf.ecore,
  org.palladiosimulator.pcm,
  org.eclipse.emf.cdo
+Import-Package: org.eclipse.emf.codegen.ecore.genmodel.impl
