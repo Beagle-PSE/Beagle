@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FailureReport.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">FailureReport.java</span></div><h1>FailureReport.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
+
 import java.util.function.Supplier;
 
 /**
@@ -13,12 +15,22 @@ import java.util.function.Supplier;
  *
  * @param &lt;RECOVER_TYPE&gt; The return type of the recover functions.
  */
-<span class="nc" id="L16">public class FailureReport&lt;RECOVER_TYPE&gt; {</span>
+<span class="nc" id="L18">public class FailureReport&lt;RECOVER_TYPE&gt; {</span>
 
 	/**
 	 * Message giving information about the failure.
 	 */
 	private String failureMessage;
+
+	/**
+	 * Details about the failure.
+	 */
+<span class="nc" id="L28">	private final StringBuilder failureDetails = new StringBuilder();</span>
+
+	/**
+	 * Wheter details about the failure have yet been provided.
+	 */
+	private boolean detailsProvided;
 
 	/**
 	 * Exception that caused or indicated the failure.
@@ -39,30 +51,50 @@ import java.util.function.Supplier;
 	 * Supplies a message describing the failure. The message will be evaluated through
 	 * {@link String#format(String, Object...)}.
 	 *
-	 * @param message A message giving details about the failure.
+	 * @param message A message describing the failure.
 	 * @param values Format values, will be passed to
 	 *            {@link String#format(String, Object...)}.
 	 * @return {@code this}.
 	 */
 	public FailureReport&lt;RECOVER_TYPE&gt; message(final String message, final Object... values) {
-<span class="nc" id="L48">		this.failureMessage = String.format(message, values);</span>
-<span class="nc" id="L49">		return this;</span>
+<span class="nc" id="L60">		this.failureMessage = String.format(message, values);</span>
+<span class="nc" id="L61">		return this;</span>
+	}
+
+	/**
+	 * Supplies a message giving details about the failure. The message will be evaluated
+	 * through {@link String#format(String, Object...)} and be &lt;em&gt;perepended&lt;/em&gt; to
+	 * potentally already existing details.
+	 *
+	 * @param message Details about the reported failure.
+	 * @param values Format values, will be passed to
+	 *            {@link String#format(String, Object...)}.
+	 * @return {@code this}.
+	 */
+	public FailureReport&lt;RECOVER_TYPE&gt; details(final String message, final Object... values) {
+<span class="nc" id="L75">		this.detailsProvided = true;</span>
+<span class="nc" id="L76">		this.failureDetails.insert(0, String.format(message, values));</span>
+<span class="nc" id="L77">		return this;</span>
 	}
 
 	/**
 	 * Supplies the exception that caused or indicated the failure. If no message has been
 	 * set on this report yet, the report’s message will be set to
-	 * {@code cause.getMessage()}. A new report’s cause is {@code null}.
+	 * {@code cause.getMessage()}. The exception’s stacktrace will be appnended to the
+	 * report’s {@linkplain #details(String, Object...) details}. A new report’s cause is
+	 * {@code null}.
 	 *
 	 * @param cause The exception that caused or indicated the failure.
 	 * @return {@code this}.
 	 */
 	public FailureReport&lt;RECOVER_TYPE&gt; cause(final Exception cause) {
-<span class="nc" id="L61">		this.failureCause = cause;</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">		if (this.failureMessage == null) {</span>
-<span class="nc" id="L63">			this.failureMessage = cause.getMessage();</span>
+<span class="nc" id="L91">		this.failureCause = cause;</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		if (this.failureMessage == null) {</span>
+<span class="nc" id="L93">			this.failureMessage = cause.getMessage();</span>
 		}
-<span class="nc" id="L65">		return this;</span>
+<span class="nc" id="L95">		this.detailsProvided = true;</span>
+<span class="nc" id="L96">		this.failureDetails.append(ExceptionUtils.getStackTrace(cause));</span>
+<span class="nc" id="L97">		return this;</span>
 	}
 
 	/**
@@ -73,10 +105,10 @@ import java.util.function.Supplier;
 	 * @return {@code this}.
 	 */
 	public FailureReport&lt;RECOVER_TYPE&gt; recoverable() {
-<span class="nc" id="L76">		this.continueFunction = () -&gt; {</span>
+<span class="nc" id="L108">		this.continueFunction = () -&gt; {</span>
 			return null;
 		};
-<span class="nc" id="L79">		return this;</span>
+<span class="nc" id="L111">		return this;</span>
 	}
 
 	/**
@@ -89,8 +121,8 @@ import java.util.function.Supplier;
 	 * @return {@code this}.
 	 */
 	public FailureReport&lt;RECOVER_TYPE&gt; continueWith(final Supplier&lt;RECOVER_TYPE&gt; continueAt) {
-<span class="nc" id="L92">		this.continueFunction = continueAt;</span>
-<span class="nc" id="L93">		return this;</span>
+<span class="nc" id="L124">		this.continueFunction = continueAt;</span>
+<span class="nc" id="L125">		return this;</span>
 	}
 
 	/**
@@ -103,11 +135,11 @@ import java.util.function.Supplier;
 	 * @return {@code this}.
 	 */
 	public FailureReport&lt;RECOVER_TYPE&gt; continueWith(final Runnable continueAt) {
-<span class="nc" id="L106">		this.continueFunction = () -&gt; {</span>
+<span class="nc" id="L138">		this.continueFunction = () -&gt; {</span>
 			continueAt.run();
 			return null;
 		};
-<span class="nc" id="L110">		return this;</span>
+<span class="nc" id="L142">		return this;</span>
 	}
 
 	/**
@@ -120,8 +152,8 @@ import java.util.function.Supplier;
 	 * @return {@code this}.
 	 */
 	public FailureReport&lt;RECOVER_TYPE&gt; retryWith(final Supplier&lt;RECOVER_TYPE&gt; retryAt) {
-<span class="nc" id="L123">		this.retryFunction = retryAt;</span>
-<span class="nc" id="L124">		return this;</span>
+<span class="nc" id="L155">		this.retryFunction = retryAt;</span>
+<span class="nc" id="L156">		return this;</span>
 	}
 
 	/**
@@ -133,23 +165,35 @@ import java.util.function.Supplier;
 	 * @return {@code this}.
 	 */
 	public FailureReport&lt;RECOVER_TYPE&gt; retryWith(final Runnable retryAt) {
-<span class="nc" id="L136">		this.retryFunction = () -&gt; {</span>
+<span class="nc" id="L168">		this.retryFunction = () -&gt; {</span>
 			retryAt.run();
 			return null;
 		};
-<span class="nc" id="L140">		return this;</span>
+<span class="nc" id="L172">		return this;</span>
 	}
 
 	/**
 	 * Gets the report’s failure description.
 	 *
-	 * @return Details about the failure. {@code null} indicates that there’s no
+	 * @return A description of the failure. {@code null} indicates that there’s no
 	 *         information available.
 	 *
 	 * @see #message(String, Object...)
 	 */
 	public String getFailureMessage() {
-<span class="nc" id="L152">		return this.failureMessage;</span>
+<span class="nc" id="L184">		return this.failureMessage;</span>
+	}
+
+	/**
+	 * Gets the report’s failure details.
+	 *
+	 * @return Details about the failure. {@code null} indicates that there’s no
+	 *         information available.
+	 *
+	 * @see #details(String, Object...)
+	 */
+	public String getDetails() {
+<span class="nc bnc" id="L196" title="All 2 branches missed.">		return (this.detailsProvided) ? this.failureDetails.toString() : null;</span>
 	}
 
 	/**
@@ -161,7 +205,7 @@ import java.util.function.Supplier;
 	 * @see #cause(Exception)
 	 */
 	public Exception getFailureCause() {
-<span class="nc" id="L164">		return this.failureCause;</span>
+<span class="nc" id="L208">		return this.failureCause;</span>
 	}
 
 	/**
@@ -175,7 +219,7 @@ import java.util.function.Supplier;
 	 * @see #continueWith(Runnable)
 	 */
 	public Supplier&lt;RECOVER_TYPE&gt; getContinueRoutine() {
-<span class="nc" id="L178">		return this.continueFunction;</span>
+<span class="nc" id="L222">		return this.continueFunction;</span>
 	}
 
 	/**
@@ -187,7 +231,7 @@ import java.util.function.Supplier;
 	 * @see #retryWith(Runnable)
 	 */
 	public Supplier&lt;RECOVER_TYPE&gt; getRetryRoutine() {
-<span class="nc" id="L190">		return this.retryFunction;</span>
+<span class="nc" id="L234">		return this.retryFunction;</span>
 	}
 
 }
