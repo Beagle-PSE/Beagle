@@ -105,7 +105,7 @@ public class MeasurementEventParser {
 			new ResourceDemandingInternalActionMeasurementEventVisitor(resourceDemandingInternalAction,
 				resourceDemandMeasurementResults);
 <span class="fc" id="L107">		final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(resourceDemandingInternalAction.getAction());</span>
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">		if (indices != null) {</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">		if (indices != null) {</span>
 <span class="fc bfc" id="L109" title="All 2 branches covered.">			for (final Integer index : indices) {</span>
 <span class="fc" id="L110">				final MeasurementEvent measurementEvent = this.measurementEvents.get(index);</span>
 <span class="fc" id="L111">				measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);</span>
@@ -312,7 +312,7 @@ public class MeasurementEventParser {
 	 *
 	 * @author Roman Langrehr
 	 */
-	private class SeffLoopMeasurementEventVisitor implements MeasurementEventVisitor {
+<span class="pc bpc" id="L315" title="1 of 2 branches missed.">	private class SeffLoopMeasurementEventVisitor implements MeasurementEventVisitor {</span>
 
 		/**
 		 * The {@link SeffBranch} where we want to know the new measurement results.
@@ -354,7 +354,7 @@ public class MeasurementEventParser {
 				// recursive call, or there is no current execution of this loop.
 <span class="fc" id="L355">				this.currentLoopCounts.push(new LoopExecutionCounter());</span>
 			}
-			//assert !this.currentLoopCounts.peek().isOpen;
+<span class="pc bpc" id="L357" title="2 of 4 branches missed.">			assert !this.currentLoopCounts.peek().isOpen;</span>
 <span class="fc bfc" id="L358" title="All 2 branches covered.">			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1</span>
 <span class="fc" id="L359">				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex</span>
 <span class="fc bfc" id="L360" title="All 2 branches covered.">					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {</span>
@@ -384,7 +384,7 @@ public class MeasurementEventParser {
 
 <span class="fc bfc" id="L385" title="All 2 branches covered.">					if (!this.currentLoopCounts.isEmpty()) {</span>
 						// The invariant for this stack
-						//assert this.currentLoopCounts.peek().isOpen;
+<span class="pc bpc" id="L387" title="2 of 4 branches missed.">						assert this.currentLoopCounts.peek().isOpen;</span>
 						// allows us to just close the next layer.
 <span class="fc" id="L389">						this.currentLoopCounts.peek().isOpen = false;</span>
 <span class="fc" id="L390">						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =</span>
