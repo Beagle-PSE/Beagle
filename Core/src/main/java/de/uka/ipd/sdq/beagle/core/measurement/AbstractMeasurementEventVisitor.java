@@ -1,4 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
+/**
+ * Test coverage check turned off, because this class needs no tests.
+ *
+ * <p>COVERAGE:OFF
+ */
 
 import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
