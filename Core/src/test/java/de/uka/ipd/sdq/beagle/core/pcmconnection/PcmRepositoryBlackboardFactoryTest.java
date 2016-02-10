@@ -42,13 +42,13 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * Pseudo fitness function.
 	 */
-	private EvaluableExpressionFitnessFunction fitnessFunction = new EvaluableExpressionFitnessFunction() {
+	private final EvaluableExpressionFitnessFunction fitnessFunction = new EvaluableExpressionFitnessFunction() {
 
 		/**
 		 * Store between (pairs of measurable seff elements and evaluable expressions) and
 		 * doubles.
 		 */
-		private HashMap<Pair<MeasurableSeffElement, EvaluableExpression>, Double> store = new HashMap<>();
+		private final HashMap<Pair<MeasurableSeffElement, EvaluableExpression>, Double> store = new HashMap<>();
 
 		@Override
 		public double gradeFor(final ExternalCallParameter parameter, final EvaluableExpression expression,
@@ -220,6 +220,13 @@ public class PcmRepositoryBlackboardFactoryTest {
 			// How do i figure out whether this is correct?
 			seffLoop.getLoopBody().getStartFile();
 		}
+	}
+
+	@Test
+	public void appSensorRepositoryTest() {
+		final PcmRepositoryBlackboardFactory appSensorBlackboardFactory =
+			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
+		Blackboard appSensorBlackboard = appSensorBlackboardFactory.getBlackboardForAllElements();
 	}
 
 }
