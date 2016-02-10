@@ -7,8 +7,6 @@ import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardV
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
-import de.uka.ipd.sdq.beagle.core.measurement.ReadOnlyMeasurementControllerBlackboardView;
-import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -78,16 +76,7 @@ public class ExtensionPointToolsFactory {
 	 * @return A new instance of a {@link MeasurementTool}
 	 */
 	public MeasurementTool createNewMeasurementTool() {
-		return new MeasurementTool() {
-
-			@Override
-			public void measure(final MeasurementOrder measurements) {
-			}
-
-			@Override
-			public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
-				return false;
-			}
+		return measurements -> {
 		};
 	}
 
