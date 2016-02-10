@@ -22,6 +22,7 @@ import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
@@ -221,7 +222,11 @@ public class PcmRepositorySeffExtractor {
 			final CodeSection codeSection = this.nameParser.parse(branchAction.getEntityName());
 			if (codeSection != null) {
 				codeSectionSet.add(codeSection);
+				final CodeSection pseudoCodesection = new CodeSection(new File("src/main/resources/pseudoFile.md"), 1,
+					new File("src/main/resources/pseudoFile.md"), 1);
+				codeSectionSet.add(pseudoCodesection);
 				final SeffBranch seffBranch = new SeffBranch(codeSectionSet);
+
 				this.seffBranchSet.add(seffBranch);
 				this.pcmMapper.addPcmIdOf(seffBranch, branchAction.getId());
 			}
@@ -259,7 +264,9 @@ public class PcmRepositorySeffExtractor {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", loopAction.getId(),
 				loopAction.getEntityName())
-			.cause(exception).recoverable().retryWith(() -> this.addLoopActionToSet(loopAction));
+			.cause(exception)
+			.recoverable()
+			.retryWith(() -> this.addLoopActionToSet(loopAction));
 		FAILURE_HANDLER.handle(failure);
 	}
 
@@ -273,7 +280,9 @@ public class PcmRepositorySeffExtractor {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", branchAction.getId(),
 				branchAction.getEntityName())
-			.cause(exception).recoverable().retryWith(() -> this.addBranchActionToSet(branchAction));
+			.cause(exception)
+			.recoverable()
+			.retryWith(() -> this.addBranchActionToSet(branchAction));
 		FAILURE_HANDLER.handle(failure);
 	}
 
@@ -287,7 +296,9 @@ public class PcmRepositorySeffExtractor {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", ecAction.getId(),
 				ecAction.getEntityName())
-			.cause(exception).recoverable().retryWith(() -> this.addExternalCallActionToSet(ecAction));
+			.cause(exception)
+			.recoverable()
+			.retryWith(() -> this.addExternalCallActionToSet(ecAction));
 		FAILURE_HANDLER.handle(failure);
 	}
 
@@ -301,7 +312,9 @@ public class PcmRepositorySeffExtractor {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", internalAction.getId(),
 				internalAction.getEntityName())
-			.cause(exception).recoverable().retryWith(() -> this.addInternalActionToSet(internalAction));
+			.cause(exception)
+			.recoverable()
+			.retryWith(() -> this.addInternalActionToSet(internalAction));
 		FAILURE_HANDLER.handle(failure);
 	}
 
