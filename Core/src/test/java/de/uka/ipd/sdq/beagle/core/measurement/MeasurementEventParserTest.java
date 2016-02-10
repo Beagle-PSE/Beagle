@@ -94,7 +94,7 @@ public class MeasurementEventParserTest {
 	 */
 	@Test
 	public void getMeasurementResultsForResourceDemandingInternalAction() {
-		final List<MeasurementEvent> measurementEvents = new ArrayList<>();
+		List<MeasurementEvent> measurementEvents = new ArrayList<>();
 		final ResourceDemandingInternalAction[] rdias = RESOURCE_DEMANDING_INTERNAL_ACTION_FACTORY.getAll();
 
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), rdias[0].getResourceType(), 0.3));
@@ -108,7 +108,7 @@ public class MeasurementEventParserTest {
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[2].getAction(), rdias[2].getResourceType(), 1.5));
 		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneCodeSectionEnteredEvent());
 		measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneCodeSectionLeftEvent());
-		final MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
+		MeasurementEventParser parser = new MeasurementEventParser(measurementEvents);
 
 		Set<ResourceDemandMeasurementResult> results = parser.getMeasurementResultsFor(rdias[0]);
 		List<Double> resultValues = results.stream().map((result) -> result.getValue()).collect(Collectors.toList());
@@ -125,6 +125,13 @@ public class MeasurementEventParserTest {
 		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[3].getAction(), rdias[3].getResourceType(), 2.2));
 		assertThat("Adding Events after inizialisation must not have an effect on returned results",
 			parser.getMeasurementResultsFor(rdias[3]), is(empty()));
+
+		measurementEvents = new ArrayList<>();
+		final ResourceDemandType type = new ResourceDemandType("NotTheSame", true);
+		measurementEvents.add(new ResourceDemandCapturedEvent(rdias[0].getAction(), type, 3.4));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(rdias[0]);
+		assertThat(results, is(empty()));
 	}
 
 	/**
@@ -233,6 +240,11 @@ public class MeasurementEventParserTest {
 		Set<LoopRepetitionCountMeasurementResult> results = parser.getMeasurementResultsFor(loops[0]);
 		List<Integer> resultValues = results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(1));
+
+		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
+		parser = new MeasurementEventParser(measurementEvents);
+		results = parser.getMeasurementResultsFor(loops[1]);
+		assertThat(results, is(empty()));
 
 		measurementEvents = new ArrayList<>();
 		measurementEvents.add(new CodeSectionEnteredEvent(loops[0].getLoopBody()));
