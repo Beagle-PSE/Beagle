@@ -203,8 +203,8 @@ public class AnalysisControllerTest {
 		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser1);
 		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser2);
 		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser3);
-		new AnalysisController(blackboard, allMeasurementTools, allMeasurementResultAnalysers,
-			allProposedExpressionAnalysers);
+		final AnalysisController analysisController = new AnalysisController(blackboard, allMeasurementTools,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
 		final Set<MeasurementTool> originalMeasurementTools = new HashSet<>(allMeasurementTools);
 		final Set<MeasurementResultAnalyser> originalMeasurementResultAnalysers =
 			new HashSet<>(allMeasurementResultAnalysers);
@@ -214,16 +214,17 @@ public class AnalysisControllerTest {
 		allMeasurementResultAnalysers.clear();
 		allProposedExpressionAnalysers.clear();
 
+		analysisController.performAnalysis();
 		// Assert that the measurement tools were asked.
 		for (final MeasurementTool measurementTool : originalMeasurementTools) {
-			verify(measurementTool).measure((MeasurementOrder) notNull());
+			verify(measurementTool, atLeastOnce()).measure((MeasurementOrder) notNull());
 		}
 		for (final MeasurementResultAnalyser measurementResultAnalyser : originalMeasurementResultAnalysers) {
-			verify(measurementResultAnalyser)
+			verify(measurementResultAnalyser, atLeastOnce())
 				.canContribute(Matchers.eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard)));
 		}
 		for (final ProposedExpressionAnalyser proposedExpressionAnalyser : originalProposedExpressionAnalysers) {
-			verify(proposedExpressionAnalyser)
+			verify(proposedExpressionAnalyser, atLeastOnce())
 				.canContribute(Matchers.eq(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard)));
 		}
 	}
@@ -304,66 +305,6 @@ public class AnalysisControllerTest {
 		verify(this.mockedMeasurementTool3, never()).measure(anyObject());
 
 		// Verify that everybody can contribute, if he wants.
-		this.resetMocks();
-		final Blackboard blackboard3 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
-		when(this.mockedMeasurementResultAnalyser1
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard3))).thenReturn(true);
-		when(this.mockedMeasurementResultAnalyser2
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard3))).thenReturn(true);
-		when(this.mockedMeasurementResultAnalyser3
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard3))).thenReturn(true);
-		when(this.mockedProposedExpressionAnalyser1
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard3))).thenReturn(true);
-		when(this.mockedProposedExpressionAnalyser2
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard3))).thenReturn(true);
-		when(this.mockedProposedExpressionAnalyser3
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard3))).thenReturn(true);
-
-		final AnalysisController analysisController4 = new AnalysisController(blackboard3, allMeasurementTools,
-			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
-		analysisController4.performAnalysis();
-		verify(this.mockedMeasurementResultAnalyser1, atLeastOnce())
-			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard3)));
-		verify(this.mockedMeasurementResultAnalyser2, atLeastOnce())
-			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard3)));
-		verify(this.mockedMeasurementResultAnalyser3, atLeastOnce())
-			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard3)));
-		verify(this.mockedProposedExpressionAnalyser1, atLeastOnce())
-			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard3)));
-		verify(this.mockedProposedExpressionAnalyser2, atLeastOnce())
-			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard3)));
-		verify(this.mockedProposedExpressionAnalyser3, atLeastOnce())
-			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard3)));
-
-		this.resetMocks();
-		final Blackboard blackboard4 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
-		when(this.mockedMeasurementResultAnalyser1
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard4))).thenReturn(true);
-		when(this.mockedMeasurementResultAnalyser2
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard4))).thenReturn(false);
-		when(this.mockedMeasurementResultAnalyser3
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard4))).thenReturn(true);
-		when(this.mockedProposedExpressionAnalyser1
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard4))).thenReturn(true);
-		when(this.mockedProposedExpressionAnalyser2
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard4))).thenReturn(false);
-		when(this.mockedProposedExpressionAnalyser3
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard4))).thenReturn(true);
-
-		final AnalysisController analysisController5 = new AnalysisController(blackboard4, allMeasurementTools,
-			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
-		analysisController5.performAnalysis();
-		verify(this.mockedMeasurementResultAnalyser1, atLeastOnce())
-			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard4)));
-		verify(this.mockedMeasurementResultAnalyser2, never()).contribute(anyObject());
-		verify(this.mockedMeasurementResultAnalyser3, atLeastOnce())
-			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard4)));
-		verify(this.mockedProposedExpressionAnalyser1, atLeastOnce())
-			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard4)));
-		verify(this.mockedProposedExpressionAnalyser2, never()).contribute(anyObject());
-		verify(this.mockedProposedExpressionAnalyser3, atLeastOnce())
-			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard4)));
-
 		// Verify correct execution order
 		this.resetMocks();
 		final Blackboard blackboard5 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
@@ -377,6 +318,12 @@ public class AnalysisControllerTest {
 			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard5));
 		when(this.mockedProposedExpressionAnalyser1
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard5))).thenReturn(true);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard5))).thenReturn(false);
+			return null;
+		}).when(this.mockedProposedExpressionAnalyser1)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard5));
 
 		final AnalysisController analysisController6 = new AnalysisController(blackboard5, oneMeasurementTool,
 			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
@@ -388,6 +335,41 @@ public class AnalysisControllerTest {
 			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard5)));
 		inOrder.verify(this.mockedProposedExpressionAnalyser1)
 			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard5)));
+
+		this.resetMocks();
+		final Blackboard blackboard6 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard6))).thenReturn(true);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard6))).thenReturn(false);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser1)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard6));
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard6))).thenReturn(true);
+
+		final AnalysisController analysisController7 = new AnalysisController(blackboard6, oneMeasurementTool,
+			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
+		analysisController7.performAnalysis();
+		final InOrder inOrder1 = Mockito.inOrder(this.mockedMeasurementTool1, this.mockedMeasurementResultAnalyser1,
+			this.mockedProposedExpressionAnalyser1);
+		inOrder1.verify(this.mockedMeasurementTool1).measure((MeasurementOrder) notNull());
+		inOrder1.verify(this.mockedMeasurementResultAnalyser1)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard6)));
+		inOrder1.verify(this.mockedProposedExpressionAnalyser1)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard6)));
+
+		// Test with empty blackboard
+		this.resetMocks();
+		final Blackboard blackboard7 = BLACKBOARD_FACTORY.getEmpty();
+
+		final AnalysisController analysisController8 = new AnalysisController(blackboard7, allMeasurementTools,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController8.performAnalysis();
+		for (final MeasurementTool measurementTool : allMeasurementTools) {
+			verify(measurementTool, never()).measure(anyObject());
+		}
 
 	}
 
