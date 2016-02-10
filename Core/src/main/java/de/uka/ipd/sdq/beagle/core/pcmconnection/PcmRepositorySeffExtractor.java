@@ -33,6 +33,12 @@ import java.util.Set;
 public class PcmRepositorySeffExtractor {
 
 	/**
+	 * The {@link FailureHandler} that is called by FileNotFoundException, giving this
+	 * information to the Fail API.
+	 */
+	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Beagle FileNotFound Handler");
+
+	/**
 	 * Temporary storage for all extracted {@link SeffLoop SeffLoops} that should be
 	 * written on the {@link Blackboard}.
 	 */
@@ -68,10 +74,9 @@ public class PcmRepositorySeffExtractor {
 	private final PcmNameParser nameParser;
 
 	/**
-	 * The {@link FailureHandler} that is called by FileNotFoundException, giving this
-	 * information to the Fail API.
+	 * The object in which all created SeffElements are mapped to their original ID.
 	 */
-	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Beagle FileNotFound Handler");
+	private final PcmBeagleMappings pcmMapper;
 
 	/**
 	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
@@ -82,13 +87,17 @@ public class PcmRepositorySeffExtractor {
 	 * @param rdiaSet the rdiaSet to add RDIAS
 	 * @param externalCallParameterSet the externalCallParameterSet to add
 	 *            externalCallParameters
+	 * @param pcmMapper The mapping class that should contain a map of all SeffElements to
+	 *            its IDs
 	 */
 	public PcmRepositorySeffExtractor(final Set<SeffLoop> seffLoopSet, final Set<SeffBranch> seffBranchSet,
-		final Set<ResourceDemandingInternalAction> rdiaSet, final Set<ExternalCallParameter> externalCallParameterSet) {
+		final Set<ResourceDemandingInternalAction> rdiaSet, final Set<ExternalCallParameter> externalCallParameterSet,
+		final PcmBeagleMappings pcmMapper) {
 		this.seffLoopSet = seffLoopSet;
 		this.seffBranchSet = seffBranchSet;
 		this.rdiaSet = rdiaSet;
 		this.externalCallParameterSet = externalCallParameterSet;
+		this.pcmMapper = pcmMapper;
 
 		this.nameParser = new PcmNameParser();
 	}
@@ -166,8 +175,10 @@ public class PcmRepositorySeffExtractor {
 		try {
 			final CodeSection codeSection = this.nameParser.parse(internalAction.getEntityName());
 			if (codeSection != null) {
-				this.rdiaSet
-					.add(new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection));
+				final ResourceDemandingInternalAction rdia =
+					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+				this.rdiaSet.add(rdia);
+				this.pcmMapper.addPcmIdOf(rdia, internalAction.getId());
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			this.handleFailureFor(internalAction, fileNotFoundE);
@@ -185,7 +196,9 @@ public class PcmRepositorySeffExtractor {
 		try {
 			final CodeSection codeSection = this.nameParser.parse(externalAction.getEntityName());
 			if (codeSection != null) {
-				this.externalCallParameterSet.add(new ExternalCallParameter(codeSection, this.zero));
+				final ExternalCallParameter exCallParam = new ExternalCallParameter(codeSection, this.zero);
+				this.externalCallParameterSet.add(exCallParam);
+				this.pcmMapper.addPcmIdOf(exCallParam, externalAction.getId());
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			this.handleFailureFor(externalAction, fileNotFoundE);
@@ -206,7 +219,9 @@ public class PcmRepositorySeffExtractor {
 			final CodeSection codeSection = this.nameParser.parse(branchAction.getEntityName());
 			if (codeSection != null) {
 				codeSectionSet.add(codeSection);
-				this.seffBranchSet.add(new SeffBranch(codeSectionSet));
+				final SeffBranch seffBranch = new SeffBranch(codeSectionSet);
+				this.seffBranchSet.add(seffBranch);
+				this.pcmMapper.addPcmIdOf(seffBranch, branchAction.getId());
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			this.handleFailureFor(branchAction, fileNotFoundE);
@@ -223,13 +238,21 @@ public class PcmRepositorySeffExtractor {
 		try {
 			final CodeSection codeSection = this.nameParser.parse(loopAction.getEntityName());
 			if (codeSection != null) {
-				this.seffLoopSet.add(new SeffLoop(codeSection));
+				final SeffLoop seffLoop = new SeffLoop(codeSection);
+				this.seffLoopSet.add(seffLoop);
+				this.pcmMapper.addPcmIdOf(seffLoop, loopAction.getId());
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			this.handleFailureFor(loopAction, fileNotFoundE);
 		}
 	}
 
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param loopAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
 	private void handleFailureFor(final LoopActionImpl loopAction, final FileNotFoundException exception) {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", loopAction.getId(),
@@ -238,6 +261,12 @@ public class PcmRepositorySeffExtractor {
 		FAILURE_HANDLER.handle(failure);
 	}
 
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param branchAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
 	private void handleFailureFor(final BranchActionImpl branchAction, final FileNotFoundException exception) {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", branchAction.getId(),
@@ -246,6 +275,12 @@ public class PcmRepositorySeffExtractor {
 		FAILURE_HANDLER.handle(failure);
 	}
 
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param ecAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
 	private void handleFailureFor(final ExternalCallActionImpl ecAction, final FileNotFoundException exception) {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", ecAction.getId(),
@@ -254,6 +289,12 @@ public class PcmRepositorySeffExtractor {
 		FAILURE_HANDLER.handle(failure);
 	}
 
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param internalAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
 	private void handleFailureFor(final InternalActionImpl internalAction, final FileNotFoundException exception) {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", internalAction.getId(),

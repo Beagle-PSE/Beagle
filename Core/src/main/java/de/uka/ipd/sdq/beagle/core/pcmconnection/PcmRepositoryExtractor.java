@@ -84,16 +84,20 @@ public class PcmRepositoryExtractor {
 	 *         Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForAllElements(final RepositoryImpl repository) {
+		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();
 		this.seffLoopSet = new HashSet<SeffLoop>();
 		this.seffBranchSet = new HashSet<SeffBranch>();
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
 		this.externalCallParameterSet = new HashSet<ExternalCallParameter>();
 		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,
-			this.externalCallParameterSet);
+			this.externalCallParameterSet, pcmMappings);
 
 		this.scanRepository(repository);
-		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet,
-			this.fitnessFunction);
+
+		final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
+			this.externalCallParameterSet, this.fitnessFunction);
+		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
+		return blackboard;
 	}
 
 	/**
@@ -126,7 +130,7 @@ public class PcmRepositoryExtractor {
 	 *         written on it. Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForIds(final RepositoryImpl repository, final Collection<String> identifiers) {
-
+		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();
 		final Set<EObject> setOfIdentifiedObjects = new HashSet<EObject>();
 
 		this.seffLoopSet = new HashSet<SeffLoop>();
@@ -134,12 +138,15 @@ public class PcmRepositoryExtractor {
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
 		this.externalCallParameterSet = new HashSet<ExternalCallParameter>();
 		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,
-			this.externalCallParameterSet);
+			this.externalCallParameterSet, pcmMappings);
 
 		if (identifiers.contains(repository.getId())) {
 			this.scanRepository(repository);
-			return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet,
-				this.fitnessFunction);
+
+			final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
+				this.externalCallParameterSet, this.fitnessFunction);
+			blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
+			return blackboard;
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -170,8 +177,10 @@ public class PcmRepositoryExtractor {
 		}
 
 		// Add the sets to the blackboard and return
-		return new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet, this.externalCallParameterSet,
-			this.fitnessFunction);
+		final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
+			this.externalCallParameterSet, this.fitnessFunction);
+		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
+		return blackboard;
 	}
 
 	/**
