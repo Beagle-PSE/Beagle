@@ -68,6 +68,12 @@ public class PcmRepositorySeffExtractor {
 	private final PcmNameParser nameParser;
 
 	/**
+	 * The {@link FailureHandler} that is called by FileNotFoundException, giving this
+	 * information to the Fail API.
+	 */
+	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Beagle FileNotFound Handler");
+
+	/**
 	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
 	 * all extracted SeffElements.
 	 *
@@ -164,7 +170,7 @@ public class PcmRepositorySeffExtractor {
 					.add(new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection));
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
-			fileNotFoundE.printStackTrace();
+			this.handleFailureFor(internalAction, fileNotFoundE);
 		}
 	}
 
@@ -182,7 +188,7 @@ public class PcmRepositorySeffExtractor {
 				this.externalCallParameterSet.add(new ExternalCallParameter(codeSection, this.zero));
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
-			fileNotFoundE.printStackTrace();
+			this.handleFailureFor(externalAction, fileNotFoundE);
 		}
 
 	}
@@ -203,7 +209,7 @@ public class PcmRepositorySeffExtractor {
 				this.seffBranchSet.add(new SeffBranch(codeSectionSet));
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
-			fileNotFoundE.printStackTrace();
+			this.handleFailureFor(branchAction, fileNotFoundE);
 		}
 	}
 
@@ -220,8 +226,40 @@ public class PcmRepositorySeffExtractor {
 				this.seffLoopSet.add(new SeffLoop(codeSection));
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
-			fileNotFoundE.printStackTrace();
+			this.handleFailureFor(loopAction, fileNotFoundE);
 		}
+	}
+
+	private void handleFailureFor(final LoopActionImpl loopAction, final FileNotFoundException exception) {
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The File for ID %s with EntityName %s can not be found!", loopAction.getId(),
+				loopAction.getEntityName())
+			.cause(exception).recoverable().retryWith(() -> this.addLoopActionToSet(loopAction));
+		FAILURE_HANDLER.handle(failure);
+	}
+
+	private void handleFailureFor(final BranchActionImpl branchAction, final FileNotFoundException exception) {
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The File for ID %s with EntityName %s can not be found!", branchAction.getId(),
+				branchAction.getEntityName())
+			.cause(exception).recoverable().retryWith(() -> this.addBranchActionToSet(branchAction));
+		FAILURE_HANDLER.handle(failure);
+	}
+
+	private void handleFailureFor(final ExternalCallActionImpl ecAction, final FileNotFoundException exception) {
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The File for ID %s with EntityName %s can not be found!", ecAction.getId(),
+				ecAction.getEntityName())
+			.cause(exception).recoverable().retryWith(() -> this.addExternalCallActionToSet(ecAction));
+		FAILURE_HANDLER.handle(failure);
+	}
+
+	private void handleFailureFor(final InternalActionImpl internalAction, final FileNotFoundException exception) {
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The File for ID %s with EntityName %s can not be found!", internalAction.getId(),
+				internalAction.getEntityName())
+			.cause(exception).recoverable().retryWith(() -> this.addInternalActionToSet(internalAction));
+		FAILURE_HANDLER.handle(failure);
 	}
 
 }
