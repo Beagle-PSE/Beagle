@@ -29,4 +29,10 @@ public class PcmRepositoryBlackboardFactoryFactory {
 			PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne());
 	}
 
+	public PcmRepositoryBlackboardFactory getAppSensorProjectInstance() {
+		return new PcmRepositoryBlackboardFactory(
+			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/AppSensor.repository",
+			PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne());
+	}
+
 }
