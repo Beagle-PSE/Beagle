@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Blackboard.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">Blackboard.java</span></div><h1>Blackboard.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
+
+import org.apache.commons.lang3.Validate;
+
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * Central and only storage of all knowledge gained by Beagle. Implements, together with
+ * {@link AnalysisController}, the Blackboard pattern from POSA I. The Blackboard’s
+ * vocabularies are: {@link ResourceDemandingInternalAction}, {@link SeffBranch},
+ * {@link SeffLoop}, {@link ResourceDemandMeasurementResult},
+ * {@link BranchDecisionMeasurementResult} , {@link LoopRepetitionCountMeasurementResult}
+ * and {@link EvaluableExpression}. It further allows classes to store custom data.
+ *
+ * &lt;p&gt;The Blackboard is typically not accessed directly by its using classes, but through
+ * &lt;em&gt;blackboard views&lt;/em&gt; (recognisable by having the {@code BlackboardView} suffix).
+ * These are surrogates for the blackboard. They don’t modify its contents but only
+ * restrict access to it.
+ *
+ * @author Christoph Michelbach
+ * @author Joshua Gleitze
+ * @author Roman Langrehr
+ * @author Michael Vogt
+ * @see AnalysisController
+ */
+public class Blackboard implements Serializable {
+
+	/**
+	 * Serialisation version UID, see {@link java.io.Serializable}.
+	 */
+	private static final long serialVersionUID = 6382577321150787599L;
+
+	/**
+	 * All measurable SEFF Elements.
+	 */
+<span class="fc" id="L49">	private final Set&lt;MeasurableSeffElement&gt; allSeffElements = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All Resource Demanding Internal Actions.
+	 */
+<span class="fc" id="L54">	private final Set&lt;ResourceDemandingInternalAction&gt; rdias = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All SEFF Branches.
+	 */
+<span class="fc" id="L59">	private final Set&lt;SeffBranch&gt; branches = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All SEFF Loops.
+	 */
+<span class="fc" id="L64">	private final Set&lt;SeffLoop&gt; loops = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All External Call Parameter.
+	 */
+<span class="fc" id="L69">	private final Set&lt;ExternalCallParameter&gt; externalCallParameters = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All resource demanding internal actions which are to be measured.
+	 */
+<span class="fc" id="L74">	private final Set&lt;ResourceDemandingInternalAction&gt; rdiasToBeMeasured = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All SEFF branches which are to be measured.
+	 */
+<span class="fc" id="L79">	private final Set&lt;SeffBranch&gt; branchesToBeMeasured = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All SEFF loops which are to be count.
+	 */
+<span class="fc" id="L84">	private final Set&lt;SeffLoop&gt; loopsToBeMeasured = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All external call parameter which are to be measured.
+	 */
+<span class="fc" id="L89">	private final Set&lt;ExternalCallParameter&gt; externalCallParameterToBeMeasured = new HashSet&lt;&gt;();</span>
+
+	/**
+	 * All resource demanding internal results.
+	 */
+<span class="fc" id="L94">	private final Map&lt;ResourceDemandingInternalAction, Set&lt;ResourceDemandMeasurementResult&gt;&gt; rdiasMeasurementResults =</span>
+		new HashMap&lt;&gt;();
+
+	/**
+	 * All SEFF branches results.
+	 */
+<span class="fc" id="L100">	private final Map&lt;SeffBranch, Set&lt;BranchDecisionMeasurementResult&gt;&gt; branchDecisionMeasurementResults =</span>
+		new HashMap&lt;&gt;();
+
+	/**
+	 * All SEFF loop count results.
+	 */
+<span class="fc" id="L106">	private final Map&lt;SeffLoop, Set&lt;LoopRepetitionCountMeasurementResult&gt;&gt; loopRepititionCountMeasurementResults =</span>
+		new HashMap&lt;&gt;();
+
+	/**
+	 * All parameter change results.
+	 */
+<span class="fc" id="L112">	private final Map&lt;ExternalCallParameter, Set&lt;ParameterChangeMeasurementResult&gt;&gt; parameterChangeMeasurementResults =</span>
+		new HashMap&lt;&gt;();
+
+	/**
+	 * All evaluable expressions.
+	 */
+<span class="fc" id="L118">	private final Map&lt;MeasurableSeffElement, Set&lt;EvaluableExpression&gt;&gt; proposedExpressions = new HashMap&lt;&gt;();</span>
+
+	/**
+	 * Is the final expression.
+	 */
+<span class="fc" id="L123">	private final Map&lt;MeasurableSeffElement, EvaluableExpression&gt; finalExpressions = new HashMap&lt;&gt;();</span>
+
+	/**
+	 * Is the function to get a better evaluable expression result.
+	 */
+	private final EvaluableExpressionFitnessFunction fitnessFunction;
+
+	/**
+	 * Private data of tools, written through {@link #writeFor(Class, Serializable)}.
+	 */
+<span class="fc" id="L133">	private final Map&lt;Class&lt;? extends BlackboardStorer&lt;? extends Serializable&gt;&gt;, Object&gt; privateWrittenData =</span>
+		new HashMap&lt;&gt;();
+
+	/**
+	 * Creates a new blackboard that can be used to analyse the given elements.
+	 *
+	 * @param rdias All resource demanding internal action to be known to analysers.
+	 * @param branches All SEFF branches to be known to analysers.
+	 * @param loops All SEFF loops to be known to analysers.
+	 * @param externalCalls All external call parameter to be known to analysers.
+	 * @param fitnessFunction The function to get better evaluable expression results.
+	 */
+	public Blackboard(final Set&lt;ResourceDemandingInternalAction&gt; rdias, final Set&lt;SeffBranch&gt; branches,
+		final Set&lt;SeffLoop&gt; loops, final Set&lt;ExternalCallParameter&gt; externalCalls,
+<span class="fc" id="L147">		final EvaluableExpressionFitnessFunction fitnessFunction) {</span>
+<span class="fc" id="L148">		Validate.noNullElements(rdias);</span>
+<span class="fc" id="L149">		Validate.noNullElements(branches);</span>
+<span class="fc" id="L150">		Validate.noNullElements(loops);</span>
+<span class="fc" id="L151">		Validate.noNullElements(externalCalls);</span>
+<span class="fc" id="L152">		Validate.notNull(fitnessFunction);</span>
+
+<span class="fc" id="L154">		this.rdias.addAll(rdias);</span>
+<span class="fc" id="L155">		this.branches.addAll(branches);</span>
+<span class="fc" id="L156">		this.loops.addAll(loops);</span>
+<span class="fc" id="L157">		this.externalCallParameters.addAll(externalCalls);</span>
+<span class="fc" id="L158">		this.fitnessFunction = fitnessFunction;</span>
+
+<span class="fc" id="L160">		this.allSeffElements.addAll(rdias);</span>
+<span class="fc" id="L161">		this.allSeffElements.addAll(branches);</span>
+<span class="fc" id="L162">		this.allSeffElements.addAll(loops);</span>
+<span class="fc" id="L163">		this.allSeffElements.addAll(externalCalls);</span>
+
+<span class="fc bfc" id="L165" title="All 2 branches covered.">		for (final SeffBranch branch : this.branches) {</span>
+<span class="fc" id="L166">			this.branchDecisionMeasurementResults.put(branch, new HashSet&lt;&gt;());</span>
+<span class="fc" id="L167">		}</span>
+<span class="fc bfc" id="L168" title="All 2 branches covered.">		for (final SeffLoop loop : this.loops) {</span>
+<span class="fc" id="L169">			this.loopRepititionCountMeasurementResults.put(loop, new HashSet&lt;&gt;());</span>
+<span class="fc" id="L170">		}</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">		for (final ExternalCallParameter parameter : this.externalCallParameters) {</span>
+<span class="fc" id="L172">			this.parameterChangeMeasurementResults.put(parameter, new HashSet&lt;&gt;());</span>
+<span class="fc" id="L173">		}</span>
+<span class="fc bfc" id="L174" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : this.rdias) {</span>
+<span class="fc" id="L175">			this.rdiasMeasurementResults.put(rdia, new HashSet&lt;&gt;());</span>
+<span class="fc" id="L176">		}</span>
+
+<span class="fc bfc" id="L178" title="All 2 branches covered.">		for (final MeasurableSeffElement element : this.allSeffElements) {</span>
+<span class="fc" id="L179">			this.proposedExpressions.put(element, new HashSet&lt;&gt;());</span>
+<span class="fc" id="L180">		}</span>
+<span class="fc" id="L181">	}</span>
+
+	/**
+	 * All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 * actions} known to Beagle.
+	 *
+	 * @return all {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} known to Beagle. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;ResourceDemandingInternalAction&gt; getAllRdias() {
+<span class="fc" id="L192">		return new HashSet&lt;&gt;(this.rdias);</span>
+	}
+
+	/**
+	 * All {@linkplain SeffBranch SEFF branches} known to Beagle.
+	 *
+	 * @return all {@linkplain SeffBranch SEFF branches} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;SeffBranch&gt; getAllSeffBranches() {
+<span class="fc" id="L202">		return new HashSet&lt;&gt;(this.branches);</span>
+	}
+
+	/**
+	 * All {@linkplain SeffLoop SEFF loops} known to Beagle.
+	 *
+	 * @return all {@linkplain SeffLoop SEFF loops} known to Beagle. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;SeffLoop&gt; getAllSeffLoops() {
+<span class="fc" id="L212">		return new HashSet&lt;&gt;(this.loops);</span>
+	}
+
+	/**
+	 * Returns all {@linkplain ExternalCallParameter external call parameters} known to
+	 * Beagle.
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} known to
+	 *         Beagle. Is never {@code null}.
+	 */
+	public Set&lt;ExternalCallParameter&gt; getAllExternalCallParameters() {
+<span class="fc" id="L223">		return new HashSet&lt;&gt;(this.externalCallParameters);</span>
+	}
+
+	/**
+	 * {@linkplain ResourceDemandingInternalAction RDIAs} that shall be measured for their
+	 * resource demands.
+	 *
+	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} to be measured. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;ResourceDemandingInternalAction&gt; getRdiasToBeMeasured() {
+<span class="fc" id="L235">		return new HashSet&lt;&gt;(this.rdiasToBeMeasured);</span>
+	}
+
+	/**
+	 * {@linkplain SeffBranch SEFF branches} that shall be measured for their branch
+	 * decisions.
+	 *
+	 * @return All {@linkplain SeffBranch SEFF branches} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;SeffBranch&gt; getSeffBranchesToBeMeasured() {
+<span class="fc" id="L246">		return new HashSet&lt;&gt;(this.branchesToBeMeasured);</span>
+	}
+
+	/**
+	 * {@linkplain SeffLoop SEFF loops} that shall be measured for their repetitions.
+	 *
+	 * @return All {@linkplain SeffLoop SEFF loops} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;SeffLoop&gt; getSeffLoopsToBeMeasured() {
+<span class="fc" id="L256">		return new HashSet&lt;&gt;(this.loopsToBeMeasured);</span>
+	}
+
+	/**
+	 * Returns all {@linkplain ExternalCallParameter external call parameters} which shall
+	 * be measured.
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} which shall
+	 *         be measured. Is never {@code null}.
+	 */
+	public Set&lt;ExternalCallParameter&gt; getExternalCallParametersToBeMeasured() {
+<span class="fc" id="L267">		return new HashSet&lt;&gt;(this.externalCallParameterToBeMeasured);</span>
+	}
+
+	/**
+	 * Reports that {@code rdias} shall be measured for its resource demands.
+	 *
+	 * @param toMeasureRdias Resource demanding internal actions that shall be measured.
+	 *            Must not be {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredRdias(Collection)
+	 */
+	public void addToBeMeasuredRdias(final ResourceDemandingInternalAction... toMeasureRdias) {
+<span class="fc" id="L278">		Validate.noNullElements(toMeasureRdias);</span>
+<span class="fc" id="L279">		Validate.isTrue(this.rdias.containsAll(Arrays.asList(toMeasureRdias)),</span>
+			&quot;toMeasureRdias may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L281">		this.rdiasToBeMeasured.addAll(Arrays.asList(toMeasureRdias));</span>
+<span class="fc" id="L282">	}</span>
+
+	/**
+	 * Reports that {@code rdias} shall be measured for its resource demands.
+	 *
+	 * @param toMeasureRdias Resource demanding internal actions that shall be measured.
+	 *            Must not be {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredRdias(ResourceDemandingInternalAction...)
+	 */
+	public void addToBeMeasuredRdias(final Collection&lt;ResourceDemandingInternalAction&gt; toMeasureRdias) {
+<span class="fc" id="L292">		Validate.noNullElements(toMeasureRdias);</span>
+<span class="fc" id="L293">		Validate.isTrue(this.rdias.containsAll(toMeasureRdias),</span>
+			&quot;toMeasureRdias may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L295">		this.rdiasToBeMeasured.addAll(toMeasureRdias);</span>
+<span class="fc" id="L296">	}</span>
+
+	/**
+	 * Reports that {@code branches} shall be measured for its branch decisions.
+	 *
+	 * @param toMeasureBranches SEFF branches that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredSeffBranches(Collection)
+	 */
+	public void addToBeMeasuredSeffBranches(final SeffBranch... toMeasureBranches) {
+<span class="fc" id="L306">		Validate.noNullElements(toMeasureBranches);</span>
+<span class="fc" id="L307">		Validate.isTrue(this.branches.containsAll(Arrays.asList(toMeasureBranches)),</span>
+			&quot;toMeasureBranches may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L309">		this.branchesToBeMeasured.addAll(Arrays.asList(toMeasureBranches));</span>
+<span class="fc" id="L310">	}</span>
+
+	/**
+	 * Reports that {@code branches} shall be measured for its branch decisions.
+	 *
+	 * @param toMeasureBranches SEFF branches that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredSeffBranches(SeffBranch...)
+	 */
+	public void addToBeMeasuredSeffBranches(final Collection&lt;SeffBranch&gt; toMeasureBranches) {
+<span class="fc" id="L320">		Validate.noNullElements(toMeasureBranches);</span>
+<span class="fc" id="L321">		Validate.isTrue(this.branches.containsAll(toMeasureBranches),</span>
+			&quot;toMeasureBranches may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L323">		this.branchesToBeMeasured.addAll(toMeasureBranches);</span>
+<span class="fc" id="L324">	}</span>
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param toMeasureLoops SEFF Loops that shall be measured. Must not be {@code null}
+	 *            and must be known to this blackboard.
+	 * @see #addToBeMeasuredSeffLoops(Collection)
+	 */
+	public void addToBeMeasuredSeffLoops(final SeffLoop... toMeasureLoops) {
+<span class="fc" id="L334">		Validate.noNullElements(toMeasureLoops);</span>
+<span class="fc" id="L335">		Validate.isTrue(this.loops.containsAll(Arrays.asList(toMeasureLoops)),</span>
+			&quot;toMeasureLoops may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L337">		this.loopsToBeMeasured.addAll(Arrays.asList(toMeasureLoops));</span>
+<span class="fc" id="L338">	}</span>
+
+	/**
+	 * Reports that {@code loops} shall be measured for its repetitions.
+	 *
+	 * @param toMeasureLoops SEFF Loops that shall be measured. Must not be {@code null}
+	 *            and must be known to this blackboard.
+	 * @see #addToBeMeasuredSeffLoops(SeffLoop...)
+	 */
+	public void addToBeMeasuredSeffLoops(final Collection&lt;SeffLoop&gt; toMeasureLoops) {
+<span class="fc" id="L348">		Validate.noNullElements(toMeasureLoops);</span>
+<span class="fc" id="L349">		Validate.isTrue(this.loops.containsAll(toMeasureLoops),</span>
+			&quot;toMeasureLoops may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L351">		this.loopsToBeMeasured.addAll(toMeasureLoops);</span>
+<span class="fc" id="L352">	}</span>
+
+	/**
+	 * Reports that {@code parameters} shall be measured.
+	 *
+	 * @param parameters external call parameters that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredExternalCallParameters(Collection)
+	 */
+	public void addToBeMeasuredExternalCallParameters(final ExternalCallParameter... parameters) {
+<span class="fc" id="L362">		Validate.noNullElements(parameters);</span>
+<span class="fc" id="L363">		Validate.isTrue(this.externalCallParameters.containsAll(Arrays.asList(parameters)),</span>
+			&quot;parameters may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L365">		this.externalCallParameterToBeMeasured.addAll(Arrays.asList(parameters));</span>
+<span class="fc" id="L366">	}</span>
+
+	/**
+	 * Reports that {@code parameters} shall be measured.
+	 *
+	 * @param parameters external call parameters that shall be measured. Must not be
+	 *            {@code null} and must be known to this blackboard.
+	 * @see #addToBeMeasuredExternalCallParameters(ExternalCallParameter...)
+	 */
+	public void addToBeMeasuredExternalCallParameters(final Collection&lt;ExternalCallParameter&gt; parameters) {
+<span class="fc" id="L376">		Validate.noNullElements(parameters);</span>
+<span class="fc" id="L377">		Validate.isTrue(this.externalCallParameters.containsAll(parameters),</span>
+			&quot;parameters may only contain elements that are already on the blackboard&quot;);
+<span class="fc" id="L379">		this.externalCallParameterToBeMeasured.addAll(parameters);</span>
+<span class="fc" id="L380">	}</span>
+
+	/**
+	 * Gets all results yet measured for the resource demands of {@code rdia}.
+	 *
+	 * @param rdia An resource demanding internal action to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results reported for {@code rdia}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;ResourceDemandMeasurementResult&gt; getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
+<span class="fc" id="L391">		Validate.notNull(rdia);</span>
+<span class="fc" id="L392">		Validate.isTrue(this.rdias.contains(rdia));</span>
+<span class="fc" id="L393">		return new HashSet&lt;&gt;(this.rdiasMeasurementResults.get(rdia));</span>
+	}
+
+	/**
+	 * Gets all results yet measured for branch decisions of {@code branch}.
+	 *
+	 * @param branch A SEFF Branch to get the measurement results of. Must not be
+	 *            {@code null}.
+	 * @return All measurement results reported for {@code branch}. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;BranchDecisionMeasurementResult&gt; getMeasurementResultsFor(final SeffBranch branch) {
+<span class="fc" id="L405">		Validate.notNull(branch);</span>
+<span class="fc" id="L406">		Validate.isTrue(this.branches.contains(branch));</span>
+<span class="fc" id="L407">		return new HashSet&lt;&gt;(this.branchDecisionMeasurementResults.get(branch));</span>
+	}
+
+	/**
+	 * Gets all results yet measured for the loop repetitions of {@code loop}.
+	 *
+	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
+	 *            .
+	 * @return All measurement results reported for {@code loop}. Changes to the returned
+	 *         set will not modify the blackboard content. Is never {@code null}.
+	 */
+	public Set&lt;LoopRepetitionCountMeasurementResult&gt; getMeasurementResultsFor(final SeffLoop loop) {
+<span class="fc" id="L419">		Validate.notNull(loop);</span>
+<span class="fc" id="L420">		Validate.isTrue(this.loops.contains(loop));</span>
+<span class="fc" id="L421">		return new HashSet&lt;&gt;(this.loopRepititionCountMeasurementResults.get(loop));</span>
+	}
+
+	/**
+	 * Gets all results yet measured for the external parameter
+	 * {@code externalCallParameter}.
+	 *
+	 * @param externalCallParameter An external parameter to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results reported for {@code externalCallParameter}. Changes
+	 *         to the returned set will not modify the blackboard content. Is never
+	 *         {@code null}.
+	 */
+	public Set&lt;ParameterChangeMeasurementResult&gt; getMeasurementResultsFor(
+		final ExternalCallParameter externalCallParameter) {
+<span class="fc" id="L436">		Validate.notNull(externalCallParameter);</span>
+<span class="fc" id="L437">		Validate.isTrue(this.externalCallParameters.contains(externalCallParameter));</span>
+<span class="fc" id="L438">		return new HashSet&lt;&gt;(this.parameterChangeMeasurementResults.get(externalCallParameter));</span>
+	}
+
+	/**
+	 * Adds a measurement result for the provided {@code rdia}.
+	 *
+	 * @param rdia A resource demanding internal action that was measured. Must not be
+	 *            {@code null} .
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+		final ResourceDemandMeasurementResult results) {
+<span class="fc" id="L450">		Validate.notNull(rdia);</span>
+<span class="fc" id="L451">		Validate.notNull(results);</span>
+<span class="fc" id="L452">		Validate.isTrue(this.rdias.contains(rdia), &quot;rdia must already be on the blackboard&quot;);</span>
+<span class="fc" id="L453">		this.rdiasMeasurementResults.get(rdia).add(results);</span>
+<span class="fc" id="L454">	}</span>
+
+	/**
+	 * Adds a measurement result for the provided {@code branch}.
+	 *
+	 * @param branch A SEFF Branch which was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+<span class="fc" id="L463">		Validate.notNull(branch);</span>
+<span class="fc" id="L464">		Validate.notNull(results);</span>
+<span class="fc" id="L465">		Validate.isTrue(this.branches.contains(branch), &quot;branch must already be on the blackboard&quot;);</span>
+<span class="fc" id="L466">		this.branchDecisionMeasurementResults.get(branch).add(results);</span>
+<span class="fc" id="L467">	}</span>
+
+	/**
+	 * Adds a measurement result for the provided {@code loop}.
+	 *
+	 * @param loop A SEFF Loop which was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+<span class="fc" id="L476">		Validate.notNull(loop);</span>
+<span class="fc" id="L477">		Validate.notNull(results);</span>
+<span class="fc" id="L478">		Validate.isTrue(this.loops.contains(loop), &quot;loop must already be on the blackboard&quot;);</span>
+<span class="fc" id="L479">		this.loopRepititionCountMeasurementResults.get(loop).add(results);</span>
+<span class="fc" id="L480">	}</span>
+
+	/**
+	 * Adds a measurement result for the provided {@code loop}.
+	 *
+	 * @param parameter An external call parameter which was measured. Must not be
+	 *            {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ExternalCallParameter parameter,
+		final ParameterChangeMeasurementResult results) {
+<span class="fc" id="L491">		Validate.notNull(parameter);</span>
+<span class="fc" id="L492">		Validate.notNull(results);</span>
+<span class="fc" id="L493">		Validate.isTrue(this.externalCallParameters.contains(parameter), &quot;parameter must already be on the blackboard&quot;);</span>
+<span class="fc" id="L494">		this.parameterChangeMeasurementResults.get(parameter).add(results);</span>
+<span class="fc" id="L495">	}</span>
+
+	/**
+	 * Returns a set of all {@linkplain EvaluableExpression evaluable expressions}
+	 * proposed for {@code element}.
+	 *
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @return A set of all {@linkplain EvaluableExpression evaluable expressions}
+	 *         proposed for {@code element}.
+	 */
+	public Set&lt;EvaluableExpression&gt; getProposedExpressionFor(final MeasurableSeffElement element) {
+<span class="fc" id="L506">		Validate.notNull(element);</span>
+<span class="fc" id="L507">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L508">		return new HashSet&lt;&gt;(this.proposedExpressions.get(element));</span>
+	}
+
+	/**
+	 * Adds {@code expression} as a proposal.
+	 *
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @param expression An evaluable expression proposed to describe {@code element}’s
+	 *            measurement results. Must not be {@code null}.
+	 */
+	public void addProposedExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+<span class="fc" id="L519">		Validate.notNull(element);</span>
+<span class="fc" id="L520">		Validate.notNull(expression);</span>
+<span class="fc" id="L521">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L522">		this.proposedExpressions.get(element).add(expression);</span>
+<span class="fc" id="L523">	}</span>
+
+	/**
+	 * Returns the final expression set for {@code element}. The return value of this
+	 * method may change if
+	 * {@link #setFinalExpressionFor(MeasurableSeffElement, EvaluableExpression)} is
+	 * called with the same {@code element} between calls to
+	 * {@code addProposedExpressionFor} with this element as parameter.
+	 *
+	 * @param element A SEFF element. Must not be {@code null}.
+	 * @return The expression momentarily marked to be the final for {@code element}.
+	 *         {@code null} if no expression has been marked yet.
+	 */
+	public EvaluableExpression getFinalExpressionFor(final MeasurableSeffElement element) {
+<span class="fc" id="L537">		Validate.notNull(element);</span>
+<span class="fc" id="L538">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L539">		return this.finalExpressions.get(element);</span>
+	}
+
+	/**
+	 * Sets {@code expression} as the final description of {@code element}’s measurement
+	 * results. Consecutive calls to this method with the same {@code element} will
+	 * override previous settings.
+	 *
+	 * @param element A SEFF element Must not be {@code null}.
+	 * @param expression An evaluable expression describing {@code element}’s measurement
+	 *            results. May be {@code null} to describe that no suitable expression was
+	 *            found.
+	 */
+	public void setFinalExpressionFor(final MeasurableSeffElement element, final EvaluableExpression expression) {
+<span class="fc" id="L553">		Validate.notNull(element);</span>
+<span class="fc" id="L554">		Validate.isTrue(this.allSeffElements.contains(element), &quot;element must already be on the blackboard&quot;);</span>
+<span class="fc" id="L555">		this.finalExpressions.put(element, expression);</span>
+<span class="fc" id="L556">	}</span>
+
+	/**
+	 * Returns an object which holds and is responsible allows access to the fitness
+	 * function grading {@linkplain EvaluableExpression evaluable expressions} regarding
+	 * their fitness.
+	 *
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 */
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+<span class="fc" id="L568">		return this.fitnessFunction;</span>
+	}
+
+	/**
+	 * Writes data for {@code writer} to the blackboard. This method serves as a type safe
+	 * mean for tools to store data that is not part of their results. Values stored here
+	 * will never contribute to Beagle’s results. Any class calling this method should
+	 * always pass its own {@linkplain Class} instance as {@code writer}. {@code writer}
+	 * has to implement {@link BlackboardStorer} and thereby declare the type of values
+	 * they write. Calling this method will override any data potentially stored
+	 * previously for the given {@code writer}.
+	 *
+	 * @param writer The class the data should be written for. Must not be {@code null}.
+	 * @param written The data to write.
+	 * @param &lt;WRITTEN_TYPE&gt; {@code written}’s type.
+	 * @see #readFor(Class)
+	 */
+	public &lt;WRITTEN_TYPE extends Serializable&gt; void writeFor(
+		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer, final WRITTEN_TYPE written) {
+<span class="fc" id="L587">		Validate.notNull(writer);</span>
+<span class="fc" id="L588">		this.privateWrittenData.put(writer, written);</span>
+<span class="fc" id="L589">	}</span>
+
+	/**
+	 * Reads data previously written for {@code writer} through
+	 * {@link #writeFor(Class, Serializable)}.
+	 *
+	 * @param writer The class the desired data was written for. Must not be {@code null}.
+	 * @param &lt;WRITTEN_TYPE&gt; The type of the data to be read.
+	 * @return The data written in the last call to {@linkplain #writeFor} for
+	 *         {@code writer}. {@code null} if no data has been written for {@code writer}
+	 *         yet.
+	 * @see #writeFor(Class, Serializable)
+	 */
+	@SuppressWarnings(&quot;unchecked&quot;)
+	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
+		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
+<span class="fc" id="L605">		Validate.notNull(writer);</span>
+		/*
+		 * This performs a cast based on generics. While the cast can not be checked by
+		 * the JVM at runtime, type safety is assured by the signature of {@link
+		 * #writeFor}, which is the only method writing data to {@link
+		 * #privateWrittenData}.
+		 */
+<span class="fc" id="L612">		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
