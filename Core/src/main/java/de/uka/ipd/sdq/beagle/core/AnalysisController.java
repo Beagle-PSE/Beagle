@@ -114,8 +114,8 @@ public class AnalysisController {
 
 		this.blackboard = blackboard;
 		this.measurementController = new MeasurementController(measurementTools);
-		this.measurementResultAnalysers = measurementResultAnalysers;
-		this.proposedExpressionAnalysers = proposedExpressionAnalysers;
+		this.measurementResultAnalysers = new HashSet<>(measurementResultAnalysers);
+		this.proposedExpressionAnalysers = new HashSet<>(proposedExpressionAnalysers);
 	}
 
 	/**

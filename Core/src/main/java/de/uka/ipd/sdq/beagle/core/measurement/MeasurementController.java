@@ -48,7 +48,7 @@ public class MeasurementController {
 		Validate.notNull(measurementTools);
 		Validate.noNullElements(measurementTools);
 
-		this.measurementTools = measurementTools;
+		this.measurementTools = new HashSet<>(measurementTools);
 	}
 
 	/**
