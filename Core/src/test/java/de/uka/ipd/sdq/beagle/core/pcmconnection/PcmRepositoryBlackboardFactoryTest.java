@@ -138,7 +138,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForAllElements() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
 		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
 		assertThat(result, is(notNullValue()));
 
