@@ -220,6 +220,14 @@ public class PcmRepositoryBlackboardFactoryTest {
 			// How do i figure out whether this is correct?
 			seffLoop.getLoopBody().getStartFile();
 		}
+
+		final Blackboard blackboardForIds2 = pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance()
+			.getBlackboardForIds("_Enr2B4RwEeWnEbz-sg1tMg");
+		assertThat(blackboardForIds2.getAllSeffBranches(), is(0));
+		assertThat(blackboardForIds2.getAllSeffLoops(), is(0));
+		assertThat(blackboardForIds2.getAllRdias(), is(1));
+		assertThat(blackboardForIds2.getAllExternalCallParameters(), is(0));
+
 	}
 
 	@Test
