@@ -19,8 +19,14 @@ import java.io.File;
  * useable with other blackboards.
  *
  * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class PcmRepositoryWriter {
+
+	/**
+	 * Blackboard to get Mapping from.
+	 */
+	private final Blackboard blackboard;
 
 	/**
 	 * Creates a writer to write the results written on {@code blackboard} back to a PCM
@@ -29,6 +35,7 @@ public class PcmRepositoryWriter {
 	 * @param blackboard The blackboard containing results.
 	 */
 	public PcmRepositoryWriter(final Blackboard blackboard) {
+		this.blackboard = blackboard;
 	}
 
 	/**
