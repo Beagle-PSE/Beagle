@@ -29,6 +29,13 @@ public class PcmRepositoryBlackboardFactoryFactory {
 			PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne());
 	}
 
+	/**
+	 * Returns a valid instance of {@link PcmRepositoryBlackboardFactory} initialised with
+	 * the AppSensor repository.
+	 *
+	 * @return A valid instance of {@link PcmRepositoryBlackboardFactory} initialised with
+	 *         the AppSensor repository.
+	 */
 	public PcmRepositoryBlackboardFactory getAppSensorProjectInstance() {
 		return new PcmRepositoryBlackboardFactory(
 			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/AppSensor.repository",
