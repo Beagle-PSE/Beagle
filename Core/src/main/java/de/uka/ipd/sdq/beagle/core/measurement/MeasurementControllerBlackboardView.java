@@ -1,11 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -15,6 +10,9 @@ import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -28,8 +26,40 @@ import java.util.Set;
  * function.
  *
  * @author Christoph Michelbach
+ * @author Michael Vogt
  */
-public class MeasurementControllerBlackboardView {
+public final class MeasurementControllerBlackboardView {
+
+	/**
+	 * Blackboard instance committed from the {@link AnalysisController}.
+	 */
+	private Blackboard blackboard;
+
+	/**
+	 * Set the blackboard instance from the {@link AnalysisController} to the private
+	 * blackboard attribute.
+	 *
+	 * @param blackboard The blackboard given from the {@link AnalysisController}.
+	 */
+	public MeasurementControllerBlackboardView(final Blackboard blackboard) {
+		Validate.notNull(blackboard);
+		this.blackboard = blackboard;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != MeasurementControllerBlackboardView.class) {
+			return false;
+		}
+		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;
+		return this.blackboard == other.blackboard;
+	}
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
@@ -40,7 +70,7 @@ public class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set<ResourceDemandingInternalAction> getRdiasToBeMeasured() {
-		return null;
+		return this.blackboard.getRdiasToBeMeasured();
 	}
 
 	/**
@@ -52,7 +82,7 @@ public class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set<SeffBranch> getSeffBranchesToBeMeasured() {
-		return null;
+		return this.blackboard.getSeffBranchesToBeMeasured();
 	}
 
 	/**
@@ -64,7 +94,7 @@ public class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set<SeffLoop> getSeffLoopsToBeMeasured() {
-		return null;
+		return this.blackboard.getSeffLoopsToBeMeasured();
 	}
 
 	/**
@@ -76,8 +106,8 @@ public class MeasurementControllerBlackboardView {
 	 *         be measured. Is never {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
-	public Set<SeffLoop> getExternalCallParametersToBeMeasured() {
-		return null;
+	public Set<ExternalCallParameter> getExternalCallParametersToBeMeasured() {
+		return this.blackboard.getExternalCallParametersToBeMeasured();
 	}
 
 	/**
@@ -91,6 +121,7 @@ public class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
+		this.blackboard.addMeasurementResultFor(rdia, results);
 	}
 
 	/**
@@ -102,6 +133,7 @@ public class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+		this.blackboard.addMeasurementResultFor(loop, results);
 	}
 
 	/**
@@ -113,6 +145,7 @@ public class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+		this.blackboard.addMeasurementResultFor(branch, results);
 	}
 
 	/**
@@ -126,6 +159,7 @@ public class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
+		this.blackboard.addMeasurementResultFor(parameter, results);
 	}
 
 	/**
@@ -137,7 +171,7 @@ public class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-		return null;
+		return this.blackboard.getFitnessFunction();
 	}
 
 	/**
@@ -153,7 +187,7 @@ public class MeasurementControllerBlackboardView {
 	 */
 	public <WRITTEN_TYPE extends Serializable> WRITTEN_TYPE readFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		return null;
+		return this.blackboard.readFor(writer);
 	}
 
 	/**
@@ -167,5 +201,13 @@ public class MeasurementControllerBlackboardView {
 	 */
 	public <WRITTEN_TYPE extends Serializable> void writeFor(
 		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
+		this.blackboard.writeFor(writer, written);
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();
 	}
 }
