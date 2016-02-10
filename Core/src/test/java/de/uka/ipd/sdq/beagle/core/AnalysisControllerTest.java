@@ -6,6 +6,7 @@ import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
@@ -25,7 +26,9 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExtensionPointToolsFactory;
 
 import org.junit.Test;
+import org.mockito.InOrder;
 import org.mockito.Matchers;
+import org.mockito.Mockito;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -360,6 +363,31 @@ public class AnalysisControllerTest {
 		verify(this.mockedProposedExpressionAnalyser2, never()).contribute(anyObject());
 		verify(this.mockedProposedExpressionAnalyser3, atLeastOnce())
 			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard4)));
+
+		// Verify correct execution order
+		this.resetMocks();
+		final Blackboard blackboard5 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard5))).thenReturn(true);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard5))).thenReturn(false);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser1)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard5));
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard5))).thenReturn(true);
+
+		final AnalysisController analysisController6 = new AnalysisController(blackboard5, oneMeasurementTool,
+			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
+		analysisController6.performAnalysis();
+		final InOrder inOrder = Mockito.inOrder(this.mockedMeasurementTool1, this.mockedMeasurementResultAnalyser1,
+			this.mockedProposedExpressionAnalyser1);
+		inOrder.verify(this.mockedMeasurementTool1).measure((MeasurementOrder) notNull());
+		inOrder.verify(this.mockedMeasurementResultAnalyser1)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard5)));
+		inOrder.verify(this.mockedProposedExpressionAnalyser1)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard5)));
 
 	}
 
