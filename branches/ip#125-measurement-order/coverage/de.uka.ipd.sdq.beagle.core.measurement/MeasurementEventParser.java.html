@@ -105,7 +105,7 @@ public class MeasurementEventParser {
 			new ResourceDemandingInternalActionMeasurementEventVisitor(resourceDemandingInternalAction,
 				resourceDemandMeasurementResults);
 <span class="fc" id="L107">		final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(resourceDemandingInternalAction.getAction());</span>
-<span class="fc bfc" id="L108" title="All 2 branches covered.">		if (indices != null) {</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">		if (indices != null) {</span>
 <span class="fc bfc" id="L109" title="All 2 branches covered.">			for (final Integer index : indices) {</span>
 <span class="fc" id="L110">				final MeasurementEvent measurementEvent = this.measurementEvents.get(index);</span>
 <span class="fc" id="L111">				measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);</span>
@@ -159,7 +159,7 @@ public class MeasurementEventParser {
 <span class="fc" id="L159">		final SeffLoopMeasurementEventVisitor seffLoopMeasurementEventVisitor =</span>
 			new SeffLoopMeasurementEventVisitor(loop, loopRepetitionCountMeasurementResults);
 <span class="fc" id="L161">		final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(loop.getLoopBody());</span>
-<span class="pc bpc" id="L162" title="1 of 2 branches missed.">		if (indices != null) {</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">		if (indices != null) {</span>
 <span class="fc bfc" id="L163" title="All 2 branches covered.">			for (final Integer index : indices) {</span>
 <span class="fc" id="L164">				this.measurementEvents.get(index).receive(seffLoopMeasurementEventVisitor);</span>
 <span class="fc" id="L165">			}</span>
@@ -229,12 +229,12 @@ public class MeasurementEventParser {
 		@Override
 		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
 			// We don't care about them.
-<span class="nc" id="L232">		}</span>
+<span class="fc" id="L232">		}</span>
 
 		@Override
 		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
 			// Check if this measurement event is for the correct resource type.
-<span class="pc bpc" id="L237" title="1 of 2 branches missed.">			if (resourceDemandCapturedEvent.getType() == this.resourceDemandingInternalAction.getResourceType()) {</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">			if (resourceDemandCapturedEvent.getType() == this.resourceDemandingInternalAction.getResourceType()) {</span>
 <span class="fc" id="L238">				this.resourceDemandMeasurementResults</span>
 <span class="fc" id="L239">					.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));</span>
 			}
