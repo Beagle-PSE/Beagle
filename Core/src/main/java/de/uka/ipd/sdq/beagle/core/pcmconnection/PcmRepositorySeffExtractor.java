@@ -3,6 +3,8 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.FailureReport;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
