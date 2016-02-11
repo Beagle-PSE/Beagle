@@ -1,0 +1,11 @@
+/**
+ * Configuration to run JUnit Tests
+ *
+ * @author Joshua Gleitze
+ */
+
+configure(javaSubprojects) {
+	test {
+		jvmArgs '-Xverify:none'
+	}
+}
