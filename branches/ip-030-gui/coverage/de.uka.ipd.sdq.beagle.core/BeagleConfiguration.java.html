@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BeagleConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">BeagleConfiguration.java</span></div><h1>BeagleConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import org.apache.commons.lang3.Validate;
+import org.palladiosimulator.pcm.core.entity.Entity;
+
+import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * Stores all settings done by the user. This object starts out with default values set to
+ * it.
+ * 
+ * @author Christoph Michelbach
+ */
+public class BeagleConfiguration {
+
+	/**
+	 * Numeric value for &quot;adaptive timeout&quot;.
+	 */
+	public static final int ADAPTIVE_TIMEOUT = -2;
+
+	/**
+	 * Numeric value for &quot;no timeout&quot;.
+	 */
+	public static final int NO_TIMEOUT = -1;
+
+	/**
+	 * The default setting for the timeout. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0
+	 * → timeout in seconds]
+	 */
+	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
+
+	/**
+	 * All elements to measure or {@code null} to indicate that everything in
+	 * {@code repositoryFile} should be analysed.
+	 */
+	private List&lt;Entity&gt; elements;
+
+	/**
+	 * The repository file.
+	 */
+	private File repositoryFile;
+
+	/**
+	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
+	 * seconds]
+	 */
+	private int timeout;
+
+	/**
+	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
+	 * elements to be measured.
+	 * 
+	 * @param elements The elements to be measured or {@code null} to indicate that
+	 *            everything in {@code repositoryFile} should be analysed.
+	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 */
+<span class="fc" id="L59">	public BeagleConfiguration(final List&lt;Entity&gt; elements, final File repositoryFile) {</span>
+<span class="fc" id="L60">		Validate.notNull(elements);</span>
+<span class="fc" id="L61">		Validate.notNull(repositoryFile);</span>
+
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		if (!repositoryFile.exists()) {</span>
+<span class="fc" id="L64">			throw new IllegalArgumentException(&quot;Repository file must exist.&quot;);</span>
+		}
+
+<span class="fc" id="L67">		this.elements = new LinkedList&lt;&gt;(elements);</span>
+<span class="fc" id="L68">		this.repositoryFile = repositoryFile;</span>
+<span class="fc" id="L69">		this.timeout = DEFAULT_TIMEOUT;</span>
+<span class="fc" id="L70">	}</span>
+
+	/**
+	 * Returns the elements to be measured or {@code null} to indicate that everything in
+	 * {@code repositoryFile} should be analysed.
+	 * 
+	 * @return The elements to be measured or {@code null} to indicate that everything in
+	 *         {@code repositoryFile} should be analysed.
+	 */
+	public List&lt;Entity&gt; getElements() {
+<span class="fc" id="L80">		return this.elements;</span>
+	}
+
+	/**
+	 * Sets the elements to be measured to {@code elements}. {@code null} to indicate that
+	 * everything in {@code repositoryFile} should be analysed.
+	 * 
+	 * @param elements The elements to be measured or {@code null} to indicate that
+	 *            everything in {@code repositoryFile} should be analysed.
+	 */
+	public void setElements(final List&lt;Entity&gt; elements) {
+<span class="fc" id="L91">		this.elements = new LinkedList&lt;&gt;(elements);</span>
+<span class="fc" id="L92">	}</span>
+
+	/**
+	 * Returns the timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 →
+	 * timeout in seconds]
+	 * 
+	 * @return The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 →
+	 *         timeout in seconds]
+	 */
+	public int getTimeout() {
+<span class="fc" id="L102">		return this.timeout;</span>
+	}
+
+	/**
+	 * Sets the timeout to be used to {@code timeout}. [-2 → adaptive timeout] [-1 → no
+	 * timeout] [≥ 0 → timeout in seconds]
+	 * 
+	 * @param timeout The timeout to be used to {@code timeout}. [-2 → adaptive timeout]
+	 *            [-1 → no timeout] [≥ 0 → timeout in seconds]
+	 */
+	public void setTimeout(final int timeout) {
+<span class="fc" id="L113">		this.timeout = timeout;</span>
+<span class="fc" id="L114">	}</span>
+
+	/**
+	 * Returns the repository file.
+	 *
+	 * @return the repository file.
+	 */
+	public File getRepositoryFile() {
+<span class="nc" id="L122">		return this.repositoryFile;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
