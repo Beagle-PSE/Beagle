@@ -7,6 +7,7 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Matchers.notNull;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
@@ -352,7 +353,7 @@ public class AnalysisControllerTest {
 		final AnalysisController analysisController7 = new AnalysisController(blackboard6, oneMeasurementTool,
 			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
 		analysisController7.performAnalysis();
-		final InOrder inOrder1 = Mockito.inOrder(this.mockedMeasurementTool1, this.mockedMeasurementResultAnalyser1,
+		final InOrder inOrder1 = inOrder(this.mockedMeasurementTool1, this.mockedMeasurementResultAnalyser1,
 			this.mockedProposedExpressionAnalyser1);
 		inOrder1.verify(this.mockedMeasurementTool1).measure((MeasurementOrder) notNull());
 		inOrder1.verify(this.mockedMeasurementResultAnalyser1)
@@ -371,6 +372,90 @@ public class AnalysisControllerTest {
 			verify(measurementTool, never()).measure(anyObject());
 		}
 
+		// Test complex scenario.
+		this.resetMocks();
+		final Blackboard blackboard8 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		// Measurement result analyser only can contribute in the following order: 2 1 3
+		when(this.mockedMeasurementResultAnalyser2
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			when(this.mockedMeasurementResultAnalyser1
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser2)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			when(this.mockedMeasurementResultAnalyser3
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser1)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+		when(this.mockedMeasurementResultAnalyser3
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser3)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+
+		// Proposed Expression analyser only can contribute in the following order: 3 1 2
+		when(this.mockedProposedExpressionAnalyser3
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard6))).thenReturn(true);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser3)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser1)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+		when(this.mockedProposedExpressionAnalyser2
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser2)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+
+		final AnalysisController analysisController9 = new AnalysisController(blackboard8, allMeasurementTools,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController9.performAnalysis();
+		verify(this.mockedMeasurementTool1).measure((MeasurementOrder) notNull());
+		verify(this.mockedMeasurementTool2).measure((MeasurementOrder) notNull());
+		verify(this.mockedMeasurementTool3).measure((MeasurementOrder) notNull());
+		final InOrder inOrder2 = inOrder(this.mockedMeasurementResultAnalyser1, this.mockedMeasurementResultAnalyser2,
+			this.mockedMeasurementResultAnalyser3, this.mockedProposedExpressionAnalyser1,
+			this.mockedProposedExpressionAnalyser2, this.mockedProposedExpressionAnalyser3);
+		inOrder2.verify(this.mockedMeasurementResultAnalyser2)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
+		inOrder2.verify(this.mockedMeasurementResultAnalyser1)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
+		inOrder2.verify(this.mockedMeasurementResultAnalyser3)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
+		inOrder2.verify(this.mockedProposedExpressionAnalyser3)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard8)));
+		inOrder2.verify(this.mockedProposedExpressionAnalyser1)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard8)));
+		inOrder2.verify(this.mockedProposedExpressionAnalyser2)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard8)));
 	}
 
 	/**
