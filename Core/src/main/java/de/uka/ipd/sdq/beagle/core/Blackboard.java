@@ -174,10 +174,13 @@ public class Blackboard implements Serializable {
 		for (final ResourceDemandingInternalAction rdia : this.rdias) {
 			this.rdiasMeasurementResults.put(rdia, new HashSet<>());
 		}
-
 		for (final MeasurableSeffElement element : this.allSeffElements) {
 			this.proposedExpressions.put(element, new HashSet<>());
 		}
+		this.rdiasToBeMeasured.addAll(rdias);
+		this.branchesToBeMeasured.addAll(branches);
+		this.loopsToBeMeasured.addAll(loops);
+		this.externalCallParameterToBeMeasured.addAll(externalCalls);
 	}
 
 	/**
