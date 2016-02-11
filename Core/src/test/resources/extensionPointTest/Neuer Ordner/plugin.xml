@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="de.uka.ipd.sdq.beagle.core.measurementresultanalysermockup1"
+         name="Measurement Result Analyser Mockup1"
+         point="de.uka.ipd.sdq.beagle.measurementresultanalyser">
+               <MeasurementResultAnalyserClass
+            MeasurementResultAnalyserClass="de.uka.ipd.sdq.beagle.core.extensionpoint.measurementresultanalysermockup1.MeasurementResultAnalyserMockup1">
+      </MeasurementResultAnalyserClass>
+   </extension>
+
+</plugin>
