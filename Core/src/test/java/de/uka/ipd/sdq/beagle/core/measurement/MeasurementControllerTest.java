@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.refEq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -103,6 +103,6 @@ public class MeasurementControllerTest {
 		measurementController.measure(new MeasurementControllerBlackboardView(blackboard));
 		final MeasurementOrder expectedMeasurementOrder = new MeasurementOrder(parameterValueSections,
 			resourceDemandSections, executionSections, new HashSet<>(), new ParameterCharacteriser());
-		verify(tool).measure(eq(expectedMeasurementOrder));
+		verify(tool).measure(refEq(expectedMeasurementOrder, "launchConfigurations", "parameterCharacteriser"));
 	}
 }
