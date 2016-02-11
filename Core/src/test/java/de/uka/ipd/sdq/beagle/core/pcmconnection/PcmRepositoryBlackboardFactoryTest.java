@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -33,7 +34,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.net4j.util.collection.Pair;
+import org.junit.Rule;
 import org.junit.Test;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -45,6 +49,7 @@ import java.util.HashSet;
  * 
  * @author Christoph Michelbach
  */
+@PrepareForTest(PcmRepositoryBlackboardFactory.class)
 public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
@@ -52,6 +57,12 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	private static PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory =
 		new PcmRepositoryBlackboardFactoryFactory();
+
+	/**
+	 * Rule loading PowerMock (to mock static methods).
+	 */
+	@Rule
+	public PowerMockRule loadPowerMock = new PowerMockRule();
 
 	/**
 	 * Pseudo fitness function.
@@ -135,9 +146,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(() -> new PcmRepositoryBlackboardFactory("\0", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
 
-		EMFHelper eMFHelper = mock(EMFHelper.class);
+		mockStatic(EMFHelper.class);
 
-		given(eMFHelper.loadFromXMIFile(any(), any())).willReturn(new SomeInvalidObject());
+		final EObject mocked = mock(EObject.class);
+		given(EMFHelper.loadFromXMIFile(any(), any())).willReturn(mocked);
 		assertThat(() -> pcmRepositoryBlackboardFactoryFactory.getValidInstance(),
 			throwsException(IllegalArgumentException.class));
 
