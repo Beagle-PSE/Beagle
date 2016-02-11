@@ -4,6 +4,8 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
  * this class!
  * 
  * <p>COVERAGE:OFF
+ * 
+ * Also Checkstyle <p>CHECKSTYLE:OFF
  */
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
@@ -34,7 +36,7 @@ public class PcmRepositoryWriter {
 	 */
 	private final Blackboard blackboard;
 
-	private final Set<ResourceDemandingInternalAction>
+	// private final Set<ResourceDemandingInternalAction> rdiaSet;
 
 	/**
 	 * Creates a writer to write the results written on {@code blackboard} back to a PCM
@@ -74,15 +76,17 @@ public class PcmRepositoryWriter {
 			throw new IllegalArgumentException("File is not a repository!");
 		}
 		final RepositoryImpl repository = (RepositoryImpl) eObject;
-		
+
 		for (ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
 			EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);
 			if (evaEx != null) {
-				
+
 			}
 		}
-		this.blackboard.getf
+
 	}
 
-	private void annotateEvaExTo()
+	private void annotateEvaExTo() {
+
+	}
 }
