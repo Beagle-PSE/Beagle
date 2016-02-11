@@ -77,7 +77,7 @@ public class BeagleConfigurationTest {
 		final List<Entity> copyedElements = new ArrayList<>();
 		copyedElements.addAll(this.elements);
 		this.elements.clear();
-		assertThat("The elements must be copyed.", beagleConfig.getElements(), is(sameInstance(copyedElements)));
+		assertThat("The elements must be copyed.", beagleConfig.getElements(), is(copyedElements));
 
 	}
 
