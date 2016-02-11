@@ -9,6 +9,7 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -91,11 +92,12 @@ public class MeasurementController {
 		final Set<SeffBranch> seffBranches = blackboard.getSeffBranchesToBeMeasured();
 		final Set<SeffLoop> seffLoops = blackboard.getSeffLoopsToBeMeasured();
 		final Set<ResourceDemandingInternalAction> rdias = blackboard.getRdiasToBeMeasured();
+		final Set<ExternalCallParameter> externalCallParameters = blackboard.getExternalCallParametersToBeMeasured();
 
 		// Initialise everything needed to create a measurement order.
-		final Set<CodeSection> parameterValueSection = new HashSet<CodeSection>();
 		final Set<CodeSection> resourceDemandSections = new HashSet<CodeSection>();
 		final Set<CodeSection> executionSections = new HashSet<CodeSection>();
+		final Set<CodeSection> parameterValueSections = new HashSet<CodeSection>();
 		final Set<LaunchConfiguration> launchConfigurations = new HashSet<LaunchConfiguration>();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
@@ -120,9 +122,15 @@ public class MeasurementController {
 			resourceDemandSections.add(codeSection);
 		}
 
+		// Fill {@code parameterValueSection}.
+		for (ExternalCallParameter externalCallParameter : externalCallParameters) {
+			final CodeSection codeSection = externalCallParameter.getCallCodeSection();
+			parameterValueSections.add(codeSection);
+		}
+
 		// Give every measurement tool a measurement order.
 		for (MeasurementTool measurementTool : this.measurementTools) {
-			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection,
+			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,
 				resourceDemandSections, executionSections, launchConfigurations, parameterCharacteriser);
 
 			measurementTool.measure(measurementOrder);
