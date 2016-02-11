@@ -108,10 +108,10 @@ public class MeasurementController {
 			}
 		}
 
-		// Fill {@code parameterValueSection}.
+		// Fill {@code executionSections}.
 		for (SeffLoop seffLoop : seffLoops) {
 			final CodeSection codeSection = seffLoop.getLoopBody();
-			parameterValueSection.add(codeSection);
+			executionSections.add(codeSection);
 		}
 
 		// Fill {@code resourceDemandSections}.
