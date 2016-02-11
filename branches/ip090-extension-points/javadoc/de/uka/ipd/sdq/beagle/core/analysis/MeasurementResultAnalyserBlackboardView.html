@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -138,7 +138,10 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#MeasurementResultAnalyserBlackboardView--">MeasurementResultAnalyserBlackboardView</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#MeasurementResultAnalyserBlackboardView-de.uka.ipd.sdq.beagle.core.Blackboard-">MeasurementResultAnalyserBlackboardView</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</code>
+<div class="block">Set the blackboard instance from the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><code>AnalysisController</code></a> to the private
+ blackboard attribute.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -195,37 +198,41 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 </td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#equals-java.lang.Object-">equals</a></span>(java.lang.Object&nbsp;object)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getAllExternalCallParameters--">getAllExternalCallParameters</a></span>()</code>
 <div class="block">Delegates to
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllExternalCallParameters--"><code>Blackboard.getAllExternalCallParameters()</code></a>.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getAllRdias--">getAllRdias</a></span>()</code>
 <div class="block">Delegates to <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllSeffBranches--"><code>Blackboard.getAllSeffBranches()</code></a>.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getAllSeffBranches--">getAllSeffBranches</a></span>()</code>
 <div class="block">Delegates to <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllSeffBranches--"><code>Blackboard.getAllSeffBranches()</code></a>.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getAllSeffLoops--">getAllSeffLoops</a></span>()</code>
 <div class="block">Delegates to <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllSeffLoops--"><code>Blackboard.getAllSeffLoops()</code></a>.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getFitnessFunction--">getFitnessFunction</a></span>()</code>
 <div class="block">Delegates to <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getFitnessFunction--"><code>Blackboard.getFitnessFunction()</code></a> .</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterChangeMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">getMeasurementResultsFor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</code>
 <div class="block">Delegates to
@@ -233,35 +240,39 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
  .</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">getMeasurementResultsFor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia)</code>
 <div class="block">Delegates to
- <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-"><code>Blackboard.getMeasurementResultsFor(ResourceDemandingInternalAction)</code></a>
+ <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-"><code>Blackboard.getMeasurementResultsFor( ResourceDemandingInternalAction)</code></a>
  .</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.SeffBranch-">getMeasurementResultsFor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&nbsp;branch)</code>
 <div class="block">Delegates to
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.SeffBranch-"><code>Blackboard.getMeasurementResultsFor(SeffBranch)</code></a>.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.SeffLoop-">getMeasurementResultsFor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&nbsp;loop)</code>
 <div class="block">Delegates to
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.SeffLoop-"><code>Blackboard.getMeasurementResultsFor(SeffLoop)</code></a>.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>&lt;WRITTEN_TYPE extends java.io.Serializable&gt;<br>WRITTEN_TYPE</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#readFor-java.lang.Class-">readFor</a></span>(java.lang.Class&lt;? extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;WRITTEN_TYPE&gt;&gt;&nbsp;writer)</code>
 <div class="block">Delegates to <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#readFor-java.lang.Class-"><code>Blackboard.readFor(Class)</code></a> .</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>&lt;WRITTEN_TYPE extends java.io.Serializable&gt;<br>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#writeFor-java.lang.Class-WRITTEN_TYPE-">writeFor</a></span>(java.lang.Class&lt;? extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;WRITTEN_TYPE&gt;&gt;&nbsp;writer,
         WRITTEN_TYPE&nbsp;written)</code>
@@ -275,7 +286,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, finalize, getClass, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -291,13 +302,19 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="MeasurementResultAnalyserBlackboardView--">
+<a name="MeasurementResultAnalyserBlackboardView-de.uka.ipd.sdq.beagle.core.Blackboard-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>MeasurementResultAnalyserBlackboardView</h4>
-<pre>public&nbsp;MeasurementResultAnalyserBlackboardView()</pre>
+<pre>public&nbsp;MeasurementResultAnalyserBlackboardView(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</pre>
+<div class="block">Set the blackboard instance from the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><code>AnalysisController</code></a> to the private
+ blackboard attribute.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>blackboard</code> - The blackboard given from the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><code>AnalysisController</code></a>.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -308,6 +325,19 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="equals-java.lang.Object-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>equals</h4>
+<pre>public&nbsp;boolean&nbsp;equals(java.lang.Object&nbsp;object)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
+</dl>
+</li>
+</ul>
 <a name="getAllRdias--">
 <!--   -->
 </a>
@@ -444,7 +474,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <h4>getMeasurementResultsFor</h4>
 <pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a>&gt;&nbsp;getMeasurementResultsFor(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia)</pre>
 <div class="block">Delegates to
- <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-"><code>Blackboard.getMeasurementResultsFor(ResourceDemandingInternalAction)</code></a>
+ <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-"><code>Blackboard.getMeasurementResultsFor( ResourceDemandingInternalAction)</code></a>
  .</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
@@ -456,7 +486,8 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <dd>All measurement results reported for <code>rdia</code>. Changes to the returned
          set will not modify the blackboard content. Is never <code>null</code>.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-"><code>Blackboard.getMeasurementResultsFor(ResourceDemandingInternalAction)</code></a></dd>
+<dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-"><code>Blackboard.getMeasurementResultsFor(
+      ResourceDemandingInternalAction)</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -523,9 +554,9 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <dd><code>externalCallParameter</code> - An external parameter to get the measurement results
             of. Must not be <code>null</code>.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>All measurement results reported for <code>externalCallParameter</code>. Changes
-         to the returned set will not modify the blackboard content. Is never
-         <code>null</code>.</dd>
+<dd>All measurement results reported for <code>loexternalCallParameterop</code>.
+         Changes to the returned set will not modify the blackboard content. Is
+         never <code>null</code>.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-"><code>Blackboard.getMeasurementResultsFor(ExternalCallParameter)</code></a></dd>
 </dl>
@@ -598,7 +629,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 </a><a name="writeFor-java.lang.Class-WRITTEN_TYPE-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>writeFor</h4>
 <pre>public&nbsp;&lt;WRITTEN_TYPE extends java.io.Serializable&gt;&nbsp;void&nbsp;writeFor(java.lang.Class&lt;? extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;WRITTEN_TYPE&gt;&gt;&nbsp;writer,
@@ -615,6 +646,19 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/Evalua
 <dd><code>written</code> - The data to write.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#writeFor-java.lang.Class-WRITTEN_TYPE-"><code>Blackboard.writeFor(Class, Serializable)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="hashCode--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>hashCode</h4>
+<pre>public&nbsp;int&nbsp;hashCode()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
 </dl>
 </li>
 </ul>
