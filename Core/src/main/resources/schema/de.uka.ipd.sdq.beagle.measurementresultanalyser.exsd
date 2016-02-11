@@ -67,7 +67,7 @@
          <meta.section type="since"/>
       </appinfo>
       <documentation>
-         [Enter the first release in which this extension point appears.]
+         Available since the first release.
       </documentation>
    </annotation>
 
@@ -76,7 +76,7 @@
          <meta.section type="examples"/>
       </appinfo>
       <documentation>
-         [Enter extension point usage example here.]
+         Each measurement result analyser must be added to this extension point and provide a zero-argument constructor.
       </documentation>
    </annotation>
 
@@ -85,7 +85,7 @@
          <meta.section type="apiinfo"/>
       </appinfo>
       <documentation>
-         [Enter API information here.]
+         Each measurement result analyser must implement the interface de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser.
       </documentation>
    </annotation>
 
@@ -94,7 +94,7 @@
          <meta.section type="implementation"/>
       </appinfo>
       <documentation>
-         [Enter information about supplied implementation of this extension point.]
+         The measurement result analysers will be instantiated with their zero-argument construcotr at the beginning of each analyis.
       </documentation>
    </annotation>
 
