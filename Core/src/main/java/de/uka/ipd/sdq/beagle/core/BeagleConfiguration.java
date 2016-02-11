@@ -4,6 +4,7 @@ import org.apache.commons.lang3.Validate;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -63,7 +64,7 @@ public class BeagleConfiguration {
 			throw new IllegalArgumentException("Repository file must exist.");
 		}
 
-		this.elements = elements;
+		this.elements = new LinkedList<>(elements);
 		this.repositoryFile = repositoryFile;
 		this.timeout = DEFAULT_TIMEOUT;
 	}
@@ -87,7 +88,7 @@ public class BeagleConfiguration {
 	 *            everything in {@code repositoryFile} should be analysed.
 	 */
 	public void setElements(final List<Entity> elements) {
-		this.elements = elements;
+		this.elements = new LinkedList<>(elements);
 	}
 
 	/**
