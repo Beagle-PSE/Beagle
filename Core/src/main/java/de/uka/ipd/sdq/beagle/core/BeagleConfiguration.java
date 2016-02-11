@@ -56,7 +56,12 @@ public class BeagleConfiguration {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
 	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile) {
+		Validate.notNull(elements);
 		Validate.notNull(repositoryFile);
+
+		if (!repositoryFile.exists()) {
+			throw new IllegalArgumentException("Repository file must exist.");
+		}
 
 		this.elements = elements;
 		this.repositoryFile = repositoryFile;
