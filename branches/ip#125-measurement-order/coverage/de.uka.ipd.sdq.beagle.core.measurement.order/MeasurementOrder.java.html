@@ -48,7 +48,7 @@ public class MeasurementOrder {
 	/**
 	 * Create a measurement order for {@linkplain MeasurementTool MeasurementTools}.
 	 *
-	 * @param parameterValueSection The code sections where parameters need to be
+	 * @param parameterValueSections The code sections where parameters need to be
 	 *            characterised. Must not be {@code null}. May not contain {@code null}
 	 *            elements.
 	 * @param resourceDemandSections The code sections, where all resource demands need to
@@ -63,16 +63,16 @@ public class MeasurementOrder {
 	 * @param parameterCharacteriser The parameter characteriser, that all measurement
 	 *            tools must use for parameter characterisation. Must not be {@code null}.
 	 */
-	public MeasurementOrder(final Set&lt;CodeSection&gt; parameterValueSection, final Set&lt;CodeSection&gt; resourceDemandSections,
+	public MeasurementOrder(final Set&lt;CodeSection&gt; parameterValueSections, final Set&lt;CodeSection&gt; resourceDemandSections,
 		final Set&lt;CodeSection&gt; executionSections, final Set&lt;LaunchConfiguration&gt; launchConfigurations,
 <span class="fc" id="L68">		final ParameterCharacteriser parameterCharacteriser) {</span>
-<span class="fc" id="L69">		Validate.noNullElements(parameterValueSection);</span>
+<span class="fc" id="L69">		Validate.noNullElements(parameterValueSections);</span>
 <span class="fc" id="L70">		Validate.noNullElements(resourceDemandSections);</span>
 <span class="fc" id="L71">		Validate.noNullElements(resourceDemandSections);</span>
 <span class="fc" id="L72">		Validate.noNullElements(executionSections);</span>
 <span class="fc" id="L73">		Validate.noNullElements(launchConfigurations);</span>
 <span class="fc" id="L74">		Validate.notNull(parameterCharacteriser);</span>
-<span class="fc" id="L75">		this.parameterValueSection = new HashSet&lt;&gt;(parameterValueSection);</span>
+<span class="fc" id="L75">		this.parameterValueSection = new HashSet&lt;&gt;(parameterValueSections);</span>
 <span class="fc" id="L76">		this.resourceDemandSections = new HashSet&lt;&gt;(resourceDemandSections);</span>
 <span class="fc" id="L77">		this.executionSections = new HashSet&lt;&gt;(executionSections);</span>
 <span class="fc" id="L78">		this.launchConfigurations = new HashSet&lt;&gt;(launchConfigurations);</span>
