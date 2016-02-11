@@ -111,15 +111,15 @@ var activeTableTab = "activeTableTab";
 extends java.lang.Object</pre>
 <div class="block">Conducts a complete analysis of elements on a blackboard. Controls the
  <a href="../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementController.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementController</code></a>, <a href="../../../../../../de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyser.html" title="interface in de.uka.ipd.sdq.beagle.core.analysis"><code>ResultAnalysers</code></a> and
- the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="interface in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> to measure and analyse parametric dependencies.
+ the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> to measure and analyse parametric dependencies.
 
  <h3>The Analysis</h3> During the analysis, the controller will ask participants whether
- they can contribute (except for the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a>, which must always be able
+ they can contribute (except for the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a>, which must always be able
  to judge). The participants may only make these assumptions of the control flow:
 
  <ul>
 
- <li>There is always only the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementController.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementController</code></a>, only the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="interface in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a>
+ <li>There is always only the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementController.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementController</code></a>, only the <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a>
  or only one <a href="../../../../../../de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyser.html" title="interface in de.uka.ipd.sdq.beagle.core.analysis"><code>ProposedExpressionAnalyser</code></a> (or none of the previous) running. They
  may use parallelisation as they wish but are self-responsible for synchronisation.
 
@@ -136,7 +136,7 @@ extends java.lang.Object</pre>
  <a href="../../../../../../de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyser.html#canContribute-de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView-"><code>canContribute</code></a> method returns
  <code>true</code> will be called.
 
- <li>The <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a> will only be called if no
+ <li>The <a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a> will only be called if no
  <a href="../../../../../../de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyser.html" title="interface in de.uka.ipd.sdq.beagle.core.analysis"><code>ProposedExpressionAnalyser</code></a> can contribute.
 
  </ul></div>

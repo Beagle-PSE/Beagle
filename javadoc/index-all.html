@@ -616,10 +616,14 @@
 <dd>
 <div class="block">The used value to express <code>true</code> as double.</div>
 </dd>
-<dt><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="interface in de.uka.ipd.sdq.beagle.core.judge"><span class="typeNameLink">FinalJudge</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/judge/package-summary.html">de.uka.ipd.sdq.beagle.core.judge</a></dt>
+<dt><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><span class="typeNameLink">FinalJudge</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/judge/package-summary.html">de.uka.ipd.sdq.beagle.core.judge</a></dt>
 <dd>
-<div class="block">TODO Document this type.</div>
+<div class="block">Implements the break condition for evolution of evaluable expressions and decides which
+ proposed evaluable expression describes the measured result best and will be annotated
+ in the PCM.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#FinalJudge--">FinalJudge()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html#forValue-double-">forValue(double)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ConstantExpression</a></dt>
 <dd>
 <div class="block">Looks for the constant expression belonging to an input <code>value</code>.</div>
@@ -1285,6 +1289,10 @@
 <dd>
 <div class="block">Builds an expression which returns .</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#init-de.uka.ipd.sdq.beagle.core.Blackboard-">init(Blackboard)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
+<dd>
+<div class="block">Initialises the <a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> object.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#isNs--">isNs()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
 <div class="block">Whether this resource type is measured machine dependent or not.</div>
@@ -1300,8 +1308,10 @@
 </a>
 <h2 class="title">J</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#judge-de.uka.ipd.sdq.beagle.core.Blackboard-">judge(Blackboard)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#judge-de.uka.ipd.sdq.beagle.core.Blackboard-">judge(Blackboard)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
+<dd>
+<div class="block">Implements the break condition for evolution of evaluable expressions.</div>
+</dd>
 </dl>
 <a name="I:L">
 <!--   -->
@@ -1346,6 +1356,11 @@
 <dd>
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/MachineSelectionWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>MachineSelectionWizardPage</code></a> being linked to the given
  <code>userConfiguration</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#MAX_CONSIDERED_FITNESS_VALUE">MAX_CONSIDERED_FITNESS_VALUE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
+<dd>
+<div class="block">Fitness values bigger than this number will be set to this number and therefore
+ will not be considered as the values they truly are.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/MeasurableSeffElement.html" title="interface in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">MeasurableSeffElement</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
