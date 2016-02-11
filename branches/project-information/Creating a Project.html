@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head> 
+        <meta charset="utf-8"> 
+        <title>Beagle—Creating a Project</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="fonts/cm-sans/cmun-sans.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-serif/cmun-serif.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-typewriter/cmun-typewriter.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css" type="text/css"> 
+        <link rel="stylesheet" href="css/index.css" type="text/css"> 
+    </head> 
+    <body> 
+        <h1>How to Create A Project</h1> 
+        <p>Beagle is structured into different subprojects (<a href="../Developers.html">see the file overview</a>). This guide details how to create a new project.</p> 
+        <h2>General</h2> 
+        <ul> 
+            <li>All projects stick to <a href="https://docs.gradle.org/current/userguide/java_plugin.html">gradle’s conventional project structure</a>, regardless of the languages they use. This means that all source files belong into <code>src/$part/$language</code> where <code>$part</code> is the part of the subproject the files belong to (must be <code>main</code> if they belong to the project’s main part) and <code>$language</code> is the language the source files are written in.</li> 
+            <li>Any build logic belongs into a subproject of the subproject, in a folder called <code>buildSrc</code> 
+                <ul> 
+                    <li>gradle tasks belong into <code>buildScr/tasks/gradle</code>. Each build aspect belongs into its own file. Task files are named <code>$i $aspect.gradle</code> where <code>$i</code> is a two digit number to sort the files and <code>$aspect</code> should explain what kind of tasks are found in the file. Tasks will automatically be imported to the project’s build logic.</li> 
+                    <li>build logic defined in java or groovy files belongs into <code>buildSrc/src/main/java</code> or <code>buildScr/src/main/groovy</code>, respectively. It will automatically be made available to the build task scripts. If the classes have dependencies, a file called <code>dependencies.gradle</code> is to be created, declaring these dependencies using <a href="https://docs.gradle.org/current/userguide/artifact_dependencies_tutorial.html">the gradle DSL</a> and adding them to the <code>compile</code> configuration.</li> 
+                </ul> </li> 
+        </ul> 
+        <h2>Java</h2> 
+        <p>Java projects must be set up in Eclipse as follows:</p> 
+        <ul> 
+            <li>The Code Templates must be set to “project specific” and the configuration from <code>config/Code Templates.xml</code> must be used.</li> 
+            <li>The Formatter must be set to “project specific” and the configuration from <code>config/Formatter.xml</code> must be used.</li> 
+            <li>The Clean Up must be set to “project specific” and the configuration from <code>config/Clean Up.xml</code> must be used.</li> 
+            <li>The Import Order must be set to “project specific” and the configuration from <code>config/Beagle.importorder</code> must be used.</li> 
+            <li>Checkstyle must be enabled and a new <em>local</em>, <em>project relative</em> configuration, pointing to <code>config/checkstyle/Checkstyle.xml</code>, must be added and used.</li> 
+        </ul> 
+        <h2>Prototypes</h2> 
+        <p>All points stated in this document apply to prototypes as well, with the following exceptions:</p> 
+        <ul> 
+            <li>Prototypes belong into the <code>Prototypes</code> subfolder.</li> 
+            <li>Prototype’s Checkstyle must be configured using <code>config/checkstyle/Checkstyle Prototype.xml</code>.</li> 
+        </ul> 
+        <h2>Eclipse Plugins</h2> 
+        <ul> 
+            <li> <p>The <code>MANIFEST.MF</code> of Eclipse plugins belongs to <code>src/main/resources/META-INF/MANIFEST.MF</code>. To point PDE to it, a new file containing the line</p> <pre><code>BUNDLE_ROOT_PATH=src/main/resources
+</code></pre> must be created in <code>.settings/org.eclipse.pde.core.prefs</code>.</li> 
+            <li><code>plugin.xml</code> belongs to <code>src/main/resources/plugin.xml</code>.</li> 
+            <li> <p><code>build.properties</code> belongs to <code>src/main/resources/build.properties</code>. Its paths must be adapted accordingly, a default is:</p> <pre><code>source.. = ../java/
+output.. = ../../../bin/
+bin.includes = META-INF/
+</code></pre></li> 
+        </ul>  
+    </body>
+</html>
