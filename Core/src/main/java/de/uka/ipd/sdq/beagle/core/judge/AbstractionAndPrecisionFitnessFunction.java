@@ -11,6 +11,11 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment;
+import de.uka.ipd.sdq.beagle.core.measurement.Parameterisation;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
+
+import java.util.Set;
 
 /**
  * Fitness function regarding abstract but precise expression as fittest. Naturally, these
@@ -19,12 +24,26 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
  * best.
  *
  * @author Joshua Gleitze
+ * @author Christoph Michelbach
  */
 public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressionFitnessFunction {
 
 	@Override
 	public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+		final Set<ResourceDemandMeasurementResult> resourceDemandMeasurementResults =
+			blackboard.getMeasurementResultsFor(rdia);
+		for (ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {
+			final double realValue = resourceDemandMeasurementResult.getValue();
+			final Parameterisation parameterisation = resourceDemandMeasurementResult.getParameterisation();
+
+			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();
+
+			final double predictedValue = expression.evaluate(evaluableVariableAssignment);
+
+			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);
+			return squareDeviation;
+		}
 		return 0;
 	}
 
