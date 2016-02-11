@@ -4,9 +4,9 @@ For testing if the extension points are work right, follow these steps:
 
 1. Import eclipse extension point test in eclipse.
 2. Run Eclipse in Eclipse.
-3. In the must a button 'Beagle' avaiable press it.
+3. In the must a button 'Beagle' available press it.
 4. Choose the 'Available Measurement Tools' and press it.
-5. Now must a window 'Avariable Tools' appear with the following kind of text:
+5. Now must a window 'Available Tools' appear with the following kind of text:
     
         Available measurement tools:
         -
@@ -19,5 +19,5 @@ For testing if the extension points are work right, follow these steps:
     	a mocked proposed expression analyser
 
 
-If that happend the extension points test succeeded.
+If that happened the extension points test succeeded.
 
