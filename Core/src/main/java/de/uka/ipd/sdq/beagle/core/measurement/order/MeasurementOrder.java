@@ -48,7 +48,7 @@ public class MeasurementOrder {
 	/**
 	 * Create a measurement order for {@linkplain MeasurementTool MeasurementTools}.
 	 *
-	 * @param parameterValueSection The code sections where parameters need to be
+	 * @param parameterValueSections The code sections where parameters need to be
 	 *            characterised. Must not be {@code null}. May not contain {@code null}
 	 *            elements.
 	 * @param resourceDemandSections The code sections, where all resource demands need to
@@ -63,16 +63,16 @@ public class MeasurementOrder {
 	 * @param parameterCharacteriser The parameter characteriser, that all measurement
 	 *            tools must use for parameter characterisation. Must not be {@code null}.
 	 */
-	public MeasurementOrder(final Set<CodeSection> parameterValueSection, final Set<CodeSection> resourceDemandSections,
+	public MeasurementOrder(final Set<CodeSection> parameterValueSections, final Set<CodeSection> resourceDemandSections,
 		final Set<CodeSection> executionSections, final Set<LaunchConfiguration> launchConfigurations,
 		final ParameterCharacteriser parameterCharacteriser) {
-		Validate.noNullElements(parameterValueSection);
+		Validate.noNullElements(parameterValueSections);
 		Validate.noNullElements(resourceDemandSections);
 		Validate.noNullElements(resourceDemandSections);
 		Validate.noNullElements(executionSections);
 		Validate.noNullElements(launchConfigurations);
 		Validate.notNull(parameterCharacteriser);
-		this.parameterValueSection = new HashSet<>(parameterValueSection);
+		this.parameterValueSection = new HashSet<>(parameterValueSections);
 		this.resourceDemandSections = new HashSet<>(resourceDemandSections);
 		this.executionSections = new HashSet<>(executionSections);
 		this.launchConfigurations = new HashSet<>(launchConfigurations);
