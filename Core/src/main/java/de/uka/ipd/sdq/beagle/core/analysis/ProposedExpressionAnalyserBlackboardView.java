@@ -22,12 +22,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 /**
  * View of the {@link Blackboard} designed to be used by {@link MeasurementResultAnalyser}
@@ -65,6 +59,9 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 		}
 		if (object == this) {
 			return true;
+		}
+		if (object.getClass() != ProposedExpressionAnalyserBlackboardView.class) {
+			return false;
 		}
 		final ProposedExpressionAnalyserBlackboardView other = (ProposedExpressionAnalyserBlackboardView) object;
 		return this.blackboard == other.blackboard;
@@ -120,7 +117,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            be {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredRdias(final Collection<ResourceDemandingInternalAction> rdias) {
-		Validate.notNull(rdias);
 		this.blackboard.addToBeMeasuredRdias(rdias);
 	}
 
@@ -133,7 +129,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            must be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffBranches(final Collection<SeffBranch> branches) {
-		Validate.notNull(branches);
 		this.blackboard.addToBeMeasuredSeffBranches(branches);
 	}
 
@@ -145,7 +140,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            be known to this blackboard.
 	 */
 	public void addToBeMeasuredSeffLoops(final Collection<SeffLoop> loops) {
-		Validate.notNull(loops);
 		this.blackboard.addToBeMeasuredSeffLoops(loops);
 	}
 
@@ -158,7 +152,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *            {@code null} and must be known to this blackboard.
 	 */
 	public void addToBeMeasuredExternalCallParameters(final Collection<ExternalCallParameter> parameters) {
-		Validate.notNull(parameters);
 		this.blackboard.addToBeMeasuredExternalCallParameters(parameters);
 	}
 
@@ -176,7 +169,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 */
 	@Override
 	public Set<ResourceDemandMeasurementResult> getMeasurementResultsFor(final ResourceDemandingInternalAction rdia) {
-		Validate.notNull(rdia);
 		return this.blackboard.getMeasurementResultsFor(rdia);
 	}
 
@@ -192,7 +184,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 */
 	@Override
 	public Set<BranchDecisionMeasurementResult> getMeasurementResultsFor(final SeffBranch branch) {
-		Validate.notNull(branch);
 		return this.blackboard.getMeasurementResultsFor(branch);
 	}
 
@@ -208,7 +199,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 */
 	@Override
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
-		Validate.notNull(loop);
 		return this.blackboard.getMeasurementResultsFor(loop);
 	}
 
@@ -227,7 +217,6 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	@Override
 	public Set<ParameterChangeMeasurementResult> getMeasurementResultsFor(
 		final ExternalCallParameter externalCallParameter) {
-		Validate.notNull(externalCallParameter);
 		return this.blackboard.getMeasurementResultsFor(externalCallParameter);
 	}
 
@@ -241,7 +230,7 @@ public class ProposedExpressionAnalyserBlackboardView implements EvaluableExpres
 	 *         to the returned set will not modify the blackboard content. Is never
 	 *         {@code null}.
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getProposedExpressionFor(MeasurableSeffElement)
-	 * 
+	 *
 	 */
 	public Set<EvaluableExpression> getProposedExpressionFor(final MeasurableSeffElement element) {
 		return this.blackboard.getProposedExpressionFor(element);

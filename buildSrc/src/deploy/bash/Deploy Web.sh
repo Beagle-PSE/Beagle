@@ -24,7 +24,7 @@ if [ -z ${GH_TOKEN:+1} ]; then
 	exit 0
 fi
 
-PUBLISH=../publish
+PUBLISH="`readlink -m ../publish`"
 BASE=$PWD
 mkdir -p $PUBLISH
 cd $PUBLISH
@@ -70,10 +70,12 @@ cd "$pubdir"
 # Remove all content - except the git files and the branches folder
 find . -maxdepth 1 \! \( -name .git -o -name . -o -name branches \) -exec rm -rf {} \;
 
-# Requirements specification
+# Copy in the content
 cp -r "$BASE/Web Presence/build"/* .
 
-###
+# Keep gh-pages from considering some resources as "special" and hiding them
+cd $PUBLISH
+touch .nojekyll
 
 git add --all .
 git commit -m "Travis build of $TRAVIS_BRANCH ($TRAVIS_COMMIT_RANGE)"
