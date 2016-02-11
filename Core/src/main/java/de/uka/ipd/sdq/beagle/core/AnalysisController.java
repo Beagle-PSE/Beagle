@@ -128,6 +128,8 @@ public class AnalysisController {
 		final MeasurementControllerBlackboardView measurementControllerBlackboardView =
 			new MeasurementControllerBlackboardView(this.blackboard);
 
+		this.addAllSeffElementsAsToBeMeasured();
+
 		final FinalJudge finalJudge = new FinalJudge();
 		finalJudge.init(this.blackboard);
 
@@ -140,6 +142,22 @@ public class AnalysisController {
 				this.chooseRandomPropesedExpressionAnalyserToContribute();
 			}
 		}
+	}
+
+	/**
+	 * Adds all seff elements on the blackboard to the "to be measured" sets.
+	 *
+	 */
+	private void addAllSeffElementsAsToBeMeasured() {
+		final Set<SeffBranch> seffBranches = this.blackboard.getAllSeffBranches();
+		final Set<SeffLoop> seffLoops = this.blackboard.getAllSeffLoops();
+		final Set<ResourceDemandingInternalAction> rdias = this.blackboard.getAllRdias();
+		final Set<ExternalCallParameter> externalCallParameters = this.blackboard.getAllExternalCallParameters();
+
+		this.blackboard.addToBeMeasuredSeffBranches(seffBranches);
+		this.blackboard.addToBeMeasuredSeffLoops(seffLoops);
+		this.blackboard.addToBeMeasuredRdias(rdias);
+		this.blackboard.addToBeMeasuredExternalCallParameters(externalCallParameters);
 	}
 
 	/**
