@@ -89,7 +89,7 @@ public class BeagleConfigurationTest {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
-		assertThat(beagleConfig.getElements(), is(sameInstance(this.elements)));
+		assertThat(beagleConfig.getElements(), is(this.elements));
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class BeagleConfigurationTest {
 		final File file = files[0];
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
 		beagleConfig.setElements(this.elements);
-		assertThat(beagleConfig.getElements(), is(sameInstance(this.elements)));
+		assertThat(beagleConfig.getElements(), is(this.elements));
 	}
 
 	/**
