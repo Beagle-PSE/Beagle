@@ -28,7 +28,10 @@ public class ExceptionThrowingFailureHandler extends FailureHandler {
 <span class="nc bnc" id="L28" title="All 4 branches missed.">		if (report.getFailureCause() == null &amp;&amp; report.getFailureMessage() != null) {</span>
 <span class="nc" id="L29">			failureDescription += &quot;\n\n&quot; + report.getFailureMessage();</span>
 		}
-<span class="nc" id="L31">		throw new RuntimeException(failureDescription, report.getFailureCause());</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">		if (report.getDetails() != null) {</span>
+<span class="nc" id="L32">			failureDescription += &quot;\n\nDetails:\n&quot; + report.getDetails();</span>
+		}
+<span class="nc" id="L34">		throw new RuntimeException(failureDescription, report.getFailureCause());</span>
 	}
 
 }
