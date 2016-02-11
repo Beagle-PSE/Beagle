@@ -9,6 +9,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
@@ -134,7 +135,9 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(() -> new PcmRepositoryBlackboardFactory("\0", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
 
-		given(EMFHelper.loadFromXMIFile(any(), any())).willReturn(new SomeInvalidObject());
+		EMFHelper eMFHelper = mock(EMFHelper.class);
+
+		given(eMFHelper.loadFromXMIFile(any(), any())).willReturn(new SomeInvalidObject());
 		assertThat(() -> pcmRepositoryBlackboardFactoryFactory.getValidInstance(),
 			throwsException(IllegalArgumentException.class));
 
