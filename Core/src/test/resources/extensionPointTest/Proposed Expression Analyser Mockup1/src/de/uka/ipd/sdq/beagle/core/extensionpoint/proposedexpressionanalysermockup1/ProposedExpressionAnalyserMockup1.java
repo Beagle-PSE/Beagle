@@ -5,6 +5,8 @@ import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardV
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
 
 /**
+ * An (empty) implementation of
+ * {@link de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser}.
  * 
  * @author Michael Vogt
  *

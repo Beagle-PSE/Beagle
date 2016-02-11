@@ -5,6 +5,8 @@ import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardVi
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
 
 /**
+ * An (empty) implementation of
+ * {@link de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser}.
  * 
  * @author Michael Vogt
  *
