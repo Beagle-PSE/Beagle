@@ -104,7 +104,7 @@ public class MeasurementEventParser {
 			new ResourceDemandingInternalActionMeasurementEventVisitor(resourceDemandingInternalAction,
 				resourceDemandMeasurementResults);
 <span class="fc" id="L106">		final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(resourceDemandingInternalAction.getAction());</span>
-<span class="pc bpc" id="L107" title="1 of 2 branches missed.">		if (indices != null) {</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">		if (indices != null) {</span>
 <span class="fc bfc" id="L108" title="All 2 branches covered.">			for (final Integer index : indices) {</span>
 <span class="fc" id="L109">				final MeasurementEvent measurementEvent = this.measurementEvents.get(index);</span>
 <span class="fc" id="L110">				measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);</span>
