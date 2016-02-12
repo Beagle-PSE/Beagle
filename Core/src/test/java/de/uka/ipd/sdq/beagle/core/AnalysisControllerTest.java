@@ -686,6 +686,125 @@ public class AnalysisControllerTest {
 	}
 
 	/**
+	 * Tests {@link AnalysisController#performAnalysis()}. Tests complex scenario where
+	 * each tool can contribute one time.
+	 *
+	 */
+	@Test
+	public void performAnalysisScenario3() {
+		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
+		oneMeasurementTool.add(this.mockedMeasurementTool1);
+		final Set<MeasurementResultAnalyser> allMeasurementResultAnalysers = new HashSet<>();
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser1);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser2);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser3);
+		final Set<ProposedExpressionAnalyser> allProposedExpressionAnalysers = new HashSet<>();
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser1);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser2);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser3);
+		this.resetMocks();
+		final Blackboard blackboard9 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		// Measurement result analyser only can contribute in the following order: 2 1 3
+		when(this.mockedMeasurementResultAnalyser2
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedMeasurementResultAnalyser2)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedMeasurementResultAnalyser1)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		when(this.mockedMeasurementResultAnalyser3
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedMeasurementResultAnalyser3)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+
+		// Proposed Expression analyser only can contribute in the following order: 3 1 2
+		when(this.mockedProposedExpressionAnalyser3
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9)))
+						.thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser3)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard9));
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9)))
+						.thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser1)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard9));
+		when(this.mockedProposedExpressionAnalyser2
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9)))
+						.thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser2)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard9));
+
+		final AnalysisController analysisController10 = new AnalysisController(blackboard9, oneMeasurementTool,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController10.performAnalysis();
+		verify(this.mockedMeasurementTool1).measure((MeasurementOrder) notNull());
+		verify(this.mockedMeasurementResultAnalyser2)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		verify(this.mockedMeasurementResultAnalyser1)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		verify(this.mockedMeasurementResultAnalyser3)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		verify(this.mockedProposedExpressionAnalyser3)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard9)));
+		verify(this.mockedProposedExpressionAnalyser1)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard9)));
+		verify(this.mockedMeasurementResultAnalyser3)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		verify(this.mockedProposedExpressionAnalyser2)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard9)));
+
+	}
+
+	/**
 	 * Resets the following mocks.
 	 *
 	 * <li>
