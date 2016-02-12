@@ -6,9 +6,10 @@ import org.eclipse.jdt.core.JavaModelException;
 
 import java.io.File;
 
+// COVERAGE:OFF
 /**
  * Provides source files from source folders of Eclipse Java Projects.
- *
+ * 
  * @author Joshua Gleitze
  */
 public class JdtProjectSourceCodeFileProvider implements SourceCodeFileProvider {
