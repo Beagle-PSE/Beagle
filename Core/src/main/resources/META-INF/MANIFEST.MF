@@ -1,8 +1,13 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Beagle Core
-Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core
+Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.debug.core,
- org.eclipse.core.runtime
+org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.e4.core.di
+Export-Package: de.uka.ipd.sdq.beagle.core.analysis,
+ de.uka.ipd.sdq.beagle.core.measurement,
+ de.uka.ipd.sdq.beagle.core.measurement.order
