@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.core.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.gui.GuiController;
 
 import org.eclipse.core.commands.AbstractHandler;
