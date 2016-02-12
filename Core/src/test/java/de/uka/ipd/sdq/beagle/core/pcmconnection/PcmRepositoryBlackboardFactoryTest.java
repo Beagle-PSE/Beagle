@@ -41,6 +41,7 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -131,6 +132,9 @@ public class PcmRepositoryBlackboardFactoryTest {
 	public void pcmRepositoryBlackboardFactory() {
 		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null, this.fitnessFunction),
 			throwsException(NullPointerException.class));
+		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null, null),
+			throwsException(NullPointerException.class));
+		assertThat(() -> new PcmRepositoryBlackboardFactory("a", null), throwsException(NullPointerException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory((File) null, this.fitnessFunction),
 			throwsException(NullPointerException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory("", this.fitnessFunction),
@@ -165,6 +169,11 @@ public class PcmRepositoryBlackboardFactoryTest {
 		// final PcmRepositoryBlackboardFactory mockedPcmRepositoryBlackboardFactory =
 		// mock(PcmRepositoryBlackboardFactory.class);
 
+		assertThat(
+			new PcmRepositoryBlackboardFactory(
+				new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository"),
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()),
+			is(pcmRepositoryBlackboardFactoryFactory.getValidInstance()));
 	}
 
 	/**
@@ -201,7 +210,18 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
 			new BlackboardFactory().getEmpty()), equalRegardingSeffElements());
 
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String) null),
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((Collection<String>) null),
+			throwsException(NullPointerException.class));
+
+		final Collection<String> collectionContainingNull = new HashSet<>();
+		collectionContainingNull.add("uaeua");
+		collectionContainingNull.add("ueuaue");
+		collectionContainingNull.add(null);
+		collectionContainingNull.add("ueul");
+		collectionContainingNull.add("vcwvcwv");
+		collectionContainingNull.add("xlcxlc");
+
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds(collectionContainingNull),
 			throwsException(NullPointerException.class));
 	}
 
@@ -222,6 +242,9 @@ public class PcmRepositoryBlackboardFactoryTest {
 			equalRegardingSeffElements());
 
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String[]) null),
+			throwsException(NullPointerException.class));
+
+		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String) null),
 			throwsException(NullPointerException.class));
 
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"), is(not(nullValue())));
