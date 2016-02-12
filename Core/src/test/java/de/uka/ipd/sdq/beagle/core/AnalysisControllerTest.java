@@ -456,6 +456,99 @@ public class AnalysisControllerTest {
 			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard8)));
 		inOrder2.verify(this.mockedProposedExpressionAnalyser2)
 			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard8)));
+
+		// Similar scenario as above, but with remeasurement.
+		this.resetMocks();
+		final Blackboard blackboard9 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+		// Measurement result analyser only can contribute in the following order: 2 1 3
+		when(this.mockedMeasurementResultAnalyser2
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+			when(this.mockedMeasurementResultAnalyser1
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser2)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+			when(this.mockedMeasurementResultAnalyser3
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser1)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		when(this.mockedMeasurementResultAnalyser3
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser3)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+
+		// Proposed Expression analyser only can contribute in the following order: 3 1 2
+		when(this.mockedProposedExpressionAnalyser3
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard6))).thenReturn(true);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser3)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+
+			// Remeasurement
+			blackboard9.addToBeMeasuredRdias(blackboard9.getAllRdias().iterator().next());
+			when(this.mockedMeasurementResultAnalyser3
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser1)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		when(this.mockedProposedExpressionAnalyser2
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
+		doAnswer(invocation -> {
+			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
+			return null;
+		}).when(this.mockedMeasurementResultAnalyser2)
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+
+		final AnalysisController analysisController10 = new AnalysisController(blackboard9, oneMeasurementTool,
+			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
+		analysisController10.performAnalysis();
+		final InOrder inOrder3 = inOrder(this.mockedMeasurementTool1, this.mockedMeasurementResultAnalyser1,
+			this.mockedMeasurementResultAnalyser2, this.mockedMeasurementResultAnalyser3,
+			this.mockedProposedExpressionAnalyser1, this.mockedProposedExpressionAnalyser2,
+			this.mockedProposedExpressionAnalyser3);
+		inOrder3.verify(this.mockedMeasurementTool1).measure((MeasurementOrder) notNull());
+		inOrder3.verify(this.mockedMeasurementResultAnalyser2)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		inOrder3.verify(this.mockedMeasurementResultAnalyser1)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		inOrder3.verify(this.mockedMeasurementResultAnalyser3)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		inOrder3.verify(this.mockedProposedExpressionAnalyser3)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard9)));
+		inOrder3.verify(this.mockedProposedExpressionAnalyser1)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard9)));
+		inOrder3.verify(this.mockedMeasurementTool1).measure((MeasurementOrder) notNull());
+		inOrder3.verify(this.mockedMeasurementResultAnalyser3)
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard9)));
+		inOrder3.verify(this.mockedProposedExpressionAnalyser2)
+			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard9)));
+
 	}
 
 	/**
