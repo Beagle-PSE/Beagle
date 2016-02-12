@@ -111,6 +111,8 @@ public class BeagleConfigurationTest {
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
 		beagleConfig.setElements(this.elements);
 		assertThat(beagleConfig.getElements(), is(this.elements));
+		beagleConfig.finalise();
+		assertThat(() -> beagleConfig.setElements(this.elements), throwsException(IllegalStateException.class));
 	}
 
 	/**
@@ -125,6 +127,8 @@ public class BeagleConfigurationTest {
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
 		beagleConfig.setTimeout(testTimeout);
 		assertThat(beagleConfig.getTimeout(), is(testTimeout));
+		beagleConfig.finalise();
+		assertThat(() -> beagleConfig.setTimeout(testTimeout), throwsException(IllegalStateException.class));
 
 	}
 
@@ -139,6 +143,8 @@ public class BeagleConfigurationTest {
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
 		beagleConfig.setRepositoryFile(file);
 		assertThat(beagleConfig.getRepositoryFile(), is(file));
+		beagleConfig.finalise();
+		assertThat(() -> beagleConfig.setRepositoryFile(file), throwsException(IllegalStateException.class));
 	}
 
 	/**
