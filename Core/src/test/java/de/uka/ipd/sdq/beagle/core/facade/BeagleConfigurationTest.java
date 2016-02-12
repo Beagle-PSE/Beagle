@@ -179,5 +179,7 @@ public class BeagleConfigurationTest {
 		beagleConfig.setFileProvider(this.fileProvider);
 		assertThat(beagleConfig.getFileProvider(), is(this.fileProvider));
 
+		beagleConfig.finalise();
+		assertThat(() -> beagleConfig.setFileProvider(this.fileProvider), throwsException(IllegalStateException.class));
 	}
 }
