@@ -123,14 +123,18 @@ public class MeasurementController {
 			parameterValueSections.add(codeSection);
 		}
 
-		// Give every measurement tool a measurement order.
 		for (final MeasurementTool measurementTool : this.measurementTools) {
+			// Give every measurement tool a measurement order.
 			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,
 				resourceDemandSections, executionSections, launchConfigurations, parameterCharacteriser);
 
+			// Get the measurement results.
 			final List<MeasurementEvent> measurementEvents = measurementTool.measure(measurementOrder);
+
+			// Construct a measurement event parser.
 			final MeasurementEventParser measurementEventParser = new MeasurementEventParser(measurementEvents);
 
+			// Add the measurement results to the blackboard.
 			this.addMeasurementResultsOfSeffBranchesToBlackboard(seffBranches, blackboard, measurementEventParser);
 			this.addMeasurementResultsOfSeffLoopsToBlackboard(seffLoops, blackboard, measurementEventParser);
 			this.addMeasurementResultsOfRdiasToBlackboard(rdias, blackboard, measurementEventParser);
