@@ -118,4 +118,15 @@ public class BeagleConfigurationTest {
 		assertThat(beagleConfig.getTimeout(), is(sameInstance(testTimeout)));
 
 	}
+
+	/**
+	 * Test method for {@link BeagleConfiguration#getRepositoryFile()}.
+	 */
+	@Test
+	public void getRepositoryFile() {
+		final File[] files = TEST_FILE_FACTORY.getAll();
+		final File file = files[0];
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		assertThat(beagleConfig.getRepositoryFile(), is(file));
+	}
 }
