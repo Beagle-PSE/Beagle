@@ -276,7 +276,6 @@
     </module>
     <module name="RightCurly">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="LITERAL_TRY,LITERAL_CATCH,LITERAL_FINALLY,LITERAL_IF,LITERAL_ELSE,LITERAL_DO"/>
     </module>
     <module name="AvoidInlineConditionals">
       <property name="severity" value="ignore"/>
