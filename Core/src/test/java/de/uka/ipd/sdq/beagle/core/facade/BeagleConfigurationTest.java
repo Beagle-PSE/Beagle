@@ -153,6 +153,19 @@ public class BeagleConfigurationTest {
 	}
 
 	/**
+	 * Test method for {@link BeagleConfiguration#finalise()}.
+	 */
+	@Test
+	public void finalise() {
+		final boolean finalise = true;
+		final File[] files = TEST_FILE_FACTORY.getAll();
+		final File file = files[0];
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		beagleConfig.finalise();
+		assertThat(beagleConfig.isFinal(), is(finalise));
+	}
+
+	/**
 	 * Test method for {@link BeagleConfiguration#getRepositoryFile()} and
 	 * {@link BeagleConfiguration#setFileProvider(SourceCodeFileProvider)}.
 	 *
