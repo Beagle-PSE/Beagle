@@ -15,7 +15,7 @@ public class ParameterValueCapturedEvent extends AbstractMeasurementEvent {
 	 * @param codeSection Note: Designing this class is out of the project’s first
 	 *            iteration’s scope.
 	 */
-	protected ParameterValueCapturedEvent(final CodeSection codeSection) {
+	public ParameterValueCapturedEvent(final CodeSection codeSection) {
 		super(codeSection);
 	}
 

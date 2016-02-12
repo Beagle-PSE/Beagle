@@ -195,7 +195,7 @@ public class AnalysisController {
 			// Choose a measurement result analyser at random.
 			final int minimum = 1;
 			final int maximum = measurementResultAnalysersAbleToContribute.size();
-			final int chosenResultAnalyser = new Random().nextInt((maximum - minimum) + 1) + minimum;
+			final int chosenResultAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;
 
 			int count = 1;
 			// @formatter:off
@@ -241,7 +241,7 @@ public class AnalysisController {
 			// Choose a proposed expression analyser at random.
 			final int minimum = 1;
 			final int maximum = proposedExpressionAnalysersAbleToContribute.size();
-			final int chosenProposedExpressionAnalyser = new Random().nextInt((maximum - minimum) + 1) + minimum;
+			final int chosenProposedExpressionAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;
 
 			int count = 1;
 			// @formatter:off

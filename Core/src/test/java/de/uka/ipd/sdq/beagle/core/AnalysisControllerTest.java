@@ -377,33 +377,33 @@ public class AnalysisControllerTest {
 		final Blackboard blackboard8 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		// Measurement result analyser only can contribute in the following order: 2 1 3
 		when(this.mockedMeasurementResultAnalyser2
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+			.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(true);
 		doAnswer(invocation -> {
 			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
 			when(this.mockedMeasurementResultAnalyser1
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(true);
 			return null;
 		}).when(this.mockedMeasurementResultAnalyser2)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
 		when(this.mockedMeasurementResultAnalyser1
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
 		doAnswer(invocation -> {
 			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
 			when(this.mockedMeasurementResultAnalyser3
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(true);
 			return null;
 		}).when(this.mockedMeasurementResultAnalyser1)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
 		when(this.mockedMeasurementResultAnalyser3
-			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+			.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
 		doAnswer(invocation -> {
 			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
 			return null;
 		}).when(this.mockedMeasurementResultAnalyser3)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
 
 		// Proposed Expression analyser only can contribute in the following order: 3 1 2
 		when(this.mockedProposedExpressionAnalyser3

@@ -22,6 +22,7 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
+import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.MeasurementEventFactory;
@@ -104,7 +105,8 @@ public class MeasurementControllerTest {
 			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(0).getLoopBody()));
 			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
 			measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
-			measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+			measurementEvents.add(new ResourceDemandCapturedEvent(rdiaSet.iterator().next().getAction(),
+				rdiaSet.iterator().next().getResourceType(), 100d));
 			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
 			measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
 			measurementEvents.add(new CodeSectionLeftEvent(loops.get(0).getLoopBody()));
@@ -139,10 +141,14 @@ public class MeasurementControllerTest {
 		verify(tool).measure(refEq(expectedMeasurementOrder, "launchConfigurations", "parameterCharacteriser"));
 
 		// Check blackboard
-		Set<LoopRepetitionCountMeasurementResult> results = blackboard.getMeasurementResultsFor(loops.get(0));
+		final Set<LoopRepetitionCountMeasurementResult> results = blackboard.getMeasurementResultsFor(loops.get(0));
 		final List<Integer> resultValues =
 			results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(1));
-		results = blackboard.getMeasurementResultsFor(loops.get(1));
+		final Set<ResourceDemandMeasurementResult> rdiaResults =
+			blackboard.getMeasurementResultsFor(rdiaSet.iterator().next());
+		final List<Double> rdiaResultValues =
+			rdiaResults.stream().map((result) -> result.getValue()).collect(Collectors.toList());
+		assertThat(rdiaResultValues, containsInAnyOrder(100d));
 	}
 }
