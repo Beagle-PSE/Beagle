@@ -73,7 +73,7 @@ public class BeagleConfiguration {
 	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
-	 * 
+	 *
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
@@ -118,7 +118,7 @@ public class BeagleConfiguration {
 	public void setElements(final List<Entity> elements) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
-		this.elements = elements;
+		this.elements = new LinkedList<>(elements);
 	}
 
 	/**
