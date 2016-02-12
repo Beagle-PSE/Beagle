@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.facade;
 
 import java.io.File;
 
-// COVERAGE:OFF
 /**
  * Provides the source code files that shall be analysed by Beagle.
  * 
