@@ -46,7 +46,7 @@ import java.util.HashSet;
 
 /**
  * Tests for {@link PcmRepositoryBlackboardFactory}.
- * 
+ *
  * @author Christoph Michelbach
  */
 @PrepareForTest(PcmRepositoryBlackboardFactory.class)
@@ -157,7 +157,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 			new File(""), new File("."), new File(".."), new File("/"), new File("/tmp"), new File("\0")
 		};
 
-		for (File impossibleRepositoryFile : impossibleRepositoryFiles) {
+		for (final File impossibleRepositoryFile : impossibleRepositoryFiles) {
 			assertThat(() -> new PcmRepositoryBlackboardFactory(impossibleRepositoryFile, this.fitnessFunction),
 				throwsException(IllegalArgumentException.class));
 		}
@@ -180,7 +180,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		assertThat(result.getAllRdias().size(), is(not(0)));
 		assertThat(result.getAllSeffBranches().size(), is(not(0)));
-		assertThat(result.getAllSeffLoops().size(), is(not(0)));
+		assertThat(result.getAllSeffLoops().size(), is(0));
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	/**
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])}.
-	 * 
+	 *
 	 */
 	@SuppressWarnings({
 		"unchecked", "rawtypes"
@@ -256,7 +256,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		assertThat(blackboardForIds.getAllSeffLoops().size(), is(not(0)));
 
-		for (SeffLoop seffLoop : blackboardForIds.getAllSeffLoops()) {
+		for (final SeffLoop seffLoop : blackboardForIds.getAllSeffLoops()) {
 			// How do i figure out whether this is correct?
 			seffLoop.getLoopBody().getStartFile();
 		}
@@ -274,12 +274,12 @@ public class PcmRepositoryBlackboardFactoryTest {
 	public void appSensorRepositoryTest() {
 		final PcmRepositoryBlackboardFactory appSensorBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
-		Blackboard appSensorBlackboard = appSensorBlackboardFactory.getBlackboardForAllElements();
+		final Blackboard appSensorBlackboard = appSensorBlackboardFactory.getBlackboardForAllElements();
 	}
 
 	/**
 	 * Non-Javadoc.
-	 * 
+	 *
 	 * @author Christoph Michelbach
 	 */
 	private class SomeInvalidObject implements EObject {
