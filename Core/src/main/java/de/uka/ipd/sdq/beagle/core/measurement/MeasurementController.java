@@ -14,6 +14,7 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.measurement.order.LaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
 
@@ -133,7 +134,24 @@ public class MeasurementController {
 			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,
 				resourceDemandSections, executionSections, launchConfigurations, parameterCharacteriser);
 
-			measurementTool.measure(measurementOrder);
+			final List<MeasurementEvent> measurementEvents = measurementTool.measure(measurementOrder);
+			final MeasurementEventParser measurementEventParser = new MeasurementEventParser(measurementEvents);
+
+			for (SeffBranch seffBranch : seffBranches) {
+				measurementEventParser.getMeasurementResultsFor(seffBranch);
+			}
+
+			for (SeffLoop seffLoop : seffLoops) {
+				measurementEventParser.getMeasurementResultsFor(seffLoop);
+			}
+
+			for (ResourceDemandingInternalAction rdia : rdias) {
+				measurementEventParser.getMeasurementResultsFor(rdia);
+			}
+
+			for (ExternalCallParameter externalCallParameter : externalCallParameters) {
+				measurementEventParser.getMeasurementResultsFor(externalCallParameter);
+			}
 		}
 	}
 }
