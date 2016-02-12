@@ -12,7 +12,9 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment;
-import de.uka.ipd.sdq.beagle.core.measurement.Parameterisation;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
 import java.util.Set;
@@ -31,38 +33,104 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 	@Override
 	public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+
 		final Set<ResourceDemandMeasurementResult> resourceDemandMeasurementResults =
 			blackboard.getMeasurementResultsFor(rdia);
+
+		// If there is no expression, return infinity.
+		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+
 		for (ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {
 			final double realValue = resourceDemandMeasurementResult.getValue();
-			final Parameterisation parameterisation = resourceDemandMeasurementResult.getParameterisation();
+			// final Parameterisation parameterisation =
+			// resourceDemandMeasurementResult.getParameterisation();
 
 			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();
 
 			final double predictedValue = expression.evaluate(evaluableVariableAssignment);
 
 			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);
-			return squareDeviation;
+			meanSquareDeviation += squareDeviation / resourceDemandMeasurementResults.size();
 		}
-		return 0;
+
+		return meanSquareDeviation;
 	}
 
 	@Override
 	public double gradeFor(final SeffBranch branch, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-		return 0;
+
+		final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults =
+			blackboard.getMeasurementResultsFor(branch);
+
+		// If there is no expression, return infinity.
+		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+
+		for (BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {
+			final double realValue = branchDecisionMeasurementResult.getBranchIndex();
+			// final Parameterisation parameterisation =
+			// branchDecisionMeasurementResult.getParameterisation();
+
+			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();
+
+			final double predictedValue = expression.evaluate(evaluableVariableAssignment);
+
+			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);
+			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();
+		}
+
+		return meanSquareDeviation;
 	}
 
 	@Override
 	public double gradeFor(final SeffLoop loop, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-		return 0;
+
+		final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults =
+			blackboard.getMeasurementResultsFor(loop);
+
+		// If there is no expression, return infinity.
+		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+
+		for (LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult : loopRepetitionCountMeasurementResults) {
+			final double realValue = loopRepetitionCountMeasurementResult.getCount();
+			// final Parameterisation parameterisation =
+			// loopRepetitionCountMeasurementResult.getParameterisation();
+
+			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();
+
+			final double predictedValue = expression.evaluate(evaluableVariableAssignment);
+
+			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);
+			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();
+		}
+
+		return meanSquareDeviation;
 	}
 
 	@Override
 	public double gradeFor(final ExternalCallParameter parameter, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-		return 0;
-	}
 
+		final Set<ParameterChangeMeasurementResult> parameterChangeMeasurementResults =
+			blackboard.getMeasurementResultsFor(parameter);
+
+		// If there is no expression, return infinity.
+		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+
+		for (ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {
+			final double realValue = parameterChangeMeasurementResult.getCount();
+			// final Parameterisation parameterisation =
+			// parameterChangeMeasurementResult.getParameterisation();
+
+			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();
+
+			final double predictedValue = expression.evaluate(evaluableVariableAssignment);
+
+			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);
+			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();
+		}
+
+		return meanSquareDeviation;
+	}
 }
