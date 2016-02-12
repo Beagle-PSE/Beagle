@@ -22,7 +22,7 @@ import java.nio.charset.Charset;
  *
  * @author Joshua Gleitze
  */
-public class EclipseAstBridge {
+class EclipseAstBridge {
 
 	/**
 	 * The ast parser responsible to parse input files.
@@ -57,7 +57,7 @@ public class EclipseAstBridge {
 	 * @param charset The encoding to use when reading and writing the source code files.
 	 *            Must not be {@code null}.
 	 */
-	public EclipseAstBridge(final File sourceCodeFile, final Charset charset) {
+	EclipseAstBridge(final File sourceCodeFile, final Charset charset) {
 		Validate.notNull(sourceCodeFile);
 		Validate.notNull(charset);
 		this.sourceCodeFile = sourceCodeFile;
@@ -72,7 +72,7 @@ public class EclipseAstBridge {
 	 *         through {@link #writeToFile(File)}.
 	 * @throws IOException If reading the file this bridge was created for fails.
 	 */
-	public CompilationUnit getAst() throws IOException {
+	CompilationUnit getAst() throws IOException {
 		this.sourceCode = FileUtils.readFileToString(this.sourceCodeFile, this.charset);
 		this.astParser.setSource(this.sourceCode.toCharArray());
 		// createAST will always "at least" return a CompilationUnit
@@ -89,7 +89,7 @@ public class EclipseAstBridge {
 	 *         bridge was created for. {@code null} if there is nothing in the file this
 	 *         desription applies to.
 	 */
-	public String getFullyQualifiedName() {
+	String getFullyQualifiedName() {
 		Validate.validState(this.compilationUnit != null, "getFullyQualifiedName may only be called after getAst was!");
 
 		// Compilation Units that don’t have exactly one type declaration at the root
@@ -119,7 +119,7 @@ public class EclipseAstBridge {
 	 * @throws IOException If an input/output error occurs while writing to
 	 *             {@code targetFile}.
 	 */
-	public void writeToFile(final File targetFile) throws IOException {
+	void writeToFile(final File targetFile) throws IOException {
 		Validate.validState(this.compilationUnit != null, "writeToFile may only be called after getAst was!");
 		Validate.notNull(targetFile);
 
