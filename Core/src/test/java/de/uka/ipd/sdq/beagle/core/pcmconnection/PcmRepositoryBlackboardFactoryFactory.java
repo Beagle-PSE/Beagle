@@ -5,7 +5,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessF
 
 /**
  * A factory which creates instances of {@link PcmRepositoryBlackboardFactory}.
- * 
+ *
  * @author Christoph Michelbach
  * @author Ansgar Spiegler
  */
@@ -15,7 +15,7 @@ public class PcmRepositoryBlackboardFactoryFactory {
 	 * An {@link EvaluableExpressionFitnessFunction} factory to easily obtain new
 	 * instances from.
 	 */
-	private static final EvaluableExpressionFitnessFunctionFactory FITNESS_FUNCTION_FACTORY =
+	public static final EvaluableExpressionFitnessFunctionFactory FITNESS_FUNCTION_FACTORY =
 		new EvaluableExpressionFitnessFunctionFactory();
 
 	/**
