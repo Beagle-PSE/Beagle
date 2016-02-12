@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.facade;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.Matchers.is;
