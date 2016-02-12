@@ -371,9 +371,27 @@ public class AnalysisControllerTest {
 		for (final MeasurementTool measurementTool : allMeasurementTools) {
 			verify(measurementTool, never()).measure(anyObject());
 		}
+	}
 
-		// Test complex scenario.
+	/**
+	 * Tests {@link AnalysisController#performAnalysis()}. Tests complex scenario.
+	 *
+	 */
+	@Test
+	public void performAnalysisScenario1() {
 		this.resetMocks();
+		final Set<MeasurementTool> allMeasurementTools = new HashSet<>();
+		allMeasurementTools.add(this.mockedMeasurementTool1);
+		allMeasurementTools.add(this.mockedMeasurementTool2);
+		allMeasurementTools.add(this.mockedMeasurementTool3);
+		final Set<MeasurementResultAnalyser> allMeasurementResultAnalysers = new HashSet<>();
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser1);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser2);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser3);
+		final Set<ProposedExpressionAnalyser> allProposedExpressionAnalysers = new HashSet<>();
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser1);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser2);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser3);
 		final Blackboard blackboard8 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		// Measurement result analyser only can contribute in the following order: 2 1 3
 		when(this.mockedMeasurementResultAnalyser2
@@ -407,7 +425,7 @@ public class AnalysisControllerTest {
 
 		// Proposed Expression analyser only can contribute in the following order: 3 1 2
 		when(this.mockedProposedExpressionAnalyser3
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard6))).thenReturn(true);
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
 		doAnswer(invocation -> {
 			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
 				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
@@ -456,8 +474,25 @@ public class AnalysisControllerTest {
 			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard8)));
 		inOrder2.verify(this.mockedProposedExpressionAnalyser2)
 			.contribute(eq(new ProposedExpressionAnalyserBlackboardView(blackboard8)));
+	}
 
-		// Similar scenario as above, but with remeasurement.
+	/**
+	 * Tests {@link AnalysisController#performAnalysis()}. Tests complex scenario with
+	 * remeasurement.
+	 *
+	 */
+	@Test
+	public void performAnalysisScenario2() {
+		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
+		oneMeasurementTool.add(this.mockedMeasurementTool1);
+		final Set<MeasurementResultAnalyser> allMeasurementResultAnalysers = new HashSet<>();
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser1);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser2);
+		allMeasurementResultAnalysers.add(this.mockedMeasurementResultAnalyser3);
+		final Set<ProposedExpressionAnalyser> allProposedExpressionAnalysers = new HashSet<>();
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser1);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser2);
+		allProposedExpressionAnalysers.add(this.mockedProposedExpressionAnalyser3);
 		this.resetMocks();
 		final Blackboard blackboard9 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		// Measurement result analyser only can contribute in the following order: 2 1 3
@@ -492,7 +527,7 @@ public class AnalysisControllerTest {
 
 		// Proposed Expression analyser only can contribute in the following order: 3 1 2
 		when(this.mockedProposedExpressionAnalyser3
-			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard6))).thenReturn(true);
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
 		doAnswer(invocation -> {
 			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
 				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
@@ -512,7 +547,7 @@ public class AnalysisControllerTest {
 			// Remeasurement
 			blackboard9.addToBeMeasuredRdias(blackboard9.getAllRdias().iterator().next());
 			when(this.mockedMeasurementResultAnalyser3
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
 			return null;
 		}).when(this.mockedMeasurementResultAnalyser1)
 			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
