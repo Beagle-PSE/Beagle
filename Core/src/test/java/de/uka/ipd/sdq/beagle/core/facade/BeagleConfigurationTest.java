@@ -41,6 +41,11 @@ public class BeagleConfigurationTest {
 	private SourceCodeFileProvider fileProvider;
 
 	/**
+	 * Whether this configuration is in the <em>finalised</em> state.
+	 */
+	private boolean finalised;
+
+	/**
 	 * Mock an initialised element list.
 	 */
 	@Before
@@ -134,6 +139,17 @@ public class BeagleConfigurationTest {
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
 		beagleConfig.setRepositoryFile(file);
 		assertThat(beagleConfig.getRepositoryFile(), is(file));
+	}
+
+	/**
+	 * Test method for {@link BeagleConfiguration#isFinal()}.
+	 */
+	@Test
+	public void isFinalTest() {
+		final File[] files = TEST_FILE_FACTORY.getAll();
+		final File file = files[0];
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		assertThat(beagleConfig.isFinal(), is(this.finalised));
 	}
 
 	/**
