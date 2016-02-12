@@ -19,13 +19,6 @@ import java.util.Random;
 import java.util.Set;
 
 /**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
-
-/**
  * Conducts a complete analysis of elements on a blackboard. Controls the
  * {@link MeasurementController}, {@link ProposedExpressionAnalyser ResultAnalysers} and
  * the {@link FinalJudge} to measure and analyse parametric dependencies.
@@ -176,7 +169,7 @@ public class AnalysisController {
 		final Set<MeasurementResultAnalyser> measurementResultAnalysersAbleToContribute =
 			new HashSet<MeasurementResultAnalyser>();
 
-		for (MeasurementResultAnalyser measurementResultAnalyser : this.measurementResultAnalysers) {
+		for (final MeasurementResultAnalyser measurementResultAnalyser : this.measurementResultAnalysers) {
 			if (measurementResultAnalyser.canContribute(readOnlyMeasurementResultAnalyserBlackboardView)) {
 				measurementResultAnalysersAbleToContribute.add(measurementResultAnalyser);
 			}
@@ -190,7 +183,7 @@ public class AnalysisController {
 
 			int count = 1;
 			// @formatter:off
-			for (MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
+			for (final MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
 				: measurementResultAnalysersAbleToContribute) {
 				// @formatter:on
 				if (count == chosenResultAnalyser) {
@@ -222,7 +215,7 @@ public class AnalysisController {
 		final Set<ProposedExpressionAnalyser> proposedExpressionAnalysersAbleToContribute =
 			new HashSet<ProposedExpressionAnalyser>();
 
-		for (ProposedExpressionAnalyser proposedExpressionAnalyser : this.proposedExpressionAnalysers) {
+		for (final ProposedExpressionAnalyser proposedExpressionAnalyser : this.proposedExpressionAnalysers) {
 			if (proposedExpressionAnalyser.canContribute(readOnlyProposedExpressionAnalyserBlackboardView)) {
 				proposedExpressionAnalysersAbleToContribute.add(proposedExpressionAnalyser);
 			}
@@ -236,7 +229,7 @@ public class AnalysisController {
 
 			int count = 1;
 			// @formatter:off
-			for (ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute
+			for (final ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute
 				: proposedExpressionAnalysersAbleToContribute) {
 				// @formatter:on
 				if (count == chosenProposedExpressionAnalyser) {
