@@ -151,8 +151,10 @@ public class MeasurementOrderTest {
 
 		assertThat(measurementOrder.getLaunchConfigurations(), is(equalTo(launchConfigurations)));
 
-		launchConfigurations.remove(LAUNCH_CONFIGURATION_FACTORY.getOne());
-		assertThat(measurementOrder.getLaunchConfigurations(), is(not(equalTo(launchConfigurations))));
+		launchConfigurations.remove(launchConfigurations.toArray()[0]);
+		assertThat(
+			"Changing the Set of Launch Configurations after inizialisation of the Measurement order must not change the result.",
+			measurementOrder.getLaunchConfigurations(), is(not(equalTo(launchConfigurations))));
 	}
 
 	/**

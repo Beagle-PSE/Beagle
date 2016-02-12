@@ -10,13 +10,13 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor;
-import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterValueCapturedEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 
 import org.apache.commons.collections4.IteratorUtils;
 import org.apache.commons.lang3.Validate;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +47,7 @@ public class MeasurementEventParser {
 	 * Maps for each code sections to all occurrences of measurement events for this code
 	 * section in {@link #measurementEvents}.
 	 */
-	private Map<CodeSection, Set<Integer>> codeSectionMapping;
+	private Map<CodeSection, Set<Integer>> codeSectionMapping = new HashMap<>();
 
 	/**
 	 * Creates a parser to parse {@code events}. The events must be provided in
@@ -103,9 +103,12 @@ public class MeasurementEventParser {
 		final ResourceDemandingInternalActionMeasurementEventVisitor resourceDemandingInternalActionMeasurementEventVisitor =
 			new ResourceDemandingInternalActionMeasurementEventVisitor(resourceDemandingInternalAction,
 				resourceDemandMeasurementResults);
-		for (final Integer index : this.codeSectionMapping.get(resourceDemandingInternalAction.getAction())) {
-			final MeasurementEvent measurementEvent = this.measurementEvents.get(index);
-			measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);
+		final Set<Integer> indices = this.codeSectionMapping.get(resourceDemandingInternalAction.getAction());
+		if (indices != null) {
+			for (final Integer index : indices) {
+				final MeasurementEvent measurementEvent = this.measurementEvents.get(index);
+				measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);
+			}
 		}
 		return resourceDemandMeasurementResults;
 
@@ -126,8 +129,11 @@ public class MeasurementEventParser {
 		// their code section.
 		final Set<MeasurementEvent> codeSectionEventsForThisBranch = new HashSet<>();
 		for (final CodeSection possibilyPickedBranch : branch.getBranches()) {
-			for (final Integer index : this.codeSectionMapping.get(possibilyPickedBranch)) {
-				codeSectionEventsForThisBranch.add(this.measurementEvents.get(index));
+			final Set<Integer> indices = this.codeSectionMapping.get(possibilyPickedBranch);
+			if (indices != null) {
+				for (final Integer index : indices) {
+					codeSectionEventsForThisBranch.add(this.measurementEvents.get(index));
+				}
 			}
 		}
 
@@ -151,8 +157,11 @@ public class MeasurementEventParser {
 		final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults = new HashSet<>();
 		final SeffLoopMeasurementEventVisitor seffLoopMeasurementEventVisitor =
 			new SeffLoopMeasurementEventVisitor(loop, loopRepetitionCountMeasurementResults);
-		for (final Integer index : this.codeSectionMapping.get(loop.getLoopBody())) {
-			this.measurementEvents.get(index).receive(seffLoopMeasurementEventVisitor);
+		final Set<Integer> indices = this.codeSectionMapping.get(loop.getLoopBody());
+		if (indices != null) {
+			for (final Integer index : indices) {
+				this.measurementEvents.get(index).receive(seffLoopMeasurementEventVisitor);
+			}
 		}
 		seffLoopMeasurementEventVisitor.finalise();
 		return loopRepetitionCountMeasurementResults;
@@ -182,7 +191,7 @@ public class MeasurementEventParser {
 	 *
 	 * @author Roman Langrehr
 	 */
-	private class ResourceDemandingInternalActionMeasurementEventVisitor implements MeasurementEventVisitor {
+	private class ResourceDemandingInternalActionMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
 
 		/**
 		 * The {@link ResourceDemandingInternalAction} where we want to know the new
@@ -212,40 +221,21 @@ public class MeasurementEventParser {
 		}
 
 		@Override
-		public void visit(final CodeSectionEnteredEvent codeSectionExecutedEvent) {
-			// We don't care about them.
-		}
-
-		@Override
-		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
-			// We don't care about them.
-		}
-
-		@Override
 		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
 			// Check if this measurement event is for the correct resource type.
 			if (resourceDemandCapturedEvent.getType() == this.resourceDemandingInternalAction.getResourceType()) {
-				// Check if it has a realistic value.
-				if (resourceDemandCapturedEvent.getValue() >= 0) {
-					this.resourceDemandMeasurementResults
-						.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));
-				}
+				this.resourceDemandMeasurementResults
+					.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));
 			}
-		}
-
-		@Override
-		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
-			// We don't care about them.
 		}
 	}
 
 	/**
 	 * A {@link MeasurementEventVisitor} for a specific {@link SeffBranch}.
 	 *
-	 *
 	 * @author Roman Langrehr
 	 */
-	private class SeffBranchMeasurementEventVisitor implements MeasurementEventVisitor {
+	private class SeffBranchMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
 
 		/**
 		 * The {@link SeffBranch} where we want to know the new measurement results.
@@ -276,26 +266,11 @@ public class MeasurementEventParser {
 		@Override
 		public void visit(final CodeSectionEnteredEvent codeSectionExecutedEvent) {
 			final int branchIndex = this.branch.getBranches().indexOf(codeSectionExecutedEvent.getCodeSection());
-			if (branchIndex != -1) {
-				this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
-			}
+			this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));
 		}
 
-		@Override
-		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
-			// We don't care about them, because we defined a SeffBranch to bexecuted,
-			// exactly when it was entered.
-		}
-
-		@Override
-		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
-			// We don't care about them.
-		}
-
-		@Override
-		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
-			// We don't care about them.
-		}
+		// We don't care about CodeSectionLeftEvents, because we defined a SeffBranch to
+		// be executed, exactly when it was entered.
 	}
 
 	/**
@@ -307,7 +282,7 @@ public class MeasurementEventParser {
 	 *
 	 * @author Roman Langrehr
 	 */
-	private class SeffLoopMeasurementEventVisitor implements MeasurementEventVisitor {
+	private class SeffLoopMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
 
 		/**
 		 * The {@link SeffBranch} where we want to know the new measurement results.
@@ -344,63 +319,54 @@ public class MeasurementEventParser {
 
 		@Override
 		public void visit(final CodeSectionEnteredEvent codeSectionEnteredEvent) {
-			if (codeSectionEnteredEvent.getCodeSection().equals(this.loop.getLoopBody())) {
-				if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {
-					// The current branch was not finished before a this, so we have a
-					// recursive call, or there is no current execution of this loop.
-					this.currentLoopCounts.push(new LoopExecutionCounter());
-				}
-				assert !this.currentLoopCounts.peek().isOpen;
-				if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
-					|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
-						+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
-					// We have not continous loop body executions, so we create a new
-					// execution event.
-					this.loopFinished();
-					this.currentLoopCounts.push(new LoopExecutionCounter());
-				}
-				this.currentLoopCounts.peek().numberOfExecutions++;
-				this.currentLoopCounts.peek().isOpen = true;
+			if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {
+				// The current branch was not finished before a this, so we have a
+				// recursive call, or there is no current execution of this loop.
+				this.currentLoopCounts.push(new LoopExecutionCounter());
 			}
+			// commented out, because the test coverage tool has problems with assert.
+			// assert !this.currentLoopCounts.peek().isOpen;
+			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
+				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
+					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
+				// We have not continuous loop body executions, so we create a new
+				// execution event.
+				this.loopFinished();
+				this.currentLoopCounts.push(new LoopExecutionCounter());
+			}
+			this.currentLoopCounts.peek().numberOfExecutions++;
+			this.currentLoopCounts.peek().isOpen = true;
 		}
 
 		@Override
 		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
-			if (codeSectionLeftEvent.getCodeSection().equals(this.loop.getLoopBody())) {
-				if (!this.currentLoopCounts.isEmpty()) {
-					if (this.currentLoopCounts.peek().isOpen) {
-						// The current execution is finished.
-						this.currentLoopCounts.peek().isOpen = false;
-						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
-							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
-					} else {
-						// The current execution is already finished, so we need to close
-						// the one "below" that.
+			if (!this.currentLoopCounts.isEmpty()) {
+				if (this.currentLoopCounts.peek().isOpen) {
+					// The current execution is finished.
+					this.currentLoopCounts.peek().isOpen = false;
+					this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
+						MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
+				} else {
+					// The current execution is already finished, so we need to close
+					// the one "below" that.
 
-						// The actual closing
-						this.loopFinished();
+					// The actual closing
+					this.loopFinished();
 
+					if (!this.currentLoopCounts.isEmpty()) {
 						// The invariant for this stack
-						assert this.currentLoopCounts.peek().isOpen;
+						// commented out, because the test coverage tool has problems with
+						// assert.
+						// assert this.currentLoopCounts.peek().isOpen;
 						// allows us to just close the next layer.
 						this.currentLoopCounts.peek().isOpen = false;
 						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
 							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);
 					}
 				}
-				// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
-				// event without an CodeSectionEnteredEvent and ignore this.
 			}
-		}
-
-		@Override
-		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
-			// We don't care about them.
-		}
-
-		@Override
-		public void visit(final ParameterValueCapturedEvent parameterValueCapturedEvent) {
-			// We don't care about them.
+			// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
+			// event without an CodeSectionEnteredEvent and ignore this.
 		}
 
 		/**

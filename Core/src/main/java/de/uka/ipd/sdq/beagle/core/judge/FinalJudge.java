@@ -155,7 +155,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * blackboard.
 	 *
 	 * <p/> CAUTION: All elements of {@code measurableSeffElements} have to be of type
-	 * {@code SE}.
+	 * {@code SEFF_ELEMENT_TYPE}.
 	 *
 	 * @param <SEFF_ELEMENT_TYPE> The type of which all {@linkplain MeasurableSeffElement
 	 *            MeasurableSeffElements} of the set {@code measurableSeffElements} are.
