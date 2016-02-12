@@ -129,12 +129,28 @@ public class AnalysisController {
 		while (!finalJudge.judge(this.blackboard)) {
 			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {
 				this.measurementController.measure(measurementControllerBlackboardView);
+
+				// After the measurements completed, clear the seff elements to be
+				// measured on the blackboard so they won't be measured again in the
+				// next iteration.
+				this.clearSeffElementsToBeMeasuredFromBlackboard();
 			}
 
 			if (!this.chooseRandomMeasurementResultAnalyserToContribute()) {
 				this.chooseRandomPropesedExpressionAnalyserToContribute();
 			}
 		}
+	}
+
+	/**
+	 * Clears the "to be measured" lists of seff elements on the blackboard.
+	 *
+	 */
+	private void clearSeffElementsToBeMeasuredFromBlackboard() {
+		this.blackboard.clearToBeMeasuredBranches();
+		this.blackboard.clearToBeMeasuredLoops();
+		this.blackboard.clearToBeMeasuredRdias();
+		this.blackboard.clearToBeMeasuredExternalCalls();
 	}
 
 	/**
