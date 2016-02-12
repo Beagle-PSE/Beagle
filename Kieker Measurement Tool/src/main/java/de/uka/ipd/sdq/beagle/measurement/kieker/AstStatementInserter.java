@@ -53,7 +53,7 @@ class AstStatementInserter {
 	boolean insertBefore(final Statement statement) {
 		Validate.notNull(statement);
 		// insert at the marker’s position.
-		return this.insert(statement, 1);
+		return this.insert(statement, 0);
 	}
 
 	/**
@@ -110,6 +110,11 @@ class AstStatementInserter {
 		private boolean success;
 
 		/**
+		 * The index of the marker if inserting into a list.
+		 */
+		private int markerIndex;
+
+		/**
 		 * Searches for the insertion point and populates
 		 * {@link AstStatementInserter#insertionStrategy}.
 		 */
@@ -143,10 +148,14 @@ class AstStatementInserter {
 
 			@SuppressWarnings("unchecked")
 			final List<ASTNode> listToInsertIn = (List<ASTNode>) node.getStructuralProperty(propertyToInsertIn);
-			final int indexToInsertAt = listToInsertIn.indexOf(this.childToSearch);
+			this.markerIndex = listToInsertIn.indexOf(this.childToSearch);
 
-			AstStatementInserter.this.insertionStrategy = Optional
-				.of((statementToInsert, offset) -> listToInsertIn.add(indexToInsertAt + offset, statementToInsert));
+			AstStatementInserter.this.insertionStrategy = Optional.of((statementToInsert, offset) -> {
+				listToInsertIn.add(this.markerIndex + offset, statementToInsert);
+				if (offset <= 0) {
+					this.markerIndex++;
+				}
+			});
 
 			this.success = true;
 			return false;
