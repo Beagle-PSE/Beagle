@@ -171,8 +171,9 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="AnonInnerLength">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
       <property name="max" value="30"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ExecutableStatementCount">
       <property name="severity" value="ignore"/>
