@@ -157,11 +157,6 @@ public class Blackboard implements Serializable {
 		this.externalCallParameters.addAll(externalCalls);
 		this.fitnessFunction = fitnessFunction;
 
-		this.allSeffElements.addAll(rdias);
-		this.allSeffElements.addAll(branches);
-		this.allSeffElements.addAll(loops);
-		this.allSeffElements.addAll(externalCalls);
-
 		for (final SeffBranch branch : this.branches) {
 			this.branchDecisionMeasurementResults.put(branch, new HashSet<>());
 		}
@@ -174,10 +169,13 @@ public class Blackboard implements Serializable {
 		for (final ResourceDemandingInternalAction rdia : this.rdias) {
 			this.rdiasMeasurementResults.put(rdia, new HashSet<>());
 		}
-
 		for (final MeasurableSeffElement element : this.allSeffElements) {
 			this.proposedExpressions.put(element, new HashSet<>());
 		}
+		this.rdiasToBeMeasured.addAll(rdias);
+		this.branchesToBeMeasured.addAll(branches);
+		this.loopsToBeMeasured.addAll(loops);
+		this.externalCallParameterToBeMeasured.addAll(externalCalls);
 	}
 
 	/**
@@ -377,6 +375,38 @@ public class Blackboard implements Serializable {
 		Validate.isTrue(this.externalCallParameters.containsAll(parameters),
 			"parameters may only contain elements that are already on the blackboard");
 		this.externalCallParameterToBeMeasured.addAll(parameters);
+	}
+
+	/**
+	 * Clears the list of {@code rdiasToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredRdias() {
+		this.rdiasToBeMeasured.clear();
+	}
+
+	/**
+	 * Clears the list of {@code branchesToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredBranches() {
+		this.branchesToBeMeasured.clear();
+	}
+
+	/**
+	 * Clears the list of {@code loopsToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredLoops() {
+		this.loopsToBeMeasured.clear();
+	}
+
+	/**
+	 * Clears the list of {@code externalCallParameterToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredExternalCalls() {
+		this.externalCallParameterToBeMeasured.clear();
 	}
 
 	/**
