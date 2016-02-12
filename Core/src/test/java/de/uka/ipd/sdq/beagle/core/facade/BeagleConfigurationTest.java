@@ -36,6 +36,11 @@ public class BeagleConfigurationTest {
 	private List<Entity> elements;
 
 	/**
+	 * The provider of the source files to be analysed.
+	 */
+	private SourceCodeFileProvider fileProvider;
+
+	/**
 	 * Mock an initialised element list.
 	 */
 	@Before
@@ -129,5 +134,21 @@ public class BeagleConfigurationTest {
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
 		beagleConfig.setRepositoryFile(file);
 		assertThat(beagleConfig.getRepositoryFile(), is(file));
+	}
+
+	/**
+	 * Test method for {@link BeagleConfiguration#getRepositoryFile()} and
+	 * {@link BeagleConfiguration#setFileProvider(SourceCodeFileProvider)}.
+	 *
+	 */
+	@Test
+	public void fileProviderTest() {
+		this.fileProvider = mock(SourceCodeFileProvider.class);
+		final File[] files = TEST_FILE_FACTORY.getAll();
+		final File file = files[0];
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		beagleConfig.setFileProvider(this.fileProvider);
+		assertThat(beagleConfig.getFileProvider(), is(this.fileProvider));
+
 	}
 }
