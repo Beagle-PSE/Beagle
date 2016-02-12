@@ -196,9 +196,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.util.Collection)}.
 	 */
+	// @formatter:off
 	@SuppressWarnings({
-		"unchecked", "rawtypes"
-	})
+		"unchecked", "rawtypes"	})
+	// @formatter:on
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
@@ -230,9 +231,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])}.
 	 *
 	 */
+	// @formatter:off
 	@SuppressWarnings({
-		"unchecked", "rawtypes"
-	})
+		"unchecked", "rawtypes"	})
+	// @formatter:on
 	@Test
 	public void getBlackboardForIdsStringArray() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
@@ -293,6 +295,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	}
 
+	/**
+	 * Test method using the app sensor.
+	 *
+	 */
 	@Test
 	public void appSensorRepositoryTest() {
 		final PcmRepositoryBlackboardFactory appSensorBlackboardFactory =
