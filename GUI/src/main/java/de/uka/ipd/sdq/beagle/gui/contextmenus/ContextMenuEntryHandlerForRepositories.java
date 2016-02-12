@@ -56,10 +56,12 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		final IPath clickedFilePath = clickedFile.getFullPath();
 		assert clickedFilePath.getFileExtension().matches(FILE_EXTENSION_MATCHER);
 
-		final File fileToAnalyse = new File(clickedFilePath.toString());
+		final File fileToAnalyse =
+			new File(clickedFile.getProject().getLocation().toFile().getParent() + clickedFilePath.toOSString());
 
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(new LinkedList<Entity>(), fileToAnalyse);
+		final BeagleConfiguration beagleConfiguration =
+			new BeagleConfiguration(new LinkedList<Entity>(), fileToAnalyse);
 		final GuiController guiController = new GuiController(beagleConfiguration);
 		guiController.open();
 		return null;
