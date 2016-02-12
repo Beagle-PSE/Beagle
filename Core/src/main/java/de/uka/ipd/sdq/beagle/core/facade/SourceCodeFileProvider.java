@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  * Provides the source code files that shall be analysed by Beagle.
- * 
+ *
  * @author Joshua Gleitze
  */
 public interface SourceCodeFileProvider {
