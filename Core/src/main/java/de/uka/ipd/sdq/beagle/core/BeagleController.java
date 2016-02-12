@@ -6,6 +6,8 @@ package de.uka.ipd.sdq.beagle.core;
  * <p>COVERAGE:OFF
  */
 
+import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
  * pause, continue, and abort an Analysis.
@@ -15,10 +17,11 @@ package de.uka.ipd.sdq.beagle.core;
 public class BeagleController {
 
 	/**
-	 * Constructs a new {@code BeagleController} with the given {@link BeagleConfiguration}.
+	 * Constructs a new {@code BeagleController} with the given
+	 * {@link BeagleConfiguration}.
 	 *
-	 * @param beagleConfiguration The {@link BeagleConfiguration} this BeagleController has
-	 *            permanently. It cannot be changed.
+	 * @param beagleConfiguration The {@link BeagleConfiguration} this BeagleController
+	 *            has permanently. It cannot be changed.
 	 */
 	public BeagleController(final BeagleConfiguration beagleConfiguration) {
 
