@@ -30,6 +30,8 @@ import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Matchers;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -133,29 +135,45 @@ public class AnalysisControllerTest {
 			EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(), new HashSet<>());
 
 		// Null tests
-		final ThrowingMethod method = () -> {
-			new AnalysisController(null, EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(),
-				EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(),
-				EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+		final ThrowingMethod method = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new AnalysisController(null, EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(),
+					EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(),
+					EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+			}
 		};
 		assertThat("Blackboard must not be null.", method, throwsException(NullPointerException.class));
-		final ThrowingMethod method2 = () -> {
-			new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(), null,
-				EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(),
-				EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+		final ThrowingMethod method2 = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(), null,
+					EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(),
+					EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+			}
 		};
 		assertThat("Measurement tools set must not be null.", method2, throwsException(NullPointerException.class));
-		final ThrowingMethod method3 = () -> {
-			new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
-				EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(), null,
-				EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+		final ThrowingMethod method3 = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
+					EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(), null,
+					EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+			}
 		};
 		assertThat("Mesasurement result analysers set must not be null.", method3,
 			throwsException(NullPointerException.class));
-		final ThrowingMethod method4 = () -> {
-			new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
-				EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(),
-				EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(), null);
+		final ThrowingMethod method4 = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
+					EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(),
+					EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(), null);
+			}
 		};
 		assertThat("Proposed expression analysers set must not be null.", method4,
 			throwsException(NullPointerException.class));
@@ -168,22 +186,35 @@ public class AnalysisControllerTest {
 		final Set<ProposedExpressionAnalyser> proposedExpressionAnalysersWithNull =
 			EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet();
 		proposedExpressionAnalysersWithNull.add(null);
-		final ThrowingMethod method5 = () -> {
-			new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(), measurementToolsWithNull,
-				EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(),
-				EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+		final ThrowingMethod method5 = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(), measurementToolsWithNull,
+					EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(),
+					EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+			}
 		};
 		assertThat("Set must not contain null.", method5, throwsException(IllegalArgumentException.class));
-		final ThrowingMethod method6 = () -> {
-			new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
-				EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(),
-				EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(), proposedExpressionAnalysersWithNull);
+		final ThrowingMethod method6 = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
+					EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(),
+					EXTENSION_POINT_FACTORY.createNewMeasurementResultAnalysersSet(),
+					proposedExpressionAnalysersWithNull);
+			}
 		};
 		assertThat("Set must not contain null.", method6, throwsException(IllegalArgumentException.class));
-		final ThrowingMethod method7 = () -> {
-			new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
-				EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(), measurementResultAnalyserWithNull,
-				EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+		final ThrowingMethod method7 = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new AnalysisController(BLACKBOARD_FACTORY.getWithToBeMeasuredContent(),
+					EXTENSION_POINT_FACTORY.createNewMeasurementToolSet(), measurementResultAnalyserWithNull,
+					EXTENSION_POINT_FACTORY.createNewProposedExpressionAnalyserSet());
+			}
 		};
 		assertThat("Set must not contain null.", method7, throwsException(IllegalArgumentException.class));
 
@@ -311,18 +342,27 @@ public class AnalysisControllerTest {
 		final Blackboard blackboard5 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		when(this.mockedMeasurementResultAnalyser1
 			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard5))).thenReturn(true);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard5))).thenReturn(false);
-			return null;
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard5))).thenReturn(false);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser1)
 			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard5));
 		when(this.mockedProposedExpressionAnalyser1
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard5))).thenReturn(true);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard5))).thenReturn(false);
-			return null;
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard5)))
+						.thenReturn(false);
+				return null;
+			}
 		}).when(this.mockedProposedExpressionAnalyser1)
 			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard5));
 
@@ -341,10 +381,14 @@ public class AnalysisControllerTest {
 		final Blackboard blackboard6 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		when(this.mockedMeasurementResultAnalyser1
 			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard6))).thenReturn(true);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard6))).thenReturn(false);
-			return null;
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard6))).thenReturn(false);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser1)
 			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard6));
 		when(this.mockedProposedExpressionAnalyser1
@@ -395,63 +439,91 @@ public class AnalysisControllerTest {
 		final Blackboard blackboard8 = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 		// Measurement result analyser only can contribute in the following order: 2 1 3
 		when(this.mockedMeasurementResultAnalyser2
-			.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(true);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
-				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
-			when(this.mockedMeasurementResultAnalyser1
-				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(true);
-			return null;
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser2)
-			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
 		when(this.mockedMeasurementResultAnalyser1
-			.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
-				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
-			when(this.mockedMeasurementResultAnalyser3
-				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(true);
-			return null;
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(false);
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))).thenReturn(true);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser1)
-			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
+			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
 		when(this.mockedMeasurementResultAnalyser3
 			.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
-				.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8)))).thenReturn(false);
-			return null;
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+					.canContribute(eq(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard8))))
+						.thenReturn(false);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser3)
 			.contribute(eq(new MeasurementResultAnalyserBlackboardView(blackboard8)));
 
 		// Proposed Expression analyser only can contribute in the following order: 3 1 2
 		when(this.mockedProposedExpressionAnalyser3
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
-			return null;
-		}).when(this.mockedMeasurementResultAnalyser3)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8)))
+						.thenReturn(false);
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser3)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard8));
 		when(this.mockedProposedExpressionAnalyser1
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
-			return null;
-		}).when(this.mockedMeasurementResultAnalyser1)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8)))
+						.thenReturn(false);
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(true);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser1)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard8));
 		when(this.mockedProposedExpressionAnalyser2
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8))).thenReturn(false);
-			return null;
-		}).when(this.mockedMeasurementResultAnalyser2)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard8));
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard8)))
+						.thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser2)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard8));
 
 		final AnalysisController analysisController9 = new AnalysisController(blackboard8, allMeasurementTools,
 			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
@@ -498,67 +570,94 @@ public class AnalysisControllerTest {
 		// Measurement result analyser only can contribute in the following order: 2 1 3
 		when(this.mockedMeasurementResultAnalyser2
 			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
-			when(this.mockedMeasurementResultAnalyser1
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
-			return null;
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser2
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser2)
 			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
 		when(this.mockedMeasurementResultAnalyser1
 			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
-			when(this.mockedMeasurementResultAnalyser3
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
-			return null;
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser1
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser1)
 			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
 		when(this.mockedMeasurementResultAnalyser3
 			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
-			return null;
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(false);
+				return null;
+			}
 		}).when(this.mockedMeasurementResultAnalyser3)
 			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
 
 		// Proposed Expression analyser only can contribute in the following order: 3 1 2
 		when(this.mockedProposedExpressionAnalyser3
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
-			return null;
-		}).when(this.mockedMeasurementResultAnalyser3)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser3
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9)))
+						.thenReturn(false);
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser3)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard9));
 		when(this.mockedProposedExpressionAnalyser1
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+		doAnswer(new Answer<Void>() {
 
-			// Remeasurement
-			blackboard9.addToBeMeasuredRdias(blackboard9.getAllRdias().iterator().next());
-			when(this.mockedMeasurementResultAnalyser3
-				.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
-			return null;
-		}).when(this.mockedMeasurementResultAnalyser1)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser1
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9)))
+						.thenReturn(false);
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(true);
+
+				// Remeasurement
+				blackboard9.addToBeMeasuredRdias(blackboard9.getAllRdias().iterator().next());
+				when(AnalysisControllerTest.this.mockedMeasurementResultAnalyser3
+					.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard9))).thenReturn(true);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser1)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard9));
 		when(this.mockedProposedExpressionAnalyser2
 			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
-		doAnswer(invocation -> {
-			when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
-				.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9))).thenReturn(false);
-			return null;
-		}).when(this.mockedMeasurementResultAnalyser2)
-			.contribute(new MeasurementResultAnalyserBlackboardView(blackboard9));
+		doAnswer(new Answer<Void>() {
+
+			@Override
+			public Void answer(final InvocationOnMock invocation) throws Throwable {
+				when(AnalysisControllerTest.this.mockedProposedExpressionAnalyser2
+					.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard9)))
+						.thenReturn(false);
+				return null;
+			}
+		}).when(this.mockedProposedExpressionAnalyser2)
+			.contribute(new ProposedExpressionAnalyserBlackboardView(blackboard9));
 
 		final AnalysisController analysisController10 = new AnalysisController(blackboard9, oneMeasurementTool,
 			allMeasurementResultAnalysers, allProposedExpressionAnalysers);
