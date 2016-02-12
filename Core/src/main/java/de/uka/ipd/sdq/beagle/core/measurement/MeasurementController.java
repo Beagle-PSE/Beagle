@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 /**
  * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
  * this class!
- * 
+ *
  * <p>COVERAGE:OFF
  */
 
@@ -103,54 +103,127 @@ public class MeasurementController {
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		// Fill {@code executionSections}.
-		for (SeffBranch seffBranch : seffBranches) {
+		for (final SeffBranch seffBranch : seffBranches) {
 			final List<CodeSection> codeSections = seffBranch.getBranches();
 
-			for (CodeSection codeSection : codeSections) {
+			for (final CodeSection codeSection : codeSections) {
 				executionSections.add(codeSection);
 			}
 		}
 
 		// Fill {@code executionSections}.
-		for (SeffLoop seffLoop : seffLoops) {
+		for (final SeffLoop seffLoop : seffLoops) {
 			final CodeSection codeSection = seffLoop.getLoopBody();
 			executionSections.add(codeSection);
 		}
 
 		// Fill {@code resourceDemandSections}.
-		for (ResourceDemandingInternalAction rdia : rdias) {
+		for (final ResourceDemandingInternalAction rdia : rdias) {
 			final CodeSection codeSection = rdia.getAction();
 			resourceDemandSections.add(codeSection);
 		}
 
 		// Fill {@code parameterValueSection}.
-		for (ExternalCallParameter externalCallParameter : externalCallParameters) {
+		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {
 			final CodeSection codeSection = externalCallParameter.getCallCodeSection();
 			parameterValueSections.add(codeSection);
 		}
 
 		// Give every measurement tool a measurement order.
-		for (MeasurementTool measurementTool : this.measurementTools) {
+		for (final MeasurementTool measurementTool : this.measurementTools) {
 			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,
 				resourceDemandSections, executionSections, launchConfigurations, parameterCharacteriser);
 
 			final List<MeasurementEvent> measurementEvents = measurementTool.measure(measurementOrder);
 			final MeasurementEventParser measurementEventParser = new MeasurementEventParser(measurementEvents);
 
-			for (SeffBranch seffBranch : seffBranches) {
+			this.addMeasurementResultsOfSeffBranchesToBlackboard(seffBranches, blackboard, measurementEventParser);
+			this.addMeasurementResultsOfSeffLoopsToBlackboard(seffLoops, blackboard, measurementEventParser);
+			this.addMeasurementResultsOfRdiasToBlackboard(rdias, blackboard, measurementEventParser);
+			this.addMeasurementResultsOfExternalCallParametersToBlackboard(externalCallParameters, blackboard,
+				measurementEventParser);
+		}
+	}
+
+	/**
+	 * Adds all measurement results of {@code seffBranches} to the blackboard.
+	 *
+	 * @param seffBranches The seff branches.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfSeffBranchesToBlackboard(final Set<SeffBranch> seffBranches,
+		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
+
+		for (final SeffBranch seffBranch : seffBranches) {
+			final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults =
 				measurementEventParser.getMeasurementResultsFor(seffBranch);
+
+			for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {
+				blackboard.addMeasurementResultFor(seffBranch, branchDecisionMeasurementResult);
 			}
 
-			for (SeffLoop seffLoop : seffLoops) {
+		}
+	}
+
+	/**
+	 * Adds all measurement results of {@code seffLoops} to the blackboard.
+	 *
+	 * @param seffLoops The seff loops.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfSeffLoopsToBlackboard(final Set<SeffLoop> seffLoops,
+		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
+
+		for (final SeffLoop seffLoop : seffLoops) {
+			final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults =
 				measurementEventParser.getMeasurementResultsFor(seffLoop);
-			}
+			// @formatter:off
+			for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
+				: loopRepetitionCountMeasurementResults) {
+				// @formatter:on
 
-			for (ResourceDemandingInternalAction rdia : rdias) {
+				blackboard.addMeasurementResultFor(seffLoop, loopRepetitionCountMeasurementResult);
+			}
+		}
+	}
+
+	/**
+	 * Adds all measurement results of {@code rdias} to the blackboard.
+	 *
+	 * @param rdias The rdias.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfRdiasToBlackboard(final Set<ResourceDemandingInternalAction> rdias,
+		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
+		for (final ResourceDemandingInternalAction rdia : rdias) {
+			final Set<ResourceDemandMeasurementResult> resourceDemandMeasurementResults =
 				measurementEventParser.getMeasurementResultsFor(rdia);
-			}
 
-			for (ExternalCallParameter externalCallParameter : externalCallParameters) {
+			for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {
+				blackboard.addMeasurementResultFor(rdia, resourceDemandMeasurementResult);
+			}
+		}
+	}
+
+	/**
+	 * Adds all measurement results of {@code externalCallParameters} to the blackboard.
+	 *
+	 * @param externalCallParameters The external call parameters.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfExternalCallParametersToBlackboard(
+		final Set<ExternalCallParameter> externalCallParameters, final MeasurementControllerBlackboardView blackboard,
+		final MeasurementEventParser measurementEventParser) {
+		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {
+			final Set<ParameterChangeMeasurementResult> parameterChangeMeasurementResults =
 				measurementEventParser.getMeasurementResultsFor(externalCallParameter);
+
+			for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {
+				blackboard.addMeasurementResultFor(externalCallParameter, parameterChangeMeasurementResult);
 			}
 		}
 	}
