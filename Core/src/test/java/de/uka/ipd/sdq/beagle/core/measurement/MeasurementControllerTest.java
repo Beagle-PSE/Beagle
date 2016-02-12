@@ -1,9 +1,13 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.refEq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisControllerTest;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
@@ -13,18 +17,25 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.MeasurementEventFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * This class tests, whether the returned {@link MeasurementOrder} of
@@ -67,6 +78,12 @@ public class MeasurementControllerTest {
 		new EvaluableExpressionFitnessFunctionFactory();
 
 	/**
+	 * A {@link MeasurementEventFactory}, which is able to generate
+	 * {@link MeasurementEvent}s.
+	 */
+	private static final MeasurementEventFactory MEASUREMENT_EVENT_FACTORY = new MeasurementEventFactory();
+
+	/**
 	 * Asserts that the returned {@link MeasurementOrder} of
 	 * {@link MeasurementController#measure(MeasurementControllerBlackboardView)} for the
 	 * {@linkplain MeasurementTool MeasurementTools} is valid.
@@ -80,9 +97,25 @@ public class MeasurementControllerTest {
 		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+		final List<SeffLoop> loops = new ArrayList<>(seffLoopSet);
+		when(tool.measure(anyObject())).thenAnswer(invocation -> {
+
+			final List<MeasurementEvent> measurementEvents = new ArrayList<>();
+			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(0).getLoopBody()));
+			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
+			measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
+			measurementEvents.add(MEASUREMENT_EVENT_FACTORY.getOneResourceDemandCapturedEvent());
+			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
+			measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
+			measurementEvents.add(new CodeSectionLeftEvent(loops.get(0).getLoopBody()));
+			return measurementEvents;
+		});
 
 		final Blackboard blackboard = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, externalCallParameterSet,
 			FITNESS_FUNCTION_FACTORY.getOne());
+		blackboard.addToBeMeasuredSeffBranches(seffBranchSet.iterator().next());
+		blackboard.addToBeMeasuredRdias(blackboard.getAllRdias().iterator().next());
+		blackboard.addToBeMeasuredSeffBranches(seffBranchSet.iterator().next());
 		final Set<CodeSection> parameterValueSections = new HashSet<>();
 		final Set<CodeSection> resourceDemandSections = new HashSet<>();
 		final Set<CodeSection> executionSections = new HashSet<>();
@@ -104,5 +137,12 @@ public class MeasurementControllerTest {
 		final MeasurementOrder expectedMeasurementOrder = new MeasurementOrder(parameterValueSections,
 			resourceDemandSections, executionSections, new HashSet<>(), new ParameterCharacteriser());
 		verify(tool).measure(refEq(expectedMeasurementOrder, "launchConfigurations", "parameterCharacteriser"));
+
+		// Check blackboard
+		Set<LoopRepetitionCountMeasurementResult> results = blackboard.getMeasurementResultsFor(loops.get(0));
+		final List<Integer> resultValues =
+			results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+		assertThat(resultValues, containsInAnyOrder(1));
+		results = blackboard.getMeasurementResultsFor(loops.get(1));
 	}
 }

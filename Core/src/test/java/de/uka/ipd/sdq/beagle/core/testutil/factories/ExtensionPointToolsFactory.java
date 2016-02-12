@@ -77,6 +77,7 @@ public class ExtensionPointToolsFactory {
 	 */
 	public MeasurementTool createNewMeasurementTool() {
 		return measurements -> {
+			return null;
 		};
 	}
 
