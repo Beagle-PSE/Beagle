@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.facade;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.sameInstance;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -115,18 +114,20 @@ public class BeagleConfigurationTest {
 		final File file = files[0];
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
 		beagleConfig.setTimeout(testTimeout);
-		assertThat(beagleConfig.getTimeout(), is(sameInstance(testTimeout)));
+		assertThat(beagleConfig.getTimeout(), is(testTimeout));
 
 	}
 
 	/**
-	 * Test method for {@link BeagleConfiguration#getRepositoryFile()}.
+	 * Test method for {@link BeagleConfiguration#getRepositoryFile()} and
+	 * {@link BeagleConfiguration#setRepositoryFile(File)}.
 	 */
 	@Test
-	public void getRepositoryFile() {
+	public void repositoryFileTest() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		beagleConfig.setRepositoryFile(file);
 		assertThat(beagleConfig.getRepositoryFile(), is(file));
 	}
 }
