@@ -157,11 +157,6 @@ public class Blackboard implements Serializable {
 		this.externalCallParameters.addAll(externalCalls);
 		this.fitnessFunction = fitnessFunction;
 
-		this.allSeffElements.addAll(rdias);
-		this.allSeffElements.addAll(branches);
-		this.allSeffElements.addAll(loops);
-		this.allSeffElements.addAll(externalCalls);
-
 		for (final SeffBranch branch : this.branches) {
 			this.branchDecisionMeasurementResults.put(branch, new HashSet<>());
 		}
