@@ -31,6 +31,9 @@ public class ExeptionThrowingFailureHandlerTest {
 		new ExceptionThrowingFailureHandler(clientName);
 	}
 
+	/**
+	 * Test method for {@link ExceptionThrowingFailureHandlerTest#handle()}.
+	 */
 	@Test
 	public void handle() {
 		final ExceptionThrowingFailureHandler exceptionHandler = new ExceptionThrowingFailureHandler("testClient");
@@ -57,25 +60,18 @@ public class ExeptionThrowingFailureHandlerTest {
 			assertThat(failEx.getMessage(), containsString("Test message"));
 		}
 
-		report.cause(null);
+		report.cause(new IllegalArgumentException("Illegal argument."));
 		report.message("Test message");
 		method = () -> {
 			exceptionHandler.handle(report);
 		};
 		assertThat(method, throwsException(FailureException.class));
 
+		try {
+			exceptionHandler.handle(report);
+		} catch (final FailureException failEx) {
+			assertThat(failEx.getMessage(), containsString("Test message"));
+			assertThat(failEx.getMessage(), containsString("Illegal argument."));
+		}
 	}
-
-	@Test
-	public void constructorFailureException() {
-		final String message = "failureMessage";
-		final ThrowingMethod method = () -> {
-			new FailureException(message, null);
-		};
-		assertThat("clientName must not be null.", method, throwsException(NullPointerException.class));
-
-		new ExceptionThrowingFailureHandler(message);
-
-	}
-
 }
