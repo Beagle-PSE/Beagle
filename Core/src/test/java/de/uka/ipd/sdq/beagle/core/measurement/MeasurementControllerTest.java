@@ -25,17 +25,19 @@ import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
-import de.uka.ipd.sdq.beagle.core.testutil.factories.MeasurementEventFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
 
 import org.junit.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -79,12 +81,6 @@ public class MeasurementControllerTest {
 		new EvaluableExpressionFitnessFunctionFactory();
 
 	/**
-	 * A {@link MeasurementEventFactory}, which is able to generate
-	 * {@link MeasurementEvent}s.
-	 */
-	private static final MeasurementEventFactory MEASUREMENT_EVENT_FACTORY = new MeasurementEventFactory();
-
-	/**
 	 * Asserts that the returned {@link MeasurementOrder} of
 	 * {@link MeasurementController#measure(MeasurementControllerBlackboardView)} for the
 	 * {@linkplain MeasurementTool MeasurementTools} is valid.
@@ -99,18 +95,22 @@ public class MeasurementControllerTest {
 		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 		final List<SeffLoop> loops = new ArrayList<>(seffLoopSet);
-		when(tool.measure(anyObject())).thenAnswer(invocation -> {
+		when(tool.measure(anyObject())).thenAnswer(new Answer<Object>() {
 
-			final List<MeasurementEvent> measurementEvents = new ArrayList<>();
-			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(0).getLoopBody()));
-			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
-			measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
-			measurementEvents.add(new ResourceDemandCapturedEvent(rdiaSet.iterator().next().getAction(),
-				rdiaSet.iterator().next().getResourceType(), 100d));
-			measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
-			measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
-			measurementEvents.add(new CodeSectionLeftEvent(loops.get(0).getLoopBody()));
-			return measurementEvents;
+			@Override
+			public Object answer(final InvocationOnMock invocation) throws Throwable {
+
+				final List<MeasurementEvent> measurementEvents = new ArrayList<>();
+				measurementEvents.add(new CodeSectionEnteredEvent(loops.get(0).getLoopBody()));
+				measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
+				measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
+				measurementEvents.add(new ResourceDemandCapturedEvent(rdiaSet.iterator().next().getAction(),
+					rdiaSet.iterator().next().getResourceType(), 100d));
+				measurementEvents.add(new CodeSectionEnteredEvent(loops.get(1).getLoopBody()));
+				measurementEvents.add(new CodeSectionLeftEvent(loops.get(1).getLoopBody()));
+				measurementEvents.add(new CodeSectionLeftEvent(loops.get(0).getLoopBody()));
+				return measurementEvents;
+			}
 		});
 
 		final Blackboard blackboard = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, externalCallParameterSet,
@@ -143,12 +143,24 @@ public class MeasurementControllerTest {
 		// Check blackboard
 		final Set<LoopRepetitionCountMeasurementResult> results = blackboard.getMeasurementResultsFor(loops.get(0));
 		final List<Integer> resultValues =
-			results.stream().map((result) -> result.getCount()).collect(Collectors.toList());
+			results.stream().map(new Function<LoopRepetitionCountMeasurementResult, Integer>() {
+
+				@Override
+				public Integer apply(final LoopRepetitionCountMeasurementResult result) {
+					return result.getCount();
+				}
+			}).collect(Collectors.toList());
 		assertThat(resultValues, containsInAnyOrder(1));
 		final Set<ResourceDemandMeasurementResult> rdiaResults =
 			blackboard.getMeasurementResultsFor(rdiaSet.iterator().next());
 		final List<Double> rdiaResultValues =
-			rdiaResults.stream().map((result) -> result.getValue()).collect(Collectors.toList());
+			rdiaResults.stream().map(new Function<ResourceDemandMeasurementResult, Double>() {
+
+				@Override
+				public Double apply(final ResourceDemandMeasurementResult result) {
+					return result.getValue();
+				}
+			}).collect(Collectors.toList());
 		assertThat(rdiaResultValues, containsInAnyOrder(100d));
 	}
 }
