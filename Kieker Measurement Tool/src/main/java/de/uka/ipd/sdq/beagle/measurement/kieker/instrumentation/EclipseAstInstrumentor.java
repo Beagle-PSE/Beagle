@@ -8,7 +8,6 @@ import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.Statement;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,24 +30,24 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Instruments code sections using Eclipse’s JDT Abstract Syntax Tree. The instrumentor is
- * configured through {@linkplain InstrumentationStrategy instrumentation strategies},
+ * configured through {@linkplain EclipseAstInstrumentationStrategy instrumentation strategies},
  * providing the statements that shall be inserted.
  *
  * <p>Instrumentation takes place on a best effort base. It is performed as follows:
  *
  * <ul>
  *
- * <li>The instrumentor queries the {@linkplain InstrumentationStrategy instrumentation
+ * <li>The instrumentor queries the {@linkplain EclipseAstInstrumentationStrategy instrumentation
  * strategy} reported through {@link #useStrategy} for instrumentation instructions to
  * instrument the code sections provided through the same method call.
  *
- * <li>{@linkplain InstrumentationStrategy#instrumentStart(CodeSection, AST) start
+ * <li>{@linkplain EclipseAstInstrumentationStrategy#instrumentStart(CodeSection, AST) start
  * instrumentation instructions} will be placed before the instrumented code section.
  * There are no guarantees for the number of statements executed between the
  * instrumentation instruction and the instrumented code section. However, the
  * instrumentor tries to keep this number as small as possible.
  *
- * <li>{@linkplain InstrumentationStrategy#instrumentEnd(CodeSection, AST) end
+ * <li>{@linkplain EclipseAstInstrumentationStrategy#instrumentEnd(CodeSection, AST) end
  * instrumentation instructions} will be placed after the instrumented code section. There
  * are no guarantees for the number of statements executed between the instrumented code
  * section and the instrumentation instruction. However, the instrumentor tries to keep
@@ -139,7 +138,7 @@ public class EclipseAstInstrumentor {
 	 *            strategy.
 	 * @return {@code this}.
 	 */
-	public EclipseAstInstrumentor useStrategy(final InstrumentationStrategy instrumentationStrategy,
+	public EclipseAstInstrumentor useStrategy(final EclipseAstInstrumentationStrategy instrumentationStrategy,
 		final Collection<CodeSection> codeSections) {
 		Validate.notNull(instrumentationStrategy);
 		Validate.noNullElements(codeSections);
@@ -162,7 +161,7 @@ public class EclipseAstInstrumentor {
 	 *            strategy.
 	 * @return {@code this}.
 	 */
-	public EclipseAstInstrumentor useStrategy(final InstrumentationStrategy instrumentationStrategy,
+	public EclipseAstInstrumentor useStrategy(final EclipseAstInstrumentationStrategy instrumentationStrategy,
 		final CodeSection... codeSections) {
 		Validate.notNull(instrumentationStrategy);
 		return this.useStrategy(instrumentationStrategy, new HashSet<>(Arrays.asList(codeSections)));
@@ -423,39 +422,6 @@ public class EclipseAstInstrumentor {
 	private static String toFailureString(final Throwable exception) {
 		final String message = exception.getMessage() != null ? exception.getMessage() : "No message provided.";
 		return String.format("%s (%s)", message, exception.getClass().getSimpleName());
-	}
-
-	/**
-	 * Defines how to instrument a code section by providing AST nodes to insert before
-	 * and after the section.
-	 *
-	 * @author Joshua Gleitze
-	 */
-	public interface InstrumentationStrategy {
-
-		/**
-		 * Provides a node to be inserted before {@code codeSection}.
-		 *
-		 * @param codeSection The section being instrumented.
-		 * @param nodeFactory The {@linkplain AST} instance that must be used to create
-		 *            the instrumentation statement.
-		 * @return The statement to add directly before the code section. The returned
-		 *         statement’s {@link Statement#getAST()} must return {@code nodeFactory}.
-		 *         {@code null} to not insert anything.
-		 */
-		Statement instrumentStart(CodeSection codeSection, AST nodeFactory);
-
-		/**
-		 * Provides a node to be inserted after {@code codeSection}.
-		 *
-		 * @param codeSection The section being instrumented.
-		 * @param nodeFactory The {@linkplain AST} instance that must be used to create
-		 *            the instrumentation statement.
-		 * @return The statement to add directly after the code section. The returned
-		 *         statement’s {@link Statement#getAST()} must return {@code nodeFactory}.
-		 *         {@code null} to not insert anything.
-		 */
-		Statement instrumentEnd(CodeSection codeSection, AST nodeFactory);
 	}
 
 	/**
