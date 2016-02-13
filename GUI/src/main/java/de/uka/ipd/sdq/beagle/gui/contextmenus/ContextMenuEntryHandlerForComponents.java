@@ -8,6 +8,8 @@ import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -42,7 +44,7 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
 		final List<Entity> components = new LinkedList<Entity>();
-		final String fileName = null;
+		File repositoryFile = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
 			// Those casts are safe because this context menu entry is only shown on
@@ -52,11 +54,16 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 			// prepare the list of components
 			final BasicComponent basicComponent =
 				(BasicComponent) ((View) basicComponentEditPart.getModel()).getElement();
-			basicComponent.eResource().getURI().toFileString();
 			components.add(basicComponent);
+
+			repositoryFile = ResourcesPlugin.getWorkspace()
+				.getRoot()
+				.getFile(new Path(basicComponent.eResource().getURI().toPlatformString(true)))
+				.getRawLocation()
+				.toFile();
 		}
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(components, new File(fileName));
+		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(components, repositoryFile);
 		final GuiController guiController = new GuiController(beagleConfiguration);
 		guiController.open();
 

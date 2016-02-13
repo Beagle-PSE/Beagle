@@ -9,6 +9,8 @@ import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -44,28 +46,35 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 
 		// prepare the list of internal actions
 		final List<Entity> internalActions = new LinkedList<Entity>();
-		String fileName = null;
+
+		// something must have been selected for this handler to be called.
+		assert structuredSelection.size() > 0;
+
+		File repositoryFile = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
 			// Those casts are safe because this context menu entry is only shown on
 			// InternalActionEditParts and InternalAction2EditParts.
+			final InternalAction internalAction;
 			if (clickObject instanceof InternalActionEditPart) {
 				final InternalActionEditPart internalActionEditPart = (InternalActionEditPart) clickObject;
-				final InternalAction internalAction =
-					(InternalAction) ((View) internalActionEditPart.getModel()).getElement();
-				fileName = internalAction.eResource().getURI().toFileString();
+				internalAction = (InternalAction) ((View) internalActionEditPart.getModel()).getElement();
 				internalActions.add(internalAction);
 			} else {
 				final InternalAction2EditPart internalAction2EditPart = (InternalAction2EditPart) clickObject;
-				final InternalAction internalAction =
-					(InternalAction) ((View) internalAction2EditPart.getModel()).getElement();
-				fileName = internalAction.eResource().getURI().toFileString();
+				internalAction = (InternalAction) ((View) internalAction2EditPart.getModel()).getElement();
 				internalActions.add(internalAction);
 			}
+
+			repositoryFile = ResourcesPlugin.getWorkspace()
+				.getRoot()
+				.getFile(new Path(internalAction.eResource().getURI().toPlatformString(true)))
+				.getRawLocation()
+				.toFile();
 		}
 
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(internalActions, new File(fileName));
+		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(internalActions, repositoryFile);
 		final GuiController guiController = new GuiController(beagleConfiguration);
 		guiController.open();
 		return null;
