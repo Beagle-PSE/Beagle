@@ -156,7 +156,7 @@ public class MeasurementEventParser {
 	public Set&lt;LoopRepetitionCountMeasurementResult&gt; getMeasurementResultsFor(final SeffLoop loop) {
 <span class="fc" id="L157">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults = new HashSet&lt;&gt;();</span>
 <span class="fc" id="L158">		final SeffLoopMeasurementEventVisitor seffLoopMeasurementEventVisitor =</span>
-			new SeffLoopMeasurementEventVisitor(loop, loopRepetitionCountMeasurementResults);
+			new SeffLoopMeasurementEventVisitor(loopRepetitionCountMeasurementResults);
 <span class="fc" id="L160">		final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(loop.getLoopBody());</span>
 <span class="fc bfc" id="L161" title="All 2 branches covered.">		if (indices != null) {</span>
 <span class="fc bfc" id="L162" title="All 2 branches covered.">			for (final Integer index : indices) {</span>
@@ -285,11 +285,6 @@ public class MeasurementEventParser {
 <span class="pc bpc" id="L285" title="1 of 2 branches missed.">	private class SeffLoopMeasurementEventVisitor extends AbstractMeasurementEventVisitor {</span>
 
 		/**
-		 * The {@link SeffBranch} where we want to know the new measurement results.
-		 */
-		private final SeffLoop loop;
-
-		/**
 		 * The set, where the {@linkplain ResourceDemandMeasurementResult
 		 * ResourceDemandMeasurementResults} should be added.
 		 */
@@ -304,67 +299,64 @@ public class MeasurementEventParser {
 		/**
 		 * Creates a visitor for a specific {@link SeffLoop}.
 		 *
-		 * @param loop The {@link SeffLoop} where we want to know the new measurement
-		 *            results.
 		 * @param loopRepetitionCountMeasurementResults The set, where the
 		 *            {@linkplain BranchDecisionMeasurementResult
 		 *            BranchDecisionMeasurementResults} should be added.
 		 */
-		SeffLoopMeasurementEventVisitor(final SeffLoop loop,
-<span class="fc" id="L314">			final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults) {</span>
-<span class="fc" id="L315">			this.loop = loop;</span>
-<span class="fc" id="L316">			this.loopRepetitionCountMeasurementResults = loopRepetitionCountMeasurementResults;</span>
-<span class="fc" id="L317">			this.currentLoopCounts = new Stack&lt;&gt;();</span>
-<span class="fc" id="L318">		}</span>
+		SeffLoopMeasurementEventVisitor(
+<span class="fc" id="L307">			final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults) {</span>
+<span class="fc" id="L308">			this.loopRepetitionCountMeasurementResults = loopRepetitionCountMeasurementResults;</span>
+<span class="fc" id="L309">			this.currentLoopCounts = new Stack&lt;&gt;();</span>
+<span class="fc" id="L310">		}</span>
 
 		@Override
 		public void visit(final CodeSectionEnteredEvent codeSectionEnteredEvent) {
-<span class="fc bfc" id="L322" title="All 4 branches covered.">			if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {</span>
+<span class="fc bfc" id="L314" title="All 4 branches covered.">			if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {</span>
 				// The current branch was not finished before a this, so we have a
 				// recursive call, or there is no current execution of this loop.
-<span class="fc" id="L325">				this.currentLoopCounts.push(new LoopExecutionCounter());</span>
+<span class="fc" id="L317">				this.currentLoopCounts.push(new LoopExecutionCounter());</span>
 			}
-<span class="pc bpc" id="L327" title="2 of 4 branches missed.">			assert !this.currentLoopCounts.peek().isOpen;</span>
-<span class="fc bfc" id="L328" title="All 2 branches covered.">			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1</span>
-<span class="fc" id="L329">				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex</span>
-<span class="fc bfc" id="L330" title="All 2 branches covered.">					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {</span>
+<span class="pc bpc" id="L319" title="2 of 4 branches missed.">			assert !this.currentLoopCounts.peek().isOpen;</span>
+<span class="fc bfc" id="L320" title="All 2 branches covered.">			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1</span>
+<span class="fc" id="L321">				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex</span>
+<span class="fc bfc" id="L322" title="All 2 branches covered.">					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {</span>
 				// We have not continuous loop body executions, so we create a new
 				// execution event.
-<span class="fc" id="L333">				this.loopFinished();</span>
-<span class="fc" id="L334">				this.currentLoopCounts.push(new LoopExecutionCounter());</span>
+<span class="fc" id="L325">				this.loopFinished();</span>
+<span class="fc" id="L326">				this.currentLoopCounts.push(new LoopExecutionCounter());</span>
 			}
-<span class="fc" id="L336">			this.currentLoopCounts.peek().numberOfExecutions++;</span>
-<span class="fc" id="L337">			this.currentLoopCounts.peek().isOpen = true;</span>
-<span class="fc" id="L338">		}</span>
+<span class="fc" id="L328">			this.currentLoopCounts.peek().numberOfExecutions++;</span>
+<span class="fc" id="L329">			this.currentLoopCounts.peek().isOpen = true;</span>
+<span class="fc" id="L330">		}</span>
 
 		@Override
 		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
-<span class="fc bfc" id="L342" title="All 2 branches covered.">			if (!this.currentLoopCounts.isEmpty()) {</span>
-<span class="fc bfc" id="L343" title="All 2 branches covered.">				if (this.currentLoopCounts.peek().isOpen) {</span>
+<span class="fc bfc" id="L334" title="All 2 branches covered.">			if (!this.currentLoopCounts.isEmpty()) {</span>
+<span class="fc bfc" id="L335" title="All 2 branches covered.">				if (this.currentLoopCounts.peek().isOpen) {</span>
 					// The current execution is finished.
-<span class="fc" id="L345">					this.currentLoopCounts.peek().isOpen = false;</span>
-<span class="fc" id="L346">					this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =</span>
-<span class="fc" id="L347">						MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);</span>
+<span class="fc" id="L337">					this.currentLoopCounts.peek().isOpen = false;</span>
+<span class="fc" id="L338">					this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =</span>
+<span class="fc" id="L339">						MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);</span>
 				} else {
 					// The current execution is already finished, so we need to close
 					// the one &quot;below&quot; that.
 
 					// The actual closing
-<span class="fc" id="L353">					this.loopFinished();</span>
+<span class="fc" id="L345">					this.loopFinished();</span>
 
-<span class="fc bfc" id="L355" title="All 2 branches covered.">					if (!this.currentLoopCounts.isEmpty()) {</span>
+<span class="fc bfc" id="L347" title="All 2 branches covered.">					if (!this.currentLoopCounts.isEmpty()) {</span>
 						// The invariant for this stack
-<span class="pc bpc" id="L357" title="2 of 4 branches missed.">						assert this.currentLoopCounts.peek().isOpen;</span>
+<span class="pc bpc" id="L349" title="2 of 4 branches missed.">						assert this.currentLoopCounts.peek().isOpen;</span>
 						// allows us to just close the next layer.
-<span class="fc" id="L359">						this.currentLoopCounts.peek().isOpen = false;</span>
-<span class="fc" id="L360">						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =</span>
-<span class="fc" id="L361">							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);</span>
+<span class="fc" id="L351">						this.currentLoopCounts.peek().isOpen = false;</span>
+<span class="fc" id="L352">						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =</span>
+<span class="fc" id="L353">							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);</span>
 					}
 				}
 			}
 			// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
 			// event without an CodeSectionEnteredEvent and ignore this.
-<span class="fc" id="L367">		}</span>
+<span class="fc" id="L359">		}</span>
 
 		/**
 		 * This method must be called after the last measurement event was visited,
@@ -373,19 +365,19 @@ public class MeasurementEventParser {
 		 */
 		public void finalise() {
 			// Close all open executions. There {@link CodeSectionLeftEvent} is missing.
-<span class="fc bfc" id="L376" title="All 2 branches covered.">			while (!this.currentLoopCounts.isEmpty()) {</span>
-<span class="fc" id="L377">				this.loopFinished();</span>
+<span class="fc bfc" id="L368" title="All 2 branches covered.">			while (!this.currentLoopCounts.isEmpty()) {</span>
+<span class="fc" id="L369">				this.loopFinished();</span>
 			}
-<span class="fc" id="L379">		}</span>
+<span class="fc" id="L371">		}</span>
 
 		/**
 		 * Pops the top of {@link #currentLoopCounts} and adds the
 		 * {@link LoopRepetitionCountMeasurementResult} for this execution.
 		 */
 		private void loopFinished() {
-<span class="fc" id="L386">			this.loopRepetitionCountMeasurementResults</span>
-<span class="fc" id="L387">				.add(new LoopRepetitionCountMeasurementResult(this.currentLoopCounts.pop().numberOfExecutions));</span>
-<span class="fc" id="L388">		}</span>
+<span class="fc" id="L378">			this.loopRepetitionCountMeasurementResults</span>
+<span class="fc" id="L379">				.add(new LoopRepetitionCountMeasurementResult(this.currentLoopCounts.pop().numberOfExecutions));</span>
+<span class="fc" id="L380">		}</span>
 
 		/**
 		 * Container for the information needed to save the state of an loop execution.
@@ -416,11 +408,11 @@ public class MeasurementEventParser {
 			/**
 			 * Creates a new, empty LoopExecutionCounter.
 			 */
-<span class="fc" id="L419">			LoopExecutionCounter() {</span>
-<span class="fc" id="L420">				this.numberOfExecutions = 0;</span>
-<span class="fc" id="L421">				this.isOpen = false;</span>
-<span class="fc" id="L422">				this.lastCodeSectionLeftEventIndex = -1;</span>
-<span class="fc" id="L423">			}</span>
+<span class="fc" id="L411">			LoopExecutionCounter() {</span>
+<span class="fc" id="L412">				this.numberOfExecutions = 0;</span>
+<span class="fc" id="L413">				this.isOpen = false;</span>
+<span class="fc" id="L414">				this.lastCodeSectionLeftEventIndex = -1;</span>
+<span class="fc" id="L415">			}</span>
 		}
 	}
 }
