@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
@@ -38,11 +39,6 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	private PcmRepositoryExtractor pcmExtractor;
 
 	/**
-	 * The fitnessFucntion to initialise the blackboard with.
-	 */
-	private final EvaluableExpressionFitnessFunction fitnessFunction;
-
-	/**
 	 * Creates a factory that will search the provided PCM files for <em>PCM
 	 * elements</em>.
 	 *
@@ -55,12 +51,6 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 */
 	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName,
 		final EvaluableExpressionFitnessFunction fitnessFunction) {
-
-		if (fitnessFunction == null || repositoryFileName == null) {
-			throw new NullPointerException();
-		}
-
-		this.fitnessFunction = fitnessFunction;
 
 		final File test = new File(repositoryFileName);
 		if (!test.exists() || !test.isFile()) {
@@ -97,12 +87,13 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 * <em>PCM elements</em> to it. Only <em>PCM elements</em> that fulfil the
 	 * restrictions described in the class description will be written.
 	 *
-	 * @return A new blackboard having all translated <em>PCM elements</em> written on it.
-	 *         Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForAllElements() {
-		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
-		return this.pcmExtractor.getBlackboardForAllElements(this.repository);
+	public void getBlackboardForAllElements(final BlackboardFactory blackboardFactory) {
+		this.pcmExtractor = new PcmRepositoryExtractor();
+		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);
 
 	}
 
@@ -131,10 +122,11 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 *
 	 * @param identifiers Identifiers of elements in the repository files that shall be
 	 *            written to the Blackboard.
-	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
-	 *         written on it. Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForIds(final Collection<String> identifiers) {
+	public void getBlackboardForIds(final Collection<String> identifiers, final BlackboardFactory blackboardFactory) {
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
@@ -143,8 +135,8 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 				throw new NullPointerException();
 			}
 		}
-		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
-		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);
+		this.pcmExtractor = new PcmRepositoryExtractor();
+		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);
 
 	}
 
@@ -173,10 +165,11 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 *
 	 * @param identifiers Identifiers of elements in the repository files that shall be
 	 *            written to the Blackboard.
-	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
-	 *         written on it. Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForIds(final String... identifiers) {
+	public void getBlackboardForIds(final BlackboardFactory blackboardFactory, final String... identifiers) {
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
@@ -189,7 +182,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 		for (final String identifier : identifiers) {
 			identifierCollection.add(identifier);
 		}
-		return this.getBlackboardForIds(identifierCollection);
+		this.getBlackboardForIds(identifierCollection, blackboardFactory);
 	}
 
 }
