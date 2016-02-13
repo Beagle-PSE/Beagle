@@ -1,13 +1,18 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Beagle Core
-Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core
+Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.eclipse.debug.core,
+Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- de.uka.ipd.sdq.pcm.gmf.repository,
+ org.eclipse.e4.core.di,
  org.palladiosimulator.pcm,
- org.eclipse.jdt.core
+ org.eclipse.jdt.core,
+ de.uka.ipd.sdq.pcm.gmf.repository,
 Export-Package: de.uka.ipd.sdq.beagle.core,
+ de.uka.ipd.sdq.beagle.core.analysis,
+ de.uka.ipd.sdq.beagle.core.evaluableexpressions,
+ de.uka.ipd.sdq.beagle.core.measurement,
+ de.uka.ipd.sdq.beagle.core.measurement.order,
  de.uka.ipd.sdq.beagle.core.facade
