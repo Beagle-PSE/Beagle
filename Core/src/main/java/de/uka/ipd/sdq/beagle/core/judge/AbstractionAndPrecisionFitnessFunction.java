@@ -1,10 +1,4 @@
 package de.uka.ipd.sdq.beagle.core.judge;
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
 
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
@@ -40,7 +34,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 		// If there is no expression, return infinity.
 		double meanSquareDeviation = Double.POSITIVE_INFINITY;
 
-		for (ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {
+		for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {
 			final double realValue = resourceDemandMeasurementResult.getValue();
 			// final Parameterisation parameterisation =
 			// resourceDemandMeasurementResult.getParameterisation();
@@ -66,7 +60,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 		// If there is no expression, return infinity.
 		double meanSquareDeviation = Double.POSITIVE_INFINITY;
 
-		for (BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {
+		for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {
 			final double realValue = branchDecisionMeasurementResult.getBranchIndex();
 			// final Parameterisation parameterisation =
 			// branchDecisionMeasurementResult.getParameterisation();
@@ -92,7 +86,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 		// If there is no expression, return infinity.
 		double meanSquareDeviation = Double.POSITIVE_INFINITY;
 
-		for (LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult : loopRepetitionCountMeasurementResults) {
+		for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult : loopRepetitionCountMeasurementResults) {
 			final double realValue = loopRepetitionCountMeasurementResult.getCount();
 			// final Parameterisation parameterisation =
 			// loopRepetitionCountMeasurementResult.getParameterisation();
@@ -118,7 +112,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 		// If there is no expression, return infinity.
 		double meanSquareDeviation = Double.POSITIVE_INFINITY;
 
-		for (ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {
+		for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {
 			final double realValue = parameterChangeMeasurementResult.getCount();
 			// final Parameterisation parameterisation =
 			// parameterChangeMeasurementResult.getParameterisation();
