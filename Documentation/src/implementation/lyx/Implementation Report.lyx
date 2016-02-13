@@ -3065,6 +3065,189 @@ Tested by:
 
 \end_layout
 
+\begin_layout Subsection*
+Tasks, that were not in the implementation plan
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="80text%">
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Task:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Facade
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nr:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Description/Classes:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+We realised that the communication between the GUI and Beagle Core is complex,
+ because the GUI also has to pass information about the project to analyse,
+ e.g.
+ to be able to access the source code files.
+ This is the reason for 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+BeagleController
+\end_layout
+
+\end_inset
+
+ being now more than a controller.
+ It is a facade with some additional classes.
+\end_layout
+
+\begin_layout Plain Layout
+The 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+UserConfiguration
+\end_layout
+
+\end_inset
+
+ has been renamed to 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+BeagleConfiguration
+\end_layout
+
+\end_inset
+
+ because it as involved in the facade, too.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Depends on:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implemented by:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Joshua Gleitze, Roman Langrehr
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tested by:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Optional Tasks
 \end_layout
@@ -3408,6 +3591,33 @@ For the genetic programming we already created the fitness function.
 
 \begin_layout Chapter
 Delays
+\end_layout
+
+\begin_layout Standard
+Most of the tasks were in the first and seconds week, which lead to some
+ small delays.
+ Some of tasks of the first week where finished in the second week and some
+ of the tasks in the second week were finished in the third week.
+ The tasks for the third week were therefore started at the end of the third
+ week and we used the empty week four for them, too.
+\end_layout
+
+\begin_layout Standard
+Getting these delays was intentionally because starting many tasks at the
+ beginning allowed us early to recognise which tasks can be implemented
+ fast and which tasks are complicated and need more time.
+ Those tasks were:
+\end_layout
+
+\begin_layout Itemize
+The PCM Connection and the context menus because nobody in our team had
+ experience with the EMF framework a lot of problem arose and caused delays.
+ Tasks that also had 
+\end_layout
+
+\begin_layout Itemize
+The Kieker measurement tool, because we had to instrument the code on our
+ own.
 \end_layout
 
 \begin_layout Chapter
