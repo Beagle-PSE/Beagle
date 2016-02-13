@@ -324,8 +324,7 @@ public class MeasurementEventParser {
 				// recursive call, or there is no current execution of this loop.
 				this.currentLoopCounts.push(new LoopExecutionCounter());
 			}
-			// commented out, because the test coverage tool has problems with assert.
-			// assert !this.currentLoopCounts.peek().isOpen;
+			assert !this.currentLoopCounts.peek().isOpen;
 			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1
 				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex
 					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {
@@ -355,9 +354,7 @@ public class MeasurementEventParser {
 
 					if (!this.currentLoopCounts.isEmpty()) {
 						// The invariant for this stack
-						// commented out, because the test coverage tool has problems with
-						// assert.
-						// assert this.currentLoopCounts.peek().isOpen;
+						assert this.currentLoopCounts.peek().isOpen;
 						// allows us to just close the next layer.
 						this.currentLoopCounts.peek().isOpen = false;
 						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =
