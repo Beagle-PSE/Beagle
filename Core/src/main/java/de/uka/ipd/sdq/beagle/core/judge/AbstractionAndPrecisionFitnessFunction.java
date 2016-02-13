@@ -37,7 +37,11 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			blackboard.getMeasurementResultsFor(rdia);
 
 		// If there is no expression, return infinity.
-		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+		if (resourceDemandMeasurementResults.size() == 0) {
+			return Double.POSITIVE_INFINITY;
+		}
+
+		double meanSquareDeviation = 0;
 
 		for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {
 			final double realValue = resourceDemandMeasurementResult.getValue();
@@ -66,7 +70,11 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			blackboard.getMeasurementResultsFor(branch);
 
 		// If there is no expression, return infinity.
-		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+		if (branchDecisionMeasurementResults.size() == 0) {
+			return Double.POSITIVE_INFINITY;
+		}
+
+		double meanSquareDeviation = 0;
 
 		for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {
 			final double realValue = branchDecisionMeasurementResult.getBranchIndex();
@@ -95,7 +103,11 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			blackboard.getMeasurementResultsFor(loop);
 
 		// If there is no expression, return infinity.
-		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+		if (loopRepetitionCountMeasurementResults.size() == 0) {
+			return Double.POSITIVE_INFINITY;
+		}
+
+		double meanSquareDeviation = 0;
 
 		// @formatter:off
 		for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
@@ -127,7 +139,11 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			blackboard.getMeasurementResultsFor(parameter);
 
 		// If there is no expression, return infinity.
-		double meanSquareDeviation = Double.POSITIVE_INFINITY;
+		if (parameterChangeMeasurementResults.size() == 0) {
+			return Double.POSITIVE_INFINITY;
+		}
+
+		double meanSquareDeviation = 0;
 
 		for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {
 			final double realValue = parameterChangeMeasurementResult.getCount();
