@@ -192,6 +192,24 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(result.getAllRdias().size(), is(not(0)));
 		assertThat(result.getAllSeffBranches().size(), is(not(0)));
 		assertThat(result.getAllSeffLoops().size(), is(0));
+
+		// Use a corrupted repositoy here.
+
+		assertThat(
+			() -> new PcmRepositoryBlackboardFactory(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedSeffBranchAppSensor.repository",
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
+			throwsException(RuntimeException.class));
+		assertThat(
+			() -> new PcmRepositoryBlackboardFactory(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CoruptedRdiaAppSensor.repository",
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
+			throwsException(RuntimeException.class));
+		assertThat(
+			() -> new PcmRepositoryBlackboardFactory(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedExternalCallParameterAppSensor.repository",
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
+			throwsException(RuntimeException.class));
 	}
 
 	/**
@@ -286,10 +304,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final Blackboard blackboardForIds2 = pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance()
 			.getBlackboardForIds("_Enr2B4RwEeWnEbz-sg1tMg");
-		assertThat(blackboardForIds2.getAllSeffBranches(), is(0));
-		assertThat(blackboardForIds2.getAllSeffLoops(), is(0));
-		assertThat(blackboardForIds2.getAllRdias(), is(1));
-		assertThat(blackboardForIds2.getAllExternalCallParameters(), is(0));
+		assertThat(blackboardForIds2.getAllSeffBranches().size(), is(0));
+		assertThat(blackboardForIds2.getAllSeffLoops().size(), is(0));
+		assertThat(blackboardForIds2.getAllRdias().size(), is(1));
+		assertThat(blackboardForIds2.getAllExternalCallParameters().size(), is(0));
 
 	}
 
