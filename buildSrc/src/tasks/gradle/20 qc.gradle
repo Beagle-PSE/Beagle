@@ -72,21 +72,6 @@ configure(javaSubprojects) {
 		}
 	}
 	
-	
-	task verifyTestCoverage(dependsOn: jacocoTestReport) {
-		description 'Throws if test code coverage is not 100%.'
-	
-		def jacocoReport = file("$buildDir/reports/jacoco/test/jacocoTestReport.xml")
-		
-		onlyIf {jacocoReport.exists()}
-	
-		doLast {
-			if (jacocoReport.text ==~ /.*missed="[^0]".*/) {
-				throw new GradleException("Code Coverage by Tests is not 100%!")
-			}
-		}
-	}
-	
 	// taken from: http://stackoverflow.com/questions/20361942/generate-checkstyle-html-report-with-gradle/20362150#20362150
 	task checkstyleHtml {
 		description 'Generates a HTML report file for a checkstyle run.'
@@ -104,7 +89,7 @@ configure(javaSubprojects) {
 	    }
 	}
 	
-	task qc (dependsOn: verifyNoCheckstyleWarnings) {
+	task qc (dependsOn: jacocoTestReport) {
 		group 'Verification'
 		description 'Verifies the code’s quality. Fails the build if issues are found.'
 	}
@@ -115,7 +100,7 @@ configure(javaSubprojects) {
 }
 
 configure(javaSubprojects - prototypeSubprojects) {
-	qc.dependsOn verifyTestCoverage
+	qc.dependsOn jacocoTestReport
 	
 	checkstyleMain.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle.xml")
 	checkstyleTest.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle Test.xml")
