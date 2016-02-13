@@ -7,7 +7,9 @@ import de.uka.ipd.sdq.beagle.core.FailureReport;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IClasspathEntry;
+import org.eclipse.jdt.core.JavaModelException;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.FileNotFoundException;
@@ -53,11 +55,20 @@ public class BeagleController {
 				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
 			}
 		}
-		final Charset charset = Charset.forName(beagleConfiguration.getJavaProject().getProject().getDefaultCharset());
-		final String buildPath =
-			this.classPathToString(beagleConfiguration.getJavaProject().getResolvedClasspath(true));
+		Charset charset = null;
+		try {
+			charset = Charset.forName(beagleConfiguration.getJavaProject().getProject().getDefaultCharset());
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		String buildPath = null;
+		try {
+			buildPath = this.classPathToString(beagleConfiguration.getJavaProject().getResolvedClasspath(true));
+		} catch (final JavaModelException javaModelException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(javaModelException));
+		}
 		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
-			beagleConfiguration.getFileProvider(), buildPath, charset));
+			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject()), buildPath, charset));
 		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard());
 	}
 

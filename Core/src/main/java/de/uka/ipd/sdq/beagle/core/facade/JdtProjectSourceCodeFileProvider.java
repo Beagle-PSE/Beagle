@@ -5,6 +5,7 @@ import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaModelException;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Provides source files from source folders of Eclipse Java Projects.
@@ -12,6 +13,11 @@ import java.io.File;
  * @author Joshua Gleitze
  */
 public class JdtProjectSourceCodeFileProvider implements SourceCodeFileProvider {
+
+	/**
+	 * See {@link Serializable}.
+	 */
+	private static final long serialVersionUID = -3573579414970056052L;
 
 	/**
 	 * The java project to get the source files from.
