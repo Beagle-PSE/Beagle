@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ResourceDemandingInternalAction.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">ResourceDemandingInternalAction.java</span></div><h1>ResourceDemandingInternalAction.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
+/**
+ * Models an internal action demanding resources of a specific type when being executed.
+ *
+ * &lt;p&gt;The internal action applies to a specific &lt;em&gt;resource type&lt;/em&gt;. The resource type
+ * describes both the resource that is demanded and the unit the demand’s value is
+ * expressed in.
+ *
+ * @author Christoph Michelbach
+ * @author Annika Berger
+ * @author Roman Langrehr
+ * @author Joshua Gleitze
+ *
+ * @see ResourceDemandType
+ */
+public class ResourceDemandingInternalAction implements MeasurableSeffElement {
+
+	/**
+	 * Serialisation version UID, see {@link java.io.Serializable}.
+	 */
+	private static final long serialVersionUID = -8743471676122273889L;
+
+	/**
+	 * The type of resource that should be measured in this code section.
+	 */
+	private final ResourceDemandType resourceType;
+
+	/**
+	 * The code section for this resource demand.
+	 */
+	private final CodeSection action;
+
+	/**
+	 * Creates a ResourceDemandingInternalAction for a specific resource type using a
+	 * given code section.
+	 *
+	 * @param resourceType The resource type of this internal action that should be
+	 *            measured. Must not be {@code null}.
+	 * @param action A valid code section for this resource demanding internal action. The
+	 *            first line of the code section marks the beginning of this internal
+	 *            action (inclusive). The last line of the code section marks the end of
+	 *            this internal action (inclusive). Must not be {@code null}.
+	 */
+<span class="fc" id="L50">	public ResourceDemandingInternalAction(final ResourceDemandType resourceType, final CodeSection action) {</span>
+<span class="fc" id="L51">		Validate.notNull(resourceType);</span>
+<span class="fc" id="L52">		Validate.notNull(action);</span>
+<span class="fc" id="L53">		this.resourceType = resourceType;</span>
+<span class="fc" id="L54">		this.action = action;</span>
+<span class="fc" id="L55">	}</span>
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L60">			return false;</span>
+		}
+<span class="fc bfc" id="L62" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L63">			return true;</span>
+		}
+<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L66">			return false;</span>
+		}
+<span class="fc" id="L68">		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;</span>
+<span class="fc" id="L69">		return new EqualsBuilder().append(this.resourceType, other.resourceType).append(this.action, other.action)</span>
+<span class="fc" id="L70">			.isEquals();</span>
+	}
+
+	/**
+	 * Gets this internal action's &lt;em&gt;code section&lt;/em&gt;.
+	 *
+	 * @return the valid code section for this resource demand. The first statement of the
+	 *         code section marks the beginning of this internal action (inclusive). The
+	 *         last statement of the code section marks the end of this internal action
+	 *         (inclusive). Is never {@code null}.
+	 */
+	public CodeSection getAction() {
+<span class="fc" id="L82">		return this.action;</span>
+	}
+
+	/**
+	 * Gets this internal action's &lt;em&gt;result type&lt;/em&gt;.
+	 *
+	 * @return This result’s &lt;em&gt;result type&lt;/em&gt;, as defined in the class description. Is
+	 *         never {@code null}.
+	 */
+	public ResourceDemandType getResourceType() {
+<span class="fc" id="L92">		return this.resourceType;</span>
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+<span class="fc" id="L99">		return new HashCodeBuilder(19, 41).append(this.resourceType).append(this.action).toHashCode();</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L104">		return new ToStringBuilder(this).append(&quot;resourceType&quot;, this.resourceType).append(&quot;action&quot;, this.action)</span>
+<span class="fc" id="L105">			.toString();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
