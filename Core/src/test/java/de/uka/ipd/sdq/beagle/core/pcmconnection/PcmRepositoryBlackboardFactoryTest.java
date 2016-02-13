@@ -259,7 +259,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		// The first ID is from {@code AppSensor.repository}, the second one from {@code
 		// Family.repositor}.
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_En2OE4RwEeWnEbz-sg1tMg"),
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_EofuUYRwEeWnEbz-sg1tMg"),
 			is(not(equalToRegardingSeffElements(
 				pcmRepositoryBlackboardFactory.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g")))));
 
