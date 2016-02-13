@@ -80,7 +80,7 @@ public class SelectionOverviewWizardPage extends WizardPage {
 
 		final LinkedList<String> elements = new LinkedList<String>();
 
-		if (this.beagleConfiguration.getElements().size() != 0) {
+		if (this.beagleConfiguration.getElements() != null) {
 			for (final Entity element : this.beagleConfiguration.getElements()) {
 				elements.add(element.eClass().getName() + ": " + element.getEntityName());
 			}
