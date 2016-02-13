@@ -9,7 +9,7 @@ import java.io.File;
 
 /**
  * Writes Beagle’s findings back to a PCM repository. This class is meant to be used for
- * Blackboard instances created by {@link PcmRepositoryBlackboardFactory} and may not be
+ * Blackboard instances created by {@link PcmRepositoryBlackboardFactoryAdder} and may not be
  * useable with other blackboards.
  *
  * @author Joshua Gleitze

@@ -25,7 +25,7 @@ import java.util.LinkedList;
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
  */
-public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagleMappings> {
+public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<PcmBeagleMappings> {
 
 	/**
 	 * The repository where this class should extract all its information from.
@@ -38,7 +38,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	private PcmRepositoryExtractor pcmExtractor;
 
 	/**
-	 * The fitnessFucntion to initialize the blackboard with.
+	 * The fitnessFucntion to initialise the blackboard with.
 	 */
 	private final EvaluableExpressionFitnessFunction fitnessFunction;
 
@@ -53,7 +53,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *             repository file or if repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactory(final String repositoryFileName,
+	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName,
 		final EvaluableExpressionFitnessFunction fitnessFunction) {
 
 		if (fitnessFunction == null || repositoryFileName == null) {
@@ -87,7 +87,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactory(final File pcmRepositoryFiles,
+	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
 		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
 		this(pcmRepositoryFiles.getAbsolutePath(), fitnessFunction);
 	}

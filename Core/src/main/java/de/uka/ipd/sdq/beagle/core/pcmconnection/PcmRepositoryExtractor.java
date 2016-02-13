@@ -26,7 +26,7 @@ import java.util.Set;
  * Extracting a given Pcm repository. Offering 2 methods:
  * {@link #getBlackboardForAllElements(RepositoryImpl)} and
  * {@link #getBlackboardForIds(RepositoryImpl, Collection)}
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositoryExtractor {
@@ -68,7 +68,7 @@ public class PcmRepositoryExtractor {
 	/**
 	 * Constructor needs EvaluableExpressionFitnessFunction.
 	 *
-	 * @param fitnessFunction The fitnessFucntion to initialize the blackboard with
+	 * @param fitnessFunction The fitnessFucntion to initialise the blackboard with
 	 */
 	public PcmRepositoryExtractor(final EvaluableExpressionFitnessFunction fitnessFunction) {
 		this.fitnessFunction = fitnessFunction;
@@ -96,7 +96,7 @@ public class PcmRepositoryExtractor {
 
 		final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
 			this.externalCallParameterSet, this.fitnessFunction);
-		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
+		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 		return blackboard;
 	}
 
@@ -145,7 +145,7 @@ public class PcmRepositoryExtractor {
 
 			final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
 				this.externalCallParameterSet, this.fitnessFunction);
-			blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
+			blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 			return blackboard;
 		}
 
@@ -179,12 +179,12 @@ public class PcmRepositoryExtractor {
 		// Add the sets to the blackboard and return
 		final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
 			this.externalCallParameterSet, this.fitnessFunction);
-		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
+		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 		return blackboard;
 	}
 
 	/**
-	 * This method takes the whole {@link PcmRepositoryBlackboardFactory#repository} and
+	 * This method takes the whole {@link PcmRepositoryBlackboardFactoryAdder#repository} and
 	 * extracts all needed content into the storing sets.
 	 *
 	 * @param repositoryToScan The repository to read from.

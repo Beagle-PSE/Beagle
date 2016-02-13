@@ -1,37 +1,120 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+
+import org.palladiosimulator.pcm.usagemodel.Branch;
+
+import java.util.Set;
 
 /**
- * Creates a new {@link Blackboard} with the information from an
- * {@link BeagleConfiguration}.
+ * Creates a new {@link Blackboard}. Therefore you can add information for the blackboard
+ * with the methods of this class and get a Blackboard containing all these information
+ * with {@link #getBlackboard()}
  *
  * @author Roman Langrehr
  */
 public class BlackboardFactory {
 
 	/**
-	 * The information about the project.
+	 * The {@linkplain ResourceDemandingInternalAction ResourceDemandingInternalActions}
+	 * for the {@link Blackboard}.
 	 */
-	private BeagleConfiguration beagleConfiguration;
+	private Set<ResourceDemandingInternalAction> rdias;
 
 	/**
-	 * Creates a new BlackboardFactory.
-	 *
-	 * @param beagleConfiguration The information about the project.
+	 * The {@linkplain Branch Branches} for the {@link Blackboard}.
 	 */
-	public BlackboardFactory(final BeagleConfiguration beagleConfiguration) {
-		this.beagleConfiguration = beagleConfiguration;
+	private Set<SeffBranch> branches;
+
+	/**
+	 * The {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}.
+	 */
+	private Set<SeffLoop> loops;
+
+	/**
+	 * The {@linkplain ExternalCallParameter ExternalCallParameter} for the
+	 * {@link Blackboard}.
+	 */
+	private Set<ExternalCallParameter> externalCalls;
+
+	/**
+	 * The {@link EvaluableExpressionFitnessFunction} for the {@link Blackboard}.
+	 */
+	private EvaluableExpressionFitnessFunction fitnessFunction;
+
+	/**
+	 * The {@link ProjectInformation} for the {@link Blackboard}.
+	 */
+	private ProjectInformation projectInformation;
+
+	/**
+	 * A blackboard with all information provided via this class.
+	 *
+	 * @return A new {@link Blackboard} instance with all information provided via this
+	 *         class.
+	 */
+	public Blackboard createBlackboard() {
+		return new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls, this.fitnessFunction,
+			this.projectInformation);
 	}
 
 	/**
-	 * Creates a new {@link Blackboard} from the {@link BeagleConfiguration} given in the
-	 * constructor.
+	 * Sets the {@linkplain ResourceDemandingInternalAction
+	 * ResourceDemandingInternalActions} for the {@link Blackboard}.
 	 *
-	 * @return A new {@link Blackboard} instance.
+	 * @param rdias the {@linkplain ResourceDemandingInternalAction
+	 *            ResourceDemandingInternalActions} for the {@link Blackboard}
 	 */
-	public Blackboard createBlackboard() {
-		return new Blackboard(rdias, branches, loops, externalCalls, fitnessFunction,
-			new ProjectInformation(this.beagleConfiguration.getTimeout(), this.beagleConfiguration.getFileProvider()));
+	public void setRdias(final Set<ResourceDemandingInternalAction> rdias) {
+		this.rdias = rdias;
+	}
+
+	/**
+	 * Sets the {@linkplain Branch Branches} for the {@link Blackboard}.
+	 *
+	 * @param branches the {@linkplain Branch Branches} for the {@link Blackboard}
+	 */
+	public void setBranches(final Set<SeffBranch> branches) {
+		this.branches = branches;
+	}
+
+	/**
+	 * Sets the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}.
+	 *
+	 * @param loops the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}
+	 */
+	public void setLoops(final Set<SeffLoop> loops) {
+		this.loops = loops;
+	}
+
+	/**
+	 * The {@linkplain ExternalCallParameter ExternalCallParameter} for the
+	 * {@link Blackboard}.
+	 *
+	 * @param externalCalls the {@linkplain ExternalCallParameter ExternalCallParameter}
+	 *            for the {@link Blackboard}
+	 */
+	public void setExternalCalls(final Set<ExternalCallParameter> externalCalls) {
+		this.externalCalls = externalCalls;
+	}
+
+	/**
+	 * The {@link EvaluableExpressionFitnessFunction} for the {@link Blackboard}.
+	 *
+	 * @param fitnessFunction The {@link EvaluableExpressionFitnessFunction} for the
+	 *            {@link Blackboard}.
+	 */
+	public void setFitnessFunction(final EvaluableExpressionFitnessFunction fitnessFunction) {
+		this.fitnessFunction = fitnessFunction;
+	}
+
+	/**
+	 * Sets the {@link ProjectInformation} for the {@link Blackboard}.
+	 *
+	 * @param projectInformation the {@link ProjectInformation} for the {@link Blackboard}
+	 *            .
+	 */
+	public void setProjectInformation(final ProjectInformation projectInformation) {
+		this.projectInformation = projectInformation;
 	}
 }

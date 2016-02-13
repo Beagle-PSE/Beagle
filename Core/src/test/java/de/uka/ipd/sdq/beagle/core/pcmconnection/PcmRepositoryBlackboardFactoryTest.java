@@ -44,15 +44,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /**
- * Tests for {@link PcmRepositoryBlackboardFactory}.
+ * Tests for {@link PcmRepositoryBlackboardFactoryAdder}.
  *
  * @author Christoph Michelbach
  */
-@PrepareForTest(PcmRepositoryBlackboardFactory.class)
+@PrepareForTest(PcmRepositoryBlackboardFactoryAdder.class)
 public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
-	 * A factory which creates instances of {@link PcmRepositoryBlackboardFactory}.
+	 * A factory which creates instances of {@link PcmRepositoryBlackboardFactoryAdder}.
 	 */
 	private static PcmRepositoryBlackboardFactoryFactory pcmRepositoryBlackboardFactoryFactory =
 		new PcmRepositoryBlackboardFactoryFactory();
@@ -121,7 +121,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
 	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#PcmRepositoryBlackboardFactory(java.util.Set)
+	 * {@link PcmRepositoryBlackboardFactoryAdder#PcmRepositoryBlackboardFactory(java.util.Set)
 	 * and PcmRepositoryBlackboardFactory#PcmRepositoryBlackboardFactory(String)}. Asserts
 	 * that creation is possible and {@code null} or an empty string or otherwise
 	 * impossible path cannot be passed.
@@ -131,24 +131,24 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void pcmRepositoryBlackboardFactory() throws FileNotFoundException {
-		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null, this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder((String) null, this.fitnessFunction),
 			throwsException(NullPointerException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null, null),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder((String) null, null),
 			throwsException(NullPointerException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory("a", null), throwsException(NullPointerException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory((File) null, this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder("a", null), throwsException(NullPointerException.class));
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder((File) null, this.fitnessFunction),
 			throwsException(NullPointerException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory("", this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder("", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory(".", this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder(".", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory("..", this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder("..", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory("/", this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder("/", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory("/tmp", this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder("/tmp", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
-		assertThat(() -> new PcmRepositoryBlackboardFactory("\0", this.fitnessFunction),
+		assertThat(() -> new PcmRepositoryBlackboardFactoryAdder("\0", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
 
 		mockStatic(EmfHelper.class);
@@ -163,7 +163,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		};
 
 		for (final File impossibleRepositoryFile : impossibleRepositoryFiles) {
-			assertThat(() -> new PcmRepositoryBlackboardFactory(impossibleRepositoryFile, this.fitnessFunction),
+			assertThat(() -> new PcmRepositoryBlackboardFactoryAdder(impossibleRepositoryFile, this.fitnessFunction),
 				throwsException(IllegalArgumentException.class));
 		}
 
@@ -171,7 +171,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		// mock(PcmRepositoryBlackboardFactory.class);
 
 		assertThat(
-			new PcmRepositoryBlackboardFactory(
+			new PcmRepositoryBlackboardFactoryAdder(
 				new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository"),
 				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
 			is(equalToRegardingSeffElements(
@@ -180,11 +180,11 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
 	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForAllElements()}.
+	 * {@link PcmRepositoryBlackboardFactoryAdder#getBlackboardForAllElements()}.
 	 */
 	@Test
 	public void getBlackboardForAllElements() {
-		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
+		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
 		final Blackboard result = pcmRepositoryBlackboardFactory.getBlackboardForAllElements();
 		assertThat(result, is(notNullValue()));
@@ -196,7 +196,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
 	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.util.Collection)}.
+	 * {@link PcmRepositoryBlackboardFactoryAdder#getBlackboardForIds(java.util.Collection)}.
 	 */
 	// @formatter:off
 	@SuppressWarnings({
@@ -204,7 +204,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	// @formatter:on
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
-		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
+		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
 		final HashSet<String> collection = new HashSet<String>();
@@ -230,7 +230,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
 	 * Test method for
-	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])}.
+	 * {@link PcmRepositoryBlackboardFactoryAdder#getBlackboardForIds(java.lang.String[])}.
 	 *
 	 */
 	// @formatter:off
@@ -239,7 +239,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	// @formatter:on
 	@Test
 	public void getBlackboardForIdsStringArray() {
-		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
+		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
@@ -301,7 +301,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void appSensorRepositoryTest() {
-		final PcmRepositoryBlackboardFactory appSensorBlackboardFactory =
+		final PcmRepositoryBlackboardFactoryAdder appSensorBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
 		final Blackboard appSensorBlackboard = appSensorBlackboardFactory.getBlackboardForAllElements();
 	}
