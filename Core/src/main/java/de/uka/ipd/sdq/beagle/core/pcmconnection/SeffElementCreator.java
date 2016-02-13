@@ -1,12 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
-/**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- *
- * <p>COVERAGE:OFF
- */
-
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
@@ -21,13 +14,13 @@ import java.util.Set;
 /**
  * *****STUB! IMPLEMENTATION DEPENDS ON SOLUTION FOR SOURCECODEDECORATOR (SOMOX)!***** NOT
  * IN USAGE RIGHT NOW.
- * 
+ *
  * <p>As Beagle is going to make usage of the SourceCoreDecorator from Somox, this class
  * will replace the {@link PcmNameParser}. In contrast to the older class this one does
  * not depend on the EntityName of SEFF-Elements, but rather on an adapter or interface to
  * Somox' SourceCodeDecorator. Besides it contains the logic to create all MeasurableSeff
  * Elements out of a given ID.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class SeffElementCreator {
