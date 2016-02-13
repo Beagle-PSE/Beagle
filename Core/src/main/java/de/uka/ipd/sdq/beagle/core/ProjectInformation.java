@@ -3,10 +3,14 @@ package de.uka.ipd.sdq.beagle.core;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
+import org.apache.commons.lang3.Validate;
+
 import java.io.Serializable;
+import java.nio.charset.Charset;
 
 /**
- * Hold information about the project under analysis. Objects of this class are immutable.
+ * Holds information about the project under analysis. Objects of this class are
+ * immutable.
  *
  * @author Roman Langrehr
  */
@@ -21,17 +25,27 @@ public class ProjectInformation implements Serializable {
 	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
 	 * seconds]
 	 */
-	private int timeout;
+	private final int timeout;
 
 	/**
 	 * The provider of the source files to be analysed.
 	 */
-	private SourceCodeFileProvider fileProvider;
+	private final SourceCodeFileProvider fileProvider;
+
+	/**
+	 * The class path containing everything needed to compile the project.
+	 */
+	private final String buildPath;
+
+	/**
+	 * The charset used for all files in the project.
+	 */
+	private final Charset charset;
 
 	/**
 	 * Creates a new Project Information.
 	 *
-	 * @param timeout The timeout to be used
+	 * @param timeout The timeout to be used.
 	 *
 	 *            <table> <caption>timeout value description</caption>
 	 *
@@ -46,12 +60,40 @@ public class ProjectInformation implements Serializable {
 	 *            timeout in seconds</td>
 	 *
 	 *            </table>
-	 * @param fileProvider The provider of the source files to be analysed
+	 * @param fileProvider The provider of the source files to be analysed.
+	 * @param buildPath The class path containing everything needed to compile the
+	 *            project.
+	 * @param charset The charset used for all files in the project. May be {@code null},
+	 *            in which case {@link Charset#defaultCharset()} will be used.
 	 */
-	public ProjectInformation(final int timeout, final SourceCodeFileProvider fileProvider) {
-		super();
+	public ProjectInformation(final int timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
+		final Charset charset) {
+		Validate.notNull(fileProvider);
+		Validate.notNull(buildPath);
+
 		this.timeout = timeout;
 		this.fileProvider = fileProvider;
+		this.charset = charset == null ? Charset.defaultCharset() : charset;
+		this.buildPath = buildPath;
+	}
+
+	/**
+	 * Queries the project’s build path.
+	 *
+	 * @return The class path containing everything needed to compile the project. Will
+	 *         never be {@code null}.
+	 */
+	public String getBuildPath() {
+		return this.buildPath;
+	}
+
+	/**
+	 * Queries the project’s charset.
+	 *
+	 * @return The charset used for all files in the project. Will never be {@code null}.
+	 */
+	public Charset getCharset() {
+		return this.charset;
 	}
 
 	/**
