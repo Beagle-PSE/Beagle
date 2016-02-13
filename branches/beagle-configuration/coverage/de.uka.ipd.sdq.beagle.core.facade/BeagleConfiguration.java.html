@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BeagleConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.facade</a> &gt; <span class="el_source">BeagleConfiguration.java</span></div><h1>BeagleConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.facade;
+
+import org.apache.commons.lang3.Validate;
+import org.palladiosimulator.pcm.core.entity.Entity;
+
+import java.io.File;
+import java.util.List;
+
+/**
+ * Configures a whole execution of Beagle. Therefore contains all values needed to set up
+ * Beagle. The class defines meaningful default values for all its settings.
+ *
+ * &lt;p&gt;The configuration has two states: A &lt;em&gt;set up&lt;/em&gt; state, during which values may
+ * be modified and a &lt;em&gt;finalised&lt;/em&gt; state, in which the configuration is immutable and
+ * can only be used to obtain values. The transition from the &lt;em&gt;set up&lt;/em&gt; state to the
+ * &lt;em&gt;finalised&lt;/em&gt; state is done through {@link #finalise()}. The inverse transition is
+ * not possible. Trying to perform an action that is not allowed for the momentary state
+ * results in an {@link IllegalStateException} being thrown.
+ *
+ * @author Christoph Michelbach
+ * @author Joshua Gleitze
+ */
+<span class="nc" id="L23">public class BeagleConfiguration {</span>
+
+	/**
+	 * Numeric value for &quot;adaptive timeout&quot;.
+	 *
+	 * @see #getTimeout()
+	 */
+	public static final int ADAPTIVE_TIMEOUT = -2;
+
+	/**
+	 * Numeric value for &quot;no timeout&quot;.
+	 *
+	 * @see #getTimeout()
+	 */
+	public static final int NO_TIMEOUT = -1;
+
+	/**
+	 * The default setting for the {@linkplain #getTimeout() timeout}.
+	 */
+	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
+
+	/**
+	 * All elements to measure or {@code null} to indicate that everything in
+	 * {@code repositoryFile} should be analysed.
+	 */
+	private List&lt;Entity&gt; elements;
+
+	/**
+	 * The repository file.
+	 */
+	private File repositoryFile;
+
+	/**
+	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
+	 * seconds]
+	 */
+	private int timeout;
+
+	/**
+	 * The provider of the source files to be analysed.
+	 */
+	private SourceCodeFileProvider fileProvider;
+
+	/**
+	 * Whether this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state.
+	 */
+	private boolean finalised;
+
+	/**
+	 * Returns the elements to be measured or {@code null} to indicate that everything in
+	 * the {@linkplain #getRepositoryFile() repository file} should be analysed.
+	 *
+	 * @return The elements to be measured or {@code null} to indicate that everything in
+	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
+	 */
+	public List&lt;Entity&gt; getElements() {
+<span class="nc" id="L79">		return this.elements;</span>
+	}
+
+	/**
+	 * Sets the elements to be measured to {@code elements}. {@code null} indicates that
+	 * everything in the {@linkplain #getRepositoryFile() repository file} should be
+	 * analysed. This operation is only allowed in the &lt;em&gt;set up&lt;/em&gt; state.
+	 *
+	 *
+	 * @param elements The elements to be measured or {@code null} to indicate that
+	 *            everything in the {@linkplain #getRepositoryFile() repository file}
+	 *            should be analysed.
+	 * @throws IllegalStateException If this configuration is not in the &lt;em&gt;set up&lt;/em&gt;
+	 *             state.
+	 * @see #getElements()
+	 */
+	public void setElements(final List&lt;Entity&gt; elements) {
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
+<span class="nc" id="L98">		this.elements = elements;</span>
+<span class="nc" id="L99">	}</span>
+
+	/**
+	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
+	 * keep trying to find results while no perfect results were found.
+	 *
+	 * &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@link #ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will use a timeout that adapts to
+	 * the quality of the analysis’ findings in the past.&lt;/td&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@link #NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will be used&lt;/td&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed timeout in
+	 * seconds&lt;/td&gt;
+	 *
+	 * &lt;/table&gt;
+	 *
+	 * @return The timeout that will be used by Beagle.
+	 */
+	public int getTimeout() {
+<span class="nc" id="L120">		return this.timeout;</span>
+	}
+
+	/**
+	 * Sets the timeout to be used to {@code timeout}. The timeout describes the minimum
+	 * time Beagle shall keep trying to find results while no perfect results were found.
+	 * This operation is only allowed in the &lt;em&gt;set up&lt;/em&gt; state.
+	 *
+	 * &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@link #ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will use a timeout that adapts to
+	 * the quality of the analysis’ findings in the past.&lt;/td&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@link #NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will be used&lt;/td&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed timeout in
+	 * seconds&lt;/td&gt;
+	 *
+	 * &lt;/table&gt;
+	 *
+	 * @param timeout The timeout to be used by Beagle.
+	 * @throws IllegalStateException If this configuration is not in the &lt;em&gt;set up&lt;/em&gt;
+	 *             state.
+	 */
+	public void setTimeout(final int timeout) {
+<span class="nc bnc" id="L145" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
+<span class="nc" id="L147">		this.timeout = timeout;</span>
+<span class="nc" id="L148">	}</span>
+
+	/**
+	 * Returns the repository file that contains all elements that shall be analysed.
+	 *
+	 * @return The repository file Beagle will operate on.
+	 */
+	public File getRepositoryFile() {
+<span class="nc" id="L156">		return this.repositoryFile;</span>
+	}
+
+	/**
+	 * Sets the repository file containing the elements Beagle shall analyse. This
+	 * operation is only allowed in the &lt;em&gt;set up&lt;/em&gt; state.
+	 *
+	 *
+	 * @param repositoryFile The pcm repository file containing all elements Beagle shall
+	 *            analyse. Must not be {@code null}.
+	 * @throws IllegalStateException If this configuration is not in the &lt;em&gt;set up&lt;/em&gt;
+	 *             state.
+	 */
+	public void setRepositoryFile(final File repositoryFile) {
+<span class="nc bnc" id="L170" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
+<span class="nc" id="L172">		Validate.notNull(repositoryFile);</span>
+<span class="nc" id="L173">		this.repositoryFile = repositoryFile;</span>
+<span class="nc" id="L174">	}</span>
+
+	/**
+	 * Queries wether this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state.
+	 *
+	 * @return {@code true} if this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state,
+	 *         {@code false} if it’s in the &lt;em&gt;set up&lt;/em&gt; state.
+	 */
+	public boolean isFinal() {
+<span class="nc" id="L183">		return this.finalised;</span>
+	}
+
+	/**
+	 * Finalises this configuration, thus transitioning it into the &lt;em&gt;finalised&lt;/em&gt;
+	 * state. Calling this method when this configuration alread is in the
+	 * &lt;em&gt;finalised&lt;/em&gt; state has no effect.
+	 */
+	public void finalise() {
+<span class="nc" id="L192">		this.finalised = true;</span>
+<span class="nc" id="L193">	}</span>
+
+	/**
+	 * Queries the provider responsible to get the source files Beagle shall analyse.
+	 *
+	 *
+	 * @return The provider of source files.
+	 */
+	public SourceCodeFileProvider getFileProvider() {
+<span class="nc" id="L202">		return this.fileProvider;</span>
+	}
+
+	/**
+	 * Sets the provider responsible to get the source files Beagle shall analyse.
+	 *
+	 * @param fileProvider The provider of source files. Must not be {@code null}.
+	 *
+	 * @throws IllegalStateException If this configuration is not in the &lt;em&gt;set up&lt;/em&gt;
+	 *             state.
+	 */
+	public void setFileProvider(final SourceCodeFileProvider fileProvider) {
+<span class="nc bnc" id="L214" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
+<span class="nc" id="L216">		Validate.notNull(fileProvider);</span>
+<span class="nc" id="L217">		this.fileProvider = fileProvider;</span>
+<span class="nc" id="L218">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
