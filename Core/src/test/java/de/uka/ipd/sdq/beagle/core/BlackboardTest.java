@@ -12,6 +12,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
@@ -21,6 +22,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.MeasurementResultFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.ProjectInformationFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
@@ -85,6 +87,11 @@ public class BlackboardTest {
 	 * A Meausurement result factory to easily obtain new instances from.
 	 */
 	private static final MeasurementResultFactory MEAUSUREMENT_RESULT_FACTORY = new MeasurementResultFactory();
+
+	/**
+	 * A project information factory to easily obtain new instances from.
+	 */
+	private static final ProjectInformationFactory PROJECT_INFORMATION_FACTORY = new ProjectInformationFactory();
 
 	/**
 	 * Creates an empty SeffBranch-set.
@@ -159,7 +166,7 @@ public class BlackboardTest {
 		final Set<ExternalCallParameter> callParametersTemp = new HashSet<>(callParameters);
 
 		final Blackboard blackboardTemp =
-			new Blackboard(rdiasTemp, seffBranchesTemp, seffLoopsTemp, callParametersTemp, EVA_EX_FACTORY.getOne());
+			new Blackboard(rdiasTemp, seffBranchesTemp, seffLoopsTemp, callParametersTemp, EVA_EX_FACTORY.getOne(), PROJECT_INFORMATION_FACTORY.getOne());
 		rdiasTemp.remove(rdiasTemp.iterator().next());
 		seffBranchesTemp.remove(seffBranchesTemp.iterator().next());
 		seffLoopsTemp.remove(seffLoopsTemp.iterator().next());
@@ -1205,7 +1212,7 @@ public class BlackboardTest {
 		testBlackboard.writeFor(TestStorer.class, null);
 		assertThat("Written data must be returned", testBlackboard.readFor(TestStorer.class), is(nullValue()));
 	}
-	
+
 	/**
 	 * Tests {@link Blackboard#clearToBeMeasuredBranches()}.
 	 */
@@ -1216,7 +1223,7 @@ public class BlackboardTest {
 		final Set<SeffBranch> branches = testBlackboard.getSeffBranchesToBeMeasured();
 		assertThat(branches, is(empty()));
 	}
-	
+
 	/**
 	 * Tests {@link Blackboard#clearToBeMeasuredExternalCalls()}.
 	 */
@@ -1227,7 +1234,7 @@ public class BlackboardTest {
 		final Set<ExternalCallParameter> externalCalls = testBlackboard.getExternalCallParametersToBeMeasured();
 		assertThat(externalCalls, is(empty()));
 	}
-	
+
 	/**
 	 * Tests {@link Blackboard#clearToBeMeasuredLoops()}.
 	 */
@@ -1238,7 +1245,7 @@ public class BlackboardTest {
 		final Set<SeffLoop> loops = testBlackboard.getSeffLoopsToBeMeasured();
 		assertThat(loops, is(empty()));
 	}
-	
+
 	/**
 	 * Tests {@link Blackboard#clearToBeMeasuredRdias()}.
 	 */
