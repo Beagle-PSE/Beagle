@@ -4,6 +4,8 @@ Bundle-Name: Beagle Core
 Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.uka.ipd.sdq.beagle.core
+Export-Package: de.uka.ipd.sdq.beagle.core,
+ de.uka.ipd.sdq.beagle.core.measurement,
+ de.uka.ipd.sdq.beagle.core.measurement.order
 Require-Bundle: org.eclipse.debug.core,
  org.eclipse.core.runtime
