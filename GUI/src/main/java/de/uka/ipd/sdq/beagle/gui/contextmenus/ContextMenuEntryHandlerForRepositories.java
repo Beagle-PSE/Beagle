@@ -7,7 +7,6 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -37,9 +36,9 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 	public static final String SPECIAL_ID_COMPLETE_REPOSITORY = "Analyse complete repository";
 
 	/**
-	 * RegEx for the file extensions, where the context menu entry should be displayed.
+	 * File extension for repository files.
 	 */
-	private static final String FILE_EXTENSION_MATCHER = "repository|repository_diagram";
+	private static final String FILE_EXTENSION_REPOSITORY = "repository";
 
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
@@ -53,11 +52,12 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		// This cast is safe because this context menu entry is only shown on IFiles.
 		final IFile clickedFile = (IFile) firstElement;
 
-		final IPath clickedFilePath = clickedFile.getFullPath();
-		assert clickedFilePath.getFileExtension().matches(FILE_EXTENSION_MATCHER);
-
-		final File fileToAnalyse =
-			new File(clickedFile.getProject().getLocation().toFile().getParent() + clickedFilePath.toOSString());
+		final File fileToAnalyse;
+		if (clickedFile.getFileExtension().equals(FILE_EXTENSION_REPOSITORY)) {
+			fileToAnalyse = clickedFile.getRawLocation().toFile();
+		} else {
+			fileToAnalyse = null;
+		}
 
 		// create a new GUI and open it
 		final BeagleConfiguration beagleConfiguration =
