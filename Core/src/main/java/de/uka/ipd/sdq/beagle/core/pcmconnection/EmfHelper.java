@@ -34,7 +34,7 @@ import java.util.Iterator;
  * @author Anne Koziolek
  *
  */
-public final class EMFHelper {
+public final class EmfHelper {
 
 	/**
 	 * Filename length for which storing is tried again. If a filename has at least this
@@ -46,7 +46,7 @@ public final class EMFHelper {
 	/**
 	 * Private constructor because this is an utility class.
 	 */
-	private EMFHelper() {
+	private EmfHelper() {
 	}
 
 	/**
