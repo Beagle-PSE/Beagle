@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
-import static de.uka.ipd.sdq.beagle.core.testutil.BlackboardSeffElementsMatcher.equalRegardingSeffElements;
+import static de.uka.ipd.sdq.beagle.core.testutil.BlackboardSeffElementsMatcher.equalToRegardingSeffElements;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -154,10 +154,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(() -> new PcmRepositoryBlackboardFactory("\0", this.fitnessFunction),
 			throwsException(IllegalArgumentException.class));
 
-		mockStatic(EMFHelper.class);
+		mockStatic(EmfHelper.class);
 
 		final EObject mocked = mock(EObject.class);
-		given(EMFHelper.loadFromXMIFile(any(), any())).willReturn(mocked);
+		given(EmfHelper.loadFromXMIFile(any(), any())).willReturn(mocked);
 		assertThat(() -> pcmRepositoryBlackboardFactoryFactory.getValidInstance(),
 			throwsException(IllegalArgumentException.class));
 
@@ -212,8 +212,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final HashSet<String> collection = new HashSet<String>();
 		collection.add("");
 
-		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
-			new BlackboardFactory().getEmpty()), equalRegardingSeffElements());
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(collection),
+			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((Collection<String>) null),
 			throwsException(NullPointerException.class));
@@ -244,8 +244,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
 			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
 
-		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds(""), new BlackboardFactory().getEmpty()),
-			equalRegardingSeffElements());
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
+			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
 		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String[]) null),
 			throwsException(NullPointerException.class));
@@ -255,30 +255,28 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"), is(not(nullValue())));
 
-		assertThat(
-			new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-				pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g")),
-			equalRegardingSeffElements());
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(equalToRegardingSeffElements(
+				pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"))));
 
-		assertThat(
-			new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-				pcmRepositoryBlackboardFactory.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g")),
-			is(not(equalRegardingSeffElements())));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(not(equalToRegardingSeffElements(
+				pcmRepositoryBlackboardFactory.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g")))));
 
-		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-			pcmRepositoryBlackboardFactory.getBlackboardForAllElements()), is(not(equalRegardingSeffElements())));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactory.getBlackboardForAllElements()))));
 
-		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-			pcmRepositoryBlackboardFactory.getBlackboardForAllElements()), is(not(equalRegardingSeffElements())));
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactory.getBlackboardForAllElements()))));
 
-		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds("_SomeIdWhichDosntExistA"),
-			new BlackboardFactory().getEmpty()), equalRegardingSeffElements());
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_SomeIdWhichDosntExistA"),
+			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds("_TooShortId"),
-			new BlackboardFactory().getEmpty()), equalRegardingSeffElements());
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_TooShortId"),
+			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(new Pair(pcmRepositoryBlackboardFactory.getBlackboardForIds("IllegalId"),
-			new BlackboardFactory().getEmpty()), equalRegardingSeffElements());
+		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("IllegalId"),
+			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
 		final Blackboard blackboardForIds =
 			pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g", "_FaSO4LnqEeWVlphM5rov7g");

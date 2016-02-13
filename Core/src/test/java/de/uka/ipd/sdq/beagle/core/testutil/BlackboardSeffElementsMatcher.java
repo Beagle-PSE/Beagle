@@ -2,102 +2,92 @@ package de.uka.ipd.sdq.beagle.core.testutil;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 
-import org.eclipse.net4j.util.collection.Pair;
 import org.hamcrest.Description;
-import org.hamcrest.DiagnosingMatcher;
 import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeDiagnosingMatcher;
 
 /**
  * Matcher asserting that two {@link Blackboard}s only contain equal seff elements.
  *
  * @author Christoph Michelbach
+ * @author Joshua Gleitze
  */
-public final class BlackboardSeffElementsMatcher extends DiagnosingMatcher<Object> {
+public final class BlackboardSeffElementsMatcher extends TypeSafeDiagnosingMatcher<Blackboard> {
 
 	/**
-	 * Matcher asserting that two {@link Blackboard}s only contain equal seff elements.
+	 * The Blackboard to compare with.
+	 */
+	private final Blackboard comparisonBlackboard;
+
+	/**
+	 * Creates a matcher that will compare to {@code blackboard}.
 	 *
+	 * @param blackboard The blackboard to compare to.
+	 */
+	private BlackboardSeffElementsMatcher(final Blackboard blackboard) {
+		this.comparisonBlackboard = blackboard;
+	}
+
+	/**
+	 * Matcher asserting that the examined blackboard contains seff elements equal to the
+	 * ones on {@code blackboard}.
 	 *
+	 * @param blackboard The blackboard to compare the examined object to.
 	 * @return A matcher as described above.
 	 */
-	public static Matcher<Object> equalRegardingSeffElements() {
-		return new BlackboardSeffElementsMatcher();
+	public static Matcher<Blackboard> equalToRegardingSeffElements(final Blackboard blackboard) {
+		return new BlackboardSeffElementsMatcher(blackboard);
 	}
 
 	@Override
 	public void describeTo(final Description description) {
-		description.appendText("equals to follow standard contract");
+		description.appendText("a Blackboard having content equal to ").appendValue(this.comparisonBlackboard);
 	}
 
 	@Override
-	protected boolean matches(final Object blackboardsParam, final Description mismatchDescription) {
-		if (blackboardsParam.equals(null)) {
-			mismatchDescription.appendText("the object was equal to null");
+	protected boolean matchesSafely(final Blackboard examined, final Description mismatchDescription) {
+		if (!examined.getAllSeffBranches().equals(this.comparisonBlackboard.getAllSeffBranches())) {
+			mismatchDescription.appendText("it has different seff branches");
 			return false;
 		}
 
-		if (!(blackboardsParam instanceof Pair)) {
-			mismatchDescription.appendText("the object was not a pair");
+		if (!examined.getAllSeffLoops().equals(this.comparisonBlackboard.getAllSeffLoops())) {
+			mismatchDescription.appendText("it has different seff loops");
 			return false;
 		}
 
-		@SuppressWarnings("unchecked")
-		final Pair<Blackboard, Blackboard> blackboards = (Pair<Blackboard, Blackboard>) blackboardsParam;
-
-		if (!(blackboards.getElement1() instanceof Blackboard)) {
-			mismatchDescription.appendText("object 1 was not a blackboard");
+		if (!examined.getAllRdias().equals(this.comparisonBlackboard.getAllRdias())) {
+			mismatchDescription.appendText("it has different rdias");
 			return false;
 		}
 
-		if (!(blackboards.getElement2() instanceof Blackboard)) {
-			mismatchDescription.appendText("object 2 was not a blackboard");
+		if (!examined.getAllExternalCallParameters().equals(this.comparisonBlackboard.getAllExternalCallParameters())) {
+			mismatchDescription.appendText("it has different external call parameters");
 			return false;
 		}
 
-		final Blackboard blackboard1 = (Blackboard) blackboards.getElement1();
-		final Blackboard blackboard2 = (Blackboard) blackboards.getElement2();
-
-		if (!blackboard1.getAllSeffBranches().equals(blackboard2.getAllSeffBranches())) {
-			mismatchDescription.appendText("blackboards are not equal");
+		if (!examined.getSeffBranchesToBeMeasured().equals(this.comparisonBlackboard.getSeffBranchesToBeMeasured())) {
+			mismatchDescription.appendText("it has different seff branches to be measured");
 			return false;
 		}
 
-		if (!blackboard1.getAllSeffLoops().equals(blackboard2.getAllSeffLoops())) {
-			mismatchDescription.appendText("blackboards are not equal");
+		if (!examined.getSeffLoopsToBeMeasured().equals(this.comparisonBlackboard.getSeffLoopsToBeMeasured())) {
+			mismatchDescription.appendText("it has different seff loops to be measured");
 			return false;
 		}
 
-		if (!blackboard1.getAllRdias().equals(blackboard2.getAllRdias())) {
-			mismatchDescription.appendText("blackboards are not equal");
+		if (!examined.getRdiasToBeMeasured().equals(this.comparisonBlackboard.getRdiasToBeMeasured())) {
+			mismatchDescription.appendText("it has different rdias to be measured");
 			return false;
 		}
 
-		if (!blackboard1.getAllExternalCallParameters().equals(blackboard2.getAllExternalCallParameters())) {
-			mismatchDescription.appendText("blackboards are not equal");
-			return false;
-		}
-
-		if (!blackboard1.getSeffBranchesToBeMeasured().equals(blackboard2.getSeffBranchesToBeMeasured())) {
-			mismatchDescription.appendText("blackboards are not equal");
-			return false;
-		}
-
-		if (!blackboard1.getSeffLoopsToBeMeasured().equals(blackboard2.getSeffLoopsToBeMeasured())) {
-			mismatchDescription.appendText("blackboards are not equal");
-			return false;
-		}
-
-		if (!blackboard1.getRdiasToBeMeasured().equals(blackboard2.getRdiasToBeMeasured())) {
-			mismatchDescription.appendText("blackboards are not equal");
-			return false;
-		}
-
-		if (!blackboard1.getExternalCallParametersToBeMeasured()
-			.equals(blackboard2.getExternalCallParametersToBeMeasured())) {
-			mismatchDescription.appendText("blackboards are not equal");
+		if (!examined.getExternalCallParametersToBeMeasured()
+			.equals(this.comparisonBlackboard.getExternalCallParametersToBeMeasured())) {
+			mismatchDescription.appendText("it has different external call parameters to be measured");
 			return false;
 		}
 
 		return true;
 	}
+
 }
