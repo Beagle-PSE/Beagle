@@ -8,9 +8,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.e4.core.di,
  org.palladiosimulator.pcm,
- org.eclipse.jdt.core
+ org.eclipse.jdt.core,
+ de.uka.ipd.sdq.pcm.gmf.repository,
 Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.analysis,
  de.uka.ipd.sdq.beagle.core.evaluableexpressions,
  de.uka.ipd.sdq.beagle.core.measurement,
- de.uka.ipd.sdq.beagle.core.measurement.order
+ de.uka.ipd.sdq.beagle.core.measurement.order,
+ de.uka.ipd.sdq.beagle.core.facade

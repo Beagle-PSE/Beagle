@@ -1,20 +1,23 @@
-package de.uka.ipd.sdq.beagle.gui;
+package de.uka.ipd.sdq.beagle.core;
+
+import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
  * pause, continue, and abort an Analysis.
- * 
+ *
  * @author Christoph Michelbach
  */
 public class BeagleController {
 
 	/**
-	 * Constructs a new {@code BeagleController} with the given {@link UserConfiguration}.
+	 * Constructs a new {@code BeagleController} with the given
+	 * {@link BeagleConfiguration}.
 	 *
-	 * @param userConfiguration The {@link UserConfiguration} this BeagleController has
-	 *            permanently. It cannot be changed.
+	 * @param beagleConfiguration The {@link BeagleConfiguration} this BeagleController
+	 *            has permanently. It cannot be changed.
 	 */
-	public BeagleController(final UserConfiguration userConfiguration) {
+	public BeagleController(final BeagleConfiguration beagleConfiguration) {
 
 	}
 
