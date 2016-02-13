@@ -20,19 +20,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Queue;
-import java.util.Stack;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import java.util.stream.Stream;
 
 /**
  * Instruments code sections using Eclipse’s JDT Abstract Syntax Tree. The instrumentor is
@@ -150,10 +145,10 @@ public class EclipseAstInstrumentor {
 		Validate.noNullElements(codeSections);
 
 		for (final CodeSection codeSection : codeSections) {
-			this.forCharacterPosition(codeSection.getStartFile(), codeSection.getStartSectionIndex()).beforeStatement
-				.add((factory) -> instrumentationStrategy.instrumentStart(codeSection, factory));
-			this.forCharacterPosition(codeSection.getEndFile(), codeSection.getEndSectionIndex()).afterStatement
-				.push((factory) -> instrumentationStrategy.instrumentEnd(codeSection, factory));
+			this.forCharacterPosition(codeSection.getStartFile(), codeSection.getStartSectionIndex())
+				.addBeforeStatementFunction((factory) -> instrumentationStrategy.instrumentStart(codeSection, factory));
+			this.forCharacterPosition(codeSection.getEndFile(), codeSection.getEndSectionIndex())
+				.addAfterStatementFunction((factory) -> instrumentationStrategy.instrumentEnd(codeSection, factory));
 		}
 		return this;
 	}
@@ -277,6 +272,12 @@ public class EclipseAstInstrumentor {
 		}
 	}
 
+	/*
+	 * This method contains the class’ core logic. The author thinks that splitting it
+	 * would lead to more confusion and less understanding of the algorithm. Therefore, he
+	 * thinks the high cyclomatic complexity of 12 is acceptable. But he’ll gladly accept
+	 * suggestions for simplification.
+	 */
 	/**
 	 * The core instrumentation method. Reads in one file, instruments it, and writes the
 	 * result back.
@@ -289,6 +290,7 @@ public class EclipseAstInstrumentor {
 	 * @throws InstrumentationImpossibleException If correct instrumentation is logically
 	 *             impossible.
 	 */
+	// CHECKSTYLE:IGNORE CyclomaticComplexity
 	private Void instrumentFile(final File sourceCodeFile,
 		final Map<Integer, InstrumentationInformation> statementInformation)
 			throws IOException, InstrumentationImpossibleException {
@@ -327,6 +329,7 @@ public class EclipseAstInstrumentor {
 
 		// whether we touched the AST at all
 		boolean modified = false;
+		final int noMore = -1;
 		int momentaryCharIndex = available.next();
 		int lowerBound = 0;
 		int upperBound = 0;
@@ -347,19 +350,35 @@ public class EclipseAstInstrumentor {
 			upperBound = (momentaryCharIndex + nextCharIndex) / 2;
 
 			InstrumentationInformation instructions = null;
-			while (lookingFor != -1 && lookingFor >= lowerBound && lookingFor < upperBound) {
-				instructions = this.merge(instructions, statementInformation.get(lookingFor));
-				lookingFor = toFind.hasNext() ? toFind.next() : -1;
+
+			// see if the next instrumentation we’re looking for belongs to the node we’re
+			// looking at. If yes, see if there are others.
+			while (lookingFor != noMore && lookingFor >= lowerBound && lookingFor < upperBound) {
+				instructions = InstrumentationInformation.merge(instructions, statementInformation.get(lookingFor));
+				lookingFor = toFind.hasNext() ? toFind.next() : noMore;
 			}
 			if (instructions != null) {
+				// we have something to instrument for the node we’re looking at. So let’s
+				// insert!
 				final ASTNode astNodeToInstrument = astStatements.get(momentaryCharIndex);
 				modified = true;
-				this.doInsertion(astNodeToInstrument, instructions);
+
+				final AstStatementInserter inserter = new AstStatementInserter(astNodeToInstrument);
+				final AST nodeFactory = astNodeToInstrument.getAST();
+
+				if (!inserter.setUp()) {
+					throw new InstrumentationImpossibleException(
+						"The following code is to be instrumented, but is not within code that statements could be added to: %s",
+						astNodeToInstrument);
+				}
+
+				instructions.getBeforeStatements(nodeFactory).forEachOrdered(inserter::insertBefore);
+				instructions.getAfterStatements(nodeFactory).forEachOrdered(inserter::insertAfter);
 			}
 
 			lowerBound = upperBound;
 			momentaryCharIndex = nextCharIndex;
-		} while (available.hasNext());
+		} while (available.hasNext() && lookingFor != noMore);
 
 		if (modified) {
 			final String fullyQualifedTypeName = astIO.getFullyQualifiedName();
@@ -368,44 +387,6 @@ public class EclipseAstInstrumentor {
 		}
 
 		return null;
-	}
-
-	/**
-	 * Handles the insertion. When being called, everything is preparde and
-	 * {@code toInstrument} can actually be instrumented according to the provided
-	 * {@code instructions}.
-	 *
-	 * @param astNodeToInstrument The node that is to be instrumented.
-	 * @param instructions Information on how to instrument {@code toInstrument}.
-	 * @throws InstrumentationImpossibleException If no point for insertion is found.
-	 */
-	private void doInsertion(final ASTNode astNodeToInstrument, final InstrumentationInformation instructions)
-		throws InstrumentationImpossibleException {
-		final AstStatementInserter inserter = new AstStatementInserter(astNodeToInstrument);
-		final AST nodeFactory = astNodeToInstrument.getAST();
-
-		// get the statements that should be inserted
-		final Stream<Statement> insertBefore = instructions.beforeStatement.stream()
-			.map((statementSupplier) -> statementSupplier.apply(nodeFactory))
-			.filter((statement) -> statement != null);
-		final Stream<Statement> insertAfter = instructions.afterStatement.stream()
-			.map((statementSupplier) -> statementSupplier.apply(nodeFactory))
-			.filter((statement) -> statement != null);
-
-		boolean instrumentable = true;
-
-		for (final Iterator<Statement> toInsertBefore = insertBefore.iterator(); toInsertBefore.hasNext();) {
-			instrumentable = instrumentable && inserter.insertBefore(toInsertBefore.next());
-		}
-		for (final Iterator<Statement> toInsertAfter = insertAfter.iterator(); toInsertAfter.hasNext();) {
-			instrumentable = instrumentable && inserter.insertAfter(toInsertAfter.next());
-		}
-
-		if (!instrumentable) {
-			throw new InstrumentationImpossibleException(
-				"The following code is to be instrumented, but is not within code that statements could be added to: %s",
-				astNodeToInstrument);
-		}
 	}
 
 	/**
@@ -442,31 +423,6 @@ public class EclipseAstInstrumentor {
 	private static String toFailureString(final Throwable exception) {
 		final String message = exception.getMessage() != null ? exception.getMessage() : "No message provided.";
 		return String.format("%s (%s)", message, exception.getClass().getSimpleName());
-	}
-
-	/**
-	 * Combines two instances of instrumentation information into one. This process means
-	 * that both information instances apply to the same node. Merging is done in a way
-	 * that the instructions of {@code first} will be at the start of the before list / at
-	 * the end of the after stack and {@code last} will be at the other end, respectively.
-	 *
-	 * @param first The information instance whose instructions come first. May be
-	 *            {@code null}.
-	 * @param second The information instance whose instructions come last. May not be
-	 *            {@code null}.
-	 * @return A new information instance that merges {@code first} and {@code last}.
-	 */
-	private InstrumentationInformation merge(final InstrumentationInformation first,
-		final InstrumentationInformation second) {
-		if (first == null) {
-			return second;
-		}
-		final InstrumentationInformation result = new InstrumentationInformation();
-		result.beforeStatement.addAll(first.beforeStatement);
-		result.beforeStatement.addAll(second.beforeStatement);
-		result.afterStatement.addAll(first.afterStatement);
-		result.afterStatement.addAll(second.afterStatement);
-		return result;
 	}
 
 	/**
@@ -519,50 +475,5 @@ public class EclipseAstInstrumentor {
 		 *         exist. Will never be {@code null}.
 		 */
 		File getFileFor(final String fullyQualifiedName);
-	}
-
-	/**
-	 * Data class for the instrumentation instruction suppliers.
-	 *
-	 * @author Joshua Gleitze
-	 */
-	private class InstrumentationInformation {
-
-		/**
-		 * Suppliers for the nodes to be inserted before an instrumented code section. The
-		 * nodes shall be inserted in the order they are in the list.
-		 */
-		private final Queue<Function<AST, Statement>> beforeStatement = new LinkedList<>();
-
-		/**
-		 * Suppliers for the nodes to be inserted after an instrumented code section. The
-		 * nodes shall be inserted in the order they are on the stack.
-		 */
-		private final Stack<Function<AST, Statement>> afterStatement = new Stack<>();
-	}
-
-	/**
-	 * Thrown if instrumentation is not logically possible.
-	 *
-	 * @author Joshua Gleitze
-	 */
-	private final class InstrumentationImpossibleException extends Exception {
-
-		/**
-		 * Serialisation version UID, see {@link java.io.Serializable}.
-		 */
-		private static final long serialVersionUID = -2984834811894116037L;
-
-		/**
-		 * Creates a InstrumentationImpossibleException.
-		 *
-		 * @param message A message desribing why instrumentation was not possible. Will
-		 *            evaluated through {@link String#format(String, Object...)}.
-		 * @param values The values to pass to {@link String#format(String, Object...)}.
-		 */
-		private InstrumentationImpossibleException(final String message, final Object... values) {
-			super(String.format(message, values));
-		}
-
 	}
 }

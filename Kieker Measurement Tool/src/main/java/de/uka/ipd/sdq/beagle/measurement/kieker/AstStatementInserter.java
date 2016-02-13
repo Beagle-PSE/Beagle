@@ -16,6 +16,12 @@ import java.util.function.BiConsumer;
  * directly after or directly before the node that contains node this inserter was created
  * for.
  *
+ * <p>The inserter needs to be set up. Setting up determines all information required to
+ * insert. Trying to insert before setting up or if setting up did not succeed results in
+ * an {@link IllegalStateException} being thrown. No modifications may be made to the AST
+ * through any other party between setting up and insertions (not even by another
+ * inserter).
+ *
  * @author Joshua Gleitze
  */
 class AstStatementInserter {
@@ -43,17 +49,27 @@ class AstStatementInserter {
 	}
 
 	/**
+	 * Sets up this inserter. Setting up is required before statements can be inserted
+	 * through it.
+	 *
+	 * @return {@code true} if setting up succeeded. {@code false} if there is no valid
+	 *         insertion point above this inserter’s marker node.
+	 */
+	boolean setUp() {
+		new InsertionPositionFinder().find();
+		return this.insertionStrategy.isPresent();
+	}
+
+	/**
 	 * Inserts the provided {@code statement} before the node this inserter was created
 	 * for. Tries to put the {@code statement} as close to the node as possible.
 	 *
 	 * @param statement The statement to insert before the insertion node.
-	 * @return {@code true} if {@code statement} was inserted. {@code false} if there is
-	 *         no point in the AST where {@code statement} could validly be inserted.
 	 */
-	boolean insertBefore(final Statement statement) {
+	void insertBefore(final Statement statement) {
 		Validate.notNull(statement);
 		// insert at the marker’s position.
-		return this.insert(statement, 0);
+		this.insert(statement, 0);
 	}
 
 	/**
@@ -62,13 +78,11 @@ class AstStatementInserter {
 	 * as possible.
 	 *
 	 * @param statement The statement to insert after the insertion node.
-	 * @return {@code true} if {@code statement} was inserted. {@code false} if there is
-	 *         no point in the AST where {@code statement} could validly be inserted.
 	 */
-	boolean insertAfter(final Statement statement) {
+	void insertAfter(final Statement statement) {
 		Validate.notNull(statement);
 		// insert 1 after the marker’s position.
-		return this.insert(statement, 1);
+		this.insert(statement, 1);
 	}
 
 	/**
@@ -77,18 +91,13 @@ class AstStatementInserter {
 	 *
 	 * @param statement The statement to insert.
 	 * @param offset how far off to insert (0 for directly before, 1 for directly after).
-	 * @return {@code true} if {@code statement} was inserted. {@code false} if there is
-	 *         no point in the AST where {@code statement} could validly be inserted.
 	 */
-	private boolean insert(final Statement statement, final int offset) {
-		if (this.insertionStrategy == null) {
-			new InsertionPositionFinder().find();
-		}
-		if (this.insertionStrategy.isPresent()) {
-			this.insertionStrategy.get().accept(statement, offset);
-			return true;
-		}
-		return false;
+	private void insert(final Statement statement, final int offset) {
+		Validate.validState(this.insertionStrategy != null,
+			"Insertion is only possible after the inserter has been set up.");
+		Validate.validState(this.insertionStrategy.isPresent(),
+			"Insertion is only possible if setting up the inserter succeeded.");
+		this.insertionStrategy.get().accept(statement, offset);
 	}
 
 	/**
