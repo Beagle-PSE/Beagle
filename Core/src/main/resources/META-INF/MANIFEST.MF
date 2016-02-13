@@ -9,3 +9,5 @@ Require-Bundle: org.apache.commons.lang3,
  org.eclipse.emf.ecore,
  org.palladiosimulator.pcm,
  org.eclipse.emf.cdo
+Export-Package: de.uka.ipd.sdq.beagle.core,
+ de.uka.ipd.sdq.beagle.core.pcmconnection

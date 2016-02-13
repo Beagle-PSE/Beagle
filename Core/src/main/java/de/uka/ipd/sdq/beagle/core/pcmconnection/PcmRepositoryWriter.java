@@ -9,6 +9,7 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -16,15 +17,18 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
+import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
 import org.palladiosimulator.pcm.seff.impl.BranchActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ExternalCallActionImpl;
 import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
+import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 
 import java.io.File;
 import java.util.HashMap;
@@ -225,7 +229,8 @@ public class PcmRepositoryWriter {
 				} else if (rdiaIdsToEvaEx.containsKey(contentId)) {
 					if (shouldBeInternalAction(contentIdentifier)) {
 						InternalActionImpl internalAction = (InternalActionImpl) contentIdentifier;
-						this.annotateEvaExFor(internalAction, rdiaIdsToEvaEx.remove(contentId));
+						//TODO
+						this.annotateEvaExFor(internalAction, rdiaIdsToEvaEx.remove(contentId), ResourceDemandType.RESOURCE_TYPE_CPU_NS);
 
 					}
 				} else if (exParamIdsToEvaEx.containsKey(contentId)) {
@@ -299,8 +304,13 @@ public class PcmRepositoryWriter {
 
 	}
 
-	private void annotateEvaExFor(final InternalActionImpl internalAction, final EvaluableExpression evaEx) {
-
+	private void annotateEvaExFor(final InternalActionImpl internalAction, final EvaluableExpression evaEx, ResourceDemandType type) {
+		EList<ParametricResourceDemand> parametricsResourceDemands = internalAction.getResourceDemand_Action();
+		for (ParametricResourceDemand parametricsResourceDemand: parametricsResourceDemands)  {
+			ProcessingResourceType resourceType = parametricsResourceDemand.getRequiredResource_ParametricResourceDemand();
+			
+			
+		}
 	}
 
 	private void annotateEvaExFor(final ExternalCallActionImpl externalAction, final EvaluableExpression evaEx) {
