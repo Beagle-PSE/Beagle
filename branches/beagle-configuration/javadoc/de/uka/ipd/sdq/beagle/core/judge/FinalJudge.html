@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":10,"i1":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -73,14 +73,14 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
@@ -91,22 +91,77 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">de.uka.ipd.sdq.beagle.core.judge</div>
-<h2 title="Interface FinalJudge" class="title">Interface FinalJudge</h2>
+<h2 title="Class FinalJudge" class="title">Class FinalJudge</h2>
 </div>
 <div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>de.uka.ipd.sdq.beagle.core.judge.FinalJudge</li>
+</ul>
+</li>
+</ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;de.uka.ipd.sdq.beagle.core.judge.FinalJudgeData&gt;</dd>
+</dl>
 <hr>
 <br>
-<pre>public interface <span class="typeNameLabel">FinalJudge</span></pre>
-<div class="block">TODO Document this type.</div>
+<pre>public class <span class="typeNameLabel">FinalJudge</span>
+extends java.lang.Object
+implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;de.uka.ipd.sdq.beagle.core.judge.FinalJudgeData&gt;</pre>
+<div class="block">Implements the break condition for evolution of evaluable expressions and decides which
+ proposed evaluable expression describes the measured result best and will be annotated
+ in the PCM.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static double</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#MAX_CONSIDERED_FITNESS_VALUE">MAX_CONSIDERED_FITNESS_VALUE</a></span></code>
+<div class="block">Fitness values bigger than this number will be set to this number and therefore
+ will not be considered as the values they truly are.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#FinalJudge--">FinalJudge</a></span>()</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -114,16 +169,31 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#judge-de.uka.ipd.sdq.beagle.core.Blackboard-">judge</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#init-de.uka.ipd.sdq.beagle.core.Blackboard-">init</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</code>
+<div class="block">Initialises the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> object.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#judge-de.uka.ipd.sdq.beagle.core.Blackboard-">judge</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</code>
+<div class="block">Implements the break condition for evolution of evaluable expressions.</div>
+</td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
 </li>
 </ul>
 </li>
@@ -132,19 +202,88 @@ var activeTableTab = "activeTableTab";
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="MAX_CONSIDERED_FITNESS_VALUE">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>MAX_CONSIDERED_FITNESS_VALUE</h4>
+<pre>public static final&nbsp;double MAX_CONSIDERED_FITNESS_VALUE</pre>
+<div class="block">Fitness values bigger than this number will be set to this number and therefore
+ will not be considered as the values they truly are. This includes infinity.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../../constant-values.html#de.uka.ipd.sdq.beagle.core.judge.FinalJudge.MAX_CONSIDERED_FITNESS_VALUE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor.detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="FinalJudge--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>FinalJudge</h4>
+<pre>public&nbsp;FinalJudge()</pre>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.detail">
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="init-de.uka.ipd.sdq.beagle.core.Blackboard-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>init</h4>
+<pre>public&nbsp;void&nbsp;init(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</pre>
+<div class="block">Initialises the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> object. Call this method before starting
+ evolution of evaluable expressions to start counting the total time the entire
+ evolution of evaluable expressions takes.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>blackboard</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> to store the data of this
+            <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> on. Must not be <code>null</code>.</dd>
+</dl>
+</li>
+</ul>
 <a name="judge-de.uka.ipd.sdq.beagle.core.Blackboard-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>judge</h4>
-<pre>void&nbsp;judge(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</pre>
+<pre>public&nbsp;boolean&nbsp;judge(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;blackboard)</pre>
+<div class="block">Implements the break condition for evolution of evaluable expressions. Decides
+ whether evolution will be continued or stopped depending on the fitness of the
+ fittest evaluable expression, the number of generations passed, the time passed,
+ and the relative improvement of a generation.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>blackboard</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> this <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> operates on. Must
+            not be <code>null</code>.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> to indicate that evolution of evaluable expressions will be
+         stopped; <code>false</code> otherwise.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -200,14 +339,14 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
