@@ -21,7 +21,7 @@ public class ShowMeasurementToolsHandler extends AbstractHandler {
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
 		final List<MeasurementTool> measurementTools =
-			new MeasurementToolContributionsHandler().getAvailableMeasurmentTools();
+			MeasurementToolContributionsHandler.getAvailableMeasurmentTools();
 		String measurementToolsAsString = "";
 		for (final MeasurementTool measurementTool : measurementTools) {
 			measurementToolsAsString += " - " + measurementTool.getClass().getPackage().getName() + "."

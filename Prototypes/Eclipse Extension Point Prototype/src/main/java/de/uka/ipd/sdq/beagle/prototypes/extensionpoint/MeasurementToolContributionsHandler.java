@@ -16,18 +16,24 @@ import java.util.List;
  *
  * @author Roman Langrehr
  */
-public class MeasurementToolContributionsHandler {
+public final class MeasurementToolContributionsHandler {
 
 	/**
 	 * The extension point id for the measurement tools.
 	 */
-	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdg.beagle.measurementtool";
+	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_ID = "de.uka.ipd.sdq.beagle.measurementtool";
 
 	/**
 	 * The property name of the extension point for the measurement tools for the
 	 * {@link MeasurementTool} implementations.
 	 */
 	private static final String MEASUREMENT_TOOL_EXTENSION_POINT_CLASS_PROPERTY_NAME = "MeasurementToolClass";
+
+	/**
+	 * Hide constructor, as this is a helper class.
+	 */
+	private MeasurementToolContributionsHandler() {
+	}
 
 	/**
 	 * Scans the measurement tool extension point for available measurement tools.
@@ -38,14 +44,8 @@ public class MeasurementToolContributionsHandler {
 	 *             constructor or if an {@code MeasurmentToolClass} provided via the
 	 *             extension point was not implementing {@link MeasurementTool}.
 	 */
-	public List<MeasurementTool> getAvailableMeasurmentTools() {
+	public static List<MeasurementTool> getAvailableMeasurmentTools() {
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
-		// final IExtensionPoint point =
-		// registry.getExtensionPoint(MEASUREMT_TOOL_EXTENSION_POINT_ID);
-		// if (point == null) {
-		// return null;
-		// }
-		// final IExtension[] extensions = point.getExtensions();
 		final List<MeasurementTool> measurementTools = new ArrayList<>();
 		final IConfigurationElement[] config =
 			registry.getConfigurationElementsFor(MEASUREMENT_TOOL_EXTENSION_POINT_ID);
