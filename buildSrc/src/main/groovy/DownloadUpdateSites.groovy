@@ -58,11 +58,18 @@ public class DownloadUpdateSites implements Plugin<Project> {
     def tellWuff() {
     	this.sites.each { updateSite ->
     		String destinationDir = updateSite.destinationFolder.absolutePath.replace('\\', '/')
-			project.wuff {
-				eclipseVersion(selectedEclipseVersion) {
-					sources {
-						source "file://$destinationDir"
-					}
+    		addToWuff("file://$destinationDir")
+		}
+	}
+	
+	/**
+	 * Adds an url to wuff’s sources
+	 */
+	def addToWuff(String url) {
+		project.wuff {
+			eclipseVersion(selectedEclipseVersion) {
+				sources {
+					source url
 				}
 			}
 		}
@@ -144,5 +151,13 @@ public class UpdateSitesConfigurationExtension {
 	def from(String url) {
 		pluginInstance.add url
 	}
+	
+	/**
+	 * Convenience method to add a zip to wuff
+	 */
+	def zip(String url) {
+		pluginInstance.addToWuff url
+	}
+	
 }
 	

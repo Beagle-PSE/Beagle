@@ -4,9 +4,8 @@ Bundle-Name: Beagle Core
 Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: org.apache.commons.lang3,
- org.eclipse.emf.common,
+Require-Bundle: org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.palladiosimulator.pcm,
- org.eclipse.emf.cdo
-Import-Package: org.eclipse.emf.codegen.ecore.genmodel.impl
+ org.eclipse.emf.cdo,
+ org.eclipse.ocl.ecore
