@@ -14,6 +14,45 @@ package de.uka.ipd.sdq.beagle.core.failurehandling;
  * no provider is configured, a {@link ExceptionThrowingFailureHandler} will be returned
  * by {@link #getHandler}.
  *
+ * <p>Given that the class has a failure handler defined in the constant
+ * {@code FAILURE_HANDLER}, these are some usage examples:
+ *
+ * <pre>
+ * <code>
+ * public ReturnType myMethod(ParameterType1 param1, ParameterType2 param2) {
+ * 	// code
+ * 	try {
+ * 		// code that may fail
+ * 	} catch (MyExceptionType exception) {
+ * 		final FailureReport&lt;ReturnTyp&gt; failure = new FailureReport&lt;&gt;()
+ * 			.message("doing something with %s and %s failed", param1, param2)
+ * 			.cause(exception)
+ * 			.recoverable()
+ * 			.retryWith(() -> myMethod(param1, param2));
+ * 		return FAILURE_HANDLER.handle(failure);
+ * 	}
+ * 	// more code
+ * }
+ * </code>
+ * </pre>
+ * 
+ * <pre>
+ * <code>
+ * public ReturnType myMethod(ParameterType1 param1, ParameterType2 param2) {
+ * 	// code
+ * 	if (failed) {
+ * 		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;&gt;()
+ * 			.message("doing something with %s and %s failed", param1, param2)
+ * 			.details("We tried this and that, but doing so was not possible")
+ * 			.continueWith(this::otherMethod);
+ * 		FAILURE_HANDLER.handle(failure);
+ * 		return null;
+ * 	}
+ * 	// more code
+ * }
+ * </code>
+ * </pre>
+ *
  * @author Joshua Gleitze
  */
 public abstract class FailureHandler {
