@@ -1,11 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
-/*
- * This class is tested, but it has "only" 97.7% code coverage, because line 228 can't be
- * tested cause of an missing implementation in MeasurementEventParser.
- *
- * COVERAGE:OFF
- */
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
