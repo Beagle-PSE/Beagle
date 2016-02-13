@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AnalysisController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">AnalysisController.java</span></div><h1>AnalysisController.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
+import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
+import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
+import de.uka.ipd.sdq.beagle.core.judge.FinalJudge;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementController;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementControllerBlackboardView;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+import de.uka.ipd.sdq.beagle.core.measurement.ReadOnlyMeasurementControllerBlackboardView;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
+/**
+ * Conducts a complete analysis of elements on a blackboard. Controls the
+ * {@link MeasurementController}, {@link ProposedExpressionAnalyser ResultAnalysers} and
+ * the {@link FinalJudge} to measure and analyse parametric dependencies.
+ *
+ * &lt;h3&gt;The Analysis&lt;/h3&gt; During the analysis, the controller will ask participants whether
+ * they can contribute (except for the {@linkplain FinalJudge}, which must always be able
+ * to judge). The participants may only make these assumptions of the control flow:
+ *
+ * &lt;ul&gt;
+ *
+ * &lt;li&gt;There is always only the {@link MeasurementController}, only the {@link FinalJudge}
+ * or only one {@link ProposedExpressionAnalyser} (or none of the previous) running. They
+ * may use parallelisation as they wish but are self-responsible for synchronisation.
+ *
+ * &lt;li&gt;A {@link ProposedExpressionAnalyser} will only be called if its
+ * {@link ProposedExpressionAnalyser#canContribute} method returns {@code true}. The
+ * {@link MeasurementController} will only be called if its
+ * {@link MeasurementController#canMeasure canMeasure} method returns {@code true}.
+ *
+ * &lt;li&gt;When picking the next participant, the {@link MeasurementController} will be always
+ * be called next if its {@link MeasurementController#canMeasure canMeasure} method
+ * returns {@code true}.
+ *
+ * &lt;li&gt;Any {@link ProposedExpressionAnalyser} whose
+ * {@link ProposedExpressionAnalyser#canContribute canContribute} method returns
+ * {@code true} will be called.
+ *
+ * &lt;li&gt;The {@linkplain FinalJudge} will only be called if no
+ * {@link ProposedExpressionAnalyser} can contribute.
+ *
+ * &lt;/ul&gt;
+ *
+ * @author Roman Langrehr
+ * @author Joshua Gleitze
+ * @author Christoph Michelbach
+ *
+ * @see MeasurementController
+ * @see Blackboard
+ */
+public class AnalysisController {
+
+	/**
+	 * The {@link Blackboard} this {@link AnalysisController} knows and uses.
+	 */
+	private Blackboard blackboard;
+
+	/**
+	 * The {@link MeasurementController} this {@link AnalysisController} knows and uses.
+	 */
+	private MeasurementController measurementController;
+
+	/**
+	 * The {@link MeasurementResultAnalyser}s this {@link AnalysisController} knows and
+	 * uses.
+	 */
+	private Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysers;
+
+	/**
+	 * The {@link ProposedExpressionAnalyser}s this {@link AnalysisController} knows and
+	 * uses.
+	 */
+	private Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysers;
+
+	/**
+	 * Creates a controller to analyse all elements written on {@code blackboard}.
+	 *
+	 * @param blackboard A blackboard having everything to be analysed written on it. Must
+	 *            not be {@code null}.
+	 * @param measurementTools The {@link MeasurementTool}s to use. Must not be
+	 *            {@code null} and must not contain {@code null}.
+	 * @param measurementResultAnalysers The {@link MeasurementResultAnalyser}s to use.
+	 *            Must not be {@code null} and must not contain {@code null}.
+	 * @param proposedExpressionAnalysers The {@link ProposedExpressionAnalyser}s to use.
+	 *            Must not be {@code null} and must not contain {@code null}.
+	 */
+	public AnalysisController(final Blackboard blackboard, final Set&lt;MeasurementTool&gt; measurementTools,
+		final Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysers,
+<span class="fc" id="L99">		final Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysers) {</span>
+<span class="fc" id="L100">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L101">		Validate.notNull(measurementTools);</span>
+<span class="fc" id="L102">		Validate.notNull(measurementResultAnalysers);</span>
+<span class="fc" id="L103">		Validate.notNull(proposedExpressionAnalysers);</span>
+<span class="fc" id="L104">		Validate.noNullElements(measurementTools);</span>
+<span class="fc" id="L105">		Validate.noNullElements(measurementResultAnalysers);</span>
+<span class="fc" id="L106">		Validate.noNullElements(proposedExpressionAnalysers);</span>
+
+<span class="fc" id="L108">		this.blackboard = blackboard;</span>
+<span class="fc" id="L109">		this.measurementController = new MeasurementController(measurementTools);</span>
+<span class="fc" id="L110">		this.measurementResultAnalysers = new HashSet&lt;&gt;(measurementResultAnalysers);</span>
+<span class="fc" id="L111">		this.proposedExpressionAnalysers = new HashSet&lt;&gt;(proposedExpressionAnalysers);</span>
+<span class="fc" id="L112">	}</span>
+
+	/**
+	 * Runs the complete analysis, including measurements, result analysis and the final
+	 * judging. See the class description for more details on the analysis process.
+	 */
+	public void performAnalysis() {
+<span class="fc" id="L119">		final ReadOnlyMeasurementControllerBlackboardView readOnlyMeasurementControllerBlackboardView =</span>
+			new ReadOnlyMeasurementControllerBlackboardView(this.blackboard);
+<span class="fc" id="L121">		final MeasurementControllerBlackboardView measurementControllerBlackboardView =</span>
+			new MeasurementControllerBlackboardView(this.blackboard);
+
+<span class="fc" id="L124">		this.addAllSeffElementsAsToBeMeasured();</span>
+
+<span class="fc" id="L126">		final FinalJudge finalJudge = new FinalJudge();</span>
+<span class="fc" id="L127">		finalJudge.init(this.blackboard);</span>
+
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		while (!finalJudge.judge(this.blackboard)) {</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {</span>
+<span class="fc" id="L131">				this.measurementController.measure(measurementControllerBlackboardView);</span>
+
+				// After the measurements completed, clear the seff elements to be
+				// measured on the blackboard so they won't be measured again in the
+				// next iteration.
+<span class="fc" id="L136">				this.clearSeffElementsToBeMeasuredFromBlackboard();</span>
+			}
+
+<span class="fc bfc" id="L139" title="All 2 branches covered.">			if (!this.chooseRandomMeasurementResultAnalyserToContribute()) {</span>
+<span class="fc" id="L140">				this.chooseRandomPropesedExpressionAnalyserToContribute();</span>
+			}
+		}
+<span class="fc" id="L143">	}</span>
+
+	/**
+	 * Clears the &quot;to be measured&quot; lists of seff elements on the blackboard.
+	 *
+	 */
+	private void clearSeffElementsToBeMeasuredFromBlackboard() {
+<span class="fc" id="L150">		this.blackboard.clearToBeMeasuredBranches();</span>
+<span class="fc" id="L151">		this.blackboard.clearToBeMeasuredLoops();</span>
+<span class="fc" id="L152">		this.blackboard.clearToBeMeasuredRdias();</span>
+<span class="fc" id="L153">		this.blackboard.clearToBeMeasuredExternalCalls();</span>
+<span class="fc" id="L154">	}</span>
+
+	/**
+	 * Adds all seff elements on the blackboard to the &quot;to be measured&quot; sets.
+	 *
+	 */
+	private void addAllSeffElementsAsToBeMeasured() {
+<span class="fc" id="L161">		final Set&lt;SeffBranch&gt; seffBranches = this.blackboard.getAllSeffBranches();</span>
+<span class="fc" id="L162">		final Set&lt;SeffLoop&gt; seffLoops = this.blackboard.getAllSeffLoops();</span>
+<span class="fc" id="L163">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = this.blackboard.getAllRdias();</span>
+<span class="fc" id="L164">		final Set&lt;ExternalCallParameter&gt; externalCallParameters = this.blackboard.getAllExternalCallParameters();</span>
+
+<span class="fc" id="L166">		this.blackboard.addToBeMeasuredSeffBranches(seffBranches);</span>
+<span class="fc" id="L167">		this.blackboard.addToBeMeasuredSeffLoops(seffLoops);</span>
+<span class="fc" id="L168">		this.blackboard.addToBeMeasuredRdias(rdias);</span>
+<span class="fc" id="L169">		this.blackboard.addToBeMeasuredExternalCallParameters(externalCallParameters);</span>
+<span class="fc" id="L170">	}</span>
+
+	/**
+	 * Chooses a {@link MeasurementResultAnalyser} able to contribute at random and lets
+	 * it contribute.
+	 *
+	 * @return {@code true} if the task was executed successfully; {@code false} if there
+	 *         was no {@link MeasurementResultAnalyser} able to contribute.
+	 */
+	private boolean chooseRandomMeasurementResultAnalyserToContribute() {
+<span class="fc" id="L180">		final ReadOnlyMeasurementResultAnalyserBlackboardView readOnlyMeasurementResultAnalyserBlackboardView =</span>
+			new ReadOnlyMeasurementResultAnalyserBlackboardView(this.blackboard);
+<span class="fc" id="L182">		final MeasurementResultAnalyserBlackboardView measurementResultAnalyserBlackboardView =</span>
+			new MeasurementResultAnalyserBlackboardView(this.blackboard);
+
+<span class="fc" id="L185">		final Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysersAbleToContribute =</span>
+			new HashSet&lt;MeasurementResultAnalyser&gt;();
+
+<span class="fc bfc" id="L188" title="All 2 branches covered.">		for (final MeasurementResultAnalyser measurementResultAnalyser : this.measurementResultAnalysers) {</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">			if (measurementResultAnalyser.canContribute(readOnlyMeasurementResultAnalyserBlackboardView)) {</span>
+<span class="fc" id="L190">				measurementResultAnalysersAbleToContribute.add(measurementResultAnalyser);</span>
+			}
+<span class="fc" id="L192">		}</span>
+
+<span class="fc bfc" id="L194" title="All 2 branches covered.">		if (measurementResultAnalysersAbleToContribute.size() != 0) {</span>
+			// Choose a measurement result analyser at random.
+<span class="fc" id="L196">			final int minimum = 1;</span>
+<span class="fc" id="L197">			final int maximum = measurementResultAnalysersAbleToContribute.size();</span>
+<span class="fc" id="L198">			final int chosenResultAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;</span>
+
+<span class="fc" id="L200">			int count = 1;</span>
+			// @formatter:off
+			for (final MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
+<span class="pc bpc" id="L203" title="1 of 2 branches missed.">				: measurementResultAnalysersAbleToContribute) {</span>
+				// @formatter:on
+<span class="fc bfc" id="L205" title="All 2 branches covered.">				if (count == chosenResultAnalyser) {</span>
+<span class="fc" id="L206">					measurementResultAnalyserAbleToContribute.contribute(measurementResultAnalyserBlackboardView);</span>
+<span class="fc" id="L207">					return true;</span>
+				}
+
+<span class="fc" id="L210">				count++;</span>
+<span class="fc" id="L211">			}</span>
+
+		}
+
+<span class="fc" id="L215">		return false;</span>
+	}
+
+	/**
+	 * Chooses a {@link ProposedExpressionAnalyser} able to contribute at random and lets
+	 * it contribute.
+	 *
+	 * @return {@code true} if the task was executed successfully; {@code false} if there
+	 *         was no {@link ProposedExpressionAnalyser} able to contribute.
+	 */
+	private boolean chooseRandomPropesedExpressionAnalyserToContribute() {
+<span class="fc" id="L226">		final ReadOnlyProposedExpressionAnalyserBlackboardView readOnlyProposedExpressionAnalyserBlackboardView =</span>
+			new ReadOnlyProposedExpressionAnalyserBlackboardView(this.blackboard);
+<span class="fc" id="L228">		final ProposedExpressionAnalyserBlackboardView proposedExpressionAnalyserBlackboardView =</span>
+			new ProposedExpressionAnalyserBlackboardView(this.blackboard);
+
+<span class="fc" id="L231">		final Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysersAbleToContribute =</span>
+			new HashSet&lt;ProposedExpressionAnalyser&gt;();
+
+<span class="fc bfc" id="L234" title="All 2 branches covered.">		for (final ProposedExpressionAnalyser proposedExpressionAnalyser : this.proposedExpressionAnalysers) {</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">			if (proposedExpressionAnalyser.canContribute(readOnlyProposedExpressionAnalyserBlackboardView)) {</span>
+<span class="fc" id="L236">				proposedExpressionAnalysersAbleToContribute.add(proposedExpressionAnalyser);</span>
+			}
+<span class="fc" id="L238">		}</span>
+
+<span class="fc bfc" id="L240" title="All 2 branches covered.">		if (proposedExpressionAnalysersAbleToContribute.size() != 0) {</span>
+			// Choose a proposed expression analyser at random.
+<span class="fc" id="L242">			final int minimum = 1;</span>
+<span class="fc" id="L243">			final int maximum = proposedExpressionAnalysersAbleToContribute.size();</span>
+<span class="fc" id="L244">			final int chosenProposedExpressionAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;</span>
+
+<span class="fc" id="L246">			int count = 1;</span>
+			// @formatter:off
+			for (final ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">				: proposedExpressionAnalysersAbleToContribute) {</span>
+				// @formatter:on
+<span class="fc bfc" id="L251" title="All 2 branches covered.">				if (count == chosenProposedExpressionAnalyser) {</span>
+<span class="fc" id="L252">					proposedExpressionAnalyserAbleToContribute.contribute(proposedExpressionAnalyserBlackboardView);</span>
+<span class="fc" id="L253">					return true;</span>
+				}
+
+<span class="fc" id="L256">				count++;</span>
+<span class="fc" id="L257">			}</span>
+
+		}
+
+<span class="fc" id="L261">		return false;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
