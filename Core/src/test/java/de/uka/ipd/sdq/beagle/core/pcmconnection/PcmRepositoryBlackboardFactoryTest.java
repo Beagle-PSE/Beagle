@@ -40,6 +40,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -127,9 +128,12 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * and PcmRepositoryBlackboardFactory#PcmRepositoryBlackboardFactory(String)}. Asserts
 	 * that creation is possible and {@code null} or an empty string or otherwise
 	 * impossible path cannot be passed.
+	 *
+	 * @throws FileNotFoundException If the factory throws an exception when it’s not
+	 *             expected.
 	 */
 	@Test
-	public void pcmRepositoryBlackboardFactory() {
+	public void pcmRepositoryBlackboardFactory() throws FileNotFoundException {
 		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null, this.fitnessFunction),
 			throwsException(NullPointerException.class));
 		assertThat(() -> new PcmRepositoryBlackboardFactory((String) null, null),
