@@ -72,16 +72,10 @@
 </a>
 <h2 class="title">A</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html#abortAnalysis--">abortAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleController</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/BeagleController.html#abortAnalysis--">abortAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core">BeagleController</a></dt>
 <dd>
 <div class="block">Aborts the analysis.</div>
 </dd>
-<dt><a href="org/eclipse/core/commands/AbstractHandler.html" title="class in org.eclipse.core.commands"><span class="typeNameLink">AbstractHandler</span></a> - Class in <a href="org/eclipse/core/commands/package-summary.html">org.eclipse.core.commands</a></dt>
-<dd>
-<div class="block">Exists only for reasons of dependency.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/eclipse/core/commands/AbstractHandler.html#AbstractHandler--">AbstractHandler()</a></span> - Constructor for class org.eclipse.core.commands.<a href="org/eclipse/core/commands/AbstractHandler.html" title="class in org.eclipse.core.commands">AbstractHandler</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><span class="typeNameLink">AbstractionAndPrecisionFitnessFunction</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/judge/package-summary.html">de.uka.ipd.sdq.beagle.core.judge</a></dt>
 <dd>
 <div class="block">Fitness function regarding abstract but precise expression as fittest.</div>
@@ -97,6 +91,12 @@
 <dd>
 <div class="block">Creates an event for the measurement of <code>codeSection</code>.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Activator</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
+<dd>
+<div class="block">The activator class controls the plug-in life cycle.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#Activator--">Activator()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#ADAPTIVE_TIMEOUT">ADAPTIVE_TIMEOUT</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>
 <div class="block">Numeric value for "adaptive timeout".</div>
@@ -155,6 +155,8 @@
  <a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#addMeasurementResultFor-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult-"><code>Blackboard.addMeasurementResultFor(ExternalCallParameter, ParameterChangeMeasurementResult)</code></a>
  .</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html#addPages--">addPages()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleAnalysisWizard</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#addPcmIdOf-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-java.lang.String-">addPcmIdOf(ResourceDemandingInternalAction, String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a></dt>
 <dd>
 <div class="block">Stores the <code>identifier</code> used for <code>rdia</code> in the PCM repository.</div>
@@ -269,24 +271,31 @@
 <dl>
 <dt><a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">BeagleAnalysisWizard</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
 <dd>
-<div class="block">Sets up and controls the graphical wizard allowing the user to configure Beagle’s
- behaviour during the analysis and afterwards starts the analysis.</div>
+<div class="block">Sets up and controls the wizard allowing the user to configure Beagle’s behaviour
+ during the analysis.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html#BeagleAnalysisWizard--">BeagleAnalysisWizard()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleAnalysisWizard</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html#BeagleAnalysisWizard-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-java.awt.event.ActionListener-">BeagleAnalysisWizard(BeagleConfiguration, ActionListener)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleAnalysisWizard</a></dt>
+<dd>
+<div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleAnalysisWizard</code></a> which runs <code>wizardFinished</code>
+ when it finishes.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><span class="typeNameLink">BeagleConfiguration</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/facade/package-summary.html">de.uka.ipd.sdq.beagle.core.facade</a></dt>
 <dd>
 <div class="block">Configures a whole execution of Beagle.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration--">BeagleConfiguration()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">BeagleController</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration-java.util.List-java.io.File-">BeagleConfiguration(List&lt;Entity&gt;, File)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
+<dd>
+<div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> using <code>elements</code> as the default
+ elements to be measured.</div>
+</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">BeagleController</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
 <div class="block">Controls the execution of the Beagle Analysis.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html#BeagleController-de.uka.ipd.sdq.beagle.gui.UserConfiguration-">BeagleController(UserConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleController</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/BeagleController.html#BeagleController-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">BeagleController(BeagleConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core">BeagleController</a></dt>
 <dd>
-<div class="block">Constructs a new <code>BeagleController</code> with the given <a href="de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>UserConfiguration</code></a>.</div>
+<div class="block">Constructs a new <code>BeagleController</code> with the given
+ <a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a>.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Blackboard</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
@@ -399,7 +408,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html#ContextMenuEntryHandlerForRepositories--">ContextMenuEntryHandlerForRepositories()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForRepositories</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html#continueAnalysis--">continueAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleController</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/BeagleController.html#continueAnalysis--">continueAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core">BeagleController</a></dt>
 <dd>
 <div class="block">Continues the analysis if it is paused.</div>
 </dd>
@@ -411,6 +420,10 @@
 <dd>
 <div class="block">Contributes this analyser’s knowledge to the passed blackboard.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html#createControl-org.eclipse.swt.widgets.Composite-">createControl(Composite)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">SelectionOverviewWizardPage</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html#createControl-org.eclipse.swt.widgets.Composite-">createControl(Composite)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">TimeoutWizardPage</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:D">
 <!--   -->
@@ -454,7 +467,7 @@
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a> - package de.uka.ipd.sdq.beagle.gui</dt>
 <dd>
-<div class="block">This package contains all files concerning the Graphical User Interface (GUI).</div>
+<div class="block">This is an Eclipse plugin adding Beagle's GUI.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/package-summary.html">de.uka.ipd.sdq.beagle.gui.contextmenus</a> - package de.uka.ipd.sdq.beagle.gui.contextmenus</dt>
 <dd>
@@ -599,22 +612,6 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForInternalActions.html#execute-org.eclipse.core.commands.ExecutionEvent-">execute(ExecutionEvent)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForInternalActions.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForInternalActions</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html#execute-org.eclipse.core.commands.ExecutionEvent-">execute(ExecutionEvent)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForRepositories</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="org/eclipse/core/commands/AbstractHandler.html#execute-org.eclipse.core.commands.ExecutionEvent-">execute(ExecutionEvent)</a></span> - Method in class org.eclipse.core.commands.<a href="org/eclipse/core/commands/AbstractHandler.html" title="class in org.eclipse.core.commands">AbstractHandler</a></dt>
-<dd>
-<div class="block">Exists only for reasons of dependency.</div>
-</dd>
-<dt><a href="org/eclipse/core/commands/ExecutionEvent.html" title="class in org.eclipse.core.commands"><span class="typeNameLink">ExecutionEvent</span></a> - Class in <a href="org/eclipse/core/commands/package-summary.html">org.eclipse.core.commands</a></dt>
-<dd>
-<div class="block">Exists only for reasons of dependency.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/eclipse/core/commands/ExecutionEvent.html#ExecutionEvent--">ExecutionEvent()</a></span> - Constructor for class org.eclipse.core.commands.<a href="org/eclipse/core/commands/ExecutionEvent.html" title="class in org.eclipse.core.commands">ExecutionEvent</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="org/eclipse/core/commands/ExecutionException.html" title="class in org.eclipse.core.commands"><span class="typeNameLink">ExecutionException</span></a> - Exception in <a href="org/eclipse/core/commands/package-summary.html">org.eclipse.core.commands</a></dt>
-<dd>
-<div class="block">Exists only for reasons of dependency.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/eclipse/core/commands/ExecutionException.html#ExecutionException--">ExecutionException()</a></span> - Constructor for exception org.eclipse.core.commands.<a href="org/eclipse/core/commands/ExecutionException.html" title="class in org.eclipse.core.commands">ExecutionException</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">ExponentationExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
@@ -830,6 +827,10 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html#getCount--">getCount()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterChangeMeasurementResult</a></dt>
 <dd>
 <div class="block">Missing Javadoc.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#getDefault--">getDefault()</a></span> - Static method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
+<dd>
+<div class="block">Returns the shared instance.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html#getDividend--">getDividend()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">DivisionExpression</a></dt>
 <dd>
@@ -1189,8 +1190,6 @@
 <div class="block">Get the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is supposed to be the smaller one in the
  comparison.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html#getSourceFile-java.lang.String-">getSourceFile(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html" title="class in de.uka.ipd.sdq.beagle.core.facade">JdtProjectSourceCodeFileProvider</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html#getSourceFile-java.lang.String-">getSourceFile(String)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a></dt>
 <dd>
 <div class="block">Queries the source code file containing the source code of the type denoted by
@@ -1220,6 +1219,10 @@
 <dd>
 <div class="block">Returns the timeout to be used.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html#getTimeout--">getTimeout()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">TimeoutWizardPage</a></dt>
+<dd>
+<div class="block">Returns the timeout chosen by the user.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html#getValue--">getValue()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">ConstantExpression</a></dt>
 <dd>
 <div class="block">Gets the value of this constant expression.</div>
@@ -1232,6 +1235,8 @@
 <dd>
 <div class="block">Gets the assigned value for the <code>EvaluableVariable variable</code>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html#getWindowTitle--">getWindowTitle()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleAnalysisWizard</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html#gradeFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView-">gradeFor(ResourceDemandingInternalAction, EvaluableExpression, EvaluableExpressionFitnessFunctionBlackboardView)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html" title="class in de.uka.ipd.sdq.beagle.core.judge">AbstractionAndPrecisionFitnessFunction</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html#gradeFor-de.uka.ipd.sdq.beagle.core.SeffBranch-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView-">gradeFor(SeffBranch, EvaluableExpression, EvaluableExpressionFitnessFunctionBlackboardView)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html" title="class in de.uka.ipd.sdq.beagle.core.judge">AbstractionAndPrecisionFitnessFunction</a></dt>
@@ -1264,9 +1269,10 @@
 <dd>
 <div class="block">Controls the Graphical User Interface (GUI).</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/GuiController.html#GuiController-java.util.Set-">GuiController(Set&lt;String&gt;)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui">GuiController</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/GuiController.html#GuiController-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">GuiController(BeagleConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui">GuiController</a></dt>
 <dd>
-<div class="block">Creates a new <a href="de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> with the given components.</div>
+<div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> using <code>components</code> as the default
+ components to be measured.</div>
 </dd>
 </dl>
 <a name="I:H">
@@ -1375,15 +1381,6 @@
 </a>
 <h2 class="title">J</h2>
 <dl>
-<dt><a href="de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><span class="typeNameLink">JdtProjectSourceCodeFileProvider</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/facade/package-summary.html">de.uka.ipd.sdq.beagle.core.facade</a></dt>
-<dd>
-<div class="block">Provides source files from source folders of Eclipse Java Projects.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html#JdtProjectSourceCodeFileProvider-org.eclipse.jdt.core.IJavaProject-">JdtProjectSourceCodeFileProvider(IJavaProject)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html" title="class in de.uka.ipd.sdq.beagle.core.facade">JdtProjectSourceCodeFileProvider</a></dt>
-<dd>
-<div class="block">Creates a provider returning source files from the provided <code>project</code>’s
- source folders.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#judge-de.uka.ipd.sdq.beagle.core.Blackboard-">judge(Blackboard)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
 <dd>
 <div class="block">Implements the break condition for evolution of evaluable expressions.</div>
@@ -1422,17 +1419,6 @@
 </a>
 <h2 class="title">M</h2>
 <dl>
-<dt><a href="de/uka/ipd/sdq/beagle/gui/MachineSelectionWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">MachineSelectionWizardPage</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
-<dd>
-<div class="block">A page of <a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleAnalysisWizard</code></a> allowing the user to configure whether they want
- to perform the analysis on the machine they're at or on a machine connected via a
- network.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/MachineSelectionWizardPage.html#MachineSelectionWizardPage-de.uka.ipd.sdq.beagle.gui.UserConfiguration-">MachineSelectionWizardPage(UserConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/MachineSelectionWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">MachineSelectionWizardPage</a></dt>
-<dd>
-<div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/MachineSelectionWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>MachineSelectionWizardPage</code></a> being linked to the given
- <code>userConfiguration</code>.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#MAX_CONSIDERED_FITNESS_VALUE">MAX_CONSIDERED_FITNESS_VALUE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
 <dd>
 <div class="block">Fitness values bigger than this number will be set to this number and therefore
@@ -1513,12 +1499,6 @@
 <dd>
 <div class="block">TODO Document this type.</div>
 </dd>
-<dt><a href="org/eclipse/jface/dialogs/MessageDialog.html" title="class in org.eclipse.jface.dialogs"><span class="typeNameLink">MessageDialog</span></a> - Class in <a href="org/eclipse/jface/dialogs/package-summary.html">org.eclipse.jface.dialogs</a></dt>
-<dd>
-<div class="block">Exists only for reasons of dependency.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/eclipse/jface/dialogs/MessageDialog.html#MessageDialog--">MessageDialog()</a></span> - Constructor for class org.eclipse.jface.dialogs.<a href="org/eclipse/jface/dialogs/MessageDialog.html" title="class in org.eclipse.jface.dialogs">MessageDialog</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">MultiplicationExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that multiplies all its contained expressions.</div>
@@ -1547,16 +1527,6 @@
 <div class="block">Builds an expression which returns the result of a logarithm of the antilogarithm
  to the base.</div>
 </dd>
-<dt><a href="de/uka/ipd/sdq/beagle/gui/NetworkConfigurationWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">NetworkConfigurationWizardPage</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
-<dd>
-<div class="block">A page of <a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleAnalysisWizard</code></a> allowing the user to configure the network if
- they previously chose to perform the analysis on a machine connected over a network.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/NetworkConfigurationWizardPage.html#NetworkConfigurationWizardPage-de.uka.ipd.sdq.beagle.gui.UserConfiguration-">NetworkConfigurationWizardPage(UserConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/NetworkConfigurationWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">NetworkConfigurationWizardPage</a></dt>
-<dd>
-<div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/NetworkConfigurationWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>NetworkConfigurationWizardPage</code></a> being linked to the given
- <code>userConfiguration</code>.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#NO_TIMEOUT">NO_TIMEOUT</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>
 <div class="block">Numeric value for "no timeout".</div>
@@ -1569,19 +1539,8 @@
 <dl>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/GuiController.html#open--">open()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui">GuiController</a></dt>
 <dd>
-<div class="block">Opens the GuiController.</div>
-</dd>
-<dt><a href="org/eclipse/core/commands/package-summary.html">org.eclipse.core.commands</a> - package org.eclipse.core.commands</dt>
-<dd>
-<div class="block">This package will be replaced by the package of Eclipse sharing the same name.</div>
-</dd>
-<dt><a href="org/eclipse/jface/dialogs/package-summary.html">org.eclipse.jface.dialogs</a> - package org.eclipse.jface.dialogs</dt>
-<dd>
-<div class="block">This package will be replaced by the package of Eclipse sharing the same name.</div>
-</dd>
-<dt><a href="org/eclipse/jface/wizard/package-summary.html">org.eclipse.jface.wizard</a> - package org.eclipse.jface.wizard</dt>
-<dd>
-<div class="block">This package will be replaced by the package of Eclipse sharing the same name.</div>
+<div class="block">Opens the GUI, meaning that from the point of time this method is called, the user
+ can see and interact with it.</div>
 </dd>
 </dl>
 <a name="I:P">
@@ -1621,7 +1580,7 @@
 <dd>
 <div class="block">Creates a result for a code section measurement.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html#pauseAnalysis--">pauseAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleController</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/BeagleController.html#pauseAnalysis--">pauseAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core">BeagleController</a></dt>
 <dd>
 <div class="block">Pauses the analysis.</div>
 </dd>
@@ -1660,6 +1619,12 @@
 <dd>
 <div class="block">Runs the complete analysis, including measurements, result analysis and the final
  judging.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html#performFinish--">performFinish()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleAnalysisWizard</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#PLUGIN_ID">PLUGIN_ID</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
+<dd>
+<div class="block">The plug-in ID.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyser.html" title="interface in de.uka.ipd.sdq.beagle.core.analysis"><span class="typeNameLink">ProposedExpressionAnalyser</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/analysis/package-summary.html">de.uka.ipd.sdq.beagle.core.analysis</a></dt>
 <dd>
@@ -1870,10 +1835,10 @@
 <div class="block">A page of <a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleAnalysisWizard</code></a> allowing the user to choose which of the
  components they selected will be be analysed.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html#SelectionOverviewWizardPage-de.uka.ipd.sdq.beagle.gui.UserConfiguration-">SelectionOverviewWizardPage(UserConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">SelectionOverviewWizardPage</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html#SelectionOverviewWizardPage-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">SelectionOverviewWizardPage(BeagleConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">SelectionOverviewWizardPage</a></dt>
 <dd>
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>SelectionOverviewWizardPage</code></a> being linked to the given
- <code>userConfiguration</code>.</div>
+ <code>beagleConfiguration</code>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setElements-java.util.List-">setElements(List&lt;Entity&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>
@@ -1912,10 +1877,18 @@
 <dd>
 <div class="block">Provides the source code files that shall be analysed by Beagle.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html#startAnalysis--">startAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleController</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html#SPECIAL_ID_COMPLETE_REPOSITORY">SPECIAL_ID_COMPLETE_REPOSITORY</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForRepositories</a></dt>
+<dd>
+<div class="block">The ID stating that an entire repository is ought to be analysed.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#start-org.osgi.framework.BundleContext-">start(BundleContext)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/BeagleController.html#startAnalysis--">startAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core">BeagleController</a></dt>
 <dd>
 <div class="block">Starts the analysis.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#stop-org.osgi.framework.BundleContext-">stop(BundleContext)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">SubtractionExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that subtracts a subtrahend from a minuend.</div>
@@ -1935,10 +1908,10 @@
 <div class="block">A page of <a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleAnalysisWizard</code></a> allowing the user to choose between an adaptive
  timeout, a constant timeout, or no timeout at all.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html#TimeoutWizardPage-de.uka.ipd.sdq.beagle.gui.UserConfiguration-">TimeoutWizardPage(UserConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">TimeoutWizardPage</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html#TimeoutWizardPage-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">TimeoutWizardPage(BeagleConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">TimeoutWizardPage</a></dt>
 <dd>
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>TimeoutWizardPage</code></a> being linked to the given
- <code>userConfiguration</code>.</div>
+ <code>beagleConfiguration</code>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#toString--">toString()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
 <dd>&nbsp;</dd>
@@ -2003,12 +1976,6 @@
 <dd>
 <div class="block">Creates an exception for an encountered undefined variable.</div>
 </dd>
-<dt><a href="de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">UserConfiguration</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
-<dd>
-<div class="block">Stores the configuration of the analysis by the user.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/UserConfiguration.html#UserConfiguration--">UserConfiguration()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui">UserConfiguration</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <a name="I:V">
 <!--   -->
@@ -2073,12 +2040,6 @@
 </a>
 <h2 class="title">W</h2>
 <dl>
-<dt><a href="org/eclipse/jface/wizard/WizardPage.html" title="class in org.eclipse.jface.wizard"><span class="typeNameLink">WizardPage</span></a> - Class in <a href="org/eclipse/jface/wizard/package-summary.html">org.eclipse.jface.wizard</a></dt>
-<dd>
-<div class="block">Exists only for reasons of dependency.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="org/eclipse/jface/wizard/WizardPage.html#WizardPage--">WizardPage()</a></span> - Constructor for class org.eclipse.jface.wizard.<a href="org/eclipse/jface/wizard/WizardPage.html" title="class in org.eclipse.jface.wizard">WizardPage</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#writeFor-java.lang.Class-WRITTEN_TYPE-">writeFor(Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt;, WRITTEN_TYPE)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyserBlackboardView</a></dt>
 <dd>
 <div class="block">Delegates to
