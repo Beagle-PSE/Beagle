@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core.measurement.order;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 
 import org.apache.commons.lang3.Validate;
@@ -21,29 +22,29 @@ public class MeasurementOrder {
 	/**
 	 * The code sections where parameters need to be characterised.
 	 */
-	private Set<CodeSection> parameterValueSection;
+	private final Set<CodeSection> parameterValueSection;
 
 	/**
 	 * The code sections, where all resource demands need to be captured.
 	 */
-	private Set<CodeSection> resourceDemandSections;
+	private final Set<CodeSection> resourceDemandSections;
 
 	/**
 	 * The code sections, where an {@link MeasurementEvent} should be created each time it
 	 * gets executed.
 	 */
-	private Set<CodeSection> executionSections;
+	private final Set<CodeSection> executionSections;
 
 	/**
-	 * Launch configurations for the code under test. Must contain at least one element.
+	 * Information about the measured project.
 	 */
-	private Set<LaunchConfiguration> launchConfigurations;
+	private final ProjectInformation projectInformation;
 
 	/**
 	 * The parameter characteriser, that all measurement tools must use for parameter
 	 * characterisation.
 	 */
-	private ParameterCharacteriser parameterCharacteriser;
+	private final ParameterCharacteriser parameterCharacteriser;
 
 	/**
 	 * Create a measurement order for {@linkplain MeasurementTool MeasurementTools}.
@@ -57,25 +58,24 @@ public class MeasurementOrder {
 	 * @param executionSections The code sections, where an {@link MeasurementEvent}
 	 *            should be created each time it gets executed. Must not be {@code null}.
 	 *            May not contain {@code null} elements.
-	 * @param launchConfigurations Launch configurations for the code under test. Must
-	 *            contain at least one element. Must not be {@code null}. May not contain
-	 *            {@code null} elements.
+	 * @param projectInformation The measured project’s configuration. Must not be
+	 *            {@code null}.
 	 * @param parameterCharacteriser The parameter characteriser, that all measurement
 	 *            tools must use for parameter characterisation. Must not be {@code null}.
 	 */
-	public MeasurementOrder(final Set<CodeSection> parameterValueSections, final Set<CodeSection> resourceDemandSections,
-		final Set<CodeSection> executionSections, final Set<LaunchConfiguration> launchConfigurations,
-		final ParameterCharacteriser parameterCharacteriser) {
+	public MeasurementOrder(final Set<CodeSection> parameterValueSections,
+		final Set<CodeSection> resourceDemandSections, final Set<CodeSection> executionSections,
+		final ProjectInformation projectInformation, final ParameterCharacteriser parameterCharacteriser) {
 		Validate.noNullElements(parameterValueSections);
 		Validate.noNullElements(resourceDemandSections);
 		Validate.noNullElements(resourceDemandSections);
 		Validate.noNullElements(executionSections);
-		Validate.noNullElements(launchConfigurations);
+		Validate.notNull(projectInformation);
 		Validate.notNull(parameterCharacteriser);
 		this.parameterValueSection = new HashSet<>(parameterValueSections);
 		this.resourceDemandSections = new HashSet<>(resourceDemandSections);
 		this.executionSections = new HashSet<>(executionSections);
-		this.launchConfigurations = new HashSet<>(launchConfigurations);
+		this.projectInformation = projectInformation;
 		this.parameterCharacteriser = parameterCharacteriser;
 	}
 
@@ -86,7 +86,7 @@ public class MeasurementOrder {
 	 *         {@code null}. Does not contain {@code null} elements.
 	 */
 	public Set<CodeSection> getParameterValueSection() {
-		return this.parameterValueSection;
+		return new HashSet<>(this.parameterValueSection);
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class MeasurementOrder {
 	 *         elements.
 	 */
 	public Set<CodeSection> getResourceDemandSections() {
-		return this.resourceDemandSections;
+		return new HashSet<>(this.resourceDemandSections);
 	}
 
 	/**
@@ -109,17 +109,16 @@ public class MeasurementOrder {
 	 *         elements.
 	 */
 	public Set<CodeSection> getExecutionSections() {
-		return this.executionSections;
+		return new HashSet<>(this.executionSections);
 	}
 
 	/**
-	 * Gives launch configurations for the code under test. Contains at least one element.
+	 * Gives information about the measured project.
 	 *
-	 * @return Launch configurations for the code under test. Contains at least one
-	 *         element. Is never {@code null}. Does not contain {@code null} elements.
+	 * @return Information about the measured project. Is never {@code null}.
 	 */
-	public Set<LaunchConfiguration> getLaunchConfigurations() {
-		return this.launchConfigurations;
+	public ProjectInformation getProjectInformation() {
+		return this.projectInformation;
 	}
 
 	/**

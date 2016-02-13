@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.measurement.order;
+package de.uka.ipd.sdq.beagle.core;
 
 /**
  * Interface for classes that execute the code under test.

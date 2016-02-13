@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.measurement.order;
+package de.uka.ipd.sdq.beagle.core;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.core.runtime.CoreException;
