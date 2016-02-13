@@ -14,6 +14,9 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
  * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this
  * interface.
  *
+ * <p>Measurement result analysers need a public zero argument constructor for the
+ * instantiation, because they are loaded through eclipse extension points.
+ *
  * @author Joshua Gleitze
  * @author Roman Langrehr
  */
