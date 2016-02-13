@@ -239,54 +239,47 @@ public class PcmRepositoryBlackboardFactoryTest {
 	// @formatter:on
 	@Test
 	public void getBlackboardForIdsStringArray() {
-		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactoryAppSensor =
+			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(""),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String[]) null),
+		assertThat(() -> pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds((String[]) null),
 			throwsException(NullPointerException.class));
 
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String) null),
+		assertThat(() -> pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds((String) null),
 			throwsException(NullPointerException.class));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"), is(not(nullValue())));
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(not(nullValue())));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
 			is(equalToRegardingSeffElements(
-				pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"))));
+				pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"))));
 
 		// The first ID is from {@code AppSensor.repository}, the second one from {@code
 		// Family.repositor}.
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_EofuUYRwEeWnEbz-sg1tMg"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_EofuUYRwEeWnEbz-sg1tMg"),
 			is(not(equalToRegardingSeffElements(
-				pcmRepositoryBlackboardFactory.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g")))));
+				pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g")))));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-			is(not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactory.getBlackboardForAllElements()))));
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_EofuUYRwEeWnEbz-sg1tMg"), is(
+			not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForAllElements()))));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-			is(not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactory.getBlackboardForAllElements()))));
-
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_SomeIdWhichDosntExistA"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_SomeIdWhichDosntExistA"),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_TooShortId"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_TooShortId"),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("IllegalId"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("IllegalId"),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		final Blackboard blackboardForIds =
-			pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g", "_FaSO4LnqEeWVlphM5rov7g");
+		final Blackboard blackboardForIds = pcmRepositoryBlackboardFactoryAppSensor
+			.getBlackboardForIds("_EnfoyoRwEeWnEbz-sg1tMg", "_En2OE4RwEeWnEbz-sg1tMg");
 
 		assertThat(blackboardForIds.getAllSeffLoops().size(), is(not(0)));
-
-		for (final SeffLoop seffLoop : blackboardForIds.getAllSeffLoops()) {
-			// How do i figure out whether this is correct?
-			seffLoop.getLoopBody().getStartFile();
-		}
 
 		final Blackboard blackboardForIds2 = pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance()
 			.getBlackboardForIds("_Enr2B4RwEeWnEbz-sg1tMg");
