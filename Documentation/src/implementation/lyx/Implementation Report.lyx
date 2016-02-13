@@ -2646,7 +2646,7 @@ status open
 
 \begin_layout Plain Layout
 
-Measurement Result Analyser
+MeasurementResultAnalyser
 \end_layout
 
 \end_inset
@@ -3622,6 +3622,72 @@ The Kieker measurement tool, because we had to instrument the code on our
 
 \begin_layout Chapter
 Unit Tests
+\end_layout
+
+\begin_layout Standard
+Everything that can be meaningful tested with JUnit Tests is tested with
+ JUnit tests.
+ The only exceptions are:
+\end_layout
+
+\begin_layout Itemize
+The GUI classes, because it is not possible to test GUIs meaningful with
+ JUnit.
+ Instead we created a document that describes what should be done to test
+ the GUI manually.
+\end_layout
+
+\begin_layout Itemize
+The Extension Points are not tested with JUnit tests, because an automated
+ test would rather test the eclipse extension point mechanism and not whether
+ we used it correctly.
+ Instead we created a some eclipse plugins with stubs for 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementTool
+\end_layout
+
+\end_inset
+
+ , 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+MeasurementResultAnalyser
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ProposedExpressionAnalyser
+\end_layout
+
+\end_inset
+
+ that use the extension point of Beagle Core.
+ Additionally we created a plugin that has BeagleCore as dependency and
+ adds a button to eclipse that allows the shows all tools, the Beagle Core
+ loads (using the Beagle Core's classes for that).
+ So the extension points can be tested manually.
+ A document describes, which should be tested.
+\end_layout
+
+\begin_layout Standard
+Detailed information on each JUnit test can be found in the Javadoc for
+ the tests.
 \end_layout
 
 \end_body
