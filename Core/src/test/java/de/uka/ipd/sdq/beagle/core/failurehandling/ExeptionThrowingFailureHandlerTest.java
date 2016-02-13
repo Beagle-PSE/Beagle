@@ -21,7 +21,7 @@ public class ExeptionThrowingFailureHandlerTest {
 	 * Test method for {@link ExceptionThrowingFailureHandlerTest#getDetails()}.
 	 */
 	@Test
-	public void constructor() {
+	public void constructorExceptionThrowingFailureHandler() {
 		final String clientName = "clientBob";
 		final ThrowingMethod method = () -> {
 			new ExceptionThrowingFailureHandler(null);
@@ -63,6 +63,18 @@ public class ExeptionThrowingFailureHandlerTest {
 			exceptionHandler.handle(report);
 		};
 		assertThat(method, throwsException(FailureException.class));
+
+	}
+
+	@Test
+	public void constructorFailureException() {
+		final String message = "failureMessage";
+		final ThrowingMethod method = () -> {
+			new FailureException(message, null);
+		};
+		assertThat("clientName must not be null.", method, throwsException(NullPointerException.class));
+
+		new ExceptionThrowingFailureHandler(message);
 
 	}
 
