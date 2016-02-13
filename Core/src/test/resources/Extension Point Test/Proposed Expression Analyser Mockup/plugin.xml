@@ -6,7 +6,7 @@
          name="Proposed Expression Analyser Mockup1"
          point="de.uka.ipd.sdq.beagle.proposedexpressionanalyser">
          <ProposedExpressionAnalyserClass
-            ProposedExpressionAnalyserClass="de.uka.ipd.sdq.beagle.core.extensionpoint.proposedexpressionanalysermockup1.ProposedExpressionAnalyserMockup1">
+            ProposedExpressionAnalyserClass="de.uka.ipd.sdq.beagle.core.extensionpoint.proposedexpressionanalysermockup1.ProposedExpressionAnalyserMockup">
       </ProposedExpressionAnalyserClass>
    </extension>
 

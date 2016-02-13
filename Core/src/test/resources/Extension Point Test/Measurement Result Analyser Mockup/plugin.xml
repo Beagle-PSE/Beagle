@@ -6,7 +6,7 @@
          name="Measurement Result Analyser Mockup1"
          point="de.uka.ipd.sdq.beagle.measurementresultanalyser">
                <MeasurementResultAnalyserClass
-            MeasurementResultAnalyserClass="de.uka.ipd.sdq.beagle.core.extensionpoint.measurementresultanalysermockup1.MeasurementResultAnalyserMockup1">
+            MeasurementResultAnalyserClass="de.uka.ipd.sdq.beagle.core.extensionpoint.measurementresultanalysermockup.MeasurementResultAnalyserMockup">
       </MeasurementResultAnalyserClass>
    </extension>
 

@@ -4,7 +4,7 @@
    <extension
          id="de.uka.ipd.sdg.beagle.measurementtoolmockup"
          name="Measurement Tool Mockup"
-         point="de.uka.ipd.sdg.beagle.measurementtool">
+         point="de.uka.ipd.sdq.beagle.measurementtool">
       <MeasurementTool
             MeasurementToolClass="de.uka.ipd.sdq.beagle.prototypes.extensionpoint.measurementtoolmockup.MockupMeasurementTool">
       </MeasurementTool>
