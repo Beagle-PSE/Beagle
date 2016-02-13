@@ -380,6 +380,38 @@ public class Blackboard implements Serializable {
 	}
 
 	/**
+	 * Clears the list of {@code rdiasToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredRdias() {
+		this.rdiasToBeMeasured.clear();
+	}
+
+	/**
+	 * Clears the list of {@code branchesToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredBranches() {
+		this.branchesToBeMeasured.clear();
+	}
+
+	/**
+	 * Clears the list of {@code loopsToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredLoops() {
+		this.loopsToBeMeasured.clear();
+	}
+
+	/**
+	 * Clears the list of {@code externalCallParameterToBeMeasured}.
+	 *
+	 */
+	public void clearToBeMeasuredExternalCalls() {
+		this.externalCallParameterToBeMeasured.clear();
+	}
+
+	/**
 	 * Gets all results yet measured for the resource demands of {@code rdia}.
 	 *
 	 * @param rdia An resource demanding internal action to get the measurement results
