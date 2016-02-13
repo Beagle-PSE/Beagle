@@ -77,7 +77,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		// Not sure if this final declaration could lead to a problem.
 		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
 
-		final EObject eObject = EMFHelper.loadFromXMIFile(repositoryFileName, ePackage);
+		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);
 		if (!(eObject.getClass() == RepositoryImpl.class)) {
 			throw new IllegalArgumentException();
 		}
