@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="de.uka.ipd.sdg.beagle.measurementtoolmockup"
+         name="Measurement Tool Mockup"
+         point="de.uka.ipd.sdq.beagle.measurementtool">
+      <MeasurementTool
+            MeasurementToolClass="de.uka.ipd.sdq.beagle.prototypes.extensionpoint.measurementtoolmockup.MockupMeasurementTool">
+      </MeasurementTool>
+   </extension>
+
+</plugin>
