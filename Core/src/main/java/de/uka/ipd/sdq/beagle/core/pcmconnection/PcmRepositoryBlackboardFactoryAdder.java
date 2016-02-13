@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
-import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -43,14 +42,11 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 * elements</em>.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
-	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
-	 *            with
 	 * @throws IllegalArgumentException If input parameter does not represent a valid
 	 *             repository file or if repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName,
-		final EvaluableExpressionFitnessFunction fitnessFunction) {
+	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName) {
 
 		final File test = new File(repositoryFileName);
 		if (!test.exists() || !test.isFile()) {
@@ -72,14 +68,11 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 * Creates a factory that will search the provided PCM file for <em>PCM elements</em>.
 	 *
 	 * @param pcmRepositoryFiles PCM repository file.
-	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
-	 *            with
 	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
-		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
-		this(pcmRepositoryFiles.getAbsolutePath(), fitnessFunction);
+	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles) throws FileNotFoundException {
+		this(pcmRepositoryFiles.getAbsolutePath());
 	}
 
 	/**
