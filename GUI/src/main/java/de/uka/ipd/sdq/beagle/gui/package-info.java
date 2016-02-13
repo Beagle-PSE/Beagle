@@ -1,4 +1,5 @@
 /**
- * This package contains all files concerning the Graphical User Interface (GUI).
+ * This is an Eclipse plugin adding Beagle's GUI.
+ *
  */
 package de.uka.ipd.sdq.beagle.gui;

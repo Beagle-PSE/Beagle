@@ -514,6 +514,7 @@
     </module>
     <module name="ClassFanOutComplexity">
       <property name="severity" value="warning"/>
+      <property name="excludedClasses" value="boolean, byte, char, double, float, int, long, short, void, Boolean, Byte, Character, Double, Float, Integer, Long, Short, Void, Object, Class, String, StringBuffer, StringBuilder, ArrayIndexOutOfBoundsException, Exception, RuntimeException, IllegalArgumentException, IllegalStateException, IndexOutOfBoundsException, NullPointerException, IOException, Throwable, SecurityException, UnsupportedOperationException, List, ArrayList, Deque, Queue, LinkedList, Set, HashSet, SortedSet, TreeSet, Map, Map.Entry, HashMap, SortedMap, TreeMap, Iterator, Collection, Collections, Stack, Arrays, Stream, Validate, FailureHandler, FailureReport"/>
     </module>
     <module name="DescendantToken">
       <property name="severity" value="ignore"/>
