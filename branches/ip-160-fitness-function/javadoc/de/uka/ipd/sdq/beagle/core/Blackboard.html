@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -255,45 +255,69 @@ implements java.io.Serializable</pre>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#clearToBeMeasuredBranches--">clearToBeMeasuredBranches</a></span>()</code>
+<div class="block">Clears the list of <code>branchesToBeMeasured</code>.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#clearToBeMeasuredExternalCalls--">clearToBeMeasuredExternalCalls</a></span>()</code>
+<div class="block">Clears the list of <code>externalCallParameterToBeMeasured</code>.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#clearToBeMeasuredLoops--">clearToBeMeasuredLoops</a></span>()</code>
+<div class="block">Clears the list of <code>loopsToBeMeasured</code>.</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#clearToBeMeasuredRdias--">clearToBeMeasuredRdias</a></span>()</code>
+<div class="block">Clears the list of <code>rdiasToBeMeasured</code>.</div>
+</td>
+</tr>
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllExternalCallParameters--">getAllExternalCallParameters</a></span>()</code>
 <div class="block">Returns all <a href="../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">external call parameters</a> known to
  Beagle.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllRdias--">getAllRdias</a></span>()</code>
 <div class="block">All <a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">resource demanding internal
  actions</a> known to Beagle.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllSeffBranches--">getAllSeffBranches</a></span>()</code>
 <div class="block">All <a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SEFF branches</a> known to Beagle.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getAllSeffLoops--">getAllSeffLoops</a></span>()</code>
 <div class="block">All <a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SEFF loops</a> known to Beagle.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getExternalCallParametersToBeMeasured--">getExternalCallParametersToBeMeasured</a></span>()</code>
 <div class="block">Returns all <a href="../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">external call parameters</a> which shall
  be measured.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getFinalExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-">getFinalExpressionFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/MeasurableSeffElement.html" title="interface in de.uka.ipd.sdq.beagle.core">MeasurableSeffElement</a>&nbsp;element)</code>
 <div class="block">Returns the final expression set for <code>element</code>.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getFitnessFunction--">getFitnessFunction</a></span>()</code>
 <div class="block">Returns an object which holds and is responsible allows access to the fitness
@@ -301,66 +325,66 @@ implements java.io.Serializable</pre>
  their fitness.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterChangeMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">getMeasurementResultsFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</code>
 <div class="block">Gets all results yet measured for the external parameter
  <code>externalCallParameter</code>.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">getMeasurementResultsFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia)</code>
 <div class="block">Gets all results yet measured for the resource demands of <code>rdia</code>.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/measurement/BranchDecisionMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">BranchDecisionMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.SeffBranch-">getMeasurementResultsFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&nbsp;branch)</code>
 <div class="block">Gets all results yet measured for branch decisions of <code>branch</code>.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/measurement/LoopRepetitionCountMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">LoopRepetitionCountMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.SeffLoop-">getMeasurementResultsFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&nbsp;loop)</code>
 <div class="block">Gets all results yet measured for the loop repetitions of <code>loop</code>.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getProposedExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-">getProposedExpressionFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/MeasurableSeffElement.html" title="interface in de.uka.ipd.sdq.beagle.core">MeasurableSeffElement</a>&nbsp;element)</code>
 <div class="block">Returns a set of all <a href="../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">evaluable expressions</a>
  proposed for <code>element</code>.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getRdiasToBeMeasured--">getRdiasToBeMeasured</a></span>()</code>
 <div class="block"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">RDIAs</a> that shall be measured for their
  resource demands.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getSeffBranchesToBeMeasured--">getSeffBranchesToBeMeasured</a></span>()</code>
 <div class="block"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SEFF branches</a> that shall be measured for their branch
  decisions.</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getSeffLoopsToBeMeasured--">getSeffLoopsToBeMeasured</a></span>()</code>
 <div class="block"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SEFF loops</a> that shall be measured for their repetitions.</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>&lt;WRITTEN_TYPE extends java.io.Serializable&gt;<br>WRITTEN_TYPE</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#readFor-java.lang.Class-">readFor</a></span>(java.lang.Class&lt;? extends <a href="../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;WRITTEN_TYPE&gt;&gt;&nbsp;writer)</code>
 <div class="block">Reads data previously written for <code>writer</code> through
  <a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#writeFor-java.lang.Class-WRITTEN_TYPE-"><code>writeFor(Class, Serializable)</code></a>.</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#setFinalExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">setFinalExpressionFor</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/MeasurableSeffElement.html" title="interface in de.uka.ipd.sdq.beagle.core">MeasurableSeffElement</a>&nbsp;element,
                      <a href="../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;expression)</code>
@@ -368,7 +392,7 @@ implements java.io.Serializable</pre>
  results.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code>&lt;WRITTEN_TYPE extends java.io.Serializable&gt;<br>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#writeFor-java.lang.Class-WRITTEN_TYPE-">writeFor</a></span>(java.lang.Class&lt;? extends <a href="../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;WRITTEN_TYPE&gt;&gt;&nbsp;writer,
         WRITTEN_TYPE&nbsp;written)</code>
@@ -690,6 +714,46 @@ implements java.io.Serializable</pre>
 </dl>
 </li>
 </ul>
+<a name="clearToBeMeasuredRdias--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearToBeMeasuredRdias</h4>
+<pre>public&nbsp;void&nbsp;clearToBeMeasuredRdias()</pre>
+<div class="block">Clears the list of <code>rdiasToBeMeasured</code>.</div>
+</li>
+</ul>
+<a name="clearToBeMeasuredBranches--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearToBeMeasuredBranches</h4>
+<pre>public&nbsp;void&nbsp;clearToBeMeasuredBranches()</pre>
+<div class="block">Clears the list of <code>branchesToBeMeasured</code>.</div>
+</li>
+</ul>
+<a name="clearToBeMeasuredLoops--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearToBeMeasuredLoops</h4>
+<pre>public&nbsp;void&nbsp;clearToBeMeasuredLoops()</pre>
+<div class="block">Clears the list of <code>loopsToBeMeasured</code>.</div>
+</li>
+</ul>
+<a name="clearToBeMeasuredExternalCalls--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clearToBeMeasuredExternalCalls</h4>
+<pre>public&nbsp;void&nbsp;clearToBeMeasuredExternalCalls()</pre>
+<div class="block">Clears the list of <code>externalCallParameterToBeMeasured</code>.</div>
+</li>
+</ul>
 <a name="getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">
 <!--   -->
 </a>
@@ -1002,7 +1066,7 @@ implements java.io.Serializable</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
