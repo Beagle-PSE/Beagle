@@ -193,7 +193,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(result.getAllSeffBranches().size(), is(not(0)));
 		assertThat(result.getAllSeffLoops().size(), is(0));
 
-		// Use a corrupted repositoy here.
+		// Use a corrupted repository here.
 
 		assertThat(
 			() -> new PcmRepositoryBlackboardFactory(
