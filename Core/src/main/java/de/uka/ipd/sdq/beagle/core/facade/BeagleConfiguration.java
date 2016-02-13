@@ -174,7 +174,7 @@ public class BeagleConfiguration {
 	}
 
 	/**
-	 * Queries wether this configuration is in the <em>finalised</em> state.
+	 * Queries whether this configuration is in the <em>finalised</em> state.
 	 *
 	 * @return {@code true} if this configuration is in the <em>finalised</em> state,
 	 *         {@code false} if it’s in the <em>set up</em> state.
@@ -185,7 +185,7 @@ public class BeagleConfiguration {
 
 	/**
 	 * Finalises this configuration, thus transitioning it into the <em>finalised</em>
-	 * state. Calling this method when this configuration alread is in the
+	 * state. Calling this method when this configuration already is in the
 	 * <em>finalised</em> state has no effect.
 	 */
 	public void finalise() {
