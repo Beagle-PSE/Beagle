@@ -14,12 +14,17 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
+import de.uka.ipd.sdq.identifier.Identifier;
+
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Writes Beagle’s findings back to a PCM repository. This class is meant to be used for
@@ -36,6 +41,8 @@ public class PcmRepositoryWriter {
 	 */
 	private final Blackboard blackboard;
 
+	private final PcmBeagleMappings pcmMappings;
+
 	// private final Set<ResourceDemandingInternalAction> rdiaSet;
 
 	/**
@@ -46,6 +53,7 @@ public class PcmRepositoryWriter {
 	 */
 	public PcmRepositoryWriter(final Blackboard blackboard) {
 		this.blackboard = blackboard;
+		this.pcmMappings = this.blackboard.readFor(PcmRepositoryBlackboardFactory.class);
 	}
 
 	/**
@@ -86,6 +94,41 @@ public class PcmRepositoryWriter {
 
 	}
 
+	private void find(final RepositoryImpl repository) {
+		final Set<Identifier> identifierSet = new HashSet<Identifier>();
+		final TreeIterator<EObject> contentIterator = repository.eAllContents();
+		while (contentIterator.hasNext()) {
+			final EObject content = contentIterator.next();
+
+			if (content instanceof Identifier) {
+				Identifier contentIdentifier = (Identifier) content;
+				identifierSet.add(contentIdentifier);
+			}
+		}
+		// return identifierSet;
+	}
+
+	private Set<String> getIdsOfSeffLoopsWithFinalExpressionsFromBlackboard() {
+
+		Set<String> seffLoopIds = new HashSet<String>();
+
+		for (SeffLoop seffLoop : this.blackboard.getAllSeffLoops()) {
+			if (this.blackboard.getFinalExpressionFor(seffLoop) != null && this.pcmMappings.hasPcmIdOf(seffLoop)) {
+				seffLoopIds.add(this.pcmMappings.getPcmIdOf(seffLoop));
+			}
+		}
+
+		return seffLoopIds;
+	}
+
+	/*
+	 * private LoopAction getMatchingLoopAction(final Set<Identifier>
+	 * repositoryContentWithIds, final SeffLoop seffLoop) { if
+	 * (this.pcmMappings.hasPcmIdOf(seffLoop)) { String seffLoopId =
+	 * this.pcmMappings.getPcmIdOf(seffLoop); if (repositoryContentWithIds.c) }
+	 * 
+	 * return null; }
+	 */
 	private void annotateEvaExTo() {
 
 	}
