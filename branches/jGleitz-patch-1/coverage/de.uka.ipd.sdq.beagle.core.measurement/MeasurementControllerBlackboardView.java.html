@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MeasurementControllerBlackboardView.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.measurement</a> &gt; <span class="el_source">MeasurementControllerBlackboardView.java</span></div><h1>MeasurementControllerBlackboardView.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.measurement;
+
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.io.Serializable;
+import java.util.Set;
+
+/**
+ * View of the {@link Blackboard} designed to be used by {@link MeasurementResultAnalyser}
+ * . It allows reading access and adding access for
+ * {@linkplain ResourceDemandingInternalAction resource demanding internal actions},
+ * {@linkplain SeffBranch SEFF branches}, {@linkplain SeffLoop SEFF loops},
+ * {@linkplain ExternalCallParameter external call parameters}, reading, and the fitness
+ * function.
+ *
+ * @author Christoph Michelbach
+ * @author Michael Vogt
+ */
+public final class MeasurementControllerBlackboardView {
+
+	/**
+	 * Blackboard instance committed from the {@link AnalysisController}.
+	 */
+	private Blackboard blackboard;
+
+	/**
+	 * Set the blackboard instance from the {@link AnalysisController} to the private
+	 * blackboard attribute.
+	 *
+	 * @param blackboard The blackboard given from the {@link AnalysisController}.
+	 */
+<span class="fc" id="L44">	public MeasurementControllerBlackboardView(final Blackboard blackboard) {</span>
+<span class="fc" id="L45">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L46">		this.blackboard = blackboard;</span>
+<span class="fc" id="L47">	}</span>
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L52">			return false;</span>
+		}
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L55">			return true;</span>
+		}
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		if (object.getClass() != MeasurementControllerBlackboardView.class) {</span>
+<span class="fc" id="L58">			return false;</span>
+		}
+<span class="fc" id="L60">		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">		return this.blackboard == other.blackboard;</span>
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()}.
+	 *
+	 * @return All {@linkplain ResourceDemandingInternalAction resource demanding internal
+	 *         actions} to be measured. Changes to the returned set will not modify the
+	 *         blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
+	 */
+	public Set&lt;ResourceDemandingInternalAction&gt; getRdiasToBeMeasured() {
+<span class="fc" id="L73">		return this.blackboard.getRdiasToBeMeasured();</span>
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()}.
+	 *
+	 * @return All {@linkplain SeffBranch SEFF branches} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
+	 */
+	public Set&lt;SeffBranch&gt; getSeffBranchesToBeMeasured() {
+<span class="fc" id="L85">		return this.blackboard.getSeffBranchesToBeMeasured();</span>
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()}.
+	 *
+	 * @return All {@linkplain SeffLoop SEFF loops} to be measured. Changes to the
+	 *         returned set will not modify the blackboard content. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
+	 */
+	public Set&lt;SeffLoop&gt; getSeffLoopsToBeMeasured() {
+<span class="fc" id="L97">		return this.blackboard.getSeffLoopsToBeMeasured();</span>
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()}
+	 * .
+	 *
+	 * @return All {@linkplain ExternalCallParameter external call parameters} which shall
+	 *         be measured. Is never {@code null}.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
+	 */
+	public Set&lt;ExternalCallParameter&gt; getExternalCallParametersToBeMeasured() {
+<span class="fc" id="L110">		return this.blackboard.getExternalCallParametersToBeMeasured();</span>
+	}
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(ResourceDemandingInternalAction, ResourceDemandMeasurementResult)}
+	 * .
+	 *
+	 * @param rdia A resource demanding internal action that was measured. Must not be
+	 *            {@code null} .
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
+		final ResourceDemandMeasurementResult results) {
+<span class="fc" id="L124">		this.blackboard.addMeasurementResultFor(rdia, results);</span>
+<span class="fc" id="L125">	}</span>
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(SeffLoop, LoopRepetitionCountMeasurementResult)}
+	 * .
+	 *
+	 * @param loop A SEFF Loop was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
+<span class="fc" id="L136">		this.blackboard.addMeasurementResultFor(loop, results);</span>
+<span class="fc" id="L137">	}</span>
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(SeffBranch, BranchDecisionMeasurementResult)}
+	 * .
+	 *
+	 * @param branch A SEFF Branch that was measured. Must not be {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
+<span class="fc" id="L148">		this.blackboard.addMeasurementResultFor(branch, results);</span>
+<span class="fc" id="L149">	}</span>
+
+	/**
+	 * Delegates to
+	 * {@link Blackboard#addMeasurementResultFor(ExternalCallParameter, ParameterChangeMeasurementResult)}
+	 * .
+	 *
+	 * @param parameter An external call parameter which was measured. Must not be
+	 *            {@code null}.
+	 * @param results The result of that measurement. Must not be {@code null}.
+	 */
+	public void addMeasurementResultFor(final ExternalCallParameter parameter,
+		final ParameterChangeMeasurementResult results) {
+<span class="fc" id="L162">		this.blackboard.addMeasurementResultFor(parameter, results);</span>
+<span class="fc" id="L163">	}</span>
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
+	 *
+	 * @return An object which holds and is responsible allows access to the fitness
+	 *         function grading {@linkplain EvaluableExpression evaluable expressions}
+	 *         regarding their fitness.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
+	 */
+	public EvaluableExpressionFitnessFunction getFitnessFunction() {
+<span class="fc" id="L174">		return this.blackboard.getFitnessFunction();</span>
+	}
+
+	/**
+	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)} .
+	 *
+	 * @param writer The class the desired data was written for. Must not be {@code null}.
+	 * @param &lt;WRITTEN_TYPE&gt; The type of the data to be read.
+	 * @return The data written in the last call to
+	 *         {@linkplain de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)}
+	 *         for {@code writer}. {@code null} if no data has been written for
+	 *         {@code writer} yet.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#readFor(Class)
+	 */
+	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
+		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
+<span class="fc" id="L190">		return this.blackboard.readFor(writer);</span>
+	}
+
+	/**
+	 * Delegates to
+	 * {@link de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)} .
+	 *
+	 * @param writer The class the data should be written for. Must not be {@code null}.
+	 * @param written The data to write.
+	 * @param &lt;WRITTEN_TYPE&gt; {@code written}’s type.
+	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#writeFor(Class, Serializable)
+	 */
+	public &lt;WRITTEN_TYPE extends Serializable&gt; void writeFor(
+		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer, final WRITTEN_TYPE written) {
+<span class="fc" id="L204">		this.blackboard.writeFor(writer, written);</span>
+<span class="fc" id="L205">	}</span>
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+<span class="fc" id="L211">		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
