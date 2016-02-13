@@ -31,7 +31,31 @@ public class ExceptionThrowingFailureHandler extends FailureHandler {
 <span class="nc bnc" id="L31" title="All 2 branches missed.">		if (report.getDetails() != null) {</span>
 <span class="nc" id="L32">			failureDescription += &quot;\n\nDetails:\n&quot; + report.getDetails();</span>
 		}
-<span class="nc" id="L34">		throw new RuntimeException(failureDescription, report.getFailureCause());</span>
+<span class="nc" id="L34">		throw new FailureException(failureDescription, report.getFailureCause());</span>
+	}
+
+	/**
+	 * Thrown by this handler for reported failures.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	public final class FailureException extends RuntimeException {
+
+		/**
+		 * Serialisation version UID, see {@link java.io.Serializable}.
+		 */
+		private static final long serialVersionUID = 1653063728785911804L;
+
+		/**
+		 * Creates the exception using the provided {@code message} and {@code cause}.
+		 *
+		 * @param message A message describing the failures.
+		 * @param cause The throwable causing or indicating the failure.
+		 */
+<span class="nc" id="L55">		private FailureException(final String message, final Throwable cause) {</span>
+<span class="nc" id="L56">			super(message, cause);</span>
+<span class="nc" id="L57">		}</span>
+
 	}
 
 }
