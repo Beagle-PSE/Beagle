@@ -15,26 +15,53 @@ import org.palladiosimulator.pcm.resourcetype.ResourceType;
 
 import java.util.Map;
 
-public class ResourceTypeMappings {
+/**
+ * This class offers a bidirectional mapping between the ResourceTypes of Beagle and the
+ * PalladioComponentModel.
+ * 
+ * @author Ansgar Spiegler
+ * @author Joshua Gleitze
+ */
+public final class ResourceTypeMappings {
 
+	/**
+	 * The location of the resourceType-file of PCM.
+	 */
 	private static final String RESOURCETYPE_URI =
 		"platform:/plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype";
 
+	/**
+	 * The bidirectional Map between {@link ResourceDemandType} and
+	 * {@link ProcessinResourceType}.
+	 */
 	private static BidiMap<ResourceDemandType, ProcessingResourceType> beagleTypeToPcmType = new DualHashBidiMap<>();
 
+	/**
+	 * Private constructor.
+	 */
+	private ResourceTypeMappings() {
+
+	}
+
+	/**
+	 * Creates a mapping for ({@link ResourceDemandType#RESOURCE_TYPE_CPU_NS},{@code CPU})
+	 * and ({@link ResourceDemandType#RESOURCE_TYPE_HDD_NS}, {@code HDD}).
+	 *
+	 * @return An instance of this class.
+	 */
 	public static ResourceTypeMappings getMappings() {
 		if (beagleTypeToPcmType.isEmpty()) {
 
-			final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-			final Map<String, Object> m = reg.getExtensionToFactoryMap();
-			m.put("resourcetype", new XMIResourceFactoryImpl());
+			final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
+			final Map<String, Object> factoryMap = registry.getExtensionToFactoryMap();
+			factoryMap.put("resourcetype", new XMIResourceFactoryImpl());
 
-			final URI uri = URI.createURI(RESOURCETYPE_URI);
+			final URI resourceTypeUri = URI.createURI(RESOURCETYPE_URI);
 
 			final ResourceSet resSet = new ResourceSetImpl();
-			final Resource resource = resSet.getResource(uri, true);
+			final Resource resource = resSet.getResource(resourceTypeUri, true);
 
-			ResourceRepository resourceRepository = (ResourceRepository) resource.getContents().get(0);
+			final ResourceRepository resourceRepository = (ResourceRepository) resource.getContents().get(0);
 			for (ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {
 				switch (resourceType.getEntityName()) {
 					case "CPU":
@@ -56,15 +83,23 @@ public class ResourceTypeMappings {
 		return new ResourceTypeMappings();
 	}
 
-	private ResourceTypeMappings() {
-
+	/**
+	 * Reading from the bidirectional map.
+	 *
+	 * @param processingResourceType The {@link ProcessingRessourceType}
+	 * @return The linked {@link ResourceDemandType}
+	 */
+	public ResourceDemandType getBeagleType(final ProcessingResourceType processingResourceType) {
+		return beagleTypeToPcmType.getKey(processingResourceType);
 	}
 
-	public ResourceDemandType getBeagleType(ProcessingResourceType prt) {
-		return beagleTypeToPcmType.getKey(prt);
-	}
-
-	public ProcessingResourceType getPcmType(ResourceDemandType rdt) {
-		return beagleTypeToPcmType.get(rdt);
+	/**
+	 * Reading from the bidirectional map.
+	 *
+	 * @param resourceDemandType The {@link ResourceDemandType}
+	 * @return The linked {@link ProcessingResourceType}
+	 */
+	public ProcessingResourceType getPcmType(final ResourceDemandType resourceDemandType) {
+		return beagleTypeToPcmType.get(resourceDemandType);
 	}
 }
