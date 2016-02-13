@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement.kieker;
+package de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.dom.ASTNode;

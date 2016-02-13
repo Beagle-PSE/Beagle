@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement.kieker;
+package de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation;
 
 /**
  * Thrown if instrumentation of source code is not logically possible.

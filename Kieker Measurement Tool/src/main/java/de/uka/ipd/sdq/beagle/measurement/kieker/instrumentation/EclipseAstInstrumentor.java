@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.measurement.kieker;
+package de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.FailureHandler;
