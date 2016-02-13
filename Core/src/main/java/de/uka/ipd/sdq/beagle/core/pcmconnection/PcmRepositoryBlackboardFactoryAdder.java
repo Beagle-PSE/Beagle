@@ -63,7 +63,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 		this.fitnessFunction = fitnessFunction;
 
 		final File test = new File(repositoryFileName);
-		if (!test.isFile()) {
+		if (!test.exists() || !test.isFile()) {
 			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
 		}
 
@@ -138,7 +138,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
-		for (String identifier : identifiers) {
+		for (final String identifier : identifiers) {
 			if (identifier == null) {
 				throw new NullPointerException();
 			}
@@ -180,7 +180,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
-		for (String identifier : identifiers) {
+		for (final String identifier : identifiers) {
 			if (identifier == null) {
 				throw new NullPointerException();
 			}

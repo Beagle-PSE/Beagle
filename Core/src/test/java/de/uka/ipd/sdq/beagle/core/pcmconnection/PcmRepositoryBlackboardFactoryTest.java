@@ -192,6 +192,24 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(result.getAllRdias().size(), is(not(0)));
 		assertThat(result.getAllSeffBranches().size(), is(not(0)));
 		assertThat(result.getAllSeffLoops().size(), is(0));
+
+		// Use a corrupted repository here.
+
+		assertThat(
+			() -> new PcmRepositoryBlackboardFactory(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedSeffBranchAppSensor.repository",
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
+			throwsException(RuntimeException.class));
+		assertThat(
+			() -> new PcmRepositoryBlackboardFactory(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedRdiaAppSensor.repository",
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
+			throwsException(RuntimeException.class));
+		assertThat(
+			() -> new PcmRepositoryBlackboardFactory(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedExternalCallParameterAppSensor.repository",
+				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
+			throwsException(RuntimeException.class));
 	}
 
 	/**
@@ -239,59 +257,57 @@ public class PcmRepositoryBlackboardFactoryTest {
 	// @formatter:on
 	@Test
 	public void getBlackboardForIdsStringArray() {
-		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactoryAppSensor =
+			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds(""),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(""),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String[]) null),
+		assertThat(() -> pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds((String[]) null),
 			throwsException(NullPointerException.class));
 
-		assertThat(() -> pcmRepositoryBlackboardFactory.getBlackboardForIds((String) null),
+		assertThat(() -> pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds((String) null),
 			throwsException(NullPointerException.class));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"), is(not(nullValue())));
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+			is(not(nullValue())));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
 			is(equalToRegardingSeffElements(
-				pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"))));
+				pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"))));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
+		// The first ID is from {@code AppSensor.repository}, the second one from {@code
+		// Family.repositor}.
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_EofuUYRwEeWnEbz-sg1tMg"),
 			is(not(equalToRegardingSeffElements(
-				pcmRepositoryBlackboardFactory.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g")))));
+				pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_FaSO4LnqEeWVlphM5rov7g")))));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-			is(not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactory.getBlackboardForAllElements()))));
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_EofuUYRwEeWnEbz-sg1tMg"), is(
+			not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForAllElements()))));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g"),
-			is(not(equalToRegardingSeffElements(pcmRepositoryBlackboardFactory.getBlackboardForAllElements()))));
-
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_SomeIdWhichDosntExistA"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_SomeIdWhichDosntExistA"),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("_TooShortId"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("_TooShortId"),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		assertThat(pcmRepositoryBlackboardFactory.getBlackboardForIds("IllegalId"),
+		assertThat(pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds("IllegalId"),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
-		final Blackboard blackboardForIds =
-			pcmRepositoryBlackboardFactory.getBlackboardForIds("_6f1a4LnmEeWVlphM5rov7g", "_FaSO4LnqEeWVlphM5rov7g");
+		final Blackboard blackboardForIds = pcmRepositoryBlackboardFactoryAppSensor
+			.getBlackboardForIds("_EnfoyoRwEeWnEbz-sg1tMg", "_En2OE4RwEeWnEbz-sg1tMg");
 
-		assertThat(blackboardForIds.getAllSeffLoops().size(), is(not(0)));
-
-		for (final SeffLoop seffLoop : blackboardForIds.getAllSeffLoops()) {
-			// How do i figure out whether this is correct?
-			seffLoop.getLoopBody().getStartFile();
-		}
+		assertThat(blackboardForIds.getAllSeffBranches().size(), is(0));
+		assertThat(blackboardForIds.getAllSeffLoops().size(), is(0));
+		assertThat(blackboardForIds.getAllRdias().size(), is(2));
+		assertThat(blackboardForIds.getAllExternalCallParameters().size(), is(0));
 
 		final Blackboard blackboardForIds2 = pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance()
 			.getBlackboardForIds("_Enr2B4RwEeWnEbz-sg1tMg");
-		assertThat(blackboardForIds2.getAllSeffBranches(), is(0));
-		assertThat(blackboardForIds2.getAllSeffLoops(), is(0));
-		assertThat(blackboardForIds2.getAllRdias(), is(1));
-		assertThat(blackboardForIds2.getAllExternalCallParameters(), is(0));
+		assertThat(blackboardForIds2.getAllSeffBranches().size(), is(0));
+		assertThat(blackboardForIds2.getAllSeffLoops().size(), is(0));
+		assertThat(blackboardForIds2.getAllRdias().size(), is(1));
+		assertThat(blackboardForIds2.getAllExternalCallParameters().size(), is(0));
 
 	}
 
