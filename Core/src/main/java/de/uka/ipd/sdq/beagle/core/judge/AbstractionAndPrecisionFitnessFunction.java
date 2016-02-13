@@ -11,6 +11,8 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 
+import org.apache.commons.lang3.Validate;
+
 import java.util.Set;
 
 /**
@@ -27,6 +29,9 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 	@Override
 	public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+		Validate.notNull(rdia);
+		Validate.notNull(expression);
+		Validate.notNull(blackboard);
 
 		final Set<ResourceDemandMeasurementResult> resourceDemandMeasurementResults =
 			blackboard.getMeasurementResultsFor(rdia);
@@ -53,6 +58,9 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 	@Override
 	public double gradeFor(final SeffBranch branch, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+		Validate.notNull(branch);
+		Validate.notNull(expression);
+		Validate.notNull(blackboard);
 
 		final Set<BranchDecisionMeasurementResult> branchDecisionMeasurementResults =
 			blackboard.getMeasurementResultsFor(branch);
@@ -79,6 +87,9 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 	@Override
 	public double gradeFor(final SeffLoop loop, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+		Validate.notNull(loop);
+		Validate.notNull(expression);
+		Validate.notNull(blackboard);
 
 		final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults =
 			blackboard.getMeasurementResultsFor(loop);
@@ -86,7 +97,10 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 		// If there is no expression, return infinity.
 		double meanSquareDeviation = Double.POSITIVE_INFINITY;
 
-		for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult : loopRepetitionCountMeasurementResults) {
+		// @formatter:off
+		for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
+			: loopRepetitionCountMeasurementResults) {
+			// @formatter:on
 			final double realValue = loopRepetitionCountMeasurementResult.getCount();
 			// final Parameterisation parameterisation =
 			// loopRepetitionCountMeasurementResult.getParameterisation();
@@ -105,6 +119,9 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 	@Override
 	public double gradeFor(final ExternalCallParameter parameter, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+		Validate.notNull(parameter);
+		Validate.notNull(expression);
+		Validate.notNull(blackboard);
 
 		final Set<ParameterChangeMeasurementResult> parameterChangeMeasurementResults =
 			blackboard.getMeasurementResultsFor(parameter);
