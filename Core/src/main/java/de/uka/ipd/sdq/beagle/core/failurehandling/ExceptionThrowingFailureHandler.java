@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.failurehandling;
 
 /**
  * {@linkplain FailureHandler} throwing an exception for any reported failure.

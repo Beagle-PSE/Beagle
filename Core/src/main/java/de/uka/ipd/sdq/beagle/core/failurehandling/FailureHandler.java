@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.failurehandling;
 
 /**
  * Handler for any failures that may occur while running Beagle. Clients may obtain an

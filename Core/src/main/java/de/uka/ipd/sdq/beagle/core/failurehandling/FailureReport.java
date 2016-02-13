@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.failurehandling;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
