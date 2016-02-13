@@ -1,14 +1,21 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.facade;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
+import de.uka.ipd.sdq.beagle.core.BlackboardFactory;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
  * pause, continue, and abort an Analysis.
  *
  * @author Christoph Michelbach
+ * @author Roman Langrehr
  */
 public class BeagleController {
+
+	/**
+	 * The analysis controller used for this project.
+	 */
+	private AnalysisController analysisController;
 
 	/**
 	 * Constructs a new {@code BeagleController} with the given
@@ -18,7 +25,7 @@ public class BeagleController {
 	 *            has permanently. It cannot be changed.
 	 */
 	public BeagleController(final BeagleConfiguration beagleConfiguration) {
-
+		this.analysisController = new AnalysisController(new BlackboardFactory(beagleConfiguration).createBlackboard());
 	}
 
 	/**
@@ -27,7 +34,7 @@ public class BeagleController {
 	 *
 	 */
 	public void startAnalysis() {
-
+		this.analysisController.performAnalysis();
 	}
 
 	/**

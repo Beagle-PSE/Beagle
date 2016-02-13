@@ -3,12 +3,19 @@ package de.uka.ipd.sdq.beagle.core;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
+import java.io.Serializable;
+
 /**
  * Hold information about the project under analysis. Objects of this class are immutable.
  *
  * @author Roman Langrehr
  */
-public class ProjectInformation {
+public class ProjectInformation implements Serializable {
+
+	/**
+	 * See {@link Serializable}.
+	 */
+	private static final long serialVersionUID = 2451089669559562551L;
 
 	/**
 	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
