@@ -47,11 +47,11 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/gui/BeagleController.html" target="_top">Frames</a></li>
+<li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/core/BeagleController.html" target="_top">Frames</a></li>
 <li><a href="BeagleController.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_top">
@@ -90,7 +90,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">de.uka.ipd.sdq.beagle.gui</div>
+<div class="subTitle">de.uka.ipd.sdq.beagle.core</div>
 <h2 title="Class BeagleController" class="title">Class BeagleController</h2>
 </div>
 <div class="contentContainer">
@@ -98,7 +98,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>de.uka.ipd.sdq.beagle.gui.BeagleController</li>
+<li>de.uka.ipd.sdq.beagle.core.BeagleController</li>
 </ul>
 </li>
 </ul>
@@ -129,8 +129,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html#BeagleController-de.uka.ipd.sdq.beagle.gui.UserConfiguration-">BeagleController</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui">UserConfiguration</a>&nbsp;userConfiguration)</code>
-<div class="block">Constructs a new <code>BeagleController</code> with the given <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>UserConfiguration</code></a>.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html#BeagleController-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">BeagleController</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a>&nbsp;beagleConfiguration)</code>
+<div class="block">Constructs a new <code>BeagleController</code> with the given
+ <a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a>.</div>
 </td>
 </tr>
 </table>
@@ -150,25 +151,25 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html#abortAnalysis--">abortAnalysis</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html#abortAnalysis--">abortAnalysis</a></span>()</code>
 <div class="block">Aborts the analysis.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html#continueAnalysis--">continueAnalysis</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html#continueAnalysis--">continueAnalysis</a></span>()</code>
 <div class="block">Continues the analysis if it is paused.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html#pauseAnalysis--">pauseAnalysis</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html#pauseAnalysis--">pauseAnalysis</a></span>()</code>
 <div class="block">Pauses the analysis.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html#startAnalysis--">startAnalysis</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html#startAnalysis--">startAnalysis</a></span>()</code>
 <div class="block">Starts the analysis.</div>
 </td>
 </tr>
@@ -194,18 +195,19 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="BeagleController-de.uka.ipd.sdq.beagle.gui.UserConfiguration-">
+<a name="BeagleController-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>BeagleController</h4>
-<pre>public&nbsp;BeagleController(<a href="../../../../../../de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui">UserConfiguration</a>&nbsp;userConfiguration)</pre>
-<div class="block">Constructs a new <code>BeagleController</code> with the given <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>UserConfiguration</code></a>.</div>
+<pre>public&nbsp;BeagleController(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a>&nbsp;beagleConfiguration)</pre>
+<div class="block">Constructs a new <code>BeagleController</code> with the given
+ <a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>userConfiguration</code> - The <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/UserConfiguration.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>UserConfiguration</code></a> this BeagleController has
-            permanently. It cannot be changed.</dd>
+<dd><code>beagleConfiguration</code> - The <a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> this BeagleController
+            has permanently. It cannot be changed.</dd>
 </dl>
 </li>
 </ul>
@@ -224,7 +226,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>startAnalysis</h4>
 <pre>public&nbsp;void&nbsp;startAnalysis()</pre>
-<div class="block">Starts the analysis. This method can only be used once per <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleController</code></a>
+<div class="block">Starts the analysis. This method can only be used once per <a href="../../../../../../de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core"><code>BeagleController</code></a>
  . Further calls will be ignored.</div>
 </li>
 </ul>
@@ -289,11 +291,11 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/gui/BeagleController.html" target="_top">Frames</a></li>
+<li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/core/BeagleController.html" target="_top">Frames</a></li>
 <li><a href="BeagleController.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">

@@ -47,8 +47,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/MachineSelectionWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/gui/GuiController.html" target="_top">Frames</a></li>
@@ -130,8 +130,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html#GuiController-java.util.Set-">GuiController</a></span>(java.util.Set&lt;java.lang.String&gt;&nbsp;pcmElementsToMeasure)</code>
-<div class="block">Creates a new <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> with the given components.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html#GuiController-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">GuiController</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a>&nbsp;beagleConfiguration)</code>
+<div class="block">Constructs a new <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> using <code>components</code> as the default
+ components to be measured.</div>
 </td>
 </tr>
 </table>
@@ -152,7 +153,8 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html#open--">open</a></span>()</code>
-<div class="block">Opens the GuiController.</div>
+<div class="block">Opens the GUI, meaning that from the point of time this method is called, the user
+ can see and interact with it.</div>
 </td>
 </tr>
 </table>
@@ -177,20 +179,18 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="GuiController-java.util.Set-">
+<a name="GuiController-de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>GuiController</h4>
-<pre>public&nbsp;GuiController(java.util.Set&lt;java.lang.String&gt;&nbsp;pcmElementsToMeasure)</pre>
-<div class="block">Creates a new <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> with the given components. It's not possible to
- change the set of components but the user can choose that certain components will
- not be measured even though they are in the set <code>components</code>.</div>
+<pre>public&nbsp;GuiController(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a>&nbsp;beagleConfiguration)</pre>
+<div class="block">Constructs a new <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> using <code>components</code> as the default
+ components to be measured.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>pcmElementsToMeasure</code> - The PCM elements this <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> will use.
-            These PCM elements are represented by PCM identifiers.</dd>
+<dd><code>beagleConfiguration</code> - The <a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> to use.</dd>
 </dl>
 </li>
 </ul>
@@ -209,7 +209,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>open</h4>
 <pre>public&nbsp;void&nbsp;open()</pre>
-<div class="block">Opens the GuiController.</div>
+<div class="block">Opens the GUI, meaning that from the point of time this method is called, the user
+ can see and interact with it. Calls after the first call of this function (per
+ <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/GuiController.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>GuiController</code></a> object) are ignored. Returns after the user closed the
+ wizard. This includes finished the wizard as well as aborting it in any way.</div>
 </li>
 </ul>
 </li>
@@ -239,8 +242,8 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/MachineSelectionWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/gui/GuiController.html" target="_top">Frames</a></li>
