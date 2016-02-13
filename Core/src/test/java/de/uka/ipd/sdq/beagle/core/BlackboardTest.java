@@ -37,6 +37,7 @@ import java.util.Set;
  *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
+ * @author Annika Berger
  */
 public class BlackboardTest {
 
@@ -1204,9 +1205,53 @@ public class BlackboardTest {
 		testBlackboard.writeFor(TestStorer.class, null);
 		assertThat("Written data must be returned", testBlackboard.readFor(TestStorer.class), is(nullValue()));
 	}
+	
+	/**
+	 * Tests {@link Blackboard#clearToBeMeasuredBranches()}.
+	 */
+	@Test
+	public void clearToBeMeasuredBranches() {
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getFull();
+		testBlackboard.clearToBeMeasuredBranches();
+		final Set<SeffBranch> branches = testBlackboard.getSeffBranchesToBeMeasured();
+		assertThat(branches, is(empty()));
+	}
+	
+	/**
+	 * Tests {@link Blackboard#clearToBeMeasuredExternalCalls()}.
+	 */
+	@Test
+	public void clearToBeMeasuredExternalCalls() {
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getFull();
+		testBlackboard.clearToBeMeasuredExternalCalls();
+		final Set<ExternalCallParameter> externalCalls = testBlackboard.getExternalCallParametersToBeMeasured();
+		assertThat(externalCalls, is(empty()));
+	}
+	
+	/**
+	 * Tests {@link Blackboard#clearToBeMeasuredLoops()}.
+	 */
+	@Test
+	public void clearToBeMeasuredLoops() {
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getFull();
+		testBlackboard.clearToBeMeasuredLoops();
+		final Set<SeffLoop> loops = testBlackboard.getSeffLoopsToBeMeasured();
+		assertThat(loops, is(empty()));
+	}
+	
+	/**
+	 * Tests {@link Blackboard#clearToBeMeasuredRdias()}.
+	 */
+	@Test
+	public void clearToBeMeasuredRdias() {
+		final Blackboard testBlackboard = BLACKBOARD_FACTORY.getFull();
+		testBlackboard.clearToBeMeasuredRdias();
+		final Set<ResourceDemandingInternalAction> rdias = testBlackboard.getRdiasToBeMeasured();
+		assertThat(rdias, is(empty()));
+	}
 
 	/**
-	 * Test {@link BlackboardStorer}.
+	 * Test {@link BlackboardStorer}. {@link Blackboard#clearToBeMeasuredRdias()}
 	 *
 	 * @author Joshua Gleitze
 	 */
