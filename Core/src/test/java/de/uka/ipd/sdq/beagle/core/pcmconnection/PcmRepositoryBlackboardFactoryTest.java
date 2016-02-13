@@ -202,7 +202,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 			throwsException(RuntimeException.class));
 		assertThat(
 			() -> new PcmRepositoryBlackboardFactory(
-				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CoruptedRdiaAppSensor.repository",
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedRdiaAppSensor.repository",
 				PcmRepositoryBlackboardFactoryFactory.FITNESS_FUNCTION_FACTORY.getOne()).getBlackboardForAllElements(),
 			throwsException(RuntimeException.class));
 		assertThat(
