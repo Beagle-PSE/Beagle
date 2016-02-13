@@ -279,7 +279,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final Blackboard blackboardForIds = pcmRepositoryBlackboardFactoryAppSensor
 			.getBlackboardForIds("_EnfoyoRwEeWnEbz-sg1tMg", "_En2OE4RwEeWnEbz-sg1tMg");
 
-		assertThat(blackboardForIds.getAllSeffLoops().size(), is(not(0)));
+		assertThat(blackboardForIds.getAllSeffBranches().size(), is(0));
+		assertThat(blackboardForIds.getAllSeffLoops().size(), is(0));
+		assertThat(blackboardForIds.getAllRdias().size(), is(2));
+		assertThat(blackboardForIds.getAllExternalCallParameters().size(), is(0));
 
 		final Blackboard blackboardForIds2 = pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance()
 			.getBlackboardForIds("_Enr2B4RwEeWnEbz-sg1tMg");
