@@ -109,7 +109,10 @@ var activeTableTab = "activeTableTab";
  details, look for the Blackboard layers in the Design and Architecture document in
  chapter 2. Tools wishing to conduct measurements on software are advised to implement
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementTool</code></a> instead of this
- interface.</div>
+ interface.
+
+ <p>Measurement result analysers need a public zero argument constructor for the
+ instantiation, because they are loaded through eclipse extension points.</div>
 </li>
 </ul>
 </div>
