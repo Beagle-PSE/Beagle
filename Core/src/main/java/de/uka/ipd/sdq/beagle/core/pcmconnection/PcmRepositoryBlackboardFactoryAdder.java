@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.BlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 
 import org.eclipse.emf.ecore.EObject;
@@ -84,7 +84,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
 	 *            never be {@code null} afterwards.
 	 */
-	public void getBlackboardForAllElements(final BlackboardFactory blackboardFactory) {
+	public void getBlackboardForAllElements(final BlackboardCreator blackboardFactory) {
 		this.pcmExtractor = new PcmRepositoryExtractor();
 		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);
 
@@ -119,7 +119,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
 	 *            never be {@code null} afterwards.
 	 */
-	public void getBlackboardForIds(final Collection<String> identifiers, final BlackboardFactory blackboardFactory) {
+	public void getBlackboardForIds(final Collection<String> identifiers, final BlackboardCreator blackboardFactory) {
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
@@ -162,7 +162,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
 	 *            never be {@code null} afterwards.
 	 */
-	public void getBlackboardForIds(final BlackboardFactory blackboardFactory, final String... identifiers) {
+	public void getBlackboardForIds(final BlackboardCreator blackboardFactory, final String... identifiers) {
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}

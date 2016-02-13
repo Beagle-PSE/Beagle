@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author Roman Langrehr
  */
-public class BlackboardFactory {
+public class BlackboardCreator {
 
 	/**
 	 * The {@linkplain ResourceDemandingInternalAction ResourceDemandingInternalActions}
@@ -52,8 +52,13 @@ public class BlackboardFactory {
 	 *
 	 * @return A new {@link Blackboard} instance with all information provided via this
 	 *         class.
+	 * 
 	 */
 	public Blackboard createBlackboard() {
+		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null
+			|| this.projectInformation == null) {
+			throw new IllegalStateException("Not everything has been setup yet.");
+		}
 		return new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls, this.fitnessFunction,
 			this.projectInformation);
 	}

@@ -20,3 +20,4 @@ Require-Bundle: de.uka.ipd.sdq.pcm.gmf.repository,
  org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.e4.core.di
+Import-Package: org.eclipse.debug.core

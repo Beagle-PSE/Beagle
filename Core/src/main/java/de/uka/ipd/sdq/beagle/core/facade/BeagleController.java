@@ -1,14 +1,17 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
-import de.uka.ipd.sdq.beagle.core.BlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.FailureReport;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
+import org.eclipse.jdt.core.IClasspathEntry;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +37,7 @@ public class BeagleController {
 	 *            has permanently. It cannot be changed.
 	 */
 	public BeagleController(final BeagleConfiguration beagleConfiguration) {
-		final BlackboardFactory blackboardFactory = new BlackboardFactory();
+		final BlackboardCreator blackboardFactory = new BlackboardCreator();
 		if (beagleConfiguration.getElements() == null) {
 			try {
 				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile())
@@ -50,6 +53,11 @@ public class BeagleController {
 				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
 			}
 		}
+		final Charset charset = Charset.forName(beagleConfiguration.getJavaProject().getProject().getDefaultCharset());
+		final String buildPath =
+			this.classPathToString(beagleConfiguration.getJavaProject().getResolvedClasspath(true));
+		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
+			beagleConfiguration.getFileProvider(), buildPath, charset));
 		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard());
 	}
 
@@ -102,5 +110,21 @@ public class BeagleController {
 			strings.add(entity.getId());
 		}
 		return strings;
+	}
+
+	/**
+	 * Converts an array of {@linkplain IClasspathEntry IClasspathEntries} to a
+	 * ";"-separated string with the paths.
+	 *
+	 * @param classpathEntries The {@linkplain IClasspathEntry IClasspathEntries} to
+	 *            convert
+	 * @return the ";"-separated string with the paths
+	 */
+	private String classPathToString(final IClasspathEntry[] classpathEntries) {
+		String path = "";
+		for (final IClasspathEntry classpathEntry : classpathEntries) {
+			path += classpathEntry.getPath().toOSString() + ";";
+		}
+		return path.substring(0, path.length() - 1);
 	}
 }

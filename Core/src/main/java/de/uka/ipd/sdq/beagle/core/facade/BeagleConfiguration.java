@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
 import org.apache.commons.lang3.Validate;
+import org.eclipse.jdt.core.IJavaProject;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
@@ -61,9 +62,9 @@ public class BeagleConfiguration {
 	private int timeout;
 
 	/**
-	 * The provider of the source files to be analysed.
+	 * The {@link IJavaProject} to analyse.
 	 */
-	private SourceCodeFileProvider fileProvider;
+	private IJavaProject javaProject;
 
 	/**
 	 * Whether this configuration is in the <em>finalised</em> state.
@@ -77,10 +78,12 @@ public class BeagleConfiguration {
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 * @param javaProject the {@link IJavaProject} to analyse
 	 */
-	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile) {
+	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile, final IJavaProject javaProject) {
 		Validate.notNull(elements);
 		Validate.notNull(repositoryFile);
+		Validate.notNull(javaProject);
 
 		if (!repositoryFile.exists()) {
 			throw new IllegalArgumentException("Repository file must exist.");
@@ -89,6 +92,16 @@ public class BeagleConfiguration {
 		this.elements = new LinkedList<>(elements);
 		this.repositoryFile = repositoryFile;
 		this.timeout = DEFAULT_TIMEOUT;
+		this.javaProject = javaProject;
+	}
+
+	/**
+	 * Gives the {@link IJavaProject} to analyse.
+	 *
+	 * @return the {@link IJavaProject} to analyse.
+	 */
+	public IJavaProject getJavaProject() {
+		return this.javaProject;
 	}
 
 	/**
@@ -213,31 +226,6 @@ public class BeagleConfiguration {
 	 */
 	public void finalise() {
 		this.finalised = true;
-	}
-
-	/**
-	 * Queries the provider responsible to get the source files Beagle shall analyse.
-	 *
-	 *
-	 * @return The provider of source files.
-	 */
-	public SourceCodeFileProvider getFileProvider() {
-		return this.fileProvider;
-	}
-
-	/**
-	 * Sets the provider responsible to get the source files Beagle shall analyse.
-	 *
-	 * @param fileProvider The provider of source files. Must not be {@code null}.
-	 *
-	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
-	 *             state.
-	 */
-	public void setFileProvider(final SourceCodeFileProvider fileProvider) {
-		Validate.validState(!this.finalised,
-			"setting values is only allowed if this configuration is not yet finalised");
-		Validate.notNull(fileProvider);
-		this.fileProvider = fileProvider;
 	}
 
 }

@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.BlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
@@ -77,7 +77,7 @@ public class PcmRepositoryExtractor {
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForAllElements(final RepositoryImpl repository,
-		final BlackboardFactory blackboardFactory) {
+		final BlackboardCreator blackboardFactory) {
 		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();
 		this.seffLoopSet = new HashSet<SeffLoop>();
 		this.seffBranchSet = new HashSet<SeffBranch>();
@@ -126,7 +126,7 @@ public class PcmRepositoryExtractor {
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForIds(final RepositoryImpl repository, final Collection<String> identifiers,
-		final BlackboardFactory blackboardFactory) {
+		final BlackboardCreator blackboardFactory) {
 		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();
 		final Set<EObject> setOfIdentifiedObjects = new HashSet<EObject>();
 
