@@ -89,7 +89,7 @@ configure(javaSubprojects) {
 	    }
 	}
 	
-	task qc (dependsOn: verifyNoCheckstyleWarnings) {
+	task qc (dependsOn: jacocoTestReport) {
 		group 'Verification'
 		description 'Verifies the code’s quality. Fails the build if issues are found.'
 	}
@@ -100,7 +100,7 @@ configure(javaSubprojects) {
 }
 
 configure(javaSubprojects - prototypeSubprojects) {
-	qc.dependsOn verifyTestCoverage
+	qc.dependsOn jacocoTestReport
 	
 	checkstyleMain.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle.xml")
 	checkstyleTest.configFile = file("$rootProject.projectDir/config/checkstyle/Checkstyle Test.xml")
