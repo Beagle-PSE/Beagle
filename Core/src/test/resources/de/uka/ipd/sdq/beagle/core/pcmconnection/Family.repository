@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_x86XkLnmEeWVlphM5rov7g" entityName="defaultRepository">
+  <components__Repository xsi:type="repository:BasicComponent" id="_6f1a4LnmEeWVlphM5rov7g" entityName="Grandfather">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_PFt5wLnnEeWVlphM5rov7g" entityName="Provided_interestingStory_Django" providedInterface__OperationProvidedRole="_Ebz70LnnEeWVlphM5rov7g"/>
+    <componentParameterUsage_ImplementationComponentType>
+      <variableCharacterisation_VariableUsage type="VALUE">
+        <specification_VariableCharacterisation specification="128"/>
+      </variableCharacterisation_VariableUsage>
+      <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="age"/>
+    </componentParameterUsage_ImplementationComponentType>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_afWrgLnnEeWVlphM5rov7g" describedService__SEFF="_XsRf4LnnEeWVlphM5rov7g">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_bA1A4LnnEeWVlphM5rov7g" entityName="start" successor_AbstractAction="_dXQswLnnEeWVlphM5rov7g"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_bA1A4bnnEeWVlphM5rov7g" entityName="stop" predecessor_AbstractAction="_dXQswLnnEeWVlphM5rov7g"/>
+      <steps_Behaviour xsi:type="seff:LoopAction" id="_dXQswLnnEeWVlphM5rov7g" entityName="OuterLoop" predecessor_AbstractAction="_bA1A4LnnEeWVlphM5rov7g" successor_AbstractAction="_bA1A4bnnEeWVlphM5rov7g">
+        <bodyBehaviour_Loop id="_dYBhwLnnEeWVlphM5rov7g">
+          <steps_Behaviour xsi:type="seff:StartAction" id="_dYHoYLnnEeWVlphM5rov7g" successor_AbstractAction="_h1a6ILnnEeWVlphM5rov7g"/>
+          <steps_Behaviour xsi:type="seff:LoopAction" id="_h1a6ILnnEeWVlphM5rov7g" entityName="InnerLoop" predecessor_AbstractAction="_dYHoYLnnEeWVlphM5rov7g">
+            <bodyBehaviour_Loop id="_h1hAwLnnEeWVlphM5rov7g">
+              <steps_Behaviour xsi:type="seff:StartAction" id="_h1hAwbnnEeWVlphM5rov7g" successor_AbstractAction="_emiG0LnoEeWVlphM5rov7g"/>
+              <steps_Behaviour xsi:type="seff:StopAction" id="_h1hAwrnnEeWVlphM5rov7g" predecessor_AbstractAction="_6nOKYLnoEeWVlphM5rov7g"/>
+              <steps_Behaviour xsi:type="seff:BranchAction" id="_emiG0LnoEeWVlphM5rov7g" entityName="SmallBranchAction" predecessor_AbstractAction="_h1hAwbnnEeWVlphM5rov7g" successor_AbstractAction="_6nOKYLnoEeWVlphM5rov7g">
+                <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_pnWv8LnoEeWVlphM5rov7g" entityName="SingleBranch" branchProbability="0.3">
+                  <branchBehaviour_BranchTransition id="_pnWv8bnoEeWVlphM5rov7g">
+                    <steps_Behaviour xsi:type="seff:StartAction" id="_pnWv8rnoEeWVlphM5rov7g"/>
+                    <steps_Behaviour xsi:type="seff:StopAction" id="_pnWv87noEeWVlphM5rov7g"/>
+                  </branchBehaviour_BranchTransition>
+                </branches_Branch>
+              </steps_Behaviour>
+              <steps_Behaviour xsi:type="seff:BranchAction" id="_6nOKYLnoEeWVlphM5rov7g" entityName="HugeBranchAction" predecessor_AbstractAction="_emiG0LnoEeWVlphM5rov7g" successor_AbstractAction="_h1hAwrnnEeWVlphM5rov7g">
+                <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Fc-L8LnpEeWVlphM5rov7g" entityName="FirstBranch" branchProbability="0.1">
+                  <branchBehaviour_BranchTransition id="_Fc-L8bnpEeWVlphM5rov7g">
+                    <steps_Behaviour xsi:type="seff:StartAction" id="_Fc-L8rnpEeWVlphM5rov7g"/>
+                    <steps_Behaviour xsi:type="seff:StopAction" id="_Fc-L87npEeWVlphM5rov7g"/>
+                  </branchBehaviour_BranchTransition>
+                </branches_Branch>
+                <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Hs4ZELnpEeWVlphM5rov7g" entityName="SecondBranch" branchProbability="0.2">
+                  <branchBehaviour_BranchTransition id="_Hs4ZEbnpEeWVlphM5rov7g">
+                    <steps_Behaviour xsi:type="seff:StartAction" id="_Hs4ZErnpEeWVlphM5rov7g"/>
+                    <steps_Behaviour xsi:type="seff:StopAction" id="_Hs4ZE7npEeWVlphM5rov7g"/>
+                  </branchBehaviour_BranchTransition>
+                </branches_Branch>
+                <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_VOe84LnpEeWVlphM5rov7g" entityName="ThirdBranch" branchProbability="0.3">
+                  <branchBehaviour_BranchTransition id="_VOlDgLnpEeWVlphM5rov7g">
+                    <steps_Behaviour xsi:type="seff:StartAction" id="_VOlDgbnpEeWVlphM5rov7g"/>
+                    <steps_Behaviour xsi:type="seff:StopAction" id="_VOlDgrnpEeWVlphM5rov7g" predecessor_AbstractAction="_FGtWILnrEeWVlphM5rov7g"/>
+                    <steps_Behaviour xsi:type="seff:BranchAction" id="_FGtWILnrEeWVlphM5rov7g" entityName="SubBranchAction" predecessor_AbstractAction="_ii4VsLnqEeWVlphM5rov7g" successor_AbstractAction="_VOlDgrnpEeWVlphM5rov7g">
+                      <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_JR0rsLnrEeWVlphM5rov7g" entityName="SubBranchOne">
+                        <branchBehaviour_BranchTransition id="_JR0rsbnrEeWVlphM5rov7g">
+                          <steps_Behaviour xsi:type="seff:StartAction" id="_JR6yULnrEeWVlphM5rov7g" successor_AbstractAction="_a5K84LnrEeWVlphM5rov7g"/>
+                          <steps_Behaviour xsi:type="seff:StopAction" id="_JR6yUbnrEeWVlphM5rov7g" predecessor_AbstractAction="_a5K84LnrEeWVlphM5rov7g"/>
+                          <steps_Behaviour xsi:type="seff:InternalAction" id="_a5K84LnrEeWVlphM5rov7g" entityName="InnerCall3" predecessor_AbstractAction="_JR6yULnrEeWVlphM5rov7g" successor_AbstractAction="_JR6yUbnrEeWVlphM5rov7g"/>
+                        </branchBehaviour_BranchTransition>
+                      </branches_Branch>
+                      <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_K0kQ0LnrEeWVlphM5rov7g" entityName="SubBranchTwo">
+                        <branchBehaviour_BranchTransition id="_K0kQ0bnrEeWVlphM5rov7g">
+                          <steps_Behaviour xsi:type="seff:StartAction" id="_K0kQ0rnrEeWVlphM5rov7g"/>
+                          <steps_Behaviour xsi:type="seff:StopAction" id="_K0kQ07nrEeWVlphM5rov7g"/>
+                        </branchBehaviour_BranchTransition>
+                      </branches_Branch>
+                    </steps_Behaviour>
+                    <steps_Behaviour xsi:type="seff:InternalAction" id="_zj1KsLnpEeWVlphM5rov7g" entityName="InternalCallWithRD" successor_AbstractAction="_ii4VsLnqEeWVlphM5rov7g">
+                      <resourceDemand_Action>
+                        <specification_ParametericResourceDemand specification="2"/>
+                        <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                      </resourceDemand_Action>
+                      <resourceDemand_Action>
+                        <specification_ParametericResourceDemand specification="3"/>
+                        <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                      </resourceDemand_Action>
+                      <resourceDemand_Action>
+                        <specification_ParametericResourceDemand specification="13"/>
+                        <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_BIjHoQ3KEdyouMqirZIhzQ"/>
+                      </resourceDemand_Action>
+                    </steps_Behaviour>
+                    <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_ii4VsLnqEeWVlphM5rov7g" predecessor_AbstractAction="_zj1KsLnpEeWVlphM5rov7g" successor_AbstractAction="_FGtWILnrEeWVlphM5rov7g">
+                      <inputVariableUsages__CallAction>
+                        <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="jokingFactor"/>
+                      </inputVariableUsages__CallAction>
+                      <returnVariableUsage__CallReturnAction>
+                        <variableCharacterisation_VariableUsage type="VALUE">
+                          <specification_VariableCharacterisation specification="DoublePMF[(2;3)(1;7)(3;2)]"/>
+                        </variableCharacterisation_VariableUsage>
+                        <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="IndependedOutputVariable"/>
+                      </returnVariableUsage__CallReturnAction>
+                    </steps_Behaviour>
+                  </branchBehaviour_BranchTransition>
+                </branches_Branch>
+              </steps_Behaviour>
+            </bodyBehaviour_Loop>
+            <iterationCount_LoopAction specification="7"/>
+          </steps_Behaviour>
+        </bodyBehaviour_Loop>
+        <iterationCount_LoopAction specification="42"/>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_9cuCwLnmEeWVlphM5rov7g" entityName="Grandchild">
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_QdryQLnnEeWVlphM5rov7g" entityName="Required_interestingStory_Torben" requiredInterface__OperationRequiredRole="_Ebz70LnnEeWVlphM5rov7g"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_FaSO4LnqEeWVlphM5rov7g" entityName="Brain">
+    <componentParameterUsage_ImplementationComponentType>
+      <variableCharacterisation_VariableUsage>
+        <specification_VariableCharacterisation specification="1000000000"/>
+      </variableCharacterisation_VariableUsage>
+      <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="NumberOfCells"/>
+    </componentParameterUsage_ImplementationComponentType>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Ebz70LnnEeWVlphM5rov7g" entityName="interestingStory">
+    <signatures__OperationInterface id="_XsRf4LnnEeWVlphM5rov7g" entityName="tellMe"/>
+  </interfaces__Repository>
+</repository:Repository>

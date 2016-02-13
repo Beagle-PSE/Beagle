@@ -67,13 +67,18 @@ public class BlackboardFactory {
 	private static final MeasurementResultFactory MEAUSUREMENT_RESULT_FACTORY = new MeasurementResultFactory();
 
 	/**
+	 * A project information factory to easily obtain new instances from.
+	 */
+	private static final ProjectInformationFactory PROJECT_INFORMATION_FACTORY = new ProjectInformationFactory();
+
+	/**
 	 * Creates a new blackboard with nothing written on it.
 	 *
 	 * @return A new blackboard instance, without any data on it.
 	 */
 	public Blackboard getEmpty() {
 		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
-			FITNESS_FUNCTION_FACTORY.getOne());
+			FITNESS_FUNCTION_FACTORY.getOne(), PROJECT_INFORMATION_FACTORY.getOne());
 	}
 
 	/**
@@ -89,7 +94,7 @@ public class BlackboardFactory {
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 
 		final Blackboard blackboard = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, externalCallParameterSet,
-			FITNESS_FUNCTION_FACTORY.getOne());
+			FITNESS_FUNCTION_FACTORY.getOne(), PROJECT_INFORMATION_FACTORY.getOne());
 		blackboard.addToBeMeasuredExternalCallParameters(externalCallParameterSet);
 		blackboard.addToBeMeasuredRdias(rdiaSet);
 		blackboard.addToBeMeasuredSeffBranches(seffBranchSet);
@@ -179,7 +184,7 @@ public class BlackboardFactory {
 	public Blackboard getWithFewElements() {
 		return new Blackboard(some(RDIA_FACTORY.getAll(), 2), some(SEFF_BRANCH_FACTORY.getAll(), 2),
 			some(SEFF_LOOP_FACTORY.getAll(), 2), some(EXTERNAL_CALL_PARAMETER_FACTORY.getAll(), 2),
-			FITNESS_FUNCTION_FACTORY.getOne());
+			FITNESS_FUNCTION_FACTORY.getOne(), PROJECT_INFORMATION_FACTORY.getOne());
 	}
 
 	/**
@@ -194,7 +199,8 @@ public class BlackboardFactory {
 	public Blackboard setFitnessFunction(final Blackboard sourceBlackboard,
 		final EvaluableExpressionFitnessFunction fitnessFunction) {
 		final Blackboard copy = new Blackboard(sourceBlackboard.getAllRdias(), sourceBlackboard.getAllSeffBranches(),
-			sourceBlackboard.getAllSeffLoops(), sourceBlackboard.getAllExternalCallParameters(), fitnessFunction);
+			sourceBlackboard.getAllSeffLoops(), sourceBlackboard.getAllExternalCallParameters(), fitnessFunction,
+			sourceBlackboard.getProjectInformation());
 		this.copyAll(sourceBlackboard, copy);
 		return copy;
 	}
