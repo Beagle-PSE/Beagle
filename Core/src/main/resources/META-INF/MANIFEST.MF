@@ -8,4 +8,8 @@ Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.facade
 Require-Bundle: de.uka.ipd.sdq.pcm.gmf.repository,
  org.palladiosimulator.pcm,
- org.eclipse.jdt.core
+ org.eclipse.jdt.core,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.cdo,
+ org.eclipse.ocl.ecore

@@ -2,10 +2,17 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.palladiosimulator.pcm.repository.RepositoryFactory;
+import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collection;
-import java.util.Set;
+import java.util.LinkedList;
 
 /**
  * Creates {@link Blackboard} instances suitable to analyse elements from a PCM
@@ -16,25 +23,73 @@ import java.util.Set;
  * source code files expressed in the source code decorator model.
  *
  * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagleMappings> {
 
 	/**
-	 * Creates a factory that will search the provided PCM files for <em>PCM
-	 * elements</em>.
-	 *
-	 * @param pcmRepositoryFiles PCM repository files.
+	 * The repository where this class should extract all its information from.
 	 */
-	public PcmRepositoryBlackboardFactory(final File... pcmRepositoryFiles) {
-	}
+	private final RepositoryImpl repository;
+
+	/**
+	 * Instance of helper class, extracting a given repository.
+	 */
+	private PcmRepositoryExtractor pcmExtractor;
+
+	/**
+	 * The fitnessFucntion to initialize the blackboard with.
+	 */
+	private final EvaluableExpressionFitnessFunction fitnessFunction;
 
 	/**
 	 * Creates a factory that will search the provided PCM files for <em>PCM
 	 * elements</em>.
 	 *
-	 * @param pcmRepositoryFiles PCM repository files.
+	 * @param repositoryFileName PCM repository to load from.
+	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
+	 *            with
+	 * @throws IllegalArgumentException If input parameter does not represent a valid
+	 *             repository file or if repositoryFileName can not be resolved to a valid
+	 *             file
 	 */
-	public PcmRepositoryBlackboardFactory(final Set<File> pcmRepositoryFiles) {
+	public PcmRepositoryBlackboardFactory(final String repositoryFileName,
+		final EvaluableExpressionFitnessFunction fitnessFunction) {
+
+		if (fitnessFunction == null || repositoryFileName == null) {
+			throw new NullPointerException();
+		}
+
+		this.fitnessFunction = fitnessFunction;
+
+		final File test = new File(repositoryFileName);
+		if (!test.isFile()) {
+			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
+		}
+
+		RepositoryFactory.eINSTANCE.createRepository();
+		// Not sure if this final declaration could lead to a problem.
+		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
+
+		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);
+		if (!(eObject.getClass() == RepositoryImpl.class)) {
+			throw new IllegalArgumentException();
+		}
+		this.repository = (RepositoryImpl) eObject;
+	}
+
+	/**
+	 * Creates a factory that will search the provided PCM file for <em>PCM elements</em>.
+	 *
+	 * @param pcmRepositoryFiles PCM repository file.
+	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
+	 *            with
+	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
+	 *             file
+	 */
+	public PcmRepositoryBlackboardFactory(final File pcmRepositoryFiles,
+		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
+		this(pcmRepositoryFiles.getAbsolutePath(), fitnessFunction);
 	}
 
 	/**
@@ -46,7 +101,9 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *         Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForAllElements() {
-		return null;
+		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
+		return this.pcmExtractor.getBlackboardForAllElements(this.repository);
+
 	}
 
 	/**
@@ -68,7 +125,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *
 	 * <li>If {@code id} describes a <em>PCM element</em>, it will be selected.
 	 *
-	 * <li>Any other ID will be silently ignored.
+	 * <li>Any different ID will be silently ignored.
 	 *
 	 * </ul>
 	 *
@@ -78,7 +135,17 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *         written on it. Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForIds(final Collection<String> identifiers) {
-		return null;
+		if (identifiers == null) {
+			throw new NullPointerException();
+		}
+		for (String identifier : identifiers) {
+			if (identifier == null) {
+				throw new NullPointerException();
+			}
+		}
+		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
+		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);
+
 	}
 
 	/**
@@ -110,6 +177,19 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *         written on it. Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForIds(final String... identifiers) {
-		return null;
+		if (identifiers == null) {
+			throw new NullPointerException();
+		}
+		for (String identifier : identifiers) {
+			if (identifier == null) {
+				throw new NullPointerException();
+			}
+		}
+		final Collection<String> identifierCollection = new LinkedList<String>();
+		for (final String identifier : identifiers) {
+			identifierCollection.add(identifier);
+		}
+		return this.getBlackboardForIds(identifierCollection);
 	}
+
 }
