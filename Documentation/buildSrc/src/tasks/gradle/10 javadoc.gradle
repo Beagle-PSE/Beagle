@@ -47,9 +47,12 @@ task javadoc(type: Javadoc) {
 	destinationDir = file("$buildDir/javadoc")
 	
 	classpath = classpath javadocSubprojects
-	options.overview "$projectDir/src/javadoc/html/Overview.html"
-	options.encoding = "UTF-8"
-	options.noTimestamp = true
+	options {
+		links "https://docs.oracle.com/javase/8/docs/api/"
+		overview "$projectDir/src/javadoc/html/Overview.html"
+		encoding = "UTF-8"
+		noTimestamp = true
+	}
 }
  
 def rendersrc = fileTree("$projectDir/src").include('common/**').include('javadoc/lyx/**')
