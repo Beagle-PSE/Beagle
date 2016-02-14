@@ -5,6 +5,15 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.Set;
 
 /**
  * Fitness function regarding abstract but precise expression as fittest. Naturally, these
@@ -13,32 +22,143 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
  * best.
  *
  * @author Joshua Gleitze
+ * @author Christoph Michelbach
  */
-<span class="fc" id="L17">public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressionFitnessFunction {</span>
+<span class="fc" id="L27">public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressionFitnessFunction {</span>
 
 	@Override
 	public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-<span class="nc" id="L22">		return 0;</span>
+<span class="fc" id="L32">		Validate.notNull(rdia);</span>
+<span class="fc" id="L33">		Validate.notNull(expression);</span>
+<span class="fc" id="L34">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L36">		final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults =</span>
+<span class="fc" id="L37">			blackboard.getMeasurementResultsFor(rdia);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		if (resourceDemandMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L41">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L44">		double meanSquareDeviation = 0;</span>
+
+<span class="fc bfc" id="L46" title="All 2 branches covered.">		for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {</span>
+<span class="fc" id="L47">			final double realValue = resourceDemandMeasurementResult.getValue();</span>
+			// final Parameterisation parameterisation =
+			// resourceDemandMeasurementResult.getParameterisation();
+
+<span class="fc" id="L51">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L53">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L55">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L56">			meanSquareDeviation += squareDeviation / resourceDemandMeasurementResults.size();</span>
+<span class="fc" id="L57">		}</span>
+
+<span class="fc" id="L59">		return meanSquareDeviation;</span>
 	}
 
 	@Override
 	public double gradeFor(final SeffBranch branch, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-<span class="nc" id="L28">		return 0;</span>
+<span class="fc" id="L65">		Validate.notNull(branch);</span>
+<span class="fc" id="L66">		Validate.notNull(expression);</span>
+<span class="fc" id="L67">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L69">		final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults =</span>
+<span class="fc" id="L70">			blackboard.getMeasurementResultsFor(branch);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L73" title="All 2 branches covered.">		if (branchDecisionMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L74">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L77">		double meanSquareDeviation = 0;</span>
+
+<span class="fc bfc" id="L79" title="All 2 branches covered.">		for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {</span>
+<span class="fc" id="L80">			final double realValue = branchDecisionMeasurementResult.getBranchIndex();</span>
+			// final Parameterisation parameterisation =
+			// branchDecisionMeasurementResult.getParameterisation();
+
+<span class="fc" id="L84">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L86">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L88">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L89">			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();</span>
+<span class="fc" id="L90">		}</span>
+
+<span class="fc" id="L92">		return meanSquareDeviation;</span>
 	}
 
 	@Override
 	public double gradeFor(final SeffLoop loop, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-<span class="nc" id="L34">		return 0;</span>
+<span class="fc" id="L98">		Validate.notNull(loop);</span>
+<span class="fc" id="L99">		Validate.notNull(expression);</span>
+<span class="fc" id="L100">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L102">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults =</span>
+<span class="fc" id="L103">			blackboard.getMeasurementResultsFor(loop);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L106" title="All 2 branches covered.">		if (loopRepetitionCountMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L107">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L110">		double meanSquareDeviation = 0;</span>
+
+		// @formatter:off
+		for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
+<span class="fc bfc" id="L114" title="All 2 branches covered.">			: loopRepetitionCountMeasurementResults) {</span>
+			// @formatter:on
+<span class="fc" id="L116">			final double realValue = loopRepetitionCountMeasurementResult.getCount();</span>
+			// final Parameterisation parameterisation =
+			// loopRepetitionCountMeasurementResult.getParameterisation();
+
+<span class="fc" id="L120">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L122">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L124">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L125">			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();</span>
+<span class="fc" id="L126">		}</span>
+
+<span class="fc" id="L128">		return meanSquareDeviation;</span>
 	}
 
 	@Override
 	public double gradeFor(final ExternalCallParameter parameter, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-<span class="nc" id="L40">		return 0;</span>
-	}
+<span class="fc" id="L134">		Validate.notNull(parameter);</span>
+<span class="fc" id="L135">		Validate.notNull(expression);</span>
+<span class="fc" id="L136">		Validate.notNull(blackboard);</span>
 
+<span class="fc" id="L138">		final Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResults =</span>
+<span class="fc" id="L139">			blackboard.getMeasurementResultsFor(parameter);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L142" title="All 2 branches covered.">		if (parameterChangeMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L143">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L146">		double meanSquareDeviation = 0;</span>
+
+<span class="fc bfc" id="L148" title="All 2 branches covered.">		for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {</span>
+<span class="fc" id="L149">			final double realValue = parameterChangeMeasurementResult.getCount();</span>
+			// final Parameterisation parameterisation =
+			// parameterChangeMeasurementResult.getParameterisation();
+
+<span class="fc" id="L153">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L155">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L157">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L158">			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();</span>
+<span class="fc" id="L159">		}</span>
+
+<span class="fc" id="L161">		return meanSquareDeviation;</span>
+	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
