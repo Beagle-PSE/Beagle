@@ -30,6 +30,11 @@ class MeasurementFileManager {
 	private static final String COMPILED_BYTE_CODE_PARTITION_NAME = "bin";
 
 	/**
+	 * Name of the partition containing Kieker’s results.
+	 */
+	private static final String KIEKER_RESULT_PARTIOTION_NAME = "kieker-result";
+
+	/**
 	 * Classpath-relative path to the Kieker jar.
 	 */
 	private static final String KIEKER_JAR_PATH = "/de/uka/ipd/sdq/beagle/measurement/kieker/kieker-1.12.jar";
@@ -74,9 +79,11 @@ class MeasurementFileManager {
 	MeasurementFileManager() throws IOException {
 		this.rootFolder = Files.createTempDirectory("beagle-kieker-measurement");
 		FileUtils.forceDeleteOnExit(this.rootFolder.toFile());
+		Files.createDirectory(this.getInstrumentedSourceCodeFolder());
+		Files.createDirectory(this.getCompiledByteCodeFolder());
 		this.kiekerJar = this.loadFromClasspath(KIEKER_JAR_PATH, "Kieker jar");
 		this.remoteCodeFolder = this.loadFromClasspath(REMOTE_CODE_PATH, "remote measurment code");
-		this.kiekerConfigFile = this.loadFromClasspath(KIEKER_JAR_PATH, "Kieker configuration file");
+		this.kiekerConfigFile = this.loadFromClasspath(KIEKER_CONFIG_FILE, "Kieker configuration file");
 
 	}
 
@@ -95,7 +102,7 @@ class MeasurementFileManager {
 			throw new FileNotFoundException(String.format("Cannot find the %s!", description));
 		}
 		try {
-			return Paths.get(classpathUrl.toURI());
+			return Paths.get(classpathUrl.toURI()).toAbsolutePath();
 		} catch (final URISyntaxException uriSyntaxError) {
 			throw new FileNotFoundException(String.format("Retrieving the %s resulted in a malformed URI:\n%s",
 				description, uriSyntaxError.getMessage()));
@@ -113,7 +120,7 @@ class MeasurementFileManager {
 	 */
 	Path getInstrumentationFileFor(final String fullyQualifiedName) {
 		Validate.notNull(fullyQualifiedName);
-		return this.getInstrumentedSourceCodeFolder().resolve(fullyQualifiedName.replace('.', '/'));
+		return this.getInstrumentedSourceCodeFolder().resolve(fullyQualifiedName.replace('.', '/')).toAbsolutePath();
 	}
 
 	/**
@@ -122,16 +129,25 @@ class MeasurementFileManager {
 	 * @return The folder for all instrumented source code. Will never be {@code null}.
 	 */
 	Path getInstrumentedSourceCodeFolder() {
-		return this.rootFolder.resolve(INSTRUMENTED_SOURCE_CODE_PARTITION_NAME);
+		return this.rootFolder.resolve(INSTRUMENTED_SOURCE_CODE_PARTITION_NAME).toAbsolutePath();
 	}
 
 	/**
 	 * Queries the path to the folder to put all compiled Java byte code in.
 	 *
-	 * @return The folder fo all compiled source code. Will never be {@code null}.
+	 * @return The folder for all compiled source code. Will never be {@code null}.
 	 */
 	Path getCompiledByteCodeFolder() {
-		return this.rootFolder.resolve(COMPILED_BYTE_CODE_PARTITION_NAME);
+		return this.rootFolder.resolve(COMPILED_BYTE_CODE_PARTITION_NAME).toAbsolutePath();
+	}
+
+	/**
+	 * Queries the path to the folder to put Kieker’s results in.
+	 *
+	 * @return The folder for Kieker’s results.
+	 */
+	Path getKiekerResultsFolder() {
+		return this.rootFolder.resolve(KIEKER_RESULT_PARTIOTION_NAME).toAbsolutePath();
 	}
 
 	/**

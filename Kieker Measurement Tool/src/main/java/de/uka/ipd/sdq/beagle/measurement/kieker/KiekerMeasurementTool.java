@@ -26,6 +26,12 @@ public class KiekerMeasurementTool implements MeasurementTool {
 	private static final String KIEKER_CONFIGURATION_FILE_PROPERTY = "kieker.monitoring.configuration";
 
 	/**
+	 * The JVM property key to set Kieker’s output folder.
+	 */
+	private static final String KIEKER_OUTPUT_FOLDER_PROPERTY =
+		"kieker.monitoring.writer.filesystem.AsyncFsWriter.customStoragePath";
+
+	/**
 	 * The handler of failures.
 	 */
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Kieker Measurement Tool");
@@ -67,15 +73,26 @@ public class KiekerMeasurementTool implements MeasurementTool {
 			.compile();
 
 		for (final LaunchConfiguration launch : measurementOrder.getProjectInformation().getLaunchConfigurations()) {
-			launch.prependClasspath(fileManager.getKiekerJar().toAbsolutePath().toString())
-				.prependClasspath(fileManager.getMeasurementRemotePackage().toAbsolutePath().toString())
-				.prependClasspath(fileManager.getCompiledByteCodeFolder().toAbsolutePath().toString())
-				.appendJvmArgument(String.format("-D%s=%s", KIEKER_CONFIGURATION_FILE_PROPERTY,
-					fileManager.getKiekerConfigurationFile().toAbsolutePath()))
+			launch.prependClasspath(fileManager.getKiekerJar().toString())
+				.prependClasspath(fileManager.getMeasurementRemotePackage().toString())
+				.prependClasspath(fileManager.getCompiledByteCodeFolder().toString())
+				.appendJvmArgument(jvmArg(KIEKER_CONFIGURATION_FILE_PROPERTY, fileManager.getKiekerConfigurationFile()))
+				.appendJvmArgument(jvmArg(KIEKER_OUTPUT_FOLDER_PROPERTY, fileManager.getKiekerResultsFolder()))
 				.execute();
 		}
 
 		return new ArrayList<>();
+	}
+
+	/**
+	 * Creates a custom ({@code -D}) JVM property string.
+	 *
+	 * @param propertyName The property’s key.
+	 * @param propertyValue The property’s value.
+	 * @return The property string.
+	 */
+	private static String jvmArg(final String propertyName, final Object propertyValue) {
+		return String.format("-D%s=\"%s\"", propertyName, propertyValue);
 	}
 
 }
