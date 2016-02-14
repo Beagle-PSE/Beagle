@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core.facade;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -64,18 +65,23 @@ public class BeagleConfigurationTest {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 
 		final File notExistingFile = new File("/de/uka/ipd/sdq/beagle/core/NotExisting.java");
-		ThrowingMethod method = () -> {
-			new BeagleConfiguration(this.elements, notExistingFile);
+		ThrowingMethod method = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new BeagleConfiguration(BeagleConfigurationTest.this.elements, notExistingFile);
+			}
 		};
 		assertThat("repositoryFile must exist.", method, throwsException(IllegalArgumentException.class));
 
-		method = () -> {
-			new BeagleConfiguration(null, files[0]);
-		};
-		assertThat("elements must not be null.", method, throwsException(NullPointerException.class));
+		assertThat(new BeagleConfiguration(null, files[0]).getElements(), is(nullValue()));
 
-		method = () -> {
-			new BeagleConfiguration(this.elements, null);
+		method = new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new BeagleConfiguration(BeagleConfigurationTest.this.elements, null);
+			}
 		};
 		assertThat("repositoryFile must not be null.", method, throwsException(NullPointerException.class));
 
@@ -112,7 +118,13 @@ public class BeagleConfigurationTest {
 		beagleConfig.setElements(this.elements);
 		assertThat(beagleConfig.getElements(), is(this.elements));
 		beagleConfig.finalise();
-		assertThat(() -> beagleConfig.setElements(this.elements), throwsException(IllegalStateException.class));
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				beagleConfig.setElements(BeagleConfigurationTest.this.elements);
+			}
+		}, throwsException(IllegalStateException.class));
 	}
 
 	/**
@@ -128,7 +140,13 @@ public class BeagleConfigurationTest {
 		beagleConfig.setTimeout(testTimeout);
 		assertThat(beagleConfig.getTimeout(), is(testTimeout));
 		beagleConfig.finalise();
-		assertThat(() -> beagleConfig.setTimeout(testTimeout), throwsException(IllegalStateException.class));
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				beagleConfig.setTimeout(testTimeout);
+			}
+		}, throwsException(IllegalStateException.class));
 
 	}
 
@@ -144,7 +162,13 @@ public class BeagleConfigurationTest {
 		beagleConfig.setRepositoryFile(file);
 		assertThat(beagleConfig.getRepositoryFile(), is(file));
 		beagleConfig.finalise();
-		assertThat(() -> beagleConfig.setRepositoryFile(file), throwsException(IllegalStateException.class));
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				beagleConfig.setRepositoryFile(file);
+			}
+		}, throwsException(IllegalStateException.class));
 	}
 
 	/**
@@ -186,6 +210,12 @@ public class BeagleConfigurationTest {
 		assertThat(beagleConfig.getFileProvider(), is(this.fileProvider));
 
 		beagleConfig.finalise();
-		assertThat(() -> beagleConfig.setFileProvider(this.fileProvider), throwsException(IllegalStateException.class));
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				beagleConfig.setFileProvider(BeagleConfigurationTest.this.fileProvider);
+			}
+		}, throwsException(IllegalStateException.class));
 	}
 }
