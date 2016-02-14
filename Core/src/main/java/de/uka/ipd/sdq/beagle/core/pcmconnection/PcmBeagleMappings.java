@@ -26,25 +26,26 @@ public class PcmBeagleMappings implements Serializable {
 	 * The HashMap for {@link ResourceDemandingInternalAction} storing all IDs as values
 	 * for one specific SeffElement.
 	 */
-	private HashMap<ResourceDemandingInternalAction, String> rdiaMap;
+	private HashMap<ResourceDemandingInternalAction, String> rdiaMap = new HashMap<ResourceDemandingInternalAction, String>();
 
 	/**
 	 * The HashMap for {@link SeffBranch} storing all IDs as values for one specific
 	 * SeffElement.
 	 */
-	private HashMap<SeffBranch, String> seffBranchMap;
+	private HashMap<SeffBranch, String> seffBranchMap = new HashMap<SeffBranch, String>();
 
 	/**
 	 * The HashMap for {@link SeffLoop} storing all IDs as values for one specific
 	 * SeffElement.
 	 */
-	private HashMap<SeffLoop, String> seffLoopMap;
+	private HashMap<SeffLoop, String> seffLoopMap = new HashMap<SeffLoop, String>();
 
 	/**
 	 * The HashMap for {@link ExternalCallParameter} storing all IDs as values for one
 	 * specific SeffElement.
 	 */
-	private HashMap<ExternalCallParameter, String> ecpMap;
+	private HashMap<ExternalCallParameter, String> ecpMap = new HashMap<ExternalCallParameter, String>();
+	
 
 	/**
 	 * Gets the identifier used for {@code rdia} in the PCM repository.

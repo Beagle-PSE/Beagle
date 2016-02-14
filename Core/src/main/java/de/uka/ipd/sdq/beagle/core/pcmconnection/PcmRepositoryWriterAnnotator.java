@@ -67,6 +67,9 @@ public class PcmRepositoryWriterAnnotator {
 	 * @param pcmMappings The PcmMapping to get the IDs from
 	 */
 	public PcmRepositoryWriterAnnotator(final Blackboard blackboard, final PcmBeagleMappings pcmMappings) {
+		if (blackboard == null || pcmMappings == null) {
+			throw new NullPointerException("Construtor arguments for PcmRepositoryWriterAnnotator must not be null!");
+		}
 		this.blackboard = blackboard;
 		this.pcmMappings = pcmMappings;
 	}
@@ -186,6 +189,10 @@ public class PcmRepositoryWriterAnnotator {
 	 *            overwrite the old StochasticExpressions)
 	 */
 	public void annotateAll(final RepositoryImpl repository) {
+		
+		if (repository == null) {
+			throw new NullPointerException("The repository in the method \"RepositoryWriter.annotateAll\" must not be null!");
+		}
 
 		final Map<String, EvaluableExpression> seffLoopIdsToEvaEx =
 			this.getMapFromIdToEvaExOfAllSeffLoopsWithFinalExpressionsFromBlackboard();
