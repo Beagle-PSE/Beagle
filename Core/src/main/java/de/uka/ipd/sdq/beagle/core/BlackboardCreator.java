@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Creates a new {@link Blackboard}. Therefore you can add information for the blackboard
  * with the methods of this class and get a Blackboard containing all these information
- * with {@link #getBlackboard()}
+ * with {@link #createBlackboard()}
  *
  * @author Roman Langrehr
  */
