@@ -18,7 +18,7 @@ import java.util.Set;
 
 /**
  * This implementation of {@link MeasurementResultAnalyser} will contribute with static
- * created {@link ProposedExpression}. It will take all SeffElements and use respectively
+ * created ProposedExpressions. It will take all SeffElements and use respectively
  * all their MeasurementResults on the {@link Blackboard} and calculate thereby an
  * expression that fits best to the average expectancy value. Its implementation of
  * {@link #canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)} checks if there
