@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.failurehandling;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * {@linkplain FailureHandler} throwing an exception for any reported failure.
  *
@@ -16,16 +18,17 @@ public class ExceptionThrowingFailureHandler extends FailureHandler {
 	 * Create a handler for a client called {@code clientName}.
 	 *
 	 * @param clientName Name identifying the client that may report failures through this
-	 *            handler.
+	 *            handler. Must not be {@code null}.
 	 */
 	public ExceptionThrowingFailureHandler(final String clientName) {
+		Validate.notNull(clientName);
 		this.clientName = clientName;
 	}
 
 	@Override
 	public <RECOVER_TYPE> RECOVER_TYPE handle(final FailureReport<RECOVER_TYPE> report) {
 		String failureDescription = String.format("%s reported a failure!", this.clientName);
-		if (report.getFailureCause() == null && report.getFailureMessage() != null) {
+		if (report.getFailureMessage() != null) {
 			failureDescription += "\n\n" + report.getFailureMessage();
 		}
 		if (report.getDetails() != null) {

@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.failurehandling;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * Handler for any failures that may occur while running Beagle. Clients may obtain an
  * instance of this class to report that an exceptional situation occurred.
@@ -35,7 +37,7 @@ package de.uka.ipd.sdq.beagle.core.failurehandling;
  * }
  * </code>
  * </pre>
- * 
+ *
  * <pre>
  * <code>
  * public ReturnType myMethod(ParameterType1 param1, ParameterType2 param2) {
@@ -66,10 +68,11 @@ public abstract class FailureHandler {
 	 * Creates a handler a client identified by {@code clientName} may report failures to.
 	 *
 	 * @param clientName A name identifying the client that may report failures to this
-	 *            handler.
+	 *            handler. Must not be {@code null}.
 	 * @return A handler for failures of a client called {@code clientName}.
 	 */
 	public static FailureHandler getHandler(final String clientName) {
+		Validate.notNull(clientName);
 		return provider.getFor(clientName);
 	}
 
@@ -77,9 +80,11 @@ public abstract class FailureHandler {
 	 * Creates a handler instances of {@code clientType} may report failures to.
 	 *
 	 * @param clientType Class of the clients that may report failures to this handler.
+	 *            Must not be {@code null}.
 	 * @return A handler for failures of clients assignable to {@code clientType}.
 	 */
 	public static FailureHandler getHandler(final Class<?> clientType) {
+		Validate.notNull(clientType);
 		return getHandler(clientType.getName());
 	}
 
@@ -87,9 +92,10 @@ public abstract class FailureHandler {
 	 * Sets the provider of Failure Handlers. The provider will be used to generate all
 	 * future handlers until the next call to this method.
 	 *
-	 * @param provider A factory for handlers.
+	 * @param provider A factory for handlers. Must not be {@code null}.
 	 */
 	public static void setProvider(final FailureHandlerProvider provider) {
+		Validate.notNull(provider);
 		FailureHandler.provider = provider;
 	}
 

@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.failurehandling;
 
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.function.Supplier;
@@ -51,12 +52,13 @@ public class FailureReport<RECOVER_TYPE> {
 	 * Supplies a message describing the failure. The message will be evaluated through
 	 * {@link String#format(String, Object...)}.
 	 *
-	 * @param message A message describing the failure.
+	 * @param message A message describing the failure. Must not be {@code null}.
 	 * @param values Format values, will be passed to
 	 *            {@link String#format(String, Object...)}.
 	 * @return {@code this}.
 	 */
 	public FailureReport<RECOVER_TYPE> message(final String message, final Object... values) {
+		Validate.notNull(message);
 		this.failureMessage = String.format(message, values);
 		return this;
 	}
@@ -84,10 +86,13 @@ public class FailureReport<RECOVER_TYPE> {
 	 * report’s {@linkplain #details(String, Object...) details}. A new report’s cause is
 	 * {@code null}.
 	 *
-	 * @param cause The exception that caused or indicated the failure.
+	 * @param cause The exception that caused or indicated the failure. Must not be
+	 *            {@code null}.
 	 * @return {@code this}.
 	 */
 	public FailureReport<RECOVER_TYPE> cause(final Exception cause) {
+		Validate.notNull(cause);
+
 		this.failureCause = cause;
 		if (this.failureMessage == null) {
 			this.failureMessage = cause.getMessage();
