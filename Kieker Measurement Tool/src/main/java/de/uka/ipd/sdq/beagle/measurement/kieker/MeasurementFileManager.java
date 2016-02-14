@@ -2,10 +2,10 @@ package de.uka.ipd.sdq.beagle.measurement.kieker;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.Validate;
+import org.eclipse.core.runtime.FileLocator;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,7 +48,7 @@ class MeasurementFileManager {
 	 * Classpath-relative path to the kieker monitoring configuration file.
 	 */
 	private static final String KIEKER_CONFIG_FILE =
-		"/de/uka/ipd/sdq/beagle/measurement/kieker/remote/kieker.monitoring.properties";
+		"/de/uka/ipd/sdq/beagle/measurement/kieker/kieker.monitoring.properties";
 
 	/**
 	 * The root folder, containing all partitions.
@@ -94,19 +94,15 @@ class MeasurementFileManager {
 	 * @param path The path to retrieve.
 	 * @param description Description of what is expected to be found at {@code path}.
 	 * @return The retrieved path.
-	 * @throws FileNotFoundException If {@code path} cannot be found.
+	 * @throws IOException If retrieving the {@code path} is not possible.
 	 */
-	private Path loadFromClasspath(final String path, final String description) throws FileNotFoundException {
-		final URL classpathUrl = MeasurementFileManager.class.getResource(KIEKER_JAR_PATH);
+	private Path loadFromClasspath(final String path, final String description) throws IOException {
+		final URL classpathUrl = this.getClass().getClassLoader().getResource(path);
 		if (classpathUrl == null) {
 			throw new FileNotFoundException(String.format("Cannot find the %s!", description));
 		}
-		try {
-			return Paths.get(classpathUrl.toURI()).toAbsolutePath();
-		} catch (final URISyntaxException uriSyntaxError) {
-			throw new FileNotFoundException(String.format("Retrieving the %s resulted in a malformed URI:\n%s",
-				description, uriSyntaxError.getMessage()));
-		}
+		final URL fileUrl = FileLocator.toFileURL(classpathUrl);
+		return Paths.get(fileUrl.toExternalForm()).toAbsolutePath();
 	}
 
 	/**
@@ -120,7 +116,9 @@ class MeasurementFileManager {
 	 */
 	Path getInstrumentationFileFor(final String fullyQualifiedName) {
 		Validate.notNull(fullyQualifiedName);
-		return this.getInstrumentedSourceCodeFolder().resolve(fullyQualifiedName.replace('.', '/')).toAbsolutePath();
+		return this.getInstrumentedSourceCodeFolder()
+			.resolve(fullyQualifiedName.replace('.', '/') + ".java")
+			.toAbsolutePath();
 	}
 
 	/**
