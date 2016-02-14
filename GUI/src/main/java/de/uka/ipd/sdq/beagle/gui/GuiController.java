@@ -78,9 +78,14 @@ public class GuiController {
 	private MessageDialog messageDialog;
 
 	/**
+	 * The {@link BeagleController} connected to this GUI.
+	 */
+	private final BeagleController beagleController = new BeagleController(GuiController.this.beagleConfiguration);
+
+	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
 	 * components to be measured.
-	 * 
+	 *
 	 * @param beagleConfiguration The {@link BeagleConfiguration} to use.
 	 */
 	public GuiController(final BeagleConfiguration beagleConfiguration) {
@@ -159,14 +164,17 @@ public class GuiController {
 			switch (buttonClick) {
 				case 1:
 					if (analysisRunning) {
-						// analysis has been paused by the user
+						// analysis is being paused by the user
 						analysisRunning = false;
+						GuiController.this.beagleController.pauseAnalysis();
 
 						this.messageDialog = new MessageDialog(this.shell, dialogTitlePaused, null, dialogMessagePaused,
 							MessageDialog.INFORMATION, buttonLabelsPaused, 0);
 					} else {
-						// analysis has been started or continued by the user
+						// analysis is being continued by the user
 						analysisRunning = true;
+						GuiController.this.beagleController.continueAnalysis();
+
 						this.messageDialog = new MessageDialog(this.shell, dialogTitleRunning, null,
 							dialogMessageRunning, MessageDialog.INFORMATION, buttonLabelsRunning, 0);
 					}
@@ -196,8 +204,7 @@ public class GuiController {
 			 */
 			@Override
 			public void run() {
-				final BeagleController beagleController = new BeagleController(GuiController.this.beagleConfiguration);
-				beagleController.startAnalysis();
+				GuiController.this.beagleController.startAnalysis();
 
 				// when {@code beagleController.startAnalysis()} returns, close the dialog
 				GuiController.this.state = GuiControllerState.terminated;
