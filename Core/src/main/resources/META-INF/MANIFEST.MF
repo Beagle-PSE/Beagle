@@ -18,9 +18,10 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.debug.core,
  org.eclipse.jdt.launching
 Export-Package: de.uka.ipd.sdq.beagle.core,
- de.uka.ipd.sdq.beagle.core.pcmconnection,
  de.uka.ipd.sdq.beagle.core.analysis,
  de.uka.ipd.sdq.beagle.core.evaluableexpressions,
+ de.uka.ipd.sdq.beagle.core.facade,
+ de.uka.ipd.sdq.beagle.core.failurehandling,
  de.uka.ipd.sdq.beagle.core.measurement,
  de.uka.ipd.sdq.beagle.core.measurement.order,
- de.uka.ipd.sdq.beagle.core.facade
+ de.uka.ipd.sdq.beagle.core.pcmconnection
