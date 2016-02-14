@@ -77,7 +77,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 		final PcmRepositoryWriterAnnotatorEvaEx annotater = new PcmRepositoryWriterAnnotatorEvaEx();
 		final LoopActionImpl loopAction = mock(LoopActionImpl.class);
 		final EvaluableExpression evaEx = ConstantExpression.forValue(2.0);
-		annotater.annotateEvaExFor(loopAction, evaEx);
+		//annotater.annotateEvaExFor(loopAction, evaEx);
 
 		final LoopActionImpl nullAction = null;
 		assertThat("Loop Action Impl must not be null", () -> annotater.annotateEvaExFor(nullAction, evaEx),
@@ -93,7 +93,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * .
 	 * 
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
-	 * parameters is {@code null} and no exception is thrown for valid calls.
+	 * parameters is {@code null}.
 	 */
 	@Test
 	public void annotateEvaExForBranchActionImplEvaluableExpression() {
@@ -116,7 +116,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * .
 	 * 
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
-	 * parameters is {@code null} and no exception is thrown for valid calls.
+	 * parameters is {@code null}.
 	 */
 	@Test
 	public void annotateEvaExForInternalActionImplResourceDemandTypeEvaluableExpression() {
@@ -124,7 +124,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 		final InternalActionImpl internalAction = mock(InternalActionImpl.class);
 		final ResourceDemandType type = ResourceDemandType.RESOURCE_TYPE_CPU;
 		final EvaluableExpression evaEx = ConstantExpression.forValue(2.0);
-		annotater.annotateEvaExFor(internalAction, type, evaEx);
+		//annotater.annotateEvaExFor(internalAction, type, evaEx);
 
 		final InternalActionImpl nullAction = null;
 		assertThat("Internal Action Impl must not be null", () -> annotater.annotateEvaExFor(nullAction, type, evaEx),
@@ -143,7 +143,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * .
 	 * 
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
-	 * parameters is {@code null} and no exception is thrown for valid calls.
+	 * parameters is {@code null}.
 	 */
 	@Test
 	public void annotateEvaExForExternalCallActionImplEvaluableExpression() {
