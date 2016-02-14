@@ -1,7 +1,21 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
-import de.uka.ipd.sdq.beagle.core.BlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
+import de.uka.ipd.sdq.beagle.core.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.FailureReport;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
+import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.IClasspathEntry;
+import org.eclipse.jdt.core.JavaModelException;
+import org.palladiosimulator.pcm.core.entity.Entity;
+
+import java.io.FileNotFoundException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
@@ -25,7 +39,37 @@ public class BeagleController {
 	 *            has permanently. It cannot be changed.
 	 */
 	public BeagleController(final BeagleConfiguration beagleConfiguration) {
-		this.analysisController = new AnalysisController(new BlackboardFactory(beagleConfiguration).createBlackboard());
+		final BlackboardCreator blackboardFactory = new BlackboardCreator();
+		if (beagleConfiguration.getElements() == null) {
+			try {
+				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile())
+					.getBlackboardForAllElements(blackboardFactory);
+			} catch (final FileNotFoundException fileNotFoundException) {
+				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
+			}
+		} else {
+			try {
+				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile())
+					.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);
+			} catch (final FileNotFoundException fileNotFoundException) {
+				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
+			}
+		}
+		Charset charset = null;
+		try {
+			charset = Charset.forName(beagleConfiguration.getJavaProject().getProject().getDefaultCharset());
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		String buildPath = null;
+		try {
+			buildPath = this.classPathToString(beagleConfiguration.getJavaProject().getResolvedClasspath(true));
+		} catch (final JavaModelException javaModelException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(javaModelException));
+		}
+		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
+			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject()), buildPath, charset));
+		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard());
 	}
 
 	/**
@@ -63,5 +107,35 @@ public class BeagleController {
 	 */
 	public void abortAnalysis() {
 
+	}
+
+	/**
+	 * Converts {@linkplain Entity Entities} to {@linkplain String Strings}.
+	 *
+	 * @param entities The {@linkplain Entity Entities} to convert.
+	 * @return The ids of the {@code entities}.
+	 */
+	private List<String> entitysToStrings(final List<Entity> entities) {
+		final List<String> strings = new ArrayList<>();
+		for (final Entity entity : entities) {
+			strings.add(entity.getId());
+		}
+		return strings;
+	}
+
+	/**
+	 * Converts an array of {@linkplain IClasspathEntry IClasspathEntries} to a
+	 * ";"-separated string with the paths.
+	 *
+	 * @param classpathEntries The {@linkplain IClasspathEntry IClasspathEntries} to
+	 *            convert
+	 * @return the ";"-separated string with the paths
+	 */
+	private String classPathToString(final IClasspathEntry[] classpathEntries) {
+		String path = "";
+		for (final IClasspathEntry classpathEntry : classpathEntries) {
+			path += classpathEntry.getPath().toOSString() + ";";
+		}
+		return path.substring(0, path.length() - 1);
 	}
 }

@@ -1,11 +1,11 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
-import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
@@ -26,8 +26,9 @@ import java.util.Set;
  * Extracting a given Pcm repository. Offering 2 methods:
  * {@link #getBlackboardForAllElements(RepositoryImpl)} and
  * {@link #getBlackboardForIds(RepositoryImpl, Collection)}
- * 
+ *
  * @author Ansgar Spiegler
+ * @author Roman Langrehr
  */
 public class PcmRepositoryExtractor {
 
@@ -61,17 +62,9 @@ public class PcmRepositoryExtractor {
 	private PcmRepositorySeffExtractor pcmSeffExtractor;
 
 	/**
-	 * The fitnessFucntion to initialize the blackboard with.
-	 */
-	private final EvaluableExpressionFitnessFunction fitnessFunction;
-
-	/**
 	 * Constructor needs EvaluableExpressionFitnessFunction.
-	 *
-	 * @param fitnessFunction The fitnessFucntion to initialize the blackboard with
 	 */
-	public PcmRepositoryExtractor(final EvaluableExpressionFitnessFunction fitnessFunction) {
-		this.fitnessFunction = fitnessFunction;
+	public PcmRepositoryExtractor() {
 	}
 
 	/**
@@ -80,10 +73,12 @@ public class PcmRepositoryExtractor {
 	 * restrictions described in the class description will be written.
 	 *
 	 * @param repository The repository to look up.
-	 * @return A new blackboard having all translated <em>PCM elements</em> written on it.
-	 *         Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForAllElements(final RepositoryImpl repository) {
+	public void getBlackboardForAllElements(final RepositoryImpl repository,
+		final BlackboardCreator blackboardFactory) {
 		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();
 		this.seffLoopSet = new HashSet<SeffLoop>();
 		this.seffBranchSet = new HashSet<SeffBranch>();
@@ -94,10 +89,11 @@ public class PcmRepositoryExtractor {
 
 		this.scanRepository(repository);
 
-		final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
-			this.externalCallParameterSet, this.fitnessFunction);
-		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
-		return blackboard;
+		blackboardFactory.setRdias(this.rdiaSet);
+		blackboardFactory.setBranches(this.seffBranchSet);
+		blackboardFactory.setLoops(this.seffLoopSet);
+		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
+		blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 	}
 
 	/**
@@ -126,10 +122,12 @@ public class PcmRepositoryExtractor {
 	 * @param repository The repository to look up.
 	 * @param identifiers Identifiers of elements in the repository files that shall be
 	 *            written to the Blackboard.
-	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
-	 *         written on it. Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForIds(final RepositoryImpl repository, final Collection<String> identifiers) {
+	public void getBlackboardForIds(final RepositoryImpl repository, final Collection<String> identifiers,
+		final BlackboardCreator blackboardFactory) {
 		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();
 		final Set<EObject> setOfIdentifiedObjects = new HashSet<EObject>();
 
@@ -143,10 +141,11 @@ public class PcmRepositoryExtractor {
 		if (identifiers.contains(repository.getId())) {
 			this.scanRepository(repository);
 
-			final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
-				this.externalCallParameterSet, this.fitnessFunction);
-			blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
-			return blackboard;
+			blackboardFactory.setRdias(this.rdiaSet);
+			blackboardFactory.setBranches(this.seffBranchSet);
+			blackboardFactory.setLoops(this.seffLoopSet);
+			blackboardFactory.setExternalCalls(this.externalCallParameterSet);
+			blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -177,15 +176,17 @@ public class PcmRepositoryExtractor {
 		}
 
 		// Add the sets to the blackboard and return
-		final Blackboard blackboard = new Blackboard(this.rdiaSet, this.seffBranchSet, this.seffLoopSet,
-			this.externalCallParameterSet, this.fitnessFunction);
-		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, pcmMappings);
-		return blackboard;
+
+		blackboardFactory.setRdias(this.rdiaSet);
+		blackboardFactory.setBranches(this.seffBranchSet);
+		blackboardFactory.setLoops(this.seffLoopSet);
+		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
+		blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 	}
 
 	/**
-	 * This method takes the whole {@link PcmRepositoryBlackboardFactory#repository} and
-	 * extracts all needed content into the storing sets.
+	 * This method takes the whole {@link PcmRepositoryBlackboardFactoryAdder#repository}
+	 * and extracts all needed content into the storing sets.
 	 *
 	 * @param repositoryToScan The repository to read from.
 	 */

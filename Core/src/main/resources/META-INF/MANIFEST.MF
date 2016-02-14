@@ -18,6 +18,6 @@ Require-Bundle: de.uka.ipd.sdq.pcm.gmf.repository,
  org.eclipse.emf.cdo,
  org.eclipse.ocl.ecore,
  org.eclipse.ui,
- org.eclipse.core.runtime,
  org.eclipse.e4.core.di,
+ org.eclipse.core.runtime,
  org.eclipse.debug.core
