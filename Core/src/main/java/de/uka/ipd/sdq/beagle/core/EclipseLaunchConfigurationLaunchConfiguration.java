@@ -16,7 +16,7 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	/**
 	 * The eclipse launch configuration to run.
 	 */
-	private ILaunchConfiguration launchConfiguration;
+	private final ILaunchConfiguration launchConfiguration;
 
 	/**
 	 * Creates a Beagle launch configuration from an eclipse launch configuration.
@@ -36,6 +36,11 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 		} catch (final CoreException exception) {
 			throw new RuntimeException(exception);
 		}
+	}
+
+	@Override
+	public LaunchConfiguration prependClasspath(final String classPathEntry) {
+		return this;
 	}
 
 }
