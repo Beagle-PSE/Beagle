@@ -70,8 +70,8 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
 		}
 		try {
-			newLaunchConfiguration.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS,
-				this.launchConfiguration.getAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, ""));
+			newLaunchConfiguration.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, argument + " "
+				+ this.launchConfiguration.getAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, ""));
 		} catch (final CoreException coreException) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
 		}

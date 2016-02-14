@@ -10,7 +10,6 @@ import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.jdt.core.IJavaProject;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -60,11 +59,6 @@ public class LauchConfigurationProvider {
 			} catch (final CoreException exception) {
 				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(exception));
 			}
-		}
-		try {
-			return new HashSet<>(Arrays.asList(manager.getLaunchConfigurations()));
-		} catch (final CoreException coreException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
 		}
 		return launchConfigurations;
 	}

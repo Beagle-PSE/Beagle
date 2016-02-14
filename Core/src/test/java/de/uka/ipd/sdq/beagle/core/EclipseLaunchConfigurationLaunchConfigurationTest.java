@@ -7,7 +7,7 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -31,13 +31,18 @@ public class EclipseLaunchConfigurationLaunchConfigurationTest {
 		final ILaunchConfiguration mockLaunchConfiguration = mock(ILaunchConfiguration.class);
 		new EclipseLaunchConfigurationLaunchConfiguration(mockLaunchConfiguration);
 
-		assertThat("launch configuration must not be null",
-			() -> new EclipseLaunchConfigurationLaunchConfiguration(null), throwsException(NullPointerException.class));
+		assertThat("launch configuration must not be null", new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new EclipseLaunchConfigurationLaunchConfiguration(null);
+			}
+		}, throwsException(NullPointerException.class));
 	}
 
 	/**
 	 * Test method for {@link EclipseLaunchConfigurationLaunchConfiguration#execute()} .
-	 * 
+	 *
 	 * @throws CoreException Will not happen.
 	 */
 	@SuppressWarnings("unchecked")
@@ -51,7 +56,12 @@ public class EclipseLaunchConfigurationLaunchConfigurationTest {
 		then(mockLaunchConfiguration).should().launch(any(), any());
 
 		given(mockLaunchConfiguration.launch(any(), any())).willThrow(CoreException.class);
-		assertThat(() -> launchConfig.execute(), throwsException(RuntimeException.class));
-	}
+		assertThat(new ThrowingMethod() {
 
+			@Override
+			public void throwException() throws Exception {
+				launchConfig.execute();
+			}
+		}, throwsException(RuntimeException.class));
+	}
 }
