@@ -12,6 +12,7 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -99,7 +100,7 @@ public class EclipseAstInstrumentor {
 	 * of the statements that shall be instrumented. For these statement, we store
 	 * information about how to instrument at this statement.startInstrumentors
 	 */
-	private final Map<File, Map<Integer, InstrumentationInformation>> toInstrument = new HashMap<>();
+	private final Map<Path, Map<Integer, InstrumentationInformation>> toInstrument = new HashMap<>();
 
 	/**
 	 * The appointer of source files to write the instrumentation results to.
@@ -144,9 +145,9 @@ public class EclipseAstInstrumentor {
 		Validate.noNullElements(codeSections);
 
 		for (final CodeSection codeSection : codeSections) {
-			this.forCharacterPosition(codeSection.getStartFile(), codeSection.getStartSectionIndex())
+			this.forCharacterPosition(codeSection.getStartFile().toPath(), codeSection.getStartSectionIndex())
 				.addBeforeStatementFunction((factory) -> instrumentationStrategy.instrumentStart(codeSection, factory));
-			this.forCharacterPosition(codeSection.getEndFile(), codeSection.getEndSectionIndex())
+			this.forCharacterPosition(codeSection.getEndFile().toPath(), codeSection.getEndSectionIndex())
 				.addAfterStatementFunction((factory) -> instrumentationStrategy.instrumentEnd(codeSection, factory));
 		}
 		return this;
@@ -194,13 +195,13 @@ public class EclipseAstInstrumentor {
 	 * @param files The files to instrument. Must be a subset of {@link #toInstrument}’s
 	 *            key set.
 	 */
-	private void instrumentFiles(final Collection<File> files) {
+	private void instrumentFiles(final Collection<Path> files) {
 		final ExecutorService executionService = Executors.newCachedThreadPool();
-		final List<File> todoFiles = new ArrayList<>(files);
+		final List<Path> todoFiles = new ArrayList<>(files);
 		final List<Future<?>> promises = new ArrayList<>(todoFiles.size());
 
 		// submit all files to be instrumented
-		for (final File todoFile : todoFiles) {
+		for (final Path todoFile : todoFiles) {
 			final Map<Integer, InstrumentationInformation> statementInformation = this.toInstrument.get(todoFile);
 			promises.add(executionService.submit(() -> this.instrumentFile(todoFile, statementInformation)));
 		}
@@ -231,14 +232,14 @@ public class EclipseAstInstrumentor {
 	 *            ordered such that the the ith future refers to the instrumentation of
 	 *            the ith file in {@code promisedFiles}.
 	 */
-	private void verifyInstrumentationResults(final List<File> promisedFiles, final List<Future<?>> promises) {
-		final Map<File, String> instrumentationFailures = new HashMap<>();
+	private void verifyInstrumentationResults(final List<Path> promisedFiles, final List<Future<?>> promises) {
+		final Map<Path, String> instrumentationFailures = new HashMap<>();
 
 		// a task might still be running at this point. We furthermore don’t know if it
 		// succeeded.
-		final Iterator<File> fileIterator = promisedFiles.iterator();
+		final Iterator<Path> fileIterator = promisedFiles.iterator();
 		for (final Future<?> promise : promises) {
-			final File promisedFile = fileIterator.next();
+			final Path promisedFile = fileIterator.next();
 
 			if (promise.cancel(true)) {
 				// the task failed to finish
@@ -265,8 +266,8 @@ public class EclipseAstInstrumentor {
 				.recoverable()
 				.retryWith(() -> this.instrumentFiles(instrumentationFailures.keySet()));
 
-			for (final Entry<File, String> readFailEntry : instrumentationFailures.entrySet()) {
-				readFailure.details("%s: %s\n", readFailEntry.getKey().getAbsolutePath(), readFailEntry.getValue());
+			for (final Entry<Path, String> readFailEntry : instrumentationFailures.entrySet()) {
+				readFailure.details("%s: %s\n", readFailEntry.getKey().toString(), readFailEntry.getValue());
 			}
 
 			FAILURE_HANDLER.handle(readFailure);
@@ -292,7 +293,7 @@ public class EclipseAstInstrumentor {
 	 *             impossible.
 	 */
 	// CHECKSTYLE:IGNORE CyclomaticComplexity
-	private Void instrumentFile(final File sourceCodeFile,
+	private Void instrumentFile(final Path sourceCodeFile,
 		final Map<Integer, InstrumentationInformation> statementInformation)
 			throws IOException, InstrumentationImpossibleException {
 
@@ -383,7 +384,7 @@ public class EclipseAstInstrumentor {
 
 		if (modified) {
 			final String fullyQualifedTypeName = astIO.getFullyQualifiedName();
-			final File writeBackFile = this.fileProvider.getFileFor(fullyQualifedTypeName);
+			final Path writeBackFile = this.fileProvider.getFileFor(fullyQualifedTypeName);
 			astIO.writeToFile(writeBackFile);
 		}
 
@@ -400,7 +401,7 @@ public class EclipseAstInstrumentor {
 	 * @return The instrumentation information for the {@code character} in a
 	 *         {@code sourceCodeFile}.
 	 */
-	private InstrumentationInformation forCharacterPosition(final File sourceCodeFile, final int character) {
+	private InstrumentationInformation forCharacterPosition(final Path sourceCodeFile, final int character) {
 		Map<Integer, InstrumentationInformation> fileMap = this.toInstrument.get(sourceCodeFile);
 		if (fileMap == null) {
 			fileMap = new HashMap<>();
@@ -442,6 +443,6 @@ public class EclipseAstInstrumentor {
 		 * @return A file the write the instrumented code to. The file does not need to
 		 *         exist. Will never be {@code null}.
 		 */
-		File getFileFor(final String fullyQualifiedName);
+		Path getFileFor(final String fullyQualifiedName);
 	}
 }

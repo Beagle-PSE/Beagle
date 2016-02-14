@@ -16,6 +16,7 @@ import org.eclipse.text.edits.TextEdit;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Path;
 
 /**
  * Reads in the Eclipse AST of a source code file and can write it back to another file.
@@ -32,7 +33,7 @@ class EclipseAstBridge {
 	/**
 	 * The source code file the edited AST came from.
 	 */
-	private final File sourceCodeFile;
+	private final Path sourceCodeFile;
 
 	/**
 	 * The content of {@link #sourceCodeFile} after {@link #getAst()} was called.
@@ -57,7 +58,7 @@ class EclipseAstBridge {
 	 * @param charset The encoding to use when reading and writing the source code files.
 	 *            Must not be {@code null}.
 	 */
-	EclipseAstBridge(final File sourceCodeFile, final Charset charset) {
+	EclipseAstBridge(final Path sourceCodeFile, final Charset charset) {
 		Validate.notNull(sourceCodeFile);
 		Validate.notNull(charset);
 		this.sourceCodeFile = sourceCodeFile;
@@ -73,7 +74,7 @@ class EclipseAstBridge {
 	 * @throws IOException If reading the file this bridge was created for fails.
 	 */
 	CompilationUnit getAst() throws IOException {
-		this.sourceCode = FileUtils.readFileToString(this.sourceCodeFile, this.charset);
+		this.sourceCode = FileUtils.readFileToString(this.sourceCodeFile.toFile(), this.charset);
 		this.astParser.setSource(this.sourceCode.toCharArray());
 		// createAST will always "at least" return a CompilationUnit
 		this.compilationUnit = (CompilationUnit) this.astParser.createAST(null);
@@ -119,7 +120,7 @@ class EclipseAstBridge {
 	 * @throws IOException If an input/output error occurs while writing to
 	 *             {@code targetFile}.
 	 */
-	void writeToFile(final File targetFile) throws IOException {
+	void writeToFile(final Path targetFile) throws IOException {
 		Validate.validState(this.compilationUnit != null, "writeToFile may only be called after getAst was!");
 		Validate.notNull(targetFile);
 
@@ -135,6 +136,6 @@ class EclipseAstBridge {
 			assert false;
 		}
 
-		FileUtils.write(targetFile, documentToEdit.get(), this.charset);
+		FileUtils.write(targetFile.toFile(), documentToEdit.get(), this.charset);
 	}
 }
