@@ -30,7 +30,7 @@ import org.apache.commons.lang3.Validate;
  * 			.message("doing something with %s and %s failed", param1, param2)
  * 			.cause(exception)
  * 			.recoverable()
- * 			.retryWith(() -> myMethod(param1, param2));
+ * 			.retryWith(() -&lt; myMethod(param1, param2));
  * 		return FAILURE_HANDLER.handle(failure);
  * 	}
  * 	// more code
