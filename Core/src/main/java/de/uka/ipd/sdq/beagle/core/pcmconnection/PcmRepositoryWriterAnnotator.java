@@ -60,7 +60,7 @@ public class PcmRepositoryWriterAnnotator {
 
 	/**
 	 * Helper class for {@link PcmRepositoryWriter}. Offering a method to write all final
-	 * {@link EvaluableExpressions} from a {@link Blackboard} to a given
+	 * {@link EvaluableExpression} from a {@link Blackboard} to a given
 	 * {@link RepositoryImpl}.
 	 *
 	 * @param blackboard The blackboard to read from

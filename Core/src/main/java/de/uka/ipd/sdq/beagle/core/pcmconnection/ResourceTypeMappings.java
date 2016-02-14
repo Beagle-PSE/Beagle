@@ -82,7 +82,7 @@ public final class ResourceTypeMappings {
 	/**
 	 * Reading from the bidirectional map.
 	 *
-	 * @param processingResourceType The {@link ProcessingRessourceType}
+	 * @param processingResourceType The {@link ProcessingResourceType}
 	 * @return The linked {@link ResourceDemandType}
 	 */
 	public ResourceDemandType getBeagleType(final ProcessingResourceType processingResourceType) {
