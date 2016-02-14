@@ -70,7 +70,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * .
 	 * 
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
-	 * parameters is {@code null}..
+	 * parameters is {@code null}.
 	 */
 	@Test
 	public void annotateEvaExForLoopActionImplEvaluableExpression() {

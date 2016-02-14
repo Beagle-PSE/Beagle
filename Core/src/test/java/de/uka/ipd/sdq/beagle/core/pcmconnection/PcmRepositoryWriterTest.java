@@ -66,8 +66,11 @@ public class PcmRepositoryWriterTest {
 	 */
 	@Test
 	public void constructor() {
-		new PcmRepositoryWriter(BLACKBOARD_FACTORY.getFull());
-
+		final Blackboard blackboard = BLACKBOARD_FACTORY.getFull();
+		final PcmBeagleMappings mappings = new PcmBeagleMappings();
+		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, mappings);
+		new PcmRepositoryWriter(blackboard);
+		
 		assertThat("Blackboard must not be null.", () -> new PcmRepositoryWriter(null),
 			throwsException(NullPointerException.class));
 	}
@@ -82,7 +85,10 @@ public class PcmRepositoryWriterTest {
 	 */
 	@Test
 	public void writeTo() throws FileNotFoundException {
-		final PcmRepositoryWriter writer = new PcmRepositoryWriter(BLACKBOARD_FACTORY.getFull());
+		final Blackboard blackboard = BLACKBOARD_FACTORY.getFull();
+		final PcmBeagleMappings mappings = new PcmBeagleMappings();
+		blackboard.writeFor(PcmRepositoryBlackboardFactory.class, mappings);
+		final PcmRepositoryWriter writer = new PcmRepositoryWriter(blackboard);
 		assertThat("File must not be null", () -> writer.writeTo(null), throwsException(NullPointerException.class));
 		
 		final File notExistingFile = new File("notExistingFile.txt");
