@@ -93,8 +93,9 @@ public class PcmNameParser {
 	 *            behaviour.
 	 * @return May return {@code null}, if the String contains no file-path
 	 *         {@link CodeSection}. Initialized with (file, firstOffset, file,
-	 *         secondOffset) OR (file, firstOffset, file, -1) if there is no second Offset
-	 *         available. Anyway, the first "file" and the second "file" are the same!
+	 *         secondOffset) OR (file, firstOffset, file, firstOffset) if there is no
+	 *         second Offset available. Anyway, the first "file" and the second "file" are
+	 *         the same!
 	 * @throws FileNotFoundException When the file was not found at the given relative
 	 *             path.
 	 */
@@ -123,7 +124,7 @@ public class PcmNameParser {
 				this.atOffset = Integer.parseInt(
 					entityName.substring(this.atPos + PcmNameParser.SPACE_AT_SPACE.length(), entityName.length()));
 
-				this.codeSection = new CodeSection(this.file, this.atOffset, this.file, -1);
+				this.codeSection = new CodeSection(this.file, this.atOffset, this.file, this.atOffset);
 			}
 		}
 

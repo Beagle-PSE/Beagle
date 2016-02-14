@@ -22,6 +22,7 @@ import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
@@ -221,7 +222,11 @@ public class PcmRepositorySeffExtractor {
 			final CodeSection codeSection = this.nameParser.parse(branchAction.getEntityName());
 			if (codeSection != null) {
 				codeSectionSet.add(codeSection);
+				final CodeSection pseudoCodesection = new CodeSection(new File("src/main/resources/pseudoFile.md"), 1,
+					new File("src/main/resources/pseudoFile.md"), 1);
+				codeSectionSet.add(pseudoCodesection);
 				final SeffBranch seffBranch = new SeffBranch(codeSectionSet);
+
 				this.seffBranchSet.add(seffBranch);
 				this.pcmMapper.addPcmIdOf(seffBranch, branchAction.getId());
 			}

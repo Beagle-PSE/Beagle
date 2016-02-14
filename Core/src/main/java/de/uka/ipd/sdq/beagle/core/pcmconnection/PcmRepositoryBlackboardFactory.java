@@ -63,7 +63,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		this.fitnessFunction = fitnessFunction;
 
 		final File test = new File(repositoryFileName);
-		if (!test.isFile()) {
+		if (!test.exists() || !test.isFile()) {
 			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
 		}
 
@@ -71,7 +71,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		// Not sure if this final declaration could lead to a problem.
 		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
 
-		final EObject eObject = EMFHelper.loadFromXMIFile(repositoryFileName, ePackage);
+		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);
 		if (!(eObject.getClass() == RepositoryImpl.class)) {
 			throw new IllegalArgumentException();
 		}
@@ -138,7 +138,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
-		for (String identifier : identifiers) {
+		for (final String identifier : identifiers) {
 			if (identifier == null) {
 				throw new NullPointerException();
 			}
@@ -180,7 +180,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
-		for (String identifier : identifiers) {
+		for (final String identifier : identifiers) {
 			if (identifier == null) {
 				throw new NullPointerException();
 			}

@@ -29,7 +29,7 @@ public class PcmRepositoryFileLoader {
 		// Not sure if this final declaration could lead to a problem.
 		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
 
-		final EObject eObject = EMFHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);
+		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);
 		if (!(eObject.getClass() == RepositoryImpl.class)) {
 			throw new IllegalArgumentException("File is not a repository!");
 		}

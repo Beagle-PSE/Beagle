@@ -97,7 +97,7 @@ public class PcmRepositoryWriter {
 	 */
 	private void saveRepository(final RepositoryImpl repository, final File repositoryFile) {
 		try {
-			EMFHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());
+			EmfHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());
 		} catch (final IOException ioException) {
 			final FailureReport<Void> failure = new FailureReport<Void>()
 				.message("The modified repository can not be saved to %s!", repositoryFile.getAbsolutePath())

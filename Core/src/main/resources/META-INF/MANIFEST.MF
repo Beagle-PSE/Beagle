@@ -4,6 +4,17 @@ Bundle-Name: Beagle Core
 Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.debug.core,
+ org.eclipse.e4.core.di,
+ org.palladiosimulator.pcm,
+ org.eclipse.jdt.core,
+ de.uka.ipd.sdq.pcm.gmf.repository,
+ org.palladiosimulator.pcm,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.cdo
 Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.pcmconnection,
  de.uka.ipd.sdq.beagle.core.analysis,
@@ -11,13 +22,3 @@ Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.measurement,
  de.uka.ipd.sdq.beagle.core.measurement.order,
  de.uka.ipd.sdq.beagle.core.facade
-Require-Bundle: org.palladiosimulator.pcm,
- org.eclipse.jdt.core,
- org.eclipse.emf.common,
- org.eclipse.emf.ecore,
- org.eclipse.emf.cdo,
- org.eclipse.debug.core,
- org.eclipse.ui,
- org.eclipse.core.runtime,
- org.eclipse.e4.core.di,
- de.uka.ipd.sdq.pcm.gmf.repository
