@@ -13,7 +13,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.UIJob;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /*
@@ -86,7 +85,7 @@ public class GuiController {
 	/**
 	 * The {@link BeagleController} connected to this GUI.
 	 */
-	private final BeagleController beagleController = new BeagleController(GuiController.this.beagleConfiguration);
+	private BeagleController beagleController;
 
 	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
@@ -122,12 +121,9 @@ public class GuiController {
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
 
-			final ActionListener wizardFinished = new ActionListener() {
-
-				@Override
-				public void actionPerformed(final ActionEvent event) {
-					GuiController.this.wizardFinishedSuccessfully = true;
-				}
+			final ActionListener wizardFinished = event -> {
+				GuiController.this.beagleController = new BeagleController(GuiController.this.beagleConfiguration);
+				GuiController.this.wizardFinishedSuccessfully = true;
 			};
 
 			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.beagleConfiguration, wizardFinished);
