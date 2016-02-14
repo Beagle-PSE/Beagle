@@ -1,0 +1,21 @@
+/**
+ * Task deploying the Kieker jar 
+ *
+ * @author Joshua Gleitze
+ */
+ 
+configurations {
+	deployJar
+}
+
+dependencies {
+	deployJar group: 'net.kieker-monitoring', name: 'kieker', version: '1.12+'
+}
+
+task deployKieker(type: Copy) {
+	from configurations.deployJar
+	into "$projectDir/src/main/resources/de/uka/ipd/sdq/beagle/measurement/kieker/"
+}
+
+build.dependsOn deployKieker
+	
