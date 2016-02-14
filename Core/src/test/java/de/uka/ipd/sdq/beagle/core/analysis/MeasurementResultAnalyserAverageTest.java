@@ -85,25 +85,8 @@ public class MeasurementResultAnalyserAverageTest {
 		given(mockedBlackboard.getMeasurementResultsFor(any(SeffLoop.class))).willReturn(loopResults);
 		final Set<ParameterChangeMeasurementResult> parameterResults = new HashSet<>();
 		given(mockedBlackboard.getMeasurementResultsFor(any(ExternalCallParameter.class))).willReturn(parameterResults);
-		ReadOnlyMeasurementResultAnalyserBlackboardView mockedView =
+		final ReadOnlyMeasurementResultAnalyserBlackboardView mockedView =
 			new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard);
-		assertThat(analyser.canContribute(mockedView), is(false));
-		
-		resourceResults.add(new ResourceDemandMeasurementResult(2.3));
-		given(mockedBlackboard.getMeasurementResultsFor(any(ResourceDemandingInternalAction.class)))
-			.willReturn(resourceResults);
-		branchResults.add(new BranchDecisionMeasurementResult(2));
-		given(mockedBlackboard.getMeasurementResultsFor(any(SeffBranch.class))).willReturn(branchResults);
-		loopResults.add(new LoopRepetitionCountMeasurementResult(2));
-		given(mockedBlackboard.getMeasurementResultsFor(any(SeffLoop.class))).willReturn(loopResults);
-		parameterResults.add(new ParameterChangeMeasurementResult());
-		given(mockedBlackboard.getMeasurementResultsFor(any(ExternalCallParameter.class))).willReturn(parameterResults);
-		mockedView = new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard);
-		assertThat(analyser.canContribute(mockedView), is(true));
-
-		final MeasurementResultAnalyserBlackboardView analyserView =
-			new MeasurementResultAnalyserBlackboardView(mockedBlackboard);
-		analyser.contribute(analyserView);
 		assertThat(analyser.canContribute(mockedView), is(false));
 
 		mockedBlackboard = mock(Blackboard.class);
@@ -115,6 +98,7 @@ public class MeasurementResultAnalyserAverageTest {
 		final HashMap<MeasurableSeffElement, Integer> contributions = new HashMap<>();
 		final SeffLoop loop = SEFF_LOOP_FACTORY.getOne();
 		contributions.put(loop, 2);
+		given(mockedBlackboard.readFor(MeasurementResultAnalyserAverage.class)).willReturn(contributions);
 		Set<LoopRepetitionCountMeasurementResult> value = new HashSet<>();
 		value.add(new LoopRepetitionCountMeasurementResult(1));
 		value.add(new LoopRepetitionCountMeasurementResult(3));
@@ -122,6 +106,11 @@ public class MeasurementResultAnalyserAverageTest {
 		given(mockedBlackboard.getMeasurementResultsFor(loop)).willReturn(value);
 		assertThat(analyser.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard)),
 			is(true));
+		
+		final MeasurementResultAnalyserBlackboardView analyserView =
+			new MeasurementResultAnalyserBlackboardView(mockedBlackboard);
+		analyser.contribute(analyserView);
+		assertThat(analyser.canContribute(mockedView), is(false));
 
 		value = new HashSet<>();
 		value.add(new LoopRepetitionCountMeasurementResult(1));
