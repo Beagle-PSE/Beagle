@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore,
  org.eclipse.emf.cdo,
  org.eclipse.ocl.ecore,
- org.eclipse.ui
+ org.eclipse.ui,
  de.uka.ipd.sdq.pcm.gmf.repository
 Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.analysis,
