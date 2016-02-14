@@ -30,20 +30,20 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Instruments code sections using Eclipse’s JDT Abstract Syntax Tree. The instrumentor is
- * configured through {@linkplain EclipseAstInstrumentationStrategy instrumentation strategies},
- * providing the statements that shall be inserted.
+ * configured through {@linkplain EclipseAstInstrumentationStrategy instrumentation
+ * strategies}, providing the statements that shall be inserted.
  *
  * <p>Instrumentation takes place on a best effort base. It is performed as follows:
  *
  * <ul>
  *
- * <li>The instrumentor queries the {@linkplain EclipseAstInstrumentationStrategy instrumentation
- * strategy} reported through {@link #useStrategy} for instrumentation instructions to
- * instrument the code sections provided through the same method call.
+ * <li>The instrumentor queries the {@linkplain EclipseAstInstrumentationStrategy
+ * instrumentation strategy} reported through {@link #useStrategy} for instrumentation
+ * instructions to instrument the code sections provided through the same method call.
  *
- * <li>{@linkplain EclipseAstInstrumentationStrategy#instrumentStart(CodeSection, AST) start
- * instrumentation instructions} will be placed before the instrumented code section.
- * There are no guarantees for the number of statements executed between the
+ * <li>{@linkplain EclipseAstInstrumentationStrategy#instrumentStart(CodeSection, AST)
+ * start instrumentation instructions} will be placed before the instrumented code
+ * section. There are no guarantees for the number of statements executed between the
  * instrumentation instruction and the instrumented code section. However, the
  * instrumentor tries to keep this number as small as possible.
  *
@@ -172,10 +172,12 @@ public class EclipseAstInstrumentor {
 	 * defaults to using {@link Charset#defaultCharset()} if no charset was set.
 	 *
 	 * @param ioCharset The charset to be used by this Instrumentor for input and output.
+	 * @return {@code this}.
 	 */
-	public void useCharset(final Charset ioCharset) {
+	public EclipseAstInstrumentor useCharset(final Charset ioCharset) {
 		Validate.notNull(ioCharset);
 		this.charset = ioCharset;
+		return this;
 	}
 
 	/**
