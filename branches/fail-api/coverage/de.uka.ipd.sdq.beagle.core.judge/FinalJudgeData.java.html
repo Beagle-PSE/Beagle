@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FinalJudgeData.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.judge</a> &gt; <span class="el_source">FinalJudgeData.java</span></div><h1>FinalJudgeData.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.judge;
+
+import org.apache.commons.collections4.MultiSet;
+import org.apache.commons.collections4.multiset.HashMultiSet;
+
+import java.io.Serializable;
+import java.util.stream.DoubleStream;
+
+/**
+ * Stores all data of {@link FinalJudge}.
+ *
+ * @author Christoph Michelbach
+ */
+<span class="fc" id="L14">class FinalJudgeData implements Serializable {</span>
+
+	/**
+	 * serialVersionUID to make sure serialisation works fine.
+	 */
+	private static final long serialVersionUID = 9038094699907524618L;
+
+	/**
+	 * The millisecond timestamp of the point in time when evolution of evaluable
+	 * expressions started or {@code -1} to indicate that this field isn't initialised.
+	 */
+<span class="fc" id="L25">	private long startTime = -1;</span>
+
+	/**
+	 * The number of generations with significant improvement (see
+	 * {@code FinalJugde#SIGNIFICANT_IMPROVEMENT} passed.
+	 */
+	private int numberOfGenerationsWithoutSignificantImprovementPassed;
+
+	/**
+	 * Contains the fittest value of each seff element (no mapping needed).
+	 */
+	private MultiSet&lt;Double&gt; fittestValues;
+
+	/**
+	 * The latest fitness value which came with good enough improvement to set
+	 * {@code numberOfGenerationsWithoutSignificantImprovementPassed} to {@code 0}.
+	 */
+<span class="fc" id="L42">	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;</span>
+
+	/**
+	 * Returns {@code startTime}.
+	 *
+	 * @return The {@code startTime}.
+	 */
+	public long getStartTime() {
+<span class="fc" id="L50">		return this.startTime;</span>
+	}
+
+	/**
+	 * Sets {@code startTime}.
+	 *
+	 * @param startTime The {@code startTime} to set.
+	 */
+	public void setStartTime(final long startTime) {
+<span class="fc" id="L59">		this.startTime = startTime;</span>
+<span class="fc" id="L60">	}</span>
+
+	/**
+	 * Returns {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
+	 *
+	 * @return The {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
+	 */
+	public int getNumberOfGenerationsWithoutSignificantImprovementPassed() {
+<span class="fc" id="L68">		return this.numberOfGenerationsWithoutSignificantImprovementPassed;</span>
+	}
+
+	/**
+	 * Sets {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
+	 *
+	 * @param numberOfGenerationsWithoutSignificantImprovementPassed The
+	 *            {@code numberOfGenerationsWithoutSignificantImprovementPassed} to set.
+	 */
+	public void setNumberOfGenerationsWithoutSignificantImprovementPassed(
+		final int numberOfGenerationsWithoutSignificantImprovementPassed) {
+<span class="fc" id="L79">		this.numberOfGenerationsWithoutSignificantImprovementPassed =</span>
+			numberOfGenerationsWithoutSignificantImprovementPassed;
+<span class="fc" id="L81">	}</span>
+
+	/**
+	 * Returns {@code fitnessBaselineValue}.
+	 *
+	 * @return The {@code fitnessBaselineValue}.
+	 */
+	public double getFitnessBaselineValue() {
+<span class="fc" id="L89">		return this.fitnessBaselineValue;</span>
+	}
+
+	/**
+	 * Announces that a new generation is being judged. Increments the number of passed
+	 * generations and sets the fittest values to an empty set.
+	 */
+	public void newGeneration() {
+<span class="fc" id="L97">		this.fittestValues = new HashMultiSet&lt;&gt;();</span>
+<span class="fc" id="L98">	}</span>
+
+	/**
+	 * Sets {@code fitnessBaselineValue}.
+	 *
+	 * @param fitnessBaselineValue The {@code fitnessBaselineValue} to set.
+	 */
+	public void setFitnessBaselineValue(final double fitnessBaselineValue) {
+<span class="fc" id="L106">		this.fitnessBaselineValue = fitnessBaselineValue;</span>
+<span class="fc" id="L107">	}</span>
+
+	/**
+	 * Adds {@code value} to the collection of the fittest value.
+	 *
+	 * @param value The fittest value of a seff element.
+	 */
+	public void addFittestValue(final double value) {
+<span class="fc" id="L115">		this.fittestValues.add(value);</span>
+<span class="fc" id="L116">	}</span>
+
+	/**
+	 * Returns the fittest values of this generation.
+	 *
+	 * @return The fittness values of the fittest proposed expressions of the momentary
+	 *         generation. The stream will contain as many {@code double}s as there are
+	 *         seff elements on the blackboard.
+	 */
+	public DoubleStream getFittestValues() {
+<span class="fc" id="L126">		return this.fittestValues.stream().mapToDouble(value -&gt; value);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
