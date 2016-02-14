@@ -136,6 +136,14 @@ public class FailureReportTest {
 		failReport.retryWith(runTest);
 		assertThat(failReport.getRetryRoutine().get(), is(nullValue()));
 		verify(runTest).run();
+
+		@SuppressWarnings("unchecked")
+		final Supplier<Object> retryTest = mock(Supplier.class);
+		final Object returned = mock(Object.class);
+		final FailureReport<Object> failReport2 = new FailureReport<>();
+		failReport2.retryWith(retryTest);
+		given(retryTest.get()).willReturn(returned);
+		assertThat(failReport2.getContinueRoutine().get(), is(theInstance(returned)));
 	}
 
 	/**
