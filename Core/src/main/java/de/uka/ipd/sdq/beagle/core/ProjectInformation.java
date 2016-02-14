@@ -4,7 +4,6 @@ import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import org.apache.commons.lang3.Validate;
-import org.eclipse.debug.core.ILaunchConfiguration;
 
 import java.io.Serializable;
 import java.nio.charset.Charset;
@@ -48,7 +47,7 @@ public class ProjectInformation implements Serializable {
 	/**
 	 * The configurations defining how to launch the measured software.
 	 */
-	private final Set<ILaunchConfiguration> launchConfigurations;
+	private final Set<LaunchConfiguration> launchConfigurations;
 
 	/**
 	 * Creates a new Project Information.
@@ -78,7 +77,7 @@ public class ProjectInformation implements Serializable {
 	 *            not be empty.
 	 */
 	public ProjectInformation(final int timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
-		final Charset charset, final Set<ILaunchConfiguration> launchConfigurations) {
+		final Charset charset, final Set<LaunchConfiguration> launchConfigurations) {
 		Validate.notNull(fileProvider);
 		Validate.notNull(buildPath);
 		Validate.noNullElements(launchConfigurations);
@@ -148,7 +147,7 @@ public class ProjectInformation implements Serializable {
 	 * @return The project’s launch configurations. Will neither be {@code null}, nor
 	 *         contain {@code null}, nor be empty.
 	 */
-	public Set<ILaunchConfiguration> getLaunchConfigurations() {
+	public Set<LaunchConfiguration> getLaunchConfigurations() {
 		return new HashSet<>(this.launchConfigurations);
 	}
 }

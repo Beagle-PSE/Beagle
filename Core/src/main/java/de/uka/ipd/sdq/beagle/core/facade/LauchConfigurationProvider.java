@@ -44,17 +44,28 @@ public class LauchConfigurationProvider {
 	public Set<ILaunchConfiguration> getAllSuitableJUnitLaunchConfigurations() {
 		final ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
 		final ILaunchConfigurationType type = manager.getLaunchConfigurationType("org.eclipse.jdt.junit.launchconfig");
+		ILaunchConfiguration[] jUnitLaunchConfigurations = null;
 		try {
-			final ILaunchConfiguration[] lcs = manager.getLaunchConfigurations(type);
-		} catch (final CoreException e) {
-			// TODO Auto-generated catch block
+			jUnitLaunchConfigurations = manager.getLaunchConfigurations(type);
+		} catch (final CoreException exception) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(exception));
 		}
-		// TO DO filter launch configurations
+		final Set<ILaunchConfiguration> launchConfigurations = new HashSet<>();
+		for (final ILaunchConfiguration launchConfiguration : jUnitLaunchConfigurations) {
+			try {
+				if (launchConfiguration.getAttribute("org.eclipse.jdt.launching.PROJECT_ATTR", "")
+					.equals(this.javaProject.getProject().getName())) {
+					launchConfigurations.add(launchConfiguration);
+				}
+			} catch (final CoreException exception) {
+				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(exception));
+			}
+		}
 		try {
 			return new HashSet<>(Arrays.asList(manager.getLaunchConfigurations()));
 		} catch (final CoreException coreException) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
 		}
-		return null;
+		return launchConfigurations;
 	}
 }

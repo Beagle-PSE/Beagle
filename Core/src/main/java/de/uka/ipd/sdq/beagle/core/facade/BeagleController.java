@@ -2,8 +2,10 @@ package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
+import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.FailureReport;
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
@@ -16,6 +18,7 @@ import org.palladiosimulator.pcm.core.entity.Entity;
 import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -71,11 +74,16 @@ public class BeagleController {
 		} catch (final JavaModelException javaModelException) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(javaModelException));
 		}
-		final Set<ILaunchConfiguration> launchConfigurations =
+		final Set<ILaunchConfiguration> iLaunchConfigurations =
 			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
 				.getAllSuitableJUnitLaunchConfigurations();
-		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
-			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
+		final Set<LaunchConfiguration> launchConfigurations = new HashSet<>();
+		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {
+			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration));
+
+			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
+				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
+		}
 		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard());
 	}
 
