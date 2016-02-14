@@ -1,13 +1,11 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings;
+import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
-import org.apache.commons.lang3.Validate;
 import org.palladiosimulator.pcm.usagemodel.Branch;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -52,11 +50,9 @@ public class BlackboardCreator {
 	private ProjectInformation projectInformation;
 
 	/**
-	 * Private data of tools, written through {@link #writeFor(Class, Serializable)}.
-	 * Should be written to the blackboard, when creating it.
+	 * The {@link PcmBeagleMappings} for the {@link Blackboard} to create.
 	 */
-	private final Map<Class<? extends BlackboardStorer<? extends Serializable>>, Object> privateWrittenData =
-		new HashMap<>();
+	private PcmBeagleMappings pcmMappings;
 
 	/**
 	 * A blackboard with all information provided via this class.
@@ -67,30 +63,24 @@ public class BlackboardCreator {
 	 */
 	public Blackboard createBlackboard() {
 		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null
-			|| this.projectInformation == null) {
+			|| this.projectInformation == null || this.pcmMappings == null) {
 			throw new IllegalStateException("Not everything has been setup yet.");
 		}
 		final Blackboard blackboard = new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls,
 			this.fitnessFunction, this.projectInformation);
-		for (final Class<? extends BlackboardStorer<? extends Serializable>> writer : this.privateWrittenData
-			.keySet()) {
-			this.write(blackboard, writer);
-		}
+
+		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, this.pcmMappings);
 		return blackboard;
 	}
 
 	/**
-	 * Helper method to perform {@link #writeFor(Class, Serializable)} on the
-	 * {@link Blackboard}.
+	 * Sets the {@link PcmBeagleMappings} for the {@link Blackboard} to create.
 	 *
-	 * @param <WRITTEN_TYPE> The type to wirte.
-	 * @param blackboard the {@link Blackboard} to write to.
-	 * @param writer the writer to write.
+	 * @param pcmMappings the {@link PcmBeagleMappings} for the {@link Blackboard} to
+	 *            create.
 	 */
-	@SuppressWarnings("unchecked")
-	private <WRITTEN_TYPE extends Serializable> void write(final Blackboard blackboard,
-		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
-		blackboard.writeFor(writer, (WRITTEN_TYPE) this.privateWrittenData.get(writer));
+	public void setPcmMappings(final PcmBeagleMappings pcmMappings) {
+		this.pcmMappings = pcmMappings;
 	}
 
 	/**
@@ -151,20 +141,5 @@ public class BlackboardCreator {
 	 */
 	public void setProjectInformation(final ProjectInformation projectInformation) {
 		this.projectInformation = projectInformation;
-	}
-
-	/**
-	 * Calls to this method will be delegated to
-	 * {@link Blackboard#writeFor(Class, Serializable)}, when the blackboard is created.
-	 *
-	 * @param writer The class the data should be written for. Must not be {@code null}.
-	 * @param written The data to write.
-	 * @param <WRITTEN_TYPE> {@code written}’s type.
-	 * @see Blackboard#writeFor(Class, Serializable)
-	 */
-	public <WRITTEN_TYPE extends Serializable> void writeFor(
-		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer, final WRITTEN_TYPE written) {
-		Validate.notNull(writer);
-		this.privateWrittenData.put(writer, written);
 	}
 }
