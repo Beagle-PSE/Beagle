@@ -105,15 +105,10 @@ var activeTableTab = "activeTableTab";
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
-<dl>
-<dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEventVisitor</a></dd>
-</dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">MeasurementEventParser</span>
-extends java.lang.Object
-implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEventVisitor</a></pre>
+extends java.lang.Object</pre>
 <div class="block">Parses <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEvents</a> in order to generate
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterisationDependentMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterisationDependentMeasurementResults</a> out of them. It is created for a sequence
  of events that occurred while measuring software (the “input events”). The parsed
@@ -166,13 +161,12 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterChangeMeasurementResult</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementEventParser.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">getMeasurementResultsFor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</code>
-<div class="block">Gets all results that could be parsed from the input events for
- <code>externalCallParameter</code>.</div>
+<div class="block">Note: this method is out of our projects scope and not yet implemented.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementEventParser.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">getMeasurementResultsFor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementEventParser.html#getMeasurementResultsFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">getMeasurementResultsFor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;resourceDemandingInternalAction)</code>
 <div class="block">Gets all results that could be parsed from the input events for <code>rdia</code>.</div>
 </td>
 </tr>
@@ -256,14 +250,15 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <ul class="blockList">
 <li class="blockList">
 <h4>getMeasurementResultsFor</h4>
-<pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a>&gt;&nbsp;getMeasurementResultsFor(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia)</pre>
+<pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ResourceDemandMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ResourceDemandMeasurementResult</a>&gt;&nbsp;getMeasurementResultsFor(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;resourceDemandingInternalAction)</pre>
 <div class="block">Gets all results that could be parsed from the input events for <code>rdia</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>rdia</code> - A resource demanding internal action to get the measurement results of.
-            Must not be <code>null</code> .</dd>
+<dd><code>resourceDemandingInternalAction</code> - A resource demanding internal action to get
+            the measurement results of. Must not be <code>null</code> .</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>All measurement results parsed for <code>rdia</code>. Is never <code>null</code>.</dd>
+<dd>All measurement results parsed for <code>rdia</code>. Is never <code>null</code>.
+         Contains never <code>null</code> elements.</dd>
 </dl>
 </li>
 </ul>
@@ -280,7 +275,8 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <dd><code>branch</code> - A SEFF Branch to get the measurement results of. Must not be
             <code>null</code> .</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>All measurement results parsed for <code>branch</code>. Is never <code>null</code>.</dd>
+<dd>All measurement results parsed for <code>branch</code>. Is never <code>null</code>.
+         Contains never <code>null</code> elements.</dd>
 </dl>
 </li>
 </ul>
@@ -297,7 +293,8 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <dd><code>loop</code> - A SEFF Loop to get the measurement results of. Must not be <code>null</code>
             .</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>All measurement results parsed for <code>loop</code>. Is never <code>null</code>.</dd>
+<dd>All measurement results parsed for <code>loop</code>. Is never <code>null</code>.
+         Contains never <code>null</code> elements.</dd>
 </dl>
 </li>
 </ul>
@@ -308,7 +305,8 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <li class="blockList">
 <h4>getMeasurementResultsFor</h4>
 <pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/ParameterChangeMeasurementResult.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">ParameterChangeMeasurementResult</a>&gt;&nbsp;getMeasurementResultsFor(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</pre>
-<div class="block">Gets all results that could be parsed from the input events for
+<div class="block">Note: this method is out of our projects scope and not yet implemented. Gets all
+ results that could be parsed from the input events for
  <code>externalCallParameter</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -316,7 +314,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
             of. Must not be <code>null</code>.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>All measurement results parsed for <code>externalCallParameter</code>. Is never
-         <code>null</code>.</dd>
+         <code>null</code>. Contains never <code>null</code> elements.</dd>
 </dl>
 </li>
 </ul>

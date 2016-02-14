@@ -134,7 +134,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementController.html#MeasurementController--">MeasurementController</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementController.html#MeasurementController-java.util.Set-">MeasurementController</a></span>(java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement">MeasurementTool</a>&gt;&nbsp;measurementTools)</code>
+<div class="block">Constructs a new <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementController.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementController</code></a>.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -187,13 +189,19 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="MeasurementController--">
+<a name="MeasurementController-java.util.Set-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>MeasurementController</h4>
-<pre>public&nbsp;MeasurementController()</pre>
+<pre>public&nbsp;MeasurementController(java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement">MeasurementTool</a>&gt;&nbsp;measurementTools)</pre>
+<div class="block">Constructs a new <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementController.html" title="class in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementController</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>measurementTools</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementTool</code></a>s to use. Must not be
+            <code>null</code> and must not contain <code>null</code>.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -215,7 +223,7 @@ extends java.lang.Object</pre>
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>blackboard</code> - The blackboard.</dd>
+<dd><code>blackboard</code> - The blackboard. Must not be <code>null</code>.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Whether a <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementTool</code></a> can measure something which is marked as
          'to be measured'. When <code>true</code> is returned, this is no guarantee that
@@ -240,7 +248,7 @@ extends java.lang.Object</pre>
  behaviour of this method is undefined.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>blackboard</code> - The blackboard.</dd>
+<dd><code>blackboard</code> - The blackboard. Must not be <code>null</code>.</dd>
 </dl>
 </li>
 </ul>

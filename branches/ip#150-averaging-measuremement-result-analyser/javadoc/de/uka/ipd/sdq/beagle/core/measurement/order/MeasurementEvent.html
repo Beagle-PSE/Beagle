@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6};
+var methods = {"i0":6,"i1":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionExecutedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/AbstractMeasurementEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">AbstractMeasurementEvent</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionExecutedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">CodeSectionExecutedEvent</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ResourceDemandCapturedEvent</a></dd>
+<dd><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/AbstractMeasurementEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">AbstractMeasurementEvent</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionEnteredEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">CodeSectionEnteredEvent</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionLeftEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">CodeSectionLeftEvent</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterValueCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ParameterValueCapturedEvent</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ResourceDemandCapturedEvent</a></dd>
 </dl>
 <hr>
 <br>
@@ -133,6 +133,13 @@ var activeTableTab = "activeTableTab";
 <div class="block">Queries the source code section this event occurred at.</div>
 </td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html#receive-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor-">receive</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEventVisitor</a>&nbsp;visitor)</code>
+<div class="block">Each implementing class calls the correct method in the
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEventVisitor</code></a>.</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -151,7 +158,7 @@ var activeTableTab = "activeTableTab";
 <a name="getCodeSection--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getCodeSection</h4>
 <pre><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;getCodeSection()</pre>
@@ -159,6 +166,21 @@ var activeTableTab = "activeTableTab";
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The source code section this event belongs to. Will never be <code>null</code>.</dd>
+</dl>
+</li>
+</ul>
+<a name="receive-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>receive</h4>
+<pre>void&nbsp;receive(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEventVisitor</a>&nbsp;visitor)</pre>
+<div class="block">Each implementing class calls the correct method in the
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEventVisitor</code></a>. Implements the well known visitor pattern.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>visitor</code> - The visitor, where the visit method should be called.</dd>
 </dl>
 </li>
 </ul>
@@ -189,7 +211,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionExecutedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
