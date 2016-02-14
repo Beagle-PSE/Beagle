@@ -20,6 +20,11 @@ import java.io.IOException;
 public class PcmRepositoryWriter {
 
 	/**
+	 * The FailureHandler for this class.
+	 */
+	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("BlackboardStorer");
+	
+	/**
 	 * Blackboard to get Mapping from.
 	 */
 	private final Blackboard blackboard;
@@ -40,10 +45,7 @@ public class PcmRepositoryWriter {
 	 */
 	private final PcmRepositoryWriterAnnotator annotator;
 
-	/**
-	 * The FailureHandler for this class.
-	 */
-	private final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("BlackboardStorer");
+
 
 	/**
 	 * Creates a writer to write the results written on {@code blackboard} back to a PCM
@@ -102,7 +104,7 @@ public class PcmRepositoryWriter {
 				.cause(ioException)
 				.recoverable()
 				.retryWith(() -> this.saveRepository(repository, repositoryFile));
-			this.FAILURE_HANDLER.handle(failure);
+			FAILURE_HANDLER.handle(failure);
 		}
 	}
 

@@ -37,6 +37,11 @@ import java.util.Map;
 public class PcmRepositoryWriterAnnotator {
 
 	/**
+	 * The FailureHandler for this class.
+	 */
+	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("PcmStorer");
+	
+	/**
 	 * Blackboard to get Mapping from.
 	 */
 	private final Blackboard blackboard;
@@ -51,10 +56,7 @@ public class PcmRepositoryWriterAnnotator {
 	 */
 	private PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx;
 	
-	/**
-	 * The FailureHandler for this class.
-	 */
-	private final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("PcmStorer");
+
 
 	/**
 	 * Helper class for {@link PcmRepositoryWriter}. Offering a method to write all final
@@ -279,7 +281,7 @@ public class PcmRepositoryWriterAnnotator {
 			.cause(new IllegalArgumentException())
 			.recoverable()
 			.retryWith(() -> this.shouldBeLoopAction(content));
-		this.FAILURE_HANDLER.handle(failure);
+		FAILURE_HANDLER.handle(failure);
 		
 		return false;
 	}
@@ -301,7 +303,7 @@ public class PcmRepositoryWriterAnnotator {
 			.cause(new IllegalArgumentException())
 			.recoverable()
 			.retryWith(() -> this.shouldBeBranchAction(content));
-		this.FAILURE_HANDLER.handle(failure);
+		FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 
@@ -322,7 +324,7 @@ public class PcmRepositoryWriterAnnotator {
 			.cause(new IllegalArgumentException())
 			.recoverable()
 			.retryWith(() -> this.shouldBeInternalAction(content));
-		this.FAILURE_HANDLER.handle(failure);
+		FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 
@@ -343,7 +345,7 @@ public class PcmRepositoryWriterAnnotator {
 			.cause(new IllegalArgumentException())
 			.recoverable()
 			.retryWith(() -> this.shouldBeExternalCallAction(content));
-		this.FAILURE_HANDLER.handle(failure);
+		FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 
@@ -363,7 +365,7 @@ public class PcmRepositoryWriterAnnotator {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The Blackboard contains seffElements that do not fit to the given repository-file!")
 			.cause(new IllegalArgumentException());
-		this.FAILURE_HANDLER.handle(failure);
+		FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 
