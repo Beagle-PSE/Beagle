@@ -81,7 +81,6 @@ public class BeagleConfiguration {
 	 * @param javaProject the {@link IJavaProject} to analyse
 	 */
 	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile, final IJavaProject javaProject) {
-		Validate.notNull(elements);
 		Validate.notNull(repositoryFile);
 		Validate.notNull(javaProject);
 
@@ -89,7 +88,10 @@ public class BeagleConfiguration {
 			throw new IllegalArgumentException("Repository file must exist.");
 		}
 
-		this.elements = new LinkedList<>(elements);
+		if (elements != null) {
+			this.elements = new LinkedList<>(elements);
+		}
+
 		this.repositoryFile = repositoryFile;
 		this.timeout = DEFAULT_TIMEOUT;
 		this.javaProject = javaProject;
@@ -131,7 +133,11 @@ public class BeagleConfiguration {
 	public void setElements(final List<Entity> elements) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
-		this.elements = new LinkedList<>(elements);
+		if (elements == null) {
+			this.elements = null;
+		} else {
+			this.elements = new LinkedList<>(elements);
+		}
 	}
 
 	/**
