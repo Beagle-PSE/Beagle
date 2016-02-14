@@ -11,11 +11,9 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
-import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
 import org.palladiosimulator.pcm.seff.BranchAction;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.InternalAction;
@@ -24,7 +22,6 @@ import org.palladiosimulator.pcm.seff.impl.BranchActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ExternalCallActionImpl;
 import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
-import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +43,11 @@ public class PcmRepositoryWriterAnnotator {
 	 * The Mappings of Seffs to Ids.
 	 */
 	private final PcmBeagleMappings pcmMappings;
+
+	/**
+	 * Object for converting and annotating EvaEx.
+	 */
+	private PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx;
 
 	/**
 	 * Helper class for {@link PcmRepositoryWriter}. Offering a method to write all final
@@ -229,23 +231,23 @@ public class PcmRepositoryWriterAnnotator {
 			if (seffLoopIdsToEvaEx.containsKey(contentId) && this.shouldBeLoopAction(contentIdentifier)) {
 
 				final LoopActionImpl loopAction = (LoopActionImpl) contentIdentifier;
-				this.annotateEvaExFor(loopAction, seffLoopIdsToEvaEx.remove(contentId));
+				this.annotatorForEvaEx.annotateEvaExFor(loopAction, seffLoopIdsToEvaEx.remove(contentId));
 
 			} else if (seffBranchIdsToEvaEx.containsKey(contentId) && this.shouldBeBranchAction(contentIdentifier)) {
 
 				final BranchActionImpl branchAction = (BranchActionImpl) contentIdentifier;
-				this.annotateEvaExFor(branchAction, seffBranchIdsToEvaEx.remove(contentId));
+				this.annotatorForEvaEx.annotateEvaExFor(branchAction, seffBranchIdsToEvaEx.remove(contentId));
 
 			} else if (rdiaIdsToEvaEx.containsKey(contentId) && this.shouldBeInternalAction(contentIdentifier)) {
 
 				final InternalActionImpl internalAction = (InternalActionImpl) contentIdentifier;
-				this.annotateEvaExFor(internalAction, rdiaIdsToResourceDemandType.get(contentId),
+				this.annotatorForEvaEx.annotateEvaExFor(internalAction, rdiaIdsToResourceDemandType.get(contentId),
 					rdiaIdsToEvaEx.remove(contentId));
 
 			} else if (exParamIdsToEvaEx.containsKey(contentId) && this.shouldBeExternalCallAction(contentIdentifier)) {
 
 				final ExternalCallActionImpl externalAction = (ExternalCallActionImpl) contentIdentifier;
-				this.annotateEvaExFor(externalAction, exParamIdsToEvaEx.remove(contentId));
+				this.annotatorForEvaEx.annotateEvaExFor(externalAction, exParamIdsToEvaEx.remove(contentId));
 
 			}
 		}
@@ -327,55 +329,6 @@ public class PcmRepositoryWriterAnnotator {
 		}
 		// Failure handle should be activated here
 		return false;
-	}
-
-	/**
-	 * Annotating the EvaluableExpression onto the given PCM element.
-	 *
-	 * @param loopAction The PCM element
-	 * @param evaEx The Expression to annotate
-	 */
-	private void annotateEvaExFor(final LoopActionImpl loopAction, final EvaluableExpression evaEx) {
-
-	}
-
-	/**
-	 * Annotating the EvaluableExpression onto the given PCM element.
-	 *
-	 * @param branchAction The PCM element
-	 * @param evaEx The Expression to annotate
-	 */
-	private void annotateEvaExFor(final BranchActionImpl branchAction, final EvaluableExpression evaEx) {
-
-	}
-
-	/**
-	 * Annotating the EvaluableExpression onto the given PCM element.
-	 *
-	 * @param internalAction The PCM element
-	 * @param type The ResourceDemandType of the InternalAction (
-	 *            {@link ResourceDemandType#RESOURCE_TYPE_CPU_NS} and
-	 *            {@link ResourceDemandType#RESOURCE_TYPE_HDD_NS} are accepted so far
-	 * @param evaEx The Expression to annotate
-	 */
-	private void annotateEvaExFor(final InternalActionImpl internalAction, final ResourceDemandType type,
-		final EvaluableExpression evaEx) {
-		final EList<ParametricResourceDemand> parametricsResourceDemands = internalAction.getResourceDemand_Action();
-		for (ParametricResourceDemand parametricsResourceDemand : parametricsResourceDemands) {
-			ProcessingResourceType resourceType =
-				parametricsResourceDemand.getRequiredResource_ParametricResourceDemand();
-
-		}
-	}
-
-	/**
-	 * Annotating the EvaluableExpression onto the given PCM element.
-	 *
-	 * @param externalAction The PCM element
-	 * @param evaEx The Expression to annotate
-	 */
-	private void annotateEvaExFor(final ExternalCallActionImpl externalAction, final EvaluableExpression evaEx) {
-
 	}
 
 }
