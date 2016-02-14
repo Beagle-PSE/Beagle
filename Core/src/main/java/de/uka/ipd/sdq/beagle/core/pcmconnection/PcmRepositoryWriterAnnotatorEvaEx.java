@@ -40,6 +40,9 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 * @param evaEx The Expression to annotate
 	 */
 	public void annotateEvaExFor(final LoopActionImpl loopAction, final EvaluableExpression evaEx) {
+		if (loopAction == null || evaEx == null) {
+			throw new NullPointerException("No null arguments in annotateEvaExFor-method allowed!");
+		}
 		loopAction.getIterationCount_LoopAction().setSpecification(this.evaExToSpecification(evaEx));
 	}
 
@@ -50,6 +53,9 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 * @param evaEx The Expression to annotate
 	 */
 	public void annotateEvaExFor(final BranchActionImpl branchAction, final EvaluableExpression evaEx) {
+		if (branchAction == null || evaEx == null) {
+			throw new NullPointerException("No null arguments in annotateEvaExFor-method allowed!");
+		}
 		// CAN NOT BE DONE YET. THE IMPLEMENTATION OF SEFFBRANCH DOES NOT REFLECT
 		// THE STRUCTURE OF A BRANCHACTION, AS A SEFFBRANCH (A MEASURABLESEFFELEMENT)
 		// WILL ONLY BE ANNOTATED WITH ONE EXPRESSION, NOT FOR EACH BRACH A NEWLY ONE.
@@ -66,6 +72,9 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 */
 	public void annotateEvaExFor(final InternalActionImpl internalAction, final ResourceDemandType type,
 		final EvaluableExpression evaEx) {
+		if (internalAction == null || evaEx == null) {
+			throw new NullPointerException("No null arguments in annotateEvaExFor-method allowed!");
+		}
 		final EList<ParametricResourceDemand> parametricResourceDemands = internalAction.getResourceDemand_Action();
 		for (ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {
 			final ProcessingResourceType processingResourceType =
@@ -86,6 +95,9 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 * @param evaEx The Expression to annotate
 	 */
 	public void annotateEvaExFor(final ExternalCallActionImpl externalAction, final EvaluableExpression evaEx) {
+		if (externalAction == null || evaEx == null) {
+			throw new NullPointerException("No null arguments in annotateEvaExFor-method allowed!");
+		}
 		// MAY BE IMPLEMENTED AS NICE TO HAVE CRITERIA, TOGHETHER WITH THE GENETIC
 		// APPROACH
 	}
