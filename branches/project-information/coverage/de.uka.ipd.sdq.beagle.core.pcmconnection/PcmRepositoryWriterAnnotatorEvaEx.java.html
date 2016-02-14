@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PcmRepositoryWriterAnnotatorEvaEx.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmconnection</a> &gt; <span class="el_source">PcmRepositoryWriterAnnotatorEvaEx.java</span></div><h1>PcmRepositoryWriterAnnotatorEvaEx.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmconnection;
+
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+
+import org.eclipse.emf.common.util.EList;
+import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
+import org.palladiosimulator.pcm.seff.impl.BranchActionImpl;
+import org.palladiosimulator.pcm.seff.impl.ExternalCallActionImpl;
+import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
+import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
+import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
+
+/**
+ * This class contains the logic for converting and annotating EvaluableExpressions.
+ * 
+ * @author Ansgar Spiegler
+ */
+public class PcmRepositoryWriterAnnotatorEvaEx {
+
+	/**
+	 * /** The Mappings of InternalAction's {@link ProcessingResourceType} to
+	 * {@link ResourceDemandType} from Beagle.
+	 */
+	private final ResourceTypeMappings typeMappings;
+
+	/**
+	 * Constructor.
+	 */
+<span class="fc" id="L31">	public PcmRepositoryWriterAnnotatorEvaEx() {</span>
+<span class="fc" id="L32">		this.typeMappings = new ResourceTypeMappings();</span>
+<span class="fc" id="L33">		this.typeMappings.initialise();</span>
+<span class="fc" id="L34">	}</span>
+
+	/**
+	 * Annotating the EvaluableExpression onto the given PCM element.
+	 *
+	 * @param loopAction The PCM element
+	 * @param evaEx The Expression to annotate
+	 */
+	public void annotateEvaExFor(final LoopActionImpl loopAction, final EvaluableExpression evaEx) {
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">		if (loopAction == null || evaEx == null) {</span>
+<span class="fc" id="L44">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
+		}
+<span class="nc" id="L46">		loopAction.getIterationCount_LoopAction().setSpecification(this.evaExToSpecification(evaEx));</span>
+<span class="nc" id="L47">	}</span>
+
+	/**
+	 * Annotating the EvaluableExpression onto the given PCM element.
+	 *
+	 * @param branchAction The PCM element
+	 * @param evaEx The Expression to annotate
+	 */
+	public void annotateEvaExFor(final BranchActionImpl branchAction, final EvaluableExpression evaEx) {
+<span class="fc bfc" id="L56" title="All 4 branches covered.">		if (branchAction == null || evaEx == null) {</span>
+<span class="fc" id="L57">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
+		}
+		// CAN NOT BE DONE YET. THE IMPLEMENTATION OF SEFFBRANCH DOES NOT REFLECT
+		// THE STRUCTURE OF A BRANCHACTION, AS A SEFFBRANCH (A MEASURABLESEFFELEMENT)
+		// WILL ONLY BE ANNOTATED WITH ONE EXPRESSION, NOT FOR EACH BRACH A NEWLY ONE.
+<span class="fc" id="L62">	}</span>
+
+	/**
+	 * Annotating the EvaluableExpression onto the given PCM element.
+	 *
+	 * @param internalAction The PCM element
+	 * @param type The ResourceDemandType of the InternalAction (
+	 *            {@link ResourceDemandType#RESOURCE_TYPE_CPU_NS} and
+	 *            {@link ResourceDemandType#RESOURCE_TYPE_HDD_NS} are accepted so far
+	 * @param evaEx The Expression to annotate
+	 */
+	public void annotateEvaExFor(final InternalActionImpl internalAction, final ResourceDemandType type,
+		final EvaluableExpression evaEx) {
+<span class="pc bpc" id="L75" title="1 of 4 branches missed.">		if (internalAction == null || evaEx == null) {</span>
+<span class="fc" id="L76">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
+		}
+<span class="nc" id="L78">		final EList&lt;ParametricResourceDemand&gt; parametricResourceDemands = internalAction.getResourceDemand_Action();</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">		for (ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {</span>
+<span class="nc" id="L80">			final ProcessingResourceType processingResourceType =</span>
+<span class="nc" id="L81">				parametricResourceDemand.getRequiredResource_ParametricResourceDemand();</span>
+
+<span class="nc bnc" id="L83" title="All 2 branches missed.">			if (this.typeMappings.getBeagleType(processingResourceType) == type) {</span>
+<span class="nc" id="L84">				parametricResourceDemand.getSpecification_ParametericResourceDemand()</span>
+<span class="nc" id="L85">					.setSpecification(this.evaExToSpecification(evaEx));</span>
+			}
+
+<span class="nc" id="L88">		}</span>
+<span class="nc" id="L89">	}</span>
+
+	/**
+	 * Annotating the EvaluableExpression onto the given PCM element.
+	 *
+	 * @param externalAction The PCM element
+	 * @param evaEx The Expression to annotate
+	 */
+	public void annotateEvaExFor(final ExternalCallActionImpl externalAction, final EvaluableExpression evaEx) {
+<span class="fc bfc" id="L98" title="All 4 branches covered.">		if (externalAction == null || evaEx == null) {</span>
+<span class="fc" id="L99">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
+		}
+		// MAY BE IMPLEMENTED AS NICE TO HAVE CRITERIA, TOGHETHER WITH THE GENETIC
+		// APPROACH
+<span class="fc" id="L103">	}</span>
+
+	/**
+	 * Supports only Constant EvaluableExpressions right now. Converts EvaluableExpression
+	 * into a String-specification of the PCM Stochastic Expression.
+	 * 
+	 *
+	 * @param evaEx constant EvaluableExpression
+	 * @return String specification of EvaluableExpression
+	 */
+	private String evaExToSpecification(final EvaluableExpression evaEx) {
+<span class="nc bnc" id="L114" title="All 2 branches missed.">		if (evaEx.getClass() == ConstantExpression.class) {</span>
+<span class="nc" id="L115">			return ((ConstantExpression) evaEx).getValue() + &quot;&quot;;</span>
+		}
+<span class="nc" id="L117">		return &quot;&quot;;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
