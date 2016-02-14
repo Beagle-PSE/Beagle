@@ -8,6 +8,7 @@ import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.JavaModelException;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -16,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
@@ -69,8 +71,11 @@ public class BeagleController {
 		} catch (final JavaModelException javaModelException) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(javaModelException));
 		}
-		blackboardFactory.setProjectInformation(
-			new ProjectInformation(beagleConfiguration.getTimeout(), sourceCodeFileProvider, buildPath, charset));
+		final Set<ILaunchConfiguration> launchConfigurations =
+			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
+				.getAllSuitableJUnitLaunchConfigurations();
+		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
+			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard());
 	}
 
