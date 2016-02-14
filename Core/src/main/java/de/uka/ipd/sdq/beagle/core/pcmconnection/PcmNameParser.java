@@ -160,7 +160,7 @@ public class PcmNameParser {
 	 *             file can be loaded at a given position, this exception is thrown.
 	 */
 	private void loadFile(final String entityName) throws FileNotFoundException {
-		String qualifiedName;
+		final String qualifiedName;
 		final int position = entityName.indexOf(PcmNameParser.AT_POSITION_COLON_SPACE);
 		final int blockPos = entityName.indexOf(PcmNameParser.DOT_JAVA);
 
