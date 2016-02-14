@@ -45,8 +45,8 @@ public class PcmRepositoryWriterTest {
 
 	/**
 	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
-	 * 
-	 * @throws Exception
+	 *
+	 * @throws Exception If mocking fails.
 	 *
 	 */
 	@Before
@@ -81,7 +81,7 @@ public class PcmRepositoryWriterTest {
 	 * <p>Asserts that a {@link NullPointerException} is thrown if method is called with
 	 * parameter {@code null}, a {@link FileNotFoundException} is thrown if the File does
 	 * not exist and no exception is thrown for correct input parameters.
-	 * 
+	 *
 	 * @throws FileNotFoundException if Repository File was not found
 	 */
 	@Test
