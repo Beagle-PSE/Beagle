@@ -17,6 +17,12 @@
     catch(err) {
     }
 //-->
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -42,7 +48,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterCharacteriser.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" target="_top">Frames</a></li>
@@ -69,13 +75,13 @@
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.java.lang.Object">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -103,7 +109,9 @@
 <br>
 <pre>public class <span class="typeNameLabel">MeasurementOrder</span>
 extends java.lang.Object</pre>
-<div class="block">TODO Document this type.</div>
+<div class="block">The measurement order specifies what to measure for a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement"><code>MeasurementTool</code></a>. The idea
+ behind this is, that <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement">MeasurementTools</a> don't depend on the
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> and don't need to know about it's structure.</div>
 </li>
 </ul>
 </div>
@@ -122,7 +130,13 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html#MeasurementOrder--">MeasurementOrder</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html#MeasurementOrder-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser-">MeasurementOrder</a></span>(java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;parameterValueSections,
+                java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;resourceDemandSections,
+                java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;executionSections,
+                java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">LaunchConfiguration</a>&gt;&nbsp;launchConfigurations,
+                <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterCharacteriser.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ParameterCharacteriser</a>&nbsp;parameterCharacteriser)</code>
+<div class="block">Create a measurement order for <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement">MeasurementTools</a>.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -133,6 +147,45 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html#getExecutionSections--">getExecutionSections</a></span>()</code>
+<div class="block">Gives the code sections, where an <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEvent</code></a> should be created each
+ time it gets executed.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">LaunchConfiguration</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html#getLaunchConfigurations--">getLaunchConfigurations</a></span>()</code>
+<div class="block">Gives launch configurations for the code under test.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterCharacteriser.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ParameterCharacteriser</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html#getParameterCharacteriser--">getParameterCharacteriser</a></span>()</code>
+<div class="block">Gives the parameter characteriser, that all measurement tools must use for
+ parameter characterisation.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html#getParameterValueSection--">getParameterValueSection</a></span>()</code>
+<div class="block">Gives the code sections where parameters need to be characterised.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html#getResourceDemandSections--">getResourceDemandSections</a></span>()</code>
+<div class="block">Gives the code sections, where all resource demands need to be captured.</div>
+</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
@@ -154,13 +207,122 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="MeasurementOrder--">
+<a name="MeasurementOrder-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>MeasurementOrder</h4>
-<pre>public&nbsp;MeasurementOrder()</pre>
+<pre>public&nbsp;MeasurementOrder(java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;parameterValueSections,
+                        java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;resourceDemandSections,
+                        java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;executionSections,
+                        java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">LaunchConfiguration</a>&gt;&nbsp;launchConfigurations,
+                        <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterCharacteriser.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ParameterCharacteriser</a>&nbsp;parameterCharacteriser)</pre>
+<div class="block">Create a measurement order for <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement">MeasurementTools</a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parameterValueSections</code> - The code sections where parameters need to be
+            characterised. Must not be <code>null</code>. May not contain <code>null</code>
+            elements.</dd>
+<dd><code>resourceDemandSections</code> - The code sections, where all resource demands need to
+            be captured. Must not be <code>null</code>. May not contain <code>null</code>
+            elements.</dd>
+<dd><code>executionSections</code> - The code sections, where an <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEvent</code></a>
+            should be created each time it gets executed. Must not be <code>null</code>.
+            May not contain <code>null</code> elements.</dd>
+<dd><code>launchConfigurations</code> - Launch configurations for the code under test. Must
+            contain at least one element. Must not be <code>null</code>. May not contain
+            <code>null</code> elements.</dd>
+<dd><code>parameterCharacteriser</code> - The parameter characteriser, that all measurement
+            tools must use for parameter characterisation. Must not be <code>null</code>.</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getParameterValueSection--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getParameterValueSection</h4>
+<pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;getParameterValueSection()</pre>
+<div class="block">Gives the code sections where parameters need to be characterised.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the code sections where parameters need to be characterised. Is never
+         <code>null</code>. Does not contain <code>null</code> elements.</dd>
+</dl>
+</li>
+</ul>
+<a name="getResourceDemandSections--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getResourceDemandSections</h4>
+<pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;getResourceDemandSections()</pre>
+<div class="block">Gives the code sections, where all resource demands need to be captured.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the resourceDemandSections The code sections, where all resource demands
+         need to be captured. Is never <code>null</code>. Does not contain <code>null</code>
+         elements.</dd>
+</dl>
+</li>
+</ul>
+<a name="getExecutionSections--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExecutionSections</h4>
+<pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&gt;&nbsp;getExecutionSections()</pre>
+<div class="block">Gives the code sections, where an <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEvent</code></a> should be created each
+ time it gets executed.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The code sections, where an <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEvent</code></a> should be created each
+         time it gets executed. Is never <code>null</code>. Does not contain <code>null</code>
+         elements.</dd>
+</dl>
+</li>
+</ul>
+<a name="getLaunchConfigurations--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLaunchConfigurations</h4>
+<pre>public&nbsp;java.util.Set&lt;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">LaunchConfiguration</a>&gt;&nbsp;getLaunchConfigurations()</pre>
+<div class="block">Gives launch configurations for the code under test. Contains at least one element.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Launch configurations for the code under test. Contains at least one
+         element. Is never <code>null</code>. Does not contain <code>null</code> elements.</dd>
+</dl>
+</li>
+</ul>
+<a name="getParameterCharacteriser--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getParameterCharacteriser</h4>
+<pre>public&nbsp;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterCharacteriser.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ParameterCharacteriser</a>&nbsp;getParameterCharacteriser()</pre>
+<div class="block">Gives the parameter characteriser, that all measurement tools must use for
+ parameter characterisation.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the parameter characteriser, that all measurement tools must use for
+         parameter characterisation. Is never <code>null</code>.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -191,7 +353,7 @@ extends java.lang.Object</pre>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterCharacteriser.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" target="_top">Frames</a></li>
@@ -218,13 +380,13 @@ extends java.lang.Object</pre>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.java.lang.Object">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">

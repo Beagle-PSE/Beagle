@@ -2,13 +2,15 @@
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * An abstract {@link MeasurementEvent}, already having a
  * {@link MeasurementEvent#getCodeSection() code section}.
  *
  * @author Joshua Gleitze
  */
-public class AbstractMeasurementEvent implements MeasurementEvent {
+public abstract class AbstractMeasurementEvent implements MeasurementEvent {
 
 	/**
 	 * The code section this measurement event was created for.
@@ -20,16 +22,17 @@ public class AbstractMeasurementEvent implements MeasurementEvent {
 	/**
 	 * Creates an event for the measurement of {@code codeSection}.
 	 *
-	 * @param codeSection The code section this event is being created for.
+	 * @param codeSection The code section this event is being created for. Must not be
+	 *            {@code null}.
 	 */
-<span class="nc" id="L25">	protected AbstractMeasurementEvent(final CodeSection codeSection) {</span>
-<span class="nc" id="L26">		this.codeSection = codeSection;</span>
-<span class="nc" id="L27">	}</span>
+<span class="fc" id="L28">	protected AbstractMeasurementEvent(final CodeSection codeSection) {</span>
+<span class="fc" id="L29">		Validate.notNull(codeSection);</span>
+<span class="fc" id="L30">		this.codeSection = codeSection;</span>
+<span class="fc" id="L31">	}</span>
 
 	@Override
 	public CodeSection getCodeSection() {
-<span class="nc" id="L31">		return this.codeSection;</span>
+<span class="fc" id="L35">		return this.codeSection;</span>
 	}
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

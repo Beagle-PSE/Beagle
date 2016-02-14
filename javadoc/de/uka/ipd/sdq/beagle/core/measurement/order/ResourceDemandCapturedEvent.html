@@ -17,6 +17,12 @@
     catch(err) {
     }
 //-->
+var methods = {"i0":10,"i1":10,"i2":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -41,7 +47,7 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterValueCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
@@ -69,13 +75,13 @@
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.de.uka.ipd.sdq.beagle.core.measurement.order.AbstractMeasurementEvent">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -132,8 +138,8 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html#ResourceDemandCapturedEvent-de.uka.ipd.sdq.beagle.core.CodeSection-java.lang.String-double-">ResourceDemandCapturedEvent</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
-                           java.lang.String&nbsp;type,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html#ResourceDemandCapturedEvent-de.uka.ipd.sdq.beagle.core.CodeSection-de.uka.ipd.sdq.beagle.core.ResourceDemandType-double-">ResourceDemandCapturedEvent</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
+                           <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a>&nbsp;type,
                            double&nbsp;value)</code>
 <div class="block">Creates an event for the fact that <code>codeSection</code> has been completely executed
  and demanded <code>value</code> resources of the type <code>type</code>.</div>
@@ -148,6 +154,32 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html#getType--">getType</a></span>()</code>
+<div class="block">Gives the demanded resource’s type.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>double</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html#getValue--">getValue</a></span>()</code>
+<div class="block">The resource demand’s value, expressed in the unit implied by <code>type</code>.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html#receive-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor-">receive</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEventVisitor</a>&nbsp;visitor)</code>
+<div class="block">Each implementing class calls the correct method in the
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEventVisitor</code></a>.</div>
+</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.de.uka.ipd.sdq.beagle.core.measurement.order.AbstractMeasurementEvent">
 <!--   -->
@@ -176,25 +208,79 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="ResourceDemandCapturedEvent-de.uka.ipd.sdq.beagle.core.CodeSection-java.lang.String-double-">
+<a name="ResourceDemandCapturedEvent-de.uka.ipd.sdq.beagle.core.CodeSection-de.uka.ipd.sdq.beagle.core.ResourceDemandType-double-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ResourceDemandCapturedEvent</h4>
 <pre>public&nbsp;ResourceDemandCapturedEvent(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
-                                   java.lang.String&nbsp;type,
+                                   <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a>&nbsp;type,
                                    double&nbsp;value)</pre>
 <div class="block">Creates an event for the fact that <code>codeSection</code> has been completely executed
  and demanded <code>value</code> resources of the type <code>type</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>codeSection</code> - The code section that was executed. Must not be <code>null</code>.</dd>
-<dd><code>type</code> - The demanded resource’s type. See
-            <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core"><code>ResourceDemandingInternalAction</code></a> for a list of conventional
-            strings. Must not be null.</dd>
+<dd><code>type</code> - The demanded resource’s type. See <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core"><code>ResourceDemandType</code></a> for a list
+            of conventional strings. Must not be <code>null</code>.</dd>
 <dd><code>value</code> - The resource demand’s value, expressed in the unit implied by
-            <code>type</code>. Must not be negative.</dd>
+            <code>type</code>. Must be non-negative.</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getType--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getType</h4>
+<pre>public&nbsp;<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a>&nbsp;getType()</pre>
+<div class="block">Gives the demanded resource’s type. See <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core"><code>ResourceDemandType</code></a> for a list of
+ conventional strings.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The demanded resource’s type. See <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core"><code>ResourceDemandType</code></a> for a list of
+         conventional strings. Is never <code>null</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getValue--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getValue</h4>
+<pre>public&nbsp;double&nbsp;getValue()</pre>
+<div class="block">The resource demand’s value, expressed in the unit implied by <code>type</code>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The resource demand’s value, expressed in the unit implied by <code>type</code>.
+         Is non-negative.</dd>
+</dl>
+</li>
+</ul>
+<a name="receive-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>receive</h4>
+<pre>public&nbsp;void&nbsp;receive(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEventVisitor</a>&nbsp;visitor)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html#receive-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor-">MeasurementEvent</a></code></span></div>
+<div class="block">Each implementing class calls the correct method in the
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEventVisitor</code></a>. Implements the well known visitor pattern.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>visitor</code> - The visitor, where the visit method should be called.</dd>
 </dl>
 </li>
 </ul>
@@ -225,7 +311,7 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterValueCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
@@ -253,13 +339,13 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.de.uka.ipd.sdq.beagle.core.measurement.order.AbstractMeasurementEvent">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">
