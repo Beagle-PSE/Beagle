@@ -3,13 +3,6 @@ package de.uka.ipd.sdq.beagle.core.analysis;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 /**
- * ATTENTION: Test coverage check turned off. Remove this comments block when implementing
- * this class!
- * 
- * <p>COVERAGE:OFF
- */
-
-/**
  * An analyser that contributes {@linkplain EvaluableExpression EvaluableExpressions} to
  * the {@link de.uka.ipd.sdq.beagle.core.Blackboard} by analysing measurement results.
  * This analyser can only use measurement results to propose new
@@ -20,6 +13,9 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
  * chapter 2. Tools wishing to conduct measurements on software are advised to implement
  * {@link de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool} instead of this
  * interface.
+ *
+ * <p>Measurement result analysers need a public zero argument constructor for the
+ * instantiation, because they are loaded through eclipse extension points.
  *
  * @author Joshua Gleitze
  * @author Roman Langrehr
