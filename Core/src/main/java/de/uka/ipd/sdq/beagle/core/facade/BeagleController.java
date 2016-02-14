@@ -7,6 +7,10 @@ import de.uka.ipd.sdq.beagle.core.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.FailureReport;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserContributionsHandler;
+import de.uka.ipd.sdq.beagle.core.judge.AbstractionAndPrecisionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementToolContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
 import org.eclipse.core.runtime.CoreException;
@@ -84,7 +88,12 @@ public class BeagleController {
 			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 		}
-		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard());
+		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());
+		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard(),
+			new HashSet<>(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),
+			new HashSet<>(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),
+			new HashSet<>(
+				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));
 	}
 
 	/**

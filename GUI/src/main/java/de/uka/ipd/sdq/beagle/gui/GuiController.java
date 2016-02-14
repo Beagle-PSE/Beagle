@@ -3,12 +3,16 @@ package de.uka.ipd.sdq.beagle.gui;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleController;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.UIJob;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /*
@@ -79,6 +83,11 @@ public class GuiController {
 	private MessageDialog messageDialog;
 
 	/**
+	 * The {@link BeagleController} connected to this GUI.
+	 */
+	private BeagleController beagleController;
+
+	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
 	 * components to be measured.
 	 *
@@ -112,12 +121,9 @@ public class GuiController {
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
 
-			final ActionListener wizardFinished = new ActionListener() {
-
-				@Override
-				public void actionPerformed(final ActionEvent event) {
-					GuiController.this.wizardFinishedSuccessfully = true;
-				}
+			final ActionListener wizardFinished = event -> {
+				GuiController.this.beagleController = new BeagleController(GuiController.this.beagleConfiguration);
+				GuiController.this.wizardFinishedSuccessfully = true;
 			};
 
 			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.beagleConfiguration, wizardFinished);
@@ -166,14 +172,17 @@ public class GuiController {
 			switch (buttonClick) {
 				case 1:
 					if (analysisRunning) {
-						// analysis has been paused by the user
+						// analysis is being paused by the user
 						analysisRunning = false;
+						GuiController.this.beagleController.pauseAnalysis();
 
 						this.messageDialog = new MessageDialog(this.shell, dialogTitlePaused, null, dialogMessagePaused,
 							MessageDialog.INFORMATION, buttonLabelsPaused, 0);
 					} else {
-						// analysis has been started or continued by the user
+						// analysis is being continued by the user
 						analysisRunning = true;
+						GuiController.this.beagleController.continueAnalysis();
+
 						this.messageDialog = new MessageDialog(this.shell, dialogTitleRunning, null,
 							dialogMessageRunning, MessageDialog.INFORMATION, buttonLabelsRunning, 0);
 					}
@@ -203,12 +212,18 @@ public class GuiController {
 			 */
 			@Override
 			public void run() {
-				final BeagleController beagleController = new BeagleController(GuiController.this.beagleConfiguration);
-				beagleController.startAnalysis();
+				GuiController.this.beagleController.startAnalysis();
 
 				// when {@code beagleController.startAnalysis()} returns, close the dialog
 				GuiController.this.state = GuiControllerState.terminated;
-				GuiController.this.messageDialog.close();
+				new UIJob(Display.getDefault(), "Close Beagle Dialog") {
+
+					@Override
+					public IStatus runInUIThread(final IProgressMonitor monitor) {
+						GuiController.this.messageDialog.close();
+						return Status.OK_STATUS;
+					}
+				}.schedule();
 			}
 		}.start();
 	}

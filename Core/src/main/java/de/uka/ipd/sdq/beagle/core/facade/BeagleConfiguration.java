@@ -79,7 +79,7 @@ public class BeagleConfiguration {
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
-	 * @param javaProject the {@link IJavaProject} to analyse
+	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
 	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile, final IJavaProject javaProject) {
 		Validate.notNull(repositoryFile);

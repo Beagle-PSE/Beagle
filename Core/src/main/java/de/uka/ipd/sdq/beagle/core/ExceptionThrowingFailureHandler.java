@@ -28,9 +28,6 @@ public class ExceptionThrowingFailureHandler extends FailureHandler {
 		if (report.getFailureCause() == null && report.getFailureMessage() != null) {
 			failureDescription += "\n\n" + report.getFailureMessage();
 		}
-		if (report.getDetails() != null) {
-			failureDescription += "\n\nDetails:\n" + report.getDetails();
-		}
 		throw new RuntimeException(failureDescription, report.getFailureCause());
 	}
 

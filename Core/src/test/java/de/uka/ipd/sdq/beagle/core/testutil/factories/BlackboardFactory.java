@@ -1,8 +1,11 @@
 package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
+import static org.mockito.Mockito.mock;
+
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -62,7 +65,7 @@ public class BlackboardFactory {
 	private static final EvaluableExpressionFactory EVALUABLE_EXPRESSION_FACTORY = new EvaluableExpressionFactory();
 
 	/**
-	 * A Meausurement result factory to easily obtain new instances from.
+	 * A Measurement result factory to easily obtain new instances from.
 	 */
 	private static final MeasurementResultFactory MEAUSUREMENT_RESULT_FACTORY = new MeasurementResultFactory();
 
@@ -79,6 +82,22 @@ public class BlackboardFactory {
 	public Blackboard getEmpty() {
 		return new Blackboard(new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>(),
 			FITNESS_FUNCTION_FACTORY.getOne(), PROJECT_INFORMATION_FACTORY.getOne());
+	}
+
+	/**
+	 * Creates a new blackboard, filled with all MeasurableSeffElements.
+	 *
+	 * @return A new blackboard instance with data.
+	 */
+	public Blackboard getInitialBlackboard() {
+		final Set<ResourceDemandingInternalAction> rdiaSet = RDIA_FACTORY.getAllAsSet();
+		final Set<SeffBranch> seffBranchSet = SEFF_BRANCH_FACTORY.getAllAsSet();
+		final Set<SeffLoop> seffLoopSet = SEFF_LOOP_FACTORY.getAllAsSet();
+		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
+
+		final Blackboard blackboard = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, externalCallParameterSet,
+			FITNESS_FUNCTION_FACTORY.getOne(), mock(ProjectInformation.class));
+		return blackboard;
 	}
 
 	/**

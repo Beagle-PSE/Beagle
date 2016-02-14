@@ -1,4 +1,7 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.failurehandling;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.util.function.Supplier;
 
@@ -21,6 +24,16 @@ public class FailureReport<RECOVER_TYPE> {
 	private String failureMessage;
 
 	/**
+	 * Details about the failure.
+	 */
+	private final StringBuilder failureDetails = new StringBuilder();
+
+	/**
+	 * Wheter details about the failure have yet been provided.
+	 */
+	private boolean detailsProvided;
+
+	/**
 	 * Exception that caused or indicated the failure.
 	 */
 	private Exception failureCause;
@@ -39,29 +52,53 @@ public class FailureReport<RECOVER_TYPE> {
 	 * Supplies a message describing the failure. The message will be evaluated through
 	 * {@link String#format(String, Object...)}.
 	 *
-	 * @param message A message giving details about the failure.
+	 * @param message A message describing the failure. Must not be {@code null}.
 	 * @param values Format values, will be passed to
 	 *            {@link String#format(String, Object...)}.
 	 * @return {@code this}.
 	 */
 	public FailureReport<RECOVER_TYPE> message(final String message, final Object... values) {
+		Validate.notNull(message);
 		this.failureMessage = String.format(message, values);
+		return this;
+	}
+
+	/**
+	 * Supplies a message giving details about the failure. The message will be evaluated
+	 * through {@link String#format(String, Object...)} and be <em>perepended</em> to
+	 * potentally already existing details.
+	 *
+	 * @param message Details about the reported failure.
+	 * @param values Format values, will be passed to
+	 *            {@link String#format(String, Object...)}.
+	 * @return {@code this}.
+	 */
+	public FailureReport<RECOVER_TYPE> details(final String message, final Object... values) {
+		this.detailsProvided = true;
+		this.failureDetails.insert(0, String.format(message, values));
 		return this;
 	}
 
 	/**
 	 * Supplies the exception that caused or indicated the failure. If no message has been
 	 * set on this report yet, the report’s message will be set to
-	 * {@code cause.getMessage()}. A new report’s cause is {@code null}.
+	 * {@code cause.getMessage()}. The exception’s stacktrace will be appnended to the
+	 * report’s {@linkplain #details(String, Object...) details}. A new report’s cause is
+	 * {@code null}.
 	 *
-	 * @param cause The exception that caused or indicated the failure.
+	 * @param cause The exception that caused or indicated the failure. Must not be
+	 *            {@code null}.
 	 * @return {@code this}.
 	 */
 	public FailureReport<RECOVER_TYPE> cause(final Exception cause) {
+		Validate.notNull(cause);
+
 		this.failureCause = cause;
 		if (this.failureMessage == null) {
 			this.failureMessage = cause.getMessage();
 		}
+		this.detailsProvided = true;
+		this.failureDetails.append(ExceptionUtils.getStackTrace(cause));
 		return this;
 	}
 
@@ -143,13 +180,25 @@ public class FailureReport<RECOVER_TYPE> {
 	/**
 	 * Gets the report’s failure description.
 	 *
-	 * @return Details about the failure. {@code null} indicates that there’s no
+	 * @return A description of the failure. {@code null} indicates that there’s no
 	 *         information available.
 	 *
 	 * @see #message(String, Object...)
 	 */
 	public String getFailureMessage() {
 		return this.failureMessage;
+	}
+
+	/**
+	 * Gets the report’s failure details.
+	 *
+	 * @return Details about the failure. {@code null} indicates that there’s no
+	 *         information available.
+	 *
+	 * @see #details(String, Object...)
+	 */
+	public String getDetails() {
+		return (this.detailsProvided) ? this.failureDetails.toString() : null;
 	}
 
 	/**
