@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PcmRepositorySeffExtractor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmconnection</a> &gt; <span class="el_source">PcmRepositorySeffExtractor.java</span></div><h1>PcmRepositorySeffExtractor.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmconnection;
+
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.seff.AbstractAction;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
+import org.palladiosimulator.pcm.seff.LoopAction;
+import org.palladiosimulator.pcm.seff.ResourceDemandingBehaviour;
+import org.palladiosimulator.pcm.seff.impl.BranchActionImpl;
+import org.palladiosimulator.pcm.seff.impl.ExternalCallActionImpl;
+import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
+import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
+import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Extractor class for SEFFElements. Adding all EObjects that are SeffLoops, SeffBranches,
+ * ResourceDemandingInternalActions or ExternalCallParameters to given sets.
+ *
+ * @author Ansgar Spiegler
+ */
+public class PcmRepositorySeffExtractor {
+
+	/**
+	 * The {@link FailureHandler} that is called by FileNotFoundException, giving this
+	 * information to the Fail API.
+	 */
+<span class="fc" id="L42">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;Beagle FileNotFound Handler&quot;);</span>
+
+	/**
+	 * Temporary storage for all extracted {@link SeffLoop SeffLoops} that should be
+	 * written on the {@link Blackboard}.
+	 */
+	private final Set&lt;SeffLoop&gt; seffLoopSet;
+
+	/**
+	 * Temporary storage for all extracted {@link SeffBranch SeffBranches} that should be
+	 * written on the {@link Blackboard}.
+	 */
+	private final Set&lt;SeffBranch&gt; seffBranchSet;
+
+	/**
+	 * Temporary storage for all extracted {@link ResourceDemandingInternalAction rdSeffs}
+	 * that should be written on the {@link Blackboard}.
+	 */
+	private final Set&lt;ResourceDemandingInternalAction&gt; rdiaSet;
+
+	/**
+	 * Temporary storage for all extracted {@link ExternalCallParameter} that should be
+	 * written on the {@link Blackboard}.
+	 */
+	private final Set&lt;ExternalCallParameter&gt; externalCallParameterSet;
+
+	/**
+	 * Integer with value 0.
+	 */
+<span class="fc" id="L71">	private final int zero = 0;</span>
+
+	/**
+	 * The {@link PcmNameParser} that is needed for parsing the EntityNames created by
+	 * SoMoX.
+	 */
+	private final PcmNameParser nameParser;
+
+	/**
+	 * The object in which all created SeffElements are mapped to their original ID.
+	 */
+	private final PcmBeagleMappings pcmMapper;
+
+	/**
+	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
+	 * all extracted SeffElements.
+	 *
+	 * @param seffLoopSet the SeffLoopSet to add SeffLoops
+	 * @param seffBranchSet the seffBranchSet to add SeffBranches
+	 * @param rdiaSet the rdiaSet to add RDIAS
+	 * @param externalCallParameterSet the externalCallParameterSet to add
+	 *            externalCallParameters
+	 * @param pcmMapper The mapping class that should contain a map of all SeffElements to
+	 *            its IDs
+	 */
+	public PcmRepositorySeffExtractor(final Set&lt;SeffLoop&gt; seffLoopSet, final Set&lt;SeffBranch&gt; seffBranchSet,
+		final Set&lt;ResourceDemandingInternalAction&gt; rdiaSet, final Set&lt;ExternalCallParameter&gt; externalCallParameterSet,
+<span class="fc" id="L98">		final PcmBeagleMappings pcmMapper) {</span>
+<span class="fc" id="L99">		this.seffLoopSet = seffLoopSet;</span>
+<span class="fc" id="L100">		this.seffBranchSet = seffBranchSet;</span>
+<span class="fc" id="L101">		this.rdiaSet = rdiaSet;</span>
+<span class="fc" id="L102">		this.externalCallParameterSet = externalCallParameterSet;</span>
+<span class="fc" id="L103">		this.pcmMapper = pcmMapper;</span>
+
+<span class="fc" id="L105">		this.nameParser = new PcmNameParser();</span>
+<span class="fc" id="L106">	}</span>
+
+	/**
+	 * Extracts the specified SEFF-elements {@link InternalActionImpl},
+	 * {@link ExternalCallActionImpl}, {@link BranchActionImpl} and {@link LoopAction}.
+	 *
+	 * @param eObject Expecting a {@link ResourceDemandingBehaviour} or any eObject that
+	 *            has a concrete SEFF-Type.
+	 *
+	 */
+	public void extractBehaviourAndAddToSet(final EObject eObject) {
+<span class="fc bfc" id="L117" title="All 2 branches covered.">		if (eObject.getClass() == InternalActionImpl.class) {</span>
+<span class="fc" id="L118">			this.addInternalActionToSet((InternalActionImpl) eObject);</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">		} else if (eObject.getClass() == ExternalCallActionImpl.class) {</span>
+<span class="fc" id="L120">			this.addExternalCallActionToSet((ExternalCallActionImpl) eObject);</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">		} else if (eObject.getClass() == BranchActionImpl.class) {</span>
+<span class="fc" id="L122">			this.addBranchActionToSet((BranchActionImpl) eObject);</span>
+<span class="fc" id="L123">			this.extractBranchAction((BranchActionImpl) eObject);</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">		} else if (eObject.getClass() == LoopActionImpl.class) {</span>
+<span class="fc" id="L125">			this.addLoopActionToSet((LoopActionImpl) eObject);</span>
+<span class="fc" id="L126">			this.extractLoopAction((LoopActionImpl) eObject);</span>
+		}
+<span class="fc" id="L128">	}</span>
+
+	/**
+	 * Extracting the information of a {@link LoopActionImpl}. That means recursively
+	 * calling the extraction of its containing {@link ResourceDemandingBehaviour}.
+	 *
+	 * @param loopAction Action to extract.
+	 */
+	private void extractLoopAction(final LoopActionImpl loopAction) {
+		// MISSING CODE FOR MAPPING ELEMENT
+		// final PCMRandomVariable loopVariable =
+		// loopAction.getIterationCount_LoopAction();
+
+<span class="fc" id="L141">		final ResourceDemandingBehaviour rdBehave = loopAction.getBodyBehaviour_Loop();</span>
+<span class="fc" id="L142">		final EList&lt;AbstractAction&gt; stepBehaviourList = rdBehave.getSteps_Behaviour();</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">		for (final AbstractAction stepBehaviour : stepBehaviourList) {</span>
+<span class="fc" id="L144">			this.extractBehaviourAndAddToSet(stepBehaviour);</span>
+<span class="fc" id="L145">		}</span>
+<span class="fc" id="L146">	}</span>
+
+	/**
+	 * Extracting the information of a {@link BranchActionImpl}. That means recursively
+	 * calling the extraction of its containing {@link ResourceDemandingBehaviour}.
+	 *
+	 * @param branchAction Action to extract.
+	 */
+	private void extractBranchAction(final BranchActionImpl branchAction) {
+<span class="fc" id="L155">		final EList&lt;AbstractBranchTransition&gt; branchActionSpecificBranchList = branchAction.getBranches_Branch();</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">		for (final EObject branchActionSpecificBranch : branchActionSpecificBranchList) {</span>
+<span class="fc" id="L157">			final EList&lt;EObject&gt; specificBranchContentList = branchActionSpecificBranch.eContents();</span>
+<span class="fc bfc" id="L158" title="All 2 branches covered.">			for (final EObject specificBranchContent : specificBranchContentList) {</span>
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">				if (specificBranchContent.getClass() == ResourceDemandingBehaviourImpl.class) {</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">					for (final EObject stepBehaviour : ((ResourceDemandingBehaviourImpl) specificBranchContent)</span>
+<span class="fc" id="L161">						.eContents()) {</span>
+<span class="fc" id="L162">						this.extractBehaviourAndAddToSet(stepBehaviour);</span>
+<span class="fc" id="L163">					}</span>
+				}
+<span class="fc" id="L165">			}</span>
+<span class="fc" id="L166">		}</span>
+<span class="fc" id="L167">	}</span>
+
+	/**
+	 * Adding a new {@link ResourceDemandingInternalAction} based on a
+	 * {@link InternalActionImpl} to the {@link rdiaSet}. Fails silently if file from
+	 * EntityName not found!
+	 *
+	 * @param internalAction SEFF-Action to add.
+	 *
+	 */
+	private void addInternalActionToSet(final InternalActionImpl internalAction) {
+		try {
+<span class="fc" id="L179">			final CodeSection codeSection = this.nameParser.parse(internalAction.getEntityName());</span>
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">			if (codeSection != null) {</span>
+<span class="nc" id="L181">				final ResourceDemandingInternalAction rdia =</span>
+					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+<span class="nc" id="L183">				this.rdiaSet.add(rdia);</span>
+<span class="nc" id="L184">				this.pcmMapper.addPcmIdOf(rdia, internalAction.getId());</span>
+			}
+<span class="nc" id="L186">		} catch (final FileNotFoundException fileNotFoundE) {</span>
+<span class="nc" id="L187">			this.handleFailureFor(internalAction, fileNotFoundE);</span>
+<span class="fc" id="L188">		}</span>
+<span class="fc" id="L189">	}</span>
+
+	/**
+	 * Adding a new {@link ExternalCallParameter} based on a
+	 * {@link ExternalCallActionImpl} to the {@link externalCallParameterSet}.
+	 *
+	 * @param externalAction SEFF-Action to add.
+	 *
+	 */
+	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
+		try {
+<span class="fc" id="L200">			final CodeSection codeSection = this.nameParser.parse(externalAction.getEntityName());</span>
+<span class="pc bpc" id="L201" title="1 of 2 branches missed.">			if (codeSection != null) {</span>
+<span class="nc" id="L202">				final ExternalCallParameter exCallParam = new ExternalCallParameter(codeSection, this.zero);</span>
+<span class="nc" id="L203">				this.externalCallParameterSet.add(exCallParam);</span>
+<span class="nc" id="L204">				this.pcmMapper.addPcmIdOf(exCallParam, externalAction.getId());</span>
+			}
+<span class="nc" id="L206">		} catch (final FileNotFoundException fileNotFoundE) {</span>
+<span class="nc" id="L207">			this.handleFailureFor(externalAction, fileNotFoundE);</span>
+<span class="fc" id="L208">		}</span>
+
+<span class="fc" id="L210">	}</span>
+
+	/**
+	 * Adding a new {@link SeffBranch} based on a {@link BranchActionImpl} to the
+	 * {@link seffBranchSet}. Fails silently if file from EntityName not found!
+	 *
+	 * @param branchAction SEFF-Action to add.
+	 *
+	 */
+	private void addBranchActionToSet(final BranchActionImpl branchAction) {
+		try {
+<span class="fc" id="L221">			final Set&lt;CodeSection&gt; codeSectionSet = new HashSet&lt;CodeSection&gt;();</span>
+<span class="fc" id="L222">			final CodeSection codeSection = this.nameParser.parse(branchAction.getEntityName());</span>
+<span class="pc bpc" id="L223" title="1 of 2 branches missed.">			if (codeSection != null) {</span>
+<span class="nc" id="L224">				codeSectionSet.add(codeSection);</span>
+<span class="nc" id="L225">				final CodeSection pseudoCodesection = new CodeSection(new File(&quot;src/main/resources/pseudoFile.md&quot;), 1,</span>
+					new File(&quot;src/main/resources/pseudoFile.md&quot;), 1);
+<span class="nc" id="L227">				codeSectionSet.add(pseudoCodesection);</span>
+<span class="nc" id="L228">				final SeffBranch seffBranch = new SeffBranch(codeSectionSet);</span>
+
+<span class="nc" id="L230">				this.seffBranchSet.add(seffBranch);</span>
+<span class="nc" id="L231">				this.pcmMapper.addPcmIdOf(seffBranch, branchAction.getId());</span>
+			}
+<span class="nc" id="L233">		} catch (final FileNotFoundException fileNotFoundE) {</span>
+<span class="nc" id="L234">			this.handleFailureFor(branchAction, fileNotFoundE);</span>
+<span class="fc" id="L235">		}</span>
+<span class="fc" id="L236">	}</span>
+
+	/**
+	 * Adding a new {@link SeffLoop} based on a {@link LoopActionImpl} to the
+	 * {@link seffLoopSet}. Fails silently if file from EntityName not found!
+	 *
+	 * @param loopAction SEFF-Action to add.
+	 */
+	private void addLoopActionToSet(final LoopActionImpl loopAction) {
+		try {
+<span class="fc" id="L246">			final CodeSection codeSection = this.nameParser.parse(loopAction.getEntityName());</span>
+<span class="pc bpc" id="L247" title="1 of 2 branches missed.">			if (codeSection != null) {</span>
+<span class="nc" id="L248">				final SeffLoop seffLoop = new SeffLoop(codeSection);</span>
+<span class="nc" id="L249">				this.seffLoopSet.add(seffLoop);</span>
+<span class="nc" id="L250">				this.pcmMapper.addPcmIdOf(seffLoop, loopAction.getId());</span>
+			}
+<span class="nc" id="L252">		} catch (final FileNotFoundException fileNotFoundE) {</span>
+<span class="nc" id="L253">			this.handleFailureFor(loopAction, fileNotFoundE);</span>
+<span class="fc" id="L254">		}</span>
+<span class="fc" id="L255">	}</span>
+
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param loopAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
+	private void handleFailureFor(final LoopActionImpl loopAction, final FileNotFoundException exception) {
+<span class="nc" id="L264">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L265">			.message(&quot;The File for ID %s with EntityName %s can not be found!&quot;, loopAction.getId(),</span>
+<span class="nc" id="L266">				loopAction.getEntityName())</span>
+<span class="nc" id="L267">			.cause(exception)</span>
+<span class="nc" id="L268">			.recoverable()</span>
+<span class="nc" id="L269">			.retryWith(() -&gt; this.addLoopActionToSet(loopAction));</span>
+<span class="nc" id="L270">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L271">	}</span>
+
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param branchAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
+	private void handleFailureFor(final BranchActionImpl branchAction, final FileNotFoundException exception) {
+<span class="nc" id="L280">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L281">			.message(&quot;The File for ID %s with EntityName %s can not be found!&quot;, branchAction.getId(),</span>
+<span class="nc" id="L282">				branchAction.getEntityName())</span>
+<span class="nc" id="L283">			.cause(exception)</span>
+<span class="nc" id="L284">			.recoverable()</span>
+<span class="nc" id="L285">			.retryWith(() -&gt; this.addBranchActionToSet(branchAction));</span>
+<span class="nc" id="L286">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L287">	}</span>
+
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param ecAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
+	private void handleFailureFor(final ExternalCallActionImpl ecAction, final FileNotFoundException exception) {
+<span class="nc" id="L296">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L297">			.message(&quot;The File for ID %s with EntityName %s can not be found!&quot;, ecAction.getId(),</span>
+<span class="nc" id="L298">				ecAction.getEntityName())</span>
+<span class="nc" id="L299">			.cause(exception)</span>
+<span class="nc" id="L300">			.recoverable()</span>
+<span class="nc" id="L301">			.retryWith(() -&gt; this.addExternalCallActionToSet(ecAction));</span>
+<span class="nc" id="L302">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L303">	}</span>
+
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param internalAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
+	private void handleFailureFor(final InternalActionImpl internalAction, final FileNotFoundException exception) {
+<span class="nc" id="L312">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L313">			.message(&quot;The File for ID %s with EntityName %s can not be found!&quot;, internalAction.getId(),</span>
+<span class="nc" id="L314">				internalAction.getEntityName())</span>
+<span class="nc" id="L315">			.cause(exception)</span>
+<span class="nc" id="L316">			.recoverable()</span>
+<span class="nc" id="L317">			.retryWith(() -&gt; this.addInternalActionToSet(internalAction));</span>
+<span class="nc" id="L318">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L319">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

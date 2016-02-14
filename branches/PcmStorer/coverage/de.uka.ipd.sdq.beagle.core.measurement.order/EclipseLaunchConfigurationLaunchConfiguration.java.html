@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EclipseLaunchConfigurationLaunchConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.measurement.order</a> &gt; <span class="el_source">EclipseLaunchConfigurationLaunchConfiguration.java</span></div><h1>EclipseLaunchConfigurationLaunchConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.measurement.order;
+
+import org.apache.commons.lang3.Validate;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchManager;
+
+/**
+ * A launch configuration that starts in its {@link #execute()} method an eclipse launch
+ * configuration.
+ *
+ * @author Roman Langrehr
+ */
+public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConfiguration {
+
+	/**
+	 * The eclipse launch configuration to run.
+	 */
+	private ILaunchConfiguration launchConfiguration;
+
+	/**
+	 * Creates a Beagle launch configuration from an eclipse launch configuration.
+	 *
+	 * @param launchConfiguration The eclipse launch configuration which should be
+	 *            launched to execute the code under test.
+	 */
+<span class="fc" id="L27">	public EclipseLaunchConfigurationLaunchConfiguration(final ILaunchConfiguration launchConfiguration) {</span>
+<span class="fc" id="L28">		Validate.notNull(launchConfiguration);</span>
+<span class="fc" id="L29">		this.launchConfiguration = launchConfiguration;</span>
+<span class="fc" id="L30">	}</span>
+
+	@Override
+	public void execute() {
+		try {
+<span class="fc" id="L35">			this.launchConfiguration.launch(ILaunchManager.RUN_MODE, null);</span>
+<span class="fc" id="L36">		} catch (final CoreException exception) {</span>
+<span class="fc" id="L37">			throw new RuntimeException(exception);</span>
+<span class="fc" id="L38">		}</span>
+<span class="fc" id="L39">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
