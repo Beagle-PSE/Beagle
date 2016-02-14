@@ -28,7 +28,8 @@ import java.util.Set;
  * 
  * @author Ansgar Spiegler
  */
-public class MeasurementResultAnalyserAverage implements MeasurementResultAnalyser, BlackboardStorer<HashMap<MeasurableSeffElement, Integer>> {
+public class MeasurementResultAnalyserAverage
+	implements MeasurementResultAnalyser, BlackboardStorer<HashMap<MeasurableSeffElement, Integer>> {
 
 	@Override
 	public boolean canContribute(final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard) {
@@ -76,7 +77,7 @@ public class MeasurementResultAnalyserAverage implements MeasurementResultAnalys
 	 * Scanning all {@link MeasurableSeffElement} for given MeasurementResults. If there
 	 * are more results than the number of results for a previous propose have been used,
 	 * a new ProposedExpression is added by
-	 * {@link #addMeasurementResultFor(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)
+	 * {@link #addMeasurementResultFor(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)}
 	 *
 	 * @param blackboard the {@link Blackboard} to read and write from
 	 */
