@@ -15,8 +15,8 @@ import java.io.IOException;
 
 /**
  * Writes Beagle’s findings back to a PCM repository. This class is meant to be used for
- * Blackboard instances created by {@link PcmRepositoryBlackboardFactoryAdder} and may not be
- * useable with other blackboards.
+ * Blackboard instances created by {@link PcmRepositoryBlackboardFactoryAdder} and may not
+ * be useable with other blackboards.
  *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
@@ -27,7 +27,7 @@ public class PcmRepositoryWriter {
 	 * The FailureHandler for this class.
 	 */
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("BlackboardStorer");
-	
+
 	/**
 	 * Blackboard to get Mapping from.
 	 */
@@ -49,8 +49,6 @@ public class PcmRepositoryWriter {
 	 */
 	private final PcmRepositoryWriterAnnotator annotator;
 
-
-
 	/**
 	 * Creates a writer to write the results written on {@code blackboard} back to a PCM
 	 * repository.
@@ -59,7 +57,7 @@ public class PcmRepositoryWriter {
 	 */
 	public PcmRepositoryWriter(final Blackboard blackboard) {
 		this.blackboard = blackboard;
-		this.pcmMappings = this.blackboard.readFor(PcmRepositoryBlackboardFactory.class);
+		this.pcmMappings = this.blackboard.readFor(PcmRepositoryBlackboardFactoryAdder.class);
 		this.fileLoader = new PcmRepositoryFileLoader();
 		this.annotator = new PcmRepositoryWriterAnnotator(blackboard, this.pcmMappings);
 	}
@@ -72,11 +70,11 @@ public class PcmRepositoryWriter {
 	 * contains an element with this identifier that is of the appropriate type, the
 	 * object’s result will appropriately written to {@code repositoryFile}. Nothing will
 	 * be written otherwise.
-	 * 
-	 * 
+	 *
+	 *
 	 * <p>If the element Id with final EvaluableExpression from the Blackboard can not be
 	 * found in the repository file.
-	 * 
+	 *
 	 * <p>If the Blackboard elements (e.g. SeffBranch) from the elements with final
 	 * EvaluableExpression from the Blackboard do not Correspond to the repository PCM
 	 * elements (e.g. BranchAction).
