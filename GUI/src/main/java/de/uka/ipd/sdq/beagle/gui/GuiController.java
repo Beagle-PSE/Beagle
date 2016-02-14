@@ -3,10 +3,15 @@ package de.uka.ipd.sdq.beagle.gui;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleController;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.UIJob;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -208,7 +213,14 @@ public class GuiController {
 
 				// when {@code beagleController.startAnalysis()} returns, close the dialog
 				GuiController.this.state = GuiControllerState.terminated;
-				GuiController.this.messageDialog.close();
+				new UIJob(Display.getDefault(), "Close Beagle Dialog") {
+
+					@Override
+					public IStatus runInUIThread(final IProgressMonitor monitor) {
+						GuiController.this.messageDialog.close();
+						return Status.OK_STATUS;
+					}
+				}.schedule();
 			}
 		}.start();
 	}

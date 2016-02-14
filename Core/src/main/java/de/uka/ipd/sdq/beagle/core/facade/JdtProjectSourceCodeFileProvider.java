@@ -39,7 +39,7 @@ public class JdtProjectSourceCodeFileProvider implements SourceCodeFileProvider 
 		try {
 			final IType type = this.jdtProject.findType(fullyQualifiedJavaPath);
 			if (type != null) {
-				return type.getCompilationUnit().getPath().toFile();
+				return type.getCompilationUnit().getResource().getRawLocation().toFile();
 			}
 		} catch (final JavaModelException didNotWork) {
 			return null;
