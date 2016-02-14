@@ -10,18 +10,31 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 
+import java.io.File;
+
 /**
  * A launch configuration that starts in its {@link #execute()} method an eclipse launch
  * configuration.
  *
  * @author Roman Langrehr
+ * @author Joshua Gleitze
  */
 public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConfiguration {
 
 	/**
+	 * Handler of failures.
+	 */
+	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Eclipse Launch Manager");
+
+	/**
 	 * The eclipse launch configuration to run.
 	 */
-	private final ILaunchConfiguration launchConfiguration;
+	private final ILaunchConfiguration originalLaunchConfiguration;
+
+	/**
+	 * The working copy we operate on to not modify the original configuration.
+	 */
+	private ILaunchConfigurationWorkingCopy workingCopy;
 
 	/**
 	 * Creates a Beagle launch configuration from an eclipse launch configuration.
@@ -31,54 +44,65 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	 */
 	public EclipseLaunchConfigurationLaunchConfiguration(final ILaunchConfiguration launchConfiguration) {
 		Validate.notNull(launchConfiguration);
-		this.launchConfiguration = launchConfiguration;
+		this.originalLaunchConfiguration = launchConfiguration;
+		this.copy();
 	}
 
 	@Override
 	public void execute() {
+		final ILaunchConfigurationWorkingCopy toLaunch = this.workingCopy;
+		this.copy();
 		try {
-			this.launchConfiguration.launch(ILaunchManager.RUN_MODE, null);
-		} catch (final CoreException exception) {
-			throw new RuntimeException(exception);
+			toLaunch.launch(ILaunchManager.RUN_MODE, null);
+		} catch (final CoreException runException) {
+			final FailureReport<LaunchConfiguration> failure =
+				new FailureReport<LaunchConfiguration>().cause(runException).retryWith(this::execute).recoverable();
+			FAILURE_HANDLER.handle(failure);
 		}
 	}
 
 	@Override
 	public LaunchConfiguration prependClasspath(final String classPathEntry) {
-		ILaunchConfigurationWorkingCopy newLaunchConfiguration = null;
 		try {
-			// Calling .getWorkingCopy() two times assures, that nobody can modify the
-			// original LaunchConfiguraion.
-			newLaunchConfiguration = this.launchConfiguration.getWorkingCopy().getWorkingCopy();
+			final String oldPath = this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, "");
+			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH,
+				classPathEntry + File.pathSeparator + oldPath);
 		} catch (final CoreException coreException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+			final FailureReport<LaunchConfiguration> failure =
+				new FailureReport<LaunchConfiguration>().cause(coreException);
+			return FAILURE_HANDLER.handle(failure);
 		}
-		try {
-			newLaunchConfiguration.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, classPathEntry + ";"
-				+ this.launchConfiguration.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, ""));
-		} catch (final CoreException coreException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
-		}
-		return new EclipseLaunchConfigurationLaunchConfiguration(newLaunchConfiguration);
+		return this;
 	}
 
 	@Override
 	public LaunchConfiguration appendJvmArgument(final String argument) {
-		ILaunchConfigurationWorkingCopy newLaunchConfiguration = null;
 		try {
-			// Calling .getWorkingCopy() two times assures, that nobody can modify the
-			// original LaunchConfiguraion.
-			newLaunchConfiguration = this.launchConfiguration.getWorkingCopy().getWorkingCopy();
+			final String oldAttributes =
+				this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, "");
+			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS,
+				oldAttributes + " " + argument);
 		} catch (final CoreException coreException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+			final FailureReport<LaunchConfiguration> failure =
+				new FailureReport<LaunchConfiguration>().cause(coreException);
+			return FAILURE_HANDLER.handle(failure);
 		}
+		return this;
+	}
+
+	/**
+	 * Puts a copy of {@link #originalLaunchConfiguration} into {@link #workingCopy}.
+	 */
+	private void copy() {
+		// Calling .getWorkingCopy() two times assures that nobody can modify the
+		// original LaunchConfiguration.
 		try {
-			newLaunchConfiguration.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, argument + " "
-				+ this.launchConfiguration.getAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, ""));
+			this.workingCopy = this.originalLaunchConfiguration.getWorkingCopy().getWorkingCopy();
 		} catch (final CoreException coreException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+			final FailureReport<LaunchConfiguration> failure =
+				new FailureReport<LaunchConfiguration>().cause(coreException);
+			FAILURE_HANDLER.handle(failure);
 		}
-		return new EclipseLaunchConfigurationLaunchConfiguration(newLaunchConfiguration);
 	}
 
 }
