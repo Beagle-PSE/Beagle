@@ -68,6 +68,8 @@ public class KiekerMeasurementTool implements MeasurementTool {
 			.instrument();
 
 		new EclipseCompiler(fileManager.getInstrumentedSourceCodeFolder())
+			.useClassPath(measurementOrder.getProjectInformation().getBuildPath())
+			.useClassPath(fileManager.getMeasurementRemotePackage().toString())
 			.useCharset(measurementOrder.getProjectInformation().getCharset())
 			.intoFolder(fileManager.getCompiledByteCodeFolder())
 			.compile();

@@ -10,6 +10,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Compiles source code files using Eclipse’s batch compiler. Reports failures through the
@@ -33,7 +35,7 @@ public class EclipseCompiler {
 	/**
 	 * The classpath to use.
 	 */
-	private String classPath;
+	private final List<String> classPath = new ArrayList<>();
 
 	/**
 	 * The folder to compile into.
@@ -58,14 +60,16 @@ public class EclipseCompiler {
 	}
 
 	/**
-	 * Provides a classpath to use by the compiler.
+	 * Provides a classpath segment to be used by the compiler. It will be appended to
+	 * existing segments.
 	 *
-	 * @param compiltationClassPath The classpath the compiler should use to compile.
+	 * @param compiltationClassPathSegment A classpath segment the compiler should use to
+	 *            compile.
 	 * @return {@code this}.
 	 */
-	public EclipseCompiler useClassPath(final String compiltationClassPath) {
-		Validate.notNull(compiltationClassPath);
-		this.classPath = compiltationClassPath;
+	public EclipseCompiler useClassPath(final String compiltationClassPathSegment) {
+		Validate.notNull(compiltationClassPathSegment);
+		this.classPath.add(compiltationClassPathSegment);
 		return this;
 	}
 
@@ -102,8 +106,8 @@ public class EclipseCompiler {
 	public void compile() {
 		final StringBuilder argumentBuilder = new StringBuilder();
 		argumentBuilder.append("-d \"").append(this.targetFolder).append("\" ");
-		if (this.classPath != null) {
-			argumentBuilder.append("-classpath \"").append(this.classPath).append("\" ");
+		for (final String segment : this.classPath) {
+			argumentBuilder.append("-classpath \"").append(segment).append("\" ");
 		}
 		if (this.charset != null) {
 			argumentBuilder.append("-encoding ").append(this.charset).append(" ");
