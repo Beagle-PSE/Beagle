@@ -79,7 +79,7 @@ public class BeagleConfiguration {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
 	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile) {
-		Validate.notNull(elements);
+
 		Validate.notNull(repositoryFile);
 
 		if (!repositoryFile.exists()) {
@@ -118,7 +118,11 @@ public class BeagleConfiguration {
 	public void setElements(final List<Entity> elements) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
-		this.elements = new LinkedList<>(elements);
+		if (elements == null) {
+			this.elements = null;
+		} else {
+			this.elements = new LinkedList<>(elements);
+		}
 	}
 
 	/**

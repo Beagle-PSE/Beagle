@@ -10,10 +10,8 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
-import java.util.LinkedList;
 
 /*
  * This class is involved in creating a Graphical User Interface. Its funtionality cannot
@@ -60,8 +58,7 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		}
 
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration =
-			new BeagleConfiguration(new LinkedList<Entity>(), fileToAnalyse);
+		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(null, fileToAnalyse);
 		final GuiController guiController = new GuiController(beagleConfiguration);
 		guiController.open();
 		return null;
