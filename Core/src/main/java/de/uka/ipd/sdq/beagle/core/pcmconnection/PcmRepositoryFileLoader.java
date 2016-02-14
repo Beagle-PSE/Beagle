@@ -6,6 +6,7 @@ import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  * Contains a method to load a {@link RepositoryImpl}-instance from a given {@link File}.
@@ -19,10 +20,15 @@ public class PcmRepositoryFileLoader {
 	 *
 	 * @param repositoryFile The repositoryFile
 	 * @return the {@link RepositoryImpl}
+	 * @throws FileNotFoundException if given repository file does not exist
 	 */
-	public RepositoryImpl loadRepositoryFromFile(final File repositoryFile) {
+	public RepositoryImpl loadRepositoryFromFile(final File repositoryFile) throws FileNotFoundException {
 		if (repositoryFile == null) {
 			throw new NullPointerException();
+		}
+		
+		if (!(repositoryFile.exists())) {
+			throw new FileNotFoundException("File " + repositoryFile.getAbsolutePath() + " does not exist!");
 		}
 
 		RepositoryFactory.eINSTANCE.createRepository();

@@ -7,6 +7,7 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -80,8 +81,9 @@ public class PcmRepositoryWriter {
 	 * @param repositoryFile A PCM repository file to write Beagle’s results to. It should
 	 *            use the same identifiers for elements as the repository file Beagle’s
 	 *            blackboard was initially created for.
+	 * @throws FileNotFoundException If given repository file does not exist
 	 */
-	public void writeTo(final File repositoryFile) {
+	public void writeTo(final File repositoryFile) throws FileNotFoundException {
 		final RepositoryImpl repository = this.fileLoader.loadRepositoryFromFile(repositoryFile);
 
 		this.annotator.annotateAll(repository);
