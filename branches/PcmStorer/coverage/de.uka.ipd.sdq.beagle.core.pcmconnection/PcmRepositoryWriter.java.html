@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PcmRepositoryWriter.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmconnection</a> &gt; <span class="el_source">PcmRepositoryWriter.java</span></div><h1>PcmRepositoryWriter.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
@@ -23,7 +26,7 @@ public class PcmRepositoryWriter {
 	/**
 	 * The FailureHandler for this class.
 	 */
-<span class="fc" id="L26">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;BlackboardStorer&quot;);</span>
+<span class="fc" id="L29">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;BlackboardStorer&quot;);</span>
 	
 	/**
 	 * Blackboard to get Mapping from.
@@ -54,12 +57,12 @@ public class PcmRepositoryWriter {
 	 *
 	 * @param blackboard The blackboard containing results.
 	 */
-<span class="fc" id="L57">	public PcmRepositoryWriter(final Blackboard blackboard) {</span>
-<span class="fc" id="L58">		this.blackboard = blackboard;</span>
-<span class="fc" id="L59">		this.pcmMappings = this.blackboard.readFor(PcmRepositoryBlackboardFactory.class);</span>
-<span class="fc" id="L60">		this.fileLoader = new PcmRepositoryFileLoader();</span>
-<span class="fc" id="L61">		this.annotator = new PcmRepositoryWriterAnnotator(blackboard, this.pcmMappings);</span>
-<span class="fc" id="L62">	}</span>
+<span class="fc" id="L60">	public PcmRepositoryWriter(final Blackboard blackboard) {</span>
+<span class="fc" id="L61">		this.blackboard = blackboard;</span>
+<span class="fc" id="L62">		this.pcmMappings = this.blackboard.readFor(PcmRepositoryBlackboardFactory.class);</span>
+<span class="fc" id="L63">		this.fileLoader = new PcmRepositoryFileLoader();</span>
+<span class="fc" id="L64">		this.annotator = new PcmRepositoryWriterAnnotator(blackboard, this.pcmMappings);</span>
+<span class="fc" id="L65">	}</span>
 
 	/**
 	 * Writes the Beagle’s findings to the {@code repositoryFile}. For each
@@ -84,11 +87,11 @@ public class PcmRepositoryWriter {
 	 * @throws FileNotFoundException If given repository file does not exist
 	 */
 	public void writeTo(final File repositoryFile) throws FileNotFoundException {
-<span class="fc" id="L87">		final RepositoryImpl repository = this.fileLoader.loadRepositoryFromFile(repositoryFile);</span>
+<span class="fc" id="L90">		final RepositoryImpl repository = this.fileLoader.loadRepositoryFromFile(repositoryFile);</span>
 
-<span class="fc" id="L89">		this.annotator.annotateAll(repository);</span>
-<span class="fc" id="L90">		this.saveRepository(repository, repositoryFile);</span>
-<span class="fc" id="L91">	}</span>
+<span class="fc" id="L92">		this.annotator.annotateAll(repository);</span>
+<span class="fc" id="L93">		this.saveRepository(repository, repositoryFile);</span>
+<span class="fc" id="L94">	}</span>
 
 	/**
 	 * Method should be called after annotating changes on the {@link RepositoryImpl}. It
@@ -99,16 +102,16 @@ public class PcmRepositoryWriter {
 	 */
 	private void saveRepository(final RepositoryImpl repository, final File repositoryFile) {
 		try {
-<span class="fc" id="L102">			EmfHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());</span>
-<span class="nc" id="L103">		} catch (final IOException ioException) {</span>
-<span class="nc" id="L104">			final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
-<span class="nc" id="L105">				.message(&quot;The modified repository can not be saved to %s!&quot;, repositoryFile.getAbsolutePath())</span>
-<span class="nc" id="L106">				.cause(ioException)</span>
-<span class="nc" id="L107">				.recoverable()</span>
-<span class="nc" id="L108">				.retryWith(() -&gt; this.saveRepository(repository, repositoryFile));</span>
-<span class="nc" id="L109">			FAILURE_HANDLER.handle(failure);</span>
-<span class="fc" id="L110">		}</span>
-<span class="fc" id="L111">	}</span>
+<span class="fc" id="L105">			EmfHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());</span>
+<span class="nc" id="L106">		} catch (final IOException ioException) {</span>
+<span class="nc" id="L107">			final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L108">				.message(&quot;The modified repository can not be saved to %s!&quot;, repositoryFile.getAbsolutePath())</span>
+<span class="nc" id="L109">				.cause(ioException)</span>
+<span class="nc" id="L110">				.recoverable()</span>
+<span class="nc" id="L111">				.retryWith(() -&gt; this.saveRepository(repository, repositoryFile));</span>
+<span class="nc" id="L112">			FAILURE_HANDLER.handle(failure);</span>
+<span class="fc" id="L113">		}</span>
+<span class="fc" id="L114">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
