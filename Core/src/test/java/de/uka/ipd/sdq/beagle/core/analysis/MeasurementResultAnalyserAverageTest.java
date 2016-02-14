@@ -21,11 +21,13 @@ import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResu
 import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
 
 import org.apache.commons.collections4.MultiSet;
 import org.apache.commons.collections4.multiset.HashMultiSet;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -41,6 +43,11 @@ public class MeasurementResultAnalyserAverageTest {
 	 * {@link BlackboardFactory} to easily create {@link Blackboard}s.
 	 */
 	private static final BlackboardFactory BLACKBOARD_FACTORY = new BlackboardFactory();
+
+	/**
+	 * A {@link SeffLoopFactory}, which is able to generate {@link SeffLoops}s.
+	 */
+	private static final SeffLoopFactory SEFF_LOOP_FACTORY = new SeffLoopFactory();
 
 	/**
 	 * Test method for
@@ -68,7 +75,7 @@ public class MeasurementResultAnalyserAverageTest {
 			new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard);
 		assertThat(analyser.canContribute(blackboardView), is(analyser.canContribute(blackboardView2)));
 
-		final Blackboard mockedBlackboard = mock(Blackboard.class);
+		Blackboard mockedBlackboard = mock(Blackboard.class);
 		final Set<ResourceDemandMeasurementResult> resourceResults = new HashSet<>();
 		given(mockedBlackboard.getMeasurementResultsFor(any(ResourceDemandingInternalAction.class)))
 			.willReturn(resourceResults);
@@ -81,7 +88,7 @@ public class MeasurementResultAnalyserAverageTest {
 		ReadOnlyMeasurementResultAnalyserBlackboardView mockedView =
 			new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard);
 		assertThat(analyser.canContribute(mockedView), is(false));
-
+		
 		resourceResults.add(new ResourceDemandMeasurementResult(2.3));
 		given(mockedBlackboard.getMeasurementResultsFor(any(ResourceDemandingInternalAction.class)))
 			.willReturn(resourceResults);
@@ -99,6 +106,29 @@ public class MeasurementResultAnalyserAverageTest {
 		analyser.contribute(analyserView);
 		assertThat(analyser.canContribute(mockedView), is(false));
 
+		mockedBlackboard = mock(Blackboard.class);
+		given(mockedBlackboard.readFor(MeasurementResultAnalyserAverage.class)).willReturn(new HashMap<>());
+		assertThat(analyser.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard)),
+			is(false));
+
+		mockedBlackboard = mock(Blackboard.class);
+		final HashMap<MeasurableSeffElement, Integer> contributions = new HashMap<>();
+		final SeffLoop loop = SEFF_LOOP_FACTORY.getOne();
+		contributions.put(loop, 2);
+		Set<LoopRepetitionCountMeasurementResult> value = new HashSet<>();
+		value.add(new LoopRepetitionCountMeasurementResult(1));
+		value.add(new LoopRepetitionCountMeasurementResult(3));
+		value.add(new LoopRepetitionCountMeasurementResult(5));
+		given(mockedBlackboard.getMeasurementResultsFor(loop)).willReturn(value);
+		assertThat(analyser.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard)),
+			is(true));
+
+		value = new HashSet<>();
+		value.add(new LoopRepetitionCountMeasurementResult(1));
+		value.add(new LoopRepetitionCountMeasurementResult(3));
+		given(mockedBlackboard.getMeasurementResultsFor(loop)).willReturn(value);
+		assertThat(analyser.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard)),
+			is(false));
 	}
 
 	/**
