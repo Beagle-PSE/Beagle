@@ -13,12 +13,17 @@ import de.uka.ipd.sdq.beagle.core.judge.AbstractionAndPrecisionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementToolContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.JavaModelException;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -156,10 +161,27 @@ public class BeagleController {
 	 * @return the ";"-separated string with the paths
 	 */
 	private String classPathToString(final IClasspathEntry[] classpathEntries) {
-		String path = "";
+		final StringBuilder pathBuilder = new StringBuilder();
+		boolean first = false;
+		final IWorkspaceRoot workspace = ResourcesPlugin.getWorkspace().getRoot();
 		for (final IClasspathEntry classpathEntry : classpathEntries) {
-			path += classpathEntry.getPath().toOSString() + ";";
+			if (first) {
+				first = false;
+			} else {
+				pathBuilder.append(File.pathSeparator);
+			}
+			final IPath entryPath = classpathEntry.getPath();
+
+			// See if the root workspace can resolve the path, if yes, resolve to
+			// file-system-absolute path.
+			final IResource pathResource = workspace.findMember(entryPath);
+			if (pathResource != null) {
+				pathBuilder.append(pathResource.getRawLocation().toOSString());
+			} else {
+				pathBuilder.append(entryPath.toOSString());
+			}
+
 		}
-		return path.substring(0, path.length() - 1);
+		return pathBuilder.toString();
 	}
 }
