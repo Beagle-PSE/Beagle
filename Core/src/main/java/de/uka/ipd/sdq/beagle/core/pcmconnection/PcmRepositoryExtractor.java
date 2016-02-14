@@ -28,6 +28,7 @@ import java.util.Set;
  * {@link #getBlackboardForIds(RepositoryImpl, Collection)}
  *
  * @author Ansgar Spiegler
+ * @author Roman Langrehr
  */
 public class PcmRepositoryExtractor {
 

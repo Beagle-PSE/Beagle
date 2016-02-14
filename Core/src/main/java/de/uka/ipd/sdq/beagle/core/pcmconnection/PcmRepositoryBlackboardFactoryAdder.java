@@ -24,6 +24,7 @@ import java.util.LinkedList;
  *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
+ * @author Roman Langrehr
  */
 public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<PcmBeagleMappings> {
 

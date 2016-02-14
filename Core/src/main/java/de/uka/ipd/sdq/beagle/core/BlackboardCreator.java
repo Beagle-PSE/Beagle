@@ -66,7 +66,6 @@ public class BlackboardCreator {
 	 *
 	 */
 	public Blackboard createBlackboard() {
-		// CHECKSTYLE:IGNORE BooleanExpressionComplexity
 		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null
 			|| this.projectInformation == null) {
 			throw new IllegalStateException("Not everything has been setup yet.");

@@ -22,6 +22,7 @@ import java.util.List;
  * @author Christoph Michelbach
  * @author Joshua Gleitze
  * @author Michael Vogt
+ * @author Roman Langrehr
  */
 public class BeagleConfiguration {
 

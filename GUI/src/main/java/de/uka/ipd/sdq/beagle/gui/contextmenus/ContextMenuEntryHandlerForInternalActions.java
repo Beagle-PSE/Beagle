@@ -10,10 +10,10 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -74,7 +74,10 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 				.getFile(new Path(internalAction.eResource().getURI().toPlatformString(true)))
 				.getRawLocation()
 				.toFile();
-			javaProject = ((IAdaptable) clickObject).getAdapter(IJavaProject.class);
+			javaProject = JavaCore.create(ResourcesPlugin.getWorkspace()
+				.getRoot()
+				.getFile(new Path(internalAction.eResource().getURI().toPlatformString(true)))
+				.getProject());
 		}
 
 		// create a new GUI and open it
