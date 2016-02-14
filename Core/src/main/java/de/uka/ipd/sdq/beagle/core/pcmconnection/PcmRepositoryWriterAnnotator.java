@@ -8,6 +8,8 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
@@ -48,6 +50,11 @@ public class PcmRepositoryWriterAnnotator {
 	 * Object for converting and annotating EvaEx.
 	 */
 	private PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx;
+	
+	/**
+	 * The FailureHandler for this class.
+	 */
+	private final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("PcmStorer");
 
 	/**
 	 * Helper class for {@link PcmRepositoryWriter}. Offering a method to write all final
@@ -65,7 +72,7 @@ public class PcmRepositoryWriterAnnotator {
 	/**
 	 * This method looks up each SeffLoop on the {@link #blackboard} and maps its ID to
 	 * its finalExpression {@link Blackboard#getFinalExpressionFor(MeasurableSeffElement)}
-	 * if such one exists. Otherwise, the SeffElement will no occur as Key-element.
+	 * if such one exists. Otherwise, the SeffElement will not occur as Key-element.
 	 *
 	 * @return A map of SeffLoops IDs to its final EvaluableExpressions.
 	 */
@@ -86,7 +93,7 @@ public class PcmRepositoryWriterAnnotator {
 	/**
 	 * This method looks up each SeffBranch on the {@link #blackboard} and maps its ID to
 	 * its finalExpression {@link Blackboard#getFinalExpressionFor(MeasurableSeffElement)}
-	 * if such one exists. Otherwise, the SeffElement will no occur as Key-element.
+	 * if such one exists. Otherwise, the SeffElement will not occur as Key-element.
 	 *
 	 * @return A map of SeffBranche IDs to its final EvaluableExpressions.
 	 */
@@ -107,7 +114,7 @@ public class PcmRepositoryWriterAnnotator {
 	/**
 	 * This method looks up each RDIA on the {@link #blackboard} and maps its ID to its
 	 * finalExpression {@link Blackboard#getFinalExpressionFor(MeasurableSeffElement)} if
-	 * such one exists. Otherwise, the SeffElement will no occur as Key-element.
+	 * such one exists. Otherwise, the SeffElement will not occur as Key-element.
 	 *
 	 * @return A map of RDIA IDs to its final EvaluableExpressions.
 	 */
@@ -127,10 +134,10 @@ public class PcmRepositoryWriterAnnotator {
 
 	/**
 	 * This method looks up each RDIA on the {@link #blackboard} and maps its ID to its
-	 * finalExpression {@link Blackboard#getFinalExpressionFor(MeasurableSeffElement)} if
-	 * such one exists. Otherwise, the SeffElement will no occur as Key-element.
+	 * ResourceDemandType if a final EvaluablExpression is found on the Blackboard. Otherwise,
+	 * the RDIA will not occur as Key-element.
 	 *
-	 * @return A map of RDIA IDs to its final EvaluableExpressions.
+	 * @return A map of RDIA IDs to its ResourceDemandTypes.
 	 */
 	private Map<String, ResourceDemandType> getMapFromIdToResourceDemandTypeOfAllRdiasWithFinalExpressionsFromBlackboard() {
 
@@ -265,7 +272,15 @@ public class PcmRepositoryWriterAnnotator {
 		if (content.getClass() == LoopActionImpl.class) {
 			return true;
 		}
-		// Failure handle should be activated here
+		
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The SeffElement with ID %s is stored by Beagle as a LoopAction"
+				+ " but is not a LoopAction in the repository-file!", content.getId())
+			.cause(new IllegalArgumentException())
+			.recoverable()
+			.retryWith(() -> this.shouldBeLoopAction(content));
+		this.FAILURE_HANDLER.handle(failure);
+		
 		return false;
 	}
 
@@ -280,7 +295,13 @@ public class PcmRepositoryWriterAnnotator {
 		if (content.getClass() == BranchActionImpl.class) {
 			return true;
 		}
-		// Failure handle should be activated here
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The SeffElement with ID %s is stored by Beagle as a BranchAction"
+				+ " but is not a BranchAction in the repository-file!", content.getId())
+			.cause(new IllegalArgumentException())
+			.recoverable()
+			.retryWith(() -> this.shouldBeBranchAction(content));
+		this.FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 
@@ -295,7 +316,13 @@ public class PcmRepositoryWriterAnnotator {
 		if (content.getClass() == InternalActionImpl.class) {
 			return true;
 		}
-		// Failure handle should be activated here
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The SeffElement with ID %s is stored by Beagle as an InternalAction but is"
+				+ " not an InternalAction in the repository-file!", content.getId())
+			.cause(new IllegalArgumentException())
+			.recoverable()
+			.retryWith(() -> this.shouldBeInternalAction(content));
+		this.FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 
@@ -310,7 +337,13 @@ public class PcmRepositoryWriterAnnotator {
 		if (content.getClass() == ExternalCallActionImpl.class) {
 			return true;
 		}
-		// Failure handle should be activated here
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The SeffElement with ID %s is stored by Beagle as an ExternalCallAction but is"
+				+ " not an ExternalCallAction in the repository-file!", content.getId())
+			.cause(new IllegalArgumentException())
+			.recoverable()
+			.retryWith(() -> this.shouldBeExternalCallAction(content));
+		this.FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 
@@ -327,7 +360,10 @@ public class PcmRepositoryWriterAnnotator {
 		if (idMap.isEmpty()) {
 			return true;
 		}
-		// Failure handle should be activated here
+		final FailureReport<Void> failure = new FailureReport<Void>()
+			.message("The Blackboard contains seffElements that do not fit to the given repository-file!")
+			.cause(new IllegalArgumentException());
+		this.FAILURE_HANDLER.handle(failure);
 		return false;
 	}
 

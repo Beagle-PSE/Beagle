@@ -67,8 +67,6 @@ public class PcmRepositoryWriter {
 	 * object’s result will appropriately written to {@code repositoryFile}. Nothing will
 	 * be written otherwise.
 	 * 
-	 * <p>FailureHandlers: If for an element with final EvaluableExpression from the
-	 * Blackboard no Id mapping exists(!!!! NOT YET ANNOTATED WITH TO-DO!!!!)
 	 * 
 	 * <p>If the element Id with final EvaluableExpression from the Blackboard can not be
 	 * found in the repository file.
