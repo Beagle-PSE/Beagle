@@ -43,4 +43,9 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 		return this;
 	}
 
+	@Override
+	public LaunchConfiguration appendJvmArgument(final String argument) {
+		return this;
+	}
+
 }
