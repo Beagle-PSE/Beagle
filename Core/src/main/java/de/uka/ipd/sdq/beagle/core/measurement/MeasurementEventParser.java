@@ -156,7 +156,7 @@ public class MeasurementEventParser {
 	public Set<LoopRepetitionCountMeasurementResult> getMeasurementResultsFor(final SeffLoop loop) {
 		final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults = new HashSet<>();
 		final SeffLoopMeasurementEventVisitor seffLoopMeasurementEventVisitor =
-			new SeffLoopMeasurementEventVisitor(loop, loopRepetitionCountMeasurementResults);
+			new SeffLoopMeasurementEventVisitor(loopRepetitionCountMeasurementResults);
 		final Set<Integer> indices = this.codeSectionMapping.get(loop.getLoopBody());
 		if (indices != null) {
 			for (final Integer index : indices) {
@@ -285,11 +285,6 @@ public class MeasurementEventParser {
 	private class SeffLoopMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
 
 		/**
-		 * The {@link SeffBranch} where we want to know the new measurement results.
-		 */
-		private final SeffLoop loop;
-
-		/**
 		 * The set, where the {@linkplain ResourceDemandMeasurementResult
 		 * ResourceDemandMeasurementResults} should be added.
 		 */
@@ -304,15 +299,12 @@ public class MeasurementEventParser {
 		/**
 		 * Creates a visitor for a specific {@link SeffLoop}.
 		 *
-		 * @param loop The {@link SeffLoop} where we want to know the new measurement
-		 *            results.
 		 * @param loopRepetitionCountMeasurementResults The set, where the
 		 *            {@linkplain BranchDecisionMeasurementResult
 		 *            BranchDecisionMeasurementResults} should be added.
 		 */
-		SeffLoopMeasurementEventVisitor(final SeffLoop loop,
+		SeffLoopMeasurementEventVisitor(
 			final Set<LoopRepetitionCountMeasurementResult> loopRepetitionCountMeasurementResults) {
-			this.loop = loop;
 			this.loopRepetitionCountMeasurementResults = loopRepetitionCountMeasurementResults;
 			this.currentLoopCounts = new Stack<>();
 		}
