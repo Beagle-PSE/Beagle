@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,8 +16,9 @@ import java.io.FileNotFoundException;
  * {@link parse}.
  * ***************************************************************************************
  * ******** No more usage of this class is made so far.
- * 
+ *
  * @author Ansgar Spiegler
+ * @author Roman Langrehr
  *
  */
 public class PcmNameParser {
@@ -87,8 +89,23 @@ public class PcmNameParser {
 	private int atPos;
 
 	/**
+	 * The {@link SourceCodeFileProvider} for the project under analysis.
+	 */
+	private SourceCodeFileProvider sourceCodeFileProvider;
+
+	/**
+	 * Creates a new name parser for a specific project to analyse.
+	 *
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
+	 */
+	public PcmNameParser(final SourceCodeFileProvider sourceCodeFileProvider) {
+		this.sourceCodeFileProvider = sourceCodeFileProvider;
+	}
+
+	/**
 	 * Parsing a SoMoX-created String to get the annotated CodeSection.
-	 * 
+	 *
 	 * @param entityName SoMoX generated entityName. If not, this leads to undefined
 	 *            behaviour.
 	 * @return May return {@code null}, if the String contains no file-path
@@ -136,25 +153,23 @@ public class PcmNameParser {
 	 * Tries to load the file, looking at the given substring between "@position: " and
 	 * ".java". May set {@link file} to null if no file annotation was found. Otherwise
 	 * {@line file} is set to the .java file at the given position.
-	 * 
+	 *
 	 * @param entityName The full entityName.
-	 * 
+	 *
 	 * @throws FileNotFoundException Tries to load a file at the given path. If no valid
 	 *             file can be loaded at a given position, this exception is thrown.
 	 */
 	private void loadFile(final String entityName) throws FileNotFoundException {
-		String fileName;
+		String qualifiedName;
 		final int position = entityName.indexOf(PcmNameParser.AT_POSITION_COLON_SPACE);
 		final int blockPos = entityName.indexOf(PcmNameParser.DOT_JAVA);
 
 		if (position != -1 && blockPos != -1) {
-			fileName = entityName.substring(position + PcmNameParser.AT_POSITION_COLON_SPACE.length(), blockPos);
-			fileName = fileName.replace(".", "/");
-			fileName = fileName.concat(".java");
-			this.file = new File(fileName);
+			qualifiedName = entityName.substring(position + PcmNameParser.AT_POSITION_COLON_SPACE.length(), blockPos);
+			this.file = this.sourceCodeFileProvider.getSourceFile(qualifiedName);
 
-			if (!this.file.isFile()) {
-				throw new FileNotFoundException("The file \"" + fileName + "\" was not found.");
+			if (this.file == null) {
+				throw new FileNotFoundException("No source file for class " + qualifiedName + " was found.");
 
 			}
 
@@ -164,7 +179,7 @@ public class PcmNameParser {
 	}
 
 	/**
-	 * Reset/initializing step of all storing variables.
+	 * Reset/initialising step of all storing variables.
 	 *
 	 */
 	private void reset() {

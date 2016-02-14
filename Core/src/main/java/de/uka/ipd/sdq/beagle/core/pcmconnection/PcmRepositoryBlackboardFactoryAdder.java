@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -39,16 +40,24 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	private PcmRepositoryExtractor pcmExtractor;
 
 	/**
+	 * The {@link SourceCodeFileProvider} for the project under analysis.
+	 */
+	private SourceCodeFileProvider sourceCodeFileProvider;
+
+	/**
 	 * Creates a factory that will search the provided PCM files for <em>PCM
 	 * elements</em>.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
 	 * @throws IllegalArgumentException If input parameter does not represent a valid
 	 *             repository file or if repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName) {
-
+	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName,
+		final SourceCodeFileProvider sourceCodeFileProvider) {
+		this.sourceCodeFileProvider = sourceCodeFileProvider;
 		final File test = new File(repositoryFileName);
 		if (!test.exists() || !test.isFile()) {
 			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
@@ -69,11 +78,14 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 * Creates a factory that will search the provided PCM file for <em>PCM elements</em>.
 	 *
 	 * @param pcmRepositoryFiles PCM repository file.
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
 	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles) throws FileNotFoundException {
-		this(pcmRepositoryFiles.getAbsolutePath());
+	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
+		final SourceCodeFileProvider sourceCodeFileProvider) throws FileNotFoundException {
+		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider);
 	}
 
 	/**
@@ -86,7 +98,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForAllElements(final BlackboardCreator blackboardFactory) {
-		this.pcmExtractor = new PcmRepositoryExtractor();
+		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);
 		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);
 
 	}
@@ -129,7 +141,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 				throw new NullPointerException();
 			}
 		}
-		this.pcmExtractor = new PcmRepositoryExtractor();
+		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);
 		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);
 
 	}

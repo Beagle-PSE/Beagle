@@ -2,12 +2,15 @@ package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
+import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.FailureReport;
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.JavaModelException;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -15,7 +18,9 @@ import org.palladiosimulator.pcm.core.entity.Entity;
 import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
@@ -40,16 +45,18 @@ public class BeagleController {
 	 */
 	public BeagleController(final BeagleConfiguration beagleConfiguration) {
 		final BlackboardCreator blackboardFactory = new BlackboardCreator();
+		final SourceCodeFileProvider sourceCodeFileProvider =
+			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());
 		if (beagleConfiguration.getElements() == null) {
 			try {
-				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile())
+				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
 					.getBlackboardForAllElements(blackboardFactory);
 			} catch (final FileNotFoundException fileNotFoundException) {
 				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
 			}
 		} else {
 			try {
-				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile())
+				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
 					.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);
 			} catch (final FileNotFoundException fileNotFoundException) {
 				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
@@ -67,8 +74,16 @@ public class BeagleController {
 		} catch (final JavaModelException javaModelException) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(javaModelException));
 		}
-		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
-			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject()), buildPath, charset));
+		final Set<ILaunchConfiguration> iLaunchConfigurations =
+			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
+				.getAllSuitableJUnitLaunchConfigurations();
+		final Set<LaunchConfiguration> launchConfigurations = new HashSet<>();
+		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {
+			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration));
+
+			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
+				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
+		}
 		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard());
 	}
 

@@ -1,9 +1,12 @@
 package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 
 /**
@@ -11,7 +14,12 @@ import java.nio.file.Files;
  *
  * @author Joshua Gleitze
  */
-public class ProjectInformationFactory {
+public class ProjectInformationFactory implements SourceCodeFileProvider {
+
+	/**
+	 * See {@link Serializable}.
+	 */
+	private static final long serialVersionUID = -2919717213224100923L;
 
 	/**
 	 * Creates a new project information.
@@ -20,17 +28,13 @@ public class ProjectInformationFactory {
 	 *         about.
 	 */
 	public ProjectInformation getOne() {
-		return new ProjectInformation(0, this::sourceFileProvider, "", null);
+		return new ProjectInformation(0, this, "", Charset.defaultCharset(),
+			new LaunchConfigurationFactory().getAllAsSet());
 	}
 
-	/**
-	 * Source file provider for project informations. Creates temporary files, so that
-	 * checks whether the file exists will succeed.
-	 *
-	 * @param name Fully qualified name of a Java type.
-	 * @return A dummy file.
-	 */
-	private File sourceFileProvider(final String name) {
+	@Override
+	public File getSourceFile(final String fullyQualifiedJavaPath) {
+
 		try {
 			return Files.createTempFile("testfile", ".java").toFile();
 		} catch (final IOException ioException) {

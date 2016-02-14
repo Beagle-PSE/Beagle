@@ -9,6 +9,7 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -30,7 +31,7 @@ import java.util.Set;
 /**
  * Extractor class for SEFFElements. Adding all EObjects that are SeffLoops, SeffBranches,
  * ResourceDemandingInternalActions or ExternalCallParameters to given sets.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositorySeffExtractor {
@@ -92,17 +93,19 @@ public class PcmRepositorySeffExtractor {
 	 *            externalCallParameters
 	 * @param pcmMapper The mapping class that should contain a map of all SeffElements to
 	 *            its IDs
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
 	 */
 	public PcmRepositorySeffExtractor(final Set<SeffLoop> seffLoopSet, final Set<SeffBranch> seffBranchSet,
 		final Set<ResourceDemandingInternalAction> rdiaSet, final Set<ExternalCallParameter> externalCallParameterSet,
-		final PcmBeagleMappings pcmMapper) {
+		final PcmBeagleMappings pcmMapper, final SourceCodeFileProvider sourceCodeFileProvider) {
 		this.seffLoopSet = seffLoopSet;
 		this.seffBranchSet = seffBranchSet;
 		this.rdiaSet = rdiaSet;
 		this.externalCallParameterSet = externalCallParameterSet;
 		this.pcmMapper = pcmMapper;
 
-		this.nameParser = new PcmNameParser();
+		this.nameParser = new PcmNameParser(sourceCodeFileProvider);
 	}
 
 	/**
@@ -111,7 +114,7 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 * @param eObject Expecting a {@link ResourceDemandingBehaviour} or any eObject that
 	 *            has a concrete SEFF-Type.
-	 * 
+	 *
 	 */
 	public void extractBehaviourAndAddToSet(final EObject eObject) {
 		if (eObject.getClass() == InternalActionImpl.class) {
@@ -172,7 +175,7 @@ public class PcmRepositorySeffExtractor {
 	 * EntityName not found!
 	 *
 	 * @param internalAction SEFF-Action to add.
-	 * 
+	 *
 	 */
 	private void addInternalActionToSet(final InternalActionImpl internalAction) {
 		try {
@@ -193,7 +196,7 @@ public class PcmRepositorySeffExtractor {
 	 * {@link ExternalCallActionImpl} to the {@link externalCallParameterSet}.
 	 *
 	 * @param externalAction SEFF-Action to add.
-	 * 
+	 *
 	 */
 	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
 		try {
@@ -214,7 +217,7 @@ public class PcmRepositorySeffExtractor {
 	 * {@link seffBranchSet}. Fails silently if file from EntityName not found!
 	 *
 	 * @param branchAction SEFF-Action to add.
-	 * 
+	 *
 	 */
 	private void addBranchActionToSet(final BranchActionImpl branchAction) {
 		try {
@@ -264,9 +267,13 @@ public class PcmRepositorySeffExtractor {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", loopAction.getId(),
 				loopAction.getEntityName())
-			.cause(exception)
-			.recoverable()
-			.retryWith(() -> this.addLoopActionToSet(loopAction));
+			.cause(exception).recoverable().retryWith(new Runnable() {
+
+				@Override
+				public void run() {
+					PcmRepositorySeffExtractor.this.addLoopActionToSet(loopAction);
+				}
+			});
 		FAILURE_HANDLER.handle(failure);
 	}
 
@@ -280,9 +287,13 @@ public class PcmRepositorySeffExtractor {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", branchAction.getId(),
 				branchAction.getEntityName())
-			.cause(exception)
-			.recoverable()
-			.retryWith(() -> this.addBranchActionToSet(branchAction));
+			.cause(exception).recoverable().retryWith(new Runnable() {
+
+				@Override
+				public void run() {
+					PcmRepositorySeffExtractor.this.addBranchActionToSet(branchAction);
+				}
+			});
 		FAILURE_HANDLER.handle(failure);
 	}
 
@@ -293,12 +304,15 @@ public class PcmRepositorySeffExtractor {
 	 * @param exception The FileNotFoundException.
 	 */
 	private void handleFailureFor(final ExternalCallActionImpl ecAction, final FileNotFoundException exception) {
-		final FailureReport<Void> failure = new FailureReport<Void>()
-			.message("The File for ID %s with EntityName %s can not be found!", ecAction.getId(),
-				ecAction.getEntityName())
-			.cause(exception)
-			.recoverable()
-			.retryWith(() -> this.addExternalCallActionToSet(ecAction));
+		final FailureReport<Void> failure =
+			new FailureReport<Void>().message("The File for ID %s with EntityName %s can not be found!",
+				ecAction.getId(), ecAction.getEntityName()).cause(exception).recoverable().retryWith(new Runnable() {
+
+					@Override
+					public void run() {
+						PcmRepositorySeffExtractor.this.addExternalCallActionToSet(ecAction);
+					}
+				});
 		FAILURE_HANDLER.handle(failure);
 	}
 
@@ -312,9 +326,13 @@ public class PcmRepositorySeffExtractor {
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The File for ID %s with EntityName %s can not be found!", internalAction.getId(),
 				internalAction.getEntityName())
-			.cause(exception)
-			.recoverable()
-			.retryWith(() -> this.addInternalActionToSet(internalAction));
+			.cause(exception).recoverable().retryWith(new Runnable() {
+
+				@Override
+				public void run() {
+					PcmRepositorySeffExtractor.this.addInternalActionToSet(internalAction);
+				}
+			});
 		FAILURE_HANDLER.handle(failure);
 	}
 

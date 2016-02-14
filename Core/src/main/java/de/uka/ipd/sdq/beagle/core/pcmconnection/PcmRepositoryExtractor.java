@@ -6,6 +6,7 @@ import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
@@ -62,9 +63,18 @@ public class PcmRepositoryExtractor {
 	private PcmRepositorySeffExtractor pcmSeffExtractor;
 
 	/**
-	 * Constructor needs EvaluableExpressionFitnessFunction.
+	 * The {@link SourceCodeFileProvider} for the project under analysis.
 	 */
-	public PcmRepositoryExtractor() {
+	private SourceCodeFileProvider sourceCodeFileProvider;
+
+	/**
+	 * Creates a new name parser for a specific project to analyse.
+	 *
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
+	 */
+	public PcmRepositoryExtractor(final SourceCodeFileProvider sourceCodeFileProvider) {
+		this.sourceCodeFileProvider = sourceCodeFileProvider;
 	}
 
 	/**
@@ -85,7 +95,7 @@ public class PcmRepositoryExtractor {
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
 		this.externalCallParameterSet = new HashSet<ExternalCallParameter>();
 		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,
-			this.externalCallParameterSet, pcmMappings);
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider);
 
 		this.scanRepository(repository);
 
@@ -136,7 +146,7 @@ public class PcmRepositoryExtractor {
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
 		this.externalCallParameterSet = new HashSet<ExternalCallParameter>();
 		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,
-			this.externalCallParameterSet, pcmMappings);
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider);
 
 		if (identifiers.contains(repository.getId())) {
 			this.scanRepository(repository);

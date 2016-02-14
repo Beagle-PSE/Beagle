@@ -75,63 +75,72 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder((String) null);
+				new PcmRepositoryBlackboardFactoryAdder((String) null,
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(NullPointerException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder((String) null);
+				new PcmRepositoryBlackboardFactoryAdder((String) null,
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(NullPointerException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder((File) null);
+				new PcmRepositoryBlackboardFactoryAdder((File) null,
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(NullPointerException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder("");
+				new PcmRepositoryBlackboardFactoryAdder("",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder(".");
+				new PcmRepositoryBlackboardFactoryAdder(".",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder("..");
+				new PcmRepositoryBlackboardFactoryAdder("..",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder("/");
+				new PcmRepositoryBlackboardFactoryAdder("/",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder("/tmp");
+				new PcmRepositoryBlackboardFactoryAdder("/tmp",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder("\0");
+				new PcmRepositoryBlackboardFactoryAdder("\0",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -151,7 +160,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 				@Override
 				public void throwException() throws Exception {
-					new PcmRepositoryBlackboardFactoryAdder(impossibleRepositoryFile);
+					new PcmRepositoryBlackboardFactoryAdder(impossibleRepositoryFile,
+						PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 				}
 			}, throwsException(IllegalArgumentException.class));
 		}
@@ -161,7 +171,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
 		new PcmRepositoryBlackboardFactoryAdder(
-			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository"))
+			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository"),
+			PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER)
 				.getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
@@ -201,7 +212,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			public void throwException() throws Exception {
 				final BlackboardCreator blackboardCreator = new BlackboardCreator();
 				new PcmRepositoryBlackboardFactoryAdder(
-					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedSeffBranchAppSensor.repository")
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedSeffBranchAppSensor.repository",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER)
 						.getBlackboardForAllElements(blackboardCreator);
 			}
 		}, throwsException(RuntimeException.class));
@@ -211,7 +223,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			public void throwException() throws Exception {
 				final BlackboardCreator blackboardCreator = new BlackboardCreator();
 				new PcmRepositoryBlackboardFactoryAdder(
-					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedRdiaAppSensor.repository")
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedRdiaAppSensor.repository",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER)
 						.getBlackboardForAllElements(blackboardCreator);
 			}
 		}, throwsException(RuntimeException.class));
@@ -220,8 +233,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				final BlackboardCreator blackboardCreator = new BlackboardCreator();
-				new PcmRepositoryBlackboardFactoryAdder("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
-					+ "CorruptedExternalCallParameterAppSensor.repository")
+				new PcmRepositoryBlackboardFactoryAdder(
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+						+ "CorruptedExternalCallParameterAppSensor.repository",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER)
 						.getBlackboardForAllElements(blackboardCreator);
 			}
 		}, throwsException(RuntimeException.class));
