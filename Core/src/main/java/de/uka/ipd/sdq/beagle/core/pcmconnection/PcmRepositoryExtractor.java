@@ -25,8 +25,8 @@ import java.util.Set;
 
 /**
  * Extracting a given Pcm repository. Offering 2 methods:
- * {@link #getBlackboardForAllElements(RepositoryImpl)} and
- * {@link #getBlackboardForIds(RepositoryImpl, Collection)}
+ * {@link #getBlackboardForAllElements(RepositoryImpl, BlackboardCreator)} and
+ * {@link #getBlackboardForIds(RepositoryImpl, Collection, BlackboardCreator)}
  *
  * @author Ansgar Spiegler
  * @author Roman Langrehr
@@ -103,7 +103,7 @@ public class PcmRepositoryExtractor {
 		blackboardFactory.setBranches(this.seffBranchSet);
 		blackboardFactory.setLoops(this.seffLoopSet);
 		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
-		blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
+		blackboardFactory.setPcmMappings(pcmMappings);
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class PcmRepositoryExtractor {
 			blackboardFactory.setBranches(this.seffBranchSet);
 			blackboardFactory.setLoops(this.seffLoopSet);
 			blackboardFactory.setExternalCalls(this.externalCallParameterSet);
-			blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
+			blackboardFactory.setPcmMappings(pcmMappings);
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -191,7 +191,7 @@ public class PcmRepositoryExtractor {
 		blackboardFactory.setBranches(this.seffBranchSet);
 		blackboardFactory.setLoops(this.seffLoopSet);
 		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
-		blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
+		blackboardFactory.setPcmMappings(pcmMappings);
 	}
 
 	/**
