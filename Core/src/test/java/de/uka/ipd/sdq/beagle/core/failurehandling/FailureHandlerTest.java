@@ -2,7 +2,9 @@ package de.uka.ipd.sdq.beagle.core.failurehandling;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
 
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler.FailureHandlerProvider;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
@@ -39,5 +41,8 @@ public class FailureHandlerTest {
 			FailureHandler.setProvider(null);
 		};
 		assertThat(method, throwsException(NullPointerException.class));
+
+		final FailureHandlerProvider provider = mock(FailureHandlerProvider.class);
+		FailureHandler.setProvider(provider);
 	}
 }
