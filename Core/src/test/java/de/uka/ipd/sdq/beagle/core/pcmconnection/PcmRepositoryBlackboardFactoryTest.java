@@ -10,23 +10,18 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.Mockito.mock;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.junit.Rule;
 import org.junit.Test;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -34,7 +29,6 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -432,111 +426,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 		public EList<Adapter> eAdapters() {
 
 			return null;
-		}
-
-		@Override
-		public boolean eDeliver() {
-
-			return false;
-		}
-
-		@Override
-		public void eSetDeliver(final boolean deliver) {
-
-		}
-
-		@Override
-		public void eNotify(final Notification notification) {
-
-		}
-
-		@Override
-		public EClass eClass() {
-
-			return null;
-		}
-
-		@Override
-		public Resource eResource() {
-
-			return null;
-		}
-
-		@Override
-		public EObject eContainer() {
-
-			return null;
-		}
-
-		@Override
-		public EStructuralFeature eContainingFeature() {
-
-			return null;
-		}
-
-		@Override
-		public EReference eContainmentFeature() {
-
-			return null;
-		}
-
-		@Override
-		public EList<EObject> eContents() {
-
-			return null;
-		}
-
-		@Override
-		public TreeIterator<EObject> eAllContents() {
-
-			return null;
-		}
-
-		@Override
-		public boolean eIsProxy() {
-
-			return false;
-		}
-
-		@Override
-		public EList<EObject> eCrossReferences() {
-
-			return null;
-		}
-
-		@Override
-		public Object eGet(final EStructuralFeature feature) {
-
-			return null;
-		}
-
-		@Override
-		public Object eGet(final EStructuralFeature feature, final boolean resolve) {
-
-			return null;
-		}
-
-		@Override
-		public void eSet(final EStructuralFeature feature, final Object newValue) {
-
-		}
-
-		@Override
-		public boolean eIsSet(final EStructuralFeature feature) {
-
-			return false;
-		}
-
-		@Override
-		public void eUnset(final EStructuralFeature feature) {
-
-		}
-
-		@Override
-		public Object eInvoke(final EOperation operation, final EList<?> arguments) throws InvocationTargetException {
-
-			return null;
-		}
-
 	}
+
 }
