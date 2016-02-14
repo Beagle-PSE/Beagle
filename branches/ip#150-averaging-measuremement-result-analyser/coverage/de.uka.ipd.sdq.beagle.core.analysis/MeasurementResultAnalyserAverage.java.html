@@ -28,94 +28,95 @@ import java.util.Set;
  * 
  * @author Ansgar Spiegler
  */
-<span class="nc" id="L31">public class MeasurementResultAnalyserAverage implements MeasurementResultAnalyser, BlackboardStorer&lt;HashMap&lt;MeasurableSeffElement, Integer&gt;&gt; {</span>
+<span class="nc" id="L31">public class MeasurementResultAnalyserAverage</span>
+	implements MeasurementResultAnalyser, BlackboardStorer&lt;HashMap&lt;MeasurableSeffElement, Integer&gt;&gt; {
 
 	@Override
 	public boolean canContribute(final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard) {
 
-<span class="nc" id="L36">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
-<span class="nc" id="L37">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+<span class="nc" id="L37">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+<span class="nc" id="L38">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
 
-<span class="nc bnc" id="L39" title="All 2 branches missed.">		if (measurableSeffContributions == null) {</span>
-<span class="nc" id="L40">			return true;</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">		if (measurableSeffContributions == null) {</span>
+<span class="nc" id="L41">			return true;</span>
 		}
 
-<span class="nc bnc" id="L43" title="All 2 branches missed.">		if (measurableSeffContributions.isEmpty()) {</span>
-<span class="nc" id="L44">			return false;</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">		if (measurableSeffContributions.isEmpty()) {</span>
+<span class="nc" id="L45">			return false;</span>
 		}
 
-<span class="nc bnc" id="L47" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
 
-<span class="nc" id="L49">			final Integer numberOfMeasurements =</span>
-<span class="nc" id="L50">				this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement);</span>
+<span class="nc" id="L50">			final Integer numberOfMeasurements =</span>
+<span class="nc" id="L51">				this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement);</span>
 
-<span class="nc bnc" id="L52" title="All 2 branches missed.">			if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
-<span class="nc" id="L53">				return true;</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">			if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="nc" id="L54">				return true;</span>
 			}
-<span class="nc" id="L55">		}</span>
+<span class="nc" id="L56">		}</span>
 
-<span class="nc" id="L57">		return false;</span>
+<span class="nc" id="L58">		return false;</span>
 	}
 
 	@Override
 	public void contribute(final MeasurementResultAnalyserBlackboardView blackboard) {
 
-<span class="nc" id="L63">		final HashMap&lt;MeasurableSeffElement, Integer&gt; writtenContent =</span>
-<span class="nc" id="L64">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+<span class="nc" id="L64">		final HashMap&lt;MeasurableSeffElement, Integer&gt; writtenContent =</span>
+<span class="nc" id="L65">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
 
-<span class="nc bnc" id="L66" title="All 2 branches missed.">		if (writtenContent == null) {</span>
-<span class="nc" id="L67">			final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions = this.initializeMap(blackboard);</span>
-<span class="nc" id="L68">			blackboard.writeFor(MeasurementResultAnalyserAverage.class, measurableSeffContributions);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">		if (writtenContent == null) {</span>
+<span class="nc" id="L68">			final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions = this.initializeMap(blackboard);</span>
+<span class="nc" id="L69">			blackboard.writeFor(MeasurementResultAnalyserAverage.class, measurableSeffContributions);</span>
 		}
 
-<span class="nc" id="L71">		this.scanAllMeasurableSeffElements(blackboard);</span>
+<span class="nc" id="L72">		this.scanAllMeasurableSeffElements(blackboard);</span>
 
-<span class="nc" id="L73">	}</span>
+<span class="nc" id="L74">	}</span>
 
 	/**
 	 * Scanning all {@link MeasurableSeffElement} for given MeasurementResults. If there
 	 * are more results than the number of results for a previous propose have been used,
 	 * a new ProposedExpression is added by
-	 * {@link #addMeasurementResultFor(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)
+	 * {@link #addMeasurementResultFor(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)}
 	 *
 	 * @param blackboard the {@link Blackboard} to read and write from
 	 */
 	private void scanAllMeasurableSeffElements(final MeasurementResultAnalyserBlackboardView blackboard) {
 
-<span class="nc" id="L85">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
-<span class="nc" id="L86">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+<span class="nc" id="L86">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+<span class="nc" id="L87">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
 
-<span class="nc bnc" id="L88" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
 
 			Integer numberOfMeasurements;
 
-<span class="nc bnc" id="L92" title="All 2 branches missed.">			if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
-<span class="nc" id="L93">				numberOfMeasurements =</span>
-<span class="nc" id="L94">					blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
-<span class="nc" id="L96">					this.addMeasurementResultFor(blackboard, (ResourceDemandingInternalAction) measurableSeffElement);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">			if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="nc" id="L94">				numberOfMeasurements =</span>
+<span class="nc" id="L95">					blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="nc" id="L97">					this.addMeasurementResultFor(blackboard, (ResourceDemandingInternalAction) measurableSeffElement);</span>
 				}
-<span class="nc bnc" id="L98" title="All 2 branches missed.">			} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
-<span class="nc" id="L99">				numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L100" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
-<span class="nc" id="L101">					this.addMeasurementResultFor(blackboard, (SeffBranch) measurableSeffElement);</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">			} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
+<span class="nc" id="L100">				numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="nc" id="L102">					this.addMeasurementResultFor(blackboard, (SeffBranch) measurableSeffElement);</span>
 				}
-<span class="nc bnc" id="L103" title="All 2 branches missed.">			} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
-<span class="nc" id="L104">				numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
-<span class="nc" id="L106">					this.addMeasurementResultFor(blackboard, (SeffLoop) measurableSeffElement);</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">			} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
+<span class="nc" id="L105">				numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="nc" id="L107">					this.addMeasurementResultFor(blackboard, (SeffLoop) measurableSeffElement);</span>
 				}
-<span class="nc bnc" id="L108" title="All 2 branches missed.">			} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
-<span class="nc" id="L109">				numberOfMeasurements =</span>
-<span class="nc" id="L110">					blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L111" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
-<span class="nc" id="L112">					this.addMeasurementResultFor(blackboard, (ExternalCallParameter) measurableSeffElement);</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">			} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
+<span class="nc" id="L110">				numberOfMeasurements =</span>
+<span class="nc" id="L111">					blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="nc" id="L113">					this.addMeasurementResultFor(blackboard, (ExternalCallParameter) measurableSeffElement);</span>
 				}
 			}
 
-<span class="nc" id="L116">		}</span>
+<span class="nc" id="L117">		}</span>
 
-<span class="nc" id="L118">	}</span>
+<span class="nc" id="L119">	}</span>
 
 	/**
 	 * This method creates an averaging {@link EvaluableExpression} over all given
@@ -132,19 +133,19 @@ import java.util.Set;
 	private void addMeasurementResultFor(final MeasurementResultAnalyserBlackboardView blackboard,
 		final ResourceDemandingInternalAction rdia) {
 
-<span class="nc" id="L135">		final Set&lt;ResourceDemandMeasurementResult&gt; measurementResults = blackboard.getMeasurementResultsFor(rdia);</span>
-<span class="nc" id="L136">		int sumOverAllMeasurementResultValues = 0;</span>
-<span class="nc" id="L137">		final int numberOfAllMeasurementResults = measurementResults.size();</span>
+<span class="nc" id="L136">		final Set&lt;ResourceDemandMeasurementResult&gt; measurementResults = blackboard.getMeasurementResultsFor(rdia);</span>
+<span class="nc" id="L137">		int sumOverAllMeasurementResultValues = 0;</span>
+<span class="nc" id="L138">		final int numberOfAllMeasurementResults = measurementResults.size();</span>
 
-<span class="nc bnc" id="L139" title="All 2 branches missed.">		for (ResourceDemandMeasurementResult rdmr : measurementResults) {</span>
-<span class="nc" id="L140">			sumOverAllMeasurementResultValues += rdmr.getValue();</span>
-<span class="nc" id="L141">		}</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">		for (ResourceDemandMeasurementResult rdmr : measurementResults) {</span>
+<span class="nc" id="L141">			sumOverAllMeasurementResultValues += rdmr.getValue();</span>
+<span class="nc" id="L142">		}</span>
 
-<span class="nc" id="L143">		final ConstantExpression expression =</span>
-<span class="nc" id="L144">			ConstantExpression.forValue((double) sumOverAllMeasurementResultValues / numberOfAllMeasurementResults);</span>
-<span class="nc" id="L145">		blackboard.addProposedExpressionFor(rdia, expression);</span>
-<span class="nc" id="L146">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, rdia);</span>
-<span class="nc" id="L147">	}</span>
+<span class="nc" id="L144">		final ConstantExpression expression =</span>
+<span class="nc" id="L145">			ConstantExpression.forValue((double) sumOverAllMeasurementResultValues / numberOfAllMeasurementResults);</span>
+<span class="nc" id="L146">		blackboard.addProposedExpressionFor(rdia, expression);</span>
+<span class="nc" id="L147">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, rdia);</span>
+<span class="nc" id="L148">	}</span>
 
 	/**
 	 * Note: Not yet implemented. This method creates an averaging
@@ -174,8 +175,8 @@ import java.util.Set;
 		// HERE SHOULD THE EVALUABLEEXPRESSION FOR BRANCHES BE CREATED AND ADDED TO THE
 		// BLACKBOARD
 
-<span class="nc" id="L177">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, seffBranch);</span>
-<span class="nc" id="L178">	}</span>
+<span class="nc" id="L178">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, seffBranch);</span>
+<span class="nc" id="L179">	}</span>
 
 	/**
 	 * This method creates an averaging {@link EvaluableExpression} over all given
@@ -192,20 +193,20 @@ import java.util.Set;
 	private void addMeasurementResultFor(final MeasurementResultAnalyserBlackboardView blackboard,
 		final SeffLoop seffLoop) {
 
-<span class="nc" id="L195">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopCountResults =</span>
-<span class="nc" id="L196">			blackboard.getMeasurementResultsFor(seffLoop);</span>
-<span class="nc" id="L197">		int sumOverAllLoopCounts = 0;</span>
-<span class="nc" id="L198">		final int numberOfAllMeasurementResults = loopCountResults.size();</span>
+<span class="nc" id="L196">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopCountResults =</span>
+<span class="nc" id="L197">			blackboard.getMeasurementResultsFor(seffLoop);</span>
+<span class="nc" id="L198">		int sumOverAllLoopCounts = 0;</span>
+<span class="nc" id="L199">		final int numberOfAllMeasurementResults = loopCountResults.size();</span>
 
-<span class="nc bnc" id="L200" title="All 2 branches missed.">		for (LoopRepetitionCountMeasurementResult loopCountResult : loopCountResults) {</span>
-<span class="nc" id="L201">			sumOverAllLoopCounts += loopCountResult.getCount();</span>
-<span class="nc" id="L202">		}</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">		for (LoopRepetitionCountMeasurementResult loopCountResult : loopCountResults) {</span>
+<span class="nc" id="L202">			sumOverAllLoopCounts += loopCountResult.getCount();</span>
+<span class="nc" id="L203">		}</span>
 
-<span class="nc" id="L204">		final ConstantExpression expression =</span>
-<span class="nc" id="L205">			ConstantExpression.forValue((double) sumOverAllLoopCounts / numberOfAllMeasurementResults);</span>
-<span class="nc" id="L206">		blackboard.addProposedExpressionFor(seffLoop, expression);</span>
-<span class="nc" id="L207">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, seffLoop);</span>
-<span class="nc" id="L208">	}</span>
+<span class="nc" id="L205">		final ConstantExpression expression =</span>
+<span class="nc" id="L206">			ConstantExpression.forValue((double) sumOverAllLoopCounts / numberOfAllMeasurementResults);</span>
+<span class="nc" id="L207">		blackboard.addProposedExpressionFor(seffLoop, expression);</span>
+<span class="nc" id="L208">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, seffLoop);</span>
+<span class="nc" id="L209">	}</span>
 
 	/**
 	 * Note: Not yet implemented. This method creates an averaging This method creates an
@@ -223,8 +224,8 @@ import java.util.Set;
 	private void addMeasurementResultFor(final MeasurementResultAnalyserBlackboardView blackboard,
 		final ExternalCallParameter exParam) {
 
-<span class="nc" id="L226">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, exParam);</span>
-<span class="nc" id="L227">	}</span>
+<span class="nc" id="L227">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, exParam);</span>
+<span class="nc" id="L228">	}</span>
 
 	/**
 	 * This method is very important to be called right after this Analyser-class has
@@ -239,11 +240,11 @@ import java.util.Set;
 	private void mapCurrentNumberOfMeasurementResultsToSeffElement(
 		final MeasurementResultAnalyserBlackboardView blackboard, final MeasurableSeffElement measurableSeffElement) {
 
-<span class="nc" id="L242">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
-<span class="nc" id="L243">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
-<span class="nc" id="L244">		measurableSeffContributions.put(measurableSeffElement,</span>
-<span class="nc" id="L245">			new Integer(this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement)));</span>
-<span class="nc" id="L246">	}</span>
+<span class="nc" id="L243">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+<span class="nc" id="L244">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+<span class="nc" id="L245">		measurableSeffContributions.put(measurableSeffElement,</span>
+<span class="nc" id="L246">			new Integer(this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement)));</span>
+<span class="nc" id="L247">	}</span>
 
 	/**
 	 * Returning the number of MeasurementResults for a given
@@ -257,21 +258,21 @@ import java.util.Set;
 	private int numberOfMeasurementResultsForSeffElement(
 		final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard,
 		final MeasurableSeffElement measurableSeffElement) {
-<span class="nc" id="L260">		int numberOfMeasurements = 0;</span>
+<span class="nc" id="L261">		int numberOfMeasurements = 0;</span>
 
-<span class="nc bnc" id="L262" title="All 2 branches missed.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
-<span class="nc" id="L263">			numberOfMeasurements =</span>
-<span class="nc" id="L264">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L265" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
-<span class="nc" id="L266">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L267" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
-<span class="nc" id="L268">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L269" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
-<span class="nc" id="L270">			numberOfMeasurements =</span>
-<span class="nc" id="L271">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L263" title="All 2 branches missed.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="nc" id="L264">			numberOfMeasurements =</span>
+<span class="nc" id="L265">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L266" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
+<span class="nc" id="L267">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
+<span class="nc" id="L269">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L270" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
+<span class="nc" id="L271">			numberOfMeasurements =</span>
+<span class="nc" id="L272">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
 		}
 
-<span class="nc" id="L274">		return numberOfMeasurements;</span>
+<span class="nc" id="L275">		return numberOfMeasurements;</span>
 	}
 
 	/**
@@ -285,21 +286,21 @@ import java.util.Set;
 	 */
 	private int numberOfMeasurementResultsForSeffElement(final MeasurementResultAnalyserBlackboardView blackboard,
 		final MeasurableSeffElement measurableSeffElement) {
-<span class="nc" id="L288">		int numberOfMeasurements = 0;</span>
+<span class="nc" id="L289">		int numberOfMeasurements = 0;</span>
 
-<span class="nc bnc" id="L290" title="All 2 branches missed.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
-<span class="nc" id="L291">			numberOfMeasurements =</span>
-<span class="nc" id="L292">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L293" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
-<span class="nc" id="L294">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L295" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
-<span class="nc" id="L296">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
-<span class="nc bnc" id="L297" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
-<span class="nc" id="L298">			numberOfMeasurements =</span>
-<span class="nc" id="L299">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L291" title="All 2 branches missed.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="nc" id="L292">			numberOfMeasurements =</span>
+<span class="nc" id="L293">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L294" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
+<span class="nc" id="L295">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
+<span class="nc" id="L297">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L298" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
+<span class="nc" id="L299">			numberOfMeasurements =</span>
+<span class="nc" id="L300">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
 		}
 
-<span class="nc" id="L302">		return numberOfMeasurements;</span>
+<span class="nc" id="L303">		return numberOfMeasurements;</span>
 	}
 
 	/**
@@ -311,31 +312,31 @@ import java.util.Set;
 	 */
 	private HashMap&lt;MeasurableSeffElement, Integer&gt; initializeMap(
 		final MeasurementResultAnalyserBlackboardView blackboard) {
-<span class="nc" id="L314">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+<span class="nc" id="L315">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
 			new HashMap&lt;MeasurableSeffElement, Integer&gt;();
-<span class="nc" id="L316">		final Set&lt;MeasurableSeffElement&gt; allMeasurableSeffElementsOnBlackboard = new HashSet&lt;MeasurableSeffElement&gt;();</span>
+<span class="nc" id="L317">		final Set&lt;MeasurableSeffElement&gt; allMeasurableSeffElementsOnBlackboard = new HashSet&lt;MeasurableSeffElement&gt;();</span>
 
-<span class="nc bnc" id="L318" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
-<span class="nc" id="L319">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
-<span class="nc" id="L320">		}</span>
+<span class="nc bnc" id="L319" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
+<span class="nc" id="L320">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="nc" id="L321">		}</span>
 
-<span class="nc bnc" id="L322" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
-<span class="nc" id="L323">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
-<span class="nc" id="L324">		}</span>
+<span class="nc bnc" id="L323" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
+<span class="nc" id="L324">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="nc" id="L325">		}</span>
 
-<span class="nc bnc" id="L326" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
-<span class="nc" id="L327">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
-<span class="nc" id="L328">		}</span>
+<span class="nc bnc" id="L327" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
+<span class="nc" id="L328">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="nc" id="L329">		}</span>
 
-<span class="nc bnc" id="L330" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
-<span class="nc" id="L331">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
-<span class="nc" id="L332">		}</span>
+<span class="nc bnc" id="L331" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
+<span class="nc" id="L332">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="nc" id="L333">		}</span>
 
-<span class="nc bnc" id="L334" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
-<span class="nc" id="L335">			measurableSeffContributions.put(measurableSeffElement, new Integer(0));</span>
-<span class="nc" id="L336">		}</span>
+<span class="nc bnc" id="L335" title="All 2 branches missed.">		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
+<span class="nc" id="L336">			measurableSeffContributions.put(measurableSeffElement, new Integer(0));</span>
+<span class="nc" id="L337">		}</span>
 
-<span class="nc" id="L338">		return measurableSeffContributions;</span>
+<span class="nc" id="L339">		return measurableSeffContributions;</span>
 	}
 
 }
