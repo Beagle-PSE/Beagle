@@ -3,7 +3,9 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 
 /**
  * A launch configuration that starts in its {@link #execute()} method an eclipse launch
@@ -40,12 +42,40 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 
 	@Override
 	public LaunchConfiguration prependClasspath(final String classPathEntry) {
-		return this;
+		ILaunchConfigurationWorkingCopy newLaunchConfiguration = null;
+		try {
+			// Calling .getWorkingCopy() two times assures, that nobody can modify the
+			// original LaunchConfiguraion.
+			newLaunchConfiguration = this.launchConfiguration.getWorkingCopy().getWorkingCopy();
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		try {
+			newLaunchConfiguration.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, classPathEntry + ";"
+				+ this.launchConfiguration.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, ""));
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		return new EclipseLaunchConfigurationLaunchConfiguration(newLaunchConfiguration);
 	}
 
 	@Override
 	public LaunchConfiguration appendJvmArgument(final String argument) {
-		return this;
+		ILaunchConfigurationWorkingCopy newLaunchConfiguration = null;
+		try {
+			// Calling .getWorkingCopy() two times assures, that nobody can modify the
+			// original LaunchConfiguraion.
+			newLaunchConfiguration = this.launchConfiguration.getWorkingCopy().getWorkingCopy();
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		try {
+			newLaunchConfiguration.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS,
+				this.launchConfiguration.getAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, ""));
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		return new EclipseLaunchConfigurationLaunchConfiguration(newLaunchConfiguration);
 	}
 
 }
