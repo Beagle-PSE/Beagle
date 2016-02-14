@@ -25,12 +25,12 @@ public final class MeasurementCentral {
 	/**
 	 * The start time of the last reported resource demanding code section.
 	 */
-	private long rdiaStart;
+	private static long rdiaStart;
 
 	/**
 	 * The id of the last reported resource demanding code section.
 	 */
-	private int rdiaId = -1;
+	private static int rdiaId = -1;
 
 	/**
 	 * This is a singleton that must be obtained through {@link #INSTANCE}.
@@ -44,22 +44,22 @@ public final class MeasurementCentral {
 	 *
 	 * @param demandId Identifier of the entered resource demanding code section.
 	 */
-	public void startResourceDemand(final int demandId) {
-		assert this.rdiaId == -1;
-		this.rdiaId = demandId;
-		this.rdiaStart = MONITORING_CONTROLLER.getTimeSource().getTime();
+	public static void startResourceDemand(final int demandId) {
+		assert rdiaId == -1;
+		rdiaId = demandId;
+		rdiaStart = MONITORING_CONTROLLER.getTimeSource().getTime();
 	}
 
 	/**
 	 * Reports that the last started resource demanding code section has just been left.
 	 */
-	public void stopResourceDemand() {
+	public static void stopResourceDemand() {
 		final long stopTime = MONITORING_CONTROLLER.getTimeSource().getTime();
 		final OperationExecutionRecord record = new OperationExecutionRecord(
-			OperationExecutionRecord.NO_OPERATION_SIGNATURE, OperationExecutionRecord.NO_SESSION_ID, this.rdiaId,
-			this.rdiaStart, stopTime, OperationExecutionRecord.NO_HOSTNAME, OperationExecutionRecord.NO_EOI_ESS,
+			OperationExecutionRecord.NO_OPERATION_SIGNATURE, OperationExecutionRecord.NO_SESSION_ID, rdiaId, rdiaStart,
+			stopTime, OperationExecutionRecord.NO_HOSTNAME, OperationExecutionRecord.NO_EOI_ESS,
 			OperationExecutionRecord.NO_EOI_ESS);
 		MONITORING_CONTROLLER.newMonitoringRecord(record);
-		this.rdiaId = -1;
+		rdiaId = -1;
 	}
 }

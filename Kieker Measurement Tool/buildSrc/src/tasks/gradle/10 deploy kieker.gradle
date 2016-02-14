@@ -13,6 +13,9 @@ dependencies {
 }
 
 task deployKieker(type: Copy) {
+	group "Build"
+	description "Deploys the Kieker jar to be provided to measured software"
+	
 	from configurations.deployJar
 	into "$projectDir/src/main/resources/de/uka/ipd/sdq/beagle/measurement/kieker/"
 }
