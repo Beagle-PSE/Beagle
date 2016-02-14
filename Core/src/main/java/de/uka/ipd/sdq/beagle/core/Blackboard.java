@@ -163,6 +163,7 @@ public class Blackboard implements Serializable {
 		this.loops.addAll(loops);
 		this.externalCallParameters.addAll(externalCalls);
 		this.fitnessFunction = fitnessFunction;
+		this.projectInformation = projectInformation;
 
 		this.allSeffElements.addAll(rdias);
 		this.allSeffElements.addAll(branches);

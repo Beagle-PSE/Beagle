@@ -15,7 +15,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.eclipse.emf.cdo,
- org.eclipse.ocl.ecore
+ org.eclipse.ocl.ecore,
+ org.eclipse.jdt.launching
 Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.analysis,
  de.uka.ipd.sdq.beagle.core.evaluableexpressions,

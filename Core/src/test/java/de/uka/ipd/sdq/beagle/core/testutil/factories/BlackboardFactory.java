@@ -1,8 +1,11 @@
 package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
+import static org.mockito.Mockito.mock;
+
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -93,7 +96,7 @@ public class BlackboardFactory {
 		final Set<ExternalCallParameter> externalCallParameterSet = EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet();
 
 		final Blackboard blackboard = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, externalCallParameterSet,
-			FITNESS_FUNCTION_FACTORY.getOne());
+			FITNESS_FUNCTION_FACTORY.getOne(), mock(ProjectInformation.class));
 		return blackboard;
 	}
 

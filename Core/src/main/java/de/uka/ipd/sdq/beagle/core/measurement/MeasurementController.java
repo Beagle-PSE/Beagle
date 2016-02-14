@@ -4,10 +4,10 @@ import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
-import de.uka.ipd.sdq.beagle.core.measurement.order.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
@@ -126,7 +126,7 @@ public class MeasurementController {
 		for (final MeasurementTool measurementTool : this.measurementTools) {
 			// Give every measurement tool a measurement order.
 			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,
-				resourceDemandSections, executionSections, launchConfigurations, parameterCharacteriser);
+				resourceDemandSections, executionSections, blackboard.getProjectInformation(), parameterCharacteriser);
 
 			// Get the measurement results.
 			final List<MeasurementEvent> measurementEvents = measurementTool.measure(measurementOrder);
