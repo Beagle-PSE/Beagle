@@ -4,6 +4,7 @@ import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
+import org.apache.commons.lang3.Validate;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -34,23 +35,20 @@ public final class ResourceTypeMappings {
 	 * The bidirectional Map between {@link ResourceDemandType} and
 	 * {@link ProcessinResourceType}.
 	 */
-	private static BidiMap<ResourceDemandType, ProcessingResourceType> beagleTypeToPcmType = new DualHashBidiMap<>();
+	private BidiMap<ResourceDemandType, ProcessingResourceType> beagleTypeToPcmType = new DualHashBidiMap<>();
 
 	/**
-	 * Private constructor.
+	 * {@code true} if {@link ResourceTypeMappings} is initialised.
 	 */
-	private ResourceTypeMappings() {
-
-	}
+	private boolean inited;
 
 	/**
 	 * Creates a mapping for ({@link ResourceDemandType#RESOURCE_TYPE_CPU_NS},{@code CPU})
 	 * and ({@link ResourceDemandType#RESOURCE_TYPE_HDD_NS}, {@code HDD}).
 	 *
-	 * @return An instance of this class.
 	 */
-	public static ResourceTypeMappings getMappings() {
-		if (beagleTypeToPcmType.isEmpty()) {
+	public void initialise() {
+		if (!this.inited) {
 
 			final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
 			final Map<String, Object> factoryMap = registry.getExtensionToFactoryMap();
@@ -65,22 +63,20 @@ public final class ResourceTypeMappings {
 			for (ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {
 				switch (resourceType.getEntityName()) {
 					case "CPU":
-						beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_CPU_NS,
+						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_CPU_NS,
 							(ProcessingResourceType) resourceType);
 						break;
 					case "HDD":
-						beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_HDD_NS,
+						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_HDD_NS,
 							(ProcessingResourceType) resourceType);
 						break;
 					default:
 				}
 			}
 
-			return new ResourceTypeMappings();
-
+			this.inited = true;
 		}
 
-		return new ResourceTypeMappings();
 	}
 
 	/**
@@ -90,7 +86,8 @@ public final class ResourceTypeMappings {
 	 * @return The linked {@link ResourceDemandType}
 	 */
 	public ResourceDemandType getBeagleType(final ProcessingResourceType processingResourceType) {
-		return beagleTypeToPcmType.getKey(processingResourceType);
+		Validate.validState(this.inited);
+		return this.beagleTypeToPcmType.getKey(processingResourceType);
 	}
 
 	/**
@@ -100,6 +97,6 @@ public final class ResourceTypeMappings {
 	 * @return The linked {@link ProcessingResourceType}
 	 */
 	public ProcessingResourceType getPcmType(final ResourceDemandType resourceDemandType) {
-		return beagleTypeToPcmType.get(resourceDemandType);
+		return this.beagleTypeToPcmType.get(resourceDemandType);
 	}
 }
