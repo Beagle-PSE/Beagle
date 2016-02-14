@@ -25,8 +25,8 @@ import java.util.Set;
 
 /**
  * Extracting a given Pcm repository. Offering 2 methods:
- * {@link #getBlackboardForAllElements(RepositoryImpl)} and
- * {@link #getBlackboardForIds(RepositoryImpl, Collection)}
+ * {@link #getBlackboardForAllElements(RepositoryImpl, BlackboardCreator)} and
+ * {@link #getBlackboardForIds(RepositoryImpl, Collection, BlackboardCreator)}
  *
  * @author Ansgar Spiegler
  * @author Roman Langrehr
