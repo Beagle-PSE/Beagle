@@ -92,7 +92,7 @@ public class PcmRepositoryExtractor {
 		blackboardFactory.setBranches(this.seffBranchSet);
 		blackboardFactory.setLoops(this.seffLoopSet);
 		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
-		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
+		blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class PcmRepositoryExtractor {
 			blackboardFactory.setBranches(this.seffBranchSet);
 			blackboardFactory.setLoops(this.seffLoopSet);
 			blackboardFactory.setExternalCalls(this.externalCallParameterSet);
-			blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
+			blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -180,7 +180,7 @@ public class PcmRepositoryExtractor {
 		blackboardFactory.setBranches(this.seffBranchSet);
 		blackboardFactory.setLoops(this.seffLoopSet);
 		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
-		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
+		blackboardFactory.writeFor(PcmRepositoryBlackboardFactoryAdder.class, pcmMappings);
 	}
 
 	/**
