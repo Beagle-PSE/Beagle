@@ -10,18 +10,13 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.Mockito.mock;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
-import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
-import de.uka.ipd.sdq.beagle.core.SeffLoop;
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
 import org.junit.Rule;
 import org.junit.Test;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -412,20 +407,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		appSensorBlackboardFactory.getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
-		final Blackboard appSensorBlackboard = blackboardCreator.createBlackboard();
-	}
-
-	/**
-	 * Non-Javadoc.
-	 *
-	 * @author Christoph Michelbach
-	 */
-	private class SomeInvalidObject implements EObject {
-
-		@Override
-		public EList<Adapter> eAdapters() {
-
-			return null;
+		blackboardCreator.createBlackboard();
 	}
 
 }
