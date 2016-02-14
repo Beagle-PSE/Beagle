@@ -81,6 +81,7 @@ class MeasurementFileManager {
 		FileUtils.forceDeleteOnExit(this.rootFolder.toFile());
 		Files.createDirectory(this.getInstrumentedSourceCodeFolder());
 		Files.createDirectory(this.getCompiledByteCodeFolder());
+		Files.createDirectory(this.getKiekerResultsFolder());
 		this.kiekerJar = this.loadFromClasspath(KIEKER_JAR_PATH, "Kieker jar");
 		this.remoteCodeFolder = this.loadFromClasspath(REMOTE_CODE_PATH, "remote measurment code");
 		this.kiekerConfigFile = this.loadFromClasspath(KIEKER_CONFIG_FILE, "Kieker configuration file");
