@@ -13,6 +13,7 @@ import de.uka.ipd.sdq.beagle.core.AnalysisControllerTest;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -114,7 +115,7 @@ public class MeasurementControllerTest {
 		});
 
 		final Blackboard blackboard = new Blackboard(rdiaSet, seffBranchSet, seffLoopSet, externalCallParameterSet,
-			FITNESS_FUNCTION_FACTORY.getOne());
+			FITNESS_FUNCTION_FACTORY.getOne(), mock(ProjectInformation.class));
 		blackboard.addToBeMeasuredSeffBranches(seffBranchSet.iterator().next());
 		blackboard.addToBeMeasuredRdias(blackboard.getAllRdias().iterator().next());
 		blackboard.addToBeMeasuredSeffBranches(seffBranchSet.iterator().next());
@@ -137,8 +138,8 @@ public class MeasurementControllerTest {
 			measurementController.canMeasure(new ReadOnlyMeasurementControllerBlackboardView(blackboard)));
 		measurementController.measure(new MeasurementControllerBlackboardView(blackboard));
 		final MeasurementOrder expectedMeasurementOrder = new MeasurementOrder(parameterValueSections,
-			resourceDemandSections, executionSections, new HashSet<>(), new ParameterCharacteriser());
-		verify(tool).measure(refEq(expectedMeasurementOrder, "launchConfigurations", "parameterCharacteriser"));
+			resourceDemandSections, executionSections, mock(ProjectInformation.class), new ParameterCharacteriser());
+		verify(tool).measure(refEq(expectedMeasurementOrder, "projectInformation", "parameterCharacteriser"));
 
 		// Check blackboard
 		final Set<LoopRepetitionCountMeasurementResult> results = blackboard.getMeasurementResultsFor(loops.get(0));

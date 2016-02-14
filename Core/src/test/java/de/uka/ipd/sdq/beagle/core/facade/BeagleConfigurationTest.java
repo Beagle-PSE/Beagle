@@ -9,6 +9,7 @@ import static org.mockito.Mockito.mock;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.TestFileFactory;
 
+import org.eclipse.jdt.core.IJavaProject;
 import org.junit.Before;
 import org.junit.Test;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -69,25 +70,27 @@ public class BeagleConfigurationTest {
 
 			@Override
 			public void throwException() throws Exception {
-				new BeagleConfiguration(BeagleConfigurationTest.this.elements, notExistingFile);
+				new BeagleConfiguration(BeagleConfigurationTest.this.elements, notExistingFile,
+					mock(IJavaProject.class));
 			}
 		};
 		assertThat("repositoryFile must exist.", method, throwsException(IllegalArgumentException.class));
 
-		assertThat(new BeagleConfiguration(null, files[0]).getElements(), is(nullValue()));
+		assertThat(new BeagleConfiguration(null, files[0], mock(IJavaProject.class)).getElements(), is(nullValue()));
 
 		method = new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
-				new BeagleConfiguration(BeagleConfigurationTest.this.elements, null);
+				new BeagleConfiguration(BeagleConfigurationTest.this.elements, null, mock(IJavaProject.class));
 			}
 		};
 		assertThat("repositoryFile must not be null.", method, throwsException(NullPointerException.class));
 
-		new BeagleConfiguration(this.elements, files[0]);
+		new BeagleConfiguration(this.elements, files[0], mock(IJavaProject.class));
 
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, files[0]);
+		final BeagleConfiguration beagleConfig =
+			new BeagleConfiguration(this.elements, files[0], mock(IJavaProject.class));
 		beagleConfig.setElements(this.elements);
 		final List<Entity> copyedElements = new ArrayList<>();
 		copyedElements.addAll(this.elements);
@@ -103,7 +106,7 @@ public class BeagleConfigurationTest {
 	public void getElements() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
 		assertThat(beagleConfig.getElements(), is(this.elements));
 	}
 
@@ -114,7 +117,7 @@ public class BeagleConfigurationTest {
 	public void setElements() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
 		beagleConfig.setElements(this.elements);
 		assertThat(beagleConfig.getElements(), is(this.elements));
 		beagleConfig.finalise();
@@ -136,7 +139,7 @@ public class BeagleConfigurationTest {
 		final int testTimeout = 42;
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
 		beagleConfig.setTimeout(testTimeout);
 		assertThat(beagleConfig.getTimeout(), is(testTimeout));
 		beagleConfig.finalise();
@@ -158,7 +161,7 @@ public class BeagleConfigurationTest {
 	public void repositoryFileTest() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
 		beagleConfig.setRepositoryFile(file);
 		assertThat(beagleConfig.getRepositoryFile(), is(file));
 		beagleConfig.finalise();
@@ -178,7 +181,7 @@ public class BeagleConfigurationTest {
 	public void isFinalTest() {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
 		assertThat(beagleConfig.isFinal(), is(this.finalised));
 	}
 
@@ -190,7 +193,7 @@ public class BeagleConfigurationTest {
 		final boolean finalise = true;
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
 		beagleConfig.finalise();
 		assertThat(beagleConfig.isFinal(), is(finalise));
 	}
@@ -205,17 +208,8 @@ public class BeagleConfigurationTest {
 		this.fileProvider = mock(SourceCodeFileProvider.class);
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
-		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file);
-		beagleConfig.setFileProvider(this.fileProvider);
-		assertThat(beagleConfig.getFileProvider(), is(this.fileProvider));
-
-		beagleConfig.finalise();
-		assertThat(new ThrowingMethod() {
-
-			@Override
-			public void throwException() throws Exception {
-				beagleConfig.setFileProvider(BeagleConfigurationTest.this.fileProvider);
-			}
-		}, throwsException(IllegalStateException.class));
+		final IJavaProject javaProject = mock(IJavaProject.class);
+		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, javaProject);
+		assertThat(beagleConfig.getJavaProject(), is(javaProject));
 	}
 }

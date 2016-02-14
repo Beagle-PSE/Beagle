@@ -1,12 +1,17 @@
 package de.uka.ipd.sdq.beagle.gui;
 
-import de.uka.ipd.sdq.beagle.core.BeagleController;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.facade.BeagleController;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.UIJob;
 
 import java.awt.event.ActionListener;
 
@@ -80,7 +85,7 @@ public class GuiController {
 	/**
 	 * The {@link BeagleController} connected to this GUI.
 	 */
-	private final BeagleController beagleController = new BeagleController(GuiController.this.beagleConfiguration);
+	private BeagleController beagleController;
 
 	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
@@ -116,7 +121,10 @@ public class GuiController {
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
 
-			final ActionListener wizardFinished = (event) -> this.wizardFinishedSuccessfully = true;
+			final ActionListener wizardFinished = event -> {
+				GuiController.this.beagleController = new BeagleController(GuiController.this.beagleConfiguration);
+				GuiController.this.wizardFinishedSuccessfully = true;
+			};
 
 			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.beagleConfiguration, wizardFinished);
 			final WizardDialog wizardDialog = new WizardDialog(this.shell, this.beagleAnalysisWizard);
@@ -128,10 +136,10 @@ public class GuiController {
 				// If the wizard finished successfully, indicate to the user that the
 				// analysis will start ...
 				this.state = GuiControllerState.dialogOpen;
-				this.engageDialog();
-
 				// ... and let it actually start.
 				this.startAnalysis();
+				this.engageDialog();
+
 			} else {
 				this.state = GuiControllerState.terminated;
 			}
@@ -208,7 +216,14 @@ public class GuiController {
 
 				// when {@code beagleController.startAnalysis()} returns, close the dialog
 				GuiController.this.state = GuiControllerState.terminated;
-				GuiController.this.messageDialog.close();
+				new UIJob(Display.getDefault(), "Close Beagle Dialog") {
+
+					@Override
+					public IStatus runInUIThread(final IProgressMonitor monitor) {
+						GuiController.this.messageDialog.close();
+						return Status.OK_STATUS;
+					}
+				}.schedule();
 			}
 		}.start();
 	}

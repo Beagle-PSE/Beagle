@@ -1,8 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
-import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,8 +25,9 @@ import java.util.LinkedList;
  *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
+ * @author Roman Langrehr
  */
-public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagleMappings> {
+public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<PcmBeagleMappings> {
 
 	/**
 	 * The repository where this class should extract all its information from.
@@ -38,30 +40,24 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	private PcmRepositoryExtractor pcmExtractor;
 
 	/**
-	 * The fitnessFucntion to initialize the blackboard with.
+	 * The {@link SourceCodeFileProvider} for the project under analysis.
 	 */
-	private final EvaluableExpressionFitnessFunction fitnessFunction;
+	private SourceCodeFileProvider sourceCodeFileProvider;
 
 	/**
 	 * Creates a factory that will search the provided PCM files for <em>PCM
 	 * elements</em>.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
-	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
-	 *            with
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
 	 * @throws IllegalArgumentException If input parameter does not represent a valid
 	 *             repository file or if repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactory(final String repositoryFileName,
-		final EvaluableExpressionFitnessFunction fitnessFunction) {
-
-		if (fitnessFunction == null || repositoryFileName == null) {
-			throw new NullPointerException();
-		}
-
-		this.fitnessFunction = fitnessFunction;
-
+	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName,
+		final SourceCodeFileProvider sourceCodeFileProvider) {
+		this.sourceCodeFileProvider = sourceCodeFileProvider;
 		final File test = new File(repositoryFileName);
 		if (!test.exists() || !test.isFile()) {
 			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
@@ -82,14 +78,14 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * Creates a factory that will search the provided PCM file for <em>PCM elements</em>.
 	 *
 	 * @param pcmRepositoryFiles PCM repository file.
-	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
-	 *            with
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
 	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
-	public PcmRepositoryBlackboardFactory(final File pcmRepositoryFiles,
-		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
-		this(pcmRepositoryFiles.getAbsolutePath(), fitnessFunction);
+	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
+		final SourceCodeFileProvider sourceCodeFileProvider) throws FileNotFoundException {
+		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider);
 	}
 
 	/**
@@ -97,12 +93,13 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 * <em>PCM elements</em> to it. Only <em>PCM elements</em> that fulfil the
 	 * restrictions described in the class description will be written.
 	 *
-	 * @return A new blackboard having all translated <em>PCM elements</em> written on it.
-	 *         Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForAllElements() {
-		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
-		return this.pcmExtractor.getBlackboardForAllElements(this.repository);
+	public void getBlackboardForAllElements(final BlackboardCreator blackboardFactory) {
+		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);
+		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);
 
 	}
 
@@ -131,10 +128,11 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *
 	 * @param identifiers Identifiers of elements in the repository files that shall be
 	 *            written to the Blackboard.
-	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
-	 *         written on it. Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForIds(final Collection<String> identifiers) {
+	public void getBlackboardForIds(final Collection<String> identifiers, final BlackboardCreator blackboardFactory) {
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
@@ -143,8 +141,8 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 				throw new NullPointerException();
 			}
 		}
-		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);
-		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);
+		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);
+		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);
 
 	}
 
@@ -173,10 +171,11 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 	 *
 	 * @param identifiers Identifiers of elements in the repository files that shall be
 	 *            written to the Blackboard.
-	 * @return A new blackboard having all selected and translated <em>PCM elements</em>
-	 *         written on it. Will never be {@code null}.
+	 * @param blackboardFactory all translated <em>PCM elements</em> will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
 	 */
-	public Blackboard getBlackboardForIds(final String... identifiers) {
+	public void getBlackboardForIds(final BlackboardCreator blackboardFactory, final String... identifiers) {
 		if (identifiers == null) {
 			throw new NullPointerException();
 		}
@@ -189,7 +188,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer<PcmBeagl
 		for (final String identifier : identifiers) {
 			identifierCollection.add(identifier);
 		}
-		return this.getBlackboardForIds(identifierCollection);
+		this.getBlackboardForIds(identifierCollection, blackboardFactory);
 	}
 
 }
