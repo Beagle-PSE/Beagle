@@ -143,7 +143,7 @@ public class FailureReportTest {
 		final FailureReport<Object> failReport2 = new FailureReport<>();
 		failReport2.retryWith(retryTest);
 		given(retryTest.get()).willReturn(returned);
-		assertThat(failReport2.getContinueRoutine().get(), is(theInstance(returned)));
+		assertThat(failReport2.getRetryRoutine().get(), is(theInstance(returned)));
 	}
 
 	/**
