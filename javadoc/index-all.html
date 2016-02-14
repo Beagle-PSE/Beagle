@@ -175,6 +175,10 @@
 <dd>
 <div class="block">Stores the <code>identifier</code> used for <code>loop</code> in the PCM repository.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#addPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-java.lang.String-">addPcmIdOf(ExternalCallParameter, String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a></dt>
+<dd>
+<div class="block">Stores the <code>identifier</code> used for <code>loop</code> in the PCM repository.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#addProposedExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">addProposedExpressionFor(MeasurableSeffElement, EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyserBlackboardView</a></dt>
 <dd>
 <div class="block">Delegates to
@@ -353,6 +357,14 @@
 <dd>
 <div class="block">Supplies the exception that caused or indicated the failure.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#cause-java.lang.Exception-">cause(Exception)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Supplies the exception that caused or indicated the failure.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#checkIdentity-org.eclipse.emf.ecore.EObject-org.eclipse.emf.ecore.EObject-">checkIdentity(EObject, EObject)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">EmfHelper</a></dt>
+<dd>
+<div class="block">Checks for two PCM model elements whether they are the same, i.e.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#clearToBeMeasuredBranches--">clearToBeMeasuredBranches()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></dt>
 <dd>
 <div class="block">Clears the list of <code>branchesToBeMeasured</code>.</div>
@@ -408,6 +420,10 @@
 <dd>
 <div class="block">An <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> having a constant value.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#contains-java.util.Collection-org.eclipse.emf.ecore.EObject-">contains(Collection&lt;? extends EObject&gt;, EObject)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">EmfHelper</a></dt>
+<dd>
+<div class="block">Implements an identifier-based contains.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForComponents.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus"><span class="typeNameLink">ContextMenuEntryHandlerForComponents</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/contextmenus/package-summary.html">de.uka.ipd.sdq.beagle.gui.contextmenus</a></dt>
 <dd>
 <div class="block">Handles the context menu entries, that start an analysis of a component.</div>
@@ -436,6 +452,16 @@
  .</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html#continueWith-java.lang.Runnable-">continueWith(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureReport</a></dt>
+<dd>
+<div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
+ .</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.util.function.Supplier-">continueWith(Supplier&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
+ .</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#continueWith-java.lang.Runnable-">continueWith(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
 <dd>
 <div class="block">Reports that the failure is recoverable by continuing by running <code>continueAt</code>
  .</div>
@@ -536,6 +562,10 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/order/EclipseLaunchConfigurationLaunchConfiguration.html#EclipseLaunchConfigurationLaunchConfiguration-org.eclipse.debug.core.ILaunchConfiguration-">EclipseLaunchConfigurationLaunchConfiguration(ILaunchConfiguration)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.measurement.order.<a href="de/uka/ipd/sdq/beagle/core/measurement/order/EclipseLaunchConfigurationLaunchConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">EclipseLaunchConfigurationLaunchConfiguration</a></dt>
 <dd>
 <div class="block">Creates a Beagle launch configuration from an eclipse launch configuration.</div>
+</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">EmfHelper</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">Helper class provided by the SDQ for working with PCM repository files.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html#equals-java.lang.Object-">equals(Object)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyserBlackboardView</a></dt>
 <dd>&nbsp;</dd>
@@ -652,6 +682,14 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html#evaluate-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-">evaluate(EvaluableVariableAssignment)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">SubtractionExpression</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">ExceptionThrowingFailureHandler</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
+<dd>
+<div class="block"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a> throwing an exception for any reported failure.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html#ExceptionThrowingFailureHandler-java.lang.String-">ExceptionThrowingFailureHandler(String)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">ExceptionThrowingFailureHandler</a></dt>
+<dd>
+<div class="block">Create a handler for a client called <code>clientName</code>.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/failurehandling/ExceptionThrowingFailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling"><span class="typeNameLink">ExceptionThrowingFailureHandler</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/failurehandling/package-summary.html">de.uka.ipd.sdq.beagle.core.failurehandling</a></dt>
 <dd>
 <div class="block"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureHandler</a> throwing an exception for any reported failure.</div>
@@ -700,18 +738,34 @@
 <dd>
 <div class="block">Creates a parameter of an external call.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#extractBehaviourAndAddToSet-org.eclipse.emf.ecore.EObject-">extractBehaviourAndAddToSet(EObject)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositorySeffExtractor</a></dt>
+<dd>
+<div class="block">Extracts the specified SEFF-elements <code>InternalActionImpl</code>,
+ <code>ExternalCallActionImpl</code>, <code>BranchActionImpl</code> and <code>LoopAction</code>.</div>
+</dd>
 </dl>
 <a name="I:F">
 <!--   -->
 </a>
 <h2 class="title">F</h2>
 <dl>
+<dt><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">FailureHandler</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
+<dd>
+<div class="block">Handler for any failures that may occur while running Beagle.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html#FailureHandler--">FailureHandler()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling"><span class="typeNameLink">FailureHandler</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/failurehandling/package-summary.html">de.uka.ipd.sdq.beagle.core.failurehandling</a></dt>
 <dd>
 <div class="block">Handler for any failures that may occur while running Beagle.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html#FailureHandler--">FailureHandler()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureHandler</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.FailureHandlerProvider.html" title="interface in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">FailureHandler.FailureHandlerProvider</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
+<dd>
+<div class="block">Interface for factories creating the handlers for failures that shall be used by
+ Beagle.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.FailureHandlerProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.failurehandling"><span class="typeNameLink">FailureHandler.FailureHandlerProvider</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/failurehandling/package-summary.html">de.uka.ipd.sdq.beagle.core.failurehandling</a></dt>
 <dd>
 <div class="block">Interface for factories creating the handlers for failures that shall be used by
@@ -722,6 +776,12 @@
 <div class="block">Information about a failure that occurred while running Beagle.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html#FailureReport--">FailureReport()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureReport</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">FailureReport</span></a>&lt;<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="type parameter in FailureReport">RECOVER_TYPE</a>&gt; - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
+<dd>
+<div class="block">Information about a failure that occurred while running Beagle.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#FailureReport--">FailureReport()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html#FALSE">FALSE</a></span> - Static variable in interface de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a></dt>
 <dd>
@@ -881,12 +941,22 @@
 <div class="block">Builds a new blackboard and writes the Beagle objects representing all found
  <em>PCM elements</em> to it.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-">getBlackboardForAllElements(RepositoryImpl)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
+<dd>
+<div class="block">Builds a new blackboard and writes the Beagle objects representing all found
+ <em>PCM elements</em> to it.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#getBlackboardForIds-java.util.Collection-">getBlackboardForIds(Collection&lt;String&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
 <dd>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
  elements</em> related to <code>ids</code> to it.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#getBlackboardForIds-java.lang.String...-">getBlackboardForIds(String...)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
+<dd>
+<div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
+ elements</em> related to <code>ids</code> to it.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-">getBlackboardForIds(RepositoryImpl, Collection&lt;String&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
 <dd>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
  elements</em> related to <code>ids</code> to it.</div>
@@ -915,6 +985,11 @@
 <div class="block">Queries the source code section this event occurred at.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html#getContinueRoutine--">getContinueRoutine()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureReport</a></dt>
+<dd>
+<div class="block">Gets the function that lets Beagle continue the analysis by skipping the failed
+ action.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#getContinueRoutine--">getContinueRoutine()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
 <dd>
 <div class="block">Gets the function that lets Beagle continue the analysis by skipping the failed
  action.</div>
@@ -973,6 +1048,10 @@
 <dd>
 <div class="block">Get the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is set as exponent.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html#getExternalCallParameterForId-java.lang.String-">getExternalCallParameterForId(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">SeffElementCreator</a></dt>
+<dd>
+<div class="block">Creates an <a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core"><code>ExternalCallParameter</code></a> for a given ID.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#getExternalCallParametersToBeMeasured--">getExternalCallParametersToBeMeasured()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></dt>
 <dd>
 <div class="block">Returns all <a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">external call parameters</a> which shall
@@ -998,7 +1077,15 @@
 <dd>
 <div class="block">Gets the exception that caused or indicated the reported failure.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#getFailureCause--">getFailureCause()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Gets the exception that caused or indicated the reported failure.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html#getFailureMessage--">getFailureMessage()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureReport</a></dt>
+<dd>
+<div class="block">Gets the report’s failure description.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#getFailureMessage--">getFailureMessage()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
 <dd>
 <div class="block">Gets the report’s failure description.</div>
 </dd>
@@ -1040,6 +1127,10 @@
 <dd>
 <div class="block">Delegates to <a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#getFitnessFunction--"><code>Blackboard.getFitnessFunction()</code></a> .</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.FailureHandlerProvider.html#getFor-java.lang.String-">getFor(String)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.FailureHandlerProvider.html" title="interface in de.uka.ipd.sdq.beagle.core">FailureHandler.FailureHandlerProvider</a></dt>
+<dd>
+<div class="block">Creates a handler for failures of a client called <code>clientName</code>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.FailureHandlerProvider.html#getFor-java.lang.String-">getFor(String)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.FailureHandlerProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.failurehandling">FailureHandler.FailureHandlerProvider</a></dt>
 <dd>
 <div class="block">Creates a handler for failures of a client called <code>clientName</code>.</div>
@@ -1048,6 +1139,14 @@
 <dd>
 <div class="block">Get the <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> which is supposed to be the greater one in the
  comparison.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html#getHandler-java.lang.String-">getHandler(String)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a></dt>
+<dd>
+<div class="block">Creates a handler a client identified by <code>clientName</code> may report failures to.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html#getHandler-java.lang.Class-">getHandler(Class&lt;?&gt;)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a></dt>
+<dd>
+<div class="block">Creates a handler instances of <code>clientType</code> may report failures to.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html#getHandler-java.lang.String-">getHandler(String)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureHandler</a></dt>
 <dd>
@@ -1258,6 +1357,10 @@
 <dd>
 <div class="block">Gets the identifier used for <code>loop</code> in the PCM repository.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#getPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">getPcmIdOf(ExternalCallParameter)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a></dt>
+<dd>
+<div class="block">Gets the identifier used for <code>loop</code> in the PCM repository.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyserBlackboardView.html#getProposedExpressionFor-de.uka.ipd.sdq.beagle.core.MeasurableSeffElement-">getProposedExpressionFor(MeasurableSeffElement)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">ProposedExpressionAnalyserBlackboardView</a></dt>
 <dd>
 <div class="block">Delegates to
@@ -1274,6 +1377,10 @@
 <dd>
 <div class="block">Returns a set of all <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">evaluable expressions</a>
  proposed for <code>element</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html#getRDIAForId-java.lang.String-">getRDIAForId(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">SeffElementCreator</a></dt>
+<dd>
+<div class="block">Creates a <a href="de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core"><code>ResourceDemandingInternalAction</code></a> for a given ID.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#getRdiasToBeMeasured--">getRdiasToBeMeasured()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></dt>
 <dd>
@@ -1304,6 +1411,10 @@
 <dd>
 <div class="block">Gets the function that lets Beagle retry the failed failed action.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#getRetryRoutine--">getRetryRoutine()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Gets the function that lets Beagle retry the failed failed action.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#getSeffBranchesToBeMeasured--">getSeffBranchesToBeMeasured()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></dt>
 <dd>
 <div class="block"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SEFF branches</a> that shall be measured for their branch
@@ -1318,6 +1429,14 @@
 <dd>
 <div class="block">Delegates to
  <a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#getSeffBranchesToBeMeasured--"><code>Blackboard.getSeffBranchesToBeMeasured()</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html#getSeffBranchForId-java.lang.String-">getSeffBranchForId(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">SeffElementCreator</a></dt>
+<dd>
+<div class="block">Creates a <a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core"><code>SeffBranch</code></a> for a given ID.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html#getSeffLoopForId-java.lang.String-">getSeffLoopForId(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">SeffElementCreator</a></dt>
+<dd>
+<div class="block">Creates a <a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core"><code>SeffLoop</code></a> for a given ID.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#getSeffLoopsToBeMeasured--">getSeffLoopsToBeMeasured()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></dt>
 <dd>
@@ -1438,6 +1557,12 @@
 </a>
 <h2 class="title">H</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.FailureReport-">handle(FailureReport&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ExceptionThrowingFailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">ExceptionThrowingFailureHandler</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.FailureReport-">handle(FailureReport&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a></dt>
+<dd>
+<div class="block">Reports a failure to this handler and makes it take action.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/ExceptionThrowingFailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport-">handle(FailureReport&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/ExceptionThrowingFailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">ExceptionThrowingFailureHandler</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html#handle-de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport-">handle(FailureReport&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureHandler</a></dt>
@@ -1508,6 +1633,11 @@
 <dd>
 <div class="block">Query whether this mapping contains a PCM identifier for <code>loop</code>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#hasPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">hasPcmIdOf(ExternalCallParameter)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a></dt>
+<dd>
+<div class="block">Query whether this mapping contains a PCM identifier for
+ <code>ExternalCallParameter</code>.</div>
+</dd>
 </dl>
 <a name="I:I">
 <!--   -->
@@ -1567,6 +1697,14 @@
 <dt><a href="de/uka/ipd/sdq/beagle/core/measurement/order/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><span class="typeNameLink">LaunchConfiguration</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/measurement/order/package-summary.html">de.uka.ipd.sdq.beagle.core.measurement.order</a></dt>
 <dd>
 <div class="block">Interface for classes that execute the code under test.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#loadFromXMIFile-java.lang.String-org.eclipse.emf.ecore.EPackage-">loadFromXMIFile(String, EPackage)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">EmfHelper</a></dt>
+<dd>
+<div class="block">Loads the root object from an EMF File.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#loadFromXMIFile-java.lang.String-org.eclipse.emf.ecore.resource.ResourceSet-org.eclipse.emf.ecore.EPackage-">loadFromXMIFile(String, ResourceSet, EPackage)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">EmfHelper</a></dt>
+<dd>
+<div class="block">Loads the root object from an EMF File.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">LogarithmExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
@@ -1713,6 +1851,10 @@
 <dd>
 <div class="block">Supplies a message describing the failure.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#message-java.lang.String-java.lang.Object...-">message(String, Object...)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Supplies a message describing the failure.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">MultiplicationExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that multiplies all its contained expressions.</div>
@@ -1808,6 +1950,10 @@
 <dd>
 <div class="block">Note: Designing this class is out of the project’s first iteration’s scope.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html#parse-java.lang.String-">parse(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmNameParser</a></dt>
+<dd>
+<div class="block">Parsing a SoMoX-created String to get the annotated CodeSection.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/BeagleController.html#pauseAnalysis--">pauseAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core">BeagleController</a></dt>
 <dd>
 <div class="block">Pauses the analysis.</div>
@@ -1819,20 +1965,44 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#PcmBeagleMappings--">PcmBeagleMappings()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmNameParser</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">****************************EXTINCT****************************************************
+ ******** This parser is a draft that can only provide proper functionality if SoMoX
+ does not change its naming convention for EntityNames.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html#PcmNameParser--">PcmNameParser()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmNameParser</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmRepositoryBlackboardFactory</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
 <dd>
 <div class="block">Creates <a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> instances suitable to analyse elements from a PCM
  repository.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.io.File...-">PcmRepositoryBlackboardFactory(File...)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.lang.String-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">PcmRepositoryBlackboardFactory(String, EvaluableExpressionFitnessFunction)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
 <dd>
 <div class="block">Creates a factory that will search the provided PCM files for <em>PCM
  elements</em>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.util.Set-">PcmRepositoryBlackboardFactory(Set&lt;File&gt;)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.io.File-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">PcmRepositoryBlackboardFactory(File, EvaluableExpressionFitnessFunction)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactory</a></dt>
 <dd>
-<div class="block">Creates a factory that will search the provided PCM files for <em>PCM
- elements</em>.</div>
+<div class="block">Creates a factory that will search the provided PCM file for <em>PCM elements</em>.</div>
+</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmRepositoryExtractor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">Extracting a given Pcm repository.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#PcmRepositoryExtractor-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">PcmRepositoryExtractor(EvaluableExpressionFitnessFunction)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
+<dd>
+<div class="block">Constructor needs EvaluableExpressionFitnessFunction.</div>
+</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmRepositorySeffExtractor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">Extractor class for SEFFElements.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings-">PcmRepositorySeffExtractor(Set&lt;SeffLoop&gt;, Set&lt;SeffBranch&gt;, Set&lt;ResourceDemandingInternalAction&gt;, Set&lt;ExternalCallParameter&gt;, PcmBeagleMappings)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositorySeffExtractor</a></dt>
+<dd>
+<div class="block">Constructor needs access to the real sets (no copy!), manipulating them by adding
+ all extracted SeffElements.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriter.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmRepositoryWriter</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
 <dd>
@@ -2004,6 +2174,11 @@
 <div class="block">Reports that the failure is recoverable by continuing the normal control flow after
  the failure handling.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#recoverable--">recoverable()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Reports that the failure is recoverable by continuing the normal control flow after
+ the failure handling.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU">RESOURCE_TYPE_CPU</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
 <div class="block">Common resource type for cycles performed on a CPU.</div>
@@ -2069,6 +2244,11 @@
 <dd>
 <div class="block">Creates a custom resource type.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#retainAll-java.util.Collection-java.util.Collection-">retainAll(Collection&lt;? extends Identifier&gt;, Collection&lt;? extends EObject&gt;)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">EmfHelper</a></dt>
+<dd>
+<div class="block"><code>Collection.retainAll(Collection)</code> for <code>Identifiers</code> based
+ on <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#checkIdentity-org.eclipse.emf.ecore.EObject-org.eclipse.emf.ecore.EObject-"><code>EmfHelper.checkIdentity(EObject, EObject)</code></a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html#retryWith-java.util.function.Supplier-">retryWith(Supplier&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureReport</a></dt>
 <dd>
 <div class="block">Reports that the failure is recoverable by retrying the failed action by running
@@ -2079,12 +2259,26 @@
 <div class="block">Reports that the failure is recoverable by retrying the failed action by running
  <code>retryAt</code>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.util.function.Supplier-">retryWith(Supplier&lt;RECOVER_TYPE&gt;)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Reports that the failure is recoverable by retrying the failed action by running
+ <code>retryAt</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureReport.html#retryWith-java.lang.Runnable-">retryWith(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core">FailureReport</a></dt>
+<dd>
+<div class="block">Reports that the failure is recoverable by retrying the failed action by running
+ <code>retryAt</code>.</div>
+</dd>
 </dl>
 <a name="I:S">
 <!--   -->
 </a>
 <h2 class="title">S</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#saveToXMIFile-org.eclipse.emf.ecore.EObject-java.lang.String-">saveToXMIFile(EObject, String)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">EmfHelper</a></dt>
+<dd>
+<div class="block">Save the given EObject to the file given by filename.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">SeffBranch</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
 <div class="block">Models branches in a component's SEFF, originating from conditional constructs.</div>
@@ -2092,6 +2286,16 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html#SeffBranch-java.util.Set-">SeffBranch(Set&lt;CodeSection&gt;)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a></dt>
 <dd>
 <div class="block">Creates a SeffBranch using a given code section.</div>
+</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">SeffElementCreator</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">*****STUB! IMPLEMENTATION DEPENDS ON SOLUTION FOR SOURCECODEDECORATOR (SOMOX)!***** NOT
+ IN USAGE RIGHT NOW.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html#SeffElementCreator--">SeffElementCreator()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">SeffElementCreator</a></dt>
+<dd>
+<div class="block">This constructor will need an association to Somox' sourceCodeDecotor as soon as a
+ working solution exists.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">SeffLoop</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
@@ -2124,6 +2328,10 @@
 <dd>
 <div class="block">Sets <code>expression</code> as the final description of <code>element</code>’s measurement
  results.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html#setProvider-de.uka.ipd.sdq.beagle.core.FailureHandler.FailureHandlerProvider-">setProvider(FailureHandler.FailureHandlerProvider)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core">FailureHandler</a></dt>
+<dd>
+<div class="block">Sets the provider of Failure Handlers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html#setProvider-de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler.FailureHandlerProvider-">setProvider(FailureHandler.FailureHandlerProvider)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureHandler.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureHandler</a></dt>
 <dd>

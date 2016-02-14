@@ -47,8 +47,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriter.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" target="_top">Frames</a></li>
@@ -138,13 +138,14 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.io.File...-">PcmRepositoryBlackboardFactory</a></span>(java.io.File...&nbsp;pcmRepositoryFiles)</code>
-<div class="block">Creates a factory that will search the provided PCM files for <em>PCM
- elements</em>.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.io.File-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">PcmRepositoryBlackboardFactory</a></span>(java.io.File&nbsp;pcmRepositoryFiles,
+                              <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)</code>
+<div class="block">Creates a factory that will search the provided PCM file for <em>PCM elements</em>.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.util.Set-">PcmRepositoryBlackboardFactory</a></span>(java.util.Set&lt;java.io.File&gt;&nbsp;pcmRepositoryFiles)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html#PcmRepositoryBlackboardFactory-java.lang.String-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">PcmRepositoryBlackboardFactory</a></span>(java.lang.String&nbsp;repositoryFileName,
+                              <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)</code>
 <div class="block">Creates a factory that will search the provided PCM files for <em>PCM
  elements</em>.</div>
 </td>
@@ -207,33 +208,46 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="PcmRepositoryBlackboardFactory-java.io.File...-">
+<a name="PcmRepositoryBlackboardFactory-java.lang.String-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>PcmRepositoryBlackboardFactory</h4>
-<pre>public&nbsp;PcmRepositoryBlackboardFactory(java.io.File...&nbsp;pcmRepositoryFiles)</pre>
+<pre>public&nbsp;PcmRepositoryBlackboardFactory(java.lang.String&nbsp;repositoryFileName,
+                                      <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)</pre>
 <div class="block">Creates a factory that will search the provided PCM files for <em>PCM
  elements</em>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>pcmRepositoryFiles</code> - PCM repository files.</dd>
+<dd><code>repositoryFileName</code> - PCM repository to load from.</dd>
+<dd><code>fitnessFunction</code> - The fitnessFunction the blackboard should be initialized
+            with</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalArgumentException</code> - If input parameter does not represent a valid
+             repository file or if repositoryFileName can not be resolved to a valid
+             file</dd>
 </dl>
 </li>
 </ul>
-<a name="PcmRepositoryBlackboardFactory-java.util.Set-">
+<a name="PcmRepositoryBlackboardFactory-java.io.File-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>PcmRepositoryBlackboardFactory</h4>
-<pre>public&nbsp;PcmRepositoryBlackboardFactory(java.util.Set&lt;java.io.File&gt;&nbsp;pcmRepositoryFiles)</pre>
-<div class="block">Creates a factory that will search the provided PCM files for <em>PCM
- elements</em>.</div>
+<pre>public&nbsp;PcmRepositoryBlackboardFactory(java.io.File&nbsp;pcmRepositoryFiles,
+                                      <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)
+                               throws java.io.FileNotFoundException</pre>
+<div class="block">Creates a factory that will search the provided PCM file for <em>PCM elements</em>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>pcmRepositoryFiles</code> - PCM repository files.</dd>
+<dd><code>pcmRepositoryFiles</code> - PCM repository file.</dd>
+<dd><code>fitnessFunction</code> - The fitnessFunction the blackboard should be initialized
+            with</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.FileNotFoundException</code> - If repositoryFileName can not be resolved to a valid
+             file</dd>
 </dl>
 </li>
 </ul>
@@ -287,7 +301,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 
  <li>If <code>id</code> describes a <em>PCM element</em>, it will be selected.
 
- <li>Any other ID will be silently ignored.
+ <li>Any different ID will be silently ignored.
 
  </ul></div>
 <dl>
@@ -365,8 +379,8 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriter.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" target="_top">Frames</a></li>

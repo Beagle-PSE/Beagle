@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,8 +47,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" target="_top">Frames</a></li>
@@ -157,56 +157,76 @@ implements java.io.Serializable</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#addPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-java.lang.String-">addPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter,
+          java.lang.String&nbsp;identifier)</code>
+<div class="block">Stores the <code>identifier</code> used for <code>loop</code> in the PCM repository.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#addPcmIdOf-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-java.lang.String-">addPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia,
           java.lang.String&nbsp;identifier)</code>
 <div class="block">Stores the <code>identifier</code> used for <code>rdia</code> in the PCM repository.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#addPcmIdOf-de.uka.ipd.sdq.beagle.core.SeffBranch-java.lang.String-">addPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&nbsp;branch,
           java.lang.String&nbsp;identifier)</code>
 <div class="block">Stores the <code>identifier</code> used for <code>branch</code> in the PCM repository.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#addPcmIdOf-de.uka.ipd.sdq.beagle.core.SeffLoop-java.lang.String-">addPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&nbsp;loop,
           java.lang.String&nbsp;identifier)</code>
 <div class="block">Stores the <code>identifier</code> used for <code>loop</code> in the PCM repository.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#getPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">getPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</code>
+<div class="block">Gets the identifier used for <code>loop</code> in the PCM repository.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#getPcmIdOf-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">getPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia)</code>
 <div class="block">Gets the identifier used for <code>rdia</code> in the PCM repository.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#getPcmIdOf-de.uka.ipd.sdq.beagle.core.SeffBranch-">getPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&nbsp;branch)</code>
 <div class="block">Gets the identifier used for <code>branch</code> in the PCM repository.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#getPcmIdOf-de.uka.ipd.sdq.beagle.core.SeffLoop-">getPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&nbsp;loop)</code>
 <div class="block">Gets the identifier used for <code>loop</code> in the PCM repository.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#hasPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">hasPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</code>
+<div class="block">Query whether this mapping contains a PCM identifier for
+ <code>ExternalCallParameter</code>.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#hasPcmIdOf-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">hasPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&nbsp;rdia)</code>
 <div class="block">Query whether this mapping contains a PCM identifier for <code>rdia</code>.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#hasPcmIdOf-de.uka.ipd.sdq.beagle.core.SeffBranch-">hasPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&nbsp;branch)</code>
 <div class="block">Query whether this mapping contains a PCM identifier for <code>branch</code>.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#hasPcmIdOf-de.uka.ipd.sdq.beagle.core.SeffLoop-">hasPcmIdOf</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&nbsp;loop)</code>
 <div class="block">Query whether this mapping contains a PCM identifier for <code>loop</code>.</div>
@@ -303,6 +323,24 @@ implements java.io.Serializable</pre>
 </dl>
 </li>
 </ul>
+<a name="getPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPcmIdOf</h4>
+<pre>public&nbsp;java.lang.String&nbsp;getPcmIdOf(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</pre>
+<div class="block">Gets the identifier used for <code>loop</code> in the PCM repository.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>externalCallParameter</code> - An ExternalCallParameter. Must not be <code>null</code>.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The identifier used for <code>externalCallParameter</code> in the PCM repository
+         if <code>this.hasPcmIdOf(externalCallParameter)</code> returns <code>true</code>.
+         <code>null</code> otherwise.</dd>
+</dl>
+</li>
+</ul>
 <a name="hasPcmIdOf-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-">
 <!--   -->
 </a>
@@ -354,6 +392,24 @@ implements java.io.Serializable</pre>
 </dl>
 </li>
 </ul>
+<a name="hasPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>hasPcmIdOf</h4>
+<pre>public&nbsp;boolean&nbsp;hasPcmIdOf(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter)</pre>
+<div class="block">Query whether this mapping contains a PCM identifier for
+ <code>ExternalCallParameter</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>externalCallParameter</code> - An ExternalCallParamter. Must not be <code>null</code>.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> only if this mapping contains a PCM identifier for
+         <code>ExternalCallParameter</code>.</dd>
+</dl>
+</li>
+</ul>
 <a name="addPcmIdOf-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-java.lang.String-">
 <!--   -->
 </a>
@@ -399,7 +455,7 @@ implements java.io.Serializable</pre>
 <a name="addPcmIdOf-de.uka.ipd.sdq.beagle.core.SeffLoop-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>addPcmIdOf</h4>
 <pre>public&nbsp;void&nbsp;addPcmIdOf(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&nbsp;loop,
@@ -414,6 +470,27 @@ implements java.io.Serializable</pre>
 <dd><code>java.lang.IllegalStateException</code> - If there is already another identifier assigned to
              <code>loop</code>. More formally: if
              <code>this.hasPcmIdOf(loop) &amp;&amp; !this.getPcmIdOf(loop).equals(identifier)</code></dd>
+</dl>
+</li>
+</ul>
+<a name="addPcmIdOf-de.uka.ipd.sdq.beagle.core.ExternalCallParameter-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>addPcmIdOf</h4>
+<pre>public&nbsp;void&nbsp;addPcmIdOf(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&nbsp;externalCallParameter,
+                       java.lang.String&nbsp;identifier)</pre>
+<div class="block">Stores the <code>identifier</code> used for <code>loop</code> in the PCM repository.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>externalCallParameter</code> - An ExternalCallParamete. Must not be <code>null</code>.</dd>
+<dd><code>identifier</code> - The identifier used for <code>externalCallParameter</code> in the PCM
+            repository. Must not be <code>null</code>.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalStateException</code> - If there is already another identifier assigned to
+             <code>externalCallParameter</code>. More formally: if
+             <code>this.hasPcmIdOf(externalCallParameter) &amp;&amp; !this.getPcmIdOf(externalCallParameter).equals(identifier)</code></dd>
 </dl>
 </li>
 </ul>
@@ -444,8 +521,8 @@ implements java.io.Serializable</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" target="_top">Frames</a></li>

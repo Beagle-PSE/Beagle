@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PcmBeagleMappings.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmconnection</a> &gt; <span class="el_source">PcmBeagleMappings.java</span></div><h1>PcmBeagleMappings.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -12,7 +13,7 @@ import java.io.Serializable;
  *
  * @author Joshua Gleitze
  */
-<span class="nc" id="L15">public class PcmBeagleMappings implements Serializable {</span>
+<span class="fc" id="L16">public class PcmBeagleMappings implements Serializable {</span>
 
 	/**
 	 * Serialisation version UID, see {@link java.io.Serializable}.
@@ -27,7 +28,7 @@ import java.io.Serializable;
 	 *         {@code this.hasPcmIdOf(rdia)} returns {@code true}. {@code null} otherwise.
 	 */
 	public String getPcmIdOf(final ResourceDemandingInternalAction rdia) {
-<span class="nc" id="L30">		return null;</span>
+<span class="nc" id="L31">		return null;</span>
 	}
 
 	/**
@@ -39,7 +40,7 @@ import java.io.Serializable;
 	 *         otherwise.
 	 */
 	public String getPcmIdOf(final SeffBranch branch) {
-<span class="nc" id="L42">		return null;</span>
+<span class="nc" id="L43">		return null;</span>
 	}
 
 	/**
@@ -50,7 +51,19 @@ import java.io.Serializable;
 	 *         {@code this.hasPcmIdOf(loop)} returns {@code true}. {@code null} otherwise.
 	 */
 	public String getPcmIdOf(final SeffLoop loop) {
-<span class="nc" id="L53">		return null;</span>
+<span class="nc" id="L54">		return null;</span>
+	}
+
+	/**
+	 * Gets the identifier used for {@code loop} in the PCM repository.
+	 *
+	 * @param externalCallParameter An ExternalCallParameter. Must not be {@code null}.
+	 * @return The identifier used for {@code externalCallParameter} in the PCM repository
+	 *         if {@code this.hasPcmIdOf(externalCallParameter)} returns {@code true}.
+	 *         {@code null} otherwise.
+	 */
+	public String getPcmIdOf(final ExternalCallParameter externalCallParameter) {
+<span class="nc" id="L66">		return null;</span>
 	}
 
 	/**
@@ -61,7 +74,7 @@ import java.io.Serializable;
 	 *         {@code rdia}.
 	 */
 	public boolean hasPcmIdOf(final ResourceDemandingInternalAction rdia) {
-<span class="nc" id="L64">		return false;</span>
+<span class="nc" id="L77">		return false;</span>
 	}
 
 	/**
@@ -72,7 +85,7 @@ import java.io.Serializable;
 	 *         {@code branch}.
 	 */
 	public boolean hasPcmIdOf(final SeffBranch branch) {
-<span class="nc" id="L75">		return false;</span>
+<span class="nc" id="L88">		return false;</span>
 	}
 
 	/**
@@ -83,7 +96,19 @@ import java.io.Serializable;
 	 *         {@code loop}.
 	 */
 	public boolean hasPcmIdOf(final SeffLoop loop) {
-<span class="nc" id="L86">		return false;</span>
+<span class="nc" id="L99">		return false;</span>
+	}
+
+	/**
+	 * Query whether this mapping contains a PCM identifier for
+	 * {@code ExternalCallParameter}.
+	 *
+	 * @param externalCallParameter An ExternalCallParamter. Must not be {@code null}.
+	 * @return {@code true} only if this mapping contains a PCM identifier for
+	 *         {@code ExternalCallParameter}.
+	 */
+	public boolean hasPcmIdOf(final ExternalCallParameter externalCallParameter) {
+<span class="nc" id="L111">		return false;</span>
 	}
 
 	/**
@@ -97,7 +122,7 @@ import java.io.Serializable;
 	 *             {@code this.hasPcmIdOf(rdia) &amp;&amp; !this.getPcmIdOf(rdia).equals(identifier)}
 	 */
 	public void addPcmIdOf(final ResourceDemandingInternalAction rdia, final String identifier) {
-<span class="nc" id="L100">	}</span>
+<span class="nc" id="L125">	}</span>
 
 	/**
 	 * Stores the {@code identifier} used for {@code branch} in the PCM repository.
@@ -110,7 +135,7 @@ import java.io.Serializable;
 	 *             {@code this.hasPcmIdOf(branch) &amp;&amp; !this.getPcmIdOf(branch).equals(identifier)}
 	 */
 	public void addPcmIdOf(final SeffBranch branch, final String identifier) {
-<span class="nc" id="L113">	}</span>
+<span class="nc" id="L138">	}</span>
 
 	/**
 	 * Stores the {@code identifier} used for {@code loop} in the PCM repository.
@@ -123,7 +148,20 @@ import java.io.Serializable;
 	 *             {@code this.hasPcmIdOf(loop) &amp;&amp; !this.getPcmIdOf(loop).equals(identifier)}
 	 */
 	public void addPcmIdOf(final SeffLoop loop, final String identifier) {
-<span class="nc" id="L126">	}</span>
+<span class="nc" id="L151">	}</span>
+
+	/**
+	 * Stores the {@code identifier} used for {@code loop} in the PCM repository.
+	 *
+	 * @param externalCallParameter An ExternalCallParamete. Must not be {@code null}.
+	 * @param identifier The identifier used for {@code externalCallParameter} in the PCM
+	 *            repository. Must not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code externalCallParameter}. More formally: if
+	 *             {@code this.hasPcmIdOf(externalCallParameter) &amp;&amp; !this.getPcmIdOf(externalCallParameter).equals(identifier)}
+	 */
+	public void addPcmIdOf(final ExternalCallParameter externalCallParameter, final String identifier) {
+<span class="nc" id="L164">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

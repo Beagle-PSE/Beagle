@@ -2,10 +2,17 @@
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.palladiosimulator.pcm.repository.RepositoryFactory;
+import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collection;
-import java.util.Set;
+import java.util.LinkedList;
 
 /**
  * Creates {@link Blackboard} instances suitable to analyse elements from a PCM
@@ -16,26 +23,74 @@ import java.util.Set;
  * source code files expressed in the source code decorator model.
  *
  * @author Joshua Gleitze
+ * @author Ansgar Spiegler
  */
 public class PcmRepositoryBlackboardFactory implements BlackboardStorer&lt;PcmBeagleMappings&gt; {
 
 	/**
-	 * Creates a factory that will search the provided PCM files for &lt;em&gt;PCM
-	 * elements&lt;/em&gt;.
-	 *
-	 * @param pcmRepositoryFiles PCM repository files.
+	 * The repository where this class should extract all its information from.
 	 */
-<span class="nc" id="L28">	public PcmRepositoryBlackboardFactory(final File... pcmRepositoryFiles) {</span>
-<span class="nc" id="L29">	}</span>
+	private final RepositoryImpl repository;
+
+	/**
+	 * Instance of helper class, extracting a given repository.
+	 */
+	private PcmRepositoryExtractor pcmExtractor;
+
+	/**
+	 * The fitnessFucntion to initialize the blackboard with.
+	 */
+	private final EvaluableExpressionFitnessFunction fitnessFunction;
 
 	/**
 	 * Creates a factory that will search the provided PCM files for &lt;em&gt;PCM
 	 * elements&lt;/em&gt;.
 	 *
-	 * @param pcmRepositoryFiles PCM repository files.
+	 * @param repositoryFileName PCM repository to load from.
+	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
+	 *            with
+	 * @throws IllegalArgumentException If input parameter does not represent a valid
+	 *             repository file or if repositoryFileName can not be resolved to a valid
+	 *             file
 	 */
-<span class="nc" id="L37">	public PcmRepositoryBlackboardFactory(final Set&lt;File&gt; pcmRepositoryFiles) {</span>
-<span class="nc" id="L38">	}</span>
+	public PcmRepositoryBlackboardFactory(final String repositoryFileName,
+<span class="fc" id="L57">		final EvaluableExpressionFitnessFunction fitnessFunction) {</span>
+
+<span class="fc bfc" id="L59" title="All 4 branches covered.">		if (fitnessFunction == null || repositoryFileName == null) {</span>
+<span class="fc" id="L60">			throw new NullPointerException();</span>
+		}
+
+<span class="fc" id="L63">		this.fitnessFunction = fitnessFunction;</span>
+
+<span class="fc" id="L65">		final File test = new File(repositoryFileName);</span>
+<span class="fc bfc" id="L66" title="All 4 branches covered.">		if (!test.exists() || !test.isFile()) {</span>
+<span class="fc" id="L67">			throw new IllegalArgumentException(&quot;No file found at: &quot; + repositoryFileName);</span>
+		}
+
+<span class="fc" id="L70">		RepositoryFactory.eINSTANCE.createRepository();</span>
+		// Not sure if this final declaration could lead to a problem.
+<span class="fc" id="L72">		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
+
+<span class="fc" id="L74">		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">		if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
+<span class="nc" id="L76">			throw new IllegalArgumentException();</span>
+		}
+<span class="fc" id="L78">		this.repository = (RepositoryImpl) eObject;</span>
+<span class="fc" id="L79">	}</span>
+
+	/**
+	 * Creates a factory that will search the provided PCM file for &lt;em&gt;PCM elements&lt;/em&gt;.
+	 *
+	 * @param pcmRepositoryFiles PCM repository file.
+	 * @param fitnessFunction The fitnessFunction the blackboard should be initialized
+	 *            with
+	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
+	 *             file
+	 */
+	public PcmRepositoryBlackboardFactory(final File pcmRepositoryFiles,
+		final EvaluableExpressionFitnessFunction fitnessFunction) throws FileNotFoundException {
+<span class="fc" id="L92">		this(pcmRepositoryFiles.getAbsolutePath(), fitnessFunction);</span>
+<span class="fc" id="L93">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing all found
@@ -46,7 +101,9 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer&lt;PcmBe
 	 *         Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForAllElements() {
-<span class="nc" id="L49">		return null;</span>
+<span class="fc" id="L104">		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);</span>
+<span class="fc" id="L105">		return this.pcmExtractor.getBlackboardForAllElements(this.repository);</span>
+
 	}
 
 	/**
@@ -68,7 +125,7 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer&lt;PcmBe
 	 *
 	 * &lt;li&gt;If {@code id} describes a &lt;em&gt;PCM element&lt;/em&gt;, it will be selected.
 	 *
-	 * &lt;li&gt;Any other ID will be silently ignored.
+	 * &lt;li&gt;Any different ID will be silently ignored.
 	 *
 	 * &lt;/ul&gt;
 	 *
@@ -78,7 +135,17 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer&lt;PcmBe
 	 *         written on it. Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForIds(final Collection&lt;String&gt; identifiers) {
-<span class="nc" id="L81">		return null;</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">		if (identifiers == null) {</span>
+<span class="fc" id="L139">			throw new NullPointerException();</span>
+		}
+<span class="fc bfc" id="L141" title="All 2 branches covered.">		for (final String identifier : identifiers) {</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">			if (identifier == null) {</span>
+<span class="fc" id="L143">				throw new NullPointerException();</span>
+			}
+<span class="fc" id="L145">		}</span>
+<span class="fc" id="L146">		this.pcmExtractor = new PcmRepositoryExtractor(this.fitnessFunction);</span>
+<span class="fc" id="L147">		return this.pcmExtractor.getBlackboardForIds(this.repository, identifiers);</span>
+
 	}
 
 	/**
@@ -110,7 +177,20 @@ public class PcmRepositoryBlackboardFactory implements BlackboardStorer&lt;PcmBe
 	 *         written on it. Will never be {@code null}.
 	 */
 	public Blackboard getBlackboardForIds(final String... identifiers) {
-<span class="nc" id="L113">		return null;</span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">		if (identifiers == null) {</span>
+<span class="nc" id="L181">			throw new NullPointerException();</span>
+		}
+<span class="nc bnc" id="L183" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">			if (identifier == null) {</span>
+<span class="nc" id="L185">				throw new NullPointerException();</span>
+			}
+		}
+<span class="nc" id="L188">		final Collection&lt;String&gt; identifierCollection = new LinkedList&lt;String&gt;();</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
+<span class="nc" id="L190">			identifierCollection.add(identifier);</span>
+		}
+<span class="nc" id="L192">		return this.getBlackboardForIds(identifierCollection);</span>
 	}
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
