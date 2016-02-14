@@ -18,9 +18,9 @@ import java.util.Set;
 
 /**
  * This implementation of {@link MeasurementResultAnalyser} will contribute with static
- * created ProposedExpressions. It will take all SeffElements and use respectively
- * all their MeasurementResults on the {@link Blackboard} and calculate thereby an
- * expression that fits best to the average expectancy value. Its implementation of
+ * created ProposedExpressions. It will take all SeffElements and use respectively all
+ * their MeasurementResults on the {@link Blackboard} and calculate thereby an expression
+ * that fits best to the average expectancy value. Its implementation of
  * {@link #canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)} checks if there
  * are any MeasurementResults for a SeffElement, that have not been flown into the average
  * proposed Expression so far.
@@ -74,14 +74,15 @@ public class MeasurementResultAnalyserAverage
 	}
 
 	/**
-	 * Called if this class has no written content on the Blackboard yet.
-	 * Checking if there are any MeasurementResults for any SeffElement.
+	 * Called if this class has no written content on the Blackboard yet. Checking if
+	 * there are any MeasurementResults for any SeffElement.
 	 *
 	 * @param blackboard the blackboard to read from
-	 * @return {@code true} if the blackboard contains MeasurementResults, otherwise {@code false}
+	 * @return {@code true} if the blackboard contains MeasurementResults, otherwise
+	 *         {@code false}
 	 */
 	private boolean firstDemandCanContribute(final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard) {
-		
+
 		final Set<MeasurableSeffElement> allMeasurableSeffElementsOnBlackboard = new HashSet<MeasurableSeffElement>();
 
 		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {
@@ -100,17 +101,16 @@ public class MeasurementResultAnalyserAverage
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		
 		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {
 			if (this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement) > 0) {
 				return true;
 			}
 		}
-		
+
 		return false;
-		
+
 	}
-	
+
 	/**
 	 * Scanning all {@link MeasurableSeffElement} for given MeasurementResults. If there
 	 * are more results than the number of results for a previous propose have been used,
@@ -126,7 +126,7 @@ public class MeasurementResultAnalyserAverage
 
 		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {
 
-			Integer numberOfMeasurements;
+			final Integer numberOfMeasurements;
 
 			if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {
 				numberOfMeasurements =
