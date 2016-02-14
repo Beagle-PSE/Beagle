@@ -18,6 +18,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ocl.ecore,
  org.eclipse.jdt.launching
 Export-Package: de.uka.ipd.sdq.beagle.core,
+ de.uka.ipd.sdq.beagle.core.pcmconnection,
  de.uka.ipd.sdq.beagle.core.analysis,
  de.uka.ipd.sdq.beagle.core.evaluableexpressions,
  de.uka.ipd.sdq.beagle.core.measurement,

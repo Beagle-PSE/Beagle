@@ -3,13 +3,13 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
-import de.uka.ipd.sdq.beagle.core.FailureHandler;
-import de.uka.ipd.sdq.beagle.core.FailureReport;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
