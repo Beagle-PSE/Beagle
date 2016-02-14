@@ -4,6 +4,8 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
@@ -117,7 +119,7 @@ public class FailureReportTest {
 		final Runnable runTest = mock(Runnable.class);
 		failReport.continueWith(runTest);
 		assertThat(failReport.getContinueRoutine().get(), is(nullValue()));
-		verify(runTest.run());
+		verify(runTest).run();
 
 	}
 
@@ -130,7 +132,7 @@ public class FailureReportTest {
 		final Runnable runTest = mock(Runnable.class);
 		failReport.retryWith(runTest);
 		assertThat(failReport.getContinueRoutine().get(), is(nullValue()));
-		verify(runTest.run());
+		verify(runTest).run();
 	}
 
 	/**

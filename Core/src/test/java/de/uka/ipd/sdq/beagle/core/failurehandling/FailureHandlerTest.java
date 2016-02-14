@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.failurehandling;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
@@ -23,8 +23,12 @@ public class FailureHandlerTest {
 		final String clientName = "clientAllice";
 		assertThat(FailureHandler.getHandler(clientName), is("clientAllice"));
 
+		assertThat(() -> FailureHandler.getHandler((String) null), throwsException(NullPointerException.class));
+
 		final Class<String> clientType = String.class;
-		assertThat(FailureHandler.getHandler(clientType.getName()), is(String.class));
+		FailureHandler.getHandler(clientType);
+
+		assertThat(() -> FailureHandler.getHandler((Class<?>) null), throwsException(NullPointerException.class));
 	}
 
 	/**
