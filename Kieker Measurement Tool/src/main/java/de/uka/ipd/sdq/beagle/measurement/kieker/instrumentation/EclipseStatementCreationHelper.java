@@ -1,7 +1,5 @@
 package de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation;
 
-import de.uka.ipd.sdq.beagle.core.CodeSection;
-
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.Name;
@@ -15,23 +13,20 @@ import java.util.List;
  *
  * @author Joshua Gleitze
  */
-public abstract class AbstracteEclipseAstInstrumentationStrategy implements EclipseAstInstrumentationStrategy {
+public class EclipseStatementCreationHelper {
 
 	/**
 	 * The {@link AST} instance implementors must use to generate AST nodes.
 	 */
-	protected AST factory;
+	private final AST factory;
 
-	@Override
-	public final Statement instrumentStart(final CodeSection codeSection, final AST nodeFactory) {
-		this.factory = nodeFactory;
-		return this.getBeforeStatement(codeSection);
-	}
-
-	@Override
-	public final Statement instrumentEnd(final CodeSection codeSection, final AST nodeFactory) {
-		this.factory = nodeFactory;
-		return this.getAfterStatement(codeSection);
+	/**
+	 * Create a helper that will create nodes using the provided {@code factory}.
+	 *
+	 * @param factory The AST to use.
+	 */
+	public EclipseStatementCreationHelper(final AST factory) {
+		this.factory = factory;
 	}
 
 	/**
@@ -42,13 +37,10 @@ public abstract class AbstracteEclipseAstInstrumentationStrategy implements Ecli
 	 *            parameter). Must contain at least one element.
 	 * @return The constructed name.
 	 */
-	protected Name getName(final String... parts) {
-		Name lastName = this.factory.newSimpleName(parts[parts.length - 1]);
+	public Name getName(final String... parts) {
+		Name lastName = this.factory.newSimpleName(parts[0]);
 
-		// we subtract by 2 because we’re counting 0 based and already took the last
-		// element.
-		// CHECKSTYLE:IGNORE MagicNumber
-		for (int i = parts.length - 2; i >= 0; i--) {
+		for (int i = 1; i < parts.length; i++) {
 			lastName = this.getName(lastName, parts[i]);
 		}
 		return lastName;
@@ -101,23 +93,4 @@ public abstract class AbstracteEclipseAstInstrumentationStrategy implements Ecli
 		}
 		return null;
 	}
-
-	/**
-	 * Method to be provided by implementor. Must use {@link #factory} to generate the
-	 * statement that’s to be inserted before the provided {@code block}.
-	 *
-	 * @param codeSection The code section to be instrumented.
-	 * @return The statement to insert before the {@code codeSection}.
-	 */
-	protected abstract Statement getBeforeStatement(final CodeSection codeSection);
-
-	/**
-	 * Method to be provided by implementor. Must use {@link #factory} to generate the
-	 * statement that’s to be inserted after the provided {@code block}.
-	 *
-	 * @param codeSection The code section to be instrumented.
-	 * @return The statement to insert after the {@code codeSection}.
-	 */
-	protected abstract Statement getAfterStatement(final CodeSection codeSection);
-
 }

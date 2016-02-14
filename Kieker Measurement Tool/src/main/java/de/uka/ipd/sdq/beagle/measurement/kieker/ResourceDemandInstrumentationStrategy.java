@@ -1,10 +1,11 @@
 package de.uka.ipd.sdq.beagle.measurement.kieker;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
-import de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation.AbstracteEclipseAstInstrumentationStrategy;
+import de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation.EclipseAstInstrumentationStrategy;
+import de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation.EclipseStatementCreationHelper;
 
+import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.MethodInvocation;
-import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.Statement;
 
 /**
@@ -13,33 +14,28 @@ import org.eclipse.jdt.core.dom.Statement;
  *
  * @author Joshua Gleitze
  */
-public class ResourceDemandInstrumentationStrategy extends AbstracteEclipseAstInstrumentationStrategy {
+public class ResourceDemandInstrumentationStrategy implements EclipseAstInstrumentationStrategy {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	protected Statement getBeforeStatement(final CodeSection codeSection) {
-		final MethodInvocation startInvocation = this.factory.newMethodInvocation();
-		startInvocation.setExpression(this.getName(this.getPackage(), "MeasurementCentral"));
-		startInvocation.setName(this.factory.newSimpleName("startResourceDemand"));
-		startInvocation.arguments().add(this.factory.newNumberLiteral("123"));
-		return this.factory.newExpressionStatement(startInvocation);
+	public Statement instrumentStart(final CodeSection codeSection, final AST nodeFactory) {
+		final EclipseStatementCreationHelper helper = new EclipseStatementCreationHelper(nodeFactory);
+		final MethodInvocation startInvocation = nodeFactory.newMethodInvocation();
+		startInvocation.setExpression(helper.getName("de", "uka", "ipd", "sdq", "beagle", "measurement", "kieker",
+			"remote", "MeasurementCentral"));
+		startInvocation.setName(nodeFactory.newSimpleName("startResourceDemand"));
+		startInvocation.arguments().add(nodeFactory.newNumberLiteral("123"));
+		return nodeFactory.newExpressionStatement(startInvocation);
 	}
 
 	@Override
-	protected Statement getAfterStatement(final CodeSection codeSection) {
-		final MethodInvocation endInvocation = this.factory.newMethodInvocation();
-		endInvocation.setExpression(this.getName(this.getPackage(), "MeasurementCentral"));
-		endInvocation.setName(this.factory.newSimpleName("stopResourceDemand"));
-		return this.factory.newExpressionStatement(endInvocation);
-	}
-
-	/**
-	 * Creates the name representing the remote measurement package.
-	 *
-	 * @return The name representing the remote measurement package.
-	 */
-	private Name getPackage() {
-		return this.getName("de", "uka", "ipd", "sdq", "beagle", "measurement", "kieker", "remote");
+	public Statement instrumentEnd(final CodeSection codeSection, final AST nodeFactory) {
+		final EclipseStatementCreationHelper helper = new EclipseStatementCreationHelper(nodeFactory);
+		final MethodInvocation endInvocation = nodeFactory.newMethodInvocation();
+		endInvocation.setExpression(helper.getName("de", "uka", "ipd", "sdq", "beagle", "measurement", "kieker",
+			"remote", "MeasurementCentral"));
+		endInvocation.setName(nodeFactory.newSimpleName("stopResourceDemand"));
+		return nodeFactory.newExpressionStatement(endInvocation);
 	}
 
 }
