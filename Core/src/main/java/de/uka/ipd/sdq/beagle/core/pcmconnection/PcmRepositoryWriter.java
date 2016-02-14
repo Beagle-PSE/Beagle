@@ -8,6 +8,7 @@ import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Writes Beagle’s findings back to a PCM repository. This class is meant to be used for
@@ -81,6 +82,12 @@ public class PcmRepositoryWriter {
 
 		this.annotator.annotateAll(repository);
 
+		try {
+			EMFHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());
+		} catch (final IOException ioException) {
+			// This catch block should implement the FailureHandler
+			ioException.getMessage();
+		}
 	}
 
 }
