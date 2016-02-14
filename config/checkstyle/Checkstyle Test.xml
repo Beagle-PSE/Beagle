@@ -476,6 +476,7 @@
     </module>
     <module name="BooleanExpressionComplexity">
       <property name="severity" value="warning"/>
+      <property name="max" value="6"/>
     </module>
     <module name="CyclomaticComplexity">
       <property name="severity" value="ignore"/>
