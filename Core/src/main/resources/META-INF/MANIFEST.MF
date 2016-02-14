@@ -4,8 +4,6 @@ Bundle-Name: Beagle Core
 Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: org.hamcrest;version="1.3.0",
- org.junit
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.e4.core.di,
