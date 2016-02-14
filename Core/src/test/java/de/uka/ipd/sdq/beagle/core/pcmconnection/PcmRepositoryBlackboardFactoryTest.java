@@ -201,10 +201,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * Test method for
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.util.Collection)}.
 	 */
-	// @formatter:off
-	@SuppressWarnings({
-		"unchecked", "rawtypes"	})
-	// @formatter:on
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
 		final PcmRepositoryBlackboardFactory pcmRepositoryBlackboardFactory =
@@ -236,10 +232,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 * {@link PcmRepositoryBlackboardFactory#getBlackboardForIds(java.lang.String[])}.
 	 *
 	 */
-	// @formatter:off
-	@SuppressWarnings({
-		"unchecked", "rawtypes"	})
-	// @formatter:on
 	@Test
 	public void getBlackboardForIdsStringArray() {
 		/*
