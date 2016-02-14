@@ -1,9 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
-import de.uka.ipd.sdq.beagle.core.SeffBranch;
-import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
@@ -40,6 +39,11 @@ public class PcmRepositoryWriter {
 	 * the Repository.
 	 */
 	private final PcmRepositoryWriterAnnotator annotator;
+
+	/**
+	 * The FailureHandler for this class.
+	 */
+	private final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("BlackboardStorer");
 
 	/**
 	 * Creates a writer to write the results written on {@code blackboard} back to a PCM
@@ -81,12 +85,26 @@ public class PcmRepositoryWriter {
 		final RepositoryImpl repository = this.fileLoader.loadRepositoryFromFile(repositoryFile);
 
 		this.annotator.annotateAll(repository);
+		this.saveRepository(repository, repositoryFile);
+	}
 
+	/**
+	 * Method should be called after annotating changes on the {@link RepositoryImpl}. It
+	 * will store the repository at the given File-path.
+	 *
+	 * @param repository modified Repository to store
+	 * @param repositoryFile storing repository as this file
+	 */
+	private void saveRepository(final RepositoryImpl repository, final File repositoryFile) {
 		try {
 			EMFHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());
 		} catch (final IOException ioException) {
-			// This catch block should implement the FailureHandler
-			ioException.getMessage();
+			final FailureReport<Void> failure = new FailureReport<Void>()
+				.message("The modified repository can not be saved to %s!", repositoryFile.getAbsolutePath())
+				.cause(ioException)
+				.recoverable()
+				.retryWith(() -> this.saveRepository(repository, repositoryFile));
+			this.FAILURE_HANDLER.handle(failure);
 		}
 	}
 
