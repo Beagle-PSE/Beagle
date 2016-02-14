@@ -6,10 +6,12 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.theInstance;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
-import de.uka.ipd.sdq.beagle.core.testutil.factories.LaunchConfigurationFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.ProjectInformationFactory;
 
 import org.junit.Test;
 
@@ -31,10 +33,10 @@ public class MeasurementOrderTest {
 	private static final CodeSectionFactory CODE_SECTION_FACTORY = new CodeSectionFactory();
 
 	/**
-	 * A {@link LaunchConfigurationFactory} providing methods to get launch configurations
-	 * to use for tests.
+	 * A {@link ProjectInformationFactory} providing methods to get project information
+	 * instances to use for tests.
 	 */
-	private static final LaunchConfigurationFactory LAUNCH_CONFIGURATION_FACTORY = new LaunchConfigurationFactory();
+	private static final ProjectInformationFactory PROJECT_INFORMATION_FACTORY = new ProjectInformationFactory();
 
 	/**
 	 * Test method for
@@ -49,30 +51,30 @@ public class MeasurementOrderTest {
 		final Set<CodeSection> parameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> resourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> executionSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final Set<LaunchConfiguration> launchConfigurations = LAUNCH_CONFIGURATION_FACTORY.getAllAsSet();
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
-		new MeasurementOrder(parameterValueSection, resourceDemandSections, executionSections, launchConfigurations,
+		new MeasurementOrder(parameterValueSection, resourceDemandSections, executionSections, projectInformation,
 			parameterCharacteriser);
 
 		assertThat(
 			"parameterCharacteriser must not be null", () -> new MeasurementOrder(parameterValueSection,
-				resourceDemandSections, executionSections, launchConfigurations, null),
+				resourceDemandSections, executionSections, projectInformation, null),
 			throwsException(NullPointerException.class));
 
 		assertThat((withNull) -> new MeasurementOrder(new HashSet<>(withNull), resourceDemandSections,
-			executionSections, launchConfigurations, parameterCharacteriser),
+			executionSections, projectInformation, parameterCharacteriser),
 			is(notAcceptingNull(parameterValueSection)));
 
 		assertThat((withNull) -> new MeasurementOrder(parameterValueSection, new HashSet<>(withNull), executionSections,
-			launchConfigurations, parameterCharacteriser), is(notAcceptingNull(resourceDemandSections)));
+			projectInformation, parameterCharacteriser), is(notAcceptingNull(resourceDemandSections)));
 
 		assertThat((withNull) -> new MeasurementOrder(parameterValueSection, resourceDemandSections,
-			new HashSet<>(withNull), launchConfigurations, parameterCharacteriser),
+			new HashSet<>(withNull), projectInformation, parameterCharacteriser),
 			is(notAcceptingNull(executionSections)));
 
-		assertThat((withNull) -> new MeasurementOrder(parameterValueSection, resourceDemandSections, executionSections,
-			new HashSet<>(withNull), parameterCharacteriser), is(notAcceptingNull(launchConfigurations)));
+		assertThat(() -> new MeasurementOrder(parameterValueSection, resourceDemandSections, executionSections, null,
+			parameterCharacteriser), throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -83,11 +85,11 @@ public class MeasurementOrderTest {
 		final Set<CodeSection> parameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> resourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> executionSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final Set<LaunchConfiguration> launchConfigurations = LAUNCH_CONFIGURATION_FACTORY.getAllAsSet();
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection, resourceDemandSections,
-			executionSections, launchConfigurations, parameterCharacteriser);
+			executionSections, projectInformation, parameterCharacteriser);
 
 		assertThat(measurementOrder.getParameterValueSection(), is(equalTo(parameterValueSection)));
 
@@ -103,11 +105,11 @@ public class MeasurementOrderTest {
 		final Set<CodeSection> parameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> resourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> executionSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final Set<LaunchConfiguration> launchConfigurations = LAUNCH_CONFIGURATION_FACTORY.getAllAsSet();
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection, resourceDemandSections,
-			executionSections, launchConfigurations, parameterCharacteriser);
+			executionSections, projectInformation, parameterCharacteriser);
 
 		assertThat(measurementOrder.getResourceDemandSections(), is(equalTo(resourceDemandSections)));
 
@@ -123,11 +125,11 @@ public class MeasurementOrderTest {
 		final Set<CodeSection> parameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> resourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> executionSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final Set<LaunchConfiguration> launchConfigurations = LAUNCH_CONFIGURATION_FACTORY.getAllAsSet();
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection, resourceDemandSections,
-			executionSections, launchConfigurations, parameterCharacteriser);
+			executionSections, projectInformation, parameterCharacteriser);
 
 		assertThat(measurementOrder.getExecutionSections(), is(equalTo(executionSections)));
 
@@ -136,25 +138,20 @@ public class MeasurementOrderTest {
 	}
 
 	/**
-	 * Test method for {@link MeasurementOrder#getLaunchConfigurations()} .
+	 * Test method for {@link MeasurementOrder#getProjectInformation()} .
 	 */
 	@Test
-	public void getLaunchConfigurations() {
+	public void getProjectInformation() {
 		final Set<CodeSection> parameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> resourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> executionSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final Set<LaunchConfiguration> launchConfigurations = LAUNCH_CONFIGURATION_FACTORY.getAllAsSet();
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection, resourceDemandSections,
-			executionSections, launchConfigurations, parameterCharacteriser);
+			executionSections, projectInformation, parameterCharacteriser);
 
-		assertThat(measurementOrder.getLaunchConfigurations(), is(equalTo(launchConfigurations)));
-
-		launchConfigurations.remove(launchConfigurations.toArray()[0]);
-		assertThat(
-			"Changing the Set of Launch Configurations after inizialisation of the Measurement order must not change the result.",
-			measurementOrder.getLaunchConfigurations(), is(not(equalTo(launchConfigurations))));
+		assertThat(measurementOrder.getProjectInformation(), is(theInstance(projectInformation)));
 	}
 
 	/**
@@ -165,11 +162,11 @@ public class MeasurementOrderTest {
 		final Set<CodeSection> parameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> resourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSection> executionSections = CODE_SECTION_FACTORY.getAllAsSet();
-		final Set<LaunchConfiguration> launchConfigurations = LAUNCH_CONFIGURATION_FACTORY.getAllAsSet();
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
 		ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection, resourceDemandSections,
-			executionSections, launchConfigurations, parameterCharacteriser);
+			executionSections, projectInformation, parameterCharacteriser);
 
 		assertThat(measurementOrder.getParameterCharacteriser(), is(equalTo(parameterCharacteriser)));
 

@@ -1,13 +1,14 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
 import java.io.File;
+import java.io.Serializable;
 
 /**
  * Provides the source code files that shall be analysed by Beagle.
  *
  * @author Joshua Gleitze
  */
-public interface SourceCodeFileProvider {
+public interface SourceCodeFileProvider extends Serializable {
 
 	/**
 	 * Queries the source code file containing the source code of the type denoted by

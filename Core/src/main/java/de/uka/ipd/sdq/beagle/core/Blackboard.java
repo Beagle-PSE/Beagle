@@ -134,6 +134,11 @@ public class Blackboard implements Serializable {
 		new HashMap<>();
 
 	/**
+	 * Information about the project belonging to this blackboard.
+	 */
+	private ProjectInformation projectInformation;
+
+	/**
 	 * Creates a new blackboard that can be used to analyse the given elements.
 	 *
 	 * @param rdias All resource demanding internal action to be known to analysers.
@@ -141,10 +146,12 @@ public class Blackboard implements Serializable {
 	 * @param loops All SEFF loops to be known to analysers.
 	 * @param externalCalls All external call parameter to be known to analysers.
 	 * @param fitnessFunction The function to get better evaluable expression results.
+	 * @param projectInformation Information about the project belonging to this
+	 *            blackboard.
 	 */
 	public Blackboard(final Set<ResourceDemandingInternalAction> rdias, final Set<SeffBranch> branches,
 		final Set<SeffLoop> loops, final Set<ExternalCallParameter> externalCalls,
-		final EvaluableExpressionFitnessFunction fitnessFunction) {
+		final EvaluableExpressionFitnessFunction fitnessFunction, final ProjectInformation projectInformation) {
 		Validate.noNullElements(rdias);
 		Validate.noNullElements(branches);
 		Validate.noNullElements(loops);
@@ -156,6 +163,7 @@ public class Blackboard implements Serializable {
 		this.loops.addAll(loops);
 		this.externalCallParameters.addAll(externalCalls);
 		this.fitnessFunction = fitnessFunction;
+		this.projectInformation = projectInformation;
 
 		this.allSeffElements.addAll(rdias);
 		this.allSeffElements.addAll(branches);
@@ -642,5 +650,14 @@ public class Blackboard implements Serializable {
 		 * #privateWrittenData}.
 		 */
 		return (WRITTEN_TYPE) this.privateWrittenData.get(writer);
+	}
+
+	/**
+	 * Information about the project belonging to this blackboard.
+	 *
+	 * @return Information about the project belonging to this blackboard.
+	 */
+	public ProjectInformation getProjectInformation() {
+		return this.projectInformation;
 	}
 }

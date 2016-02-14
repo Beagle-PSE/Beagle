@@ -11,6 +11,8 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -45,6 +47,7 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 
 		final List<Entity> components = new LinkedList<Entity>();
 		File repositoryFile = null;
+		IJavaProject javaProject = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
 			// Those casts are safe because this context menu entry is only shown on
@@ -61,9 +64,14 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 				.getFile(new Path(basicComponent.eResource().getURI().toPlatformString(true)))
 				.getRawLocation()
 				.toFile();
+			javaProject = JavaCore.create(ResourcesPlugin.getWorkspace()
+				.getRoot()
+				.getFile(new Path(basicComponent.eResource().getURI().toPlatformString(true)))
+				.getProject());
 		}
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(components, repositoryFile);
+		final BeagleConfiguration beagleConfiguration =
+			new BeagleConfiguration(components, repositoryFile, javaProject);
 		final GuiController guiController = new GuiController(beagleConfiguration);
 		guiController.open();
 
