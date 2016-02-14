@@ -5,8 +5,8 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.startsWith;
-import static org.hamcrest.CoreMatchers.theInstance;
+import static org.hamcrest.core.IsSame.sameInstance;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -66,11 +66,11 @@ public class ResourceDemandingInternalActionTest {
 		final CodeSection codeSection = codeSections[0];
 		ResourceDemandingInternalAction rdia =
 			new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
-		assertThat(rdia.getAction(), is(theInstance(codeSection)));
+		assertThat(rdia.getAction(), is(sameInstance(codeSection)));
 
 		final CodeSection secCodeSection = codeSections[1];
 		rdia = new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, secCodeSection);
-		assertThat(rdia.getAction(), is(theInstance(secCodeSection)));
+		assertThat(rdia.getAction(), is(sameInstance(secCodeSection)));
 
 	}
 
