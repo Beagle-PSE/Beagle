@@ -17,6 +17,12 @@
     catch(err) {
     }
 //-->
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -69,13 +75,13 @@
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -93,13 +99,128 @@
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementEventParser.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">MeasurementEventParser</a></dd>
+<dd><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/AbstractMeasurementEventVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">AbstractMeasurementEventVisitor</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">MeasurementEventVisitor</span></pre>
 <div class="block">A visitor for <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order"><code>MeasurementEvents</code></a> useful to iterate over a
  sequence of different such events. Implements the well known visitor pattern.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html#visit-de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent-">visit</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionEnteredEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">CodeSectionEnteredEvent</a>&nbsp;codeSectionEnteredEvent)</code>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionEnteredEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>CodeSectionEnteredEvent</code></a>.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html#visit-de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent-">visit</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionLeftEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">CodeSectionLeftEvent</a>&nbsp;codeSectionLeftEvent)</code>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionLeftEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>CodeSectionLeftEvent</code></a>.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html#visit-de.uka.ipd.sdq.beagle.core.measurement.order.ParameterValueCapturedEvent-">visit</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterValueCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ParameterValueCapturedEvent</a>&nbsp;parameterValueCapturedEvent)</code>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterValueCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>ParameterValueCapturedEvent</code></a>.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEventVisitor.html#visit-de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent-">visit</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ResourceDemandCapturedEvent</a>&nbsp;resourceDemandCapturedEvent)</code>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>ResourceDemandCapturedEvent</code></a>.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="visit-de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>visit</h4>
+<pre>void&nbsp;visit(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionEnteredEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">CodeSectionEnteredEvent</a>&nbsp;codeSectionEnteredEvent)</pre>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionEnteredEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>CodeSectionEnteredEvent</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>codeSectionEnteredEvent</code> - the visited measurement event</dd>
+</dl>
+</li>
+</ul>
+<a name="visit-de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>visit</h4>
+<pre>void&nbsp;visit(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionLeftEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">CodeSectionLeftEvent</a>&nbsp;codeSectionLeftEvent)</pre>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/CodeSectionLeftEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>CodeSectionLeftEvent</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>codeSectionLeftEvent</code> - the visited measurement event</dd>
+</dl>
+</li>
+</ul>
+<a name="visit-de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>visit</h4>
+<pre>void&nbsp;visit(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ResourceDemandCapturedEvent</a>&nbsp;resourceDemandCapturedEvent)</pre>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>ResourceDemandCapturedEvent</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>resourceDemandCapturedEvent</code> - the visited measurement event</dd>
+</dl>
+</li>
+</ul>
+<a name="visit-de.uka.ipd.sdq.beagle.core.measurement.order.ParameterValueCapturedEvent-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>visit</h4>
+<pre>void&nbsp;visit(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterValueCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ParameterValueCapturedEvent</a>&nbsp;parameterValueCapturedEvent)</pre>
+<div class="block">Called if the visited measurement event is a <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/ParameterValueCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order"><code>ParameterValueCapturedEvent</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parameterValueCapturedEvent</code> - the visited measurement event</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 </div>
@@ -153,13 +274,13 @@
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">
