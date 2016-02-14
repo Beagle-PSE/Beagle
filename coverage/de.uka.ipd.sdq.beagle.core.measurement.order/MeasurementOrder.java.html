@@ -2,6 +2,7 @@
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 
 import org.apache.commons.lang3.Validate;
@@ -21,29 +22,29 @@ public class MeasurementOrder {
 	/**
 	 * The code sections where parameters need to be characterised.
 	 */
-	private Set&lt;CodeSection&gt; parameterValueSection;
+	private final Set&lt;CodeSection&gt; parameterValueSection;
 
 	/**
 	 * The code sections, where all resource demands need to be captured.
 	 */
-	private Set&lt;CodeSection&gt; resourceDemandSections;
+	private final Set&lt;CodeSection&gt; resourceDemandSections;
 
 	/**
 	 * The code sections, where an {@link MeasurementEvent} should be created each time it
 	 * gets executed.
 	 */
-	private Set&lt;CodeSection&gt; executionSections;
+	private final Set&lt;CodeSection&gt; executionSections;
 
 	/**
-	 * Launch configurations for the code under test. Must contain at least one element.
+	 * Information about the measured project.
 	 */
-	private Set&lt;LaunchConfiguration&gt; launchConfigurations;
+	private final ProjectInformation projectInformation;
 
 	/**
 	 * The parameter characteriser, that all measurement tools must use for parameter
 	 * characterisation.
 	 */
-	private ParameterCharacteriser parameterCharacteriser;
+	private final ParameterCharacteriser parameterCharacteriser;
 
 	/**
 	 * Create a measurement order for {@linkplain MeasurementTool MeasurementTools}.
@@ -57,25 +58,24 @@ public class MeasurementOrder {
 	 * @param executionSections The code sections, where an {@link MeasurementEvent}
 	 *            should be created each time it gets executed. Must not be {@code null}.
 	 *            May not contain {@code null} elements.
-	 * @param launchConfigurations Launch configurations for the code under test. Must
-	 *            contain at least one element. Must not be {@code null}. May not contain
-	 *            {@code null} elements.
+	 * @param projectInformation The measured project’s configuration. Must not be
+	 *            {@code null}.
 	 * @param parameterCharacteriser The parameter characteriser, that all measurement
 	 *            tools must use for parameter characterisation. Must not be {@code null}.
 	 */
-	public MeasurementOrder(final Set&lt;CodeSection&gt; parameterValueSections, final Set&lt;CodeSection&gt; resourceDemandSections,
-		final Set&lt;CodeSection&gt; executionSections, final Set&lt;LaunchConfiguration&gt; launchConfigurations,
-<span class="fc" id="L68">		final ParameterCharacteriser parameterCharacteriser) {</span>
+	public MeasurementOrder(final Set&lt;CodeSection&gt; parameterValueSections,
+		final Set&lt;CodeSection&gt; resourceDemandSections, final Set&lt;CodeSection&gt; executionSections,
+<span class="fc" id="L68">		final ProjectInformation projectInformation, final ParameterCharacteriser parameterCharacteriser) {</span>
 <span class="fc" id="L69">		Validate.noNullElements(parameterValueSections);</span>
 <span class="fc" id="L70">		Validate.noNullElements(resourceDemandSections);</span>
 <span class="fc" id="L71">		Validate.noNullElements(resourceDemandSections);</span>
 <span class="fc" id="L72">		Validate.noNullElements(executionSections);</span>
-<span class="fc" id="L73">		Validate.noNullElements(launchConfigurations);</span>
+<span class="fc" id="L73">		Validate.notNull(projectInformation);</span>
 <span class="fc" id="L74">		Validate.notNull(parameterCharacteriser);</span>
 <span class="fc" id="L75">		this.parameterValueSection = new HashSet&lt;&gt;(parameterValueSections);</span>
 <span class="fc" id="L76">		this.resourceDemandSections = new HashSet&lt;&gt;(resourceDemandSections);</span>
 <span class="fc" id="L77">		this.executionSections = new HashSet&lt;&gt;(executionSections);</span>
-<span class="fc" id="L78">		this.launchConfigurations = new HashSet&lt;&gt;(launchConfigurations);</span>
+<span class="fc" id="L78">		this.projectInformation = projectInformation;</span>
 <span class="fc" id="L79">		this.parameterCharacteriser = parameterCharacteriser;</span>
 <span class="fc" id="L80">	}</span>
 
@@ -86,7 +86,7 @@ public class MeasurementOrder {
 	 *         {@code null}. Does not contain {@code null} elements.
 	 */
 	public Set&lt;CodeSection&gt; getParameterValueSection() {
-<span class="fc" id="L89">		return this.parameterValueSection;</span>
+<span class="fc" id="L89">		return new HashSet&lt;&gt;(this.parameterValueSection);</span>
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class MeasurementOrder {
 	 *         elements.
 	 */
 	public Set&lt;CodeSection&gt; getResourceDemandSections() {
-<span class="fc" id="L100">		return this.resourceDemandSections;</span>
+<span class="fc" id="L100">		return new HashSet&lt;&gt;(this.resourceDemandSections);</span>
 	}
 
 	/**
@@ -109,17 +109,16 @@ public class MeasurementOrder {
 	 *         elements.
 	 */
 	public Set&lt;CodeSection&gt; getExecutionSections() {
-<span class="fc" id="L112">		return this.executionSections;</span>
+<span class="fc" id="L112">		return new HashSet&lt;&gt;(this.executionSections);</span>
 	}
 
 	/**
-	 * Gives launch configurations for the code under test. Contains at least one element.
+	 * Gives information about the measured project.
 	 *
-	 * @return Launch configurations for the code under test. Contains at least one
-	 *         element. Is never {@code null}. Does not contain {@code null} elements.
+	 * @return Information about the measured project. Is never {@code null}.
 	 */
-	public Set&lt;LaunchConfiguration&gt; getLaunchConfigurations() {
-<span class="fc" id="L122">		return this.launchConfigurations;</span>
+	public ProjectInformation getProjectInformation() {
+<span class="fc" id="L121">		return this.projectInformation;</span>
 	}
 
 	/**
@@ -130,7 +129,7 @@ public class MeasurementOrder {
 	 *         parameter characterisation. Is never {@code null}.
 	 */
 	public ParameterCharacteriser getParameterCharacteriser() {
-<span class="fc" id="L133">		return this.parameterCharacteriser;</span>
+<span class="fc" id="L132">		return this.parameterCharacteriser;</span>
 	}
 
 }

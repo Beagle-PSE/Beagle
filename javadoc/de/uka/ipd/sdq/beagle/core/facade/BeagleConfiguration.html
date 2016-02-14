@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" target="_top">Frames</a></li>
@@ -169,8 +169,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration-java.util.List-java.io.File-">BeagleConfiguration</a></span>(java.util.List&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;elements,
-                   java.io.File&nbsp;repositoryFile)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration-java.util.List-java.io.File-org.eclipse.jdt.core.IJavaProject-">BeagleConfiguration</a></span>(java.util.List&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;elements,
+                   java.io.File&nbsp;repositoryFile,
+                   org.eclipse.jdt.core.IJavaProject&nbsp;javaProject)</code>
 <div class="block">Constructs a new <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> using <code>elements</code> as the default
  elements to be measured.</div>
 </td>
@@ -205,9 +206,9 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getFileProvider--">getFileProvider</a></span>()</code>
-<div class="block">Queries the provider responsible to get the source files Beagle shall analyse.</div>
+<td class="colFirst"><code>org.eclipse.jdt.core.IJavaProject</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getJavaProject--">getJavaProject</a></span>()</code>
+<div class="block">Gives the <code>IJavaProject</code> to analyse.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -225,7 +226,7 @@ extends java.lang.Object</pre>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#isFinal--">isFinal</a></span>()</code>
-<div class="block">Queries wether this configuration is in the <em>finalised</em> state.</div>
+<div class="block">Queries whether this configuration is in the <em>finalised</em> state.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -236,17 +237,11 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setFileProvider-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">setFileProvider</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;fileProvider)</code>
-<div class="block">Sets the provider responsible to get the source files Beagle shall analyse.</div>
-</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setRepositoryFile-java.io.File-">setRepositoryFile</a></span>(java.io.File&nbsp;repositoryFile)</code>
 <div class="block">Sets the repository file containing the elements Beagle shall analyse.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setTimeout-int-">setTimeout</a></span>(int&nbsp;timeout)</code>
 <div class="block">Sets the timeout to be used to <code>timeout</code>.</div>
@@ -326,14 +321,15 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="BeagleConfiguration-java.util.List-java.io.File-">
+<a name="BeagleConfiguration-java.util.List-java.io.File-org.eclipse.jdt.core.IJavaProject-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>BeagleConfiguration</h4>
 <pre>public&nbsp;BeagleConfiguration(java.util.List&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;elements,
-                           java.io.File&nbsp;repositoryFile)</pre>
+                           java.io.File&nbsp;repositoryFile,
+                           org.eclipse.jdt.core.IJavaProject&nbsp;javaProject)</pre>
 <div class="block">Constructs a new <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> using <code>elements</code> as the default
  elements to be measured.</div>
 <dl>
@@ -341,6 +337,7 @@ extends java.lang.Object</pre>
 <dd><code>elements</code> - The elements to be measured or <code>null</code> to indicate that
             everything in <code>repositoryFile</code> should be analysed.</dd>
 <dd><code>repositoryFile</code> - The repository file to use. Must not be <code>null</code>.</dd>
+<dd><code>javaProject</code> - the <code>IJavaProject</code> to analyse. Must not be <code>null</code>.</dd>
 </dl>
 </li>
 </ul>
@@ -352,6 +349,20 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getJavaProject--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getJavaProject</h4>
+<pre>public&nbsp;org.eclipse.jdt.core.IJavaProject&nbsp;getJavaProject()</pre>
+<div class="block">Gives the <code>IJavaProject</code> to analyse.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the <code>IJavaProject</code> to analyse.</dd>
+</dl>
+</li>
+</ul>
 <a name="getElements--">
 <!--   -->
 </a>
@@ -489,7 +500,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>isFinal</h4>
 <pre>public&nbsp;boolean&nbsp;isFinal()</pre>
-<div class="block">Queries wether this configuration is in the <em>finalised</em> state.</div>
+<div class="block">Queries whether this configuration is in the <em>finalised</em> state.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd><code>true</code> if this configuration is in the <em>finalised</em> state,
@@ -500,44 +511,13 @@ extends java.lang.Object</pre>
 <a name="finalise--">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>finalise</h4>
 <pre>public&nbsp;void&nbsp;finalise()</pre>
 <div class="block">Finalises this configuration, thus transitioning it into the <em>finalised</em>
- state. Calling this method when this configuration alread is in the
+ state. Calling this method when this configuration already is in the
  <em>finalised</em> state has no effect.</div>
-</li>
-</ul>
-<a name="getFileProvider--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getFileProvider</h4>
-<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;getFileProvider()</pre>
-<div class="block">Queries the provider responsible to get the source files Beagle shall analyse.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The provider of source files.</dd>
-</dl>
-</li>
-</ul>
-<a name="setFileProvider-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>setFileProvider</h4>
-<pre>public&nbsp;void&nbsp;setFileProvider(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;fileProvider)</pre>
-<div class="block">Sets the provider responsible to get the source files Beagle shall analyse.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>fileProvider</code> - The provider of source files. Must not be <code>null</code>.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.lang.IllegalStateException</code> - If this configuration is not in the <em>set up</em>
-             state.</dd>
-</dl>
 </li>
 </ul>
 </li>
@@ -568,7 +548,7 @@ extends java.lang.Object</pre>
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" target="_top">Frames</a></li>

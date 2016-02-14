@@ -4,10 +4,10 @@ import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
-import de.uka.ipd.sdq.beagle.core.measurement.order.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
@@ -126,7 +126,7 @@ public class MeasurementController {
 <span class="fc bfc" id="L126" title="All 2 branches covered.">		for (final MeasurementTool measurementTool : this.measurementTools) {</span>
 			// Give every measurement tool a measurement order.
 <span class="fc" id="L128">			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,</span>
-				resourceDemandSections, executionSections, launchConfigurations, parameterCharacteriser);
+<span class="fc" id="L129">				resourceDemandSections, executionSections, blackboard.getProjectInformation(), parameterCharacteriser);</span>
 
 			// Get the measurement results.
 <span class="fc" id="L132">			final List&lt;MeasurementEvent&gt; measurementEvents = measurementTool.measure(measurementOrder);</span>

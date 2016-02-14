@@ -110,8 +110,8 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">PcmRepositoryWriter</span>
 extends java.lang.Object</pre>
 <div class="block">Writes Beagle’s findings back to a PCM repository. This class is meant to be used for
- Blackboard instances created by <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><code>PcmRepositoryBlackboardFactory</code></a> and may not be
- useable with other blackboards.</div>
+ Blackboard instances created by <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><code>PcmRepositoryBlackboardFactoryAdder</code></a> and may not
+ be useable with other blackboards.</div>
 </li>
 </ul>
 </div>
@@ -216,11 +216,11 @@ extends java.lang.Object</pre>
  contains an element with this identifier that is of the appropriate type, the
  object’s result will appropriately written to <code>repositoryFile</code>. Nothing will
  be written otherwise.
- 
- 
+
+
  <p>If the element Id with final EvaluableExpression from the Blackboard can not be
  found in the repository file.
- 
+
  <p>If the Blackboard elements (e.g. SeffBranch) from the elements with final
  EvaluableExpression from the Blackboard do not Correspond to the repository PCM
  elements (e.g. BranchAction).</div>

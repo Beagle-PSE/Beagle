@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryFileLoader.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -110,8 +110,8 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">PcmRepositoryExtractor</span>
 extends java.lang.Object</pre>
 <div class="block">Extracting a given Pcm repository. Offering 2 methods:
- <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-"><code>getBlackboardForAllElements(RepositoryImpl)</code></a> and
- <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-"><code>getBlackboardForIds(RepositoryImpl, Collection)</code></a></div>
+ <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-de.uka.ipd.sdq.beagle.core.BlackboardCreator-"><code>getBlackboardForAllElements(RepositoryImpl, BlackboardCreator)</code></a> and
+ <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-de.uka.ipd.sdq.beagle.core.BlackboardCreator-"><code>getBlackboardForIds(RepositoryImpl, Collection, BlackboardCreator)</code></a></div>
 </li>
 </ul>
 </div>
@@ -130,8 +130,8 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#PcmRepositoryExtractor-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">PcmRepositoryExtractor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)</code>
-<div class="block">Constructor needs EvaluableExpressionFitnessFunction.</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#PcmRepositoryExtractor-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositoryExtractor</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</code>
+<div class="block">Creates a new name parser for a specific project to analyse.</div>
 </td>
 </tr>
 </table>
@@ -150,16 +150,18 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-">getBlackboardForAllElements</a></span>(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository)</code>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-de.uka.ipd.sdq.beagle.core.BlackboardCreator-">getBlackboardForAllElements</a></span>(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository,
+                           <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardCreator.html" title="class in de.uka.ipd.sdq.beagle.core">BlackboardCreator</a>&nbsp;blackboardFactory)</code>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing all found
  <em>PCM elements</em> to it.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-">getBlackboardForIds</a></span>(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository,
-                   java.util.Collection&lt;java.lang.String&gt;&nbsp;identifiers)</code>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-de.uka.ipd.sdq.beagle.core.BlackboardCreator-">getBlackboardForIds</a></span>(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository,
+                   java.util.Collection&lt;java.lang.String&gt;&nbsp;identifiers,
+                   <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardCreator.html" title="class in de.uka.ipd.sdq.beagle.core">BlackboardCreator</a>&nbsp;blackboardFactory)</code>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
  elements</em> related to <code>ids</code> to it.</div>
 </td>
@@ -186,17 +188,18 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="PcmRepositoryExtractor-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction-">
+<a name="PcmRepositoryExtractor-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>PcmRepositoryExtractor</h4>
-<pre>public&nbsp;PcmRepositoryExtractor(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a>&nbsp;fitnessFunction)</pre>
-<div class="block">Constructor needs EvaluableExpressionFitnessFunction.</div>
+<pre>public&nbsp;PcmRepositoryExtractor(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</pre>
+<div class="block">Creates a new name parser for a specific project to analyse.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>fitnessFunction</code> - The fitnessFucntion to initialize the blackboard with</dd>
+<dd><code>sourceCodeFileProvider</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade"><code>SourceCodeFileProvider</code></a> for the project
+            under analysis.</dd>
 </dl>
 </li>
 </ul>
@@ -208,33 +211,35 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-">
+<a name="getBlackboardForAllElements-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-de.uka.ipd.sdq.beagle.core.BlackboardCreator-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getBlackboardForAllElements</h4>
-<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;getBlackboardForAllElements(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository)</pre>
+<pre>public&nbsp;void&nbsp;getBlackboardForAllElements(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository,
+                                        <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardCreator.html" title="class in de.uka.ipd.sdq.beagle.core">BlackboardCreator</a>&nbsp;blackboardFactory)</pre>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing all found
  <em>PCM elements</em> to it. Only <em>PCM elements</em> that fulfil the
  restrictions described in the class description will be written.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>repository</code> - The repository to look up.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>A new blackboard having all translated <em>PCM elements</em> written on it.
-         Will never be <code>null</code>.</dd>
+<dd><code>blackboardFactory</code> - all translated <em>PCM elements</em> will be written on
+            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+            never be <code>null</code> afterwards.</dd>
 </dl>
 </li>
 </ul>
-<a name="getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-">
+<a name="getBlackboardForIds-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-java.util.Collection-de.uka.ipd.sdq.beagle.core.BlackboardCreator-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getBlackboardForIds</h4>
-<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core">Blackboard</a>&nbsp;getBlackboardForIds(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository,
-                                      java.util.Collection&lt;java.lang.String&gt;&nbsp;identifiers)</pre>
+<pre>public&nbsp;void&nbsp;getBlackboardForIds(org.palladiosimulator.pcm.repository.impl.RepositoryImpl&nbsp;repository,
+                                java.util.Collection&lt;java.lang.String&gt;&nbsp;identifiers,
+                                <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardCreator.html" title="class in de.uka.ipd.sdq.beagle.core">BlackboardCreator</a>&nbsp;blackboardFactory)</pre>
 <div class="block">Builds a new blackboard and writes the Beagle objects representing <em>PCM
  elements</em> related to <code>ids</code> to it. Only <em>PCM elements</em> that fulfil
  the restrictions described in the class description will be written.
@@ -261,9 +266,9 @@ extends java.lang.Object</pre>
 <dd><code>repository</code> - The repository to look up.</dd>
 <dd><code>identifiers</code> - Identifiers of elements in the repository files that shall be
             written to the Blackboard.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>A new blackboard having all selected and translated <em>PCM elements</em>
-         written on it. Will never be <code>null</code>.</dd>
+<dd><code>blackboardFactory</code> - all translated <em>PCM elements</em> will be written on
+            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+            never be <code>null</code> afterwards.</dd>
 </dl>
 </li>
 </ul>
@@ -294,7 +299,7 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactory.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryFileLoader.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">

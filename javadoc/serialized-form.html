@@ -167,10 +167,15 @@
 <pre><a href="de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionFitnessFunction</a> fitnessFunction</pre>
 <div class="block">Is the function to get a better evaluable expression result.</div>
 </li>
-<li class="blockListLast">
+<li class="blockList">
 <h4>privateWrittenData</h4>
 <pre>java.util.Map&lt;K,V&gt; privateWrittenData</pre>
 <div class="block">Private data of tools, written through <a href="de/uka/ipd/sdq/beagle/core/Blackboard.html#writeFor-java.lang.Class-WRITTEN_TYPE-"><code>Blackboard.writeFor(Class, Serializable)</code></a>.</div>
+</li>
+<li class="blockListLast">
+<h4>projectInformation</h4>
+<pre><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">ProjectInformation</a> projectInformation</pre>
+<div class="block">Information about the project belonging to this blackboard.</div>
 </li>
 </ul>
 </li>
@@ -236,6 +241,48 @@
 <h4>index</h4>
 <pre>int index</pre>
 <div class="block">The parameters index in the parameter list. Starting with <code>0</code>.</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList"><a name="de.uka.ipd.sdq.beagle.core.ProjectInformation">
+<!--   -->
+</a>
+<h3>Class <a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">de.uka.ipd.sdq.beagle.core.ProjectInformation</a> extends java.lang.Object implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>2451089669559562551L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockList">
+<h4>timeout</h4>
+<pre>int timeout</pre>
+<div class="block">The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
+ seconds]</div>
+</li>
+<li class="blockList">
+<h4>fileProvider</h4>
+<pre><a href="de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a> fileProvider</pre>
+<div class="block">The provider of the source files to be analysed.</div>
+</li>
+<li class="blockList">
+<h4>buildPath</h4>
+<pre>java.lang.String buildPath</pre>
+<div class="block">The class path containing everything needed to compile the project.</div>
+</li>
+<li class="blockList">
+<h4>charset</h4>
+<pre>java.nio.charset.Charset charset</pre>
+<div class="block">The charset used for all files in the project.</div>
+</li>
+<li class="blockListLast">
+<h4>launchConfigurations</h4>
+<pre>java.util.Set&lt;E&gt; launchConfigurations</pre>
+<div class="block">The configurations defining how to launch the measured software.</div>
 </li>
 </ul>
 </li>
@@ -335,6 +382,32 @@
 <h4>assignment</h4>
 <pre><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a> assignment</pre>
 <div class="block">The assignment raising the exception.</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList">
+<h2 title="Package">Package&nbsp;de.uka.ipd.sdq.beagle.core.facade</h2>
+<ul class="blockList">
+<li class="blockList"><a name="de.uka.ipd.sdq.beagle.core.facade.JdtProjectSourceCodeFileProvider">
+<!--   -->
+</a>
+<h3>Class <a href="de/uka/ipd/sdq/beagle/core/facade/JdtProjectSourceCodeFileProvider.html" title="class in de.uka.ipd.sdq.beagle.core.facade">de.uka.ipd.sdq.beagle.core.facade.JdtProjectSourceCodeFileProvider</a> extends java.lang.Object implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-3573579414970056052L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockListLast">
+<h4>jdtProject</h4>
+<pre>org.eclipse.jdt.core.IJavaProject jdtProject</pre>
+<div class="block">The java project to get the source files from.</div>
 </li>
 </ul>
 </li>

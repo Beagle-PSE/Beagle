@@ -4,6 +4,7 @@ import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -41,24 +42,24 @@ public final class MeasurementControllerBlackboardView {
 	 *
 	 * @param blackboard The blackboard given from the {@link AnalysisController}.
 	 */
-<span class="fc" id="L44">	public MeasurementControllerBlackboardView(final Blackboard blackboard) {</span>
-<span class="fc" id="L45">		Validate.notNull(blackboard);</span>
-<span class="fc" id="L46">		this.blackboard = blackboard;</span>
-<span class="fc" id="L47">	}</span>
+<span class="fc" id="L45">	public MeasurementControllerBlackboardView(final Blackboard blackboard) {</span>
+<span class="fc" id="L46">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L47">		this.blackboard = blackboard;</span>
+<span class="fc" id="L48">	}</span>
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="fc bfc" id="L51" title="All 2 branches covered.">		if (object == null) {</span>
-<span class="fc" id="L52">			return false;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L53">			return false;</span>
 		}
-<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (object == this) {</span>
-<span class="fc" id="L55">			return true;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L56">			return true;</span>
 		}
-<span class="fc bfc" id="L57" title="All 2 branches covered.">		if (object.getClass() != MeasurementControllerBlackboardView.class) {</span>
-<span class="fc" id="L58">			return false;</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">		if (object.getClass() != MeasurementControllerBlackboardView.class) {</span>
+<span class="fc" id="L59">			return false;</span>
 		}
-<span class="fc" id="L60">		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;</span>
-<span class="fc bfc" id="L61" title="All 2 branches covered.">		return this.blackboard == other.blackboard;</span>
+<span class="fc" id="L61">		final MeasurementControllerBlackboardView other = (MeasurementControllerBlackboardView) object;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">		return this.blackboard == other.blackboard;</span>
 	}
 
 	/**
@@ -70,7 +71,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getRdiasToBeMeasured()
 	 */
 	public Set&lt;ResourceDemandingInternalAction&gt; getRdiasToBeMeasured() {
-<span class="fc" id="L73">		return this.blackboard.getRdiasToBeMeasured();</span>
+<span class="fc" id="L74">		return this.blackboard.getRdiasToBeMeasured();</span>
 	}
 
 	/**
@@ -82,7 +83,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffBranchesToBeMeasured()
 	 */
 	public Set&lt;SeffBranch&gt; getSeffBranchesToBeMeasured() {
-<span class="fc" id="L85">		return this.blackboard.getSeffBranchesToBeMeasured();</span>
+<span class="fc" id="L86">		return this.blackboard.getSeffBranchesToBeMeasured();</span>
 	}
 
 	/**
@@ -94,7 +95,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getSeffLoopsToBeMeasured()
 	 */
 	public Set&lt;SeffLoop&gt; getSeffLoopsToBeMeasured() {
-<span class="fc" id="L97">		return this.blackboard.getSeffLoopsToBeMeasured();</span>
+<span class="fc" id="L98">		return this.blackboard.getSeffLoopsToBeMeasured();</span>
 	}
 
 	/**
@@ -107,7 +108,7 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getExternalCallParametersToBeMeasured()
 	 */
 	public Set&lt;ExternalCallParameter&gt; getExternalCallParametersToBeMeasured() {
-<span class="fc" id="L110">		return this.blackboard.getExternalCallParametersToBeMeasured();</span>
+<span class="fc" id="L111">		return this.blackboard.getExternalCallParametersToBeMeasured();</span>
 	}
 
 	/**
@@ -121,8 +122,8 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ResourceDemandingInternalAction rdia,
 		final ResourceDemandMeasurementResult results) {
-<span class="fc" id="L124">		this.blackboard.addMeasurementResultFor(rdia, results);</span>
-<span class="fc" id="L125">	}</span>
+<span class="fc" id="L125">		this.blackboard.addMeasurementResultFor(rdia, results);</span>
+<span class="fc" id="L126">	}</span>
 
 	/**
 	 * Delegates to
@@ -133,8 +134,8 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffLoop loop, final LoopRepetitionCountMeasurementResult results) {
-<span class="fc" id="L136">		this.blackboard.addMeasurementResultFor(loop, results);</span>
-<span class="fc" id="L137">	}</span>
+<span class="fc" id="L137">		this.blackboard.addMeasurementResultFor(loop, results);</span>
+<span class="fc" id="L138">	}</span>
 
 	/**
 	 * Delegates to
@@ -145,8 +146,8 @@ public final class MeasurementControllerBlackboardView {
 	 * @param results The result of that measurement. Must not be {@code null}.
 	 */
 	public void addMeasurementResultFor(final SeffBranch branch, final BranchDecisionMeasurementResult results) {
-<span class="fc" id="L148">		this.blackboard.addMeasurementResultFor(branch, results);</span>
-<span class="fc" id="L149">	}</span>
+<span class="fc" id="L149">		this.blackboard.addMeasurementResultFor(branch, results);</span>
+<span class="fc" id="L150">	}</span>
 
 	/**
 	 * Delegates to
@@ -159,8 +160,8 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public void addMeasurementResultFor(final ExternalCallParameter parameter,
 		final ParameterChangeMeasurementResult results) {
-<span class="fc" id="L162">		this.blackboard.addMeasurementResultFor(parameter, results);</span>
-<span class="fc" id="L163">	}</span>
+<span class="fc" id="L163">		this.blackboard.addMeasurementResultFor(parameter, results);</span>
+<span class="fc" id="L164">	}</span>
 
 	/**
 	 * Delegates to {@link de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()} .
@@ -171,7 +172,16 @@ public final class MeasurementControllerBlackboardView {
 	 * @see de.uka.ipd.sdq.beagle.core.Blackboard#getFitnessFunction()
 	 */
 	public EvaluableExpressionFitnessFunction getFitnessFunction() {
-<span class="fc" id="L174">		return this.blackboard.getFitnessFunction();</span>
+<span class="fc" id="L175">		return this.blackboard.getFitnessFunction();</span>
+	}
+
+	/**
+	 * Information about the project belonging to this blackboard.
+	 *
+	 * @return Information about the project belonging to this blackboard.
+	 */
+	public ProjectInformation getProjectInformation() {
+<span class="fc" id="L184">		return this.blackboard.getProjectInformation();</span>
 	}
 
 	/**
@@ -187,7 +197,7 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; WRITTEN_TYPE readFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer) {
-<span class="fc" id="L190">		return this.blackboard.readFor(writer);</span>
+<span class="fc" id="L200">		return this.blackboard.readFor(writer);</span>
 	}
 
 	/**
@@ -201,14 +211,14 @@ public final class MeasurementControllerBlackboardView {
 	 */
 	public &lt;WRITTEN_TYPE extends Serializable&gt; void writeFor(
 		final Class&lt;? extends BlackboardStorer&lt;WRITTEN_TYPE&gt;&gt; writer, final WRITTEN_TYPE written) {
-<span class="fc" id="L204">		this.blackboard.writeFor(writer, written);</span>
-<span class="fc" id="L205">	}</span>
+<span class="fc" id="L214">		this.blackboard.writeFor(writer, written);</span>
+<span class="fc" id="L215">	}</span>
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L211">		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();</span>
+<span class="fc" id="L221">		return new HashCodeBuilder(335, 353).append(this.blackboard).toHashCode();</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

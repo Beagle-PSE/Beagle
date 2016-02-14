@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -208,36 +208,42 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">ProjectInformation</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementControllerBlackboardView.html#getProjectInformation--">getProjectInformation</a></span>()</code>
+<div class="block">Information about the project belonging to this blackboard.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementControllerBlackboardView.html#getRdiasToBeMeasured--">getRdiasToBeMeasured</a></span>()</code>
 <div class="block">Delegates to <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getRdiasToBeMeasured--"><code>Blackboard.getRdiasToBeMeasured()</code></a>.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementControllerBlackboardView.html#getSeffBranchesToBeMeasured--">getSeffBranchesToBeMeasured</a></span>()</code>
 <div class="block">Delegates to
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getSeffBranchesToBeMeasured--"><code>Blackboard.getSeffBranchesToBeMeasured()</code></a>.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementControllerBlackboardView.html#getSeffLoopsToBeMeasured--">getSeffLoopsToBeMeasured</a></span>()</code>
 <div class="block">Delegates to
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getSeffLoopsToBeMeasured--"><code>Blackboard.getSeffLoopsToBeMeasured()</code></a>.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementControllerBlackboardView.html#hashCode--">hashCode</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>&lt;WRITTEN_TYPE extends java.io.Serializable&gt;<br>WRITTEN_TYPE</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementControllerBlackboardView.html#readFor-java.lang.Class-">readFor</a></span>(java.lang.Class&lt;? extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;WRITTEN_TYPE&gt;&gt;&nbsp;writer)</code>
 <div class="block">Delegates to <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#readFor-java.lang.Class-"><code>Blackboard.readFor(Class)</code></a> .</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>&lt;WRITTEN_TYPE extends java.io.Serializable&gt;<br>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementControllerBlackboardView.html#writeFor-java.lang.Class-WRITTEN_TYPE-">writeFor</a></span>(java.lang.Class&lt;? extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardStorer.html" title="interface in de.uka.ipd.sdq.beagle.core">BlackboardStorer</a>&lt;WRITTEN_TYPE&gt;&gt;&nbsp;writer,
         WRITTEN_TYPE&nbsp;written)</code>
@@ -465,6 +471,20 @@ extends java.lang.Object</pre>
          regarding their fitness.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html#getFitnessFunction--"><code>Blackboard.getFitnessFunction()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getProjectInformation--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProjectInformation</h4>
+<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">ProjectInformation</a>&nbsp;getProjectInformation()</pre>
+<div class="block">Information about the project belonging to this blackboard.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Information about the project belonging to this blackboard.</dd>
 </dl>
 </li>
 </ul>

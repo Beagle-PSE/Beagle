@@ -129,11 +129,12 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings-">PcmRepositorySeffExtractor</a></span>(java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;seffLoopSet,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositorySeffExtractor</a></span>(java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>&gt;&nbsp;seffLoopSet,
                           java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;seffBranchSet,
                           java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;rdiaSet,
                           java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&gt;&nbsp;externalCallParameterSet,
-                          <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a>&nbsp;pcmMapper)</code>
+                          <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a>&nbsp;pcmMapper,
+                          <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</code>
 <div class="block">Constructor needs access to the real sets (no copy!), manipulating them by adding
  all extracted SeffElements.</div>
 </td>
@@ -182,7 +183,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings-">
+<a name="PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -192,7 +193,8 @@ extends java.lang.Object</pre>
                                   java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a>&gt;&nbsp;seffBranchSet,
                                   java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>&gt;&nbsp;rdiaSet,
                                   java.util.Set&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core">ExternalCallParameter</a>&gt;&nbsp;externalCallParameterSet,
-                                  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a>&nbsp;pcmMapper)</pre>
+                                  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a>&nbsp;pcmMapper,
+                                  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</pre>
 <div class="block">Constructor needs access to the real sets (no copy!), manipulating them by adding
  all extracted SeffElements.</div>
 <dl>
@@ -204,6 +206,8 @@ extends java.lang.Object</pre>
             externalCallParameters</dd>
 <dd><code>pcmMapper</code> - The mapping class that should contain a map of all SeffElements to
             its IDs</dd>
+<dd><code>sourceCodeFileProvider</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade"><code>SourceCodeFileProvider</code></a> for the project
+            under analysis.</dd>
 </dl>
 </li>
 </ul>
