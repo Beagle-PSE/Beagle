@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
-import de.uka.ipd.sdq.beagle.core.FailureHandler;
-import de.uka.ipd.sdq.beagle.core.FailureReport;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.DebugPlugin;
@@ -23,7 +23,7 @@ public class LauchConfigurationProvider {
 	/**
 	 * The project under analysis.
 	 */
-	private IJavaProject javaProject;
+	private final IJavaProject javaProject;
 
 	/**
 	 * A new launch configuration provider for a specific project.

@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.measurement.kieker;
 
-import de.uka.ipd.sdq.beagle.core.FailureHandler;
-import de.uka.ipd.sdq.beagle.core.FailureReport;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.compiler.batch.BatchCompiler;

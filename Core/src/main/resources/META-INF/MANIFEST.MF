@@ -7,9 +7,10 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.analysis,
  de.uka.ipd.sdq.beagle.core.evaluableexpressions,
+ de.uka.ipd.sdq.beagle.core.facade,
+ de.uka.ipd.sdq.beagle.core.failurehandling,
  de.uka.ipd.sdq.beagle.core.measurement,
- de.uka.ipd.sdq.beagle.core.measurement.order,
- de.uka.ipd.sdq.beagle.core.facade
+ de.uka.ipd.sdq.beagle.core.measurement.order
 Require-Bundle: de.uka.ipd.sdq.pcm.gmf.repository,
  org.palladiosimulator.pcm,
  org.eclipse.jdt.core,

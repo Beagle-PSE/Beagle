@@ -3,12 +3,12 @@ package de.uka.ipd.sdq.beagle.core.facade;
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
-import de.uka.ipd.sdq.beagle.core.FailureHandler;
-import de.uka.ipd.sdq.beagle.core.FailureReport;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserContributionsHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import de.uka.ipd.sdq.beagle.core.judge.AbstractionAndPrecisionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementToolContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
@@ -38,7 +38,7 @@ public class BeagleController {
 	/**
 	 * The analysis controller used for this project.
 	 */
-	private AnalysisController analysisController;
+	private final AnalysisController analysisController;
 
 	/**
 	 * Constructs a new {@code BeagleController} with the given
