@@ -286,7 +286,7 @@ KOMAoptions{open=right}
 \end_layout
 
 \begin_layout Chapter
-Design changes
+Design Changes
 \end_layout
 
 \begin_layout Chapter
@@ -294,7 +294,7 @@ Implemented Tasks
 \end_layout
 
 \begin_layout Standard
-Each task should be implemented in the Week it belongs to and tested in
+Each task should be implemented in the week it belongs to and tested in
  the week after that.
 \end_layout
 
@@ -303,19 +303,19 @@ Changes to the Implementation Plan
 \end_layout
 
 \begin_layout Standard
-We decided to split up the PCM-task (#050) into two:
+We decided to split up the PCM task (#050) into two:
 \end_layout
 
 \begin_layout Itemize
-In #050A the loading part should be implemented (read the PCM repository
+In #050A, the loading part should be implemented (read the PCM repository
  and store the information on the blackboard).
  This should be done in the first week.
 \end_layout
 
 \begin_layout Itemize
-In #050B the storing part should be implemented (convert the Evaluable Expressio
-ns from the blackboard to Stochastic Expressions and store them on the blackboar
-d).
+In #050B, the storing part should be implemented (convert the evaluable
+ expressions from the blackboard to stochastic expressions and store them
+ on the blackboard).
  This should be done in the last week.
 \end_layout
 
@@ -352,7 +352,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-SEFF classes
+SEFF Classes
 \end_layout
 
 \end_inset
@@ -542,7 +542,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-PCM Repository loader
+PCM Repository Loader
 \end_layout
 
 \end_inset
@@ -582,8 +582,8 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Create a class that provides all information from the PCM which are relevant
- for Beagle and a factory that uses these information to create the 
+Create a class that provides all information of the PCM which is relevant
+ for Beagle and a factory that uses this information to create the 
 \begin_inset listings
 inline true
 status open
@@ -805,7 +805,7 @@ Depends on:
 \end_layout
 
 \begin_layout Plain Layout
-(Not depending on #050, as the 
+(Not depending on #050 as the 
 \begin_inset listings
 inline true
 status open
@@ -1091,7 +1091,7 @@ Depends on:
 \end_layout
 
 \begin_layout Plain Layout
-(Not depending on #060, as the Blackboard Views only need the blackboards
+(Does not depend on #060 as the blackboard views only need the blackboard's
  method stubs.)
 \end_layout
 
@@ -1170,7 +1170,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate prototype for Context Menus
+Integrate Prototype for Context Menus
 \end_layout
 
 \end_inset
@@ -1308,7 +1308,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Integrate prototype for Eclipse Extension Points
+Integrate Prototype for Eclipse Extension Points
 \end_layout
 
 \end_inset
@@ -2433,7 +2433,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Kieker measurement tool
+Kieker Measurement Tool
 \end_layout
 
 \end_inset
@@ -2517,7 +2517,7 @@ Blackboard
 
 \end_inset
 
-), #070 (Blackboard Views), #040 (SEFF classes) and #125 (Measurement Order)
+), #070 (Blackboard Views), #040 (SEFF classes) and #125 (Measurement Order).
 \end_layout
 
 \end_inset
@@ -2651,19 +2651,7 @@ MeasurementResultAnalyser
 
 \end_inset
 
-, which takes as final 
-\begin_inset listings
-inline true
-status open
-
-\begin_layout Plain Layout
-
-EvaluableExpression
-\end_layout
-
-\end_inset
-
- a 
+ which takes a 
 \begin_inset listings
 inline true
 status open
@@ -2675,7 +2663,19 @@ ConstantExpression
 
 \end_inset
 
- for all 
+ as final 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+EvaluableExpression
+\end_layout
+
+\end_inset
+
+ for each 
 \begin_inset listings
 inline true
 status open
@@ -2687,7 +2687,7 @@ MeasurableSeffElement
 
 \end_inset
 
-s with the average of all available measurement results.
+ with the average of all available measurement results.
 \end_layout
 
 \end_inset
@@ -2759,7 +2759,7 @@ Tested by:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Annika Berger
 \end_layout
 
 \end_inset
@@ -2913,7 +2913,7 @@ Tested by:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Annika Berger
 \end_layout
 
 \end_inset
@@ -2951,7 +2951,7 @@ Task:
 \begin_inset Text
 
 \begin_layout Plain Layout
-PCM Repository storer
+PCM Repository Storer
 \end_layout
 
 \end_inset
@@ -3052,7 +3052,7 @@ Tested by:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Annika Berger
 \end_layout
 
 \end_inset
@@ -3066,7 +3066,7 @@ Tested by:
 \end_layout
 
 \begin_layout Subsection*
-Tasks, that were not in the implementation plan
+Tasks Not Covered by the Implementation Plan
 \end_layout
 
 \begin_layout Standard
@@ -3110,7 +3110,7 @@ Nr:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+–
 \end_layout
 
 \end_inset
@@ -3130,9 +3130,9 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-We realised that the communication between the GUI and Beagle Core is complex,
- because the GUI also has to pass information about the project to analyse,
- e.g.
+We realised that the communication between the GUI and Beagle Core is complex
+ because in addition to what we planned, the GUI has to pass information
+ about the project to analyse, e.g.
  to be able to access the source code files.
  This is the reason for 
 \begin_inset listings
@@ -3195,7 +3195,7 @@ Depends on:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+–
 \end_layout
 
 \end_inset
@@ -3215,7 +3215,7 @@ Implemented by:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Joshua Gleitze, Roman Langrehr
+Joshua Gleitze, Chirstoph Michelbach, Roman Langrehr
 \end_layout
 
 \end_inset
@@ -3235,7 +3235,7 @@ Tested by:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+Annika Berger
 \end_layout
 
 \end_inset
@@ -3297,7 +3297,7 @@ Nr:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+–
 \end_layout
 
 \end_inset
@@ -3317,7 +3317,7 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-Our project can be build using gradle.
+Our project can be build automatically using gradle.
 \end_layout
 
 \end_inset
@@ -3443,7 +3443,7 @@ Nr:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+-
 \end_layout
 
 \end_inset
@@ -3463,13 +3463,14 @@ Description/Classes:
 \begin_inset Text
 
 \begin_layout Plain Layout
-On many parts of our project errors can occur, that can't be handled there,
- e.g.
+On many parts of our project, errors which can't be handled where they emerge
+ can occur.
+ E.g.
  a source file from the project under test can't be read or doesn't compile.
 \end_layout
 
 \begin_layout Plain Layout
-Therefore we created the 
+Therefore, we created the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3477,7 +3478,7 @@ Fail API
 \begin_inset Quotes erd
 \end_inset
 
-: Everywhere in our project those exceptions are reported to the 
+: Everywhere in our project, these exceptions are reported to the 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3486,10 +3487,10 @@ Fail API
 \end_inset
 
  and handled there.
- At the moment the Fail API only throws an Exception, but when we want that
- those exceptions are reported to the user and the user can choose in a
- dialogue whether to abort or to retry, this has to be changed only in the
- Fail API and not on multiple places in the code.
+ At the moment, the Fail API only throws an exception but when we want these
+ exceptions to be reported to the user so the user can choose in a dialogue
+ whether to abort or to retry, this has to be changed only in the Fail API
+ and not on multiple places in the code.
 \end_layout
 
 \end_inset
@@ -3563,15 +3564,15 @@ Michael Vogt
 \end_layout
 
 \begin_layout Subsection
-Preparation for other optional tasks
+Preparation for Other Optional Tasks
 \end_layout
 
 \begin_layout Standard
-We made a lot of preparation to implement the following optional tasks:
+We did a lot of preparation to implement the following optional tasks:
 \end_layout
 
 \begin_layout Itemize
-Parametrisation of the results
+Parametrisation of the results.
 \end_layout
 
 \begin_layout Itemize
@@ -3579,14 +3580,26 @@ Using genetic programming for the analysis.
 \end_layout
 
 \begin_layout Standard
-The classes for the parametrisation were created (but are empty) and handled
- in each class, that doesn't depend on the realisation of this class.
+The classes for the parameterisation were created (but are empty) and are
+ used by all classes which don't depend on the implementation of them.
 \end_layout
 
 \begin_layout Standard
-For the genetic programming we already created the fitness function.
- The tools that combine results to the next generation can be added easily
- as new ProposedExpressionAnalyser.
+For the genetic programming approach, we already created the fitness function.
+ The tools which combine results to the next generation can be added easily
+ as new 
+\begin_inset listings
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ProposedExpressionAnalyser
+\end_layout
+
+\end_inset
+
+s.
 \end_layout
 
 \begin_layout Chapter
@@ -3594,29 +3607,30 @@ Delays
 \end_layout
 
 \begin_layout Standard
-Most of the tasks were in the first and seconds week, which lead to some
- small delays.
- Some of tasks of the first week where finished in the second week and some
- of the tasks in the second week were finished in the third week.
+Most of the tasks were scheduled to be done during the first and seconds
+ week which lead to some small delays.
+ Some of the tasks of the first week where finished in the second week and
+ some of the tasks in the second week were finished in the third week.
  The tasks for the third week were therefore started at the end of the third
  week and we used the empty week four for them, too.
 \end_layout
 
 \begin_layout Standard
 Getting these delays was intentional because starting many tasks at the
- beginning allowed us early to recognise which tasks can be implemented
- fast and which tasks are complicated and need more time.
- Those tasks were:
+ beginning allowed us to recognise which tasks can be implemented fast and
+ which tasks are complicated and therefore need more time early in the implement
+ation phase.
+ These tasks were:
 \end_layout
 
 \begin_layout Itemize
-The PCM Connection and the context menus because nobody in our team had
- experience with the EMF framework a lot of problem arose and caused delays.
- Tasks that also had 
+The PCM connection and the context menus because nobody in our team had
+ experience with the EMF framework and a lot of problem arose and caused
+ delays.
 \end_layout
 
 \begin_layout Itemize
-The Kieker measurement tool, because we had to instrument the code on our
+The Kieker measurement tool because we had to instrument the code on our
  own.
 \end_layout
 
@@ -3627,21 +3641,21 @@ Unit Tests
 \begin_layout Standard
 Everything that can be meaningfully tested with JUnit Tests is tested with
  JUnit tests.
- The only exceptions are:
+ The only parts not tested with JUnit tests are:
 \end_layout
 
 \begin_layout Itemize
-The GUI classes, because it is not possible to test GUIs meaningfully with
+The GUI classes because it is not possible to test GUIs meaningfully with
  JUnit.
- Instead we created a document that describes what should be done to test
- the GUI manually.
+ Instead, we created a document describing what should be done to test the
+ GUI manually.
 \end_layout
 
 \begin_layout Itemize
-The Extension Points are not tested with JUnit tests, because an automated
- test would rather test the eclipse extension point mechanism and not whether
+The extension points are not tested with JUnit tests because an automated
+ test would rather test the Eclipse extension point mechanism and not whether
  we used it correctly.
- Instead we created a some eclipse plugins with stubs for 
+ Instead, we created some Eclipse plugins with stubs for 
 \begin_inset listings
 inline true
 status open
@@ -3677,17 +3691,17 @@ ProposedExpressionAnalyser
 
 \end_inset
 
- that use the extension point of Beagle Core.
- Additionally we created a plugin that has BeagleCore as dependency and
- adds a button to eclipse that allows the shows all tools, the Beagle Core
- loads (using the Beagle Core's classes for that).
- So the extension points can be tested manually.
- A document describes, which should be tested.
+ which use the extension point of Beagle Core.
+ Additionally, we created a plugin having BeagleCore as a dependency which
+ adds a button to Eclipse allowing the user to see all tools loaded by Beagle
+ Core (using Beagle Core's classes for that).
+ For manual testing of the extension points, a document describing the process
+ and the relevant parts to be tested has been added.
 \end_layout
 
 \begin_layout Standard
-Detailed information on each JUnit test can be found in the Javadoc for
- the tests.
+Detailed information on each JUnit test can be found in the Javadoc of the
+ particular test.
 \end_layout
 
 \end_body
