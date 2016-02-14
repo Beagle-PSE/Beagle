@@ -39,7 +39,7 @@ public class KiekerMeasurementTool implements MeasurementTool {
 	@Override
 	public List<MeasurementEvent> measure(final MeasurementOrder measurementOrder) {
 		try {
-			this.doMeasure(measurementOrder);
+			return this.doMeasure(measurementOrder);
 		} catch (final IOException readWriteError) {
 			final FailureReport<List<MeasurementEvent>> failure =
 				new FailureReport<List<MeasurementEvent>>().cause(readWriteError)
@@ -47,7 +47,6 @@ public class KiekerMeasurementTool implements MeasurementTool {
 					.retryWith(() -> this.measure(measurementOrder));
 			return FAILURE_HANDLER.handle(failure);
 		}
-		return null;
 	}
 
 	/**
@@ -61,10 +60,12 @@ public class KiekerMeasurementTool implements MeasurementTool {
 	 */
 	private List<MeasurementEvent> doMeasure(final MeasurementOrder measurementOrder) throws IOException {
 		final MeasurementFileManager fileManager = new MeasurementFileManager();
+		final CodeSectionIdentifier resourceDemandIdentifer = new CodeSectionIdentifier();
 
 		new EclipseAstInstrumentor(fileManager::getInstrumentationFileFor)
 			.useCharset(measurementOrder.getProjectInformation().getCharset())
-			.useStrategy(new ResourceDemandInstrumentationStrategy(), measurementOrder.getResourceDemandSections())
+			.useStrategy(new ResourceDemandInstrumentationStrategy(resourceDemandIdentifer),
+				measurementOrder.getResourceDemandSections())
 			.instrument();
 
 		new EclipseCompiler(fileManager.getInstrumentedSourceCodeFolder())

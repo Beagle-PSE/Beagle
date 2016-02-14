@@ -16,6 +16,21 @@ import org.eclipse.jdt.core.dom.Statement;
  */
 public class ResourceDemandInstrumentationStrategy implements EclipseAstInstrumentationStrategy {
 
+	/**
+	 * Identifier for instrumented code sections.
+	 */
+	private final CodeSectionIdentifier identifier;
+
+	/**
+	 * Creates a strategey that will use the provided {@code identifier} to identify code
+	 * sections in the instrumentation code.
+	 *
+	 * @param identifier The provider of identifers for instrumented code sections.
+	 */
+	public ResourceDemandInstrumentationStrategy(final CodeSectionIdentifier identifier) {
+		this.identifier = identifier;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Statement instrumentStart(final CodeSection codeSection, final AST nodeFactory) {
@@ -24,7 +39,7 @@ public class ResourceDemandInstrumentationStrategy implements EclipseAstInstrume
 		startInvocation.setExpression(helper.getName("de", "uka", "ipd", "sdq", "beagle", "measurement", "kieker",
 			"remote", "MeasurementCentral"));
 		startInvocation.setName(nodeFactory.newSimpleName("startResourceDemand"));
-		startInvocation.arguments().add(nodeFactory.newNumberLiteral("123"));
+		startInvocation.arguments().add(nodeFactory.newNumberLiteral("" + this.identifier.getIdOf(codeSection)));
 		return nodeFactory.newExpressionStatement(startInvocation);
 	}
 

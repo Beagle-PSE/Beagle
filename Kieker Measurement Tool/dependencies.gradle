@@ -2,6 +2,7 @@ dependencies {
 	// Production dependencies
 	production group: 'org.apache.commons', name: 'commons-lang3', version: '3.4+'
 	production group: 'commons-io', name: 'commons-io', version: '2.4+'
+	production group: 'org.apache.commons', name: 'commons-collections4', version: '4.1+'
 	production group: 'net.kieker-monitoring', name: 'kieker', version: '1.12+'
 	
 	// Test dependencies
