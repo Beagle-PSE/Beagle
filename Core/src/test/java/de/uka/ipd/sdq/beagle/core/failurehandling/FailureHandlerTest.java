@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.failurehandling;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
@@ -10,7 +9,7 @@ import org.junit.Test;
 
 /**
  * Tests {@link FailureHandler} and contains all test cases needed to check every method.
- * 
+ *
  * @author Michael Vogt
  */
 public class FailureHandlerTest {
@@ -21,7 +20,7 @@ public class FailureHandlerTest {
 	@Test
 	public void getHandler() {
 		final String clientName = "clientAllice";
-		assertThat(FailureHandler.getHandler(clientName), is("clientAllice"));
+		FailureHandler.getHandler(clientName);
 
 		assertThat(() -> FailureHandler.getHandler((String) null), throwsException(NullPointerException.class));
 

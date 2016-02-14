@@ -1,9 +1,12 @@
 package de.uka.ipd.sdq.beagle.core.failurehandling;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.theInstance;
 import static org.junit.Assert.assertThat;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -15,7 +18,7 @@ import java.util.function.Supplier;
 
 /**
  * Tests {@link FailureReport} and contains all test cases needed to check every method.
- * 
+ *
  * @author Michael Vogt
  */
 public class FailureReportTest {
@@ -24,11 +27,6 @@ public class FailureReportTest {
 	 * Message giving information about the failure.
 	 */
 	private String failureMessage;
-
-	/**
-	 * Wheter details about the failure have yet been provided.
-	 */
-	private boolean detailsProvided;
 
 	/**
 	 * Exception that caused or indicated the failure.
@@ -52,7 +50,8 @@ public class FailureReportTest {
 	public void message() {
 		final String message = "failureMessage";
 		final FailureReport<String> failReport = new FailureReport<>();
-		assertThat(failReport.message("failureMessage"), is(message));
+		failReport.message("failureMessage");
+		assertThat(failReport.getFailureMessage(), containsString(message));
 		final ThrowingMethod method = () -> {
 			final FailureReport<String> failReport1 = new FailureReport<>();
 			failReport1.message(null);
@@ -67,15 +66,13 @@ public class FailureReportTest {
 	public void details() {
 		final String message = "failureMessage";
 		final FailureReport<String> failReport = new FailureReport<>();
-		assertThat(failReport.details("failureMessage"), is(message));
+		failReport.details("failureMessage");
+		assertThat(failReport.getDetails(), containsString(message));
 		final ThrowingMethod method = () -> {
 			final FailureReport<String> failReport1 = new FailureReport<>();
 			failReport1.details(null);
 		};
 		assertThat(method, throwsException(NullPointerException.class));
-		final FailureReport<String> failReport2 = new FailureReport<>();
-		failReport2.details(message);
-		assertThat(this.detailsProvided, is(true));
 	}
 
 	/**
@@ -89,14 +86,12 @@ public class FailureReportTest {
 		};
 		assertThat(method, throwsException(NullPointerException.class));
 		final FailureReport<String> failReport1 = new FailureReport<>();
-		failReport1.message(null);
 		failReport1.cause(new IllegalArgumentException("illegal arg"));
-		assertThat(failReport1.getFailureMessage(), is("illegal arg"));
+		assertThat(failReport1.getFailureMessage(), containsString("illegal arg"));
 		final FailureReport<String> failReport2 = new FailureReport<>();
 		failReport2.message("failure message");
 		failReport2.cause(new IllegalArgumentException("illegal arg"));
-		assertThat(this.detailsProvided, (is(true)));
-
+		assertThat(failReport2.getFailureMessage(), containsString("failure message"));
 	}
 
 	/**
@@ -121,6 +116,14 @@ public class FailureReportTest {
 		assertThat(failReport.getContinueRoutine().get(), is(nullValue()));
 		verify(runTest).run();
 
+		@SuppressWarnings("unchecked")
+		final Supplier<Object> continueTest = mock(Supplier.class);
+		final Object returned = mock(Object.class);
+		final FailureReport<Object> failReport2 = new FailureReport<>();
+		failReport2.continueWith(continueTest);
+		given(continueTest.get()).willReturn(returned);
+		assertThat(failReport2.getContinueRoutine().get(), is(theInstance(returned)));
+
 	}
 
 	/**
@@ -131,7 +134,7 @@ public class FailureReportTest {
 		final FailureReport<String> failReport = new FailureReport<>();
 		final Runnable runTest = mock(Runnable.class);
 		failReport.retryWith(runTest);
-		assertThat(failReport.getContinueRoutine().get(), is(nullValue()));
+		assertThat(failReport.getRetryRoutine().get(), is(nullValue()));
 		verify(runTest).run();
 	}
 
@@ -150,12 +153,11 @@ public class FailureReportTest {
 	 */
 	@Test
 	public void getDetails() {
-		this.detailsProvided = false;
 		final FailureReport<String> failReport = new FailureReport<>();
-		assertThat(failReport.getDetails(), is(this.detailsProvided));
-		this.detailsProvided = true;
+		assertThat(failReport.getDetails(), is(nullValue()));
 		final FailureReport<String> failReport1 = new FailureReport<>();
-		assertThat(failReport1.getDetails(), is(this.detailsProvided));
+		failReport1.details("testmessage %s", "continued");
+		assertThat(failReport1.getDetails(), containsString("testmessage continued"));
 	}
 
 	/**

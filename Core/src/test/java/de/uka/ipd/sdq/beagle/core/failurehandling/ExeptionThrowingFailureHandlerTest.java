@@ -12,7 +12,7 @@ import org.junit.Test;
 /**
  * Tests {@link ExeptionThrowingFailureHandler} and contains all test cases needed to
  * check every method.
- * 
+ *
  * @author Michael Vogt
  */
 public class ExeptionThrowingFailureHandlerTest {
@@ -32,7 +32,7 @@ public class ExeptionThrowingFailureHandlerTest {
 	}
 
 	/**
-	 * Test method for {@link ExceptionThrowingFailureHandlerTest#handle()}.
+	 * Test method for {@link ExceptionThrowingFailureHandler#handle()}.
 	 */
 	@Test
 	public void handle() {
@@ -43,7 +43,6 @@ public class ExeptionThrowingFailureHandlerTest {
 		assertThat(method, throwsException(NullPointerException.class));
 
 		final FailureReport<String> report = new FailureReport<>();
-		report.cause(null);
 		method = () -> {
 			exceptionHandler.handle(report);
 		};
