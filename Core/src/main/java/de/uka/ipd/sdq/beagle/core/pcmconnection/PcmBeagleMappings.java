@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -54,6 +55,18 @@ public class PcmBeagleMappings implements Serializable {
 	}
 
 	/**
+	 * Gets the identifier used for {@code loop} in the PCM repository.
+	 *
+	 * @param externalCallParameter An ExternalCallParameter. Must not be {@code null}.
+	 * @return The identifier used for {@code externalCallParameter} in the PCM repository
+	 *         if {@code this.hasPcmIdOf(externalCallParameter)} returns {@code true}.
+	 *         {@code null} otherwise.
+	 */
+	public String getPcmIdOf(final ExternalCallParameter externalCallParameter) {
+		return null;
+	}
+
+	/**
 	 * Query whether this mapping contains a PCM identifier for {@code rdia}.
 	 *
 	 * @param rdia A resource demanding internal action. Must not be {@code null}.
@@ -83,6 +96,18 @@ public class PcmBeagleMappings implements Serializable {
 	 *         {@code loop}.
 	 */
 	public boolean hasPcmIdOf(final SeffLoop loop) {
+		return false;
+	}
+
+	/**
+	 * Query whether this mapping contains a PCM identifier for
+	 * {@code ExternalCallParameter}.
+	 *
+	 * @param externalCallParameter An ExternalCallParamter. Must not be {@code null}.
+	 * @return {@code true} only if this mapping contains a PCM identifier for
+	 *         {@code ExternalCallParameter}.
+	 */
+	public boolean hasPcmIdOf(final ExternalCallParameter externalCallParameter) {
 		return false;
 	}
 
@@ -123,6 +148,19 @@ public class PcmBeagleMappings implements Serializable {
 	 *             {@code this.hasPcmIdOf(loop) && !this.getPcmIdOf(loop).equals(identifier)}
 	 */
 	public void addPcmIdOf(final SeffLoop loop, final String identifier) {
+	}
+
+	/**
+	 * Stores the {@code identifier} used for {@code loop} in the PCM repository.
+	 *
+	 * @param externalCallParameter An ExternalCallParamete. Must not be {@code null}.
+	 * @param identifier The identifier used for {@code externalCallParameter} in the PCM
+	 *            repository. Must not be {@code null}.
+	 * @throws IllegalStateException If there is already another identifier assigned to
+	 *             {@code externalCallParameter}. More formally: if
+	 *             {@code this.hasPcmIdOf(externalCallParameter) && !this.getPcmIdOf(externalCallParameter).equals(identifier)}
+	 */
+	public void addPcmIdOf(final ExternalCallParameter externalCallParameter, final String identifier) {
 	}
 
 }
