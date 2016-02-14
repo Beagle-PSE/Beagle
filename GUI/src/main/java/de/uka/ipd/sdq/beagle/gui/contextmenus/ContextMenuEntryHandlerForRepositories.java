@@ -7,7 +7,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -59,8 +59,8 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		}
 
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(null, fileToAnalyse,
-			clickedFile.getAdapter(IJavaProject.class));
+		final BeagleConfiguration beagleConfiguration =
+			new BeagleConfiguration(null, fileToAnalyse, JavaCore.create(clickedFile.getProject()));
 		final GuiController guiController = new GuiController(beagleConfiguration);
 		guiController.open();
 		return null;

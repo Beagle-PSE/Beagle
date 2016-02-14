@@ -66,16 +66,32 @@ public class BlackboardCreator {
 	 *
 	 */
 	public Blackboard createBlackboard() {
+		// CHECKSTYLE:IGNORE BooleanExpressionComplexity
 		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null
 			|| this.projectInformation == null) {
 			throw new IllegalStateException("Not everything has been setup yet.");
 		}
 		final Blackboard blackboard = new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls,
 			this.fitnessFunction, this.projectInformation);
-		for (final Class<? extends BlackboardStorer<? extends Serializable>> key : this.privateWrittenData.keySet()) {
-			blackboard.writeFor(key, this.privateWrittenData.get(key));
+		for (final Class<? extends BlackboardStorer<? extends Serializable>> writer : this.privateWrittenData
+			.keySet()) {
+			this.write(blackboard, writer);
 		}
 		return blackboard;
+	}
+
+	/**
+	 * Helper method to perform {@link #writeFor(Class, Serializable)} on the
+	 * {@link Blackboard}.
+	 *
+	 * @param <WRITTEN_TYPE> The type to wirte.
+	 * @param blackboard the {@link Blackboard} to write to.
+	 * @param writer the writer to write.
+	 */
+	@SuppressWarnings("unchecked")
+	private <WRITTEN_TYPE extends Serializable> void write(final Blackboard blackboard,
+		final Class<? extends BlackboardStorer<WRITTEN_TYPE>> writer) {
+		blackboard.writeFor(writer, (WRITTEN_TYPE) this.privateWrittenData.get(writer));
 	}
 
 	/**
