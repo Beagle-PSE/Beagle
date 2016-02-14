@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Proposed_Expression_Analyser
+Bundle-SymbolicName: Proposed_Expression_Analyser_Mockup;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: de.uka.ipd.sdq.beagle.core.extensionpoint.proposedexpressionanalysermockup1.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ de.uka.ipd.sdq.beagle.core;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Import-Package: de.uka.ipd.sdq.beagle.core.analysis
