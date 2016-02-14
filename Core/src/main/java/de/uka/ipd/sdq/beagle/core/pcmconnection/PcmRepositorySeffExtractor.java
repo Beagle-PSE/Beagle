@@ -3,12 +3,12 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
-import de.uka.ipd.sdq.beagle.core.FailureHandler;
-import de.uka.ipd.sdq.beagle.core.FailureReport;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -30,7 +30,7 @@ import java.util.Set;
 /**
  * Extractor class for SEFFElements. Adding all EObjects that are SeffLoops, SeffBranches,
  * ResourceDemandingInternalActions or ExternalCallParameters to given sets.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositorySeffExtractor {
@@ -111,7 +111,7 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 * @param eObject Expecting a {@link ResourceDemandingBehaviour} or any eObject that
 	 *            has a concrete SEFF-Type.
-	 * 
+	 *
 	 */
 	public void extractBehaviourAndAddToSet(final EObject eObject) {
 		if (eObject.getClass() == InternalActionImpl.class) {
@@ -172,7 +172,7 @@ public class PcmRepositorySeffExtractor {
 	 * EntityName not found!
 	 *
 	 * @param internalAction SEFF-Action to add.
-	 * 
+	 *
 	 */
 	private void addInternalActionToSet(final InternalActionImpl internalAction) {
 		try {
@@ -193,7 +193,7 @@ public class PcmRepositorySeffExtractor {
 	 * {@link ExternalCallActionImpl} to the {@link externalCallParameterSet}.
 	 *
 	 * @param externalAction SEFF-Action to add.
-	 * 
+	 *
 	 */
 	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
 		try {
@@ -214,7 +214,7 @@ public class PcmRepositorySeffExtractor {
 	 * {@link seffBranchSet}. Fails silently if file from EntityName not found!
 	 *
 	 * @param branchAction SEFF-Action to add.
-	 * 
+	 *
 	 */
 	private void addBranchActionToSet(final BranchActionImpl branchAction) {
 		try {
