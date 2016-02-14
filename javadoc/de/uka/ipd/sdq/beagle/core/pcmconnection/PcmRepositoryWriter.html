@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriterAnnotator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriter.html" target="_top">Frames</a></li>
@@ -207,19 +207,30 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>writeTo</h4>
-<pre>public&nbsp;void&nbsp;writeTo(java.io.File&nbsp;repositoryFile)</pre>
+<pre>public&nbsp;void&nbsp;writeTo(java.io.File&nbsp;repositoryFile)
+             throws java.io.FileNotFoundException</pre>
 <div class="block">Writes the Beagle’s findings to the <code>repositoryFile</code>. For each
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandingInternalAction.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandingInternalAction</a>, <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffBranch.html" title="class in de.uka.ipd.sdq.beagle.core">SeffBranch</a> and
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/SeffLoop.html" title="class in de.uka.ipd.sdq.beagle.core">SeffLoop</a>, the method will look up the identifier of the element in the
  source repository file the object was created for. If <code>repositoryFile</code>
  contains an element with this identifier that is of the appropriate type, the
  object’s result will appropriately written to <code>repositoryFile</code>. Nothing will
- be written otherwise.</div>
+ be written otherwise.
+ 
+ 
+ <p>If the element Id with final EvaluableExpression from the Blackboard can not be
+ found in the repository file.
+ 
+ <p>If the Blackboard elements (e.g. SeffBranch) from the elements with final
+ EvaluableExpression from the Blackboard do not Correspond to the repository PCM
+ elements (e.g. BranchAction).</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>repositoryFile</code> - A PCM repository file to write Beagle’s results to. It should
             use the same identifiers for elements as the repository file Beagle’s
             blackboard was initially created for.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.FileNotFoundException</code> - If given repository file does not exist</dd>
 </dl>
 </li>
 </ul>
@@ -251,7 +262,7 @@ extends java.lang.Object</pre>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/SeffElementCreator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriterAnnotator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriter.html" target="_top">Frames</a></li>

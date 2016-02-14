@@ -124,8 +124,8 @@ public final class EmfHelper {
 	 * @throws IOException If accessing the file fails.
 	 */
 	public static void saveToXMIFile(final EObject modelToSave, final String fileName) throws IOException {
-<span class="nc" id="L127">		saveToXMIFile(modelToSave, fileName, true);</span>
-<span class="nc" id="L128">	}</span>
+<span class="fc" id="L127">		saveToXMIFile(modelToSave, fileName, true);</span>
+<span class="fc" id="L128">	}</span>
 
 	/**
 	 * Additional parameter mayRetry to detect to deep recursion.
@@ -144,19 +144,19 @@ public final class EmfHelper {
 		// logger.debug(&quot;Saving &quot; + modelToSave.toString() + &quot; to &quot; + fileName);
 
 		// Create a resource set.
-<span class="nc" id="L147">		final ResourceSet resourceSet = new ResourceSetImpl();</span>
+<span class="fc" id="L147">		final ResourceSet resourceSet = new ResourceSetImpl();</span>
 
 		// Register the default resource factory -- only needed for stand-alone!
-<span class="nc" id="L150">		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()</span>
-<span class="nc" id="L151">			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());</span>
+<span class="fc" id="L150">		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()</span>
+<span class="fc" id="L151">			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());</span>
 
-<span class="nc" id="L153">		final URI myURI = URI.createURI(fileName);</span>
+<span class="fc" id="L153">		final URI myURI = URI.createURI(fileName);</span>
 
-<span class="nc" id="L155">		final Resource resource = resourceSet.createResource(myURI);</span>
-<span class="nc" id="L156">		resource.getContents().add(modelToSave);</span>
+<span class="fc" id="L155">		final Resource resource = resourceSet.createResource(myURI);</span>
+<span class="fc" id="L156">		resource.getContents().add(modelToSave);</span>
 
 		try {
-<span class="nc" id="L159">			resource.save(Collections.EMPTY_MAP);</span>
+<span class="fc" id="L159">			resource.save(Collections.EMPTY_MAP);</span>
 <span class="nc" id="L160">		} catch (final FileNotFoundException fileNotFound) {</span>
 <span class="nc bnc" id="L161" title="All 4 branches missed.">			if (mayRetry &amp;&amp; fileName.length() &gt; RETRY_FILENAME_LENGTH) {</span>
 				// try again with a shorter filename, but just one more try (mayRetry =
@@ -166,8 +166,8 @@ public final class EmfHelper {
 			} else {
 <span class="nc" id="L167">				throw fileNotFound;</span>
 			}
-<span class="nc" id="L169">		}</span>
-<span class="nc" id="L170">	}</span>
+<span class="fc" id="L169">		}</span>
+<span class="fc" id="L170">	}</span>
 
 	/**
 	 * Loads the root object from an EMF File.
