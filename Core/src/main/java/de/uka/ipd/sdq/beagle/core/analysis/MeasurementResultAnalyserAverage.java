@@ -38,7 +38,7 @@ public class MeasurementResultAnalyserAverage
 			blackboard.readFor(MeasurementResultAnalyserAverage.class);
 
 		if (measurableSeffContributions == null) {
-			return true;
+			return this.firstDemandCanContribute(blackboard);
 		}
 
 		if (measurableSeffContributions.isEmpty()) {
@@ -73,6 +73,44 @@ public class MeasurementResultAnalyserAverage
 
 	}
 
+	/**
+	 * Called if this class has no written content on the Blackboard yet.
+	 * Checking if there are any MeasurementResults for any SeffElement.
+	 *
+	 * @param blackboard the blackboard to read from
+	 * @return {@code true} if the blackboard contains MeasurementResults, otherwise {@code false}
+	 */
+	private boolean firstDemandCanContribute(final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard) {
+		
+		final Set<MeasurableSeffElement> allMeasurableSeffElementsOnBlackboard = new HashSet<MeasurableSeffElement>();
+
+		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {
+			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
+		}
+
+		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {
+			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
+		}
+
+		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {
+			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
+		}
+
+		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {
+			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
+		}
+
+		
+		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {
+			if (this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement) > 0) {
+				return true;
+			}
+		}
+		
+		return false;
+		
+	}
+	
 	/**
 	 * Scanning all {@link MeasurableSeffElement} for given MeasurementResults. If there
 	 * are more results than the number of results for a previous propose have been used,
