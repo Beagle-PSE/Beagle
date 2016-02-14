@@ -79,7 +79,7 @@ public class BeagleConfiguration {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
 <span class="fc" id="L81">	public BeagleConfiguration(final List&lt;Entity&gt; elements, final File repositoryFile) {</span>
-<span class="fc" id="L82">		Validate.notNull(elements);</span>
+
 <span class="fc" id="L83">		Validate.notNull(repositoryFile);</span>
 
 <span class="fc bfc" id="L85" title="All 2 branches covered.">		if (!repositoryFile.exists()) {</span>
@@ -118,8 +118,12 @@ public class BeagleConfiguration {
 	public void setElements(final List&lt;Entity&gt; elements) {
 <span class="fc bfc" id="L119" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L121">		this.elements = new LinkedList&lt;&gt;(elements);</span>
-<span class="fc" id="L122">	}</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">		if (elements == null) {</span>
+<span class="nc" id="L122">			this.elements = null;</span>
+		} else {
+<span class="fc" id="L124">			this.elements = new LinkedList&lt;&gt;(elements);</span>
+		}
+<span class="fc" id="L126">	}</span>
 
 	/**
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
@@ -140,7 +144,7 @@ public class BeagleConfiguration {
 	 * @return The timeout that will be used by Beagle.
 	 */
 	public int getTimeout() {
-<span class="fc" id="L143">		return this.timeout;</span>
+<span class="fc" id="L147">		return this.timeout;</span>
 	}
 
 	/**
@@ -165,10 +169,10 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setTimeout(final int timeout) {
-<span class="fc bfc" id="L168" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L170">		this.timeout = timeout;</span>
-<span class="fc" id="L171">	}</span>
+<span class="fc" id="L174">		this.timeout = timeout;</span>
+<span class="fc" id="L175">	}</span>
 
 	/**
 	 * Returns the repository file that contains all elements that shall be analysed.
@@ -176,7 +180,7 @@ public class BeagleConfiguration {
 	 * @return The repository file Beagle will operate on.
 	 */
 	public File getRepositoryFile() {
-<span class="fc" id="L179">		return this.repositoryFile;</span>
+<span class="fc" id="L183">		return this.repositoryFile;</span>
 	}
 
 	/**
@@ -190,11 +194,11 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setRepositoryFile(final File repositoryFile) {
-<span class="fc bfc" id="L193" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L195">		Validate.notNull(repositoryFile);</span>
-<span class="fc" id="L196">		this.repositoryFile = repositoryFile;</span>
-<span class="fc" id="L197">	}</span>
+<span class="fc" id="L199">		Validate.notNull(repositoryFile);</span>
+<span class="fc" id="L200">		this.repositoryFile = repositoryFile;</span>
+<span class="fc" id="L201">	}</span>
 
 	/**
 	 * Queries wether this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state.
@@ -203,7 +207,7 @@ public class BeagleConfiguration {
 	 *         {@code false} if it’s in the &lt;em&gt;set up&lt;/em&gt; state.
 	 */
 	public boolean isFinal() {
-<span class="fc" id="L206">		return this.finalised;</span>
+<span class="fc" id="L210">		return this.finalised;</span>
 	}
 
 	/**
@@ -212,8 +216,8 @@ public class BeagleConfiguration {
 	 * &lt;em&gt;finalised&lt;/em&gt; state has no effect.
 	 */
 	public void finalise() {
-<span class="fc" id="L215">		this.finalised = true;</span>
-<span class="fc" id="L216">	}</span>
+<span class="fc" id="L219">		this.finalised = true;</span>
+<span class="fc" id="L220">	}</span>
 
 	/**
 	 * Queries the provider responsible to get the source files Beagle shall analyse.
@@ -222,7 +226,7 @@ public class BeagleConfiguration {
 	 * @return The provider of source files.
 	 */
 	public SourceCodeFileProvider getFileProvider() {
-<span class="fc" id="L225">		return this.fileProvider;</span>
+<span class="fc" id="L229">		return this.fileProvider;</span>
 	}
 
 	/**
@@ -234,11 +238,11 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setFileProvider(final SourceCodeFileProvider fileProvider) {
-<span class="fc bfc" id="L237" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L239">		Validate.notNull(fileProvider);</span>
-<span class="fc" id="L240">		this.fileProvider = fileProvider;</span>
-<span class="fc" id="L241">	}</span>
+<span class="fc" id="L243">		Validate.notNull(fileProvider);</span>
+<span class="fc" id="L244">		this.fileProvider = fileProvider;</span>
+<span class="fc" id="L245">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
