@@ -8,6 +8,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /*
@@ -80,7 +81,7 @@ public class GuiController {
 	/**
 	 * Constructs a new {@link GuiController} using {@code components} as the default
 	 * components to be measured.
-	 * 
+	 *
 	 * @param beagleConfiguration The {@link BeagleConfiguration} to use.
 	 */
 	public GuiController(final BeagleConfiguration beagleConfiguration) {
@@ -111,7 +112,13 @@ public class GuiController {
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
 
-			final ActionListener wizardFinished = (event) -> this.wizardFinishedSuccessfully = true;
+			final ActionListener wizardFinished = new ActionListener() {
+
+				@Override
+				public void actionPerformed(final ActionEvent event) {
+					GuiController.this.wizardFinishedSuccessfully = true;
+				}
+			};
 
 			this.beagleAnalysisWizard = new BeagleAnalysisWizard(this.beagleConfiguration, wizardFinished);
 			final WizardDialog wizardDialog = new WizardDialog(this.shell, this.beagleAnalysisWizard);
@@ -123,10 +130,10 @@ public class GuiController {
 				// If the wizard finished successfully, indicate to the user that the
 				// analysis will start ...
 				this.state = GuiControllerState.dialogOpen;
-				this.engageDialog();
-
 				// ... and let it actually start.
 				this.startAnalysis();
+				this.engageDialog();
+
 			} else {
 				this.state = GuiControllerState.terminated;
 			}
