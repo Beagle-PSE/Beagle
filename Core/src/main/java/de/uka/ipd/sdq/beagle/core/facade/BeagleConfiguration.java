@@ -79,14 +79,16 @@ public class BeagleConfiguration {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 */
 	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile) {
-
 		Validate.notNull(repositoryFile);
 
 		if (!repositoryFile.exists()) {
 			throw new IllegalArgumentException("Repository file must exist.");
 		}
 
-		this.elements = new LinkedList<>(elements);
+		if (elements != null) {
+			this.elements = new LinkedList<>(elements);
+		}
+
 		this.repositoryFile = repositoryFile;
 		this.timeout = DEFAULT_TIMEOUT;
 	}
