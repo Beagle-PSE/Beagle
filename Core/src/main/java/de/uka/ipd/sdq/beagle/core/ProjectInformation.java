@@ -148,7 +148,7 @@ public class ProjectInformation implements Serializable {
 	 * @return The project’s launch configurations. Will neither be {@code null}, nor
 	 *         contain {@code null}, nor be empty.
 	 */
-	public Set<LaunchConfiguration> getLaunchConfigurations() {
+	public Set<ILaunchConfiguration> getLaunchConfigurations() {
 		return new HashSet<>(this.launchConfigurations);
 	}
 }
