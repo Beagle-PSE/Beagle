@@ -50,7 +50,7 @@
 
 % Set the PDF metadata
 \hypersetup{
-    pdftitle={Beagle --- Implementation report},
+    pdftitle={Beagle --- Implementation Report},
     pdfsubject={Beagle is a tool for automatic dynamic source code analysis in order to find resource demands of component based software’s components’ internal actions.},
     pdfauthor={Annika Berger, Joshua Gleitze, Roman Langrehr, Christoph Michelbach, Ansgar Spiegler, Michael Vogt},
     pdfkeywords={component based software, dynamic analysis, reverse engeneering, resource demands, SoMoX, Beagle, Palladio, Eclipse, Kieker},
@@ -3175,7 +3175,7 @@ BeagleConfiguration
 
 \end_inset
 
- because it as involved in the facade, too.
+ because it is involved in the facade, too.
 \end_layout
 
 \end_inset
@@ -3579,7 +3579,7 @@ Using genetic programming for the analysis.
 \end_layout
 
 \begin_layout Standard
-The classes for the parametrisation where created (but are empty) and handled
+The classes for the parametrisation were created (but are empty) and handled
  in each class, that doesn't depend on the realisation of this class.
 \end_layout
 
@@ -3603,7 +3603,7 @@ Most of the tasks were in the first and seconds week, which lead to some
 \end_layout
 
 \begin_layout Standard
-Getting these delays was intentionally because starting many tasks at the
+Getting these delays was intentional because starting many tasks at the
  beginning allowed us early to recognise which tasks can be implemented
  fast and which tasks are complicated and need more time.
  Those tasks were:
@@ -3625,13 +3625,13 @@ Unit Tests
 \end_layout
 
 \begin_layout Standard
-Everything that can be meaningful tested with JUnit Tests is tested with
+Everything that can be meaningfully tested with JUnit Tests is tested with
  JUnit tests.
  The only exceptions are:
 \end_layout
 
 \begin_layout Itemize
-The GUI classes, because it is not possible to test GUIs meaningful with
+The GUI classes, because it is not possible to test GUIs meaningfully with
  JUnit.
  Instead we created a document that describes what should be done to test
  the GUI manually.
