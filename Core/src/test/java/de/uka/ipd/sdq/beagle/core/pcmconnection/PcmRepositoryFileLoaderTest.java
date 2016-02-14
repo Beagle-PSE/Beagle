@@ -2,8 +2,19 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
+import static org.powermock.api.mockito.PowerMockito.whenNew;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,7 +26,30 @@ import java.net.URISyntaxException;
  * 
  * @author Annika Berger
  */
+//@formatter: off
+@PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
+	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
+//@formatter: on
 public class PcmRepositoryFileLoaderTest {
+	
+	/**
+	 * Rule loading PowerMock (to mock static methods).
+	 */
+	@Rule
+	public PowerMockRule loadPowerMock = new PowerMockRule();
+
+	/**
+	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
+	 * @throws Exception 
+	 *
+	 */
+	@Before
+	public void prepare() throws Exception {
+		final ResourceTypeMappings mockedMappings = PowerMockito.mock(ResourceTypeMappings.class);
+		mockStatic(ResourceTypeMappings.class);
+		whenNew(ResourceTypeMappings.class).withNoArguments().thenReturn(mockedMappings);
+		doNothing().when(mockedMappings).initialise();
+	}
 
 	/**
 	 * Test method for {@link PcmRepositoryFileLoader#loadRepositoryFromFile(File)}.

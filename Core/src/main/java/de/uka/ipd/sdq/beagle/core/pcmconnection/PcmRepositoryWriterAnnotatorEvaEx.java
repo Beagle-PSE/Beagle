@@ -29,7 +29,8 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 * Constructor.
 	 */
 	public PcmRepositoryWriterAnnotatorEvaEx() {
-		this.typeMappings = ResourceTypeMappings.getMappings();
+		this.typeMappings = new ResourceTypeMappings();
+		this.typeMappings.initialise();
 	}
 
 	/**

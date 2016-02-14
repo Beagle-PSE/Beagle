@@ -2,17 +2,26 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
+import static org.powermock.api.mockito.PowerMockito.whenNew;
 
 import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.palladiosimulator.pcm.seff.impl.BranchActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ExternalCallActionImpl;
 import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 
 /**
  * Tests {@link PcmRepositoryWriterAnnotatorEvaEx} and contains all test cases needed to
@@ -20,7 +29,30 @@ import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
  * 
  * @author Annika Berger
  */
+//@formatter: off
+@PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
+	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
+//@formatter: on
 public class PcmRepositoryWriterAnnotatorEvaExTest {
+
+	/**
+	 * Rule loading PowerMock (to mock static methods).
+	 */
+	@Rule
+	public PowerMockRule loadPowerMock = new PowerMockRule();
+
+	/**
+	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
+	 * @throws Exception 
+	 *
+	 */
+	@Before
+	public void prepare() throws Exception {
+		final ResourceTypeMappings mockedMappings = PowerMockito.mock(ResourceTypeMappings.class);
+		mockStatic(ResourceTypeMappings.class);
+		whenNew(ResourceTypeMappings.class).withNoArguments().thenReturn(mockedMappings);
+		doNothing().when(mockedMappings).initialise();
+	}
 
 	/**
 	 * Test method for
@@ -30,14 +62,14 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	public void constructor() {
 		new PcmRepositoryWriterAnnotatorEvaEx();
 	}
-
+	
 	/**
 	 * Test method for
 	 * {@link PcmRepositoryWriterAnnotatorEvaEx#annotateEvaExFor(LoopActionImpl, EvaluableExpression)}
 	 * .
 	 * 
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
-	 * parameters is {@code null} and no exception is thrown for valid calls.
+	 * parameters is {@code null}..
 	 */
 	@Test
 	public void annotateEvaExForLoopActionImplEvaluableExpression() {
@@ -96,12 +128,12 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 		final InternalActionImpl nullAction = null;
 		assertThat("Internal Action Impl must not be null", () -> annotater.annotateEvaExFor(nullAction, type, evaEx),
 			throwsException(NullPointerException.class));
-		
-		assertThat("Evaluable expression must not be null", () -> annotater.annotateEvaExFor(internalAction, null, evaEx),
-			throwsException(NullPointerException.class));
 
-		assertThat("Evaluable expression must not be null", () -> annotater.annotateEvaExFor(internalAction, type, null),
-			throwsException(NullPointerException.class));
+		assertThat("Evaluable expression must not be null",
+			() -> annotater.annotateEvaExFor(internalAction, null, evaEx), throwsException(NullPointerException.class));
+
+		assertThat("Evaluable expression must not be null",
+			() -> annotater.annotateEvaExFor(internalAction, type, null), throwsException(NullPointerException.class));
 	}
 
 	/**
