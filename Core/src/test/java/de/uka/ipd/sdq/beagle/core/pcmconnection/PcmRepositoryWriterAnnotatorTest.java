@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
@@ -24,10 +23,10 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
  * 
  * @author Annika Berger
  */
-//@formatter: off
+//@formatter:off
 @PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
 	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
-//@formatter: on
+//@formatter:on
 public class PcmRepositoryWriterAnnotatorTest {
 
 	/**
@@ -43,7 +42,9 @@ public class PcmRepositoryWriterAnnotatorTest {
 
 	/**
 	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception something went wrong while trying to mock the constructor of
+	 *             {@link ResourceTypeMappings}.
 	 *
 	 */
 	@Before

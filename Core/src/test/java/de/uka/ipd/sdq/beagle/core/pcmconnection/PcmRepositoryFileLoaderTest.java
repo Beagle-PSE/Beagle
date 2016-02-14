@@ -2,10 +2,7 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
@@ -26,12 +23,12 @@ import java.net.URISyntaxException;
  * 
  * @author Annika Berger
  */
-//@formatter: off
+// @formatter:off
 @PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
 	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
-//@formatter: on
+// @formatter:on
 public class PcmRepositoryFileLoaderTest {
-	
+
 	/**
 	 * Rule loading PowerMock (to mock static methods).
 	 */
@@ -40,7 +37,9 @@ public class PcmRepositoryFileLoaderTest {
 
 	/**
 	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
-	 * @throws Exception 
+	 * 
+	 * @throws Exception if something went wrong while mocking the constructor of
+	 *             {@link ResourceTypeMappings}.
 	 *
 	 */
 	@Before
@@ -57,9 +56,11 @@ public class PcmRepositoryFileLoaderTest {
 	 * <p>Asserts that a {@link NullPointerException} is thrown if method is called with
 	 * parameter {@code null}, a {@link FileNotFoundException} is thrown if the File does
 	 * not exist and no exception is thrown for correct input parameters.
+	 * 
+	 * @throws FileNotFoundException thrown if File does not exist
 	 */
 	@Test
-	public void loadRepositoryFromFile() {
+	public void loadRepositoryFromFile() throws FileNotFoundException {
 		final PcmRepositoryFileLoader loader = new PcmRepositoryFileLoader();
 		assertThat(() -> loader.loadRepositoryFromFile(null), throwsException(NullPointerException.class));
 

@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core.pcmconnection;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
@@ -27,10 +26,10 @@ import java.net.URISyntaxException;
  * 
  * @author Annika Berger
  */
-// @formatter: off
+// @formatter:off
 @PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
 	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
-//@formatter: on
+//@formatter:on
 public class PcmRepositoryWriterTest {
 
 	/**
@@ -79,9 +78,10 @@ public class PcmRepositoryWriterTest {
 	 * <p>Asserts that a {@link NullPointerException} is thrown if method is called with
 	 * parameter {@code null}, a {@link FileNotFoundException} is thrown if the File does
 	 * not exist and no exception is thrown for correct input parameters.
+	 * @throws FileNotFoundException if Repository File was not found
 	 */
 	@Test
-	public void writeTo() {
+	public void writeTo() throws FileNotFoundException {
 		final PcmRepositoryWriter writer = new PcmRepositoryWriter(BLACKBOARD_FACTORY.getFull());
 		assertThat("File must not be null", () -> writer.writeTo(null), throwsException(NullPointerException.class));
 		
