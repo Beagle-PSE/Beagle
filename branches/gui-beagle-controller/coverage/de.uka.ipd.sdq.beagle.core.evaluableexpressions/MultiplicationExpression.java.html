@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MultiplicationExpression.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a> &gt; <span class="el_source">MultiplicationExpression.java</span></div><h1>MultiplicationExpression.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+
+import org.apache.commons.collections4.MultiSet;
+import org.apache.commons.collections4.multiset.HashMultiSet;
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
+/**
+ * Expression that multiplies all its contained expressions.
+ *
+ * @author Joshua Gleitze
+ */
+public class MultiplicationExpression implements EvaluableExpression {
+
+	/**
+	 * The minimum number of summands needed to create a correct expression.
+	 */
+	private static final int MIN_FACTORS = 2;
+
+	/**
+	 * All factors of this expression as collection.
+	 */
+	private final MultiSet&lt;EvaluableExpression&gt; factors;
+
+	/**
+	 * Builds an expression that will return the product of all {@code factors} on
+	 * evaluation.
+	 *
+	 * @param factors The factors forming this expression’s product.
+	 *            {@code factors.size()} must at least be 2.
+	 */
+<span class="fc" id="L37">	public MultiplicationExpression(final Collection&lt;EvaluableExpression&gt; factors) {</span>
+<span class="fc" id="L38">		Validate.noNullElements(factors);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">		Validate.isTrue(factors.size() &gt;= MIN_FACTORS, &quot;The expression must contain at least %d factors.&quot;, MIN_FACTORS);</span>
+<span class="fc" id="L40">		this.factors = new HashMultiSet&lt;&gt;(factors);</span>
+<span class="fc" id="L41">	}</span>
+
+	/**
+	 * Builds an expression that will return the sum of all {@code factors} on evaluation.
+	 *
+	 * @param factors The factors forming this expression’s product.
+	 *            {@code factors.length} must at least be 2.
+	 */
+	public MultiplicationExpression(final EvaluableExpression... factors) {
+<span class="fc" id="L50">		this(Arrays.asList(factors));</span>
+<span class="fc" id="L51">	}</span>
+
+	/**
+	 * Gets all factors (expressions that will be multiplied on evaluation).
+	 *
+	 * @return The expressions forming this expression’s product.
+	 */
+	public Collection&lt;EvaluableExpression&gt; getFactors() {
+<span class="fc" id="L59">		return new ArrayList&lt;&gt;(this.factors);</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 */
+	@Override
+	public void receive(final EvaluableExpressionVisitor visitor) {
+<span class="fc" id="L70">		Validate.notNull(visitor);</span>
+<span class="fc" id="L71">		visitor.visit(this);</span>
+<span class="fc" id="L72">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 */
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+<span class="fc" id="L83">		Validate.notNull(variableAssignments);</span>
+<span class="fc" id="L84">		double product = 1;</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">		for (final EvaluableExpression factor : this.factors) {</span>
+<span class="fc" id="L86">			product *= factor.evaluate(variableAssignments);</span>
+<span class="fc" id="L87">		}</span>
+<span class="fc" id="L88">		return product;</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L93">		final StringBuilder result = new StringBuilder();</span>
+<span class="fc" id="L94">		result.append(&quot;(&quot;);</span>
+<span class="fc" id="L95">		boolean first = true;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (final EvaluableExpression factor : this.factors) {</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">			if (!first) {</span>
+<span class="fc" id="L98">				result.append(&quot; * &quot;);</span>
+			} else {
+<span class="fc" id="L100">				first = false;</span>
+			}
+<span class="fc" id="L102">			result.append(factor.toString());</span>
+<span class="fc" id="L103">		}</span>
+<span class="fc" id="L104">		result.append(&quot;)&quot;);</span>
+<span class="fc" id="L105">		return result.toString();</span>
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L111">			return false;</span>
+		}
+<span class="fc bfc" id="L113" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L114">			return true;</span>
+		}
+<span class="fc bfc" id="L116" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L117">			return false;</span>
+		}
+<span class="fc" id="L119">		final MultiplicationExpression other = (MultiplicationExpression) object;</span>
+<span class="fc" id="L120">		return new EqualsBuilder().append(this.factors, other.factors).isEquals();</span>
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+<span class="fc" id="L127">		return new HashCodeBuilder(223, 225).append(this.factors).toHashCode();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
