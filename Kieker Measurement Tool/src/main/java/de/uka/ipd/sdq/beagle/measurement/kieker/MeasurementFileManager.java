@@ -98,12 +98,12 @@ class MeasurementFileManager {
 	 * @throws IOException If retrieving the {@code path} is not possible.
 	 */
 	private Path loadFromClasspath(final String path, final String description) throws IOException {
-		final URL classpathUrl = this.getClass().getClassLoader().getResource(path);
+		final URL classpathUrl = MeasurementFileManager.class.getResource(path);
 		if (classpathUrl == null) {
 			throw new FileNotFoundException(String.format("Cannot find the %s!", description));
 		}
 		final URL fileUrl = FileLocator.toFileURL(classpathUrl);
-		return Paths.get(fileUrl.toExternalForm()).toAbsolutePath();
+		return Paths.get(fileUrl.getPath()).toAbsolutePath();
 	}
 
 	/**
@@ -176,5 +176,15 @@ class MeasurementFileManager {
 	 */
 	Path getKiekerConfigurationFile() {
 		return this.kiekerConfigFile;
+	}
+
+	/**
+	 * Copies the remote measurement code to the compiled instrumented code.
+	 *
+	 * @throws IOException If the copy operation fails.
+	 */
+	void copyRemoteMeasurementByteCodeToInstrumentedByteCode() throws IOException {
+		FileUtils.copyDirectory(this.getMeasurementRemotePackage().toFile(),
+			this.getCompiledByteCodeFolder().resolve(REMOTE_CODE_PATH.substring(1)).toFile());
 	}
 }

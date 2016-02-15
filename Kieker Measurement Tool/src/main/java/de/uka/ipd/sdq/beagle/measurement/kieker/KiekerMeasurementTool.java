@@ -75,9 +75,10 @@ public class KiekerMeasurementTool implements MeasurementTool {
 			.intoFolder(fileManager.getCompiledByteCodeFolder())
 			.compile();
 
+		fileManager.copyRemoteMeasurementByteCodeToInstrumentedByteCode();
+
 		for (final LaunchConfiguration launch : measurementOrder.getProjectInformation().getLaunchConfigurations()) {
 			launch.prependClasspath(fileManager.getKiekerJar().toString())
-				.prependClasspath(fileManager.getMeasurementRemotePackage().toString())
 				.prependClasspath(fileManager.getCompiledByteCodeFolder().toString())
 				.appendJvmArgument(jvmArg(KIEKER_CONFIGURATION_FILE_PROPERTY, fileManager.getKiekerConfigurationFile()))
 				.appendJvmArgument(jvmArg(KIEKER_OUTPUT_FOLDER_PROPERTY, fileManager.getKiekerResultsFolder()))
