@@ -115,8 +115,8 @@ var activeTableTab = "activeTableTab";
 
  <p>Note that expressions cannot not contain themselves.
 
- <p>Implementations are encouraged to override <code>Object.equals(Object)</code> and
- <code>Object.hashCode()</code> to fulfill the following: If for two evaluable expressions
+ <p>Implementations are encouraged to override <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang"><code>Object.equals(Object)</code></a> and
+ <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang"><code>Object.hashCode()</code></a> to fulfill the following: If for two evaluable expressions
  <code>a</code> and <code>b</code> <code>a.equals(b)</code> returns <code>true</code> true,
  <code>a.evaluate(ass)</code> will return a value equal to <code>b.evaluate(ass)</code> for any
  <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariableAssignment</code></a> <code>ass</code>. The inverse implication will usually
@@ -125,7 +125,7 @@ var activeTableTab = "activeTableTab";
  <code>d.evaluate(ass)</code> for any <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariableAssignment</code></a> <code>ass</code> but
  <code>a.equals(b)</code> returns <code>false</code>. However, the implementation of
  <code>equals</code> should aim to allow as few such pairs <code>(c,d)</code> as possible. <br>
- Users should be aware that calling <code>EvaluableExpression#equals(Object)</code> may be very costly, as it might require a lot of
+ Users should be aware that calling <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang"><code>EvaluableExpression#equals(Object)</code></a> may be very costly, as it might require a lot of
  comparisons and expressions may an unlimited amount of contained expressions.</div>
 </li>
 </ul>
