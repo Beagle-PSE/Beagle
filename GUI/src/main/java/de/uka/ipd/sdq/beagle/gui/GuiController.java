@@ -212,18 +212,23 @@ public class GuiController {
 			 */
 			@Override
 			public void run() {
-				GuiController.this.beagleController.startAnalysis();
+				try {
+					GuiController.this.beagleController.startAnalysis();
+					// CHECKSTYLE:IGNORE IllegalCatch
+				} catch (final Exception runtimeException) {
 
-				// when {@code beagleController.startAnalysis()} returns, close the dialog
-				GuiController.this.state = GuiControllerState.terminated;
-				new UIJob(Display.getDefault(), "Close Beagle Dialog") {
+					// when {@code beagleController.startAnalysis()} returns, close the
+					// dialog
+					GuiController.this.state = GuiControllerState.terminated;
+					new UIJob(Display.getDefault(), "Close Beagle Dialog") {
 
-					@Override
-					public IStatus runInUIThread(final IProgressMonitor monitor) {
-						GuiController.this.messageDialog.close();
-						return Status.OK_STATUS;
-					}
-				}.schedule();
+						@Override
+						public IStatus runInUIThread(final IProgressMonitor monitor) {
+							GuiController.this.messageDialog.close();
+							return Status.OK_STATUS;
+						}
+					}.schedule();
+				}
 			}
 		}.start();
 	}

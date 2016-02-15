@@ -3,20 +3,18 @@ package de.uka.ipd.sdq.beagle.core.facade;
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
-import de.uka.ipd.sdq.beagle.core.FailureHandler;
-import de.uka.ipd.sdq.beagle.core.FailureReport;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserContributionsHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import de.uka.ipd.sdq.beagle.core.judge.AbstractionAndPrecisionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementToolContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
-import org.eclipse.jdt.core.IClasspathEntry;
-import org.eclipse.jdt.core.JavaModelException;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.FileNotFoundException;
@@ -38,7 +36,7 @@ public class BeagleController {
 	/**
 	 * The analysis controller used for this project.
 	 */
-	private AnalysisController analysisController;
+	private final AnalysisController analysisController;
 
 	/**
 	 * Constructs a new {@code BeagleController} with the given
@@ -72,18 +70,14 @@ public class BeagleController {
 		} catch (final CoreException coreException) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
 		}
-		String buildPath = null;
-		try {
-			buildPath = this.classPathToString(beagleConfiguration.getJavaProject().getResolvedClasspath(true));
-		} catch (final JavaModelException javaModelException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(javaModelException));
-		}
+		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();
 		final Set<ILaunchConfiguration> iLaunchConfigurations =
 			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
 				.getAllSuitableJUnitLaunchConfigurations();
 		final Set<LaunchConfiguration> launchConfigurations = new HashSet<>();
 		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {
-			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration));
+			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration,
+				beagleConfiguration.getJavaProject()));
 
 			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
@@ -145,21 +139,5 @@ public class BeagleController {
 			strings.add(entity.getId());
 		}
 		return strings;
-	}
-
-	/**
-	 * Converts an array of {@linkplain IClasspathEntry IClasspathEntries} to a
-	 * ";"-separated string with the paths.
-	 *
-	 * @param classpathEntries The {@linkplain IClasspathEntry IClasspathEntries} to
-	 *            convert
-	 * @return the ";"-separated string with the paths
-	 */
-	private String classPathToString(final IClasspathEntry[] classpathEntries) {
-		String path = "";
-		for (final IClasspathEntry classpathEntry : classpathEntries) {
-			path += classpathEntry.getPath().toOSString() + ";";
-		}
-		return path.substring(0, path.length() - 1);
 	}
 }

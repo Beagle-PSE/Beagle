@@ -6,6 +6,7 @@ import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.jdt.core.IJavaProject;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -13,7 +14,7 @@ import java.util.Set;
 
 /**
  * Builds LaunchConfiguration and provides methods to get them.
- * 
+ *
  * @author Annika Berger
  */
 public final class LaunchConfigurationFactory {
@@ -26,26 +27,21 @@ public final class LaunchConfigurationFactory {
 	public LaunchConfiguration getOne() {
 		final ILaunchConfiguration launchConfig = mock(ILaunchConfiguration.class);
 		final EclipseLaunchConfigurationLaunchConfiguration launchConfiguration =
-			new EclipseLaunchConfigurationLaunchConfiguration(launchConfig);
+			new EclipseLaunchConfigurationLaunchConfiguration(launchConfig, mock(IJavaProject.class));
 		return launchConfiguration;
 	}
-	
+
 	/**
 	 * Creates Launch Configurations.
 	 *
 	 * @return an array containing all created launch configurations
 	 */
 	public LaunchConfiguration[] getAll() {
-		final ILaunchConfiguration launchConfig = mock(ILaunchConfiguration.class);
-		final EclipseLaunchConfigurationLaunchConfiguration launchConfiguration =
-			new EclipseLaunchConfigurationLaunchConfiguration(launchConfig);
-		
-		final LaunchConfiguration[] launchConfigurations = {
-			launchConfiguration
+		return new LaunchConfiguration[] {
+			mock(LaunchConfiguration.class)
 		};
-		return launchConfigurations;
 	}
-	
+
 	/**
 	 * Creates Launch Configurations.
 	 *
