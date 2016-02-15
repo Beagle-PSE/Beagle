@@ -6,11 +6,16 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -22,14 +27,29 @@ import org.junit.Test;
 public class EclipseLaunchConfigurationLaunchConfigurationTest {
 
 	/**
+	 * A mocked launch configuration.
+	 */
+	private ILaunchConfigurationWorkingCopy launchConfiguration;
+
+	/**
+	 * Populates {@link #launchConfiguration}, and {@link #workingCopy}.
+	 *
+	 * @throws CoreException will never be thrown
+	 */
+	@Before
+	public void mockLaunchConfiguration() throws CoreException {
+		this.launchConfiguration = mock(ILaunchConfigurationWorkingCopy.class);
+		when(this.launchConfiguration.getWorkingCopy()).thenReturn(this.launchConfiguration);
+	}
+
+	/**
 	 * Test method for
 	 * {@link EclipseLaunchConfigurationLaunchConfiguration#EclipseLaunchConfigurationLaunchConfiguration(ILaunchConfiguration)}
 	 * .
 	 */
 	@Test
 	public void eclipseLaunchConfigurationLaunchConfiguration() {
-		final ILaunchConfiguration mockLaunchConfiguration = mock(ILaunchConfiguration.class);
-		new EclipseLaunchConfigurationLaunchConfiguration(mockLaunchConfiguration);
+		new EclipseLaunchConfigurationLaunchConfiguration(this.launchConfiguration);
 
 		assertThat("launch configuration must not be null", new ThrowingMethod() {
 
@@ -45,23 +65,15 @@ public class EclipseLaunchConfigurationLaunchConfigurationTest {
 	 *
 	 * @throws CoreException Will not happen.
 	 */
-	@SuppressWarnings("unchecked")
 	@Test
 	public void execute() throws CoreException {
-		final ILaunchConfiguration mockLaunchConfiguration = mock(ILaunchConfiguration.class);
 		final EclipseLaunchConfigurationLaunchConfiguration launchConfig =
-			new EclipseLaunchConfigurationLaunchConfiguration(mockLaunchConfiguration);
+			new EclipseLaunchConfigurationLaunchConfiguration(this.launchConfiguration);
 
 		launchConfig.execute();
-		then(mockLaunchConfiguration).should().launch(any(), any());
+		then(this.launchConfiguration).should().launch(any(), any());
 
-		given(mockLaunchConfiguration.launch(any(), any())).willThrow(CoreException.class);
-		assertThat(new ThrowingMethod() {
-
-			@Override
-			public void throwException() throws Exception {
-				launchConfig.execute();
-			}
-		}, throwsException(RuntimeException.class));
+		given(this.launchConfiguration.launch(any(), any())).willThrow(new CoreException(Status.CANCEL_STATUS));
+		assertThat(launchConfig::execute, throwsException(FailureException.class));
 	}
 }

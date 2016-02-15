@@ -13,7 +13,7 @@ import java.util.Set;
 
 /**
  * Builds LaunchConfiguration and provides methods to get them.
- * 
+ *
  * @author Annika Berger
  */
 public final class LaunchConfigurationFactory {
@@ -29,23 +29,18 @@ public final class LaunchConfigurationFactory {
 			new EclipseLaunchConfigurationLaunchConfiguration(launchConfig);
 		return launchConfiguration;
 	}
-	
+
 	/**
 	 * Creates Launch Configurations.
 	 *
 	 * @return an array containing all created launch configurations
 	 */
 	public LaunchConfiguration[] getAll() {
-		final ILaunchConfiguration launchConfig = mock(ILaunchConfiguration.class);
-		final EclipseLaunchConfigurationLaunchConfiguration launchConfiguration =
-			new EclipseLaunchConfigurationLaunchConfiguration(launchConfig);
-		
-		final LaunchConfiguration[] launchConfigurations = {
-			launchConfiguration
+		return new LaunchConfiguration[] {
+			mock(LaunchConfiguration.class)
 		};
-		return launchConfigurations;
 	}
-	
+
 	/**
 	 * Creates Launch Configurations.
 	 *
