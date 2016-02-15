@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EclipseLaunchConfigurationLaunchConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">EclipseLaunchConfigurationLaunchConfiguration.java</span></div><h1>EclipseLaunchConfigurationLaunchConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+
+import org.apache.commons.lang3.Validate;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
+
+import java.io.File;
+
+/**
+ * A launch configuration that starts in its {@link #execute()} method an eclipse launch
+ * configuration.
+ *
+ * @author Roman Langrehr
+ * @author Joshua Gleitze
+ */
+public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConfiguration {
+
+	/**
+	 * Handler of failures.
+	 */
+<span class="fc" id="L27">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;Eclipse Launch Manager&quot;);</span>
+
+	/**
+	 * The eclipse launch configuration to run.
+	 */
+	private final ILaunchConfiguration originalLaunchConfiguration;
+
+	/**
+	 * The working copy we operate on to not modify the original configuration.
+	 */
+	private ILaunchConfigurationWorkingCopy workingCopy;
+
+	/**
+	 * Creates a Beagle launch configuration from an eclipse launch configuration.
+	 *
+	 * @param launchConfiguration The eclipse launch configuration which should be
+	 *            launched to execute the code under test.
+	 */
+<span class="fc" id="L45">	public EclipseLaunchConfigurationLaunchConfiguration(final ILaunchConfiguration launchConfiguration) {</span>
+<span class="fc" id="L46">		Validate.notNull(launchConfiguration);</span>
+<span class="fc" id="L47">		this.originalLaunchConfiguration = launchConfiguration;</span>
+<span class="fc" id="L48">		this.copy();</span>
+<span class="fc" id="L49">	}</span>
+
+	@Override
+	public void execute() {
+<span class="fc" id="L53">		final ILaunchConfigurationWorkingCopy toLaunch = this.workingCopy;</span>
+<span class="fc" id="L54">		this.copy();</span>
+		try {
+<span class="fc" id="L56">			toLaunch.launch(ILaunchManager.RUN_MODE, null);</span>
+<span class="nc" id="L57">		} catch (final CoreException runException) {</span>
+<span class="nc" id="L58">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L59">				new FailureReport&lt;LaunchConfiguration&gt;().cause(runException).retryWith(this::execute).recoverable();</span>
+<span class="nc" id="L60">			FAILURE_HANDLER.handle(failure);</span>
+<span class="fc" id="L61">		}</span>
+<span class="fc" id="L62">	}</span>
+
+	@Override
+	public LaunchConfiguration prependClasspath(final String classPathEntry) {
+		try {
+<span class="nc" id="L67">			final String oldPath = this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, &quot;&quot;);</span>
+<span class="nc" id="L68">			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH,</span>
+				classPathEntry + File.pathSeparator + oldPath);
+<span class="nc" id="L70">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L71">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L72">				new FailureReport&lt;LaunchConfiguration&gt;().cause(coreException);</span>
+<span class="nc" id="L73">			return FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L74">		}</span>
+<span class="nc" id="L75">		return this;</span>
+	}
+
+	@Override
+	public LaunchConfiguration appendJvmArgument(final String argument) {
+		try {
+<span class="nc" id="L81">			final String oldAttributes =</span>
+<span class="nc" id="L82">				this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, &quot;&quot;);</span>
+<span class="nc" id="L83">			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS,</span>
+				oldAttributes + &quot; &quot; + argument);
+<span class="nc" id="L85">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L86">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L87">				new FailureReport&lt;LaunchConfiguration&gt;().cause(coreException);</span>
+<span class="nc" id="L88">			return FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L89">		}</span>
+<span class="nc" id="L90">		return this;</span>
+	}
+
+	/**
+	 * Puts a copy of {@link #originalLaunchConfiguration} into {@link #workingCopy}.
+	 */
+	private void copy() {
+		// Calling .getWorkingCopy() two times assures that nobody can modify the
+		// original LaunchConfiguration.
+		try {
+<span class="fc" id="L100">			this.workingCopy = this.originalLaunchConfiguration.getWorkingCopy().getWorkingCopy();</span>
+<span class="nc" id="L101">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L102">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L103">				new FailureReport&lt;LaunchConfiguration&gt;().cause(coreException);</span>
+<span class="nc" id="L104">			FAILURE_HANDLER.handle(failure);</span>
+<span class="fc" id="L105">		}</span>
+<span class="fc" id="L106">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
