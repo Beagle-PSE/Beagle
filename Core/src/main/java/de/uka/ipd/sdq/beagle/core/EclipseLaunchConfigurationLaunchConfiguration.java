@@ -6,15 +6,19 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import org.apache.commons.lang3.Validate;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.core.ILaunchesListener2;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
 import org.eclipse.jdt.launching.JavaRuntime;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,6 +52,11 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	private ILaunchConfigurationWorkingCopy workingCopy;
 
 	/**
+	 * When launched, indicates whether the launch has finished.
+	 */
+	private boolean done;
+
+	/**
 	 * Creates a Beagle launch configuration from an eclipse launch configuration.
 	 *
 	 * @param launchConfiguration The eclipse launch configuration which should be
@@ -63,18 +72,27 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 		this.originalLaunchConfiguration = launchConfiguration;
 		this.launchedProject = launchedProject;
 		this.copy();
+
+		DebugPlugin.getDefault().getLaunchManager().addLaunchListener(new FinishWaiter());
 	}
 
 	@Override
 	public void execute() {
-		final ILaunchConfigurationWorkingCopy toLaunch = this.workingCopy;
-		this.copy();
+		this.done = false;
 		try {
-			toLaunch.launch(ILaunchManager.RUN_MODE, null);
-		} catch (final CoreException runException) {
+			this.workingCopy.launch(ILaunchManager.RUN_MODE, null);
+
+			synchronized (this) {
+				while (!this.done) {
+					this.wait();
+				}
+			}
+		} catch (final InterruptedException | CoreException runException) {
 			final FailureReport<LaunchConfiguration> failure =
 				new FailureReport<LaunchConfiguration>().cause(runException).retryWith(this::execute).recoverable();
 			FAILURE_HANDLER.handle(failure);
+		} finally {
+			this.copy();
 		}
 	}
 
@@ -128,4 +146,45 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 		}
 	}
 
+	/**
+	 * Monitors the launched configurations for being terminated. Notifies this monitor
+	 * once the launch finished.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private class FinishWaiter implements ILaunchesListener2 {
+
+		/**
+		 * Reference to “oun” {@link EclipseLaunchConfigurationLaunchConfiguration}
+		 * instance.
+		 */
+		private final EclipseLaunchConfigurationLaunchConfiguration parent =
+			EclipseLaunchConfigurationLaunchConfiguration.this;
+
+		@Override
+		public void launchesRemoved(final ILaunch[] launches) {
+			// not interesting to us
+		}
+
+		@Override
+		public void launchesAdded(final ILaunch[] launches) {
+			// not interesting to us
+		}
+
+		@Override
+		public void launchesChanged(final ILaunch[] launches) {
+			// not interesting to us
+		}
+
+		@Override
+		public void launchesTerminated(final ILaunch[] launches) {
+			if (Arrays.stream(launches)
+				.anyMatch((launch) -> launch.getLaunchConfiguration() == this.parent.workingCopy)) {
+				synchronized (this.parent) {
+					this.parent.done = true;
+					this.parent.notifyAll();
+				}
+			}
+		}
+	}
 }
