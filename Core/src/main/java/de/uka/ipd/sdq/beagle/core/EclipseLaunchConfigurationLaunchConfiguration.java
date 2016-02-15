@@ -64,6 +64,7 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	@Override
 	public LaunchConfiguration prependClasspath(final String classPathEntry) {
 		try {
+			this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_DEFAULT_CLASSPATH, false);
 			final String oldPath = this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, "");
 			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH,
 				classPathEntry + File.pathSeparator + oldPath);
