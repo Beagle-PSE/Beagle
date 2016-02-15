@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.measurement.kieker;
 
+import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
@@ -11,6 +12,7 @@ import de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation.EclipseAstInstru
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A measurement tool instrumenting the project’s source code to be measured by <a
@@ -61,11 +63,11 @@ public class KiekerMeasurementTool implements MeasurementTool {
 	private List<MeasurementEvent> doMeasure(final MeasurementOrder measurementOrder) throws IOException {
 		final MeasurementFileManager fileManager = new MeasurementFileManager();
 		final CodeSectionIdentifier resourceDemandIdentifer = new CodeSectionIdentifier();
+		final Set<CodeSection> resourceDemandSections = measurementOrder.getResourceDemandSections();
 
 		new EclipseAstInstrumentor(fileManager::getInstrumentationFileFor)
 			.useCharset(measurementOrder.getProjectInformation().getCharset())
-			.useStrategy(new ResourceDemandInstrumentationStrategy(resourceDemandIdentifer),
-				measurementOrder.getResourceDemandSections())
+			.useStrategy(new ResourceDemandInstrumentationStrategy(resourceDemandIdentifer), resourceDemandSections)
 			.instrument();
 
 		fileManager.copyRemoteMeasurementByteCodeToInstrumentedByteCode();
@@ -85,7 +87,8 @@ public class KiekerMeasurementTool implements MeasurementTool {
 				.execute();
 		}
 
-		return new ArrayList<>();
+		return new KiekerMeasurementResultProcessor(fileManager.getKiekerResultsFolder())
+			.useResourceDemandIdentifier(resourceDemandIdentifer).process();
 	}
 
 	/**
