@@ -68,14 +68,14 @@ public class KiekerMeasurementTool implements MeasurementTool {
 				measurementOrder.getResourceDemandSections())
 			.instrument();
 
+		fileManager.copyRemoteMeasurementByteCodeToInstrumentedByteCode();
+
 		new EclipseCompiler(fileManager.getInstrumentedSourceCodeFolder())
 			.useClassPath(measurementOrder.getProjectInformation().getBuildPath())
-			.useClassPath(fileManager.getMeasurementRemotePackage().toString())
+			.useClassPath(fileManager.getCompiledByteCodeFolder().toString())
 			.useCharset(measurementOrder.getProjectInformation().getCharset())
 			.intoFolder(fileManager.getCompiledByteCodeFolder())
 			.compile();
-
-		fileManager.copyRemoteMeasurementByteCodeToInstrumentedByteCode();
 
 		for (final LaunchConfiguration launch : measurementOrder.getProjectInformation().getLaunchConfigurations()) {
 			launch.prependClasspath(fileManager.getKiekerJar().toString())
