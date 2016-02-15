@@ -40,6 +40,8 @@ public class EclipseCompiler {
 	/**
 	 * The folder to compile into.
 	 */
+	// Passing "none" as target folder to the batch compiler will prevent the generation
+	// of .class files.
 	private String targetFolder = "none";
 
 	/**
