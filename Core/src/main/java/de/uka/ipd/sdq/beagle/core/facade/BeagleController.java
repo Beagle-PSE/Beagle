@@ -76,7 +76,8 @@ public class BeagleController {
 				.getAllSuitableJUnitLaunchConfigurations();
 		final Set<LaunchConfiguration> launchConfigurations = new HashSet<>();
 		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {
-			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration));
+			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration,
+				beagleConfiguration.getJavaProject()));
 
 			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));

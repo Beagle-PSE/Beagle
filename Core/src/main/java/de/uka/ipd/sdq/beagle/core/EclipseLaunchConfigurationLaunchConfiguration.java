@@ -5,12 +5,17 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
+import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
+import org.eclipse.jdt.launching.JavaRuntime;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A launch configuration that starts in its {@link #execute()} method an eclipse launch
@@ -32,6 +37,12 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	private final ILaunchConfiguration originalLaunchConfiguration;
 
 	/**
+	 * The project that will be launched when executing
+	 * {@link #originalLaunchConfiguration}.
+	 */
+	private final IJavaProject launchedProject;
+
+	/**
 	 * The working copy we operate on to not modify the original configuration.
 	 */
 	private ILaunchConfigurationWorkingCopy workingCopy;
@@ -41,10 +52,16 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	 *
 	 * @param launchConfiguration The eclipse launch configuration which should be
 	 *            launched to execute the code under test.
+	 * @param launchedProject The project that will be launched when executing the
+	 *            {@code launchConfiguration}.
 	 */
-	public EclipseLaunchConfigurationLaunchConfiguration(final ILaunchConfiguration launchConfiguration) {
+	public EclipseLaunchConfigurationLaunchConfiguration(final ILaunchConfiguration launchConfiguration,
+		final IJavaProject launchedProject) {
 		Validate.notNull(launchConfiguration);
+		Validate.notNull(launchedProject);
+
 		this.originalLaunchConfiguration = launchConfiguration;
+		this.launchedProject = launchedProject;
 		this.copy();
 	}
 
@@ -63,11 +80,16 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 
 	@Override
 	public LaunchConfiguration prependClasspath(final String classPathEntry) {
+		final IRuntimeClasspathEntry newEntry = JavaRuntime.newArchiveRuntimeClasspathEntry(new Path(classPathEntry));
 		try {
-			this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_DEFAULT_CLASSPATH, false);
-			final String oldPath = this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, "");
-			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH,
-				classPathEntry + File.pathSeparator + oldPath);
+			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_DEFAULT_CLASSPATH, false);
+			final List<String> entries =
+				this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, new ArrayList<>());
+			if (entries.isEmpty()) {
+				entries.add(JavaRuntime.newDefaultProjectClasspathEntry(this.launchedProject).getMemento());
+			}
+			entries.add(0, newEntry.getMemento());
+			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, entries);
 		} catch (final CoreException coreException) {
 			final FailureReport<LaunchConfiguration> failure =
 				new FailureReport<LaunchConfiguration>().cause(coreException);

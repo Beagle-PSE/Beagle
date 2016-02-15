@@ -9,12 +9,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
-import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.jdt.core.IJavaProject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -49,15 +49,15 @@ public class EclipseLaunchConfigurationLaunchConfigurationTest {
 	 */
 	@Test
 	public void eclipseLaunchConfigurationLaunchConfiguration() {
-		new EclipseLaunchConfigurationLaunchConfiguration(this.launchConfiguration);
+		new EclipseLaunchConfigurationLaunchConfiguration(this.launchConfiguration, mock(IJavaProject.class));
 
-		assertThat("launch configuration must not be null", new ThrowingMethod() {
+		assertThat("launch configuration must not be null",
+			() -> new EclipseLaunchConfigurationLaunchConfiguration(null, mock(IJavaProject.class)),
+			throwsException(NullPointerException.class));
 
-			@Override
-			public void throwException() throws Exception {
-				new EclipseLaunchConfigurationLaunchConfiguration(null);
-			}
-		}, throwsException(NullPointerException.class));
+		assertThat("java project must not be null",
+			() -> new EclipseLaunchConfigurationLaunchConfiguration(this.launchConfiguration, null),
+			throwsException(NullPointerException.class));
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class EclipseLaunchConfigurationLaunchConfigurationTest {
 	@Test
 	public void execute() throws CoreException {
 		final EclipseLaunchConfigurationLaunchConfiguration launchConfig =
-			new EclipseLaunchConfigurationLaunchConfiguration(this.launchConfiguration);
+			new EclipseLaunchConfigurationLaunchConfiguration(this.launchConfiguration, mock(IJavaProject.class));
 
 		launchConfig.execute();
 		then(this.launchConfiguration).should().launch(any(), any());
