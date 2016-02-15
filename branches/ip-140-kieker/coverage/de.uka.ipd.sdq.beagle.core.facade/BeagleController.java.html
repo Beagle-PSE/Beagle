@@ -76,19 +76,18 @@ public class BeagleController {
 <span class="nc" id="L76">				.getAllSuitableJUnitLaunchConfigurations();</span>
 <span class="nc" id="L77">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = new HashSet&lt;&gt;();</span>
 <span class="nc bnc" id="L78" title="All 2 branches missed.">		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {</span>
-<span class="nc" id="L79">			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration,</span>
-<span class="nc" id="L80">				beagleConfiguration.getJavaProject()));</span>
+<span class="nc" id="L79">			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration));</span>
 
-<span class="nc" id="L82">			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
+<span class="nc" id="L81">			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
-<span class="nc" id="L84">		}</span>
-<span class="nc" id="L85">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
-<span class="nc" id="L86">		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard(),</span>
-<span class="nc" id="L87">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
-<span class="nc" id="L88">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
+<span class="nc" id="L83">		}</span>
+<span class="nc" id="L84">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
+<span class="nc" id="L85">		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard(),</span>
+<span class="nc" id="L86">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
+<span class="nc" id="L87">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
 			new HashSet&lt;&gt;(
-<span class="nc" id="L90">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
-<span class="nc" id="L91">	}</span>
+<span class="nc" id="L89">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
+<span class="nc" id="L90">	}</span>
 
 	/**
 	 * Starts the analysis. This method can only be used once per {@link BeagleController}
@@ -96,8 +95,8 @@ public class BeagleController {
 	 *
 	 */
 	public void startAnalysis() {
-<span class="nc" id="L99">		this.analysisController.performAnalysis();</span>
-<span class="nc" id="L100">	}</span>
+<span class="nc" id="L98">		this.analysisController.performAnalysis();</span>
+<span class="nc" id="L99">	}</span>
 
 	/**
 	 * Pauses the analysis. If the analysis is already paused, calls to this method are
@@ -106,7 +105,7 @@ public class BeagleController {
 	 */
 	public void pauseAnalysis() {
 
-<span class="nc" id="L109">	}</span>
+<span class="nc" id="L108">	}</span>
 
 	/**
 	 * Continues the analysis if it is paused. If it's running, calls to this method are
@@ -115,7 +114,7 @@ public class BeagleController {
 	 */
 	public void continueAnalysis() {
 
-<span class="nc" id="L118">	}</span>
+<span class="nc" id="L117">	}</span>
 
 	/**
 	 * Aborts the analysis. If it already is aborted, calls to this method are ignored.
@@ -125,7 +124,7 @@ public class BeagleController {
 	 */
 	public void abortAnalysis() {
 
-<span class="nc" id="L128">	}</span>
+<span class="nc" id="L127">	}</span>
 
 	/**
 	 * Converts {@linkplain Entity Entities} to {@linkplain String Strings}.
@@ -134,11 +133,11 @@ public class BeagleController {
 	 * @return The ids of the {@code entities}.
 	 */
 	private List&lt;String&gt; entitysToStrings(final List&lt;Entity&gt; entities) {
-<span class="nc" id="L137">		final List&lt;String&gt; strings = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L138" title="All 2 branches missed.">		for (final Entity entity : entities) {</span>
-<span class="nc" id="L139">			strings.add(entity.getId());</span>
-<span class="nc" id="L140">		}</span>
-<span class="nc" id="L141">		return strings;</span>
+<span class="nc" id="L136">		final List&lt;String&gt; strings = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">		for (final Entity entity : entities) {</span>
+<span class="nc" id="L138">			strings.add(entity.getId());</span>
+<span class="nc" id="L139">		}</span>
+<span class="nc" id="L140">		return strings;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
