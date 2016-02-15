@@ -134,7 +134,8 @@ implements <a href="../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfigura
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/EclipseLaunchConfigurationLaunchConfiguration.html#EclipseLaunchConfigurationLaunchConfiguration-org.eclipse.debug.core.ILaunchConfiguration-">EclipseLaunchConfigurationLaunchConfiguration</a></span>(org.eclipse.debug.core.ILaunchConfiguration&nbsp;launchConfiguration)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/EclipseLaunchConfigurationLaunchConfiguration.html#EclipseLaunchConfigurationLaunchConfiguration-org.eclipse.debug.core.ILaunchConfiguration-org.eclipse.jdt.core.IJavaProject-">EclipseLaunchConfigurationLaunchConfiguration</a></span>(org.eclipse.debug.core.ILaunchConfiguration&nbsp;launchConfiguration,
+                                             org.eclipse.jdt.core.IJavaProject&nbsp;launchedProject)</code>
 <div class="block">Creates a Beagle launch configuration from an eclipse launch configuration.</div>
 </td>
 </tr>
@@ -195,18 +196,21 @@ implements <a href="../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfigura
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="EclipseLaunchConfigurationLaunchConfiguration-org.eclipse.debug.core.ILaunchConfiguration-">
+<a name="EclipseLaunchConfigurationLaunchConfiguration-org.eclipse.debug.core.ILaunchConfiguration-org.eclipse.jdt.core.IJavaProject-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>EclipseLaunchConfigurationLaunchConfiguration</h4>
-<pre>public&nbsp;EclipseLaunchConfigurationLaunchConfiguration(org.eclipse.debug.core.ILaunchConfiguration&nbsp;launchConfiguration)</pre>
+<pre>public&nbsp;EclipseLaunchConfigurationLaunchConfiguration(org.eclipse.debug.core.ILaunchConfiguration&nbsp;launchConfiguration,
+                                                     org.eclipse.jdt.core.IJavaProject&nbsp;launchedProject)</pre>
 <div class="block">Creates a Beagle launch configuration from an eclipse launch configuration.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>launchConfiguration</code> - The eclipse launch configuration which should be
             launched to execute the code under test.</dd>
+<dd><code>launchedProject</code> - The project that will be launched when executing the
+            <code>launchConfiguration</code>.</dd>
 </dl>
 </li>
 </ul>
