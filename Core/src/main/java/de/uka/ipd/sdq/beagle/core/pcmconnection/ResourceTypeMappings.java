@@ -98,6 +98,7 @@ public final class ResourceTypeMappings {
 	 * @return The linked {@link ProcessingResourceType}
 	 */
 	public ProcessingResourceType getPcmType(final ResourceDemandType resourceDemandType) {
+		Validate.validState(this.inited);
 		return this.beagleTypeToPcmType.get(resourceDemandType).pcmType;
 	}
 
