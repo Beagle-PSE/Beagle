@@ -107,6 +107,8 @@ class MeasurementFileManager {
 		}
 		final URL fileUrl = FileLocator.toFileURL(classpathUrl);
 		try {
+			// The URL to Path conversion has to be done like this, to make it work with
+			// Linux and Windows style paths.
 			final URI urii = new URI(fileUrl.getProtocol(), fileUrl.getPath(), null);
 			final Path returnValue = Paths.get(urii).toAbsolutePath();
 			return returnValue;
