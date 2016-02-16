@@ -23,7 +23,7 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 * The value measured. The unit is specified by the
 	 * {@link ResourceDemandingInternalAction}'s type it belongs to.
 	 */
-	private double value;
+	private final double value;
 
 	/**
 	 * Creates a result for a resource demand measurement for which no parameterisation

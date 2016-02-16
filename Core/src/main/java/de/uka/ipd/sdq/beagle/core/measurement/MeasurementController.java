@@ -32,7 +32,7 @@ public class MeasurementController {
 	/**
 	 * All {@link MeasurementTool}s this {@link MeasurementController} knows.
 	 */
-	private Set<MeasurementTool> measurementTools;
+	private final Set<MeasurementTool> measurementTools;
 
 	/**
 	 * Constructs a new {@link MeasurementController}.

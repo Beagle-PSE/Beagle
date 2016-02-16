@@ -91,7 +91,7 @@ public class PcmNameParser {
 	/**
 	 * The {@link SourceCodeFileProvider} for the project under analysis.
 	 */
-	private SourceCodeFileProvider sourceCodeFileProvider;
+	private final SourceCodeFileProvider sourceCodeFileProvider;
 
 	/**
 	 * Creates a new name parser for a specific project to analyse.

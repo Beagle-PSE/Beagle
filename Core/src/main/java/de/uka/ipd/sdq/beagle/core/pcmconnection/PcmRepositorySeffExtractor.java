@@ -48,12 +48,6 @@ public class PcmRepositorySeffExtractor {
 	private final Set<SeffLoop> seffLoopSet;
 
 	/**
-	 * Temporary storage for all extracted {@link SeffBranch SeffBranches} that should be
-	 * written on the {@link Blackboard}.
-	 */
-	private final Set<SeffBranch> seffBranchSet;
-
-	/**
 	 * Temporary storage for all extracted {@link ResourceDemandingInternalAction rdSeffs}
 	 * that should be written on the {@link Blackboard}.
 	 */
@@ -99,7 +93,6 @@ public class PcmRepositorySeffExtractor {
 		final Set<ResourceDemandingInternalAction> rdiaSet, final Set<ExternalCallParameter> externalCallParameterSet,
 		final PcmBeagleMappings pcmMapper, final SourceCodeFileProvider sourceCodeFileProvider) {
 		this.seffLoopSet = seffLoopSet;
-		this.seffBranchSet = seffBranchSet;
 		this.rdiaSet = rdiaSet;
 		this.externalCallParameterSet = externalCallParameterSet;
 		this.pcmMapper = pcmMapper;

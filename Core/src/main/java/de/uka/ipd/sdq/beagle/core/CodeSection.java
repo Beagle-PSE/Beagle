@@ -114,8 +114,10 @@ public class CodeSection implements Serializable {
 		}
 		final CodeSection other = (CodeSection) object;
 		return new EqualsBuilder().append(this.startFile, other.startFile)
-			.append(this.startStatementNumber, other.startStatementNumber).append(this.endFile, other.endFile)
-			.append(this.endStatementNumber, other.endStatementNumber).isEquals();
+			.append(this.startStatementNumber, other.startStatementNumber)
+			.append(this.endFile, other.endFile)
+			.append(this.endStatementNumber, other.endStatementNumber)
+			.isEquals();
 	}
 
 	/**
@@ -165,15 +167,20 @@ public class CodeSection implements Serializable {
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(23, 45).append(this.startFile).append(this.startStatementNumber).append(this.endFile)
-			.append(this.endStatementNumber).toHashCode();
+		return new HashCodeBuilder(23, 45).append(this.startFile)
+			.append(this.startStatementNumber)
+			.append(this.endFile)
+			.append(this.endStatementNumber)
+			.toHashCode();
 	}
 
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this).append("startFile", this.startFile)
-			.append("startStatementNumber", this.startStatementNumber).append("endFile", this.endFile)
-			.append("endStatementNumber", this.endStatementNumber).toString();
+			.append("startStatementNumber", this.startStatementNumber)
+			.append("endFile", this.endFile)
+			.append("endStatementNumber", this.endStatementNumber)
+			.toString();
 	}
 
 	/**

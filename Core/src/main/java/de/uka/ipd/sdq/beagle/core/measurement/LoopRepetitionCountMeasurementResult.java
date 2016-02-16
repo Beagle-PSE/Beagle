@@ -16,7 +16,7 @@ public class LoopRepetitionCountMeasurementResult extends ParameterisationDepend
 	/**
 	 * How many times the loop's body was executed.
 	 */
-	private int count;
+	private final int count;
 
 	/**
 	 * Creates a result for a loop measurement for which no parameterisation was recorded.

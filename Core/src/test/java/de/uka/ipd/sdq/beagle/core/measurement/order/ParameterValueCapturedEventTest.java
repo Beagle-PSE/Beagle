@@ -14,7 +14,7 @@ import org.junit.Test;
 /**
  * Tests {@link ParameterValueCapturedEvent} and contains the test cases needed to check
  * every method.
- * 
+ *
  * @author Annika Berger
  */
 public class ParameterValueCapturedEventTest {
@@ -32,7 +32,7 @@ public class ParameterValueCapturedEventTest {
 	@Test
 	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			new ParameterValueCapturedEvent(codeSection);
 		}
 

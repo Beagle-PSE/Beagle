@@ -147,7 +147,8 @@ public final class EmfHelper {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		// Register the default resource factory -- only needed for stand-alone!
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+		resourceSet.getResourceFactoryRegistry()
+			.getExtensionToFactoryMap()
 			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
 		final URI myURI = URI.createURI(fileName);
@@ -182,7 +183,8 @@ public final class EmfHelper {
 
 		// Register the appropriate resource factory to handle all file
 		// extensions.
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+		resourceSet.getResourceFactoryRegistry()
+			.getExtensionToFactoryMap()
 			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
 		// Register the package to ensure it is available during loading.

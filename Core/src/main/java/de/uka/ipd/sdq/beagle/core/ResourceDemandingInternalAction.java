@@ -66,7 +66,8 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 			return false;
 		}
 		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;
-		return new EqualsBuilder().append(this.resourceType, other.resourceType).append(this.action, other.action)
+		return new EqualsBuilder().append(this.resourceType, other.resourceType)
+			.append(this.action, other.action)
 			.isEquals();
 	}
 
@@ -101,7 +102,8 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("resourceType", this.resourceType).append("action", this.action)
+		return new ToStringBuilder(this).append("resourceType", this.resourceType)
+			.append("action", this.action)
 			.toString();
 	}
 }
