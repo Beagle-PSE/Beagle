@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EclipseLaunchConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">EclipseLaunchConfiguration.java</span></div><h1>EclipseLaunchConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+
+import org.apache.commons.lang3.Validate;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunch;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.core.ILaunchManager;
+import org.eclipse.debug.core.ILaunchesListener2;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
+import org.eclipse.jdt.launching.IRuntimeClasspathEntry;
+import org.eclipse.jdt.launching.JavaRuntime;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * A launch configuration that starts in its {@link #execute()} method an eclipse launch
+ * configuration.
+ *
+ * @author Roman Langrehr
+ * @author Joshua Gleitze
+ */
+public class EclipseLaunchConfiguration implements LaunchConfiguration {
+
+	/**
+	 * Handler of failures.
+	 */
+<span class="nc" id="L36">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;Eclipse Launch Manager&quot;);</span>
+
+	/**
+	 * The eclipse launch configuration to run.
+	 */
+	private final ILaunchConfiguration originalLaunchConfiguration;
+
+	/**
+	 * The project that will be launched when executing
+	 * {@link #originalLaunchConfiguration}.
+	 */
+	private final IJavaProject launchedProject;
+
+	/**
+	 * The working copy we operate on to not modify the original configuration.
+	 */
+	private ILaunchConfigurationWorkingCopy workingCopy;
+
+	/**
+	 * When launched, indicates whether the launch has finished.
+	 */
+	private boolean done;
+
+	/**
+	 * Creates a Beagle launch configuration from an eclipse launch configuration.
+	 *
+	 * @param launchConfiguration The eclipse launch configuration which should be
+	 *            launched to execute the code under test.
+	 * @param launchedProject The project that will be launched when executing the
+	 *            {@code launchConfiguration}.
+	 */
+	public EclipseLaunchConfiguration(final ILaunchConfiguration launchConfiguration,
+<span class="nc" id="L68">		final IJavaProject launchedProject) {</span>
+<span class="nc" id="L69">		Validate.notNull(launchConfiguration);</span>
+<span class="nc" id="L70">		Validate.notNull(launchedProject);</span>
+
+<span class="nc" id="L72">		this.originalLaunchConfiguration = launchConfiguration;</span>
+<span class="nc" id="L73">		this.launchedProject = launchedProject;</span>
+<span class="nc" id="L74">		this.copy();</span>
+
+<span class="nc" id="L76">		DebugPlugin.getDefault().getLaunchManager().addLaunchListener(new FinishWaiter());</span>
+<span class="nc" id="L77">	}</span>
+
+	@Override
+	public void execute() {
+<span class="nc" id="L81">		this.done = false;</span>
+		try {
+<span class="nc" id="L83">			this.workingCopy.launch(ILaunchManager.RUN_MODE, null);</span>
+
+<span class="nc" id="L85">			synchronized (this) {</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">				while (!this.done) {</span>
+<span class="nc" id="L87">					this.wait();</span>
+				}
+<span class="nc" id="L89">			}</span>
+<span class="nc" id="L90">		} catch (final InterruptedException | CoreException runException) {</span>
+<span class="nc" id="L91">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L92">				new FailureReport&lt;LaunchConfiguration&gt;().cause(runException).retryWith(this::execute).recoverable();</span>
+<span class="nc" id="L93">			FAILURE_HANDLER.handle(failure);</span>
+		} finally {
+<span class="nc" id="L95">			this.copy();</span>
+<span class="nc" id="L96">		}</span>
+<span class="nc" id="L97">	}</span>
+
+	@Override
+	public LaunchConfiguration prependClasspath(final String classPathEntry) {
+<span class="nc" id="L101">		final IRuntimeClasspathEntry newEntry = JavaRuntime.newArchiveRuntimeClasspathEntry(new Path(classPathEntry));</span>
+		try {
+<span class="nc" id="L103">			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_DEFAULT_CLASSPATH, false);</span>
+<span class="nc" id="L104">			final List&lt;String&gt; entries =</span>
+<span class="nc" id="L105">				this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, new ArrayList&lt;&gt;());</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">			if (entries.isEmpty()) {</span>
+<span class="nc" id="L107">				entries.add(JavaRuntime.newDefaultProjectClasspathEntry(this.launchedProject).getMemento());</span>
+			}
+<span class="nc" id="L109">			entries.add(0, newEntry.getMemento());</span>
+<span class="nc" id="L110">			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_CLASSPATH, entries);</span>
+<span class="nc" id="L111">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L112">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L113">				new FailureReport&lt;LaunchConfiguration&gt;().cause(coreException);</span>
+<span class="nc" id="L114">			return FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L115">		}</span>
+<span class="nc" id="L116">		return this;</span>
+	}
+
+	@Override
+	public LaunchConfiguration appendJvmArgument(final String argument) {
+		try {
+<span class="nc" id="L122">			final String oldAttributes =</span>
+<span class="nc" id="L123">				this.workingCopy.getAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, &quot;&quot;);</span>
+<span class="nc" id="L124">			this.workingCopy.setAttribute(IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS,</span>
+				oldAttributes + &quot; &quot; + argument);
+<span class="nc" id="L126">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L127">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L128">				new FailureReport&lt;LaunchConfiguration&gt;().cause(coreException);</span>
+<span class="nc" id="L129">			return FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L130">		}</span>
+<span class="nc" id="L131">		return this;</span>
+	}
+
+	/**
+	 * Puts a copy of {@link #originalLaunchConfiguration} into {@link #workingCopy}.
+	 */
+	private void copy() {
+		// Calling .getWorkingCopy() two times assures that nobody can modify the
+		// original LaunchConfiguration.
+		try {
+<span class="nc" id="L141">			this.workingCopy = this.originalLaunchConfiguration.getWorkingCopy().getWorkingCopy();</span>
+<span class="nc" id="L142">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L143">			final FailureReport&lt;LaunchConfiguration&gt; failure =</span>
+<span class="nc" id="L144">				new FailureReport&lt;LaunchConfiguration&gt;().cause(coreException);</span>
+<span class="nc" id="L145">			FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L146">		}</span>
+<span class="nc" id="L147">	}</span>
+
+	/**
+	 * Monitors the launched configurations for being terminated. Notifies this monitor
+	 * once the launch finished.
+	 *
+	 * @author Joshua Gleitze
+	 */
+<span class="nc" id="L155">	private class FinishWaiter implements ILaunchesListener2 {</span>
+
+		/**
+		 * Reference to “own” {@link EclipseLaunchConfiguration} instance.
+		 */
+<span class="nc" id="L160">		private final EclipseLaunchConfiguration parent = EclipseLaunchConfiguration.this;</span>
+
+		@Override
+		public void launchesRemoved(final ILaunch[] launches) {
+			// not interesting to us
+<span class="nc" id="L165">		}</span>
+
+		@Override
+		public void launchesAdded(final ILaunch[] launches) {
+			// not interesting to us
+<span class="nc" id="L170">		}</span>
+
+		@Override
+		public void launchesChanged(final ILaunch[] launches) {
+			// not interesting to us
+<span class="nc" id="L175">		}</span>
+
+		@Override
+		public void launchesTerminated(final ILaunch[] launches) {
+<span class="nc" id="L179">			if (Arrays.stream(launches)</span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">				.anyMatch((launch) -&gt; launch.getLaunchConfiguration() == this.parent.workingCopy)) {</span>
+<span class="nc" id="L181">				synchronized (this.parent) {</span>
+<span class="nc" id="L182">					this.parent.done = true;</span>
+<span class="nc" id="L183">					this.parent.notifyAll();</span>
+<span class="nc" id="L184">				}</span>
+			}
+<span class="nc" id="L186">		}</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
