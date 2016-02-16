@@ -2,7 +2,7 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import static org.mockito.Mockito.mock;
 
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 
 import org.eclipse.debug.core.ILaunchConfiguration;
@@ -26,8 +26,8 @@ public final class LaunchConfigurationFactory {
 	 */
 	public LaunchConfiguration getOne() {
 		final ILaunchConfiguration launchConfig = mock(ILaunchConfiguration.class);
-		final EclipseLaunchConfigurationLaunchConfiguration launchConfiguration =
-			new EclipseLaunchConfigurationLaunchConfiguration(launchConfig, mock(IJavaProject.class));
+		final EclipseLaunchConfiguration launchConfiguration =
+			new EclipseLaunchConfiguration(launchConfig, mock(IJavaProject.class));
 		return launchConfiguration;
 	}
 
