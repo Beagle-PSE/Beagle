@@ -28,7 +28,7 @@ import java.util.List;
  * @author Roman Langrehr
  * @author Joshua Gleitze
  */
-public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConfiguration {
+public class EclipseLaunchConfiguration implements LaunchConfiguration {
 
 	/**
 	 * Handler of failures.
@@ -64,7 +64,7 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	 * @param launchedProject The project that will be launched when executing the
 	 *            {@code launchConfiguration}.
 	 */
-	public EclipseLaunchConfigurationLaunchConfiguration(final ILaunchConfiguration launchConfiguration,
+	public EclipseLaunchConfiguration(final ILaunchConfiguration launchConfiguration,
 		final IJavaProject launchedProject) {
 		Validate.notNull(launchConfiguration);
 		Validate.notNull(launchedProject);
@@ -155,11 +155,9 @@ public class EclipseLaunchConfigurationLaunchConfiguration implements LaunchConf
 	private class FinishWaiter implements ILaunchesListener2 {
 
 		/**
-		 * Reference to “oun” {@link EclipseLaunchConfigurationLaunchConfiguration}
-		 * instance.
+		 * Reference to “own” {@link EclipseLaunchConfiguration} instance.
 		 */
-		private final EclipseLaunchConfigurationLaunchConfiguration parent =
-			EclipseLaunchConfigurationLaunchConfiguration.this;
+		private final EclipseLaunchConfiguration parent = EclipseLaunchConfiguration.this;
 
 		@Override
 		public void launchesRemoved(final ILaunch[] launches) {
