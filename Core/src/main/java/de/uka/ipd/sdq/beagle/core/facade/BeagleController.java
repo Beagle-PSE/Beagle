@@ -3,7 +3,7 @@ package de.uka.ipd.sdq.beagle.core.facade;
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
@@ -94,8 +94,8 @@ public class BeagleController {
 				.getAllSuitableJUnitLaunchConfigurations();
 		final Set<LaunchConfiguration> launchConfigurations = new HashSet<>();
 		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {
-			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration,
-				beagleConfiguration.getJavaProject()));
+			launchConfigurations
+				.add(new EclipseLaunchConfiguration(iLaunchConfiguration, beagleConfiguration.getJavaProject()));
 
 			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
