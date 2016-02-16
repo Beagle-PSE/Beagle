@@ -34,7 +34,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Testing the {@link MeasurementControllerBlackboardView}.
+ * Testing the {@link MeasurementControllerBlackboardView}. Uses
+ * {@link MeasurableSeffElement}.
  *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler

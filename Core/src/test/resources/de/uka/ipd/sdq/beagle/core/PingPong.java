@@ -14,6 +14,7 @@ public class PingPong extends JPanel implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unused")
 	private final static int SCHRITTWEITE = 1;
 
 	private final JFrame frame;
