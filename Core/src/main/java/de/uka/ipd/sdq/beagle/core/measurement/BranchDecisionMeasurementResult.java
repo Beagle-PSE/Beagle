@@ -41,7 +41,7 @@ public class BranchDecisionMeasurementResult extends ParameterisationDependentMe
 	 */
 	public BranchDecisionMeasurementResult(final Parameterisation parameterisation, final int branchIndex) {
 		super(parameterisation);
-		Validate.isTrue(branchIndex >= 0, "The measured branch index was negative: %d", this.branchIndex);
+		Validate.isTrue(branchIndex >= 0, "The measured branch index was negative: %d", branchIndex);
 		this.branchIndex = branchIndex;
 	}
 
