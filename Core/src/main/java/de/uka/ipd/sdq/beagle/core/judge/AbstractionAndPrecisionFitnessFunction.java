@@ -67,10 +67,13 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / resourceDemandMeasurementResults.size();
 		}
 
-		final double complexity = this.determineComputationalComplexity(expression)
-			+ this.determineHumanReadabilityComplexity(expression) * HUMAN_READABLITY_COEFFICIENT;
+		final Complexity complexity = new Complexity();
+		complexity.determineComplexity(expression);
 
-		return meanSquareDeviation + complexity / DEMANDED_PRECISION_COEFFICIENT;
+		final double numericComplexity = complexity.getComputationalComplexitySum()
+			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
+
+		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
 
 	@Override
@@ -103,10 +106,13 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();
 		}
 
-		final double complexity = this.determineComputationalComplexity(expression)
-			+ this.determineHumanReadabilityComplexity(expression) * HUMAN_READABLITY_COEFFICIENT;
+		final Complexity complexity = new Complexity();
+		complexity.determineComplexity(expression);
 
-		return meanSquareDeviation * DEMANDED_PRECISION_COEFFICIENT + complexity;
+		final double numericComplexity = complexity.getComputationalComplexitySum()
+			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
+
+		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
 
 	@Override
@@ -142,10 +148,13 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();
 		}
 
-		final double complexity = this.determineComputationalComplexity(expression)
-			+ this.determineHumanReadabilityComplexity(expression) * HUMAN_READABLITY_COEFFICIENT;
+		final Complexity complexity = new Complexity();
+		complexity.determineComplexity(expression);
 
-		return meanSquareDeviation * DEMANDED_PRECISION_COEFFICIENT + complexity;
+		final double numericComplexity = complexity.getComputationalComplexitySum()
+			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
+
+		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
 
 	@Override
@@ -178,29 +187,12 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();
 		}
 
-		final double complexity = this.determineComputationalComplexity(expression)
-			+ this.determineHumanReadabilityComplexity(expression) * HUMAN_READABLITY_COEFFICIENT;
+		final Complexity complexity = new Complexity();
+		complexity.determineComplexity(expression);
 
-		return meanSquareDeviation * DEMANDED_PRECISION_COEFFICIENT + complexity;
-	}
+		final double numericComplexity = complexity.getComputationalComplexitySum()
+			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
 
-	/**
-	 * Determines the computational complexity of {@code expression}.
-	 *
-	 * @param expression The evaluable expression.
-	 * @return The computational complexity of {@code expression}.
-	 */
-	private double determineComputationalComplexity(final EvaluableExpression expression) {
-
-	}
-
-	/**
-	 * Determines the human-readability complexity of {@code expression}.
-	 *
-	 * @param expression The evaluable expression.
-	 * @return The human-readability complexity of {@code expression}.
-	 */
-	private double determineHumanReadabilityComplexity(final EvaluableExpression expression) {
-
+		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
 }
