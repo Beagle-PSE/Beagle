@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,6 +101,6 @@ public class SeffBranch implements MeasurableSeffElement {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("branches", this.branches).toString();
+		return String.format("SeffBranch@%4.4s<%s>", Integer.toHexString(this.hashCode()), this.branches);
 	}
 }

@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A result of measuring which branch is taken in a branching source code construct. This
@@ -19,7 +18,7 @@ public class BranchDecisionMeasurementResult extends ParameterisationDependentMe
 	 * The index of the branch in the associated {@link SeffBranch}'s branch list that was
 	 * executed.
 	 */
-	private int branchIndex;
+	private final int branchIndex;
 
 	/**
 	 * Creates a result for a branch measurement for which no parameterisation was
@@ -58,7 +57,8 @@ public class BranchDecisionMeasurementResult extends ParameterisationDependentMe
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).appendSuper(super.toString()).append("branch index", this.branchIndex)
-			.toString();
+		return String.format("BranchResult@%4.4s<%d,%s>", Integer.toHexString(this.hashCode()), this.branchIndex,
+			this.getParameterisation());
+
 	}
 }
