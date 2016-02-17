@@ -212,13 +212,13 @@ public class PcmRepositoryWriterAnnotator {
 		final TreeIterator<EObject> contentIterator = repository.eAllContents();
 		//Creating a list with the copied contentIterator objects because this
 		//Section is going to manipulate the content of the repository.
-		List<EObject> copyList = new LinkedList<EObject>();
+		final List<EObject> copyList = new LinkedList<EObject>();
 		while (contentIterator.hasNext()) {
-			EObject content = contentIterator.next();
+			final EObject content = contentIterator.next();
 			copyList.add(content);
 		}
 		
-		ListIterator<EObject> contentListIterator = copyList.listIterator();
+		final ListIterator<EObject> contentListIterator = copyList.listIterator();
 		
 		
 		while (contentListIterator.hasNext()) {
