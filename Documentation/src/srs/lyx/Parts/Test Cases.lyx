@@ -1005,21 +1005,7 @@ gls{Beagle}
 
 \end_inset
 
- works with different measurement software.
- Test 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{Beagle}
-\end_layout
-
-\end_inset
-
- with 
+ works with 
 \begin_inset ERT
 status open
 
@@ -1029,27 +1015,6 @@ status open
 \backslash
 gls{Kieker}
 \end_layout
-
-\end_inset
-
- and other 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-gls{measurement software}
-\end_layout
-
-\end_inset
-
-.
- Tests 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "/Q20/"
 
 \end_inset
 
