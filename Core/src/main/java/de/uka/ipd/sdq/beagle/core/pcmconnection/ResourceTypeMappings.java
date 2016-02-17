@@ -14,12 +14,13 @@ import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
 import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
 import org.palladiosimulator.pcm.resourcetype.ResourceType;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * This class offers a bidirectional mapping between the ResourceTypes of Beagle and the
  * PalladioComponentModel.
- * 
+ *
  * @author Ansgar Spiegler
  * @author Joshua Gleitze
  */
@@ -29,13 +30,13 @@ public final class ResourceTypeMappings {
 	 * The location of the resourceType-file of PCM.
 	 */
 	private static final String RESOURCETYPE_URI =
-		"platform:/plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype";
+		"pathmap://PCM_MODELS/Palladio.resourcetype";
 
 	/**
 	 * The bidirectional Map between {@link ResourceDemandType} and
 	 * {@link ProcessinResourceType}.
 	 */
-	private BidiMap<ResourceDemandType, ProcessingResourceType> beagleTypeToPcmType = new DualHashBidiMap<>();
+	private final BidiMap<ResourceDemandType, PcmTypeIdEqualsWrapper> beagleTypeToPcmType = new DualHashBidiMap<>();
 
 	/**
 	 * {@code true} if {@link ResourceTypeMappings} is initialised.
@@ -60,15 +61,15 @@ public final class ResourceTypeMappings {
 			final Resource resource = resSet.getResource(resourceTypeUri, true);
 
 			final ResourceRepository resourceRepository = (ResourceRepository) resource.getContents().get(0);
-			for (ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {
+			for (final ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {
 				switch (resourceType.getEntityName()) {
 					case "CPU":
 						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_CPU_NS,
-							(ProcessingResourceType) resourceType);
+							new PcmTypeIdEqualsWrapper((ProcessingResourceType) resourceType));
 						break;
 					case "HDD":
 						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_HDD_NS,
-							(ProcessingResourceType) resourceType);
+							new PcmTypeIdEqualsWrapper((ProcessingResourceType) resourceType));
 						break;
 					default:
 				}
@@ -87,7 +88,7 @@ public final class ResourceTypeMappings {
 	 */
 	public ResourceDemandType getBeagleType(final ProcessingResourceType processingResourceType) {
 		Validate.validState(this.inited);
-		return this.beagleTypeToPcmType.getKey(processingResourceType);
+		return this.beagleTypeToPcmType.getKey(new PcmTypeIdEqualsWrapper(processingResourceType));
 	}
 
 	/**
@@ -97,6 +98,52 @@ public final class ResourceTypeMappings {
 	 * @return The linked {@link ProcessingResourceType}
 	 */
 	public ProcessingResourceType getPcmType(final ResourceDemandType resourceDemandType) {
-		return this.beagleTypeToPcmType.get(resourceDemandType);
+		Validate.validState(this.inited);
+		return this.beagleTypeToPcmType.get(resourceDemandType).pcmType;
+	}
+
+	/**
+	 * Wraps an {@link ProcessingResourceType} to override its
+	 * {@link Object#equals(Object)} and {@link Object#hashCode()} to be based on the
+	 * resource type’s id. This allows them to be inserted into a {@link HashMap} and be
+	 * retrieved as expected.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class PcmTypeIdEqualsWrapper {
+
+		/**
+		 * The wrapped resource type.
+		 */
+		private final ProcessingResourceType pcmType;
+
+		/**
+		 * Creates a wrapper for the given {@code type}.
+		 *
+		 * @param type The resource type to wrap.
+		 */
+		private PcmTypeIdEqualsWrapper(final ProcessingResourceType type) {
+			this.pcmType = type;
+		}
+
+		@Override
+		public boolean equals(final Object otherObject) {
+			if (otherObject == this) {
+				return true;
+			}
+			if (otherObject == null) {
+				return false;
+			}
+			if (otherObject.getClass() != this.getClass()) {
+				return false;
+			}
+			final PcmTypeIdEqualsWrapper other = (PcmTypeIdEqualsWrapper) otherObject;
+			return this.pcmType.getId().equals(other.pcmType.getId());
+		}
+
+		@Override
+		public int hashCode() {
+			return this.pcmType.getId().hashCode();
+		}
 	}
 }
