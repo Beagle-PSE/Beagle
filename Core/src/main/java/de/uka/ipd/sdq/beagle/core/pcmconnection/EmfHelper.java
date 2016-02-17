@@ -64,7 +64,7 @@ public final class EmfHelper {
 			return false;
 		}
 		if (identifier1 instanceof Identifier && identifier2 instanceof Identifier) {
-			return (((Identifier) identifier1).getId().equals(((Identifier) identifier2).getId()));
+			return ((Identifier) identifier1).getId().equals(((Identifier) identifier2).getId());
 		} else {
 			return EcoreUtil.equals(identifier1, identifier2);
 		}
@@ -151,7 +151,7 @@ public final class EmfHelper {
 			.getExtensionToFactoryMap()
 			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
-		final URI myURI = URI.createURI(fileName);
+		final URI myURI = URI.createFileURI(fileName);
 
 		final Resource resource = resourceSet.createResource(myURI);
 		resource.getContents().add(modelToSave);
