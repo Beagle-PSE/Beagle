@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * This class is offering a method to annotate all final EvaluableExpressions of a given
  * Blackboard to a PCM-repository.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositoryWriterAnnotator {
@@ -43,7 +43,7 @@ public class PcmRepositoryWriterAnnotator {
 	 * The FailureHandler for this class.
 	 */
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("PcmStorer");
-	
+
 	/**
 	 * Blackboard to get Mapping from.
 	 */
@@ -57,9 +57,7 @@ public class PcmRepositoryWriterAnnotator {
 	/**
 	 * Object for converting and annotating EvaEx.
 	 */
-	private PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx;
-	
-
+	private final PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx = new PcmRepositoryWriterAnnotatorEvaEx();
 
 	/**
 	 * Helper class for {@link PcmRepositoryWriter}. Offering a method to write all final
@@ -88,7 +86,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> seffLoopIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (SeffLoop seffLoop : this.blackboard.getAllSeffLoops()) {
+		for (final SeffLoop seffLoop : this.blackboard.getAllSeffLoops()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffLoop);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(seffLoop)) {
 
@@ -109,7 +107,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> seffBranchIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (SeffBranch seffBranch : this.blackboard.getAllSeffBranches()) {
+		for (final SeffBranch seffBranch : this.blackboard.getAllSeffBranches()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffBranch);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(seffBranch)) {
 
@@ -130,7 +128,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> rdiaIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
+		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(rdia)) {
 
@@ -142,8 +140,8 @@ public class PcmRepositoryWriterAnnotator {
 
 	/**
 	 * This method looks up each RDIA on the {@link #blackboard} and maps its ID to its
-	 * ResourceDemandType if a final EvaluablExpression is found on the Blackboard. Otherwise,
-	 * the RDIA will not occur as Key-element.
+	 * ResourceDemandType if a final EvaluablExpression is found on the Blackboard.
+	 * Otherwise, the RDIA will not occur as Key-element.
 	 *
 	 * @return A map of RDIA IDs to its ResourceDemandTypes.
 	 */
@@ -151,7 +149,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, ResourceDemandType> rdiaIdToDemandType = new HashMap<String, ResourceDemandType>();
 
-		for (ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
+		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(rdia)) {
 
@@ -173,7 +171,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> exParamIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (ExternalCallParameter exParam : this.blackboard.getAllExternalCallParameters()) {
+		for (final ExternalCallParameter exParam : this.blackboard.getAllExternalCallParameters()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(exParam);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(exParam)) {
 
@@ -192,9 +190,10 @@ public class PcmRepositoryWriterAnnotator {
 	 *            overwrite the old StochasticExpressions)
 	 */
 	public void annotateAll(final RepositoryImpl repository) {
-		
+
 		if (repository == null) {
-			throw new NullPointerException("The repository in the method \"RepositoryWriter.annotateAll\" must not be null!");
+			throw new NullPointerException(
+				"The repository in the method \"RepositoryWriter.annotateAll\" must not be null!");
 		}
 
 		final Map<String, EvaluableExpression> seffLoopIdsToEvaEx =
@@ -208,19 +207,17 @@ public class PcmRepositoryWriterAnnotator {
 		final Map<String, EvaluableExpression> exParamIdsToEvaEx =
 			this.getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard();
 
-		
 		final TreeIterator<EObject> contentIterator = repository.eAllContents();
-		//Creating a list with the copied contentIterator objects because this
-		//Section is going to manipulate the content of the repository.
+		// Creating a list with the copied contentIterator objects because this
+		// Section is going to manipulate the content of the repository.
 		final List<EObject> copyList = new LinkedList<EObject>();
 		while (contentIterator.hasNext()) {
 			final EObject content = contentIterator.next();
 			copyList.add(content);
 		}
-		
+
 		final ListIterator<EObject> contentListIterator = copyList.listIterator();
-		
-		
+
 		while (contentListIterator.hasNext()) {
 			final EObject content = contentListIterator.next();
 
@@ -296,7 +293,7 @@ public class PcmRepositoryWriterAnnotator {
 		if (content.getClass() == LoopActionImpl.class) {
 			return true;
 		}
-		
+
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The SeffElement with ID %s is stored by Beagle as a LoopAction"
 				+ " but is not a LoopAction in the repository-file!", content.getId())
@@ -304,7 +301,7 @@ public class PcmRepositoryWriterAnnotator {
 			.recoverable()
 			.retryWith(() -> this.shouldBeLoopAction(content));
 		FAILURE_HANDLER.handle(failure);
-		
+
 		return false;
 	}
 
