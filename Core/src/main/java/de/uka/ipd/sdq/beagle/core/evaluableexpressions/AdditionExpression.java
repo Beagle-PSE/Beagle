@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
 
+import org.apache.commons.collections4.MultiSet;
+import org.apache.commons.collections4.multiset.HashMultiSet;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -7,7 +9,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Expression that sums up all its contained expressions.
@@ -17,9 +18,14 @@ import java.util.List;
 public class AdditionExpression implements EvaluableExpression {
 
 	/**
+	 * The minimum number of summands needed to create a correct expression.
+	 */
+	private static final int MIN_SUMMANDS = 2;
+
+	/**
 	 * All summands of this evaluable expression.
 	 */
-	private final List<EvaluableExpression> summands;
+	private final MultiSet<EvaluableExpression> summands;
 
 	/**
 	 * Builds an expression that will return the sum of all {@code summands} on
@@ -30,7 +36,9 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	public AdditionExpression(final Collection<EvaluableExpression> summands) {
 		Validate.noNullElements(summands);
-		this.summands = new ArrayList<>(summands);
+		Validate.isTrue(summands.size() >= MIN_SUMMANDS, "The expression must contain at least %d summands.",
+			MIN_SUMMANDS);
+		this.summands = new HashMultiSet<>(summands);
 	}
 
 	/**
@@ -41,8 +49,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 *            must at least be 2.
 	 */
 	public AdditionExpression(final EvaluableExpression... summands) {
-		Validate.noNullElements(summands);
-		this.summands = new ArrayList<>(Arrays.asList(summands));
+		this(Arrays.asList(summands));
 	}
 
 	/**
@@ -52,7 +59,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 * @return A collection of all summands of this addition expression.
 	 */
 	public Collection<EvaluableExpression> getSummands() {
-		return this.summands;
+		return new ArrayList<>(this.summands);
 	}
 
 	/*
@@ -63,6 +70,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -75,6 +83,7 @@ public class AdditionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		double result = 0;
 		double value;
 		for (final EvaluableExpression summand : this.summands) {

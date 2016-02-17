@@ -29,7 +29,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	 * @param base The expression which is the base of this expression. Must not be
 	 *            {@code null}.
 	 */
-	public ExponentationExpression(final EvaluableExpression exponent, final EvaluableExpression base) {
+	public ExponentationExpression(final EvaluableExpression base, final EvaluableExpression exponent) {
 		Validate.notNull(exponent);
 		Validate.notNull(base);
 		this.exponent = exponent;
@@ -62,6 +62,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -74,6 +75,7 @@ public class ExponentationExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		return Math.pow(this.base.evaluate(variableAssignments), this.exponent.evaluate(variableAssignments));
 	}
 

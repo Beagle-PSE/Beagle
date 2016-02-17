@@ -159,7 +159,6 @@
     </module>
     <module name="UnusedImports">
       <property name="severity" value="warning"/>
-      <property name="processJavadoc" value="true"/>
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ImportControl">
@@ -172,13 +171,15 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="AnonInnerLength">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
       <property name="max" value="30"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ExecutableStatementCount">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
       <property name="max" value="100"/>
       <property name="tokens" value="INSTANCE_INIT,STATIC_INIT,METHOD_DEF,CTOR_DEF"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="LineLength">
       <property name="severity" value="warning"/>
@@ -186,7 +187,8 @@
       <property name="tabWidth" value="4"/>
     </module>
     <module name="MethodLength">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ParameterNumber">
       <property name="severity" value="warning"/>
@@ -277,7 +279,6 @@
     </module>
     <module name="RightCurly">
       <property name="severity" value="warning"/>
-      <property name="tokens" value="LITERAL_TRY,LITERAL_CATCH,LITERAL_FINALLY,LITERAL_IF,LITERAL_ELSE,LITERAL_DO"/>
     </module>
     <module name="AvoidInlineConditionals">
       <property name="severity" value="ignore"/>
@@ -475,16 +476,19 @@
     </module>
     <module name="BooleanExpressionComplexity">
       <property name="severity" value="warning"/>
+      <property name="max" value="6"/>
     </module>
     <module name="CyclomaticComplexity">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="JavaNCSS">
       <property name="severity" value="warning"/>
       <property name="methodMaximum" value="150"/>
     </module>
     <module name="NPathComplexity">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="ArrayTypeStyle">
       <property name="severity" value="error"/>
@@ -516,7 +520,8 @@
       <property name="severity" value="warning"/>
     </module>
     <module name="ClassFanOutComplexity">
-      <property name="severity" value="warning"/>
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
     </module>
     <module name="DescendantToken">
       <property name="severity" value="ignore"/>
@@ -565,7 +570,8 @@
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
   <module name="FileLength">
-    <property name="severity" value="warning"/>
+    <property name="severity" value="ignore"/>
+    <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
   </module>
   <module name="FileTabCharacter">
     <property name="severity" value="ignore"/>
@@ -606,4 +612,9 @@
     <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
   </module>
   <module name="SuppressionCommentFilter"/>
+  <module name="SuppressWithNearbyCommentFilter">
+    <property name="commentFormat" value="CHECKSTYLE:IGNORE (\w+)"/>
+    <property name="checkFormat" value="$1"/>
+    <property name="influenceFormat" value="1"/>
+  </module>
 </module>

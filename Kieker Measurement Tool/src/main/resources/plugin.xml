@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+>
+   <extension
+         point="de.uka.ipd.sdq.beagle.measurementtool"
+         id="de.uka.ipd.sdq.beagle.measurement.kieker"
+         name="Kieker Meausurement Tool">
+         <MeasurementTool
+         	MeasurementToolClass="de.uka.ipd.sdq.beagle.measurement.kieker.KiekerMeasurementTool">
+         </MeasurementTool>
+   </extension>
+</plugin>

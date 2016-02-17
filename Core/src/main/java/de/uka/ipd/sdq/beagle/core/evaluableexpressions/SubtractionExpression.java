@@ -61,6 +61,7 @@ public class SubtractionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -73,6 +74,7 @@ public class SubtractionExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		return this.minuend.evaluate(variableAssignments) - this.subtrahend.evaluate(variableAssignments);
 	}
 

@@ -11,6 +11,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  *
  */
 public class ComparisonExpression implements EvaluableExpression {
+	
+	
+	/**
+	 * The used value to express {@code true} as double.
+	 */
+	private static final double TRUE = 1.0;
 
 	/**
 	 * The {@link EvaluableExpression} which is supposed to be the smaller one in the
@@ -50,7 +56,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * @return the greater expression
 	 */
 	public EvaluableExpression getGreater() {
-		return this.smaller;
+		return this.greater;
 	}
 
 	/**
@@ -63,7 +69,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 * @return the smaller expression
 	 */
 	public EvaluableExpression getSmaller() {
-		return this.greater;
+		return this.smaller;
 	}
 
 	/*
@@ -74,6 +80,7 @@ public class ComparisonExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -86,10 +93,11 @@ public class ComparisonExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+		Validate.notNull(variableAssignments);
 		if (this.smaller.evaluate(variableAssignments) < this.greater.evaluate(variableAssignments)) {
-			return 1;
+			return TRUE;
 		} else {
-			return 0;
+			return FALSE;
 		}
 	}
 

@@ -53,6 +53,6 @@ allprojects {
 	fileTree("$projectDir/buildSrc/src/tasks/gradle").include('*.gradle').sort().each { file ->
 		project.apply from: file
 	} 
+	
+	defaultTasks 'build'
 }
-
-defaultTasks 'build'

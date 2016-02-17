@@ -83,6 +83,7 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public void receive(final EvaluableExpressionVisitor visitor) {
+		Validate.notNull(visitor);
 		visitor.visit(this);
 	}
 
@@ -95,7 +96,12 @@ public class IfThenElseExpression implements EvaluableExpression {
 	 */
 	@Override
 	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
-		if (this.ifStatement.evaluate(variableAssignments) == 0) {
+		Validate.notNull(variableAssignments);
+		final double resultIf = this.ifStatement.evaluate(variableAssignments);
+		if (Double.isNaN(resultIf)) {
+			return Double.NaN;
+		}
+		if (resultIf != FALSE) {
 			return this.thenStatement.evaluate(variableAssignments);
 		} else {
 			return this.elseStatement.evaluate(variableAssignments);

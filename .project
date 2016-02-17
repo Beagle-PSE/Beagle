@@ -168,5 +168,14 @@
 				<arguments>1.0-projectRelativePath-matches-false-false-Prototypes/Eclipse GUI with Wizards and Dialogs</arguments>
 			</matcher>
 		</filter>
+		<filter>
+			<id>1455388552384</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-false-false-Kieker Measurement Tool</arguments>
+			</matcher>
+		</filter>
 	</filteredResources>
 </projectDescription>
