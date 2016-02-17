@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents a type of a measured resource, like CPU usage or HDD usage.
@@ -133,6 +132,6 @@ public class ResourceDemandType {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("name", this.name).append("isNs", this.isNs).toString();
+		return this.name + (this.isNs ? "_NS" : "");
 	}
 }
