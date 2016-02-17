@@ -2,7 +2,7 @@
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfigurationLaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
@@ -76,8 +76,8 @@ public class BeagleController {
 <span class="nc" id="L76">				.getAllSuitableJUnitLaunchConfigurations();</span>
 <span class="nc" id="L77">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = new HashSet&lt;&gt;();</span>
 <span class="nc bnc" id="L78" title="All 2 branches missed.">		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {</span>
-<span class="nc" id="L79">			launchConfigurations.add(new EclipseLaunchConfigurationLaunchConfiguration(iLaunchConfiguration,</span>
-<span class="nc" id="L80">				beagleConfiguration.getJavaProject()));</span>
+<span class="nc" id="L79">			launchConfigurations</span>
+<span class="nc" id="L80">				.add(new EclipseLaunchConfiguration(iLaunchConfiguration, beagleConfiguration.getJavaProject()));</span>
 
 <span class="nc" id="L82">			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
