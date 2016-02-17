@@ -26,6 +26,9 @@ import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 /**
@@ -205,9 +208,21 @@ public class PcmRepositoryWriterAnnotator {
 		final Map<String, EvaluableExpression> exParamIdsToEvaEx =
 			this.getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard();
 
+		
 		final TreeIterator<EObject> contentIterator = repository.eAllContents();
+		//Creating a list with the copied contentIterator objects because this
+		//Section is going to manipulate the content of the repository.
+		List<EObject> copyList = new LinkedList<EObject>();
 		while (contentIterator.hasNext()) {
-			final EObject content = contentIterator.next();
+			EObject content = contentIterator.next();
+			copyList.add(content);
+		}
+		
+		ListIterator<EObject> contentListIterator = copyList.listIterator();
+		
+		
+		while (contentListIterator.hasNext()) {
+			final EObject content = contentListIterator.next();
 
 			this.annotateForEObject(content, seffLoopIdsToEvaEx, seffBranchIdsToEvaEx, rdiaIdsToEvaEx,
 				rdiaIdsToResourceDemandType, exParamIdsToEvaEx);
