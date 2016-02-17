@@ -9,24 +9,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * contained {@link EvaluableExpression} and the base is e (Euler’s number).
  *
  * @author Annika Berger
- * @author Christoph Michelbach
  */
 public class NaturalLogarithmExpression implements EvaluableExpression {
-
-	/**
-	 * States how long it takes to evaluate the expression for a computer. The bigger the
-	 * number, the harder it is. The norm is addition which means that the
-	 * {@code COMPUTATINOAL_COMPLEXITY} of addition is {@code 1}. Scaling is linear.
-	 */
-	public static final double COMPUTATINOAL_COMPLEXITY = 10d;
-
-	/**
-	 * States how hard it is for educated humans to understand the expression. The bigger
-	 * the number, the harder it is. The norm is addition which means that the
-	 * {@code HUMAN_UNDERSTANDABILITY_COMPXELITY} of addition is {@code 1}. Scaling is
-	 * linear.
-	 */
-	public static final double HUMAN_UNDERSTANDABILITY_COMPXELITY = 17d;
 
 	/**
 	 * The antilogarithm of the expression.

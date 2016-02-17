@@ -14,24 +14,8 @@ import java.util.Collection;
  * Expression that multiplies all its contained expressions.
  *
  * @author Joshua Gleitze
- * @author Christoph Michelbach
  */
 public class MultiplicationExpression implements EvaluableExpression {
-
-	/**
-	 * States how long it takes to evaluate the expression for a computer. The bigger the
-	 * number, the harder it is. The norm is addition which means that the
-	 * {@code COMPUTATINOAL_COMPLEXITY} of addition is {@code 1}. Scaling is linear.
-	 */
-	public static final double COMPUTATINOAL_COMPLEXITY = 3d;
-
-	/**
-	 * States how hard it is for educated humans to understand the expression. The bigger
-	 * the number, the harder it is. The norm is addition which means that the
-	 * {@code HUMAN_UNDERSTANDABILITY_COMPXELITY} of addition is {@code 1}. Scaling is
-	 * linear.
-	 */
-	public static final double HUMAN_UNDERSTANDABILITY_COMPXELITY = 3d;
 
 	/**
 	 * The minimum number of summands needed to create a correct expression.
