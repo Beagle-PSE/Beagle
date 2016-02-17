@@ -11,9 +11,25 @@ import java.util.Map;
  * An {@link EvaluableExpression} having a constant value.
  *
  * @author Annika Berger
+ * @author Christoph Michelbach
  *
  */
 public final class ConstantExpression implements EvaluableExpression {
+
+	/**
+	 * States how long it takes to evaluate the expression for a computer. The bigger the
+	 * number, the harder it is. The norm is addition which means that the
+	 * {@code COMPUTATINOAL_COMPLEXITY} of addition is {@code 1}. Scaling is linear.
+	 */
+	public static final double COMPUTATINOAL_COMPLEXITY = .1d;
+
+	/**
+	 * States how hard it is for educated humans to understand the expression. The bigger
+	 * the number, the harder it is. The norm is addition which means that the
+	 * {@code HUMAN_UNDERSTANDABILITY_COMPXELITY} of addition is {@code 1}. Scaling is
+	 * linear.
+	 */
+	public static final double HUMAN_UNDERSTANDABILITY_COMPXELITY = .1d;
 
 	/**
 	 * Hash map containing all existing constant expressions with their value as key.

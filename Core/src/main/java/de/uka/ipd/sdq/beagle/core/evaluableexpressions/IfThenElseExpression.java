@@ -8,8 +8,24 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  * Expression that executes an if-then-else-statement based on its contained expressions.
  *
  * @author Annika Berger
+ * @author Christoph Michelbach
  */
 public class IfThenElseExpression implements EvaluableExpression {
+
+	/**
+	 * States how long it takes to evaluate the expression for a computer. The bigger the
+	 * number, the harder it is. The norm is addition which means that the
+	 * {@code COMPUTATINOAL_COMPLEXITY} of addition is {@code 1}. Scaling is linear.
+	 */
+	public static final double COMPUTATINOAL_COMPLEXITY = 2d;
+
+	/**
+	 * States how hard it is for educated humans to understand the expression. The bigger
+	 * the number, the harder it is. The norm is addition which means that the
+	 * {@code HUMAN_UNDERSTANDABILITY_COMPXELITY} of addition is {@code 1}. Scaling is
+	 * linear.
+	 */
+	public static final double HUMAN_UNDERSTANDABILITY_COMPXELITY = 4d;
 
 	/**
 	 * The expression containing the if-statement.
@@ -126,15 +142,19 @@ public class IfThenElseExpression implements EvaluableExpression {
 		}
 		final IfThenElseExpression other = (IfThenElseExpression) object;
 		return new EqualsBuilder().append(this.ifStatement, other.ifStatement)
-			.append(this.thenStatement, other.thenStatement).append(this.elseStatement, other.elseStatement).isEquals();
+			.append(this.thenStatement, other.thenStatement)
+			.append(this.elseStatement, other.elseStatement)
+			.isEquals();
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(215, 217).append(this.ifStatement).append(this.thenStatement)
-			.append(this.elseStatement).toHashCode();
+		return new HashCodeBuilder(215, 217).append(this.ifStatement)
+			.append(this.thenStatement)
+			.append(this.elseStatement)
+			.toHashCode();
 	}
 
 }
