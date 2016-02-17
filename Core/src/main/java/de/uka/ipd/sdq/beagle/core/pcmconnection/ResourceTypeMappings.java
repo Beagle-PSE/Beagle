@@ -30,7 +30,7 @@ public final class ResourceTypeMappings {
 	 * The location of the resourceType-file of PCM.
 	 */
 	private static final String RESOURCETYPE_URI =
-		"platform:/plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype";
+		"pathmap://PCM_MODELS/Palladio.resourcetype";
 
 	/**
 	 * The bidirectional Map between {@link ResourceDemandType} and
