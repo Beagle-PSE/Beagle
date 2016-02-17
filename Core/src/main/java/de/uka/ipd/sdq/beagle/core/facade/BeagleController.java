@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
+import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
@@ -12,7 +13,9 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import de.uka.ipd.sdq.beagle.core.judge.AbstractionAndPrecisionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementToolContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
+import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryWriter;
 
+import org.apache.commons.lang3.Validate;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -31,6 +34,7 @@ import java.util.Set;
  * @author Christoph Michelbach
  * @author Roman Langrehr
  */
+// CHECKSTYLE:IGNORE ClassFanOutComplexity
 public class BeagleController {
 
 	/**
@@ -39,13 +43,27 @@ public class BeagleController {
 	private final AnalysisController analysisController;
 
 	/**
+	 * The final {@link BeagleConfiguration} for this analysis.
+	 */
+	private BeagleConfiguration beagleConfiguration;
+
+	/**
+	 * The {@link Blackboard} for this analysis.
+	 */
+	private Blackboard blackboard;
+
+	/**
 	 * Constructs a new {@code BeagleController} with the given
 	 * {@link BeagleConfiguration}.
 	 *
 	 * @param beagleConfiguration The {@link BeagleConfiguration} this BeagleController
 	 *            has permanently. It cannot be changed.
+	 *            {@link BeagleConfiguration#finalise()} must have been called.
 	 */
 	public BeagleController(final BeagleConfiguration beagleConfiguration) {
+		Validate.isTrue(beagleConfiguration.isFinal(),
+			"The BeagleConfiguration must be final for the BeagleController");
+		this.beagleConfiguration = beagleConfiguration;
 		final BlackboardCreator blackboardFactory = new BlackboardCreator();
 		final SourceCodeFileProvider sourceCodeFileProvider =
 			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());
@@ -83,7 +101,8 @@ public class BeagleController {
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 		}
 		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());
-		this.analysisController = new AnalysisController(blackboardFactory.createBlackboard(),
+		this.blackboard = blackboardFactory.createBlackboard();
+		this.analysisController = new AnalysisController(this.blackboard,
 			new HashSet<>(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),
 			new HashSet<>(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),
 			new HashSet<>(
@@ -97,6 +116,11 @@ public class BeagleController {
 	 */
 	public void startAnalysis() {
 		this.analysisController.performAnalysis();
+		try {
+			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());
+		} catch (final FileNotFoundException fileNotFoundException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
+		}
 	}
 
 	/**
