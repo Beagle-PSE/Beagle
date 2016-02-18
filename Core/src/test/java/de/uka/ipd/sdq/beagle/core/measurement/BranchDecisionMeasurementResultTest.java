@@ -1,10 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -100,8 +99,8 @@ public class BranchDecisionMeasurementResultTest {
 		final BranchDecisionMeasurementResult measurementResultP =
 			new BranchDecisionMeasurementResult(parameterisation, value) {
 			};
-		assertThat(measurementResult.toString(), not(startsWith("BranchDecisionMeasurementResult@")));
-		assertThat(measurementResultP.toString(), not(startsWith("BranchDecisionMeasurementResult@")));
+		assertThat(measurementResult, hasOverriddenToString());
+		assertThat(measurementResultP, hasOverriddenToString());
 	}
 
 }
