@@ -17,9 +17,12 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.RecursiveEvaluableExpressionVisitor;
 
 /**
+ * ATTENTION: Checkstyle is turned off where numbers with obvious meanings are used.
+ */
+
+/**
  * Complexity object for an {@link EvaluableExpression}.
  *
- * <p>ATTENTION: Checkstyle is turned off where numbers with obvious meanings are used.
  *
  * @author Christoph Michelbach
  */
