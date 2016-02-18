@@ -176,6 +176,8 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 	 * Determines the fitness value of {@code expression}.
 	 *
 	 * @param expression The {@link EvaluableExpression}.
+	 * @param meanSquareDeviation The mean square deviation of {@code expression} from the
+	 *            measured values.
 	 * @return The fitness value of {@code expression}.
 	 */
 	private double determineFitnessValue(final EvaluableExpression expression, final double meanSquareDeviation) {
