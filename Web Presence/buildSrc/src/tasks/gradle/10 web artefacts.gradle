@@ -18,14 +18,15 @@ task copyWebArtefacts() {
 		designDest = "$WEB_DEST/$doc.design.dest.name"
 		implementationPlanDest = "$WEB_DEST/$doc.implementation.dest.name"
 		implementationReportDest = "$WEB_DEST/$doc.implementationreport.dest.name"
+		implementationSlidesDest = "$WEB_DEST/$doc.implementationslides.dest.name"
 	}
 	
 	
 	def checkstyleDirs = rootProject.javaSubprojects.collect { it.checkstyleHtml.dest }
 	def testReports = rootProject.javaSubprojects.collect { it.jacocoTestReport.reports.html.destination }
 	
-	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.design.dest, checkstyleDirs, testReports, doc.implementation.dest, doc.implementationreport.dest
-	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest, implementationPlanDest, implementationReportDest
+	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.design.dest, checkstyleDirs, testReports, doc.implementation.dest, doc.implementationreport.dest, doc.implementationslides.dest
+	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest, implementationPlanDest, implementationReportDest, implementationSlidesDest
 	
 	doLast {
 		rootProject.javaSubprojects.each { project ->
@@ -47,7 +48,7 @@ task copyWebArtefacts() {
 		}	
 		
 		copy {
-			from doc.srs.dest, doc.design.dest, doc.implementation.dest, doc.implementationreport.dest
+			from doc.srs.dest, doc.design.dest, doc.implementation.dest, doc.implementationreport.dest, doc.implementationslides.dest
 			into WEB_DEST
 		}
 	}
