@@ -12,6 +12,7 @@ set -e
 # To be called from Beagle’s root folder on Travis CI    #
 #                                                        #
 # author: Joshua Gleitze                                 #
+# author: Roman Langrehr                                 #
 ##########################################################
 
 
@@ -27,21 +28,21 @@ cp Documentation/Dependencies/sdqthesis.layout ~/.lyx/layouts
 cp Documentation/Dependencies/KIT-Beamer.layout ~/.lyx/layouts
 
 # Download the sdqthesis template, unzip it, copy the important content into the local texmf, run texhash
-texmf="/usr/share/texmf/tex/latex/sdqthesis"
+texmf="/usr/share/texmf/tex/latex"
 sudo mkdir -p $texmf
 
 sdqthesiszip="https://sdqweb.ipd.kit.edu/mediawiki-sdq-extern/images/7/76/Ausarbeitungs-Vorlage_SDQ_2014.zip"
-kitbeamerzip="https://intranet.kit.edu/downloads/KIT-Vorlagen-Folien.zip"
 
 tmpdir=`mktemp -d`
 zipname="$tmpdir/sdqthesis.zip"
 kitbeamerzipname="$tmpdir/kitbeamer.zip"
 
 wget -qO- -O $zipname $sdqthesiszip && unzip $zipname -d $tmpdir
-wget -qO- -O $kitbeamerzipname $kitbeamerzip && unzip $kitbeamerzipname -d $tmpdir
+wget -qO- -O $kitbeamerzipname $BEAMERLINK && unzip $kitbeamerzipname -d $tmpdir
 unzip $tmpdir/KITbase.zip -d $tmpdir
 unzip $tmpdir/KITbeamer.zip -d $tmpdir
-sudo cp -r $tmpdir/tex $tmpdir/logos $tmpdir/sdqthesis.cls $tmpdir/title-background.pdf $tmpdir/title-background.eps $texmf
+sudo cp -r $tmpdir/logos $tmpdir/sdqthesis.cls $tmpdir/title-background.pdf $tmpdir/title-background.eps $texmf/sdqthesis
+sudo cp -r $tmpdir/tex/latex $texmf
 
 sudo texhash
 	
