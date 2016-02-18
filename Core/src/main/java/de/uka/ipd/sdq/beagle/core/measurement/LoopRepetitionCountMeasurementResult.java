@@ -50,7 +50,7 @@ public class LoopRepetitionCountMeasurementResult extends ParameterisationDepend
 
 	@Override
 	public String toString() {
-		return String.format("LoopResult@%4.4s<%f,%s>", Integer.toHexString(this.hashCode()), this.count,
+		return String.format("LoopResult@%4.4s<%d,%s>", Integer.toHexString(this.hashCode()), this.count,
 			this.getParameterisation());
 
 	}
