@@ -176,18 +176,20 @@ import java.util.Set;
 	 * Determines the fitness value of {@code expression}.
 	 *
 	 * @param expression The {@link EvaluableExpression}.
+	 * @param meanSquareDeviation The mean square deviation of {@code expression} from the
+	 *            measured values.
 	 * @return The fitness value of {@code expression}.
 	 */
 	private double determineFitnessValue(final EvaluableExpression expression, final double meanSquareDeviation) {
-<span class="fc" id="L182">		final EvaluableExpressionComplexityAnalyser evaluableExpressionComplexityAnalyser =</span>
+<span class="fc" id="L184">		final EvaluableExpressionComplexityAnalyser evaluableExpressionComplexityAnalyser =</span>
 			new EvaluableExpressionComplexityAnalyser();
-<span class="fc" id="L184">		evaluableExpressionComplexityAnalyser.determineComplexity(expression);</span>
+<span class="fc" id="L186">		evaluableExpressionComplexityAnalyser.determineComplexity(expression);</span>
 
-<span class="fc" id="L186">		final double numericComplexity = evaluableExpressionComplexityAnalyser.getComputationalComplexitySum()</span>
-<span class="fc" id="L187">			+ evaluableExpressionComplexityAnalyser.getHumanComprehensibilityComplexitySum()</span>
+<span class="fc" id="L188">		final double numericComplexity = evaluableExpressionComplexityAnalyser.getComputationalComplexitySum()</span>
+<span class="fc" id="L189">			+ evaluableExpressionComplexityAnalyser.getHumanComprehensibilityComplexitySum()</span>
 				* HUMAN_READABLITY_COEFFICIENT;
 
-<span class="fc" id="L190">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+<span class="fc" id="L192">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
