@@ -16,7 +16,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.RecursiveEvaluableExpressionVisitor;
 
-/**
+/*
  * ATTENTION: Checkstyle is turned off where numbers with obvious meanings are used.
  */
 
