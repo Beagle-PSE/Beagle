@@ -187,11 +187,11 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 	 * @return The numeric complexity of {@code expression}.
 	 */
 	private double determineNumericComplexity(final EvaluableExpression expression) {
-		final Complexity complexity = new Complexity();
-		complexity.determineComplexity(expression);
+		final EvaluableExpressionComplexityAnalyser evaluableExpressionComplexityAnalyser = new EvaluableExpressionComplexityAnalyser();
+		evaluableExpressionComplexityAnalyser.determineComplexity(expression);
 
-		return complexity.getComputationalComplexitySum()
-			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
+		return evaluableExpressionComplexityAnalyser.getComputationalComplexitySum()
+			+ evaluableExpressionComplexityAnalyser.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
 
 	}
 }

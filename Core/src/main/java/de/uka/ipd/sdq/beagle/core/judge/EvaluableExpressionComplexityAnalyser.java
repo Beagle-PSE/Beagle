@@ -21,12 +21,12 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.RecursiveEvaluableEx
  */
 
 /**
- * Complexity object for an {@link EvaluableExpression}.
+ * EvaluableExpressionComplexityAnalyser object for an {@link EvaluableExpression}.
  *
  *
  * @author Christoph Michelbach
  */
-public class Complexity extends RecursiveEvaluableExpressionVisitor {
+public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExpressionVisitor {
 
 	/**
 	 * Every expression with depth larger than this will receive {@link #DEPTH_PENALTY} of
