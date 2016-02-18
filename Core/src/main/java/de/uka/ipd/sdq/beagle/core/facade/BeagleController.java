@@ -16,8 +16,10 @@ import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAd
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryWriter;
 
 import org.apache.commons.lang3.Validate;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.jdt.core.IJavaProject;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.FileNotFoundException;
@@ -36,6 +38,11 @@ import java.util.Set;
  */
 // CHECKSTYLE:IGNORE ClassFanOutComplexity
 public class BeagleController {
+
+	/**
+	 * The failure handler for this class.
+	 */
+	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(BeagleConfiguration.class);
 
 	/**
 	 * The analysis controller used for this project.
@@ -82,12 +89,7 @@ public class BeagleController {
 				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
 			}
 		}
-		Charset charset = null;
-		try {
-			charset = Charset.forName(beagleConfiguration.getJavaProject().getProject().getDefaultCharset());
-		} catch (final CoreException coreException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
-		}
+		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());
 		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();
 		final Set<ILaunchConfiguration> iLaunchConfigurations =
 			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
@@ -120,6 +122,23 @@ public class BeagleController {
 			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());
 		} catch (final FileNotFoundException fileNotFoundException) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
+		}
+	}
+
+	/**
+	 * Reads the default charset of an {@link IJavaProject}.
+	 *
+	 * @param javaProject the {@link IJavaProject} to read from.
+	 * @return the charset specified by {@link IProject#getDefaultCharset()}
+	 */
+	private Charset readCharset(final IJavaProject javaProject) {
+		try {
+			return Charset.forName(javaProject.getProject().getDefaultCharset());
+		} catch (final CoreException coreException) {
+			final FailureReport<Object> failure = new FailureReport<>().cause(coreException)
+				.continueWith(Charset::defaultCharset)
+				.retryWith(() -> this.readCharset(javaProject));
+			return (Charset) FAILURE_HANDLER.handle(failure);
 		}
 	}
 
