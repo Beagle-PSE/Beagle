@@ -67,133 +67,132 @@ import java.util.Set;
 <span class="fc" id="L67">			meanSquareDeviation += squareDeviation / resourceDemandMeasurementResults.size();</span>
 <span class="fc" id="L68">		}</span>
 
-<span class="fc" id="L70">		final Complexity complexity = new Complexity();</span>
-<span class="fc" id="L71">		complexity.determineComplexity(expression);</span>
+<span class="fc" id="L70">		final double numericComplexity = this.determineNumericComplexity(expression);</span>
 
-<span class="fc" id="L73">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
-<span class="fc" id="L74">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
-
-<span class="fc" id="L76">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+<span class="fc" id="L72">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
 	}
 
 	@Override
 	public double gradeFor(final SeffBranch branch, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-<span class="fc" id="L82">		Validate.notNull(branch);</span>
-<span class="fc" id="L83">		Validate.notNull(expression);</span>
-<span class="fc" id="L84">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L78">		Validate.notNull(branch);</span>
+<span class="fc" id="L79">		Validate.notNull(expression);</span>
+<span class="fc" id="L80">		Validate.notNull(blackboard);</span>
 
-<span class="fc" id="L86">		final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults =</span>
-<span class="fc" id="L87">			blackboard.getMeasurementResultsFor(branch);</span>
+<span class="fc" id="L82">		final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults =</span>
+<span class="fc" id="L83">			blackboard.getMeasurementResultsFor(branch);</span>
 
 		// If there is no expression, return infinity.
-<span class="fc bfc" id="L90" title="All 2 branches covered.">		if (branchDecisionMeasurementResults.size() == 0) {</span>
-<span class="fc" id="L91">			return Double.POSITIVE_INFINITY;</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">		if (branchDecisionMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L87">			return Double.POSITIVE_INFINITY;</span>
 		}
 
-<span class="fc" id="L94">		double meanSquareDeviation = 0;</span>
+<span class="fc" id="L90">		double meanSquareDeviation = 0;</span>
 
-<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {</span>
-<span class="fc" id="L97">			final double realValue = branchDecisionMeasurementResult.getBranchIndex();</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">		for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {</span>
+<span class="fc" id="L93">			final double realValue = branchDecisionMeasurementResult.getBranchIndex();</span>
 			// final Parameterisation parameterisation =
 			// branchDecisionMeasurementResult.getParameterisation();
 
-<span class="fc" id="L101">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+<span class="fc" id="L97">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
 
-<span class="fc" id="L103">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+<span class="fc" id="L99">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
 
-<span class="fc" id="L105">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
-<span class="fc" id="L106">			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();</span>
-<span class="fc" id="L107">		}</span>
+<span class="fc" id="L101">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L102">			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();</span>
+<span class="fc" id="L103">		}</span>
 
-<span class="fc" id="L109">		final Complexity complexity = new Complexity();</span>
-<span class="fc" id="L110">		complexity.determineComplexity(expression);</span>
+<span class="fc" id="L105">		final double numericComplexity = this.determineNumericComplexity(expression);</span>
 
-<span class="fc" id="L112">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
-<span class="fc" id="L113">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
-
-<span class="fc" id="L115">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+<span class="fc" id="L107">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
 	}
 
 	@Override
 	public double gradeFor(final SeffLoop loop, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-<span class="fc" id="L121">		Validate.notNull(loop);</span>
-<span class="fc" id="L122">		Validate.notNull(expression);</span>
-<span class="fc" id="L123">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L113">		Validate.notNull(loop);</span>
+<span class="fc" id="L114">		Validate.notNull(expression);</span>
+<span class="fc" id="L115">		Validate.notNull(blackboard);</span>
 
-<span class="fc" id="L125">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults =</span>
-<span class="fc" id="L126">			blackboard.getMeasurementResultsFor(loop);</span>
+<span class="fc" id="L117">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults =</span>
+<span class="fc" id="L118">			blackboard.getMeasurementResultsFor(loop);</span>
 
 		// If there is no expression, return infinity.
-<span class="fc bfc" id="L129" title="All 2 branches covered.">		if (loopRepetitionCountMeasurementResults.size() == 0) {</span>
-<span class="fc" id="L130">			return Double.POSITIVE_INFINITY;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">		if (loopRepetitionCountMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L122">			return Double.POSITIVE_INFINITY;</span>
 		}
 
-<span class="fc" id="L133">		double meanSquareDeviation = 0;</span>
+<span class="fc" id="L125">		double meanSquareDeviation = 0;</span>
 
 		// @formatter:off
 		for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
-<span class="fc bfc" id="L137" title="All 2 branches covered.">			: loopRepetitionCountMeasurementResults) {</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">			: loopRepetitionCountMeasurementResults) {</span>
 			// @formatter:on
-<span class="fc" id="L139">			final double realValue = loopRepetitionCountMeasurementResult.getCount();</span>
+<span class="fc" id="L131">			final double realValue = loopRepetitionCountMeasurementResult.getCount();</span>
 			// final Parameterisation parameterisation =
 			// loopRepetitionCountMeasurementResult.getParameterisation();
 
-<span class="fc" id="L143">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+<span class="fc" id="L135">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
 
-<span class="fc" id="L145">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+<span class="fc" id="L137">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
 
-<span class="fc" id="L147">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
-<span class="fc" id="L148">			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();</span>
-<span class="fc" id="L149">		}</span>
+<span class="fc" id="L139">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L140">			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();</span>
+<span class="fc" id="L141">		}</span>
 
-<span class="fc" id="L151">		final Complexity complexity = new Complexity();</span>
-<span class="fc" id="L152">		complexity.determineComplexity(expression);</span>
+<span class="fc" id="L143">		final double numericComplexity = this.determineNumericComplexity(expression);</span>
 
-<span class="fc" id="L154">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
-<span class="fc" id="L155">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
-
-<span class="fc" id="L157">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+<span class="fc" id="L145">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
 	}
 
 	@Override
 	public double gradeFor(final ExternalCallParameter parameter, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
-<span class="fc" id="L163">		Validate.notNull(parameter);</span>
-<span class="fc" id="L164">		Validate.notNull(expression);</span>
-<span class="fc" id="L165">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L151">		Validate.notNull(parameter);</span>
+<span class="fc" id="L152">		Validate.notNull(expression);</span>
+<span class="fc" id="L153">		Validate.notNull(blackboard);</span>
 
-<span class="fc" id="L167">		final Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResults =</span>
-<span class="fc" id="L168">			blackboard.getMeasurementResultsFor(parameter);</span>
+<span class="fc" id="L155">		final Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResults =</span>
+<span class="fc" id="L156">			blackboard.getMeasurementResultsFor(parameter);</span>
 
 		// If there is no expression, return infinity.
-<span class="fc bfc" id="L171" title="All 2 branches covered.">		if (parameterChangeMeasurementResults.size() == 0) {</span>
-<span class="fc" id="L172">			return Double.POSITIVE_INFINITY;</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">		if (parameterChangeMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L160">			return Double.POSITIVE_INFINITY;</span>
 		}
 
-<span class="fc" id="L175">		double meanSquareDeviation = 0;</span>
+<span class="fc" id="L163">		double meanSquareDeviation = 0;</span>
 
-<span class="fc bfc" id="L177" title="All 2 branches covered.">		for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {</span>
-<span class="fc" id="L178">			final double realValue = parameterChangeMeasurementResult.getCount();</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">		for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {</span>
+<span class="fc" id="L166">			final double realValue = parameterChangeMeasurementResult.getCount();</span>
 			// final Parameterisation parameterisation =
 			// parameterChangeMeasurementResult.getParameterisation();
 
-<span class="fc" id="L182">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+<span class="fc" id="L170">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
 
-<span class="fc" id="L184">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+<span class="fc" id="L172">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
 
-<span class="fc" id="L186">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
-<span class="fc" id="L187">			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();</span>
-<span class="fc" id="L188">		}</span>
+<span class="fc" id="L174">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L175">			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();</span>
+<span class="fc" id="L176">		}</span>
 
-<span class="fc" id="L190">		final Complexity complexity = new Complexity();</span>
-<span class="fc" id="L191">		complexity.determineComplexity(expression);</span>
+<span class="fc" id="L178">		final double numericComplexity = this.determineNumericComplexity(expression);</span>
 
-<span class="fc" id="L193">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
-<span class="fc" id="L194">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
+<span class="fc" id="L180">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+	}
 
-<span class="fc" id="L196">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+	/**
+	 * Determines the numeric complexity for {@code expression}.
+	 *
+	 * @param expression The {@link EvaluableExpression}.
+	 * @return The numeric complexity of {@code expression}.
+	 */
+	private double determineNumericComplexity(final EvaluableExpression expression) {
+<span class="fc" id="L190">		final EvaluableExpressionComplexityAnalyser evaluableExpressionComplexityAnalyser = new EvaluableExpressionComplexityAnalyser();</span>
+<span class="fc" id="L191">		evaluableExpressionComplexityAnalyser.determineComplexity(expression);</span>
+
+<span class="fc" id="L193">		return evaluableExpressionComplexityAnalyser.getComputationalComplexitySum()</span>
+<span class="fc" id="L194">			+ evaluableExpressionComplexityAnalyser.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
+
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
