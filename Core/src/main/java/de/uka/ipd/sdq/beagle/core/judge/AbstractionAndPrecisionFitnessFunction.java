@@ -67,11 +67,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / resourceDemandMeasurementResults.size();
 		}
 
-		final Complexity complexity = new Complexity();
-		complexity.determineComplexity(expression);
-
-		final double numericComplexity = complexity.getComputationalComplexitySum()
-			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
+		final double numericComplexity = this.determineNumericComplexity(expression);
 
 		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
@@ -106,11 +102,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();
 		}
 
-		final Complexity complexity = new Complexity();
-		complexity.determineComplexity(expression);
-
-		final double numericComplexity = complexity.getComputationalComplexitySum()
-			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
+		final double numericComplexity = this.determineNumericComplexity(expression);
 
 		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
@@ -148,11 +140,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();
 		}
 
-		final Complexity complexity = new Complexity();
-		complexity.determineComplexity(expression);
-
-		final double numericComplexity = complexity.getComputationalComplexitySum()
-			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
+		final double numericComplexity = this.determineNumericComplexity(expression);
 
 		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
@@ -187,12 +175,23 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();
 		}
 
+		final double numericComplexity = this.determineNumericComplexity(expression);
+
+		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
+	}
+
+	/**
+	 * Determines the numeric complexity for {@code expression}.
+	 *
+	 * @param expression The {@link EvaluableExpression}.
+	 * @return The numeric complexity of {@code expression}.
+	 */
+	private double determineNumericComplexity(final EvaluableExpression expression) {
 		final Complexity complexity = new Complexity();
 		complexity.determineComplexity(expression);
 
-		final double numericComplexity = complexity.getComputationalComplexitySum()
+		return complexity.getComputationalComplexitySum()
 			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;
 
-		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
 	}
 }
