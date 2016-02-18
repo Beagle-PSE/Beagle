@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ModifyingEvaluableExpressionVisitor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a> &gt; <span class="el_source">ModifyingEvaluableExpressionVisitor.java</span></div><h1>ModifyingEvaluableExpressionVisitor.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
+
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.Collection;
+
+/**
+ * A visitor allowing to create a new {@linkplain EvaluableExpression} out of an existing
+ * one. Evaluable Expressions are immutable and can thus not simply be modified. However,
+ * it may often be wished to create a new expression out of an existing one that only
+ * differs from the initial one in some details.
+ *
+ * &lt;p&gt;This visitor follows the same traversal strategy as
+ * {@link RecursiveEvaluableExpressionVisitor}. This means it will perform a depth-first
+ * traversal on the tree formed by the expression passed to {@link #modifyRecursively}.
+ * Implementors may call {@link #replaceCurrentExpressionWith(EvaluableExpression)} in any
+ * hook. This will replace the currently visited expression and continue traversal in the
+ * replacement. Replacing an expression will lead to a replacement of all expressions that
+ * have the replaced expression as an inner expression. These “parent” expressions will be
+ * replaced by a new expression of the same type containing the same inner expressions
+ * except for the ones that were initially replaced.
+ *
+ * &lt;p&gt;This visitor will start at the expression passed to
+ * {@link #modifyRecursively(EvaluableExpression)} and call the according {@code at} hook.
+ * Afterwards, it will recursively visit all inner expressions and then call the
+ * {@code after} hook. If {@link #stopTraversal()} is called, the traversal will no longer
+ * visit inner expressions. Instead, it will go “up” the tree again, whilst calling the
+ * {@code after} hooks, until it reached the initial expression and then terminate. Given
+ * that no expression is thrown,the traversal of one expression tree that only contains
+ * pairwise different inner expressions has these properties:
+ *
+ * &lt;ul&gt;
+ *
+ * &lt;li&gt; the number of all called {@code at} hooks will equal the number of all called
+ * {@code after} hooks. However, the numbers may differ for a type of specific hooks
+ * because the expression was changed during the visit. For example
+ * {@link #atSubstraction} may be called on an expression that is replaced by an
+ * {@linkplain AdditionExpression} in this hook. Thus {@link #afterAddition} will be
+ * called instead of {@link #afterSubstraction} at this position when traversing upwards.
+ *
+ * &lt;li&gt; if for two expression {@code e1} and {@code e2}, {@code atExpression(e1)} was
+ * called before {@code atExpression(e2)} was, {@code afterExpression(e2)} will be called
+ * before {@code afterExpression(e1)} will be called.
+ *
+ * &lt;/ul&gt;
+ *
+ * &lt;p&gt;Please note that evaluable expressions may often contain an instance of one
+ * evaluable expression multiple times. Replacements do however only apply to the current
+ * position in the traversal tree (and not all occurences of the currently visited
+ * expression).
+ *
+ * &lt;p&gt;This visitor is not thread safe. It may only be used to traverse one expression at a
+ * time, meaning that its results are undefined if
+ * {@link #modifyRecursively(EvaluableExpression)} is called when
+ * {@link #getTraversalDepth()} does not return {@code -1}. There is however no limitation
+ * on how many expression trees can be visited by an instance of this class.
+ *
+ * @author Joshua Gleitze
+ * @see ExpressionTreeWalker
+ */
+<span class="nc" id="L77">public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTreeWalker {</span>
+
+	/**
+	 * The momentarily visited expression. It can change multiple times at the same tree
+	 * node!
+	 */
+	private EvaluableExpression currentExpression;
+
+	/**
+	 * How deeply we have the traversed so far. Will be 0 at the root.
+	 */
+	private int depth;
+
+	/**
+	 * How many expressions we’ve seen so far. Will be 1 at the root.
+	 */
+	private int count;
+
+	/**
+	 * As long as this is true, we’ll traverse further. We’ll immediately stop to traverse
+	 * deeper as soon as this is false.
+	 */
+<span class="nc" id="L99">	private boolean doTraverse = true;</span>
+
+	/**
+	 * The visitor handling the calls to the {@code at} hooks.
+	 */
+<span class="nc" id="L104">	private final AtHookHandler atHookHandler = new AtHookHandler();</span>
+
+	/**
+	 * The visitor handling the calls to the {@code after} hooks.
+	 */
+<span class="nc" id="L109">	private final AfterHookHandler afterHookHandler = new AfterHookHandler();</span>
+
+	/**
+	 * The iterator momentarily iterating over the inner expressions of the last
+	 * expression visited on one level above this one. Will be {@code null} at the root
+	 * expression.
+	 */
+	private InnerExpressionIterator lastInnerExpressionIterator;
+
+	/**
+	 * The modifier that will adapt the current expression if one of its inner expressions
+	 * was modified.
+	 */
+<span class="nc" id="L122">	private final OuterExpressionModifier currentExpressionModifier = new OuterExpressionModifier();</span>
+
+	/**
+	 * Moves the traversal to the next expression which must have already been put into
+	 * {@link #currentExpression}. Because {@link #currentExpression} can change after
+	 * every hook, this cannot be realised by one visitor. Instead, this method uses
+	 * multiple visitors that newly resolve the current expression’s type to act
+	 * accordingly.
+	 */
+	private void next() {
+<span class="nc" id="L132">		this.depth++;</span>
+<span class="nc" id="L133">		this.count++;</span>
+
+		// call at-hooks
+<span class="nc" id="L136">		this.atOther(this.currentExpression);</span>
+<span class="nc" id="L137">		this.currentExpression.receive(this.atHookHandler);</span>
+
+		// visit inner expressions
+<span class="nc" id="L140">		final InnerExpressionIterator oldInnerExpressionIterator = this.lastInnerExpressionIterator;</span>
+<span class="nc" id="L141">		this.lastInnerExpressionIterator = new InnerExpressionIterator();</span>
+<span class="nc" id="L142">		this.lastInnerExpressionIterator.recurse();</span>
+<span class="nc" id="L143">		this.lastInnerExpressionIterator = oldInnerExpressionIterator;</span>
+
+		// call after-hooks
+<span class="nc" id="L146">		this.afterOther(this.currentExpression);</span>
+<span class="nc" id="L147">		this.currentExpression.receive(this.afterHookHandler);</span>
+<span class="nc" id="L148">		this.depth--;</span>
+<span class="nc" id="L149">	}</span>
+
+	/**
+	 * Starts visiting {@code expression}.
+	 *
+	 * @param expression The expression forming the root of the expression tree that shall
+	 *            be traversed. Must not be {@code null}.
+	 * @return The modified expression. This is the expression that was build to reflect
+	 *         all replacements. Will be {@code expression} if no substantial call to
+	 *         {@link #replaceCurrentExpressionWith(EvaluableExpression)} was made.
+	 */
+	protected EvaluableExpression modifyRecursively(final EvaluableExpression expression) {
+<span class="nc" id="L161">		Validate.notNull(expression, &quot;Cannot traverse null.&quot;);</span>
+
+<span class="nc" id="L163">		this.currentExpression = expression;</span>
+<span class="nc" id="L164">		this.lastInnerExpressionIterator = null;</span>
+<span class="nc" id="L165">		this.count = 0;</span>
+<span class="nc" id="L166">		this.depth = -1;</span>
+<span class="nc" id="L167">		this.doTraverse = true;</span>
+
+<span class="nc" id="L169">		this.next();</span>
+
+<span class="nc" id="L171">		return this.currentExpression;</span>
+	}
+
+	/**
+	 * Replaces the currently visited expression with {@code expression} in the expression
+	 * tree. This will lead the traversal to continue in {@code expression} and all
+	 * expressions for which no {@code after} hooks have been called yet to be replaced by
+	 * an expression reflecting this replacement. A call to this method has no effect if
+	 * {@code expression} equals the momentarily visited expression.
+	 *
+	 * @param expression The new expression to be inserted at the point in the expression
+	 *            tree at which the current expression is found. Must not be {@code null}.
+	 *
+	 * @throws IllegalStateException If this visitor is currently not visiting an
+	 *             expression tree.
+	 */
+	protected void replaceCurrentExpressionWith(final EvaluableExpression expression) {
+<span class="nc" id="L188">		Validate.notNull(expression, &quot;The current expression can only be replaced by a new one.&quot;);</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">		Validate.validState(this.depth &gt;= 0, &quot;This visitor does no visit any expression in the moment. &quot;</span>
+			+ &quot;Please call this method only from a visiting hook!&quot;);
+
+<span class="nc bnc" id="L192" title="All 2 branches missed.">		if (this.currentExpression.equals(expression)) {</span>
+<span class="nc" id="L193">			return;</span>
+		}
+
+<span class="nc" id="L196">		this.currentExpression = expression;</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">		if (this.lastInnerExpressionIterator != null) {</span>
+<span class="nc" id="L198">			this.lastInnerExpressionIterator.notifyNew();</span>
+		}
+<span class="nc" id="L200">	}</span>
+
+	/**
+	 * Queries how many expressions have been visited during the momentary traversal. This
+	 * value is only reset when starting a new visit a new expression, it can thus be used
+	 * to determine how many expressions were visited after a traversal.
+	 *
+	 * @return The amount of visited expressions since the last call to
+	 *         {@link #modifyRecursively(EvaluableExpression)}.
+	 */
+	protected int getVisitedCount() {
+<span class="nc" id="L211">		return this.count;</span>
+	}
+
+	/**
+	 * Queries how “deep” the currently visited expression is in the visited tree.
+	 *
+	 * @return how many {@code at} hooks have been called - how many {@code after} hooks
+	 *         have been called - 1. Will be {@code 0} at the root expression and
+	 *         {@code -1} at the before and after a traversal.
+	 */
+	protected int getTraversalDepth() {
+<span class="nc" id="L222">		return this.depth;</span>
+	}
+
+	/**
+	 * Stops visiting of inner expressions. As soon as this method is called, this visitor
+	 * will no longer visit inner expressions. This means that only {@code after} hooks of
+	 * already visited expressions will be called until the root is reached. This setting
+	 * persists only until the next call of
+	 * {@link #modifyRecursively(EvaluableExpression)} .
+	 */
+	protected void stopTraversal() {
+<span class="nc" id="L233">		this.doTraverse = false;</span>
+<span class="nc" id="L234">	}</span>
+
+	/**
+	 * Continues visiting of inner expressions after it has been stopped through
+	 * {@link #stopTraversal()}. This returns to the visitor’s default behaviour.
+	 */
+	protected void continueTraversal() {
+<span class="nc" id="L241">		this.doTraverse = true;</span>
+<span class="nc" id="L242">	}</span>
+
+	/**
+	 * Queries whether the visitor will visit inner expressions. Will return {@code true}
+	 * unless {@link #stopTraversal()} is called. The value will be reset when calling
+	 * {@link #modifyRecursively(EvaluableExpression)}.
+	 *
+	 * @return Whether inner expressions will be examined for the momentary tree.
+	 */
+	protected boolean willTraverse() {
+<span class="nc" id="L252">		return this.doTraverse;</span>
+	}
+
+	/**
+	 * Visitor responsible to iterate over an expression’s inner expressions. It first
+	 * resolves the current expression by visiting it. Afterwards, it translates the
+	 * expression’s inner expressions into an expression array and iterates over it to
+	 * call the recursion for them. If any of the inner expressions change while doing so,
+	 * the class will call
+	 * {@link ModifyingEvaluableExpressionVisitor#currentExpressionModifier} to adapt the
+	 * current expression accordingly.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class InnerExpressionIterator implements EvaluableExpressionVisitor {
+
+		/**
+		 * The InnerExpressionIterator momentarily iterating at one level “above” this one
+		 * in the traversal tree. Will be notified if the current expression is modified.
+		 */
+		private final InnerExpressionIterator parent;
+
+		/**
+		 * {@code true} if any inner expression was modified while iterating over inner
+		 * expressions.
+		 */
+		private boolean innerExpressionWasModified;
+
+		/**
+		 * The current expression’s inner expressions to iterate over.
+		 */
+		private EvaluableExpression[] innerExpressions;
+
+		/**
+		 * Index of the expression which we’re currently iterating over in
+		 * {@link #innerExpressions}.
+		 */
+		private int innerExpressionIndex;
+
+		/**
+		 * Creates this recursor. A new recursor must be created for every expression that
+		 * is visited during traversal.
+		 */
+<span class="nc" id="L295">		private InnerExpressionIterator() {</span>
+<span class="nc" id="L296">			this.parent = ModifyingEvaluableExpressionVisitor.this.lastInnerExpressionIterator;</span>
+<span class="nc" id="L297">		}</span>
+
+		/**
+		 * Notifies this recursor that an inner expression was modified. It will thus
+		 * modify the current expression at the end of the momentary recursion.
+		 */
+		private void notifyNew() {
+<span class="nc" id="L304">			this.innerExpressions[this.innerExpressionIndex] =</span>
+<span class="nc" id="L305">				ModifyingEvaluableExpressionVisitor.this.currentExpression;</span>
+<span class="nc" id="L306">			this.innerExpressionWasModified = true;</span>
+<span class="nc" id="L307">		}</span>
+
+		/**
+		 * Starts iterating over the current expression’s inner expressions.
+		 */
+		private void recurse() {
+<span class="nc" id="L313">			this.innerExpressionIndex = 0;</span>
+<span class="nc" id="L314">			this.innerExpressionWasModified = false;</span>
+<span class="nc" id="L315">			final EvaluableExpression oldExpression = ModifyingEvaluableExpressionVisitor.this.currentExpression;</span>
+
+<span class="nc" id="L317">			ModifyingEvaluableExpressionVisitor.this.currentExpression.receive(this);</span>
+
+<span class="nc" id="L319">			ModifyingEvaluableExpressionVisitor.this.currentExpression = oldExpression;</span>
+<span class="nc bnc" id="L320" title="All 2 branches missed.">			if (this.innerExpressionWasModified) {</span>
+<span class="nc" id="L321">				ModifyingEvaluableExpressionVisitor.this.currentExpressionModifier.modify(this.innerExpressions);</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">				if (this.parent != null) {</span>
+<span class="nc" id="L323">					this.parent.notifyNew();</span>
+				}
+			}
+<span class="nc" id="L326">		}</span>
+
+		/**
+		 * Makes the {@link ModifyingEvaluableExpressionVisitor} visit all
+		 * {@code currentInnerExpressions}.
+		 *
+		 * @param currentInnerExpressions All innerExpressions of
+		 *            {@link ModifyingEvaluableExpressionVisitor#currentExpression}.
+		 */
+		private void visitInner(final Collection&lt;EvaluableExpression&gt; currentInnerExpressions) {
+<span class="nc" id="L336">			this.visitInner(currentInnerExpressions.toArray(new EvaluableExpression[currentInnerExpressions.size()]));</span>
+<span class="nc" id="L337">		}</span>
+
+		/**
+		 * Makes the {@link ModifyingEvaluableExpressionVisitor} visit all
+		 * {@code currentInnerExpressions}.
+		 *
+		 * @param currentInnerExpressions All innerExpressions of
+		 *            {@link ModifyingEvaluableExpressionVisitor#currentExpression}.
+		 */
+		private void visitInner(final EvaluableExpression... currentInnerExpressions) {
+<span class="nc" id="L347">			this.innerExpressions = currentInnerExpressions;</span>
+
+			// iterate over all as long as doTraverse is true.
+<span class="nc" id="L350">			for (this.innerExpressionIndex = 0; this.innerExpressionIndex &lt; this.innerExpressions.length</span>
+<span class="nc bnc" id="L351" title="All 4 branches missed.">				&amp;&amp; ModifyingEvaluableExpressionVisitor.this.doTraverse; this.innerExpressionIndex++) {</span>
+<span class="nc" id="L352">				ModifyingEvaluableExpressionVisitor.this.currentExpression =</span>
+					this.innerExpressions[this.innerExpressionIndex];
+<span class="nc" id="L354">				ModifyingEvaluableExpressionVisitor.this.next();</span>
+			}
+<span class="nc" id="L356">		}</span>
+
+		@Override
+		public void visit(final AdditionExpression expression) {
+<span class="nc" id="L360">			this.visitInner(expression.getSummands());</span>
+<span class="nc" id="L361">		}</span>
+
+		@Override
+		public void visit(final MultiplicationExpression expression) {
+<span class="nc" id="L365">			this.visitInner(expression.getFactors());</span>
+<span class="nc" id="L366">		}</span>
+
+		@Override
+		public void visit(final EvaluableVariable variable) {
+			// No inner expressions—nothing to do here
+<span class="nc" id="L371">		}</span>
+
+		@Override
+		public void visit(final ComparisonExpression expression) {
+<span class="nc" id="L375">			this.visitInner(expression.getSmaller(), expression.getGreater());</span>
+<span class="nc" id="L376">		}</span>
+
+		@Override
+		public void visit(final ConstantExpression constant) {
+			// No inner expressions—nothing to do here
+<span class="nc" id="L381">		}</span>
+
+		@Override
+		public void visit(final DivisionExpression expression) {
+<span class="nc" id="L385">			this.visitInner(expression.getDivisor(), expression.getDividend());</span>
+<span class="nc" id="L386">		}</span>
+
+		@Override
+		public void visit(final ExponentationExpression expression) {
+<span class="nc" id="L390">			this.visitInner(expression.getBase(), expression.getExponent());</span>
+<span class="nc" id="L391">		}</span>
+
+		@Override
+		public void visit(final ExponentialFunctionExpression expression) {
+<span class="nc" id="L395">			this.visitInner(expression.getExponent());</span>
+<span class="nc" id="L396">		}</span>
+
+		@Override
+		public void visit(final IfThenElseExpression expression) {
+<span class="nc" id="L400">			this.visitInner(expression.getIfStatement(), expression.getThenStatement(), expression.getElseStatement());</span>
+<span class="nc" id="L401">		}</span>
+
+		@Override
+		public void visit(final LogarithmExpression expression) {
+<span class="nc" id="L405">			this.visitInner(expression.getBase(), expression.getAntilogarithm());</span>
+<span class="nc" id="L406">		}</span>
+
+		@Override
+		public void visit(final NaturalLogarithmExpression expression) {
+<span class="nc" id="L410">			this.visitInner(expression.getAntilogarithm());</span>
+<span class="nc" id="L411">		}</span>
+
+		@Override
+		public void visit(final SineExpression expression) {
+<span class="nc" id="L415">			this.visitInner(expression.getArgument());</span>
+<span class="nc" id="L416">		}</span>
+
+		@Override
+		public void visit(final SubtractionExpression expression) {
+<span class="nc" id="L420">			this.visitInner(expression.getMinuend(), expression.getSubtrahend());</span>
+<span class="nc" id="L421">		}</span>
+
+	}
+
+	/**
+	 * Rebuilds {@link ModifyingEvaluableExpressionVisitor#currentExpression} to reflect
+	 * that one of its inner expressions was modified. To do so, it reverts
+	 * {@link ModifyingEvaluableExpressionVisitor.InnerExpressionIterator}’s conversion of
+	 * inner expressions into an array. This means that the new expression will be of the
+	 * same type as the old one and behave equally, except that the inner expressions that
+	 * were changed will be replaced accordingly.
+	 *
+	 * @author Joshua Gleitze
+	 */
+<span class="nc bnc" id="L435" title="All 2 branches missed.">	private class OuterExpressionModifier implements EvaluableExpressionVisitor {</span>
+
+		/**
+		 * The maximal number of arguments any expression constructor takes.
+		 */
+<span class="nc" id="L440">		private final int three = 3;</span>
+
+		/**
+		 * Will hold the new curren expression.
+		 */
+		private EvaluableExpression result;
+
+		/**
+		 * Holds the array of inner expressions, as costructed by
+		 * {@link ModifyingEvaluableExpressionVisitor.InnerExpressionIterator}.
+		 */
+		private EvaluableExpression[] inner;
+
+		/**
+		 * Sets {@link ModifyingEvaluableExpressionVisitor#currentExpression} to an
+		 * expression built out of {@code newInnerExpressions}.
+		 *
+		 * @param newInnerExpressions The inner expressions of the newly created
+		 *            expressions. Must be in the order the responsible constructor
+		 *            expects them to be.
+		 */
+		public void modify(final EvaluableExpression[] newInnerExpressions) {
+<span class="nc" id="L462">			this.inner = newInnerExpressions;</span>
+<span class="nc" id="L463">			ModifyingEvaluableExpressionVisitor.this.currentExpression.receive(this);</span>
+<span class="nc" id="L464">			ModifyingEvaluableExpressionVisitor.this.currentExpression = this.result;</span>
+<span class="nc" id="L465">		}</span>
+
+		@Override
+		public void visit(final AdditionExpression expression) {
+<span class="nc" id="L469">			this.result = new AdditionExpression(this.inner);</span>
+<span class="nc" id="L470">		}</span>
+
+		@Override
+		public void visit(final MultiplicationExpression expression) {
+<span class="nc" id="L474">			this.result = new MultiplicationExpression(this.inner);</span>
+
+<span class="nc" id="L476">		}</span>
+
+		@Override
+		public void visit(final EvaluableVariable variable) {
+			// Will never be called
+<span class="nc bnc" id="L481" title="All 2 branches missed.">			assert false;</span>
+<span class="nc" id="L482">		}</span>
+
+		@Override
+		public void visit(final ComparisonExpression expression) {
+<span class="nc" id="L486">			this.result = new ComparisonExpression(this.inner[0], this.inner[1]);</span>
+<span class="nc" id="L487">		}</span>
+
+		@Override
+		public void visit(final ConstantExpression constant) {
+			// Will never be called
+<span class="nc bnc" id="L492" title="All 2 branches missed.">			assert false;</span>
+<span class="nc" id="L493">		}</span>
+
+		@Override
+		public void visit(final DivisionExpression expression) {
+<span class="nc" id="L497">			this.result = new DivisionExpression(this.inner[0], this.inner[1]);</span>
+<span class="nc" id="L498">		}</span>
+
+		@Override
+		public void visit(final ExponentationExpression expression) {
+<span class="nc" id="L502">			this.result = new ExponentationExpression(this.inner[0], this.inner[1]);</span>
+<span class="nc" id="L503">		}</span>
+
+		@Override
+		public void visit(final ExponentialFunctionExpression expression) {
+<span class="nc" id="L507">			this.result = new ExponentialFunctionExpression(this.inner[0]);</span>
+<span class="nc" id="L508">		}</span>
+
+		@Override
+		public void visit(final IfThenElseExpression expression) {
+<span class="nc" id="L512">			this.result = new IfThenElseExpression(this.inner[0], this.inner[1], this.inner[this.three]);</span>
+<span class="nc" id="L513">		}</span>
+
+		@Override
+		public void visit(final LogarithmExpression expression) {
+<span class="nc" id="L517">			this.result = new LogarithmExpression(this.inner[0], this.inner[1]);</span>
+<span class="nc" id="L518">		}</span>
+
+		@Override
+		public void visit(final NaturalLogarithmExpression expression) {
+<span class="nc" id="L522">			this.result = new NaturalLogarithmExpression(this.inner[0]);</span>
+<span class="nc" id="L523">		}</span>
+
+		@Override
+		public void visit(final SineExpression expression) {
+<span class="nc" id="L527">			this.result = new SineExpression(this.inner[0]);</span>
+<span class="nc" id="L528">		}</span>
+
+		@Override
+		public void visit(final SubtractionExpression expression) {
+<span class="nc" id="L532">			this.result = new SubtractionExpression(this.inner[0], this.inner[1]);</span>
+<span class="nc" id="L533">		}</span>
+	}
+
+	/**
+	 * Resolves the {@link ModifyingEvaluableExpressionVisitor#currentExpression}’s type
+	 * to call the right {@code at} hook.
+	 *
+	 * @author Joshua Gleitze
+	 */
+<span class="nc" id="L542">	private class AtHookHandler implements EvaluableExpressionVisitor {</span>
+
+		@Override
+		public void visit(final AdditionExpression expression) {
+<span class="nc" id="L546">			ModifyingEvaluableExpressionVisitor.this.atAddition(expression);</span>
+<span class="nc" id="L547">		}</span>
+
+		@Override
+		public void visit(final MultiplicationExpression expression) {
+<span class="nc" id="L551">			ModifyingEvaluableExpressionVisitor.this.atMultiplication(expression);</span>
+<span class="nc" id="L552">		}</span>
+
+		@Override
+		public void visit(final EvaluableVariable variable) {
+<span class="nc" id="L556">			ModifyingEvaluableExpressionVisitor.this.atVariable(variable);</span>
+<span class="nc" id="L557">		}</span>
+
+		@Override
+		public void visit(final ComparisonExpression expression) {
+<span class="nc" id="L561">			ModifyingEvaluableExpressionVisitor.this.atComparison(expression);</span>
+<span class="nc" id="L562">		}</span>
+
+		@Override
+		public void visit(final ConstantExpression constant) {
+<span class="nc" id="L566">			ModifyingEvaluableExpressionVisitor.this.atConstant(constant);</span>
+<span class="nc" id="L567">		}</span>
+
+		@Override
+		public void visit(final DivisionExpression expression) {
+<span class="nc" id="L571">			ModifyingEvaluableExpressionVisitor.this.atDivision(expression);</span>
+<span class="nc" id="L572">		}</span>
+
+		@Override
+		public void visit(final ExponentationExpression expression) {
+<span class="nc" id="L576">			ModifyingEvaluableExpressionVisitor.this.atExponentation(expression);</span>
+<span class="nc" id="L577">		}</span>
+
+		@Override
+		public void visit(final ExponentialFunctionExpression expression) {
+<span class="nc" id="L581">			ModifyingEvaluableExpressionVisitor.this.atExponentialFunction(expression);</span>
+<span class="nc" id="L582">		}</span>
+
+		@Override
+		public void visit(final IfThenElseExpression expression) {
+<span class="nc" id="L586">			ModifyingEvaluableExpressionVisitor.this.atIfThenElse(expression);</span>
+<span class="nc" id="L587">		}</span>
+
+		@Override
+		public void visit(final LogarithmExpression expression) {
+<span class="nc" id="L591">			ModifyingEvaluableExpressionVisitor.this.atLogarithm(expression);</span>
+<span class="nc" id="L592">		}</span>
+
+		@Override
+		public void visit(final NaturalLogarithmExpression expression) {
+<span class="nc" id="L596">			ModifyingEvaluableExpressionVisitor.this.atNaturalLogarithm(expression);</span>
+<span class="nc" id="L597">		}</span>
+
+		@Override
+		public void visit(final SineExpression expression) {
+<span class="nc" id="L601">			ModifyingEvaluableExpressionVisitor.this.atSine(expression);</span>
+<span class="nc" id="L602">		}</span>
+
+		@Override
+		public void visit(final SubtractionExpression expression) {
+<span class="nc" id="L606">			ModifyingEvaluableExpressionVisitor.this.atSubstraction(expression);</span>
+<span class="nc" id="L607">		}</span>
+	}
+
+	/**
+	 * Resolves the {@link ModifyingEvaluableExpressionVisitor#currentExpression}’s type
+	 * to call the right {@code after} hook.
+	 *
+	 * @author Joshua Gleitze
+	 */
+<span class="nc" id="L616">	private class AfterHookHandler implements EvaluableExpressionVisitor {</span>
+
+		@Override
+		public void visit(final AdditionExpression expression) {
+<span class="nc" id="L620">			ModifyingEvaluableExpressionVisitor.this.afterAddition(expression);</span>
+<span class="nc" id="L621">		}</span>
+
+		@Override
+		public void visit(final MultiplicationExpression expression) {
+<span class="nc" id="L625">			ModifyingEvaluableExpressionVisitor.this.afterMultiplication(expression);</span>
+<span class="nc" id="L626">		}</span>
+
+		@Override
+		public void visit(final EvaluableVariable variable) {
+<span class="nc" id="L630">			ModifyingEvaluableExpressionVisitor.this.afterVariable(variable);</span>
+<span class="nc" id="L631">		}</span>
+
+		@Override
+		public void visit(final ComparisonExpression expression) {
+<span class="nc" id="L635">			ModifyingEvaluableExpressionVisitor.this.afterComparison(expression);</span>
+<span class="nc" id="L636">		}</span>
+
+		@Override
+		public void visit(final ConstantExpression constant) {
+<span class="nc" id="L640">			ModifyingEvaluableExpressionVisitor.this.afterConstant(constant);</span>
+<span class="nc" id="L641">		}</span>
+
+		@Override
+		public void visit(final DivisionExpression expression) {
+<span class="nc" id="L645">			ModifyingEvaluableExpressionVisitor.this.afterDivision(expression);</span>
+<span class="nc" id="L646">		}</span>
+
+		@Override
+		public void visit(final ExponentationExpression expression) {
+<span class="nc" id="L650">			ModifyingEvaluableExpressionVisitor.this.afterExponentation(expression);</span>
+<span class="nc" id="L651">		}</span>
+
+		@Override
+		public void visit(final ExponentialFunctionExpression expression) {
+<span class="nc" id="L655">			ModifyingEvaluableExpressionVisitor.this.afterExponentialFunction(expression);</span>
+<span class="nc" id="L656">		}</span>
+
+		@Override
+		public void visit(final IfThenElseExpression expression) {
+<span class="nc" id="L660">			ModifyingEvaluableExpressionVisitor.this.afterIfThenElse(expression);</span>
+<span class="nc" id="L661">		}</span>
+
+		@Override
+		public void visit(final LogarithmExpression expression) {
+<span class="nc" id="L665">			ModifyingEvaluableExpressionVisitor.this.afterLogarithm(expression);</span>
+<span class="nc" id="L666">		}</span>
+
+		@Override
+		public void visit(final NaturalLogarithmExpression expression) {
+<span class="nc" id="L670">			ModifyingEvaluableExpressionVisitor.this.afterNaturalLogarithm(expression);</span>
+<span class="nc" id="L671">		}</span>
+
+		@Override
+		public void visit(final SineExpression expression) {
+<span class="nc" id="L675">			ModifyingEvaluableExpressionVisitor.this.afterSine(expression);</span>
+<span class="nc" id="L676">		}</span>
+
+		@Override
+		public void visit(final SubtractionExpression expression) {
+<span class="nc" id="L680">			ModifyingEvaluableExpressionVisitor.this.afterSubstraction(expression);</span>
+<span class="nc" id="L681">		}</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

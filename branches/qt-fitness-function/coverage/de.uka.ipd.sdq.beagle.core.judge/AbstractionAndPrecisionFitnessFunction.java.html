@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AbstractionAndPrecisionFitnessFunction.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.judge</a> &gt; <span class="el_source">AbstractionAndPrecisionFitnessFunction.java</span></div><h1>AbstractionAndPrecisionFitnessFunction.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.judge;
+
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment;
+import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ParameterChangeMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.Set;
+
+/**
+ * Fitness function regarding abstract but precise expression as fittest. Naturally, these
+ * requirements contradict each other. This fitness function grades the expression finding
+ * the best compromise (reasonable abstracted but still precise enough to be meaningful)
+ * best.
+ *
+ * @author Joshua Gleitze
+ * @author Christoph Michelbach
+ */
+<span class="fc" id="L27">public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressionFitnessFunction {</span>
+
+	/**
+	 * How much more valuable human-readability is compared to low computational
+	 * complexity. The higher the value, the more important human-readability is.
+	 */
+	private static final double HUMAN_READABLITY_COEFFICIENT = 7d;
+
+	/**
+	 * How bad deviation is seen. The higher the value, the worse deviation is seen.
+	 */
+	private static final double DEMANDED_PRECISION_COEFFICIENT = 10000d;
+
+	@Override
+	public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
+		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+<span class="fc" id="L43">		Validate.notNull(rdia);</span>
+<span class="fc" id="L44">		Validate.notNull(expression);</span>
+<span class="fc" id="L45">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L47">		final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults =</span>
+<span class="fc" id="L48">			blackboard.getMeasurementResultsFor(rdia);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L51" title="All 2 branches covered.">		if (resourceDemandMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L52">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L55">		double meanSquareDeviation = 0;</span>
+
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {</span>
+<span class="fc" id="L58">			final double realValue = resourceDemandMeasurementResult.getValue();</span>
+			// final Parameterisation parameterisation =
+			// resourceDemandMeasurementResult.getParameterisation();
+
+<span class="fc" id="L62">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L64">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L66">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L67">			meanSquareDeviation += squareDeviation / resourceDemandMeasurementResults.size();</span>
+<span class="fc" id="L68">		}</span>
+
+<span class="fc" id="L70">		final Complexity complexity = new Complexity();</span>
+<span class="fc" id="L71">		complexity.determineComplexity(expression);</span>
+
+<span class="fc" id="L73">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
+<span class="fc" id="L74">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
+
+<span class="fc" id="L76">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+	}
+
+	@Override
+	public double gradeFor(final SeffBranch branch, final EvaluableExpression expression,
+		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+<span class="fc" id="L82">		Validate.notNull(branch);</span>
+<span class="fc" id="L83">		Validate.notNull(expression);</span>
+<span class="fc" id="L84">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L86">		final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults =</span>
+<span class="fc" id="L87">			blackboard.getMeasurementResultsFor(branch);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		if (branchDecisionMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L91">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L94">		double meanSquareDeviation = 0;</span>
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {</span>
+<span class="fc" id="L97">			final double realValue = branchDecisionMeasurementResult.getBranchIndex();</span>
+			// final Parameterisation parameterisation =
+			// branchDecisionMeasurementResult.getParameterisation();
+
+<span class="fc" id="L101">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L103">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L105">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L106">			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();</span>
+<span class="fc" id="L107">		}</span>
+
+<span class="fc" id="L109">		final Complexity complexity = new Complexity();</span>
+<span class="fc" id="L110">		complexity.determineComplexity(expression);</span>
+
+<span class="fc" id="L112">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
+<span class="fc" id="L113">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
+
+<span class="fc" id="L115">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+	}
+
+	@Override
+	public double gradeFor(final SeffLoop loop, final EvaluableExpression expression,
+		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+<span class="fc" id="L121">		Validate.notNull(loop);</span>
+<span class="fc" id="L122">		Validate.notNull(expression);</span>
+<span class="fc" id="L123">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L125">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults =</span>
+<span class="fc" id="L126">			blackboard.getMeasurementResultsFor(loop);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		if (loopRepetitionCountMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L130">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L133">		double meanSquareDeviation = 0;</span>
+
+		// @formatter:off
+		for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
+<span class="fc bfc" id="L137" title="All 2 branches covered.">			: loopRepetitionCountMeasurementResults) {</span>
+			// @formatter:on
+<span class="fc" id="L139">			final double realValue = loopRepetitionCountMeasurementResult.getCount();</span>
+			// final Parameterisation parameterisation =
+			// loopRepetitionCountMeasurementResult.getParameterisation();
+
+<span class="fc" id="L143">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L145">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L147">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L148">			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();</span>
+<span class="fc" id="L149">		}</span>
+
+<span class="fc" id="L151">		final Complexity complexity = new Complexity();</span>
+<span class="fc" id="L152">		complexity.determineComplexity(expression);</span>
+
+<span class="fc" id="L154">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
+<span class="fc" id="L155">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
+
+<span class="fc" id="L157">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+	}
+
+	@Override
+	public double gradeFor(final ExternalCallParameter parameter, final EvaluableExpression expression,
+		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
+<span class="fc" id="L163">		Validate.notNull(parameter);</span>
+<span class="fc" id="L164">		Validate.notNull(expression);</span>
+<span class="fc" id="L165">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L167">		final Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResults =</span>
+<span class="fc" id="L168">			blackboard.getMeasurementResultsFor(parameter);</span>
+
+		// If there is no expression, return infinity.
+<span class="fc bfc" id="L171" title="All 2 branches covered.">		if (parameterChangeMeasurementResults.size() == 0) {</span>
+<span class="fc" id="L172">			return Double.POSITIVE_INFINITY;</span>
+		}
+
+<span class="fc" id="L175">		double meanSquareDeviation = 0;</span>
+
+<span class="fc bfc" id="L177" title="All 2 branches covered.">		for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {</span>
+<span class="fc" id="L178">			final double realValue = parameterChangeMeasurementResult.getCount();</span>
+			// final Parameterisation parameterisation =
+			// parameterChangeMeasurementResult.getParameterisation();
+
+<span class="fc" id="L182">			final EvaluableVariableAssignment evaluableVariableAssignment = new EvaluableVariableAssignment();</span>
+
+<span class="fc" id="L184">			final double predictedValue = expression.evaluate(evaluableVariableAssignment);</span>
+
+<span class="fc" id="L186">			final double squareDeviation = Math.pow(Math.abs(realValue) - Math.abs(predictedValue), 2);</span>
+<span class="fc" id="L187">			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();</span>
+<span class="fc" id="L188">		}</span>
+
+<span class="fc" id="L190">		final Complexity complexity = new Complexity();</span>
+<span class="fc" id="L191">		complexity.determineComplexity(expression);</span>
+
+<span class="fc" id="L193">		final double numericComplexity = complexity.getComputationalComplexitySum()</span>
+<span class="fc" id="L194">			+ complexity.getHumanComprehensibilityComplexitySum() * HUMAN_READABLITY_COEFFICIENT;</span>
+
+<span class="fc" id="L196">		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
