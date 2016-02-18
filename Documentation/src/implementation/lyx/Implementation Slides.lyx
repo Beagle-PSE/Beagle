@@ -87,11 +87,72 @@ IPD SDQ/ARE
 \end_layout
 
 \begin_layout Date
-19.
- Februar 2016
+19.02.2016
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Statstiken
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Beigetragene ELOC
 \end_layout
 
 \begin_layout Standard
+\begin_inset Graphics
+	filename commits.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Statstiken
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Stabilität
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename loc.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
 
 \end_layout
 
