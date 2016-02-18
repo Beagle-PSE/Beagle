@@ -2,12 +2,12 @@ package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -149,7 +149,7 @@ public class SeffBranchTest {
 		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final SeffBranch branch = new SeffBranch(codeSections);
 
-		assertThat(branch.toString(), not(startsWith("SeffBranch@")));
+		assertThat(branch, hasOverriddenToString());
 	}
 
 }

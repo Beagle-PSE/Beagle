@@ -1,10 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.measurement;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
@@ -80,8 +79,8 @@ public class ParameterisationDependentMeasurementResultTest {
 		final ParameterisationDependentMeasurementResult measurementResultP =
 			new ParameterisationDependentMeasurementResult(parameterisation) {
 			};
-		assertThat(measurementResult.toString(), not(startsWith("ParameterisationDependentMeasurementResult@")));
-		assertThat(measurementResultP.toString(), not(startsWith("ParameterisationDependentMeasurementResult@")));
+		assertThat(measurementResult, hasOverriddenToString());
+		assertThat(measurementResultP, hasOverriddenToString());
 	}
 
 }
