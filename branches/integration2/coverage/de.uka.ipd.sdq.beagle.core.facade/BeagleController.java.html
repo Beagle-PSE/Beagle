@@ -16,8 +16,10 @@ import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAd
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryWriter;
 
 import org.apache.commons.lang3.Validate;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.jdt.core.IJavaProject;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.FileNotFoundException;
@@ -36,6 +38,11 @@ import java.util.Set;
  */
 // CHECKSTYLE:IGNORE ClassFanOutComplexity
 public class BeagleController {
+
+	/**
+	 * The failure handler for this class.
+	 */
+<span class="nc" id="L45">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(BeagleConfiguration.class);</span>
 
 	/**
 	 * The analysis controller used for this project.
@@ -60,54 +67,49 @@ public class BeagleController {
 	 *            has permanently. It cannot be changed.
 	 *            {@link BeagleConfiguration#finalise()} must have been called.
 	 */
-<span class="nc" id="L63">	public BeagleController(final BeagleConfiguration beagleConfiguration) {</span>
-<span class="nc" id="L64">		Validate.isTrue(beagleConfiguration.isFinal(),</span>
+<span class="nc" id="L70">	public BeagleController(final BeagleConfiguration beagleConfiguration) {</span>
+<span class="nc" id="L71">		Validate.isTrue(beagleConfiguration.isFinal(),</span>
 			&quot;The BeagleConfiguration must be final for the BeagleController&quot;);
-<span class="nc" id="L66">		this.beagleConfiguration = beagleConfiguration;</span>
-<span class="nc" id="L67">		final BlackboardCreator blackboardFactory = new BlackboardCreator();</span>
-<span class="nc" id="L68">		final SourceCodeFileProvider sourceCodeFileProvider =</span>
-<span class="nc" id="L69">			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">		if (beagleConfiguration.getElements() == null) {</span>
-			try {
-<span class="nc" id="L72">				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)</span>
-<span class="nc" id="L73">					.getBlackboardForAllElements(blackboardFactory);</span>
-<span class="nc" id="L74">			} catch (final FileNotFoundException fileNotFoundException) {</span>
-<span class="nc" id="L75">				FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(fileNotFoundException));</span>
-<span class="nc" id="L76">			}</span>
-		} else {
+<span class="nc" id="L73">		this.beagleConfiguration = beagleConfiguration;</span>
+<span class="nc" id="L74">		final BlackboardCreator blackboardFactory = new BlackboardCreator();</span>
+<span class="nc" id="L75">		final SourceCodeFileProvider sourceCodeFileProvider =</span>
+<span class="nc" id="L76">			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">		if (beagleConfiguration.getElements() == null) {</span>
 			try {
 <span class="nc" id="L79">				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)</span>
-<span class="nc" id="L80">					.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);</span>
+<span class="nc" id="L80">					.getBlackboardForAllElements(blackboardFactory);</span>
 <span class="nc" id="L81">			} catch (final FileNotFoundException fileNotFoundException) {</span>
 <span class="nc" id="L82">				FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(fileNotFoundException));</span>
 <span class="nc" id="L83">			}</span>
+		} else {
+			try {
+<span class="nc" id="L86">				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)</span>
+<span class="nc" id="L87">					.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);</span>
+<span class="nc" id="L88">			} catch (final FileNotFoundException fileNotFoundException) {</span>
+<span class="nc" id="L89">				FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(fileNotFoundException));</span>
+<span class="nc" id="L90">			}</span>
 		}
-<span class="nc" id="L85">		Charset charset = null;</span>
-		try {
-<span class="nc" id="L87">			charset = Charset.forName(beagleConfiguration.getJavaProject().getProject().getDefaultCharset());</span>
-<span class="nc" id="L88">		} catch (final CoreException coreException) {</span>
-<span class="nc" id="L89">			FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(coreException));</span>
-<span class="nc" id="L90">		}</span>
-<span class="nc" id="L91">		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();</span>
-<span class="nc" id="L92">		final Set&lt;ILaunchConfiguration&gt; iLaunchConfigurations =</span>
-<span class="nc" id="L93">			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())</span>
-<span class="nc" id="L94">				.getAllSuitableJUnitLaunchConfigurations();</span>
-<span class="nc" id="L95">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = new HashSet&lt;&gt;();</span>
-<span class="nc bnc" id="L96" title="All 2 branches missed.">		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {</span>
-<span class="nc" id="L97">			launchConfigurations</span>
-<span class="nc" id="L98">				.add(new EclipseLaunchConfiguration(iLaunchConfiguration, beagleConfiguration.getJavaProject()));</span>
+<span class="nc" id="L92">		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());</span>
+<span class="nc" id="L93">		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();</span>
+<span class="nc" id="L94">		final Set&lt;ILaunchConfiguration&gt; iLaunchConfigurations =</span>
+<span class="nc" id="L95">			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())</span>
+<span class="nc" id="L96">				.getAllSuitableJUnitLaunchConfigurations();</span>
+<span class="nc" id="L97">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {</span>
+<span class="nc" id="L99">			launchConfigurations</span>
+<span class="nc" id="L100">				.add(new EclipseLaunchConfiguration(iLaunchConfiguration, beagleConfiguration.getJavaProject()));</span>
 
-<span class="nc" id="L100">			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
+<span class="nc" id="L102">			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
 				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
-<span class="nc" id="L102">		}</span>
-<span class="nc" id="L103">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
-<span class="nc" id="L104">		this.blackboard = blackboardFactory.createBlackboard();</span>
-<span class="nc" id="L105">		this.analysisController = new AnalysisController(this.blackboard,</span>
-<span class="nc" id="L106">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
-<span class="nc" id="L107">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
+<span class="nc" id="L104">		}</span>
+<span class="nc" id="L105">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
+<span class="nc" id="L106">		this.blackboard = blackboardFactory.createBlackboard();</span>
+<span class="nc" id="L107">		this.analysisController = new AnalysisController(this.blackboard,</span>
+<span class="nc" id="L108">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
+<span class="nc" id="L109">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
 			new HashSet&lt;&gt;(
-<span class="nc" id="L109">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
-<span class="nc" id="L110">	}</span>
+<span class="nc" id="L111">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
+<span class="nc" id="L112">	}</span>
 
 	/**
 	 * Starts the analysis. This method can only be used once per {@link BeagleController}
@@ -115,13 +117,30 @@ public class BeagleController {
 	 *
 	 */
 	public void startAnalysis() {
-<span class="nc" id="L118">		this.analysisController.performAnalysis();</span>
+<span class="nc" id="L120">		this.analysisController.performAnalysis();</span>
 		try {
-<span class="nc" id="L120">			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
-<span class="nc" id="L121">		} catch (final FileNotFoundException fileNotFoundException) {</span>
-<span class="nc" id="L122">			FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(fileNotFoundException));</span>
-<span class="nc" id="L123">		}</span>
-<span class="nc" id="L124">	}</span>
+<span class="nc" id="L122">			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
+<span class="nc" id="L123">		} catch (final FileNotFoundException fileNotFoundException) {</span>
+<span class="nc" id="L124">			FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(fileNotFoundException));</span>
+<span class="nc" id="L125">		}</span>
+<span class="nc" id="L126">	}</span>
+
+	/**
+	 * Reads the default charset of an {@link IJavaProject}.
+	 *
+	 * @param javaProject the {@link IJavaProject} to read from.
+	 * @return the charset specified by {@link IProject#getDefaultCharset()}
+	 */
+	private Charset readCharset(final IJavaProject javaProject) {
+		try {
+<span class="nc" id="L136">			return Charset.forName(javaProject.getProject().getDefaultCharset());</span>
+<span class="nc" id="L137">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L138">			final FailureReport&lt;Object&gt; failure = new FailureReport&lt;&gt;().cause(coreException)</span>
+<span class="nc" id="L139">				.continueWith(Charset::defaultCharset)</span>
+<span class="nc" id="L140">				.retryWith(() -&gt; this.readCharset(javaProject));</span>
+<span class="nc" id="L141">			return (Charset) FAILURE_HANDLER.handle(failure);</span>
+		}
+	}
 
 	/**
 	 * Pauses the analysis. If the analysis is already paused, calls to this method are
@@ -130,7 +149,7 @@ public class BeagleController {
 	 */
 	public void pauseAnalysis() {
 
-<span class="nc" id="L133">	}</span>
+<span class="nc" id="L152">	}</span>
 
 	/**
 	 * Continues the analysis if it is paused. If it's running, calls to this method are
@@ -139,7 +158,7 @@ public class BeagleController {
 	 */
 	public void continueAnalysis() {
 
-<span class="nc" id="L142">	}</span>
+<span class="nc" id="L161">	}</span>
 
 	/**
 	 * Aborts the analysis. If it already is aborted, calls to this method are ignored.
@@ -149,7 +168,7 @@ public class BeagleController {
 	 */
 	public void abortAnalysis() {
 
-<span class="nc" id="L152">	}</span>
+<span class="nc" id="L171">	}</span>
 
 	/**
 	 * Converts {@linkplain Entity Entities} to {@linkplain String Strings}.
@@ -158,11 +177,11 @@ public class BeagleController {
 	 * @return The ids of the {@code entities}.
 	 */
 	private List&lt;String&gt; entitysToStrings(final List&lt;Entity&gt; entities) {
-<span class="nc" id="L161">		final List&lt;String&gt; strings = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L162" title="All 2 branches missed.">		for (final Entity entity : entities) {</span>
-<span class="nc" id="L163">			strings.add(entity.getId());</span>
-<span class="nc" id="L164">		}</span>
-<span class="nc" id="L165">		return strings;</span>
+<span class="nc" id="L180">		final List&lt;String&gt; strings = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">		for (final Entity entity : entities) {</span>
+<span class="nc" id="L182">			strings.add(entity.getId());</span>
+<span class="nc" id="L183">		}</span>
+<span class="nc" id="L184">		return strings;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
