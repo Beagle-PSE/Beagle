@@ -95,7 +95,7 @@ IPD SDQ/ARE
 status open
 
 \begin_layout Plain Layout
-Statstiken
+Statistiken
 \end_layout
 
 \end_inset
@@ -105,12 +105,12 @@ Statstiken
 
 \begin_deeper
 \begin_layout FrameSubtitle
-Beigetragene ELOC
+Test coverage
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename commits.PNG
+	filename coverage.PNG
 	width 100text%
 
 \end_inset
@@ -138,12 +138,12 @@ Statstiken
 
 \begin_deeper
 \begin_layout FrameSubtitle
-Stabilität
+Beigetragene ELOC
 \end_layout
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename loc.PNG
+	filename eloc.PNG
 	width 100text%
 
 \end_inset
