@@ -22,6 +22,12 @@ sudo apt-get update
 # Install dependency packages
 sudo apt-get install -qq lyx texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-lang-german xindy
 
+tmpdir=`mktemp -d`
+cd $tmpdir
+wget https://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+texlua install-getnonfreefonts
+cd $OLDPWD
+
 # Copy the lyx layout file to the private lyx layouts folder
 mkdir -p ~/.lyx/layouts
 cp Documentation/Dependencies/sdqthesis.layout ~/.lyx/layouts
