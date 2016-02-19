@@ -38,11 +38,6 @@ public class BeagleConfigurationTest {
 	private List<Entity> elements;
 
 	/**
-	 * The provider of the source files to be analysed.
-	 */
-	private SourceCodeFileProvider fileProvider;
-
-	/**
 	 * Whether this configuration is in the <em>finalised</em> state.
 	 */
 	private boolean finalised;
@@ -66,25 +61,13 @@ public class BeagleConfigurationTest {
 		final File[] files = TEST_FILE_FACTORY.getAll();
 
 		final File notExistingFile = new File("/de/uka/ipd/sdq/beagle/core/NotExisting.java");
-		ThrowingMethod method = new ThrowingMethod() {
-
-			@Override
-			public void throwException() throws Exception {
-				new BeagleConfiguration(BeagleConfigurationTest.this.elements, notExistingFile,
-					mock(IJavaProject.class));
-			}
-		};
+		ThrowingMethod method = () -> new BeagleConfiguration(BeagleConfigurationTest.this.elements, notExistingFile,
+			mock(IJavaProject.class));
 		assertThat("repositoryFile must exist.", method, throwsException(IllegalArgumentException.class));
 
 		assertThat(new BeagleConfiguration(null, files[0], mock(IJavaProject.class)).getElements(), is(nullValue()));
 
-		method = new ThrowingMethod() {
-
-			@Override
-			public void throwException() throws Exception {
-				new BeagleConfiguration(BeagleConfigurationTest.this.elements, null, mock(IJavaProject.class));
-			}
-		};
+		method = () -> new BeagleConfiguration(BeagleConfigurationTest.this.elements, null, mock(IJavaProject.class));
 		assertThat("repositoryFile must not be null.", method, throwsException(NullPointerException.class));
 
 		new BeagleConfiguration(this.elements, files[0], mock(IJavaProject.class));
@@ -205,7 +188,6 @@ public class BeagleConfigurationTest {
 	 */
 	@Test
 	public void fileProviderTest() {
-		this.fileProvider = mock(SourceCodeFileProvider.class);
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
 		final IJavaProject javaProject = mock(IJavaProject.class);

@@ -95,7 +95,8 @@ public class SubtractionExpression implements EvaluableExpression {
 			return false;
 		}
 		final SubtractionExpression other = (SubtractionExpression) object;
-		return new EqualsBuilder().append(this.minuend, other.minuend).append(this.subtrahend, other.subtrahend)
+		return new EqualsBuilder().append(this.minuend, other.minuend)
+			.append(this.subtrahend, other.subtrahend)
 			.isEquals();
 	}
 

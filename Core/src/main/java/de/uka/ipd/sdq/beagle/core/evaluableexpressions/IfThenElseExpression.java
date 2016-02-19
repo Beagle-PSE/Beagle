@@ -126,15 +126,19 @@ public class IfThenElseExpression implements EvaluableExpression {
 		}
 		final IfThenElseExpression other = (IfThenElseExpression) object;
 		return new EqualsBuilder().append(this.ifStatement, other.ifStatement)
-			.append(this.thenStatement, other.thenStatement).append(this.elseStatement, other.elseStatement).isEquals();
+			.append(this.thenStatement, other.thenStatement)
+			.append(this.elseStatement, other.elseStatement)
+			.isEquals();
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(215, 217).append(this.ifStatement).append(this.thenStatement)
-			.append(this.elseStatement).toHashCode();
+		return new HashCodeBuilder(215, 217).append(this.ifStatement)
+			.append(this.thenStatement)
+			.append(this.elseStatement)
+			.toHashCode();
 	}
 
 }

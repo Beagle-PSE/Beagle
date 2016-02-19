@@ -2,12 +2,12 @@ package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsSame.sameInstance;
-import static org.hamcrest.core.StringStartsWith.startsWith;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
@@ -77,7 +77,7 @@ public class SeffLoopTest {
 		SeffLoop loop;
 		for (final CodeSection codeSection : codeSections) {
 			loop = new SeffLoop(codeSection);
-			assertThat(loop.toString(), not(startsWith("SeffLoop@")));
+			assertThat(loop, hasOverriddenToString());
 		}
 	}
 

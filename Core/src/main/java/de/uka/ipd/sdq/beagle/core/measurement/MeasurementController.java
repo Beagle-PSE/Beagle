@@ -4,7 +4,6 @@ import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
-import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -32,7 +31,7 @@ public class MeasurementController {
 	/**
 	 * All {@link MeasurementTool}s this {@link MeasurementController} knows.
 	 */
-	private Set<MeasurementTool> measurementTools;
+	private final Set<MeasurementTool> measurementTools;
 
 	/**
 	 * Constructs a new {@link MeasurementController}.
@@ -93,7 +92,6 @@ public class MeasurementController {
 		final Set<CodeSection> resourceDemandSections = new HashSet<CodeSection>();
 		final Set<CodeSection> executionSections = new HashSet<CodeSection>();
 		final Set<CodeSection> parameterValueSections = new HashSet<CodeSection>();
-		final Set<LaunchConfiguration> launchConfigurations = new HashSet<LaunchConfiguration>();
 		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		// Fill {@code executionSections}.

@@ -2,11 +2,11 @@ package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.IsSame.sameInstance;
-import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -140,7 +140,7 @@ public class ResourceDemandingInternalActionTest {
 		for (final CodeSection codeSection : codeSections) {
 			final ResourceDemandingInternalAction rdia =
 				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
-			assertThat(rdia.toString(), not(startsWith("ResourceDemandingInternalAction@")));
+			assertThat(rdia, hasOverriddenToString());
 		}
 	}
 

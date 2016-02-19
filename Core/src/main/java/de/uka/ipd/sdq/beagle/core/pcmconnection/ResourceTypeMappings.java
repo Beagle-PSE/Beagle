@@ -14,7 +14,6 @@ import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
 import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
 import org.palladiosimulator.pcm.resourcetype.ResourceType;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
