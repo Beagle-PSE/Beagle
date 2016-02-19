@@ -10,7 +10,6 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -26,7 +25,7 @@ public class PcmRepositoryWriter {
 	/**
 	 * The FailureHandler for this class.
 	 */
-<span class="fc" id="L29">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;BlackboardStorer&quot;);</span>
+<span class="fc" id="L28">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;BlackboardStorer&quot;);</span>
 
 	/**
 	 * Blackboard to get Mapping from.
@@ -55,12 +54,12 @@ public class PcmRepositoryWriter {
 	 *
 	 * @param blackboard The blackboard containing results.
 	 */
-<span class="fc" id="L58">	public PcmRepositoryWriter(final Blackboard blackboard) {</span>
-<span class="fc" id="L59">		this.blackboard = blackboard;</span>
-<span class="fc" id="L60">		this.pcmMappings = this.blackboard.readFor(PcmRepositoryBlackboardFactoryAdder.class);</span>
-<span class="fc" id="L61">		this.fileLoader = new PcmRepositoryFileLoader();</span>
-<span class="fc" id="L62">		this.annotator = new PcmRepositoryWriterAnnotator(blackboard, this.pcmMappings);</span>
-<span class="fc" id="L63">	}</span>
+<span class="fc" id="L57">	public PcmRepositoryWriter(final Blackboard blackboard) {</span>
+<span class="fc" id="L58">		this.blackboard = blackboard;</span>
+<span class="fc" id="L59">		this.pcmMappings = this.blackboard.readFor(PcmRepositoryBlackboardFactoryAdder.class);</span>
+<span class="fc" id="L60">		this.fileLoader = new PcmRepositoryFileLoader();</span>
+<span class="fc" id="L61">		this.annotator = new PcmRepositoryWriterAnnotator(blackboard, this.pcmMappings);</span>
+<span class="fc" id="L62">	}</span>
 
 	/**
 	 * Writes the Beagle’s findings to the {@code repositoryFile}. For each
@@ -82,14 +81,13 @@ public class PcmRepositoryWriter {
 	 * @param repositoryFile A PCM repository file to write Beagle’s results to. It should
 	 *            use the same identifiers for elements as the repository file Beagle’s
 	 *            blackboard was initially created for.
-	 * @throws FileNotFoundException If given repository file does not exist
 	 */
-	public void writeTo(final File repositoryFile) throws FileNotFoundException {
-<span class="fc" id="L88">		final RepositoryImpl repository = this.fileLoader.loadRepositoryFromFile(repositoryFile);</span>
+	public void writeTo(final File repositoryFile) {
+<span class="fc" id="L86">		final RepositoryImpl repository = this.fileLoader.loadRepositoryFromFile(repositoryFile);</span>
 
-<span class="fc" id="L90">		this.annotator.annotateAll(repository);</span>
-<span class="fc" id="L91">		this.saveRepository(repository, repositoryFile);</span>
-<span class="fc" id="L92">	}</span>
+<span class="fc" id="L88">		this.annotator.annotateAll(repository);</span>
+<span class="fc" id="L89">		this.saveRepository(repository, repositoryFile);</span>
+<span class="fc" id="L90">	}</span>
 
 	/**
 	 * Method should be called after annotating changes on the {@link RepositoryImpl}. It
@@ -100,16 +98,16 @@ public class PcmRepositoryWriter {
 	 */
 	private void saveRepository(final RepositoryImpl repository, final File repositoryFile) {
 		try {
-<span class="fc" id="L103">			EmfHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());</span>
-<span class="nc" id="L104">		} catch (final IOException ioException) {</span>
-<span class="nc" id="L105">			final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
-<span class="nc" id="L106">				.message(&quot;The modified repository can not be saved to %s!&quot;, repositoryFile.getAbsolutePath())</span>
-<span class="nc" id="L107">				.cause(ioException)</span>
-<span class="nc" id="L108">				.recoverable()</span>
-<span class="nc" id="L109">				.retryWith(() -&gt; this.saveRepository(repository, repositoryFile));</span>
-<span class="nc" id="L110">			FAILURE_HANDLER.handle(failure);</span>
-<span class="fc" id="L111">		}</span>
-<span class="fc" id="L112">	}</span>
+<span class="fc" id="L101">			EmfHelper.saveToXMIFile(repository, repositoryFile.getAbsolutePath());</span>
+<span class="nc" id="L102">		} catch (final IOException ioException) {</span>
+<span class="nc" id="L103">			final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L104">				.message(&quot;The modified repository can not be saved to %s!&quot;, repositoryFile.getAbsolutePath())</span>
+<span class="nc" id="L105">				.cause(ioException)</span>
+<span class="nc" id="L106">				.recoverable()</span>
+<span class="nc" id="L107">				.retryWith(() -&gt; this.saveRepository(repository, repositoryFile));</span>
+<span class="nc" id="L108">			FAILURE_HANDLER.handle(failure);</span>
+<span class="fc" id="L109">		}</span>
+<span class="fc" id="L110">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
