@@ -25,7 +25,7 @@ sudo apt-get install -qq lyx texlive-latex-base texlive-latex-recommended texliv
 tmpdir=`mktemp -d`
 cd $tmpdir
 wget https://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
-texlua install-getnonfreefonts
+sudo texlua install-getnonfreefonts
 cd $OLDPWD
 
 # Copy the lyx layout file to the private lyx layouts folder
