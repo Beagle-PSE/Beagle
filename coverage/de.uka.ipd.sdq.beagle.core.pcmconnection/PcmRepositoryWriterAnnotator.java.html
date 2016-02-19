@@ -13,7 +13,7 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import org.eclipse.emf.common.util.TreeIterator;
+import org.apache.commons.collections4.IteratorUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 import org.palladiosimulator.pcm.seff.BranchAction;
@@ -26,6 +26,7 @@ import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 
 import java.util.HashMap;
+import java.util.ListIterator;
 import java.util.Map;
 
 /**
@@ -39,7 +40,7 @@ public class PcmRepositoryWriterAnnotator {
 	/**
 	 * The FailureHandler for this class.
 	 */
-<span class="fc" id="L42">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;PcmStorer&quot;);</span>
+<span class="fc" id="L43">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;PcmStorer&quot;);</span>
 
 	/**
 	 * Blackboard to get Mapping from.
@@ -64,13 +65,13 @@ public class PcmRepositoryWriterAnnotator {
 	 * @param blackboard The blackboard to read from
 	 * @param pcmMappings The PcmMapping to get the IDs from
 	 */
-<span class="fc" id="L67">	public PcmRepositoryWriterAnnotator(final Blackboard blackboard, final PcmBeagleMappings pcmMappings) {</span>
-<span class="fc bfc" id="L68" title="All 4 branches covered.">		if (blackboard == null || pcmMappings == null) {</span>
-<span class="fc" id="L69">			throw new NullPointerException(&quot;Construtor arguments for PcmRepositoryWriterAnnotator must not be null!&quot;);</span>
+<span class="fc" id="L68">	public PcmRepositoryWriterAnnotator(final Blackboard blackboard, final PcmBeagleMappings pcmMappings) {</span>
+<span class="fc bfc" id="L69" title="All 4 branches covered.">		if (blackboard == null || pcmMappings == null) {</span>
+<span class="fc" id="L70">			throw new NullPointerException(&quot;Construtor arguments for PcmRepositoryWriterAnnotator must not be null!&quot;);</span>
 		}
-<span class="fc" id="L71">		this.blackboard = blackboard;</span>
-<span class="fc" id="L72">		this.pcmMappings = pcmMappings;</span>
-<span class="fc" id="L73">	}</span>
+<span class="fc" id="L72">		this.blackboard = blackboard;</span>
+<span class="fc" id="L73">		this.pcmMappings = pcmMappings;</span>
+<span class="fc" id="L74">	}</span>
 
 	/**
 	 * This method looks up each SeffLoop on the {@link #blackboard} and maps its ID to
@@ -81,16 +82,16 @@ public class PcmRepositoryWriterAnnotator {
 	 */
 	private Map&lt;String, EvaluableExpression&gt; getMapFromIdToEvaExOfAllSeffLoopsWithFinalExpressionsFromBlackboard() {
 
-<span class="fc" id="L84">		final Map&lt;String, EvaluableExpression&gt; seffLoopIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
+<span class="fc" id="L85">		final Map&lt;String, EvaluableExpression&gt; seffLoopIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
 
-<span class="fc bfc" id="L86" title="All 2 branches covered.">		for (final SeffLoop seffLoop : this.blackboard.getAllSeffLoops()) {</span>
-<span class="fc" id="L87">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffLoop);</span>
-<span class="pc bpc" id="L88" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(seffLoop)) {</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">		for (final SeffLoop seffLoop : this.blackboard.getAllSeffLoops()) {</span>
+<span class="fc" id="L88">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffLoop);</span>
+<span class="pc bpc" id="L89" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(seffLoop)) {</span>
 
-<span class="nc" id="L90">				seffLoopIdToEvaEx.put(this.pcmMappings.getPcmIdOf(seffLoop), evaEx);</span>
+<span class="nc" id="L91">				seffLoopIdToEvaEx.put(this.pcmMappings.getPcmIdOf(seffLoop), evaEx);</span>
 			}
-<span class="fc" id="L92">		}</span>
-<span class="fc" id="L93">		return seffLoopIdToEvaEx;</span>
+<span class="fc" id="L93">		}</span>
+<span class="fc" id="L94">		return seffLoopIdToEvaEx;</span>
 	}
 
 	/**
@@ -102,16 +103,16 @@ public class PcmRepositoryWriterAnnotator {
 	 */
 	private Map&lt;String, EvaluableExpression&gt; getMapFromIdToEvaExOfAllSeffBranchesWithFinalExpressionsFromBlackboard() {
 
-<span class="fc" id="L105">		final Map&lt;String, EvaluableExpression&gt; seffBranchIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
+<span class="fc" id="L106">		final Map&lt;String, EvaluableExpression&gt; seffBranchIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
 
-<span class="fc bfc" id="L107" title="All 2 branches covered.">		for (final SeffBranch seffBranch : this.blackboard.getAllSeffBranches()) {</span>
-<span class="fc" id="L108">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffBranch);</span>
-<span class="pc bpc" id="L109" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(seffBranch)) {</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">		for (final SeffBranch seffBranch : this.blackboard.getAllSeffBranches()) {</span>
+<span class="fc" id="L109">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffBranch);</span>
+<span class="pc bpc" id="L110" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(seffBranch)) {</span>
 
-<span class="nc" id="L111">				seffBranchIdToEvaEx.put(this.pcmMappings.getPcmIdOf(seffBranch), evaEx);</span>
+<span class="nc" id="L112">				seffBranchIdToEvaEx.put(this.pcmMappings.getPcmIdOf(seffBranch), evaEx);</span>
 			}
-<span class="fc" id="L113">		}</span>
-<span class="fc" id="L114">		return seffBranchIdToEvaEx;</span>
+<span class="fc" id="L114">		}</span>
+<span class="fc" id="L115">		return seffBranchIdToEvaEx;</span>
 	}
 
 	/**
@@ -123,16 +124,16 @@ public class PcmRepositoryWriterAnnotator {
 	 */
 	private Map&lt;String, EvaluableExpression&gt; getMapFromIdToEvaExOfAllRdiasWithFinalExpressionsFromBlackboard() {
 
-<span class="fc" id="L126">		final Map&lt;String, EvaluableExpression&gt; rdiaIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
+<span class="fc" id="L127">		final Map&lt;String, EvaluableExpression&gt; rdiaIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
 
-<span class="fc bfc" id="L128" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {</span>
-<span class="fc" id="L129">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);</span>
-<span class="pc bpc" id="L130" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(rdia)) {</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {</span>
+<span class="fc" id="L130">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);</span>
+<span class="pc bpc" id="L131" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(rdia)) {</span>
 
-<span class="nc" id="L132">				rdiaIdToEvaEx.put(this.pcmMappings.getPcmIdOf(rdia), evaEx);</span>
+<span class="nc" id="L133">				rdiaIdToEvaEx.put(this.pcmMappings.getPcmIdOf(rdia), evaEx);</span>
 			}
-<span class="fc" id="L134">		}</span>
-<span class="fc" id="L135">		return rdiaIdToEvaEx;</span>
+<span class="fc" id="L135">		}</span>
+<span class="fc" id="L136">		return rdiaIdToEvaEx;</span>
 	}
 
 	/**
@@ -144,16 +145,16 @@ public class PcmRepositoryWriterAnnotator {
 	 */
 	private Map&lt;String, ResourceDemandType&gt; getMapFromIdToResourceDemandTypeOfAllRdiasWithFinalExpressionsFromBlackboard() {
 
-<span class="fc" id="L147">		final Map&lt;String, ResourceDemandType&gt; rdiaIdToDemandType = new HashMap&lt;String, ResourceDemandType&gt;();</span>
+<span class="fc" id="L148">		final Map&lt;String, ResourceDemandType&gt; rdiaIdToDemandType = new HashMap&lt;String, ResourceDemandType&gt;();</span>
 
-<span class="fc bfc" id="L149" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {</span>
-<span class="fc" id="L150">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);</span>
-<span class="pc bpc" id="L151" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(rdia)) {</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {</span>
+<span class="fc" id="L151">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);</span>
+<span class="pc bpc" id="L152" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(rdia)) {</span>
 
-<span class="nc" id="L153">				rdiaIdToDemandType.put(this.pcmMappings.getPcmIdOf(rdia), rdia.getResourceType());</span>
+<span class="nc" id="L154">				rdiaIdToDemandType.put(this.pcmMappings.getPcmIdOf(rdia), rdia.getResourceType());</span>
 			}
-<span class="fc" id="L155">		}</span>
-<span class="fc" id="L156">		return rdiaIdToDemandType;</span>
+<span class="fc" id="L156">		}</span>
+<span class="fc" id="L157">		return rdiaIdToDemandType;</span>
 	}
 
 	/**
@@ -166,16 +167,16 @@ public class PcmRepositoryWriterAnnotator {
 	 */
 	private Map&lt;String, EvaluableExpression&gt; getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard() {
 
-<span class="fc" id="L169">		final Map&lt;String, EvaluableExpression&gt; exParamIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
+<span class="fc" id="L170">		final Map&lt;String, EvaluableExpression&gt; exParamIdToEvaEx = new HashMap&lt;String, EvaluableExpression&gt;();</span>
 
-<span class="fc bfc" id="L171" title="All 2 branches covered.">		for (final ExternalCallParameter exParam : this.blackboard.getAllExternalCallParameters()) {</span>
-<span class="fc" id="L172">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(exParam);</span>
-<span class="pc bpc" id="L173" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(exParam)) {</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">		for (final ExternalCallParameter exParam : this.blackboard.getAllExternalCallParameters()) {</span>
+<span class="fc" id="L173">			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(exParam);</span>
+<span class="pc bpc" id="L174" title="2 of 4 branches missed.">			if (evaEx != null &amp;&amp; this.pcmMappings.hasPcmIdOf(exParam)) {</span>
 
-<span class="nc" id="L175">				exParamIdToEvaEx.put(this.pcmMappings.getPcmIdOf(exParam), evaEx);</span>
+<span class="nc" id="L176">				exParamIdToEvaEx.put(this.pcmMappings.getPcmIdOf(exParam), evaEx);</span>
 			}
-<span class="fc" id="L177">		}</span>
-<span class="fc" id="L178">		return exParamIdToEvaEx;</span>
+<span class="fc" id="L178">		}</span>
+<span class="fc" id="L179">		return exParamIdToEvaEx;</span>
 	}
 
 	/**
@@ -188,37 +189,38 @@ public class PcmRepositoryWriterAnnotator {
 	 */
 	public void annotateAll(final RepositoryImpl repository) {
 
-<span class="fc bfc" id="L191" title="All 2 branches covered.">		if (repository == null) {</span>
-<span class="fc" id="L192">			throw new NullPointerException(</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">		if (repository == null) {</span>
+<span class="fc" id="L193">			throw new NullPointerException(</span>
 				&quot;The repository in the method \&quot;RepositoryWriter.annotateAll\&quot; must not be null!&quot;);
 		}
 
-<span class="fc" id="L196">		final Map&lt;String, EvaluableExpression&gt; seffLoopIdsToEvaEx =</span>
-<span class="fc" id="L197">			this.getMapFromIdToEvaExOfAllSeffLoopsWithFinalExpressionsFromBlackboard();</span>
-<span class="fc" id="L198">		final Map&lt;String, EvaluableExpression&gt; seffBranchIdsToEvaEx =</span>
-<span class="fc" id="L199">			this.getMapFromIdToEvaExOfAllSeffBranchesWithFinalExpressionsFromBlackboard();</span>
-<span class="fc" id="L200">		final Map&lt;String, EvaluableExpression&gt; rdiaIdsToEvaEx =</span>
-<span class="fc" id="L201">			this.getMapFromIdToEvaExOfAllRdiasWithFinalExpressionsFromBlackboard();</span>
-<span class="fc" id="L202">		final Map&lt;String, ResourceDemandType&gt; rdiaIdsToResourceDemandType =</span>
-<span class="fc" id="L203">			this.getMapFromIdToResourceDemandTypeOfAllRdiasWithFinalExpressionsFromBlackboard();</span>
-<span class="fc" id="L204">		final Map&lt;String, EvaluableExpression&gt; exParamIdsToEvaEx =</span>
-<span class="fc" id="L205">			this.getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard();</span>
+<span class="fc" id="L197">		final Map&lt;String, EvaluableExpression&gt; seffLoopIdsToEvaEx =</span>
+<span class="fc" id="L198">			this.getMapFromIdToEvaExOfAllSeffLoopsWithFinalExpressionsFromBlackboard();</span>
+<span class="fc" id="L199">		final Map&lt;String, EvaluableExpression&gt; seffBranchIdsToEvaEx =</span>
+<span class="fc" id="L200">			this.getMapFromIdToEvaExOfAllSeffBranchesWithFinalExpressionsFromBlackboard();</span>
+<span class="fc" id="L201">		final Map&lt;String, EvaluableExpression&gt; rdiaIdsToEvaEx =</span>
+<span class="fc" id="L202">			this.getMapFromIdToEvaExOfAllRdiasWithFinalExpressionsFromBlackboard();</span>
+<span class="fc" id="L203">		final Map&lt;String, ResourceDemandType&gt; rdiaIdsToResourceDemandType =</span>
+<span class="fc" id="L204">			this.getMapFromIdToResourceDemandTypeOfAllRdiasWithFinalExpressionsFromBlackboard();</span>
+<span class="fc" id="L205">		final Map&lt;String, EvaluableExpression&gt; exParamIdsToEvaEx =</span>
+<span class="fc" id="L206">			this.getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard();</span>
 
-<span class="fc" id="L207">		final TreeIterator&lt;EObject&gt; contentIterator = repository.eAllContents();</span>
-<span class="fc bfc" id="L208" title="All 2 branches covered.">		while (contentIterator.hasNext()) {</span>
-<span class="fc" id="L209">			final EObject content = contentIterator.next();</span>
+<span class="fc" id="L208">		final ListIterator&lt;EObject&gt; contentListIterator = IteratorUtils.toListIterator(repository.eAllContents());</span>
 
-<span class="fc" id="L211">			this.annotateForEObject(content, seffLoopIdsToEvaEx, seffBranchIdsToEvaEx, rdiaIdsToEvaEx,</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">		while (contentListIterator.hasNext()) {</span>
+<span class="fc" id="L211">			final EObject content = contentListIterator.next();</span>
+
+<span class="fc" id="L213">			this.annotateForEObject(content, seffLoopIdsToEvaEx, seffBranchIdsToEvaEx, rdiaIdsToEvaEx,</span>
 				rdiaIdsToResourceDemandType, exParamIdsToEvaEx);
 
-<span class="fc" id="L214">		}</span>
+<span class="fc" id="L216">		}</span>
 
-<span class="fc" id="L216">		this.shouldBeEmpty(seffLoopIdsToEvaEx);</span>
-<span class="fc" id="L217">		this.shouldBeEmpty(seffBranchIdsToEvaEx);</span>
-<span class="fc" id="L218">		this.shouldBeEmpty(rdiaIdsToEvaEx);</span>
-<span class="fc" id="L219">		this.shouldBeEmpty(exParamIdsToEvaEx);</span>
+<span class="fc" id="L218">		this.shouldBeEmpty(seffLoopIdsToEvaEx);</span>
+<span class="fc" id="L219">		this.shouldBeEmpty(seffBranchIdsToEvaEx);</span>
+<span class="fc" id="L220">		this.shouldBeEmpty(rdiaIdsToEvaEx);</span>
+<span class="fc" id="L221">		this.shouldBeEmpty(exParamIdsToEvaEx);</span>
 
-<span class="fc" id="L221">	}</span>
+<span class="fc" id="L223">	}</span>
 
 	/**
 	 * Find out, if a given EObject has the ID of a given Set. If so, the
@@ -239,35 +241,35 @@ public class PcmRepositoryWriterAnnotator {
 		final Map&lt;String, ResourceDemandType&gt; rdiaIdsToResourceDemandType,
 		final Map&lt;String, EvaluableExpression&gt; exParamIdsToEvaEx) {
 
-<span class="fc bfc" id="L242" title="All 2 branches covered.">		if (eObject instanceof Identifier) {</span>
-<span class="fc" id="L243">			final Identifier contentIdentifier = (Identifier) eObject;</span>
-<span class="fc" id="L244">			final String contentId = contentIdentifier.getId();</span>
+<span class="fc bfc" id="L244" title="All 2 branches covered.">		if (eObject instanceof Identifier) {</span>
+<span class="fc" id="L245">			final Identifier contentIdentifier = (Identifier) eObject;</span>
+<span class="fc" id="L246">			final String contentId = contentIdentifier.getId();</span>
 
-<span class="pc bpc" id="L246" title="3 of 4 branches missed.">			if (seffLoopIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeLoopAction(contentIdentifier)) {</span>
+<span class="pc bpc" id="L248" title="3 of 4 branches missed.">			if (seffLoopIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeLoopAction(contentIdentifier)) {</span>
 
-<span class="nc" id="L248">				final LoopActionImpl loopAction = (LoopActionImpl) contentIdentifier;</span>
-<span class="nc" id="L249">				this.annotatorForEvaEx.annotateEvaExFor(loopAction, seffLoopIdsToEvaEx.remove(contentId));</span>
+<span class="nc" id="L250">				final LoopActionImpl loopAction = (LoopActionImpl) contentIdentifier;</span>
+<span class="nc" id="L251">				this.annotatorForEvaEx.annotateEvaExFor(loopAction, seffLoopIdsToEvaEx.remove(contentId));</span>
 
-<span class="pc bpc" id="L251" title="3 of 4 branches missed.">			} else if (seffBranchIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeBranchAction(contentIdentifier)) {</span>
+<span class="pc bpc" id="L253" title="3 of 4 branches missed.">			} else if (seffBranchIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeBranchAction(contentIdentifier)) {</span>
 
-<span class="nc" id="L253">				final BranchActionImpl branchAction = (BranchActionImpl) contentIdentifier;</span>
-<span class="nc" id="L254">				this.annotatorForEvaEx.annotateEvaExFor(branchAction, seffBranchIdsToEvaEx.remove(contentId));</span>
+<span class="nc" id="L255">				final BranchActionImpl branchAction = (BranchActionImpl) contentIdentifier;</span>
+<span class="nc" id="L256">				this.annotatorForEvaEx.annotateEvaExFor(branchAction, seffBranchIdsToEvaEx.remove(contentId));</span>
 
-<span class="pc bpc" id="L256" title="3 of 4 branches missed.">			} else if (rdiaIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeInternalAction(contentIdentifier)) {</span>
+<span class="pc bpc" id="L258" title="3 of 4 branches missed.">			} else if (rdiaIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeInternalAction(contentIdentifier)) {</span>
 
-<span class="nc" id="L258">				final InternalActionImpl internalAction = (InternalActionImpl) contentIdentifier;</span>
-<span class="nc" id="L259">				this.annotatorForEvaEx.annotateEvaExFor(internalAction, rdiaIdsToResourceDemandType.get(contentId),</span>
-<span class="nc" id="L260">					rdiaIdsToEvaEx.remove(contentId));</span>
+<span class="nc" id="L260">				final InternalActionImpl internalAction = (InternalActionImpl) contentIdentifier;</span>
+<span class="nc" id="L261">				this.annotatorForEvaEx.annotateEvaExFor(internalAction, rdiaIdsToResourceDemandType.get(contentId),</span>
+<span class="nc" id="L262">					rdiaIdsToEvaEx.remove(contentId));</span>
 
-<span class="pc bpc" id="L262" title="3 of 4 branches missed.">			} else if (exParamIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeExternalCallAction(contentIdentifier)) {</span>
+<span class="pc bpc" id="L264" title="3 of 4 branches missed.">			} else if (exParamIdsToEvaEx.containsKey(contentId) &amp;&amp; this.shouldBeExternalCallAction(contentIdentifier)) {</span>
 
-<span class="nc" id="L264">				final ExternalCallActionImpl externalAction = (ExternalCallActionImpl) contentIdentifier;</span>
-<span class="nc" id="L265">				this.annotatorForEvaEx.annotateEvaExFor(externalAction, exParamIdsToEvaEx.remove(contentId));</span>
+<span class="nc" id="L266">				final ExternalCallActionImpl externalAction = (ExternalCallActionImpl) contentIdentifier;</span>
+<span class="nc" id="L267">				this.annotatorForEvaEx.annotateEvaExFor(externalAction, exParamIdsToEvaEx.remove(contentId));</span>
 
 			}
 		}
 
-<span class="fc" id="L270">	}</span>
+<span class="fc" id="L272">	}</span>
 
 	/**
 	 * Checking if a given {@link Identifier} is a {@link LoopAction}. Otherwise a Failure
@@ -277,19 +279,19 @@ public class PcmRepositoryWriterAnnotator {
 	 * @return {@code true} if content is {@link LoopAction}
 	 */
 	private boolean shouldBeLoopAction(final Identifier content) {
-<span class="nc bnc" id="L280" title="All 2 branches missed.">		if (content.getClass() == LoopActionImpl.class) {</span>
-<span class="nc" id="L281">			return true;</span>
+<span class="nc bnc" id="L282" title="All 2 branches missed.">		if (content.getClass() == LoopActionImpl.class) {</span>
+<span class="nc" id="L283">			return true;</span>
 		}
 
-<span class="nc" id="L284">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
-<span class="nc" id="L285">			.message(&quot;The SeffElement with ID %s is stored by Beagle as a LoopAction&quot;</span>
-<span class="nc" id="L286">				+ &quot; but is not a LoopAction in the repository-file!&quot;, content.getId())</span>
-<span class="nc" id="L287">			.cause(new IllegalArgumentException())</span>
-<span class="nc" id="L288">			.recoverable()</span>
-<span class="nc" id="L289">			.retryWith(() -&gt; this.shouldBeLoopAction(content));</span>
-<span class="nc" id="L290">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L286">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L287">			.message(&quot;The SeffElement with ID %s is stored by Beagle as a LoopAction&quot;</span>
+<span class="nc" id="L288">				+ &quot; but is not a LoopAction in the repository-file!&quot;, content.getId())</span>
+<span class="nc" id="L289">			.cause(new IllegalArgumentException())</span>
+<span class="nc" id="L290">			.recoverable()</span>
+<span class="nc" id="L291">			.retryWith(() -&gt; this.shouldBeLoopAction(content));</span>
+<span class="nc" id="L292">		FAILURE_HANDLER.handle(failure);</span>
 
-<span class="nc" id="L292">		return false;</span>
+<span class="nc" id="L294">		return false;</span>
 	}
 
 	/**
@@ -300,17 +302,17 @@ public class PcmRepositoryWriterAnnotator {
 	 * @return {@code true} if content is {@link BranchAction}
 	 */
 	private boolean shouldBeBranchAction(final Identifier content) {
-<span class="nc bnc" id="L303" title="All 2 branches missed.">		if (content.getClass() == BranchActionImpl.class) {</span>
-<span class="nc" id="L304">			return true;</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">		if (content.getClass() == BranchActionImpl.class) {</span>
+<span class="nc" id="L306">			return true;</span>
 		}
-<span class="nc" id="L306">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
-<span class="nc" id="L307">			.message(&quot;The SeffElement with ID %s is stored by Beagle as a BranchAction&quot;</span>
-<span class="nc" id="L308">				+ &quot; but is not a BranchAction in the repository-file!&quot;, content.getId())</span>
-<span class="nc" id="L309">			.cause(new IllegalArgumentException())</span>
-<span class="nc" id="L310">			.recoverable()</span>
-<span class="nc" id="L311">			.retryWith(() -&gt; this.shouldBeBranchAction(content));</span>
-<span class="nc" id="L312">		FAILURE_HANDLER.handle(failure);</span>
-<span class="nc" id="L313">		return false;</span>
+<span class="nc" id="L308">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L309">			.message(&quot;The SeffElement with ID %s is stored by Beagle as a BranchAction&quot;</span>
+<span class="nc" id="L310">				+ &quot; but is not a BranchAction in the repository-file!&quot;, content.getId())</span>
+<span class="nc" id="L311">			.cause(new IllegalArgumentException())</span>
+<span class="nc" id="L312">			.recoverable()</span>
+<span class="nc" id="L313">			.retryWith(() -&gt; this.shouldBeBranchAction(content));</span>
+<span class="nc" id="L314">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L315">		return false;</span>
 	}
 
 	/**
@@ -321,17 +323,17 @@ public class PcmRepositoryWriterAnnotator {
 	 * @return {@code true} if content is {@link InternalAction}
 	 */
 	private boolean shouldBeInternalAction(final Identifier content) {
-<span class="nc bnc" id="L324" title="All 2 branches missed.">		if (content.getClass() == InternalActionImpl.class) {</span>
-<span class="nc" id="L325">			return true;</span>
+<span class="nc bnc" id="L326" title="All 2 branches missed.">		if (content.getClass() == InternalActionImpl.class) {</span>
+<span class="nc" id="L327">			return true;</span>
 		}
-<span class="nc" id="L327">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
-<span class="nc" id="L328">			.message(&quot;The SeffElement with ID %s is stored by Beagle as an InternalAction but is&quot;</span>
-<span class="nc" id="L329">				+ &quot; not an InternalAction in the repository-file!&quot;, content.getId())</span>
-<span class="nc" id="L330">			.cause(new IllegalArgumentException())</span>
-<span class="nc" id="L331">			.recoverable()</span>
-<span class="nc" id="L332">			.retryWith(() -&gt; this.shouldBeInternalAction(content));</span>
-<span class="nc" id="L333">		FAILURE_HANDLER.handle(failure);</span>
-<span class="nc" id="L334">		return false;</span>
+<span class="nc" id="L329">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L330">			.message(&quot;The SeffElement with ID %s is stored by Beagle as an InternalAction but is&quot;</span>
+<span class="nc" id="L331">				+ &quot; not an InternalAction in the repository-file!&quot;, content.getId())</span>
+<span class="nc" id="L332">			.cause(new IllegalArgumentException())</span>
+<span class="nc" id="L333">			.recoverable()</span>
+<span class="nc" id="L334">			.retryWith(() -&gt; this.shouldBeInternalAction(content));</span>
+<span class="nc" id="L335">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L336">		return false;</span>
 	}
 
 	/**
@@ -342,17 +344,17 @@ public class PcmRepositoryWriterAnnotator {
 	 * @return {@code true} if content is {@link ExternalCallAction}
 	 */
 	private boolean shouldBeExternalCallAction(final Identifier content) {
-<span class="nc bnc" id="L345" title="All 2 branches missed.">		if (content.getClass() == ExternalCallActionImpl.class) {</span>
-<span class="nc" id="L346">			return true;</span>
+<span class="nc bnc" id="L347" title="All 2 branches missed.">		if (content.getClass() == ExternalCallActionImpl.class) {</span>
+<span class="nc" id="L348">			return true;</span>
 		}
-<span class="nc" id="L348">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
-<span class="nc" id="L349">			.message(&quot;The SeffElement with ID %s is stored by Beagle as an ExternalCallAction but is&quot;</span>
-<span class="nc" id="L350">				+ &quot; not an ExternalCallAction in the repository-file!&quot;, content.getId())</span>
-<span class="nc" id="L351">			.cause(new IllegalArgumentException())</span>
-<span class="nc" id="L352">			.recoverable()</span>
-<span class="nc" id="L353">			.retryWith(() -&gt; this.shouldBeExternalCallAction(content));</span>
-<span class="nc" id="L354">		FAILURE_HANDLER.handle(failure);</span>
-<span class="nc" id="L355">		return false;</span>
+<span class="nc" id="L350">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L351">			.message(&quot;The SeffElement with ID %s is stored by Beagle as an ExternalCallAction but is&quot;</span>
+<span class="nc" id="L352">				+ &quot; not an ExternalCallAction in the repository-file!&quot;, content.getId())</span>
+<span class="nc" id="L353">			.cause(new IllegalArgumentException())</span>
+<span class="nc" id="L354">			.recoverable()</span>
+<span class="nc" id="L355">			.retryWith(() -&gt; this.shouldBeExternalCallAction(content));</span>
+<span class="nc" id="L356">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L357">		return false;</span>
 	}
 
 	/**
@@ -365,14 +367,14 @@ public class PcmRepositoryWriterAnnotator {
 	 * @return {@code true} if the given Map is empty
 	 */
 	private boolean shouldBeEmpty(final Map&lt;String, EvaluableExpression&gt; idMap) {
-<span class="pc bpc" id="L368" title="1 of 2 branches missed.">		if (idMap.isEmpty()) {</span>
-<span class="fc" id="L369">			return true;</span>
+<span class="pc bpc" id="L370" title="1 of 2 branches missed.">		if (idMap.isEmpty()) {</span>
+<span class="fc" id="L371">			return true;</span>
 		}
-<span class="nc" id="L371">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
-<span class="nc" id="L372">			.message(&quot;The Blackboard contains seffElements that do not fit to the given repository-file!&quot;)</span>
-<span class="nc" id="L373">			.cause(new IllegalArgumentException());</span>
-<span class="nc" id="L374">		FAILURE_HANDLER.handle(failure);</span>
-<span class="nc" id="L375">		return false;</span>
+<span class="nc" id="L373">		final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;()</span>
+<span class="nc" id="L374">			.message(&quot;The Blackboard contains seffElements that do not fit to the given repository-file!&quot;)</span>
+<span class="nc" id="L375">			.cause(new IllegalArgumentException());</span>
+<span class="nc" id="L376">		FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L377">		return false;</span>
 	}
 
 }
