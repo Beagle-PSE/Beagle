@@ -13,7 +13,7 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import org.eclipse.emf.common.util.TreeIterator;
+import org.apache.commons.collections4.IteratorUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 import org.palladiosimulator.pcm.seff.BranchAction;
@@ -26,6 +26,7 @@ import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 
 import java.util.HashMap;
+import java.util.ListIterator;
 import java.util.Map;
 
 /**
@@ -204,9 +205,10 @@ public class PcmRepositoryWriterAnnotator {
 		final Map<String, EvaluableExpression> exParamIdsToEvaEx =
 			this.getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard();
 
-		final TreeIterator<EObject> contentIterator = repository.eAllContents();
-		while (contentIterator.hasNext()) {
-			final EObject content = contentIterator.next();
+		final ListIterator<EObject> contentListIterator = IteratorUtils.toListIterator(repository.eAllContents());
+
+		while (contentListIterator.hasNext()) {
+			final EObject content = contentListIterator.next();
 
 			this.annotateForEObject(content, seffLoopIdsToEvaEx, seffBranchIdsToEvaEx, rdiaIdsToEvaEx,
 				rdiaIdsToResourceDemandType, exParamIdsToEvaEx);
