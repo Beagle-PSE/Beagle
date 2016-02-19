@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Models an internal action demanding resources of a specific type when being executed.
@@ -66,7 +65,8 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 			return false;
 		}
 		final ResourceDemandingInternalAction other = (ResourceDemandingInternalAction) object;
-		return new EqualsBuilder().append(this.resourceType, other.resourceType).append(this.action, other.action)
+		return new EqualsBuilder().append(this.resourceType, other.resourceType)
+			.append(this.action, other.action)
 			.isEquals();
 	}
 
@@ -101,7 +101,6 @@ public class ResourceDemandingInternalAction implements MeasurableSeffElement {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("resourceType", this.resourceType).append("action", this.action)
-			.toString();
+		return String.format("RDIA@%4.4s<%s,%s>", Integer.toHexString(this.hashCode()), this.resourceType, this.action);
 	}
 }
