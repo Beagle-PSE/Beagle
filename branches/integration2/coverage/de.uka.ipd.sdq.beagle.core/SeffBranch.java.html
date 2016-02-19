@@ -3,7 +3,6 @@
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,28 +49,28 @@ public class SeffBranch implements MeasurableSeffElement {
 	 * @throws IllegalArgumentException If {@code branches} has less than {@code 2}
 	 *             branches.
 	 */
-<span class="fc" id="L53">	public SeffBranch(final Set&lt;CodeSection&gt; branches) {</span>
-<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (branches.size() &lt;= 1) {</span>
-<span class="fc" id="L55">			throw new IllegalArgumentException(</span>
+<span class="fc" id="L52">	public SeffBranch(final Set&lt;CodeSection&gt; branches) {</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">		if (branches.size() &lt;= 1) {</span>
+<span class="fc" id="L54">			throw new IllegalArgumentException(</span>
 				&quot;The code section set for the SeffBranch had less than two code sections&quot;);
 		}
-<span class="fc" id="L58">		Validate.noNullElements(branches);</span>
-<span class="fc" id="L59">		this.branches = new ArrayList&lt;&gt;(branches);</span>
-<span class="fc" id="L60">	}</span>
+<span class="fc" id="L57">		Validate.noNullElements(branches);</span>
+<span class="fc" id="L58">		this.branches = new ArrayList&lt;&gt;(branches);</span>
+<span class="fc" id="L59">	}</span>
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="fc bfc" id="L64" title="All 2 branches covered.">		if (object == null) {</span>
-<span class="fc" id="L65">			return false;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L64">			return false;</span>
 		}
-<span class="fc bfc" id="L67" title="All 2 branches covered.">		if (object == this) {</span>
-<span class="fc" id="L68">			return true;</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L67">			return true;</span>
 		}
-<span class="fc bfc" id="L70" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
-<span class="fc" id="L71">			return false;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L70">			return false;</span>
 		}
-<span class="fc" id="L73">		final SeffBranch other = (SeffBranch) object;</span>
-<span class="fc" id="L74">		return new EqualsBuilder().append(this.branches, other.branches).isEquals();</span>
+<span class="fc" id="L72">		final SeffBranch other = (SeffBranch) object;</span>
+<span class="fc" id="L73">		return new EqualsBuilder().append(this.branches, other.branches).isEquals();</span>
 	}
 
 	/**
@@ -90,19 +89,19 @@ public class SeffBranch implements MeasurableSeffElement {
 	 *         entries. Changes to the list are not reflected in the SeffBranch.
 	 */
 	public List&lt;CodeSection&gt; getBranches() {
-<span class="fc" id="L93">		return new ArrayList&lt;&gt;(this.branches);</span>
+<span class="fc" id="L92">		return new ArrayList&lt;&gt;(this.branches);</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L100">		return new HashCodeBuilder(21, 49).append(this.branches).toHashCode();</span>
+<span class="fc" id="L99">		return new HashCodeBuilder(21, 49).append(this.branches).toHashCode();</span>
 	}
 
 	@Override
 	public String toString() {
-<span class="fc" id="L105">		return new ToStringBuilder(this).append(&quot;branches&quot;, this.branches).toString();</span>
+<span class="fc" id="L104">		return String.format(&quot;SeffBranch@%4.4s&lt;%s&gt;&quot;, Integer.toHexString(this.hashCode()), this.branches);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

@@ -3,7 +3,6 @@
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A parameter of an external call.
@@ -35,12 +34,12 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 	 *            {@code null}.
 	 * @param index The parameters index in the parameter list. Starting with {@code 0}.
 	 */
-<span class="fc" id="L38">	public ExternalCallParameter(final CodeSection call, final int index) {</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">		Validate.isTrue(index &gt;= 0, &quot;The index must be non-neagtive, but was %d&quot;, index);</span>
-<span class="fc" id="L40">		Validate.notNull(call);</span>
-<span class="fc" id="L41">		this.call = call;</span>
-<span class="fc" id="L42">		this.index = index;</span>
-<span class="fc" id="L43">	}</span>
+<span class="fc" id="L37">	public ExternalCallParameter(final CodeSection call, final int index) {</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">		Validate.isTrue(index &gt;= 0, &quot;The index must be non-neagtive, but was %d&quot;, index);</span>
+<span class="fc" id="L39">		Validate.notNull(call);</span>
+<span class="fc" id="L40">		this.call = call;</span>
+<span class="fc" id="L41">		this.index = index;</span>
+<span class="fc" id="L42">	}</span>
 
 	/**
 	 * Gives the code section where the external call will be made.
@@ -48,7 +47,7 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 	 * @return the code section where the external call will be made.
 	 */
 	public CodeSection getCallCodeSection() {
-<span class="fc" id="L51">		return this.call;</span>
+<span class="fc" id="L50">		return this.call;</span>
 	}
 
 	/**
@@ -57,34 +56,34 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 	 * @return the parameters index in the parameter list. Starting with {@code 0}.
 	 */
 	public int getIndex() {
-<span class="fc" id="L60">		return this.index;</span>
+<span class="fc" id="L59">		return this.index;</span>
 	}
 
 	@Override
 	public boolean equals(final Object object) {
-<span class="fc bfc" id="L65" title="All 2 branches covered.">		if (object == null) {</span>
-<span class="fc" id="L66">			return false;</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L65">			return false;</span>
 		}
-<span class="fc bfc" id="L68" title="All 2 branches covered.">		if (object == this) {</span>
-<span class="fc" id="L69">			return true;</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L68">			return true;</span>
 		}
-<span class="fc bfc" id="L71" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
-<span class="fc" id="L72">			return false;</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L71">			return false;</span>
 		}
-<span class="fc" id="L74">		final ExternalCallParameter other = (ExternalCallParameter) object;</span>
-<span class="fc" id="L75">		return new EqualsBuilder().append(this.call, other.call).append(this.index, other.index).isEquals();</span>
+<span class="fc" id="L73">		final ExternalCallParameter other = (ExternalCallParameter) object;</span>
+<span class="fc" id="L74">		return new EqualsBuilder().append(this.call, other.call).append(this.index, other.index).isEquals();</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L82">		return new HashCodeBuilder(49, 151).append(this.call).append(this.index).toHashCode();</span>
+<span class="fc" id="L81">		return new HashCodeBuilder(49, 151).append(this.call).append(this.index).toHashCode();</span>
 	}
 
 	@Override
 	public String toString() {
-<span class="fc" id="L87">		return new ToStringBuilder(this).append(&quot;call&quot;, this.call).append(&quot;index&quot;, this.index).toString();</span>
+<span class="fc" id="L86">		return String.format(&quot;ExCall@%4.4s&lt;%d,%s&gt;&quot;, Integer.toHexString(this.hashCode()), this.index, this.call);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
