@@ -12,6 +12,7 @@ set -e
 # To be called from Beagle’s root folder on Travis CI    #
 #                                                        #
 # author: Joshua Gleitze                                 #
+# author: Roman Langrehr                                 #
 ##########################################################
 
 
@@ -21,21 +22,36 @@ sudo apt-get update
 # Install dependency packages
 sudo apt-get install -qq lyx texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-bibtex-extra texlive-lang-german xindy
 
+tmpdir=`mktemp -d`
+cd $tmpdir
+wget https://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+sudo texlua install-getnonfreefonts
+sudo getnonfreefonts-sys arial-urw
+cd $OLDPWD
+
 # Copy the lyx layout file to the private lyx layouts folder
 mkdir -p ~/.lyx/layouts
 cp Documentation/Dependencies/sdqthesis.layout ~/.lyx/layouts
+cp Documentation/Dependencies/KIT-Beamer.layout ~/.lyx/layouts
 
 # Download the sdqthesis template, unzip it, copy the important content into the local texmf, run texhash
-texmf="/usr/share/texmf/tex/latex/sdqthesis"
-sudo mkdir -p $texmf
+texmf="/usr/share/texmf/tex/latex"
+sudo mkdir -p $texmf/sdqthesis
 
 sdqthesiszip="https://sdqweb.ipd.kit.edu/mediawiki-sdq-extern/images/7/76/Ausarbeitungs-Vorlage_SDQ_2014.zip"
+kitbeamerzip="https://owncloud.joshuagleitze.de/index.php/s/SXkKlV7v6vWTWaN/download"
 
 tmpdir=`mktemp -d`
 zipname="$tmpdir/sdqthesis.zip"
+kitbeamerzipname="$tmpdir/kitbeamer.zip"
 
 wget -qO- -O $zipname $sdqthesiszip && unzip $zipname -d $tmpdir
-sudo cp -r $tmpdir/logos $tmpdir/sdqthesis.cls $tmpdir/title-background.pdf $tmpdir/title-background.eps $texmf
+wget -qO- -O $kitbeamerzipname $kitbeamerzip && unzip $kitbeamerzipname -d $tmpdir
+unzip $tmpdir/KITbase.zip -d $tmpdir
+unzip $tmpdir/KITbeamer.zip -d $tmpdir
+
+sudo cp -r $tmpdir/logos $tmpdir/sdqthesis.cls $tmpdir/title-background.pdf $tmpdir/title-background.eps $texmf/sdqthesis
+sudo cp -r $tmpdir/tex/latex/KIT $texmf
 
 sudo texhash
 	

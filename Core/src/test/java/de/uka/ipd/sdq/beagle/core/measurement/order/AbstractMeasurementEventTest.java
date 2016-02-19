@@ -13,7 +13,7 @@ import org.junit.Test;
 /**
  * Tests {@link AbstractMeasurementEvent} and contains all test cases needed to check
  * every method.
- * 
+ *
  * @author Annika Berger
  */
 public class AbstractMeasurementEventTest {
@@ -31,7 +31,7 @@ public class AbstractMeasurementEventTest {
 	@Test
 	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			new AbstractMeasurementEvent(codeSection) {
 
 				@Override
@@ -41,7 +41,7 @@ public class AbstractMeasurementEventTest {
 			};
 		}
 
-		ThrowingMethod method = () -> {
+		final ThrowingMethod method = () -> {
 			new AbstractMeasurementEvent(null) {
 
 				@Override
@@ -60,8 +60,8 @@ public class AbstractMeasurementEventTest {
 	@Test
 	public void getCodeSection() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		for (CodeSection codeSection : codeSections) {
-			AbstractMeasurementEvent event = new AbstractMeasurementEvent(codeSection) {
+		for (final CodeSection codeSection : codeSections) {
+			final AbstractMeasurementEvent event = new AbstractMeasurementEvent(codeSection) {
 
 				@Override
 				public void receive(final MeasurementEventVisitor visitor) {
@@ -74,7 +74,7 @@ public class AbstractMeasurementEventTest {
 
 		CodeSection codeSection = CODE_SECTION_FACTORY.getOne();
 		final CodeSection copiedSection = codeSection;
-		AbstractMeasurementEvent event = new AbstractMeasurementEvent(codeSection) {
+		final AbstractMeasurementEvent event = new AbstractMeasurementEvent(codeSection) {
 
 			@Override
 			public void receive(final MeasurementEventVisitor visitor) {

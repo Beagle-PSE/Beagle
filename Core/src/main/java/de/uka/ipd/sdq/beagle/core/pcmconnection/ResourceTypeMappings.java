@@ -14,7 +14,6 @@ import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
 import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
 import org.palladiosimulator.pcm.resourcetype.ResourceType;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -29,8 +28,7 @@ public final class ResourceTypeMappings {
 	/**
 	 * The location of the resourceType-file of PCM.
 	 */
-	private static final String RESOURCETYPE_URI =
-		"pathmap://PCM_MODELS/Palladio.resourcetype";
+	private static final String RESOURCETYPE_URI = "pathmap://PCM_MODELS/Palladio.resourcetype";
 
 	/**
 	 * The bidirectional Map between {@link ResourceDemandType} and

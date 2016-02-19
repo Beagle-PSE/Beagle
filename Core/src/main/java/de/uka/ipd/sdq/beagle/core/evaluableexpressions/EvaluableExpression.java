@@ -29,7 +29,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
  * @author Joshua Gleitze
  */
 public interface EvaluableExpression {
-	
+
 	/**
 	 * The used value to express {@code true} as double.
 	 */

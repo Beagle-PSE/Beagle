@@ -24,8 +24,8 @@ import java.util.Set;
  * {@link #canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)} checks if there
  * are any MeasurementResults for a SeffElement, that have not been flown into the average
  * proposed Expression so far.
- * 
- * 
+ *
+ *
  * @author Ansgar Spiegler
  */
 public class MeasurementResultAnalyserAverage
@@ -45,7 +45,7 @@ public class MeasurementResultAnalyserAverage
 			return false;
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {
+		for (final MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {
 
 			final Integer numberOfMeasurements =
 				this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement);
@@ -85,23 +85,23 @@ public class MeasurementResultAnalyserAverage
 
 		final Set<MeasurableSeffElement> allMeasurableSeffElementsOnBlackboard = new HashSet<MeasurableSeffElement>();
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {
+		for (final MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {
 			if (this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement) > 0) {
 				return true;
 			}
@@ -124,7 +124,7 @@ public class MeasurementResultAnalyserAverage
 		final HashMap<MeasurableSeffElement, Integer> measurableSeffContributions =
 			blackboard.readFor(MeasurementResultAnalyserAverage.class);
 
-		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {
+		for (final MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {
 
 			final Integer numberOfMeasurements;
 
@@ -175,7 +175,7 @@ public class MeasurementResultAnalyserAverage
 		int sumOverAllMeasurementResultValues = 0;
 		final int numberOfAllMeasurementResults = measurementResults.size();
 
-		for (ResourceDemandMeasurementResult rdmr : measurementResults) {
+		for (final ResourceDemandMeasurementResult rdmr : measurementResults) {
 			sumOverAllMeasurementResultValues += rdmr.getValue();
 		}
 
@@ -236,7 +236,7 @@ public class MeasurementResultAnalyserAverage
 		int sumOverAllLoopCounts = 0;
 		final int numberOfAllMeasurementResults = loopCountResults.size();
 
-		for (LoopRepetitionCountMeasurementResult loopCountResult : loopCountResults) {
+		for (final LoopRepetitionCountMeasurementResult loopCountResult : loopCountResults) {
 			sumOverAllLoopCounts += loopCountResult.getCount();
 		}
 
@@ -354,23 +354,23 @@ public class MeasurementResultAnalyserAverage
 			new HashMap<MeasurableSeffElement, Integer>();
 		final Set<MeasurableSeffElement> allMeasurableSeffElementsOnBlackboard = new HashSet<MeasurableSeffElement>();
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {
+		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {
 			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);
 		}
 
-		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {
+		for (final MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {
 			measurableSeffContributions.put(measurableSeffElement, new Integer(0));
 		}
 

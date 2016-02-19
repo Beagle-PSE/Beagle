@@ -59,6 +59,5 @@ public class BranchDecisionMeasurementResult extends ParameterisationDependentMe
 	public String toString() {
 		return String.format("BranchResult@%4.4s<%d,%s>", Integer.toHexString(this.hashCode()), this.branchIndex,
 			this.getParameterisation());
-
 	}
 }
