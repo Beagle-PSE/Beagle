@@ -10,6 +10,7 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -24,7 +25,7 @@ public final class ExpressionEqualityMatcher extends TypeSafeMatcher<EvaluableEx
 	 * The {@link EvaluableExpression} to whose value the value of the other must be
 	 * equal.
 	 */
-	private final EvaluableExpression expression;
+	private final EvaluableExpression reference;
 
 	/**
 	 * Filled if the matcher returns false to give a proper error message.
@@ -37,7 +38,7 @@ public final class ExpressionEqualityMatcher extends TypeSafeMatcher<EvaluableEx
 	 * @param expression to which values should be compared
 	 */
 	private ExpressionEqualityMatcher(final EvaluableExpression expression) {
-		this.expression = expression;
+		this.reference = expression;
 	}
 
 	/**
@@ -53,7 +54,7 @@ public final class ExpressionEqualityMatcher extends TypeSafeMatcher<EvaluableEx
 
 	@Override
 	public void describeTo(final Description description) {
-		description.appendText("An expression producing equals values as ");
+		description.appendText("an expression producing equal values as ").appendValue(this.reference);
 	}
 
 	/*
@@ -68,33 +69,41 @@ public final class ExpressionEqualityMatcher extends TypeSafeMatcher<EvaluableEx
 	}
 
 	@Override
-	protected boolean matchesSafely(final EvaluableExpression item) {
+	protected boolean matchesSafely(final EvaluableExpression examined) {
 		final VariableFinder variableFinder = new VariableFinder();
-		final Set<EvaluableVariable> variablesOfExpression = variableFinder.getVariables(this.expression);
-		final Set<EvaluableVariable> variablesOfItem = variableFinder.getVariables(item);
+		final Set<EvaluableVariable> variablesOfReference = variableFinder.getVariables(this.reference);
+		final Set<EvaluableVariable> variablesOfExamined = variableFinder.getVariables(examined);
 
-		if (!variablesOfExpression.containsAll(variablesOfItem)) {
-			variablesOfItem.removeAll(variablesOfExpression);
-			this.errorMessage = String
-				.format("The examined expression contains the variables <%s>, which are not expected", variablesOfItem);
+		if (!variablesOfReference.containsAll(variablesOfExamined)) {
+			variablesOfExamined.removeAll(variablesOfReference);
+			this.errorMessage = String.format(
+				"the examined expression contains the variables <%s>, which are not expected", variablesOfExamined);
 			return false;
 		}
 
-		final int primeOne = 100;
-		final int primeTwo = 100;
+		// Make it unlikely to let the result “escape” to infinity
+		final double maxExponent = Double.MAX_EXPONENT - 30;
+		// This will always produce the same values!
+		final Random numberSource = new Random(12345678);
 		final int amountOfCombinations = 100;
-		final EvaluableVariable[] variables =
-			variablesOfExpression.toArray(new EvaluableVariable[variablesOfExpression.size()]);
+		final double epsilon = Math.pow(2, -15);
+		final double variation = Math.pow(2, 10);
+
 		for (int i = 0; i < amountOfCombinations; i++) {
 			final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
-			for (int j = 0; j < variables.length; j++) {
-				assignment.setValueFor(variables[j], ((i + j) * primeOne) % primeTwo);
+			final double sizeFactor = Math.pow(2, numberSource.nextDouble() * maxExponent);
+			for (EvaluableVariable variable : variablesOfReference) {
+				final double value = (numberSource.nextBoolean() ? -1 : 1) * variation * sizeFactor;
+				assignment.setValueFor(variable, value);
 			}
-			final double valueOfItem = item.evaluate(assignment);
-			final double valueOfExpression = item.evaluate(assignment);
-			if (valueOfItem != valueOfExpression) {
-				this.errorMessage = String.format("<%f> expected for <%s>, but was <%d>", valueOfExpression,
-					assignment.toString(), valueOfItem);
+
+			final double resultValue = examined.evaluate(assignment);
+			final double expectedValue = this.reference.evaluate(assignment);
+
+			if (Math.abs(resultValue - expectedValue) > epsilon * Math.abs(expectedValue)) {
+				this.errorMessage =
+					String.format("<%s> produces <%s> instead of <%s> for <%s> (allowed deviation: <%s>", examined,
+						resultValue, expectedValue, assignment.toString(), epsilon * Math.abs(expectedValue));
 				return false;
 			}
 		}
@@ -113,7 +122,7 @@ public final class ExpressionEqualityMatcher extends TypeSafeMatcher<EvaluableEx
 		 * Set containing all {@link EvaluableVariable}s of the
 		 * {@link EvaluableExpression}.
 		 */
-		private final Set<EvaluableVariable> variables = new HashSet<>();
+		private Set<EvaluableVariable> variables = new HashSet<>();
 
 		@Override
 		protected void atVariable(final EvaluableVariable variable) {
@@ -129,7 +138,7 @@ public final class ExpressionEqualityMatcher extends TypeSafeMatcher<EvaluableEx
 		 *         {@link EvaluableExpression}
 		 */
 		private Set<EvaluableVariable> getVariables(final EvaluableExpression expression) {
-			this.variables.clear();
+			this.variables = new HashSet<>();
 			this.visitRecursively(expression);
 			return this.variables;
 		}
