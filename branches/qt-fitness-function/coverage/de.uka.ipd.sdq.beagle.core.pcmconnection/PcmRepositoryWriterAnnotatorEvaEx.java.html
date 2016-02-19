@@ -98,7 +98,7 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 <span class="nc" id="L98">			final ProcessingResourceType processingResourceType =</span>
 <span class="nc" id="L99">				parametricResourceDemand.getRequiredResource_ParametricResourceDemand();</span>
 
-<span class="nc bnc" id="L101" title="All 2 branches missed.">			if (this.typeMappings.getBeagleType(processingResourceType).equals(type)) {</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">			if (type.equals(this.typeMappings.getBeagleType(processingResourceType))) {</span>
 <span class="nc bnc" id="L102" title="All 2 branches missed.">				if (!hasWrittenEvaEx) {</span>
 <span class="nc" id="L103">					parametricResourceDemand.getSpecification_ParametericResourceDemand()</span>
 <span class="nc" id="L104">						.setSpecification(this.evaExToSpecification(evaEx));</span>
