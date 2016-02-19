@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.File;
 import java.io.Serializable;
@@ -176,11 +175,11 @@ public class CodeSection implements Serializable {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("startFile", this.startFile)
-			.append("startStatementNumber", this.startStatementNumber)
-			.append("endFile", this.endFile)
-			.append("endStatementNumber", this.endStatementNumber)
-			.toString();
+		final String startFileName = this.startFile.getName().replace(".java", "");
+		final String endFileName =
+			this.startFile.equals(this.endFile) ? "" : this.endFile.getName().replace(".java", "") + ":";
+		return String.format("%s:%d–%s%d", startFileName, this.startStatementNumber, endFileName,
+			this.endStatementNumber);
 	}
 
 	/**
