@@ -13,7 +13,7 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
-import org.eclipse.emf.common.util.TreeIterator;
+import org.apache.commons.collections4.IteratorUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 import org.palladiosimulator.pcm.seff.BranchAction;
@@ -26,8 +26,6 @@ import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 
@@ -43,7 +41,7 @@ public class PcmRepositoryWriterAnnotator {
 	 * The FailureHandler for this class.
 	 */
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("PcmStorer");
-	
+
 	/**
 	 * Blackboard to get Mapping from.
 	 */
@@ -58,8 +56,6 @@ public class PcmRepositoryWriterAnnotator {
 	 * Object for converting and annotating EvaEx.
 	 */
 	private PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx;
-	
-
 
 	/**
 	 * Helper class for {@link PcmRepositoryWriter}. Offering a method to write all final
@@ -142,8 +138,8 @@ public class PcmRepositoryWriterAnnotator {
 
 	/**
 	 * This method looks up each RDIA on the {@link #blackboard} and maps its ID to its
-	 * ResourceDemandType if a final EvaluablExpression is found on the Blackboard. Otherwise,
-	 * the RDIA will not occur as Key-element.
+	 * ResourceDemandType if a final EvaluablExpression is found on the Blackboard.
+	 * Otherwise, the RDIA will not occur as Key-element.
 	 *
 	 * @return A map of RDIA IDs to its ResourceDemandTypes.
 	 */
@@ -192,9 +188,10 @@ public class PcmRepositoryWriterAnnotator {
 	 *            overwrite the old StochasticExpressions)
 	 */
 	public void annotateAll(final RepositoryImpl repository) {
-		
+
 		if (repository == null) {
-			throw new NullPointerException("The repository in the method \"RepositoryWriter.annotateAll\" must not be null!");
+			throw new NullPointerException(
+				"The repository in the method \"RepositoryWriter.annotateAll\" must not be null!");
 		}
 
 		final Map<String, EvaluableExpression> seffLoopIdsToEvaEx =
@@ -208,19 +205,8 @@ public class PcmRepositoryWriterAnnotator {
 		final Map<String, EvaluableExpression> exParamIdsToEvaEx =
 			this.getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard();
 
-		
-		final TreeIterator<EObject> contentIterator = repository.eAllContents();
-		//Creating a list with the copied contentIterator objects because this
-		//Section is going to manipulate the content of the repository.
-		final List<EObject> copyList = new LinkedList<EObject>();
-		while (contentIterator.hasNext()) {
-			final EObject content = contentIterator.next();
-			copyList.add(content);
-		}
-		
-		final ListIterator<EObject> contentListIterator = copyList.listIterator();
-		
-		
+		final ListIterator<EObject> contentListIterator = IteratorUtils.toListIterator(repository.eAllContents());
+
 		while (contentListIterator.hasNext()) {
 			final EObject content = contentListIterator.next();
 
@@ -296,7 +282,7 @@ public class PcmRepositoryWriterAnnotator {
 		if (content.getClass() == LoopActionImpl.class) {
 			return true;
 		}
-		
+
 		final FailureReport<Void> failure = new FailureReport<Void>()
 			.message("The SeffElement with ID %s is stored by Beagle as a LoopAction"
 				+ " but is not a LoopAction in the repository-file!", content.getId())
@@ -304,7 +290,7 @@ public class PcmRepositoryWriterAnnotator {
 			.recoverable()
 			.retryWith(() -> this.shouldBeLoopAction(content));
 		FAILURE_HANDLER.handle(failure);
-		
+
 		return false;
 	}
 
