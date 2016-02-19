@@ -19,7 +19,7 @@ import java.util.LinkedList;
 
 /**
  * This class contains the logic for converting and annotating EvaluableExpressions.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositoryWriterAnnotatorEvaEx {
@@ -72,9 +72,10 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 * @param internalAction The PCM element
 	 * @param type The ResourceDemandType of the InternalAction (
 	 *            {@link ResourceDemandType#RESOURCE_TYPE_CPU_NS} and
-	 *            {@link ResourceDemandType#RESOURCE_TYPE_HDD_NS} are accepted so far.
-	 *            If the suitable Type is found more than one time, it is deleted every further time.
-	 *            If the suitable Type is not yet in this InternalAction, it is created newly and added.
+	 *            {@link ResourceDemandType#RESOURCE_TYPE_HDD_NS} are accepted so far. If
+	 *            the suitable Type is found more than one time, it is deleted every
+	 *            further time. If the suitable Type is not yet in this InternalAction, it
+	 *            is created newly and added.
 	 * @param evaEx The Expression to annotate
 	 */
 	public void annotateEvaExFor(final InternalActionImpl internalAction, final ResourceDemandType type,
@@ -82,16 +83,18 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 		if (internalAction == null || evaEx == null) {
 			throw new NullPointerException("No null arguments in annotateEvaExFor-method allowed!");
 		}
-		//Other TYPES are not supported so far!
-		if (!type.equals(ResourceDemandType.RESOURCE_TYPE_CPU_NS) && !type.equals(ResourceDemandType.RESOURCE_TYPE_HDD_NS)) {
+		// Other TYPES are not supported so far!
+		if (!type.equals(ResourceDemandType.RESOURCE_TYPE_CPU_NS)
+			&& !type.equals(ResourceDemandType.RESOURCE_TYPE_HDD_NS)) {
 			return;
 		}
-		
+
 		boolean hasWrittenEvaEx = false;
-		final LinkedList<ParametricResourceDemand> duplicateResourceDemandsToRemove = new LinkedList<ParametricResourceDemand>();
-		
+		final LinkedList<ParametricResourceDemand> duplicateResourceDemandsToRemove =
+			new LinkedList<ParametricResourceDemand>();
+
 		final EList<ParametricResourceDemand> parametricResourceDemands = internalAction.getResourceDemand_Action();
-		for (ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {
+		for (final ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {
 			final ProcessingResourceType processingResourceType =
 				parametricResourceDemand.getRequiredResource_ParametricResourceDemand();
 
@@ -105,24 +108,26 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 				}
 			}
 		}
-		
-		//In case there are more than one ResourceDemands of the same Type are found, the duplicates are deleted.
+
+		// In case there are more than one ResourceDemands of the same Type are found, the
+		// duplicates are deleted.
 		if (!duplicateResourceDemandsToRemove.isEmpty()) {
 			parametricResourceDemands.removeAll(duplicateResourceDemandsToRemove);
 		}
-		
-		//In case there is no such ResourceDemandType at this InternalAction a new ResourceDemand with this Type is added.
+
+		// In case there is no such ResourceDemandType at this InternalAction a new
+		// ResourceDemand with this Type is added.
 		if (!hasWrittenEvaEx) {
-	        final ParametricResourceDemand prdToAdd = SeffPerformanceFactory.eINSTANCE.createParametricResourceDemand();
-	        final PCMRandomVariable randomVar = CoreFactory.eINSTANCE.createPCMRandomVariable();
-	        randomVar.setSpecification(this.evaExToSpecification(evaEx));
-	        prdToAdd.setSpecification_ParametericResourceDemand(randomVar);
-	        
-	        internalAction.getResourceDemand_Action().add(prdToAdd);
-	        prdToAdd.setRequiredResource_ParametricResourceDemand(this.typeMappings.getPcmType(type));
-	        prdToAdd.setAction_ParametricResourceDemand(internalAction);
+			final ParametricResourceDemand prdToAdd = SeffPerformanceFactory.eINSTANCE.createParametricResourceDemand();
+			final PCMRandomVariable randomVar = CoreFactory.eINSTANCE.createPCMRandomVariable();
+			randomVar.setSpecification(this.evaExToSpecification(evaEx));
+			prdToAdd.setSpecification_ParametericResourceDemand(randomVar);
+
+			internalAction.getResourceDemand_Action().add(prdToAdd);
+			prdToAdd.setRequiredResource_ParametricResourceDemand(this.typeMappings.getPcmType(type));
+			prdToAdd.setAction_ParametricResourceDemand(internalAction);
 		}
-		
+
 	}
 
 	/**
@@ -142,7 +147,7 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	/**
 	 * Supports only Constant EvaluableExpressions right now. Converts EvaluableExpression
 	 * into a String-specification of the PCM Stochastic Expression.
-	 * 
+	 *
 	 *
 	 * @param evaEx constant EvaluableExpression
 	 * @return String specification of EvaluableExpression

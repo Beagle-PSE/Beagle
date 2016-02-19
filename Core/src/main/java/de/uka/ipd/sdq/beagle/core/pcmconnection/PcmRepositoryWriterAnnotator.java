@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  * This class is offering a method to annotate all final EvaluableExpressions of a given
  * Blackboard to a PCM-repository.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositoryWriterAnnotator {
@@ -84,7 +84,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> seffLoopIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (SeffLoop seffLoop : this.blackboard.getAllSeffLoops()) {
+		for (final SeffLoop seffLoop : this.blackboard.getAllSeffLoops()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffLoop);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(seffLoop)) {
 
@@ -105,7 +105,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> seffBranchIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (SeffBranch seffBranch : this.blackboard.getAllSeffBranches()) {
+		for (final SeffBranch seffBranch : this.blackboard.getAllSeffBranches()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(seffBranch);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(seffBranch)) {
 
@@ -126,7 +126,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> rdiaIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
+		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(rdia)) {
 
@@ -147,7 +147,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, ResourceDemandType> rdiaIdToDemandType = new HashMap<String, ResourceDemandType>();
 
-		for (ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
+		for (final ResourceDemandingInternalAction rdia : this.blackboard.getAllRdias()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(rdia);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(rdia)) {
 
@@ -169,7 +169,7 @@ public class PcmRepositoryWriterAnnotator {
 
 		final Map<String, EvaluableExpression> exParamIdToEvaEx = new HashMap<String, EvaluableExpression>();
 
-		for (ExternalCallParameter exParam : this.blackboard.getAllExternalCallParameters()) {
+		for (final ExternalCallParameter exParam : this.blackboard.getAllExternalCallParameters()) {
 			final EvaluableExpression evaEx = this.blackboard.getFinalExpressionFor(exParam);
 			if (evaEx != null && this.pcmMappings.hasPcmIdOf(exParam)) {
 
