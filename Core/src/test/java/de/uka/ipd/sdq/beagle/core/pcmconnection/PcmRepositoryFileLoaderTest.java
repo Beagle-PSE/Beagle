@@ -20,7 +20,7 @@ import java.net.URISyntaxException;
 /**
  * Tests {@link PcmRepositoryFileLoader} and contains all test cases needed to check all
  * methods.
- * 
+ *
  * @author Annika Berger
  */
 // @formatter:off
@@ -37,7 +37,7 @@ public class PcmRepositoryFileLoaderTest {
 
 	/**
 	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
-	 * 
+	 *
 	 * @throws Exception if something went wrong while mocking the constructor of
 	 *             {@link ResourceTypeMappings}.
 	 *
@@ -52,11 +52,11 @@ public class PcmRepositoryFileLoaderTest {
 
 	/**
 	 * Test method for {@link PcmRepositoryFileLoader#loadRepositoryFromFile(File)}.
-	 * 
+	 *
 	 * <p>Asserts that a {@link NullPointerException} is thrown if method is called with
 	 * parameter {@code null}, a {@link FileNotFoundException} is thrown if the File does
 	 * not exist and no exception is thrown for correct input parameters.
-	 * 
+	 *
 	 * @throws FileNotFoundException thrown if File does not exist
 	 */
 	@Test

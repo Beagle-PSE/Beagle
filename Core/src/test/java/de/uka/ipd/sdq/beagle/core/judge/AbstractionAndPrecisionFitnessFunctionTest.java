@@ -31,7 +31,7 @@ import java.util.Set;
 /**
  * Tests {@link AbstractionAndPrecisionFitnessFunction} and contains all test cases needed
  * to check every method.
- * 
+ *
  * @author Annika Berger
  */
 public class AbstractionAndPrecisionFitnessFunctionTest {
@@ -47,23 +47,25 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 	 * A {@link SeffBranchFactory} to easily create {@link SeffBranch}s.
 	 */
 	private static final SeffBranchFactory SEFF_BRANCH_FACTORY = new SeffBranchFactory();
-	
+
 	/**
 	 * A {@link SeffLoopFactory} to easily create {@link SeffLoop}s.
 	 */
 	private static final SeffLoopFactory SEFF_LOOP_FACTORY = new SeffLoopFactory();
-	
+
 	/**
-	 * A {@link ExternalCallParameterFactory} to easily create {@link ExternalCallParameter}s.
+	 * A {@link ExternalCallParameterFactory} to easily create
+	 * {@link ExternalCallParameter}s.
 	 */
-	private static final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY = new ExternalCallParameterFactory();
+	private static final ExternalCallParameterFactory EXTERNAL_CALL_PARAMETER_FACTORY =
+		new ExternalCallParameterFactory();
 
 	//@formatter:off
 	/**
 	 * Test method for
 	 * {@link AbstractionAndPrecisionFitnessFunction#gradeFor(ResourceDemandingInternalAction, EvaluableExpression,
 	 * EvaluableExpressionFitnessFunctionBlackboardView)}.
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the arguments is null, infinity is returned
 	 * if there are no results and an expression nearer to the result returns a smaller double than one farer away.
 	 */
@@ -100,7 +102,7 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		given(expression2.evaluate(any())).willReturn(10.32);
 		assertThat(function.gradeFor(rdia, expression, blackboardView),
 			is(lessThan(function.gradeFor(rdia, expression2, blackboardView))));
-		
+
 		results = new HashSet<>();
 		results.add(new ResourceDemandMeasurementResult(2.0));
 		results.add(new ResourceDemandMeasurementResult(20.32));
@@ -120,7 +122,7 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 	 * Test method for
 	 * {@link AbstractionAndPrecisionFitnessFunction#gradeFor(SeffBranch, EvaluableExpression,
 	 * EvaluableExpressionFitnessFunctionBlackboardView)}.
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the arguments is null, infinity is returned
 	 * if there are no results and an expression nearer to the result returns a smaller double than one farer away.
 	 */
@@ -156,7 +158,7 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		given(expression2.evaluate(any())).willReturn(10.32);
 		assertThat(function.gradeFor(branch, expression, blackboardView),
 			is(lessThan(function.gradeFor(branch, expression2, blackboardView))));
-		
+
 		results = new HashSet<>();
 		results.add(new BranchDecisionMeasurementResult(2));
 		results.add(new BranchDecisionMeasurementResult(20));
@@ -176,7 +178,7 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 	 * Test method for
 	 * {@link AbstractionAndPrecisionFitnessFunction#gradeFor(SeffLoop, EvaluableExpression,
 	 * EvaluableExpressionFitnessFunctionBlackboardView)}.
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the arguments is null, infinity is returned
 	 * if there are no results and an expression nearer to the result returns a smaller double than one farer away.
 	 */
@@ -212,7 +214,7 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		given(expression2.evaluate(any())).willReturn(10.32);
 		assertThat(function.gradeFor(loop, expression, blackboardView),
 			is(lessThan(function.gradeFor(loop, expression2, blackboardView))));
-		
+
 		results = new HashSet<>();
 		results.add(new LoopRepetitionCountMeasurementResult(2));
 		results.add(new LoopRepetitionCountMeasurementResult(21));
@@ -232,7 +234,7 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 	 * Test method for
 	 * {@link AbstractionAndPrecisionFitnessFunction#gradeFor(ExternalCallParameter, EvaluableExpression,
 	 * EvaluableExpressionFitnessFunctionBlackboardView)}.
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the arguments is null, infinity is returned
 	 * if there are no results and an expression nearer to the result returns a smaller double than one farer away.
 	 */
@@ -270,7 +272,7 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		given(expression2.evaluate(any())).willReturn(10.32);
 		assertThat(function.gradeFor(parameter, expression, blackboardView),
 			is(lessThan(function.gradeFor(parameter, expression2, blackboardView))));
-		
+
 		results = new HashSet<>();
 		parameterChangeResult = mock(ParameterChangeMeasurementResult.class);
 		given(parameterChangeResult.getCount()).willReturn(2);
