@@ -76,7 +76,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atMultiplication(final MultiplicationExpression expression) {
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 3d;
+		this.computationalComplexitySum += 1.6492450638792102d;
 		this.humanComprehensibilityComplexitySum += 3d;
 		// CHECKSTYLE:ON
 
@@ -148,7 +148,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atDivision(final DivisionExpression expression) {
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 5d;
+		this.computationalComplexitySum += 3.2740998838559814d;
 		this.humanComprehensibilityComplexitySum += 7d;
 		// CHECKSTYLE:ON
 
@@ -167,7 +167,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atExponentation(final ExponentationExpression expression) {
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 10d;
+		this.computationalComplexitySum += 2177.7277840269966d;
 		this.humanComprehensibilityComplexitySum += 12d;
 		// CHECKSTYLE:ON
 
@@ -186,7 +186,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atExponentialFunction(final ExponentialFunctionExpression expression) {
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 15d;
+		this.computationalComplexitySum += 941.1764705882353d;
 		this.humanComprehensibilityComplexitySum += 20d;
 		// CHECKSTYLE:ON
 
@@ -222,7 +222,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atLogarithm(final LogarithmExpression expression) {
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 23d;
+		this.computationalComplexitySum += 126.78362573099415d;
 		this.humanComprehensibilityComplexitySum += 25d;
 		// CHECKSTYLE:ON
 
@@ -241,7 +241,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atNaturalLogarithm(final NaturalLogarithmExpression expression) {
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 10d;
+		this.computationalComplexitySum += 26.54729466718568d;
 		this.humanComprehensibilityComplexitySum += 17d;
 		// CHECKSTYLE:ON
 
@@ -260,7 +260,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atSine(final SineExpression expression) {
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 20d;
+		this.computationalComplexitySum += 205.03680743897714d;
 		this.humanComprehensibilityComplexitySum += 15d;
 		// CHECKSTYLE:ON
 
