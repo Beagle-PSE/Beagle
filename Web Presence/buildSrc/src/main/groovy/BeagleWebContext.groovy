@@ -63,6 +63,10 @@ public class BeagleWebContext {
 		 * Path to the implementation report PDF.
 		 */
 		String implementationReport = relative project.copyWebArtefacts.implementationReportDest
+		/** 
+		 * Path to the implementation slides PDF.
+		 */
+		String implementationSlides = relative project.copyWebArtefacts.implementationSlidesDest
 		/**
 		 * Path to the javadoc folder.
 		 */
