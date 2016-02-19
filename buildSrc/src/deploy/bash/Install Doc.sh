@@ -32,7 +32,7 @@ texmf="/usr/share/texmf/tex/latex"
 sudo mkdir -p $texmf
 
 sdqthesiszip="https://sdqweb.ipd.kit.edu/mediawiki-sdq-extern/images/7/76/Ausarbeitungs-Vorlage_SDQ_2014.zip"
-kitbeamerzip="https://owncloud.joshuagleitze.de/index.php/s/SXkKlV7v6vWTWaN"
+kitbeamerzip="https://owncloud.joshuagleitze.de/index.php/s/SXkKlV7v6vWTWaN/download"
 
 tmpdir=`mktemp -d`
 zipname="$tmpdir/sdqthesis.zip"
