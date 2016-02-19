@@ -63,24 +63,24 @@ public class AnalysisController {
 	/**
 	 * The {@link Blackboard} this {@link AnalysisController} knows and uses.
 	 */
-	private Blackboard blackboard;
+	private final Blackboard blackboard;
 
 	/**
 	 * The {@link MeasurementController} this {@link AnalysisController} knows and uses.
 	 */
-	private MeasurementController measurementController;
+	private final MeasurementController measurementController;
 
 	/**
 	 * The {@link MeasurementResultAnalyser}s this {@link AnalysisController} knows and
 	 * uses.
 	 */
-	private Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysers;
+	private final Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysers;
 
 	/**
 	 * The {@link ProposedExpressionAnalyser}s this {@link AnalysisController} knows and
 	 * uses.
 	 */
-	private Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysers;
+	private final Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysers;
 
 	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
@@ -202,13 +202,13 @@ public class AnalysisController {
 			for (final MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
 <span class="pc bpc" id="L203" title="1 of 2 branches missed.">				: measurementResultAnalysersAbleToContribute) {</span>
 				// @formatter:on
-<span class="pc bpc" id="L205" title="1 of 2 branches missed.">				if (count == chosenResultAnalyser) {</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">				if (count == chosenResultAnalyser) {</span>
 <span class="fc" id="L206">					measurementResultAnalyserAbleToContribute.contribute(measurementResultAnalyserBlackboardView);</span>
 <span class="fc" id="L207">					return true;</span>
 				}
 
-<span class="nc" id="L210">				count++;</span>
-<span class="nc" id="L211">			}</span>
+<span class="fc" id="L210">				count++;</span>
+<span class="fc" id="L211">			}</span>
 
 		}
 

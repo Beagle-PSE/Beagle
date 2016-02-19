@@ -95,15 +95,16 @@ public class SubtractionExpression implements EvaluableExpression {
 <span class="fc" id="L95">			return false;</span>
 		}
 <span class="fc" id="L97">		final SubtractionExpression other = (SubtractionExpression) object;</span>
-<span class="fc" id="L98">		return new EqualsBuilder().append(this.minuend, other.minuend).append(this.subtrahend, other.subtrahend)</span>
-<span class="fc" id="L99">			.isEquals();</span>
+<span class="fc" id="L98">		return new EqualsBuilder().append(this.minuend, other.minuend)</span>
+<span class="fc" id="L99">			.append(this.subtrahend, other.subtrahend)</span>
+<span class="fc" id="L100">			.isEquals();</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L106">		return new HashCodeBuilder(235, 237).append(this.minuend).append(this.subtrahend).toHashCode();</span>
+<span class="fc" id="L107">		return new HashCodeBuilder(235, 237).append(this.minuend).append(this.subtrahend).toHashCode();</span>
 	}
 
 }

@@ -26,26 +26,26 @@ import java.util.HashMap;
 	 * The HashMap for {@link ResourceDemandingInternalAction} storing all IDs as values
 	 * for one specific SeffElement.
 	 */
-<span class="fc" id="L29">	private HashMap&lt;ResourceDemandingInternalAction, String&gt; rdiaMap = new HashMap&lt;ResourceDemandingInternalAction, String&gt;();</span>
+<span class="fc" id="L29">	private final HashMap&lt;ResourceDemandingInternalAction, String&gt; rdiaMap =</span>
+		new HashMap&lt;ResourceDemandingInternalAction, String&gt;();
 
 	/**
 	 * The HashMap for {@link SeffBranch} storing all IDs as values for one specific
 	 * SeffElement.
 	 */
-<span class="fc" id="L35">	private HashMap&lt;SeffBranch, String&gt; seffBranchMap = new HashMap&lt;SeffBranch, String&gt;();</span>
+<span class="fc" id="L36">	private final HashMap&lt;SeffBranch, String&gt; seffBranchMap = new HashMap&lt;SeffBranch, String&gt;();</span>
 
 	/**
 	 * The HashMap for {@link SeffLoop} storing all IDs as values for one specific
 	 * SeffElement.
 	 */
-<span class="fc" id="L41">	private HashMap&lt;SeffLoop, String&gt; seffLoopMap = new HashMap&lt;SeffLoop, String&gt;();</span>
+<span class="fc" id="L42">	private final HashMap&lt;SeffLoop, String&gt; seffLoopMap = new HashMap&lt;SeffLoop, String&gt;();</span>
 
 	/**
 	 * The HashMap for {@link ExternalCallParameter} storing all IDs as values for one
 	 * specific SeffElement.
 	 */
-<span class="fc" id="L47">	private HashMap&lt;ExternalCallParameter, String&gt; ecpMap = new HashMap&lt;ExternalCallParameter, String&gt;();</span>
-	
+<span class="fc" id="L48">	private final HashMap&lt;ExternalCallParameter, String&gt; ecpMap = new HashMap&lt;ExternalCallParameter, String&gt;();</span>
 
 	/**
 	 * Gets the identifier used for {@code rdia} in the PCM repository.

@@ -14,7 +14,7 @@ import org.palladiosimulator.pcm.seff.seff_performance.ParametricResourceDemand;
 
 /**
  * This class contains the logic for converting and annotating EvaluableExpressions.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositoryWriterAnnotatorEvaEx {
@@ -76,7 +76,7 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 <span class="fc" id="L76">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
 		}
 <span class="nc" id="L78">		final EList&lt;ParametricResourceDemand&gt; parametricResourceDemands = internalAction.getResourceDemand_Action();</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">		for (ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">		for (final ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {</span>
 <span class="nc" id="L80">			final ProcessingResourceType processingResourceType =</span>
 <span class="nc" id="L81">				parametricResourceDemand.getRequiredResource_ParametricResourceDemand();</span>
 
@@ -105,7 +105,7 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	/**
 	 * Supports only Constant EvaluableExpressions right now. Converts EvaluableExpression
 	 * into a String-specification of the PCM Stochastic Expression.
-	 * 
+	 *
 	 *
 	 * @param evaEx constant EvaluableExpression
 	 * @return String specification of EvaluableExpression

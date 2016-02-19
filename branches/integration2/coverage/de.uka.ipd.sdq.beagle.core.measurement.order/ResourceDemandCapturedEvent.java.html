@@ -18,13 +18,13 @@ public class ResourceDemandCapturedEvent extends AbstractMeasurementEvent {
 	 * The demanded resource’s type. See {@link ResourceDemandType} for a list of
 	 * conventional strings. Must not be null.
 	 */
-	private ResourceDemandType type;
+	private final ResourceDemandType type;
 
 	/**
 	 * The resource demand’s value, expressed in the unit implied by {@code type}. Must
 	 * not be negative.
 	 */
-	private double value;
+	private final double value;
 
 	/**
 	 * Creates an event for the fact that {@code codeSection} has been completely executed

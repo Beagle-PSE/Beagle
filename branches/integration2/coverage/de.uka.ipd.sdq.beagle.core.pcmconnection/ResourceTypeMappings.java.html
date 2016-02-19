@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * This class offers a bidirectional mapping between the ResourceTypes of Beagle and the
  * PalladioComponentModel.
- * 
+ *
  * @author Ansgar Spiegler
  * @author Joshua Gleitze
  */
@@ -35,7 +35,7 @@ import java.util.Map;
 	 * The bidirectional Map between {@link ResourceDemandType} and
 	 * {@link ProcessinResourceType}.
 	 */
-<span class="nc" id="L38">	private BidiMap&lt;ResourceDemandType, ProcessingResourceType&gt; beagleTypeToPcmType = new DualHashBidiMap&lt;&gt;();</span>
+<span class="nc" id="L38">	private final BidiMap&lt;ResourceDemandType, ProcessingResourceType&gt; beagleTypeToPcmType = new DualHashBidiMap&lt;&gt;();</span>
 
 	/**
 	 * {@code true} if {@link ResourceTypeMappings} is initialised.
@@ -60,7 +60,7 @@ import java.util.Map;
 <span class="nc" id="L60">			final Resource resource = resSet.getResource(resourceTypeUri, true);</span>
 
 <span class="nc" id="L62">			final ResourceRepository resourceRepository = (ResourceRepository) resource.getContents().get(0);</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">			for (ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">			for (final ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {</span>
 <span class="nc bnc" id="L64" title="All 10 branches missed.">				switch (resourceType.getEntityName()) {</span>
 					case &quot;CPU&quot;:
 <span class="nc" id="L66">						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_CPU_NS,</span>
