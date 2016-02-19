@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 
 /**
  * Contains a method to load a {@link RepositoryImpl}-instance from a given {@link File}.
- * 
+ *
  * @author Ansgar Spiegler
  */
 <span class="fc" id="L16">public class PcmRepositoryFileLoader {</span>
@@ -26,7 +26,7 @@ import java.io.FileNotFoundException;
 <span class="fc bfc" id="L26" title="All 2 branches covered.">		if (repositoryFile == null) {</span>
 <span class="fc" id="L27">			throw new NullPointerException();</span>
 		}
-		
+
 <span class="fc bfc" id="L30" title="All 2 branches covered.">		if (!(repositoryFile.exists())) {</span>
 <span class="fc" id="L31">			throw new FileNotFoundException(&quot;File &quot; + repositoryFile.getAbsolutePath() + &quot; does not exist!&quot;);</span>
 		}

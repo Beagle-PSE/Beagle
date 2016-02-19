@@ -19,7 +19,7 @@ import java.util.LinkedList;
 
 /**
  * This class contains the logic for converting and annotating EvaluableExpressions.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositoryWriterAnnotatorEvaEx {
@@ -72,58 +72,63 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 * @param internalAction The PCM element
 	 * @param type The ResourceDemandType of the InternalAction (
 	 *            {@link ResourceDemandType#RESOURCE_TYPE_CPU_NS} and
-	 *            {@link ResourceDemandType#RESOURCE_TYPE_HDD_NS} are accepted so far.
-	 *            If the suitable Type is found more than one time, it is deleted every further time.
-	 *            If the suitable Type is not yet in this InternalAction, it is created newly and added.
+	 *            {@link ResourceDemandType#RESOURCE_TYPE_HDD_NS} are accepted so far. If
+	 *            the suitable Type is found more than one time, it is deleted every
+	 *            further time. If the suitable Type is not yet in this InternalAction, it
+	 *            is created newly and added.
 	 * @param evaEx The Expression to annotate
 	 */
 	public void annotateEvaExFor(final InternalActionImpl internalAction, final ResourceDemandType type,
 		final EvaluableExpression evaEx) {
-<span class="pc bpc" id="L82" title="1 of 4 branches missed.">		if (internalAction == null || evaEx == null) {</span>
-<span class="fc" id="L83">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
+<span class="pc bpc" id="L83" title="1 of 4 branches missed.">		if (internalAction == null || evaEx == null) {</span>
+<span class="fc" id="L84">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
 		}
-		//Other TYPES are not supported so far!
-<span class="nc bnc" id="L86" title="All 4 branches missed.">		if (!type.equals(ResourceDemandType.RESOURCE_TYPE_CPU_NS) &amp;&amp; !type.equals(ResourceDemandType.RESOURCE_TYPE_HDD_NS)) {</span>
-<span class="nc" id="L87">			return;</span>
+		// Other TYPES are not supported so far!
+<span class="nc bnc" id="L87" title="All 2 branches missed.">		if (!type.equals(ResourceDemandType.RESOURCE_TYPE_CPU_NS)</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">			&amp;&amp; !type.equals(ResourceDemandType.RESOURCE_TYPE_HDD_NS)) {</span>
+<span class="nc" id="L89">			return;</span>
 		}
-		
-<span class="nc" id="L90">		boolean hasWrittenEvaEx = false;</span>
-<span class="nc" id="L91">		final LinkedList&lt;ParametricResourceDemand&gt; duplicateResourceDemandsToRemove = new LinkedList&lt;ParametricResourceDemand&gt;();</span>
-		
-<span class="nc" id="L93">		final EList&lt;ParametricResourceDemand&gt; parametricResourceDemands = internalAction.getResourceDemand_Action();</span>
-<span class="nc bnc" id="L94" title="All 2 branches missed.">		for (ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {</span>
-<span class="nc" id="L95">			final ProcessingResourceType processingResourceType =</span>
-<span class="nc" id="L96">				parametricResourceDemand.getRequiredResource_ParametricResourceDemand();</span>
 
-<span class="nc bnc" id="L98" title="All 2 branches missed.">			if (this.typeMappings.getBeagleType(processingResourceType).equals(type)) {</span>
-<span class="nc bnc" id="L99" title="All 2 branches missed.">				if (!hasWrittenEvaEx) {</span>
-<span class="nc" id="L100">					parametricResourceDemand.getSpecification_ParametericResourceDemand()</span>
-<span class="nc" id="L101">						.setSpecification(this.evaExToSpecification(evaEx));</span>
-<span class="nc" id="L102">					hasWrittenEvaEx = true;</span>
+<span class="nc" id="L92">		boolean hasWrittenEvaEx = false;</span>
+<span class="nc" id="L93">		final LinkedList&lt;ParametricResourceDemand&gt; duplicateResourceDemandsToRemove =</span>
+			new LinkedList&lt;ParametricResourceDemand&gt;();
+
+<span class="nc" id="L96">		final EList&lt;ParametricResourceDemand&gt; parametricResourceDemands = internalAction.getResourceDemand_Action();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		for (final ParametricResourceDemand parametricResourceDemand : parametricResourceDemands) {</span>
+<span class="nc" id="L98">			final ProcessingResourceType processingResourceType =</span>
+<span class="nc" id="L99">				parametricResourceDemand.getRequiredResource_ParametricResourceDemand();</span>
+
+<span class="nc bnc" id="L101" title="All 2 branches missed.">			if (this.typeMappings.getBeagleType(processingResourceType).equals(type)) {</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">				if (!hasWrittenEvaEx) {</span>
+<span class="nc" id="L103">					parametricResourceDemand.getSpecification_ParametericResourceDemand()</span>
+<span class="nc" id="L104">						.setSpecification(this.evaExToSpecification(evaEx));</span>
+<span class="nc" id="L105">					hasWrittenEvaEx = true;</span>
 				} else {
-<span class="nc" id="L104">					duplicateResourceDemandsToRemove.add(parametricResourceDemand);</span>
+<span class="nc" id="L107">					duplicateResourceDemandsToRemove.add(parametricResourceDemand);</span>
 				}
 			}
-<span class="nc" id="L107">		}</span>
-		
-		//In case there are more than one ResourceDemands of the same Type are found, the duplicates are deleted.
-<span class="nc bnc" id="L110" title="All 2 branches missed.">		if (!duplicateResourceDemandsToRemove.isEmpty()) {</span>
-<span class="nc" id="L111">			parametricResourceDemands.removeAll(duplicateResourceDemandsToRemove);</span>
+<span class="nc" id="L110">		}</span>
+
+		// In case there are more than one ResourceDemands of the same Type are found, the
+		// duplicates are deleted.
+<span class="nc bnc" id="L114" title="All 2 branches missed.">		if (!duplicateResourceDemandsToRemove.isEmpty()) {</span>
+<span class="nc" id="L115">			parametricResourceDemands.removeAll(duplicateResourceDemandsToRemove);</span>
 		}
-		
-		//In case there is no such ResourceDemandType at this InternalAction a new ResourceDemand with this Type is added.
-<span class="nc bnc" id="L115" title="All 2 branches missed.">		if (!hasWrittenEvaEx) {</span>
-<span class="nc" id="L116">	        final ParametricResourceDemand prdToAdd = SeffPerformanceFactory.eINSTANCE.createParametricResourceDemand();</span>
-<span class="nc" id="L117">	        final PCMRandomVariable randomVar = CoreFactory.eINSTANCE.createPCMRandomVariable();</span>
-<span class="nc" id="L118">	        randomVar.setSpecification(this.evaExToSpecification(evaEx));</span>
-<span class="nc" id="L119">	        prdToAdd.setSpecification_ParametericResourceDemand(randomVar);</span>
-	        
-<span class="nc" id="L121">	        internalAction.getResourceDemand_Action().add(prdToAdd);</span>
-<span class="nc" id="L122">	        prdToAdd.setRequiredResource_ParametricResourceDemand(this.typeMappings.getPcmType(type));</span>
-<span class="nc" id="L123">	        prdToAdd.setAction_ParametricResourceDemand(internalAction);</span>
+
+		// In case there is no such ResourceDemandType at this InternalAction a new
+		// ResourceDemand with this Type is added.
+<span class="nc bnc" id="L120" title="All 2 branches missed.">		if (!hasWrittenEvaEx) {</span>
+<span class="nc" id="L121">			final ParametricResourceDemand prdToAdd = SeffPerformanceFactory.eINSTANCE.createParametricResourceDemand();</span>
+<span class="nc" id="L122">			final PCMRandomVariable randomVar = CoreFactory.eINSTANCE.createPCMRandomVariable();</span>
+<span class="nc" id="L123">			randomVar.setSpecification(this.evaExToSpecification(evaEx));</span>
+<span class="nc" id="L124">			prdToAdd.setSpecification_ParametericResourceDemand(randomVar);</span>
+
+<span class="nc" id="L126">			internalAction.getResourceDemand_Action().add(prdToAdd);</span>
+<span class="nc" id="L127">			prdToAdd.setRequiredResource_ParametricResourceDemand(this.typeMappings.getPcmType(type));</span>
+<span class="nc" id="L128">			prdToAdd.setAction_ParametricResourceDemand(internalAction);</span>
 		}
-		
-<span class="nc" id="L126">	}</span>
+
+<span class="nc" id="L131">	}</span>
 
 	/**
 	 * Annotating the EvaluableExpression onto the given PCM element.
@@ -132,26 +137,26 @@ public class PcmRepositoryWriterAnnotatorEvaEx {
 	 * @param evaEx The Expression to annotate
 	 */
 	public void annotateEvaExFor(final ExternalCallActionImpl externalAction, final EvaluableExpression evaEx) {
-<span class="fc bfc" id="L135" title="All 4 branches covered.">		if (externalAction == null || evaEx == null) {</span>
-<span class="fc" id="L136">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
+<span class="fc bfc" id="L140" title="All 4 branches covered.">		if (externalAction == null || evaEx == null) {</span>
+<span class="fc" id="L141">			throw new NullPointerException(&quot;No null arguments in annotateEvaExFor-method allowed!&quot;);</span>
 		}
 		// MAY BE IMPLEMENTED AS NICE TO HAVE CRITERIA, TOGHETHER WITH THE GENETIC
 		// APPROACH
-<span class="fc" id="L140">	}</span>
+<span class="fc" id="L145">	}</span>
 
 	/**
 	 * Supports only Constant EvaluableExpressions right now. Converts EvaluableExpression
 	 * into a String-specification of the PCM Stochastic Expression.
-	 * 
+	 *
 	 *
 	 * @param evaEx constant EvaluableExpression
 	 * @return String specification of EvaluableExpression
 	 */
 	private String evaExToSpecification(final EvaluableExpression evaEx) {
-<span class="nc bnc" id="L151" title="All 2 branches missed.">		if (evaEx.getClass() == ConstantExpression.class) {</span>
-<span class="nc" id="L152">			return ((ConstantExpression) evaEx).getValue() + &quot;&quot;;</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		if (evaEx.getClass() == ConstantExpression.class) {</span>
+<span class="nc" id="L157">			return ((ConstantExpression) evaEx).getValue() + &quot;&quot;;</span>
 		}
-<span class="nc" id="L154">		return &quot;&quot;;</span>
+<span class="nc" id="L159">		return &quot;&quot;;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
