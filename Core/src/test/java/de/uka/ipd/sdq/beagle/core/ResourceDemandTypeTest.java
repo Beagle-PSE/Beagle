@@ -2,11 +2,11 @@ package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.core.StringStartsWith.startsWith;
-import static org.junit.Assert.assertThat;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
@@ -87,7 +87,7 @@ public class ResourceDemandTypeTest {
 	@Test
 	public void toStringT() {
 		final ResourceDemandType type = new ResourceDemandType("test", true);
-		assertThat(type.toString(), not(startsWith("ResourceDemandType@")));
+		assertThat(type, hasOverriddenToString());
 	}
 
 }

@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * Creates {@link MeasurementEvent}s and provides methods to get them.
- * 
+ *
  * @author Annika Berger
  */
 public final class MeasurementEventFactory {
@@ -115,7 +115,7 @@ public final class MeasurementEventFactory {
 	public Set<CodeSectionLeftEvent> getAllCodeSectionLeftEventsAsSet() {
 		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSectionLeftEvent> events = new HashSet<>();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			events.add(new CodeSectionLeftEvent(codeSection));
 		}
 		return events;
@@ -129,7 +129,7 @@ public final class MeasurementEventFactory {
 	public Set<CodeSectionEnteredEvent> getAllCodeSectionEnteredEventsAsSet() {
 		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<CodeSectionEnteredEvent> events = new HashSet<>();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			events.add(new CodeSectionEnteredEvent(codeSection));
 		}
 		return events;
@@ -143,7 +143,7 @@ public final class MeasurementEventFactory {
 	public Set<ResourceDemandCapturedEvent> getAllResourceDemandCapturedEventsAsSet() {
 		final Set<CodeSection> codeSections = CODE_SECTION_FACTORY.getAllAsSet();
 		final Set<ResourceDemandCapturedEvent> events = new HashSet<>();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			events.add(new ResourceDemandCapturedEvent(codeSection, ResourceDemandType.RESOURCE_TYPE_CPU, 2.3));
 		}
 		return events;

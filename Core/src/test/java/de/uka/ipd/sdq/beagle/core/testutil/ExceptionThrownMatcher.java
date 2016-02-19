@@ -54,7 +54,8 @@ public final class ExceptionThrownMatcher extends TypeSafeDiagnosingMatcher<Thro
 
 	@Override
 	public void describeTo(final Description description) {
-		description.appendText("a ").appendValue(this.expectedExceptionClass.getSimpleName())
+		description.appendText("a ")
+			.appendValue(this.expectedExceptionClass.getSimpleName())
 			.appendText(" to be thrown");
 	}
 
@@ -76,7 +77,8 @@ public final class ExceptionThrownMatcher extends TypeSafeDiagnosingMatcher<Thro
 			if (this.expectedExceptionClass.isInstance(thrownException)) {
 				return true;
 			}
-			mismatchDescription.appendText("a ").appendValue(thrownException.getClass().getSimpleName())
+			mismatchDescription.appendText("a ")
+				.appendValue(thrownException.getClass().getSimpleName())
 				.appendText(" was thrown");
 		}
 		return false;

@@ -2,11 +2,11 @@ package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.IsSame.sameInstance;
-import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -215,7 +215,7 @@ public class CodeSectionTest {
 		final int startCodeLine = 4;
 		final int endCodeLine = 15;
 		final CodeSection codeSection = new CodeSection(file, startCodeLine, file, endCodeLine);
-		assertThat(codeSection.toString(), not(startsWith("CodeSection@")));
+		assertThat(codeSection, hasOverriddenToString());
 	}
 
 }
