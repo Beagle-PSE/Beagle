@@ -29,7 +29,7 @@ cp Documentation/Dependencies/KIT-Beamer.layout ~/.lyx/layouts
 
 # Download the sdqthesis template, unzip it, copy the important content into the local texmf, run texhash
 texmf="/usr/share/texmf/tex/latex"
-sudo mkdir -p $texmf
+sudo mkdir -p $texmf/sdqthesis
 
 sdqthesiszip="https://sdqweb.ipd.kit.edu/mediawiki-sdq-extern/images/7/76/Ausarbeitungs-Vorlage_SDQ_2014.zip"
 kitbeamerzip="https://owncloud.joshuagleitze.de/index.php/s/SXkKlV7v6vWTWaN/download"
