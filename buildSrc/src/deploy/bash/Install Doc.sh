@@ -41,6 +41,7 @@ wget -qO- -O $zipname $sdqthesiszip && unzip $zipname -d $tmpdir
 wget -qO- -O $kitbeamerzipname $BEAMERLINK && unzip $kitbeamerzipname -d $tmpdir
 unzip $tmpdir/KITbase.zip -d $tmpdir
 unzip $tmpdir/KITbeamer.zip -d $tmpdir
+
 sudo cp -r $tmpdir/logos $tmpdir/sdqthesis.cls $tmpdir/title-background.pdf $tmpdir/title-background.eps $texmf/sdqthesis
 sudo cp -r $tmpdir/tex/latex $texmf
 
