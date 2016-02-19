@@ -11,7 +11,6 @@ import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -80,11 +79,9 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 * @param pcmRepositoryFiles PCM repository file.
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
-	 * @throws FileNotFoundException If repositoryFileName can not be resolved to a valid
-	 *             file
 	 */
 	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
-		final SourceCodeFileProvider sourceCodeFileProvider) throws FileNotFoundException {
+		final SourceCodeFileProvider sourceCodeFileProvider) {
 		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider);
 	}
 
@@ -100,7 +97,6 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	public void getBlackboardForAllElements(final BlackboardCreator blackboardFactory) {
 		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);
 		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);
-
 	}
 
 	/**
