@@ -1,12 +1,14 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * Contains a method to load a {@link RepositoryImpl}-instance from a given {@link File}.
@@ -16,19 +18,26 @@ import java.io.FileNotFoundException;
 public class PcmRepositoryFileLoader {
 
 	/**
+	 * Handler of failures.
+	 */
+	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("PCM Repository loader");
+
+	/**
 	 * Load/Initialize the repository for a given File.
 	 *
 	 * @param repositoryFile The repositoryFile
 	 * @return the {@link RepositoryImpl}
-	 * @throws FileNotFoundException if given repository file does not exist
 	 */
-	public RepositoryImpl loadRepositoryFromFile(final File repositoryFile) throws FileNotFoundException {
+	public RepositoryImpl loadRepositoryFromFile(final File repositoryFile) {
 		if (repositoryFile == null) {
 			throw new NullPointerException();
 		}
 
 		if (!(repositoryFile.exists())) {
-			throw new FileNotFoundException("File " + repositoryFile.getAbsolutePath() + " does not exist!");
+			final FailureReport<RepositoryImpl> failure = new FailureReport<RepositoryImpl>()
+				.message("The repository file %s does not exist.", repositoryFile.getAbsolutePath())
+				.retryWith(() -> this.loadRepositoryFromFile(repositoryFile));
+			FAILURE_HANDLER.handle(failure);
 		}
 
 		RepositoryFactory.eINSTANCE.createRepository();
