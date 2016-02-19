@@ -152,9 +152,9 @@ public class ReadOnlyProposedExpressionAnalyserBlackboardViewTest {
 
 		assertThat("Two ReadOnlyProposedExpressionAnalyserBlackboardViews should not be equal,"
 			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
-		
-		assertThat("The Equals function should work properly for null, same instances and other objects",
-			emptyViewOne, EqualsMatcher.hasDefaultEqualsProperties());
+
+		assertThat("The Equals function should work properly for null, same instances and other objects", emptyViewOne,
+			EqualsMatcher.hasDefaultEqualsProperties());
 	}
 
 	/**

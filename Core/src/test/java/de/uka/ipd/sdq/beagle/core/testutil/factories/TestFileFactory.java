@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+
 import java.io.File;
 import java.net.URISyntaxException;
 import java.util.Arrays;

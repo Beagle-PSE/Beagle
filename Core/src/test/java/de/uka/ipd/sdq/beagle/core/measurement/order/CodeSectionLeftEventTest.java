@@ -14,11 +14,11 @@ import org.junit.Test;
 /**
  * Tests {@link CodeSectionLeftEvent} and contains the test cases needed to check all
  * methods.
- * 
+ *
  * @author Annika Berger
  */
 public class CodeSectionLeftEventTest {
-	
+
 	/**
 	 * A {@link CodeSectionFactory} providing methods to get code sections to use for
 	 * tests.
@@ -31,7 +31,7 @@ public class CodeSectionLeftEventTest {
 	@Test
 	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			new CodeSectionLeftEvent(codeSection);
 		}
 

@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.File;
 import java.io.Serializable;
@@ -114,8 +113,10 @@ public class CodeSection implements Serializable {
 		}
 		final CodeSection other = (CodeSection) object;
 		return new EqualsBuilder().append(this.startFile, other.startFile)
-			.append(this.startStatementNumber, other.startStatementNumber).append(this.endFile, other.endFile)
-			.append(this.endStatementNumber, other.endStatementNumber).isEquals();
+			.append(this.startStatementNumber, other.startStatementNumber)
+			.append(this.endFile, other.endFile)
+			.append(this.endStatementNumber, other.endStatementNumber)
+			.isEquals();
 	}
 
 	/**
@@ -165,15 +166,20 @@ public class CodeSection implements Serializable {
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-		return new HashCodeBuilder(23, 45).append(this.startFile).append(this.startStatementNumber).append(this.endFile)
-			.append(this.endStatementNumber).toHashCode();
+		return new HashCodeBuilder(23, 45).append(this.startFile)
+			.append(this.startStatementNumber)
+			.append(this.endFile)
+			.append(this.endStatementNumber)
+			.toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("startFile", this.startFile)
-			.append("startStatementNumber", this.startStatementNumber).append("endFile", this.endFile)
-			.append("endStatementNumber", this.endStatementNumber).toString();
+		final String startFileName = this.startFile.getName().replace(".java", "");
+		final String endFileName =
+			this.startFile.equals(this.endFile) ? "" : this.endFile.getName().replace(".java", "") + ":";
+		return String.format("%s:%d–%s%d", startFileName, this.startStatementNumber, endFileName,
+			this.endStatementNumber);
 	}
 
 	/**

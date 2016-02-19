@@ -2,10 +2,10 @@ package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static de.uka.ipd.sdq.beagle.core.testutil.ToStringMatcher.hasOverriddenToString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -108,7 +108,7 @@ public class ExternalCallParameterTest {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
 		for (final CodeSection codeSection : codeSections) {
 			final ExternalCallParameter externalCallP = new ExternalCallParameter(codeSection, 1);
-			assertThat(externalCallP.toString(), not(startsWith("ExternalCallParameter@")));
+			assertThat(externalCallP, hasOverriddenToString());
 		}
 	}
 

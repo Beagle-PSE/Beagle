@@ -13,9 +13,11 @@ import static org.mockito.Mockito.mock;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
@@ -32,7 +34,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Testing the {@link MeasurementControllerBlackboardView}.
+ * Testing the {@link MeasurementControllerBlackboardView}. Uses
+ * {@link MeasurableSeffElement}.
  *
  * @author Joshua Gleitze
  * @author Ansgar Spiegler
@@ -153,9 +156,9 @@ public class MeasurementControllerBlackboardViewTest {
 
 		assertThat("Two MeasurementControllerBlackboardViews should not be equal,"
 			+ "if they have not exact the same Blackboard reference!", emptyViewOne, not(equalTo(emptyViewTwo)));
-		
-		assertThat("The Equals function should work properly for null, same instances and other objects",
-			emptyViewOne, EqualsMatcher.hasDefaultEqualsProperties());
+
+		assertThat("The Equals function should work properly for null, same instances and other objects", emptyViewOne,
+			EqualsMatcher.hasDefaultEqualsProperties());
 	}
 
 	/**

@@ -12,7 +12,7 @@ public class EvaluableExpressionFitnessFunctionFactory {
 
 	/**
 	 * Creates a new FitnessFunction.
-	 * 
+	 *
 	 * @return EvaluableExpressionFitnessFunction. You may not make any assumptions about
 	 *         it.
 	 */
