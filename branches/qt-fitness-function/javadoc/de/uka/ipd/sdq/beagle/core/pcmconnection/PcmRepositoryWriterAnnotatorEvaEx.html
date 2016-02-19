@@ -263,7 +263,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <dd><code>internalAction</code> - The PCM element</dd>
 <dd><code>type</code> - The ResourceDemandType of the InternalAction (
             <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU_NS"><code>ResourceDemandType.RESOURCE_TYPE_CPU_NS</code></a> and
-            <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_HDD_NS"><code>ResourceDemandType.RESOURCE_TYPE_HDD_NS</code></a> are accepted so far</dd>
+            <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_HDD_NS"><code>ResourceDemandType.RESOURCE_TYPE_HDD_NS</code></a> are accepted so far. If
+            the suitable Type is found more than one time, it is deleted every
+            further time. If the suitable Type is not yet in this InternalAction, it
+            is created newly and added.</dd>
 <dd><code>evaEx</code> - The Expression to annotate</dd>
 </dl>
 </li>
