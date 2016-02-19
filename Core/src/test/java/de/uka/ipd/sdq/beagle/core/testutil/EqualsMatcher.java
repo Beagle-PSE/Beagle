@@ -45,6 +45,7 @@ public final class EqualsMatcher extends DiagnosingMatcher<Object> {
 		}
 		if (!examined.equals(examined)) {
 			mismatchDescription.appendText("the object was not equal to itself");
+			return false;
 		}
 		if (examined.equals(new Object())) {
 			mismatchDescription.appendText("the object is equal to a new object");
