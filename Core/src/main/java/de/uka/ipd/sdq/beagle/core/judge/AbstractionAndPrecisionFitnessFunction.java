@@ -27,15 +27,27 @@ import java.util.Set;
 public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressionFitnessFunction {
 
 	/**
-	 * How much more valuable human-readability is compared to low computational
-	 * complexity. The higher the value, the more important human-readability is.
+	 * Defines how important human-comprehensibility is compared to low computational
+	 * complexity. Values are ϵ [0, 1]. The importance of computational complexity is
+	 * {@code 1 - HUMAN_COMPREHENSIBILITY_VALUE}.
 	 */
-	private static final double HUMAN_READABLITY_COEFFICIENT = 7d;
+	private static final double HUMAN_COMPREHENSIBILITY_VALUE = .5d;
 
 	/**
-	 * How bad deviation is seen. The higher the value, the worse deviation is seen.
+	 * Defines how important human-comprehensibility and low computational complexity are
+	 * compared to precision. The importance of precision is {@code 1 - NICE_VALUE}.
 	 */
-	private static final double DEMANDED_PRECISION_COEFFICIENT = 10000d;
+	private static final double NICE_VALUE = .2d;
+
+	/**
+	 * Norms the human-comprehensibility.
+	 */
+	private static final double HUMAN_COMPREHENSIBILITY_NORMATION = .01d;
+
+	/**
+	 * Norms the computational complexity.
+	 */
+	private static final double COMPUTATIONIONAL_COMPLEXITY_NORMATION = .01d;
 
 	@Override
 	public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
