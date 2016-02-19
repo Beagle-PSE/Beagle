@@ -98,15 +98,16 @@ public class LogarithmExpression implements EvaluableExpression {
 <span class="fc" id="L98">			return false;</span>
 		}
 <span class="fc" id="L100">		final LogarithmExpression other = (LogarithmExpression) object;</span>
-<span class="fc" id="L101">		return new EqualsBuilder().append(this.base, other.base).append(this.antilogarithm, other.antilogarithm)</span>
-<span class="fc" id="L102">			.isEquals();</span>
+<span class="fc" id="L101">		return new EqualsBuilder().append(this.base, other.base)</span>
+<span class="fc" id="L102">			.append(this.antilogarithm, other.antilogarithm)</span>
+<span class="fc" id="L103">			.isEquals();</span>
 	}
 
 	@Override
 	public int hashCode() {
 		// you pick a hard-coded, randomly chosen, non-zero, odd number
 		// ideally different for each class
-<span class="fc" id="L109">		return new HashCodeBuilder(219, 221).append(this.base).append(this.antilogarithm).toHashCode();</span>
+<span class="fc" id="L110">		return new HashCodeBuilder(219, 221).append(this.base).append(this.antilogarithm).toHashCode();</span>
 	}
 
 }
