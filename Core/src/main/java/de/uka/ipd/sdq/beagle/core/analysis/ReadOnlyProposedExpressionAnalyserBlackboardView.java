@@ -37,7 +37,7 @@ public final class ReadOnlyProposedExpressionAnalyserBlackboardView {
 	/**
 	 * Blackboard instance committed from the {@link AnalysisController}.
 	 */
-	private Blackboard blackboard;
+	private final Blackboard blackboard;
 
 	/**
 	 * Set the blackboard instance from the {@link AnalysisController} to the private
