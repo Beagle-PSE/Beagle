@@ -9,49 +9,47 @@ import org.palladiosimulator.pcm.repository.RepositoryFactory;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * Contains a method to load a {@link RepositoryImpl}-instance from a given {@link File}.
  *
  * @author Ansgar Spiegler
  */
-<span class="fc" id="L19">public class PcmRepositoryFileLoader {</span>
+<span class="fc" id="L18">public class PcmRepositoryFileLoader {</span>
 
 	/**
 	 * Handler of failures.
 	 */
-<span class="fc" id="L24">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;PCM Repository loader&quot;);</span>
+<span class="fc" id="L23">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;PCM Repository loader&quot;);</span>
 
 	/**
 	 * Load/Initialize the repository for a given File.
 	 *
 	 * @param repositoryFile The repositoryFile
 	 * @return the {@link RepositoryImpl}
-	 * @throws FileNotFoundException if given repository file does not exist
 	 */
 	public RepositoryImpl loadRepositoryFromFile(final File repositoryFile) {
-<span class="fc bfc" id="L34" title="All 2 branches covered.">		if (repositoryFile == null) {</span>
-<span class="fc" id="L35">			throw new NullPointerException();</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">		if (repositoryFile == null) {</span>
+<span class="fc" id="L33">			throw new NullPointerException();</span>
 		}
 
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">		if (!(repositoryFile.exists())) {</span>
-<span class="nc" id="L39">			final FailureReport&lt;RepositoryImpl&gt; failure = new FailureReport&lt;RepositoryImpl&gt;()</span>
-<span class="nc" id="L40">				.message(&quot;The repository file %s does not exist.&quot;, repositoryFile.getAbsolutePath())</span>
-<span class="nc" id="L41">				.retryWith(() -&gt; this.loadRepositoryFromFile(repositoryFile));</span>
-<span class="nc" id="L42">			FAILURE_HANDLER.handle(failure);</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		if (!(repositoryFile.exists())) {</span>
+<span class="nc" id="L37">			final FailureReport&lt;RepositoryImpl&gt; failure = new FailureReport&lt;RepositoryImpl&gt;()</span>
+<span class="nc" id="L38">				.message(&quot;The repository file %s does not exist.&quot;, repositoryFile.getAbsolutePath())</span>
+<span class="nc" id="L39">				.retryWith(() -&gt; this.loadRepositoryFromFile(repositoryFile));</span>
+<span class="nc" id="L40">			FAILURE_HANDLER.handle(failure);</span>
 		}
 
-<span class="fc" id="L45">		RepositoryFactory.eINSTANCE.createRepository();</span>
+<span class="fc" id="L43">		RepositoryFactory.eINSTANCE.createRepository();</span>
 		// Not sure if this final declaration could lead to a problem.
-<span class="fc" id="L47">		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
+<span class="fc" id="L45">		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
 
-<span class="fc" id="L49">		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);</span>
-<span class="pc bpc" id="L50" title="1 of 2 branches missed.">		if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
-<span class="nc" id="L51">			throw new IllegalArgumentException(&quot;File is not a repository!&quot;);</span>
+<span class="fc" id="L47">		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">		if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
+<span class="nc" id="L49">			throw new IllegalArgumentException(&quot;File is not a repository!&quot;);</span>
 		}
-<span class="fc" id="L53">		final RepositoryImpl repository = (RepositoryImpl) eObject;</span>
-<span class="fc" id="L54">		return repository;</span>
+<span class="fc" id="L51">		final RepositoryImpl repository = (RepositoryImpl) eObject;</span>
+<span class="fc" id="L52">		return repository;</span>
 	}
 
 }
