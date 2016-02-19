@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
+import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
@@ -40,7 +42,7 @@ public class LauchConfigurationProvider {
 	 *
 	 * @return all launch configurations for the project of this object
 	 */
-	public Set<ILaunchConfiguration> getAllSuitableJUnitLaunchConfigurations() {
+	public Set<LaunchConfiguration> getAllSuitableJUnitLaunchConfigurations() {
 		final ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
 		final ILaunchConfigurationType type = manager.getLaunchConfigurationType("org.eclipse.jdt.junit.launchconfig");
 		ILaunchConfiguration[] jUnitLaunchConfigurations = null;
@@ -49,12 +51,12 @@ public class LauchConfigurationProvider {
 		} catch (final CoreException exception) {
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(exception));
 		}
-		final Set<ILaunchConfiguration> launchConfigurations = new HashSet<>();
+		final Set<LaunchConfiguration> launchConfigurations = new HashSet<>();
 		for (final ILaunchConfiguration launchConfiguration : jUnitLaunchConfigurations) {
 			try {
 				if (launchConfiguration.getAttribute("org.eclipse.jdt.launching.PROJECT_ATTR", "")
 					.equals(this.javaProject.getProject().getName())) {
-					launchConfigurations.add(launchConfiguration);
+					launchConfigurations.add(new EclipseLaunchConfiguration(launchConfiguration, this.javaProject));
 				}
 			} catch (final CoreException exception) {
 				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(exception));

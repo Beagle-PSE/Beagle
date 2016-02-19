@@ -119,6 +119,7 @@ public class GuiController {
 	 */
 	private void engageWizard() {
 		this.wizardFinishedSuccessfully = false;
+		this.beagleConfiguration.finalise();
 
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
