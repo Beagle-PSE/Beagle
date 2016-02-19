@@ -55,7 +55,7 @@ public class PcmRepositoryWriterAnnotator {
 	/**
 	 * Object for converting and annotating EvaEx.
 	 */
-	private PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx;
+	private final PcmRepositoryWriterAnnotatorEvaEx annotatorForEvaEx = new PcmRepositoryWriterAnnotatorEvaEx();
 
 	/**
 	 * Helper class for {@link PcmRepositoryWriter}. Offering a method to write all final
