@@ -197,10 +197,15 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			new EvaluableExpressionComplexityAnalyser();
 		evaluableExpressionComplexityAnalyser.determineComplexity(expression);
 
-		final double numericComplexity = evaluableExpressionComplexityAnalyser.getComputationalComplexitySum()
-			+ evaluableExpressionComplexityAnalyser.getHumanComprehensibilityComplexitySum()
-				* HUMAN_READABLITY_COEFFICIENT;
+		final double humanComprehensibilityComplexity =
+			evaluableExpressionComplexityAnalyser.getHumanComprehensibilityComplexitySum()
+				* HUMAN_COMPREHENSIBILITY_NORMATION;
+		final double computationalComplexity = evaluableExpressionComplexityAnalyser.getComputationalComplexitySum()
+			* COMPUTATIONIONAL_COMPLEXITY_NORMATION;
 
-		return meanSquareDeviation + numericComplexity / DEMANDED_PRECISION_COEFFICIENT;
+		final double combinedComplexity = HUMAN_COMPREHENSIBILITY_VALUE * humanComprehensibilityComplexity
+			+ (1 - HUMAN_COMPREHENSIBILITY_VALUE) * computationalComplexity;
+
+		return NICE_VALUE * combinedComplexity + (1 - NICE_VALUE) * meanSquareDeviation;
 	}
 }
