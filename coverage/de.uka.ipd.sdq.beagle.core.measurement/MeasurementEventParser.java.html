@@ -47,7 +47,7 @@ public class MeasurementEventParser {
 	 * Maps for each code sections to all occurrences of measurement events for this code
 	 * section in {@link #measurementEvents}.
 	 */
-<span class="fc" id="L50">	private Map&lt;CodeSection, Set&lt;Integer&gt;&gt; codeSectionMapping = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L50">	private final Map&lt;CodeSection, Set&lt;Integer&gt;&gt; codeSectionMapping = new HashMap&lt;&gt;();</span>
 
 	/**
 	 * Creates a parser to parse {@code events}. The events must be provided in
@@ -294,7 +294,7 @@ public class MeasurementEventParser {
 		 * The number of loops measured in the current sequence of measurement events for
 		 * one loop body. The stack contains all
 		 */
-		private Stack&lt;LoopExecutionCounter&gt; currentLoopCounts;
+		private final Stack&lt;LoopExecutionCounter&gt; currentLoopCounts;
 
 		/**
 		 * Creates a visitor for a specific {@link SeffLoop}.

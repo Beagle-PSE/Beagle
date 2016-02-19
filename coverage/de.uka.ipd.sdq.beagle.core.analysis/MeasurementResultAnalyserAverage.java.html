@@ -24,8 +24,8 @@ import java.util.Set;
  * {@link #canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)} checks if there
  * are any MeasurementResults for a SeffElement, that have not been flown into the average
  * proposed Expression so far.
- * 
- * 
+ *
+ *
  * @author Ansgar Spiegler
  */
 <span class="fc" id="L31">public class MeasurementResultAnalyserAverage</span>
@@ -45,7 +45,7 @@ import java.util.Set;
 <span class="fc" id="L45">			return false;</span>
 		}
 
-<span class="fc bfc" id="L48" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
 
 <span class="fc" id="L50">			final Integer numberOfMeasurements =</span>
 <span class="fc" id="L51">				this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement);</span>
@@ -85,23 +85,23 @@ import java.util.Set;
 
 <span class="fc" id="L86">		final Set&lt;MeasurableSeffElement&gt; allMeasurableSeffElementsOnBlackboard = new HashSet&lt;MeasurableSeffElement&gt;();</span>
 
-<span class="fc bfc" id="L88" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
 <span class="fc" id="L89">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L90">		}</span>
 
-<span class="fc bfc" id="L92" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
 <span class="fc" id="L93">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L94">		}</span>
 
-<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
 <span class="fc" id="L97">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L98">		}</span>
 
-<span class="fc bfc" id="L100" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
 <span class="fc" id="L101">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L102">		}</span>
 
-<span class="fc bfc" id="L104" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
 <span class="pc bpc" id="L105" title="1 of 2 branches missed.">			if (this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement) &gt; 0) {</span>
 <span class="fc" id="L106">				return true;</span>
 			}
@@ -124,7 +124,7 @@ import java.util.Set;
 <span class="fc" id="L124">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
 <span class="fc" id="L125">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
 
-<span class="fc bfc" id="L127" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
 
 			final Integer numberOfMeasurements;
 
@@ -175,7 +175,7 @@ import java.util.Set;
 <span class="fc" id="L175">		int sumOverAllMeasurementResultValues = 0;</span>
 <span class="fc" id="L176">		final int numberOfAllMeasurementResults = measurementResults.size();</span>
 
-<span class="fc bfc" id="L178" title="All 2 branches covered.">		for (ResourceDemandMeasurementResult rdmr : measurementResults) {</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">		for (final ResourceDemandMeasurementResult rdmr : measurementResults) {</span>
 <span class="fc" id="L179">			sumOverAllMeasurementResultValues += rdmr.getValue();</span>
 <span class="fc" id="L180">		}</span>
 
@@ -236,7 +236,7 @@ import java.util.Set;
 <span class="fc" id="L236">		int sumOverAllLoopCounts = 0;</span>
 <span class="fc" id="L237">		final int numberOfAllMeasurementResults = loopCountResults.size();</span>
 
-<span class="fc bfc" id="L239" title="All 2 branches covered.">		for (LoopRepetitionCountMeasurementResult loopCountResult : loopCountResults) {</span>
+<span class="fc bfc" id="L239" title="All 2 branches covered.">		for (final LoopRepetitionCountMeasurementResult loopCountResult : loopCountResults) {</span>
 <span class="fc" id="L240">			sumOverAllLoopCounts += loopCountResult.getCount();</span>
 <span class="fc" id="L241">		}</span>
 
@@ -298,9 +298,9 @@ import java.util.Set;
 		final MeasurableSeffElement measurableSeffElement) {
 <span class="fc" id="L299">		int numberOfMeasurements = 0;</span>
 
-<span class="pc bpc" id="L301" title="1 of 2 branches missed.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
-<span class="nc" id="L302">			numberOfMeasurements =</span>
-<span class="nc" id="L303">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="fc bfc" id="L301" title="All 2 branches covered.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="fc" id="L302">			numberOfMeasurements =</span>
+<span class="fc" id="L303">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
 <span class="pc bpc" id="L304" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
 <span class="nc" id="L305">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
 <span class="pc bpc" id="L306" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
@@ -354,23 +354,23 @@ import java.util.Set;
 			new HashMap&lt;MeasurableSeffElement, Integer&gt;();
 <span class="fc" id="L355">		final Set&lt;MeasurableSeffElement&gt; allMeasurableSeffElementsOnBlackboard = new HashSet&lt;MeasurableSeffElement&gt;();</span>
 
-<span class="fc bfc" id="L357" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
+<span class="fc bfc" id="L357" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
 <span class="fc" id="L358">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L359">		}</span>
 
-<span class="fc bfc" id="L361" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
+<span class="fc bfc" id="L361" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
 <span class="fc" id="L362">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L363">		}</span>
 
-<span class="fc bfc" id="L365" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
+<span class="fc bfc" id="L365" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
 <span class="fc" id="L366">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L367">		}</span>
 
-<span class="fc bfc" id="L369" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
+<span class="fc bfc" id="L369" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
 <span class="fc" id="L370">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
 <span class="fc" id="L371">		}</span>
 
-<span class="fc bfc" id="L373" title="All 2 branches covered.">		for (MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
+<span class="fc bfc" id="L373" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
 <span class="fc" id="L374">			measurableSeffContributions.put(measurableSeffElement, new Integer(0));</span>
 <span class="fc" id="L375">		}</span>
 

@@ -136,7 +136,7 @@ public class Blackboard implements Serializable {
 	/**
 	 * Information about the project belonging to this blackboard.
 	 */
-	private ProjectInformation projectInformation;
+	private final ProjectInformation projectInformation;
 
 	/**
 	 * Creates a new blackboard that can be used to analyse the given elements.

@@ -63,24 +63,24 @@ public class AnalysisController {
 	/**
 	 * The {@link Blackboard} this {@link AnalysisController} knows and uses.
 	 */
-	private Blackboard blackboard;
+	private final Blackboard blackboard;
 
 	/**
 	 * The {@link MeasurementController} this {@link AnalysisController} knows and uses.
 	 */
-	private MeasurementController measurementController;
+	private final MeasurementController measurementController;
 
 	/**
 	 * The {@link MeasurementResultAnalyser}s this {@link AnalysisController} knows and
 	 * uses.
 	 */
-	private Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysers;
+	private final Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysers;
 
 	/**
 	 * The {@link ProposedExpressionAnalyser}s this {@link AnalysisController} knows and
 	 * uses.
 	 */
-	private Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysers;
+	private final Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysers;
 
 	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
