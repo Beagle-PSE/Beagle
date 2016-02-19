@@ -2,8 +2,8 @@ package de.uka.ipd.sdq.beagle.core.measurement.order;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.BDDMockito.same;
 import static org.mockito.BDDMockito.then;
+import static org.mockito.Matchers.same;
 import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
@@ -12,9 +12,9 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.CodeSectionFactory;
 import org.junit.Test;
 
 /**
- * Tests {@link CodeSectionEnteredEvent} and contains all test cases needed to check
- * every method.
- * 
+ * Tests {@link CodeSectionEnteredEvent} and contains all test cases needed to check every
+ * method.
+ *
  * @author Annika Berger
  */
 public class CodeSectionEnteredEventTest {
@@ -32,7 +32,7 @@ public class CodeSectionEnteredEventTest {
 	@Test
 	public void constructor() {
 		final CodeSection[] codeSections = CODE_SECTION_FACTORY.getAll();
-		for (CodeSection codeSection : codeSections) {
+		for (final CodeSection codeSection : codeSections) {
 			new CodeSectionEnteredEvent(codeSection);
 		}
 

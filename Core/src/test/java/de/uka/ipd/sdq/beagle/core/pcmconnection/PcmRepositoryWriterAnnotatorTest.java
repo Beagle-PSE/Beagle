@@ -20,7 +20,7 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 /**
  * Tests {@link PcmRepositoryWriterAnnotator} and contains all test cases needed to check
  * all methods.
- * 
+ *
  * @author Annika Berger
  */
 //@formatter:off
@@ -42,7 +42,7 @@ public class PcmRepositoryWriterAnnotatorTest {
 
 	/**
 	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
-	 * 
+	 *
 	 * @throws Exception something went wrong while trying to mock the constructor of
 	 *             {@link ResourceTypeMappings}.
 	 *
@@ -59,7 +59,7 @@ public class PcmRepositoryWriterAnnotatorTest {
 	 * Test method for
 	 * {@link PcmRepositoryWriterAnnotator#PcmRepositoryWriterAnnotator(Blackboard, PcmBeagleMappings)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException} are thrown if one parameter is null
 	 * and no exception is thrown for valid input.
 	 */
@@ -78,7 +78,7 @@ public class PcmRepositoryWriterAnnotatorTest {
 
 	/**
 	 * Test method for {@link PcmRepositoryWriterAnnotator#annotateAll(RepositoryImpl)}.
-	 * 
+	 *
 	 * <p>Asserts that a {@link NullPointerException} is thrown if the
 	 * {@link RepositoryImpl} is {@code null} and no exceptions are thrown for a valid
 	 * call.

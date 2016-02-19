@@ -98,7 +98,8 @@ public class LogarithmExpression implements EvaluableExpression {
 			return false;
 		}
 		final LogarithmExpression other = (LogarithmExpression) object;
-		return new EqualsBuilder().append(this.base, other.base).append(this.antilogarithm, other.antilogarithm)
+		return new EqualsBuilder().append(this.base, other.base)
+			.append(this.antilogarithm, other.antilogarithm)
 			.isEquals();
 	}
 
