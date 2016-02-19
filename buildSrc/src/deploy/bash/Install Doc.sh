@@ -32,13 +32,14 @@ texmf="/usr/share/texmf/tex/latex"
 sudo mkdir -p $texmf
 
 sdqthesiszip="https://sdqweb.ipd.kit.edu/mediawiki-sdq-extern/images/7/76/Ausarbeitungs-Vorlage_SDQ_2014.zip"
+kitbeamerzip="https://owncloud.joshuagleitze.de/index.php/s/SXkKlV7v6vWTWaN"
 
 tmpdir=`mktemp -d`
 zipname="$tmpdir/sdqthesis.zip"
 kitbeamerzipname="$tmpdir/kitbeamer.zip"
 
 wget -qO- -O $zipname $sdqthesiszip && unzip $zipname -d $tmpdir
-wget -qO- -O $kitbeamerzipname $BEAMERLINK && unzip $kitbeamerzipname -d $tmpdir
+wget -qO- -O $kitbeamerzipname $kitbeamerzip && unzip $kitbeamerzipname -d $tmpdir
 unzip $tmpdir/KITbase.zip -d $tmpdir
 unzip $tmpdir/KITbeamer.zip -d $tmpdir
 
