@@ -44,7 +44,7 @@ unzip $tmpdir/KITbase.zip -d $tmpdir
 unzip $tmpdir/KITbeamer.zip -d $tmpdir
 
 sudo cp -r $tmpdir/logos $tmpdir/sdqthesis.cls $tmpdir/title-background.pdf $tmpdir/title-background.eps $texmf/sdqthesis
-sudo cp -r $tmpdir/tex/latex $texmf
+sudo cp -r $tmpdir/tex/latex/KIT $texmf
 
 sudo texhash
 	
