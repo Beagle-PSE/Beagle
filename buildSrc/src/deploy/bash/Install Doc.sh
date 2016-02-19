@@ -26,6 +26,7 @@ tmpdir=`mktemp -d`
 cd $tmpdir
 wget https://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
 sudo texlua install-getnonfreefonts
+sudo getnonfreefonts-sys arial-urw
 cd $OLDPWD
 
 # Copy the lyx layout file to the private lyx layouts folder
