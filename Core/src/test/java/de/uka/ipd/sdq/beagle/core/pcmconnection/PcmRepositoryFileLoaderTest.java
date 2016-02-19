@@ -6,6 +6,8 @@ import static org.mockito.Mockito.doNothing;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
+import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -65,7 +67,7 @@ public class PcmRepositoryFileLoaderTest {
 		assertThat(() -> loader.loadRepositoryFromFile(null), throwsException(NullPointerException.class));
 
 		final File file = new File("notExistingFile.txt");
-		assertThat(() -> loader.loadRepositoryFromFile(file), throwsException(FileNotFoundException.class));
+		assertThat(() -> loader.loadRepositoryFromFile(file), throwsException(FailureException.class));
 
 		final File repositoryFile;
 		try {

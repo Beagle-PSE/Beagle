@@ -7,6 +7,7 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
 import org.junit.Before;
@@ -94,7 +95,7 @@ public class PcmRepositoryWriterTest {
 
 		final File notExistingFile = new File("notExistingFile.txt");
 		assertThat("File must exist.", () -> writer.writeTo(notExistingFile),
-			throwsException(FileNotFoundException.class));
+			throwsException(FailureException.class));
 
 		final File repositoryFile;
 		try {
