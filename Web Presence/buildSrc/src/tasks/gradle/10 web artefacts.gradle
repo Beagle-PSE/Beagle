@@ -18,14 +18,16 @@ task copyWebArtefacts() {
 		designDest = "$WEB_DEST/$doc.design.dest.name"
 		implementationPlanDest = "$WEB_DEST/$doc.implementation.dest.name"
 		implementationReportDest = "$WEB_DEST/$doc.implementationreport.dest.name"
+		implementationSlidesDest = "$WEB_DEST/$doc.implementationslides.dest.name"
+		renderLogDest = "$WEB_DEST/log/lyx"
 	}
 	
 	
 	def checkstyleDirs = rootProject.javaSubprojects.collect { it.checkstyleHtml.dest }
 	def testReports = rootProject.javaSubprojects.collect { it.jacocoTestReport.reports.html.destination }
 	
-	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.design.dest, checkstyleDirs, testReports, doc.implementation.dest, doc.implementationreport.dest
-	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest, implementationPlanDest, implementationReportDest
+	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.srs.logdest, doc.design.dest, doc.design.logdest, checkstyleDirs, testReports, doc.implementation.dest, doc.implementation.logdest,  doc.implementationreport.dest, doc.implementationreport.logdest,  doc.implementationslides.dest,  doc.implementationslides.logdest
+	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest, implementationPlanDest, implementationReportDest, implementationSlidesDest, renderLogDest
 	
 	doLast {
 		rootProject.javaSubprojects.each { project ->
@@ -47,8 +49,13 @@ task copyWebArtefacts() {
 		}	
 		
 		copy {
-			from doc.srs.dest, doc.design.dest, doc.implementation.dest, doc.implementationreport.dest
+			from doc.srs.dest, doc.design.dest, doc.implementation.dest, doc.implementationreport.dest, doc.implementationslides.dest
 			into WEB_DEST
+		}
+
+		copy {
+			from doc.srs.logdest, doc.design.logdest, doc.implementation.logdest, doc.implementationreport.logdest, doc.implementationslides.logdest
+			into renderLogDest
 		}
 	}
 }

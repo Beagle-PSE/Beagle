@@ -1,0 +1,16 @@
+/**
+ * Tasks to build the Implementation Slides
+ *
+ * @author Roman Langrehr
+ */
+ 
+task implementationslides(type: LyXRenderTask) {
+	group 'Documentation'
+	description 'Renders the Implementation Slides.'
+	
+	from files("$projectDir/src/implementation")
+	document "lyx/Implementation Slides.lyx"
+	into buildDir
+}
+
+build.dependsOn implementationslides
