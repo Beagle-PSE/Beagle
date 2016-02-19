@@ -3,7 +3,6 @@
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A result of measuring resource demands of a code section. The result expresses that a
@@ -23,7 +22,7 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 * The value measured. The unit is specified by the
 	 * {@link ResourceDemandingInternalAction}'s type it belongs to.
 	 */
-	private double value;
+	private final double value;
 
 	/**
 	 * Creates a result for a resource demand measurement for which no parameterisation
@@ -33,10 +32,10 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 *            {@link ResourceDemandingInternalAction}'s type it belongs to. Must be
 	 *            equal or greater than {@code 0}.
 	 */
-<span class="fc" id="L36">	public ResourceDemandMeasurementResult(final double value) {</span>
-<span class="fc bfc" id="L37" title="All 2 branches covered.">		Validate.isTrue(value &gt;= 0, &quot;The measured resources value was negative: %d&quot;, value);</span>
-<span class="fc" id="L38">		this.value = value;</span>
-<span class="fc" id="L39">	}</span>
+<span class="fc" id="L35">	public ResourceDemandMeasurementResult(final double value) {</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">		Validate.isTrue(value &gt;= 0, &quot;The measured resources value was negative: %d&quot;, value);</span>
+<span class="fc" id="L37">		this.value = value;</span>
+<span class="fc" id="L38">	}</span>
 
 	/**
 	 * Creates a result for a parameterised resource demand measurement.
@@ -48,10 +47,10 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 *            greater than {@code 0}.
 	 */
 	public ResourceDemandMeasurementResult(final Parameterisation parameterisation, final double value) {
-<span class="fc" id="L51">		super(parameterisation);</span>
-<span class="fc bfc" id="L52" title="All 2 branches covered.">		Validate.isTrue(value &gt;= 0, &quot;The measured resources value was negative: %d&quot;, value);</span>
-<span class="fc" id="L53">		this.value = value;</span>
-<span class="fc" id="L54">	}</span>
+<span class="fc" id="L50">		super(parameterisation);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">		Validate.isTrue(value &gt;= 0, &quot;The measured resources value was negative: %d&quot;, value);</span>
+<span class="fc" id="L52">		this.value = value;</span>
+<span class="fc" id="L53">	}</span>
 
 	/**
 	 * Gets this result’s value.
@@ -60,12 +59,13 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 *         positive double or 0.
 	 */
 	public double getValue() {
-<span class="fc" id="L63">		return this.value;</span>
+<span class="fc" id="L62">		return this.value;</span>
 	}
 
 	@Override
 	public String toString() {
-<span class="fc" id="L68">		return new ToStringBuilder(this).appendSuper(super.toString()).append(&quot;value&quot;, this.value).toString();</span>
+<span class="fc" id="L67">		return String.format(&quot;RDResult@%4.4s&lt;%.2f,%s&gt;&quot;, Integer.toHexString(this.hashCode()), this.value,</span>
+<span class="fc" id="L68">			this.getParameterisation());</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
