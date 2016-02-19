@@ -242,7 +242,7 @@ texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> </usr/share/texmf/tex/latex
 _4c_positiv-rgb.pdf> <./Test Produktionscode.pdf>]
 <eloc.PNG, id=45, 1218.80344pt x 402.75468pt> <use eloc.PNG> [3 </usr/share/tex
 mf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> <./eloc.PNG>]
-<coverage.PNG, id=56, 874.76813pt x 211.54031pt> <use coverage.PNG> [4 </usr/sh
+<coverage.PNG, id=56, 877.02657pt x 207.02344pt> <use coverage.PNG> [4 </usr/sh
 are/texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> <./coverage.PNG>]
 [5 </usr/share/texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf>]
 (./Implementation Slides.aux)
@@ -256,7 +256,7 @@ Package rerunfilecheck Warning: File `"Implementation Slides".out' has changed.
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/local/share/texmf/fonts/type1/urw/arial/u
 a1b8a.pfb></usr/local/share/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
-Output written on "Implementation Slides.pdf" (5 pages, 384713 bytes).
+Output written on "Implementation Slides.pdf" (5 pages, 384219 bytes).
 Transcript written on "Implementation Slides.log".
 
 
@@ -495,14 +495,14 @@ texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> </usr/share/texmf/tex/latex
 _4c_positiv-rgb.pdf> <./Test Produktionscode.pdf>]
 <eloc.PNG, id=45, 1218.80344pt x 402.75468pt> <use eloc.PNG> [3 </usr/share/tex
 mf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> <./eloc.PNG>]
-<coverage.PNG, id=56, 874.76813pt x 211.54031pt> <use coverage.PNG> [4 </usr/sh
+<coverage.PNG, id=56, 877.02657pt x 207.02344pt> <use coverage.PNG> [4 </usr/sh
 are/texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> <./coverage.PNG>]
 [5 </usr/share/texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf>]
 (./Implementation Slides.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/local/share/texmf/fonts/type1/urw/arial/u
 a1b8a.pfb></usr/local/share/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
-Output written on "Implementation Slides.pdf" (5 pages, 384713 bytes).
+Output written on "Implementation Slides.pdf" (5 pages, 384219 bytes).
 Transcript written on "Implementation Slides.log".
 
 
@@ -741,12 +741,12 @@ texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> </usr/share/texmf/tex/latex
 _4c_positiv-rgb.pdf> <./Test Produktionscode.pdf>]
 <eloc.PNG, id=45, 1218.80344pt x 402.75468pt> <use eloc.PNG> [3 </usr/share/tex
 mf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> <./eloc.PNG>]
-<coverage.PNG, id=56, 874.76813pt x 211.54031pt> <use coverage.PNG> [4 </usr/sh
+<coverage.PNG, id=56, 877.02657pt x 207.02344pt> <use coverage.PNG> [4 </usr/sh
 are/texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf> <./coverage.PNG>]
 [5 </usr/share/texmf/tex/latex/KIT/kit_logo_de_4c_positiv-rgb.pdf>]
 (./Implementation Slides.aux) )
 (see the transcript file for additional information){/usr/share/texlive/texmf-d
 ist/fonts/enc/dvips/base/8r.enc}</usr/local/share/texmf/fonts/type1/urw/arial/u
 a1b8a.pfb></usr/local/share/texmf/fonts/type1/urw/arial/ua1r8a.pfb>
-Output written on "Implementation Slides.pdf" (5 pages, 384713 bytes).
+Output written on "Implementation Slides.pdf" (5 pages, 384219 bytes).
 Transcript written on "Implementation Slides.log".
