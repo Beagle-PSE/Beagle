@@ -95,7 +95,7 @@ IPD SDQ/ARE
 status open
 
 \begin_layout Plain Layout
-Statsitiken
+Statistiken
 \end_layout
 
 \end_inset
@@ -108,28 +108,8 @@ Statsitiken
 Projekt
 \end_layout
 
-\begin_layout Columns
-
-\end_layout
-
-\begin_deeper
-\begin_layout Column
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-0.5
-\backslash
-textwidth
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features rotate="0" tabularvalignment="middle">
@@ -259,33 +239,25 @@ Gesamt
 
 \end_layout
 
-\begin_layout Column
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-0.5
-\backslash
-textwidth
-\end_layout
-
+\begin_layout Standard
+\align center
+\begin_inset VSpace defskip
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename Test Produktionscode.pdf
-	width 40text%
+	width 60text%
 
 \end_inset
 
 
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Separator
 
@@ -296,7 +268,7 @@ textwidth
 status open
 
 \begin_layout Plain Layout
-Statstiken
+Statistiken
 \end_layout
 
 \end_inset
