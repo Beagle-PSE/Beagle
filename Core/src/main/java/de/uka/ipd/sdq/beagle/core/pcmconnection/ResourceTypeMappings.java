@@ -19,7 +19,7 @@ import java.util.Map;
 /**
  * This class offers a bidirectional mapping between the ResourceTypes of Beagle and the
  * PalladioComponentModel.
- * 
+ *
  * @author Ansgar Spiegler
  * @author Joshua Gleitze
  */
@@ -35,7 +35,7 @@ public final class ResourceTypeMappings {
 	 * The bidirectional Map between {@link ResourceDemandType} and
 	 * {@link ProcessinResourceType}.
 	 */
-	private BidiMap<ResourceDemandType, ProcessingResourceType> beagleTypeToPcmType = new DualHashBidiMap<>();
+	private final BidiMap<ResourceDemandType, ProcessingResourceType> beagleTypeToPcmType = new DualHashBidiMap<>();
 
 	/**
 	 * {@code true} if {@link ResourceTypeMappings} is initialised.
@@ -60,7 +60,7 @@ public final class ResourceTypeMappings {
 			final Resource resource = resSet.getResource(resourceTypeUri, true);
 
 			final ResourceRepository resourceRepository = (ResourceRepository) resource.getContents().get(0);
-			for (ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {
+			for (final ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {
 				switch (resourceType.getEntityName()) {
 					case "CPU":
 						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_CPU_NS,

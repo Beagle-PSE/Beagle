@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 
 /**
  * Contains a method to load a {@link RepositoryImpl}-instance from a given {@link File}.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmRepositoryFileLoader {
@@ -26,7 +26,7 @@ public class PcmRepositoryFileLoader {
 		if (repositoryFile == null) {
 			throw new NullPointerException();
 		}
-		
+
 		if (!(repositoryFile.exists())) {
 			throw new FileNotFoundException("File " + repositoryFile.getAbsolutePath() + " does not exist!");
 		}

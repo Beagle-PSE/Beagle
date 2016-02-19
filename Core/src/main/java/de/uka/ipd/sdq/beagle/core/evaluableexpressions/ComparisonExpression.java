@@ -11,8 +11,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  *
  */
 public class ComparisonExpression implements EvaluableExpression {
-	
-	
+
 	/**
 	 * The used value to express {@code true} as double.
 	 */
