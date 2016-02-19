@@ -84,7 +84,7 @@ public class PcmRepositoryWriter {
 	 *            blackboard was initially created for.
 	 * @throws FileNotFoundException If given repository file does not exist
 	 */
-	public void writeTo(final File repositoryFile) throws FileNotFoundException {
+	public void writeTo(final File repositoryFile) {
 		final RepositoryImpl repository = this.fileLoader.loadRepositoryFromFile(repositoryFile);
 
 		this.annotator.annotateAll(repository);

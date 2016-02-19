@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core.facade;
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
@@ -18,11 +17,9 @@ import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryWriter;
 import org.apache.commons.lang3.Validate;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.jdt.core.IJavaProject;
 import org.palladiosimulator.pcm.core.entity.Entity;
 
-import java.io.FileNotFoundException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -36,7 +33,6 @@ import java.util.Set;
  * @author Christoph Michelbach
  * @author Roman Langrehr
  */
-// CHECKSTYLE:IGNORE ClassFanOutComplexity
 public class BeagleController {
 
 	/**
@@ -74,34 +70,24 @@ public class BeagleController {
 		final BlackboardCreator blackboardFactory = new BlackboardCreator();
 		final SourceCodeFileProvider sourceCodeFileProvider =
 			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());
+
 		if (beagleConfiguration.getElements() == null) {
-			try {
-				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
-					.getBlackboardForAllElements(blackboardFactory);
-			} catch (final FileNotFoundException fileNotFoundException) {
-				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
-			}
+			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
+				.getBlackboardForAllElements(blackboardFactory);
 		} else {
-			try {
-				new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
-					.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);
-			} catch (final FileNotFoundException fileNotFoundException) {
-				FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
-			}
+			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
+				.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);
 		}
+
 		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());
 		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();
-		final Set<ILaunchConfiguration> iLaunchConfigurations =
+
+		final Set<LaunchConfiguration> launchConfigurations =
 			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
 				.getAllSuitableJUnitLaunchConfigurations();
-		final Set<LaunchConfiguration> launchConfigurations = new HashSet<>();
-		for (final ILaunchConfiguration iLaunchConfiguration : iLaunchConfigurations) {
-			launchConfigurations
-				.add(new EclipseLaunchConfiguration(iLaunchConfiguration, beagleConfiguration.getJavaProject()));
-
-			blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
-				sourceCodeFileProvider, buildPath, charset, launchConfigurations));
-		}
+		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
+			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
+		
 		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());
 		this.blackboard = blackboardFactory.createBlackboard();
 		this.analysisController = new AnalysisController(this.blackboard,
@@ -118,11 +104,7 @@ public class BeagleController {
 	 */
 	public void startAnalysis() {
 		this.analysisController.performAnalysis();
-		try {
-			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());
-		} catch (final FileNotFoundException fileNotFoundException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(fileNotFoundException));
-		}
+		new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());
 	}
 
 	/**
