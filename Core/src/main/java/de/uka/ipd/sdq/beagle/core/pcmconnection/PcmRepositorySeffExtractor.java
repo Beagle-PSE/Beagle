@@ -179,10 +179,36 @@ public class PcmRepositorySeffExtractor {
 		try {
 			final CodeSection codeSection = this.nameParser.parse(internalAction.getEntityName());
 			if (codeSection != null) {
-				final ResourceDemandingInternalAction rdia =
+
+				final ResourceDemandingInternalAction rdiaCpu =
 					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
-				this.rdiaSet.add(rdia);
-				this.pcmMapper.addPcmIdOf(rdia, internalAction.getId());
+				this.rdiaSet.add(rdiaCpu);
+				this.pcmMapper.addPcmIdOf(rdiaCpu, internalAction.getId());
+
+				final ResourceDemandingInternalAction rdiaCpuNs =
+					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, codeSection);
+				this.rdiaSet.add(rdiaCpuNs);
+				this.pcmMapper.addPcmIdOf(rdiaCpuNs, internalAction.getId());
+
+				final ResourceDemandingInternalAction rdiaHdd =
+					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD, codeSection);
+				this.rdiaSet.add(rdiaHdd);
+				this.pcmMapper.addPcmIdOf(rdiaHdd, internalAction.getId());
+
+				final ResourceDemandingInternalAction rdiaHddNs =
+					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD_NS, codeSection);
+				this.rdiaSet.add(rdiaHddNs);
+				this.pcmMapper.addPcmIdOf(rdiaHddNs, internalAction.getId());
+
+				final ResourceDemandingInternalAction rdiaLan =
+					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK, codeSection);
+				this.rdiaSet.add(rdiaLan);
+				this.pcmMapper.addPcmIdOf(rdiaLan, internalAction.getId());
+
+				final ResourceDemandingInternalAction rdiaLanNs =
+					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, codeSection);
+				this.rdiaSet.add(rdiaLanNs);
+				this.pcmMapper.addPcmIdOf(rdiaLanNs, internalAction.getId());
 			}
 		} catch (final FileNotFoundException fileNotFoundE) {
 			this.handleFailureFor(internalAction, fileNotFoundE);
