@@ -34,7 +34,7 @@ public final class EvaluableExpressionLengthMatcher extends TypeSafeDiagnosingMa
 	}
 
 	/**
-	 * A matcher that matches that the length of an {@link EvaluableExpression} is no
+	 * A matcher that asserts that the length of an {@link EvaluableExpression} is no
 	 * longer than the length of the given {@link EvaluableExpression}.
 	 *
 	 * @param expression which is used to determine the maximum length
