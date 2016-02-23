@@ -21,9 +21,12 @@ public class UmletRenderTask extends DefaultTask {
 	/**
 	 * Locations to search for UMLET on Windows
 	 */
-	String[] UMLET_LOCATIONS = [/C:\Program Files (x86)\Umlet\\umlet.jar/,
-								/C:\Program Files\Umlet\\umlet.jar/,
-								/C:\weitere Programme\Umlet\\umlet.jar/]
+	String[] UMLET_LOCATIONS_WINDOWS = [/C:\Program Files (x86)\Umlet\\umlet.jar/,
+								        /C:\Program Files\Umlet\\umlet.jar/,
+										/C:\weitere Programme\Umlet\\umlet.jar/]
+										
+	String[] UMLET_LOCATIONS_LINUX	 = ["/opt/Umlet/umlet.jar",
+										"/opt/umlet/umlet.jar"]	
 	
 	/**
 	 * All files to be copied to the rendered location.
@@ -77,17 +80,14 @@ public class UmletRenderTask extends DefaultTask {
 	 * Returns the path to the UMLET jar on this system.
 	 */
 	String UMLET() {
-		 if (System.getProperty('os.name').toLowerCase().split()[0] == 'windows') {
-			for (String loc : UMLET_LOCATIONS) {
-				if (project.file(loc).exists()) {
-					return loc
-				}
+		String[] locations = System.getProperty('os.name').toLowerCase().split()[0] == 'windows' ? UMLET_LOCATIONS_WINDOWS : UMLET_LOCATIONS_LINUX
+		for (String loc : locations) {
+			if (project.file(loc).exists()) {
+				return loc
 			}
-			throw new RuntimeException("We can not find a UMLET installation on your machine. Please install it.\n"
-				 + "If you’ve already installed it, please add the path to your installation folder in UmletRenderer.groovy!")
-		} else {
-			return "/opt/Umlet/umlet.jar"
-		} 
+		}
+		throw new RuntimeException("We can not find a UMLET installation on your machine. Please install it.\n"
+			 + "If you’ve already installed it, please add the path to your installation folder in UmletRenderer.groovy!")
 	}
 	
 	/** 
