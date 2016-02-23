@@ -68,6 +68,11 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
  * {@linkplain EvaluableExpression}, except when visiting an
  * {@linkplain AdditionExpression}.
  *
+ * <p>Furthermore, the class offers two general purpose hooks, {@link #atExpression} and
+ * {@link #afterExpression}, that are always called for any expression. These will be
+ * called <em>before</em> the expression’s specific hook (which implies that they will
+ * also be called before the {@code other} hook).
+ *
  * @author Joshua Gleitze
  */
 public abstract class ExpressionTreeWalker {
@@ -77,9 +82,22 @@ public abstract class ExpressionTreeWalker {
 	 * See the class description for details.
 	 *
 	 * @param expression The momentarily visited expression.
+	 * @see #atExpression(EvaluableExpression)
 	 */
 	protected void atOther(final EvaluableExpression expression) {
 		// may be implemented by implementor.
+	}
+
+	/**
+	 * Called when visiting any {@link EvaluableExpression}. Contrary to
+	 * {@link #atOther(EvaluableExpression)}, this hook will always be called, no matter
+	 * if an overridden specific hook exists for {@code expression}.
+	 *
+	 * @param expression The momentarily visited expression.
+	 * @see #atOther(EvaluableExpression)
+	 */
+	protected void atExpression(final EvaluableExpression expression) {
+		// may be implemented by implementor
 	}
 
 	/**
@@ -202,11 +220,23 @@ public abstract class ExpressionTreeWalker {
 	/**
 	 * Called when leaving any {@link EvaluableExpression} no hook was defined for. See
 	 * the class description for details.
-	 * 
+	 *
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterOther(final EvaluableExpression expression) {
 		// may be implemented by implementor.
+	}
+
+	/**
+	 * Called when leaving any {@link EvaluableExpression}. Contrary to
+	 * {@link #afterOther(EvaluableExpression)}, this hook will always be called, no
+	 * matter if an overridden specific hook exists for {@code expression}.
+	 *
+	 * @param expression The momentarily visited expression.
+	 * @see #afterOther(EvaluableExpression)
+	 */
+	protected void afterExpression(final EvaluableExpression expression) {
+		// may be implemented by implementor
 	}
 
 	/**
