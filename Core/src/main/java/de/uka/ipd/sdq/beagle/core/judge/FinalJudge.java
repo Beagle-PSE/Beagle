@@ -106,7 +106,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		}
 
 		// Take the measurements.
-		this.measureAllFitnessAndAddToBlackboard(blackboard);
+		this.measureFitnessOfAllSeffElementsAndAddResultsToBlackboard(blackboard);
 
 		return willReturnTrue || this.allElementsArePerfect() || !this.sufficientRelativeImprovement();
 	}
@@ -135,7 +135,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *
 	 * @param blackboard The {@link Blackboard} to use.
 	 */
-	private void measureAllFitnessAndAddToBlackboard(final Blackboard blackboard) {
+	private void measureFitnessOfAllSeffElementsAndAddResultsToBlackboard(final Blackboard blackboard) {
 		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();
 
 		final Set<SeffBranch> seffBranches = blackboard.getAllSeffBranches();
@@ -143,10 +143,10 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		final Set<ResourceDemandingInternalAction> rdias = blackboard.getAllRdias();
 		final Set<ExternalCallParameter> extCallParameters = blackboard.getAllExternalCallParameters();
 
-		this.measureFitnessAndAddToBlackboard(seffBranches, blackboard, fitnessFunction::gradeFor);
-		this.measureFitnessAndAddToBlackboard(seffLoops, blackboard, fitnessFunction::gradeFor);
-		this.measureFitnessAndAddToBlackboard(rdias, blackboard, fitnessFunction::gradeFor);
-		this.measureFitnessAndAddToBlackboard(extCallParameters, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddResultsToBlackboard(seffBranches, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddResultsToBlackboard(seffLoops, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddResultsToBlackboard(rdias, blackboard, fitnessFunction::gradeFor);
+		this.measureFitnessAndAddResultsToBlackboard(extCallParameters, blackboard, fitnessFunction::gradeFor);
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *         sufficient fitness to stop evolution of evaluable expressions;
 	 *         {@code false} otherwise.
 	 */
-	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean measureFitnessAndAddToBlackboard(
+	private <SEFF_ELEMENT_TYPE extends MeasurableSeffElement> boolean measureFitnessAndAddResultsToBlackboard(
 		final Set<SEFF_ELEMENT_TYPE> measurableSeffElements, final Blackboard blackboard,
 		final TypedFitnessFunction<SEFF_ELEMENT_TYPE> fitnessFunction) {
 
