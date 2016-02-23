@@ -5,7 +5,7 @@ package de.uka.ipd.sdq.beagle.core.timeout;
  *
  * @author Christoph Michelbach
  */
-public class NoTimeout implements Timeout {
+public class NoTimeout extends Timeout {
 
 	@Override
 	public boolean isReached() {
