@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AdaptiveTimeout.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.timeout</a> &gt; <span class="el_source">AdaptiveTimeout.java</span></div><h1>AdaptiveTimeout.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.timeout;
 
+import org.apache.commons.lang3.Validate;
+
+import java.util.Arrays;
+
 /**
  * Implements an adaptive timeout. This means that later calls to {@link #isReached()}
  * will return {@code false} if the previous calls took a long time, too.
  *
  * @author Christoph Michelbach
  */
-<span class="nc" id="L9">public class AdaptiveTimeout extends Timeout {</span>
+<span class="nc" id="L13">public class AdaptiveTimeout extends Timeout {</span>
 
 	/**
 	 * How much additional time is always tolerated. Stated in milliseconds.
@@ -40,28 +44,28 @@
 	/**
 	 * Contains the telling times of the previous calls to {@link #isReached()}.
 	 */
-<span class="nc" id="L43">	private long[] previousTellingTimes = new long[RANGE];</span>
+<span class="nc" id="L47">	private long[] previousTellingTimes = new long[RANGE];</span>
 
 	@Override
 	public void init() {
-<span class="nc" id="L47">		super.init();</span>
+<span class="nc" id="L51">		super.init();</span>
 
-<span class="nc" id="L49">		this.timeOfPreviousCall = System.currentTimeMillis();</span>
-<span class="nc" id="L50">	}</span>
+<span class="nc" id="L53">		this.timeOfPreviousCall = System.currentTimeMillis();</span>
+<span class="nc" id="L54">	}</span>
 
 	@Override
 	public boolean isReached() {
-<span class="nc bnc" id="L54" title="All 2 branches missed.">		if (this.reachedTimeoutInThePast) {</span>
-<span class="nc" id="L55">			return true;</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">		if (this.reachedTimeoutInThePast) {</span>
+<span class="nc" id="L59">			return true;</span>
 		}
 
-<span class="nc" id="L58">		final long currentTime = System.currentTimeMillis();</span>
+<span class="nc" id="L62">		final long currentTime = System.currentTimeMillis();</span>
 
 		// Prepare everything for the next call to this method.
-<span class="nc" id="L61">		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);</span>
-<span class="nc" id="L62">		this.numberOfPreviousCalls++;</span>
+<span class="nc" id="L65">		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);</span>
+<span class="nc" id="L66">		this.numberOfPreviousCalls++;</span>
 
-<span class="nc" id="L64">		return false;</span>
+<span class="nc" id="L68">		return false;</span>
 	}
 
 	/**
@@ -72,12 +76,12 @@
 	 * @param time The telling time to add.
 	 */
 	private void addTellingTimeToPreviousTellingTimes(final long time) {
-<span class="nc bnc" id="L75" title="All 2 branches missed.">		for (int i = 1; i &lt; RANGE; i++) {</span>
-<span class="nc" id="L76">			this.previousTellingTimes[i - 1] = this.previousTellingTimes[i];</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">		for (int i = 1; i &lt; RANGE; i++) {</span>
+<span class="nc" id="L80">			this.previousTellingTimes[i - 1] = this.previousTellingTimes[i];</span>
 		}
 
-<span class="nc" id="L79">		this.previousTellingTimes[RANGE - 1] = time;</span>
-<span class="nc" id="L80">	}</span>
+<span class="nc" id="L83">		this.previousTellingTimes[RANGE - 1] = time;</span>
+<span class="nc" id="L84">	}</span>
 
 	/**
 	 * A regression line.
@@ -112,18 +116,44 @@
 		 *
 		 * @param data The data to determine the regression line for.
 		 */
-<span class="nc" id="L115">		public RegressionLine(final long[] data) {</span>
-<span class="nc" id="L116">			this.data = data.clone();</span>
-<span class="nc" id="L117">			this.initialised = false;</span>
-<span class="nc" id="L118">		}</span>
+<span class="nc" id="L119">		public RegressionLine(final long[] data) {</span>
+<span class="nc" id="L120">			this.data = data.clone();</span>
+<span class="nc" id="L121">			this.initialised = false;</span>
+<span class="nc" id="L122">		}</span>
 
 		/**
 		 * Calculates the offset and slope of the regression line.
 		 */
 		public void init() {
 
-<span class="nc" id="L125">			this.initialised = true;</span>
-<span class="nc" id="L126">		}</span>
+<span class="nc" id="L129">			final double averageTime = Arrays.stream(this.data).average().getAsDouble();</span>
+
+<span class="nc" id="L131">			double sum1 = 0;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			for (int i = 0; i &lt; this.data.length; i++) {</span>
+<span class="nc" id="L133">				final long time = this.data[i];</span>
+
+				// Because I need to do math.
+				// CHECKSTYLE:OFF
+<span class="nc" id="L137">				sum1 += (i - this.data.length / 2d) * (time - averageTime);</span>
+				// CHECKSTYLE:ON
+			}
+
+			/*
+			 * If you have equal distances between the x-coordinates of data and start
+			 * counting with 0, the divisor sum of the slope of the regression line can be
+			 * simplified to this. Go grab a pencil and a peace of paper and try it
+			 * yourself. :)
+			 */
+<span class="nc" id="L147">			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));</span>
+
+<span class="nc" id="L149">			this.slope = sum1 / sum2;</span>
+			// Because I need to do math.
+			// CHECKSTYLE:OFF
+<span class="nc" id="L152">			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);</span>
+			// CHECKSTYLE:ON
+
+<span class="nc" id="L155">			this.initialised = true;</span>
+<span class="nc" id="L156">		}</span>
 
 		/**
 		 * Returns the offset of the regression line.
@@ -131,7 +161,9 @@
 		 * @return The offset.
 		 */
 		public double getOffset() {
-<span class="nc" id="L134">			return this.offset;</span>
+<span class="nc" id="L164">			Validate.validState(this.initialised);</span>
+
+<span class="nc" id="L166">			return this.offset;</span>
 		}
 
 		/**
@@ -140,7 +172,9 @@
 		 * @return The slope.
 		 */
 		public double getSlope() {
-<span class="nc" id="L143">			return this.slope;</span>
+<span class="nc" id="L175">			Validate.validState(this.initialised);</span>
+
+<span class="nc" id="L177">			return this.slope;</span>
 		}
 
 	}
