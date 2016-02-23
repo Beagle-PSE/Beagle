@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ResourceTypeMappings.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmconnection</a> &gt; <span class="el_source">ResourceTypeMappings.java</span></div><h1>ResourceTypeMappings.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmconnection;
+
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
+
+import org.apache.commons.collections4.BidiMap;
+import org.apache.commons.collections4.bidimap.DualHashBidiMap;
+import org.apache.commons.lang3.Validate;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.palladiosimulator.pcm.resourcetype.ProcessingResourceType;
+import org.palladiosimulator.pcm.resourcetype.ResourceRepository;
+import org.palladiosimulator.pcm.resourcetype.ResourceType;
+
+import java.util.Map;
+
+/**
+ * This class offers a bidirectional mapping between the ResourceTypes of Beagle and the
+ * PalladioComponentModel.
+ *
+ * @author Ansgar Spiegler
+ * @author Joshua Gleitze
+ */
+<span class="nc" id="L26">public final class ResourceTypeMappings {</span>
+
+	/**
+	 * The location of the resourceType-file of PCM.
+	 */
+	private static final String RESOURCETYPE_URI = &quot;pathmap://PCM_MODELS/Palladio.resourcetype&quot;;
+
+	/**
+	 * The bidirectional Map between {@link ResourceDemandType} and
+	 * {@link ProcessinResourceType}.
+	 */
+<span class="nc" id="L37">	private final BidiMap&lt;ResourceDemandType, PcmTypeIdEqualsWrapper&gt; beagleTypeToPcmType = new DualHashBidiMap&lt;&gt;();</span>
+
+	/**
+	 * {@code true} if {@link ResourceTypeMappings} is initialised.
+	 */
+	private boolean inited;
+
+	/**
+	 * Creates a mapping for ({@link ResourceDemandType#RESOURCE_TYPE_CPU_NS},{@code CPU})
+	 * and ({@link ResourceDemandType#RESOURCE_TYPE_HDD_NS}, {@code HDD}).
+	 *
+	 */
+	public void initialise() {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">		if (!this.inited) {</span>
+
+<span class="nc" id="L52">			final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;</span>
+<span class="nc" id="L53">			final Map&lt;String, Object&gt; factoryMap = registry.getExtensionToFactoryMap();</span>
+<span class="nc" id="L54">			factoryMap.put(&quot;resourcetype&quot;, new XMIResourceFactoryImpl());</span>
+
+<span class="nc" id="L56">			final URI resourceTypeUri = URI.createURI(RESOURCETYPE_URI);</span>
+
+<span class="nc" id="L58">			final ResourceSet resSet = new ResourceSetImpl();</span>
+<span class="nc" id="L59">			final Resource resource = resSet.getResource(resourceTypeUri, true);</span>
+
+<span class="nc" id="L61">			final ResourceRepository resourceRepository = (ResourceRepository) resource.getContents().get(0);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">			for (final ResourceType resourceType : resourceRepository.getAvailableResourceTypes_ResourceRepository()) {</span>
+<span class="nc bnc" id="L63" title="All 10 branches missed.">				switch (resourceType.getEntityName()) {</span>
+					case &quot;CPU&quot;:
+<span class="nc" id="L65">						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_CPU_NS,</span>
+							new PcmTypeIdEqualsWrapper((ProcessingResourceType) resourceType));
+<span class="nc" id="L67">						break;</span>
+					case &quot;HDD&quot;:
+<span class="nc" id="L69">						this.beagleTypeToPcmType.put(ResourceDemandType.RESOURCE_TYPE_HDD_NS,</span>
+							new PcmTypeIdEqualsWrapper((ProcessingResourceType) resourceType));
+<span class="nc" id="L71">						break;</span>
+					default:
+				}
+<span class="nc" id="L74">			}</span>
+
+<span class="nc" id="L76">			this.inited = true;</span>
+		}
+
+<span class="nc" id="L79">	}</span>
+
+	/**
+	 * Reading from the bidirectional map.
+	 *
+	 * @param processingResourceType The {@link ProcessingResourceType}
+	 * @return The linked {@link ResourceDemandType}
+	 */
+	public ResourceDemandType getBeagleType(final ProcessingResourceType processingResourceType) {
+<span class="nc" id="L88">		Validate.validState(this.inited);</span>
+<span class="nc" id="L89">		return this.beagleTypeToPcmType.getKey(new PcmTypeIdEqualsWrapper(processingResourceType));</span>
+	}
+
+	/**
+	 * Reading from the bidirectional map.
+	 *
+	 * @param resourceDemandType The {@link ResourceDemandType}
+	 * @return The linked {@link ProcessingResourceType}
+	 */
+	public ProcessingResourceType getPcmType(final ResourceDemandType resourceDemandType) {
+<span class="nc" id="L99">		Validate.validState(this.inited);</span>
+<span class="nc" id="L100">		return this.beagleTypeToPcmType.get(resourceDemandType).pcmType;</span>
+	}
+
+	/**
+	 * Wraps an {@link ProcessingResourceType} to override its
+	 * {@link Object#equals(Object)} and {@link Object#hashCode()} to be based on the
+	 * resource type’s id. This allows them to be inserted into a {@link HashMap} and be
+	 * retrieved as expected.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class PcmTypeIdEqualsWrapper {
+
+		/**
+		 * The wrapped resource type.
+		 */
+		private final ProcessingResourceType pcmType;
+
+		/**
+		 * Creates a wrapper for the given {@code type}.
+		 *
+		 * @param type The resource type to wrap.
+		 */
+<span class="nc" id="L123">		private PcmTypeIdEqualsWrapper(final ProcessingResourceType type) {</span>
+<span class="nc" id="L124">			this.pcmType = type;</span>
+<span class="nc" id="L125">		}</span>
+
+		@Override
+		public boolean equals(final Object otherObject) {
+<span class="nc bnc" id="L129" title="All 2 branches missed.">			if (otherObject == this) {</span>
+<span class="nc" id="L130">				return true;</span>
+			}
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			if (otherObject == null) {</span>
+<span class="nc" id="L133">				return false;</span>
+			}
+<span class="nc bnc" id="L135" title="All 2 branches missed.">			if (otherObject.getClass() != this.getClass()) {</span>
+<span class="nc" id="L136">				return false;</span>
+			}
+<span class="nc" id="L138">			final PcmTypeIdEqualsWrapper other = (PcmTypeIdEqualsWrapper) otherObject;</span>
+<span class="nc" id="L139">			return this.pcmType.getId().equals(other.pcmType.getId());</span>
+		}
+
+		@Override
+		public int hashCode() {
+<span class="nc" id="L144">			return this.pcmType.getId().hashCode();</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

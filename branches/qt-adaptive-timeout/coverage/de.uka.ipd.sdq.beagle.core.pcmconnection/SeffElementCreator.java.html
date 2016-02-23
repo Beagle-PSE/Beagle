@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SeffElementCreator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmconnection</a> &gt; <span class="el_source">SeffElementCreator.java</span></div><h1>SeffElementCreator.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmconnection;
+
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandType;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+
+import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * *****STUB! IMPLEMENTATION DEPENDS ON SOLUTION FOR SOURCECODEDECORATOR (SOMOX)!***** NOT
+ * IN USAGE RIGHT NOW.
+ *
+ * &lt;p&gt;As Beagle is going to make usage of the SourceCoreDecorator from Somox, this class
+ * will replace the {@link PcmNameParser}. In contrast to the older class this one does
+ * not depend on the EntityName of SEFF-Elements, but rather on an adapter or interface to
+ * Somox' SourceCodeDecorator. Besides it contains the logic to create all MeasurableSeff
+ * Elements out of a given ID.
+ *
+ * @author Ansgar Spiegler
+ */
+public class SeffElementCreator {
+
+	/**
+	 * Integer with value 0.
+	 */
+<span class="nc" id="L31">	private final int zero = 0;</span>
+
+	/**
+	 * This constructor will need an association to Somox' sourceCodeDecotor as soon as a
+	 * working solution exists.
+	 */
+<span class="nc" id="L37">	public SeffElementCreator() {</span>
+
+<span class="nc" id="L39">	}</span>
+
+	/**
+	 * This method searches for a given ID, where its representative SEFF is situated in
+	 * source code storing this information in a {@link CodeSection}.
+	 *
+	 * @param identity The ID of an AbstractAction
+	 * @return CodeSection with all information extracted by SourceCodeDecorator
+	 * @throws IllegalArgumentException Thrown when an ID is not found or does not
+	 *             represent a MeasurableSeff
+	 */
+	private CodeSection getCodeSectionForId(final String identity) throws IllegalArgumentException {
+<span class="nc" id="L51">		final int pseudoSection1 = 1;</span>
+<span class="nc" id="L52">		final int pseudoSection2 = 2;</span>
+<span class="nc" id="L53">		final File pseudoFile = new File(&quot;src/main/resources/pseudoFile.md&quot;);</span>
+<span class="nc" id="L54">		return new CodeSection(pseudoFile, pseudoSection1, pseudoFile, pseudoSection2);</span>
+
+	}
+
+	/**
+	 * Creates an {@link ExternalCallParameter} for a given ID. Assert that identity fits
+	 * to SeffType.
+	 *
+	 * @param identity The identity of the ExternalCallParameter
+	 * @return ExternalCallParameter element
+	 */
+	public ExternalCallParameter getExternalCallParameterForId(final String identity) {
+<span class="nc" id="L66">		final CodeSection codeSection = this.getCodeSectionForId(identity);</span>
+<span class="nc" id="L67">		return new ExternalCallParameter(codeSection, this.zero);</span>
+	}
+
+	/**
+	 * Creates a {@link SeffBranch} for a given ID. Assert that identity fits to SeffType.
+	 *
+	 * @param identity The identity of the SeffBranch
+	 * @return SeffBranch element containing a set of at least 2 CodeSections
+	 */
+	public SeffBranch getSeffBranchForId(final String identity) {
+<span class="nc" id="L77">		final Set&lt;CodeSection&gt; sectionSet = new HashSet&lt;CodeSection&gt;();</span>
+<span class="nc" id="L78">		sectionSet.add(this.getCodeSectionForId(identity));</span>
+
+<span class="nc" id="L80">		final int pseudoSection5 = 5;</span>
+<span class="nc" id="L81">		final int pseudoSection6 = 6;</span>
+<span class="nc" id="L82">		final File pseudoFile = new File(&quot;src/main/resources/pseudoFile.md&quot;);</span>
+
+<span class="nc" id="L84">		sectionSet.add(new CodeSection(pseudoFile, pseudoSection5, pseudoFile, pseudoSection6));</span>
+<span class="nc" id="L85">		return new SeffBranch(sectionSet);</span>
+	}
+
+	/**
+	 * Creates a {@link SeffLoop} for a given ID. Assert that identity fits to SeffType.
+	 *
+	 * @param identity The identity of the SeffLoop
+	 * @return SeffLoop element
+	 */
+	public SeffLoop getSeffLoopForId(final String identity) {
+<span class="nc" id="L95">		final CodeSection codeSection = this.getCodeSectionForId(identity);</span>
+<span class="nc" id="L96">		return new SeffLoop(codeSection);</span>
+	}
+
+	/**
+	 * Creates a {@link ResourceDemandingInternalAction} for a given ID. Assert that
+	 * identity fits to SeffType. MISSING! Check if InternalAction contains a
+	 * ResourceDemand !AND! Find out what kind of resourceDemand !MISSING! This will for
+	 * now return a {@link ResourceDemandingInternalAction} with CPU type.
+	 *
+	 * @param identity The identity of the RDIA
+	 * @return ResourceDemandingInternalAction element
+	 */
+	public ResourceDemandingInternalAction getRDIAForId(final String identity) {
+<span class="nc" id="L109">		final CodeSection codeSection = this.getCodeSectionForId(identity);</span>
+		// final CodeSection sectionTemp =
+		// this.nameParser.parse(internalAction.getEntityName());
+<span class="nc" id="L112">		return new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);</span>
+
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
