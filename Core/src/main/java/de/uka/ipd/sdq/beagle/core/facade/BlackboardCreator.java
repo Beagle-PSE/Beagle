@@ -68,8 +68,8 @@ public class BlackboardCreator {
 	 *
 	 */
 	public Blackboard createBlackboard() {
-		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null
-			|| this.projectInformation == null || this.pcmMappings == null) {
+		if (this.rdias == null || this.branches == null || this.loops == null || this.externalCalls == null
+			|| this.fitnessFunction == null || this.projectInformation == null || this.pcmMappings == null) {
 			throw new IllegalStateException("Not everything has been setup yet.");
 		}
 		final Blackboard blackboard = new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls,
