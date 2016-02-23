@@ -1,5 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.timeout;
 
+import org.apache.commons.lang3.Validate;
+
+import java.util.Arrays;
+
 /**
  * Implements an adaptive timeout. This means that later calls to {@link #isReached()}
  * will return {@code false} if the previous calls took a long time, too.
@@ -122,6 +126,32 @@ public class AdaptiveTimeout extends Timeout {
 		 */
 		public void init() {
 
+			final double averageTime = Arrays.stream(this.data).average().getAsDouble();
+
+			double sum1 = 0;
+			for (int i = 0; i < this.data.length; i++) {
+				final long time = this.data[i];
+
+				// Because I need to do math.
+				// CHECKSTYLE:OFF
+				sum1 += (i - this.data.length / 2d) * (time - averageTime);
+				// CHECKSTYLE:ON
+			}
+
+			/*
+			 * If you have equal distances between the x-coordinates of data and start
+			 * counting with 0, the divisor sum of the slope of the regression line can be
+			 * simplified to this. Go grab a pencil and a peace of paper and try it
+			 * yourself. :)
+			 */
+			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));
+
+			this.slope = sum1 / sum2;
+			// Because I need to do math.
+			// CHECKSTYLE:OFF
+			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);
+			// CHECKSTYLE:ON
+
 			this.initialised = true;
 		}
 
@@ -131,6 +161,8 @@ public class AdaptiveTimeout extends Timeout {
 		 * @return The offset.
 		 */
 		public double getOffset() {
+			Validate.validState(this.initialised);
+
 			return this.offset;
 		}
 
@@ -140,6 +172,8 @@ public class AdaptiveTimeout extends Timeout {
 		 * @return The slope.
 		 */
 		public double getSlope() {
+			Validate.validState(this.initialised);
+
 			return this.slope;
 		}
 
