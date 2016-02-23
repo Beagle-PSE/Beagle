@@ -105,7 +105,7 @@ sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-
 wget https://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
 sudo texlua install-getnonfreefonts
 sudo getnonfreefonts-sys arial-urw
-rm intall-getnonfreefonts
+rm install-getnonfreefonts
 ```
 
 ##### Windows
