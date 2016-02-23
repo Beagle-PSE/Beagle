@@ -68,8 +68,10 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	 */
 	@Override
 	protected void atAddition(final AdditionExpression expression) {
-		this.computationalComplexitySum += 1d;
-		this.humanComprehensibilityComplexitySum += 1d;
+		final int numberOfElements = expression.getSummands().size();
+
+		this.computationalComplexitySum += 1d * (numberOfElements - 1);
+		this.humanComprehensibilityComplexitySum += 1d * (numberOfElements - 1);
 
 	}
 
@@ -82,9 +84,11 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	 */
 	@Override
 	protected void atMultiplication(final MultiplicationExpression expression) {
+		final int numberOfElements = expression.getFactors().size();
+
 		// CHECKSTYLE:OFF
-		this.computationalComplexitySum += 1.6492450638792102d;
-		this.humanComprehensibilityComplexitySum += 3d;
+		this.computationalComplexitySum += 1.6492450638792102d * (numberOfElements - 1);
+		this.humanComprehensibilityComplexitySum += 3d * (numberOfElements - 1);
 		// CHECKSTYLE:ON
 
 	}
