@@ -53,6 +53,13 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	 */
 	private double humanComprehensibilityComplexitySum;
 
+	@Override
+	protected void atExpression(final EvaluableExpression expression) {
+		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
+			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -64,9 +71,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.computationalComplexitySum += 1d;
 		this.humanComprehensibilityComplexitySum += 1d;
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -83,9 +87,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 3d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -101,9 +102,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 4d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -119,9 +117,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 3d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -137,9 +132,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += .1d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -155,9 +147,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 7d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -174,9 +163,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 12d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -193,9 +179,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 20d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -211,9 +194,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 4d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -229,9 +209,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 25d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -248,9 +225,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 17d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -267,9 +241,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 15d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/*
@@ -286,9 +257,6 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.humanComprehensibilityComplexitySum += 1.2d;
 		// CHECKSTYLE:ON
 
-		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
-		}
 	}
 
 	/**
