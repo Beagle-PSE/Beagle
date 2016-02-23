@@ -106,7 +106,7 @@ import java.util.Set;
 		}
 
 		// Take the measurements.
-<span class="fc" id="L109">		this.measureAllFitnessAndAddToBlackboard(blackboard);</span>
+<span class="fc" id="L109">		this.measureFitnessOfAllSeffElementsAndAddResultsToBlackboard(blackboard);</span>
 
 <span class="fc bfc" id="L111" title="All 6 branches covered.">		return willReturnTrue || this.allElementsArePerfect() || !this.sufficientRelativeImprovement();</span>
 	}
@@ -135,7 +135,7 @@ import java.util.Set;
 	 *
 	 * @param blackboard The {@link Blackboard} to use.
 	 */
-	private void measureAllFitnessAndAddToBlackboard(final Blackboard blackboard) {
+	private void measureFitnessOfAllSeffElementsAndAddResultsToBlackboard(final Blackboard blackboard) {
 <span class="fc" id="L139">		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();</span>
 
 <span class="fc" id="L141">		final Set&lt;SeffBranch&gt; seffBranches = blackboard.getAllSeffBranches();</span>
@@ -143,10 +143,10 @@ import java.util.Set;
 <span class="fc" id="L143">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = blackboard.getAllRdias();</span>
 <span class="fc" id="L144">		final Set&lt;ExternalCallParameter&gt; extCallParameters = blackboard.getAllExternalCallParameters();</span>
 
-<span class="fc" id="L146">		this.measureFitnessAndAddToBlackboard(seffBranches, blackboard, fitnessFunction::gradeFor);</span>
-<span class="fc" id="L147">		this.measureFitnessAndAddToBlackboard(seffLoops, blackboard, fitnessFunction::gradeFor);</span>
-<span class="fc" id="L148">		this.measureFitnessAndAddToBlackboard(rdias, blackboard, fitnessFunction::gradeFor);</span>
-<span class="fc" id="L149">		this.measureFitnessAndAddToBlackboard(extCallParameters, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L146">		this.measureFitnessAndAddResultsToBlackboard(seffBranches, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L147">		this.measureFitnessAndAddResultsToBlackboard(seffLoops, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L148">		this.measureFitnessAndAddResultsToBlackboard(rdias, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L149">		this.measureFitnessAndAddResultsToBlackboard(extCallParameters, blackboard, fitnessFunction::gradeFor);</span>
 <span class="fc" id="L150">	}</span>
 
 	/**
@@ -169,7 +169,7 @@ import java.util.Set;
 	 *         sufficient fitness to stop evolution of evaluable expressions;
 	 *         {@code false} otherwise.
 	 */
-	private &lt;SEFF_ELEMENT_TYPE extends MeasurableSeffElement&gt; boolean measureFitnessAndAddToBlackboard(
+	private &lt;SEFF_ELEMENT_TYPE extends MeasurableSeffElement&gt; boolean measureFitnessAndAddResultsToBlackboard(
 		final Set&lt;SEFF_ELEMENT_TYPE&gt; measurableSeffElements, final Blackboard blackboard,
 		final TypedFitnessFunction&lt;SEFF_ELEMENT_TYPE&gt; fitnessFunction) {
 
