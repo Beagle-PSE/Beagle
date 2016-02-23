@@ -1,8 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import org.eclipse.emf.ecore.EObject;
