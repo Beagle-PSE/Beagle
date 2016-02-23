@@ -60,6 +60,10 @@ public class AdaptiveTimeout extends Timeout {
 		}
 
 		final long currentTime = System.currentTimeMillis();
+		final RegressionLine regressionLine = new RegressionLine(this.previousTellingTimes);
+		regressionLine.init();
+
+		final long predictedValue = (long) regressionLine.getValueFor(RANGE);
 
 		// Prepare everything for the next call to this method.
 		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
@@ -175,6 +179,18 @@ public class AdaptiveTimeout extends Timeout {
 			Validate.validState(this.initialised);
 
 			return this.slope;
+		}
+
+		/**
+		 * Returns the function value for {@code xValue}.
+		 *
+		 * @param xValue The value on the x-axis.
+		 * @return The function value for {@code xValue}.
+		 */
+		public double getValueFor(final double xValue) {
+			Validate.validState(this.initialised);
+
+			return this.offset + xValue * this.slope;
 		}
 
 	}
