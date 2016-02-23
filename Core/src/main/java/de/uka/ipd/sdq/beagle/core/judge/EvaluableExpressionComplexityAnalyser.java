@@ -41,7 +41,10 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	private static final double DEPTH_PENALTY = .3d;
 
 	/**
-	 * The total computational complexity.
+	 * The total computational complexity. The values added up to this sum have been
+	 * determined on a laptop with an Intel® Core™ i7-4720HQ CPU @ 2.60GHz × 8 (8 cores
+	 * with Hyper-Threading; 4 cores physically) processor running Linux
+	 * 3.19.0-30-generic.
 	 */
 	private double computationalComplexitySum;
 
