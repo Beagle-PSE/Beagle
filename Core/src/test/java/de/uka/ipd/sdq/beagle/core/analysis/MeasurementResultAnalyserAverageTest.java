@@ -106,7 +106,7 @@ public class MeasurementResultAnalyserAverageTest {
 		given(mockedBlackboard.getMeasurementResultsFor(loop)).willReturn(value);
 		assertThat(analyser.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(mockedBlackboard)),
 			is(true));
-		
+
 		final MeasurementResultAnalyserBlackboardView analyserView =
 			new MeasurementResultAnalyserBlackboardView(mockedBlackboard);
 		analyser.contribute(analyserView);
@@ -137,13 +137,13 @@ public class MeasurementResultAnalyserAverageTest {
 		final MeasurementResultAnalyserBlackboardView blackboardView =
 			new MeasurementResultAnalyserBlackboardView(blackboard);
 		final MultiSet<EvaluableExpression> proposedExpressions = new HashMultiSet<>();
-		for (MeasurableSeffElement element : allElements) {
+		for (final MeasurableSeffElement element : allElements) {
 			proposedExpressions.addAll(blackboard.getProposedExpressionFor(element));
 		}
 		if (analyser.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard))) {
 			analyser.contribute(blackboardView);
 			final MultiSet<EvaluableExpression> newProposedExpressions = new HashMultiSet<>();
-			for (MeasurableSeffElement element : allElements) {
+			for (final MeasurableSeffElement element : allElements) {
 				newProposedExpressions.addAll(blackboard.getProposedExpressionFor(element));
 			}
 			assertThat(newProposedExpressions, is(not(proposedExpressions)));

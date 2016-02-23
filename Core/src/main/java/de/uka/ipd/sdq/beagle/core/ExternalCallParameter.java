@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A parameter of an external call.
@@ -84,6 +83,6 @@ public class ExternalCallParameter implements MeasurableSeffElement {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("call", this.call).append("index", this.index).toString();
+		return String.format("ExCall@%4.4s<%d,%s>", Integer.toHexString(this.hashCode()), this.index, this.call);
 	}
 }

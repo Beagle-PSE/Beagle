@@ -17,7 +17,7 @@ import org.junit.Test;
 /**
  * Tests {@link ResourceDemandCapturedEvent} and contains all test cases needed to check
  * every method.
- * 
+ *
  * @author Annika Berger
  */
 public class ResourceDemandCapturedEventTest {
@@ -32,7 +32,7 @@ public class ResourceDemandCapturedEventTest {
 	 * Test method for
 	 * {@link ResourceDemandCapturedEvent#ResourceDemandCapturedEvent(CodeSection, ResourceDemandType, double)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the arguments is
 	 * null and that an {@link IllegalArgumentException} is thrown if the value is
 	 * negative.

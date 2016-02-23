@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core;
 import org.apache.commons.lang3.Validate;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Models loops (like Java’s for , while and do - while statement) which affect the calls
@@ -70,6 +69,6 @@ public class SeffLoop implements MeasurableSeffElement {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("loopBody", this.loopBody).toString();
+		return String.format("SeffLoop@%4.4s<%s>", Integer.toHexString(this.hashCode()), this.loopBody);
 	}
 }

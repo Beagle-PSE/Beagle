@@ -25,7 +25,7 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 /**
  * Tests {@link PcmRepositoryWriterAnnotatorEvaEx} and contains all test cases needed to
  * check all methods.
- * 
+ *
  * @author Annika Berger
  */
 //@formatter:off
@@ -42,7 +42,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 
 	/**
 	 * Mocks {@link ResourceTypeMappings} to be able to run the tests.
-	 * 
+	 *
 	 * @throws Exception if something went wrong while trying to mock the constructor of
 	 *             {@link ResourceTypeMappings}.
 	 *
@@ -68,7 +68,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * Test method for
 	 * {@link PcmRepositoryWriterAnnotatorEvaEx#annotateEvaExFor(LoopActionImpl, EvaluableExpression)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
 	 * parameters is {@code null}.
 	 */
@@ -77,7 +77,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 		final PcmRepositoryWriterAnnotatorEvaEx annotater = new PcmRepositoryWriterAnnotatorEvaEx();
 		final LoopActionImpl loopAction = mock(LoopActionImpl.class);
 		final EvaluableExpression evaEx = ConstantExpression.forValue(2.0);
-		//annotater.annotateEvaExFor(loopAction, evaEx);
+		// annotater.annotateEvaExFor(loopAction, evaEx);
 
 		final LoopActionImpl nullAction = null;
 		assertThat("Loop Action Impl must not be null", () -> annotater.annotateEvaExFor(nullAction, evaEx),
@@ -91,7 +91,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * Test method for
 	 * {@link PcmRepositoryWriterAnnotatorEvaEx#annotateEvaExFor(BranchActionImpl, EvaluableExpression)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
 	 * parameters is {@code null}.
 	 */
@@ -114,7 +114,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * Test method for
 	 * {@link PcmRepositoryWriterAnnotatorEvaEx#annotateEvaExFor(InternalActionImpl, ResourceDemandType, EvaluableExpression)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
 	 * parameters is {@code null}.
 	 */
@@ -124,7 +124,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 		final InternalActionImpl internalAction = mock(InternalActionImpl.class);
 		final ResourceDemandType type = ResourceDemandType.RESOURCE_TYPE_CPU;
 		final EvaluableExpression evaEx = ConstantExpression.forValue(2.0);
-		//annotater.annotateEvaExFor(internalAction, type, evaEx);
+		// annotater.annotateEvaExFor(internalAction, type, evaEx);
 
 		final InternalActionImpl nullAction = null;
 		assertThat("Internal Action Impl must not be null", () -> annotater.annotateEvaExFor(nullAction, type, evaEx),
@@ -141,7 +141,7 @@ public class PcmRepositoryWriterAnnotatorEvaExTest {
 	 * Test method for
 	 * {@link PcmRepositoryWriterAnnotatorEvaEx#annotateEvaExFor(ExternalCallActionImpl, EvaluableExpression)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the input
 	 * parameters is {@code null}.
 	 */

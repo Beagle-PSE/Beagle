@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ASCII"?>
 <repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_x86XkLnmEeWVlphM5rov7g" entityName="defaultRepository">
   <components__Repository xsi:type="repository:BasicComponent" id="_6f1a4LnmEeWVlphM5rov7g" entityName="Grandfather">
     <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_PFt5wLnnEeWVlphM5rov7g" entityName="Provided_interestingStory_Django" providedInterface__OperationProvidedRole="_Ebz70LnnEeWVlphM5rov7g"/>

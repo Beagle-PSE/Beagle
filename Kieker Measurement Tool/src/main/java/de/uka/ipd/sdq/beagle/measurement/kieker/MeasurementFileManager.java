@@ -6,6 +6,8 @@ import org.eclipse.core.runtime.FileLocator;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,6 +18,7 @@ import java.nio.file.Paths;
  * paths to files that don’t necessarily exist.
  *
  * @author Joshua Gleitze
+ * @author Roman Langrehr
  */
 class MeasurementFileManager {
 
@@ -103,7 +106,15 @@ class MeasurementFileManager {
 			throw new FileNotFoundException(String.format("Cannot find the %s!", description));
 		}
 		final URL fileUrl = FileLocator.toFileURL(classpathUrl);
-		return Paths.get(fileUrl.getPath()).toAbsolutePath();
+		try {
+			// The URL to Path conversion has to be done like this, to make it work with
+			// Linux and Windows style paths.
+			final URI urii = new URI(fileUrl.getProtocol(), fileUrl.getPath(), null);
+			final Path returnValue = Paths.get(urii).toAbsolutePath();
+			return returnValue;
+		} catch (final URISyntaxException uriSyntaxException) {
+			throw new FileNotFoundException(uriSyntaxException.getMessage());
+		}
 	}
 
 	/**

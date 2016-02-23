@@ -14,6 +14,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.UIJob;
 
 import java.awt.event.ActionListener;
+import java.lang.Thread.UncaughtExceptionHandler;
 
 /*
  * This class is involved in creating a Graphical User Interface. Its funtionality cannot
@@ -28,6 +29,7 @@ import java.awt.event.ActionListener;
  * it's possible for a GUI instance to exist while not being open.
  *
  * @author Christoph Michelbach
+ * @author Roman Langrehr
  */
 public class GuiController {
 
@@ -117,6 +119,7 @@ public class GuiController {
 	 */
 	private void engageWizard() {
 		this.wizardFinishedSuccessfully = false;
+		this.beagleConfiguration.finalise();
 
 		if (this.state == GuiControllerState.unopened) {
 			this.state = GuiControllerState.wizardOpen;
@@ -204,32 +207,52 @@ public class GuiController {
 	 * thread so the GUI remains responsive.
 	 */
 	private void startAnalysis() {
-		new Thread() {
+		final UncaughtExceptionHandler uncaughtExceptionHandler = Thread.currentThread().getUncaughtExceptionHandler();
 
-			/**
-			 * Calls {@link BeagleController} to start the analysis. This happens in a
-			 * different thread so the GUI remains responsive.
-			 */
+		/*
+		 * Calls {@link BeagleController} to start the analysis. This happens in a
+		 * different thread so the GUI remains responsive.
+		 */
+		new Thread(new Runnable() {
+
 			@Override
 			public void run() {
-				try {
-					GuiController.this.beagleController.startAnalysis();
-					// CHECKSTYLE:IGNORE IllegalCatch
-				} catch (final Exception runtimeException) {
-
-					// when {@code beagleController.startAnalysis()} returns, close the
-					// dialog
-					GuiController.this.state = GuiControllerState.terminated;
-					new UIJob(Display.getDefault(), "Close Beagle Dialog") {
-
-						@Override
-						public IStatus runInUIThread(final IProgressMonitor monitor) {
-							GuiController.this.messageDialog.close();
-							return Status.OK_STATUS;
-						}
-					}.schedule();
-				}
+				GuiController.this.guiJob(uncaughtExceptionHandler);
 			}
-		}.start();
+		}).start();
+	}
+
+	/**
+	 * Runs the tasks that should be done asynchrony to the GUI progress dialog.
+	 *
+	 * @param uncaughtExceptionHandler The {@link UncaughtExceptionHandler} to notify,
+	 *            when an exception occurs.
+	 */
+	private void guiJob(final UncaughtExceptionHandler uncaughtExceptionHandler) {
+		try {
+			GuiController.this.beagleController.startAnalysis();
+			// CHECKSTYLE:IGNORE IllegalCatch
+		} catch (final Exception exception) {
+			uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), exception);
+			new UIJob(Display.getDefault(), "Close Beagle Dialog") {
+
+				@Override
+				public IStatus runInUIThread(final IProgressMonitor monitor) {
+					GuiController.this.messageDialog.close();
+					return Status.OK_STATUS;
+				}
+			}.schedule();
+		}
+		// when {@code beagleController.startAnalysis()} returns, close the
+		// dialog
+		GuiController.this.state = GuiControllerState.terminated;
+		new UIJob(Display.getDefault(), "Close Beagle Dialog") {
+
+			@Override
+			public IStatus runInUIThread(final IProgressMonitor monitor) {
+				GuiController.this.messageDialog.close();
+				return Status.OK_STATUS;
+			}
+		}.schedule();
 	}
 }

@@ -23,6 +23,11 @@ import java.util.List;
 public class EclipseCompiler {
 
 	/**
+	 * The compliance level for the java compiler.
+	 */
+	private static final String COMPLIANCE_LEVEL = "1.8";
+
+	/**
 	 * The handler of failures.
 	 */
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Measurement Source Code Compiler");
@@ -115,6 +120,7 @@ public class EclipseCompiler {
 			argumentBuilder.append("-encoding ").append(this.charset).append(" ");
 		}
 		argumentBuilder.append("\"").append(this.sourceFilesFolder).append("\" ");
+		argumentBuilder.append("-").append(COMPLIANCE_LEVEL);
 
 		final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		final boolean success = BatchCompiler.compile(argumentBuilder.toString(), new PrintWriter(outputStream),

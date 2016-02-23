@@ -64,7 +64,7 @@ public final class EmfHelper {
 			return false;
 		}
 		if (identifier1 instanceof Identifier && identifier2 instanceof Identifier) {
-			return (((Identifier) identifier1).getId().equals(((Identifier) identifier2).getId()));
+			return ((Identifier) identifier1).getId().equals(((Identifier) identifier2).getId());
 		} else {
 			return EcoreUtil.equals(identifier1, identifier2);
 		}
@@ -147,10 +147,11 @@ public final class EmfHelper {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		// Register the default resource factory -- only needed for stand-alone!
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+		resourceSet.getResourceFactoryRegistry()
+			.getExtensionToFactoryMap()
 			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
-		final URI myURI = URI.createURI(fileName);
+		final URI myURI = URI.createFileURI(fileName);
 
 		final Resource resource = resourceSet.createResource(myURI);
 		resource.getContents().add(modelToSave);
@@ -182,7 +183,8 @@ public final class EmfHelper {
 
 		// Register the appropriate resource factory to handle all file
 		// extensions.
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+		resourceSet.getResourceFactoryRegistry()
+			.getExtensionToFactoryMap()
 			.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
 		// Register the package to ensure it is available during loading.

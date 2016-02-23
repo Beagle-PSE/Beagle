@@ -4,4 +4,14 @@
    <extension-point id="de.uka.ipd.sdq.beagle.measurementtool" name="MeasurementTool" schema="src/main/resources/schema/de.uka.ipd.sdq.beagle.measurementtool.exsd"/>
    <extension-point id="de.uka.ipd.sdq.beagle.proposedexpressionanalyser" name="ProposedExpressionAnalyser" schema="src/main/resources/schema/de.uka.ipd.sdq.beagle.proposedexpressionanalyser.exsd"/>
    <extension-point id="de.uka.ipd.sdq.beagle.measurementresultanalyser" name="MeasurementResultAnalyser" schema="src/main/resources/schema/de.uka.ipd.sdq.beagle.measurementresultanalyser.exsd"/>
+   <extension
+         point="de.uka.ipd.sdq.beagle.measurementresultanalyser"
+         id="de.uka.ipd.sdg.beagle.analysis.measurement.average"
+         name="Averaging Measurement Result Analyser">
+		<MeasurementResultAnalyser
+			MeasurementResultAnalyserClass="de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserAverage">
+		</MeasurementResultAnalyser>
+   </extension>
+   
+ 
 </plugin>

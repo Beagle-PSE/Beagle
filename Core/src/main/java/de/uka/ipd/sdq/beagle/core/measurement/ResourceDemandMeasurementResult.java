@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.core.measurement;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A result of measuring resource demands of a code section. The result expresses that a
@@ -23,7 +22,7 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 	 * The value measured. The unit is specified by the
 	 * {@link ResourceDemandingInternalAction}'s type it belongs to.
 	 */
-	private double value;
+	private final double value;
 
 	/**
 	 * Creates a result for a resource demand measurement for which no parameterisation
@@ -65,6 +64,7 @@ public class ResourceDemandMeasurementResult extends ParameterisationDependentMe
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).appendSuper(super.toString()).append("value", this.value).toString();
+		return String.format("RDResult@%4.4s<%.2f,%s>", Integer.toHexString(this.hashCode()), this.value,
+			this.getParameterisation());
 	}
 }
