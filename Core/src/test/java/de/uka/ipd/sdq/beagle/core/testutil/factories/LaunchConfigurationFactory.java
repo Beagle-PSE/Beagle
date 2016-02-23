@@ -2,8 +2,8 @@ package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
 import static org.mockito.Mockito.mock;
 
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.facade.EclipseLaunchConfiguration;
 
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.jdt.core.IJavaProject;
