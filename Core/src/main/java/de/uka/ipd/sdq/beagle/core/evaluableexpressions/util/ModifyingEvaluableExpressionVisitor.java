@@ -543,66 +543,79 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 
 		@Override
 		public void visit(final AdditionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atAddition(expression);
 		}
 
 		@Override
 		public void visit(final MultiplicationExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atMultiplication(expression);
 		}
 
 		@Override
 		public void visit(final EvaluableVariable variable) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(variable);
 			ModifyingEvaluableExpressionVisitor.this.atVariable(variable);
 		}
 
 		@Override
 		public void visit(final ComparisonExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atComparison(expression);
 		}
 
 		@Override
 		public void visit(final ConstantExpression constant) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(constant);
 			ModifyingEvaluableExpressionVisitor.this.atConstant(constant);
 		}
 
 		@Override
 		public void visit(final DivisionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atDivision(expression);
 		}
 
 		@Override
 		public void visit(final ExponentationExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atExponentation(expression);
 		}
 
 		@Override
 		public void visit(final ExponentialFunctionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atExponentialFunction(expression);
 		}
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atIfThenElse(expression);
 		}
 
 		@Override
 		public void visit(final LogarithmExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final NaturalLogarithmExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atNaturalLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final SineExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atSine(expression);
 		}
 
 		@Override
 		public void visit(final SubtractionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atSubstraction(expression);
 		}
 	}
@@ -617,66 +630,79 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 
 		@Override
 		public void visit(final AdditionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterAddition(expression);
 		}
 
 		@Override
 		public void visit(final MultiplicationExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterMultiplication(expression);
 		}
 
 		@Override
 		public void visit(final EvaluableVariable variable) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(variable);
 			ModifyingEvaluableExpressionVisitor.this.afterVariable(variable);
 		}
 
 		@Override
 		public void visit(final ComparisonExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterComparison(expression);
 		}
 
 		@Override
 		public void visit(final ConstantExpression constant) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(constant);
 			ModifyingEvaluableExpressionVisitor.this.afterConstant(constant);
 		}
 
 		@Override
 		public void visit(final DivisionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterDivision(expression);
 		}
 
 		@Override
 		public void visit(final ExponentationExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterExponentation(expression);
 		}
 
 		@Override
 		public void visit(final ExponentialFunctionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterExponentialFunction(expression);
 		}
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterIfThenElse(expression);
 		}
 
 		@Override
 		public void visit(final LogarithmExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final NaturalLogarithmExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterNaturalLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final SineExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterSine(expression);
 		}
 
 		@Override
 		public void visit(final SubtractionExpression expression) {
+			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterSubstraction(expression);
 		}
 	}

@@ -97,6 +97,7 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 	private void atExpressionPrivate(final EvaluableExpression expression) {
 		this.depth++;
 		this.count++;
+		this.atExpression(expression);
 	}
 
 	/**
@@ -107,6 +108,7 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 	 */
 	private void afterExpressionPrivate(final EvaluableExpression expression) {
 		this.depth--;
+		this.afterExpression(expression);
 	}
 
 	/**

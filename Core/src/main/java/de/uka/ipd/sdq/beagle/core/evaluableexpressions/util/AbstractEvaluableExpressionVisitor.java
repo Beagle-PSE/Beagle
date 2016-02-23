@@ -26,7 +26,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
  *
  * @author Joshua Gleitze
  */
-public class AbstractEvaluableExpressionVisitor implements EvaluableExpressionVisitor {
+public abstract class AbstractEvaluableExpressionVisitor implements EvaluableExpressionVisitor {
 
 	/**
 	 * Called for any expression the implementor did not write {@code visit} (or called

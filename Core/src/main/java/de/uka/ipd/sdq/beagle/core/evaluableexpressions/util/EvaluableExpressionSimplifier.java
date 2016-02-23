@@ -22,17 +22,13 @@ import java.util.List;
  *
  * @author Joshua Gleitze
  */
-public class EvaluableExpressionSimplifier extends ModifyingEvaluableExpressionVisitor {
-
-	/*
-	 * This outer visitor recursively walks the tree. In the after hooks, the matching
-	 * simplifier for the current exrpession is invoked. We thus simlify bottom up.
-	 */
+public class EvaluableExpressionSimplifier {
 
 	/**
-	 * Handles simplifying of an {@link AdditionExpression}.
+	 * The instance that will do the actual work.
 	 */
-	private final AdditionSimplifier additionSimplifier = new AdditionSimplifier();
+	private final ActualSimplifier sipmlifier = new ActualSimplifier();
+
 
 	/**
 	 * Simplifies {@code expression}.
@@ -43,12 +39,30 @@ public class EvaluableExpressionSimplifier extends ModifyingEvaluableExpressionV
 	 */
 	public EvaluableExpression simplify(final EvaluableExpression expression) {
 		Validate.notNull("The expression passed to simplify was null!");
-		return this.modifyRecursively(expression);
+		return this.sipmlifier.modifyRecursively(expression);
 	}
 
-	@Override
-	protected void afterAddition(final AdditionExpression expression) {
-		this.additionSimplifier.simplify(expression);
+	/*
+	 * This outer visitor recursively walks the tree. In the after hooks, the matching
+	 * simplifier for the current exrpession is invoked. We thus simlify bottom up.
+	 */
+	/**
+	 * The class actually performing the simplification. Realised as private inner class
+	 * to hide the visitor interface.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private class ActualSimplifier extends ModifyingEvaluableExpressionVisitor {
+
+		/**
+		 * Handles simplifying of an {@link AdditionExpression}.
+		 */
+		private final AdditionSimplifier additionSimplifier = new AdditionSimplifier();
+
+		@Override
+		protected void afterAddition(final AdditionExpression expression) {
+			this.additionSimplifier.simplify(expression);
+		}
 	}
 
 	/**
@@ -146,7 +160,7 @@ public class EvaluableExpressionSimplifier extends ModifyingEvaluableExpressionV
 						newSum = new SubtractionExpression(newSum, new AdditionExpression(this.negativePart));
 					}
 				}
-				EvaluableExpressionSimplifier.this.replaceCurrentExpressionWith(newSum);
+				EvaluableExpressionSimplifier.this.sipmlifier.replaceCurrentExpressionWith(newSum);
 			}
 		}
 
