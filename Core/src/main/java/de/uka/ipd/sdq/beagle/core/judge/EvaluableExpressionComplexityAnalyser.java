@@ -41,6 +41,12 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	private static final double DEPTH_PENALTY = .3d;
 
 	/**
+	 * If the maximum depth exceeds {@link #DEPTH_PENALTY_THRESHOLD}, the maximum depth to
+	 * the power of this will be added to {@link #humanComprehensibilityComplexitySum}.
+	 */
+	private static final double EXPONENT_PENALTY_MAX_DEPTH = 1.4d;
+
+	/**
 	 * The total computational complexity. The values added up to this sum have been
 	 * determined on a laptop with an Intel® Core™ i7-4720HQ CPU @ 2.60GHz × 8 (8 cores
 	 * with Hyper-Threading; 4 cores physically) processor running Linux
@@ -53,10 +59,19 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	 */
 	private double humanComprehensibilityComplexitySum;
 
+	/**
+	 * The maximum depth of this expression.
+	 */
+	private int maxDepth;
+
 	@Override
 	protected void atExpression(final EvaluableExpression expression) {
 		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
 			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
+		}
+
+		if (this.getTraversalDepth() > this.maxDepth) {
+			this.maxDepth = this.getTraversalDepth();
 		}
 	}
 
@@ -272,6 +287,10 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	 */
 	public void determineComplexity(final EvaluableExpression expression) {
 		this.visitRecursively(expression);
+
+		if (this.maxDepth > DEPTH_PENALTY_THRESHOLD) {
+			this.humanComprehensibilityComplexitySum += Math.pow(this.maxDepth, EXPONENT_PENALTY_MAX_DEPTH);
+		}
 	}
 
 	/**
