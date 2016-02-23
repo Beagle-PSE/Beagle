@@ -1,6 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
