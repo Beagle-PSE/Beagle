@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>LauchConfigurationProvider.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.facade</a> &gt; <span class="el_source">LauchConfigurationProvider.java</span></div><h1>LauchConfigurationProvider.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.facade;
 
-import de.uka.ipd.sdq.beagle.core.EclipseLaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
@@ -33,9 +32,9 @@ public class LauchConfigurationProvider {
 	 * @param javaProject the project under analysis
 	 */
 	public LauchConfigurationProvider(final IJavaProject javaProject) {
-<span class="nc" id="L36">		super();</span>
-<span class="nc" id="L37">		this.javaProject = javaProject;</span>
-<span class="nc" id="L38">	}</span>
+<span class="nc" id="L35">		super();</span>
+<span class="nc" id="L36">		this.javaProject = javaProject;</span>
+<span class="nc" id="L37">	}</span>
 
 	/**
 	 * Gives all launch configurations for the project of this object.
@@ -43,26 +42,26 @@ public class LauchConfigurationProvider {
 	 * @return all launch configurations for the project of this object
 	 */
 	public Set&lt;LaunchConfiguration&gt; getAllSuitableJUnitLaunchConfigurations() {
-<span class="nc" id="L46">		final ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();</span>
-<span class="nc" id="L47">		final ILaunchConfigurationType type = manager.getLaunchConfigurationType(&quot;org.eclipse.jdt.junit.launchconfig&quot;);</span>
-<span class="nc" id="L48">		ILaunchConfiguration[] jUnitLaunchConfigurations = null;</span>
+<span class="nc" id="L45">		final ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();</span>
+<span class="nc" id="L46">		final ILaunchConfigurationType type = manager.getLaunchConfigurationType(&quot;org.eclipse.jdt.junit.launchconfig&quot;);</span>
+<span class="nc" id="L47">		ILaunchConfiguration[] jUnitLaunchConfigurations = null;</span>
 		try {
-<span class="nc" id="L50">			jUnitLaunchConfigurations = manager.getLaunchConfigurations(type);</span>
-<span class="nc" id="L51">		} catch (final CoreException exception) {</span>
-<span class="nc" id="L52">			FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(exception));</span>
-<span class="nc" id="L53">		}</span>
-<span class="nc" id="L54">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = new HashSet&lt;&gt;();</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">		for (final ILaunchConfiguration launchConfiguration : jUnitLaunchConfigurations) {</span>
+<span class="nc" id="L49">			jUnitLaunchConfigurations = manager.getLaunchConfigurations(type);</span>
+<span class="nc" id="L50">		} catch (final CoreException exception) {</span>
+<span class="nc" id="L51">			FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(exception));</span>
+<span class="nc" id="L52">		}</span>
+<span class="nc" id="L53">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">		for (final ILaunchConfiguration launchConfiguration : jUnitLaunchConfigurations) {</span>
 			try {
-<span class="nc" id="L57">				if (launchConfiguration.getAttribute(&quot;org.eclipse.jdt.launching.PROJECT_ATTR&quot;, &quot;&quot;)</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">					.equals(this.javaProject.getProject().getName())) {</span>
-<span class="nc" id="L59">					launchConfigurations.add(new EclipseLaunchConfiguration(launchConfiguration, this.javaProject));</span>
+<span class="nc" id="L56">				if (launchConfiguration.getAttribute(&quot;org.eclipse.jdt.launching.PROJECT_ATTR&quot;, &quot;&quot;)</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">					.equals(this.javaProject.getProject().getName())) {</span>
+<span class="nc" id="L58">					launchConfigurations.add(new EclipseLaunchConfiguration(launchConfiguration, this.javaProject));</span>
 				}
-<span class="nc" id="L61">			} catch (final CoreException exception) {</span>
-<span class="nc" id="L62">				FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(exception));</span>
-<span class="nc" id="L63">			}</span>
+<span class="nc" id="L60">			} catch (final CoreException exception) {</span>
+<span class="nc" id="L61">				FailureHandler.getHandler(this.getClass()).handle(new FailureReport&lt;&gt;().cause(exception));</span>
+<span class="nc" id="L62">			}</span>
 		}
-<span class="nc" id="L65">		return launchConfigurations;</span>
+<span class="nc" id="L64">		return launchConfigurations;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
