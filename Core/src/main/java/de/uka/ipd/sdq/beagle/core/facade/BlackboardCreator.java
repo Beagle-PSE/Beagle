@@ -1,5 +1,11 @@
-package de.uka.ipd.sdq.beagle.core;
+package de.uka.ipd.sdq.beagle.core.facade;
 
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;

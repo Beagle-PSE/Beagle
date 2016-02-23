@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
