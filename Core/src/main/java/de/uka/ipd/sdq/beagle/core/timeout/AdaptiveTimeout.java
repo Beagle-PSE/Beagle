@@ -65,11 +65,16 @@ public class AdaptiveTimeout extends Timeout {
 
 		final long predictedValue = (long) regressionLine.getValueFor(RANGE);
 
+		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;
+
+		final boolean returnValue = (currentTime - this.timeOfPreviousCall) > maximallyTolerableTime;
+
 		// Prepare everything for the next call to this method.
 		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
+		this.timeOfPreviousCall = currentTime;
 		this.numberOfPreviousCalls++;
 
-		return false;
+		return returnValue;
 	}
 
 	/**
@@ -120,7 +125,7 @@ public class AdaptiveTimeout extends Timeout {
 		 *
 		 * @param data The data to determine the regression line for.
 		 */
-		public RegressionLine(final long[] data) {
+		RegressionLine(final long[] data) {
 			this.data = data.clone();
 			this.initialised = false;
 		}
