@@ -2,7 +2,6 @@
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
-import de.uka.ipd.sdq.beagle.core.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
@@ -38,7 +37,7 @@ public class BeagleController {
 	/**
 	 * The failure handler for this class.
 	 */
-<span class="nc" id="L41">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(BeagleConfiguration.class);</span>
+<span class="nc" id="L40">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(BeagleConfiguration.class);</span>
 
 	/**
 	 * The analysis controller used for this project.
@@ -63,39 +62,39 @@ public class BeagleController {
 	 *            has permanently. It cannot be changed.
 	 *            {@link BeagleConfiguration#finalise()} must have been called.
 	 */
-<span class="nc" id="L66">	public BeagleController(final BeagleConfiguration beagleConfiguration) {</span>
-<span class="nc" id="L67">		Validate.isTrue(beagleConfiguration.isFinal(),</span>
+<span class="nc" id="L65">	public BeagleController(final BeagleConfiguration beagleConfiguration) {</span>
+<span class="nc" id="L66">		Validate.isTrue(beagleConfiguration.isFinal(),</span>
 			&quot;The BeagleConfiguration must be final for the BeagleController&quot;);
-<span class="nc" id="L69">		this.beagleConfiguration = beagleConfiguration;</span>
-<span class="nc" id="L70">		final BlackboardCreator blackboardFactory = new BlackboardCreator();</span>
-<span class="nc" id="L71">		final SourceCodeFileProvider sourceCodeFileProvider =</span>
-<span class="nc" id="L72">			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());</span>
+<span class="nc" id="L68">		this.beagleConfiguration = beagleConfiguration;</span>
+<span class="nc" id="L69">		final BlackboardCreator blackboardFactory = new BlackboardCreator();</span>
+<span class="nc" id="L70">		final SourceCodeFileProvider sourceCodeFileProvider =</span>
+<span class="nc" id="L71">			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());</span>
 
-<span class="nc bnc" id="L74" title="All 2 branches missed.">		if (beagleConfiguration.getElements() == null) {</span>
-<span class="nc" id="L75">			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)</span>
-<span class="nc" id="L76">				.getBlackboardForAllElements(blackboardFactory);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">		if (beagleConfiguration.getElements() == null) {</span>
+<span class="nc" id="L74">			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)</span>
+<span class="nc" id="L75">				.getBlackboardForAllElements(blackboardFactory);</span>
 		} else {
-<span class="nc" id="L78">			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)</span>
-<span class="nc" id="L79">				.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);</span>
+<span class="nc" id="L77">			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)</span>
+<span class="nc" id="L78">				.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);</span>
 		}
 
-<span class="nc" id="L82">		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());</span>
-<span class="nc" id="L83">		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();</span>
+<span class="nc" id="L81">		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());</span>
+<span class="nc" id="L82">		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();</span>
 
-<span class="nc" id="L85">		final Set&lt;LaunchConfiguration&gt; launchConfigurations =</span>
-<span class="nc" id="L86">			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())</span>
-<span class="nc" id="L87">				.getAllSuitableJUnitLaunchConfigurations();</span>
-<span class="nc" id="L88">		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
+<span class="nc" id="L84">		final Set&lt;LaunchConfiguration&gt; launchConfigurations =</span>
+<span class="nc" id="L85">			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())</span>
+<span class="nc" id="L86">				.getAllSuitableJUnitLaunchConfigurations();</span>
+<span class="nc" id="L87">		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 		
-<span class="nc" id="L91">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
-<span class="nc" id="L92">		this.blackboard = blackboardFactory.createBlackboard();</span>
-<span class="nc" id="L93">		this.analysisController = new AnalysisController(this.blackboard,</span>
-<span class="nc" id="L94">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
-<span class="nc" id="L95">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
+<span class="nc" id="L90">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
+<span class="nc" id="L91">		this.blackboard = blackboardFactory.createBlackboard();</span>
+<span class="nc" id="L92">		this.analysisController = new AnalysisController(this.blackboard,</span>
+<span class="nc" id="L93">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
+<span class="nc" id="L94">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
 			new HashSet&lt;&gt;(
-<span class="nc" id="L97">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
-<span class="nc" id="L98">	}</span>
+<span class="nc" id="L96">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
+<span class="nc" id="L97">	}</span>
 
 	/**
 	 * Starts the analysis. This method can only be used once per {@link BeagleController}
@@ -103,9 +102,9 @@ public class BeagleController {
 	 *
 	 */
 	public void startAnalysis() {
-<span class="nc" id="L106">		this.analysisController.performAnalysis();</span>
-<span class="nc" id="L107">		new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
-<span class="nc" id="L108">	}</span>
+<span class="nc" id="L105">		this.analysisController.performAnalysis();</span>
+<span class="nc" id="L106">		new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
+<span class="nc" id="L107">	}</span>
 
 	/**
 	 * Reads the default charset of an {@link IJavaProject}.
@@ -115,12 +114,12 @@ public class BeagleController {
 	 */
 	private Charset readCharset(final IJavaProject javaProject) {
 		try {
-<span class="nc" id="L118">			return Charset.forName(javaProject.getProject().getDefaultCharset());</span>
-<span class="nc" id="L119">		} catch (final CoreException coreException) {</span>
-<span class="nc" id="L120">			final FailureReport&lt;Object&gt; failure = new FailureReport&lt;&gt;().cause(coreException)</span>
-<span class="nc" id="L121">				.continueWith(Charset::defaultCharset)</span>
-<span class="nc" id="L122">				.retryWith(() -&gt; this.readCharset(javaProject));</span>
-<span class="nc" id="L123">			return (Charset) FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L117">			return Charset.forName(javaProject.getProject().getDefaultCharset());</span>
+<span class="nc" id="L118">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L119">			final FailureReport&lt;Object&gt; failure = new FailureReport&lt;&gt;().cause(coreException)</span>
+<span class="nc" id="L120">				.continueWith(Charset::defaultCharset)</span>
+<span class="nc" id="L121">				.retryWith(() -&gt; this.readCharset(javaProject));</span>
+<span class="nc" id="L122">			return (Charset) FAILURE_HANDLER.handle(failure);</span>
 		}
 	}
 
@@ -131,7 +130,7 @@ public class BeagleController {
 	 */
 	public void pauseAnalysis() {
 
-<span class="nc" id="L134">	}</span>
+<span class="nc" id="L133">	}</span>
 
 	/**
 	 * Continues the analysis if it is paused. If it's running, calls to this method are
@@ -140,7 +139,7 @@ public class BeagleController {
 	 */
 	public void continueAnalysis() {
 
-<span class="nc" id="L143">	}</span>
+<span class="nc" id="L142">	}</span>
 
 	/**
 	 * Aborts the analysis. If it already is aborted, calls to this method are ignored.
@@ -150,7 +149,7 @@ public class BeagleController {
 	 */
 	public void abortAnalysis() {
 
-<span class="nc" id="L153">	}</span>
+<span class="nc" id="L152">	}</span>
 
 	/**
 	 * Converts {@linkplain Entity Entities} to {@linkplain String Strings}.
@@ -159,11 +158,11 @@ public class BeagleController {
 	 * @return The ids of the {@code entities}.
 	 */
 	private List&lt;String&gt; entitysToStrings(final List&lt;Entity&gt; entities) {
-<span class="nc" id="L162">		final List&lt;String&gt; strings = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L163" title="All 2 branches missed.">		for (final Entity entity : entities) {</span>
-<span class="nc" id="L164">			strings.add(entity.getId());</span>
-<span class="nc" id="L165">		}</span>
-<span class="nc" id="L166">		return strings;</span>
+<span class="nc" id="L161">		final List&lt;String&gt; strings = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">		for (final Entity entity : entities) {</span>
+<span class="nc" id="L163">			strings.add(entity.getId());</span>
+<span class="nc" id="L164">		}</span>
+<span class="nc" id="L165">		return strings;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
