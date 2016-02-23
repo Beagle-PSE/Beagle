@@ -50,7 +50,7 @@ You’ll obviously first need to install LyX and LaTeX.
     * On Ubuntu: 
          * copy the unzipped folder’s _contents_ to `/usr/share/texmf/tex/latex/sdqthesis`. For example: 
          ```
-         sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis`)
+         sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis
          ```
          * run `sudo texhash`
       
@@ -60,8 +60,22 @@ You’ll obviously first need to install LyX and LaTeX.
       
     * You may remove the files `thesis.tex` and `thesis.bib` as well as the subfolder `sections`.
     
+  * Download the [KIT LaTeX templates](https://owncloud.joshuagleitze.de/index.php/s/SXkKlV7v6vWTWaN/download) and install them to your LaTeX distribution.
+    * unzip the zip file’s inner zip files.
     
-  * Install the LyX layout file from `Documentation/Dependencies/sqthesis.layout`.
+    * On Ubuntu: 
+      * copy the contents of `KITbase/tex/latex/KIT` to `/usr/share/texmf/tex/latex/KITBase` and the contents of `KITbeamer/tex/latex/KIT` to `/usr/share/texmf/tex/latex/KITBeamer`. For example: 
+      ```
+      sudo cp -r KITbase/tex/latex/KIT /usr/share/texmf/tex/latex/KITBase
+      sudo cp -r KITbeamer/tex/latex/KIT /usr/share/texmf/tex/latex/KITBeamer
+      ```
+      * run `sudo texhash`
+    
+    * On Windows (with MiKTeX):
+      * copy the contents of `KITbase/tex/latex/KIT` and `KITbeamer/tex/latex/KIT` to  `C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\KIT`. 
+      * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
+  
+  * Install the LyX layout files `Documentation/Dependencies/sqthesis.layout` and `Documentation/Dependencies/KIT-Beamer.layout`.
       * copy the file to your personal layout folder (Ubuntu: `~/.lyx/layouts`, Windows: `C:\Users\[User]\AppData\Roaming\LyX2.1\layouts`
       * Open LyX and run `Tools -> Reconfigure`
       * Restart LyX to use the template
@@ -80,13 +94,18 @@ A (small!) subset of the required LaTeX packages are:
   * Enumitem (`enumitem`)
   * Break citations (`breakcites`)
   * xindy (`xindy`)
+  * Arial (`uarial`)
   
-If you care for the full list, look it up yourself in `sdqthesis.cls`.
+If you care for the full list, look it up yourself in `sdqthesis.cls`, and the KIT template `.sty` files.
 
 ##### Ubuntu
-All required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-extra`, `xindy`, `texlive-bibtex-extra` and `texlive-lang-german` debian packages (you'll likely have most of them installed already):
+Most required packages can be installed by installing the`texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-fonts-extra`, `xindy`, `texlive-bibtex-extra` and `texlive-lang-german` debian packages. However, `uarial` is not open source and must thus be downloaded and installed in an extra step. Run these commands:
 ```
 sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german texlive-bibtex-extra xindy
+wget https://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+sudo texlua install-getnonfreefonts
+sudo getnonfreefonts-sys arial-urw
+rm intall-getnonfreefonts
 ```
 
 ##### Windows
