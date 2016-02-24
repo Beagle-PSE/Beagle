@@ -4,6 +4,7 @@ import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import org.apache.commons.lang3.Validate;
+import org.junit.rules.Timeout;
 
 import java.io.Serializable;
 import java.nio.charset.Charset;
@@ -24,10 +25,9 @@ public class ProjectInformation implements Serializable {
 	private static final long serialVersionUID = 2451089669559562551L;
 
 	/**
-	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
-	 * seconds]
+	 * The timeout to be used.
 	 */
-	private final int timeout;
+	private final Timeout timeout;
 
 	/**
 	 * The provider of the source files to be analysed.
@@ -76,7 +76,7 @@ public class ProjectInformation implements Serializable {
 	 *            software. Must not be {@code null}, must not contain {@code null}, must
 	 *            not be empty.
 	 */
-	public ProjectInformation(final int timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
+	public ProjectInformation(final Timeout timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
 		final Charset charset, final Set<LaunchConfiguration> launchConfigurations) {
 		Validate.notNull(fileProvider);
 		Validate.notNull(buildPath);
@@ -127,7 +127,7 @@ public class ProjectInformation implements Serializable {
 	 *
 	 * @return The timeout that will be used by Beagle.
 	 */
-	public int getTimeout() {
+	public Timeout getTimeout() {
 		return this.timeout;
 	}
 
