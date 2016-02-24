@@ -9,6 +9,7 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 
@@ -218,11 +219,12 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 *
 	 * @param blackboard The {@link Blackboard}.
 	 *
-	 * @return {@code true} if and only if the time passed is greater than
-	 *         {@code MAX_TIME_PASSED}.
+	 * @return {@code true} if and only if the timeout is reached.
 	 */
 	private boolean timePassedTooHigh(final Blackboard blackboard) {
+		final Timeout timeout = blackboard.getProjectInformation().getTimeout();
 
+		return timeout.isReached();
 	}
 
 	/**
