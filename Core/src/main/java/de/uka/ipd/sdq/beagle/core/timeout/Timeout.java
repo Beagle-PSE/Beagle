@@ -18,7 +18,7 @@ public abstract class Timeout {
 	 *
 	 * @return {@code true} if the timeout is reached; {@code false} otherwise.
 	 */
-	abstract boolean isReached();
+	public abstract boolean isReached();
 
 	/**
 	 * Initialises the timeout object. Sets the starting time to the current time.
