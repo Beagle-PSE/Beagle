@@ -129,7 +129,7 @@
     </module>
     <module name="TypeName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-ZΑ-Ω][a-zα-ωA-ZΑ-Ω0-9]{7,}$|^Main$"/>
+      <property name="format" value="^[A-ZΑ-Ω][a-zα-ωA-ZΑ-Ω0-9]{6,}$|^Main$"/>
     </module>
     <module name="AbbreviationAsWordInName">
       <property name="severity" value="warning"/>
