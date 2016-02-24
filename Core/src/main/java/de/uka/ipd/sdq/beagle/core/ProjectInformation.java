@@ -2,9 +2,9 @@ package de.uka.ipd.sdq.beagle.core;
 
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
-import org.junit.rules.Timeout;
 
 import java.io.Serializable;
 import java.nio.charset.Charset;
@@ -16,6 +16,7 @@ import java.util.Set;
  * immutable.
  *
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class ProjectInformation implements Serializable {
 
