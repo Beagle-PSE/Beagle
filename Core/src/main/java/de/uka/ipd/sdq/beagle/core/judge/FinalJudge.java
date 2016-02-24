@@ -100,7 +100,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		boolean willReturnTrue = false;
 
 		// Determine the criteria which aren't CPU-intensive first.
-		if (this.timePassedTooHigh()) {
+		if (this.timePassedTooHigh(blackboard)) {
 			// We are now destined to return {@code true}.
 			willReturnTrue = true;
 		}
@@ -216,12 +216,13 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	/**
 	 * Determines whether the amount of time passed is too high.
 	 *
+	 * @param blackboard The {@link Blackboard}.
+	 *
 	 * @return {@code true} if and only if the time passed is greater than
 	 *         {@code MAX_TIME_PASSED}.
 	 */
-	private boolean timePassedTooHigh() {
-		final long currentTime = System.currentTimeMillis();
-		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
+	private boolean timePassedTooHigh(final Blackboard blackboard) {
+
 	}
 
 	/**
