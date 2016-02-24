@@ -50,20 +50,33 @@
                 <ul> 
                     <li> <p>On Ubuntu:</p> 
                         <ul> 
-                            <li>copy the unzipped folder’s <em>contents</em> to <code>/usr/share/texmf/tex/latex/sdqthesis</code>. For example: <code> sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis`) </code></li> 
+                            <li> <p>copy the unzipped folder’s <em>contents</em> to <code>/usr/share/texmf/tex/latex/sdqthesis</code>. For example: </p> <pre><code>sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis
+</code></pre></li> 
                             <li>run <code>sudo texhash</code></li> 
                         </ul> </li> 
                     <li> <p>On Windows (with MiKTeX):</p> 
                         <ul> 
-                            <li>copy the unzipped folder’s <em>contents</em> to <code>C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\sdqthesis</code>.</li> 
+                            <li>copy the unzipped folder’s <em>contents</em> to your local texmf folder. If you don’t have one yet, create one (for example <code>C:\Users\[User]\texmf</code>) and <a href="http://docs.miktex.org/manual/localadditions.html">add it under <code>Roots</code> in the MiKTeX settings</a>. Given <code>[texmf]</code> is your local texmf folder, the contents must be copied into <code>[texmf]\tex\latex\sdqthesis</code>.</li> 
                             <li>Launch “MiKTeX Settings” and hit “Refresh FNDB”</li> 
                         </ul> </li> 
                     <li> <p>You may remove the files <code>thesis.tex</code> and <code>thesis.bib</code> as well as the subfolder <code>sections</code>.</p></li> 
                 </ul> </li> 
-            <li> <p>Install the LyX layout file from <code>Documentation/Dependencies/sqthesis.layout</code>.</p> 
+            <li> <p>Download the <a href="https://owncloud.joshuagleitze.de/index.php/s/SXkKlV7v6vWTWaN/download">KIT LaTeX templates</a> and install them to your LaTeX distribution.</p> 
                 <ul> 
-                    <li>copy the file to your personal layout folder (Ubuntu: <code>~/.lyx/layouts</code>, Windows: <code>C:\Users\[User]\AppData\Roaming\LyX2.1\layouts</code></li> 
-                    <li>Open LyX and run <code>Tools -&gt; Reconfigure</code></li> 
+                    <li> <p>unzip the zip file’s inner zip files.</p></li> 
+                    <li> <p>On Ubuntu: </p></li> 
+                    <li> <p>copy the contents of <code>KITbase/tex/latex/KIT</code> to <code>/usr/share/texmf/tex/latex/KITBase</code> and the contents of <code>KITbeamer/tex/latex/KIT</code> to <code>/usr/share/texmf/tex/latex/KITBeamer</code>. For example: </p> <pre><code>sudo cp -r KITbase/tex/latex/KIT /usr/share/texmf/tex/latex/KITBase
+sudo cp -r KITbeamer/tex/latex/KIT /usr/share/texmf/tex/latex/KITBeamer
+</code></pre></li> 
+                    <li>run <code>sudo texhash</code></li> 
+                    <li> <p>On Windows (with MiKTeX):</p></li> 
+                    <li>copy the contents of <code>KITbase/tex/latex/KIT</code> and <code>KITbeamer/tex/latex/KIT</code> to <code>[texmf]\tex\latex\misc\KIT</code> where <code>[texmf]</code> is your local texmf folder, as explained above.</li> 
+                    <li>Launch “MiKTeX Settings” and hit “Refresh FNDB”</li> 
+                </ul> </li> 
+            <li> <p>Install the LyX layout files <code>Documentation/Dependencies/sqthesis.layout</code> and <code>Documentation/Dependencies/KIT-Beamer.layout</code>.</p> 
+                <ul> 
+                    <li>copy the file to your personal layout folder (Ubuntu: <code>~/.lyx/layouts</code>, Windows: <code>C:\Users\[User]\AppData\Roaming\LyX2.1\layouts</code>)</li> 
+                    <li>Open LyX and run “Tools -&gt; Reconfigure”</li> 
                     <li>Restart LyX to use the template</li> 
                 </ul> </li> 
         </ul> 
@@ -79,14 +92,19 @@
             <li>Enumitem (<code>enumitem</code>)</li> 
             <li>Break citations (<code>breakcites</code>)</li> 
             <li>xindy (<code>xindy</code>)</li> 
+            <li>Arial (<code>uarial</code>)</li> 
         </ul> 
-        <p>If you care for the full list, look it up yourself in <code>sdqthesis.cls</code>.</p> 
+        <p>If you care for the full list, look it up yourself in <code>sdqthesis.cls</code>, and the KIT template <code>.sty</code> files.</p> 
         <h5>Ubuntu</h5> 
-        <p>All required packages can be installed by installing the<code>texlive-latex-base</code>, <code>texlive-latex-recommended</code>, <code>texlive-latex-extra</code>, <code>texlive-fonts-extra</code>, <code>xindy</code>, <code>texlive-bibtex-extra</code> and <code>texlive-lang-german</code> debian packages (you’ll likely have most of them installed already):</p> 
+        <p>Most required packages can be installed by installing the<code>texlive-latex-base</code>, <code>texlive-latex-recommended</code>, <code>texlive-latex-extra</code>, <code>texlive-fonts-extra</code>, <code>xindy</code>, <code>texlive-bibtex-extra</code> and <code>texlive-lang-german</code> debian packages. However, <code>uarial</code> is not open source and must thus be downloaded and installed in an extra step. Run these commands:</p> 
         <pre><code>sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-german texlive-bibtex-extra xindy
+wget https://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+sudo texlua install-getnonfreefonts
+sudo getnonfreefonts-sys arial-urw
+rm install-getnonfreefonts
 </code></pre> 
         <h5>Windows</h5> 
-        <p>On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically. However, you need to install Perl: <a href="http://www.activestate.com/activeperl/downloads">ActivePerl</a>. Make sure the checkbox “Add Perl to PATH”, which appeares during the installation process, is checked.</p> 
+        <p>On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically. However, you need to install Perl: <a href="http://www.activestate.com/activeperl/downloads">ActivePerl</a>. Make sure the checkbox “Add Perl to PATH”, which appears during the installation process, is checked.</p> 
         <h3>Install UMLet</h3> 
         <ul> 
             <li>Install the <a href="http://www.umlet.com/changes.htm">UMLet standalone</a>. Extract the zip file and move it to <code>C:\Program Files (x86)\Umlet\Umlet.exe</code> (Windows) or <code>/opt/Umlet/</code> (Linux). (If you want to put it somewhere else, you have to adapt <code>UmletRenderTask.goovy</code> in the Documentation project’s <code>buildSrc</code> project.) UMLet is required to build the documentation.</li> 
