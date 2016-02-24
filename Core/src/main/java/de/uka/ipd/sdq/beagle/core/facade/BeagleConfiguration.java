@@ -1,5 +1,10 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
+import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
+
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.IJavaProject;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -27,23 +32,30 @@ import java.util.List;
 public class BeagleConfiguration {
 
 	/**
-	 * Numeric value for "adaptive timeout".
+	 * Adaptive timeout.
 	 *
 	 * @see #getTimeout()
 	 */
-	public static final int ADAPTIVE_TIMEOUT = -2;
+	public static final AdaptiveTimeout ADAPTIVE_TIMEOUT = new AdaptiveTimeout();
 
 	/**
-	 * Numeric value for "no timeout".
+	 * No timeout at all.
 	 *
 	 * @see #getTimeout()
 	 */
-	public static final int NO_TIMEOUT = -1;
+	public static final NoTimeout NO_TIMEOUT = new NoTimeout();
+
+	/**
+	 * A constant timeout.
+	 *
+	 * @see #getTimeout()
+	 */
+	public static final ConstantTimeout CONSTANT_TIMEOUT = new ConstantTimeout(0);
 
 	/**
 	 * The default setting for the {@linkplain #getTimeout() timeout}.
 	 */
-	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
+	public static final Timeout DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
 	/**
 	 * All elements to measure or {@code null} to indicate that everything in
@@ -57,10 +69,9 @@ public class BeagleConfiguration {
 	private File repositoryFile;
 
 	/**
-	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
-	 * seconds]
+	 * The timeout to be used.
 	 */
-	private int timeout;
+	private Timeout timeout;
 
 	/**
 	 * The {@link IJavaProject} to analyse.
@@ -159,7 +170,7 @@ public class BeagleConfiguration {
 	 *
 	 * @return The timeout that will be used by Beagle.
 	 */
-	public int getTimeout() {
+	public Timeout getTimeout() {
 		return this.timeout;
 	}
 
@@ -184,7 +195,7 @@ public class BeagleConfiguration {
 	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
 	 *             state.
 	 */
-	public void setTimeout(final int timeout) {
+	public void setTimeout(final Timeout timeout) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
 		this.timeout = timeout;
