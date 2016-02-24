@@ -55,7 +55,8 @@ You’ll obviously first need to install LyX and LaTeX.
          * run `sudo texhash`
       
     * On Windows (with MiKTeX):
-        * copy the unzipped folder’s _contents_ to `C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\sdqthesis`.
+        * copy the unzipped folder’s _contents_ to your local texmf folder. If you don’t have one yet, create one (for example `C:\Users\[User]\texmf`) and [add it under `Roots` in the MiKTeX settings](http://docs.miktex.org/manual/localadditions.html).
+          Given `[texmf]` is your local texmf folder, the contents must be copied into `[texmf]\tex\latex\sdqthesis`.
         * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
       
     * You may remove the files `thesis.tex` and `thesis.bib` as well as the subfolder `sections`.
@@ -72,7 +73,7 @@ You’ll obviously first need to install LyX and LaTeX.
       * run `sudo texhash`
     
     * On Windows (with MiKTeX):
-      * copy the contents of `KITbase/tex/latex/KIT` and `KITbeamer/tex/latex/KIT` to  `C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\KIT`. 
+      * copy the contents of `KITbase/tex/latex/KIT` and `KITbeamer/tex/latex/KIT` to `[texmf]\tex\latex\misc\KIT` where `[texmf]` is your local texmf folder, as explained above. 
       * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
   
   * Install the LyX layout files `Documentation/Dependencies/sqthesis.layout` and `Documentation/Dependencies/KIT-Beamer.layout`.
