@@ -49,9 +49,9 @@ You’ll obviously first need to install LyX and LaTeX.
   * Download the [SDQ thesis template](https://sdqweb.ipd.kit.edu/wiki/File:Ausarbeitungs-Vorlage_SDQ_2014.zip) and install it according to your LaTeX distribution.
     * On Ubuntu: 
          * copy the unzipped folder’s _contents_ to `/usr/share/texmf/tex/latex/sdqthesis`. For example: 
-         ```
-         sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis
-         ```
+```
+sudo cp -r Ausarbeitungs-Vorlage_SDQ_2014 /usr/share/texmf/tex/latex/sdqthesis
+```
          * run `sudo texhash`
       
     * On Windows (with MiKTeX):
@@ -66,10 +66,10 @@ You’ll obviously first need to install LyX and LaTeX.
     
     * On Ubuntu: 
       * copy the contents of `KITbase/tex/latex/KIT` to `/usr/share/texmf/tex/latex/KITBase` and the contents of `KITbeamer/tex/latex/KIT` to `/usr/share/texmf/tex/latex/KITBeamer`. For example: 
-      ```
-      sudo cp -r KITbase/tex/latex/KIT /usr/share/texmf/tex/latex/KITBase
-      sudo cp -r KITbeamer/tex/latex/KIT /usr/share/texmf/tex/latex/KITBeamer
-      ```
+```
+sudo cp -r KITbase/tex/latex/KIT /usr/share/texmf/tex/latex/KITBase
+sudo cp -r KITbeamer/tex/latex/KIT /usr/share/texmf/tex/latex/KITBeamer
+```
       * run `sudo texhash`
     
     * On Windows (with MiKTeX):
@@ -77,8 +77,8 @@ You’ll obviously first need to install LyX and LaTeX.
       * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
   
   * Install the LyX layout files `Documentation/Dependencies/sqthesis.layout` and `Documentation/Dependencies/KIT-Beamer.layout`.
-      * copy the file to your personal layout folder (Ubuntu: `~/.lyx/layouts`, Windows: `C:\Users\[User]\AppData\Roaming\LyX2.1\layouts`
-      * Open LyX and run `Tools -> Reconfigure`
+      * copy the file to your personal layout folder (Ubuntu: `~/.lyx/layouts`, Windows: `C:\Users\[User]\AppData\Roaming\LyX2.1\layouts`)
+      * Open LyX and run "Tools -> Reconfigure"
       * Restart LyX to use the template
 	  
 	
@@ -110,7 +110,7 @@ rm install-getnonfreefonts
 ```
 
 ##### Windows
-On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically. However, you need to install Perl: [ActivePerl](http://www.activestate.com/activeperl/downloads). Make sure the checkbox "Add Perl to PATH", which appeares during the installation process, is checked.
+On Windows, you’ll likely use MiKTeX, which will install automatically all required packages automatically. However, you need to install Perl: [ActivePerl](http://www.activestate.com/activeperl/downloads). Make sure the checkbox "Add Perl to PATH", which appears during the installation process, is checked.
 
 
 ### Install UMLet
