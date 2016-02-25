@@ -102,13 +102,13 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 
 	/**
 	 * Called when leaving any {@link EvaluableExpression}. Will be called after its inner
-	 * expressions were visited and before it specific {@code after*} hook will be called.
+	 * expressions were visited and after the specific {@code after*} hook will was
+	 * called.
 	 *
 	 * @param expression The momentary visited expression.
 	 */
 	private void afterExpressionPrivate(final EvaluableExpression expression) {
 		this.depth--;
-		this.afterExpression(expression);
 	}
 
 	/**
@@ -195,8 +195,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				innerExpressions.next().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterAddition(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -217,8 +218,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				innerExpressions.next().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterMultiplication(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 
 		}
 
@@ -236,8 +238,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 
 			// no inner expressions to visit
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(variable);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(variable);
 			RecursiveEvaluableExpressionVisitor.this.afterVariable(variable);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(variable);
 		}
 
 		/*
@@ -259,8 +262,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getGreater().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterComparison(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -277,8 +281,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 
 			// no inner expressions to visit
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(constant);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(constant);
 			RecursiveEvaluableExpressionVisitor.this.afterConstant(constant);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(constant);
 		}
 
 		/*
@@ -300,8 +305,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getDivisor().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterDivision(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -323,8 +329,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getExponent().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterExponentation(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -344,8 +351,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getExponent().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterExponentialFunction(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -370,8 +378,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getElseStatement().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterIfThenElse(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -393,8 +402,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getAntilogarithm().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterLogarithm(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -414,8 +424,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getAntilogarithm().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterNaturalLogarithm(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -434,8 +445,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getArgument().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterSine(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 
 		/*
@@ -457,8 +469,9 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 				expression.getSubtrahend().receive(this);
 			}
 
-			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterSubstraction(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 	}
 
