@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.stringContainsInOrder;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
@@ -51,10 +50,10 @@ public class RecursiveEvaluableExpressionVisitorTest {
 						new NaturalLogarithmExpression(new SineExpression(ConstantExpression.forValue(1))),
 						new ExponentialFunctionExpression(new EvaluableVariable("g"))))));
 
-		final RecursiveEvaluableExpressionVisitor visitor = new TestRecursiveEvaluableExpressionVisitor();
+		final TestRecursiveEvaluableExpressionVisitor visitor = new TestRecursiveEvaluableExpressionVisitor();
 		visitor.visitRecursively(expression);
-
-		// getVisitedCount
+		assertThat(visitor.getCounterAt(), is(22));
+		assertThat(visitor.getCounterAfter(), is(22));
 	}
 
 	/**
@@ -63,6 +62,38 @@ public class RecursiveEvaluableExpressionVisitorTest {
 	 * @author Annika Berger
 	 */
 	private class TestRecursiveEvaluableExpressionVisitor extends RecursiveEvaluableExpressionVisitor {
+
+		/**
+		 * Counter used to assert that every expression is visited.
+		 */
+		private int counterAt;
+
+		/**
+		 * Counter used to assert that every expression is visited.
+		 */
+		private int counterAfter;
+
+		/**
+		 * Counter which is increase for every
+		 * {@link RecursiveEvaluableExpressionVisitor#atExpression(EvaluableExpression)}
+		 * call.
+		 *
+		 * @return number of visited Expressions.
+		 */
+		public int getCounterAt() {
+			return this.counterAt;
+		}
+
+		/**
+		 * Counter which is increase for every
+		 * {@link RecursiveEvaluableExpressionVisitor#afterExpression(EvaluableExpression)}
+		 * call.
+		 *
+		 * @return number of visited Expressions.
+		 */
+		public int getCounterAfter() {
+			return this.counterAfter;
+		}
 
 		/*
 		 * (non-Javadoc)
@@ -73,6 +104,11 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		@Override
 		protected void atOther(final EvaluableExpression expression) {
 			fail("This method should not be called as there is no AdditionExpression in this expression.");
+		}
+
+		@Override
+		protected void atExpression(final EvaluableExpression expression) {
+			this.counterAt++;
 		}
 
 		/*
@@ -179,7 +215,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 				assertThat("Wrong Count", this.getVisitedCount(), is(20));
 
 			} else {
-				fail(String.format("There must be no constant with value %s in the visited expression", expression.getValue()));
+				fail(String.format("There must be no constant with value %s in the visited expression",
+					expression.getValue()));
 			}
 		}
 
@@ -197,19 +234,20 @@ public class RecursiveEvaluableExpressionVisitorTest {
 					assertThat("Wrong Depth", this.getTraversalDepth(), is(1));
 					assertThat("Wrong Count", this.getVisitedCount(), is(2));
 					break;
-					
+
 				case "4.32":
 					assertThat("Wrong Depth", this.getTraversalDepth(), is(4));
 					assertThat("Wrong Count", this.getVisitedCount(), is(7));
 					break;
-					
+
 				case "-1.0":
 					assertThat("Wrong Depth", this.getTraversalDepth(), is(2));
 					assertThat("Wrong Count", this.getVisitedCount(), is(12));
 					break;
 
 				default:
-					fail(String.format("There must be no division with %s as dividend in the visited expression", dividend));
+					fail(String.format("There must be no division with %s as dividend in the visited expression",
+						dividend));
 			}
 		}
 
@@ -292,14 +330,15 @@ public class RecursiveEvaluableExpressionVisitorTest {
 					assertThat("Wrong Depth", this.getTraversalDepth(), is(5));
 					assertThat("Wrong Count", this.getVisitedCount(), is(19));
 					break;
-					
+
 				case "(4.32 / c)":
 					assertThat("Wrong Depth", this.getTraversalDepth(), is(3));
 					assertThat("Wrong Count", this.getVisitedCount(), is(6));
 					break;
 
 				default:
-					fail(String.format("There must be no sine with %s as argument in the visited expression", argument));
+					fail(
+						String.format("There must be no sine with %s as argument in the visited expression", argument));
 			}
 		}
 
@@ -324,8 +363,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterOther(final EvaluableExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterOther(expression);
+			fail("This method should not be called.");
 		}
 
 		/*
@@ -337,8 +375,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterExpression(final EvaluableExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterExpression(expression);
+			this.counterAfter++;
 		}
 
 		/*
@@ -350,8 +387,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterAddition(final AdditionExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterAddition(expression);
+			fail("This method should not be called as there is no Addition Expression.");
 		}
 
 		/*
@@ -363,8 +399,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterMultiplication(final MultiplicationExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterMultiplication(expression);
+			fail("This method should not be called as there is no multiplication expression.");
 		}
 
 		/*
@@ -376,8 +411,30 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterVariable(final EvaluableVariable expression) {
-			// TODO Auto-generated method stub
-			super.afterVariable(expression);
+			switch (expression.getName()) {
+				case "a":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(2));
+					assertThat("Wrong Count", this.getVisitedCount(), is(3));
+					break;
+
+				case "c":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(5));
+					assertThat("Wrong Count", this.getVisitedCount(), is(9));
+					break;
+
+				case "z":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(5));
+					assertThat("Wrong Count", this.getVisitedCount(), is(16));
+					break;
+
+				case "g":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(5));
+					assertThat("Wrong Count", this.getVisitedCount(), is(22));
+					break;
+
+				default:
+					fail(String.format("There must be no variable %s in the visited expression", expression.getName()));
+			}
 		}
 
 		/*
@@ -389,8 +446,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterComparison(final ComparisonExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterComparison(expression);
+			assertThat("Wrong Depth", this.getTraversalDepth(), is(4));
+			assertThat("Wrong Count", this.getVisitedCount(), is(17));
 		}
 
 		/*
@@ -402,8 +459,35 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterConstant(final ConstantExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterConstant(expression);
+			final double value = expression.getValue();
+			if (value == 2) {
+				assertThat("Wrong Depth", this.getTraversalDepth(), is(3));
+				assertThat("Wrong Count", this.getVisitedCount(), is(5));
+
+			} else if (value == 4.32) {
+				assertThat("Wrong Depth", this.getTraversalDepth(), is(5));
+				assertThat("Wrong Count", this.getVisitedCount(), is(8));
+
+			} else if (value == 393.123) {
+				assertThat("Wrong Depth", this.getTraversalDepth(), is(2));
+				assertThat("Wrong Count", this.getVisitedCount(), is(11));
+
+			} else if (value == -1) {
+				assertThat("Wrong Depth", this.getTraversalDepth(), is(3));
+				assertThat("Wrong Count", this.getVisitedCount(), is(13));
+
+			} else if (value == 0) {
+				assertThat("Wrong Depth", this.getTraversalDepth(), is(5));
+				assertThat("Wrong Count", this.getVisitedCount(), is(17));
+
+			} else if (value == 1) {
+				assertThat("Wrong Depth", this.getTraversalDepth(), is(6));
+				assertThat("Wrong Count", this.getVisitedCount(), is(20));
+
+			} else {
+				fail(String.format("There must be no constant with value %s in the visited expression",
+					expression.getValue()));
+			}
 		}
 
 		/*
@@ -415,8 +499,27 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterDivision(final DivisionExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterDivision(expression);
+			final String dividend = expression.getDividend().toString();
+			switch (dividend) {
+				case "a":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(1));
+					assertThat("Wrong Count", this.getVisitedCount(), is(9));
+					break;
+
+				case "4.32":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(4));
+					assertThat("Wrong Count", this.getVisitedCount(), is(9));
+					break;
+
+				case "-1.0":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(2));
+					assertThat("Wrong Count", this.getVisitedCount(), is(22));
+					break;
+
+				default:
+					fail(String.format("There must be no division with %s as dividend in the visited expression",
+						dividend));
+			}
 		}
 
 		/*
@@ -428,8 +531,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterExponentation(final ExponentationExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterExponentation(expression);
+			assertThat("Wrong Depth", this.getTraversalDepth(), is(1));
+			assertThat("Wrong Count", this.getVisitedCount(), is(22));
 		}
 
 		/*
@@ -441,8 +544,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterExponentialFunction(final ExponentialFunctionExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterExponentialFunction(expression);
+			assertThat("Wrong Depth", this.getTraversalDepth(), is(4));
+			assertThat("Wrong Count", this.getVisitedCount(), is(22));
 		}
 
 		/*
@@ -454,8 +557,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterIfThenElse(final IfThenElseExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterIfThenElse(expression);
+			assertThat("Wrong Depth", this.getTraversalDepth(), is(3));
+			assertThat("Wrong Count", this.getVisitedCount(), is(22));
 		}
 
 		/*
@@ -467,8 +570,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterLogarithm(final LogarithmExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterLogarithm(expression);
+			assertThat("Wrong Depth", this.getTraversalDepth(), is(2));
+			assertThat("Wrong Count", this.getVisitedCount(), is(9));
 		}
 
 		/*
@@ -480,8 +583,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterNaturalLogarithm(final NaturalLogarithmExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterNaturalLogarithm(expression);
+			assertThat("Wrong Depth", this.getTraversalDepth(), is(4));
+			assertThat("Wrong Count", this.getVisitedCount(), is(20));
 		}
 
 		/*
@@ -492,8 +595,22 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterSine(final SineExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterSine(expression);
+			final String argument = expression.getArgument().toString();
+			switch (argument) {
+				case "1.0":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(5));
+					assertThat("Wrong Count", this.getVisitedCount(), is(20));
+					break;
+
+				case "(4.32 / c)":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(3));
+					assertThat("Wrong Count", this.getVisitedCount(), is(9));
+					break;
+
+				default:
+					fail(
+						String.format("There must be no sine with %s as argument in the visited expression", argument));
+			}
 		}
 
 		/*
@@ -505,8 +622,8 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void afterSubstraction(final SubtractionExpression expression) {
-			// TODO Auto-generated method stub
-			super.afterSubstraction(expression);
+			assertThat("Wrong Depth", this.getTraversalDepth(), is(0));
+			assertThat("Wrong Count", this.getVisitedCount(), is(22));
 		}
 
 	}
