@@ -46,11 +46,39 @@ public class AdaptiveTimeout extends Timeout {
 	 */
 	private long[] previousTellingTimes = new long[RANGE];
 
+	/**
+	 * The current regression line.
+	 */
+
+	private RegressionLine regressionLine;
+
 	@Override
 	public void init() {
 		super.init();
 
 		this.timeOfPreviousCall = System.currentTimeMillis();
+	}
+
+	@Override
+	public void reportOneStepProgress() {
+		if (this.reachedTimeoutInThePast) {
+			return;
+		}
+
+		final long currentTime = System.currentTimeMillis();
+		this.regressionLine = new RegressionLine(this.previousTellingTimes);
+		this.regressionLine.init();
+
+		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);
+		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;
+		final boolean reachedTimeout = (currentTime - this.timeOfPreviousCall) > maximallyTolerableTime;
+
+		this.reachedTimeoutInThePast = reachedTimeout;
+
+		// Prepare everything for the next call to this method.
+		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
+		this.timeOfPreviousCall = currentTime;
+		this.numberOfPreviousCalls++;
 	}
 
 	@Override
@@ -60,19 +88,12 @@ public class AdaptiveTimeout extends Timeout {
 		}
 
 		final long currentTime = System.currentTimeMillis();
-		final RegressionLine regressionLine = new RegressionLine(this.previousTellingTimes);
-		regressionLine.init();
-
-		final long predictedValue = (long) regressionLine.getValueFor(RANGE);
-
+		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);
 		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;
 
 		final boolean returnValue = (currentTime - this.timeOfPreviousCall) > maximallyTolerableTime;
 
-		// Prepare everything for the next call to this method.
-		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
-		this.timeOfPreviousCall = currentTime;
-		this.numberOfPreviousCalls++;
+		this.reachedTimeoutInThePast = returnValue;
 
 		return returnValue;
 	}
@@ -199,4 +220,5 @@ public class AdaptiveTimeout extends Timeout {
 		}
 
 	}
+
 }
