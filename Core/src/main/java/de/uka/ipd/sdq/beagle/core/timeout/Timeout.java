@@ -21,6 +21,11 @@ public abstract class Timeout {
 	public abstract boolean isReached();
 
 	/**
+	 * Call this method after each step of the work the timeout is about.
+	 */
+	public abstract void reportOneStepProgress();
+
+	/**
 	 * Initialises the timeout object. Sets the starting time to the current time.
 	 */
 	void init() {
