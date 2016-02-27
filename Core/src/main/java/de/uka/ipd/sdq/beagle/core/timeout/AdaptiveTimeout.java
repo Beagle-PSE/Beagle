@@ -162,10 +162,7 @@ public class AdaptiveTimeout extends Timeout {
 			for (int i = 0; i < this.data.length; i++) {
 				final long time = this.data[i];
 
-				// Because I need to do math.
-				// CHECKSTYLE:OFF
 				sum1 += (i - this.data.length / 2d) * (time - averageTime);
-				// CHECKSTYLE:ON
 			}
 
 			/*
