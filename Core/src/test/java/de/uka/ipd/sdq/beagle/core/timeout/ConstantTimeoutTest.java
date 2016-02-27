@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.BDDMockito.given;
 
 import org.junit.Test;
 
@@ -19,16 +20,14 @@ public class ConstantTimeoutTest {
 	@Test
 	public void isReached() {
 		final int timeout = 100;
-		final int longerThanTimeout = 200;
 		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
+		constTimeout.init();
 		assertThat(constTimeout.isReached(), is(equalTo(false)));
 
 		final ConstantTimeout constTimeout1 = new ConstantTimeout(timeout);
+		given(System.currentTimeMillis()).willReturn(486487484886446L);
 		constTimeout1.init();
-		try {
-			constTimeout1.wait(longerThanTimeout);
-		} catch (final InterruptedException e) {
-		}
+		given(System.currentTimeMillis()).willReturn(486487484886446L + timeout);
 		assertThat(constTimeout1.isReached(), is(equalTo(true)));
 	}
 
