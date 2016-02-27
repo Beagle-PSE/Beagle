@@ -12,4 +12,9 @@ public class NoTimeout extends Timeout {
 		return false;
 	}
 
+	@Override
+	public void reportOneStepProgress() {
+
+	}
+
 }

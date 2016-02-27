@@ -35,4 +35,8 @@ public class ConstantTimeout extends Timeout {
 		return this.timeout;
 	}
 
+	@Override
+	public void reportOneStepProgress() {
+	}
+
 }
