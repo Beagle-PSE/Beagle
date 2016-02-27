@@ -27,15 +27,6 @@ public class ConstantTimeout extends Timeout {
 	}
 
 	/**
-	 * Sets the timeout to {@code timeout}.
-	 *
-	 * @param timeout The timeout in milliseconds.
-	 */
-	public void setTimeout(final long timeout) {
-		this.timeout = timeout;
-	}
-
-	/**
 	 * Returns the timeout in milliseconds.
 	 *
 	 * @return The timeout in milliseconds.
