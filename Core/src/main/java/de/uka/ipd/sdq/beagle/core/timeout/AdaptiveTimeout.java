@@ -186,28 +186,6 @@ public class AdaptiveTimeout extends Timeout {
 		}
 
 		/**
-		 * Returns the offset of the regression line.
-		 *
-		 * @return The offset.
-		 */
-		public double getOffset() {
-			Validate.validState(this.initialised);
-
-			return this.offset;
-		}
-
-		/**
-		 * Returns the slope of the regression line.
-		 *
-		 * @return The slope.
-		 */
-		public double getSlope() {
-			Validate.validState(this.initialised);
-
-			return this.slope;
-		}
-
-		/**
 		 * Returns the function value for {@code xValue}.
 		 *
 		 * @param xValue The value on the x-axis.
