@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.timeout;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * Provides a constant timeout which cannot be changed.
  *
@@ -23,6 +25,8 @@ public class ConstantTimeout extends Timeout {
 
 	@Override
 	public boolean isReached() {
+		Validate.isTrue(this.initilised);
+
 		return this.startingTime - System.currentTimeMillis() > this.timeout;
 	}
 
@@ -32,11 +36,14 @@ public class ConstantTimeout extends Timeout {
 	 * @return The timeout in milliseconds.
 	 */
 	public long getTimeout() {
+		Validate.isTrue(this.initilised);
+
 		return this.timeout;
 	}
 
 	@Override
 	public void reportOneStepProgress() {
+		Validate.isTrue(this.initilised);
 	}
 
 }

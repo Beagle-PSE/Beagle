@@ -9,6 +9,11 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 public abstract class Timeout {
 
 	/**
+	 * Indicates whether this object has been initialised.
+	 */
+	protected boolean initilised;
+
+	/**
 	 * The millisecond timestamp when this Timeout object has been initialised.
 	 */
 	protected long startingTime;
@@ -30,5 +35,6 @@ public abstract class Timeout {
 	 */
 	void init() {
 		this.startingTime = System.currentTimeMillis();
+		this.initilised = true;
 	}
 }

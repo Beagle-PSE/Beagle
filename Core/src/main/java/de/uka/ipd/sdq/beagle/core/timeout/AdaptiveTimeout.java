@@ -54,6 +54,8 @@ public class AdaptiveTimeout extends Timeout {
 
 	@Override
 	public void init() {
+		Validate.isTrue(!this.initilised);
+
 		super.init();
 
 		this.timeOfPreviousCall = System.currentTimeMillis();
@@ -61,6 +63,8 @@ public class AdaptiveTimeout extends Timeout {
 
 	@Override
 	public void reportOneStepProgress() {
+		Validate.isTrue(this.initilised);
+
 		if (this.reachedTimeoutInThePast) {
 			return;
 		}
@@ -83,6 +87,8 @@ public class AdaptiveTimeout extends Timeout {
 
 	@Override
 	public boolean isReached() {
+		Validate.isTrue(this.initilised);
+
 		if (this.reachedTimeoutInThePast) {
 			return true;
 		}
