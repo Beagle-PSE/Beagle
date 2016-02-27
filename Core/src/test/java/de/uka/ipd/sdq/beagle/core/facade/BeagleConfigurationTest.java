@@ -8,6 +8,7 @@ import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.TestFileFactory;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.eclipse.jdt.core.IJavaProject;
 import org.junit.Before;
@@ -119,7 +120,7 @@ public class BeagleConfigurationTest {
 	 */
 	@Test
 	public void timeoutTest() {
-		final int testTimeout = 42;
+		final Timeout testTimeout = mock(Timeout.class);
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
