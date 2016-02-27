@@ -1,7 +1,10 @@
 package de.uka.ipd.sdq.beagle.core.testutil.factories;
 
+import static org.mockito.Mockito.mock;
+
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +31,8 @@ public class ProjectInformationFactory implements SourceCodeFileProvider {
 	 *         about.
 	 */
 	public ProjectInformation getOne() {
-		return new ProjectInformation(0, this, "", Charset.defaultCharset(),
+		final Timeout timeout = mock(Timeout.class);
+		return new ProjectInformation(timeout, this, "", Charset.defaultCharset(),
 			new LaunchConfigurationFactory().getAllAsSet());
 	}
 
