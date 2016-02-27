@@ -174,10 +174,7 @@ public class AdaptiveTimeout extends Timeout {
 			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));
 
 			this.slope = sum1 / sum2;
-			// Because I need to do math.
-			// CHECKSTYLE:OFF
 			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);
-			// CHECKSTYLE:ON
 
 			this.initialised = true;
 		}
