@@ -120,7 +120,7 @@ public class AdaptiveTimeout extends Timeout {
 	}
 
 	/**
-	 * A regression line.
+	 * A regression line with data points of equal distance on the x-axis.
 	 *
 	 * @author Christoph Michelbach
 	 */
