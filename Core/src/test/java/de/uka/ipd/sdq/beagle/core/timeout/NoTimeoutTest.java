@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -26,9 +27,15 @@ public class NoTimeoutTest {
 		assertThat(timeout.isReached(), is(equals(false)));
 
 		final ThrowingMethod method = () -> {
-			new NoTimeout();
+			final NoTimeout timeout1 = new NoTimeout();
+			timeout1.init();
+			timeout1.init();
 		};
-		assertThat("init() must be called once.", method, throwsException(IllegalStateException.class));
+		assertThat("timeout must not be allowed to call init() more than one time.", method,
+			throwsException(IllegalStateException.class));
+
+		final NoTimeout timeout2 = new NoTimeout();
+		assertThat(timeout2.initialised, is(equalTo(false)));
 	}
 
 	/**
@@ -42,9 +49,15 @@ public class NoTimeoutTest {
 		timeout.reportOneStepProgress();
 
 		final ThrowingMethod method = () -> {
-			new NoTimeout();
+			final NoTimeout timeout1 = new NoTimeout();
+			timeout1.init();
+			timeout1.init();
 		};
-		assertThat("init() must be called once.", method, throwsException(IllegalStateException.class));
+		assertThat("timeout must not be allowed to call init() more than one time.", method,
+			throwsException(IllegalStateException.class));
+
+		final NoTimeout timeout2 = new NoTimeout();
+		assertThat(timeout2.initialised, is(equalTo(false)));
 
 	}
 
