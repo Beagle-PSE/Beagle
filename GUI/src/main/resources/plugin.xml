@@ -145,7 +145,7 @@
 	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
 	    <launchConfigurationTabGroup
 	        type="de.uka.ipd.sdq.beagle.launch"
-	        class="org.eclipse.jdt.internal.debug.ui.launcher.JavaAppletTabGroup"
+	        class="de.uka.ipd.sdq.beagle.gui.BeagleLaunchConfigurationTabGroup"
 	        id="de.uka.ipd.sdq.beagle.launch.launchConfigurationTabGroup">
 	    </launchConfigurationTabGroup>
 	</extension>
