@@ -1,0 +1,87 @@
+/**
+ * Deploys projects that are used to test Beagle
+ */
+ 
+buildscript {
+	repositories {
+		jcenter()
+	}
+	
+	dependencies {
+    	classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1.0'
+	}
+}
+
+apply plugin: 'de.undercouch.download'
+
+def tmp = file("$buildDir/tmp/test-resources")
+
+tmp.mkdirs()
+
+task downloadCocome {
+	def destination = file("$projectDir/src/test/resources/CoCoME")
+	
+	group "Build Setup"
+	description "Deploys CoCoME to be used for testing Beagle"
+	outputs.dir destination
+	
+	doLast {
+		download {
+			src ([
+				'http://www.cocome.org/downloads/implementation/cocome-impl.zip',
+				'http://www.cocome.org/downloads/implementation/cocome-systests.zip',
+				'http://www.cocome.org/downloads/implementation/cocome-testdriver.zip'
+			])
+			onlyIfNewer true
+			quiet true
+			dest tmp
+		}
+		
+		copy {
+			from zipTree("$tmp/cocome-impl.zip"), zipTree("$tmp/cocome-systests.zip"), zipTree("$tmp/cocome-testdriver.zip")
+			
+			// shift all files "one folder up"
+			eachFile { FileCopyDetails fcp ->
+            	def pathsegments = fcp.relativeSourcePath.segments[1..-1] as String[]
+              	fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
+            }
+            
+			into destination
+		}
+	}
+}
+
+task downloadAppSensor {
+	def destination = file("$projectDir/src/test/resources/AppSensor")
+	
+	group "Build Setup"
+	description "Deploys AppSensor to be used for testing Beagle"
+	outputs.dir destination
+	
+	doLast {
+		rootProject.download {
+			src 'https://github.com/jtmelton/appsensor/archive/master.zip'
+			onlyIfNewer true
+			quiet true
+			dest tmp
+		}
+		
+		copy {
+			from zipTree("$tmp/master.zip")
+			
+			// shift all files "one folder up"
+			eachFile { FileCopyDetails fcp ->
+            	def pathsegments = fcp.relativeSourcePath.segments[1..-1] as String[]
+              	fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
+            }
+            
+			into destination
+		}
+	}
+}
+
+configure(javaSubprojects) {
+	test.dependsOn rootProject.tasks.downloadCocome
+	test.dependsOn rootProject.tasks.downloadAppSensor
+}
+	
