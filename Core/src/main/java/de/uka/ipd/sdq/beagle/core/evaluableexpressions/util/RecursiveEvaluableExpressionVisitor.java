@@ -28,11 +28,11 @@ import java.util.Iterator;
  * {@link #visitRecursively(EvaluableExpression)} and call the according {@code at} hook.
  * Afterwards, it will recursively visit all inner expressions and then call the
  * {@code after} hook. It thus realises a depth-first traversal of the tree formed by each
- * expression. If {@link #stopTraversal()} is called, the traversal will no longer visit
- * inner expressions. Instead, it will go “up” the tree again, whilst calling the
- * {@code after} hooks, until it reached the initial expression and then terminate. Given
- * that no exception is thrown, the traversal of one expression tree that only contains
- * pairwise different inner expressions has these properties:
+ * expression. If {@link #stopTraversingInnerExpressions()} is called, the traversal will
+ * no longer visit inner expressions. Instead, it will go “up” the tree again, whilst
+ * calling the {@code after} hooks, until it reached the initial expression and then
+ * terminate. Given that no exception is thrown, the traversal of one expression tree that
+ * only contains pairwise different inner expressions has these properties:
  *
  * <ul>
  *
@@ -117,23 +117,26 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 	 * already visited expressions will be called until the root is reached. This setting
 	 * persists only until the next call of {@link #visitRecursively(EvaluableExpression)}
 	 * .
+	 *
+	 * @see #startTraversingInnerExpressions()
 	 */
-	protected void stopTraversal() {
+	protected void stopTraversingInnerExpressions() {
 		this.recursiveWalker.doTraverse = false;
 	}
 
 	/**
-	 * Continues visiting of inner expressions after it has been stopped through
-	 * {@link #stopTraversal()}. This returns to the visitor’s default behaviour.
+	 * Restarts visiting of inner expressions after it has been stopped through
+	 * {@link #stopTraversingInnerExpressions()}. This returns to the visitor’s default
+	 * behaviour.
 	 */
-	protected void continueTraversal() {
+	protected void startTraversingInnerExpressions() {
 		this.recursiveWalker.doTraverse = true;
 	}
 
 	/**
 	 * Queries whether the visitor will visit inner expressions. Will return {@code true}
-	 * unless {@link #stopTraversal()} is called. The value will be reset when calling
-	 * {@link #visitRecursively(EvaluableExpression)}.
+	 * unless {@link #stopTraversingInnerExpressions()} is called. The value will be reset
+	 * when calling {@link #visitRecursively(EvaluableExpression)}.
 	 *
 	 * @return Whether inner expressions will be examined for the momentary tree.
 	 */
