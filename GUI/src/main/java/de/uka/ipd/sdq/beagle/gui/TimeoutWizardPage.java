@@ -62,6 +62,11 @@ public class TimeoutWizardPage extends WizardPage {
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
 
 	/**
+	 * Extensive inquiries yielded that a second comprises this many milliseconds.
+	 */
+	private static final int SECOND_MILLISECOND_RATIO = 1000;
+
+	/**
 	 * The {@link BeagleConfiguration} this {@link TimeoutWizardPage} uses.
 	 */
 	private final BeagleConfiguration beagleConfiguration;
@@ -85,12 +90,6 @@ public class TimeoutWizardPage extends WizardPage {
 	 * A sub-container.
 	 */
 	private Composite upperContainer;
-
-	/**
-	 * Applies the default setting for the timeout. [-2 → adaptive timeout] [-1 → no
-	 * timeout] [≥ 0 → timeout in seconds]
-	 */
-	private Timeout timeout;
 
 	/**
 	 * The {@link SelectionListener} which will be called when the radio box indicating
@@ -130,7 +129,6 @@ public class TimeoutWizardPage extends WizardPage {
 		this.setDescription(DESCRIPTION);
 		this.setControl(this.textboxTimeoutSeconds);
 		this.beagleConfiguration = beagleConfiguration;
-		this.timeout = this.beagleConfiguration.getTimeout();
 	}
 
 	@Override
@@ -162,8 +160,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = BeagleConfiguration.ADAPTIVE_TIMEOUT;
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new AdaptiveTimeout());
 			}
 
 			@Override
@@ -182,13 +179,10 @@ public class TimeoutWizardPage extends WizardPage {
 					TimeoutWizardPage.this.setPageComplete(false);
 				} else {
 					TimeoutWizardPage.this.setPageComplete(true);
-					final ConstantTimeout constantTimeout = BeagleConfiguration.CONSTANT_TIMEOUT;
-					constantTimeout
-						.setTimeout(Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText()));
-					TimeoutWizardPage.this.timeout = constantTimeout;
-
-					TimeoutWizardPage.this.beagleConfiguration.setTimeout(BeagleConfiguration.ADAPTIVE_TIMEOUT);
-					TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+					final ConstantTimeout constantTimeout =
+						new ConstantTimeout(Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText())
+							* SECOND_MILLISECOND_RATIO);
+					TimeoutWizardPage.this.beagleConfiguration.setTimeout(constantTimeout);
 				}
 			}
 
@@ -216,8 +210,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = BeagleConfiguration.NO_TIMEOUT;
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new NoTimeout());
 			}
 
 			@Override
@@ -309,6 +302,6 @@ public class TimeoutWizardPage extends WizardPage {
 	 * @return the timeout chosen by the user.
 	 */
 	public Timeout getTimeout() {
-		return this.timeout;
+		return this.beagleConfiguration.getTimeout();
 	}
 }

@@ -1,8 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
-import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
-import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
@@ -30,32 +28,6 @@ import java.util.List;
  * @author Roman Langrehr
  */
 public class BeagleConfiguration {
-
-	/**
-	 * Adaptive timeout.
-	 *
-	 * @see #getTimeout()
-	 */
-	public static final AdaptiveTimeout ADAPTIVE_TIMEOUT = new AdaptiveTimeout();
-
-	/**
-	 * No timeout at all.
-	 *
-	 * @see #getTimeout()
-	 */
-	public static final NoTimeout NO_TIMEOUT = new NoTimeout();
-
-	/**
-	 * A constant timeout.
-	 *
-	 * @see #getTimeout()
-	 */
-	public static final ConstantTimeout CONSTANT_TIMEOUT = new ConstantTimeout(0);
-
-	/**
-	 * The default setting for the {@linkplain #getTimeout() timeout}.
-	 */
-	public static final Timeout DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
 
 	/**
 	 * All elements to measure or {@code null} to indicate that everything in
@@ -105,7 +77,7 @@ public class BeagleConfiguration {
 		}
 
 		this.repositoryFile = repositoryFile;
-		this.timeout = DEFAULT_TIMEOUT;
+		this.timeout = new AdaptiveTimeout();
 		this.javaProject = javaProject;
 	}
 
