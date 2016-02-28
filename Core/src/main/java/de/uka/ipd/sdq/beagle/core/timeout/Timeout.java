@@ -11,7 +11,7 @@ public abstract class Timeout {
 	/**
 	 * Indicates whether this object has been initialised.
 	 */
-	protected boolean initilised;
+	protected boolean initialised;
 
 	/**
 	 * The millisecond timestamp when this Timeout object has been initialised.
@@ -35,6 +35,6 @@ public abstract class Timeout {
 	 */
 	void init() {
 		this.startingTime = System.currentTimeMillis();
-		this.initilised = true;
+		this.initialised = true;
 	}
 }

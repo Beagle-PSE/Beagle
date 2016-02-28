@@ -11,14 +11,14 @@ public class NoTimeout extends Timeout {
 
 	@Override
 	public boolean isReached() {
-		Validate.isTrue(this.initilised);
+		Validate.isTrue(this.initialised);
 
 		return false;
 	}
 
 	@Override
 	public void reportOneStepProgress() {
-		Validate.isTrue(this.initilised);
+		Validate.isTrue(this.initialised);
 	}
 
 }

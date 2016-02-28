@@ -54,7 +54,7 @@ public class AdaptiveTimeout extends Timeout {
 
 	@Override
 	public void init() {
-		Validate.isTrue(!this.initilised);
+		Validate.isTrue(!this.initialised);
 
 		super.init();
 
@@ -63,7 +63,7 @@ public class AdaptiveTimeout extends Timeout {
 
 	@Override
 	public void reportOneStepProgress() {
-		Validate.isTrue(this.initilised);
+		Validate.isTrue(this.initialised);
 
 		if (this.reachedTimeoutInThePast) {
 			return;
@@ -87,7 +87,7 @@ public class AdaptiveTimeout extends Timeout {
 
 	@Override
 	public boolean isReached() {
-		Validate.isTrue(this.initilised);
+		Validate.isTrue(this.initialised);
 
 		if (this.reachedTimeoutInThePast) {
 			return true;

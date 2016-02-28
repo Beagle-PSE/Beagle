@@ -25,7 +25,7 @@ public class ConstantTimeout extends Timeout {
 
 	@Override
 	public boolean isReached() {
-		Validate.isTrue(this.initilised);
+		Validate.isTrue(this.initialised);
 
 		return this.startingTime - System.currentTimeMillis() > this.timeout;
 	}
@@ -36,14 +36,14 @@ public class ConstantTimeout extends Timeout {
 	 * @return The timeout in milliseconds.
 	 */
 	public long getTimeout() {
-		Validate.isTrue(this.initilised);
+		Validate.isTrue(this.initialised);
 
 		return this.timeout;
 	}
 
 	@Override
 	public void reportOneStepProgress() {
-		Validate.isTrue(this.initilised);
+		Validate.isTrue(this.initialised);
 	}
 
 }
