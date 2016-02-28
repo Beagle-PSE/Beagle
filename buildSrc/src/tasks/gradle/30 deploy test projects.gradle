@@ -65,14 +65,14 @@ task downloadAppSensor {
 	
 	doLast {
 		rootProject.download {
-			src 'https://github.com/jtmelton/appsensor/archive/master.zip'
+			src 'https://github.com/jtmelton/appsensor/archive/v2.2.0.zip'
 			onlyIfNewer true
 			quiet true
 			dest tmp
 		}
 		
 		copy {
-			from zipTree("$tmp/master.zip")
+			from zipTree("$tmp/v2.2.0.zip")
 			eachFile shiftUp
 			into destination
 		}
