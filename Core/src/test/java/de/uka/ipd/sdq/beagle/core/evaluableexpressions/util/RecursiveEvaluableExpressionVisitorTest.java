@@ -688,5 +688,4 @@ public class RecursiveEvaluableExpressionVisitorTest {
 
 		}
 	}
-
 }
