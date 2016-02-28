@@ -51,6 +51,7 @@ task downloadCocome {
 		copy {
 			from zipTree("$tmp/cocome-impl.zip"), zipTree("$tmp/cocome-systests.zip"), zipTree("$tmp/cocome-testdriver.zip")
 			eachFile shiftUp
+			includeEmptyDirs false
 			into destination
 		}
 	}
@@ -74,6 +75,7 @@ task downloadAppSensor {
 		copy {
 			from zipTree("$tmp/v2.2.0.zip")
 			eachFile shiftUp
+			includeEmptyDirs false
 			into destination
 		}
 	}
