@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
@@ -31,14 +30,11 @@ import org.junit.Test;
 public class RecursiveEvaluableExpressionVisitorTest {
 
 	/**
-	 * Tests if the {@link RecursiveEvaluableExpressionVisitor} works correctly for one
-	 * specific expression. This is done by implementing a private
-	 * {@link RecursiveEvaluableExpressionVisitor} which has assertions to check the
-	 * result.
+	 * Builds an {@link EvaluableExpression} which can be used in the other test methods.
 	 *
+	 * @return the {@link EvaluableExpression}.
 	 */
-	@Test
-	public void allMethods() {
+	private EvaluableExpression buildExpression() {
 		final EvaluableExpression expression = new SubtractionExpression(
 			new DivisionExpression(new EvaluableVariable("a"),
 				new LogarithmExpression(ConstantExpression.forValue(2),
@@ -50,19 +46,41 @@ public class RecursiveEvaluableExpressionVisitorTest {
 						new ComparisonExpression(new EvaluableVariable("z"), ConstantExpression.forValue(0)),
 						new NaturalLogarithmExpression(new SineExpression(ConstantExpression.forValue(1))),
 						new ExponentialFunctionExpression(new EvaluableVariable("g"))))));
+		return expression;
+	}
+
+	/**
+	 * Tests if the {@link RecursiveEvaluableExpressionVisitor} works correctly for one
+	 * specific expression. This is done by implementing a private
+	 * {@link RecursiveEvaluableExpressionVisitor} which has assertions to check the
+	 * result.
+	 *
+	 */
+	@Test
+	public void allMethods() {
+		final EvaluableExpression expression = this.buildExpression();
 
 		final TestRecursiveEvaluableExpressionVisitor visitor = new TestRecursiveEvaluableExpressionVisitor();
 		visitor.visitRecursively(expression);
 		assertThat(visitor.getCounterAt(), is(22));
 		assertThat(visitor.getCounterAfter(), is(22));
+	}
 
-		assertThat(visitor.willTraverseInnerExpressions(), is(true));
-		visitor.findExpression(ConstantExpression.forValue(2), expression);
-		final int visitedExpressions = visitor.getVisitedCount();
-		assertThat(visitor.willTraverseInnerExpressions(), is(false));
-		visitor.startTraversingInnerExpressions();
-		assertThat(visitor.willTraverseInnerExpressions(), is(true));
-		assertThat(visitor.getVisitedCount(), is(greaterThan(visitedExpressions)));
+	/**
+	 * Tests if {@link RecursiveEvaluableExpressionVisitor#willTraverse()},
+	 * {@link RecursiveEvaluableExpressionVisitor#stopTraversingInnerExpression()} and
+	 * {@link RecursiveEvaluableExpressionVisitor#startTraversingInnerExpressions()} work
+	 * correctly.
+	 */
+	@Test
+	public void traversalTest() {
+		final EvaluableExpression expression = this.buildExpression();
+
+		final TraversalTestRecursiveEvaluableExpressionVisitor traversalTestVisitor =
+			new TraversalTestRecursiveEvaluableExpressionVisitor();
+		traversalTestVisitor.visitRecursively(expression);
+		assertThat(traversalTestVisitor.getVisitedCount(), is(17));
+
 	}
 
 	/**
@@ -636,38 +654,38 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		}
 
 	}
-	
+
 	/**
-	 * Implementation of {@link RecursiveEvaluableExpressionVisitor} used to test the traversal methods in the visitor.
+	 * Implementation of {@link RecursiveEvaluableExpressionVisitor} used to test the
+	 * traversal methods in the visitor.
 	 * 
 	 * @author Annika Berger
 	 */
 	private class TraversalTestRecursiveEvaluableExpressionVisitor extends RecursiveEvaluableExpressionVisitor {
-		
-		/**
-		 * {@link EvaluableExpression} at which traversal should stop.
-		 */
-		private EvaluableExpression searchedExpression;
-		
-		/**
-		 * Method used to find an Expression with the help of this visitor. Traversal stops if expression is found.
-		 *
-		 * @param expression {@link EvaluableExpression} to search for
-		 * @param start {@link EvaluableExpression} which should contain the searched expression
-		 */
-		public void findExpression(final EvaluableExpression expression, final EvaluableExpression start) {
-			this.searchedExpression = expression;
-			this.visitRecursively(start);
-			
-			
-		}
-		
+
 		@Override
-		protected void atExpression(final EvaluableExpression expression) {
-			this.counterAt++;
-			if (expression == this.searchedExpression) {
-				stopTraversal();
+		protected void atLogarithm(final LogarithmExpression expression) {
+			assertThat(willTraverse(), is(true));
+			stopTraversingInnerExpressions();
+			assertThat(willTraverse(), is(false));
+		}
+
+		@Override
+		protected void afterDivision(final DivisionExpression expression) {
+			if (expression.getDividend().toString().equals("a")) {
+				assertThat(willTraverse(), is(false));
+				this.startTraversingInnerExpressions();
+				assertThat(willTraverse(), is(true));
 			}
+		}
+
+		@Override
+		protected void atVariable(final EvaluableVariable expression) {
+			if (expression.getName().equals("c")) {
+				fail("Should not be visited.");
+				assertThat(willTraverse(), is(false));
+			}
+
 		}
 	}
 
