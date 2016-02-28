@@ -56,12 +56,12 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		assertThat(visitor.getCounterAt(), is(22));
 		assertThat(visitor.getCounterAfter(), is(22));
 
-		assertThat(visitor.willTraverse(), is(true));
+		assertThat(visitor.willTraverseInnerExpressions(), is(true));
 		visitor.findExpression(ConstantExpression.forValue(2), expression);
 		final int visitedExpressions = visitor.getVisitedCount();
-		assertThat(visitor.willTraverse(), is(false));
+		assertThat(visitor.willTraverseInnerExpressions(), is(false));
 		visitor.startTraversingInnerExpressions();
-		assertThat(visitor.willTraverse(), is(true));
+		assertThat(visitor.willTraverseInnerExpressions(), is(true));
 		assertThat(visitor.getVisitedCount(), is(greaterThan(visitedExpressions)));
 	}
 

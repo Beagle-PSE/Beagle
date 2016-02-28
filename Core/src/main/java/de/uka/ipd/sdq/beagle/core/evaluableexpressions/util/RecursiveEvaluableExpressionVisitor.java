@@ -140,7 +140,7 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 	 *
 	 * @return Whether inner expressions will be examined for the momentary tree.
 	 */
-	protected boolean willTraverse() {
+	protected boolean willTraverseInnerExpressions() {
 		return this.recursiveWalker.doTraverse;
 	}
 
