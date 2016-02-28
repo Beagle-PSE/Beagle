@@ -1,9 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.timeout;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -38,11 +38,6 @@ public class ConstantTimeoutTest {
 		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
 
-		method = () -> {
-			new ConstantTimeout(valideTimeout);
-		};
-		assertThat("init() must be called once.", method, throwsException(IllegalStateException.class));
-
 	}
 
 	/**
@@ -51,6 +46,7 @@ public class ConstantTimeoutTest {
 	@Test
 	public void isReached() {
 		final int timeout = 100;
+		final int longerThanTimeout = 200;
 
 		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
 		constTimeout.init();
@@ -59,8 +55,20 @@ public class ConstantTimeoutTest {
 		final ConstantTimeout constTimeout1 = new ConstantTimeout(timeout);
 		given(System.currentTimeMillis()).willReturn(486487484886446L);
 		constTimeout1.init();
-		given(System.currentTimeMillis()).willReturn(486487484886446L + timeout);
+		given(System.currentTimeMillis()).willReturn(486487484886446L + longerThanTimeout);
 		assertThat(constTimeout1.isReached(), is(equalTo(true)));
+
+		final ThrowingMethod method = () -> {
+			final ConstantTimeout constTimeout2 = new ConstantTimeout(timeout);
+			constTimeout2.init();
+			constTimeout2.init();
+		};
+		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
+			throwsException(IllegalStateException.class));
+
+		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
+
+		assertThat(constTimeout3.initialised, is(equalTo(false)));
 	}
 
 	/**
@@ -73,6 +81,18 @@ public class ConstantTimeoutTest {
 		constTimeout.init();
 		assertThat(constTimeout.getTimeout(), is((long) timeout));
 
+		final ThrowingMethod method = () -> {
+			final ConstantTimeout constTimeout2 = new ConstantTimeout(timeout);
+			constTimeout2.init();
+			constTimeout2.init();
+		};
+		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
+			throwsException(IllegalStateException.class));
+
+		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
+
+		assertThat(constTimeout3.initialised, is(equalTo(false)));
+
 	}
 
 	/**
@@ -84,6 +104,17 @@ public class ConstantTimeoutTest {
 		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
 		constTimeout.init();
 		constTimeout.reportOneStepProgress();
-	}
 
+		final ThrowingMethod method = () -> {
+			final ConstantTimeout constTimeout2 = new ConstantTimeout(timeout);
+			constTimeout2.init();
+			constTimeout2.init();
+		};
+		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
+			throwsException(IllegalStateException.class));
+
+		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
+
+		assertThat(constTimeout3.initialised, is(equalTo(false)));
+	}
 }
