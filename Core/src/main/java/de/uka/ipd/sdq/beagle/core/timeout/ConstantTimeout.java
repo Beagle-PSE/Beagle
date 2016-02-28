@@ -17,9 +17,11 @@ public class ConstantTimeout extends Timeout {
 	/**
 	 * Constructs a new constant timeout.
 	 *
-	 * @param timeout The timeout in milliseconds.
+	 * @param timeout The timeout in milliseconds. Must not be negative.
 	 */
 	public ConstantTimeout(final int timeout) {
+		Validate.isTrue(timeout >= 0);
+
 		this.timeout = timeout;
 	}
 
@@ -27,7 +29,7 @@ public class ConstantTimeout extends Timeout {
 	public boolean isReached() {
 		Validate.isTrue(this.initialised);
 
-		return this.startingTime - System.currentTimeMillis() > this.timeout;
+		return System.currentTimeMillis() - this.startingTime < this.timeout;
 	}
 
 	/**

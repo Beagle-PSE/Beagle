@@ -1,5 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.timeout;
 
+import org.apache.commons.lang3.Validate;
+
 /**
  * Decides when a timeout is reached. This abstract class has implementing classes which
  * do so depending on different criteria.
@@ -34,6 +36,8 @@ public abstract class Timeout {
 	 * Initialises the timeout object. Sets the starting time to the current time.
 	 */
 	void init() {
+		Validate.validState(!this.initialised);
+
 		this.startingTime = System.currentTimeMillis();
 		this.initialised = true;
 	}
