@@ -33,7 +33,8 @@ public abstract class Timeout {
 	public abstract void reportOneStepProgress();
 
 	/**
-	 * Initialises the timeout object. Sets the starting time to the current time.
+	 * Initialises the timeout object. Sets the starting time to the current time. Must be
+	 * called before any different method is called and must only be called once.
 	 */
 	void init() {
 		Validate.validState(!this.initialised);
