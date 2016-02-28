@@ -73,11 +73,6 @@ public class RecursiveEvaluableExpressionVisitorTest {
 	private class TestRecursiveEvaluableExpressionVisitor extends RecursiveEvaluableExpressionVisitor {
 
 		/**
-		 * {@link EvaluableExpression} at which traversal should stop.
-		 */
-		private EvaluableExpression searchedExpression;
-
-		/**
 		 * Counter used to assert that every expression is visited.
 		 */
 		private int counterAt;
@@ -109,19 +104,6 @@ public class RecursiveEvaluableExpressionVisitorTest {
 			return this.counterAfter;
 		}
 
-		/**
-		 * Method used to find an Expression with the help of this visitor. Traversal
-		 * stops if expression is found.
-		 *
-		 * @param expression {@link EvaluableExpression} to search for
-		 * @param start {@link EvaluableExpression} which should contain the searched
-		 *            expression
-		 */
-		public void findExpression(final EvaluableExpression expression, final EvaluableExpression start) {
-			this.searchedExpression = expression;
-			this.visitRecursively(start);
-		}
-
 		/*
 		 * (non-Javadoc)
 		 *
@@ -136,9 +118,6 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		@Override
 		protected void atExpression(final EvaluableExpression expression) {
 			this.counterAt++;
-			if (expression == this.searchedExpression) {
-				this.stopTraversingInnerExpressions();
-			}
 		}
 
 		/*
@@ -656,6 +635,40 @@ public class RecursiveEvaluableExpressionVisitorTest {
 			assertThat("Wrong Count", this.getVisitedCount(), is(22));
 		}
 
+	}
+	
+	/**
+	 * Implementation of {@link RecursiveEvaluableExpressionVisitor} used to test the traversal methods in the visitor.
+	 * 
+	 * @author Annika Berger
+	 */
+	private class TraversalTestRecursiveEvaluableExpressionVisitor extends RecursiveEvaluableExpressionVisitor {
+		
+		/**
+		 * {@link EvaluableExpression} at which traversal should stop.
+		 */
+		private EvaluableExpression searchedExpression;
+		
+		/**
+		 * Method used to find an Expression with the help of this visitor. Traversal stops if expression is found.
+		 *
+		 * @param expression {@link EvaluableExpression} to search for
+		 * @param start {@link EvaluableExpression} which should contain the searched expression
+		 */
+		public void findExpression(final EvaluableExpression expression, final EvaluableExpression start) {
+			this.searchedExpression = expression;
+			this.visitRecursively(start);
+			
+			
+		}
+		
+		@Override
+		protected void atExpression(final EvaluableExpression expression) {
+			this.counterAt++;
+			if (expression == this.searchedExpression) {
+				stopTraversal();
+			}
+		}
 	}
 
 }
