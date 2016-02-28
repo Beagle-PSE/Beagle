@@ -1,5 +1,7 @@
 /**
- * Deploys projects that are used to test Beagle
+ * Deploys projects that are used to test Beagle.
+ *
+ * @author Joshua Gleitze
  */
  
 buildscript {
@@ -15,8 +17,17 @@ buildscript {
 apply plugin: 'de.undercouch.download'
 
 def tmp = file("$buildDir/tmp/test-resources")
-
 tmp.mkdirs()
+
+/**
+ * Shifts the relative destination path of a FileCopyDetails object one level up (discards the 
+ * top most path segments). Assumes that the path is not at the top most level.
+ */
+def shiftUp =  { FileCopyDetails fcp ->
+	def pathsegments = fcp.relativeSourcePath.segments[1..-1] as String[]
+	fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
+}
+            
 
 task downloadCocome {
 	def destination = file("$projectDir/src/test/resources/CoCoME")
@@ -39,13 +50,7 @@ task downloadCocome {
 		
 		copy {
 			from zipTree("$tmp/cocome-impl.zip"), zipTree("$tmp/cocome-systests.zip"), zipTree("$tmp/cocome-testdriver.zip")
-			
-			// shift all files "one folder up"
-			eachFile { FileCopyDetails fcp ->
-            	def pathsegments = fcp.relativeSourcePath.segments[1..-1] as String[]
-              	fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
-            }
-            
+			eachFile shiftUp
 			into destination
 		}
 	}
@@ -68,13 +73,7 @@ task downloadAppSensor {
 		
 		copy {
 			from zipTree("$tmp/master.zip")
-			
-			// shift all files "one folder up"
-			eachFile { FileCopyDetails fcp ->
-            	def pathsegments = fcp.relativeSourcePath.segments[1..-1] as String[]
-              	fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
-            }
-            
+			eachFile shiftUp
 			into destination
 		}
 	}
