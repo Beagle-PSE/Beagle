@@ -616,7 +616,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		@Override
 		public void visit(final SubtractionExpression expression) {
 			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
-			ModifyingEvaluableExpressionVisitor.this.atSubstraction(expression);
+			ModifyingEvaluableExpressionVisitor.this.atSubtraction(expression);
 		}
 	}
 
@@ -703,7 +703,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		@Override
 		public void visit(final SubtractionExpression expression) {
 			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
-			ModifyingEvaluableExpressionVisitor.this.afterSubstraction(expression);
+			ModifyingEvaluableExpressionVisitor.this.afterSubtraction(expression);
 		}
 	}
 }

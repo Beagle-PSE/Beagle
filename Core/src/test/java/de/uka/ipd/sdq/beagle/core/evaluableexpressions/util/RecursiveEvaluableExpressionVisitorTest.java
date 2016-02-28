@@ -378,7 +378,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 * SubtractionExpression)
 		 */
 		@Override
-		protected void atSubstraction(final SubtractionExpression expression) {
+		protected void atSubtraction(final SubtractionExpression expression) {
 			assertThat("Wrong Depth", this.getTraversalDepth(), is(0));
 			assertThat("Wrong Count", this.getVisitedCount(), is(1));
 		}
@@ -649,7 +649,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 * SubtractionExpression)
 		 */
 		@Override
-		protected void afterSubstraction(final SubtractionExpression expression) {
+		protected void afterSubtraction(final SubtractionExpression expression) {
 			assertThat("Wrong Depth", this.getTraversalDepth(), is(0));
 			assertThat("Wrong Count", this.getVisitedCount(), is(22));
 		}

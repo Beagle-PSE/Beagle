@@ -460,7 +460,7 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 		@Override
 		public final void visit(final SubtractionExpression expression) {
 			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);
-			RecursiveEvaluableExpressionVisitor.this.atSubstraction(expression);
+			RecursiveEvaluableExpressionVisitor.this.atSubtraction(expression);
 
 			if (this.doTraverse) {
 				expression.getMinuend().receive(this);
@@ -470,7 +470,7 @@ public abstract class RecursiveEvaluableExpressionVisitor extends ExpressionTree
 			}
 
 			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);
-			RecursiveEvaluableExpressionVisitor.this.afterSubstraction(expression);
+			RecursiveEvaluableExpressionVisitor.this.afterSubtraction(expression);
 			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);
 		}
 	}

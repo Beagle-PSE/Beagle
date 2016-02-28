@@ -213,7 +213,7 @@ public abstract class ExpressionTreeWalker {
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void atSubstraction(final SubtractionExpression expression) {
+	protected void atSubtraction(final SubtractionExpression expression) {
 		this.atOther(expression);
 	}
 
@@ -353,7 +353,7 @@ public abstract class ExpressionTreeWalker {
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void afterSubstraction(final SubtractionExpression expression) {
+	protected void afterSubtraction(final SubtractionExpression expression) {
 		this.afterOther(expression);
 	}
 
