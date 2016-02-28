@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.fail;
 
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
@@ -54,6 +55,14 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		visitor.visitRecursively(expression);
 		assertThat(visitor.getCounterAt(), is(22));
 		assertThat(visitor.getCounterAfter(), is(22));
+		
+		assertThat(visitor.willTraverse(), is(true));
+		visitor.findExpression(ConstantExpression.forValue(2), expression);
+		final int visitedExpressions = visitor.getVisitedCount();
+		assertThat(visitor.willTraverse(), is(false));
+		visitor.continueTraversal();
+		assertThat(visitor.willTraverse(), is(true));
+		assertThat(visitor.getVisitedCount(), is(greaterThan(visitedExpressions)));
 	}
 
 	/**
@@ -62,6 +71,11 @@ public class RecursiveEvaluableExpressionVisitorTest {
 	 * @author Annika Berger
 	 */
 	private class TestRecursiveEvaluableExpressionVisitor extends RecursiveEvaluableExpressionVisitor {
+		
+		/**
+		 * {@link EvaluableExpression} at which traversal should stop.
+		 */
+		private EvaluableExpression searchedExpression;
 
 		/**
 		 * Counter used to assert that every expression is visited.
@@ -94,6 +108,17 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		public int getCounterAfter() {
 			return this.counterAfter;
 		}
+		
+		/**
+		 * Method used to find an Expression with the help of this visitor. Traversal stops if expression is found.
+		 *
+		 * @param expression {@link EvaluableExpression} to search for
+		 * @param start {@link EvaluableExpression} which should contain the searched expression
+		 */
+		public void findExpression(final EvaluableExpression expression, final EvaluableExpression start) {
+			this.searchedExpression = expression;
+			this.visitRecursively(start);
+		}
 
 		/*
 		 * (non-Javadoc)
@@ -109,6 +134,9 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		@Override
 		protected void atExpression(final EvaluableExpression expression) {
 			this.counterAt++;
+			if (expression == this.searchedExpression) {
+				stopTraversal();
+			}
 		}
 
 		/*
