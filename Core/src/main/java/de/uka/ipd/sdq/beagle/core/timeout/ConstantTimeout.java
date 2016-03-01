@@ -51,7 +51,7 @@ public class ConstantTimeout extends Timeout {
 	}
 
 	/**
-	 * Will be executed once the timeout is reached.
+	 * Calls the callback handlers once the timeout is reached.
 	 */
 	private void notifyOnReachedTimeout() {
 		// Wait until the timeout is up.

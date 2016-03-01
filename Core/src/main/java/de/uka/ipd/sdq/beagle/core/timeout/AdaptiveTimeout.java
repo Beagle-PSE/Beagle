@@ -142,7 +142,7 @@ public class AdaptiveTimeout extends Timeout {
 	}
 
 	/**
-	 * Will be executed once the timeout is reached.
+	 * Calls the callback handlers once the timeout is reached.
 	 */
 	private void notifyOnReachedTimeout() {
 
