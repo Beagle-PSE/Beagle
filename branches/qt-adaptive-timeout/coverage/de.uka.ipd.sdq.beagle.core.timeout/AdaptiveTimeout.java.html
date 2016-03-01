@@ -167,13 +167,12 @@ import java.util.Arrays;
 <span class="nc" id="L167">				}</span>
 				// CHECKSTYLE:ON
 			}
+<span class="nc" id="L170">		}</span>
 
-<span class="nc bnc" id="L171" title="All 2 branches missed.">			for (final Runnable callback : AdaptiveTimeout.this.callbacks) {</span>
-<span class="nc" id="L172">				new Thread(callback).start();</span>
-<span class="nc" id="L173">			}</span>
-
-<span class="nc" id="L175">		}</span>
-<span class="nc" id="L176">	}</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">		for (final Runnable callback : AdaptiveTimeout.this.callbacks) {</span>
+<span class="nc" id="L173">			new Thread(callback).start();</span>
+<span class="nc" id="L174">		}</span>
+<span class="nc" id="L175">	}</span>
 
 	/**
 	 * A regression line with data points of equal distance on the x-axis.
@@ -208,23 +207,23 @@ import java.util.Arrays;
 		 *
 		 * @param data The data to determine the regression line for.
 		 */
-<span class="nc" id="L211">		RegressionLine(final long[] data) {</span>
-<span class="nc" id="L212">			this.data = data.clone();</span>
-<span class="nc" id="L213">			this.initialised = false;</span>
-<span class="nc" id="L214">		}</span>
+<span class="nc" id="L210">		RegressionLine(final long[] data) {</span>
+<span class="nc" id="L211">			this.data = data.clone();</span>
+<span class="nc" id="L212">			this.initialised = false;</span>
+<span class="nc" id="L213">		}</span>
 
 		/**
 		 * Calculates the offset and slope of the regression line.
 		 */
 		public void init() {
 
-<span class="nc" id="L221">			final double averageTime = Arrays.stream(this.data).average().getAsDouble();</span>
+<span class="nc" id="L220">			final double averageTime = Arrays.stream(this.data).average().getAsDouble();</span>
 
-<span class="nc" id="L223">			double sum1 = 0;</span>
-<span class="nc bnc" id="L224" title="All 2 branches missed.">			for (int i = 0; i &lt; this.data.length; i++) {</span>
-<span class="nc" id="L225">				final long time = this.data[i];</span>
+<span class="nc" id="L222">			double sum1 = 0;</span>
+<span class="nc bnc" id="L223" title="All 2 branches missed.">			for (int i = 0; i &lt; this.data.length; i++) {</span>
+<span class="nc" id="L224">				final long time = this.data[i];</span>
 
-<span class="nc" id="L227">				sum1 += (i - this.data.length / 2d) * (time - averageTime);</span>
+<span class="nc" id="L226">				sum1 += (i - this.data.length / 2d) * (time - averageTime);</span>
 			}
 
 			/*
@@ -233,13 +232,13 @@ import java.util.Arrays;
 			 * simplified to this. Go grab a pencil and a peace of paper and try it
 			 * yourself. :)
 			 */
-<span class="nc" id="L236">			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));</span>
+<span class="nc" id="L235">			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));</span>
 
-<span class="nc" id="L238">			this.slope = sum1 / sum2;</span>
-<span class="nc" id="L239">			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);</span>
+<span class="nc" id="L237">			this.slope = sum1 / sum2;</span>
+<span class="nc" id="L238">			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);</span>
 
-<span class="nc" id="L241">			this.initialised = true;</span>
-<span class="nc" id="L242">		}</span>
+<span class="nc" id="L240">			this.initialised = true;</span>
+<span class="nc" id="L241">		}</span>
 
 		/**
 		 * Returns the function value for {@code xValue}.
@@ -248,9 +247,9 @@ import java.util.Arrays;
 		 * @return The function value for {@code xValue}.
 		 */
 		public double getValueFor(final double xValue) {
-<span class="nc" id="L251">			Validate.validState(this.initialised);</span>
+<span class="nc" id="L250">			Validate.validState(this.initialised);</span>
 
-<span class="nc" id="L253">			return this.offset + xValue * this.slope;</span>
+<span class="nc" id="L252">			return this.offset + xValue * this.slope;</span>
 		}
 
 	}
