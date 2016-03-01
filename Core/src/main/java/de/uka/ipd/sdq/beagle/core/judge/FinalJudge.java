@@ -38,12 +38,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	private static final double PERFECT_FITNESS = 0.5E-10d;
 
 	/**
-	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
-	 * the application started so evolution of evaluable expressions will be continued.
-	 */
-	private static final long MAX_TIME_PASSED = 3 * 24 * 3600 * 1000;
-
-	/**
 	 * If more generations than this have less than {@link #SIGNIFICANT_IMPROVEMENT}
 	 * relative improvement to the previously best value, evolution of evaluable
 	 * expressions will be stopped.
