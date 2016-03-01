@@ -44,12 +44,11 @@ public class AdaptiveTimeout extends Timeout {
 	/**
 	 * Contains the telling times of the previous calls to {@link #isReached()}.
 	 */
-	private long[] previousTellingTimes = new long[RANGE];
+	private final long[] previousTellingTimes = new long[RANGE];
 
 	/**
 	 * The current regression line.
 	 */
-
 	private RegressionLine regressionLine;
 
 	@Override
@@ -88,6 +87,10 @@ public class AdaptiveTimeout extends Timeout {
 	@Override
 	public boolean isReached() {
 		Validate.isTrue(this.initialised);
+
+		if (this.numberOfPreviousCalls < RANGE) {
+			return false;
+		}
 
 		if (this.reachedTimeoutInThePast) {
 			return true;
@@ -129,7 +132,7 @@ public class AdaptiveTimeout extends Timeout {
 		/**
 		 * The data to determine the regression line for.
 		 */
-		private long[] data;
+		private final long[] data;
 
 		/**
 		 * Whether the regression line has been initialised since its data has been
