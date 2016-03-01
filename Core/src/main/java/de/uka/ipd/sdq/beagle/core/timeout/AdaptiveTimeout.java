@@ -103,32 +103,39 @@ public class AdaptiveTimeout extends Timeout {
 
 				@Override
 				public void run() {
-					try {
-						// Wait until the timeout is up.
-						while (!AdaptiveTimeout.this.isReached()) {
-							final long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
-								+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime
-								- System.currentTimeMillis();
+					while (true) {
+						try {
+							// Wait until the timeout is up.
+							while (!AdaptiveTimeout.this.isReached()) {
+								final long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
+									+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime
+									- System.currentTimeMillis();
 
-							/**
-							 * This can happen if the necessary time passed between the
-							 * execution of the loop condition and the calculation if
-							 * {@code timeToWait}.
-							 */
-							if (timeToSleep <= 0) {
-								assert AdaptiveTimeout.this.isReached();
-							} else {
-								Thread.sleep(timeToSleep);
+								/**
+								 * This can happen if the necessary time passed between
+								 * the execution of the loop condition and the calculation
+								 * if {@code timeToWait}.
+								 */
+								if (timeToSleep <= 0) {
+									assert AdaptiveTimeout.this.isReached();
+								} else {
+									Thread.sleep(timeToSleep);
+								}
 							}
-						}
 
-						for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
-							new Thread(callback).start();
+							for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
+								new Thread(callback).start();
+							}
+
+							// Don't retry if the try block has been executed
+							// successfully.
+							break;
+						} // CHECKSTYLE:OFF
+						catch (final InterruptedException exception) {
+							// Retry on interrupt.
 						}
-					} // CHECKSTYLE:OFF
-					catch (final InterruptedException exception) {
+						// CHECKSTYLE:ON
 					}
-					// CHECKSTYLE:ON
 
 				}
 			}).start();
