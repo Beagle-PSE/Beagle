@@ -44,12 +44,19 @@ public abstract class Timeout {
 	 * Initialises the timeout object. Sets the starting time to the current time. Must be
 	 * called before any different method is called and must only be called once.
 	 */
-	public void init() {
+	public final void init() {
 		Validate.validState(!this.initialised);
 
 		this.startingTime = System.currentTimeMillis();
 		this.initialised = true;
+
+		this.implementationInit();
 	}
+
+	/**
+	 * For init methots of implemanting classes. Runs after {@link #init()}.
+	 */
+	public abstract void implementationInit();
 
 	/**
 	 * Registers {@code callback} to be run once the timeout is reached.

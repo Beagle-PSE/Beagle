@@ -82,4 +82,9 @@ public class ConstantTimeout extends Timeout {
 		}
 	}
 
+	@Override
+	public void implementationInit() {
+		// Nothing to do.
+	}
+
 }

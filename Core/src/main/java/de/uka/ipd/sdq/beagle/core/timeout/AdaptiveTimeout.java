@@ -64,13 +64,8 @@ public class AdaptiveTimeout extends Timeout {
 	private long currentMaximallyTolerableTime;
 
 	@Override
-	public void init() {
-		Validate.isTrue(!this.initialised);
-
-		super.init();
-
+	public void implementationInit() {
 		this.timeOfPreviousCall = System.currentTimeMillis();
-		this.initialised = true;
 	}
 
 	@Override
