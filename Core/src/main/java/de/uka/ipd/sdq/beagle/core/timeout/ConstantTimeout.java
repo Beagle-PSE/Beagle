@@ -54,35 +54,36 @@ public class ConstantTimeout extends Timeout {
 	 * Will be executed once the timeout is reached.
 	 */
 	private void notifyOnReachedTimeout() {
-		while (true) {
-			try {
-				// Wait until the timeout is up.
-				while (!ConstantTimeout.this.isReached()) {
-					final long timeToSleep =
-						ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout - System.currentTimeMillis();
+		// Wait until the timeout is up.
+		while (!ConstantTimeout.this.isReached()) {
+			final long timeToSleep =
+				ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout - System.currentTimeMillis();
 
-					/**
-					 * This can happen if the necessary time passed between the execution
-					 * of the loop condition and the calculation if {@code timeToWait}.
-					 */
-					if (timeToSleep <= 0) {
-						assert ConstantTimeout.this.isReached();
-					} else {
+			/**
+			 * This can happen if the necessary time passed between the execution of the
+			 * loop condition and the calculation if {@code timeToWait}.
+			 */
+			if (timeToSleep <= 0) {
+				assert ConstantTimeout.this.isReached();
+			} else {
+				while (true) {
+					try {
 						Thread.sleep(timeToSleep);
+
+						// Don't retry if the try block has been executed successfully.
+						break;
+					} // CHECKSTYLE:OFF
+					catch (final InterruptedException exception) {
+						// Retry on interrupt.
 					}
+					// CHECKSTYLE:ON
 				}
-
-				for (final Runnable callback : ConstantTimeout.this.callbacks) {
-					new Thread(callback).start();
-				}
-
-				// Don't retry if the try block has been executed successfully.
-				break;
-			} // CHECKSTYLE:OFF
-			catch (final InterruptedException exception) {
-				// Retry on interrupt.
 			}
-			// CHECKSTYLE:ON
+
+			for (final Runnable callback : ConstantTimeout.this.callbacks) {
+				new Thread(callback).start();
+			}
+
 		}
 	}
 
