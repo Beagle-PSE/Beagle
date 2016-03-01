@@ -137,7 +137,7 @@ public class AnalysisController {
 			}
 
 			if (!this.chooseRandomMeasurementResultAnalyserToContribute()) {
-				this.chooseRandomPropesedExpressionAnalyserToContribute();
+				this.chooseRandomProposedExpressionAnalyserToContribute();
 			}
 		}
 	}
@@ -222,7 +222,7 @@ public class AnalysisController {
 	 * @return {@code true} if the task was executed successfully; {@code false} if there
 	 *         was no {@link ProposedExpressionAnalyser} able to contribute.
 	 */
-	private boolean chooseRandomPropesedExpressionAnalyserToContribute() {
+	private boolean chooseRandomProposedExpressionAnalyserToContribute() {
 		final ReadOnlyProposedExpressionAnalyserBlackboardView readOnlyProposedExpressionAnalyserBlackboardView =
 			new ReadOnlyProposedExpressionAnalyserBlackboardView(this.blackboard);
 		final ProposedExpressionAnalyserBlackboardView proposedExpressionAnalyserBlackboardView =
