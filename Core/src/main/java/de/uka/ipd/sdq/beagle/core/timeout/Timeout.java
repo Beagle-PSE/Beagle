@@ -2,6 +2,9 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 
 import org.apache.commons.lang3.Validate;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Decides when a timeout is reached. This abstract class has implementing classes which
  * do so depending on different criteria.
@@ -19,6 +22,11 @@ public abstract class Timeout {
 	 * The millisecond timestamp when this Timeout object has been initialised.
 	 */
 	protected long startingTime;
+
+	/**
+	 * A set of callbacks which will be called once the timeout is reached.
+	 */
+	protected Set<Runnable> callbacks = new HashSet<>();
 
 	/**
 	 * Determines whether the timeout is reached.
@@ -41,5 +49,24 @@ public abstract class Timeout {
 
 		this.startingTime = System.currentTimeMillis();
 		this.initialised = true;
+	}
+
+	/**
+	 * Registers {@code callback} to be run once the timeout is reached.
+	 *
+	 * @param callback A {@link Runnable} object.
+	 */
+	public void registerCallback(final Runnable callback) {
+		this.callbacks.add(callback);
+	}
+
+	/**
+	 * Removes {@code callback} from the set of callbacks to be run once the timeout is
+	 * reached.
+	 *
+	 * @param callback A {@link Runnable} object.
+	 */
+	public void unregisterCallback(final Runnable callback) {
+		this.callbacks.remove(callback);
 	}
 }

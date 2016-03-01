@@ -23,6 +23,28 @@ public class ConstantTimeout extends Timeout {
 		Validate.isTrue(timeout >= 0);
 
 		this.timeout = timeout;
+
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					// Wait until the timeout is up.
+					while (!ConstantTimeout.this.isReached()) {
+						this.wait(ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout
+							- System.currentTimeMillis());
+					}
+
+					for (final Runnable callback : ConstantTimeout.this.callbacks) {
+						new Thread(callback).start();
+					}
+				} // CHECKSTYLE:OFF
+				catch (final InterruptedException exception) {
+				}
+				// CHECKSTYLE:ON
+
+			}
+		}).start();
 	}
 
 	@Override

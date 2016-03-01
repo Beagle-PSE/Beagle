@@ -51,6 +51,13 @@ public class AdaptiveTimeout extends Timeout {
 	 */
 	private RegressionLine regressionLine;
 
+	/**
+	 * The timestamp of when the timeout will be arrived if
+	 * {@link #reportOneStepProgress()} isn't called any more or {@code -1} to indicate
+	 * infinity.
+	 */
+	private long expectedElapseTime = -1;
+
 	@Override
 	public void init() {
 		Validate.isTrue(!this.initialised);
@@ -58,6 +65,7 @@ public class AdaptiveTimeout extends Timeout {
 		super.init();
 
 		this.timeOfPreviousCall = System.currentTimeMillis();
+		this.initialised = true;
 	}
 
 	@Override
@@ -77,11 +85,37 @@ public class AdaptiveTimeout extends Timeout {
 		final boolean reachedTimeout = (currentTime - this.timeOfPreviousCall) > maximallyTolerableTime;
 
 		this.reachedTimeoutInThePast = reachedTimeout;
+		this.expectedElapseTime = System.currentTimeMillis() + maximallyTolerableTime;
 
 		// Prepare everything for the next call to this method.
 		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
 		this.timeOfPreviousCall = currentTime;
 		this.numberOfPreviousCalls++;
+
+		if (this.numberOfPreviousCalls == RANGE) {
+			new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						// Wait until the timeout is up.
+						while (!AdaptiveTimeout.this.isReached()) {
+							Validate.isTrue(AdaptiveTimeout.this.expectedElapseTime >= 0);
+
+							this.wait(AdaptiveTimeout.this.expectedElapseTime);
+						}
+
+						for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
+							new Thread(callback).start();
+						}
+					} // CHECKSTYLE:OFF
+					catch (final InterruptedException exception) {
+					}
+					// CHECKSTYLE:ON
+
+				}
+			}).start();
+		}
 	}
 
 	@Override
