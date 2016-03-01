@@ -104,7 +104,7 @@ public class ConstantTimeoutTest {
 		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
 
-		final ConstantTimeout constTimeout3 = new ConstantTimeout(valideTimeout);
-		assertThat(constTimeout3.initialised, is(equalTo(false)));
+		final ConstantTimeout constTimeout1 = new ConstantTimeout(valideTimeout);
+		assertThat(constTimeout1.initialised, is(equalTo(false)));
 	}
 }
