@@ -21,4 +21,9 @@ public class NoTimeout extends Timeout {
 		Validate.isTrue(this.initialised);
 	}
 
+	@Override
+	public void implementationInit() {
+		// Nothing to do.
+	}
+
 }
