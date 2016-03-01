@@ -48,9 +48,10 @@ public class NoTimeoutTest {
 		timeout.init();
 		timeout.reportOneStepProgress();
 
+		final NoTimeout timeout1 = new NoTimeout();
+		timeout1.init();
+
 		final ThrowingMethod method = () -> {
-			final NoTimeout timeout1 = new NoTimeout();
-			timeout1.init();
 			timeout1.init();
 		};
 		assertThat("timeout must not be allowed to call init() more than one time.", method,
