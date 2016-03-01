@@ -7,7 +7,6 @@ import static org.mockito.BDDMockito.given;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -57,12 +56,20 @@ public class AdaptiveTimeoutTest {
 		}
 		given(System.currentTimeMillis()).willReturn((long) (5 * 60 * 1000 + 10));
 		adaptTimeout2.reportOneStepProgress();
+
+		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
+		adaptTimeout3.init();
+		for (int i = 0; i < 9; i++) {
+			adaptTimeout3.reportOneStepProgress();
+		}
+		given(System.currentTimeMillis()).willReturn((long) (5 * 60 * 1000 * 10));
+		adaptTimeout3.reportOneStepProgress();
+
 	}
 
 	/**
 	 * Test method for {@link AdaptiveTimeout#isReached()}.
 	 */
-	@Ignore
 	@Test
 	public void isReached() {
 
