@@ -52,11 +52,16 @@ public class AdaptiveTimeout extends Timeout {
 	private RegressionLine regressionLine;
 
 	/**
-	 * The timestamp of when the timeout will be arrived if
-	 * {@link #reportOneStepProgress()} isn't called any more or {@code -1} to indicate
-	 * infinity.
+	 * The millisecond timestamp of when {@link #currentMaximallyTolerableTime} has been
+	 * updated the last time.
 	 */
-	private long expectedElapseTime = -1;
+	private long lastTimeUpdatedCurrentMaximallyTolerableTime;
+
+	/**
+	 * The latest value of {@code maximallyTolerabeTime}. See
+	 * {@link #reportOneStepProgress()}.
+	 */
+	private long currentMaximallyTolerableTime;
 
 	@Override
 	public void init() {
@@ -85,7 +90,8 @@ public class AdaptiveTimeout extends Timeout {
 		final boolean reachedTimeout = (currentTime - this.timeOfPreviousCall) > maximallyTolerableTime;
 
 		this.reachedTimeoutInThePast = reachedTimeout;
-		this.expectedElapseTime = System.currentTimeMillis() + maximallyTolerableTime;
+		this.currentMaximallyTolerableTime = maximallyTolerableTime;
+		this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();
 
 		// Prepare everything for the next call to this method.
 		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
@@ -100,9 +106,20 @@ public class AdaptiveTimeout extends Timeout {
 					try {
 						// Wait until the timeout is up.
 						while (!AdaptiveTimeout.this.isReached()) {
-							Validate.isTrue(AdaptiveTimeout.this.expectedElapseTime >= 0);
+							final long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
+								+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime
+								- System.currentTimeMillis();
 
-							this.wait(AdaptiveTimeout.this.expectedElapseTime);
+							/**
+							 * This can happen if the necessary time passed between the
+							 * execution of the loop condition and the calculation if
+							 * {@code timeToWait}.
+							 */
+							if (timeToSleep <= 0) {
+								assert AdaptiveTimeout.this.isReached();
+							} else {
+								Thread.sleep(timeToSleep);
+							}
 						}
 
 						for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
