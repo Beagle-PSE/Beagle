@@ -61,7 +61,7 @@ public class ConstantTimeout extends Timeout {
 
 			/**
 			 * This can happen if the necessary time passed between the execution of the
-			 * loop condition and the calculation if {@code timeToWait}.
+			 * loop condition and the calculation of {@code timeToWait}.
 			 */
 			if (timeToSleep <= 0) {
 				assert ConstantTimeout.this.isReached();
