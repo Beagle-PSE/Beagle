@@ -29,7 +29,7 @@ public class ConstantTimeout extends Timeout {
 	public boolean isReached() {
 		Validate.isTrue(this.initialised);
 
-		return System.currentTimeMillis() - this.startingTime < this.timeout;
+		return System.currentTimeMillis() - this.startingTime > this.timeout;
 	}
 
 	/**
