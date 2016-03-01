@@ -31,8 +31,19 @@ public class ConstantTimeout extends Timeout {
 				try {
 					// Wait until the timeout is up.
 					while (!ConstantTimeout.this.isReached()) {
-						this.wait(ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout
-							- System.currentTimeMillis());
+						final long timeToSleep = ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout
+							- System.currentTimeMillis();
+
+						/**
+						 * This can happen if the necessary time passed between the
+						 * execution of the loop condition and the calculation if
+						 * {@code timeToWait}.
+						 */
+						if (timeToSleep <= 0) {
+							assert ConstantTimeout.this.isReached();
+						} else {
+							Thread.sleep(timeToSleep);
+						}
 					}
 
 					for (final Runnable callback : ConstantTimeout.this.callbacks) {
