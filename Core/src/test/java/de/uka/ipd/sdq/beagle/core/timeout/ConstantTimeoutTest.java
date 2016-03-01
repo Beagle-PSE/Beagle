@@ -22,6 +22,9 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 @PrepareForTest(ConstantTimeout.class)
 public class ConstantTimeoutTest {
 
+	/**
+	 * Loads PowerMockito to mock the static final class {@link System}.
+	 */
 	@Rule
 	public final PowerMockRule loadPowerMockito = new PowerMockRule();
 
