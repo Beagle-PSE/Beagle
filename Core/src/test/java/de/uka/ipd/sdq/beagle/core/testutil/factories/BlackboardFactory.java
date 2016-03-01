@@ -225,6 +225,24 @@ public class BlackboardFactory {
 	}
 
 	/**
+	 * Creates a copy of the provided Blackboard but sets the provided
+	 * {@code projectInformation} on it.
+	 *
+	 * @param sourceBlackboard The Blackboard to copy.
+	 * @param projectInformation The project information to use on the copy.
+	 * @return A Blackboard with the same content, except that {@code projectInformation} is
+	 *         set on it.
+	 */
+	public Blackboard setProjectInformation(final Blackboard sourceBlackboard,
+		final ProjectInformation projectInformation) {
+		final Blackboard copy = new Blackboard(sourceBlackboard.getAllRdias(), sourceBlackboard.getAllSeffBranches(),
+			sourceBlackboard.getAllSeffLoops(), sourceBlackboard.getAllExternalCallParameters(),
+			sourceBlackboard.getFitnessFunction(), projectInformation);
+		this.copyAll(sourceBlackboard, copy);
+		return copy;
+	}
+
+	/**
 	 * Extracts {@code count} elements from an array.
 	 *
 	 * @param inputArray The array to get the elements from. Must contain at least
