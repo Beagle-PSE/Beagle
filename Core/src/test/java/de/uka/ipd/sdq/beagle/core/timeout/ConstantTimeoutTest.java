@@ -5,17 +5,25 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 
 /**
  * Tests {@link ConstantTimeout} and contains all test cases needed to check every method.
  *
  * @author Michael Vogt
  */
+@PrepareForTest(ConstantTimeout.class)
 public class ConstantTimeoutTest {
+
+	@Rule
+	public final PowerMockRule loadPowerMockito = new PowerMockRule();
 
 	/**
 	 * Test method for the constructor.
@@ -47,6 +55,7 @@ public class ConstantTimeoutTest {
 	public void isReached() {
 		final int timeout = 100;
 		final int longerThanTimeout = 200;
+		mockStatic(System.class);
 
 		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
 		constTimeout.init();
