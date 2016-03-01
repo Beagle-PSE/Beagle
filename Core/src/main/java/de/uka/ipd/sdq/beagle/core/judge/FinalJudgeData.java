@@ -45,7 +45,7 @@ class FinalJudgeData implements Serializable {
 	 * Whether {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will return
 	 * {@code true} for sure.
 	 */
-	private boolean willReturnTrue = false;
+	private boolean willReturnTrue;
 
 	/**
 	 * Returns {@code startTime}.
