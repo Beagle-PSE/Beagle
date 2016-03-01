@@ -227,21 +227,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <div class="block">Creates a new Project Information.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>timeout</code> - The timeout to be used.
-
-            <table> <caption>timeout value description</caption>
-
-            <tr><td><code>BeagleConfiguration#ADAPTIVE_TIMEOUT</code></td><td>Beagle will
-            use a timeout that adapts to the quality of the analysis’ findings in
-            the past.</td>
-
-            <tr><td><code>BeagleConfiguration#NO_TIMEOUT</code></td><td>no timeout will
-            be used</td>
-
-            <tr><td><code>≥ 0</code></td><td>the given value will be used as a fixed
-            timeout in seconds</td>
-
-            </table></dd>
+<dd><code>timeout</code> - The timeout to be used.</dd>
 <dd><code>fileProvider</code> - The provider of the source files to be analysed.</dd>
 <dd><code>buildPath</code> - The class path containing everything needed to compile the
             project.</dd>
@@ -298,19 +284,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <h4>getTimeout</h4>
 <pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;getTimeout()</pre>
 <div class="block">Returns the timeout to be used. The timeout describes the minimum time Beagle shall
- keep trying to find results while no perfect results were found.
-
- <table> <caption>timeout value description</caption>
-
- <tr><td><code>BeagleConfiguration#ADAPTIVE_TIMEOUT</code></td><td>Beagle will use a
- timeout that adapts to the quality of the analysis’ findings in the past.</td>
-
- <tr><td><code>BeagleConfiguration#NO_TIMEOUT</code></td><td>no timeout will be used</td>
-
- <tr><td><code>≥ 0</code></td><td>the given value will be used as a fixed timeout in
- seconds</td>
-
- </table></div>
+ keep trying to find results while no perfect results were found.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The timeout that will be used by Beagle.</dd>

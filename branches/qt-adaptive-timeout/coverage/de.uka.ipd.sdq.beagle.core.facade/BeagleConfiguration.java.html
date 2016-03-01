@@ -128,22 +128,10 @@ public class BeagleConfiguration {
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
 	 * keep trying to find results while no perfect results were found.
 	 *
-	 * &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@link #ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will use a timeout that adapts to
-	 * the quality of the analysis’ findings in the past.&lt;/td&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@link #NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will be used&lt;/td&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed timeout in
-	 * seconds&lt;/td&gt;
-	 *
-	 * &lt;/table&gt;
-	 *
 	 * @return The timeout that will be used by Beagle.
 	 */
 	public Timeout getTimeout() {
-<span class="fc" id="L146">		return this.timeout;</span>
+<span class="fc" id="L134">		return this.timeout;</span>
 	}
 
 	/**
@@ -151,27 +139,15 @@ public class BeagleConfiguration {
 	 * time Beagle shall keep trying to find results while no perfect results were found.
 	 * This operation is only allowed in the &lt;em&gt;set up&lt;/em&gt; state.
 	 *
-	 * &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@link #ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will use a timeout that adapts to
-	 * the quality of the analysis’ findings in the past.&lt;/td&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@link #NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will be used&lt;/td&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed timeout in
-	 * seconds&lt;/td&gt;
-	 *
-	 * &lt;/table&gt;
-	 *
 	 * @param timeout The timeout to be used by Beagle.
 	 * @throws IllegalStateException If this configuration is not in the &lt;em&gt;set up&lt;/em&gt;
 	 *             state.
 	 */
 	public void setTimeout(final Timeout timeout) {
-<span class="fc bfc" id="L171" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L173">		this.timeout = timeout;</span>
-<span class="fc" id="L174">	}</span>
+<span class="fc" id="L149">		this.timeout = timeout;</span>
+<span class="fc" id="L150">	}</span>
 
 	/**
 	 * Returns the repository file that contains all elements that shall be analysed.
@@ -179,7 +155,7 @@ public class BeagleConfiguration {
 	 * @return The repository file Beagle will operate on.
 	 */
 	public File getRepositoryFile() {
-<span class="fc" id="L182">		return this.repositoryFile;</span>
+<span class="fc" id="L158">		return this.repositoryFile;</span>
 	}
 
 	/**
@@ -193,11 +169,11 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setRepositoryFile(final File repositoryFile) {
-<span class="fc bfc" id="L196" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L198">		Validate.notNull(repositoryFile);</span>
-<span class="fc" id="L199">		this.repositoryFile = repositoryFile;</span>
-<span class="fc" id="L200">	}</span>
+<span class="fc" id="L174">		Validate.notNull(repositoryFile);</span>
+<span class="fc" id="L175">		this.repositoryFile = repositoryFile;</span>
+<span class="fc" id="L176">	}</span>
 
 	/**
 	 * Queries whether this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state.
@@ -206,7 +182,7 @@ public class BeagleConfiguration {
 	 *         {@code false} if it’s in the &lt;em&gt;set up&lt;/em&gt; state.
 	 */
 	public boolean isFinal() {
-<span class="fc" id="L209">		return this.finalised;</span>
+<span class="fc" id="L185">		return this.finalised;</span>
 	}
 
 	/**
@@ -215,8 +191,8 @@ public class BeagleConfiguration {
 	 * &lt;em&gt;finalised&lt;/em&gt; state has no effect.
 	 */
 	public void finalise() {
-<span class="fc" id="L218">		this.finalised = true;</span>
-<span class="fc" id="L219">	}</span>
+<span class="fc" id="L194">		this.finalised = true;</span>
+<span class="fc" id="L195">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
