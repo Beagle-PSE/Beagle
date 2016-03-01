@@ -66,18 +66,14 @@ public class ConstantTimeout extends Timeout {
 			if (timeToSleep <= 0) {
 				assert ConstantTimeout.this.isReached();
 			} else {
-				while (true) {
-					try {
-						Thread.sleep(timeToSleep);
+				try {
+					Thread.sleep(timeToSleep);
 
-						// Don't retry if the try block has been executed successfully.
-						break;
-					} // CHECKSTYLE:OFF
-					catch (final InterruptedException exception) {
-						// Retry on interrupt.
-					}
-					// CHECKSTYLE:ON
+				} // CHECKSTYLE:OFF
+				catch (final InterruptedException exception) {
+					// Retry on interrupt.
 				}
+				// CHECKSTYLE:ON
 			}
 
 			for (final Runnable callback : ConstantTimeout.this.callbacks) {
