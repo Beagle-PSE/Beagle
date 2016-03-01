@@ -4,6 +4,7 @@ import de.uka.ipd.sdq.beagle.core.AnalysisController;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation.AnalysisState;
 import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
@@ -86,7 +87,7 @@ public class BeagleController {
 				.getAllSuitableJUnitLaunchConfigurations();
 		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
-		
+
 		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());
 		this.blackboard = blackboardFactory.createBlackboard();
 		this.analysisController = new AnalysisController(this.blackboard,
@@ -129,7 +130,7 @@ public class BeagleController {
 	 *
 	 */
 	public void pauseAnalysis() {
-
+		this.blackboard.getProjectInformation().setAnalysisState(AnalysisState.ENDING);
 	}
 
 	/**
@@ -148,7 +149,7 @@ public class BeagleController {
 	 *
 	 */
 	public void abortAnalysis() {
-
+		this.blackboard.getProjectInformation().setAnalysisState(AnalysisState.ABORTING);
 	}
 
 	/**
