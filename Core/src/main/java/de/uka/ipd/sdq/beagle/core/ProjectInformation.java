@@ -32,7 +32,7 @@ public class ProjectInformation implements Serializable {
 	/**
 	 * The current state of the analysis.
 	 */
-	private final AnalysisState analysisState;
+	private AnalysisState analysisState;
 
 	/**
 	 * The provider of the source files to be analysed.
@@ -93,6 +93,7 @@ public class ProjectInformation implements Serializable {
 		this.charset = charset == null ? Charset.defaultCharset() : charset;
 		this.buildPath = buildPath;
 		this.launchConfigurations = new HashSet<>(launchConfigurations);
+		this.analysisState = AnalysisState.RUNNING;
 	}
 
 	/**
@@ -173,6 +174,39 @@ public class ProjectInformation implements Serializable {
 	 */
 	public void setAnalysisState(final AnalysisState analysisState) {
 
+		/*
+		 * Ignore this method call if the new state is equal to the old state.
+		 */
+		if (this.analysisState.equals(analysisState)) {
+			return;
+		}
+
+		switch (analysisState) {
+			case RUNNING:
+				Validate.validState(false, "Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
+				break;
+			case ABORTING:
+				Validate.validState(this.analysisState == AnalysisState.RUNNING,
+					"Can't switch from %s to AnalysisState.ABORTING.", this.analysisState);
+
+				this.analysisState = AnalysisState.ABORTING;
+
+				break;
+			case ENDING:
+				Validate.validState(this.analysisState == AnalysisState.RUNNING,
+					"Can't switch from %s to AnalysisState.ENDING.", this.analysisState);
+
+				this.analysisState = AnalysisState.ENDING;
+
+				break;
+			case TERMINATED:
+				this.analysisState = AnalysisState.TERMINATED;
+
+				break;
+			default:
+				Validate.isTrue(false);
+				break;
+		}
 	}
 
 	/**
