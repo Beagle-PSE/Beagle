@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MeasurementOrder.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.measurement.order</a> &gt; <span class="el_source">MeasurementOrder.java</span></div><h1>MeasurementOrder.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.measurement.order;
+
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * The measurement order specifies what to measure for a {@link MeasurementTool}. The idea
+ * behind this is, that {@linkplain MeasurementTool MeasurementTools} don't depend on the
+ * {@link Blackboard} and don't need to know about it's structure.
+ *
+ * @author Roman Langrehr
+ */
+public class MeasurementOrder {
+
+	/**
+	 * The code sections where parameters need to be characterised.
+	 */
+	private final Set&lt;CodeSection&gt; parameterValueSection;
+
+	/**
+	 * The code sections, where all resource demands need to be captured.
+	 */
+	private final Set&lt;CodeSection&gt; resourceDemandSections;
+
+	/**
+	 * The code sections, where an {@link MeasurementEvent} should be created each time it
+	 * gets executed.
+	 */
+	private final Set&lt;CodeSection&gt; executionSections;
+
+	/**
+	 * Information about the measured project.
+	 */
+	private final ProjectInformation projectInformation;
+
+	/**
+	 * The parameter characteriser, that all measurement tools must use for parameter
+	 * characterisation.
+	 */
+	private final ParameterCharacteriser parameterCharacteriser;
+
+	/**
+	 * Create a measurement order for {@linkplain MeasurementTool MeasurementTools}.
+	 *
+	 * @param parameterValueSections The code sections where parameters need to be
+	 *            characterised. Must not be {@code null}. May not contain {@code null}
+	 *            elements.
+	 * @param resourceDemandSections The code sections, where all resource demands need to
+	 *            be captured. Must not be {@code null}. May not contain {@code null}
+	 *            elements.
+	 * @param executionSections The code sections, where an {@link MeasurementEvent}
+	 *            should be created each time it gets executed. Must not be {@code null}.
+	 *            May not contain {@code null} elements.
+	 * @param projectInformation The measured project’s configuration. Must not be
+	 *            {@code null}.
+	 * @param parameterCharacteriser The parameter characteriser, that all measurement
+	 *            tools must use for parameter characterisation. Must not be {@code null}.
+	 */
+	public MeasurementOrder(final Set&lt;CodeSection&gt; parameterValueSections,
+		final Set&lt;CodeSection&gt; resourceDemandSections, final Set&lt;CodeSection&gt; executionSections,
+<span class="fc" id="L68">		final ProjectInformation projectInformation, final ParameterCharacteriser parameterCharacteriser) {</span>
+<span class="fc" id="L69">		Validate.noNullElements(parameterValueSections);</span>
+<span class="fc" id="L70">		Validate.noNullElements(resourceDemandSections);</span>
+<span class="fc" id="L71">		Validate.noNullElements(resourceDemandSections);</span>
+<span class="fc" id="L72">		Validate.noNullElements(executionSections);</span>
+<span class="fc" id="L73">		Validate.notNull(projectInformation);</span>
+<span class="fc" id="L74">		Validate.notNull(parameterCharacteriser);</span>
+<span class="fc" id="L75">		this.parameterValueSection = new HashSet&lt;&gt;(parameterValueSections);</span>
+<span class="fc" id="L76">		this.resourceDemandSections = new HashSet&lt;&gt;(resourceDemandSections);</span>
+<span class="fc" id="L77">		this.executionSections = new HashSet&lt;&gt;(executionSections);</span>
+<span class="fc" id="L78">		this.projectInformation = projectInformation;</span>
+<span class="fc" id="L79">		this.parameterCharacteriser = parameterCharacteriser;</span>
+<span class="fc" id="L80">	}</span>
+
+	/**
+	 * Gives the code sections where parameters need to be characterised.
+	 *
+	 * @return the code sections where parameters need to be characterised. Is never
+	 *         {@code null}. Does not contain {@code null} elements.
+	 */
+	public Set&lt;CodeSection&gt; getParameterValueSection() {
+<span class="fc" id="L89">		return new HashSet&lt;&gt;(this.parameterValueSection);</span>
+	}
+
+	/**
+	 * Gives the code sections, where all resource demands need to be captured.
+	 *
+	 * @return the resourceDemandSections The code sections, where all resource demands
+	 *         need to be captured. Is never {@code null}. Does not contain {@code null}
+	 *         elements.
+	 */
+	public Set&lt;CodeSection&gt; getResourceDemandSections() {
+<span class="fc" id="L100">		return new HashSet&lt;&gt;(this.resourceDemandSections);</span>
+	}
+
+	/**
+	 * Gives the code sections, where an {@link MeasurementEvent} should be created each
+	 * time it gets executed.
+	 *
+	 * @return The code sections, where an {@link MeasurementEvent} should be created each
+	 *         time it gets executed. Is never {@code null}. Does not contain {@code null}
+	 *         elements.
+	 */
+	public Set&lt;CodeSection&gt; getExecutionSections() {
+<span class="fc" id="L112">		return new HashSet&lt;&gt;(this.executionSections);</span>
+	}
+
+	/**
+	 * Gives information about the measured project.
+	 *
+	 * @return Information about the measured project. Is never {@code null}.
+	 */
+	public ProjectInformation getProjectInformation() {
+<span class="fc" id="L121">		return this.projectInformation;</span>
+	}
+
+	/**
+	 * Gives the parameter characteriser, that all measurement tools must use for
+	 * parameter characterisation.
+	 *
+	 * @return the parameter characteriser, that all measurement tools must use for
+	 *         parameter characterisation. Is never {@code null}.
+	 */
+	public ParameterCharacteriser getParameterCharacteriser() {
+<span class="fc" id="L132">		return this.parameterCharacteriser;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
