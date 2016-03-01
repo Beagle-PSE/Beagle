@@ -54,37 +54,38 @@ import org.apache.commons.lang3.Validate;
 	 * Will be executed once the timeout is reached.
 	 */
 	private void notifyOnReachedTimeout() {
-		while (true) {
-			try {
-				// Wait until the timeout is up.
-<span class="fc bfc" id="L60" title="All 2 branches covered.">				while (!ConstantTimeout.this.isReached()) {</span>
-<span class="fc" id="L61">					final long timeToSleep =</span>
-<span class="fc" id="L62">						ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout - System.currentTimeMillis();</span>
+		// Wait until the timeout is up.
+<span class="fc bfc" id="L58" title="All 2 branches covered.">		while (!ConstantTimeout.this.isReached()) {</span>
+<span class="fc" id="L59">			final long timeToSleep =</span>
+<span class="fc" id="L60">				ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout - System.currentTimeMillis();</span>
 
-					/**
-					 * This can happen if the necessary time passed between the execution
-					 * of the loop condition and the calculation if {@code timeToWait}.
-					 */
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">					if (timeToSleep &lt;= 0) {</span>
-<span class="nc bnc" id="L69" title="All 4 branches missed.">						assert ConstantTimeout.this.isReached();</span>
-					} else {
+			/**
+			 * This can happen if the necessary time passed between the execution of the
+			 * loop condition and the calculation if {@code timeToWait}.
+			 */
+<span class="pc bpc" id="L66" title="1 of 2 branches missed.">			if (timeToSleep &lt;= 0) {</span>
+<span class="nc bnc" id="L67" title="All 4 branches missed.">				assert ConstantTimeout.this.isReached();</span>
+			} else {
+				while (true) {
+					try {
 <span class="fc" id="L71">						Thread.sleep(timeToSleep);</span>
-					}
-<span class="fc" id="L73">				}</span>
 
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">				for (final Runnable callback : ConstantTimeout.this.callbacks) {</span>
-<span class="nc" id="L76">					new Thread(callback).start();</span>
-<span class="nc" id="L77">				}</span>
+						// Don't retry if the try block has been executed successfully.
+<span class="fc" id="L74">						break;</span>
+					} // CHECKSTYLE:OFF
+<span class="nc" id="L76">					catch (final InterruptedException exception) {</span>
+						// Retry on interrupt.
+<span class="nc" id="L78">					}</span>
+					// CHECKSTYLE:ON
+				}
+			}
 
-				// Don't retry if the try block has been executed successfully.
-<span class="fc" id="L80">				break;</span>
-			} // CHECKSTYLE:OFF
-<span class="nc" id="L82">			catch (final InterruptedException exception) {</span>
-				// Retry on interrupt.
-<span class="nc" id="L84">			}</span>
-			// CHECKSTYLE:ON
-		}
-<span class="fc" id="L87">	}</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">			for (final Runnable callback : ConstantTimeout.this.callbacks) {</span>
+<span class="nc" id="L84">				new Thread(callback).start();</span>
+<span class="nc" id="L85">			}</span>
+
+<span class="fc" id="L87">		}</span>
+<span class="fc" id="L88">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
