@@ -66,26 +66,22 @@ import org.apache.commons.lang3.Validate;
 <span class="pc bpc" id="L66" title="1 of 2 branches missed.">			if (timeToSleep &lt;= 0) {</span>
 <span class="nc bnc" id="L67" title="All 4 branches missed.">				assert ConstantTimeout.this.isReached();</span>
 			} else {
-				while (true) {
-					try {
-<span class="fc" id="L71">						Thread.sleep(timeToSleep);</span>
+				try {
+<span class="fc" id="L70">					Thread.sleep(timeToSleep);</span>
 
-						// Don't retry if the try block has been executed successfully.
-<span class="fc" id="L74">						break;</span>
-					} // CHECKSTYLE:OFF
-<span class="nc" id="L76">					catch (final InterruptedException exception) {</span>
-						// Retry on interrupt.
-<span class="nc" id="L78">					}</span>
-					// CHECKSTYLE:ON
-				}
+				} // CHECKSTYLE:OFF
+<span class="nc" id="L73">				catch (final InterruptedException exception) {</span>
+					// Retry on interrupt.
+<span class="fc" id="L75">				}</span>
+				// CHECKSTYLE:ON
 			}
 
-<span class="pc bpc" id="L83" title="1 of 2 branches missed.">			for (final Runnable callback : ConstantTimeout.this.callbacks) {</span>
-<span class="nc" id="L84">				new Thread(callback).start();</span>
-<span class="nc" id="L85">			}</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">			for (final Runnable callback : ConstantTimeout.this.callbacks) {</span>
+<span class="nc" id="L80">				new Thread(callback).start();</span>
+<span class="nc" id="L81">			}</span>
 
-<span class="fc" id="L87">		}</span>
-<span class="fc" id="L88">	}</span>
+<span class="fc" id="L83">		}</span>
+<span class="fc" id="L84">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
