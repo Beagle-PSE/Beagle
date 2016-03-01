@@ -128,18 +128,6 @@ public class BeagleConfiguration {
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
 	 * keep trying to find results while no perfect results were found.
 	 *
-	 * <table> <caption>timeout value description</caption>
-	 *
-	 * <tr><td>{@link #ADAPTIVE_TIMEOUT}</td><td>Beagle will use a timeout that adapts to
-	 * the quality of the analysis’ findings in the past.</td>
-	 *
-	 * <tr><td>{@link #NO_TIMEOUT}</td><td>no timeout will be used</td>
-	 *
-	 * <tr><td>{@code ≥ 0}</td><td>the given value will be used as a fixed timeout in
-	 * seconds</td>
-	 *
-	 * </table>
-	 *
 	 * @return The timeout that will be used by Beagle.
 	 */
 	public Timeout getTimeout() {
@@ -150,18 +138,6 @@ public class BeagleConfiguration {
 	 * Sets the timeout to be used to {@code timeout}. The timeout describes the minimum
 	 * time Beagle shall keep trying to find results while no perfect results were found.
 	 * This operation is only allowed in the <em>set up</em> state.
-	 *
-	 * <table> <caption>timeout value description</caption>
-	 *
-	 * <tr><td>{@link #ADAPTIVE_TIMEOUT}</td><td>Beagle will use a timeout that adapts to
-	 * the quality of the analysis’ findings in the past.</td>
-	 *
-	 * <tr><td>{@link #NO_TIMEOUT}</td><td>no timeout will be used</td>
-	 *
-	 * <tr><td>{@code ≥ 0}</td><td>the given value will be used as a fixed timeout in
-	 * seconds</td>
-	 *
-	 * </table>
 	 *
 	 * @param timeout The timeout to be used by Beagle.
 	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
