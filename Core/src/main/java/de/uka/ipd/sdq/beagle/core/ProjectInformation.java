@@ -30,6 +30,11 @@ public class ProjectInformation implements Serializable {
 	private final int timeout;
 
 	/**
+	 * The current state of the analysis.
+	 */
+	private final AnalysisState analysisState;
+
+	/**
 	 * The provider of the source files to be analysed.
 	 */
 	private final SourceCodeFileProvider fileProvider;
@@ -149,5 +154,53 @@ public class ProjectInformation implements Serializable {
 	 */
 	public Set<LaunchConfiguration> getLaunchConfigurations() {
 		return new HashSet<>(this.launchConfigurations);
+	}
+
+	/**
+	 * Returns the current state of the analysis.
+	 *
+	 * @return The current state of the analysis.
+	 */
+	public AnalysisState getAnalysisState() {
+		return this.analysisState;
+	}
+
+	/**
+	 * Sets the current state of the analysis to {@code analysisState}.
+	 *
+	 * @param analysisState The state the analysis will be in after this method has been
+	 *            called.
+	 */
+	public void setAnalysisState(final AnalysisState analysisState) {
+
+	}
+
+	/**
+	 * The current state of the analysis.
+	 *
+	 * @author Christoph Michelbach
+	 */
+	public enum AnalysisState {
+		/**
+		 * The analysis is currently running.
+		 */
+		RUNNING,
+
+		/**
+		 * Stopping the analysis without trying to preserve data accumulated in the
+		 * current phase.
+		 */
+		ABORTING,
+
+		/**
+		 * Stopping the analysis but trying to preserve data accumulated in the current
+		 * phase.
+		 */
+		ENDING,
+
+		/**
+		 * The analysis isn't running.
+		 */
+		TERMINATED
 	}
 }
