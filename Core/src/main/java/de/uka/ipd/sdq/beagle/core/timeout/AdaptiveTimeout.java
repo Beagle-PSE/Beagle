@@ -151,9 +151,31 @@ public class AdaptiveTimeout extends Timeout {
 	 */
 	private void notifyOnReachedTimeout() {
 
+		long timeToSleep;
+
+		if (AdaptiveTimeout.this.currentMaximallyTolerableTime >= 0) {
+			timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
+				+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();
+		} else {
+			timeToSleep = DEFAULT_SLEEP_TIME;
+		}
+
 		// Wait until the timeout is up.
 		while (!AdaptiveTimeout.this.isReached()) {
-			final long timeToSleep;
+
+			/**
+			 * This can happen if the necessary time passed between the execution of the
+			 * loop condition and the calculation of {@code timeToSleep}.
+			 */
+			assert timeToSleep > 0;
+
+			try {
+				Thread.sleep(timeToSleep);
+			} // CHECKSTYLE:OFF
+			catch (final InterruptedException exception) {
+				// Retry on interrupt.
+			}
+			// CHECKSTYLE:ON
 
 			if (AdaptiveTimeout.this.currentMaximallyTolerableTime >= 0) {
 				timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
@@ -161,23 +183,6 @@ public class AdaptiveTimeout extends Timeout {
 					+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();
 			} else {
 				timeToSleep = DEFAULT_SLEEP_TIME;
-			}
-
-			/**
-			 * This can happen if the necessary time passed between the execution of the
-			 * loop condition and the calculation of {@code timeToSleep}.
-			 */
-			if (timeToSleep <= 0) {
-				assert AdaptiveTimeout.this.isReached();
-			} else {
-				try {
-					Thread.sleep(timeToSleep);
-
-				} // CHECKSTYLE:OFF
-				catch (final InterruptedException exception) {
-					// Retry on interrupt.
-				}
-				// CHECKSTYLE:ON
 			}
 		}
 
