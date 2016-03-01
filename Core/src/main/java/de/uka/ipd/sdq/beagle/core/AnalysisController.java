@@ -126,7 +126,9 @@ public class AnalysisController {
 		final FinalJudge finalJudge = new FinalJudge();
 		finalJudge.init(this.blackboard);
 
-		while (!finalJudge.judge(this.blackboard)) {
+		final ProjectInformation projectInformation = this.blackboard.getProjectInformation();
+		while ((projectInformation.getAnalysisState() == ProjectInformation.AnalysisState.RUNNING)
+			&& !finalJudge.judge(this.blackboard)) {
 			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {
 				this.measurementController.measure(measurementControllerBlackboardView);
 
@@ -140,6 +142,15 @@ public class AnalysisController {
 				this.chooseRandomProposedExpressionAnalyserToContribute();
 			}
 		}
+
+		if (projectInformation.getAnalysisState() == ProjectInformation.AnalysisState.ENDING) {
+			/*
+			 * Call the {@link FinalJudge#judge} a last time so it measures the fitness
+			 * values and stores it on the blackboard.
+			 */
+			finalJudge.judge(this.blackboard);
+		}
+
 	}
 
 	/**
