@@ -34,21 +34,11 @@ public class ConstantTimeoutTest {
 	@Test
 	public void constructorConstantTimeout() {
 		final int negTimeout = -100;
-		final int valideTimeout = 100;
-		ThrowingMethod method = () -> {
+		final ThrowingMethod method = () -> {
 			final ConstantTimeout constTimeout1 = new ConstantTimeout(negTimeout);
 			constTimeout1.init();
 		};
 		assertThat("timeout must not be negative.", method, throwsException(IllegalArgumentException.class));
-
-		method = () -> {
-			final ConstantTimeout constTimeout2 = new ConstantTimeout(valideTimeout);
-			constTimeout2.init();
-			constTimeout2.init();
-		};
-		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
-			throwsException(IllegalStateException.class));
-
 	}
 
 	/**
@@ -128,5 +118,21 @@ public class ConstantTimeoutTest {
 		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
 
 		assertThat(constTimeout3.initialised, is(equalTo(false)));
+
+	}
+
+	/**
+	 * Test method for {@link ConstantTimeout#reportOneStepProgress()}.
+	 */
+	@Test
+	public void init() {
+		final int valideTimeout = 100;
+		final ThrowingMethod method = () -> {
+			final ConstantTimeout constTimeout2 = new ConstantTimeout(valideTimeout);
+			constTimeout2.init();
+			constTimeout2.init();
+		};
+		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
+			throwsException(IllegalStateException.class));
 	}
 }
