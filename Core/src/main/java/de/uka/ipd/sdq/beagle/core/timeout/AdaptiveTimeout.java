@@ -99,46 +99,7 @@ public class AdaptiveTimeout extends Timeout {
 		this.numberOfPreviousCalls++;
 
 		if (this.numberOfPreviousCalls == RANGE) {
-			new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-					while (true) {
-						try {
-							// Wait until the timeout is up.
-							while (!AdaptiveTimeout.this.isReached()) {
-								final long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
-									+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime
-									- System.currentTimeMillis();
-
-								/**
-								 * This can happen if the necessary time passed between
-								 * the execution of the loop condition and the calculation
-								 * if {@code timeToWait}.
-								 */
-								if (timeToSleep <= 0) {
-									assert AdaptiveTimeout.this.isReached();
-								} else {
-									Thread.sleep(timeToSleep);
-								}
-							}
-
-							for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
-								new Thread(callback).start();
-							}
-
-							// Don't retry if the try block has been executed
-							// successfully.
-							break;
-						} // CHECKSTYLE:OFF
-						catch (final InterruptedException exception) {
-							// Retry on interrupt.
-						}
-						// CHECKSTYLE:ON
-					}
-
-				}
-			}).start();
+			new Thread(this::notifyOnReachedTimeout).start();
 		}
 	}
 
@@ -178,6 +139,44 @@ public class AdaptiveTimeout extends Timeout {
 		}
 
 		this.previousTellingTimes[RANGE - 1] = time;
+	}
+
+	/**
+	 * Will be executed once the timeout is reached.
+	 */
+	private void notifyOnReachedTimeout() {
+		while (true) {
+			try {
+				// Wait until the timeout is up.
+				while (!AdaptiveTimeout.this.isReached()) {
+					final long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
+						+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime
+						- System.currentTimeMillis();
+
+					/**
+					 * This can happen if the necessary time passed between the execution
+					 * of the loop condition and the calculation if {@code timeToWait}.
+					 */
+					if (timeToSleep <= 0) {
+						assert AdaptiveTimeout.this.isReached();
+					} else {
+						Thread.sleep(timeToSleep);
+					}
+				}
+
+				for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
+					new Thread(callback).start();
+				}
+
+				// Don't retry if the try block has been executed
+				// successfully.
+				break;
+			} // CHECKSTYLE:OFF
+			catch (final InterruptedException exception) {
+				// Retry on interrupt.
+			}
+			// CHECKSTYLE:ON
+		}
 	}
 
 	/**

@@ -24,44 +24,7 @@ public class ConstantTimeout extends Timeout {
 
 		this.timeout = timeout;
 
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				while (true) {
-					try {
-						// Wait until the timeout is up.
-						while (!ConstantTimeout.this.isReached()) {
-							final long timeToSleep = ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout
-								- System.currentTimeMillis();
-
-							/**
-							 * This can happen if the necessary time passed between the
-							 * execution of the loop condition and the calculation if
-							 * {@code timeToWait}.
-							 */
-							if (timeToSleep <= 0) {
-								assert ConstantTimeout.this.isReached();
-							} else {
-								Thread.sleep(timeToSleep);
-							}
-						}
-
-						for (final Runnable callback : ConstantTimeout.this.callbacks) {
-							new Thread(callback).start();
-						}
-
-						// Don't retry if the try block has been executed successfully.
-						break;
-					} // CHECKSTYLE:OFF
-					catch (final InterruptedException exception) {
-						// Retry on interrupt.
-					}
-					// CHECKSTYLE:ON
-				}
-
-			}
-		}).start();
+		new Thread(this::notifyOnReachedTimeout).start();
 	}
 
 	@Override
@@ -85,6 +48,42 @@ public class ConstantTimeout extends Timeout {
 	@Override
 	public void reportOneStepProgress() {
 		Validate.isTrue(this.initialised);
+	}
+
+	/**
+	 * Will be executed once the timeout is reached.
+	 */
+	private void notifyOnReachedTimeout() {
+		while (true) {
+			try {
+				// Wait until the timeout is up.
+				while (!ConstantTimeout.this.isReached()) {
+					final long timeToSleep =
+						ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout - System.currentTimeMillis();
+
+					/**
+					 * This can happen if the necessary time passed between the execution
+					 * of the loop condition and the calculation if {@code timeToWait}.
+					 */
+					if (timeToSleep <= 0) {
+						assert ConstantTimeout.this.isReached();
+					} else {
+						Thread.sleep(timeToSleep);
+					}
+				}
+
+				for (final Runnable callback : ConstantTimeout.this.callbacks) {
+					new Thread(callback).start();
+				}
+
+				// Don't retry if the try block has been executed successfully.
+				break;
+			} // CHECKSTYLE:OFF
+			catch (final InterruptedException exception) {
+				// Retry on interrupt.
+			}
+			// CHECKSTYLE:ON
+		}
 	}
 
 }
