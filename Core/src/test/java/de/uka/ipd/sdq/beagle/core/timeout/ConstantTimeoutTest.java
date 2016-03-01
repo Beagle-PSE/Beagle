@@ -60,16 +60,7 @@ public class ConstantTimeoutTest {
 		given(System.currentTimeMillis()).willReturn(486487484886446L + longerThanTimeout);
 		assertThat(constTimeout1.isReached(), is(equalTo(true)));
 
-		final ThrowingMethod method = () -> {
-			final ConstantTimeout constTimeout2 = new ConstantTimeout(timeout);
-			constTimeout2.init();
-			constTimeout2.init();
-		};
-		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
-			throwsException(IllegalStateException.class));
-
 		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
-
 		assertThat(constTimeout3.initialised, is(equalTo(false)));
 	}
 
@@ -82,15 +73,6 @@ public class ConstantTimeoutTest {
 		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
 		constTimeout.init();
 		assertThat(constTimeout.getTimeout(), is((long) timeout));
-
-		final ThrowingMethod method = () -> {
-			final ConstantTimeout constTimeout2 = new ConstantTimeout(timeout);
-			constTimeout2.init();
-			constTimeout2.init();
-		};
-		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
-			throwsException(IllegalStateException.class));
-
 		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
 
 		assertThat(constTimeout3.initialised, is(equalTo(false)));
@@ -106,33 +88,23 @@ public class ConstantTimeoutTest {
 		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
 		constTimeout.init();
 		constTimeout.reportOneStepProgress();
-
-		final ThrowingMethod method = () -> {
-			final ConstantTimeout constTimeout2 = new ConstantTimeout(timeout);
-			constTimeout2.init();
-			constTimeout2.init();
-		};
-		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
-			throwsException(IllegalStateException.class));
-
-		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
-
-		assertThat(constTimeout3.initialised, is(equalTo(false)));
-
 	}
 
 	/**
-	 * Test method for {@link ConstantTimeout#reportOneStepProgress()}.
+	 * Test that init() is called at first method and only once.
 	 */
 	@Test
 	public void init() {
 		final int valideTimeout = 100;
+		final ConstantTimeout constTimeout = new ConstantTimeout(valideTimeout);
+		constTimeout.init();
 		final ThrowingMethod method = () -> {
-			final ConstantTimeout constTimeout2 = new ConstantTimeout(valideTimeout);
-			constTimeout2.init();
-			constTimeout2.init();
+			constTimeout.init();
 		};
 		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
+
+		final ConstantTimeout constTimeout3 = new ConstantTimeout(valideTimeout);
+		assertThat(constTimeout3.initialised, is(equalTo(false)));
 	}
 }
