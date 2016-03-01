@@ -167,11 +167,10 @@ public class AdaptiveTimeout extends Timeout {
 				}
 				// CHECKSTYLE:ON
 			}
+		}
 
-			for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
-				new Thread(callback).start();
-			}
-
+		for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
+			new Thread(callback).start();
 		}
 	}
 
