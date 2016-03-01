@@ -25,17 +25,6 @@ public class NoTimeoutTest {
 		final NoTimeout timeout = new NoTimeout();
 		timeout.init();
 		assertThat(timeout.isReached(), is(equals(false)));
-
-		final ThrowingMethod method = () -> {
-			final NoTimeout timeout1 = new NoTimeout();
-			timeout1.init();
-			timeout1.init();
-		};
-		assertThat("timeout must not be allowed to call init() more than one time.", method,
-			throwsException(IllegalStateException.class));
-
-		final NoTimeout timeout2 = new NoTimeout();
-		assertThat(timeout2.initialised, is(equalTo(false)));
 	}
 
 	/**
@@ -50,16 +39,23 @@ public class NoTimeoutTest {
 
 		final NoTimeout timeout1 = new NoTimeout();
 		timeout1.init();
+	}
 
+	/**
+	 * Test that init() is called at first method and only once.
+	 */
+	@Test
+	public void init() {
+		final NoTimeout noTimeout = new NoTimeout();
+		noTimeout.init();
 		final ThrowingMethod method = () -> {
-			timeout1.init();
+			noTimeout.init();
 		};
-		assertThat("timeout must not be allowed to call init() more than one time.", method,
+		assertThat("noTimeout must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
 
 		final NoTimeout timeout2 = new NoTimeout();
 		assertThat(timeout2.initialised, is(equalTo(false)));
-
 	}
 
 }
