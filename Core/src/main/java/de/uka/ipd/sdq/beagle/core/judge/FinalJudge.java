@@ -80,7 +80,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		this.loadData(blackboard);
 
 		final Timeout timeout = blackboard.getProjectInformation().getTimeout();
-
+		timeout.init();
 	}
 
 	/**
