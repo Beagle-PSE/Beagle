@@ -26,6 +26,12 @@ public class AdaptiveTimeout extends Timeout {
 	private static final int RANGE = 10;
 
 	/**
+	 * The default time to sleep in the callback handler thread if
+	 * {@link #currentMaximallyTolerableTime} is {@code -1}.
+	 */
+	private static final long DEFAULT_SLEEP_TIME = 5000;
+
+	/**
 	 * Whether the timeout has been reached in the past. {@code true} if it did;
 	 * {@code false} otherwise.
 	 */
@@ -58,10 +64,10 @@ public class AdaptiveTimeout extends Timeout {
 	private long lastTimeUpdatedCurrentMaximallyTolerableTime;
 
 	/**
-	 * The latest value of {@code maximallyTolerabeTime}. See
-	 * {@link #reportOneStepProgress()}.
+	 * The latest value of {@code maximallyTolerabeTime} (see
+	 * {@link #reportOneStepProgress()}) or {@code -1} to indicate infinity.
 	 */
-	private long currentMaximallyTolerableTime;
+	private long currentMaximallyTolerableTime = -1;
 
 	@Override
 	public void implementationInit() {
@@ -73,6 +79,8 @@ public class AdaptiveTimeout extends Timeout {
 		Validate.isTrue(this.initialised);
 
 		if (this.reachedTimeoutInThePast) {
+			this.currentMaximallyTolerableTime = 0;
+			this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();
 			return;
 		}
 
@@ -107,6 +115,8 @@ public class AdaptiveTimeout extends Timeout {
 		}
 
 		if (this.reachedTimeoutInThePast) {
+			this.currentMaximallyTolerableTime = 0;
+			this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();
 			return true;
 		}
 
@@ -143,8 +153,15 @@ public class AdaptiveTimeout extends Timeout {
 
 		// Wait until the timeout is up.
 		while (!AdaptiveTimeout.this.isReached()) {
-			final long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
-				+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();
+			final long timeToSleep;
+
+			if (AdaptiveTimeout.this.currentMaximallyTolerableTime >= 0) {
+				timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
+
+					+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();
+			} else {
+				timeToSleep = DEFAULT_SLEEP_TIME;
+			}
 
 			/**
 			 * This can happen if the necessary time passed between the execution of the
