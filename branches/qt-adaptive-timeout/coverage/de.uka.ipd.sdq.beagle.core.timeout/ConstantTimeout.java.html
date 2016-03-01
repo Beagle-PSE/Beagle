@@ -23,13 +23,35 @@ public class ConstantTimeout extends Timeout {
 <span class="fc bfc" id="L23" title="All 2 branches covered.">		Validate.isTrue(timeout &gt;= 0);</span>
 
 <span class="fc" id="L25">		this.timeout = timeout;</span>
-<span class="fc" id="L26">	}</span>
+
+<span class="fc" id="L27">		new Thread(new Runnable() {</span>
+
+			@Override
+			public void run() {
+				try {
+					// Wait until the timeout is up.
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">					while (!ConstantTimeout.this.isReached()) {</span>
+<span class="nc" id="L34">						this.wait(ConstantTimeout.this.startingTime + ConstantTimeout.this.timeout</span>
+<span class="nc" id="L35">							- System.currentTimeMillis());</span>
+					}
+
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">					for (final Runnable callback : ConstantTimeout.this.callbacks) {</span>
+<span class="nc" id="L39">						new Thread(callback).start();</span>
+<span class="nc" id="L40">					}</span>
+				} // CHECKSTYLE:OFF
+<span class="nc" id="L42">				catch (final InterruptedException exception) {</span>
+<span class="fc" id="L43">				}</span>
+				// CHECKSTYLE:ON
+
+<span class="fc" id="L46">			}</span>
+<span class="fc" id="L47">		}).start();</span>
+<span class="fc" id="L48">	}</span>
 
 	@Override
 	public boolean isReached() {
-<span class="fc" id="L30">		Validate.isTrue(this.initialised);</span>
+<span class="fc" id="L52">		Validate.isTrue(this.initialised);</span>
 
-<span class="fc bfc" id="L32" title="All 2 branches covered.">		return System.currentTimeMillis() - this.startingTime &gt; this.timeout;</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		return System.currentTimeMillis() - this.startingTime &gt; this.timeout;</span>
 	}
 
 	/**
@@ -38,15 +60,15 @@ public class ConstantTimeout extends Timeout {
 	 * @return The timeout in milliseconds.
 	 */
 	public long getTimeout() {
-<span class="fc" id="L41">		Validate.isTrue(this.initialised);</span>
+<span class="fc" id="L63">		Validate.isTrue(this.initialised);</span>
 
-<span class="fc" id="L43">		return this.timeout;</span>
+<span class="fc" id="L65">		return this.timeout;</span>
 	}
 
 	@Override
 	public void reportOneStepProgress() {
-<span class="fc" id="L48">		Validate.isTrue(this.initialised);</span>
-<span class="fc" id="L49">	}</span>
+<span class="fc" id="L70">		Validate.isTrue(this.initialised);</span>
+<span class="fc" id="L71">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

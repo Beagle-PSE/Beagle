@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":6,"i2":6};
+var methods = {"i0":10,"i1":6,"i2":10,"i3":6,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -134,12 +134,18 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#callbacks">callbacks</a></span></code>
+<div class="block">A set of callbacks which will be called once the timeout is reached.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>protected boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#initialised">initialised</a></span></code>
 <div class="block">Indicates whether this object has been initialised.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#startingTime">startingTime</a></span></code>
 <div class="block">The millisecond timestamp when this Timeout object has been initialised.</div>
@@ -190,9 +196,22 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#registerCallback-java.lang.Runnable-">registerCallback</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a>&nbsp;callback)</code>
+<div class="block">Registers <code>callback</code> to be run once the timeout is reached.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#reportOneStepProgress--">reportOneStepProgress</a></span>()</code>
 <div class="block">Call this method after each step of the work the timeout is about.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#unregisterCallback-java.lang.Runnable-">unregisterCallback</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a>&nbsp;callback)</code>
+<div class="block">Removes <code>callback</code> from the set of callbacks to be run once the timeout is
+ reached.</div>
 </td>
 </tr>
 </table>
@@ -230,11 +249,21 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <a name="startingTime">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>startingTime</h4>
 <pre>protected&nbsp;long startingTime</pre>
 <div class="block">The millisecond timestamp when this Timeout object has been initialised.</div>
+</li>
+</ul>
+<a name="callbacks">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>callbacks</h4>
+<pre>protected&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a>&gt; callbacks</pre>
+<div class="block">A set of callbacks which will be called once the timeout is reached.</div>
 </li>
 </ul>
 </li>
@@ -289,12 +318,41 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <a name="init--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>init</h4>
 <pre>public&nbsp;void&nbsp;init()</pre>
 <div class="block">Initialises the timeout object. Sets the starting time to the current time. Must be
  called before any different method is called and must only be called once.</div>
+</li>
+</ul>
+<a name="registerCallback-java.lang.Runnable-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerCallback</h4>
+<pre>public&nbsp;void&nbsp;registerCallback(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a>&nbsp;callback)</pre>
+<div class="block">Registers <code>callback</code> to be run once the timeout is reached.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>callback</code> - A <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang"><code>Runnable</code></a> object.</dd>
+</dl>
+</li>
+</ul>
+<a name="unregisterCallback-java.lang.Runnable-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>unregisterCallback</h4>
+<pre>public&nbsp;void&nbsp;unregisterCallback(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a>&nbsp;callback)</pre>
+<div class="block">Removes <code>callback</code> from the set of callbacks to be run once the timeout is
+ reached.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>callback</code> - A <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang"><code>Runnable</code></a> object.</dd>
+</dl>
 </li>
 </ul>
 </li>

@@ -51,60 +51,94 @@ import java.util.Arrays;
 	 */
 	private RegressionLine regressionLine;
 
+	/**
+	 * The timestamp of when the timeout will be arrived if
+	 * {@link #reportOneStepProgress()} isn't called any more or {@code -1} to indicate
+	 * infinity.
+	 */
+<span class="fc" id="L59">	private long expectedElapseTime = -1;</span>
+
 	@Override
 	public void init() {
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">		Validate.isTrue(!this.initialised);</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">		Validate.isTrue(!this.initialised);</span>
 
-<span class="fc" id="L58">		super.init();</span>
+<span class="fc" id="L65">		super.init();</span>
 
-<span class="fc" id="L60">		this.timeOfPreviousCall = System.currentTimeMillis();</span>
-<span class="fc" id="L61">	}</span>
+<span class="fc" id="L67">		this.timeOfPreviousCall = System.currentTimeMillis();</span>
+<span class="fc" id="L68">		this.initialised = true;</span>
+<span class="fc" id="L69">	}</span>
 
 	@Override
 	public void reportOneStepProgress() {
-<span class="nc" id="L65">		Validate.isTrue(this.initialised);</span>
+<span class="nc" id="L73">		Validate.isTrue(this.initialised);</span>
 
-<span class="nc bnc" id="L67" title="All 2 branches missed.">		if (this.reachedTimeoutInThePast) {</span>
-<span class="nc" id="L68">			return;</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">		if (this.reachedTimeoutInThePast) {</span>
+<span class="nc" id="L76">			return;</span>
 		}
 
-<span class="nc" id="L71">		final long currentTime = System.currentTimeMillis();</span>
-<span class="nc" id="L72">		this.regressionLine = new RegressionLine(this.previousTellingTimes);</span>
-<span class="nc" id="L73">		this.regressionLine.init();</span>
+<span class="nc" id="L79">		final long currentTime = System.currentTimeMillis();</span>
+<span class="nc" id="L80">		this.regressionLine = new RegressionLine(this.previousTellingTimes);</span>
+<span class="nc" id="L81">		this.regressionLine.init();</span>
 
-<span class="nc" id="L75">		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);</span>
-<span class="nc" id="L76">		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">		final boolean reachedTimeout = (currentTime - this.timeOfPreviousCall) &gt; maximallyTolerableTime;</span>
+<span class="nc" id="L83">		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);</span>
+<span class="nc" id="L84">		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">		final boolean reachedTimeout = (currentTime - this.timeOfPreviousCall) &gt; maximallyTolerableTime;</span>
 
-<span class="nc" id="L79">		this.reachedTimeoutInThePast = reachedTimeout;</span>
+<span class="nc" id="L87">		this.reachedTimeoutInThePast = reachedTimeout;</span>
+<span class="nc" id="L88">		this.expectedElapseTime = System.currentTimeMillis() + maximallyTolerableTime;</span>
 
 		// Prepare everything for the next call to this method.
-<span class="nc" id="L82">		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);</span>
-<span class="nc" id="L83">		this.timeOfPreviousCall = currentTime;</span>
-<span class="nc" id="L84">		this.numberOfPreviousCalls++;</span>
-<span class="nc" id="L85">	}</span>
+<span class="nc" id="L91">		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);</span>
+<span class="nc" id="L92">		this.timeOfPreviousCall = currentTime;</span>
+<span class="nc" id="L93">		this.numberOfPreviousCalls++;</span>
+
+<span class="nc bnc" id="L95" title="All 2 branches missed.">		if (this.numberOfPreviousCalls == RANGE) {</span>
+<span class="nc" id="L96">			new Thread(new Runnable() {</span>
+
+				@Override
+				public void run() {
+					try {
+						// Wait until the timeout is up.
+<span class="nc bnc" id="L102" title="All 2 branches missed.">						while (!AdaptiveTimeout.this.isReached()) {</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">							Validate.isTrue(AdaptiveTimeout.this.expectedElapseTime &gt;= 0);</span>
+
+<span class="nc" id="L105">							this.wait(AdaptiveTimeout.this.expectedElapseTime);</span>
+						}
+
+<span class="nc bnc" id="L108" title="All 2 branches missed.">						for (final Runnable callback : AdaptiveTimeout.this.callbacks) {</span>
+<span class="nc" id="L109">							new Thread(callback).start();</span>
+<span class="nc" id="L110">						}</span>
+					} // CHECKSTYLE:OFF
+<span class="nc" id="L112">					catch (final InterruptedException exception) {</span>
+<span class="nc" id="L113">					}</span>
+					// CHECKSTYLE:ON
+
+<span class="nc" id="L116">				}</span>
+<span class="nc" id="L117">			}).start();</span>
+		}
+<span class="nc" id="L119">	}</span>
 
 	@Override
 	public boolean isReached() {
-<span class="nc" id="L89">		Validate.isTrue(this.initialised);</span>
+<span class="nc" id="L123">		Validate.isTrue(this.initialised);</span>
 
-<span class="nc bnc" id="L91" title="All 2 branches missed.">		if (this.numberOfPreviousCalls &lt; RANGE) {</span>
-<span class="nc" id="L92">			return false;</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">		if (this.numberOfPreviousCalls &lt; RANGE) {</span>
+<span class="nc" id="L126">			return false;</span>
 		}
 
-<span class="nc bnc" id="L95" title="All 2 branches missed.">		if (this.reachedTimeoutInThePast) {</span>
-<span class="nc" id="L96">			return true;</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">		if (this.reachedTimeoutInThePast) {</span>
+<span class="nc" id="L130">			return true;</span>
 		}
 
-<span class="nc" id="L99">		final long currentTime = System.currentTimeMillis();</span>
-<span class="nc" id="L100">		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);</span>
-<span class="nc" id="L101">		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;</span>
+<span class="nc" id="L133">		final long currentTime = System.currentTimeMillis();</span>
+<span class="nc" id="L134">		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);</span>
+<span class="nc" id="L135">		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;</span>
 
-<span class="nc bnc" id="L103" title="All 2 branches missed.">		final boolean returnValue = (currentTime - this.timeOfPreviousCall) &gt; maximallyTolerableTime;</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">		final boolean returnValue = (currentTime - this.timeOfPreviousCall) &gt; maximallyTolerableTime;</span>
 
-<span class="nc" id="L105">		this.reachedTimeoutInThePast = returnValue;</span>
+<span class="nc" id="L139">		this.reachedTimeoutInThePast = returnValue;</span>
 
-<span class="nc" id="L107">		return returnValue;</span>
+<span class="nc" id="L141">		return returnValue;</span>
 	}
 
 	/**
@@ -115,12 +149,12 @@ import java.util.Arrays;
 	 * @param time The telling time to add.
 	 */
 	private void addTellingTimeToPreviousTellingTimes(final long time) {
-<span class="nc bnc" id="L118" title="All 2 branches missed.">		for (int i = 1; i &lt; RANGE; i++) {</span>
-<span class="nc" id="L119">			this.previousTellingTimes[i - 1] = this.previousTellingTimes[i];</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">		for (int i = 1; i &lt; RANGE; i++) {</span>
+<span class="nc" id="L153">			this.previousTellingTimes[i - 1] = this.previousTellingTimes[i];</span>
 		}
 
-<span class="nc" id="L122">		this.previousTellingTimes[RANGE - 1] = time;</span>
-<span class="nc" id="L123">	}</span>
+<span class="nc" id="L156">		this.previousTellingTimes[RANGE - 1] = time;</span>
+<span class="nc" id="L157">	}</span>
 
 	/**
 	 * A regression line with data points of equal distance on the x-axis.
@@ -155,23 +189,23 @@ import java.util.Arrays;
 		 *
 		 * @param data The data to determine the regression line for.
 		 */
-<span class="nc" id="L158">		RegressionLine(final long[] data) {</span>
-<span class="nc" id="L159">			this.data = data.clone();</span>
-<span class="nc" id="L160">			this.initialised = false;</span>
-<span class="nc" id="L161">		}</span>
+<span class="nc" id="L192">		RegressionLine(final long[] data) {</span>
+<span class="nc" id="L193">			this.data = data.clone();</span>
+<span class="nc" id="L194">			this.initialised = false;</span>
+<span class="nc" id="L195">		}</span>
 
 		/**
 		 * Calculates the offset and slope of the regression line.
 		 */
 		public void init() {
 
-<span class="nc" id="L168">			final double averageTime = Arrays.stream(this.data).average().getAsDouble();</span>
+<span class="nc" id="L202">			final double averageTime = Arrays.stream(this.data).average().getAsDouble();</span>
 
-<span class="nc" id="L170">			double sum1 = 0;</span>
-<span class="nc bnc" id="L171" title="All 2 branches missed.">			for (int i = 0; i &lt; this.data.length; i++) {</span>
-<span class="nc" id="L172">				final long time = this.data[i];</span>
+<span class="nc" id="L204">			double sum1 = 0;</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">			for (int i = 0; i &lt; this.data.length; i++) {</span>
+<span class="nc" id="L206">				final long time = this.data[i];</span>
 
-<span class="nc" id="L174">				sum1 += (i - this.data.length / 2d) * (time - averageTime);</span>
+<span class="nc" id="L208">				sum1 += (i - this.data.length / 2d) * (time - averageTime);</span>
 			}
 
 			/*
@@ -180,13 +214,13 @@ import java.util.Arrays;
 			 * simplified to this. Go grab a pencil and a peace of paper and try it
 			 * yourself. :)
 			 */
-<span class="nc" id="L183">			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));</span>
+<span class="nc" id="L217">			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));</span>
 
-<span class="nc" id="L185">			this.slope = sum1 / sum2;</span>
-<span class="nc" id="L186">			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);</span>
+<span class="nc" id="L219">			this.slope = sum1 / sum2;</span>
+<span class="nc" id="L220">			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);</span>
 
-<span class="nc" id="L188">			this.initialised = true;</span>
-<span class="nc" id="L189">		}</span>
+<span class="nc" id="L222">			this.initialised = true;</span>
+<span class="nc" id="L223">		}</span>
 
 		/**
 		 * Returns the function value for {@code xValue}.
@@ -195,9 +229,9 @@ import java.util.Arrays;
 		 * @return The function value for {@code xValue}.
 		 */
 		public double getValueFor(final double xValue) {
-<span class="nc" id="L198">			Validate.validState(this.initialised);</span>
+<span class="nc" id="L232">			Validate.validState(this.initialised);</span>
 
-<span class="nc" id="L200">			return this.offset + xValue * this.slope;</span>
+<span class="nc" id="L234">			return this.offset + xValue * this.slope;</span>
 		}
 
 	}

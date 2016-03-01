@@ -2,13 +2,16 @@
 
 import org.apache.commons.lang3.Validate;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Decides when a timeout is reached. This abstract class has implementing classes which
  * do so depending on different criteria.
  *
  * @author Christoph Michelbach
  */
-<span class="fc" id="L11">public abstract class Timeout {</span>
+<span class="fc" id="L14">public abstract class Timeout {</span>
 
 	/**
 	 * Indicates whether this object has been initialised.
@@ -19,6 +22,11 @@ import org.apache.commons.lang3.Validate;
 	 * The millisecond timestamp when this Timeout object has been initialised.
 	 */
 	protected long startingTime;
+
+	/**
+	 * A set of callbacks which will be called once the timeout is reached.
+	 */
+<span class="fc" id="L29">	protected Set&lt;Runnable&gt; callbacks = new HashSet&lt;&gt;();</span>
 
 	/**
 	 * Determines whether the timeout is reached.
@@ -37,10 +45,29 @@ import org.apache.commons.lang3.Validate;
 	 * called before any different method is called and must only be called once.
 	 */
 	public void init() {
-<span class="fc bfc" id="L40" title="All 2 branches covered.">		Validate.validState(!this.initialised);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		Validate.validState(!this.initialised);</span>
 
-<span class="fc" id="L42">		this.startingTime = System.currentTimeMillis();</span>
-<span class="fc" id="L43">		this.initialised = true;</span>
-<span class="fc" id="L44">	}</span>
+<span class="fc" id="L50">		this.startingTime = System.currentTimeMillis();</span>
+<span class="fc" id="L51">		this.initialised = true;</span>
+<span class="fc" id="L52">	}</span>
+
+	/**
+	 * Registers {@code callback} to be run once the timeout is reached.
+	 *
+	 * @param callback A {@link Runnable} object.
+	 */
+	public void registerCallback(final Runnable callback) {
+<span class="nc" id="L60">		this.callbacks.add(callback);</span>
+<span class="nc" id="L61">	}</span>
+
+	/**
+	 * Removes {@code callback} from the set of callbacks to be run once the timeout is
+	 * reached.
+	 *
+	 * @param callback A {@link Runnable} object.
+	 */
+	public void unregisterCallback(final Runnable callback) {
+<span class="nc" id="L70">		this.callbacks.remove(callback);</span>
+<span class="nc" id="L71">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
