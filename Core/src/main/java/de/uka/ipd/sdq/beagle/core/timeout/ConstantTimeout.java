@@ -10,6 +10,12 @@ import org.apache.commons.lang3.Validate;
 public class ConstantTimeout extends Timeout {
 
 	/**
+	 * The default time to sleep in the callback handler thread if this object isn't
+	 * initialised yet.
+	 */
+	private static final long DEFAULT_SLEEP_TIME = 5000;
+
+	/**
 	 * The timeout in milliseconds.
 	 */
 	private long timeout;
@@ -54,6 +60,15 @@ public class ConstantTimeout extends Timeout {
 	 * Calls the callback handlers once the timeout is reached.
 	 */
 	private void notifyOnReachedTimeout() {
+		while (!this.initialised) {
+			try {
+				Thread.sleep(DEFAULT_SLEEP_TIME);
+			} catch (final InterruptedException exception) {
+				// Retry on interrupt. No handling is needed because the loop just tries
+				// again.
+			}
+		}
+
 		// Wait until the timeout is up.
 		while (!ConstantTimeout.this.isReached()) {
 			final long timeToSleep =
