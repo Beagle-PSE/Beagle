@@ -13,6 +13,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.LaunchConfigurationFactory;
 import org.junit.Test;
 
 import java.nio.charset.Charset;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -28,28 +29,29 @@ public class ProjectInformationTest {
 	 */
 	@Test
 	public void constructor() {
-		final ProjectInformation projectInfo = new ProjectInformation(0, mock(SourceCodeFileProvider.class), null,
-			Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
+		new ProjectInformation(0, mock(SourceCodeFileProvider.class), null, Charset.defaultCharset(),
+			new LaunchConfigurationFactory().getAllAsSet());
 		ThrowingMethod method = () -> {
-			projectInfo.getBuildPath();
 		};
-		assertThat(method, throwsException(NullPointerException.class));
+		assertThat("buildPath must not be null.", method, throwsException(NullPointerException.class));
 
-		final ProjectInformation projectInfo1 = new ProjectInformation(0, null, "", Charset.defaultCharset(),
+		new ProjectInformation(0, null, "", Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
+		method = () -> {
+		};
+		assertThat("fileProvider must not be null.", method, throwsException(NullPointerException.class));
+
+		new ProjectInformation(0, mock(SourceCodeFileProvider.class), "", null,
 			new LaunchConfigurationFactory().getAllAsSet());
 		method = () -> {
-			projectInfo1.getFileProvider();
 		};
-		assertThat(method, throwsException(NullPointerException.class));
-
-		final ProjectInformation projectInfo2 = new ProjectInformation(0, mock(SourceCodeFileProvider.class), "", null,
-			new LaunchConfigurationFactory().getAllAsSet());
+		assertThat("charset must not be null.", method, throwsException(NullPointerException.class));
+		final Set<LaunchConfiguration> launchConfig = new HashSet<>();
+		new ProjectInformation(0, mock(SourceCodeFileProvider.class), "", Charset.defaultCharset(), launchConfig);
 		method = () -> {
-			projectInfo2.getCharset();
 		};
-		assertThat(method, throwsException(NullPointerException.class));
+		assertThat("launchConiguration must not be empty.", method, throwsException(NullPointerException.class));
+		new ProjectInformation(0, mock(SourceCodeFileProvider.class), "",
 
-		final ProjectInformation projectInfo3 = new ProjectInformation(0, mock(SourceCodeFileProvider.class), "",
 			Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
 	}
 
