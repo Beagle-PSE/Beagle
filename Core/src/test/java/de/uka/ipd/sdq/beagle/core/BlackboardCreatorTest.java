@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 
+import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
