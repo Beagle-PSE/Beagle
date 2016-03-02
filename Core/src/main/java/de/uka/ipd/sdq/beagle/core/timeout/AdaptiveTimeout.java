@@ -171,11 +171,10 @@ public class AdaptiveTimeout extends Timeout {
 
 			try {
 				Thread.sleep(timeToSleep);
-			} // CHECKSTYLE:OFF
-			catch (final InterruptedException exception) {
-				// Retry on interrupt.
+			} catch (final InterruptedException exception) {
+				// Retry on interrupt. No handling is needed because the loop just tries
+				// again.
 			}
-			// CHECKSTYLE:ON
 
 			if (AdaptiveTimeout.this.currentMaximallyTolerableTime >= 0) {
 				timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
