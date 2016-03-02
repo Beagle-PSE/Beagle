@@ -9,7 +9,6 @@ import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
-import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -66,6 +65,126 @@ public class BlackboardCreatorTest {
 	 * A project information factory to easily obtain new instances from.
 	 */
 	private static final ProjectInformationFactory PROJECT_INFORMATION_FACTORY = new ProjectInformationFactory();
+
+	/**
+	 * Test method for {@link BlackboardCreator#createBlackboard()}.
+	 */
+	@Test
+	public void createBlackboard() {
+		final BlackboardCreator blackboardCreator = new BlackboardCreator();
+		blackboardCreator.setBranches(SEFF_BRANCH_FACTORY.getAllAsSet());
+		blackboardCreator.setLoops(SEFF_LOOP_FACTORY.getAllAsSet());
+		blackboardCreator.setExternalCalls(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+		blackboardCreator.setFitnessFunction(EVA_EX_FACTORY.getOne());
+		blackboardCreator.setProjectInformation(PROJECT_INFORMATION_FACTORY.getOne());
+		blackboardCreator.setPcmMappings(mock(PcmBeagleMappings.class));
+		ThrowingMethod method = () -> {
+			blackboardCreator.createBlackboard();
+		};
+
+		assertThat("rdias must not null to create a blackboard.", method, throwsException(IllegalStateException.class));
+
+		final BlackboardCreator blackboardCreator1 = new BlackboardCreator();
+		method = () -> {
+			blackboardCreator1.setRdias(RDIA_FACTORY.getAllAsSet());
+
+			blackboardCreator1.setLoops(SEFF_LOOP_FACTORY.getAllAsSet());
+			blackboardCreator1.setExternalCalls(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+			blackboardCreator1.setFitnessFunction(EVA_EX_FACTORY.getOne());
+			blackboardCreator1.setProjectInformation(PROJECT_INFORMATION_FACTORY.getOne());
+			blackboardCreator.setPcmMappings(mock(PcmBeagleMappings.class));
+			blackboardCreator1.createBlackboard();
+		};
+
+		assertThat("branches must not null to create a blackboard.", method,
+			throwsException(IllegalStateException.class));
+
+		final BlackboardCreator blackboardCreator2 = new BlackboardCreator();
+		method = () -> {
+			blackboardCreator2.setRdias(RDIA_FACTORY.getAllAsSet());
+			blackboardCreator2.setBranches(SEFF_BRANCH_FACTORY.getAllAsSet());
+
+			blackboardCreator2.setExternalCalls(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+			blackboardCreator2.setFitnessFunction(EVA_EX_FACTORY.getOne());
+			blackboardCreator2.setProjectInformation(PROJECT_INFORMATION_FACTORY.getOne());
+			blackboardCreator.setPcmMappings(mock(PcmBeagleMappings.class));
+			blackboardCreator2.createBlackboard();
+		};
+
+		assertThat("loopes must not null to create a blackboard.", method,
+			throwsException(IllegalStateException.class));
+
+		final BlackboardCreator blackboardCreator3 = new BlackboardCreator();
+		method = () -> {
+			blackboardCreator3.setRdias(RDIA_FACTORY.getAllAsSet());
+			blackboardCreator3.setBranches(SEFF_BRANCH_FACTORY.getAllAsSet());
+			blackboardCreator3.setLoops(SEFF_LOOP_FACTORY.getAllAsSet());
+
+			blackboardCreator3.setFitnessFunction(EVA_EX_FACTORY.getOne());
+			blackboardCreator3.setProjectInformation(PROJECT_INFORMATION_FACTORY.getOne());
+			blackboardCreator.setPcmMappings(mock(PcmBeagleMappings.class));
+			blackboardCreator3.createBlackboard();
+		};
+
+		assertThat("externalCalls must not null to create a blackboard.", method,
+			throwsException(IllegalStateException.class));
+
+		final BlackboardCreator blackboardCreator4 = new BlackboardCreator();
+		method = () -> {
+			blackboardCreator4.setRdias(RDIA_FACTORY.getAllAsSet());
+			blackboardCreator4.setBranches(SEFF_BRANCH_FACTORY.getAllAsSet());
+			blackboardCreator4.setLoops(SEFF_LOOP_FACTORY.getAllAsSet());
+			blackboardCreator4.setExternalCalls(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+
+			blackboardCreator4.setProjectInformation(PROJECT_INFORMATION_FACTORY.getOne());
+			blackboardCreator.setPcmMappings(mock(PcmBeagleMappings.class));
+			blackboardCreator4.createBlackboard();
+		};
+
+		assertThat("fitnessFunction must not null to create a blackboard.", method,
+			throwsException(IllegalStateException.class));
+
+		final BlackboardCreator blackboardCreator5 = new BlackboardCreator();
+		method = () -> {
+			blackboardCreator5.setRdias(RDIA_FACTORY.getAllAsSet());
+			blackboardCreator5.setBranches(SEFF_BRANCH_FACTORY.getAllAsSet());
+			blackboardCreator5.setLoops(SEFF_LOOP_FACTORY.getAllAsSet());
+			blackboardCreator5.setExternalCalls(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+			blackboardCreator5.setFitnessFunction(EVA_EX_FACTORY.getOne());
+			blackboardCreator.setPcmMappings(mock(PcmBeagleMappings.class));
+
+			blackboardCreator5.createBlackboard();
+		};
+
+		assertThat("projectInformation must not null to create a blackboard.", method,
+			throwsException(IllegalStateException.class));
+
+		final BlackboardCreator blackboardCreator6 = new BlackboardCreator();
+		method = () -> {
+			blackboardCreator6.setRdias(RDIA_FACTORY.getAllAsSet());
+			blackboardCreator6.setBranches(SEFF_BRANCH_FACTORY.getAllAsSet());
+			blackboardCreator6.setLoops(SEFF_LOOP_FACTORY.getAllAsSet());
+			blackboardCreator6.setExternalCalls(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+			blackboardCreator6.setFitnessFunction(EVA_EX_FACTORY.getOne());
+			blackboardCreator6.setProjectInformation(PROJECT_INFORMATION_FACTORY.getOne());
+
+			blackboardCreator6.createBlackboard();
+		};
+
+		assertThat("pcmMappings must not null to create a blackboard.", method,
+			throwsException(IllegalStateException.class));
+
+		final BlackboardCreator blackboardCreator7 = new BlackboardCreator();
+		blackboardCreator7.setRdias(RDIA_FACTORY.getAllAsSet());
+		blackboardCreator7.setBranches(SEFF_BRANCH_FACTORY.getAllAsSet());
+		blackboardCreator7.setLoops(SEFF_LOOP_FACTORY.getAllAsSet());
+		blackboardCreator7.setExternalCalls(EXTERNAL_CALL_PARAMETER_FACTORY.getAllAsSet());
+		blackboardCreator7.setFitnessFunction(EVA_EX_FACTORY.getOne());
+		blackboardCreator7.setProjectInformation(PROJECT_INFORMATION_FACTORY.getOne());
+		blackboardCreator7.setPcmMappings(mock(PcmBeagleMappings.class));
+		blackboardCreator7.createBlackboard();
+
+	}
 
 	/**
 	 * Test method for {@link BlackboardCreator#setPcmMappings()}.
