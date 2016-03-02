@@ -269,7 +269,8 @@
     </module>
     <module name="EmptyCatchBlock">
       <property name="severity" value="warning"/>
-      <property name="commentFormat" value=".{10,} because .{10,}\."/>
+      <property name="commentFormat" value=".{10,}"/>
+      <message key="catch.block.empty" value="Empty catch block. Please provide a description why it’s being left empty!"/>
     </module>
     <module name="LeftCurly">
       <property name="severity" value="warning"/>
