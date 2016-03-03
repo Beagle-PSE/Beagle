@@ -153,11 +153,6 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 		// Wait until the timeout is up.
 		while (!this.isReached()) {
-
-			/**
-			 * This can happen if the necessary time passed between the execution of the
-			 * loop condition and the calculation of {@code timeToSleep}.
-			 */
 			assert timeToSleep > 0;
 
 			try {
@@ -167,6 +162,12 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 				// again.
 			}
 
+			/**
+			 * This has to be done at the end of the loop, not at the beginning. Otherwise
+			 * the timeout can be reached right before the first instruction in the loop
+			 * body but not in the loop header causing {@code timeToSleep} to become
+			 * negative. This would be an illegal argument for {@link Thread#sleep(long)}.
+			 */
 			timeToSleep = this.currentMaximallyTolerableTime + this.lastTimeUpdatedCurrentMaximallyTolerableTime
 				- System.currentTimeMillis();
 
