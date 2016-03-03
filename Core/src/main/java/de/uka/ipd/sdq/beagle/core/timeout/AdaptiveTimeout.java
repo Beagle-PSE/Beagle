@@ -27,12 +27,6 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	private static final int RANGE = 10;
 
 	/**
-	 * The default time to sleep in the callback handler thread if
-	 * {@link #currentMaximallyTolerableTime} is {@code -1}.
-	 */
-	private static final long DEFAULT_SLEEP_TIME = 5000;
-
-	/**
 	 * Whether the timeout has been reached in the past. {@code true} if it did;
 	 * {@code false} otherwise.
 	 */
@@ -152,14 +146,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	 */
 	private void notifyOnReachedTimeout() {
 
-		while (this.currentMaximallyTolerableTime < 0) {
-			try {
-				Thread.sleep(DEFAULT_SLEEP_TIME);
-			} catch (final InterruptedException exception) {
-				// Retry on interrupt. No handling is needed because the loop just tries
-				// again.
-			}
-		}
+		assert this.currentMaximallyTolerableTime >= 0;
 
 		long timeToSleep = this.currentMaximallyTolerableTime + this.lastTimeUpdatedCurrentMaximallyTolerableTime
 			- System.currentTimeMillis();
