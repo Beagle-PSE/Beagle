@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
@@ -59,10 +60,6 @@ public class ModifyingEvaluableExpressionVisitorTest {
 		visitor.modifyRecursively(expression);
 		assertThat(visitor.getCounterAt(), is(22));
 		assertThat(visitor.getCounterAfter(), is(22));
-
-		// ersetze aktuelle Expression mit replace (mit anderem Visitor)
-		// equals zu erwarteten
-		// weiterhin richtige traversierung
 	}
 
 	/**
@@ -70,7 +67,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 	 */
 	@Test
 	public void modify() {
-		final EvaluableExpression expression = this.buildExpression();
+		EvaluableExpression expression = this.buildExpression();
 
 		final ReplaceDivisionVisitor divVisitor = new ReplaceDivisionVisitor();
 		EvaluableExpression correctModified = new SubtractionExpression(new EvaluableVariable("a"),
@@ -90,11 +87,20 @@ public class ModifyingEvaluableExpressionVisitorTest {
 						new NaturalLogarithmExpression(new SineExpression(ConstantExpression.forValue(1))),
 						new ExponentialFunctionExpression(new EvaluableVariable("x"))))));
 		assertThat(varVisitor.modifyRecursively(expression), is(correctModified));
+		
+		final ModifyNothingVisitor noChange = new ModifyNothingVisitor();
+		assertThat(noChange.modifyRecursively(expression), is(expression));
 
-		// ersetze aktuelle Expression mit replace (mit anderem Visitor)
-		// equals zu erwarteten
-		// weiterhin richtige traversierung
-
+		expression = new AdditionExpression(
+			new MultiplicationExpression(ConstantExpression.forValue(2), new EvaluableVariable("a")),
+			new NaturalLogarithmExpression(new EvaluableVariable("c")));
+		correctModified = new AdditionExpression(
+			new MultiplicationExpression(ConstantExpression.forValue(2), new EvaluableVariable("x")),
+			new NaturalLogarithmExpression(new EvaluableVariable("x")));
+		assertThat(varVisitor.modifyRecursively(expression), is(correctModified));
+		
+		final EvaluableExpression finalExpression = this.buildExpression();
+		assertThat(() -> varVisitor.replaceCurrentExpressionWith(finalExpression), throwsException(IllegalStateException.class));
 	}
 
 	/**
@@ -735,7 +741,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 		protected void atOther(final EvaluableExpression expression) {
 			fail("Expression was in replaced part.");
 		}
-		
+
 		@Override
 		protected void atConstant(final ConstantExpression expression) {
 			if (expression.getValue() == 393.123) {
@@ -787,6 +793,20 @@ public class ModifyingEvaluableExpressionVisitorTest {
 					fail("there should not be a variable called different.");
 			}
 			this.replaceCurrentExpressionWith(new EvaluableVariable("x"));
+		}
+	}
+
+	/**
+	 * Implementation of a {@link ModifyingEvaluableExpressionVisitor}, which replaces
+	 * every expression with itself.
+	 * 
+	 * @author Annika Berger
+	 */
+	private class ModifyNothingVisitor extends ModifyingEvaluableExpressionVisitor {
+
+		@Override
+		protected void atOther(final EvaluableExpression expression) {
+			this.replaceCurrentExpressionWith(expression);
 		}
 	}
 

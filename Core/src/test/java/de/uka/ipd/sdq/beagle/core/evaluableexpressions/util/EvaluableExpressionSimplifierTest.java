@@ -65,7 +65,7 @@ public class EvaluableExpressionSimplifierTest {
 		simplified = simplifier.simplify(expression);
 		assertThat(simplified, isNoLongerThan(expression));
 		assertThat(simplified, is(producingTheSameValuesAs(expression)));
-		
+
 		summands = new HashMultiSet<>();
 		summands.add(ConstantExpression.forValue(19));
 		summands.add(ConstantExpression.forValue(2));
@@ -84,6 +84,14 @@ public class EvaluableExpressionSimplifierTest {
 		assertThat(simplified, is(producingTheSameValuesAs(expression)));
 
 		expression = new MultiplicationExpression(ConstantExpression.forValue(3), new EvaluableVariable("a"));
+		simplified = simplifier.simplify(expression);
+		assertThat(simplified, isNoLongerThan(expression));
+		assertThat(simplified, is(producingTheSameValuesAs(expression)));
+
+		expression =
+			new AdditionExpression(new SubtractionExpression(new EvaluableVariable("b"), new EvaluableVariable("z")),
+				new SubtractionExpression(new EvaluableVariable("x"),
+					new AdditionExpression(ConstantExpression.forValue(3.2), new EvaluableVariable("j"))));
 		simplified = simplifier.simplify(expression);
 		assertThat(simplified, isNoLongerThan(expression));
 		assertThat(simplified, is(producingTheSameValuesAs(expression)));
