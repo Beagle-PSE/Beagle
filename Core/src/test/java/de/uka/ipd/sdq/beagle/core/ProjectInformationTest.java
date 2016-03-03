@@ -42,12 +42,7 @@ public class ProjectInformationTest {
 		assertThat("fileProvider must not be null.", method, throwsException(NullPointerException.class));
 
 		method = () -> {
-			new ProjectInformation(0, mock(SourceCodeFileProvider.class), "", null,
-				new LaunchConfigurationFactory().getAllAsSet());
-		};
-		assertThat("charset must not be null.", method, throwsException(NullPointerException.class));
-		final Set<LaunchConfiguration> launchConfig = new HashSet<>();
-		method = () -> {
+			final Set<LaunchConfiguration> launchConfig = new HashSet<>();
 			new ProjectInformation(0, mock(SourceCodeFileProvider.class), "", Charset.defaultCharset(), launchConfig);
 		};
 		assertThat("launchConiguration must not be empty.", method, throwsException(IllegalArgumentException.class));
