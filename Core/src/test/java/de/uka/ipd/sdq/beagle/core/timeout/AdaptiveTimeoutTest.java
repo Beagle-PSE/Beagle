@@ -66,7 +66,7 @@ public class AdaptiveTimeoutTest {
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout2.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn((long) (5 * 60 * 1000 + 10));
+		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 1000);
 		adaptTimeout2.reportOneStepProgress();
 
 		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
@@ -74,7 +74,7 @@ public class AdaptiveTimeoutTest {
 		for (int i = 0; i < 9; i++) {
 			adaptTimeout3.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn((long) (5 * 60 * 1000 * 10));
+		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 2000);
 		adaptTimeout3.reportOneStepProgress();
 
 	}
@@ -103,17 +103,16 @@ public class AdaptiveTimeoutTest {
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout2.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn((long) (5 * 60 * 1000 + 1000));
+		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 1000);
 
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 
 		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
-		given(System.currentTimeMillis()).willReturn(0L);
 		adaptTimeout3.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout3.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn((long) (5 * 60 * 1000 + 1000));
+		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 2000);
 		adaptTimeout3.reportOneStepProgress();
 		assertThat(adaptTimeout3.isReached(), equalTo(true));
 	}
