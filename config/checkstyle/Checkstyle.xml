@@ -129,7 +129,7 @@
     </module>
     <module name="TypeName">
       <property name="severity" value="warning"/>
-      <property name="format" value="^[A-ZΑ-Ω][a-zα-ωA-ZΑ-Ω0-9]{7,}$"/>
+      <property name="format" value="^[A-ZΑ-Ω][a-zα-ωA-ZΑ-Ω0-9]{6,}$"/>
     </module>
     <module name="AbbreviationAsWordInName">
       <property name="severity" value="warning"/>
@@ -266,7 +266,8 @@
     </module>
     <module name="EmptyCatchBlock">
       <property name="severity" value="warning"/>
-      <property name="commentFormat" value=".{10,} because .{10,}\."/>
+      <property name="commentFormat" value=".{10,}"/>
+      <message key="catch.block.empty" value="Empty catch block. Please provide a description why it’s being left empty!"/>
     </module>
     <module name="LeftCurly">
       <property name="severity" value="warning"/>
@@ -349,7 +350,7 @@
     </module>
     <module name="MagicNumber">
       <property name="severity" value="warning"/>
-      <property name="ignoreNumbers" value="-1, 0, 1"/>
+      <property name="ignoreNumbers" value="-2, -1, 0, 1, 2"/>
       <property name="ignoreHashCodeMethod" value="true"/>
       <property name="constantWaiverParentToken" value="TYPECAST,METHOD_CALL,EXPR,ARRAY_INIT,UNARY_MINUS,UNARY_PLUS,ELIST,STAR,ASSIGN,PLUS,MINUS,DIV,LITERAL_NEW"/>
     </module>
