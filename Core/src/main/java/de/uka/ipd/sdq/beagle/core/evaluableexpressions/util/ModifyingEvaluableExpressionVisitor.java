@@ -389,7 +389,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 		/**
 		 * The maximal number of arguments any expression constructor takes.
 		 */
-		private final int three = 3;
+		private static final int TWO = 2;
 
 		/**
 		 * Will hold the new curren expression.
@@ -461,7 +461,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
-			this.result = new IfThenElseExpression(this.inner[0], this.inner[1], this.inner[this.three]);
+			this.result = new IfThenElseExpression(this.inner[0], this.inner[1], this.inner[TWO]);
 		}
 
 		@Override
