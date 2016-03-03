@@ -151,7 +151,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	 */
 	private void notifyOnReachedTimeout() {
 
-		while (AdaptiveTimeout.this.currentMaximallyTolerableTime < 0) {
+		while (this.currentMaximallyTolerableTime < 0) {
 			try {
 				Thread.sleep(DEFAULT_SLEEP_TIME);
 			} catch (final InterruptedException exception) {
@@ -160,11 +160,11 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 			}
 		}
 
-		long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
-			+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();
+		long timeToSleep = this.currentMaximallyTolerableTime + this.lastTimeUpdatedCurrentMaximallyTolerableTime
+			- System.currentTimeMillis();
 
 		// Wait until the timeout is up.
-		while (!AdaptiveTimeout.this.isReached()) {
+		while (!this.isReached()) {
 
 			/**
 			 * This can happen if the necessary time passed between the execution of the
@@ -179,12 +179,12 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 				// again.
 			}
 
-			timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime
-				+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();
+			timeToSleep = this.currentMaximallyTolerableTime + this.lastTimeUpdatedCurrentMaximallyTolerableTime
+				- System.currentTimeMillis();
 
 		}
 
-		for (final Runnable callback : AdaptiveTimeout.this.callbacks) {
+		for (final Runnable callback : this.callbacks) {
 			new Thread(callback).start();
 		}
 	}
