@@ -102,7 +102,7 @@ import java.util.Arrays;
 <span class="fc" id="L102">	}</span>
 
 	@Override
-	public boolean isReached() {
+	public synchronized boolean isReached() {
 <span class="fc" id="L106">		Validate.isTrue(this.initialised);</span>
 
 <span class="fc bfc" id="L108" title="All 2 branches covered.">		if (this.numberOfPreviousCalls &lt; RANGE) {</span>
