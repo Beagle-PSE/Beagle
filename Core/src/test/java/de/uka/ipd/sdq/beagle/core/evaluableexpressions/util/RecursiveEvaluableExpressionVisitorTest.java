@@ -130,12 +130,13 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		 */
 		@Override
 		protected void atOther(final EvaluableExpression expression) {
-			fail("This method should not be called as there is no AdditionExpression in this expression.");
+			fail("This method should not be called as all occuring expressions are overwritten.");
 		}
 
 		@Override
 		protected void atExpression(final EvaluableExpression expression) {
 			this.counterAt++;
+			assertThat(this.counterAt, is(this.getVisitedCount()));
 		}
 
 		/*
