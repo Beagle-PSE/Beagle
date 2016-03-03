@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -178,12 +178,18 @@ extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Executi
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#implementationInit--">implementationInit</a></span>()</code>
+<div class="block">For init methots of implemanting classes.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#isReached--">isReached</a></span>()</code>
 <div class="block">Determines whether the timeout is reached.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#reportOneStepProgress--">reportOneStepProgress</a></span>()</code>
 <div class="block">Reports one step of progress to the policy.</div>
@@ -273,13 +279,28 @@ extends <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Executi
 <a name="reportOneStepProgress--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>reportOneStepProgress</h4>
 <pre>public&nbsp;void&nbsp;reportOneStepProgress()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#reportOneStepProgress--">Timeout</a></code></span></div>
 <div class="block">Reports one step of progress to the policy. What one step of progress is is to be
  defined by the client. The timeout may use this information to make its decision.</div>
+</li>
+</ul>
+<a name="implementationInit--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>implementationInit</h4>
+<pre>protected&nbsp;void&nbsp;implementationInit()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#implementationInit--">ExecutionTimeBasedTimeout</a></code></span></div>
+<div class="block">For init methots of implemanting classes. Runs after <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#init--"><code>ExecutionTimeBasedTimeout.init()</code></a>.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#implementationInit--">implementationInit</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
