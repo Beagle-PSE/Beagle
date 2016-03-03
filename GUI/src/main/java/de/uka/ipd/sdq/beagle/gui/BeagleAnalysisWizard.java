@@ -63,7 +63,7 @@ public class BeagleAnalysisWizard extends Wizard {
 	public void addPages() {
 		final List<WizardPage> wizardPages = new LinkedList<WizardPage>();
 		wizardPages.add(new SelectionOverviewWizardPage(this.beagleConfiguration));
-		wizardPages.add(new TimeoutWizardPage(this.beagleConfiguration));
+		wizardPages.add(new TimeoutTab(this.beagleConfiguration));
 		final Iterator<WizardPage> iterator = wizardPages.iterator();
 
 		while (iterator.hasNext()) {

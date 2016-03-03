@@ -2,6 +2,9 @@ package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
@@ -16,19 +19,20 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 /*
- * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * This class is involved in creating a Graphical User Interface. Its functionality cannot
  * reasonably be tested by automated unit tests.
  *
  * COVERAGE:OFF
  */
 
 /**
- * A page of {@link BeagleAnalysisWizard} allowing the user to choose between an adaptive
+ * A tab of Beagle's launch configuration allowing the user to choose between an adaptive
  * timeout, a constant timeout, or no timeout at all.
  *
  * @author Christoph Michelbach
+ * @author Roman Langrehr
  */
-public class TimeoutWizardPage extends WizardPage {
+public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 	/**
 	 * The title of this page.
@@ -58,7 +62,7 @@ public class TimeoutWizardPage extends WizardPage {
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
 
 	/**
-	 * The {@link BeagleConfiguration} this {@link TimeoutWizardPage} uses.
+	 * The {@link BeagleConfiguration} this {@link TimeoutTab} uses.
 	 */
 	private final BeagleConfiguration beagleConfiguration;
 
@@ -111,23 +115,23 @@ public class TimeoutWizardPage extends WizardPage {
 	 * that no timeout will be used gets selected.
 	 */
 	private SelectionListener radioNoTimeoutSelected;
-
-	/**
-	 * Constructs a new {@link TimeoutWizardPage} being linked to the given
-	 * {@code beagleConfiguration}.
-	 *
-	 * @param beagleConfiguration The {@link BeagleConfiguration} this
-	 *            {@link TimeoutWizardPage} will be permanently linked to. Changing the
-	 *            associated {@link BeagleConfiguration} is not possible.
-	 */
-	public TimeoutWizardPage(final BeagleConfiguration beagleConfiguration) {
-		super(TITLE);
-		this.setTitle(TITLE);
-		this.setDescription(DESCRIPTION);
-		this.setControl(this.textboxTimeoutSeconds);
-		this.beagleConfiguration = beagleConfiguration;
-		this.timeout = this.beagleConfiguration.getTimeout();
-	}
+	//
+	// /**
+	// * Constructs a new {@link TimeoutTab} being linked to the given
+	// * {@code beagleConfiguration}.
+	// *
+	// * @param beagleConfiguration The {@link BeagleConfiguration} this
+	// * {@link TimeoutTab} will be permanently linked to. Changing the
+	// * associated {@link BeagleConfiguration} is not possible.
+	// */
+	// public TimeoutTab(final BeagleConfiguration beagleConfiguration) {
+	// super(TITLE);
+	// this.setTitle(TITLE);
+	// this.setDescription(DESCRIPTION);
+	// this.setControl(this.textboxTimeoutSeconds);
+	// this.beagleConfiguration = beagleConfiguration;
+	// this.timeout = this.beagleConfiguration.getTimeout();
+	// }
 
 	@Override
 	public void createControl(final Composite parent) {
@@ -158,8 +162,8 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = BeagleConfiguration.ADAPTIVE_TIMEOUT;
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutTab.this.timeout = BeagleConfiguration.ADAPTIVE_TIMEOUT;
+				TimeoutTab.this.beagleConfiguration.setTimeout(TimeoutTab.this.timeout);
 			}
 
 			@Override
@@ -172,16 +176,15 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.textboxTimeoutSeconds.setEnabled(true);
+				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(true);
 
-				if (TimeoutWizardPage.this.textboxTimeoutSeconds.getText().isEmpty()) {
-					TimeoutWizardPage.this.setPageComplete(false);
+				if (TimeoutTab.this.textboxTimeoutSeconds.getText().isEmpty()) {
+					TimeoutTab.this.setPageComplete(false);
 				} else {
-					TimeoutWizardPage.this.setPageComplete(true);
-					TimeoutWizardPage.this.timeout =
-						Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
-					TimeoutWizardPage.this.beagleConfiguration.setTimeout(BeagleConfiguration.ADAPTIVE_TIMEOUT);
-					TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+					TimeoutTab.this.setPageComplete(true);
+					TimeoutTab.this.timeout = Integer.parseInt(TimeoutTab.this.textboxTimeoutSeconds.getText());
+					TimeoutTab.this.beagleConfiguration.setTimeout(BeagleConfiguration.ADAPTIVE_TIMEOUT);
+					TimeoutTab.this.beagleConfiguration.setTimeout(TimeoutTab.this.timeout);
 				}
 			}
 
@@ -195,8 +198,8 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.textboxTimeoutSeconds.setEnabled(false);
-				TimeoutWizardPage.this.setPageComplete(true);
+				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(false);
+				TimeoutTab.this.setPageComplete(true);
 			}
 
 			@Override
@@ -209,8 +212,8 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = BeagleConfiguration.NO_TIMEOUT;
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutTab.this.timeout = BeagleConfiguration.NO_TIMEOUT;
+				TimeoutTab.this.beagleConfiguration.setTimeout(TimeoutTab.this.timeout);
 			}
 
 			@Override
@@ -252,14 +255,14 @@ public class TimeoutWizardPage extends WizardPage {
 			public void keyReleased(final KeyEvent keyEvent) {
 				// remove everything not a number
 				if (keyEvent.character < '0' || keyEvent.character > '9') {
-					TimeoutWizardPage.this.textboxTimeoutSeconds.setText(
-						TimeoutWizardPage.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
+					TimeoutTab.this.textboxTimeoutSeconds
+						.setText(TimeoutTab.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
 				}
 
-				if (TimeoutWizardPage.this.textboxTimeoutSeconds.getText().isEmpty()) {
-					TimeoutWizardPage.this.setPageComplete(false);
+				if (TimeoutTab.this.textboxTimeoutSeconds.getText().isEmpty()) {
+					TimeoutTab.this.setPageComplete(false);
 				} else {
-					TimeoutWizardPage.this.setPageComplete(true);
+					TimeoutTab.this.setPageComplete(true);
 				}
 			}
 		});
@@ -304,5 +307,29 @@ public class TimeoutWizardPage extends WizardPage {
 	 */
 	public int getTimeout() {
 		return this.timeout;
+	}
+
+	@Override
+	public void setDefaults(final ILaunchConfigurationWorkingCopy configuration) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void initializeFrom(final ILaunchConfiguration configuration) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void performApply(final ILaunchConfigurationWorkingCopy configuration) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
