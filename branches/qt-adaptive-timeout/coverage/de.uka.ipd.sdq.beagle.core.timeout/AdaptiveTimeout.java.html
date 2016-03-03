@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AdaptiveTimeout.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.timeout</a> &gt; <span class="el_source">AdaptiveTimeout.java</span></div><h1>AdaptiveTimeout.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.timeout;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.Arrays;
+
+/**
+ * Implements an adaptive timeout. This means that later calls to {@link #isReached()}
+ * will return {@code false} if the previous calls took a long time, too.
+ *
+ * @author Christoph Michelbach
+ */
+<span class="pc bpc" id="L13" title="1 of 2 branches missed.">public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {</span>
+
+	/**
+	 * How much additional time is always tolerated. Stated in milliseconds.
+	 */
+	private static final long ADDITIONAL_TIME_TOLEARANCE = 5 * 60 * 1000;
+
+	/**
+	 * How far the adaptive timeout looks back to the past (calls to {@link #isReached()})
+	 * before forgetting about events. This is also how often {@link #isReached()} will
+	 * return {@code true} for sure because this much data has to be collected before
+	 * enabling the timeout to make a sensible decision.
+	 */
+	private static final int RANGE = 10;
+
+	/**
+	 * The default time to sleep in the callback handler thread if
+	 * {@link #currentMaximallyTolerableTime} is {@code -1}.
+	 */
+	private static final long DEFAULT_SLEEP_TIME = 5000;
+
+	/**
+	 * Whether the timeout has been reached in the past. {@code true} if it did;
+	 * {@code false} otherwise.
+	 */
+	private boolean reachedTimeoutInThePast;
+
+	/**
+	 * When {@link #isReached()} has been called the last time. Stated in milliseconds.
+	 */
+	private long timeOfPreviousCall;
+
+	/**
+	 * How often {@link #isReached()} has been called in the past.
+	 */
+	private int numberOfPreviousCalls;
+
+	/**
+	 * Contains the telling times of the previous calls to {@link #isReached()}.
+	 */
+<span class="fc" id="L53">	private final long[] previousTellingTimes = new long[RANGE];</span>
+
+	/**
+	 * The current regression line.
+	 */
+	private RegressionLine regressionLine;
+
+	/**
+	 * The millisecond timestamp of when {@link #currentMaximallyTolerableTime} has been
+	 * updated the last time.
+	 */
+	private long lastTimeUpdatedCurrentMaximallyTolerableTime;
+
+	/**
+	 * The latest value of {@code maximallyTolerabeTime} (see
+	 * {@link #reportOneStepProgress()}) or {@code -1} to indicate infinity.
+	 */
+<span class="fc" id="L70">	private long currentMaximallyTolerableTime = -1;</span>
+
+	@Override
+	public void init() {
+<span class="fc" id="L74">		super.init();</span>
+<span class="fc" id="L75">		this.timeOfPreviousCall = System.currentTimeMillis();</span>
+<span class="fc" id="L76">	}</span>
+
+	@Override
+	public void reportOneStepProgress() {
+<span class="fc" id="L80">		Validate.isTrue(this.initialised);</span>
+
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		if (this.reachedTimeoutInThePast) {</span>
+<span class="fc" id="L83">			this.currentMaximallyTolerableTime = 0;</span>
+<span class="fc" id="L84">			this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();</span>
+<span class="fc" id="L85">			return;</span>
+		}
+
+<span class="fc" id="L88">		final long currentTime = System.currentTimeMillis();</span>
+<span class="fc" id="L89">		this.regressionLine = new RegressionLine(this.previousTellingTimes);</span>
+<span class="fc" id="L90">		this.regressionLine.init();</span>
+
+<span class="fc" id="L92">		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);</span>
+<span class="fc" id="L93">		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		final boolean reachedTimeout = (currentTime - this.timeOfPreviousCall) &gt; maximallyTolerableTime;</span>
+
+<span class="fc" id="L96">		this.reachedTimeoutInThePast = reachedTimeout;</span>
+<span class="fc" id="L97">		this.currentMaximallyTolerableTime = maximallyTolerableTime;</span>
+<span class="fc" id="L98">		this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();</span>
+
+		// Prepare everything for the next call to this method.
+<span class="fc" id="L101">		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);</span>
+<span class="fc" id="L102">		this.timeOfPreviousCall = currentTime;</span>
+<span class="fc" id="L103">		this.numberOfPreviousCalls++;</span>
+
+<span class="fc bfc" id="L105" title="All 2 branches covered.">		if (this.numberOfPreviousCalls == RANGE) {</span>
+<span class="fc" id="L106">			new Thread(this::notifyOnReachedTimeout).start();</span>
+		}
+<span class="fc" id="L108">	}</span>
+
+	@Override
+	public boolean isReached() {
+<span class="fc" id="L112">		Validate.isTrue(this.initialised);</span>
+
+<span class="fc bfc" id="L114" title="All 2 branches covered.">		if (this.numberOfPreviousCalls &lt; RANGE) {</span>
+<span class="fc" id="L115">			return false;</span>
+		}
+
+<span class="fc bfc" id="L118" title="All 2 branches covered.">		if (this.reachedTimeoutInThePast) {</span>
+<span class="fc" id="L119">			this.currentMaximallyTolerableTime = 0;</span>
+<span class="fc" id="L120">			this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();</span>
+<span class="fc" id="L121">			return true;</span>
+		}
+
+<span class="fc" id="L124">		final long currentTime = System.currentTimeMillis();</span>
+<span class="fc" id="L125">		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);</span>
+<span class="fc" id="L126">		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;</span>
+
+<span class="fc bfc" id="L128" title="All 2 branches covered.">		final boolean returnValue = (currentTime - this.timeOfPreviousCall) &gt; maximallyTolerableTime;</span>
+
+<span class="fc" id="L130">		this.reachedTimeoutInThePast = returnValue;</span>
+
+<span class="fc" id="L132">		return returnValue;</span>
+	}
+
+	/**
+	 * Shifts the contents of {@link #previousTimes} one down and adds {@code} time to the
+	 * highest element.
+	 *
+	 *
+	 * @param time The telling time to add.
+	 */
+	private void addTellingTimeToPreviousTellingTimes(final long time) {
+<span class="fc bfc" id="L143" title="All 2 branches covered.">		for (int i = 1; i &lt; RANGE; i++) {</span>
+<span class="fc" id="L144">			this.previousTellingTimes[i - 1] = this.previousTellingTimes[i];</span>
+		}
+
+<span class="fc" id="L147">		this.previousTellingTimes[RANGE - 1] = time;</span>
+<span class="fc" id="L148">	}</span>
+
+	/**
+	 * Calls the callback handlers once the timeout is reached.
+	 */
+	private void notifyOnReachedTimeout() {
+
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">		while (AdaptiveTimeout.this.currentMaximallyTolerableTime &lt; 0) {</span>
+			try {
+<span class="nc" id="L157">				Thread.sleep(DEFAULT_SLEEP_TIME);</span>
+<span class="nc" id="L158">			} catch (final InterruptedException exception) {</span>
+				// Retry on interrupt. No handling is needed because the loop just tries
+				// again.
+<span class="nc" id="L161">			}</span>
+		}
+
+<span class="fc" id="L164">		long timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime</span>
+<span class="fc" id="L165">			+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();</span>
+
+		// Wait until the timeout is up.
+<span class="fc bfc" id="L168" title="All 2 branches covered.">		while (!AdaptiveTimeout.this.isReached()) {</span>
+
+			/**
+			 * This can happen if the necessary time passed between the execution of the
+			 * loop condition and the calculation of {@code timeToSleep}.
+			 */
+<span class="pc bpc" id="L174" title="2 of 4 branches missed.">			assert timeToSleep &gt; 0;</span>
+
+			try {
+<span class="nc" id="L177">				Thread.sleep(timeToSleep);</span>
+<span class="nc" id="L178">			} catch (final InterruptedException exception) {</span>
+				// Retry on interrupt. No handling is needed because the loop just tries
+				// again.
+<span class="nc" id="L181">			}</span>
+
+<span class="nc" id="L183">			timeToSleep = AdaptiveTimeout.this.currentMaximallyTolerableTime</span>
+<span class="nc" id="L184">				+ AdaptiveTimeout.this.lastTimeUpdatedCurrentMaximallyTolerableTime - System.currentTimeMillis();</span>
+
+		}
+
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">		for (final Runnable callback : AdaptiveTimeout.this.callbacks) {</span>
+<span class="nc" id="L189">			new Thread(callback).start();</span>
+<span class="nc" id="L190">		}</span>
+<span class="fc" id="L191">	}</span>
+
+	/**
+	 * A regression line with data points of equal distance on the x-axis.
+	 *
+	 * @author Christoph Michelbach
+	 */
+	private class RegressionLine {
+
+		/**
+		 * The data to determine the regression line for.
+		 */
+		private final long[] data;
+
+		/**
+		 * Whether the regression line has been initialised since its data has been
+		 * updated the last time.
+		 */
+		private boolean initialised;
+
+		/**
+		 * The offset of the regression line.
+		 */
+		private double offset;
+
+		/**
+		 * The slope of the regression line.
+		 */
+		private double slope;
+
+		/**
+		 * Constructs a new {@link RegressionLine} object.
+		 *
+		 * @param data The data to determine the regression line for.
+		 */
+<span class="fc" id="L226">		RegressionLine(final long[] data) {</span>
+<span class="fc" id="L227">			this.data = data.clone();</span>
+<span class="fc" id="L228">			this.initialised = false;</span>
+<span class="fc" id="L229">		}</span>
+
+		/**
+		 * Calculates the offset and slope of the regression line.
+		 */
+		public void init() {
+
+<span class="fc" id="L236">			final double averageTime = Arrays.stream(this.data).average().getAsDouble();</span>
+
+<span class="fc" id="L238">			double sum1 = 0;</span>
+<span class="fc bfc" id="L239" title="All 2 branches covered.">			for (int i = 0; i &lt; this.data.length; i++) {</span>
+<span class="fc" id="L240">				final long time = this.data[i];</span>
+
+<span class="fc" id="L242">				sum1 += (i - this.data.length / 2d) * (time - averageTime);</span>
+			}
+
+			/*
+			 * If you have equal distances between the x-coordinates of data and start
+			 * counting with 0, the divisor sum of the slope of the regression line can be
+			 * simplified to this. Go grab a pencil and a peace of paper and try it
+			 * yourself. :)
+			 */
+<span class="fc" id="L251">			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));</span>
+
+<span class="fc" id="L253">			this.slope = sum1 / sum2;</span>
+<span class="fc" id="L254">			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);</span>
+
+<span class="fc" id="L256">			this.initialised = true;</span>
+<span class="fc" id="L257">		}</span>
+
+		/**
+		 * Returns the function value for {@code xValue}.
+		 *
+		 * @param xValue The value on the x-axis.
+		 * @return The function value for {@code xValue}.
+		 */
+		public double getValueFor(final double xValue) {
+<span class="fc" id="L266">			Validate.validState(this.initialised);</span>
+
+<span class="fc" id="L268">			return this.offset + xValue * this.slope;</span>
+		}
+
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
