@@ -188,7 +188,7 @@ public class AbstractEvaluableExpressionVisitorTest {
 	/**
 	 * Class used to test if the visit methods of
 	 * {@link AbstractEvaluableExpressionVisitor} work as demanded.
-	 * 
+	 *
 	 * @author Annika Berger
 	 */
 	private class VisitExpressionVisitor extends AbstractEvaluableExpressionVisitor {

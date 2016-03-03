@@ -27,7 +27,7 @@ public class EvaluableExpressionSimplifierTest {
 	/**
 	 * Test method for {@link EvaluableExpressionSimplifier#simplify(EvaluableExpression)}
 	 * .
-	 * 
+	 *
 	 * <p>Asserts that length of simplified expression is no longer than the length of the
 	 * initial expression and that the result of the expression still is the same.
 	 */

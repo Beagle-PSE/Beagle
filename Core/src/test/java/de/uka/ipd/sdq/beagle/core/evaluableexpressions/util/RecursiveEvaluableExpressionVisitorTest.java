@@ -659,24 +659,24 @@ public class RecursiveEvaluableExpressionVisitorTest {
 	/**
 	 * Implementation of {@link RecursiveEvaluableExpressionVisitor} used to test the
 	 * traversal methods in the visitor.
-	 * 
+	 *
 	 * @author Annika Berger
 	 */
 	private class TraversalTestRecursiveEvaluableExpressionVisitor extends RecursiveEvaluableExpressionVisitor {
 
 		@Override
 		protected void atLogarithm(final LogarithmExpression expression) {
-			assertThat(willTraverseInnerExpressions(), is(true));
-			stopTraversingInnerExpressions();
-			assertThat(willTraverseInnerExpressions(), is(false));
+			assertThat(this.willTraverseInnerExpressions(), is(true));
+			this.stopTraversingInnerExpressions();
+			assertThat(this.willTraverseInnerExpressions(), is(false));
 		}
 
 		@Override
 		protected void afterDivision(final DivisionExpression expression) {
 			if (expression.getDividend().toString().equals("a")) {
-				assertThat(willTraverseInnerExpressions(), is(false));
+				assertThat(this.willTraverseInnerExpressions(), is(false));
 				this.startTraversingInnerExpressions();
-				assertThat(willTraverseInnerExpressions(), is(true));
+				assertThat(this.willTraverseInnerExpressions(), is(true));
 			}
 		}
 
@@ -684,7 +684,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		protected void atVariable(final EvaluableVariable expression) {
 			if (expression.getName().equals("c")) {
 				fail("Should not be visited.");
-				assertThat(willTraverseInnerExpressions(), is(false));
+				assertThat(this.willTraverseInnerExpressions(), is(false));
 			}
 
 		}

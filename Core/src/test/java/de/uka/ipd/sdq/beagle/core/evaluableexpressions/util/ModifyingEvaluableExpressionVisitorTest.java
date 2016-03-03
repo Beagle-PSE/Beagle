@@ -24,7 +24,7 @@ import org.junit.Test;
 
 /**
  * Tests {@link ModifyingEvaluableExpressionVisitor} and contains all needed test cases.
- * 
+ *
  * @author Annika Berger
  */
 public class ModifyingEvaluableExpressionVisitorTest {
@@ -87,7 +87,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 						new NaturalLogarithmExpression(new SineExpression(ConstantExpression.forValue(1))),
 						new ExponentialFunctionExpression(new EvaluableVariable("x"))))));
 		assertThat(varVisitor.modifyRecursively(expression), is(correctModified));
-		
+
 		final ModifyNothingVisitor noChange = new ModifyNothingVisitor();
 		assertThat(noChange.modifyRecursively(expression), is(expression));
 
@@ -98,9 +98,10 @@ public class ModifyingEvaluableExpressionVisitorTest {
 			new MultiplicationExpression(ConstantExpression.forValue(2), new EvaluableVariable("x")),
 			new NaturalLogarithmExpression(new EvaluableVariable("x")));
 		assertThat(varVisitor.modifyRecursively(expression), is(correctModified));
-		
+
 		final EvaluableExpression finalExpression = this.buildExpression();
-		assertThat(() -> varVisitor.replaceCurrentExpressionWith(finalExpression), throwsException(IllegalStateException.class));
+		assertThat(() -> varVisitor.replaceCurrentExpressionWith(finalExpression),
+			throwsException(IllegalStateException.class));
 	}
 
 	/**
@@ -119,7 +120,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 
 	/**
 	 * Implementation of {@link ModifyingEvaluableExpressionVisitor} used to test it.
-	 * 
+	 *
 	 * @author Annika Berger
 	 */
 	private class TestModifyingExpressionVisitor extends ModifyingEvaluableExpressionVisitor {
@@ -692,7 +693,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 	/**
 	 * Implementation of {@link ModifyingEvaluableExpressionVisitor}, which replaces
 	 * Divisions with its Dividend.
-	 * 
+	 *
 	 * @author Annika Berger
 	 */
 	private class ReplaceDivisionVisitor extends ModifyingEvaluableExpressionVisitor {
@@ -773,7 +774,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 	/**
 	 * Implementation of a {@link ModifyingEvaluableExpressionVisitor}, which renames all
 	 * {@link EvaluableVariable} to {@code x}.
-	 * 
+	 *
 	 * @author Annika Berger
 	 */
 	private class RenameVariablesVisitor extends ModifyingEvaluableExpressionVisitor {
@@ -799,7 +800,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 	/**
 	 * Implementation of a {@link ModifyingEvaluableExpressionVisitor}, which replaces
 	 * every expression with itself.
-	 * 
+	 *
 	 * @author Annika Berger
 	 */
 	private class ModifyNothingVisitor extends ModifyingEvaluableExpressionVisitor {
@@ -813,24 +814,24 @@ public class ModifyingEvaluableExpressionVisitorTest {
 	/**
 	 * Implementation of {@link RecursiveEvaluableExpressionVisitor} used to test the
 	 * traversal methods in the visitor.
-	 * 
+	 *
 	 * @author Annika Berger
 	 */
 	private class TraversalTestRecursiveEvaluableExpressionVisitor extends RecursiveEvaluableExpressionVisitor {
 
 		@Override
 		protected void atLogarithm(final LogarithmExpression expression) {
-			assertThat(willTraverseInnerExpressions(), is(true));
-			stopTraversingInnerExpressions();
-			assertThat(willTraverseInnerExpressions(), is(false));
+			assertThat(this.willTraverseInnerExpressions(), is(true));
+			this.stopTraversingInnerExpressions();
+			assertThat(this.willTraverseInnerExpressions(), is(false));
 		}
 
 		@Override
 		protected void afterDivision(final DivisionExpression expression) {
 			if (expression.getDividend().toString().equals("a")) {
-				assertThat(willTraverseInnerExpressions(), is(false));
+				assertThat(this.willTraverseInnerExpressions(), is(false));
 				this.startTraversingInnerExpressions();
-				assertThat(willTraverseInnerExpressions(), is(true));
+				assertThat(this.willTraverseInnerExpressions(), is(true));
 			}
 		}
 
@@ -838,7 +839,7 @@ public class ModifyingEvaluableExpressionVisitorTest {
 		protected void atVariable(final EvaluableVariable expression) {
 			if (expression.getName().equals("c")) {
 				fail("Should not be visited.");
-				assertThat(willTraverseInnerExpressions(), is(false));
+				assertThat(this.willTraverseInnerExpressions(), is(false));
 			}
 
 		}
