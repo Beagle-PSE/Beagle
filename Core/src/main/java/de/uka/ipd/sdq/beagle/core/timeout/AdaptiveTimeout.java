@@ -70,7 +70,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	}
 
 	@Override
-	public void reportOneStepProgress() {
+	public synchronized void reportOneStepProgress() {
 		Validate.isTrue(this.initialised);
 
 		if (this.reachedTimeoutInThePast) {
@@ -144,7 +144,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	/**
 	 * Calls the callback handlers once the timeout is reached.
 	 */
-	private void notifyOnReachedTimeout() {
+	private synchronized void notifyOnReachedTimeout() {
 
 		assert this.currentMaximallyTolerableTime >= 0;
 
