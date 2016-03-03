@@ -85,7 +85,6 @@ public class AdaptiveTimeoutTest {
 	@Test
 	public void isReached() {
 		mockStatic(System.class);
-
 		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
 		adaptTimeout.init();
 		assertThat(adaptTimeout.isReached(), equalTo(false));
@@ -94,7 +93,6 @@ public class AdaptiveTimeoutTest {
 		adaptTimeout1.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout1.reportOneStepProgress();
-
 		}
 		assertThat(adaptTimeout1.isReached(), equalTo(false));
 
@@ -104,7 +102,6 @@ public class AdaptiveTimeoutTest {
 			adaptTimeout2.reportOneStepProgress();
 		}
 		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 1000);
-
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 
 		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
@@ -113,7 +110,9 @@ public class AdaptiveTimeoutTest {
 			adaptTimeout3.reportOneStepProgress();
 		}
 		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 2000);
+		System.out.println("1");
 		adaptTimeout3.reportOneStepProgress();
+		System.out.println("2");
 		assertThat(adaptTimeout3.isReached(), equalTo(true));
 	}
 
