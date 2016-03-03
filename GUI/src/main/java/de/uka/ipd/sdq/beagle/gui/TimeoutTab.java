@@ -1,15 +1,17 @@
 package de.uka.ipd.sdq.beagle.gui;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.ExecutionTimeBasedTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.KeyListener;
@@ -39,15 +41,72 @@ import org.eclipse.swt.widgets.Text;
 public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 	/**
+	 * The key in the Beagle Launch Configuration determining the type of the timeout to
+	 * be used.
+	 *
+	 * <p>Permitted values are:
+	 *
+	 * <ul>
+	 *
+	 * <li> {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT}
+	 *
+	 * <li>{@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT}
+	 *
+	 * <li>
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_EXECUTION_TIME_BASED_TIMEOUT}
+	 *
+	 * <li>{@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT}
+	 *
+	 * </ul>
+	 *
+	 */
+	private static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE = "TIMEOUT";
+
+	/**
+	 * This value in Beagle's launch configuration for the key
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE} specifies that the
+	 * {@link Timeout} used should be a {@link AdaptiveTimeout}.
+	 */
+	private static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT = "ADAPTIVE_TIMEOUT";
+
+	/**
+	 * This value in Beagle's launch configuration for the key
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE} specifies that the
+	 * {@link Timeout} used should be a {@link ConstantTimeout}.
+	 */
+	private static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT = "CONSTANT_TIMEOUT";
+
+	/**
+	 * This value in Beagle's launch configuration for the key
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE} specifies that the
+	 * {@link Timeout} used should be a {@link ExecutionTimeBasedTimeout}.
+	 */
+	private static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_EXECUTION_TIME_BASED_TIMEOUT =
+		"EXECUTION_TIME_BASED_TIMEOUT";
+
+	/**
+	 * This value in Beagle's launch configuration for the key
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE} specifies that the
+	 * {@link Timeout} used should be a {@link NoTimeout}.
+	 */
+	private static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT = "NO_TIMEOUT";
+
+	/**
+	 * The key in the Beagle Launch Configuration determining the time set up for an
+	 * {@link ConstantTimeout} in seconds.
+	 */
+	private static final String BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE = "CONSTANT_TIMEOUT_VALUE";
+
+	/**
+	 * The default value in Beagle's launch configuration for the key
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE}.
+	 */
+	private static final int BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE = 60;
+
+	/**
 	 * The title of this page.
 	 */
 	private static final String TITLE = "Timeout";
-
-	/**
-	 * The description of this page.
-	 */
-	private static final String DESCRIPTION =
-		"To avoid infinite loops or too long calculations, a timeout can be used. Please choose as you wish.";
 
 	/**
 	 * The number of columns of the layout of container which contains the entire content
@@ -64,16 +123,6 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 * The number of columns of the layout of the lower container.
 	 */
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
-
-	/**
-	 * Extensive inquiries yielded that a second comprises this many milliseconds.
-	 */
-	private static final int SECOND_MILLISECOND_RATIO = 1000;
-
-	/**
-	 * The {@link BeagleConfiguration} this {@link TimeoutWizardPage} uses.
-	 */
-	private final BeagleConfiguration beagleConfiguration;
 
 	/**
 	 * A textbox for the timeout in seconds (if the timeout is set manually).
@@ -120,20 +169,25 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	private SelectionListener radioNoTimeoutSelected;
 
 	/**
-	 * Constructs a new {@link TimeoutWizardPage} being linked to the given
-	 * {@code beagleConfiguration}.
-	 *
-	 * @param beagleConfiguration The {@link BeagleConfiguration} this
-	 *            {@link TimeoutWizardPage} will be permanently linked to. Changing the
-	 *            associated {@link BeagleConfiguration} is not possible.
+	 * The type of timeout that is currently selected.
 	 */
-	public TimeoutWizardPage(final BeagleConfiguration beagleConfiguration) {
-		super(TITLE);
-		this.setTitle(TITLE);
-		this.setDescription(DESCRIPTION);
-		this.setControl(this.textboxTimeoutSeconds);
-		this.beagleConfiguration = beagleConfiguration;
-	}
+	private String currentTimeoutTypeSelection;
+
+	// /**
+	// * Constructs a new {@link TimeoutWizardPage} being linked to the given
+	// * {@code beagleConfiguration}.
+	// *
+	// * @param beagleConfiguration The {@link BeagleConfiguration} this
+	// * {@link TimeoutWizardPage} will be permanently linked to. Changing the
+	// * associated {@link BeagleConfiguration} is not possible.
+	// */
+	// public TimeoutWizardPage(final BeagleConfiguration beagleConfiguration) {
+	// super(TITLE);
+	// this.setTitle(TITLE);
+	// this.setDescription(DESCRIPTION);
+	// this.setControl(this.textboxTimeoutSeconds);
+	// this.beagleConfiguration = beagleConfiguration;
+	// }
 
 	@Override
 	public void createControl(final Composite parent) {
@@ -164,7 +218,8 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new AdaptiveTimeout());
+				TimeoutTab.this.currentTimeoutTypeSelection =
+					BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT;
 			}
 
 			@Override
@@ -179,15 +234,8 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(true);
 
-				if (TimeoutTab.this.textboxTimeoutSeconds.getText().isEmpty()) {
-					TimeoutTab.this.setPageComplete(false);
-				} else {
-					TimeoutWizardPage.this.setPageComplete(true);
-					final ConstantTimeout constantTimeout =
-						new ConstantTimeout(Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText())
-							* SECOND_MILLISECOND_RATIO);
-					TimeoutWizardPage.this.beagleConfiguration.setTimeout(constantTimeout);
-				}
+				TimeoutTab.this.currentTimeoutTypeSelection =
+					BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT;
 			}
 
 			@Override
@@ -201,7 +249,6 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(false);
-				TimeoutTab.this.setPageComplete(true);
 			}
 
 			@Override
@@ -214,7 +261,8 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new NoTimeout());
+
+				TimeoutTab.this.currentTimeoutTypeSelection = BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT;
 			}
 
 			@Override
@@ -259,73 +307,57 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 					TimeoutTab.this.textboxTimeoutSeconds
 						.setText(TimeoutTab.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
 				}
-
-				if (TimeoutTab.this.textboxTimeoutSeconds.getText().isEmpty()) {
-					TimeoutTab.this.setPageComplete(false);
-				} else {
-					TimeoutTab.this.setPageComplete(true);
-				}
 			}
 		});
 
 		this.textboxTimeoutSeconds.setLayoutData(gridData);
 
 		// required to avoid an error in the system
-		this.setControl(this.upperContainer);
-
-		this.setPageComplete(true);
-
-		this.adaptPageToDefaultValues();
-	}
-
-	/**
-	 * Sets the content of this {@link WizardPage} to the default values defined in
-	 * {@link BeagleConfiguration}. Note that this method will not rely on
-	 * {@code DEFAULT_TIMEOUT} of {@link BeagleConfiguration} but instead will get the
-	 * timeout of the user {@link BeagleConfiguration} object associated with this
-	 * {@link WizardPage} so the visibility of this constant can be changed in the future.
-	 */
-	private void adaptPageToDefaultValues() {
-		// Nothing needs to be done for {@code AdaptiveTimeout} because {@link
-		// TimeoutWizardPage} is written so this is the default.
-		if (this.beagleConfiguration.getTimeout() instanceof NoTimeout) {
-			this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
-		} else {
-			// will be chosen when a set timeout is default
-			this.radioSetTimeoutSelected.widgetSelected(new SelectionEvent(null));
-		}
-	}
-
-	/**
-	 * Returns the timeout chosen by the user.
-	 *
-	 * @return the timeout chosen by the user.
-	 */
-	public Timeout getTimeout() {
-		return this.beagleConfiguration.getTimeout();
+		this.setControl(this.mainContainer);
 	}
 
 	@Override
 	public void setDefaults(final ILaunchConfigurationWorkingCopy configuration) {
-		// TODO Auto-generated method stub
-
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE,
+			BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT);
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
+			BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE);
 	}
 
 	@Override
 	public void initializeFrom(final ILaunchConfiguration configuration) {
-		// TODO Auto-generated method stub
+		try {
+			this.currentTimeoutTypeSelection = configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE,
+				BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT);
+			this.textboxTimeoutSeconds
+				.setText("" + configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
+					BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE));
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException)
+				.retryWith(() -> TimeoutTab.this.initializeFrom(configuration)));
+		}
 
 	}
 
 	@Override
 	public void performApply(final ILaunchConfigurationWorkingCopy configuration) {
-		// TODO Auto-generated method stub
-
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE, this.currentTimeoutTypeSelection);
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
+			Integer.parseInt(this.textboxTimeoutSeconds.getText()));
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return TITLE;
+	}
+
+	@Override
+	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		this.setErrorMessage(null);
+		if (this.textboxTimeoutSeconds.getText().isEmpty() && this.currentTimeoutTypeSelection
+			.equals(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT)) {
+			this.setErrorMessage("Please enter a value for the constant timeout");
+		}
+		return true;
 	}
 }

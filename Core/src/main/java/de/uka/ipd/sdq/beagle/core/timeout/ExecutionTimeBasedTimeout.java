@@ -41,7 +41,7 @@ public abstract class ExecutionTimeBasedTimeout implements Timeout {
 	}
 
 	/**
-	 * For init methots of implemanting classes. Runs after {@link #init()}.
+	 * For init methods of implementing classes. Runs after {@link #init()}.
 	 */
 	protected abstract void implementationInit();
 
