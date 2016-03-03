@@ -127,7 +127,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 		this.count++;
 
 		// call at-hooks
-		this.atOther(this.currentExpression);
+		this.atExpression(this.currentExpression);
 		this.currentExpression.receive(this.atHookHandler);
 
 		// visit inner expressions
@@ -137,7 +137,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 		this.lastInnerExpressionIterator = oldInnerExpressionIterator;
 
 		// call after-hooks
-		this.afterOther(this.currentExpression);
+		this.afterExpression(this.currentExpression);
 		this.currentExpression.receive(this.afterHookHandler);
 		this.depth--;
 	}
@@ -193,26 +193,11 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 		}
 	}
 
-	/**
-	 * Queries how many expressions have been visited during the momentary traversal. This
-	 * value is only reset when starting a new visit a new expression, it can thus be used
-	 * to determine how many expressions were visited after a traversal.
-	 *
-	 * @return The amount of visited expressions since the last call to
-	 *         {@link #modifyRecursively(EvaluableExpression)}.
-	 */
 	@Override
 	protected int getVisitedCount() {
 		return this.count;
 	}
 
-	/**
-	 * Queries how “deep” the currently visited expression is in the visited tree.
-	 *
-	 * @return how many {@code at} hooks have been called - how many {@code after} hooks
-	 *         have been called - 1. Will be {@code 0} at the root expression and
-	 *         {@code -1} at the before and after a traversal.
-	 */
 	@Override
 	protected int getTraversalDepth() {
 		return this.depth;
@@ -349,7 +334,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 
 		@Override
 		public void visit(final DivisionExpression expression) {
-			this.visitInner(expression.getDivisor(), expression.getDividend());
+			this.visitInner(expression.getDividend(), expression.getDivisor());
 		}
 
 		@Override
@@ -510,79 +495,66 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 
 		@Override
 		public void visit(final AdditionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atAddition(expression);
 		}
 
 		@Override
 		public void visit(final MultiplicationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atMultiplication(expression);
 		}
 
 		@Override
 		public void visit(final EvaluableVariable variable) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(variable);
 			ModifyingEvaluableExpressionVisitor.this.atVariable(variable);
 		}
 
 		@Override
 		public void visit(final ComparisonExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atComparison(expression);
 		}
 
 		@Override
 		public void visit(final ConstantExpression constant) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(constant);
 			ModifyingEvaluableExpressionVisitor.this.atConstant(constant);
 		}
 
 		@Override
 		public void visit(final DivisionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atDivision(expression);
 		}
 
 		@Override
 		public void visit(final ExponentationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atExponentation(expression);
 		}
 
 		@Override
 		public void visit(final ExponentialFunctionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atExponentialFunction(expression);
 		}
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atIfThenElse(expression);
 		}
 
 		@Override
 		public void visit(final LogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final NaturalLogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atNaturalLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final SineExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atSine(expression);
 		}
 
 		@Override
 		public void visit(final SubtractionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atSubtraction(expression);
 		}
 	}
@@ -597,79 +569,66 @@ public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpress
 
 		@Override
 		public void visit(final AdditionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterAddition(expression);
 		}
 
 		@Override
 		public void visit(final MultiplicationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterMultiplication(expression);
 		}
 
 		@Override
 		public void visit(final EvaluableVariable variable) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(variable);
 			ModifyingEvaluableExpressionVisitor.this.afterVariable(variable);
 		}
 
 		@Override
 		public void visit(final ComparisonExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterComparison(expression);
 		}
 
 		@Override
 		public void visit(final ConstantExpression constant) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(constant);
 			ModifyingEvaluableExpressionVisitor.this.afterConstant(constant);
 		}
 
 		@Override
 		public void visit(final DivisionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterDivision(expression);
 		}
 
 		@Override
 		public void visit(final ExponentationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterExponentation(expression);
 		}
 
 		@Override
 		public void visit(final ExponentialFunctionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterExponentialFunction(expression);
 		}
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterIfThenElse(expression);
 		}
 
 		@Override
 		public void visit(final LogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final NaturalLogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterNaturalLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final SineExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterSine(expression);
 		}
 
 		@Override
 		public void visit(final SubtractionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterSubtraction(expression);
 		}
 	}
