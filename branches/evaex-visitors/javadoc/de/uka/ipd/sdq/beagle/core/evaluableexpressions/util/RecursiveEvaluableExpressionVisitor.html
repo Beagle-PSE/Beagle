@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
@@ -101,12 +101,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker</a></li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.PartialExpressionTreeWalker</a></li>
-<li>
-<ul class="inheritance">
 <li>de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.RecursiveEvaluableExpressionVisitor</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -118,7 +113,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">RecursiveEvaluableExpressionVisitor</span>
-extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">PartialExpressionTreeWalker</a></pre>
+extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></pre>
 <div class="block">Visitor of <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpressions</code></a>, recursively visiting all
  their inner expressions.
 
@@ -126,7 +121,7 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
  <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#visitRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-"><code>visitRecursively(EvaluableExpression)</code></a> and call the according <code>at</code> hook.
  Afterwards, it will recursively visit all inner expressions and then call the
  <code>after</code> hook. It thus realises a depth-first traversal of the tree formed by each
- expression. If <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#stopTraversingInnerExpressions--"><code>PartialExpressionTreeWalker.stopTraversingInnerExpressions()</code></a> is called, the traversal will
+ expression. If <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#stopTraversingInnerExpressions--"><code>stopTraversingInnerExpressions()</code></a> is called, the traversal will
  no longer visit inner expressions. Instead, it will go “up” the tree again, whilst
  calling the <code>after</code> hooks, until it reached the initial expression and then
  terminate. Given that no exception is thrown, the traversal of one expression tree that
@@ -144,8 +139,7 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
  </ul>
 
  <p>Please note that evaluable expressions may often contain an instance of one
- evaluable expression multiple times. For every new visit, traversing of inner
- expressions will be enabled.
+ evaluable expression multiple times.
 
  <p>This visitor is not thread safe. It may only be used to traverse one expression at a
  time, meaning that its results are undefined if
@@ -205,18 +199,30 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#startTraversingInnerExpressions--">startTraversingInnerExpressions</a></span>()</code>
+<div class="block">Restarts visiting of inner expressions after it has been stopped through
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#stopTraversingInnerExpressions--"><code>stopTraversingInnerExpressions()</code></a>.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#stopTraversingInnerExpressions--">stopTraversingInnerExpressions</a></span>()</code>
+<div class="block">Stops visiting of inner expressions.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#visitRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">visitRecursively</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>&nbsp;expression)</code>
 <div class="block">Starts visiting <code>expression</code> recursively.</div>
 </td>
 </tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#willTraverseInnerExpressions--">willTraverseInnerExpressions</a></span>()</code>
+<div class="block">Queries whether the visitor will visit inner expressions.</div>
+</td>
+</tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.PartialExpressionTreeWalker">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">PartialExpressionTreeWalker</a></h3>
-<code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#startTraversingInnerExpressions--">startTraversingInnerExpressions</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#stopTraversingInnerExpressions--">stopTraversingInnerExpressions</a>, <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#willTraverseInnerExpressions--">willTraverseInnerExpressions</a></code></li>
-</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker">
 <!--   -->
@@ -277,6 +283,52 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 </dl>
 </li>
 </ul>
+<a name="stopTraversingInnerExpressions--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>stopTraversingInnerExpressions</h4>
+<pre>protected&nbsp;void&nbsp;stopTraversingInnerExpressions()</pre>
+<div class="block">Stops visiting of inner expressions. As soon as this method is called, this visitor
+ will no longer visit inner expressions. This means that only <code>after</code> hooks of
+ already visited expressions will be called until the root is reached. This setting
+ persists only until the next call of <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#visitRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-"><code>visitRecursively(EvaluableExpression)</code></a>
+ .</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#startTraversingInnerExpressions--"><code>startTraversingInnerExpressions()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="startTraversingInnerExpressions--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>startTraversingInnerExpressions</h4>
+<pre>protected&nbsp;void&nbsp;startTraversingInnerExpressions()</pre>
+<div class="block">Restarts visiting of inner expressions after it has been stopped through
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#stopTraversingInnerExpressions--"><code>stopTraversingInnerExpressions()</code></a>. This returns to the visitor’s default
+ behaviour.</div>
+</li>
+</ul>
+<a name="willTraverseInnerExpressions--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>willTraverseInnerExpressions</h4>
+<pre>protected&nbsp;boolean&nbsp;willTraverseInnerExpressions()</pre>
+<div class="block">Queries whether the visitor will visit inner expressions. Will return <code>true</code>
+ unless <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#stopTraversingInnerExpressions--"><code>stopTraversingInnerExpressions()</code></a> is called. The value will be reset
+ when calling <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#visitRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-"><code>visitRecursively(EvaluableExpression)</code></a>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Whether inner expressions will be examined for the momentary tree.</dd>
+</dl>
+</li>
+</ul>
 <a name="getVisitedCount--">
 <!--   -->
 </a>
@@ -284,16 +336,13 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <li class="blockList">
 <h4>getVisitedCount</h4>
 <pre>protected&nbsp;int&nbsp;getVisitedCount()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#getVisitedCount--">ExpressionTreeWalker</a></code></span></div>
 <div class="block">Queries how many expressions have been visited during the momentary traversal. This
  value is only reset when starting a new visit a new expression, it can thus be used
  to determine how many expressions were visited after a traversal.</div>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#getVisitedCount--">getVisitedCount</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The amount of visited expressions since the last call to
-         <code>#modifyRecursively(EvaluableExpression)</code>.</dd>
+         <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#visitRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-"><code>visitRecursively(EvaluableExpression)</code></a>.</dd>
 </dl>
 </li>
 </ul>
@@ -304,11 +353,8 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <li class="blockList">
 <h4>getTraversalDepth</h4>
 <pre>protected&nbsp;int&nbsp;getTraversalDepth()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#getTraversalDepth--">ExpressionTreeWalker</a></code></span></div>
 <div class="block">Queries how “deep” the currently visited expression is in the visited tree.</div>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#getTraversalDepth--">getTraversalDepth</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>how many <code>at</code> hooks have been called - how many <code>after</code> hooks
          have been called - 1. Will be <code>0</code> at the root expression and
@@ -343,7 +389,7 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
