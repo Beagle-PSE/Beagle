@@ -289,5 +289,46 @@ KOMAoptions{open=right}
 Tests
 \end_layout
 
+\begin_layout Section
+JUnit Tests
+\end_layout
+
+\begin_layout Section
+Integration Tests
+\end_layout
+
+\begin_layout Section
+Tests defined in SRS
+\end_layout
+
+\begin_layout Subsection
+T200
+\end_layout
+
+\begin_layout Subsection
+T210
+\end_layout
+
+\begin_layout Subsection
+T220
+\end_layout
+
+\begin_layout Subsection
+OT200
+\end_layout
+
+\begin_layout Chapter
+Bugs
+\end_layout
+
+\begin_layout Standard
+Contains all Bugs found and/ or fixed in the Quality Control Phase.
+\end_layout
+
+\begin_layout Standard
+Reports should contain at least Symptom, Reason and a description of the
+ fix.
+\end_layout
+
 \end_body
 \end_document
