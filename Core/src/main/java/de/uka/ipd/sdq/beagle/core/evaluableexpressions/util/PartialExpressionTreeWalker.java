@@ -1,11 +1,11 @@
 package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
 
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
-
 /**
  * An evaluable expression tree walker allowing to ignore certain subtrees. The class
  * offers a mechanism to stop visiting of inner expressions, forcing the visitor not to
- * traverse the expression tree any further.
+ * traverse the expression tree any further. Instead, the traversal will go “up” again,
+ * only calling {@code after} hooks, until it terminates at the root or traversal of inner
+ * expressions is activated again.
  *
  * @author Joshua Gleitze
  */
@@ -39,8 +39,8 @@ public abstract class PartialExpressionTreeWalker extends ExpressionTreeWalker {
 
 	/**
 	 * Queries whether the visitor will visit inner expressions. Will return {@code true}
-	 * unless {@link #stopTraversingInnerExpressions()} is called. The value will be reset
-	 * when calling {@link #visitRecursively(EvaluableExpression)}.
+	 * if {@link #startTraversingInnerExpressions()} was called and {@code false} if
+	 * {@link #stopTraversingInnerExpressions()} was called.
 	 *
 	 * @return Whether inner expressions will be examined for the momentary tree.
 	 */

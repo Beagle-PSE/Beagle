@@ -39,20 +39,17 @@ import java.util.Collection;
  * <p>This visitor will start at the expression passed to
  * {@link #modifyRecursively(EvaluableExpression)} and call the according {@code at} hook.
  * Afterwards, it will recursively visit all inner expressions and then call the
- * {@code after} hook. If {@link #stopTraversal()} is called, the traversal will no longer
- * visit inner expressions. Instead, it will go “up” the tree again, whilst calling the
- * {@code after} hooks, until it reached the initial expression and then terminate. Given
- * that no expression is thrown,the traversal of one expression tree that only contains
- * pairwise different inner expressions has these properties:
+ * {@code after} hook. Given that no expression is thrown, the traversal of one expression
+ * tree that only contains pairwise different inner expressions has these properties:
  *
  * <ul>
  *
  * <li> the number of all called {@code at} hooks will equal the number of all called
  * {@code after} hooks. However, the numbers may differ for a type of specific hooks
- * because the expression was changed during the visit. For example
- * {@link #atSubstraction} may be called on an expression that is replaced by an
- * {@linkplain AdditionExpression} in this hook. Thus {@link #afterAddition} will be
- * called instead of {@link #afterSubstraction} at this position when traversing upwards.
+ * because the expression was changed during the visit. For example {@code atSubstraction}
+ * may be called on an expression that is replaced by an {@linkplain AdditionExpression}
+ * in this hook. Thus {@code afterAddition} will be called instead of
+ * {@code afterSubstraction} at this position when traversing upwards.
  *
  * <li> if for two expression {@code e1} and {@code e2}, {@code atExpression(e1)} was
  * called before {@code atExpression(e2)} was, {@code afterExpression(e2)} will be called

@@ -82,8 +82,7 @@ public abstract class ExpressionTreeWalker {
 	 * value is only reset when starting a new visit a new expression, it can thus be used
 	 * to determine how many expressions were visited after a traversal.
 	 *
-	 * @return The amount of visited expressions since the last call to
-	 *         {@link #modifyRecursively(EvaluableExpression)}.
+	 * @return The amount of visited expressions during the current visit.
 	 */
 	protected abstract int getVisitedCount();
 
