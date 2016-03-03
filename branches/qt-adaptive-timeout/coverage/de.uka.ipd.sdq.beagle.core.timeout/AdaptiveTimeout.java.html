@@ -70,7 +70,7 @@ import java.util.Arrays;
 <span class="fc" id="L70">	}</span>
 
 	@Override
-	public void reportOneStepProgress() {
+	public synchronized void reportOneStepProgress() {
 <span class="fc" id="L74">		Validate.isTrue(this.initialised);</span>
 
 <span class="fc bfc" id="L76" title="All 2 branches covered.">		if (this.reachedTimeoutInThePast) {</span>
@@ -144,7 +144,7 @@ import java.util.Arrays;
 	/**
 	 * Calls the callback handlers once the timeout is reached.
 	 */
-	private void notifyOnReachedTimeout() {
+	private synchronized void notifyOnReachedTimeout() {
 
 <span class="pc bpc" id="L149" title="2 of 4 branches missed.">		assert this.currentMaximallyTolerableTime &gt;= 0;</span>
 

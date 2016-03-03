@@ -52,35 +52,38 @@ import org.apache.commons.lang3.Validate;
 	 * Calls the callback handlers once the timeout is reached.
 	 */
 	private void notifyOnReachedTimeout() {
+
+<span class="fc" id="L56">		long timeToSleep = this.startingTime + this.timeout - System.currentTimeMillis();</span>
+
 		// Wait until the timeout is up.
-<span class="fc bfc" id="L56" title="All 2 branches covered.">		while (!this.isReached()) {</span>
-<span class="fc" id="L57">			final long timeToSleep = this.startingTime + this.timeout - System.currentTimeMillis();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		while (!this.isReached()) {</span>
+<span class="pc bpc" id="L60" title="2 of 4 branches missed.">			assert timeToSleep &gt;= 0;</span>
+
+			try {
+<span class="fc" id="L63">				Thread.sleep(timeToSleep);</span>
+
+<span class="nc" id="L65">			} catch (final InterruptedException exception) {</span>
+				// Retry on interrupt. No handling is needed because the loop just
+				// tries again.
+<span class="fc" id="L68">			}</span>
 
 			/**
-			 * This can happen if the necessary time passed between the execution of the
-			 * loop condition and the calculation of {@code timeToSleep}.
+			 * This has to be done at the end of the loop, not at the beginning. Otherwise
+			 * the timeout can be reached right before the first instruction in the loop
+			 * body but not in the loop header causing {@code timeToSleep} to become
+			 * negative. This would be an illegal argument for {@link Thread#sleep(long)}.
 			 */
-<span class="pc bpc" id="L63" title="1 of 2 branches missed.">			if (timeToSleep &lt;= 0) {</span>
-<span class="nc bnc" id="L64" title="All 4 branches missed.">				assert this.isReached();</span>
-			} else {
-				try {
-<span class="fc" id="L67">					Thread.sleep(timeToSleep);</span>
+<span class="fc" id="L76">			timeToSleep = this.startingTime + this.timeout - System.currentTimeMillis();</span>
+		}
 
-<span class="nc" id="L69">				} catch (final InterruptedException exception) {</span>
-					// Retry on interrupt. No handling is needed because the loop just
-					// tries again.
-<span class="fc" id="L72">				}</span>
-			}
-<span class="fc" id="L74">		}</span>
-
-<span class="pc bpc" id="L76" title="1 of 2 branches missed.">		for (final Runnable callback : this.callbacks) {</span>
-<span class="nc" id="L77">			new Thread(callback).start();</span>
-<span class="nc" id="L78">		}</span>
-<span class="fc" id="L79">	}</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">		for (final Runnable callback : this.callbacks) {</span>
+<span class="nc" id="L80">			new Thread(callback).start();</span>
+<span class="nc" id="L81">		}</span>
+<span class="fc" id="L82">	}</span>
 
 	@Override
 	protected void implementationInit() {
-<span class="fc" id="L83">		new Thread(this::notifyOnReachedTimeout).start();</span>
-<span class="fc" id="L84">	}</span>
+<span class="fc" id="L86">		new Thread(this::notifyOnReachedTimeout).start();</span>
+<span class="fc" id="L87">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
