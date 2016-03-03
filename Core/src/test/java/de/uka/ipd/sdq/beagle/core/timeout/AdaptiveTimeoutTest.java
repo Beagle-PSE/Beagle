@@ -50,9 +50,11 @@ public class AdaptiveTimeoutTest {
 	 */
 	@Test
 	public void reportOneStepProgress() {
+		mockStatic(System.class);
+		given(System.currentTimeMillis()).willReturn(0L);
+
 		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
 		adaptTimeout.init();
-		mockStatic(System.class);
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout.reportOneStepProgress();
 		}
@@ -66,7 +68,7 @@ public class AdaptiveTimeoutTest {
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout2.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 1000);
+		given(System.currentTimeMillis()).willReturn(1000L);
 		adaptTimeout2.reportOneStepProgress();
 
 		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
@@ -74,7 +76,7 @@ public class AdaptiveTimeoutTest {
 		for (int i = 0; i < 9; i++) {
 			adaptTimeout3.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 2000);
+		given(System.currentTimeMillis()).willReturn(2000L);
 		adaptTimeout3.reportOneStepProgress();
 
 	}
@@ -85,6 +87,8 @@ public class AdaptiveTimeoutTest {
 	@Test
 	public void isReached() {
 		mockStatic(System.class);
+		given(System.currentTimeMillis()).willReturn(0L);
+
 		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
 		adaptTimeout.init();
 		assertThat(adaptTimeout.isReached(), equalTo(false));
@@ -101,7 +105,7 @@ public class AdaptiveTimeoutTest {
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout2.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 1000);
+		given(System.currentTimeMillis()).willReturn(1000L);
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 
 		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
@@ -109,10 +113,10 @@ public class AdaptiveTimeoutTest {
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout3.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn(5L * 60 * 1000 + 2000);
-		System.out.println("1");
+		given(System.currentTimeMillis()).willReturn(2L * 1000);
+
 		adaptTimeout3.reportOneStepProgress();
-		System.out.println("2");
+
 		assertThat(adaptTimeout3.isReached(), equalTo(true));
 	}
 

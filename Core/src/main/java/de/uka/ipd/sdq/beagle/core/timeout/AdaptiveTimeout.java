@@ -6,7 +6,8 @@ import java.util.Arrays;
 
 /**
  * Implements an adaptive timeout. This means that later calls to {@link #isReached()}
- * will return {@code false} if the previous calls took a long time, too.
+ * will return {@code false} if the previous calls took a long time, too. This class is
+ * thread safe.
  *
  * @author Christoph Michelbach
  */
@@ -15,7 +16,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	/**
 	 * How much additional time is always tolerated. Stated in milliseconds.
 	 */
-	private static final long ADDITIONAL_TIME_TOLEARANCE = 5 * 60 * 1000;
+	private static final long ADDITIONAL_TIME_TOLEARANCE = 30 * 1000;
 
 	/**
 	 * How far the adaptive timeout looks back to the past (calls to
@@ -30,7 +31,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	 * Whether the timeout has been reached in the past. {@code true} if it did;
 	 * {@code false} otherwise.
 	 */
-	private boolean reachedTimeoutInThePast;
+	private Boolean reachedTimeoutInThePast = false;
 
 	/**
 	 * When {@link #isReached()} has been called the last time. Stated in milliseconds.
@@ -74,12 +75,15 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		Validate.isTrue(this.initialised);
 
 		if (this.reachedTimeoutInThePast) {
-			this.currentMaximallyTolerableTime = 0;
-			this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();
 			return;
 		}
 
 		final long currentTime = System.currentTimeMillis();
+
+		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
+		this.timeOfPreviousCall = currentTime;
+		this.numberOfPreviousCalls++;
+
 		this.regressionLine = new RegressionLine(this.previousTellingTimes);
 		this.regressionLine.init();
 
@@ -92,9 +96,6 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();
 
 		// Prepare everything for the next call to this method.
-		this.addTellingTimeToPreviousTellingTimes(currentTime - this.timeOfPreviousCall);
-		this.timeOfPreviousCall = currentTime;
-		this.numberOfPreviousCalls++;
 
 		if (this.numberOfPreviousCalls == RANGE) {
 			new Thread(this::notifyOnReachedTimeout).start();
@@ -102,7 +103,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	}
 
 	@Override
-	public synchronized boolean isReached() {
+	public boolean isReached() {
 		Validate.isTrue(this.initialised);
 
 		if (this.numberOfPreviousCalls < RANGE) {
@@ -110,18 +111,15 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		}
 
 		if (this.reachedTimeoutInThePast) {
-			this.currentMaximallyTolerableTime = 0;
-			this.lastTimeUpdatedCurrentMaximallyTolerableTime = System.currentTimeMillis();
 			return true;
 		}
 
-		final long currentTime = System.currentTimeMillis();
-		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);
-		final long maximallyTolerableTime = predictedValue + ADDITIONAL_TIME_TOLEARANCE;
-
-		final boolean returnValue = (currentTime - this.timeOfPreviousCall) > maximallyTolerableTime;
-
-		this.reachedTimeoutInThePast = returnValue;
+		final boolean returnValue;
+		synchronized (this.reachedTimeoutInThePast) {
+			final long currentTime = System.currentTimeMillis();
+			returnValue = (currentTime - this.timeOfPreviousCall) > this.currentMaximallyTolerableTime;
+			this.reachedTimeoutInThePast = returnValue;
+		}
 
 		return returnValue;
 	}
@@ -144,8 +142,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	/**
 	 * Calls the callback handlers once the timeout is reached.
 	 */
-	private synchronized void notifyOnReachedTimeout() {
-
+	private void notifyOnReachedTimeout() {
 		assert this.currentMaximallyTolerableTime >= 0;
 
 		long timeToSleep = this.currentMaximallyTolerableTime + this.lastTimeUpdatedCurrentMaximallyTolerableTime
@@ -212,7 +209,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		 * @param data The data to determine the regression line for.
 		 */
 		RegressionLine(final long[] data) {
-			this.data = data.clone();
+			this.data = data;
 			this.initialised = false;
 		}
 
