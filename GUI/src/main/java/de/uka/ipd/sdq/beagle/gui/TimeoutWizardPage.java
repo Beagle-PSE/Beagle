@@ -282,13 +282,9 @@ public class TimeoutWizardPage extends WizardPage {
 	 * {@link WizardPage} so the visibility of this constant can be changed in the future.
 	 */
 	private void adaptPageToDefaultValues() {
-
-		// CHECKSTYLE:OFF
-		if (this.beagleConfiguration.getTimeout() instanceof AdaptiveTimeout) {
-			// Nothing needs to be done because {@link TimeoutWizardPage} is written
-			// so this is the default.
-			// CHECKSTYLE:ON
-		} else if (this.beagleConfiguration.getTimeout() instanceof NoTimeout) {
+		// Nothing needs to be done for {@code AdaptiveTimeout} because {@link
+		// TimeoutWizardPage} is written so this is the default.
+		if (this.beagleConfiguration.getTimeout() instanceof NoTimeout) {
 			this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
 		} else {
 			// will be chosen when a set timeout is default
