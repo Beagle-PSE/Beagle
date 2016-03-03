@@ -102,7 +102,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	}
 
 	@Override
-	public boolean isReached() {
+	public synchronized boolean isReached() {
 		Validate.isTrue(this.initialised);
 
 		if (this.numberOfPreviousCalls < RANGE) {
