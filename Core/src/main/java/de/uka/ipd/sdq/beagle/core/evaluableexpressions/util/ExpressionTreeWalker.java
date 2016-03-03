@@ -78,6 +78,25 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 public abstract class ExpressionTreeWalker {
 
 	/**
+	 * Queries how many expressions have been visited during the momentary traversal. This
+	 * value is only reset when starting a new visit a new expression, it can thus be used
+	 * to determine how many expressions were visited after a traversal.
+	 *
+	 * @return The amount of visited expressions since the last call to
+	 *         {@link #modifyRecursively(EvaluableExpression)}.
+	 */
+	protected abstract int getVisitedCount();
+
+	/**
+	 * Queries how “deep” the currently visited expression is in the visited tree.
+	 *
+	 * @return how many {@code at} hooks have been called - how many {@code after} hooks
+	 *         have been called - 1. Will be {@code 0} at the root expression and
+	 *         {@code -1} at the before and after a traversal.
+	 */
+	protected abstract int getTraversalDepth();
+
+	/**
 	 * Called when first visiting any {@link EvaluableExpression} no hook was defined for.
 	 * See the class description for details.
 	 *

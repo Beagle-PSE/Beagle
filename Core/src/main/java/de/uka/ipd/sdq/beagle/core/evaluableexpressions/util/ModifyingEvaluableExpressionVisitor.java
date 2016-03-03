@@ -63,7 +63,7 @@ import java.util.Collection;
  * <p>Please note that evaluable expressions may often contain an instance of one
  * evaluable expression multiple times. Replacements do however only apply to the current
  * position in the traversal tree (and not all occurences of the currently visited
- * expression).
+ * expression). For every new visit, traversing of inner expressions will be enabled.
  *
  * <p>This visitor is not thread safe. It may only be used to traverse one expression at a
  * time, meaning that its results are undefined if
@@ -74,7 +74,7 @@ import java.util.Collection;
  * @author Joshua Gleitze
  * @see ExpressionTreeWalker
  */
-public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTreeWalker {
+public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpressionTreeWalker {
 
 	/**
 	 * The momentarily visited expression. It can change multiple times at the same tree
@@ -91,12 +91,6 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 	 * How many expressions we’ve seen so far. Will be 1 at the root.
 	 */
 	private int count;
-
-	/**
-	 * As long as this is true, we’ll traverse further. We’ll immediately stop to traverse
-	 * deeper as soon as this is false.
-	 */
-	private boolean doTraverse = true;
 
 	/**
 	 * The visitor handling the calls to the {@code at} hooks.
@@ -164,7 +158,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		this.lastInnerExpressionIterator = null;
 		this.count = 0;
 		this.depth = -1;
-		this.doTraverse = true;
+		this.startTraversingInnerExpressions();
 
 		this.next();
 
@@ -207,6 +201,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 	 * @return The amount of visited expressions since the last call to
 	 *         {@link #modifyRecursively(EvaluableExpression)}.
 	 */
+	@Override
 	protected int getVisitedCount() {
 		return this.count;
 	}
@@ -218,38 +213,9 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 	 *         have been called - 1. Will be {@code 0} at the root expression and
 	 *         {@code -1} at the before and after a traversal.
 	 */
+	@Override
 	protected int getTraversalDepth() {
 		return this.depth;
-	}
-
-	/**
-	 * Stops visiting of inner expressions. As soon as this method is called, this visitor
-	 * will no longer visit inner expressions. This means that only {@code after} hooks of
-	 * already visited expressions will be called until the root is reached. This setting
-	 * persists only until the next call of
-	 * {@link #modifyRecursively(EvaluableExpression)} .
-	 */
-	protected void stopTraversal() {
-		this.doTraverse = false;
-	}
-
-	/**
-	 * Continues visiting of inner expressions after it has been stopped through
-	 * {@link #stopTraversal()}. This returns to the visitor’s default behaviour.
-	 */
-	protected void continueTraversal() {
-		this.doTraverse = true;
-	}
-
-	/**
-	 * Queries whether the visitor will visit inner expressions. Will return {@code true}
-	 * unless {@link #stopTraversal()} is called. The value will be reset when calling
-	 * {@link #modifyRecursively(EvaluableExpression)}.
-	 *
-	 * @return Whether inner expressions will be examined for the momentary tree.
-	 */
-	protected boolean willTraverse() {
-		return this.doTraverse;
 	}
 
 	/**
@@ -346,9 +312,10 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		private void visitInner(final EvaluableExpression... currentInnerExpressions) {
 			this.innerExpressions = currentInnerExpressions;
 
-			// iterate over all as long as doTraverse is true.
+			// iterate over all as long further traversing is not stopped
 			for (this.innerExpressionIndex = 0; this.innerExpressionIndex < this.innerExpressions.length
-				&& ModifyingEvaluableExpressionVisitor.this.doTraverse; this.innerExpressionIndex++) {
+				&& ModifyingEvaluableExpressionVisitor.this
+					.willTraverseInnerExpressions(); this.innerExpressionIndex++) {
 				ModifyingEvaluableExpressionVisitor.this.currentExpression =
 					this.innerExpressions[this.innerExpressionIndex];
 				ModifyingEvaluableExpressionVisitor.this.next();
