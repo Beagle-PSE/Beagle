@@ -80,6 +80,7 @@ public class ProjectInformation implements Serializable {
 		final Charset charset, final Set<LaunchConfiguration> launchConfigurations) {
 		Validate.notNull(fileProvider);
 		Validate.notNull(buildPath);
+		Validate.notNull(charset);
 		Validate.noNullElements(launchConfigurations);
 		Validate.isTrue(!launchConfigurations.isEmpty(), "The launch configurations may not be empty");
 
