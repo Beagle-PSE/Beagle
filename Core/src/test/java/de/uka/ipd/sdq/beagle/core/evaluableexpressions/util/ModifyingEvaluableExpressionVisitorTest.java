@@ -49,15 +49,52 @@ public class ModifyingEvaluableExpressionVisitorTest {
 	}
 
 	/**
-	 * Tests if {@link ModifyingEvaluableExpressionVisitor} works as expected.
+	 * Tests if {@link ModifyingEvaluableExpressionVisitor} visits the expression
+	 * recursively.
 	 */
 	@Test
-	public void mainWork() {
+	public void visit() {
 		final EvaluableExpression expression = this.buildExpression();
 		final TestModifyingExpressionVisitor visitor = new TestModifyingExpressionVisitor();
 		visitor.modifyRecursively(expression);
 		assertThat(visitor.getCounterAt(), is(22));
 		assertThat(visitor.getCounterAfter(), is(22));
+
+		// ersetze aktuelle Expression mit replace (mit anderem Visitor)
+		// equals zu erwarteten
+		// weiterhin richtige traversierung
+	}
+
+	/**
+	 * Asserts that modifying works correctly.
+	 */
+	@Test
+	public void modify() {
+		final EvaluableExpression expression = this.buildExpression();
+
+		final ReplaceDivisionVisitor divVisitor = new ReplaceDivisionVisitor();
+		EvaluableExpression correctModified = new SubtractionExpression(new EvaluableVariable("a"),
+			new ExponentationExpression(ConstantExpression.forValue(393.123), ConstantExpression.forValue(-1)));
+		assertThat(divVisitor.modifyRecursively(expression), is(correctModified));
+
+		final RenameVariablesVisitor varVisitor = new RenameVariablesVisitor();
+		correctModified = new SubtractionExpression(
+			new DivisionExpression(new EvaluableVariable("x"),
+				new LogarithmExpression(ConstantExpression.forValue(2),
+					new SineExpression(
+						new DivisionExpression(ConstantExpression.forValue(4.32), new EvaluableVariable("x"))))),
+			new ExponentationExpression(ConstantExpression.forValue(393.123),
+				new DivisionExpression(ConstantExpression.forValue(-1),
+					new IfThenElseExpression(
+						new ComparisonExpression(new EvaluableVariable("x"), ConstantExpression.forValue(0)),
+						new NaturalLogarithmExpression(new SineExpression(ConstantExpression.forValue(1))),
+						new ExponentialFunctionExpression(new EvaluableVariable("x"))))));
+		assertThat(varVisitor.modifyRecursively(expression), is(correctModified));
+
+		// ersetze aktuelle Expression mit replace (mit anderem Visitor)
+		// equals zu erwarteten
+		// weiterhin richtige traversierung
+
 	}
 
 	/**
@@ -643,6 +680,113 @@ public class ModifyingEvaluableExpressionVisitorTest {
 		protected void afterSubtraction(final SubtractionExpression expression) {
 			assertThat("Wrong Depth", this.getTraversalDepth(), is(0));
 			assertThat("Wrong Count", this.getVisitedCount(), is(22));
+		}
+	}
+
+	/**
+	 * Implementation of {@link ModifyingEvaluableExpressionVisitor}, which replaces
+	 * Divisions with its Dividend.
+	 * 
+	 * @author Annika Berger
+	 */
+	private class ReplaceDivisionVisitor extends ModifyingEvaluableExpressionVisitor {
+
+		@Override
+		protected void atDivision(final DivisionExpression expression) {
+			final EvaluableExpression dividend = expression.getDividend();
+			this.replaceCurrentExpressionWith(dividend);
+			switch (dividend.toString()) {
+				case "a":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(1));
+					assertThat("Wrong Count", this.getVisitedCount(), is(2));
+					break;
+				case "4.32":
+					fail("Should not be visited anymore.");
+					break;
+				case "-1.0":
+					assertThat("Wrong Depth", this.getTraversalDepth(), is(2));
+					assertThat("Wrong Count", this.getVisitedCount(), is(5));
+					break;
+
+				default:
+					fail(String.format("There must be no division with %s as dividend in the visited expression",
+						dividend));
+			}
+		}
+
+		@Override
+		protected void afterVariable(final EvaluableVariable expression) {
+			switch (expression.getName()) {
+				case "a":
+					assertThat(this.getTraversalDepth(), is(1));
+					assertThat(this.getVisitedCount(), is(2));
+					break;
+				default:
+					fail("there should not be a variable called different.");
+			}
+		}
+
+		@Override
+		protected void atVariable(final EvaluableVariable expression) {
+			fail("Should not be called.");
+		}
+
+		@Override
+		protected void atOther(final EvaluableExpression expression) {
+			fail("Expression was in replaced part.");
+		}
+		
+		@Override
+		protected void atConstant(final ConstantExpression expression) {
+			if (expression.getValue() == 393.123) {
+				assertThat(this.getTraversalDepth(), is(2));
+				assertThat(this.getVisitedCount(), is(4));
+			} else {
+				fail("Should not be called");
+			}
+		}
+
+		@Override
+		protected void atSubtraction(final SubtractionExpression expression) {
+			assertThat(this.getTraversalDepth(), is(0));
+			assertThat(this.getVisitedCount(), is(1));
+		}
+
+		@Override
+		protected void atExponentation(final ExponentationExpression expression) {
+			assertThat(this.getTraversalDepth(), is(1));
+			assertThat(this.getVisitedCount(), is(3));
+		}
+
+		@Override
+		protected void afterDivision(final DivisionExpression expression) {
+			fail("Should not be called");
+		}
+	}
+
+	/**
+	 * Implementation of a {@link ModifyingEvaluableExpressionVisitor}, which renames all
+	 * {@link EvaluableVariable} to {@code x}.
+	 * 
+	 * @author Annika Berger
+	 */
+	private class RenameVariablesVisitor extends ModifyingEvaluableExpressionVisitor {
+
+		@Override
+		protected void atVariable(final EvaluableVariable expression) {
+			switch (expression.getName()) {
+				case "a":
+					break;
+				case "c":
+					break;
+				case "z":
+					break;
+				case "g":
+					break;
+				default:
+					fail("there should not be a variable called different.");
+			}
+			this.replaceCurrentExpressionWith(new EvaluableVariable("x"));
 		}
 	}
 
