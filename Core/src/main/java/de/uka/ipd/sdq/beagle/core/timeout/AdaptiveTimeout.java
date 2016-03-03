@@ -18,10 +18,11 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	private static final long ADDITIONAL_TIME_TOLEARANCE = 5 * 60 * 1000;
 
 	/**
-	 * How far the adaptive timeout looks back to the past (calls to {@link #isReached()})
-	 * before forgetting about events. This is also how often {@link #isReached()} will
-	 * return {@code true} for sure because this much data has to be collected before
-	 * enabling the timeout to make a sensible decision.
+	 * How far the adaptive timeout looks back to the past (calls to
+	 * {@link #reportOneStepProgress()}) before forgetting about events. If there have
+	 * been fewer than this calls to {@link #reportOneStepProgress()},
+	 * {@link #isReached()} will return {@code true} for sure because this much data has
+	 * to be collected before enabling the adaptive timeout to make a sensible decision.
 	 */
 	private static final int RANGE = 10;
 
