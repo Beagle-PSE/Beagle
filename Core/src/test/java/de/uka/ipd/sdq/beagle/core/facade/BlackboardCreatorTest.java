@@ -96,7 +96,7 @@ public class BlackboardCreatorTest {
 			blackboardCreator1.createBlackboard();
 		};
 
-		assertThat("branches must not null to create a blackboard.", method,
+		assertThat("branches must not be null to create a blackboard.", method,
 			throwsException(IllegalStateException.class));
 
 		final BlackboardCreator blackboardCreator2 = new BlackboardCreator();
