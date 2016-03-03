@@ -1,6 +1,10 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -62,7 +66,12 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
 
 	/**
-	 * The {@link BeagleConfiguration} this {@link TimeoutTab} uses.
+	 * Extensive inquiries yielded that a second comprises this many milliseconds.
+	 */
+	private static final int SECOND_MILLISECOND_RATIO = 1000;
+
+	/**
+	 * The {@link BeagleConfiguration} this {@link TimeoutWizardPage} uses.
 	 */
 	private final BeagleConfiguration beagleConfiguration;
 
@@ -87,12 +96,6 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	private Composite upperContainer;
 
 	/**
-	 * Applies the default setting for the timeout. [-2 → adaptive timeout] [-1 → no
-	 * timeout] [≥ 0 → timeout in seconds]
-	 */
-	private int timeout;
-
-	/**
 	 * The {@link SelectionListener} which will be called when the radio box indicating
 	 * that an adaptive timeout will be used gets selected.
 	 */
@@ -115,23 +118,22 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 * that no timeout will be used gets selected.
 	 */
 	private SelectionListener radioNoTimeoutSelected;
-	//
-	// /**
-	// * Constructs a new {@link TimeoutTab} being linked to the given
-	// * {@code beagleConfiguration}.
-	// *
-	// * @param beagleConfiguration The {@link BeagleConfiguration} this
-	// * {@link TimeoutTab} will be permanently linked to. Changing the
-	// * associated {@link BeagleConfiguration} is not possible.
-	// */
-	// public TimeoutTab(final BeagleConfiguration beagleConfiguration) {
-	// super(TITLE);
-	// this.setTitle(TITLE);
-	// this.setDescription(DESCRIPTION);
-	// this.setControl(this.textboxTimeoutSeconds);
-	// this.beagleConfiguration = beagleConfiguration;
-	// this.timeout = this.beagleConfiguration.getTimeout();
-	// }
+
+	/**
+	 * Constructs a new {@link TimeoutWizardPage} being linked to the given
+	 * {@code beagleConfiguration}.
+	 *
+	 * @param beagleConfiguration The {@link BeagleConfiguration} this
+	 *            {@link TimeoutWizardPage} will be permanently linked to. Changing the
+	 *            associated {@link BeagleConfiguration} is not possible.
+	 */
+	public TimeoutWizardPage(final BeagleConfiguration beagleConfiguration) {
+		super(TITLE);
+		this.setTitle(TITLE);
+		this.setDescription(DESCRIPTION);
+		this.setControl(this.textboxTimeoutSeconds);
+		this.beagleConfiguration = beagleConfiguration;
+	}
 
 	@Override
 	public void createControl(final Composite parent) {
@@ -162,8 +164,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutTab.this.timeout = BeagleConfiguration.ADAPTIVE_TIMEOUT;
-				TimeoutTab.this.beagleConfiguration.setTimeout(TimeoutTab.this.timeout);
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new AdaptiveTimeout());
 			}
 
 			@Override
@@ -181,10 +182,11 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 				if (TimeoutTab.this.textboxTimeoutSeconds.getText().isEmpty()) {
 					TimeoutTab.this.setPageComplete(false);
 				} else {
-					TimeoutTab.this.setPageComplete(true);
-					TimeoutTab.this.timeout = Integer.parseInt(TimeoutTab.this.textboxTimeoutSeconds.getText());
-					TimeoutTab.this.beagleConfiguration.setTimeout(BeagleConfiguration.ADAPTIVE_TIMEOUT);
-					TimeoutTab.this.beagleConfiguration.setTimeout(TimeoutTab.this.timeout);
+					TimeoutWizardPage.this.setPageComplete(true);
+					final ConstantTimeout constantTimeout =
+						new ConstantTimeout(Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText())
+							* SECOND_MILLISECOND_RATIO);
+					TimeoutWizardPage.this.beagleConfiguration.setTimeout(constantTimeout);
 				}
 			}
 
@@ -212,8 +214,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutTab.this.timeout = BeagleConfiguration.NO_TIMEOUT;
-				TimeoutTab.this.beagleConfiguration.setTimeout(TimeoutTab.this.timeout);
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new NoTimeout());
 			}
 
 			@Override
@@ -285,18 +286,13 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 * {@link WizardPage} so the visibility of this constant can be changed in the future.
 	 */
 	private void adaptPageToDefaultValues() {
-		switch (this.beagleConfiguration.getTimeout()) {
-			case BeagleConfiguration.ADAPTIVE_TIMEOUT:
-				// Nothing needs to be done because {@link TimeoutWizardPage} is written
-				// so this is the default.
-				break;
-			case BeagleConfiguration.NO_TIMEOUT:
-				this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
-				break;
-			default:
-				// will be chosen when a set timeout is default
-				this.radioSetTimeoutSelected.widgetSelected(new SelectionEvent(null));
-				break;
+		// Nothing needs to be done for {@code AdaptiveTimeout} because {@link
+		// TimeoutWizardPage} is written so this is the default.
+		if (this.beagleConfiguration.getTimeout() instanceof NoTimeout) {
+			this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
+		} else {
+			// will be chosen when a set timeout is default
+			this.radioSetTimeoutSelected.widgetSelected(new SelectionEvent(null));
 		}
 	}
 
@@ -305,8 +301,8 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 *
 	 * @return the timeout chosen by the user.
 	 */
-	public int getTimeout() {
-		return this.timeout;
+	public Timeout getTimeout() {
+		return this.beagleConfiguration.getTimeout();
 	}
 
 	@Override

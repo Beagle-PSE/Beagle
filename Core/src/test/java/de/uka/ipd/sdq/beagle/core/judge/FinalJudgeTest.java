@@ -6,14 +6,15 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -21,14 +22,13 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.ProjectInformationFactory;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.hamcrest.Matcher;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.stubbing.Answer;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.util.Set;
 
@@ -37,13 +37,17 @@ import java.util.Set;
  *
  * @author Joshua Gleitze
  */
-@PrepareForTest(FinalJudge.class)
 public class FinalJudgeTest {
 
 	/**
 	 * A factory for {@link Blackboard}s to easily obtain new instances from.
 	 */
 	private static final BlackboardFactory BLACKBOARD_FACTORY = new BlackboardFactory();
+
+	/**
+	 * A factory for {@link ProjectInformation}s to easily obtain new instances from.
+	 */
+	private static final ProjectInformationFactory PROJECT_INFORMATION_FACTORY = new ProjectInformationFactory();
 
 	/**
 	 * A {@link EvaluableExpression} factory to easily obtain new instances from.
@@ -61,12 +65,6 @@ public class FinalJudgeTest {
 	private static final Matcher<Boolean> CONTINUES_ANALYSIS = is(false);
 
 	/**
-	 * Rule loading PowerMock (to mock static methods).
-	 */
-	@Rule
-	public PowerMockRule loadPowerMock = new PowerMockRule();
-
-	/**
 	 * The Final Judge under test.
 	 */
 	private FinalJudge testedJudge;
@@ -82,9 +80,14 @@ public class FinalJudgeTest {
 	private Set<MeasurableSeffElement> allSeffElements;
 
 	/**
-	 * A mocked fitness function that it set on {@link #testBlackboard}.
+	 * A mocked fitness function that is set on {@link #testBlackboard}.
 	 */
 	private EvaluableExpressionFitnessFunction mockFitnessFunction;
+
+	/**
+	 * A mocked timeout that is set on {@link #testBlackboard}.
+	 */
+	private Timeout mockTimeout;
 
 	/**
 	 * Creates default instances for the test methods.
@@ -93,8 +96,11 @@ public class FinalJudgeTest {
 	public void createObjects() {
 		this.testedJudge = new FinalJudge();
 		this.mockFitnessFunction = mock(EvaluableExpressionFitnessFunction.class);
+		this.mockTimeout = mock(Timeout.class);
 		this.testBlackboard = BLACKBOARD_FACTORY.getWithFewElements();
 		this.testBlackboard = BLACKBOARD_FACTORY.setFitnessFunction(this.testBlackboard, this.mockFitnessFunction);
+		this.testBlackboard = BLACKBOARD_FACTORY.setProjectInformation(this.testBlackboard,
+			PROJECT_INFORMATION_FACTORY.setTimeout(this.testBlackboard.getProjectInformation(), this.mockTimeout));
 		this.allSeffElements = BLACKBOARD_FACTORY.getAllSeffElements(this.testBlackboard);
 	}
 
@@ -106,6 +112,10 @@ public class FinalJudgeTest {
 	public void initialisation() {
 		assertThat(() -> this.testedJudge.judge(this.testBlackboard), throwsException(IllegalStateException.class));
 		this.testedJudge.init(this.testBlackboard);
+
+		then(this.mockTimeout).should().init();
+
+		// now judging should be possible without an exception
 		this.testedJudge.judge(this.testBlackboard);
 		new FinalJudge().judge(this.testBlackboard);
 	}
@@ -127,22 +137,18 @@ public class FinalJudgeTest {
 	 * only that the analysis was aborted after 5 days.
 	 */
 	@Test
-	public void endsWhenRunningTooLong() {
-		final int daysToWait = 5;
+	public void endsAtTimeout() {
 		final EvaluableExpression testExpression = EVALUABLE_EXPRESSION_FACTORY.getOne();
 		final SeffBranch seffElement = this.testBlackboard.getAllSeffBranches().iterator().next();
 
-		// “go ahead in time” by mocking {@link System#currentTimeMillis}.
-		mockStatic(System.class);
-		given(System.currentTimeMillis()).willReturn(0L);
 		given(this.mockFitnessFunction.gradeFor(any(SeffBranch.class), any(), any())).willReturn(3d);
 
 		this.testedJudge.init(this.testBlackboard);
 
-		given(System.currentTimeMillis()).willReturn(daysToWait * 24L * 60L * 60L * 1000L);
+		given(this.mockTimeout.isReached()).willReturn(true);
 
 		this.testBlackboard.addProposedExpressionFor(seffElement, testExpression);
-		assertThat("The final judge should end the analysis if it lasts too long",
+		assertThat("The final judge should end the analysis if the timeout is reached",
 			this.testedJudge.judge(this.testBlackboard), ENDS_ANALYSIS);
 		assertThat("The test for running to long should be performed statelessly",
 			new FinalJudge().judge(this.testBlackboard), ENDS_ANALYSIS);
