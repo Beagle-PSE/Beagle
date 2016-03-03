@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  * @author Christoph Michelbach
  */
-public class AdaptiveTimeout extends Timeout {
+public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
 	 * How much additional time is always tolerated. Stated in milliseconds.
@@ -70,7 +70,8 @@ public class AdaptiveTimeout extends Timeout {
 	private long currentMaximallyTolerableTime = -1;
 
 	@Override
-	public void implementationInit() {
+	public void init() {
+		super.init();
 		this.timeOfPreviousCall = System.currentTimeMillis();
 	}
 

@@ -1,29 +1,34 @@
 package de.uka.ipd.sdq.beagle.core.timeout;
 
-import org.apache.commons.lang3.Validate;
-
 /**
- * Always says that the timeout isn't reached.
+ * A timeout policy that never aborts execution.
  *
  * @author Christoph Michelbach
  */
-public class NoTimeout extends Timeout {
+public class NoTimeout implements Timeout {
 
 	@Override
 	public boolean isReached() {
-		Validate.isTrue(this.initialised);
-
 		return false;
 	}
 
 	@Override
 	public void reportOneStepProgress() {
-		Validate.isTrue(this.initialised);
 	}
 
 	@Override
-	public void implementationInit() {
-		// Nothing to do.
+	public void init() {
+		// nothing to do here
+	}
+
+	@Override
+	public void registerCallback(final Runnable callback) {
+		// there is no timeout, thus, the callbacks will never be called.
+	}
+
+	@Override
+	public void unregisterCallback(final Runnable callback) {
+		// nothing registered → nothing to unregister
 	}
 
 }

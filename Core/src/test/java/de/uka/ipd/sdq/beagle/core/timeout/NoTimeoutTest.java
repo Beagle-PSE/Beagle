@@ -1,11 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.timeout;
 
-import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-
-import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
 
@@ -24,7 +20,7 @@ public class NoTimeoutTest {
 
 		final NoTimeout timeout = new NoTimeout();
 		timeout.init();
-		assertThat(timeout.isReached(), is(equals(false)));
+		assertThat(timeout.isReached(), is(this.equals(false)));
 	}
 
 	/**
@@ -40,22 +36,4 @@ public class NoTimeoutTest {
 		final NoTimeout timeout1 = new NoTimeout();
 		timeout1.init();
 	}
-
-	/**
-	 * Test that init() is called at first method and only once.
-	 */
-	@Test
-	public void init() {
-		final NoTimeout noTimeout = new NoTimeout();
-		noTimeout.init();
-		final ThrowingMethod method = () -> {
-			noTimeout.init();
-		};
-		assertThat("noTimeout must not be allowed to call init() more than one time.", method,
-			throwsException(IllegalStateException.class));
-
-		final NoTimeout timeout2 = new NoTimeout();
-		assertThat(timeout2.initialised, is(equalTo(false)));
-	}
-
 }

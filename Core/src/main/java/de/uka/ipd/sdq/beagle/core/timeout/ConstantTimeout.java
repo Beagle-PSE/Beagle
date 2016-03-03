@@ -7,7 +7,7 @@ import org.apache.commons.lang3.Validate;
  *
  * @author Christoph Michelbach
  */
-public class ConstantTimeout extends Timeout {
+public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
 	 * The default time to sleep in the callback handler thread if this object isn't
@@ -18,7 +18,7 @@ public class ConstantTimeout extends Timeout {
 	/**
 	 * The timeout in milliseconds.
 	 */
-	private long timeout;
+	private final long timeout;
 
 	/**
 	 * Constructs a new constant timeout.
@@ -95,10 +95,4 @@ public class ConstantTimeout extends Timeout {
 			new Thread(callback).start();
 		}
 	}
-
-	@Override
-	public void implementationInit() {
-		// Nothing to do.
-	}
-
 }
