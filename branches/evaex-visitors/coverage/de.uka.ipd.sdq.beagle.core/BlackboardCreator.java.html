@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BlackboardCreator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">BlackboardCreator.java</span></div><h1>BlackboardCreator.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings;
+import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
+
+import org.palladiosimulator.pcm.usagemodel.Branch;
+
+import java.util.Set;
+
+/**
+ * Creates a new {@link Blackboard}. Therefore you can add information for the blackboard
+ * with the methods of this class and get a Blackboard containing all these information
+ * with {@link #createBlackboard()}
+ *
+ * @author Roman Langrehr
+ */
+<span class="nc" id="L18">public class BlackboardCreator {</span>
+
+	/**
+	 * The {@linkplain ResourceDemandingInternalAction ResourceDemandingInternalActions}
+	 * for the {@link Blackboard}.
+	 */
+	private Set&lt;ResourceDemandingInternalAction&gt; rdias;
+
+	/**
+	 * The {@linkplain Branch Branches} for the {@link Blackboard}.
+	 */
+	private Set&lt;SeffBranch&gt; branches;
+
+	/**
+	 * The {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}.
+	 */
+	private Set&lt;SeffLoop&gt; loops;
+
+	/**
+	 * The {@linkplain ExternalCallParameter ExternalCallParameter} for the
+	 * {@link Blackboard}.
+	 */
+	private Set&lt;ExternalCallParameter&gt; externalCalls;
+
+	/**
+	 * The {@link EvaluableExpressionFitnessFunction} for the {@link Blackboard}.
+	 */
+	private EvaluableExpressionFitnessFunction fitnessFunction;
+
+	/**
+	 * The {@link ProjectInformation} for the {@link Blackboard}.
+	 */
+	private ProjectInformation projectInformation;
+
+	/**
+	 * The {@link PcmBeagleMappings} for the {@link Blackboard} to create.
+	 */
+	private PcmBeagleMappings pcmMappings;
+
+	/**
+	 * A blackboard with all information provided via this class.
+	 *
+	 * @return A new {@link Blackboard} instance with all information provided via this
+	 *         class.
+	 *
+	 */
+	public Blackboard createBlackboard() {
+<span class="nc bnc" id="L65" title="All 12 branches missed.">		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null</span>
+			|| this.projectInformation == null || this.pcmMappings == null) {
+<span class="nc" id="L67">			throw new IllegalStateException(&quot;Not everything has been setup yet.&quot;);</span>
+		}
+<span class="nc" id="L69">		final Blackboard blackboard = new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls,</span>
+			this.fitnessFunction, this.projectInformation);
+
+<span class="nc" id="L72">		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, this.pcmMappings);</span>
+<span class="nc" id="L73">		return blackboard;</span>
+	}
+
+	/**
+	 * Sets the {@link PcmBeagleMappings} for the {@link Blackboard} to create.
+	 *
+	 * @param pcmMappings the {@link PcmBeagleMappings} for the {@link Blackboard} to
+	 *            create.
+	 */
+	public void setPcmMappings(final PcmBeagleMappings pcmMappings) {
+<span class="nc" id="L83">		this.pcmMappings = pcmMappings;</span>
+<span class="nc" id="L84">	}</span>
+
+	/**
+	 * Sets the {@linkplain ResourceDemandingInternalAction
+	 * ResourceDemandingInternalActions} for the {@link Blackboard}.
+	 *
+	 * @param rdias the {@linkplain ResourceDemandingInternalAction
+	 *            ResourceDemandingInternalActions} for the {@link Blackboard}
+	 */
+	public void setRdias(final Set&lt;ResourceDemandingInternalAction&gt; rdias) {
+<span class="nc" id="L94">		this.rdias = rdias;</span>
+<span class="nc" id="L95">	}</span>
+
+	/**
+	 * Sets the {@linkplain Branch Branches} for the {@link Blackboard}.
+	 *
+	 * @param branches the {@linkplain Branch Branches} for the {@link Blackboard}
+	 */
+	public void setBranches(final Set&lt;SeffBranch&gt; branches) {
+<span class="nc" id="L103">		this.branches = branches;</span>
+<span class="nc" id="L104">	}</span>
+
+	/**
+	 * Sets the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}.
+	 *
+	 * @param loops the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}
+	 */
+	public void setLoops(final Set&lt;SeffLoop&gt; loops) {
+<span class="nc" id="L112">		this.loops = loops;</span>
+<span class="nc" id="L113">	}</span>
+
+	/**
+	 * The {@linkplain ExternalCallParameter ExternalCallParameter} for the
+	 * {@link Blackboard}.
+	 *
+	 * @param externalCalls the {@linkplain ExternalCallParameter ExternalCallParameter}
+	 *            for the {@link Blackboard}
+	 */
+	public void setExternalCalls(final Set&lt;ExternalCallParameter&gt; externalCalls) {
+<span class="nc" id="L123">		this.externalCalls = externalCalls;</span>
+<span class="nc" id="L124">	}</span>
+
+	/**
+	 * The {@link EvaluableExpressionFitnessFunction} for the {@link Blackboard}.
+	 *
+	 * @param fitnessFunction The {@link EvaluableExpressionFitnessFunction} for the
+	 *            {@link Blackboard}.
+	 */
+	public void setFitnessFunction(final EvaluableExpressionFitnessFunction fitnessFunction) {
+<span class="nc" id="L133">		this.fitnessFunction = fitnessFunction;</span>
+<span class="nc" id="L134">	}</span>
+
+	/**
+	 * Sets the {@link ProjectInformation} for the {@link Blackboard}.
+	 *
+	 * @param projectInformation the {@link ProjectInformation} for the {@link Blackboard}
+	 *            .
+	 */
+	public void setProjectInformation(final ProjectInformation projectInformation) {
+<span class="nc" id="L143">		this.projectInformation = projectInformation;</span>
+<span class="nc" id="L144">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
