@@ -665,17 +665,17 @@ public class RecursiveEvaluableExpressionVisitorTest {
 
 		@Override
 		protected void atLogarithm(final LogarithmExpression expression) {
-			assertThat(willTraverse(), is(true));
+			assertThat(willTraverseInnerExpressions(), is(true));
 			stopTraversingInnerExpressions();
-			assertThat(willTraverse(), is(false));
+			assertThat(willTraverseInnerExpressions(), is(false));
 		}
 
 		@Override
 		protected void afterDivision(final DivisionExpression expression) {
 			if (expression.getDividend().toString().equals("a")) {
-				assertThat(willTraverse(), is(false));
+				assertThat(willTraverseInnerExpressions(), is(false));
 				this.startTraversingInnerExpressions();
-				assertThat(willTraverse(), is(true));
+				assertThat(willTraverseInnerExpressions(), is(true));
 			}
 		}
 
@@ -683,7 +683,7 @@ public class RecursiveEvaluableExpressionVisitorTest {
 		protected void atVariable(final EvaluableVariable expression) {
 			if (expression.getName().equals("c")) {
 				fail("Should not be visited.");
-				assertThat(willTraverse(), is(false));
+				assertThat(willTraverseInnerExpressions(), is(false));
 			}
 
 		}
