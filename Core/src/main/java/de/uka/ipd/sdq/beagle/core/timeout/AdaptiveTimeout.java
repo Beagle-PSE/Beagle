@@ -70,8 +70,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	private long currentMaximallyTolerableTime = -1;
 
 	@Override
-	public void init() {
-		super.init();
+	public void implementationInit() {
 		this.timeOfPreviousCall = System.currentTimeMillis();
 	}
 

@@ -32,12 +32,18 @@ public abstract class ExecutionTimeBasedTimeout implements Timeout {
 	protected final Set<Runnable> callbacks = new HashSet<>();
 
 	@Override
-	public void init() {
+	public final void init() {
 		Validate.validState(!this.initialised);
 
 		this.startingTime = System.currentTimeMillis();
 		this.initialised = true;
+		this.implementationInit();
 	}
+
+	/**
+	 * For init methots of implemanting classes. Runs after {@link #init()}.
+	 */
+	public abstract void implementationInit();
 
 	@Override
 	public void registerCallback(final Runnable callback) {

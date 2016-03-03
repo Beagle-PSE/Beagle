@@ -95,4 +95,8 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 			new Thread(callback).start();
 		}
 	}
+
+	@Override
+	public void implementationInit() {
+	}
 }
