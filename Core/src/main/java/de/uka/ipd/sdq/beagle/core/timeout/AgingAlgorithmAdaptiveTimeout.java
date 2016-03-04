@@ -10,9 +10,25 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
-	 * The agingAlgorithmAlpha value of the aging algorithm.
+	 * The AGING_ALPHA value of the aging algorithm.
 	 */
-	private static final double agingAlgorithmAlpha = 0.5;
+	private static final double AGING_ALPHA = 0.5;
+
+	/**
+	 * How much additional time is always tolerated. Stated in milliseconds.
+	 */
+	private static final long CONSTANT_ADDITIONAL_TIME_TOLEARANCE = 5 * 60 * 1000;
+
+	/**
+	 * How much additional time is always tolerated. Relative to the calculated time
+	 * tolerance (without {@link #CONSTANT_ADDITIONAL_TIME_TOLEARANCE}).
+	 */
+	private static final double MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE = 0.3;
+
+	/**
+	 * The start value for the aging algorithm.
+	 */
+	private static final long AGING_START_VALUE = 3600 * 1000;
 
 	/**
 	 * The previous maximally tolerable time in milliseconds or {@code -1} to indicate
@@ -24,7 +40,7 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	 * The maximally tolerable time in milliseconds or {@code -1} to indicate that there
 	 * is none.
 	 */
-	private long maximallyTolerableTime = -1;
+	private long maximallyTolerableTime = AGING_START_VALUE;
 
 	/**
 	 * When {@link #isReached()} has been called the last time. Stated in milliseconds.
@@ -52,10 +68,11 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		this.timeOfPreviousCall = System.currentTimeMillis();
 
 		if (this.previousMaximallyTolerableTime == -1) {
-			this.maximallyTolerableTime = tellingTime;
+			this.maximallyTolerableTime = (long) (tellingTime * (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE))
+				+ CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
 		} else {
-			this.maximallyTolerableTime = (long) (this.previousMaximallyTolerableTime * (1 - agingAlgorithmAlpha)
-				+ tellingTime * agingAlgorithmAlpha);
+			this.maximallyTolerableTime =
+				(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
 
 			if (!this.startedCallbackThread) {
 				this.startedCallbackThread = true;
