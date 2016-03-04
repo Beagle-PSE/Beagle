@@ -11,7 +11,7 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
 	 * The α value of the aging algorithm. The higher this value, the bigger the influence
-	 * of the newly measured value.
+	 * of the newly measured value. Must be ∈ (0,1).
 	 */
 	private static final double AGING_ALPHA = 0.5;
 
@@ -85,6 +85,7 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	@Override
 	protected void implementationInit() {
 		this.timeOfPreviousCall = System.currentTimeMillis();
+		assert AGING_ALPHA > 0 && AGING_ALPHA < 1;
 	}
 
 	/**
