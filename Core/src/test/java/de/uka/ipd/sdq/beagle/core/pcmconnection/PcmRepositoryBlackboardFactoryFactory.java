@@ -4,8 +4,6 @@ import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 
 import java.io.File;
 import java.io.Serializable;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 /**
  * A factory which creates instances of {@link PcmRepositoryBlackboardFactoryAdder}.
@@ -60,20 +58,24 @@ public class PcmRepositoryBlackboardFactoryFactory {
 		 */
 		private static final long serialVersionUID = -1066585975466213430L;
 
+		/**
+		 * Paths to scan for the source files.
+		 */
+		private static final String[] SOURCE_PATHS = {
+			"../src/test/resources/AppSensor/appsensor-core/src/main/java/",
+			"../src/test/resources/AppSensor/access-controllers/appsensor-access-control-reference/src/main/java/"
+		};
+
 		@Override
 		public File getSourceFile(final String fullyQualifiedJavaPath) {
-			final URL fileUrl = PcmRepositoryBlackboardFactoryFactory.class
-				.getResource("/de/uka/ipd/sdq/beagle/core/pcmconnection/Source files/"
-					+ fullyQualifiedJavaPath.replace(".", "/") + ".java");
-			if (fileUrl != null) {
-				try {
-					return new File(fileUrl.toURI());
-				} catch (final URISyntaxException uriSyntaxException) {
-					return null;
-				}
-			} else {
-				return null;
-			}
+			int index = 0;
+			File result;
+			do {
+				result = new File(
+					SOURCE_PATHS[index] + fullyQualifiedJavaPath.replaceAll("^core.", "").replace(".", "/") + ".java");
+				index++;
+			} while (!result.exists() && index != SOURCE_PATHS.length);
+			return result;
 		}
 
 	}

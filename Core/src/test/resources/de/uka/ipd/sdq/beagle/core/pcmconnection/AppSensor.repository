@@ -1,0 +1,1354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:composition="http://palladiosimulator.org/PalladioComponentModel/Core/Composition/5.1" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" id="_Ek8EAYRwEeWnEbz-sg1tMg">
+  <components__Repository xsi:type="repository:BasicComponent" id="_ElgrwIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 0 org.owasp.appsensor.accesscontrol.ReferenceAccessController.java.ReferenceAccessController>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EmFTgIRwEeWnEbz-sg1tMg" entityName="AccessController 0 (prov)" providedInterface__OperationProvidedRole="_Elig8IRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EmFTgYRwEeWnEbz-sg1tMg" describedService__SEFF="_EljIAIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIUd4IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FIrDMIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FIrDMIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.accesscontrol.ReferenceAccessController.java.ReferenceAccessController.isAuthorized() from 1142 to 1263" predecessor_AbstractAction="_FIUd4IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FIVE8IRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIVE8IRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIrDMIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EmXAUIRwEeWnEbz-sg1tMg" describedService__SEFF="_EmEFYIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUoIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUooRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FIvUooRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.accesscontrol.ReferenceAccessController.java.ReferenceAccessController.assertAuthorized() from 1797 to 1854" predecessor_AbstractAction="_FIvUoIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUoYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUoYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIvUooRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EmeVEIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 1 org.owasp.appsensor.analysis.ReferenceAttackAnalysisEngine.java.ReferenceAttackAnalysisEngine>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnDj4IRwEeWnEbz-sg1tMg" entityName="AttackListener 1 (prov)" providedInterface__OperationProvidedRole="_EnBHooRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnDj4oRwEeWnEbz-sg1tMg" entityName="AttackListener 2 (prov)" providedInterface__OperationProvidedRole="_EnBHooRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EnBHoYRwEeWnEbz-sg1tMg" entityName="Collection 1 (req)" requiredInterface__OperationRequiredRole="_EmlCwIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnDj4YRwEeWnEbz-sg1tMg" describedService__SEFF="_EnC80IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUo4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUpIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUpIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIvUo4RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnDj44RwEeWnEbz-sg1tMg" describedService__SEFF="_EnC80IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUpYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUpoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUpoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIvUpYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EnEK8IRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 2 org.owasp.appsensor.analysis.ReferenceEventAnalysisEngine.java.ReferenceEventAnalysisEngine>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnNU4YRwEeWnEbz-sg1tMg" entityName="EventListener 3 (prov)" providedInterface__OperationProvidedRole="_EnK4oYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnN78IRwEeWnEbz-sg1tMg" entityName="EventListener 4 (prov)" providedInterface__OperationProvidedRole="_EnK4oYRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EnK4oIRwEeWnEbz-sg1tMg" entityName="Collection 2 (req)" requiredInterface__OperationRequiredRole="_EmlCwIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnNU4oRwEeWnEbz-sg1tMg" describedService__SEFF="_EnNU4IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUp4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUqIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUqIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIvUp4RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnPKEIRwEeWnEbz-sg1tMg" describedService__SEFF="_EnNU4IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUqYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUqoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUqoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIvUqYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EnPxIIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 3 org.owasp.appsensor.analysis.ReferenceResponseAnalysisEngine.java.ReferenceResponseAnalysisEngine>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnTbgIRwEeWnEbz-sg1tMg" entityName="ResponseListener 5 (prov)" providedInterface__OperationProvidedRole="_EnRmUIRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnTbgoRwEeWnEbz-sg1tMg" entityName="ResponseListener 6 (prov)" providedInterface__OperationProvidedRole="_EnRmUIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnTbgYRwEeWnEbz-sg1tMg" describedService__SEFF="_EnSNYIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUq4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUrIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUrIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIvUq4RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnTbg4RwEeWnEbz-sg1tMg" describedService__SEFF="_EnSNYIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUrYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUroRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUroRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FIvUrYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EnTbhIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 4 core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EneaoIRwEeWnEbz-sg1tMg" entityName="Serializable 7 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EndzkIRwEeWnEbz-sg1tMg" entityName="Collection 3 (req)" requiredInterface__OperationRequiredRole="_EmlCwIRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EneaoYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 5 core.org.owasp.appsensor.core.DetectionPointTest.java.DetectionPointTest>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnfoyIRwEeWnEbz-sg1tMg" entityName="DetectionPointTest 8 (prov)" providedInterface__OperationProvidedRole="_EnfowIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnfoyYRwEeWnEbz-sg1tMg" describedService__SEFF="_EnfowYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FIvUr4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FI33gIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FI33gIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint.typeAndThresholdMatches() from 4638 to 4658" predecessor_AbstractAction="_FIvUr4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FIvUsIRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FIvUsIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FI33gIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnfoyoRwEeWnEbz-sg1tMg" describedService__SEFF="_EnfowoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FI33gYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJCPkIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FJCPkIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint.typeAndThresholdMatches() from 4638 to 4658" predecessor_AbstractAction="_FI33gYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FI33goRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FI33goRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FJCPkIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Enfoy4RwEeWnEbz-sg1tMg" describedService__SEFF="_Enfow4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FJC2oIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJPD4IRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FJPD4IRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint.typeAndThresholdMatches() from 4638 to 4658" predecessor_AbstractAction="_FJC2oIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJC2oYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FJC2oYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FJPD4IRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnfozIRwEeWnEbz-sg1tMg" describedService__SEFF="_EnfoxIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FJPD4YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJaDAIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FJaDAIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint.typeAndThresholdMatches() from 4638 to 4658" predecessor_AbstractAction="_FJPD4YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJPD4oRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FJPD4oRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FJaDAIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnfozYRwEeWnEbz-sg1tMg" describedService__SEFF="_EnfoxYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FJaDAYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJlCIIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FJlCIIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint.typeAndThresholdMatches() from 4638 to 4658" predecessor_AbstractAction="_FJaDAYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJaDAoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FJaDAoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FJlCIIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EnfozoRwEeWnEbz-sg1tMg" describedService__SEFF="_EnfoxoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FJlCIYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJvaMIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FJvaMIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint.typeAndThresholdMatches() from 4638 to 4658" predecessor_AbstractAction="_FJlCIYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJlCIoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FJlCIoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FJvaMIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Enfoz4RwEeWnEbz-sg1tMg" describedService__SEFF="_Enfox4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FJvaMYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJ7ncIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FJ7ncIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint.typeAndThresholdMatches() from 4638 to 4658" predecessor_AbstractAction="_FJvaMYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJvaMoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FJvaMoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FJ7ncIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Enfo0IRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 6 core.org.owasp.appsensor.core.DetectionSystem.java.DetectionSystem>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EniFAYRwEeWnEbz-sg1tMg" entityName="Serializable 9 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EniFAoRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 7 core.org.owasp.appsensor.core.IPAddress.java.IPAddress>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Enqn4IRwEeWnEbz-sg1tMg" entityName="Serializable 10 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EnqA0IRwEeWnEbz-sg1tMg" entityName="GeoLocator 6 (req)" requiredInterface__OperationRequiredRole="_EnlIUIRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EnrO8IRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 8 core.org.owasp.appsensor.core.IPAddressTest.java.IPAddressTest>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Enr2BYRwEeWnEbz-sg1tMg" entityName="IPAddressTest 11 (prov)" providedInterface__OperationProvidedRole="_Enr2AIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Enr2BoRwEeWnEbz-sg1tMg" describedService__SEFF="_Enr2AYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FJ7ncYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKBuEIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FKBuEIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.IPAddress.java.IPAddress.fromString() from 1751 to 1797" predecessor_AbstractAction="_FJ7ncYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FJ7ncoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FJ7ncoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FKBuEIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Enr2B4RwEeWnEbz-sg1tMg" describedService__SEFF="_Enr2AoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FKCVIIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKIbwIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FKIbwIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.IPAddress.java.IPAddress.fromString() from 1751 to 1797" predecessor_AbstractAction="_FKCVIIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKCVIYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FKCVIYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FKIbwIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Enr2CIRwEeWnEbz-sg1tMg" describedService__SEFF="_Enr2A4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FKJC0IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKPJcIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FKPJcIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.IPAddress.java.IPAddress.fromString() from 1751 to 1797" predecessor_AbstractAction="_FKJC0IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKJC0YRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FKJC0YRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FKPJcIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Enr2CYRwEeWnEbz-sg1tMg" describedService__SEFF="_Enr2BIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FKPJcYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKV3IIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FKV3IIRwEeWnEbz-sg1tMg" entityName="IA  @position: core.org.owasp.appsensor.core.IPAddress.java.IPAddress.fromString() from 1751 to 1797" predecessor_AbstractAction="_FKPJcYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKPJcoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FKPJcoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FKV3IIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Enr2CoRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 9 core.org.owasp.appsensor.core.Interval.java.Interval>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnuSQYRwEeWnEbz-sg1tMg" entityName="Serializable 12 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Enu5UIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 10 core.org.owasp.appsensor.core.KeyValuePair.java.KeyValuePair>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EnvgYYRwEeWnEbz-sg1tMg" entityName="Serializable 13 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EnvgYoRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 11 org.owasp.appsensor.core.Threshold.java.Threshold>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Enx8oYRwEeWnEbz-sg1tMg" entityName="Serializable 14 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Enx8ooRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 12 org.owasp.appsensor.core.User.java.User>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_En0Y4YRwEeWnEbz-sg1tMg" entityName="Serializable 15 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_En0Y4oRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 13 org.owasp.appsensor.core.analysis.AttackAnalysisEngine.java.AttackAnalysisEngine>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_En0_8YRwEeWnEbz-sg1tMg" entityName="AttackListener 16 (prov)" providedInterface__OperationProvidedRole="_EnBHooRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_En0_8oRwEeWnEbz-sg1tMg" describedService__SEFF="_EnC80IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FKx8AIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK0_UIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FK0_UIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.analysis.AttackAnalysisEngine.java.AttackAnalysisEngine.onAdd() at 788" predecessor_AbstractAction="_FKx8AIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FKx8AYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FKx8AYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK0_UIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_En1nAIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 14 org.owasp.appsensor.core.analysis.EventAnalysisEngine.java.EventAnalysisEngine>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_En2OEYRwEeWnEbz-sg1tMg" entityName="EventListener 17 (prov)" providedInterface__OperationProvidedRole="_EnK4oYRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_En2OEoRwEeWnEbz-sg1tMg" describedService__SEFF="_EnNU4IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK0_UYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK5QwIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FK5QwIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.analysis.EventAnalysisEngine.java.EventAnalysisEngine.onAdd() at 775" predecessor_AbstractAction="_FK0_UYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK0_UoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK0_UoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK5QwIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_En2OE4RwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 15 org.owasp.appsensor.core.analysis.ResponseAnalysisEngine.java.ResponseAnalysisEngine>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_En21IYRwEeWnEbz-sg1tMg" entityName="ResponseListener 18 (prov)" providedInterface__OperationProvidedRole="_EnRmUIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_En21IoRwEeWnEbz-sg1tMg" describedService__SEFF="_EnSNYIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK5QwYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK87IIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FK87IIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.analysis.ResponseAnalysisEngine.java.ResponseAnalysisEngine.onAdd() at 811" predecessor_AbstractAction="_FK5QwYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK5QwoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK5QwoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK87IIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_En3cMIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 16 org.owasp.appsensor.core.configuration.client.ClientConfiguration.java.ClientConfiguration>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EoCbUIRwEeWnEbz-sg1tMg" entityName="ClientConfiguration 19 (prov)" providedInterface__OperationProvidedRole="_En4qUIRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Ewo9sIRwEeWnEbz-sg1tMg" entityName="ServerConnection 36 (req)" requiredInterface__OperationRequiredRole="_EoEQgIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoCbUYRwEeWnEbz-sg1tMg" describedService__SEFF="_En4qUYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK87IYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK87IoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK87IoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK87IYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoCbUoRwEeWnEbz-sg1tMg" describedService__SEFF="_En9i0IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK87I4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FK87JIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK87JIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK87I4RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoCbU4RwEeWnEbz-sg1tMg" describedService__SEFF="_EoB0QIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK87JYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK87JoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK87JoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK87JYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoCbVIRwEeWnEbz-sg1tMg" describedService__SEFF="_EoB0QYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK87J4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FK87KIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK87KIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK87J4RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoCbVYRwEeWnEbz-sg1tMg" describedService__SEFF="_EoB0QoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK87KYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK_-cIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FK_-cIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.configuration.client.ClientConfiguration.java.ClientConfiguration.hashCode() from 1106 to 1190" predecessor_AbstractAction="_FK87KYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK87KoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK87KoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FK_-cIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoCbVoRwEeWnEbz-sg1tMg" describedService__SEFF="_EoB0Q4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FK_-cYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLAlgIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FLAlgIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.configuration.client.ClientConfiguration.java.ClientConfiguration.equals() from 1244 to 1262" predecessor_AbstractAction="_FK_-cYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FK_-coRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FK_-coRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLAlgIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoCbV4RwEeWnEbz-sg1tMg" describedService__SEFF="_EoB0RIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLDo0IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLHTMIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FLHTMIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.configuration.client.ClientConfiguration.java.ClientConfiguration.toString() from 1580 to 1684" predecessor_AbstractAction="_FLDo0IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLDo0YRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLDo0YRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLHTMIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EoCbWIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 17 org.owasp.appsensor.core.configuration.client.ServerConnection.java.ServerConnection>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EoFep4RwEeWnEbz-sg1tMg" entityName="ServerConnection 20 (prov)" providedInterface__OperationProvidedRole="_EoEQgIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoFeqIRwEeWnEbz-sg1tMg" describedService__SEFF="_EoEQgYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLHTMYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLHTMoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLHTMoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLHTMYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFsIRwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3kIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLHTM4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FLHTNIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLHTNIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLHTM4RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFsYRwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3kYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLHTNYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLHTNoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLHTNoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLHTNYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFsoRwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3koRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLHTN4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FLHTOIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLHTOIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLHTN4RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFs4RwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3k4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6QIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6QYRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6QYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6QIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFtIRwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3lIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6QoRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6Q4RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6Q4RwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6QoRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFtYRwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3lYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6RIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6RYRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6RYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6RIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFtoRwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3loRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6RoRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6R4RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6R4RwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6RoRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFt4RwEeWnEbz-sg1tMg" describedService__SEFF="_EoE3l4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6SIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6SYRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6SYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6SIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFuIRwEeWnEbz-sg1tMg" describedService__SEFF="_EoFeoIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6SoRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6S4RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6S4RwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6SoRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFuYRwEeWnEbz-sg1tMg" describedService__SEFF="_EoFeoYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6TIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6TYRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6TYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6TIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFuoRwEeWnEbz-sg1tMg" describedService__SEFF="_EoFeooRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6ToRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6T4RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6T4RwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6ToRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFu4RwEeWnEbz-sg1tMg" describedService__SEFF="_EoFeo4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLH6UIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLH6UYRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLH6UYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FLH6UIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFvIRwEeWnEbz-sg1tMg" describedService__SEFF="_EoFepIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FLIhUIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FMSX4IRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FMSX4IRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.configuration.client.ServerConnection.java.ServerConnection.hashCode() from 2782 to 3027" predecessor_AbstractAction="_FLIhUIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FLIhUYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FLIhUYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FMSX4IRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFvYRwEeWnEbz-sg1tMg" describedService__SEFF="_EoFepYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FMSX4YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FMSX44RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FMSX44RwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.configuration.client.ServerConnection.java.ServerConnection.equals() from 3081 to 3099" predecessor_AbstractAction="_FMSX4YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FMSX4oRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FMSX4oRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FMSX44RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoGFvoRwEeWnEbz-sg1tMg" describedService__SEFF="_EoFepoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FNWH0IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FOmsEIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FOmsEIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.configuration.client.ServerConnection.java.ServerConnection.toString() from 3728 to 4104" predecessor_AbstractAction="_FNWH0IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FNWH0YRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FNWH0YRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FOmsEIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EoGFv4RwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 18 org.owasp.appsensor.core.geolocation.GeoLocation.java.GeoLocation>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EoH64YRwEeWnEbz-sg1tMg" entityName="Serializable 21 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EoIh8IRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 19 org.owasp.appsensor.core.logging.LoggerBeanPostProcessor.java.LoggerBeanPostProcessor>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EoOBgIRwEeWnEbz-sg1tMg" entityName="LoggerBeanPostProcessor 22 (prov)" providedInterface__OperationProvidedRole="_EoNacIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoOBgYRwEeWnEbz-sg1tMg" describedService__SEFF="_EoNacYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FOmsEYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPFNMIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPFNMIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.logging.LoggerBeanPostProcessor.java.LoggerBeanPostProcessor.postProcessAfterInitialization() from 819 to 941" predecessor_AbstractAction="_FOmsEYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FOmsEoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FOmsEoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPFNMIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoOBgoRwEeWnEbz-sg1tMg" describedService__SEFF="_EoNacoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPFNMYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPFNMoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPFNMoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPFNMYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EoOBg4RwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 20 org.owasp.appsensor.core.response.NoopUserManager.java.NoopUserManager>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EoRr4oRwEeWnEbz-sg1tMg" entityName="UserManager 23 (prov)" providedInterface__OperationProvidedRole="_EoOokIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoRr44RwEeWnEbz-sg1tMg" describedService__SEFF="_EoOokYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPFNM4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FPHCYIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPHCYIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.response.NoopUserManager.java.NoopUserManager.logout() at 684" predecessor_AbstractAction="_FPFNM4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FPFNNIRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPFNNIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPHCYIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EoRr5IRwEeWnEbz-sg1tMg" describedService__SEFF="_EoRr4IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPHCYYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPJeoIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPJeoIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.response.NoopUserManager.java.NoopUserManager.disable() at 841" predecessor_AbstractAction="_FPHCYYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPHCYoRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPHCYoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPJeoIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EoSS8IRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 21 org.owasp.appsensor.core.util.DateUtils.java.DateUtils>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_Eoa10oRwEeWnEbz-sg1tMg" entityName="DateUtils 24 (prov)" providedInterface__OperationProvidedRole="_EoYZkIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Eoa104RwEeWnEbz-sg1tMg" describedService__SEFF="_EoYZkYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPJeoYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPJeooRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPJeooRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPJeoYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Eoa11IRwEeWnEbz-sg1tMg" describedService__SEFF="_EoZAoIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPKFsIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPMh8IRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPMh8IRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.DateUtils.java.DateUtils.getCurrentTimestampAsString() from 667 to 709" predecessor_AbstractAction="_FPKFsIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPKFsYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPKFsYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPMh8IRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Eobc4IRwEeWnEbz-sg1tMg" describedService__SEFF="_EoZAoYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPMh8YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPMh84RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPMh84RwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.DateUtils.java.DateUtils.fromString() from 1008 to 1039" predecessor_AbstractAction="_FPMh8YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPMh8oRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPMh8oRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPMh84RwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EocrAIRwEeWnEbz-sg1tMg" describedService__SEFF="_EoaOwIRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPMh9IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPO-MIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPO-MIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.DateUtils.java.DateUtils.epoch() at 1389" predecessor_AbstractAction="_FPMh9IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPMh9YRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPMh9YRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPO-MIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_Eod5IIRwEeWnEbz-sg1tMg" describedService__SEFF="_Eoa10IRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPTPoIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPVr4IRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPVr4IRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.DateUtils.java.DateUtils.getCurrentTimestampAsString() from 667 to 709" predecessor_AbstractAction="_FPTPoIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPTPoYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPTPoYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPVr4IRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EoegMIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 22 org.owasp.appsensor.core.util.StringUtils.java.StringUtils>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EofHQoRwEeWnEbz-sg1tMg" entityName="StringUtils 25 (prov)" providedInterface__OperationProvidedRole="_EofHQIRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EoegMYRwEeWnEbz-sg1tMg" entityName="Collection 17 (req)" requiredInterface__OperationRequiredRole="_EmlCwIRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EofHQ4RwEeWnEbz-sg1tMg" describedService__SEFF="_EofHQYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPVr4YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPVr44RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPVr44RwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.StringUtils.java.StringUtils.toCollection() from 384 to 403" predecessor_AbstractAction="_FPVr4YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPXhEIRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPXhEIRwEeWnEbz-sg1tMg" entityName="add @position: org.owasp.appsensor.core.util.StringUtils.java.StringUtils.toCollection() at 578" predecessor_AbstractAction="_FPVr44RwEeWnEbz-sg1tMg" successor_AbstractAction="_FPVr4oRwEeWnEbz-sg1tMg" calledService_ExternalService="_EmzFNIRwEeWnEbz-sg1tMg" role_ExternalService="_EoegMYRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPVr4oRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPXhEIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EofHRIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 23 org.owasp.appsensor.core.util.StringUtilsTest.java.StringUtilsTest>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EofHSIRwEeWnEbz-sg1tMg" entityName="StringUtilsTest 26 (prov)" providedInterface__OperationProvidedRole="_EofHRYRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EofHSYRwEeWnEbz-sg1tMg" describedService__SEFF="_EofHRoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPYvMIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPYvMoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPYvMoRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.StringUtils.java.StringUtils.toCollection() from 384 to 403" predecessor_AbstractAction="_FPYvMIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPYvMYRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPYvMYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPYvMoRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EofuUIRwEeWnEbz-sg1tMg" describedService__SEFF="_EofHR4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPYvM4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FPeOwIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPeOwIRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.StringUtils.java.StringUtils.toCollection() from 384 to 403" predecessor_AbstractAction="_FPYvM4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FPYvNIRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPYvNIRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPeOwIRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_EofuUYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 24 org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_EqItEIRwEeWnEbz-sg1tMg" entityName="XmlUtils 27 (prov)" providedInterface__OperationProvidedRole="_EqFpwIRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Eol08YRwEeWnEbz-sg1tMg" entityName="SAXException 18 (req)" requiredInterface__OperationRequiredRole="_EofuUoRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EonDFoRwEeWnEbz-sg1tMg" entityName="InputStream 19 (req)" requiredInterface__OperationRequiredRole="_Eol08oRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EouX0IRwEeWnEbz-sg1tMg" entityName="Schema 20 (req)" requiredInterface__OperationRequiredRole="_EonDF4RwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Eo1sk4RwEeWnEbz-sg1tMg" entityName="StreamSource 21 (req)" requiredInterface__OperationRequiredRole="_EouX0YRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EphCAoRwEeWnEbz-sg1tMg" entityName="Validator 22 (req)" requiredInterface__OperationRequiredRole="_Eo2ToIRwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Epyu1IRwEeWnEbz-sg1tMg" entityName="XMLStreamReader 23 (req)" requiredInterface__OperationRequiredRole="_EphCA4RwEeWnEbz-sg1tMg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_EqFCs4RwEeWnEbz-sg1tMg" entityName="Map 24 (req)" requiredInterface__OperationRequiredRole="_Epyu1YRwEeWnEbz-sg1tMg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EqItEYRwEeWnEbz-sg1tMg" describedService__SEFF="_EqFpwYRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPeOwYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPgD8IRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPgD8IRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema() at 1225" predecessor_AbstractAction="_FPeOwYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPgD8YRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPgD8YRwEeWnEbz-sg1tMg" entityName="newValidator @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema() at 2594" predecessor_AbstractAction="_FPgD8IRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPgD8oRwEeWnEbz-sg1tMg" calledService_ExternalService="_EonDGIRwEeWnEbz-sg1tMg" role_ExternalService="_EouX0IRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPgD8oRwEeWnEbz-sg1tMg" entityName="validate @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema() at 2651" predecessor_AbstractAction="_FPgD8YRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPhSEIRwEeWnEbz-sg1tMg" calledService_ExternalService="_Eo2TooRwEeWnEbz-sg1tMg" role_ExternalService="_EphCAoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_FPhSEIRwEeWnEbz-sg1tMg" entityName=" @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema().Block from 1714 to 1739" predecessor_AbstractAction="_FPgD8oRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPjuUoRwEeWnEbz-sg1tMg">
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_FPigMIRwEeWnEbz-sg1tMg" entityName="SoMoX default branch probability" branchProbability="1.0">
+          <branchBehaviour_BranchTransition id="_FPjHQIRwEeWnEbz-sg1tMg">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_FPjHQYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPjuUIRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPjuUIRwEeWnEbz-sg1tMg" entityName="close @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema().Block.Block at 1775" predecessor_AbstractAction="_FPjHQYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPjuUYRwEeWnEbz-sg1tMg" calledService_ExternalService="_EonDEoRwEeWnEbz-sg1tMg" role_ExternalService="_EonDFoRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_FPjuUYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPjuUIRwEeWnEbz-sg1tMg"/>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_FPjuUoRwEeWnEbz-sg1tMg" entityName=" @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema().Block from 1837 to 1862" predecessor_AbstractAction="_FPhSEIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPeOwoRwEeWnEbz-sg1tMg">
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_FPjuU4RwEeWnEbz-sg1tMg" entityName="SoMoX default branch probability" branchProbability="1.0">
+          <branchBehaviour_BranchTransition id="_FPjuVIRwEeWnEbz-sg1tMg">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_FPjuVYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPjuVoRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPjuVoRwEeWnEbz-sg1tMg" entityName="close @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema().Block.Block at 1898" predecessor_AbstractAction="_FPjuVYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPjuV4RwEeWnEbz-sg1tMg" calledService_ExternalService="_EonDEoRwEeWnEbz-sg1tMg" role_ExternalService="_EonDFoRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_FPjuV4RwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPjuVoRwEeWnEbz-sg1tMg"/>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPeOwoRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPjuUoRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EqItEoRwEeWnEbz-sg1tMg" describedService__SEFF="_EqFpwoRwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPjuWIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPjuWoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_FPjuWoRwEeWnEbz-sg1tMg" entityName="IA  @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema() at 2469" predecessor_AbstractAction="_FPjuWIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPkVYIRwEeWnEbz-sg1tMg">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="pathmap://PCM_MODELS/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPkVYIRwEeWnEbz-sg1tMg" entityName="newValidator @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema() at 2594" predecessor_AbstractAction="_FPjuWoRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPkVYYRwEeWnEbz-sg1tMg" calledService_ExternalService="_EonDGIRwEeWnEbz-sg1tMg" role_ExternalService="_EouX0IRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPkVYYRwEeWnEbz-sg1tMg" entityName="validate @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.validateXMLSchema() at 2651" predecessor_AbstractAction="_FPkVYIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPjuWYRwEeWnEbz-sg1tMg" calledService_ExternalService="_Eo2TooRwEeWnEbz-sg1tMg" role_ExternalService="_EphCAoRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPjuWYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPkVYYRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_EqItE4RwEeWnEbz-sg1tMg" describedService__SEFF="_EqFpw4RwEeWnEbz-sg1tMg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_FPk8cIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPmKkIRwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_FPmKkIRwEeWnEbz-sg1tMg" entityName=" @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.getElementQualifiedName() from 3062 to 3343" predecessor_AbstractAction="_FPk8cIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPnYtoRwEeWnEbz-sg1tMg">
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_FPmKkYRwEeWnEbz-sg1tMg" entityName="SoMoX default branch probability" branchProbability="0.3333333333333333">
+          <branchBehaviour_BranchTransition id="_FPmKkoRwEeWnEbz-sg1tMg">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_FPmKk4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FPmxoIRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPmxoIRwEeWnEbz-sg1tMg" entityName="getNamespaceURI @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.getElementQualifiedName() at 3231" predecessor_AbstractAction="_FPmKk4RwEeWnEbz-sg1tMg" successor_AbstractAction="_FPmxoYRwEeWnEbz-sg1tMg" calledService_ExternalService="_EpyHw4RwEeWnEbz-sg1tMg" role_ExternalService="_Epyu1IRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPmxoYRwEeWnEbz-sg1tMg" entityName="getLocalName @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.getElementQualifiedName() at 3273" predecessor_AbstractAction="_FPmxoIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPmxooRwEeWnEbz-sg1tMg" calledService_ExternalService="_EpyHwYRwEeWnEbz-sg1tMg" role_ExternalService="_Epyu1IRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_FPmxooRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPmxoYRwEeWnEbz-sg1tMg"/>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_FPmxo4RwEeWnEbz-sg1tMg" entityName="SoMoX default branch probability" branchProbability="0.3333333333333333">
+          <branchBehaviour_BranchTransition id="_FPmxpIRwEeWnEbz-sg1tMg">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_FPmxpYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPmxpoRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPmxpoRwEeWnEbz-sg1tMg" entityName="getNamespaceURI @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.getElementQualifiedName() at 3231" predecessor_AbstractAction="_FPmxpYRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPnYsIRwEeWnEbz-sg1tMg" calledService_ExternalService="_EpyHw4RwEeWnEbz-sg1tMg" role_ExternalService="_Epyu1IRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPnYsIRwEeWnEbz-sg1tMg" entityName="getLocalName @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.getElementQualifiedName() at 3273" predecessor_AbstractAction="_FPmxpoRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPnYsYRwEeWnEbz-sg1tMg" calledService_ExternalService="_EpyHwYRwEeWnEbz-sg1tMg" role_ExternalService="_Epyu1IRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_FPnYsYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPnYsIRwEeWnEbz-sg1tMg"/>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_FPnYsoRwEeWnEbz-sg1tMg" entityName="SoMoX default branch probability" branchProbability="0.3333333333333333">
+          <branchBehaviour_BranchTransition id="_FPnYs4RwEeWnEbz-sg1tMg">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_FPnYtIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPnYtYRwEeWnEbz-sg1tMg"/>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_FPnYtYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPnYtIRwEeWnEbz-sg1tMg"/>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_FPnYtoRwEeWnEbz-sg1tMg" entityName="get @position: org.owasp.appsensor.core.util.XmlUtils.java.XmlUtils.getElementQualifiedName() from 3347 to 3406" predecessor_AbstractAction="_FPmKkIRwEeWnEbz-sg1tMg" successor_AbstractAction="_FPk8cYRwEeWnEbz-sg1tMg" calledService_ExternalService="_EpzV44RwEeWnEbz-sg1tMg" role_ExternalService="_EqFCs4RwEeWnEbz-sg1tMg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_FPk8cYRwEeWnEbz-sg1tMg" predecessor_AbstractAction="_FPnYtoRwEeWnEbz-sg1tMg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_E5ewoIRwEeWnEbz-sg1tMg" entityName="CC No. 1 (dir: org.owasp.appsensor.core.) &lt;...asp.appsensor.core.IPAddressTest.java.IPAddressTest>>">
+    <assemblyContexts__ComposedStructure id="_E5fXsIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 7 core.org.owasp.appsensor.core.IPAddress.java.IPAddress>-instance" encapsulatedComponent__AssemblyContext="_EniFAoRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E5fXsYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 8 core.org.owasp.appsensor.core.IPAddressTest.java.IPAddressTest>-instance" encapsulatedComponent__AssemblyContext="_EnrO8IRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E5f-wYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_Enqn4IRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E5f-wIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E5fXsIRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E5gl0YRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_Enr2BYRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E5gl0IRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E5fXsYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E5f-wIRwEeWnEbz-sg1tMg" entityName="Serializable 0 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E5gl0IRwEeWnEbz-sg1tMg" entityName="IPAddressTest 1 (prov)" providedInterface__OperationProvidedRole="_Enr2AIRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_E8LfUIRwEeWnEbz-sg1tMg" entityName="CC No. 2 (dir: org.owasp.appsensor.core.) &lt;...sp.appsensor.core.IPAddressTest.java.IPAddressTest>>>">
+    <assemblyContexts__ComposedStructure id="_E8LfUYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 4 core.org.owasp.appsensor.core.DetectionPoint.java.DetectionPoint>-instance" encapsulatedComponent__AssemblyContext="_EnTbhIRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E8LfUoRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 5 core.org.owasp.appsensor.core.DetectionPointTest.java.DetectionPointTest>-instance" encapsulatedComponent__AssemblyContext="_EneaoYRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E8LfU4RwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 6 core.org.owasp.appsensor.core.DetectionSystem.java.DetectionSystem>-instance" encapsulatedComponent__AssemblyContext="_Enfo0IRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E8LfVIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 9 core.org.owasp.appsensor.core.Interval.java.Interval>-instance" encapsulatedComponent__AssemblyContext="_Enr2CoRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E8LfVYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 10 core.org.owasp.appsensor.core.KeyValuePair.java.KeyValuePair>-instance" encapsulatedComponent__AssemblyContext="_Enu5UIRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E8LfVoRwEeWnEbz-sg1tMg" entityName="CC No. 1 (dir: org.owasp.appsensor.core.) &lt;...asp.appsensor.core.IPAddressTest.java.IPAddressTest>>-instance" encapsulatedComponent__AssemblyContext="_E5ewoIRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E8MGYIRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_EneaoIRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E8LfV4RwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E8LfUYRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E8MGYoRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_EnfoyIRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E8MGYYRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E8LfUoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E8MGZIRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E5gl0IRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E8MGY4RwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E8LfVoRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E8LfV4RwEeWnEbz-sg1tMg" entityName="Serializable 2 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E8MGYYRwEeWnEbz-sg1tMg" entityName="DetectionPointTest 3 (prov)" providedInterface__OperationProvidedRole="_EnfowIRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E8MGY4RwEeWnEbz-sg1tMg" entityName="IPAddressTest 4 (prov)" providedInterface__OperationProvidedRole="_Enr2AIRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_E-7RUIRwEeWnEbz-sg1tMg" entityName="CC No. 3 (dir: org.owasp.appsensor.core.geolocation.) &lt;...p.appsensor.core.IPAddressTest.java.IPAddressTest>>>>">
+    <assemblyContexts__ComposedStructure id="_E-7RUYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 1 org.owasp.appsensor.analysis.ReferenceAttackAnalysisEngine.java.ReferenceAttackAnalysisEngine>-instance" encapsulatedComponent__AssemblyContext="_EmeVEIRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E-7RUoRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 2 org.owasp.appsensor.analysis.ReferenceEventAnalysisEngine.java.ReferenceEventAnalysisEngine>-instance" encapsulatedComponent__AssemblyContext="_EnEK8IRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E-7RU4RwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 11 org.owasp.appsensor.core.Threshold.java.Threshold>-instance" encapsulatedComponent__AssemblyContext="_EnvgYoRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E-7RVIRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 12 org.owasp.appsensor.core.User.java.User>-instance" encapsulatedComponent__AssemblyContext="_Enx8ooRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E-7RVYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 18 org.owasp.appsensor.core.geolocation.GeoLocation.java.GeoLocation>-instance" encapsulatedComponent__AssemblyContext="_EoGFv4RwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_E-7RVoRwEeWnEbz-sg1tMg" entityName="CC No. 2 (dir: org.owasp.appsensor.core.) &lt;...sp.appsensor.core.IPAddressTest.java.IPAddressTest>>>-instance" encapsulatedComponent__AssemblyContext="_E8LfUIRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E-74YYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_EnDj4IRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E-74YIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E-7RUYRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E-74Y4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_EnNU4YRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E-74YoRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E-7RUoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E-74ZYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_Enx8oYRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E-74ZIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E-7RU4RwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E-74Z4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E8MGYYRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E-74ZoRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E-7RVoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_E-74aYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E8MGY4RwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_E-74aIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_E-7RVoRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E-74YIRwEeWnEbz-sg1tMg" entityName="AttackListener 5 (prov)" providedInterface__OperationProvidedRole="_EnBHooRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E-74YoRwEeWnEbz-sg1tMg" entityName="EventListener 6 (prov)" providedInterface__OperationProvidedRole="_EnK4oYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E-74ZIRwEeWnEbz-sg1tMg" entityName="Serializable 7 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E-74ZoRwEeWnEbz-sg1tMg" entityName="DetectionPointTest 8 (prov)" providedInterface__OperationProvidedRole="_EnfowIRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_E-74aIRwEeWnEbz-sg1tMg" entityName="IPAddressTest 9 (prov)" providedInterface__OperationProvidedRole="_Enr2AIRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_FBHpsIRwEeWnEbz-sg1tMg" entityName="CC No. 4 (dir: org.owasp.appsensor.core.response.) &lt;....appsensor.core.IPAddressTest.java.IPAddressTest>>>>>">
+    <assemblyContexts__ComposedStructure id="_FBHpsYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 20 org.owasp.appsensor.core.response.NoopUserManager.java.NoopUserManager>-instance" encapsulatedComponent__AssemblyContext="_EoOBg4RwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_FBHpsoRwEeWnEbz-sg1tMg" entityName="CC No. 3 (dir: org.owasp.appsensor.core.geolocation.) &lt;...p.appsensor.core.IPAddressTest.java.IPAddressTest>>>>-instance" encapsulatedComponent__AssemblyContext="_E-7RUIRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FBIQwYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_EoRr4oRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FBIQwIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FBHpsYRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FBIQw4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E-74YIRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FBIQwoRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FBHpsoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FBIQxYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E-74YoRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FBIQxIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FBHpsoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FBIQx4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E-74ZIRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FBIQxoRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FBHpsoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FBIQyYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E-74ZoRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FBIQyIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FBHpsoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FBIQy4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_E-74aIRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FBIQyoRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FBHpsoRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FBIQwIRwEeWnEbz-sg1tMg" entityName="UserManager 10 (prov)" providedInterface__OperationProvidedRole="_EoOokIRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FBIQwoRwEeWnEbz-sg1tMg" entityName="AttackListener 11 (prov)" providedInterface__OperationProvidedRole="_EnBHooRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FBIQxIRwEeWnEbz-sg1tMg" entityName="EventListener 12 (prov)" providedInterface__OperationProvidedRole="_EnK4oYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FBIQxoRwEeWnEbz-sg1tMg" entityName="Serializable 13 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FBIQyIRwEeWnEbz-sg1tMg" entityName="DetectionPointTest 14 (prov)" providedInterface__OperationProvidedRole="_EnfowIRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FBIQyoRwEeWnEbz-sg1tMg" entityName="IPAddressTest 15 (prov)" providedInterface__OperationProvidedRole="_Enr2AIRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:CompositeComponent" id="_FEJIgIRwEeWnEbz-sg1tMg" entityName="CC No. 5 (dir: org.owasp.appsensor.core.analysis.) &lt;...appsensor.core.IPAddressTest.java.IPAddressTest>>>>>>">
+    <assemblyContexts__ComposedStructure id="_FEJIgYRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 13 org.owasp.appsensor.core.analysis.AttackAnalysisEngine.java.AttackAnalysisEngine>-instance" encapsulatedComponent__AssemblyContext="_En0Y4oRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_FEJIgoRwEeWnEbz-sg1tMg" entityName=" &lt;PC No. 14 org.owasp.appsensor.core.analysis.EventAnalysisEngine.java.EventAnalysisEngine>-instance" encapsulatedComponent__AssemblyContext="_En1nAIRwEeWnEbz-sg1tMg"/>
+    <assemblyContexts__ComposedStructure id="_FEJIg4RwEeWnEbz-sg1tMg" entityName="CC No. 4 (dir: org.owasp.appsensor.core.response.) &lt;....appsensor.core.IPAddressTest.java.IPAddressTest>>>>>-instance" encapsulatedComponent__AssemblyContext="_FBHpsIRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FEJvkYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_En0_8YRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FEJvkIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FEJIgYRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FEJvk4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_En2OEYRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FEJvkoRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FEJIgoRwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FEJvlYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_FBIQwIRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FEJvlIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FEJIg4RwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FEJvl4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_FBIQxoRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FEJvloRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FEJIg4RwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FEJvmYRwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_FBIQyIRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FEJvmIRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FEJIg4RwEeWnEbz-sg1tMg"/>
+    <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_FEJvm4RwEeWnEbz-sg1tMg" innerProvidedRole_ProvidedDelegationConnector="_FBIQyoRwEeWnEbz-sg1tMg" outerProvidedRole_ProvidedDelegationConnector="_FEJvmoRwEeWnEbz-sg1tMg" assemblyContext_ProvidedDelegationConnector="_FEJIg4RwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FEJvkIRwEeWnEbz-sg1tMg" entityName="AttackListener 16 (prov)" providedInterface__OperationProvidedRole="_EnBHooRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FEJvkoRwEeWnEbz-sg1tMg" entityName="EventListener 17 (prov)" providedInterface__OperationProvidedRole="_EnK4oYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FEJvlIRwEeWnEbz-sg1tMg" entityName="UserManager 18 (prov)" providedInterface__OperationProvidedRole="_EoOokIRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FEJvloRwEeWnEbz-sg1tMg" entityName="Serializable 19 (prov)" providedInterface__OperationProvidedRole="_EndzkYRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FEJvmIRwEeWnEbz-sg1tMg" entityName="DetectionPointTest 20 (prov)" providedInterface__OperationProvidedRole="_EnfowIRwEeWnEbz-sg1tMg"/>
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_FEJvmoRwEeWnEbz-sg1tMg" entityName="IPAddressTest 21 (prov)" providedInterface__OperationProvidedRole="_Enr2AIRwEeWnEbz-sg1tMg"/>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_FILT8IRwEeWnEbz-sg1tMg" entityName="SoMoX System-Level Dummy Component"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Elig8IRwEeWnEbz-sg1tMg" entityName="AccessController.java.AccessController">
+    <signatures__OperationInterface id="_EljIAIRwEeWnEbz-sg1tMg" entityName="isAuthorized">
+      <parameters__OperationSignature dataType__Parameter="_ElsR8IRwEeWnEbz-sg1tMg" parameterName="clientApplication"/>
+      <parameters__OperationSignature dataType__Parameter="_EmBCEIRwEeWnEbz-sg1tMg" parameterName="action"/>
+      <parameters__OperationSignature dataType__Parameter="_EmCQMIRwEeWnEbz-sg1tMg" parameterName="context"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EmEFYIRwEeWnEbz-sg1tMg" entityName="assertAuthorized">
+      <parameters__OperationSignature dataType__Parameter="_ElsR8IRwEeWnEbz-sg1tMg" parameterName="clientApplication"/>
+      <parameters__OperationSignature dataType__Parameter="_EmBCEIRwEeWnEbz-sg1tMg" parameterName="action"/>
+      <parameters__OperationSignature dataType__Parameter="_EmCQMIRwEeWnEbz-sg1tMg" parameterName="context"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EmlCwYRwEeWnEbz-sg1tMg" entityName="Iterable.java.Iterable">
+    <signatures__OperationInterface id="_EmlCwoRwEeWnEbz-sg1tMg" entityName="iterator" returnType__OperationSignature="_EmlCw4RwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EmotIIRwEeWnEbz-sg1tMg" entityName="forEach">
+      <parameters__OperationSignature dataType__Parameter="_EmpUMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EmsXgIRwEeWnEbz-sg1tMg" entityName="spliterator" returnType__OperationSignature="_Ems-kIRwEeWnEbz-sg1tMg"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EmlCwIRwEeWnEbz-sg1tMg" entityName="Collection.java.Collection" parentInterfaces__Interface="_EmlCwYRwEeWnEbz-sg1tMg">
+    <signatures__OperationInterface id="_EmuzwIRwEeWnEbz-sg1tMg" entityName="size">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Emva0IRwEeWnEbz-sg1tMg" entityName="isEmpty">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Emva0YRwEeWnEbz-sg1tMg" entityName="contains">
+      <parameters__OperationSignature dataType__Parameter="_Emva0oRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Emx3EIRwEeWnEbz-sg1tMg" entityName="iterator" returnType__OperationSignature="_EmlCw4RwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Emx3EYRwEeWnEbz-sg1tMg" entityName="toArray" returnType__OperationSignature="_EmzFMIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EmzFMYRwEeWnEbz-sg1tMg" entityName="toArray_1" returnType__OperationSignature="_EmzFM4RwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EmzFNIRwEeWnEbz-sg1tMg" entityName="add">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EmzFNYRwEeWnEbz-sg1tMg" entityName="remove">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EmzsQIRwEeWnEbz-sg1tMg" entityName="containsAll">
+      <parameters__OperationSignature dataType__Parameter="_ElzmsIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EmzsQYRwEeWnEbz-sg1tMg" entityName="addAll">
+      <parameters__OperationSignature dataType__Parameter="_ElzmsIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EmzsQoRwEeWnEbz-sg1tMg" entityName="removeAll">
+      <parameters__OperationSignature dataType__Parameter="_ElzmsIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Em0TUIRwEeWnEbz-sg1tMg" entityName="removeIf">
+      <parameters__OperationSignature dataType__Parameter="_Em0TUYRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Em5L0IRwEeWnEbz-sg1tMg" entityName="retainAll">
+      <parameters__OperationSignature dataType__Parameter="_ElzmsIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Em5L0YRwEeWnEbz-sg1tMg" entityName="clear"/>
+    <signatures__OperationInterface id="_Em5L0oRwEeWnEbz-sg1tMg" entityName="equals">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Em5L04RwEeWnEbz-sg1tMg" entityName="hashCode">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Em5L1IRwEeWnEbz-sg1tMg" entityName="spliterator" returnType__OperationSignature="_Ems-kIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Em5y4IRwEeWnEbz-sg1tMg" entityName="stream" returnType__OperationSignature="_Em9dQIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EnBHoIRwEeWnEbz-sg1tMg" entityName="parallelStream" returnType__OperationSignature="_Em9dQIRwEeWnEbz-sg1tMg"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EnBHooRwEeWnEbz-sg1tMg" entityName="AttackListener.java.AttackListener">
+    <signatures__OperationInterface id="_EnC80IRwEeWnEbz-sg1tMg" entityName="onAdd"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EnK4oYRwEeWnEbz-sg1tMg" entityName="EventListener.java.EventListener">
+    <signatures__OperationInterface id="_EnNU4IRwEeWnEbz-sg1tMg" entityName="onAdd"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EnRmUIRwEeWnEbz-sg1tMg" entityName="ResponseListener.java.ResponseListener">
+    <signatures__OperationInterface id="_EnSNYIRwEeWnEbz-sg1tMg" entityName="onAdd"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EndzkYRwEeWnEbz-sg1tMg" entityName="Serializable.java.Serializable"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EnfowIRwEeWnEbz-sg1tMg" entityName="IDetectionPointTest.java.DetectionPointTest">
+    <signatures__OperationInterface id="_EnfowYRwEeWnEbz-sg1tMg" entityName="testTypeMatchesNull"/>
+    <signatures__OperationInterface id="_EnfowoRwEeWnEbz-sg1tMg" entityName="testTypeMatchesEmptyDetectionPoints"/>
+    <signatures__OperationInterface id="_Enfow4RwEeWnEbz-sg1tMg" entityName="testTypeMatchesFullMismatch"/>
+    <signatures__OperationInterface id="_EnfoxIRwEeWnEbz-sg1tMg" entityName="testTypeMatchesCategoryMismatch"/>
+    <signatures__OperationInterface id="_EnfoxYRwEeWnEbz-sg1tMg" entityName="testTypeMatchesLabelMismatch"/>
+    <signatures__OperationInterface id="_EnfoxoRwEeWnEbz-sg1tMg" entityName="testTypeMatchesThresholdMismatch"/>
+    <signatures__OperationInterface id="_Enfox4RwEeWnEbz-sg1tMg" entityName="testTypeMatchesThresholdMatch"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EnlIUIRwEeWnEbz-sg1tMg" entityName="GeoLocator.java.GeoLocator">
+    <signatures__OperationInterface id="_EnlvYIRwEeWnEbz-sg1tMg" entityName="readLocation" returnType__OperationSignature="_El6UYIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EnlvYYRwEeWnEbz-sg1tMg" parameterName="address"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Enr2AIRwEeWnEbz-sg1tMg" entityName="IIPAddressTest.java.IPAddressTest">
+    <signatures__OperationInterface id="_Enr2AYRwEeWnEbz-sg1tMg" entityName="testFromStringInvalidFormat"/>
+    <signatures__OperationInterface id="_Enr2AoRwEeWnEbz-sg1tMg" entityName="testFromStringInvalidAddress"/>
+    <signatures__OperationInterface id="_Enr2A4RwEeWnEbz-sg1tMg" entityName="testFromStringValid"/>
+    <signatures__OperationInterface id="_Enr2BIRwEeWnEbz-sg1tMg" entityName="testAsInetAddress"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_En4qUIRwEeWnEbz-sg1tMg" entityName="IClientConfiguration.java.ClientConfiguration">
+    <signatures__OperationInterface id="_En4qUYRwEeWnEbz-sg1tMg" entityName="getConfigurationFile" returnType__OperationSignature="_En4qUoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_En9i0IRwEeWnEbz-sg1tMg" entityName="setConfigurationFile" returnType__OperationSignature="_En9i0YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_En4qUoRwEeWnEbz-sg1tMg" parameterName="configurationFile"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoB0QIRwEeWnEbz-sg1tMg" entityName="getServerConnection" returnType__OperationSignature="_En_YAIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EoB0QYRwEeWnEbz-sg1tMg" entityName="setServerConnection" returnType__OperationSignature="_En9i0YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_En_YAIRwEeWnEbz-sg1tMg" parameterName="serverConnection"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoB0QoRwEeWnEbz-sg1tMg" entityName="hashCode">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoB0Q4RwEeWnEbz-sg1tMg" entityName="equals">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="obj"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoB0RIRwEeWnEbz-sg1tMg" entityName="toString">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EoEQgIRwEeWnEbz-sg1tMg" entityName="IServerConnection.java.ServerConnection">
+    <signatures__OperationInterface id="_EoEQgYRwEeWnEbz-sg1tMg" entityName="getType">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3kIRwEeWnEbz-sg1tMg" entityName="setType" returnType__OperationSignature="_En_YAIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="type">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3kYRwEeWnEbz-sg1tMg" entityName="getUrl">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3koRwEeWnEbz-sg1tMg" entityName="setUrl" returnType__OperationSignature="_En_YAIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="url">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3k4RwEeWnEbz-sg1tMg" entityName="getClientApplicationIdentificationHeaderName">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3lIRwEeWnEbz-sg1tMg" entityName="getClientApplicationIdentificationHeaderNameOrDefault">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3lYRwEeWnEbz-sg1tMg" entityName="setClientApplicationIdentificationHeaderName" returnType__OperationSignature="_En_YAIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="clientApplicationIdentificationHeaderName">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3loRwEeWnEbz-sg1tMg" entityName="getClientApplicationIdentificationHeaderValue">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoE3l4RwEeWnEbz-sg1tMg" entityName="setClientApplicationIdentificationHeaderValue" returnType__OperationSignature="_En_YAIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="clientApplicationIdentificationHeaderValue">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoFeoIRwEeWnEbz-sg1tMg" entityName="getPort">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoFeoYRwEeWnEbz-sg1tMg" entityName="setPort" returnType__OperationSignature="_En_YAIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="port">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoFeooRwEeWnEbz-sg1tMg" entityName="getSocketTimeout">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoFeo4RwEeWnEbz-sg1tMg" entityName="setSocketTimeout" returnType__OperationSignature="_En_YAIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="socketTimeout">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoFepIRwEeWnEbz-sg1tMg" entityName="hashCode">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoFepYRwEeWnEbz-sg1tMg" entityName="equals">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="obj"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoFepoRwEeWnEbz-sg1tMg" entityName="toString">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EoNacIRwEeWnEbz-sg1tMg" entityName="ILoggerBeanPostProcessor.java.LoggerBeanPostProcessor">
+    <signatures__OperationInterface id="_EoNacYRwEeWnEbz-sg1tMg" entityName="postProcessAfterInitialization" returnType__OperationSignature="_EmzFMIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="bean"/>
+      <parameters__OperationSignature parameterName="beanName">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoNacoRwEeWnEbz-sg1tMg" entityName="postProcessBeforeInitialization" returnType__OperationSignature="_EmzFMIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="bean"/>
+      <parameters__OperationSignature parameterName="beanName">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EoOokIRwEeWnEbz-sg1tMg" entityName="UserManager.java.UserManager">
+    <signatures__OperationInterface id="_EoOokYRwEeWnEbz-sg1tMg" entityName="logout">
+      <parameters__OperationSignature dataType__Parameter="_EoOokoRwEeWnEbz-sg1tMg" parameterName="user"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoRr4IRwEeWnEbz-sg1tMg" entityName="disable">
+      <parameters__OperationSignature dataType__Parameter="_EoOokoRwEeWnEbz-sg1tMg" parameterName="user"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EoYZkIRwEeWnEbz-sg1tMg" entityName="IDateUtils.java.DateUtils">
+    <signatures__OperationInterface id="_EoYZkYRwEeWnEbz-sg1tMg" entityName="getCurrentTimestamp" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EoZAoIRwEeWnEbz-sg1tMg" entityName="getCurrentTimestampAsString">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoZAoYRwEeWnEbz-sg1tMg" entityName="fromString" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="rfc3339Timestamp">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoaOwIRwEeWnEbz-sg1tMg" entityName="epoch" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Eoa10IRwEeWnEbz-sg1tMg" entityName="main">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="args"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EofHQIRwEeWnEbz-sg1tMg" entityName="IStringUtils.java.StringUtils">
+    <signatures__OperationInterface id="_EofHQYRwEeWnEbz-sg1tMg" entityName="toCollection" returnType__OperationSignature="_ElzmsIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="value"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EofHRYRwEeWnEbz-sg1tMg" entityName="IStringUtilsTest.java.StringUtilsTest">
+    <signatures__OperationInterface id="_EofHRoRwEeWnEbz-sg1tMg" entityName="testToCollectionNull"/>
+    <signatures__OperationInterface id="_EofHR4RwEeWnEbz-sg1tMg" entityName="testToCollection"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EofuUoRwEeWnEbz-sg1tMg" entityName="SAXException.java.SAXException" parentInterfaces__Interface="_EndzkYRwEeWnEbz-sg1tMg">
+    <signatures__OperationInterface id="_EogVYIRwEeWnEbz-sg1tMg" entityName="getMessage" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EogVYYRwEeWnEbz-sg1tMg" entityName="getException" returnType__OperationSignature="_EogVYoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EojYsIRwEeWnEbz-sg1tMg" entityName="getCause" returnType__OperationSignature="_EojYsYRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Eol08IRwEeWnEbz-sg1tMg" entityName="toString" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Eol09IRwEeWnEbz-sg1tMg" entityName="AutoCloseable.java.AutoCloseable">
+    <signatures__OperationInterface id="_EomcAIRwEeWnEbz-sg1tMg" entityName="close"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Eol084RwEeWnEbz-sg1tMg" entityName="Closeable.java.Closeable" parentInterfaces__Interface="_Eol09IRwEeWnEbz-sg1tMg">
+    <signatures__OperationInterface id="_EomcAYRwEeWnEbz-sg1tMg" entityName="close"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Eol08oRwEeWnEbz-sg1tMg" entityName="InputStream.java.InputStream" parentInterfaces__Interface="_Eol084RwEeWnEbz-sg1tMg _Eol09IRwEeWnEbz-sg1tMg">
+    <signatures__OperationInterface id="_EomcAoRwEeWnEbz-sg1tMg" entityName="read">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EomcA4RwEeWnEbz-sg1tMg" entityName="read_1">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+      </parameters__OperationSignature>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EomcBIRwEeWnEbz-sg1tMg" entityName="read_2">
+      <parameters__OperationSignature dataType__Parameter="_EomcBYRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <parameters__OperationSignature parameterName="arg1">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="arg2">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EonDEIRwEeWnEbz-sg1tMg" entityName="skip">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EonDEYRwEeWnEbz-sg1tMg" entityName="available">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EonDEoRwEeWnEbz-sg1tMg" entityName="close"/>
+    <signatures__OperationInterface id="_EonDE4RwEeWnEbz-sg1tMg" entityName="mark">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EonDFIRwEeWnEbz-sg1tMg" entityName="reset"/>
+    <signatures__OperationInterface id="_EonDFYRwEeWnEbz-sg1tMg" entityName="markSupported">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EonDF4RwEeWnEbz-sg1tMg" entityName="Schema.java.Schema">
+    <signatures__OperationInterface id="_EonDGIRwEeWnEbz-sg1tMg" entityName="newValidator" returnType__OperationSignature="_EonqIIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EoqtcIRwEeWnEbz-sg1tMg" entityName="newValidatorHandler" returnType__OperationSignature="_Eor7kIRwEeWnEbz-sg1tMg"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EouX0oRwEeWnEbz-sg1tMg" entityName="Source.java.Source">
+    <signatures__OperationInterface id="_EouX04RwEeWnEbz-sg1tMg" entityName="setSystemId">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Eou-4IRwEeWnEbz-sg1tMg" entityName="getSystemId" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EouX0YRwEeWnEbz-sg1tMg" entityName="StreamSource.java.StreamSource" parentInterfaces__Interface="_EouX0oRwEeWnEbz-sg1tMg">
+    <signatures__OperationInterface id="_Eou-4YRwEeWnEbz-sg1tMg" entityName="setInputStream">
+      <parameters__OperationSignature dataType__Parameter="_Eou-4oRwEeWnEbz-sg1tMg" parameterName="inputStream"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EoyCMIRwEeWnEbz-sg1tMg" entityName="getInputStream" returnType__OperationSignature="_Eou-4oRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EoypQIRwEeWnEbz-sg1tMg" entityName="setReader">
+      <parameters__OperationSignature dataType__Parameter="_EoypQYRwEeWnEbz-sg1tMg" parameterName="reader"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Eo1FgIRwEeWnEbz-sg1tMg" entityName="getReader" returnType__OperationSignature="_EoypQYRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Eo1FgYRwEeWnEbz-sg1tMg" entityName="setPublicId">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="publicId"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Eo1FgoRwEeWnEbz-sg1tMg" entityName="getPublicId" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Eo1skIRwEeWnEbz-sg1tMg" entityName="setSystemId">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="systemId"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Eo1skYRwEeWnEbz-sg1tMg" entityName="getSystemId" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Eo1skoRwEeWnEbz-sg1tMg" entityName="setSystemId_1">
+      <parameters__OperationSignature dataType__Parameter="_En4qUoRwEeWnEbz-sg1tMg" parameterName="f"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Eo2ToIRwEeWnEbz-sg1tMg" entityName="Validator.java.Validator">
+    <signatures__OperationInterface id="_Eo2ToYRwEeWnEbz-sg1tMg" entityName="reset"/>
+    <signatures__OperationInterface id="_Eo2TooRwEeWnEbz-sg1tMg" entityName="validate">
+      <parameters__OperationSignature dataType__Parameter="_Eo2To4RwEeWnEbz-sg1tMg" parameterName="source"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Eo5-AIRwEeWnEbz-sg1tMg" entityName="validate_1">
+      <parameters__OperationSignature dataType__Parameter="_Eo2To4RwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <parameters__OperationSignature dataType__Parameter="_Eo5-AYRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpX4EIRwEeWnEbz-sg1tMg" entityName="setErrorHandler">
+      <parameters__OperationSignature dataType__Parameter="_EpYfIIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpcwkIRwEeWnEbz-sg1tMg" entityName="getErrorHandler" returnType__OperationSignature="_EpYfIIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpdXoIRwEeWnEbz-sg1tMg" entityName="setResourceResolver">
+      <parameters__OperationSignature dataType__Parameter="_EpdXoYRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Epga8IRwEeWnEbz-sg1tMg" entityName="getResourceResolver" returnType__OperationSignature="_EpdXoYRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Epga8YRwEeWnEbz-sg1tMg" entityName="getFeature">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="name"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Epga8oRwEeWnEbz-sg1tMg" entityName="setFeature">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="name"/>
+      <parameters__OperationSignature parameterName="value">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphCAIRwEeWnEbz-sg1tMg" entityName="setProperty">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="name"/>
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="object"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphCAYRwEeWnEbz-sg1tMg" entityName="getProperty" returnType__OperationSignature="_EmzFMIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="name"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EphCBIRwEeWnEbz-sg1tMg" entityName="XMLStreamConstants.java.XMLStreamConstants"/>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EphCA4RwEeWnEbz-sg1tMg" entityName="XMLStreamReader.java.XMLStreamReader" parentInterfaces__Interface="_EphCBIRwEeWnEbz-sg1tMg">
+    <signatures__OperationInterface id="_EphCBYRwEeWnEbz-sg1tMg" entityName="getProperty" returnType__OperationSignature="_EmzFMIRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphCBoRwEeWnEbz-sg1tMg" entityName="next">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphCB4RwEeWnEbz-sg1tMg" entityName="require">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="arg2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpEIRwEeWnEbz-sg1tMg" entityName="getElementText" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EphpEYRwEeWnEbz-sg1tMg" entityName="nextTag">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpEoRwEeWnEbz-sg1tMg" entityName="hasNext">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpE4RwEeWnEbz-sg1tMg" entityName="close"/>
+    <signatures__OperationInterface id="_EphpFIRwEeWnEbz-sg1tMg" entityName="getNamespaceURI" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpFYRwEeWnEbz-sg1tMg" entityName="isStartElement">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpFoRwEeWnEbz-sg1tMg" entityName="isEndElement">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpF4RwEeWnEbz-sg1tMg" entityName="isCharacters">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpGIRwEeWnEbz-sg1tMg" entityName="isWhiteSpace">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpGYRwEeWnEbz-sg1tMg" entityName="getAttributeValue" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EphpGoRwEeWnEbz-sg1tMg" entityName="getAttributeCount">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpiQIIRwEeWnEbz-sg1tMg" entityName="getAttributeName" returnType__OperationSignature="_EpiQIYRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpnIoIRwEeWnEbz-sg1tMg" entityName="getAttributeNamespace" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpnvsIRwEeWnEbz-sg1tMg" entityName="getAttributeLocalName" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpnvsYRwEeWnEbz-sg1tMg" entityName="getAttributePrefix" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpnvsoRwEeWnEbz-sg1tMg" entityName="getAttributeType" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Epnvs4RwEeWnEbz-sg1tMg" entityName="getAttributeValue_1" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpnvtIRwEeWnEbz-sg1tMg" entityName="isAttributeSpecified">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpnvtYRwEeWnEbz-sg1tMg" entityName="getNamespaceCount">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpoWwIRwEeWnEbz-sg1tMg" entityName="getNamespacePrefix" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpoWwYRwEeWnEbz-sg1tMg" entityName="getNamespaceURI_1" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpoWwoRwEeWnEbz-sg1tMg" entityName="getNamespaceContext" returnType__OperationSignature="_Epo90IRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpsoMIRwEeWnEbz-sg1tMg" entityName="getEventType">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EptPQIRwEeWnEbz-sg1tMg" entityName="getText" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EptPQYRwEeWnEbz-sg1tMg" entityName="getTextCharacters" returnType__OperationSignature="_EptPQoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EptPQ4RwEeWnEbz-sg1tMg" entityName="getTextCharacters_1">
+      <parameters__OperationSignature parameterName="arg0">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature dataType__Parameter="_EptPRIRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+      <parameters__OperationSignature parameterName="arg2">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="arg3">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EptPRYRwEeWnEbz-sg1tMg" entityName="getTextStart">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EptPRoRwEeWnEbz-sg1tMg" entityName="getTextLength">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EptPR4RwEeWnEbz-sg1tMg" entityName="getEncoding" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Ept2UIRwEeWnEbz-sg1tMg" entityName="hasText">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Ept2UYRwEeWnEbz-sg1tMg" entityName="getLocation" returnType__OperationSignature="_EpudYIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpyHwIRwEeWnEbz-sg1tMg" entityName="getName" returnType__OperationSignature="_EpiQIYRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpyHwYRwEeWnEbz-sg1tMg" entityName="getLocalName" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpyHwoRwEeWnEbz-sg1tMg" entityName="hasName">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpyHw4RwEeWnEbz-sg1tMg" entityName="getNamespaceURI_2" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpyHxIRwEeWnEbz-sg1tMg" entityName="getPrefix" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpyHxYRwEeWnEbz-sg1tMg" entityName="getVersion" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpyHxoRwEeWnEbz-sg1tMg" entityName="isStandalone">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Epyu0IRwEeWnEbz-sg1tMg" entityName="standaloneSet">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Epyu0YRwEeWnEbz-sg1tMg" entityName="getCharacterEncodingScheme" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Epyu0oRwEeWnEbz-sg1tMg" entityName="getPITarget" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Epyu04RwEeWnEbz-sg1tMg" entityName="getPIData" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Epyu1YRwEeWnEbz-sg1tMg" entityName="Map.java.Map">
+    <signatures__OperationInterface id="_Epyu1oRwEeWnEbz-sg1tMg" entityName="size">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpzV4IRwEeWnEbz-sg1tMg" entityName="isEmpty">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpzV4YRwEeWnEbz-sg1tMg" entityName="containsKey">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpzV4oRwEeWnEbz-sg1tMg" entityName="containsValue">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpzV44RwEeWnEbz-sg1tMg" entityName="get" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpzV5IRwEeWnEbz-sg1tMg" entityName="put" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EpzV5YRwEeWnEbz-sg1tMg" entityName="remove" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EpzV5oRwEeWnEbz-sg1tMg" entityName="putAll">
+      <parameters__OperationSignature dataType__Parameter="_Epz88IRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Ep2ZMIRwEeWnEbz-sg1tMg" entityName="clear"/>
+    <signatures__OperationInterface id="_Ep2ZMYRwEeWnEbz-sg1tMg" entityName="keySet" returnType__OperationSignature="_Ep3AQIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Ep3AQYRwEeWnEbz-sg1tMg" entityName="values" returnType__OperationSignature="_ElzmsIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Ep3AQoRwEeWnEbz-sg1tMg" entityName="entrySet" returnType__OperationSignature="_Ep3AQIRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_Ep3nUIRwEeWnEbz-sg1tMg" entityName="equals">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Ep3nUYRwEeWnEbz-sg1tMg" entityName="hashCode">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Ep3nUoRwEeWnEbz-sg1tMg" entityName="getOrDefault" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Ep3nU4RwEeWnEbz-sg1tMg" entityName="forEach">
+      <parameters__OperationSignature dataType__Parameter="_Ep41cIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Ep7RsIRwEeWnEbz-sg1tMg" entityName="replaceAll">
+      <parameters__OperationSignature dataType__Parameter="_Ep8f0IRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqAxQIRwEeWnEbz-sg1tMg" entityName="putIfAbsent" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EqAxQYRwEeWnEbz-sg1tMg" entityName="remove_1">
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg0"/>
+      <parameters__OperationSignature dataType__Parameter="_EmzFMIRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqBYUIRwEeWnEbz-sg1tMg" entityName="replace">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqBYUYRwEeWnEbz-sg1tMg" entityName="replace_1" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg"/>
+    <signatures__OperationInterface id="_EqBYUoRwEeWnEbz-sg1tMg" entityName="computeIfAbsent" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EqB_YIRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqFCsIRwEeWnEbz-sg1tMg" entityName="computeIfPresent" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Ep8f0IRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqFCsYRwEeWnEbz-sg1tMg" entityName="compute" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Ep8f0IRwEeWnEbz-sg1tMg" parameterName="arg1"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqFCsoRwEeWnEbz-sg1tMg" entityName="merge" returnType__OperationSignature="_EmzFMoRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_Ep8f0IRwEeWnEbz-sg1tMg" parameterName="arg2"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_EqFpwIRwEeWnEbz-sg1tMg" entityName="IXmlUtils.java.XmlUtils">
+    <signatures__OperationInterface id="_EqFpwYRwEeWnEbz-sg1tMg" entityName="validateXMLSchema">
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="xsdPath"/>
+      <parameters__OperationSignature dataType__Parameter="_Eoa10YRwEeWnEbz-sg1tMg" parameterName="xmlPath"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqFpwoRwEeWnEbz-sg1tMg" entityName="validateXMLSchema_1">
+      <parameters__OperationSignature dataType__Parameter="_Eou-4oRwEeWnEbz-sg1tMg" parameterName="xsdStream"/>
+      <parameters__OperationSignature dataType__Parameter="_Eou-4oRwEeWnEbz-sg1tMg" parameterName="xmlStream"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_EqFpw4RwEeWnEbz-sg1tMg" entityName="getElementQualifiedName" returnType__OperationSignature="_Eoa10YRwEeWnEbz-sg1tMg">
+      <parameters__OperationSignature dataType__Parameter="_EqFpxIRwEeWnEbz-sg1tMg" parameterName="xmlReader"/>
+      <parameters__OperationSignature dataType__Parameter="_Epz88IRwEeWnEbz-sg1tMg" parameterName="namespaces"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_ElsR8IRwEeWnEbz-sg1tMg" entityName="ClientApplication">
+    <innerDeclaration_CompositeDataType entityName="name">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="roles" datatype_InnerDeclaration="_ElzmsIRwEeWnEbz-sg1tMg"/>
+    <innerDeclaration_CompositeDataType entityName="ipAddress" datatype_InnerDeclaration="_El4fMIRwEeWnEbz-sg1tMg"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_ElzmsIRwEeWnEbz-sg1tMg" entityName="Collection"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_El4fMIRwEeWnEbz-sg1tMg" entityName="IPAddress">
+    <innerDeclaration_CompositeDataType entityName="serialVersionUID">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="id">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="address">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="geoLocation" datatype_InnerDeclaration="_El6UYIRwEeWnEbz-sg1tMg"/>
+    <innerDeclaration_CompositeDataType entityName="geoLocator" datatype_InnerDeclaration="_El9XsIRwEeWnEbz-sg1tMg"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_El6UYIRwEeWnEbz-sg1tMg" entityName="GeoLocation">
+    <innerDeclaration_CompositeDataType entityName="serialVersionUID">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="id">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="latitude">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="longitude">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.3"/>
+    </innerDeclaration_CompositeDataType>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_El9XsIRwEeWnEbz-sg1tMg" entityName="GeoLocator"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EmBCEIRwEeWnEbz-sg1tMg" entityName="Action"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EmCQMIRwEeWnEbz-sg1tMg" entityName="Context"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EmlCw4RwEeWnEbz-sg1tMg" entityName="Iterator"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EmpUMIRwEeWnEbz-sg1tMg" entityName="Consumer"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Ems-kIRwEeWnEbz-sg1tMg" entityName="Spliterator"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Emva0oRwEeWnEbz-sg1tMg" entityName="Object"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_EmzFMIRwEeWnEbz-sg1tMg" entityName="ObjectList" innerType_CollectionDataType="_Emva0oRwEeWnEbz-sg1tMg"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EmzFMoRwEeWnEbz-sg1tMg" entityName="Object"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_EmzFM4RwEeWnEbz-sg1tMg" entityName="ObjectList" innerType_CollectionDataType="_EmzFMoRwEeWnEbz-sg1tMg"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Em0TUYRwEeWnEbz-sg1tMg" entityName="Predicate"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Em9dQIRwEeWnEbz-sg1tMg" entityName="Stream"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EnlvYYRwEeWnEbz-sg1tMg" entityName="InetAddress"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_En4qUoRwEeWnEbz-sg1tMg" entityName="File"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_En9i0YRwEeWnEbz-sg1tMg" entityName="ClientConfiguration">
+    <innerDeclaration_CompositeDataType entityName="configurationFile" datatype_InnerDeclaration="_En4qUoRwEeWnEbz-sg1tMg"/>
+    <innerDeclaration_CompositeDataType entityName="serverConnection" datatype_InnerDeclaration="_En_YAIRwEeWnEbz-sg1tMg"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_En_YAIRwEeWnEbz-sg1tMg" entityName="ServerConnection">
+    <innerDeclaration_CompositeDataType entityName="DEFAULT_HEADER_NAME">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="type">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="url">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="clientApplicationIdentificationHeaderName">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="clientApplicationIdentificationHeaderValue">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="port">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="socketTimeout">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EoOokoRwEeWnEbz-sg1tMg" entityName="User">
+    <innerDeclaration_CompositeDataType entityName="serialVersionUID">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="id">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="username">
+      <datatype_InnerDeclaration xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+    </innerDeclaration_CompositeDataType>
+    <innerDeclaration_CompositeDataType entityName="ipAddress" datatype_InnerDeclaration="_El4fMIRwEeWnEbz-sg1tMg"/>
+    <innerDeclaration_CompositeDataType entityName="locator" datatype_InnerDeclaration="_El4fMIRwEeWnEbz-sg1tMg"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_Eoa10YRwEeWnEbz-sg1tMg" entityName="STRINGList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EogVYoRwEeWnEbz-sg1tMg" entityName="Exception"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EojYsYRwEeWnEbz-sg1tMg" entityName="Throwable"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_EomcBYRwEeWnEbz-sg1tMg" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EonqIIRwEeWnEbz-sg1tMg" entityName="Validator"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Eor7kIRwEeWnEbz-sg1tMg" entityName="ValidatorHandler"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Eou-4oRwEeWnEbz-sg1tMg" entityName="InputStream"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EoypQYRwEeWnEbz-sg1tMg" entityName="Reader"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Eo2To4RwEeWnEbz-sg1tMg" entityName="Source"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Eo5-AYRwEeWnEbz-sg1tMg" entityName="Result"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EpYfIIRwEeWnEbz-sg1tMg" entityName="ErrorHandler"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EpdXoYRwEeWnEbz-sg1tMg" entityName="LSResourceResolver"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EpiQIYRwEeWnEbz-sg1tMg" entityName="QName"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Epo90IRwEeWnEbz-sg1tMg" entityName="NamespaceContext"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_EptPQoRwEeWnEbz-sg1tMg" entityName="CHARList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.4"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_EptPRIRwEeWnEbz-sg1tMg" entityName="CHARList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="pathmap://PCM_MODELS/PrimitiveTypes.repository#//@dataTypes__Repository.4"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EpudYIRwEeWnEbz-sg1tMg" entityName="Location"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Epz88IRwEeWnEbz-sg1tMg" entityName="Map"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_Ep3AQIRwEeWnEbz-sg1tMg" entityName="Set"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Ep41cIRwEeWnEbz-sg1tMg" entityName="BiConsumer"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Ep8f0IRwEeWnEbz-sg1tMg" entityName="BiFunction"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EqB_YIRwEeWnEbz-sg1tMg" entityName="Function"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_EqFpxIRwEeWnEbz-sg1tMg" entityName="XMLStreamReader"/>
+</repository:Repository>
