@@ -60,11 +60,7 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	@Override
 	public boolean isReached() {
-		if (this.maximallyTolerableTime == -1) {
-			return false;
-		} else {
-			return this.timeOfPreviousCall + this.maximallyTolerableTime - System.currentTimeMillis() < 0;
-		}
+		return this.timeOfPreviousCall + this.maximallyTolerableTime - System.currentTimeMillis() < 0;
 	}
 
 	@Override
@@ -73,24 +69,16 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		final long tellingTime = this.timeOfPreviousCall - System.currentTimeMillis();
 		this.timeOfPreviousCall = System.currentTimeMillis();
 
-		if (this.previousMaximallyTolerableTime == -1) {
-			final long preliminaryMaximallyTolerableTime =
-				(long) (tellingTime * (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE))
-					+ CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
-			this.maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
-				? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
+		final long preliminaryMaximallyTolerableTime =
+			(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
+		this.maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
+			? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
 
-		} else {
-			final long preliminaryMaximallyTolerableTime =
-				(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
-			this.maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
-				? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
-
-			if (!this.startedCallbackThread) {
-				this.startedCallbackThread = true;
-				new Thread(this::notifyOnReachedTimeout).start();
-			}
+		if (!this.startedCallbackThread) {
+			this.startedCallbackThread = true;
+			new Thread(this::notifyOnReachedTimeout).start();
 		}
+
 	}
 
 	@Override
