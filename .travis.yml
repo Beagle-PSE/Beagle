@@ -15,7 +15,7 @@ after_failure:
   - gradle web
   
 after_success:
-  - gradle cleanTmp
+  - gradle cleanTmp cleanTestProjects
   - ./buildSrc/src/deploy/bash/Deploy\ SVN.sh
 
 after_script:
