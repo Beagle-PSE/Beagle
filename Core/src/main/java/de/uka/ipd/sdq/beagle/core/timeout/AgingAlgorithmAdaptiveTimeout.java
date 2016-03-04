@@ -27,6 +27,11 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	private static final double MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE = 0.3;
 
 	/**
+	 * The time tolerance cannot fall below this value.
+	 */
+	private static final long MINIMUM_TIME_TOLERANCE = 10 * 60;
+
+	/**
 	 * The start value for the aging algorithm.
 	 */
 	private static final long AGING_START_VALUE = 3600 * 1000;
@@ -69,11 +74,17 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		this.timeOfPreviousCall = System.currentTimeMillis();
 
 		if (this.previousMaximallyTolerableTime == -1) {
-			this.maximallyTolerableTime = (long) (tellingTime * (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE))
-				+ CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
+			final long preliminaryMaximallyTolerableTime =
+				(long) (tellingTime * (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE))
+					+ CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
+			this.maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
+				? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
+
 		} else {
-			this.maximallyTolerableTime =
+			final long preliminaryMaximallyTolerableTime =
 				(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
+			this.maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
+				? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
 
 			if (!this.startedCallbackThread) {
 				this.startedCallbackThread = true;

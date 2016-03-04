@@ -19,6 +19,11 @@ public class LinearRegressionAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	private static final long CONSTANT_ADDITIONAL_TIME_TOLEARANCE = 5 * 60 * 1000;
 
 	/**
+	 * The time tolerance cannot fall below this value.
+	 */
+	private static final long MINIMUM_TIME_TOLERANCE = 10 * 60;
+
+	/**
 	 * How much additional time is always tolerated. Relative to the calculated time
 	 * tolerance (without {@link #CONSTANT_ADDITIONAL_TIME_TOLEARANCE}).
 	 */
@@ -94,8 +99,12 @@ public class LinearRegressionAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		this.regressionLine.init();
 
 		final long predictedValue = (long) this.regressionLine.getValueFor(RANGE);
-		final long maximallyTolerableTime = (long) (predictedValue * (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE))
-			+ CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
+		final long preliminaryMaximallyTolerableTime =
+			(long) (predictedValue * (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE))
+				+ CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
+
+		final long maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
+			? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
 		final boolean reachedTimeout = (currentTime - this.timeOfPreviousCall) > maximallyTolerableTime;
 
 		this.reachedTimeoutInThePast = reachedTimeout;
