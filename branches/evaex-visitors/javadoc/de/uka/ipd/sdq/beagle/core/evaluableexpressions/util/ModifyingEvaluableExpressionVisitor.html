@@ -137,20 +137,17 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
  <p>This visitor will start at the expression passed to
  <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html#modifyRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-"><code>modifyRecursively(EvaluableExpression)</code></a> and call the according <code>at</code> hook.
  Afterwards, it will recursively visit all inner expressions and then call the
- <code>after</code> hook. If <code>#stopTraversal()</code> is called, the traversal will no longer
- visit inner expressions. Instead, it will go “up” the tree again, whilst calling the
- <code>after</code> hooks, until it reached the initial expression and then terminate. Given
- that no expression is thrown,the traversal of one expression tree that only contains
- pairwise different inner expressions has these properties:
+ <code>after</code> hook. Given that no expression is thrown, the traversal of one expression
+ tree that only contains pairwise different inner expressions has these properties:
 
  <ul>
 
  <li> the number of all called <code>at</code> hooks will equal the number of all called
  <code>after</code> hooks. However, the numbers may differ for a type of specific hooks
- because the expression was changed during the visit. For example
- <code>#atSubstraction</code> may be called on an expression that is replaced by an
- <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">AdditionExpression</a> in this hook. Thus <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterAddition-de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression-"><code>ExpressionTreeWalker.afterAddition(de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)</code></a> will be
- called instead of <code>#afterSubstraction</code> at this position when traversing upwards.
+ because the expression was changed during the visit. For example <code>atSubstraction</code>
+ may be called on an expression that is replaced by an <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">AdditionExpression</a>
+ in this hook. Thus <code>afterAddition</code> will be called instead of
+ <code>afterSubstraction</code> at this position when traversing upwards.
 
  <li> if for two expression <code>e1</code> and <code>e2</code>, <code>atExpression(e1)</code> was
  called before <code>atExpression(e2)</code> was, <code>afterExpression(e2)</code> will be called
@@ -341,8 +338,7 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#getVisitedCount--">getVisitedCount</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The amount of visited expressions since the last call to
-         <code>#modifyRecursively(EvaluableExpression)</code>.</dd>
+<dd>The amount of visited expressions during the current visit.</dd>
 </dl>
 </li>
 </ul>

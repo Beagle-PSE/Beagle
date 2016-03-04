@@ -15,7 +15,7 @@
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
-(./Design and Architecture.tex
+(./Requirements Specification.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 7 languages loaded.
 (/usr/share/texmf/tex/latex/sdqthesis/sdqthesis.cls
@@ -188,17 +188,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty)
-********************************************************
-Package `algorithm2e' Release 5.0 -- january 06 2013 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (cfiorio@um2.fr)
-********************************************************
-) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty)))
@@ -257,7 +249,7 @@ y) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3candidates.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty))
-Writing index file "Design and Architecture".idx
+Writing index file "Requirements Specification".idx
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
@@ -268,7 +260,7 @@ Writing index file "Design and Architecture".idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def))
 (/usr/share/texlive/texmf-dist/tex/latex/breakcites/breakcites.sty)
-No file "Design and Architecture".aux.
+No file "Requirements Specification".aux.
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd)
@@ -324,8 +316,10 @@ English.dict) <logos/kitlogo_en_cmyk.pdf, id=7, 198.7425pt x 92.345pt>
 <logos/sdqlogo.pdf, id=8, 558.085pt x 280.24701pt> <use logos/sdqlogo.pdf>
 (/usr/share/texlive/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-LF.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsya.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd)
 <title-background.pdf, id=9, 597.50786pt x 845.04686pt>
 <use title-background.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
@@ -337,123 +331,421 @@ pdfTeX warning: pdflatex (file /usr/share/texmf/tex/latex/sdqthesis/logos/sdqlo
 go.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 
 >] [2] (../../common/lyx/Terms and Definitions.tex) [1]
-No file "Design and Architecture".acr.
-[2] (./Parts/Architectual Overview.tex
+No file "Requirements Specification".acr.
+[2] [3] [4] (./Parts/Purpose.tex
 Chapter 1.
 
-LaTeX Warning: Citation `javadoc' on page 1 undefined on input line 7.
-
-<"../umlet/Beagle Core Component.uxf".pdf, id=84, 451.6875pt x 281.05pt>
-<use "../umlet/Beagle Core Component.uxf".pdf>
-
-LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 61.
-
-[1] <"../umlet/Beagle Core.uxf".pdf, id=111, 1345.025pt x 2449.15pt>
-<use "../umlet/Beagle Core.uxf".pdf>
-
-LaTeX Warning: Citation `javadoc' on page 2 undefined on input line 78.
+LaTeX Warning: Citation `PCMtechreport' on page 1 undefined on input line 9.
 
 
-LaTeX Warning: Citation `javadoc' on page 2 undefined on input line 78.
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 25.
 
 
-LaTeX Warning: Float too large for page by 43.3275pt on input line 79.
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 30.
 
-<../umlet/Packages.uxf.pdf, id=112, 953.5625pt x 963.6pt>
-<use ../umlet/Packages.uxf.pdf>) (./Parts/Blackboard.tex [2 <../umlet/Beagle Co
-re Component.uxf.pdf>] [3 <../umlet/Beagle Core.uxf.pdf>] [4 <../umlet/Packages
-.uxf.pdf>]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 37.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active [1]
+<"../umlet/Use Cases.uxf".pdf, id=179, 893.3375pt x 592.2125pt>
+<use "../umlet/Use Cases.uxf".pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./Parts/Application.tex [2] [3 <../umlet/Use Cases.uxf.pdf>] [4]
 Chapter 2.
+<../umlet/Reengineering.uxf.pdf, id=240, 873.2625pt x 782.925pt>
+<use ../umlet/Reengineering.uxf.pdf>
 
-LaTeX Warning: Citation `buschmann1996patternoriented' on page 5 undefined on i
-nput line 4.
+LaTeX Warning: Reference `/A10/' on page 5 undefined on input line 22.
 
-<"../umlet/Blackboard Layers.uxf".pdf, id=147, 805.0075pt x 381.425pt>
-<use "../umlet/Blackboard Layers.uxf".pdf>
-<../umlet/Blackboard.uxf.pdf, id=148, 1997.4625pt x 2378.8875pt>
-<use ../umlet/Blackboard.uxf.pdf> [5]
-<"../umlet/Evaluable Expression.uxf".pdf, id=155, 1264.725pt x 1445.4pt>
-<use "../umlet/Evaluable Expression.uxf".pdf>) (./Parts/Analysis.tex [6 <../uml
-et/Blackboard Layers.uxf.pdf>] [7 <../umlet/Blackboard.uxf.pdf>] [8 <../umlet/E
-valuable Expression.uxf.pdf>]
+
+LaTeX Warning: Reference `/A10/' on page 5 undefined on input line 22.
+
+<../umlet/Development.uxf.pdf, id=249, 1013.7875pt x 792.9625pt>
+<use ../umlet/Development.uxf.pdf>
+
+LaTeX Warning: Reference `/A20/' on page 5 undefined on input line 37.
+
+
+LaTeX Warning: Reference `/A20/' on page 5 undefined on input line 37.
+
+<../umlet/Prototype.uxf.pdf, id=258, 973.6375pt x 792.9625pt>
+<use ../umlet/Prototype.uxf.pdf>
+
+LaTeX Warning: Reference `/A30/' on page 5 undefined on input line 52.
+
+
+LaTeX Warning: Reference `/A30/' on page 5 undefined on input line 52.
+
+<../umlet/Validation.uxf.pdf, id=265, 823.075pt x 692.5875pt>
+<use ../umlet/Validation.uxf.pdf>
+
+LaTeX Warning: Reference `/A40/' on page 5 undefined on input line 67.
+
+
+LaTeX Warning: Reference `/A40/' on page 5 undefined on input line 67.
+
+
+LaTeX Warning: Reference `/A10/' on page 5 undefined on input line 77.
+
+
+LaTeX Warning: Reference `/A40/' on page 5 undefined on input line 77.
+
+
+LaTeX Warning: Reference `/A40/' on page 5 undefined on input line 79.
+
+
+LaTeX Warning: Reference `/A20/' on page 5 undefined on input line 81.
+
+
+LaTeX Warning: Reference `/A30/' on page 5 undefined on input line 81.
+
+) (./Parts/Environment.tex [5] [6 <../umlet/Reengineering.uxf.pdf>] [7 <../umle
+t/Development.uxf.pdf>] [8 <../umlet/Prototype.uxf.pdf>] [9 <../umlet/Validatio
+n.uxf.pdf>] [10]
 Chapter 3.
 
-LaTeX Warning: Reference `alg:Beagle-Controller=000023perform-Analys' on page 9
- undefined on input line 40.
+LaTeX Warning: Reference `/C130/' on page 11 undefined on input line 16.
 
-<../umlet/Controllers.uxf.pdf, id=189, 1033.8625pt x 863.225pt>
-<use ../umlet/Controllers.uxf.pdf>
-<"../umlet/Sequence Diagram perform Analysis().uxf".pdf, id=190, 1616.0375pt x 
-2429.075pt> <use "../umlet/Sequence Diagram perform Analysis().uxf".pdf>
-
-LaTeX Warning: Float too large for page by 32.11168pt on input line 90.
-
-[9] [10 <../umlet/Controllers.uxf.pdf>] [11] [12 <../umlet/Sequence Diagram per
-form Analysis().uxf.pdf>]
-
-LaTeX Warning: Citation `KrogmannPhD' on page 13 undefined on input line 114.
-
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
-[13] <../umlet/Measurement.uxf.pdf, id=241, 1425.325pt x 1365.1pt>
-<use ../umlet/Measurement.uxf.pdf>
-<"../umlet/Sequence Diagram can measure().uxf".pdf, id=242, 1425.325pt x 622.32
-5pt> <use "../umlet/Sequence Diagram can measure().uxf".pdf>
-<"../umlet/Sequence Diagram measure().uxf".pdf, id=243, 1595.9625pt x 893.3375p
-t> <use "../umlet/Sequence Diagram measure().uxf".pdf>
-
-LaTeX Warning: Citation `KrogmannPhD' on page 14 undefined on input line 220.
-
-[14] [15 <../umlet/Measurement.uxf.pdf>] [16 <../umlet/Sequence Diagram can mea
-sure().uxf.pdf> <../umlet/Sequence Diagram measure().uxf.pdf>]
-<"../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".pdf, 
-id=274, 1595.9625pt x 722.7pt>
-<use "../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".p
-df>
-<"../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".pdf,
- id=275, 1636.1125pt x 582.175pt>
-<use "../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".
-pdf> [17 <../umlet/Sequence Diagram Measurement Result Analyser_contribute().ux
-f.pdf>]
-<"../umlet/Sequence Diagram judge().uxf".pdf, id=287, 1776.6375pt x 1084.05pt>
-<use "../umlet/Sequence Diagram judge().uxf".pdf>) (./Parts/GUI.tex [18 <../uml
-et/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf>]
-[19 <../umlet/Sequence Diagram judge().uxf.pdf>] [20]
+<../umlet/Component.uxf.pdf, id=351, 792.9625pt x 381.425pt>
+<use ../umlet/Component.uxf.pdf>) (./Parts/Data.tex [11 <../umlet/Component.uxf
+.pdf>] [12]
 Chapter 4.
-<../umlet/GUI.uxf.pdf, id=310, 1194.4625pt x 1415.2875pt>
-<use ../umlet/GUI.uxf.pdf> [21] [22 <../umlet/GUI.uxf.pdf>]
-<"../umlet/PCM Connection.uxf".pdf, id=343, 1013.7875pt x 542.025pt>
-<use "../umlet/PCM Connection.uxf".pdf>)
-(./Parts/Requirements Specification.tex [23 <../umlet/PCM Connection.uxf.pdf>]
-[24]
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13]
+
+LaTeX Warning: Reference `/OF130/' on page 14 undefined on input line 67.
+
+
+LaTeX Warning: Reference `/OF140/' on page 14 undefined on input line 67.
+
+
+LaTeX Warning: Reference `/OF160/' on page 14 undefined on input line 68.
+
+
+LaTeX Warning: Reference `/OF150/' on page 14 undefined on input line 70.
+
+) (./Parts/Functional Requirements.tex [14]
 Chapter 5.
 
-LaTeX Warning: Citation `srs' on page 25 undefined on input line 4.
+LaTeX Warning: Reference `input artefacts' on page 15 undefined on input line 6
+.
 
 
-LaTeX Warning: Reference `sec:Changes-to-the' on page 25 undefined on input lin
-e 6.
+LaTeX Warning: Reference `input artefacts' on page 15 undefined on input line 7
+.
 
 
-LaTeX Warning: Reference `sec:Relating-Requirements-to' on page 25 undefined on
- input line 8.
+LaTeX Warning: Reference `/F10/' on page 15 undefined on input line 22.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlong' on input line 13.
+LaTeX Warning: Reference `/F20/' on page 15 undefined on input line 24.
 
-[25])
-No file "Design and Architecture".gls.
-[26]
-No file "Design and Architecture".bbl.
-(./Design and Architecture.aux)
+
+LaTeX Warning: Reference `/OF20/' on page 15 undefined on input line 35.
+
+
+LaTeX Warning: Reference `/OF40/' on page 15 undefined on input line 41.
+
+[15]
+
+LaTeX Warning: Reference `/OF70/' on page 16 undefined on input line 60.
+
+
+LaTeX Warning: Reference `/OF130/' on page 16 undefined on input line 80.
+
+
+LaTeX Warning: Reference `/OD140/' on page 16 undefined on input line 83.
+
+
+LaTeX Warning: Reference `/OF130/' on page 16 undefined on input line 83.
+
+
+LaTeX Warning: Reference `/OF140/' on page 16 undefined on input line 84.
+
+[16]
+
+LaTeX Warning: Reference `result PCM' on page 17 undefined on input line 102.
+
+
+LaTeX Warning: Reference `result PCM' on page 17 undefined on input line 102.
+
+
+LaTeX Warning: Reference `result PCM' on page 17 undefined on input line 103.
+
+
+LaTeX Warning: Reference `result PCM' on page 17 undefined on input line 106.
+
+
+LaTeX Warning: Reference `result PCM' on page 17 undefined on input line 108.
+
+
+LaTeX Warning: Reference `input PCM' on page 17 undefined on input line 111.
+
+
+LaTeX Warning: Reference `/OF10/' on page 17 undefined on input line 119.
+
+
+LaTeX Warning: Reference `/OF30/' on page 17 undefined on input line 119.
+
+
+LaTeX Warning: Reference `/OF50/' on page 17 undefined on input line 119.
+
+) (./Parts/Non-Functional Requirements.tex [17] [18]
+Chapter 6.
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19]
+
+LaTeX Warning: Reference `/OQ100/' on page 20 undefined on input line 86.
+
+
+LaTeX Warning: Reference `/OF80/' on page 20 undefined on input line 93.
+
+
+LaTeX Warning: Reference `/OF120/' on page 20 undefined on input line 94.
+
+
+LaTeX Warning: Reference `/OF60/' on page 20 undefined on input line 96.
+
+
+LaTeX Warning: Reference `/OF60/' on page 20 undefined on input line 99.
+
+[20]
+
+LaTeX Warning: Reference `/OF130/' on page 21 undefined on input line 107.
+
+
+LaTeX Warning: Reference `/OF140/' on page 21 undefined on input line 109.
+
+) (./Parts/Test Cases.tex [21] [22]
+Chapter 7.
+
+LaTeX Warning: Reference `/E10/' on page 23 undefined on input line 10.
+
+
+LaTeX Warning: Reference `/E20/' on page 23 undefined on input line 10.
+
+
+LaTeX Warning: Reference `/E30/' on page 23 undefined on input line 10.
+
+
+LaTeX Warning: Reference `input artefacts' on page 23 undefined on input line 1
+5.
+
+
+LaTeX Warning: Reference `/Q30/' on page 23 undefined on input line 16.
+
+
+LaTeX Warning: Reference `/OQ20/' on page 23 undefined on input line 17.
+
+
+LaTeX Warning: Reference `/F10/' on page 23 undefined on input line 28.
+
+
+LaTeX Warning: Reference `result PCM' on page 23 undefined on input line 30.
+
+
+LaTeX Warning: Reference `result PCM' on page 23 undefined on input line 32.
+
+
+LaTeX Warning: Reference `/P10/' on page 23 undefined on input line 33.
+
+
+LaTeX Warning: Reference `/P20/' on page 23 undefined on input line 33.
+
+
+LaTeX Warning: Reference `/F200/' on page 23 undefined on input line 33.
+
+
+LaTeX Warning: Reference `/F210/' on page 23 undefined on input line 33.
+
+
+LaTeX Warning: Reference `/F230/' on page 23 undefined on input line 33.
+
+
+LaTeX Warning: Reference `input PCM' on page 23 undefined on input line 34.
+
+
+LaTeX Warning: Reference `result PCM' on page 23 undefined on input line 35.
+
+
+LaTeX Warning: Reference `/F240/' on page 23 undefined on input line 35.
+
+
+LaTeX Warning: Reference `input source code' on page 23 undefined on input line
+ 37.
+
+
+LaTeX Warning: Reference `/F50/' on page 23 undefined on input line 40.
+
+
+LaTeX Warning: Reference `/F60/' on page 23 undefined on input line 40.
+
+[23]
+
+LaTeX Warning: Reference `/OQ30/' on page 24 undefined on input line 50.
+
+
+LaTeX Warning: Reference `result PCM' on page 24 undefined on input line 52.
+
+
+LaTeX Warning: Reference `/OF10/' on page 24 undefined on input line 55.
+
+
+LaTeX Warning: Reference `result PCM' on page 24 undefined on input line 56.
+
+
+LaTeX Warning: Reference `/OT30/' on page 24 undefined on input line 60.
+
+
+LaTeX Warning: Reference `/OF20/' on page 24 undefined on input line 63.
+
+
+LaTeX Warning: Reference `/OF30/' on page 24 undefined on input line 63.
+
+
+LaTeX Warning: Reference `/OF40/' on page 24 undefined on input line 64.
+
+
+LaTeX Warning: Reference `/OF50/' on page 24 undefined on input line 64.
+
+
+LaTeX Warning: Reference `/OF200/' on page 24 undefined on input line 64.
+
+
+LaTeX Warning: Reference `result PCM' on page 24 undefined on input line 69.
+
+
+LaTeX Warning: Reference `/OF100/' on page 24 undefined on input line 70.
+
+
+LaTeX Warning: Reference `result PCM' on page 24 undefined on input line 73.
+
+
+LaTeX Warning: Reference `/OF110/' on page 24 undefined on input line 74.
+
+
+LaTeX Warning: Reference `result PCM' on page 24 undefined on input line 77.
+
+
+LaTeX Warning: Reference `input artefacts' on page 24 undefined on input line 8
+0.
+
+
+LaTeX Warning: Reference `/OF130/' on page 24 undefined on input line 81.
+
+
+LaTeX Warning: Reference `/OF140/' on page 24 undefined on input line 81.
+
+
+LaTeX Warning: Reference `/OF150/' on page 24 undefined on input line 81.
+
+
+LaTeX Warning: Reference `/OF160/' on page 24 undefined on input line 81.
+
+
+LaTeX Warning: Reference `/OF170/' on page 24 undefined on input line 85.
+
+
+LaTeX Warning: Reference `/OF120/' on page 24 undefined on input line 89.
+
+
+LaTeX Warning: Reference `input source code' on page 24 undefined on input line
+ 90.
+
+
+LaTeX Warning: Reference `/OQ40/' on page 24 undefined on input line 91.
+
+[24]
+
+LaTeX Warning: Reference `/Q10/' on page 25 undefined on input line 100.
+
+
+LaTeX Warning: Reference `/Q10/' on page 25 undefined on input line 104.
+
+
+LaTeX Warning: Reference `result PCM' on page 25 undefined on input line 106.
+
+
+LaTeX Warning: Reference `/F220/' on page 25 undefined on input line 108.
+
+
+LaTeX Warning: Reference `/OQ10/' on page 25 undefined on input line 115.
+
+
+LaTeX Warning: Reference `/OQ100/' on page 25 undefined on input line 119.
+
+
+LaTeX Warning: Reference `/OQ110/' on page 25 undefined on input line 119.
+
+) (./Parts/Discussion.tex [25] [26]
+Chapter 8.
+
+LaTeX Warning: Reference `input artefacts' on page 27 undefined on input line 2
+2.
+
+
+LaTeX Warning: Reference `input artefacts' on page 27 undefined on input line 2
+2.
+
+[27]
+
+LaTeX Warning: Reference `/OF60/' on page 28 undefined on input line 58.
+
+
+LaTeX Warning: Reference `/C150/' on page 28 undefined on input line 90.
+
+[28]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 29 undefined on input line 95.
+
+) (./Parts/Models.tex [29] [30]
+Chapter 9.
+[31] [32])
+No file "Requirements Specification".gls.
+[33] [34]
+No file "Requirements Specification".bbl.
+(./Requirements Specification.aux)
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )pdfTeX warning (dest): name{section*.12} has been referenced but does not exi
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{section*.130} has been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:layer} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:ByCounter} has been referenced but does not exi
 st, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:PCM\040Stochastic\040Expression\040Language} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:Java\040Runtime\040Environment} has been refere
+nced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:code\040decorator} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:JRE} has been referenced but does not exist, re
+placed by a fixed one
+
+pdfTeX warning (dest): name{glo:component\040developer} has been referenced but
+ does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:system\040deployer} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:software\040architect} has been referenced but 
+does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:Common\040Trace\040API} has been referenced but
  does not exist, replaced by a fixed one
@@ -461,23 +753,41 @@ pdfTeX warning (dest): name{glo:Common\040Trace\040API} has been referenced but
 pdfTeX warning (dest): name{glo:CTA} has been referenced but does not exist, re
 placed by a fixed one
 
-pdfTeX warning (dest): name{glo:SRS} has been referenced but does not exist, re
-placed by a fixed one
+pdfTeX warning (dest): name{glo:Kieker} has been referenced but does not exist,
+ replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:GUI} has been referenced but does not exist, re
 placed by a fixed one
 
-pdfTeX warning (dest): name{glo:SEFF\040loop} has been referenced but does not 
-exist, replaced by a fixed one
-
 pdfTeX warning (dest): name{glo:SEFF\040condition} has been referenced but does
  not exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{glo:API} has been referenced but does not exist, re
-placed by a fixed one
+pdfTeX warning (dest): name{glo:SEFF\040loop} has been referenced but does not 
+exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{glo:Kieker} has been referenced but does not exist,
+pdfTeX warning (dest): name{glo:assembly\040context} has been referenced but do
+es not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:deployment\040context} has been referenced but 
+does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:usage\040context} has been referenced but does 
+not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:component-based\040software\040architecture} ha
+s been referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:measurement\040software} has been referenced bu
+t does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:internal\040action} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:Beagle} has been referenced but does not exist,
  replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:resource\040demand} has been referenced but doe
+s not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:service\040effect\040specification} has been re
 ferenced but does not exist, replaced by a fixed one
@@ -485,14 +795,14 @@ ferenced but does not exist, replaced by a fixed one
 pdfTeX warning (dest): name{glo:SEFF} has been referenced but does not exist, r
 eplaced by a fixed one
 
-pdfTeX warning (dest): name{glo:internal\040action} has been referenced but doe
-s not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:SoMoX} has been referenced but does not exist, 
+replaced by a fixed one
 
-pdfTeX warning (dest): name{glo:resource\040demand} has been referenced but doe
-s not exist, replaced by a fixed one
+pdfTeX warning (dest): name{glo:system} has been referenced but does not exist,
+ replaced by a fixed one
 
-pdfTeX warning (dest): name{glo:RDIA} has been referenced but does not exist, r
-eplaced by a fixed one
+pdfTeX warning (dest): name{glo:component} has been referenced but does not exi
+st, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:Palladio\040Component\040Model} has been refere
 nced but does not exist, replaced by a fixed one
@@ -500,24 +810,39 @@ nced but does not exist, replaced by a fixed one
 pdfTeX warning (dest): name{glo:PCM} has been referenced but does not exist, re
 placed by a fixed one
 
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/
-share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/texmf-dist/font
-s/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/
-dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
-/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/liber
-tine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertin
-e/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sourcesans
-pro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sou
-rcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
-fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (30 pages, 463576 bytes).
-Transcript written on "Design and Architecture.log".
+pdfTeX warning (dest): name{glo:component-based\040software} has been reference
+d but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:Palladio} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:quality\040of\040service} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{glo:QoS} has been referenced but does not exist, re
+placed by a fixed one
+
+pdfTeX warning (dest): name{glo:software\040architecture} has been referenced b
+ut does not exist, replaced by a fixed one
+
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
+texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/
+enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dv
+ips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/li
+bertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/liber
+tine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sources
+anspro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/
+sourcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
+fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
+b>
+Output written on "Requirements Specification.pdf" (40 pages, 435217 bytes).
+Transcript written on "Requirements Specification.log".
 
 
 
@@ -528,54 +853,54 @@ Transcript written on "Design and Architecture.log".
 makeglossaries version 2.12 (2014-01-20)
 added glossary type 'main' (glg,gls,glo)
 added glossary type 'acronym' (alg,acr,acn)
-xindy  -L english -C utf8 -I xindy -M "Design and Architecture" -t "Design and Architecture.alg" -o "Design and Architecture.acr" "Design and Architecture.acn"
-Opening logfile "Design and Architecture.alg" (done)
+xindy  -L english -C utf8 -I xindy -M "Requirements Specification" -t "Requirements Specification.alg" -o "Requirements Specification.acr" "Requirements Specification.acn"
+Opening logfile "Requirements Specification.alg" (done)
 Reading indexstyle...
-Loading module "/tmp/rh7McbBfvf"...
+Loading module "/tmp/esoI4myZIx"...
 Loading module "lang/english/utf8-lang.xdy"...
 Loading module "lang/english/utf8.xdy"...
 Finished loading module "lang/english/utf8.xdy".
 Finished loading module "lang/english/utf8-lang.xdy".
-Loading module "Design and Architecture.xdy"...
+Loading module "Requirements Specification.xdy"...
 Loading module "tex.xdy"...
 Finished loading module "tex.xdy".
-Finished loading module "Design and Architecture.xdy".
-Finished loading module "/tmp/rh7McbBfvf".
+Finished loading module "Requirements Specification.xdy".
+Finished loading module "/tmp/esoI4myZIx".
 Finished reading indexstyle.
 Finalizing indexstyle... (done)
 
-Reading raw-index "/tmp/hLLkFcTZYt"...
+Reading raw-index "/tmp/KHkSIbMXVd"...
 Finished reading raw-index.
 
 Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
 Finished processing index.
 
 Writing markup... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
-Markup written into file "Design and Architecture.acr".
-xindy  -L english -C utf8 -I xindy -M "Design and Architecture" -t "Design and Architecture.glg" -o "Design and Architecture.gls" "Design and Architecture.glo"
-Opening logfile "Design and Architecture.glg" (done)
+Markup written into file "Requirements Specification.acr".
+xindy  -L english -C utf8 -I xindy -M "Requirements Specification" -t "Requirements Specification.glg" -o "Requirements Specification.gls" "Requirements Specification.glo"
+Opening logfile "Requirements Specification.glg" (done)
 Reading indexstyle...
-Loading module "/tmp/oHoM47HvcO"...
+Loading module "/tmp/xsSAGoafGL"...
 Loading module "lang/english/utf8-lang.xdy"...
 Loading module "lang/english/utf8.xdy"...
 Finished loading module "lang/english/utf8.xdy".
 Finished loading module "lang/english/utf8-lang.xdy".
-Loading module "Design and Architecture.xdy"...
+Loading module "Requirements Specification.xdy"...
 Loading module "tex.xdy"...
 Finished loading module "tex.xdy".
-Finished loading module "Design and Architecture.xdy".
-Finished loading module "/tmp/oHoM47HvcO".
+Finished loading module "Requirements Specification.xdy".
+Finished loading module "/tmp/xsSAGoafGL".
 Finished reading indexstyle.
 Finalizing indexstyle... (done)
 
-Reading raw-index "/tmp/6JzByWdg3T"...
+Reading raw-index "/tmp/NgQHuBxaQB"...
 Finished reading raw-index.
 
 Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
 Finished processing index.
 
 Writing markup... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
-Markup written into file "Design and Architecture.gls".
+Markup written into file "Requirements Specification.gls".
 
 
 
@@ -586,7 +911,7 @@ Markup written into file "Design and Architecture.gls".
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
-(./Design and Architecture.tex
+(./Requirements Specification.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 7 languages loaded.
 (/usr/share/texmf/tex/latex/sdqthesis/sdqthesis.cls
@@ -759,17 +1084,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty)
-********************************************************
-Package `algorithm2e' Release 5.0 -- january 06 2013 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (cfiorio@um2.fr)
-********************************************************
-) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty)))
@@ -828,7 +1145,7 @@ y) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3candidates.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty))
-Writing index file "Design and Architecture".idx
+Writing index file "Requirements Specification".idx
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
@@ -839,7 +1156,7 @@ Writing index file "Design and Architecture".idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def))
 (/usr/share/texlive/texmf-dist/tex/latex/breakcites/breakcites.sty)
-(./Design and Architecture.aux)
+(./Requirements Specification.aux)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd)
@@ -890,14 +1207,16 @@ ABD: EveryShipout initializing macros
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/dict/glossaries-dictionary-
-English.dict) (./Design and Architecture.glsdefs)
+English.dict) (./Requirements Specification.glsdefs)
 <logos/kitlogo_en_cmyk.pdf, id=7, 198.7425pt x 92.345pt>
 <use logos/kitlogo_en_cmyk.pdf>
 <logos/sdqlogo.pdf, id=8, 558.085pt x 280.24701pt> <use logos/sdqlogo.pdf>
 (/usr/share/texlive/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-LF.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsya.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd)
 <title-background.pdf, id=9, 597.50786pt x 845.04686pt>
 <use title-background.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
@@ -909,152 +1228,161 @@ pdfTeX warning: pdflatex (file /usr/share/texmf/tex/latex/sdqthesis/logos/sdqlo
 go.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 
 >] [2] (../../common/lyx/Terms and Definitions.tex)
-(./Design and Architecture.toc) [1] (./Design and Architecture.lof)
-(./Design and Architecture.acr [2]) [3] [4] (./Parts/Architectual Overview.tex
+(./Requirements Specification.toc
+Underfull \vbox (badness 1377) has occurred while \output is active [1])
+[2] (./Requirements Specification.lof) (./Requirements Specification.acr
+[3]) [4] [5] [6] (./Parts/Purpose.tex
 Chapter 1.
 
-LaTeX Warning: Citation `javadoc' on page 1 undefined on input line 7.
-
-<"../umlet/Beagle Core Component.uxf".pdf, id=176, 451.6875pt x 281.05pt>
-<use "../umlet/Beagle Core Component.uxf".pdf>
-
-LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 61.
-
-[1] <"../umlet/Beagle Core.uxf".pdf, id=196, 1345.025pt x 2449.15pt>
-<use "../umlet/Beagle Core.uxf".pdf>
-
-LaTeX Warning: Citation `javadoc' on page 2 undefined on input line 78.
+LaTeX Warning: Citation `PCMtechreport' on page 1 undefined on input line 9.
 
 
-LaTeX Warning: Citation `javadoc' on page 2 undefined on input line 78.
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 25.
 
 
-LaTeX Warning: Float too large for page by 43.3275pt on input line 79.
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 30.
 
-<../umlet/Packages.uxf.pdf, id=197, 953.5625pt x 963.6pt>
-<use ../umlet/Packages.uxf.pdf>) (./Parts/Blackboard.tex [2 <../umlet/Beagle Co
-re Component.uxf.pdf>] [3 <../umlet/Beagle Core.uxf.pdf>] [4 <../umlet/Packages
-.uxf.pdf>]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 37.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active [1]
+<"../umlet/Use Cases.uxf".pdf, id=278, 893.3375pt x 592.2125pt>
+<use "../umlet/Use Cases.uxf".pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./Parts/Application.tex [2] [3 <../umlet/Use Cases.uxf.pdf>] [4]
 Chapter 2.
-
-LaTeX Warning: Citation `buschmann1996patternoriented' on page 5 undefined on i
-nput line 4.
-
-<"../umlet/Blackboard Layers.uxf".pdf, id=226, 805.0075pt x 381.425pt>
-<use "../umlet/Blackboard Layers.uxf".pdf>
-<../umlet/Blackboard.uxf.pdf, id=227, 1997.4625pt x 2378.8875pt>
-<use ../umlet/Blackboard.uxf.pdf> [5]
-<"../umlet/Evaluable Expression.uxf".pdf, id=232, 1264.725pt x 1445.4pt>
-<use "../umlet/Evaluable Expression.uxf".pdf>) (./Parts/Analysis.tex [6 <../uml
-et/Blackboard Layers.uxf.pdf>] [7 <../umlet/Blackboard.uxf.pdf>] [8 <../umlet/E
-valuable Expression.uxf.pdf>]
+<../umlet/Reengineering.uxf.pdf, id=331, 873.2625pt x 782.925pt>
+<use ../umlet/Reengineering.uxf.pdf>
+<../umlet/Development.uxf.pdf, id=342, 1013.7875pt x 792.9625pt>
+<use ../umlet/Development.uxf.pdf>
+<../umlet/Prototype.uxf.pdf, id=353, 973.6375pt x 792.9625pt>
+<use ../umlet/Prototype.uxf.pdf>
+<../umlet/Validation.uxf.pdf, id=362, 823.075pt x 692.5875pt>
+<use ../umlet/Validation.uxf.pdf>) (./Parts/Environment.tex [5] [6 <../umlet/Re
+engineering.uxf.pdf>] [7 <../umlet/Development.uxf.pdf>] [8 <../umlet/Prototype
+.uxf.pdf>] [9 <../umlet/Validation.uxf.pdf>] [10]
 Chapter 3.
-<../umlet/Controllers.uxf.pdf, id=263, 1033.8625pt x 863.225pt>
-<use ../umlet/Controllers.uxf.pdf>
-<"../umlet/Sequence Diagram perform Analysis().uxf".pdf, id=264, 1616.0375pt x 
-2429.075pt> <use "../umlet/Sequence Diagram perform Analysis().uxf".pdf>
-
-LaTeX Warning: Float too large for page by 32.11168pt on input line 90.
-
-[9] [10 <../umlet/Controllers.uxf.pdf>] [11] [12 <../umlet/Sequence Diagram per
-form Analysis().uxf.pdf>]
-
-LaTeX Warning: Citation `KrogmannPhD' on page 13 undefined on input line 114.
-
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
-[13] <../umlet/Measurement.uxf.pdf, id=311, 1425.325pt x 1365.1pt>
-<use ../umlet/Measurement.uxf.pdf>
-<"../umlet/Sequence Diagram can measure().uxf".pdf, id=312, 1425.325pt x 622.32
-5pt> <use "../umlet/Sequence Diagram can measure().uxf".pdf>
-<"../umlet/Sequence Diagram measure().uxf".pdf, id=313, 1595.9625pt x 893.3375p
-t> <use "../umlet/Sequence Diagram measure().uxf".pdf>
-
-LaTeX Warning: Citation `KrogmannPhD' on page 14 undefined on input line 220.
-
-[14] [15 <../umlet/Measurement.uxf.pdf>] [16 <../umlet/Sequence Diagram can mea
-sure().uxf.pdf> <../umlet/Sequence Diagram measure().uxf.pdf>]
-<"../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".pdf, 
-id=339, 1595.9625pt x 722.7pt>
-<use "../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".p
-df>
-<"../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".pdf,
- id=340, 1636.1125pt x 582.175pt>
-<use "../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".
-pdf> [17 <../umlet/Sequence Diagram Measurement Result Analyser_contribute().ux
-f.pdf>]
-<"../umlet/Sequence Diagram judge().uxf".pdf, id=349, 1776.6375pt x 1084.05pt>
-<use "../umlet/Sequence Diagram judge().uxf".pdf>) (./Parts/GUI.tex [18 <../uml
-et/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf>]
-[19 <../umlet/Sequence Diagram judge().uxf.pdf>] [20]
+<../umlet/Component.uxf.pdf, id=447, 792.9625pt x 381.425pt>
+<use ../umlet/Component.uxf.pdf>) (./Parts/Data.tex [11 <../umlet/Component.uxf
+.pdf>] [12]
 Chapter 4.
-<../umlet/GUI.uxf.pdf, id=371, 1194.4625pt x 1415.2875pt>
-<use ../umlet/GUI.uxf.pdf> [21] [22 <../umlet/GUI.uxf.pdf>]
-<"../umlet/PCM Connection.uxf".pdf, id=399, 1013.7875pt x 542.025pt>
-<use "../umlet/PCM Connection.uxf".pdf>)
-(./Parts/Requirements Specification.tex [23 <../umlet/PCM Connection.uxf.pdf>]
-[24]
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13])
+(./Parts/Functional Requirements.tex [14]
 Chapter 5.
+[15] [16]) (./Parts/Non-Functional Requirements.tex [17] [18]
+Chapter 6.
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19] [20])
+(./Parts/Test Cases.tex [21] [22]
+Chapter 7.
 
-LaTeX Warning: Citation `srs' on page 25 undefined on input line 4.
-
-
-LaTeX Warning: Reference `sec:Relating-Requirements-to' on page 25 undefined on
- input line 8.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlong' on input line 13.
-
-[25]) (./Design and Architecture.gls [26]
-
-LaTeX Warning: Citation `KiekerPaper' on page 27 undefined on input line 35.
+LaTeX Warning: Reference `/F50/' on page 23 undefined on input line 40.
 
 
-LaTeX Warning: Citation `Kounev' on page 27 undefined on input line 38.
+LaTeX Warning: Reference `/F60/' on page 23 undefined on input line 40.
 
-(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd) [27]) [28]
-No file "Design and Architecture".bbl.
-(./Design and Architecture.aux)
+[23] [24]) (./Parts/Discussion.tex [25] [26]
+Chapter 8.
+[27] [28]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 29 undefined on input line 95.
+
+) (./Parts/Models.tex [29] [30]
+Chapter 9.
+[31] [32]) (./Requirements Specification.gls [33] [34]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 35 undefined on input line 46.
+
+
+LaTeX Warning: Citation `ByCounterPaper' on page 35 undefined on input line 48.
+
+
+
+LaTeX Warning: Citation `ComponentSoftwareBook' on page 35 undefined on input l
+ine 63.
+
+
+LaTeX Warning: Citation `PalladioPaper' on page 35 undefined on input line 66.
+
+
+LaTeX Warning: Citation `PCMtechreport' on page 35 undefined on input line 66.
+
+[35]
+
+LaTeX Warning: Citation `KiekerPaper' on page 36 undefined on input line 94.
+
+[36]
+
+LaTeX Warning: Citation `Kounev' on page 37 undefined on input line 118.
+
+
+LaTeX Warning: Citation `KrogmannPhD' on page 37 undefined on input line 122.
+
+
+LaTeX Warning: Citation `PCMtechreport' on page 37 undefined on input line 124.
+
+
+[37]
+
+LaTeX Warning: Citation `PCMtechreport' on page 38 undefined on input line 156.
+
+
+
+LaTeX Warning: Citation `KrogmannPhD' on page 38 undefined on input line 170.
+
+
+LaTeX Warning: Citation `conwaysLaw' on page 38 undefined on input line 175.
+
+
+LaTeX Warning: Citation `PCMtechreport' on page 38 undefined on input line 178.
+
+
+[38]) [39] [40]
+No file "Requirements Specification".bbl.
+(./Requirements Specification.aux)
 
 LaTeX Warning: There were undefined references.
 
- )pdfTeX warning (dest): name{section*.16} has been referenced but does not exi
-st, replaced by a fixed one
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{section*.134} has been referenced but does not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{glo:CPU} has been referenced but does not exist, re
 placed by a fixed one
 
-pdfTeX warning (dest): name{glo:software\040architecture} has been referenced b
-ut does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section*.6} has been referenced but does not exist,
+ replaced by a fixed one
 
-pdfTeX warning (dest): name{glo:Palladio} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:measurement\040software} has been referenced bu
-t does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:component} has been referenced but does not exi
-st, replaced by a fixed one
+pdfTeX warning (dest): name{chapter*.4} has been referenced but does not exist,
+ replaced by a fixed one
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/texmf-dist/font
-s/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/
-dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
-/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/liber
-tine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertin
-e/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sourcesans
-pro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sou
-rcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfo
-nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (34 pages, 474912 bytes).
-Transcript written on "Design and Architecture.log".
+texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/
+enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dv
+ips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/li
+bertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/liber
+tine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sources
+anspro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/
+sourcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
+fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
+b>
+Output written on "Requirements Specification.pdf" (48 pages, 459280 bytes).
+Transcript written on "Requirements Specification.log".
 
 
 
@@ -1063,9 +1391,11 @@ Transcript written on "Design and Architecture.log".
 ####################################################################################################
 
 This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-The top-level auxiliary file: Design and Architecture.aux
+The top-level auxiliary file: Requirements Specification.aux
 The style file: apalike.bst
 Database file #1: ../../common/bibtex/Bibliography.bib
+Warning--empty school in PalladioPaper
+(There was 1 warning)
 
 
 
@@ -1076,7 +1406,7 @@ Database file #1: ../../common/bibtex/Bibliography.bib
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
-(./Design and Architecture.tex
+(./Requirements Specification.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 7 languages loaded.
 (/usr/share/texmf/tex/latex/sdqthesis/sdqthesis.cls
@@ -1249,17 +1579,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty)
-********************************************************
-Package `algorithm2e' Release 5.0 -- january 06 2013 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (cfiorio@um2.fr)
-********************************************************
-) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty)))
@@ -1318,7 +1640,7 @@ y) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3candidates.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty))
-Writing index file "Design and Architecture".idx
+Writing index file "Requirements Specification".idx
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
@@ -1329,7 +1651,7 @@ Writing index file "Design and Architecture".idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def))
 (/usr/share/texlive/texmf-dist/tex/latex/breakcites/breakcites.sty)
-(./Design and Architecture.aux)
+(./Requirements Specification.aux)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd)
@@ -1380,14 +1702,16 @@ ABD: EveryShipout initializing macros
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/dict/glossaries-dictionary-
-English.dict) (./Design and Architecture.glsdefs)
+English.dict) (./Requirements Specification.glsdefs)
 <logos/kitlogo_en_cmyk.pdf, id=7, 198.7425pt x 92.345pt>
 <use logos/kitlogo_en_cmyk.pdf>
 <logos/sdqlogo.pdf, id=8, 558.085pt x 280.24701pt> <use logos/sdqlogo.pdf>
 (/usr/share/texlive/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-LF.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsya.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd)
 <title-background.pdf, id=9, 597.50786pt x 845.04686pt>
 <use title-background.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
@@ -1399,151 +1723,149 @@ pdfTeX warning: pdflatex (file /usr/share/texmf/tex/latex/sdqthesis/logos/sdqlo
 go.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 
 >] [2] (../../common/lyx/Terms and Definitions.tex)
-(./Design and Architecture.toc) [1] (./Design and Architecture.lof)
-(./Design and Architecture.acr [2]) [3] [4] (./Parts/Architectual Overview.tex
+(./Requirements Specification.toc [1]) [2] (./Requirements Specification.lof)
+(./Requirements Specification.acr [3]) [4] [5] [6] (./Parts/Purpose.tex
 Chapter 1.
 
-LaTeX Warning: Citation `javadoc' on page 1 undefined on input line 7.
-
-<"../umlet/Beagle Core Component.uxf".pdf, id=179, 451.6875pt x 281.05pt>
-<use "../umlet/Beagle Core Component.uxf".pdf>
-
-LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 61.
-
-[1] <"../umlet/Beagle Core.uxf".pdf, id=199, 1345.025pt x 2449.15pt>
-<use "../umlet/Beagle Core.uxf".pdf>
-
-LaTeX Warning: Citation `javadoc' on page 2 undefined on input line 78.
+LaTeX Warning: Citation `PCMtechreport' on page 1 undefined on input line 9.
 
 
-LaTeX Warning: Citation `javadoc' on page 2 undefined on input line 78.
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 25.
 
 
-LaTeX Warning: Float too large for page by 43.3275pt on input line 79.
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 30.
 
-<../umlet/Packages.uxf.pdf, id=200, 953.5625pt x 963.6pt>
-<use ../umlet/Packages.uxf.pdf>) (./Parts/Blackboard.tex [2 <../umlet/Beagle Co
-re Component.uxf.pdf>] [3 <../umlet/Beagle Core.uxf.pdf>] [4 <../umlet/Packages
-.uxf.pdf>]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 1 undefined on input line 37.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active [1]
+<"../umlet/Use Cases.uxf".pdf, id=280, 893.3375pt x 592.2125pt>
+<use "../umlet/Use Cases.uxf".pdf>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./Parts/Application.tex [2] [3 <../umlet/Use Cases.uxf.pdf>] [4]
 Chapter 2.
-
-LaTeX Warning: Citation `buschmann1996patternoriented' on page 5 undefined on i
-nput line 4.
-
-<"../umlet/Blackboard Layers.uxf".pdf, id=229, 805.0075pt x 381.425pt>
-<use "../umlet/Blackboard Layers.uxf".pdf>
-<../umlet/Blackboard.uxf.pdf, id=230, 1997.4625pt x 2378.8875pt>
-<use ../umlet/Blackboard.uxf.pdf> [5]
-<"../umlet/Evaluable Expression.uxf".pdf, id=235, 1264.725pt x 1445.4pt>
-<use "../umlet/Evaluable Expression.uxf".pdf>) (./Parts/Analysis.tex [6 <../uml
-et/Blackboard Layers.uxf.pdf>] [7 <../umlet/Blackboard.uxf.pdf>] [8 <../umlet/E
-valuable Expression.uxf.pdf>]
+<../umlet/Reengineering.uxf.pdf, id=335, 873.2625pt x 782.925pt>
+<use ../umlet/Reengineering.uxf.pdf>
+<../umlet/Development.uxf.pdf, id=346, 1013.7875pt x 792.9625pt>
+<use ../umlet/Development.uxf.pdf>
+<../umlet/Prototype.uxf.pdf, id=357, 973.6375pt x 792.9625pt>
+<use ../umlet/Prototype.uxf.pdf>
+<../umlet/Validation.uxf.pdf, id=366, 823.075pt x 692.5875pt>
+<use ../umlet/Validation.uxf.pdf>) (./Parts/Environment.tex [5] [6 <../umlet/Re
+engineering.uxf.pdf>] [7 <../umlet/Development.uxf.pdf>] [8 <../umlet/Prototype
+.uxf.pdf>] [9 <../umlet/Validation.uxf.pdf>] [10]
 Chapter 3.
-<../umlet/Controllers.uxf.pdf, id=266, 1033.8625pt x 863.225pt>
-<use ../umlet/Controllers.uxf.pdf>
-<"../umlet/Sequence Diagram perform Analysis().uxf".pdf, id=267, 1616.0375pt x 
-2429.075pt> <use "../umlet/Sequence Diagram perform Analysis().uxf".pdf>
-
-LaTeX Warning: Float too large for page by 32.11168pt on input line 90.
-
-[9] [10 <../umlet/Controllers.uxf.pdf>] [11] [12 <../umlet/Sequence Diagram per
-form Analysis().uxf.pdf>]
-
-LaTeX Warning: Citation `KrogmannPhD' on page 13 undefined on input line 114.
-
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
-[13] <../umlet/Measurement.uxf.pdf, id=314, 1425.325pt x 1365.1pt>
-<use ../umlet/Measurement.uxf.pdf>
-<"../umlet/Sequence Diagram can measure().uxf".pdf, id=315, 1425.325pt x 622.32
-5pt> <use "../umlet/Sequence Diagram can measure().uxf".pdf>
-<"../umlet/Sequence Diagram measure().uxf".pdf, id=316, 1595.9625pt x 893.3375p
-t> <use "../umlet/Sequence Diagram measure().uxf".pdf>
-
-LaTeX Warning: Citation `KrogmannPhD' on page 14 undefined on input line 220.
-
-[14] [15 <../umlet/Measurement.uxf.pdf>] [16 <../umlet/Sequence Diagram can mea
-sure().uxf.pdf> <../umlet/Sequence Diagram measure().uxf.pdf>]
-<"../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".pdf, 
-id=342, 1595.9625pt x 722.7pt>
-<use "../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".p
-df>
-<"../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".pdf,
- id=343, 1636.1125pt x 582.175pt>
-<use "../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".
-pdf> [17 <../umlet/Sequence Diagram Measurement Result Analyser_contribute().ux
-f.pdf>]
-<"../umlet/Sequence Diagram judge().uxf".pdf, id=352, 1776.6375pt x 1084.05pt>
-<use "../umlet/Sequence Diagram judge().uxf".pdf>) (./Parts/GUI.tex [18 <../uml
-et/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf>]
-[19 <../umlet/Sequence Diagram judge().uxf.pdf>] [20]
+<../umlet/Component.uxf.pdf, id=449, 792.9625pt x 381.425pt>
+<use ../umlet/Component.uxf.pdf>) (./Parts/Data.tex [11 <../umlet/Component.uxf
+.pdf>] [12]
 Chapter 4.
-<../umlet/GUI.uxf.pdf, id=374, 1194.4625pt x 1415.2875pt>
-<use ../umlet/GUI.uxf.pdf> [21] [22 <../umlet/GUI.uxf.pdf>]
-<"../umlet/PCM Connection.uxf".pdf, id=402, 1013.7875pt x 542.025pt>
-<use "../umlet/PCM Connection.uxf".pdf>)
-(./Parts/Requirements Specification.tex [23 <../umlet/PCM Connection.uxf.pdf>]
-[24]
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13])
+(./Parts/Functional Requirements.tex [14]
 Chapter 5.
+[15] [16]) (./Parts/Non-Functional Requirements.tex [17] [18]
+Chapter 6.
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19] [20])
+(./Parts/Test Cases.tex [21] [22]
+Chapter 7.
 
-LaTeX Warning: Citation `srs' on page 25 undefined on input line 4.
-
-
-LaTeX Warning: Reference `sec:Relating-Requirements-to' on page 25 undefined on
- input line 8.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlong' on input line 13.
-
-[25]) (./Design and Architecture.gls [26]
-
-LaTeX Warning: Citation `KiekerPaper' on page 27 undefined on input line 35.
+LaTeX Warning: Reference `/F50/' on page 23 undefined on input line 40.
 
 
-LaTeX Warning: Citation `Kounev' on page 27 undefined on input line 38.
+LaTeX Warning: Reference `/F60/' on page 23 undefined on input line 40.
 
-(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd) [27]) [28]
-(./Design and Architecture.bbl) [29] (./Design and Architecture.aux)
+[23] [24]) (./Parts/Discussion.tex [25] [26]
+Chapter 8.
+[27] [28]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 29 undefined on input line 95.
+
+) (./Parts/Models.tex [29] [30]
+Chapter 9.
+[31] [32]) (./Requirements Specification.gls [33] [34]
+
+LaTeX Warning: Citation `KrogmannPhD' on page 35 undefined on input line 46.
+
+
+LaTeX Warning: Citation `ByCounterPaper' on page 35 undefined on input line 48.
+
+
+
+LaTeX Warning: Citation `ComponentSoftwareBook' on page 35 undefined on input l
+ine 63.
+
+
+LaTeX Warning: Citation `PalladioPaper' on page 35 undefined on input line 66.
+
+
+LaTeX Warning: Citation `PCMtechreport' on page 35 undefined on input line 66.
+
+[35]
+
+LaTeX Warning: Citation `KiekerPaper' on page 36 undefined on input line 94.
+
+[36]
+
+LaTeX Warning: Citation `Kounev' on page 37 undefined on input line 118.
+
+
+LaTeX Warning: Citation `KrogmannPhD' on page 37 undefined on input line 122.
+
+
+LaTeX Warning: Citation `PCMtechreport' on page 37 undefined on input line 124.
+
+
+[37]
+
+LaTeX Warning: Citation `PCMtechreport' on page 38 undefined on input line 156.
+
+
+
+LaTeX Warning: Citation `KrogmannPhD' on page 38 undefined on input line 170.
+
+
+LaTeX Warning: Citation `conwaysLaw' on page 38 undefined on input line 175.
+
+
+LaTeX Warning: Citation `PCMtechreport' on page 38 undefined on input line 178.
+
+
+[38]) [39] [40] (./Requirements Specification.bbl) [41]
+(./Requirements Specification.aux)
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
- )pdfTeX warning (dest): name{glo:CPU} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:software\040architecture} has been referenced b
-ut does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:Palladio} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:measurement\040software} has been referenced bu
-t does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:component} has been referenced but does not exi
-st, replaced by a fixed one
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{glo:CPU} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/texmf-dist/font
-s/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/
-dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
-/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/liber
-tine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertin
-e/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sourcesans
-pro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sou
-rcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfo
-nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 477518 bytes).
-Transcript written on "Design and Architecture.log".
+texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/
+enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dv
+ips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/li
+bertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/liber
+tine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sources
+anspro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/
+sourcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
+fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
+b>
+Output written on "Requirements Specification.pdf" (49 pages, 464110 bytes).
+Transcript written on "Requirements Specification.log".
 
 
 
@@ -1554,7 +1876,7 @@ Transcript written on "Design and Architecture.log".
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
-(./Design and Architecture.tex
+(./Requirements Specification.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 7 languages loaded.
 (/usr/share/texmf/tex/latex/sdqthesis/sdqthesis.cls
@@ -1727,17 +2049,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty)
-********************************************************
-Package `algorithm2e' Release 5.0 -- january 06 2013 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (cfiorio@um2.fr)
-********************************************************
-) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty)))
@@ -1796,7 +2110,7 @@ y) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3candidates.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty))
-Writing index file "Design and Architecture".idx
+Writing index file "Requirements Specification".idx
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
@@ -1807,7 +2121,7 @@ Writing index file "Design and Architecture".idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def))
 (/usr/share/texlive/texmf-dist/tex/latex/breakcites/breakcites.sty)
-(./Design and Architecture.aux)
+(./Requirements Specification.aux)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd)
@@ -1858,14 +2172,16 @@ ABD: EveryShipout initializing macros
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/dict/glossaries-dictionary-
-English.dict) (./Design and Architecture.glsdefs)
+English.dict) (./Requirements Specification.glsdefs)
 <logos/kitlogo_en_cmyk.pdf, id=7, 198.7425pt x 92.345pt>
 <use logos/kitlogo_en_cmyk.pdf>
 <logos/sdqlogo.pdf, id=8, 558.085pt x 280.24701pt> <use logos/sdqlogo.pdf>
 (/usr/share/texlive/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-LF.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsya.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd)
 <title-background.pdf, id=9, 597.50786pt x 845.04686pt>
 <use title-background.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
@@ -1877,117 +2193,83 @@ pdfTeX warning: pdflatex (file /usr/share/texmf/tex/latex/sdqthesis/logos/sdqlo
 go.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 
 >] [2] (../../common/lyx/Terms and Definitions.tex)
-(./Design and Architecture.toc) [1] (./Design and Architecture.lof)
-(./Design and Architecture.acr [2]) [3] [4] (./Parts/Architectual Overview.tex
+(./Requirements Specification.toc [1]) [2] (./Requirements Specification.lof)
+(./Requirements Specification.acr [3]) [4] [5] [6] (./Parts/Purpose.tex
 Chapter 1.
-<"../umlet/Beagle Core Component.uxf".pdf, id=182, 451.6875pt x 281.05pt>
-<use "../umlet/Beagle Core Component.uxf".pdf> [1]
-<"../umlet/Beagle Core.uxf".pdf, id=203, 1345.025pt x 2449.15pt>
-<use "../umlet/Beagle Core.uxf".pdf>
 
-LaTeX Warning: Float too large for page by 43.3275pt on input line 79.
+Underfull \vbox (badness 10000) has occurred while \output is active [1]
+<"../umlet/Use Cases.uxf".pdf, id=287, 893.3375pt x 592.2125pt>
+<use "../umlet/Use Cases.uxf".pdf>
 
-<../umlet/Packages.uxf.pdf, id=206, 953.5625pt x 963.6pt>
-<use ../umlet/Packages.uxf.pdf>) (./Parts/Blackboard.tex [2 <../umlet/Beagle Co
-re Component.uxf.pdf>] [3 <../umlet/Beagle Core.uxf.pdf>] [4 <../umlet/Packages
-.uxf.pdf>]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./Parts/Application.tex [2] [3 <../umlet/Use Cases.uxf.pdf>] [4]
 Chapter 2.
-<"../umlet/Blackboard Layers.uxf".pdf, id=237, 805.0075pt x 381.425pt>
-<use "../umlet/Blackboard Layers.uxf".pdf>
-<../umlet/Blackboard.uxf.pdf, id=238, 1997.4625pt x 2378.8875pt>
-<use ../umlet/Blackboard.uxf.pdf> [5]
-<"../umlet/Evaluable Expression.uxf".pdf, id=244, 1264.725pt x 1445.4pt>
-<use "../umlet/Evaluable Expression.uxf".pdf>) (./Parts/Analysis.tex [6 <../uml
-et/Blackboard Layers.uxf.pdf>] [7 <../umlet/Blackboard.uxf.pdf>] [8 <../umlet/E
-valuable Expression.uxf.pdf>]
+<../umlet/Reengineering.uxf.pdf, id=342, 873.2625pt x 782.925pt>
+<use ../umlet/Reengineering.uxf.pdf>
+<../umlet/Development.uxf.pdf, id=353, 1013.7875pt x 792.9625pt>
+<use ../umlet/Development.uxf.pdf>
+<../umlet/Prototype.uxf.pdf, id=364, 973.6375pt x 792.9625pt>
+<use ../umlet/Prototype.uxf.pdf>
+<../umlet/Validation.uxf.pdf, id=373, 823.075pt x 692.5875pt>
+<use ../umlet/Validation.uxf.pdf>) (./Parts/Environment.tex [5] [6 <../umlet/Re
+engineering.uxf.pdf>] [7 <../umlet/Development.uxf.pdf>] [8 <../umlet/Prototype
+.uxf.pdf>] [9 <../umlet/Validation.uxf.pdf>] [10]
 Chapter 3.
-<../umlet/Controllers.uxf.pdf, id=275, 1033.8625pt x 863.225pt>
-<use ../umlet/Controllers.uxf.pdf>
-<"../umlet/Sequence Diagram perform Analysis().uxf".pdf, id=276, 1616.0375pt x 
-2429.075pt> <use "../umlet/Sequence Diagram perform Analysis().uxf".pdf>
-
-LaTeX Warning: Float too large for page by 32.11168pt on input line 90.
-
-[9] [10 <../umlet/Controllers.uxf.pdf>] [11] [12 <../umlet/Sequence Diagram per
-form Analysis().uxf.pdf>]
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
-[13] <../umlet/Measurement.uxf.pdf, id=326, 1425.325pt x 1365.1pt>
-<use ../umlet/Measurement.uxf.pdf>
-<"../umlet/Sequence Diagram can measure().uxf".pdf, id=327, 1425.325pt x 622.32
-5pt> <use "../umlet/Sequence Diagram can measure().uxf".pdf>
-<"../umlet/Sequence Diagram measure().uxf".pdf, id=328, 1595.9625pt x 893.3375p
-t> <use "../umlet/Sequence Diagram measure().uxf".pdf> [14] [15 <../umlet/Measu
-rement.uxf.pdf>] [16 <../umlet/Sequence Diagram can measure().uxf.pdf> <../umle
-t/Sequence Diagram measure().uxf.pdf>]
-<"../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".pdf, 
-id=355, 1595.9625pt x 722.7pt>
-<use "../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".p
-df>
-<"../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".pdf,
- id=356, 1636.1125pt x 582.175pt>
-<use "../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".
-pdf> [17 <../umlet/Sequence Diagram Measurement Result Analyser_contribute().ux
-f.pdf>]
-<"../umlet/Sequence Diagram judge().uxf".pdf, id=365, 1776.6375pt x 1084.05pt>
-<use "../umlet/Sequence Diagram judge().uxf".pdf>) (./Parts/GUI.tex [18 <../uml
-et/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf>]
-[19 <../umlet/Sequence Diagram judge().uxf.pdf>] [20]
+<../umlet/Component.uxf.pdf, id=456, 792.9625pt x 381.425pt>
+<use ../umlet/Component.uxf.pdf>) (./Parts/Data.tex [11 <../umlet/Component.uxf
+.pdf>] [12]
 Chapter 4.
-<../umlet/GUI.uxf.pdf, id=387, 1194.4625pt x 1415.2875pt>
-<use ../umlet/GUI.uxf.pdf> [21] [22 <../umlet/GUI.uxf.pdf>]
-<"../umlet/PCM Connection.uxf".pdf, id=415, 1013.7875pt x 542.025pt>
-<use "../umlet/PCM Connection.uxf".pdf>)
-(./Parts/Requirements Specification.tex [23 <../umlet/PCM Connection.uxf.pdf>]
-[24]
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13])
+(./Parts/Functional Requirements.tex [14]
 Chapter 5.
+[15] [16]) (./Parts/Non-Functional Requirements.tex [17] [18]
+Chapter 6.
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19] [20])
+(./Parts/Test Cases.tex [21] [22]
+Chapter 7.
 
-LaTeX Warning: Reference `sec:Relating-Requirements-to' on page 25 undefined on
- input line 8.
+LaTeX Warning: Reference `/F50/' on page 23 undefined on input line 40.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlong' on input line 13.
+LaTeX Warning: Reference `/F60/' on page 23 undefined on input line 40.
 
-[25]) (./Design and Architecture.gls [26]
-(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd) [27]) [28]
-(./Design and Architecture.bbl) [29] (./Design and Architecture.aux)
+[23] [24]) (./Parts/Discussion.tex [25] [26]
+Chapter 8.
+[27] [28]) (./Parts/Models.tex [29] [30]
+Chapter 9.
+[31] [32]) (./Requirements Specification.gls [33] [34] [35] [36] [37] [38])
+[39] [40] (./Requirements Specification.bbl) [41]
+(./Requirements Specification.aux)
 
 LaTeX Warning: There were undefined references.
 
- )pdfTeX warning (dest): name{glo:CPU} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:software\040architecture} has been referenced b
-ut does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:Palladio} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:measurement\040software} has been referenced bu
-t does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:component} has been referenced but does not exi
-st, replaced by a fixed one
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{glo:CPU} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/texmf-dist/font
-s/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/
-dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/
-sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/liber
-tine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertin
-e/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sourcesans
-pro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sou
-rcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfo
-nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 478107 bytes).
-Transcript written on "Design and Architecture.log".
+texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/e
+nc/dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dv
+ips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/li
+bertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/liber
+tine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sources
+anspro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/
+sourcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
+fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
+b>
+Output written on "Requirements Specification.pdf" (49 pages, 464992 bytes).
+Transcript written on "Requirements Specification.log".
 
 
 
@@ -1998,7 +2280,7 @@ Transcript written on "Design and Architecture.log".
 This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
  restricted \write18 enabled.
 entering extended mode
-(./Design and Architecture.tex
+(./Requirements Specification.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 7 languages loaded.
 (/usr/share/texmf/tex/latex/sdqthesis/sdqthesis.cls
@@ -2171,17 +2453,9 @@ Package hyperref Message: Driver (autodetected): hpdftex.
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def))
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty)
-********************************************************
-Package `algorithm2e' Release 5.0 -- january 06 2013 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (cfiorio@um2.fr)
-********************************************************
-) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty)))
@@ -2240,7 +2514,7 @@ y) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/l3candidates.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty))
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty))
-Writing index file "Design and Architecture".idx
+Writing index file "Requirements Specification".idx
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg))
@@ -2251,7 +2525,7 @@ Writing index file "Design and Architecture".idx
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def))
 (/usr/share/texlive/texmf-dist/tex/latex/breakcites/breakcites.sty)
-(./Design and Architecture.aux)
+(./Requirements Specification.aux)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd)
@@ -2302,14 +2576,16 @@ ABD: EveryShipout initializing macros
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/dict/glossaries-dictionary-
-English.dict) (./Design and Architecture.glsdefs)
+English.dict) (./Requirements Specification.glsdefs)
 <logos/kitlogo_en_cmyk.pdf, id=7, 198.7425pt x 92.345pt>
 <use logos/kitlogo_en_cmyk.pdf>
 <logos/sdqlogo.pdf, id=8, 558.085pt x 280.24701pt> <use logos/sdqlogo.pdf>
 (/usr/share/texlive/texmf-dist/tex/latex/sourcesanspro/T1SourceSansPro-LF.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsya.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd)
 <title-background.pdf, id=9, 597.50786pt x 845.04686pt>
 <use title-background.pdf> [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
@@ -2321,114 +2597,80 @@ pdfTeX warning: pdflatex (file /usr/share/texmf/tex/latex/sdqthesis/logos/sdqlo
 go.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 
 >] [2] (../../common/lyx/Terms and Definitions.tex)
-(./Design and Architecture.toc) [1] (./Design and Architecture.lof)
-(./Design and Architecture.acr [2]) [3] [4] (./Parts/Architectual Overview.tex
+(./Requirements Specification.toc [1]) [2] (./Requirements Specification.lof)
+(./Requirements Specification.acr [3]) [4] [5] [6] (./Parts/Purpose.tex
 Chapter 1.
-<"../umlet/Beagle Core Component.uxf".pdf, id=182, 451.6875pt x 281.05pt>
-<use "../umlet/Beagle Core Component.uxf".pdf> [1]
-<"../umlet/Beagle Core.uxf".pdf, id=203, 1345.025pt x 2449.15pt>
-<use "../umlet/Beagle Core.uxf".pdf>
 
-LaTeX Warning: Float too large for page by 43.3275pt on input line 79.
+Underfull \vbox (badness 10000) has occurred while \output is active [1]
+<"../umlet/Use Cases.uxf".pdf, id=287, 893.3375pt x 592.2125pt>
+<use "../umlet/Use Cases.uxf".pdf>
 
-<../umlet/Packages.uxf.pdf, id=206, 953.5625pt x 963.6pt>
-<use ../umlet/Packages.uxf.pdf>) (./Parts/Blackboard.tex [2 <../umlet/Beagle Co
-re Component.uxf.pdf>] [3 <../umlet/Beagle Core.uxf.pdf>] [4 <../umlet/Packages
-.uxf.pdf>]
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./Parts/Application.tex [2] [3 <../umlet/Use Cases.uxf.pdf>] [4]
 Chapter 2.
-<"../umlet/Blackboard Layers.uxf".pdf, id=237, 805.0075pt x 381.425pt>
-<use "../umlet/Blackboard Layers.uxf".pdf>
-<../umlet/Blackboard.uxf.pdf, id=238, 1997.4625pt x 2378.8875pt>
-<use ../umlet/Blackboard.uxf.pdf> [5]
-<"../umlet/Evaluable Expression.uxf".pdf, id=244, 1264.725pt x 1445.4pt>
-<use "../umlet/Evaluable Expression.uxf".pdf>) (./Parts/Analysis.tex [6 <../uml
-et/Blackboard Layers.uxf.pdf>] [7 <../umlet/Blackboard.uxf.pdf>] [8 <../umlet/E
-valuable Expression.uxf.pdf>]
+<../umlet/Reengineering.uxf.pdf, id=342, 873.2625pt x 782.925pt>
+<use ../umlet/Reengineering.uxf.pdf>
+<../umlet/Development.uxf.pdf, id=353, 1013.7875pt x 792.9625pt>
+<use ../umlet/Development.uxf.pdf>
+<../umlet/Prototype.uxf.pdf, id=364, 973.6375pt x 792.9625pt>
+<use ../umlet/Prototype.uxf.pdf>
+<../umlet/Validation.uxf.pdf, id=373, 823.075pt x 692.5875pt>
+<use ../umlet/Validation.uxf.pdf>) (./Parts/Environment.tex [5] [6 <../umlet/Re
+engineering.uxf.pdf>] [7 <../umlet/Development.uxf.pdf>] [8 <../umlet/Prototype
+.uxf.pdf>] [9 <../umlet/Validation.uxf.pdf>] [10]
 Chapter 3.
-<../umlet/Controllers.uxf.pdf, id=275, 1033.8625pt x 863.225pt>
-<use ../umlet/Controllers.uxf.pdf>
-<"../umlet/Sequence Diagram perform Analysis().uxf".pdf, id=276, 1616.0375pt x 
-2429.075pt> <use "../umlet/Sequence Diagram perform Analysis().uxf".pdf>
-
-LaTeX Warning: Float too large for page by 32.11168pt on input line 90.
-
-[9] [10 <../umlet/Controllers.uxf.pdf>] [11] [12 <../umlet/Sequence Diagram per
-form Analysis().uxf.pdf>]
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
-[13] <../umlet/Measurement.uxf.pdf, id=326, 1425.325pt x 1365.1pt>
-<use ../umlet/Measurement.uxf.pdf>
-<"../umlet/Sequence Diagram can measure().uxf".pdf, id=327, 1425.325pt x 622.32
-5pt> <use "../umlet/Sequence Diagram can measure().uxf".pdf>
-<"../umlet/Sequence Diagram measure().uxf".pdf, id=328, 1595.9625pt x 893.3375p
-t> <use "../umlet/Sequence Diagram measure().uxf".pdf> [14] [15 <../umlet/Measu
-rement.uxf.pdf>] [16 <../umlet/Sequence Diagram can measure().uxf.pdf> <../umle
-t/Sequence Diagram measure().uxf.pdf>]
-<"../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".pdf, 
-id=355, 1595.9625pt x 722.7pt>
-<use "../umlet/Sequence Diagram Measurement Result Analyser_contribute().uxf".p
-df>
-<"../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".pdf,
- id=356, 1636.1125pt x 582.175pt>
-<use "../umlet/Sequence Diagram Proposed Expression Analyser_contribute().uxf".
-pdf> [17 <../umlet/Sequence Diagram Measurement Result Analyser_contribute().ux
-f.pdf>]
-<"../umlet/Sequence Diagram judge().uxf".pdf, id=365, 1776.6375pt x 1084.05pt>
-<use "../umlet/Sequence Diagram judge().uxf".pdf>) (./Parts/GUI.tex [18 <../uml
-et/Sequence Diagram Proposed Expression Analyser_contribute().uxf.pdf>]
-[19 <../umlet/Sequence Diagram judge().uxf.pdf>] [20]
+<../umlet/Component.uxf.pdf, id=456, 792.9625pt x 381.425pt>
+<use ../umlet/Component.uxf.pdf>) (./Parts/Data.tex [11 <../umlet/Component.uxf
+.pdf>] [12]
 Chapter 4.
-<../umlet/GUI.uxf.pdf, id=387, 1194.4625pt x 1415.2875pt>
-<use ../umlet/GUI.uxf.pdf> [21] [22 <../umlet/GUI.uxf.pdf>]
-<"../umlet/PCM Connection.uxf".pdf, id=415, 1013.7875pt x 542.025pt>
-<use "../umlet/PCM Connection.uxf".pdf>)
-(./Parts/Requirements Specification.tex [23 <../umlet/PCM Connection.uxf.pdf>]
-[24]
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [13])
+(./Parts/Functional Requirements.tex [14]
 Chapter 5.
+[15] [16]) (./Parts/Non-Functional Requirements.tex [17] [18]
+Chapter 6.
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin9.def)
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def) [19] [20])
+(./Parts/Test Cases.tex [21] [22]
+Chapter 7.
 
-LaTeX Warning: Reference `sec:Relating-Requirements-to' on page 25 undefined on
- input line 8.
+LaTeX Warning: Reference `/F50/' on page 23 undefined on input line 40.
 
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\acrlong' on input line 13.
+LaTeX Warning: Reference `/F60/' on page 23 undefined on input line 40.
 
-[25]) (./Design and Architecture.gls [26]
-(/usr/share/texlive/texmf-dist/tex/latex/bera/t1fvm.fd) [27]) [28]
-(./Design and Architecture.bbl) [29] (./Design and Architecture.aux)
+[23] [24]) (./Parts/Discussion.tex [25] [26]
+Chapter 8.
+[27] [28]) (./Parts/Models.tex [29] [30]
+Chapter 9.
+[31] [32]) (./Requirements Specification.gls [33] [34] [35] [36] [37] [38])
+[39] [40] (./Requirements Specification.bbl) [41]
+(./Requirements Specification.aux)
 
 LaTeX Warning: There were undefined references.
 
- )pdfTeX warning (dest): name{glo:CPU} has been referenced but does not exist, 
-replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:software\040architecture} has been referenced b
-ut does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:Palladio} has been referenced but does not exis
-t, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:measurement\040software} has been referenced bu
-t does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{glo:component} has been referenced but does not exi
-st, replaced by a fixed one
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{glo:CPU} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/share/texlive/texmf-dist/font
-s/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fonts/enc/
-dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/
-sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/liber
-tine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertin
-e/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine
-/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sourcesans
-pro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sou
-rcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfo
-nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 478107 bytes).
-Transcript written on "Design and Architecture.log".
+texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/f
+onts/enc/dvips/libertine/lbtn_naooyc.enc}{/usr/share/texlive/texmf-dist/fonts/e
+nc/dvips/sourcesanspro/a_5tbsmu.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dv
+ips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/li
+bertine/lbtn_76gpa5.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/liber
+tine/LinLibertineT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTB.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libert
+ine/LinLibertineTI.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/sources
+anspro/SourceSansPro-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/adobe/
+sourcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
+fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
+b>
+Output written on "Requirements Specification.pdf" (49 pages, 464992 bytes).
+Transcript written on "Requirements Specification.log".

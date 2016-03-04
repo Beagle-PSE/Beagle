@@ -120,7 +120,9 @@ var activeTableTab = "activeTableTab";
 extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></pre>
 <div class="block">An evaluable expression tree walker allowing to ignore certain subtrees. The class
  offers a mechanism to stop visiting of inner expressions, forcing the visitor not to
- traverse the expression tree any further.</div>
+ traverse the expression tree any further. Instead, the traversal will go “up” again,
+ only calling <code>after</code> hooks, until it terminates at the root or traversal of inner
+ expressions is activated again.</div>
 </li>
 </ul>
 </div>
@@ -259,8 +261,8 @@ extends <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexp
 <h4>willTraverseInnerExpressions</h4>
 <pre>protected&nbsp;boolean&nbsp;willTraverseInnerExpressions()</pre>
 <div class="block">Queries whether the visitor will visit inner expressions. Will return <code>true</code>
- unless <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#stopTraversingInnerExpressions--"><code>stopTraversingInnerExpressions()</code></a> is called. The value will be reset
- when calling <code>#visitRecursively(EvaluableExpression)</code>.</div>
+ if <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#startTraversingInnerExpressions--"><code>startTraversingInnerExpressions()</code></a> was called and <code>false</code> if
+ <a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#stopTraversingInnerExpressions--"><code>stopTraversingInnerExpressions()</code></a> was called.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Whether inner expressions will be examined for the momentary tree.</dd>

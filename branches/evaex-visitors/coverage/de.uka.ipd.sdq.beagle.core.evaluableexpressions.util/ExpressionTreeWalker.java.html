@@ -82,8 +82,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * value is only reset when starting a new visit a new expression, it can thus be used
 	 * to determine how many expressions were visited after a traversal.
 	 *
-	 * @return The amount of visited expressions since the last call to
-	 *         {@link #modifyRecursively(EvaluableExpression)}.
+	 * @return The amount of visited expressions during the current visit.
 	 */
 	protected abstract int getVisitedCount();
 
@@ -105,7 +104,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 */
 	protected void atOther(final EvaluableExpression expression) {
 		// may be implemented by implementor.
-<span class="fc" id="L108">	}</span>
+<span class="fc" id="L107">	}</span>
 
 	/**
 	 * Called when visiting any {@link EvaluableExpression}. Contrary to
@@ -117,7 +116,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 */
 	protected void atExpression(final EvaluableExpression expression) {
 		// may be implemented by implementor
-<span class="fc" id="L120">	}</span>
+<span class="fc" id="L119">	}</span>
 
 	/**
 	 * Called when first visiting an {@link AdditionExpression}.
@@ -125,8 +124,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atAddition(final AdditionExpression expression) {
-<span class="fc" id="L128">		this.atOther(expression);</span>
-<span class="fc" id="L129">	}</span>
+<span class="fc" id="L127">		this.atOther(expression);</span>
+<span class="fc" id="L128">	}</span>
 
 	/**
 	 * Called when first visiting a {@link MultiplicationExpression}.
@@ -134,8 +133,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atMultiplication(final MultiplicationExpression expression) {
-<span class="fc" id="L137">		this.atOther(expression);</span>
-<span class="fc" id="L138">	}</span>
+<span class="fc" id="L136">		this.atOther(expression);</span>
+<span class="fc" id="L137">	}</span>
 
 	/**
 	 * Called when first visiting an {@link EvaluableVariable}.
@@ -143,8 +142,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atVariable(final EvaluableVariable expression) {
-<span class="fc" id="L146">		this.atOther(expression);</span>
-<span class="fc" id="L147">	}</span>
+<span class="fc" id="L145">		this.atOther(expression);</span>
+<span class="fc" id="L146">	}</span>
 
 	/**
 	 * Called when first visiting a {@link ComparisonExpression}.
@@ -152,8 +151,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atComparison(final ComparisonExpression expression) {
-<span class="fc" id="L155">		this.atOther(expression);</span>
-<span class="fc" id="L156">	}</span>
+<span class="fc" id="L154">		this.atOther(expression);</span>
+<span class="fc" id="L155">	}</span>
 
 	/**
 	 * Called when first visiting a {@link ConstantExpression}.
@@ -161,8 +160,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atConstant(final ConstantExpression expression) {
-<span class="fc" id="L164">		this.atOther(expression);</span>
-<span class="fc" id="L165">	}</span>
+<span class="fc" id="L163">		this.atOther(expression);</span>
+<span class="fc" id="L164">	}</span>
 
 	/**
 	 * Called when first visiting a {@link DivisionExpression}.
@@ -170,8 +169,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atDivision(final DivisionExpression expression) {
-<span class="fc" id="L173">		this.atOther(expression);</span>
-<span class="fc" id="L174">	}</span>
+<span class="fc" id="L172">		this.atOther(expression);</span>
+<span class="fc" id="L173">	}</span>
 
 	/**
 	 * Called when first visiting an {@link ExponentationExpression}.
@@ -179,8 +178,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atExponentation(final ExponentationExpression expression) {
-<span class="fc" id="L182">		this.atOther(expression);</span>
-<span class="fc" id="L183">	}</span>
+<span class="fc" id="L181">		this.atOther(expression);</span>
+<span class="fc" id="L182">	}</span>
 
 	/**
 	 * Called when first visiting an {@link ExponentialFunctionExpression}.
@@ -188,8 +187,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atExponentialFunction(final ExponentialFunctionExpression expression) {
-<span class="fc" id="L191">		this.atOther(expression);</span>
-<span class="fc" id="L192">	}</span>
+<span class="fc" id="L190">		this.atOther(expression);</span>
+<span class="fc" id="L191">	}</span>
 
 	/**
 	 * Called when first visiting an {@link IfThenElseExpression}.
@@ -197,8 +196,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atIfThenElse(final IfThenElseExpression expression) {
-<span class="fc" id="L200">		this.atOther(expression);</span>
-<span class="fc" id="L201">	}</span>
+<span class="fc" id="L199">		this.atOther(expression);</span>
+<span class="fc" id="L200">	}</span>
 
 	/**
 	 * Called when first visiting a {@link LogarithmExpression}.
@@ -206,8 +205,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atLogarithm(final LogarithmExpression expression) {
-<span class="fc" id="L209">		this.atOther(expression);</span>
-<span class="fc" id="L210">	}</span>
+<span class="fc" id="L208">		this.atOther(expression);</span>
+<span class="fc" id="L209">	}</span>
 
 	/**
 	 * Called when first visiting a {@link NaturalLogarithmExpression}.
@@ -215,8 +214,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atNaturalLogarithm(final NaturalLogarithmExpression expression) {
-<span class="fc" id="L218">		this.atOther(expression);</span>
-<span class="fc" id="L219">	}</span>
+<span class="fc" id="L217">		this.atOther(expression);</span>
+<span class="fc" id="L218">	}</span>
 
 	/**
 	 * Called when first visiting a {@link SineExpression}.
@@ -224,8 +223,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atSine(final SineExpression expression) {
-<span class="fc" id="L227">		this.atOther(expression);</span>
-<span class="fc" id="L228">	}</span>
+<span class="fc" id="L226">		this.atOther(expression);</span>
+<span class="fc" id="L227">	}</span>
 
 	/**
 	 * Called when first visiting a {@link SubtractionExpression}.
@@ -233,8 +232,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void atSubtraction(final SubtractionExpression expression) {
-<span class="fc" id="L236">		this.atOther(expression);</span>
-<span class="fc" id="L237">	}</span>
+<span class="fc" id="L235">		this.atOther(expression);</span>
+<span class="fc" id="L236">	}</span>
 
 	/**
 	 * Called when leaving any {@link EvaluableExpression} no hook was defined for. See
@@ -244,7 +243,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 */
 	protected void afterOther(final EvaluableExpression expression) {
 		// may be implemented by implementor.
-<span class="fc" id="L247">	}</span>
+<span class="fc" id="L246">	}</span>
 
 	/**
 	 * Called when leaving any {@link EvaluableExpression}. Contrary to
@@ -256,7 +255,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 */
 	protected void afterExpression(final EvaluableExpression expression) {
 		// may be implemented by implementor
-<span class="fc" id="L259">	}</span>
+<span class="fc" id="L258">	}</span>
 
 	/**
 	 * Called when leaving an {@link AdditionExpression}.
@@ -264,8 +263,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterAddition(final AdditionExpression expression) {
-<span class="fc" id="L267">		this.afterOther(expression);</span>
-<span class="fc" id="L268">	}</span>
+<span class="fc" id="L266">		this.afterOther(expression);</span>
+<span class="fc" id="L267">	}</span>
 
 	/**
 	 * Called when leaving a {@link MultiplicationExpression}.
@@ -273,8 +272,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterMultiplication(final MultiplicationExpression expression) {
-<span class="fc" id="L276">		this.afterOther(expression);</span>
-<span class="fc" id="L277">	}</span>
+<span class="fc" id="L275">		this.afterOther(expression);</span>
+<span class="fc" id="L276">	}</span>
 
 	/**
 	 * Called when leaving an {@link EvaluableVariable}.
@@ -282,8 +281,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterVariable(final EvaluableVariable expression) {
-<span class="fc" id="L285">		this.afterOther(expression);</span>
-<span class="fc" id="L286">	}</span>
+<span class="fc" id="L284">		this.afterOther(expression);</span>
+<span class="fc" id="L285">	}</span>
 
 	/**
 	 * Called when leaving a {@link ComparisonExpression}.
@@ -291,8 +290,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterComparison(final ComparisonExpression expression) {
-<span class="fc" id="L294">		this.afterOther(expression);</span>
-<span class="fc" id="L295">	}</span>
+<span class="fc" id="L293">		this.afterOther(expression);</span>
+<span class="fc" id="L294">	}</span>
 
 	/**
 	 * Called when leaving a {@link ConstantExpression}.
@@ -300,8 +299,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterConstant(final ConstantExpression expression) {
-<span class="fc" id="L303">		this.afterOther(expression);</span>
-<span class="fc" id="L304">	}</span>
+<span class="fc" id="L302">		this.afterOther(expression);</span>
+<span class="fc" id="L303">	}</span>
 
 	/**
 	 * Called when leaving a {@link DivisionExpression}.
@@ -309,8 +308,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterDivision(final DivisionExpression expression) {
-<span class="fc" id="L312">		this.afterOther(expression);</span>
-<span class="fc" id="L313">	}</span>
+<span class="fc" id="L311">		this.afterOther(expression);</span>
+<span class="fc" id="L312">	}</span>
 
 	/**
 	 * Called when leaving an {@link ExponentationExpression}.
@@ -318,8 +317,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterExponentation(final ExponentationExpression expression) {
-<span class="fc" id="L321">		this.afterOther(expression);</span>
-<span class="fc" id="L322">	}</span>
+<span class="fc" id="L320">		this.afterOther(expression);</span>
+<span class="fc" id="L321">	}</span>
 
 	/**
 	 * Called when leaving an {@link ExponentialFunctionExpression}.
@@ -327,8 +326,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterExponentialFunction(final ExponentialFunctionExpression expression) {
-<span class="fc" id="L330">		this.afterOther(expression);</span>
-<span class="fc" id="L331">	}</span>
+<span class="fc" id="L329">		this.afterOther(expression);</span>
+<span class="fc" id="L330">	}</span>
 
 	/**
 	 * Called when leaving an {@link IfThenElseExpression}.
@@ -336,8 +335,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterIfThenElse(final IfThenElseExpression expression) {
-<span class="fc" id="L339">		this.afterOther(expression);</span>
-<span class="fc" id="L340">	}</span>
+<span class="fc" id="L338">		this.afterOther(expression);</span>
+<span class="fc" id="L339">	}</span>
 
 	/**
 	 * Called when leaving a {@link LogarithmExpression}.
@@ -345,8 +344,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterLogarithm(final LogarithmExpression expression) {
-<span class="fc" id="L348">		this.afterOther(expression);</span>
-<span class="fc" id="L349">	}</span>
+<span class="fc" id="L347">		this.afterOther(expression);</span>
+<span class="fc" id="L348">	}</span>
 
 	/**
 	 * Called when leaving a {@link NaturalLogarithmExpression}.
@@ -354,8 +353,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterNaturalLogarithm(final NaturalLogarithmExpression expression) {
-<span class="fc" id="L357">		this.afterOther(expression);</span>
-<span class="fc" id="L358">	}</span>
+<span class="fc" id="L356">		this.afterOther(expression);</span>
+<span class="fc" id="L357">	}</span>
 
 	/**
 	 * Called when leaving a {@link SineExpression}, after its inner expressions will be
@@ -364,8 +363,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterSine(final SineExpression expression) {
-<span class="fc" id="L367">		this.afterOther(expression);</span>
-<span class="fc" id="L368">	}</span>
+<span class="fc" id="L366">		this.afterOther(expression);</span>
+<span class="fc" id="L367">	}</span>
 
 	/**
 	 * Called when leaving a {@link SubtractionExpression}.
@@ -373,8 +372,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 	 * @param expression The momentary visited expression.
 	 */
 	protected void afterSubtraction(final SubtractionExpression expression) {
-<span class="fc" id="L376">		this.afterOther(expression);</span>
-<span class="fc" id="L377">	}</span>
+<span class="fc" id="L375">		this.afterOther(expression);</span>
+<span class="fc" id="L376">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

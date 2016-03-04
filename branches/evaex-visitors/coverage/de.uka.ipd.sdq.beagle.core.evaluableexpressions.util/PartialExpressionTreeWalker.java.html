@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PartialExpressionTreeWalker.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a> &gt; <span class="el_source">PartialExpressionTreeWalker.java</span></div><h1>PartialExpressionTreeWalker.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
 
-import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
-
 /**
  * An evaluable expression tree walker allowing to ignore certain subtrees. The class
  * offers a mechanism to stop visiting of inner expressions, forcing the visitor not to
- * traverse the expression tree any further.
+ * traverse the expression tree any further. Instead, the traversal will go “up” again,
+ * only calling {@code after} hooks, until it terminates at the root or traversal of inner
+ * expressions is activated again.
  *
  * @author Joshua Gleitze
  */
@@ -39,8 +39,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 
 	/**
 	 * Queries whether the visitor will visit inner expressions. Will return {@code true}
-	 * unless {@link #stopTraversingInnerExpressions()} is called. The value will be reset
-	 * when calling {@link #visitRecursively(EvaluableExpression)}.
+	 * if {@link #startTraversingInnerExpressions()} was called and {@code false} if
+	 * {@link #stopTraversingInnerExpressions()} was called.
 	 *
 	 * @return Whether inner expressions will be examined for the momentary tree.
 	 */
