@@ -27,11 +27,6 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	private static final double MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE = 0.3;
 
 	/**
-	 * The time tolerance cannot fall below this value.
-	 */
-	private static final long MINIMUM_TIME_TOLERANCE = 10 * 60;
-
-	/**
 	 * The start value for the aging algorithm.
 	 */
 	private static final long AGING_START_VALUE = 3600 * 1000;
@@ -66,10 +61,9 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 		final long preliminaryMaximallyTolerableTimeWithoutAdditionalTime =
 			(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
-		final long preliminaryMaximallyTolerableTime = (long) (preliminaryMaximallyTolerableTimeWithoutAdditionalTime
+		this.maximallyTolerableTime = (long) (preliminaryMaximallyTolerableTimeWithoutAdditionalTime
 			* (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE)) + CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
-		this.maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
-			? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
+
 	}
 
 	@Override
