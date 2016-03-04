@@ -73,13 +73,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -124,39 +124,6 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#ADAPTIVE_TIMEOUT">ADAPTIVE_TIMEOUT</a></span></code>
-<div class="block">Numeric value for "adaptive timeout".</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#DEFAULT_TIMEOUT">DEFAULT_TIMEOUT</a></span></code>
-<div class="block">The default setting for the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getTimeout--">timeout</a>.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#NO_TIMEOUT">NO_TIMEOUT</a></span></code>
-<div class="block">Numeric value for "no timeout".</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -218,7 +185,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getTimeout--">getTimeout</a></span>()</code>
 <div class="block">Returns the timeout to be used.</div>
 </td>
@@ -243,7 +210,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setTimeout-int-">setTimeout</a></span>(int&nbsp;timeout)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setTimeout-de.uka.ipd.sdq.beagle.core.timeout.Timeout-">setTimeout</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;timeout)</code>
 <div class="block">Sets the timeout to be used to <code>timeout</code>.</div>
 </td>
 </tr>
@@ -263,58 +230,6 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="ADAPTIVE_TIMEOUT">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>ADAPTIVE_TIMEOUT</h4>
-<pre>public static final&nbsp;int ADAPTIVE_TIMEOUT</pre>
-<div class="block">Numeric value for "adaptive timeout".</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getTimeout--"><code>getTimeout()</code></a>, 
-<a href="../../../../../../../constant-values.html#de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration.ADAPTIVE_TIMEOUT">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="NO_TIMEOUT">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>NO_TIMEOUT</h4>
-<pre>public static final&nbsp;int NO_TIMEOUT</pre>
-<div class="block">Numeric value for "no timeout".</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getTimeout--"><code>getTimeout()</code></a>, 
-<a href="../../../../../../../constant-values.html#de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration.NO_TIMEOUT">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="DEFAULT_TIMEOUT">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>DEFAULT_TIMEOUT</h4>
-<pre>public static final&nbsp;int DEFAULT_TIMEOUT</pre>
-<div class="block">The default setting for the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getTimeout--">timeout</a>.</div>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../../../constant-values.html#de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration.DEFAULT_TIMEOUT">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -408,49 +323,25 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getTimeout</h4>
-<pre>public&nbsp;int&nbsp;getTimeout()</pre>
+<pre>public&nbsp;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;getTimeout()</pre>
 <div class="block">Returns the timeout to be used. The timeout describes the minimum time Beagle shall
- keep trying to find results while no perfect results were found.
-
- <table> <caption>timeout value description</caption>
-
- <tr><td><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#ADAPTIVE_TIMEOUT"><code>ADAPTIVE_TIMEOUT</code></a></td><td>Beagle will use a timeout that adapts to
- the quality of the analysis’ findings in the past.</td>
-
- <tr><td><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#NO_TIMEOUT"><code>NO_TIMEOUT</code></a></td><td>no timeout will be used</td>
-
- <tr><td><code>≥ 0</code></td><td>the given value will be used as a fixed timeout in
- seconds</td>
-
- </table></div>
+ keep trying to find results while no perfect results were found.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The timeout that will be used by Beagle.</dd>
 </dl>
 </li>
 </ul>
-<a name="setTimeout-int-">
+<a name="setTimeout-de.uka.ipd.sdq.beagle.core.timeout.Timeout-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setTimeout</h4>
-<pre>public&nbsp;void&nbsp;setTimeout(int&nbsp;timeout)</pre>
+<pre>public&nbsp;void&nbsp;setTimeout(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;timeout)</pre>
 <div class="block">Sets the timeout to be used to <code>timeout</code>. The timeout describes the minimum
  time Beagle shall keep trying to find results while no perfect results were found.
- This operation is only allowed in the <em>set up</em> state.
-
- <table> <caption>timeout value description</caption>
-
- <tr><td><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#ADAPTIVE_TIMEOUT"><code>ADAPTIVE_TIMEOUT</code></a></td><td>Beagle will use a timeout that adapts to
- the quality of the analysis’ findings in the past.</td>
-
- <tr><td><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#NO_TIMEOUT"><code>NO_TIMEOUT</code></a></td><td>no timeout will be used</td>
-
- <tr><td><code>≥ 0</code></td><td>the given value will be used as a fixed timeout in
- seconds</td>
-
- </table></div>
+ This operation is only allowed in the <em>set up</em> state.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>timeout</code> - The timeout to be used by Beagle.</dd>
@@ -573,13 +464,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

@@ -138,7 +138,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/ProjectInformation.html#ProjectInformation-int-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-java.lang.String-java.nio.charset.Charset-java.util.Set-">ProjectInformation</a></span>(int&nbsp;timeout,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/ProjectInformation.html#ProjectInformation-de.uka.ipd.sdq.beagle.core.timeout.Timeout-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-java.lang.String-java.nio.charset.Charset-java.util.Set-">ProjectInformation</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;timeout,
                   <a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;fileProvider,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;buildPath,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</a>&nbsp;charset,
@@ -186,7 +186,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>int</code></td>
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/ProjectInformation.html#getTimeout--">getTimeout</a></span>()</code>
 <div class="block">Returns the timeout to be used.</div>
 </td>
@@ -213,13 +213,13 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="ProjectInformation-int-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-java.lang.String-java.nio.charset.Charset-java.util.Set-">
+<a name="ProjectInformation-de.uka.ipd.sdq.beagle.core.timeout.Timeout-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-java.lang.String-java.nio.charset.Charset-java.util.Set-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ProjectInformation</h4>
-<pre>public&nbsp;ProjectInformation(int&nbsp;timeout,
+<pre>public&nbsp;ProjectInformation(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;timeout,
                           <a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;fileProvider,
                           <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;buildPath,
                           <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/charset/Charset.html?is-external=true" title="class or interface in java.nio.charset">Charset</a>&nbsp;charset,
@@ -227,21 +227,7 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <div class="block">Creates a new Project Information.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>timeout</code> - The timeout to be used.
-
-            <table> <caption>timeout value description</caption>
-
-            <tr><td><a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#ADAPTIVE_TIMEOUT"><code>BeagleConfiguration.ADAPTIVE_TIMEOUT</code></a></td><td>Beagle will
-            use a timeout that adapts to the quality of the analysis’ findings in
-            the past.</td>
-
-            <tr><td><a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#NO_TIMEOUT"><code>BeagleConfiguration.NO_TIMEOUT</code></a></td><td>no timeout will
-            be used</td>
-
-            <tr><td><code>≥ 0</code></td><td>the given value will be used as a fixed
-            timeout in seconds</td>
-
-            </table></dd>
+<dd><code>timeout</code> - The timeout to be used.</dd>
 <dd><code>fileProvider</code> - The provider of the source files to be analysed.</dd>
 <dd><code>buildPath</code> - The class path containing everything needed to compile the
             project.</dd>
@@ -296,21 +282,9 @@ implements <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializab
 <ul class="blockList">
 <li class="blockList">
 <h4>getTimeout</h4>
-<pre>public&nbsp;int&nbsp;getTimeout()</pre>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;getTimeout()</pre>
 <div class="block">Returns the timeout to be used. The timeout describes the minimum time Beagle shall
- keep trying to find results while no perfect results were found.
-
- <table> <caption>timeout value description</caption>
-
- <tr><td><a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#ADAPTIVE_TIMEOUT"><code>BeagleConfiguration.ADAPTIVE_TIMEOUT</code></a></td><td>Beagle will use a
- timeout that adapts to the quality of the analysis’ findings in the past.</td>
-
- <tr><td><a href="../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#NO_TIMEOUT"><code>BeagleConfiguration.NO_TIMEOUT</code></a></td><td>no timeout will be used</td>
-
- <tr><td><code>≥ 0</code></td><td>the given value will be used as a fixed timeout in
- seconds</td>
-
- </table></div>
+ keep trying to find results while no perfect results were found.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The timeout that will be used by Beagle.</dd>
