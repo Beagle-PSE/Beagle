@@ -218,14 +218,15 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		 */
 		public void init() {
 
+			double sum1Part1 = 0;
+			for (int i = 0; i < this.data.length; i++) {
+				sum1Part1 += i * this.data[i];
+			}
+
 			final double averageTime = Arrays.stream(this.data).average().getAsDouble();
 
-			double sum1 = 0;
-			for (int i = 0; i < this.data.length; i++) {
-				final long time = this.data[i];
-
-				sum1 += (i - this.data.length / 2d) * (time - averageTime);
-			}
+			final double sum1Part2 = RANGE * averageTime * 1 / 2 * (RANGE - 1) * RANGE;
+			final double sum1 = sum1Part1 - sum1Part2;
 
 			/*
 			 * If you have equal distances between the x-coordinates of data and start
@@ -233,7 +234,7 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 			 * simplified to this. Go grab a pencil and a peace of paper and try it
 			 * yourself. :)
 			 */
-			final double sum2 = 1 / 12d * this.data.length * (-1 + Math.pow(this.data.length, 2));
+			final double sum2 = -1 / 2 * Math.pow((-1 + RANGE), 2) * RANGE;
 
 			this.slope = sum1 / sum2;
 			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);
