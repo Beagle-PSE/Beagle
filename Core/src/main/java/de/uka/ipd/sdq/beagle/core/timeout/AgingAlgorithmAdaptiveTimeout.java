@@ -10,9 +10,9 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
-	 * The alpha value of the aging algorithm.
+	 * The agingAlgorithmAlpha value of the aging algorithm.
 	 */
-	private static final double alpha = 0.5;
+	private static final double agingAlgorithmAlpha = 0.5;
 
 	/**
 	 * The previous maximally tolerable time in milliseconds or {@code -1} to indicate
@@ -31,17 +31,22 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	 */
 	private long timeOfPreviousCall;
 
+	/**
+	 * Whether the callback thread has been started.
+	 */
+	private boolean startedCallbackThread;
+
 	@Override
 	public boolean isReached() {
 		if (this.maximallyTolerableTime == -1) {
 			return false;
 		} else {
-			return this.timeOfPreviousCall + this.previousMaximallyTolerableTime - System.currentTimeMillis() < 0;
+			return this.timeOfPreviousCall + this.maximallyTolerableTime - System.currentTimeMillis() < 0;
 		}
 	}
 
 	@Override
-	public void reportOneStepProgress() {
+	public synchronized void reportOneStepProgress() {
 		this.previousMaximallyTolerableTime = this.maximallyTolerableTime;
 		final long tellingTime = this.timeOfPreviousCall - System.currentTimeMillis();
 		this.timeOfPreviousCall = System.currentTimeMillis();
@@ -49,8 +54,13 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		if (this.previousMaximallyTolerableTime == -1) {
 			this.maximallyTolerableTime = tellingTime;
 		} else {
-			this.maximallyTolerableTime =
-				(long) (this.previousMaximallyTolerableTime * (1 - alpha) + tellingTime * alpha);
+			this.maximallyTolerableTime = (long) (this.previousMaximallyTolerableTime * (1 - agingAlgorithmAlpha)
+				+ tellingTime * agingAlgorithmAlpha);
+
+			if (!this.startedCallbackThread) {
+				this.startedCallbackThread = true;
+				new Thread(this::notifyOnReachedTimeout).start();
+			}
 		}
 	}
 
@@ -59,4 +69,36 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		this.timeOfPreviousCall = System.currentTimeMillis();
 	}
 
+	/**
+	 * Calls the callback handlers once the timeout is reached.
+	 */
+	private void notifyOnReachedTimeout() {
+		assert this.maximallyTolerableTime != -1;
+
+		long timeToSleep = this.timeOfPreviousCall + this.maximallyTolerableTime - System.currentTimeMillis();
+
+		// Wait until the timeout is up.
+		while (!this.isReached()) {
+			assert timeToSleep > 0;
+
+			try {
+				Thread.sleep(timeToSleep);
+			} catch (final InterruptedException exception) {
+				// Retry on interrupt. No handling is needed because the loop just tries
+				// again.
+			}
+
+			/**
+			 * This has to be done at the end of the loop, not at the beginning. Otherwise
+			 * the timeout can be reached right before the first instruction in the loop
+			 * body but not in the loop header causing {@code timeToSleep} to become
+			 * negative. This would be an illegal argument for {@link Thread#sleep(long)}.
+			 */
+			timeToSleep = this.timeOfPreviousCall + this.maximallyTolerableTime - System.currentTimeMillis();
+		}
+
+		for (final Runnable callback : this.callbacks) {
+			new Thread(callback).start();
+		}
+	}
 }
