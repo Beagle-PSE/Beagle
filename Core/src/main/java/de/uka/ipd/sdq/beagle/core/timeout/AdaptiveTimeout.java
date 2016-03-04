@@ -234,10 +234,10 @@ public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 			 * simplified to this. Go grab a pencil and a peace of paper and try it
 			 * yourself. :)
 			 */
-			final double sum2 = -1 / 2 * Math.pow((-1 + RANGE), 2) * RANGE;
+			final double sum2 = 1 / 12 * RANGE * (3 * Math.pow(RANGE, 4) - 12 * Math.pow(RANGE, 3) - 12 * RANGE + 2);
 
-			this.slope = sum1 / sum2;
-			this.offset = averageTime - this.slope * (1 / 2d * (this.data.length - 1) * this.data.length);
+			this.slope = sum2 == 0 ? 0 : sum1 / sum2;
+			this.offset = averageTime - this.slope * (1 / 2d * (RANGE - 1) * RANGE);
 
 			this.initialised = true;
 		}
