@@ -60,7 +60,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 * </ul>
 	 *
 	 */
-	private static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE = "TIMEOUT";
+	private static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE = "TIMEOUT_TYPE";
 
 	/**
 	 * This value in Beagle's launch configuration for the key
@@ -170,24 +170,23 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 	/**
 	 * The type of timeout that is currently selected.
+	 *
+	 * <p>Permitted values are:
+	 *
+	 * <ul>
+	 *
+	 * <li> {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT}
+	 *
+	 * <li>{@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT}
+	 *
+	 * <li>
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_EXECUTION_TIME_BASED_TIMEOUT}
+	 *
+	 * <li>{@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT}
+	 *
+	 * </ul>
 	 */
 	private String currentTimeoutTypeSelection;
-
-	// /**
-	// * Constructs a new {@link TimeoutWizardPage} being linked to the given
-	// * {@code beagleConfiguration}.
-	// *
-	// * @param beagleConfiguration The {@link BeagleConfiguration} this
-	// * {@link TimeoutWizardPage} will be permanently linked to. Changing the
-	// * associated {@link BeagleConfiguration} is not possible.
-	// */
-	// public TimeoutWizardPage(final BeagleConfiguration beagleConfiguration) {
-	// super(TITLE);
-	// this.setTitle(TITLE);
-	// this.setDescription(DESCRIPTION);
-	// this.setControl(this.textboxTimeoutSeconds);
-	// this.beagleConfiguration = beagleConfiguration;
-	// }
 
 	@Override
 	public void createControl(final Composite parent) {
