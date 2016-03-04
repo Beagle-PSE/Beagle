@@ -5,13 +5,13 @@ import org.apache.commons.lang3.Validate;
 import java.util.Arrays;
 
 /**
- * Implements an adaptive timeout. This means that later calls to {@link #isReached()}
- * will return {@code false} if the previous calls took a long time, too. This class is
- * thread safe.
+ * Implements an adaptive timeout based on linear regression. This means that later calls
+ * to {@link #isReached()} will return {@code false} if the previous calls took a long
+ * time, too. This class is thread safe.
  *
  * @author Christoph Michelbach
  */
-public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
+public class LinearRegressionAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
 	 * How much additional time is always tolerated. Stated in milliseconds.

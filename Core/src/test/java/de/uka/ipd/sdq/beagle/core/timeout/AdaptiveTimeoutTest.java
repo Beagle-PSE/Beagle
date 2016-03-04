@@ -15,11 +15,11 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
 /**
- * Tests {@link AdaptiveTimeout} and contains all test cases needed to check every method.
+ * Tests {@link LinearRegressionAdaptiveTimeout} and contains all test cases needed to check every method.
  *
  * @author Michael Vogt
  */
-@PrepareForTest(AdaptiveTimeout.class)
+@PrepareForTest(LinearRegressionAdaptiveTimeout.class)
 public class AdaptiveTimeoutTest {
 
 	/**
@@ -33,10 +33,10 @@ public class AdaptiveTimeoutTest {
 	 */
 	@Test
 	public void init() {
-		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout.init();
 
-		final AdaptiveTimeout adaptTimeout1 = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout1 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout1.init();
 		final ThrowingMethod method = () -> {
 			adaptTimeout1.init();
@@ -46,24 +46,24 @@ public class AdaptiveTimeoutTest {
 	}
 
 	/**
-	 * Test method for {@link AdaptiveTimeout#reportOneStepProgress()}.
+	 * Test method for {@link LinearRegressionAdaptiveTimeout#reportOneStepProgress()}.
 	 */
 	@Test
 	public void reportOneStepProgress() {
 		mockStatic(System.class);
 		given(System.currentTimeMillis()).willReturn(0L);
 
-		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout.reportOneStepProgress();
 		}
 
-		final AdaptiveTimeout adaptTimeout1 = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout1 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout1.init();
 		adaptTimeout1.reportOneStepProgress();
 
-		final AdaptiveTimeout adaptTimeout2 = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout2 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout2.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout2.reportOneStepProgress();
@@ -71,7 +71,7 @@ public class AdaptiveTimeoutTest {
 		given(System.currentTimeMillis()).willReturn(1000L);
 		adaptTimeout2.reportOneStepProgress();
 
-		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout3 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout3.init();
 		for (int i = 0; i < 9; i++) {
 			adaptTimeout3.reportOneStepProgress();
@@ -82,25 +82,25 @@ public class AdaptiveTimeoutTest {
 	}
 
 	/**
-	 * Test method for {@link AdaptiveTimeout#isReached()}.
+	 * Test method for {@link LinearRegressionAdaptiveTimeout#isReached()}.
 	 */
 	@Test
 	public void isReached() {
 		mockStatic(System.class);
 		given(System.currentTimeMillis()).willReturn(0L);
 
-		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout.init();
 		assertThat(adaptTimeout.isReached(), equalTo(false));
 
-		final AdaptiveTimeout adaptTimeout1 = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout1 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout1.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout1.reportOneStepProgress();
 		}
 		assertThat(adaptTimeout1.isReached(), equalTo(false));
 
-		final AdaptiveTimeout adaptTimeout2 = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout2 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout2.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout2.reportOneStepProgress();
@@ -108,7 +108,7 @@ public class AdaptiveTimeoutTest {
 		given(System.currentTimeMillis()).willReturn(1000L);
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 
-		final AdaptiveTimeout adaptTimeout3 = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout3 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout3.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout3.reportOneStepProgress();
@@ -121,13 +121,13 @@ public class AdaptiveTimeoutTest {
 	}
 
 	/**
-	 * Test method for {@link AdaptiveTimeout#notifyOnReachedTimeout()}.
+	 * Test method for {@link LinearRegressionAdaptiveTimeout#notifyOnReachedTimeout()}.
 	 */
 	@Ignore
 	// This test is not ready yet.
 	@Test
 	public void notifyOnReachedTimeout() {
-		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
+		final LinearRegressionAdaptiveTimeout adaptTimeout = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout.init();
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout.reportOneStepProgress();
