@@ -42,7 +42,10 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 		Validate.isTrue(mode.equals(ILaunchManager.RUN_MODE),
 			"Only run mode for the Beagle configuration is supported.");
 
-		new BeagleController(this.convertBeagleLaunchConfigurationToBeagleConfiguration(configuration)).startAnalysis();
+		final BeagleConfiguration beagleConfiguration =
+			this.convertBeagleLaunchConfigurationToBeagleConfiguration(configuration);
+		beagleConfiguration.finalise();
+		new BeagleController(beagleConfiguration).startAnalysis();
 	}
 
 	/**

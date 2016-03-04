@@ -48,7 +48,7 @@ public class BeagleConfigurationTest {
 	@Before
 	public void initialiseElements() {
 		this.elements = new ArrayList<>();
-		this.elements.add(mock(String.class));
+		this.elements.add("test");
 	}
 
 	/**
