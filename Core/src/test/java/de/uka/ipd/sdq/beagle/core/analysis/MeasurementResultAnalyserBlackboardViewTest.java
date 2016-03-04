@@ -14,6 +14,7 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
@@ -28,6 +29,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.EvaluableExpressionFitnessFunctionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ExternalCallParameterFactory;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.ProjectInformationFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.ResourceDemandingInternalActionFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffBranchFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.SeffLoopFactory;
@@ -79,6 +81,11 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 	 */
 	private static final EvaluableExpressionFitnessFunctionFactory FITNESS_FUNCTION_FACTORY =
 		new EvaluableExpressionFitnessFunctionFactory();
+
+	/**
+	 * A {@link ProjectInformation} factory to easily obtain new instances from.
+	 */
+	private static final ProjectInformationFactory PROJECT_INFORMATION_FACTORY = new ProjectInformationFactory();
 
 	/**
 	 * A {@link SeffBranch} factory to easily obtain new instances from.
@@ -473,6 +480,27 @@ public class MeasurementResultAnalyserBlackboardViewTest {
 		final EvaluableExpressionFitnessFunction result = this.testedView.getFitnessFunction();
 		assertThat("The testedView should return the Fitness Function instance it obtained from the blackboad", result,
 			is(theInstance(fitnessFunction)));
+	}
+
+	/**
+	 * Test method for
+	 * {@link MeasurementResultAnalyserBlackboardView#getProjectInformation()} . Asserts
+	 * that:
+	 *
+	 * <ul>
+	 *
+	 * <li> The tested view returns the instance it obtained from the blackboard.
+	 *
+	 * </ul>
+	 */
+	@Test
+	public void getProjectInformation() {
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
+		given(this.mockedBlackboard.getProjectInformation()).willReturn(projectInformation);
+
+		final ProjectInformation result = this.testedView.getProjectInformation();
+		assertThat("The testedView should return the Project Information instance it obtained from the blackboad",
+			result, is(theInstance(projectInformation)));
 	}
 
 	/**
