@@ -10,7 +10,8 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
-	 * The AGING_ALPHA value of the aging algorithm.
+	 * The α value of the aging algorithm. The higher this value, the bigger the influence
+	 * of the newly measured value.
 	 */
 	private static final double AGING_ALPHA = 0.5;
 
