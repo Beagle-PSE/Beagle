@@ -71,7 +71,7 @@ public class ProjectInformation implements Serializable {
 	 * @param buildPath The class path containing everything needed to compile the
 	 *            project.
 	 * @param charset The charset used for all files in the project. May be {@code null},
-	 *            in which case {@link Charset#defaultCharset()} will be used.
+	 *            in this case {@link Charset#defaultCharset()} will be used.
 	 * @param launchConfigurations The configurations defining how to launch the measured
 	 *            software. Must not be {@code null}, must not contain {@code null}, must
 	 *            not be empty.
@@ -80,7 +80,6 @@ public class ProjectInformation implements Serializable {
 		final Charset charset, final Set<LaunchConfiguration> launchConfigurations) {
 		Validate.notNull(fileProvider);
 		Validate.notNull(buildPath);
-		Validate.notNull(charset);
 		Validate.noNullElements(launchConfigurations);
 		Validate.isTrue(!launchConfigurations.isEmpty(), "The launch configurations may not be empty");
 
