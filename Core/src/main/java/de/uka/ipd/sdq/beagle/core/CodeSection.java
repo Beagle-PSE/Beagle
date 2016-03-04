@@ -80,10 +80,10 @@ public class CodeSection implements Serializable {
 	 */
 	public CodeSection(final File startFile, final int startIndex, final File endFile, final int endIndex) {
 		if (!startFile.isFile()) {
-			throw new IllegalArgumentException("The given startFile is not a file.");
+			throw new IllegalArgumentException("The given startFile is not a file: " + startFile.getAbsolutePath());
 		}
 		if (!endFile.isFile()) {
-			throw new IllegalArgumentException("The given endFile is not a file.");
+			throw new IllegalArgumentException("The given endFile is not a file: " + endFile.getAbsolutePath());
 		}
 		Validate.isTrue(startIndex >= 0, "The startIndex must be non-neagtive, but was %d", startIndex);
 		Validate.isTrue(endIndex >= 0, "The endIndex must be non-neagtive, but was %d", endIndex);
