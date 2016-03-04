@@ -1,7 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
-import de.uka.ipd.sdq.beagle.gui.GuiController;
+import de.uka.ipd.sdq.beagle.gui.BeagleLaunchConfigurationCreator;
 
 import de.uka.ipd.sdq.pcm.gmf.repository.edit.parts.BasicComponentEditPart;
 
@@ -24,7 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * This class is involved in creating a Graphical User Interface. Its functionality cannot
  * reasonably be tested by automated unit tests.
  *
  * COVERAGE:OFF
@@ -70,11 +69,7 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 				.getProject());
 		}
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration =
-			new BeagleConfiguration(components, repositoryFile, javaProject);
-		final GuiController guiController = new GuiController(beagleConfiguration);
-		guiController.open();
-
+		new BeagleLaunchConfigurationCreator(components, repositoryFile, javaProject).createLaunchConfiguration();
 		return null;
 	}
 }

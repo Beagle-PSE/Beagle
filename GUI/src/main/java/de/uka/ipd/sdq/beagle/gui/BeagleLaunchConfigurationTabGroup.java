@@ -16,7 +16,11 @@ public class BeagleLaunchConfigurationTabGroup extends AbstractLaunchConfigurati
 	@Override
 	public void createTabs(final ILaunchConfigurationDialog dialog, final String mode) {
 		final ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] {
-			new TimeoutTab(), new CommonTab()
+			// @formatter:off
+			new SelectionOverviewTab(),
+			new TimeoutTab(),
+			new CommonTab()
+			// @formatter:on
 		};
 		this.setTabs(tabs);
 	}

@@ -17,12 +17,9 @@ import org.apache.commons.lang3.Validate;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IJavaProject;
-import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -75,7 +72,7 @@ public class BeagleController {
 				.getBlackboardForAllElements(blackboardFactory);
 		} else {
 			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
-				.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);
+				.getBlackboardForIds(beagleConfiguration.getElements(), blackboardFactory);
 		}
 
 		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());
@@ -86,7 +83,7 @@ public class BeagleController {
 				.getAllSuitableJUnitLaunchConfigurations();
 		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
-		
+
 		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());
 		this.blackboard = blackboardFactory.createBlackboard();
 		this.analysisController = new AnalysisController(this.blackboard,
@@ -149,19 +146,5 @@ public class BeagleController {
 	 */
 	public void abortAnalysis() {
 
-	}
-
-	/**
-	 * Converts {@linkplain Entity Entities} to {@linkplain String Strings}.
-	 *
-	 * @param entities The {@linkplain Entity Entities} to convert.
-	 * @return The ids of the {@code entities}.
-	 */
-	private List<String> entitysToStrings(final List<Entity> entities) {
-		final List<String> strings = new ArrayList<>();
-		for (final Entity entity : entities) {
-			strings.add(entity.getId());
-		}
-		return strings;
 	}
 }

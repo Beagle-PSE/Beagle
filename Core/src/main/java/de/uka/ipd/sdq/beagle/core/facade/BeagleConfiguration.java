@@ -5,7 +5,6 @@ import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.IJavaProject;
-import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
 import java.util.LinkedList;
@@ -33,7 +32,7 @@ public class BeagleConfiguration {
 	 * All elements to measure or {@code null} to indicate that everything in
 	 * {@code repositoryFile} should be analysed.
 	 */
-	private List<Entity> elements;
+	private List<String> elements;
 
 	/**
 	 * The repository file.
@@ -64,7 +63,7 @@ public class BeagleConfiguration {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile, final IJavaProject javaProject) {
+	public BeagleConfiguration(final List<String> elements, final File repositoryFile, final IJavaProject javaProject) {
 		Validate.notNull(repositoryFile);
 		Validate.notNull(javaProject);
 
@@ -97,7 +96,7 @@ public class BeagleConfiguration {
 	 * @return The elements to be measured or {@code null} to indicate that everything in
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
 	 */
-	public List<Entity> getElements() {
+	public List<String> getElements() {
 		return this.elements;
 	}
 
@@ -114,7 +113,7 @@ public class BeagleConfiguration {
 	 *             state.
 	 * @see #getElements()
 	 */
-	public void setElements(final List<Entity> elements) {
+	public void setElements(final List<String> elements) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
 		if (elements == null) {
