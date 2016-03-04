@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
+import org.apache.commons.lang3.Validate;
 import org.palladiosimulator.pcm.usagemodel.Branch;
 
 import java.util.Set;
@@ -68,8 +69,8 @@ public class BlackboardCreator {
 	 *
 	 */
 	public Blackboard createBlackboard() {
-		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null
-			|| this.projectInformation == null || this.pcmMappings == null) {
+		if (this.rdias == null || this.branches == null || this.loops == null || this.externalCalls == null
+			|| this.fitnessFunction == null || this.projectInformation == null || this.pcmMappings == null) {
 			throw new IllegalStateException("Not everything has been setup yet.");
 		}
 		final Blackboard blackboard = new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls,
@@ -83,9 +84,10 @@ public class BlackboardCreator {
 	 * Sets the {@link PcmBeagleMappings} for the {@link Blackboard} to create.
 	 *
 	 * @param pcmMappings the {@link PcmBeagleMappings} for the {@link Blackboard} to
-	 *            create.
+	 *            create. May not be {@code null}.
 	 */
 	public void setPcmMappings(final PcmBeagleMappings pcmMappings) {
+		Validate.notNull(pcmMappings);
 		this.pcmMappings = pcmMappings;
 	}
 
@@ -94,27 +96,33 @@ public class BlackboardCreator {
 	 * ResourceDemandingInternalActions} for the {@link Blackboard}.
 	 *
 	 * @param rdias the {@linkplain ResourceDemandingInternalAction
-	 *            ResourceDemandingInternalActions} for the {@link Blackboard}
+	 *            ResourceDemandingInternalActions} for the {@link Blackboard}. May not be
+	 *            {@code null}.
 	 */
 	public void setRdias(final Set<ResourceDemandingInternalAction> rdias) {
+		Validate.notNull(rdias);
 		this.rdias = rdias;
 	}
 
 	/**
 	 * Sets the {@linkplain Branch Branches} for the {@link Blackboard}.
 	 *
-	 * @param branches the {@linkplain Branch Branches} for the {@link Blackboard}
+	 * @param branches the {@linkplain Branch Branches} for the {@link Blackboard}. May
+	 *            not be {@code null}.
 	 */
 	public void setBranches(final Set<SeffBranch> branches) {
+		Validate.notNull(branches);
 		this.branches = branches;
 	}
 
 	/**
 	 * Sets the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}.
 	 *
-	 * @param loops the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}
+	 * @param loops the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}. May
+	 *            not be {@code null}.
 	 */
 	public void setLoops(final Set<SeffLoop> loops) {
+		Validate.notNull(loops);
 		this.loops = loops;
 	}
 
@@ -123,9 +131,10 @@ public class BlackboardCreator {
 	 * {@link Blackboard}.
 	 *
 	 * @param externalCalls the {@linkplain ExternalCallParameter ExternalCallParameter}
-	 *            for the {@link Blackboard}
+	 *            for the {@link Blackboard}. May not be {@code null}.
 	 */
 	public void setExternalCalls(final Set<ExternalCallParameter> externalCalls) {
+		Validate.notNull(externalCalls);
 		this.externalCalls = externalCalls;
 	}
 
@@ -133,9 +142,10 @@ public class BlackboardCreator {
 	 * The {@link EvaluableExpressionFitnessFunction} for the {@link Blackboard}.
 	 *
 	 * @param fitnessFunction The {@link EvaluableExpressionFitnessFunction} for the
-	 *            {@link Blackboard}.
+	 *            {@link Blackboard}. May not be {@code null}.
 	 */
 	public void setFitnessFunction(final EvaluableExpressionFitnessFunction fitnessFunction) {
+		Validate.notNull(fitnessFunction);
 		this.fitnessFunction = fitnessFunction;
 	}
 
@@ -143,9 +153,10 @@ public class BlackboardCreator {
 	 * Sets the {@link ProjectInformation} for the {@link Blackboard}.
 	 *
 	 * @param projectInformation the {@link ProjectInformation} for the {@link Blackboard}
-	 *            .
+	 *            . May not be {@code null}. .
 	 */
 	public void setProjectInformation(final ProjectInformation projectInformation) {
+		Validate.notNull(projectInformation);
 		this.projectInformation = projectInformation;
 	}
 }
