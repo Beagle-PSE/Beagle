@@ -53,11 +53,6 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	 */
 	private long timeOfPreviousCall;
 
-	/**
-	 * Whether the callback thread has been started.
-	 */
-	private boolean startedCallbackThread;
-
 	@Override
 	public boolean isReached() {
 		return this.timeOfPreviousCall + this.maximallyTolerableTime - System.currentTimeMillis() < 0;
@@ -69,22 +64,20 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		final long tellingTime = this.timeOfPreviousCall - System.currentTimeMillis();
 		this.timeOfPreviousCall = System.currentTimeMillis();
 
-		final long preliminaryMaximallyTolerableTime =
+		final long preliminaryMaximallyTolerableTimeWithoutAdditionalTime =
 			(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
+		final long preliminaryMaximallyTolerableTime = (long) (preliminaryMaximallyTolerableTimeWithoutAdditionalTime
+			* (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE)) + CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
 		this.maximallyTolerableTime = preliminaryMaximallyTolerableTime >= MINIMUM_TIME_TOLERANCE
 			? preliminaryMaximallyTolerableTime : MINIMUM_TIME_TOLERANCE;
-
-		if (!this.startedCallbackThread) {
-			this.startedCallbackThread = true;
-			new Thread(this::notifyOnReachedTimeout).start();
-		}
-
 	}
 
 	@Override
 	protected void implementationInit() {
-		this.timeOfPreviousCall = System.currentTimeMillis();
 		assert AGING_ALPHA > 0 && AGING_ALPHA < 1;
+
+		this.timeOfPreviousCall = System.currentTimeMillis();
+		new Thread(this::notifyOnReachedTimeout).start();
 	}
 
 	/**
