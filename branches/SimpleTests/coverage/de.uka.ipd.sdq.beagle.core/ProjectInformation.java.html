@@ -71,7 +71,7 @@ public class ProjectInformation implements Serializable {
 	 * @param buildPath The class path containing everything needed to compile the
 	 *            project.
 	 * @param charset The charset used for all files in the project. May be {@code null},
-	 *            in which case {@link Charset#defaultCharset()} will be used.
+	 *            in this case {@link Charset#defaultCharset()} will be used.
 	 * @param launchConfigurations The configurations defining how to launch the measured
 	 *            software. Must not be {@code null}, must not contain {@code null}, must
 	 *            not be empty.
@@ -80,16 +80,15 @@ public class ProjectInformation implements Serializable {
 <span class="fc" id="L80">		final Charset charset, final Set&lt;LaunchConfiguration&gt; launchConfigurations) {</span>
 <span class="fc" id="L81">		Validate.notNull(fileProvider);</span>
 <span class="fc" id="L82">		Validate.notNull(buildPath);</span>
-<span class="fc" id="L83">		Validate.notNull(charset);</span>
-<span class="fc" id="L84">		Validate.noNullElements(launchConfigurations);</span>
-<span class="fc bfc" id="L85" title="All 2 branches covered.">		Validate.isTrue(!launchConfigurations.isEmpty(), &quot;The launch configurations may not be empty&quot;);</span>
+<span class="fc" id="L83">		Validate.noNullElements(launchConfigurations);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">		Validate.isTrue(!launchConfigurations.isEmpty(), &quot;The launch configurations may not be empty&quot;);</span>
 
-<span class="fc" id="L87">		this.timeout = timeout;</span>
-<span class="fc" id="L88">		this.fileProvider = fileProvider;</span>
-<span class="pc bpc" id="L89" title="1 of 2 branches missed.">		this.charset = charset == null ? Charset.defaultCharset() : charset;</span>
-<span class="fc" id="L90">		this.buildPath = buildPath;</span>
-<span class="fc" id="L91">		this.launchConfigurations = new HashSet&lt;&gt;(launchConfigurations);</span>
-<span class="fc" id="L92">	}</span>
+<span class="fc" id="L86">		this.timeout = timeout;</span>
+<span class="fc" id="L87">		this.fileProvider = fileProvider;</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		this.charset = charset == null ? Charset.defaultCharset() : charset;</span>
+<span class="fc" id="L89">		this.buildPath = buildPath;</span>
+<span class="fc" id="L90">		this.launchConfigurations = new HashSet&lt;&gt;(launchConfigurations);</span>
+<span class="fc" id="L91">	}</span>
 
 	/**
 	 * Queries the project’s build path.
@@ -98,7 +97,7 @@ public class ProjectInformation implements Serializable {
 	 *         never be {@code null}.
 	 */
 	public String getBuildPath() {
-<span class="fc" id="L101">		return this.buildPath;</span>
+<span class="fc" id="L100">		return this.buildPath;</span>
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class ProjectInformation implements Serializable {
 	 * @return The charset used for all files in the project. Will never be {@code null}.
 	 */
 	public Charset getCharset() {
-<span class="fc" id="L110">		return this.charset;</span>
+<span class="fc" id="L109">		return this.charset;</span>
 	}
 
 	/**
@@ -129,7 +128,7 @@ public class ProjectInformation implements Serializable {
 	 * @return The timeout that will be used by Beagle.
 	 */
 	public int getTimeout() {
-<span class="fc" id="L132">		return this.timeout;</span>
+<span class="fc" id="L131">		return this.timeout;</span>
 	}
 
 	/**
@@ -139,7 +138,7 @@ public class ProjectInformation implements Serializable {
 	 * @return The provider of source files.
 	 */
 	public SourceCodeFileProvider getFileProvider() {
-<span class="fc" id="L142">		return this.fileProvider;</span>
+<span class="fc" id="L141">		return this.fileProvider;</span>
 	}
 
 	/**
@@ -149,7 +148,7 @@ public class ProjectInformation implements Serializable {
 	 *         contain {@code null}, nor be empty.
 	 */
 	public Set&lt;LaunchConfiguration&gt; getLaunchConfigurations() {
-<span class="fc" id="L152">		return new HashSet&lt;&gt;(this.launchConfigurations);</span>
+<span class="fc" id="L151">		return new HashSet&lt;&gt;(this.launchConfigurations);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
