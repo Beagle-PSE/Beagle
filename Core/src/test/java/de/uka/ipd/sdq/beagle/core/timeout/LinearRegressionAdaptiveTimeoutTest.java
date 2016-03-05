@@ -20,7 +20,7 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
  * @author Michael Vogt
  */
 @PrepareForTest(LinearRegressionAdaptiveTimeout.class)
-public class AdaptiveTimeoutTest {
+public class LinearRegressionAdaptiveTimeoutTest {
 
 	/**
 	 * Loads PowerMockito to mock the static final class {@link System}.
