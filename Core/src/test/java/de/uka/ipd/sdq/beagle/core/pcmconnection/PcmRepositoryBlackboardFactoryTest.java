@@ -180,10 +180,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void getBlackboardForAllElements() {
-		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactory =
+		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactoryAdder =
 			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
-		pcmRepositoryBlackboardFactory.getBlackboardForAllElements(blackboardCreator);
+		pcmRepositoryBlackboardFactoryAdder.getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
 		final Blackboard result = blackboardCreator.createBlackboard();
