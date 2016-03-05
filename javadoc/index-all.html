@@ -76,6 +76,12 @@
 <dd>
 <div class="block">Aborts the analysis.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">AbstractEvaluableExpressionVisitor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a></dt>
+<dd>
+<div class="block">Abstract <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressionVisitor</a> offering a convenient interface.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#AbstractEvaluableExpressionVisitor--">AbstractEvaluableExpressionVisitor()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><span class="typeNameLink">AbstractionAndPrecisionFitnessFunction</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/judge/package-summary.html">de.uka.ipd.sdq.beagle.core.judge</a></dt>
 <dd>
 <div class="block">Fitness function regarding abstract but precise expression as fittest.</div>
@@ -265,6 +271,67 @@
 <dd>
 <div class="block">Reports that <code>loops</code> shall be measured for its repetitions.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterAddition-de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression-">afterAddition(AdditionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>AdditionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterComparison-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression-">afterComparison(ComparisonExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ComparisonExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterConstant-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression-">afterConstant(ConstantExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ConstantExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterDivision-de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression-">afterDivision(DivisionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>DivisionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterExponentation-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression-">afterExponentation(ExponentationExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ExponentationExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterExponentialFunction-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression-">afterExponentialFunction(ExponentialFunctionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ExponentialFunctionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">afterExpression(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving any <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterIfThenElse-de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression-">afterIfThenElse(IfThenElseExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>IfThenElseExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterLogarithm-de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression-">afterLogarithm(LogarithmExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>LogarithmExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterMultiplication-de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression-">afterMultiplication(MultiplicationExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>MultiplicationExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterNaturalLogarithm-de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression-">afterNaturalLogarithm(NaturalLogarithmExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>NaturalLogarithmExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterOther-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">afterOther(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving any <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> no hook was defined for.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterSine-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression-">afterSine(SineExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SineExpression</code></a>, after its inner expressions will be
+ visited.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterSubtraction-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression-">afterSubtraction(SubtractionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SubtractionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#afterVariable-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-">afterVariable(EvaluableVariable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when leaving an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariable</code></a>.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">AnalysisController</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
 <div class="block">Conducts a complete analysis of elements on a blackboard.</div>
@@ -300,6 +367,66 @@
 <dd>
 <div class="block">Adds the given <code>argument</code> to the JVM arguments used when launching the
  software.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atAddition-de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression-">atAddition(AdditionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>AdditionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atComparison-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression-">atComparison(ComparisonExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ComparisonExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ComparisonExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atConstant-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression-">atConstant(ConstantExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ConstantExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atDivision-de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression-">atDivision(DivisionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/DivisionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>DivisionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atExponentation-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression-">atExponentation(ExponentationExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ExponentationExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atExponentialFunction-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression-">atExponentialFunction(ExponentialFunctionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentialFunctionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>ExponentialFunctionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atExpression-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">atExpression(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when visiting any <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atIfThenElse-de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression-">atIfThenElse(IfThenElseExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/IfThenElseExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>IfThenElseExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atLogarithm-de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression-">atLogarithm(LogarithmExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/LogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>LogarithmExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atMultiplication-de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression-">atMultiplication(MultiplicationExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>MultiplicationExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atNaturalLogarithm-de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression-">atNaturalLogarithm(NaturalLogarithmExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/NaturalLogarithmExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>NaturalLogarithmExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atOther-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">atOther(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting any <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> no hook was defined for.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atSine-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression-">atSine(SineExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SineExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atSubtraction-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression-">atSubtraction(SubtractionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SubtractionExpression</code></a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#atVariable-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-">atVariable(EvaluableVariable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Called when first visiting an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariable</code></a>.</div>
 </dd>
 </dl>
 <a name="I:B">
@@ -534,6 +661,11 @@
 <dd>
 <div class="block">Contains evaluable expressions suitable to compose functions.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a> - package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</dt>
+<dd>
+<div class="block">Utility classes to work with
+ <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">Evaluable Expressions</a>.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/facade/package-summary.html">de.uka.ipd.sdq.beagle.core.facade</a> - package de.uka.ipd.sdq.beagle.core.facade</dt>
 <dd>
 <div class="block">Types setting up and launching Beagle.</div>
@@ -719,9 +851,15 @@
 <div class="block">Interface for Blackboard views designed to be passed to an
  <a href="de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionFitnessFunction.html" title="interface in de.uka.ipd.sdq.beagle.core.judge"><code>EvaluableExpressionFitnessFunction</code></a>.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/EvaluableExpressionSimplifier.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">EvaluableExpressionSimplifier</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a></dt>
+<dd>
+<div class="block">Produces shorter versions of unnecessarily complex <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressions</a>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/EvaluableExpressionSimplifier.html#EvaluableExpressionSimplifier--">EvaluableExpressionSimplifier()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/EvaluableExpressionSimplifier.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">EvaluableExpressionSimplifier</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpressionVisitor.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">EvaluableExpressionVisitor</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
-<div class="block">Provides methods to visit all evaluable expressions.</div>
+<div class="block">Provides methods to visit any <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">EvaluableVariable</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
@@ -807,6 +945,12 @@
 <dd>
 <div class="block">Builds an expression which returns e raised to the power of the exponent.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">ExpressionTreeWalker</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a></dt>
+<dd>
+<div class="block">Interface for visitors traversing an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression’s</a> inner expressions.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#ExpressionTreeWalker--">ExpressionTreeWalker()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/ExternalCallParameter.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">ExternalCallParameter</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
 <div class="block">A parameter of an external call.</div>
@@ -1599,6 +1743,14 @@
 <dd>
 <div class="block">Returns the timeout chosen by the user.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#getTraversalDepth--">getTraversalDepth()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Queries how “deep” the currently visited expression is in the visited tree.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html#getTraversalDepth--">getTraversalDepth()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ModifyingEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#getTraversalDepth--">getTraversalDepth()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">RecursiveEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html#getType--">getType()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.order.<a href="de/uka/ipd/sdq/beagle/core/measurement/order/ResourceDemandCapturedEvent.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">ResourceDemandCapturedEvent</a></dt>
 <dd>
 <div class="block">Gives the demanded resource’s type.</div>
@@ -1619,6 +1771,14 @@
 <dd>
 <div class="block">Gets the assigned value for the <code>EvaluableVariable variable</code>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html#getVisitedCount--">getVisitedCount()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Queries how many expressions have been visited during the momentary traversal.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html#getVisitedCount--">getVisitedCount()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ModifyingEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#getVisitedCount--">getVisitedCount()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">RecursiveEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html#getWindowTitle--">getWindowTitle()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleAnalysisWizard</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html#gradeFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView-">gradeFor(ResourceDemandingInternalAction, EvaluableExpression, EvaluableExpressionFitnessFunctionBlackboardView)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html" title="class in de.uka.ipd.sdq.beagle.core.judge">AbstractionAndPrecisionFitnessFunction</a></dt>
@@ -2045,6 +2205,17 @@
 <dd>
 <div class="block">Supplies a message describing the failure.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">ModifyingEvaluableExpressionVisitor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a></dt>
+<dd>
+<div class="block">A visitor allowing to create a new <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a> out of an existing
+ one.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html#ModifyingEvaluableExpressionVisitor--">ModifyingEvaluableExpressionVisitor()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ModifyingEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html#modifyRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">modifyRecursively(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ModifyingEvaluableExpressionVisitor</a></dt>
+<dd>
+<div class="block">Starts visiting <code>expression</code>.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/MultiplicationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">MultiplicationExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that multiplies all its contained expressions.</div>
@@ -2150,6 +2321,12 @@
 <dd>
 <div class="block">Parsing a SoMoX-created String to get the annotated CodeSection.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">PartialExpressionTreeWalker</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a></dt>
+<dd>
+<div class="block">An evaluable expression tree walker allowing to ignore certain subtrees.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#PartialExpressionTreeWalker--">PartialExpressionTreeWalker()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">PartialExpressionTreeWalker</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleController.html#pauseAnalysis--">pauseAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleController</a></dt>
 <dd>
 <div class="block">Pauses the analysis.</div>
@@ -2414,6 +2591,18 @@
 <div class="block">Reports that the failure is recoverable by continuing the normal control flow after
  the failure handling.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util"><span class="typeNameLink">RecursiveEvaluableExpressionVisitor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a></dt>
+<dd>
+<div class="block">Visitor of <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpressions</code></a>, recursively visiting all
+ their inner expressions.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#RecursiveEvaluableExpressionVisitor--">RecursiveEvaluableExpressionVisitor()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">RecursiveEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html#replaceCurrentExpressionWith-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">replaceCurrentExpressionWith(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ModifyingEvaluableExpressionVisitor</a></dt>
+<dd>
+<div class="block">Replaces the currently visited expression with <code>expression</code> in the expression
+ tree.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU">RESOURCE_TYPE_CPU</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
 <div class="block">Common resource type for cycles performed on a CPU.</div>
@@ -2612,6 +2801,10 @@
 <dd>
 <div class="block">Assigns a value to an evaluable variable.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/EvaluableExpressionSimplifier.html#simplify-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">simplify(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/EvaluableExpressionSimplifier.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">EvaluableExpressionSimplifier</a></dt>
+<dd>
+<div class="block">Simplifies <code>expression</code>.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SineExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">SineExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that executes a sine function on its contained expression.</div>
@@ -2639,11 +2832,19 @@
 <div class="block">Reports that the resource demanding code section identified by <code>rdiaId</code> is
  about to be entered.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#startTraversingInnerExpressions--">startTraversingInnerExpressions()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">PartialExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Starts visiting of inner expressions.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#stop-org.osgi.framework.BundleContext-">stop(BundleContext)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/measurement/kieker/remote/MeasurementCentral.html#stopResourceDemand--">stopResourceDemand()</a></span> - Static method in class de.uka.ipd.sdq.beagle.measurement.kieker.remote.<a href="de/uka/ipd/sdq/beagle/measurement/kieker/remote/MeasurementCentral.html" title="class in de.uka.ipd.sdq.beagle.measurement.kieker.remote">MeasurementCentral</a></dt>
 <dd>
 <div class="block">Reports that the last started resource demanding code section has just been left.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#stopTraversingInnerExpressions--">stopTraversingInnerExpressions()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">PartialExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Stops visiting of inner expressions.</div>
 </dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">SubtractionExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
@@ -2817,6 +3018,32 @@
 <dd>
 <div class="block">Called if the visited expression is a <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/SubtractionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>SubtractionExpression</code></a>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression-">visit(AdditionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression-">visit(MultiplicationExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-">visit(EvaluableVariable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression-">visit(ComparisonExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression-">visit(ConstantExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression-">visit(DivisionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression-">visit(ExponentationExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression-">visit(ExponentialFunctionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression-">visit(IfThenElseExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression-">visit(LogarithmExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression-">visit(NaturalLogarithmExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression-">visit(SineExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visit-de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression-">visit(SubtractionExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/AbstractMeasurementEventVisitor.html#visit-de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent-">visit(CodeSectionEnteredEvent)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/AbstractMeasurementEventVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">AbstractMeasurementEventVisitor</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/measurement/AbstractMeasurementEventVisitor.html#visit-de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent-">visit(CodeSectionLeftEvent)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.measurement.<a href="de/uka/ipd/sdq/beagle/core/measurement/AbstractMeasurementEventVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.measurement">AbstractMeasurementEventVisitor</a></dt>
@@ -3025,12 +3252,25 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/NotRecursingAstVisitor.html#visit-org.eclipse.jdt.core.dom.WildcardType-">visit(WildcardType)</a></span> - Method in class de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation.<a href="de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/NotRecursingAstVisitor.html" title="class in de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation">NotRecursingAstVisitor</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html#visitOther-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">visitOther(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dt>
+<dd>
+<div class="block">Called for any expression the implementor did not write <code>visit</code> (or called
+ <code>super.visit</code> for.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#visitRecursively-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">visitRecursively(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">RecursiveEvaluableExpressionVisitor</a></dt>
+<dd>
+<div class="block">Starts visiting <code>expression</code> recursively.</div>
+</dd>
 </dl>
 <a name="I:W">
 <!--   -->
 </a>
 <h2 class="title">W</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html#willTraverseInnerExpressions--">willTraverseInnerExpressions()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/PartialExpressionTreeWalker.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">PartialExpressionTreeWalker</a></dt>
+<dd>
+<div class="block">Queries whether the visitor will visit inner expressions.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseStatementCreationHelper.html#wrap-org.eclipse.jdt.core.dom.Statement:A-">wrap(Statement[])</a></span> - Method in class de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation.<a href="de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseStatementCreationHelper.html" title="class in de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation">EclipseStatementCreationHelper</a></dt>
 <dd>
 <div class="block">Wraps the given <code>statements</code> into a <code>Block</code>.</div>
