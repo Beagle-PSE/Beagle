@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EvaluableExpressionComplexityAnalyser.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.judge</a> &gt; <span class="el_source">EvaluableExpressionComplexityAnalyser.java</span></div><h1>EvaluableExpressionComplexityAnalyser.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.judge;
+
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.RecursiveEvaluableExpressionVisitor;
+
+import org.apache.commons.lang3.Validate;
+
+/*
+ * ATTENTION: Checkstyle is turned off where numbers with obvious meanings are used.
+ */
+
+/**
+ * EvaluableExpressionComplexityAnalyser object for an {@link EvaluableExpression}.
+ *
+ * &lt;p&gt;{@link #determineComplexity(EvaluableExpression)} must be called before
+ * {@link #getComputationalComplexitySum()} or
+ * {@link #getHumanComprehensibilityComplexitySum()} are called.
+ *
+ *
+ * @author Christoph Michelbach
+ */
+<span class="fc" id="L35">public class EvaluableExpressionComplexityAnalyser {</span>
+
+	/**
+	 * Every expression with depth larger than this will receive {@link #DEPTH_PENALTY} of
+	 * penalty in human-comprehensibility.
+	 */
+	private static final int DEPTH_PENALTY_THRESHOLD = 2;
+
+	/**
+	 * If the maximum depth exceeds {@link #DEPTH_PENALTY_THRESHOLD}, the maximum depth to
+	 * the power of {@link PENALTY_MAX_DEPTH_EXPONTENT} times
+	 * {@link PENALTY_MAX_DEPTH_FACTOR} will be added to
+	 * {@link #humanComprehensibilityComplexitySum}.
+	 */
+	private static final double PENALTY_MAX_DEPTH_EXPONTENT = 1.4d;
+
+	/**
+	 * If the maximum depth exceeds {@link #DEPTH_PENALTY_THRESHOLD}, the maximum depth to
+	 * the power of {@link PENALTY_MAX_DEPTH_EXPONTENT} times
+	 * {@link PENALTY_MAX_DEPTH_FACTOR} will be added to
+	 * {@link #humanComprehensibilityComplexitySum}.
+	 */
+	private static final double PENALTY_MAX_DEPTH_FACTOR = 2.7d;
+
+	/**
+	 * The factor for the depth penalty of every expression branch. Every expression with
+	 * depth larger than {@link #DEPTH_PENALTY_THRESHOLD} will receive this much penalty
+	 * in human-comprehensibility in combination with {@link #DEPTH_PENALTY_EXPONENT}.
+	 */
+	private static final double DEPTH_PENATLY_FACOTOR = .5d;
+
+	/**
+	 * The exponent for the depth penalty of every expression branch. Every expression
+	 * with depth larger than {@link #DEPTH_PENALTY_THRESHOLD} will receive this much
+	 * penalty in human-comprehensibility in combination with
+	 * {@link #DEPTH_PENATLY_FACOTOR}.
+	 */
+	private static final double DEPTH_PENALTY_EXPONENT = 1.3d;
+
+	/**
+	 * The visitor this class uses.
+	 */
+	private Visitor visitor;
+
+	/**
+	 * Determines the computational and human-readability complexity of {@code expression}
+	 * .
+	 *
+	 * @param expression The {@link EvaluableExpression} to determine the complexity
+	 *            values for.
+	 */
+	public void determineComplexity(final EvaluableExpression expression) {
+<span class="fc" id="L87">		this.visitor = new Visitor();</span>
+<span class="fc" id="L88">		this.visitor.visitRecursively(expression);</span>
+
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		if (this.visitor.maxDepth &gt; DEPTH_PENALTY_THRESHOLD) {</span>
+<span class="fc" id="L91">			this.visitor.humanComprehensibilityComplexitySum +=</span>
+<span class="fc" id="L92">				PENALTY_MAX_DEPTH_FACTOR * Math.pow(this.visitor.maxDepth, PENALTY_MAX_DEPTH_EXPONTENT);</span>
+		}
+<span class="fc" id="L94">	}</span>
+
+	/**
+	 * Returns the computational complexity.
+	 *
+	 * &lt;p&gt;{@link #determineComplexity(EvaluableExpression)} must be called before this
+	 * method or an {@link IllegalStateException} will be thrown.
+	 *
+	 * @return The computationalComplexitySum.
+	 */
+	public double getComputationalComplexitySum() {
+<span class="fc bfc" id="L105" title="All 2 branches covered.">		Validate.validState(this.visitor != null);</span>
+
+<span class="fc" id="L107">		return this.visitor.computationalComplexitySum;</span>
+	}
+
+	/**
+	 * Returns the human-comprehensibility complexity.
+	 *
+	 * &lt;p&gt;{@link #determineComplexity(EvaluableExpression)} must be called before this
+	 * method or an {@link IllegalStateException} will be thrown.
+	 *
+	 * @return The humanComprehensibilityComplexitySum.
+	 */
+	public double getHumanComprehensibilityComplexitySum() {
+<span class="fc bfc" id="L119" title="All 2 branches covered.">		Validate.validState(this.visitor != null);</span>
+
+<span class="fc" id="L121">		return this.visitor.humanComprehensibilityComplexitySum;</span>
+	}
+
+	/**
+	 * Private class for hiding the visitor pattern.
+	 *
+	 * @author Christoph Michelbach
+	 */
+<span class="fc" id="L129">	private class Visitor extends RecursiveEvaluableExpressionVisitor {</span>
+
+		/**
+		 * The total computational complexity. The values added up to this sum have been
+		 * determined on a laptop with an Intel® Core™ i7-4720HQ CPU @ 2.60GHz × 8 (8
+		 * cores with Hyper-Threading; 4 cores physically) processor running Linux
+		 * 3.19.0-30-generic.
+		 */
+		private double computationalComplexitySum;
+
+		/**
+		 * The total human-readability complexity.
+		 */
+		private double humanComprehensibilityComplexitySum;
+
+		/**
+		 * The maximum depth of this expression.
+		 */
+		private int maxDepth;
+
+		@Override
+		protected void visitRecursively(final EvaluableExpression expression) {
+<span class="fc" id="L151">			super.visitRecursively(expression);</span>
+<span class="fc" id="L152">		}</span>
+
+		@Override
+		protected void atExpression(final EvaluableExpression expression) {
+<span class="fc bfc" id="L156" title="All 2 branches covered.">			if (this.getTraversalDepth() &gt; DEPTH_PENALTY_THRESHOLD) {</span>
+<span class="fc" id="L157">				this.humanComprehensibilityComplexitySum +=</span>
+<span class="fc" id="L158">					DEPTH_PENATLY_FACOTOR * Math.pow(this.getTraversalDepth(), DEPTH_PENALTY_EXPONENT);</span>
+			}
+
+<span class="fc bfc" id="L161" title="All 2 branches covered.">			if (this.getTraversalDepth() &gt; this.maxDepth) {</span>
+<span class="fc" id="L162">				this.maxDepth = this.getTraversalDepth();</span>
+			}
+<span class="fc" id="L164">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atAddition(de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)
+		 */
+		@Override
+		protected void atAddition(final AdditionExpression expression) {
+<span class="fc" id="L174">			final int numberOfElements = expression.getSummands().size();</span>
+
+<span class="fc" id="L176">			this.computationalComplexitySum += 1d * (numberOfElements - 1);</span>
+<span class="fc" id="L177">			this.humanComprehensibilityComplexitySum += 1d * (numberOfElements - 1);</span>
+
+<span class="fc" id="L179">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atMultiplication(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * MultiplicationExpression)
+		 */
+		@Override
+		protected void atMultiplication(final MultiplicationExpression expression) {
+<span class="fc" id="L190">			final int numberOfElements = expression.getFactors().size();</span>
+
+			// CHECKSTYLE:OFF
+<span class="fc" id="L193">			this.computationalComplexitySum += 1.6492450638792102d * (numberOfElements - 1);</span>
+<span class="fc" id="L194">			this.humanComprehensibilityComplexitySum += 3d * (numberOfElements - 1);</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L197">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atVariable(de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable)
+		 */
+		@Override
+		protected void atVariable(final EvaluableVariable expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L208">			this.computationalComplexitySum += 1d;</span>
+<span class="fc" id="L209">			this.humanComprehensibilityComplexitySum += 4d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L212">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atComparison(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * ComparisonExpression)
+		 */
+		@Override
+		protected void atComparison(final ComparisonExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L224">			this.computationalComplexitySum += 1d;</span>
+<span class="fc" id="L225">			this.humanComprehensibilityComplexitySum += 3d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L228">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atConstant(de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression)
+		 */
+		@Override
+		protected void atConstant(final ConstantExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L239">			this.computationalComplexitySum += .1d;</span>
+<span class="fc" id="L240">			this.humanComprehensibilityComplexitySum += .1d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L243">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atDivision(de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression)
+		 */
+		@Override
+		protected void atDivision(final DivisionExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L254">			this.computationalComplexitySum += 3.2740998838559814d;</span>
+<span class="fc" id="L255">			this.humanComprehensibilityComplexitySum += 7d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L258">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atExponentation(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * ExponentationExpression)
+		 */
+		@Override
+		protected void atExponentation(final ExponentationExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L270">			this.computationalComplexitySum += 2177.7277840269966d;</span>
+<span class="fc" id="L271">			this.humanComprehensibilityComplexitySum += 12d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L274">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atExponentialFunction(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * ExponentialFunctionExpression)
+		 */
+		@Override
+		protected void atExponentialFunction(final ExponentialFunctionExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L286">			this.computationalComplexitySum += 941.1764705882353d;</span>
+<span class="fc" id="L287">			this.humanComprehensibilityComplexitySum += 20d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L290">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atIfThenElse(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * IfThenElseExpression)
+		 */
+		@Override
+		protected void atIfThenElse(final IfThenElseExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L302">			this.computationalComplexitySum += 2d;</span>
+<span class="fc" id="L303">			this.humanComprehensibilityComplexitySum += 4d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L306">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atLogarithm(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * LogarithmExpression)
+		 */
+		@Override
+		protected void atLogarithm(final LogarithmExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L318">			this.computationalComplexitySum += 126.78362573099415d;</span>
+<span class="fc" id="L319">			this.humanComprehensibilityComplexitySum += 25d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L322">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atNaturalLogarithm(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * NaturalLogarithmExpression)
+		 */
+		@Override
+		protected void atNaturalLogarithm(final NaturalLogarithmExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L334">			this.computationalComplexitySum += 26.54729466718568d;</span>
+<span class="fc" id="L335">			this.humanComprehensibilityComplexitySum += 17d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L338">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atSine(de .uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression)
+		 */
+		@Override
+		protected void atSine(final SineExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L349">			this.computationalComplexitySum += 205.03680743897714d;</span>
+<span class="fc" id="L350">			this.humanComprehensibilityComplexitySum += 15d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L353">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.ExpressionTreeWalker#
+		 * atSubstraction(de.uka.ipd.sdq.beagle.core.evaluableexpressions.
+		 * SubtractionExpression)
+		 */
+		@Override
+		protected void atSubtraction(final SubtractionExpression expression) {
+			// CHECKSTYLE:OFF
+<span class="fc" id="L365">			this.computationalComplexitySum += 1d;</span>
+<span class="fc" id="L366">			this.humanComprehensibilityComplexitySum += 1.2d;</span>
+			// CHECKSTYLE:ON
+
+<span class="fc" id="L369">		}</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
