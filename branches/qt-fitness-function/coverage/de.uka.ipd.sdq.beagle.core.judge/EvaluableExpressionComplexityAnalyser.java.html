@@ -96,23 +96,29 @@ import org.apache.commons.lang3.Validate;
 	/**
 	 * Returns the computational complexity.
 	 *
+	 * &lt;p&gt;{@link #determineComplexity(EvaluableExpression)} must be called before this
+	 * method or an {@link IllegalStateException} will be thrown.
+	 *
 	 * @return The computationalComplexitySum.
 	 */
 	public double getComputationalComplexitySum() {
-<span class="fc bfc" id="L102" title="All 2 branches covered.">		Validate.validState(this.visitor != null);</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">		Validate.validState(this.visitor != null);</span>
 
-<span class="fc" id="L104">		return this.visitor.computationalComplexitySum;</span>
+<span class="fc" id="L107">		return this.visitor.computationalComplexitySum;</span>
 	}
 
 	/**
 	 * Returns the human-comprehensibility complexity.
 	 *
+	 * &lt;p&gt;{@link #determineComplexity(EvaluableExpression)} must be called before this
+	 * method or an {@link IllegalStateException} will be thrown.
+	 *
 	 * @return The humanComprehensibilityComplexitySum.
 	 */
 	public double getHumanComprehensibilityComplexitySum() {
-<span class="fc bfc" id="L113" title="All 2 branches covered.">		Validate.validState(this.visitor != null);</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">		Validate.validState(this.visitor != null);</span>
 
-<span class="fc" id="L115">		return this.visitor.humanComprehensibilityComplexitySum;</span>
+<span class="fc" id="L121">		return this.visitor.humanComprehensibilityComplexitySum;</span>
 	}
 
 	/**
@@ -120,7 +126,7 @@ import org.apache.commons.lang3.Validate;
 	 *
 	 * @author Christoph Michelbach
 	 */
-<span class="fc" id="L123">	private class Visitor extends RecursiveEvaluableExpressionVisitor {</span>
+<span class="fc" id="L129">	private class Visitor extends RecursiveEvaluableExpressionVisitor {</span>
 
 		/**
 		 * The total computational complexity. The values added up to this sum have been
@@ -142,20 +148,20 @@ import org.apache.commons.lang3.Validate;
 
 		@Override
 		protected void visitRecursively(final EvaluableExpression expression) {
-<span class="fc" id="L145">			super.visitRecursively(expression);</span>
-<span class="fc" id="L146">		}</span>
+<span class="fc" id="L151">			super.visitRecursively(expression);</span>
+<span class="fc" id="L152">		}</span>
 
 		@Override
 		protected void atExpression(final EvaluableExpression expression) {
-<span class="fc bfc" id="L150" title="All 2 branches covered.">			if (this.getTraversalDepth() &gt; DEPTH_PENALTY_THRESHOLD) {</span>
-<span class="fc" id="L151">				this.humanComprehensibilityComplexitySum +=</span>
-<span class="fc" id="L152">					DEPTH_PENATLY_FACOTOR * Math.pow(this.getTraversalDepth(), DEPTH_PENALTY_EXPONENT);</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">			if (this.getTraversalDepth() &gt; DEPTH_PENALTY_THRESHOLD) {</span>
+<span class="fc" id="L157">				this.humanComprehensibilityComplexitySum +=</span>
+<span class="fc" id="L158">					DEPTH_PENATLY_FACOTOR * Math.pow(this.getTraversalDepth(), DEPTH_PENALTY_EXPONENT);</span>
 			}
 
-<span class="fc bfc" id="L155" title="All 2 branches covered.">			if (this.getTraversalDepth() &gt; this.maxDepth) {</span>
-<span class="fc" id="L156">				this.maxDepth = this.getTraversalDepth();</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">			if (this.getTraversalDepth() &gt; this.maxDepth) {</span>
+<span class="fc" id="L162">				this.maxDepth = this.getTraversalDepth();</span>
 			}
-<span class="fc" id="L158">		}</span>
+<span class="fc" id="L164">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -165,12 +171,12 @@ import org.apache.commons.lang3.Validate;
 		 */
 		@Override
 		protected void atAddition(final AdditionExpression expression) {
-<span class="fc" id="L168">			final int numberOfElements = expression.getSummands().size();</span>
+<span class="fc" id="L174">			final int numberOfElements = expression.getSummands().size();</span>
 
-<span class="fc" id="L170">			this.computationalComplexitySum += 1d * (numberOfElements - 1);</span>
-<span class="fc" id="L171">			this.humanComprehensibilityComplexitySum += 1d * (numberOfElements - 1);</span>
+<span class="fc" id="L176">			this.computationalComplexitySum += 1d * (numberOfElements - 1);</span>
+<span class="fc" id="L177">			this.humanComprehensibilityComplexitySum += 1d * (numberOfElements - 1);</span>
 
-<span class="fc" id="L173">		}</span>
+<span class="fc" id="L179">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -181,14 +187,14 @@ import org.apache.commons.lang3.Validate;
 		 */
 		@Override
 		protected void atMultiplication(final MultiplicationExpression expression) {
-<span class="fc" id="L184">			final int numberOfElements = expression.getFactors().size();</span>
+<span class="fc" id="L190">			final int numberOfElements = expression.getFactors().size();</span>
 
 			// CHECKSTYLE:OFF
-<span class="fc" id="L187">			this.computationalComplexitySum += 1.6492450638792102d * (numberOfElements - 1);</span>
-<span class="fc" id="L188">			this.humanComprehensibilityComplexitySum += 3d * (numberOfElements - 1);</span>
+<span class="fc" id="L193">			this.computationalComplexitySum += 1.6492450638792102d * (numberOfElements - 1);</span>
+<span class="fc" id="L194">			this.humanComprehensibilityComplexitySum += 3d * (numberOfElements - 1);</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L191">		}</span>
+<span class="fc" id="L197">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -199,11 +205,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atVariable(final EvaluableVariable expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L202">			this.computationalComplexitySum += 1d;</span>
-<span class="fc" id="L203">			this.humanComprehensibilityComplexitySum += 4d;</span>
+<span class="fc" id="L208">			this.computationalComplexitySum += 1d;</span>
+<span class="fc" id="L209">			this.humanComprehensibilityComplexitySum += 4d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L206">		}</span>
+<span class="fc" id="L212">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -215,11 +221,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atComparison(final ComparisonExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L218">			this.computationalComplexitySum += 1d;</span>
-<span class="fc" id="L219">			this.humanComprehensibilityComplexitySum += 3d;</span>
+<span class="fc" id="L224">			this.computationalComplexitySum += 1d;</span>
+<span class="fc" id="L225">			this.humanComprehensibilityComplexitySum += 3d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L222">		}</span>
+<span class="fc" id="L228">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -230,11 +236,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atConstant(final ConstantExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L233">			this.computationalComplexitySum += .1d;</span>
-<span class="fc" id="L234">			this.humanComprehensibilityComplexitySum += .1d;</span>
+<span class="fc" id="L239">			this.computationalComplexitySum += .1d;</span>
+<span class="fc" id="L240">			this.humanComprehensibilityComplexitySum += .1d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L237">		}</span>
+<span class="fc" id="L243">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -245,11 +251,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atDivision(final DivisionExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L248">			this.computationalComplexitySum += 3.2740998838559814d;</span>
-<span class="fc" id="L249">			this.humanComprehensibilityComplexitySum += 7d;</span>
+<span class="fc" id="L254">			this.computationalComplexitySum += 3.2740998838559814d;</span>
+<span class="fc" id="L255">			this.humanComprehensibilityComplexitySum += 7d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L252">		}</span>
+<span class="fc" id="L258">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -261,11 +267,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atExponentation(final ExponentationExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L264">			this.computationalComplexitySum += 2177.7277840269966d;</span>
-<span class="fc" id="L265">			this.humanComprehensibilityComplexitySum += 12d;</span>
+<span class="fc" id="L270">			this.computationalComplexitySum += 2177.7277840269966d;</span>
+<span class="fc" id="L271">			this.humanComprehensibilityComplexitySum += 12d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L268">		}</span>
+<span class="fc" id="L274">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -277,11 +283,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atExponentialFunction(final ExponentialFunctionExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L280">			this.computationalComplexitySum += 941.1764705882353d;</span>
-<span class="fc" id="L281">			this.humanComprehensibilityComplexitySum += 20d;</span>
+<span class="fc" id="L286">			this.computationalComplexitySum += 941.1764705882353d;</span>
+<span class="fc" id="L287">			this.humanComprehensibilityComplexitySum += 20d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L284">		}</span>
+<span class="fc" id="L290">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -293,11 +299,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atIfThenElse(final IfThenElseExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L296">			this.computationalComplexitySum += 2d;</span>
-<span class="fc" id="L297">			this.humanComprehensibilityComplexitySum += 4d;</span>
+<span class="fc" id="L302">			this.computationalComplexitySum += 2d;</span>
+<span class="fc" id="L303">			this.humanComprehensibilityComplexitySum += 4d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L300">		}</span>
+<span class="fc" id="L306">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -309,11 +315,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atLogarithm(final LogarithmExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L312">			this.computationalComplexitySum += 126.78362573099415d;</span>
-<span class="fc" id="L313">			this.humanComprehensibilityComplexitySum += 25d;</span>
+<span class="fc" id="L318">			this.computationalComplexitySum += 126.78362573099415d;</span>
+<span class="fc" id="L319">			this.humanComprehensibilityComplexitySum += 25d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L316">		}</span>
+<span class="fc" id="L322">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -325,11 +331,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atNaturalLogarithm(final NaturalLogarithmExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L328">			this.computationalComplexitySum += 26.54729466718568d;</span>
-<span class="fc" id="L329">			this.humanComprehensibilityComplexitySum += 17d;</span>
+<span class="fc" id="L334">			this.computationalComplexitySum += 26.54729466718568d;</span>
+<span class="fc" id="L335">			this.humanComprehensibilityComplexitySum += 17d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L332">		}</span>
+<span class="fc" id="L338">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -340,11 +346,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atSine(final SineExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L343">			this.computationalComplexitySum += 205.03680743897714d;</span>
-<span class="fc" id="L344">			this.humanComprehensibilityComplexitySum += 15d;</span>
+<span class="fc" id="L349">			this.computationalComplexitySum += 205.03680743897714d;</span>
+<span class="fc" id="L350">			this.humanComprehensibilityComplexitySum += 15d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L347">		}</span>
+<span class="fc" id="L353">		}</span>
 
 		/*
 		 * (non-Javadoc)
@@ -356,11 +362,11 @@ import org.apache.commons.lang3.Validate;
 		@Override
 		protected void atSubtraction(final SubtractionExpression expression) {
 			// CHECKSTYLE:OFF
-<span class="fc" id="L359">			this.computationalComplexitySum += 1d;</span>
-<span class="fc" id="L360">			this.humanComprehensibilityComplexitySum += 1.2d;</span>
+<span class="fc" id="L365">			this.computationalComplexitySum += 1d;</span>
+<span class="fc" id="L366">			this.humanComprehensibilityComplexitySum += 1.2d;</span>
 			// CHECKSTYLE:ON
 
-<span class="fc" id="L363">		}</span>
+<span class="fc" id="L369">		}</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
