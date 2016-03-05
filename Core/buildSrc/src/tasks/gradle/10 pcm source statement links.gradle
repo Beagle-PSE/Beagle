@@ -1,0 +1,120 @@
+/**
+ * Creates Java classes out of the the PCM Source Statement Link XSL definition.
+ *
+ * @author Joshua Gleitze
+ */
+ 
+buildscript {
+	repositories {
+		jcenter()
+		mavenCentral()
+	}
+
+	dependencies {
+		classpath group: 'com.github.jacobono', name: 'gradle-jaxb-plugin', version: '1.3.6+'
+	}
+}
+
+import org.gradle.jacobo.plugins.JaxbPlugin
+apply plugin: JaxbPlugin
+
+dependencies {
+	jaxb 'com.sun.xml.bind:jaxb-xjc:2.2.7-b41'
+	jaxb 'com.sun.xml.bind:jaxb-impl:2.2.7-b41'
+	jaxb 'javax.xml.bind:jaxb-api:2.2.7'
+}
+
+def psslSchemaDefinitionFolder = "Core/src/main/resources/de/uka/ipd/sdq/beagle/core/pcmsourcestatementlink"
+def psslSourceFileFolder = file("$buildDir/jaxb-src")
+def psslCompilationDestination = file("$buildDir/classes/generated")
+def psslJarDestFolder = file("$buildDir/generated")
+def psslJarName = 'pcm-source-statement-links'
+def userLanguage = System.getProperty('user.language')
+def psslInputFiles = [ "$rootDir/$psslSchemaDefinitionFolder/PCM Source Statement Links.xsd", "$rootDir/$psslSchemaDefinitionFolder/PCM Source Statement Links Bindings.xjb" ]
+
+project.ext {
+	pcmSourceStatementLinksSourceCode =	psslSourceFileFolder
+}
+
+jaxb {
+	xsdDir = psslSchemaDefinitionFolder
+	bindingsDir = psslSchemaDefinitionFolder
+	bindings = ['PCM Source Statement Links Bindings.xjb']
+	
+	xjc {     
+		destinationDir = psslSourceFileFolder
+		episodesDir = 'Core/build/tmp/jaxb-episodes'
+		header = false
+		args = ['-mark-generated']
+	}
+}
+
+task prepareXjc {
+	inputs.files psslInputFiles
+	outputs.dir psslSourceFileFolder
+
+	doLast {
+		System.setProperty('javax.xml.accessExternalSchema', 'all')
+		System.setProperty('user.language', 'en')
+		delete psslSourceFileFolder
+		psslSourceFileFolder.mkdirs()
+		
+		// The task’s up-to-date check is broken, so we disable it. up-to-date checking is done by pcmSourceStatementLinks
+		xjc.inputs.files psslInputFiles
+		xjc.outputs.dir psslSourceFileFolder
+	}
+}
+
+task compileXjc(type: JavaCompile) {
+	dependsOn xjc
+	
+	inputs.dir psslSourceFileFolder
+	outputs.dir psslCompilationDestination
+	
+	source psslSourceFileFolder
+	classpath = files(psslSourceFileFolder)
+	destinationDir psslCompilationDestination
+}
+
+task pcmSourceStatementLinksSource(type: Jar) {
+	dependsOn xjc
+	
+	inputs.files "$rootDir/$psslSchemaDefinitionFolder/PCM Source Statement Links.xsd", "$rootDir/$psslSchemaDefinitionFolder/PCM Source Statement Links Bindings.xjb"
+	outputs.file archivePath
+	
+	classifier 'sources'
+	baseName psslJarName
+	version '1.0.0'
+	destinationDir = psslJarDestFolder
+	from psslSourceFileFolder
+}
+	
+task pcmSourceStatementLinks(type: Jar) {
+	group "Build"
+	description "Packs the Java classes to edit the PCM Source Statement Links model into a jar"
+	
+	from psslCompilationDestination
+	baseName psslJarName
+	version '1.0.0'
+	destinationDir = psslJarDestFolder
+	
+	inputs.files "$rootDir/$psslSchemaDefinitionFolder/PCM Source Statement Links.xsd", "$rootDir/$psslSchemaDefinitionFolder/PCM Source Statement Links Bindings.xjb"
+	outputs.file archivePath
+	dependsOn compileXjc, pcmSourceStatementLinksSource
+	
+	doLast {
+		System.setProperty('user.language', userLanguage)
+	}
+}
+
+xjc.dependsOn prepareXjc
+compileJava.dependsOn pcmSourceStatementLinks
+
+
+configure(rootProject.javaSubprojects) {
+	repositories {
+		flatDir {
+			dirs psslJarDestFolder
+		}
+	}
+}

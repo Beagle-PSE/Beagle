@@ -24,6 +24,11 @@ ext.eclipseSubprojects = subprojects.findAll { project ->
 }
 
 allprojects {
+	repositories {
+		jcenter()
+		mavenCentral()
+	}
+	
 	// All subprojects have a build and clean task
 	if (tasks.findByPath('build') == null) {
 		task build {
