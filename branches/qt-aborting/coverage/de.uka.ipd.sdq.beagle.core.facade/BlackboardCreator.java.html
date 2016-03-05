@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 
+import org.apache.commons.lang3.Validate;
 import org.palladiosimulator.pcm.usagemodel.Branch;
 
 import java.util.Set;
@@ -21,7 +22,7 @@ import java.util.Set;
  *
  * @author Roman Langrehr
  */
-<span class="nc" id="L24">public class BlackboardCreator {</span>
+<span class="fc" id="L25">public class BlackboardCreator {</span>
 
 	/**
 	 * The {@linkplain ResourceDemandingInternalAction ResourceDemandingInternalActions}
@@ -68,85 +69,95 @@ import java.util.Set;
 	 *
 	 */
 	public Blackboard createBlackboard() {
-<span class="nc bnc" id="L71" title="All 12 branches missed.">		if (this.rdias == null || this.branches == null || this.externalCalls == null || this.fitnessFunction == null</span>
-			|| this.projectInformation == null || this.pcmMappings == null) {
-<span class="nc" id="L73">			throw new IllegalStateException(&quot;Not everything has been setup yet.&quot;);</span>
+<span class="fc bfc" id="L72" title="All 14 branches covered.">		if (this.rdias == null || this.branches == null || this.loops == null || this.externalCalls == null</span>
+			|| this.fitnessFunction == null || this.projectInformation == null || this.pcmMappings == null) {
+<span class="fc" id="L74">			throw new IllegalStateException(&quot;Not everything has been setup yet.&quot;);</span>
 		}
-<span class="nc" id="L75">		final Blackboard blackboard = new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls,</span>
+<span class="fc" id="L76">		final Blackboard blackboard = new Blackboard(this.rdias, this.branches, this.loops, this.externalCalls,</span>
 			this.fitnessFunction, this.projectInformation);
 
-<span class="nc" id="L78">		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, this.pcmMappings);</span>
-<span class="nc" id="L79">		return blackboard;</span>
+<span class="fc" id="L79">		blackboard.writeFor(PcmRepositoryBlackboardFactoryAdder.class, this.pcmMappings);</span>
+<span class="fc" id="L80">		return blackboard;</span>
 	}
 
 	/**
 	 * Sets the {@link PcmBeagleMappings} for the {@link Blackboard} to create.
 	 *
 	 * @param pcmMappings the {@link PcmBeagleMappings} for the {@link Blackboard} to
-	 *            create.
+	 *            create. May not be {@code null}.
 	 */
 	public void setPcmMappings(final PcmBeagleMappings pcmMappings) {
-<span class="nc" id="L89">		this.pcmMappings = pcmMappings;</span>
-<span class="nc" id="L90">	}</span>
+<span class="fc" id="L90">		Validate.notNull(pcmMappings);</span>
+<span class="fc" id="L91">		this.pcmMappings = pcmMappings;</span>
+<span class="fc" id="L92">	}</span>
 
 	/**
 	 * Sets the {@linkplain ResourceDemandingInternalAction
 	 * ResourceDemandingInternalActions} for the {@link Blackboard}.
 	 *
 	 * @param rdias the {@linkplain ResourceDemandingInternalAction
-	 *            ResourceDemandingInternalActions} for the {@link Blackboard}
+	 *            ResourceDemandingInternalActions} for the {@link Blackboard}. May not be
+	 *            {@code null}.
 	 */
 	public void setRdias(final Set&lt;ResourceDemandingInternalAction&gt; rdias) {
-<span class="nc" id="L100">		this.rdias = rdias;</span>
-<span class="nc" id="L101">	}</span>
+<span class="fc" id="L103">		Validate.notNull(rdias);</span>
+<span class="fc" id="L104">		this.rdias = rdias;</span>
+<span class="fc" id="L105">	}</span>
 
 	/**
 	 * Sets the {@linkplain Branch Branches} for the {@link Blackboard}.
 	 *
-	 * @param branches the {@linkplain Branch Branches} for the {@link Blackboard}
+	 * @param branches the {@linkplain Branch Branches} for the {@link Blackboard}. May
+	 *            not be {@code null}.
 	 */
 	public void setBranches(final Set&lt;SeffBranch&gt; branches) {
-<span class="nc" id="L109">		this.branches = branches;</span>
-<span class="nc" id="L110">	}</span>
+<span class="fc" id="L114">		Validate.notNull(branches);</span>
+<span class="fc" id="L115">		this.branches = branches;</span>
+<span class="fc" id="L116">	}</span>
 
 	/**
 	 * Sets the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}.
 	 *
-	 * @param loops the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}
+	 * @param loops the {@linkplain SeffLoop SeffLoops} for the {@link Blackboard}. May
+	 *            not be {@code null}.
 	 */
 	public void setLoops(final Set&lt;SeffLoop&gt; loops) {
-<span class="nc" id="L118">		this.loops = loops;</span>
-<span class="nc" id="L119">	}</span>
+<span class="fc" id="L125">		Validate.notNull(loops);</span>
+<span class="fc" id="L126">		this.loops = loops;</span>
+<span class="fc" id="L127">	}</span>
 
 	/**
 	 * The {@linkplain ExternalCallParameter ExternalCallParameter} for the
 	 * {@link Blackboard}.
 	 *
 	 * @param externalCalls the {@linkplain ExternalCallParameter ExternalCallParameter}
-	 *            for the {@link Blackboard}
+	 *            for the {@link Blackboard}. May not be {@code null}.
 	 */
 	public void setExternalCalls(final Set&lt;ExternalCallParameter&gt; externalCalls) {
-<span class="nc" id="L129">		this.externalCalls = externalCalls;</span>
-<span class="nc" id="L130">	}</span>
+<span class="fc" id="L137">		Validate.notNull(externalCalls);</span>
+<span class="fc" id="L138">		this.externalCalls = externalCalls;</span>
+<span class="fc" id="L139">	}</span>
 
 	/**
 	 * The {@link EvaluableExpressionFitnessFunction} for the {@link Blackboard}.
 	 *
 	 * @param fitnessFunction The {@link EvaluableExpressionFitnessFunction} for the
-	 *            {@link Blackboard}.
+	 *            {@link Blackboard}. May not be {@code null}.
 	 */
 	public void setFitnessFunction(final EvaluableExpressionFitnessFunction fitnessFunction) {
-<span class="nc" id="L139">		this.fitnessFunction = fitnessFunction;</span>
-<span class="nc" id="L140">	}</span>
+<span class="fc" id="L148">		Validate.notNull(fitnessFunction);</span>
+<span class="fc" id="L149">		this.fitnessFunction = fitnessFunction;</span>
+<span class="fc" id="L150">	}</span>
 
 	/**
 	 * Sets the {@link ProjectInformation} for the {@link Blackboard}.
 	 *
 	 * @param projectInformation the {@link ProjectInformation} for the {@link Blackboard}
-	 *            .
+	 *            . May not be {@code null}. .
 	 */
 	public void setProjectInformation(final ProjectInformation projectInformation) {
-<span class="nc" id="L149">		this.projectInformation = projectInformation;</span>
-<span class="nc" id="L150">	}</span>
+<span class="fc" id="L159">		Validate.notNull(projectInformation);</span>
+<span class="fc" id="L160">		this.projectInformation = projectInformation;</span>
+<span class="fc" id="L161">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

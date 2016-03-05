@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ExpressionTreeWalker.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a> &gt; <span class="el_source">ExpressionTreeWalker.java</span></div><h1>ExpressionTreeWalker.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
+
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
+
+/**
+ * Interface for visitors traversing an {@linkplain EvaluableExpression
+ * EvaluableExpression’s} inner expressions. This class does not define the logic of the
+ * traversal but only a common interface with hooks to interact with it.
+ *
+ * &lt;p&gt;Implementors will define an algorithm resulting in some
+ * {@linkplain EvaluableExpression inner expressions} of an
+ * {@linkplain EvaluableExpression} (hereafter to be called the “root expression”) being
+ * visited and left in a certain order. The following hook types are offered:
+ *
+ * &lt;ul&gt;
+ *
+ * &lt;li&gt;{@code at}: called when the traversal first reaches an expression.
+ *
+ * &lt;li&gt;{@code after}: called when leaving an expression.
+ *
+ * &lt;/ul&gt;
+ *
+ * &lt;p&gt;Every hook type is offered for every {@linkplain EvaluableExpression} in
+ * {@link de.uka.ipd.sdq.beagle.core.evaluableexpressions}. Additionally, there is an
+ * {@code other} hook for each type. It is called for every expression type no hook was
+ * defined for. If a hook is to be defined for an expression type but the {@code other}
+ * hook is to be called for the expression anyway, the {@code super} hook can be called.
+ * Example:
+ *
+ * &lt;pre&gt;
+ * &lt;code&gt;
+ * class MyWalker extends ExpressionTreeWalker {
+ *
+ * 	&amp;#64;Override
+ * 	void atAddition(AdditionExpression expression) {
+ * 		// some code
+ * 	}
+ *
+ * 	&amp;#64;Override
+ * 	void atMultiplication(MultiplicationExpression expression) {
+ * 		// some code
+ * 		super.atMultiplication(expression);
+ * 		// more code
+ * 	}
+ *
+ * 	&amp;#64;Override
+ * 	void atOther(EvaluableExpression expression) {
+ * 		// will be called for every expression but AdditionExpressions
+ * 	}
+ * }
+ * &lt;/code&gt;
+ * &lt;/pre&gt;
+ *
+ * {@code MyWalker#atOther} will be called when first visiting any
+ * {@linkplain EvaluableExpression}, except when visiting an
+ * {@linkplain AdditionExpression}.
+ *
+ * &lt;p&gt;Furthermore, the class offers two general purpose hooks, {@link #atExpression} and
+ * {@link #afterExpression}, that are always called for any expression. These will be
+ * called &lt;em&gt;before&lt;/em&gt; the expression’s specific hook (which implies that they will
+ * also be called before the {@code other} hook).
+ *
+ * @author Joshua Gleitze
+ */
+<span class="fc" id="L78">public abstract class ExpressionTreeWalker {</span>
+
+	/**
+	 * Queries how many expressions have been visited during the momentary traversal. This
+	 * value is only reset when starting a new visit a new expression, it can thus be used
+	 * to determine how many expressions were visited after a traversal.
+	 *
+	 * @return The amount of visited expressions during the current visit.
+	 */
+	protected abstract int getVisitedCount();
+
+	/**
+	 * Queries how “deep” the currently visited expression is in the visited tree.
+	 *
+	 * @return how many {@code at} hooks have been called - how many {@code after} hooks
+	 *         have been called - 1. Will be {@code 0} at the root expression and
+	 *         {@code -1} at the before and after a traversal.
+	 */
+	protected abstract int getTraversalDepth();
+
+	/**
+	 * Called when first visiting any {@link EvaluableExpression} no hook was defined for.
+	 * See the class description for details.
+	 *
+	 * @param expression The momentarily visited expression.
+	 * @see #atExpression(EvaluableExpression)
+	 */
+	protected void atOther(final EvaluableExpression expression) {
+		// may be implemented by implementor.
+<span class="fc" id="L107">	}</span>
+
+	/**
+	 * Called when visiting any {@link EvaluableExpression}. Contrary to
+	 * {@link #atOther(EvaluableExpression)}, this hook will always be called, no matter
+	 * if an overridden specific hook exists for {@code expression}.
+	 *
+	 * @param expression The momentarily visited expression.
+	 * @see #atOther(EvaluableExpression)
+	 */
+	protected void atExpression(final EvaluableExpression expression) {
+		// may be implemented by implementor
+<span class="fc" id="L119">	}</span>
+
+	/**
+	 * Called when first visiting an {@link AdditionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atAddition(final AdditionExpression expression) {
+<span class="fc" id="L127">		this.atOther(expression);</span>
+<span class="fc" id="L128">	}</span>
+
+	/**
+	 * Called when first visiting a {@link MultiplicationExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atMultiplication(final MultiplicationExpression expression) {
+<span class="fc" id="L136">		this.atOther(expression);</span>
+<span class="fc" id="L137">	}</span>
+
+	/**
+	 * Called when first visiting an {@link EvaluableVariable}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atVariable(final EvaluableVariable expression) {
+<span class="fc" id="L145">		this.atOther(expression);</span>
+<span class="fc" id="L146">	}</span>
+
+	/**
+	 * Called when first visiting a {@link ComparisonExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atComparison(final ComparisonExpression expression) {
+<span class="fc" id="L154">		this.atOther(expression);</span>
+<span class="fc" id="L155">	}</span>
+
+	/**
+	 * Called when first visiting a {@link ConstantExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atConstant(final ConstantExpression expression) {
+<span class="fc" id="L163">		this.atOther(expression);</span>
+<span class="fc" id="L164">	}</span>
+
+	/**
+	 * Called when first visiting a {@link DivisionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atDivision(final DivisionExpression expression) {
+<span class="fc" id="L172">		this.atOther(expression);</span>
+<span class="fc" id="L173">	}</span>
+
+	/**
+	 * Called when first visiting an {@link ExponentationExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atExponentation(final ExponentationExpression expression) {
+<span class="fc" id="L181">		this.atOther(expression);</span>
+<span class="fc" id="L182">	}</span>
+
+	/**
+	 * Called when first visiting an {@link ExponentialFunctionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atExponentialFunction(final ExponentialFunctionExpression expression) {
+<span class="fc" id="L190">		this.atOther(expression);</span>
+<span class="fc" id="L191">	}</span>
+
+	/**
+	 * Called when first visiting an {@link IfThenElseExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atIfThenElse(final IfThenElseExpression expression) {
+<span class="fc" id="L199">		this.atOther(expression);</span>
+<span class="fc" id="L200">	}</span>
+
+	/**
+	 * Called when first visiting a {@link LogarithmExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atLogarithm(final LogarithmExpression expression) {
+<span class="fc" id="L208">		this.atOther(expression);</span>
+<span class="fc" id="L209">	}</span>
+
+	/**
+	 * Called when first visiting a {@link NaturalLogarithmExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atNaturalLogarithm(final NaturalLogarithmExpression expression) {
+<span class="fc" id="L217">		this.atOther(expression);</span>
+<span class="fc" id="L218">	}</span>
+
+	/**
+	 * Called when first visiting a {@link SineExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atSine(final SineExpression expression) {
+<span class="fc" id="L226">		this.atOther(expression);</span>
+<span class="fc" id="L227">	}</span>
+
+	/**
+	 * Called when first visiting a {@link SubtractionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void atSubtraction(final SubtractionExpression expression) {
+<span class="fc" id="L235">		this.atOther(expression);</span>
+<span class="fc" id="L236">	}</span>
+
+	/**
+	 * Called when leaving any {@link EvaluableExpression} no hook was defined for. See
+	 * the class description for details.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterOther(final EvaluableExpression expression) {
+		// may be implemented by implementor.
+<span class="fc" id="L246">	}</span>
+
+	/**
+	 * Called when leaving any {@link EvaluableExpression}. Contrary to
+	 * {@link #afterOther(EvaluableExpression)}, this hook will always be called, no
+	 * matter if an overridden specific hook exists for {@code expression}.
+	 *
+	 * @param expression The momentarily visited expression.
+	 * @see #afterOther(EvaluableExpression)
+	 */
+	protected void afterExpression(final EvaluableExpression expression) {
+		// may be implemented by implementor
+<span class="fc" id="L258">	}</span>
+
+	/**
+	 * Called when leaving an {@link AdditionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterAddition(final AdditionExpression expression) {
+<span class="fc" id="L266">		this.afterOther(expression);</span>
+<span class="fc" id="L267">	}</span>
+
+	/**
+	 * Called when leaving a {@link MultiplicationExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterMultiplication(final MultiplicationExpression expression) {
+<span class="fc" id="L275">		this.afterOther(expression);</span>
+<span class="fc" id="L276">	}</span>
+
+	/**
+	 * Called when leaving an {@link EvaluableVariable}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterVariable(final EvaluableVariable expression) {
+<span class="fc" id="L284">		this.afterOther(expression);</span>
+<span class="fc" id="L285">	}</span>
+
+	/**
+	 * Called when leaving a {@link ComparisonExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterComparison(final ComparisonExpression expression) {
+<span class="fc" id="L293">		this.afterOther(expression);</span>
+<span class="fc" id="L294">	}</span>
+
+	/**
+	 * Called when leaving a {@link ConstantExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterConstant(final ConstantExpression expression) {
+<span class="fc" id="L302">		this.afterOther(expression);</span>
+<span class="fc" id="L303">	}</span>
+
+	/**
+	 * Called when leaving a {@link DivisionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterDivision(final DivisionExpression expression) {
+<span class="fc" id="L311">		this.afterOther(expression);</span>
+<span class="fc" id="L312">	}</span>
+
+	/**
+	 * Called when leaving an {@link ExponentationExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterExponentation(final ExponentationExpression expression) {
+<span class="fc" id="L320">		this.afterOther(expression);</span>
+<span class="fc" id="L321">	}</span>
+
+	/**
+	 * Called when leaving an {@link ExponentialFunctionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterExponentialFunction(final ExponentialFunctionExpression expression) {
+<span class="fc" id="L329">		this.afterOther(expression);</span>
+<span class="fc" id="L330">	}</span>
+
+	/**
+	 * Called when leaving an {@link IfThenElseExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterIfThenElse(final IfThenElseExpression expression) {
+<span class="fc" id="L338">		this.afterOther(expression);</span>
+<span class="fc" id="L339">	}</span>
+
+	/**
+	 * Called when leaving a {@link LogarithmExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterLogarithm(final LogarithmExpression expression) {
+<span class="fc" id="L347">		this.afterOther(expression);</span>
+<span class="fc" id="L348">	}</span>
+
+	/**
+	 * Called when leaving a {@link NaturalLogarithmExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterNaturalLogarithm(final NaturalLogarithmExpression expression) {
+<span class="fc" id="L356">		this.afterOther(expression);</span>
+<span class="fc" id="L357">	}</span>
+
+	/**
+	 * Called when leaving a {@link SineExpression}, after its inner expressions will be
+	 * visited.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterSine(final SineExpression expression) {
+<span class="fc" id="L366">		this.afterOther(expression);</span>
+<span class="fc" id="L367">	}</span>
+
+	/**
+	 * Called when leaving a {@link SubtractionExpression}.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	protected void afterSubtraction(final SubtractionExpression expression) {
+<span class="fc" id="L375">		this.afterOther(expression);</span>
+<span class="fc" id="L376">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

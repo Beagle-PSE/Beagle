@@ -97,11 +97,20 @@ var activeTableTab = "activeTableTab";
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/AbstractEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">AbstractEvaluableExpressionVisitor</a></dd>
+</dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">EvaluableExpressionVisitor</span></pre>
-<div class="block">Provides methods to visit all evaluable expressions. Implements the well known Visitor
- Pattern.</div>
+<div class="block">Provides methods to visit any <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpression</a>. Implements the well
+ known Visitor Pattern.
+
+ <p>This interface defines <code>visit</code> methods <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableExpressions</a> call to register themselves at the visitor. These methods are not
+ meant to be used by clients. Implementors are advised not to implement this interface
+ directly, but to rather use a private nested class to do so. This will hide the visitor
+ interface from clients.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="https://en.wikipedia.org/wiki/Visitor_pattern">The Visitor Pattern on
