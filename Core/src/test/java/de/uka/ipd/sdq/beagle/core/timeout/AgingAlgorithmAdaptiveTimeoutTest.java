@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -36,11 +37,11 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
 		mockStatic(System.class);
 		given(System.currentTimeMillis()).willReturn(0L);
-		adaptTimeout.implementationInit();
+		adaptTimeout.init();
 		assertThat(adaptTimeout.isReached(), equalTo(false));
 
 		final AgingAlgorithmAdaptiveTimeout adaptTimeout2 = new AgingAlgorithmAdaptiveTimeout();
-		adaptTimeout2.implementationInit();
+		adaptTimeout2.init();
 		given(System.currentTimeMillis()).willReturn(2L * (3600 * 1000));
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 	}
@@ -51,7 +52,7 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 	@Test
 	public void reportOneStepProgress() {
 		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
-		adaptTimeout.implementationInit();
+		adaptTimeout.init();
 		adaptTimeout.reportOneStepProgress();
 	}
 
@@ -61,15 +62,27 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 	@Test
 	public void init() {
 		final AgingAlgorithmAdaptiveTimeout adaptTimeout1 = new AgingAlgorithmAdaptiveTimeout();
-		adaptTimeout1.implementationInit();
+		adaptTimeout1.init();
 		final ThrowingMethod method = () -> {
-			adaptTimeout1.implementationInit();
+			adaptTimeout1.init();
 		};
 		assertThat("adaptTimeout1 must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
 
 		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
-		adaptTimeout.implementationInit();
+		adaptTimeout.init();
+	}
+
+	/**
+	 * Test method for {@link AgingAlgorithmAdaptiveTimeout#notifyOnReachedTimeout()}.
+	 */
+	@Test
+	public void notifyOnReachedTimeout() {
+		final Runnable callback1 = mock(Runnable.class);
+		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
+		adaptTimeout.registerCallback(callback1);
+		adaptTimeout.init();
+
 	}
 
 }
