@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.core.timeout;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
@@ -58,6 +59,30 @@ public class LinearRegressionAdaptiveTimeoutTest {
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout.reportOneStepProgress();
 		}
+
+		final LinearRegressionAdaptiveTimeout adaptTimeout1 = new LinearRegressionAdaptiveTimeout();
+		adaptTimeout1.init();
+		given(System.currentTimeMillis()).willReturn(1000L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2000L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2500L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2750L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2800L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2810L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2815L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2817L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(2818L);
+		adaptTimeout1.reportOneStepProgress();
+		given(System.currentTimeMillis()).willReturn(100000000000L);
+		adaptTimeout1.reportOneStepProgress();
+		assertThat(adaptTimeout1.isReached(), is(equalTo(true)));
 
 		final LinearRegressionAdaptiveTimeout adaptTimeout4 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout4.init();
