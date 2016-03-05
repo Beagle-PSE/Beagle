@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ProjectInformation.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">ProjectInformation.java</span></div><h1>ProjectInformation.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+
+import org.apache.commons.lang3.Validate;
+
+import java.io.Serializable;
+import java.nio.charset.Charset;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Holds information about the project under analysis. Objects of this class are
+ * immutable.
+ *
+ * @author Roman Langrehr
+ */
+public class ProjectInformation implements Serializable {
+
+	/**
+	 * See {@link Serializable}.
+	 */
+	private static final long serialVersionUID = 2451089669559562551L;
+
+	/**
+	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
+	 * seconds]
+	 */
+	private final int timeout;
+
+	/**
+	 * The provider of the source files to be analysed.
+	 */
+	private final SourceCodeFileProvider fileProvider;
+
+	/**
+	 * The class path containing everything needed to compile the project.
+	 */
+	private final String buildPath;
+
+	/**
+	 * The charset used for all files in the project.
+	 */
+	private final Charset charset;
+
+	/**
+	 * The configurations defining how to launch the measured software.
+	 */
+	private final Set&lt;LaunchConfiguration&gt; launchConfigurations;
+
+	/**
+	 * Creates a new Project Information.
+	 *
+	 * @param timeout The timeout to be used.
+	 *
+	 *            &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
+	 *
+	 *            &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will
+	 *            use a timeout that adapts to the quality of the analysis’ findings in
+	 *            the past.&lt;/td&gt;
+	 *
+	 *            &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will
+	 *            be used&lt;/td&gt;
+	 *
+	 *            &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed
+	 *            timeout in seconds&lt;/td&gt;
+	 *
+	 *            &lt;/table&gt;
+	 * @param fileProvider The provider of the source files to be analysed.
+	 * @param buildPath The class path containing everything needed to compile the
+	 *            project.
+	 * @param charset The charset used for all files in the project. May be {@code null},
+	 *            in this case {@link Charset#defaultCharset()} will be used.
+	 * @param launchConfigurations The configurations defining how to launch the measured
+	 *            software. Must not be {@code null}, must not contain {@code null}, must
+	 *            not be empty.
+	 */
+	public ProjectInformation(final int timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
+<span class="fc" id="L80">		final Charset charset, final Set&lt;LaunchConfiguration&gt; launchConfigurations) {</span>
+<span class="fc" id="L81">		Validate.notNull(fileProvider);</span>
+<span class="fc" id="L82">		Validate.notNull(buildPath);</span>
+<span class="fc" id="L83">		Validate.noNullElements(launchConfigurations);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">		Validate.isTrue(!launchConfigurations.isEmpty(), &quot;The launch configurations may not be empty&quot;);</span>
+
+<span class="fc" id="L86">		this.timeout = timeout;</span>
+<span class="fc" id="L87">		this.fileProvider = fileProvider;</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		this.charset = charset == null ? Charset.defaultCharset() : charset;</span>
+<span class="fc" id="L89">		this.buildPath = buildPath;</span>
+<span class="fc" id="L90">		this.launchConfigurations = new HashSet&lt;&gt;(launchConfigurations);</span>
+<span class="fc" id="L91">	}</span>
+
+	/**
+	 * Queries the project’s build path.
+	 *
+	 * @return The class path containing everything needed to compile the project. Will
+	 *         never be {@code null}.
+	 */
+	public String getBuildPath() {
+<span class="fc" id="L100">		return this.buildPath;</span>
+	}
+
+	/**
+	 * Queries the project’s charset.
+	 *
+	 * @return The charset used for all files in the project. Will never be {@code null}.
+	 */
+	public Charset getCharset() {
+<span class="fc" id="L109">		return this.charset;</span>
+	}
+
+	/**
+	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
+	 * keep trying to find results while no perfect results were found.
+	 *
+	 * &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will use a
+	 * timeout that adapts to the quality of the analysis’ findings in the past.&lt;/td&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will be used&lt;/td&gt;
+	 *
+	 * &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed timeout in
+	 * seconds&lt;/td&gt;
+	 *
+	 * &lt;/table&gt;
+	 *
+	 * @return The timeout that will be used by Beagle.
+	 */
+	public int getTimeout() {
+<span class="fc" id="L131">		return this.timeout;</span>
+	}
+
+	/**
+	 * Queries the provider responsible to get the source files Beagle shall analyse.
+	 *
+	 *
+	 * @return The provider of source files.
+	 */
+	public SourceCodeFileProvider getFileProvider() {
+<span class="fc" id="L141">		return this.fileProvider;</span>
+	}
+
+	/**
+	 * Queries the configurations defining how to launch the measured software.
+	 *
+	 * @return The project’s launch configurations. Will neither be {@code null}, nor
+	 *         contain {@code null}, nor be empty.
+	 */
+	public Set&lt;LaunchConfiguration&gt; getLaunchConfigurations() {
+<span class="fc" id="L151">		return new HashSet&lt;&gt;(this.launchConfigurations);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
