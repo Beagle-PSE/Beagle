@@ -78,20 +78,18 @@ public class BeagleController {
 <span class="nc" id="L78">		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());</span>
 <span class="nc" id="L79">		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();</span>
 
-<span class="nc" id="L81">		final Set&lt;LaunchConfiguration&gt; launchConfigurations =</span>
-<span class="nc" id="L82">			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())</span>
-<span class="nc" id="L83">				.getAllSuitableJUnitLaunchConfigurations();</span>
-<span class="nc" id="L84">		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
+<span class="nc" id="L81">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = beagleConfiguration.getLaunchConfigurations();</span>
+<span class="nc" id="L82">		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 
-<span class="nc" id="L87">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
-<span class="nc" id="L88">		this.blackboard = blackboardFactory.createBlackboard();</span>
-<span class="nc" id="L89">		this.analysisController = new AnalysisController(this.blackboard,</span>
-<span class="nc" id="L90">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
-<span class="nc" id="L91">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
+<span class="nc" id="L85">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
+<span class="nc" id="L86">		this.blackboard = blackboardFactory.createBlackboard();</span>
+<span class="nc" id="L87">		this.analysisController = new AnalysisController(this.blackboard,</span>
+<span class="nc" id="L88">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
+<span class="nc" id="L89">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
 			new HashSet&lt;&gt;(
-<span class="nc" id="L93">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
-<span class="nc" id="L94">	}</span>
+<span class="nc" id="L91">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
+<span class="nc" id="L92">	}</span>
 
 	/**
 	 * Starts the analysis. This method can only be used once per {@link BeagleController}
@@ -99,9 +97,9 @@ public class BeagleController {
 	 *
 	 */
 	public void startAnalysis() {
-<span class="nc" id="L102">		this.analysisController.performAnalysis();</span>
-<span class="nc" id="L103">		new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
-<span class="nc" id="L104">	}</span>
+<span class="nc" id="L100">		this.analysisController.performAnalysis();</span>
+<span class="nc" id="L101">		new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
+<span class="nc" id="L102">	}</span>
 
 	/**
 	 * Reads the default charset of an {@link IJavaProject}.
@@ -111,12 +109,12 @@ public class BeagleController {
 	 */
 	private Charset readCharset(final IJavaProject javaProject) {
 		try {
-<span class="nc" id="L114">			return Charset.forName(javaProject.getProject().getDefaultCharset());</span>
-<span class="nc" id="L115">		} catch (final CoreException coreException) {</span>
-<span class="nc" id="L116">			final FailureReport&lt;Object&gt; failure = new FailureReport&lt;&gt;().cause(coreException)</span>
-<span class="nc" id="L117">				.continueWith(Charset::defaultCharset)</span>
-<span class="nc" id="L118">				.retryWith(() -&gt; this.readCharset(javaProject));</span>
-<span class="nc" id="L119">			return (Charset) FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L112">			return Charset.forName(javaProject.getProject().getDefaultCharset());</span>
+<span class="nc" id="L113">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L114">			final FailureReport&lt;Object&gt; failure = new FailureReport&lt;&gt;().cause(coreException)</span>
+<span class="nc" id="L115">				.continueWith(Charset::defaultCharset)</span>
+<span class="nc" id="L116">				.retryWith(() -&gt; this.readCharset(javaProject));</span>
+<span class="nc" id="L117">			return (Charset) FAILURE_HANDLER.handle(failure);</span>
 		}
 	}
 
@@ -127,7 +125,7 @@ public class BeagleController {
 	 */
 	public void pauseAnalysis() {
 
-<span class="nc" id="L130">	}</span>
+<span class="nc" id="L128">	}</span>
 
 	/**
 	 * Continues the analysis if it is paused. If it's running, calls to this method are
@@ -136,7 +134,7 @@ public class BeagleController {
 	 */
 	public void continueAnalysis() {
 
-<span class="nc" id="L139">	}</span>
+<span class="nc" id="L137">	}</span>
 
 	/**
 	 * Aborts the analysis. If it already is aborted, calls to this method are ignored.
@@ -146,6 +144,6 @@ public class BeagleController {
 	 */
 	public void abortAnalysis() {
 
-<span class="nc" id="L149">	}</span>
+<span class="nc" id="L147">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

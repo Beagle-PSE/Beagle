@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BeagleConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.facade</a> &gt; <span class="el_source">BeagleConfiguration.java</span></div><h1>BeagleConfiguration.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.facade;
 
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
@@ -9,6 +10,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Configures a whole execution of Beagle. Therefore contains all values needed to set up
@@ -55,6 +57,11 @@ public class BeagleConfiguration {
 	private boolean finalised;
 
 	/**
+	 * The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the analysis.
+	 */
+	private Set&lt;LaunchConfiguration&gt; launchConfigurations;
+
+	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 *
@@ -63,22 +70,22 @@ public class BeagleConfiguration {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-<span class="fc" id="L66">	public BeagleConfiguration(final List&lt;String&gt; elements, final File repositoryFile, final IJavaProject javaProject) {</span>
-<span class="fc" id="L67">		Validate.notNull(repositoryFile);</span>
-<span class="fc" id="L68">		Validate.notNull(javaProject);</span>
+<span class="fc" id="L73">	public BeagleConfiguration(final List&lt;String&gt; elements, final File repositoryFile, final IJavaProject javaProject) {</span>
+<span class="fc" id="L74">		Validate.notNull(repositoryFile);</span>
+<span class="fc" id="L75">		Validate.notNull(javaProject);</span>
 
-<span class="fc bfc" id="L70" title="All 2 branches covered.">		if (!repositoryFile.exists()) {</span>
-<span class="fc" id="L71">			throw new IllegalArgumentException(&quot;Repository file must exist.&quot;);</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		if (!repositoryFile.exists()) {</span>
+<span class="fc" id="L78">			throw new IllegalArgumentException(&quot;Repository file must exist.&quot;);</span>
 		}
 
-<span class="fc bfc" id="L74" title="All 2 branches covered.">		if (elements != null) {</span>
-<span class="fc" id="L75">			this.elements = new LinkedList&lt;&gt;(elements);</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">		if (elements != null) {</span>
+<span class="fc" id="L82">			this.elements = new LinkedList&lt;&gt;(elements);</span>
 		}
 
-<span class="fc" id="L78">		this.repositoryFile = repositoryFile;</span>
-<span class="fc" id="L79">		this.timeout = new AdaptiveTimeout();</span>
-<span class="fc" id="L80">		this.javaProject = javaProject;</span>
-<span class="fc" id="L81">	}</span>
+<span class="fc" id="L85">		this.repositoryFile = repositoryFile;</span>
+<span class="fc" id="L86">		this.timeout = new AdaptiveTimeout();</span>
+<span class="fc" id="L87">		this.javaProject = javaProject;</span>
+<span class="fc" id="L88">	}</span>
 
 	/**
 	 * Gives the {@link IJavaProject} to analyse.
@@ -86,7 +93,7 @@ public class BeagleConfiguration {
 	 * @return the {@link IJavaProject} to analyse.
 	 */
 	public IJavaProject getJavaProject() {
-<span class="fc" id="L89">		return this.javaProject;</span>
+<span class="fc" id="L96">		return this.javaProject;</span>
 	}
 
 	/**
@@ -97,7 +104,7 @@ public class BeagleConfiguration {
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
 	 */
 	public List&lt;String&gt; getElements() {
-<span class="fc" id="L100">		return this.elements;</span>
+<span class="fc" id="L107">		return this.elements;</span>
 	}
 
 	/**
@@ -114,14 +121,14 @@ public class BeagleConfiguration {
 	 * @see #getElements()
 	 */
 	public void setElements(final List&lt;String&gt; elements) {
-<span class="fc bfc" id="L117" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="pc bpc" id="L119" title="1 of 2 branches missed.">		if (elements == null) {</span>
-<span class="nc" id="L120">			this.elements = null;</span>
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">		if (elements == null) {</span>
+<span class="nc" id="L127">			this.elements = null;</span>
 		} else {
-<span class="fc" id="L122">			this.elements = new LinkedList&lt;&gt;(elements);</span>
+<span class="fc" id="L129">			this.elements = new LinkedList&lt;&gt;(elements);</span>
 		}
-<span class="fc" id="L124">	}</span>
+<span class="fc" id="L131">	}</span>
 
 	/**
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
@@ -130,7 +137,7 @@ public class BeagleConfiguration {
 	 * @return The timeout that will be used by Beagle.
 	 */
 	public Timeout getTimeout() {
-<span class="fc" id="L133">		return this.timeout;</span>
+<span class="fc" id="L140">		return this.timeout;</span>
 	}
 
 	/**
@@ -143,10 +150,36 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setTimeout(final Timeout timeout) {
-<span class="fc bfc" id="L146" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L148">		this.timeout = timeout;</span>
-<span class="fc" id="L149">	}</span>
+<span class="fc" id="L155">		this.timeout = timeout;</span>
+<span class="fc" id="L156">	}</span>
+
+	/**
+	 * Returns the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis.
+	 *
+	 * @return The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 *         analysis.
+	 */
+	public Set&lt;LaunchConfiguration&gt; getLaunchConfigurations() {
+<span class="nc" id="L166">		return this.launchConfigurations;</span>
+	}
+
+	/**
+	 * Sets the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis. This operation is only allowed in the &lt;em&gt;set up&lt;/em&gt; state.
+	 *
+	 * @param launchConfigurations The {@linkplain LaunchConfiguration
+	 *            LaunchConfigurations} to use for the analysis.
+	 * @throws IllegalStateException If this configuration is not in the &lt;em&gt;set up&lt;/em&gt;
+	 *             state.
+	 */
+	public void setLaunchConfigurations(final Set&lt;LaunchConfiguration&gt; launchConfigurations) {
+<span class="nc bnc" id="L179" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
+<span class="nc" id="L181">		this.launchConfigurations = launchConfigurations;</span>
+<span class="nc" id="L182">	}</span>
 
 	/**
 	 * Returns the repository file that contains all elements that shall be analysed.
@@ -154,7 +187,7 @@ public class BeagleConfiguration {
 	 * @return The repository file Beagle will operate on.
 	 */
 	public File getRepositoryFile() {
-<span class="fc" id="L157">		return this.repositoryFile;</span>
+<span class="fc" id="L190">		return this.repositoryFile;</span>
 	}
 
 	/**
@@ -168,11 +201,11 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setRepositoryFile(final File repositoryFile) {
-<span class="fc bfc" id="L171" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L204" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L173">		Validate.notNull(repositoryFile);</span>
-<span class="fc" id="L174">		this.repositoryFile = repositoryFile;</span>
-<span class="fc" id="L175">	}</span>
+<span class="fc" id="L206">		Validate.notNull(repositoryFile);</span>
+<span class="fc" id="L207">		this.repositoryFile = repositoryFile;</span>
+<span class="fc" id="L208">	}</span>
 
 	/**
 	 * Queries whether this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state.
@@ -181,7 +214,7 @@ public class BeagleConfiguration {
 	 *         {@code false} if it’s in the &lt;em&gt;set up&lt;/em&gt; state.
 	 */
 	public boolean isFinal() {
-<span class="fc" id="L184">		return this.finalised;</span>
+<span class="fc" id="L217">		return this.finalised;</span>
 	}
 
 	/**
@@ -190,8 +223,8 @@ public class BeagleConfiguration {
 	 * &lt;em&gt;finalised&lt;/em&gt; state has no effect.
 	 */
 	public void finalise() {
-<span class="fc" id="L193">		this.finalised = true;</span>
-<span class="fc" id="L194">	}</span>
+<span class="fc" id="L226">		this.finalised = true;</span>
+<span class="fc" id="L227">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
