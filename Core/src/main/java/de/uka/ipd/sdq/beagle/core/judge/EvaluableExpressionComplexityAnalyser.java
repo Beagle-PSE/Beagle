@@ -35,16 +35,35 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	private static final int DEPTH_PENALTY_THRESHOLD = 2;
 
 	/**
-	 * Every expression with depth larger than {@link #DEPTH_PENALTY_THRESHOLD} will
-	 * receive this much penalty in human-comprehensibility.
+	 * If the maximum depth exceeds {@link #DEPTH_PENALTY_THRESHOLD}, the maximum depth to
+	 * the power of {@link PENALTY_MAX_DEPTH_EXPONTENT} times
+	 * {@link PENALTY_MAX_DEPTH_FACTOR} will be added to
+	 * {@link #humanComprehensibilityComplexitySum}.
 	 */
-	private static final double DEPTH_PENALTY = .3d;
+	private static final double PENALTY_MAX_DEPTH_EXPONTENT = 1.4d;
 
 	/**
 	 * If the maximum depth exceeds {@link #DEPTH_PENALTY_THRESHOLD}, the maximum depth to
-	 * the power of this will be added to {@link #humanComprehensibilityComplexitySum}.
+	 * the power of {@link PENALTY_MAX_DEPTH_EXPONTENT} times
+	 * {@link PENALTY_MAX_DEPTH_FACTOR} will be added to
+	 * {@link #humanComprehensibilityComplexitySum}.
 	 */
-	private static final double EXPONENT_PENALTY_MAX_DEPTH = 1.4d;
+	private static final double PENALTY_MAX_DEPTH_FACTOR = 2.7d;
+
+	/**
+	 * The factor for the depth penalty of every expression branch. Every expression with
+	 * depth larger than {@link #DEPTH_PENALTY_THRESHOLD} will receive this much penalty
+	 * in human-comprehensibility in combination with {@link #DEPTH_PENALTY_EXPONENT}.
+	 */
+	private static final double DEPTH_PENATLY_FACOTOR = .5d;
+
+	/**
+	 * The exponent for the depth penalty of every expression branch. Every expression
+	 * with depth larger than {@link #DEPTH_PENALTY_THRESHOLD} will receive this much
+	 * penalty in human-comprehensibility in combination with
+	 * {@link #DEPTH_PENATLY_FACOTOR}.
+	 */
+	private static final double DEPTH_PENALTY_EXPONENT = 1.3d;
 
 	/**
 	 * The total computational complexity. The values added up to this sum have been
@@ -67,7 +86,8 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	@Override
 	protected void atExpression(final EvaluableExpression expression) {
 		if (this.getTraversalDepth() > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += DEPTH_PENALTY;
+			this.humanComprehensibilityComplexitySum +=
+				DEPTH_PENATLY_FACOTOR * Math.pow(this.getTraversalDepth(), DEPTH_PENALTY_EXPONENT);
 		}
 
 		if (this.getTraversalDepth() > this.maxDepth) {
@@ -289,7 +309,8 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 		this.visitRecursively(expression);
 
 		if (this.maxDepth > DEPTH_PENALTY_THRESHOLD) {
-			this.humanComprehensibilityComplexitySum += Math.pow(this.maxDepth, EXPONENT_PENALTY_MAX_DEPTH);
+			this.humanComprehensibilityComplexitySum +=
+				PENALTY_MAX_DEPTH_FACTOR * Math.pow(this.maxDepth, PENALTY_MAX_DEPTH_EXPONTENT);
 		}
 	}
 
