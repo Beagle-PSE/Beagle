@@ -2,13 +2,27 @@
 <!-- This is a schema for XML files that link PCM elements to source code statements the PCM element represents. -->
 <xsd:schema xmlns="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink">
 	
+	<!-- An index that must be greater than 0 -->
+	<xsd:simpleType name="CharacterIndex">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- A Java type’s fully qualified name -->
+	<xsd:simpleType name="JavaFullyQualifiedName">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([\p{L}_$][\p{L}\p{N}_$]*\.)*[\p{L}_$][\p{L}\p{N}_$]*" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
 	<!-- Defines a position in a source code file -->
 	<xsd:complexType name="SourceCodePosition">
 		<!--  The index of the character -->
 		<xsd:simpleContent>
-			<xsd:extension base="xsd:int">
+			<xsd:extension base="CharacterIndex">
 				<!-- The fully qualified name of the java file that contains the indexed character -->
-				<xsd:attribute name="sourceCodeFile" type="xsd:string" />
+				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" />
 			</xsd:extension>
 		</xsd:simpleContent>
 	</xsd:complexType>
@@ -19,7 +33,7 @@
 		<xsd:simpleContent>
 			<xsd:extension base="xsd:string">
 				<!-- The fully qualified name of the java file that is hashed -->
-				<xsd:attribute name="sourceCodeFile" type="xsd:string" />
+				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" />
 				<!-- The hash algorithm that was used to generate the hash -->
 				<xsd:attribute name="algorithm" default="md5" />
 			</xsd:extension>
@@ -35,6 +49,8 @@
 			the statement defined in firstStatement is assumed to be both the first and last statement. -->
 			<xsd:element name="LastStatement" type="SourceCodePosition" minOccurs="0" maxOccurs="1" />
 		</xsd:sequence>
+		<!-- Note: de.uka.ipd.sdq.identifier.Identifier states: Identifiers are not fixed to one realization. Therefore,
+		we put no restrictions on this attribute’s content. -->
 		<xsd:attribute name="pcmElementId" type="xsd:string" />
 	</xsd:complexType>
 
@@ -43,9 +59,18 @@
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="PcmSourceStatementLink" type="PcmSourceStatementLink" minOccurs="1" maxOccurs="unbounded" />
-				<xsd:element name="SourceCodeFileHash" type="SourceCodeFileHash" minOccurs="1" maxOccurs="unbounded" />
+				<xsd:element name="SourceCodeFileHash" type="SourceCodeFileHash" minOccurs="1" maxOccurs="unbounded">
+				</xsd:element>
 			</xsd:sequence>
 		</xsd:complexType>
+		<xsd:unique name="OnlyOneHashPerFile">
+			<xsd:selector xpath="SourceCodeFileHash" />
+			<xsd:field xpath="@sourceCodeFile" />
+		</xsd:unique>
+		<xsd:unique name="OnlyOneLinkPerPcmElement">
+			<xsd:selector xpath="PcmSourceStatementLink" />
+			<xsd:field xpath="@pcmElementId" />
+		</xsd:unique>
 	</xsd:element>
 	
 </xsd:schema>
