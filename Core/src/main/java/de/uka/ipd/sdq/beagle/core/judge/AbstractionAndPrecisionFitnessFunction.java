@@ -26,6 +26,29 @@ import java.util.Set;
  */
 public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressionFitnessFunction {
 
+	/**
+	 * Defines how important human-comprehensibility is compared to low computational
+	 * complexity. Values are ϵ [0, 1]. The importance of computational complexity is
+	 * {@code 1 - HUMAN_COMPREHENSIBILITY_VALUE}.
+	 */
+	private static final double HUMAN_COMPREHENSIBILITY_VALUE = .5d;
+
+	/**
+	 * Defines how important human-comprehensibility and low computational complexity are
+	 * compared to precision. The importance of precision is {@code 1 - NICE_VALUE}.
+	 */
+	private static final double NICE_VALUE = .2d;
+
+	/**
+	 * Norms the human-comprehensibility.
+	 */
+	private static final double HUMAN_COMPREHENSIBILITY_NORMATION = .01d;
+
+	/**
+	 * Norms the computational complexity.
+	 */
+	private static final double COMPUTATIONIONAL_COMPLEXITY_NORMATION = .01d;
+
 	@Override
 	public double gradeFor(final ResourceDemandingInternalAction rdia, final EvaluableExpression expression,
 		final EvaluableExpressionFitnessFunctionBlackboardView blackboard) {
@@ -56,7 +79,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / resourceDemandMeasurementResults.size();
 		}
 
-		return meanSquareDeviation;
+		return this.determineFitnessValue(expression, meanSquareDeviation);
 	}
 
 	@Override
@@ -89,7 +112,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / branchDecisionMeasurementResults.size();
 		}
 
-		return meanSquareDeviation;
+		return this.determineFitnessValue(expression, meanSquareDeviation);
 	}
 
 	@Override
@@ -125,7 +148,7 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / loopRepetitionCountMeasurementResults.size();
 		}
 
-		return meanSquareDeviation;
+		return this.determineFitnessValue(expression, meanSquareDeviation);
 	}
 
 	@Override
@@ -158,6 +181,31 @@ public class AbstractionAndPrecisionFitnessFunction implements EvaluableExpressi
 			meanSquareDeviation += squareDeviation / parameterChangeMeasurementResults.size();
 		}
 
-		return meanSquareDeviation;
+		return this.determineFitnessValue(expression, meanSquareDeviation);
+	}
+
+	/**
+	 * Determines the fitness value of {@code expression}.
+	 *
+	 * @param expression The {@link EvaluableExpression}.
+	 * @param meanSquareDeviation The mean square deviation of {@code expression} from the
+	 *            measured values.
+	 * @return The fitness value of {@code expression}.
+	 */
+	private double determineFitnessValue(final EvaluableExpression expression, final double meanSquareDeviation) {
+		final EvaluableExpressionComplexityAnalyser evaluableExpressionComplexityAnalyser =
+			new EvaluableExpressionComplexityAnalyser();
+		evaluableExpressionComplexityAnalyser.determineComplexity(expression);
+
+		final double humanComprehensibilityComplexity =
+			evaluableExpressionComplexityAnalyser.getHumanComprehensibilityComplexitySum()
+				* HUMAN_COMPREHENSIBILITY_NORMATION;
+		final double computationalComplexity = evaluableExpressionComplexityAnalyser.getComputationalComplexitySum()
+			* COMPUTATIONIONAL_COMPLEXITY_NORMATION;
+
+		final double combinedComplexity = HUMAN_COMPREHENSIBILITY_VALUE * humanComprehensibilityComplexity
+			+ (1 - HUMAN_COMPREHENSIBILITY_VALUE) * computationalComplexity;
+
+		return NICE_VALUE * combinedComplexity + (1 - NICE_VALUE) * meanSquareDeviation;
 	}
 }
