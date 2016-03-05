@@ -4,6 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.lessThan;
+import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -289,6 +290,16 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		given(expression.evaluate(any())).willReturn(2.0);
 		given(expression2.evaluate(any())).willReturn(10.32);
 		assertThat(function.gradeFor(parameter, expression, blackboardView), is(Double.POSITIVE_INFINITY));
+	}
+
+	/**
+	 * Asserts that more complex {@link EvaluableExpression}s are graded worse than simpler ones
+	 * with same result.
+	 *
+	 */
+	@Test
+	public void gradeMoreComplexWorse() {
+		fail("Not implemented yet.");
 	}
 
 }
