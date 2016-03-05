@@ -111,7 +111,7 @@ public class AnalysisController {
 		this.proposedExpressionAnalysers = new HashSet<>(proposedExpressionAnalysers);
 
 		final Callback callback = new Callback(Thread.currentThread());
-		new Thread(callback).start();
+		this.blackboard.getProjectInformation().getTimeout().registerCallback(callback);
 	}
 
 	/**
