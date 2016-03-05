@@ -52,7 +52,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
  * 	&#64;Override
  * 	void atMultiplication(MultiplicationExpression expression) {
  * 		// some code
- * 		supre.atMultiplication(expression);
+ * 		super.atMultiplication(expression);
  * 		// more code
  * 	}
  *
