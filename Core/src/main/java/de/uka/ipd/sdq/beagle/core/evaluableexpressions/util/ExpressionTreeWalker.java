@@ -52,7 +52,7 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
  * 	&#64;Override
  * 	void atMultiplication(MultiplicationExpression expression) {
  * 		// some code
- * 		supre.atMultiplication(expression);
+ * 		super.atMultiplication(expression);
  * 		// more code
  * 	}
  *
@@ -76,6 +76,24 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
  * @author Joshua Gleitze
  */
 public abstract class ExpressionTreeWalker {
+
+	/**
+	 * Queries how many expressions have been visited during the momentary traversal. This
+	 * value is only reset when starting a new visit a new expression, it can thus be used
+	 * to determine how many expressions were visited after a traversal.
+	 *
+	 * @return The amount of visited expressions during the current visit.
+	 */
+	protected abstract int getVisitedCount();
+
+	/**
+	 * Queries how “deep” the currently visited expression is in the visited tree.
+	 *
+	 * @return how many {@code at} hooks have been called - how many {@code after} hooks
+	 *         have been called - 1. Will be {@code 0} at the root expression and
+	 *         {@code -1} at the before and after a traversal.
+	 */
+	protected abstract int getTraversalDepth();
 
 	/**
 	 * Called when first visiting any {@link EvaluableExpression} no hook was defined for.
@@ -213,7 +231,7 @@ public abstract class ExpressionTreeWalker {
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void atSubstraction(final SubtractionExpression expression) {
+	protected void atSubtraction(final SubtractionExpression expression) {
 		this.atOther(expression);
 	}
 
@@ -353,7 +371,7 @@ public abstract class ExpressionTreeWalker {
 	 *
 	 * @param expression The momentary visited expression.
 	 */
-	protected void afterSubstraction(final SubtractionExpression expression) {
+	protected void afterSubtraction(final SubtractionExpression expression) {
 		this.afterOther(expression);
 	}
 

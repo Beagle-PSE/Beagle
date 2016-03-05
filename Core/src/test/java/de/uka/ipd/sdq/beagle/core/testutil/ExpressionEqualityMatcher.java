@@ -81,19 +81,37 @@ public final class ExpressionEqualityMatcher extends TypeSafeMatcher<EvaluableEx
 			return false;
 		}
 
-		// Make it unlikely to let the result “escape” to infinity
-		final double maxExponent = Double.MAX_EXPONENT - 30;
+		/*
+		 * The code below will generate pseudo-random numbers whose absolute value is
+		 * equally distributed over the magnitudes to base 2 allowed in a double. The
+		 * values will always be within the range defined by magnitudeVariation to keep
+		 * the calculation error in check.
+		 */
+
+		// Make it reasonable unlikely to let the result “escape” to infinity or zero
+		// during the calculation.
+		final int maxExponent = Double.MAX_EXPONENT - 30;
+		final int minExponent = Double.MIN_EXPONENT + 30;
 		// This will always produce the same values!
 		final Random numberSource = new Random(12345678);
-		final int amountOfCombinations = 100;
+		final int amountOfCombinations = 1000;
 		final double epsilon = Math.pow(2, -15);
-		final double variation = Math.pow(2, 10);
+		// the variation we allow for the generated values. The values will not leave the
+		// magnitude defined by this value.
+		final double magnitudeVariation = 10;
 
 		for (int i = 0; i < amountOfCombinations; i++) {
 			final EvaluableVariableAssignment assignment = new EvaluableVariableAssignment();
-			final double sizeFactor = Math.pow(2, numberSource.nextDouble() * maxExponent);
-			for (EvaluableVariable variable : variablesOfReference) {
-				final double value = (numberSource.nextBoolean() ? -1 : 1) * variation * sizeFactor;
+
+			// Defines the generated values’ minimum magnitude
+			final int minimumMagnitude =
+				numberSource.nextInt((int) (maxExponent - 1 - magnitudeVariation + Math.abs(minExponent)))
+					+ minExponent;
+			final double minimumValue = Math.pow(2, minimumMagnitude);
+			final double maximumValue = Math.pow(2, minimumMagnitude + magnitudeVariation);
+			for (final EvaluableVariable variable : variablesOfReference) {
+				final double sign = numberSource.nextBoolean() ? -1 : 1;
+				final double value = sign * (maximumValue - minimumValue) * numberSource.nextDouble() + minimumValue;
 				assignment.setValueFor(variable, value);
 			}
 

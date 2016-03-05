@@ -39,20 +39,17 @@ import java.util.Collection;
  * <p>This visitor will start at the expression passed to
  * {@link #modifyRecursively(EvaluableExpression)} and call the according {@code at} hook.
  * Afterwards, it will recursively visit all inner expressions and then call the
- * {@code after} hook. If {@link #stopTraversal()} is called, the traversal will no longer
- * visit inner expressions. Instead, it will go “up” the tree again, whilst calling the
- * {@code after} hooks, until it reached the initial expression and then terminate. Given
- * that no expression is thrown,the traversal of one expression tree that only contains
- * pairwise different inner expressions has these properties:
+ * {@code after} hook. Given that no expression is thrown, the traversal of one expression
+ * tree that only contains pairwise different inner expressions has these properties:
  *
  * <ul>
  *
  * <li> the number of all called {@code at} hooks will equal the number of all called
  * {@code after} hooks. However, the numbers may differ for a type of specific hooks
- * because the expression was changed during the visit. For example
- * {@link #atSubstraction} may be called on an expression that is replaced by an
- * {@linkplain AdditionExpression} in this hook. Thus {@link #afterAddition} will be
- * called instead of {@link #afterSubstraction} at this position when traversing upwards.
+ * because the expression was changed during the visit. For example {@code atSubstraction}
+ * may be called on an expression that is replaced by an {@linkplain AdditionExpression}
+ * in this hook. Thus {@code afterAddition} will be called instead of
+ * {@code afterSubstraction} at this position when traversing upwards.
  *
  * <li> if for two expression {@code e1} and {@code e2}, {@code atExpression(e1)} was
  * called before {@code atExpression(e2)} was, {@code afterExpression(e2)} will be called
@@ -63,7 +60,7 @@ import java.util.Collection;
  * <p>Please note that evaluable expressions may often contain an instance of one
  * evaluable expression multiple times. Replacements do however only apply to the current
  * position in the traversal tree (and not all occurences of the currently visited
- * expression).
+ * expression). For every new visit, traversing of inner expressions will be enabled.
  *
  * <p>This visitor is not thread safe. It may only be used to traverse one expression at a
  * time, meaning that its results are undefined if
@@ -74,7 +71,7 @@ import java.util.Collection;
  * @author Joshua Gleitze
  * @see ExpressionTreeWalker
  */
-public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTreeWalker {
+public abstract class ModifyingEvaluableExpressionVisitor extends PartialExpressionTreeWalker {
 
 	/**
 	 * The momentarily visited expression. It can change multiple times at the same tree
@@ -91,12 +88,6 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 	 * How many expressions we’ve seen so far. Will be 1 at the root.
 	 */
 	private int count;
-
-	/**
-	 * As long as this is true, we’ll traverse further. We’ll immediately stop to traverse
-	 * deeper as soon as this is false.
-	 */
-	private boolean doTraverse = true;
 
 	/**
 	 * The visitor handling the calls to the {@code at} hooks.
@@ -133,7 +124,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		this.count++;
 
 		// call at-hooks
-		this.atOther(this.currentExpression);
+		this.atExpression(this.currentExpression);
 		this.currentExpression.receive(this.atHookHandler);
 
 		// visit inner expressions
@@ -143,7 +134,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		this.lastInnerExpressionIterator = oldInnerExpressionIterator;
 
 		// call after-hooks
-		this.afterOther(this.currentExpression);
+		this.afterExpression(this.currentExpression);
 		this.currentExpression.receive(this.afterHookHandler);
 		this.depth--;
 	}
@@ -164,7 +155,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		this.lastInnerExpressionIterator = null;
 		this.count = 0;
 		this.depth = -1;
-		this.doTraverse = true;
+		this.startTraversingInnerExpressions();
 
 		this.next();
 
@@ -199,57 +190,14 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		}
 	}
 
-	/**
-	 * Queries how many expressions have been visited during the momentary traversal. This
-	 * value is only reset when starting a new visit a new expression, it can thus be used
-	 * to determine how many expressions were visited after a traversal.
-	 *
-	 * @return The amount of visited expressions since the last call to
-	 *         {@link #modifyRecursively(EvaluableExpression)}.
-	 */
+	@Override
 	protected int getVisitedCount() {
 		return this.count;
 	}
 
-	/**
-	 * Queries how “deep” the currently visited expression is in the visited tree.
-	 *
-	 * @return how many {@code at} hooks have been called - how many {@code after} hooks
-	 *         have been called - 1. Will be {@code 0} at the root expression and
-	 *         {@code -1} at the before and after a traversal.
-	 */
+	@Override
 	protected int getTraversalDepth() {
 		return this.depth;
-	}
-
-	/**
-	 * Stops visiting of inner expressions. As soon as this method is called, this visitor
-	 * will no longer visit inner expressions. This means that only {@code after} hooks of
-	 * already visited expressions will be called until the root is reached. This setting
-	 * persists only until the next call of
-	 * {@link #modifyRecursively(EvaluableExpression)} .
-	 */
-	protected void stopTraversal() {
-		this.doTraverse = false;
-	}
-
-	/**
-	 * Continues visiting of inner expressions after it has been stopped through
-	 * {@link #stopTraversal()}. This returns to the visitor’s default behaviour.
-	 */
-	protected void continueTraversal() {
-		this.doTraverse = true;
-	}
-
-	/**
-	 * Queries whether the visitor will visit inner expressions. Will return {@code true}
-	 * unless {@link #stopTraversal()} is called. The value will be reset when calling
-	 * {@link #modifyRecursively(EvaluableExpression)}.
-	 *
-	 * @return Whether inner expressions will be examined for the momentary tree.
-	 */
-	protected boolean willTraverse() {
-		return this.doTraverse;
 	}
 
 	/**
@@ -346,9 +294,10 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		private void visitInner(final EvaluableExpression... currentInnerExpressions) {
 			this.innerExpressions = currentInnerExpressions;
 
-			// iterate over all as long as doTraverse is true.
+			// iterate over all as long further traversing is not stopped
 			for (this.innerExpressionIndex = 0; this.innerExpressionIndex < this.innerExpressions.length
-				&& ModifyingEvaluableExpressionVisitor.this.doTraverse; this.innerExpressionIndex++) {
+				&& ModifyingEvaluableExpressionVisitor.this
+					.willTraverseInnerExpressions(); this.innerExpressionIndex++) {
 				ModifyingEvaluableExpressionVisitor.this.currentExpression =
 					this.innerExpressions[this.innerExpressionIndex];
 				ModifyingEvaluableExpressionVisitor.this.next();
@@ -382,7 +331,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 
 		@Override
 		public void visit(final DivisionExpression expression) {
-			this.visitInner(expression.getDivisor(), expression.getDividend());
+			this.visitInner(expression.getDividend(), expression.getDivisor());
 		}
 
 		@Override
@@ -437,7 +386,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 		/**
 		 * The maximal number of arguments any expression constructor takes.
 		 */
-		private final int three = 3;
+		private static final int TWO = 2;
 
 		/**
 		 * Will hold the new curren expression.
@@ -509,7 +458,7 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
-			this.result = new IfThenElseExpression(this.inner[0], this.inner[1], this.inner[this.three]);
+			this.result = new IfThenElseExpression(this.inner[0], this.inner[1], this.inner[TWO]);
 		}
 
 		@Override
@@ -543,80 +492,67 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 
 		@Override
 		public void visit(final AdditionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atAddition(expression);
 		}
 
 		@Override
 		public void visit(final MultiplicationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atMultiplication(expression);
 		}
 
 		@Override
 		public void visit(final EvaluableVariable variable) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(variable);
 			ModifyingEvaluableExpressionVisitor.this.atVariable(variable);
 		}
 
 		@Override
 		public void visit(final ComparisonExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atComparison(expression);
 		}
 
 		@Override
 		public void visit(final ConstantExpression constant) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(constant);
 			ModifyingEvaluableExpressionVisitor.this.atConstant(constant);
 		}
 
 		@Override
 		public void visit(final DivisionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atDivision(expression);
 		}
 
 		@Override
 		public void visit(final ExponentationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atExponentation(expression);
 		}
 
 		@Override
 		public void visit(final ExponentialFunctionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atExponentialFunction(expression);
 		}
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atIfThenElse(expression);
 		}
 
 		@Override
 		public void visit(final LogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final NaturalLogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atNaturalLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final SineExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.atSine(expression);
 		}
 
 		@Override
 		public void visit(final SubtractionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.atExpression(expression);
-			ModifyingEvaluableExpressionVisitor.this.atSubstraction(expression);
+			ModifyingEvaluableExpressionVisitor.this.atSubtraction(expression);
 		}
 	}
 
@@ -630,80 +566,67 @@ public abstract class ModifyingEvaluableExpressionVisitor extends ExpressionTree
 
 		@Override
 		public void visit(final AdditionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterAddition(expression);
 		}
 
 		@Override
 		public void visit(final MultiplicationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterMultiplication(expression);
 		}
 
 		@Override
 		public void visit(final EvaluableVariable variable) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(variable);
 			ModifyingEvaluableExpressionVisitor.this.afterVariable(variable);
 		}
 
 		@Override
 		public void visit(final ComparisonExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterComparison(expression);
 		}
 
 		@Override
 		public void visit(final ConstantExpression constant) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(constant);
 			ModifyingEvaluableExpressionVisitor.this.afterConstant(constant);
 		}
 
 		@Override
 		public void visit(final DivisionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterDivision(expression);
 		}
 
 		@Override
 		public void visit(final ExponentationExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterExponentation(expression);
 		}
 
 		@Override
 		public void visit(final ExponentialFunctionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterExponentialFunction(expression);
 		}
 
 		@Override
 		public void visit(final IfThenElseExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterIfThenElse(expression);
 		}
 
 		@Override
 		public void visit(final LogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final NaturalLogarithmExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterNaturalLogarithm(expression);
 		}
 
 		@Override
 		public void visit(final SineExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
 			ModifyingEvaluableExpressionVisitor.this.afterSine(expression);
 		}
 
 		@Override
 		public void visit(final SubtractionExpression expression) {
-			ModifyingEvaluableExpressionVisitor.this.afterExpression(expression);
-			ModifyingEvaluableExpressionVisitor.this.afterSubstraction(expression);
+			ModifyingEvaluableExpressionVisitor.this.afterSubtraction(expression);
 		}
 	}
 }
