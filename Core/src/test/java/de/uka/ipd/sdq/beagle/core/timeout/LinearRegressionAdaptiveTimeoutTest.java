@@ -8,14 +8,14 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
-import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
 /**
- * Tests {@link LinearRegressionAdaptiveTimeout} and contains all test cases needed to check every method.
+ * Tests {@link LinearRegressionAdaptiveTimeout} and contains all test cases needed to
+ * check every method.
  *
  * @author Michael Vogt
  */
@@ -79,6 +79,15 @@ public class LinearRegressionAdaptiveTimeoutTest {
 		given(System.currentTimeMillis()).willReturn(2000L);
 		adaptTimeout3.reportOneStepProgress();
 
+		final LinearRegressionAdaptiveTimeout adaptTimeout4 = new LinearRegressionAdaptiveTimeout();
+		adaptTimeout4.init();
+		for (int i = 0; i < 10; i++) {
+			adaptTimeout4.reportOneStepProgress();
+		}
+		given(System.currentTimeMillis()).willReturn(1L + (15 * 60 * 1000));
+		adaptTimeout4.isReached();
+		adaptTimeout4.reportOneStepProgress();
+		adaptTimeout4.reportOneStepProgress();
 	}
 
 	/**
@@ -119,20 +128,4 @@ public class LinearRegressionAdaptiveTimeoutTest {
 
 		assertThat(adaptTimeout3.isReached(), equalTo(true));
 	}
-
-	/**
-	 * Test method for {@link LinearRegressionAdaptiveTimeout#notifyOnReachedTimeout()}.
-	 */
-	@Ignore
-	// This test is not ready yet.
-	@Test
-	public void notifyOnReachedTimeout() {
-		final LinearRegressionAdaptiveTimeout adaptTimeout = new LinearRegressionAdaptiveTimeout();
-		adaptTimeout.init();
-		for (int i = 0; i < 10; i++) {
-			adaptTimeout.reportOneStepProgress();
-		}
-
-	}
-
 }
