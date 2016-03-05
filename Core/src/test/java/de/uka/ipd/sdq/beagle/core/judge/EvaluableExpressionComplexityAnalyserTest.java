@@ -18,7 +18,7 @@ import org.junit.Test;
 /**
  * Tests {@link EvaluableExpressionComplexityAnalyser} and contains the test cases needed
  * to check all methods.
- * 
+ *
  * @author Annika Berger
  */
 public class EvaluableExpressionComplexityAnalyserTest {
@@ -55,15 +55,16 @@ public class EvaluableExpressionComplexityAnalyserTest {
 		analyser.determineComplexity(complex);
 		complexValue = analyser.getHumanComprehensibilityComplexitySum();
 		assertThat(simpleValue, is(lessThan(complexValue)));
-		
+
 		analyser.determineComplexity(complex);
 		final double complexValue2 = analyser.getHumanComprehensibilityComplexitySum();
+		System.out.println(complexValue + " : " + complexValue2);
 		assertThat(complexValue, is(complexValue2));
 	}
-	
+
 	/**
-	 * Asserts that an Expression, which is simpler to evaluate for computers is graded better
-	 * than a more complex one.
+	 * Asserts that an Expression, which is simpler to evaluate for computers is graded
+	 * better than a more complex one.
 	 *
 	 */
 	@Test
@@ -93,7 +94,7 @@ public class EvaluableExpressionComplexityAnalyserTest {
 		analyser.determineComplexity(complex);
 		complexValue = analyser.getComputationalComplexitySum();
 		assertThat(simpleValue, is(lessThan(complexValue)));
-		
+
 		analyser.determineComplexity(complex);
 		final double complexValue2 = analyser.getComputationalComplexitySum();
 		assertThat(complexValue, is(complexValue2));

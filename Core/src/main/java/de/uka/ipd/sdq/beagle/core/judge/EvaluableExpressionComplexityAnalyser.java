@@ -16,6 +16,8 @@ import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.RecursiveEvaluableExpressionVisitor;
 
+import org.apache.commons.lang3.Validate;
+
 /*
  * ATTENTION: Checkstyle is turned off where numbers with obvious meanings are used.
  */
@@ -68,7 +70,7 @@ public class EvaluableExpressionComplexityAnalyser {
 	/**
 	 * The visitor this class uses.
 	 */
-	private Visitor visitor = new Visitor();
+	private Visitor visitor = null;
 
 	/**
 	 * Determines the computational and human-readability complexity of {@code expression}
@@ -78,6 +80,7 @@ public class EvaluableExpressionComplexityAnalyser {
 	 *            values for.
 	 */
 	public void determineComplexity(final EvaluableExpression expression) {
+		this.visitor = new Visitor();
 		this.visitor.visitRecursively(expression);
 
 		if (this.visitor.maxDepth > DEPTH_PENALTY_THRESHOLD) {
@@ -92,6 +95,8 @@ public class EvaluableExpressionComplexityAnalyser {
 	 * @return The computationalComplexitySum.
 	 */
 	public double getComputationalComplexitySum() {
+		Validate.validState(this.visitor != null);
+
 		return this.visitor.computationalComplexitySum;
 	}
 
@@ -101,6 +106,8 @@ public class EvaluableExpressionComplexityAnalyser {
 	 * @return The humanComprehensibilityComplexitySum.
 	 */
 	public double getHumanComprehensibilityComplexitySum() {
+		Validate.validState(this.visitor != null);
+
 		return this.visitor.humanComprehensibilityComplexitySum;
 	}
 
