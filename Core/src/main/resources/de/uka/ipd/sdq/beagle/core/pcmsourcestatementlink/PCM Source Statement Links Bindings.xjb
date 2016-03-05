@@ -64,6 +64,11 @@ If it’s omitted, the first statement is considered to also be the last stateme
 is considered to also be the last statement.</javadoc>
 				</property>
 			</bindings>
+			<bindings node=".//xsd:attribute[@name='pcmElementId']">
+				<property>
+<javadoc>The id of the PCM element being linked.</javadoc>
+				</property>
+			</bindings>
 		</bindings>
 		
 		<bindings node="xsd:element[@name='PcmSourceStatementLinkRepository']">
