@@ -96,6 +96,9 @@ public class EvaluableExpressionComplexityAnalyser {
 	/**
 	 * Returns the computational complexity.
 	 *
+	 * <p>{@link #determineComplexity(EvaluableExpression)} must be called before this
+	 * method or an {@link IllegalStateException} will be thrown.
+	 *
 	 * @return The computationalComplexitySum.
 	 */
 	public double getComputationalComplexitySum() {
@@ -106,6 +109,9 @@ public class EvaluableExpressionComplexityAnalyser {
 
 	/**
 	 * Returns the human-comprehensibility complexity.
+	 *
+	 * <p>{@link #determineComplexity(EvaluableExpression)} must be called before this
+	 * method or an {@link IllegalStateException} will be thrown.
 	 *
 	 * @return The humanComprehensibilityComplexitySum.
 	 */
