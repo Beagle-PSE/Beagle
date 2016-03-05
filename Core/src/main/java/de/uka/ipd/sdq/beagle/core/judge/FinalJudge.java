@@ -9,6 +9,7 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 
@@ -35,12 +36,6 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	 * is needed.
 	 */
 	private static final double PERFECT_FITNESS = 0.5E-10d;
-
-	/**
-	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
-	 * the application started so evolution of evaluable expressions will be continued.
-	 */
-	private static final long MAX_TIME_PASSED = 3 * 24 * 3600 * 1000;
 
 	/**
 	 * If more generations than this have less than {@link #SIGNIFICANT_IMPROVEMENT}
@@ -78,7 +73,8 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 
 		this.loadData(blackboard);
 
-		this.data.setStartTime(System.currentTimeMillis());
+		final Timeout timeout = blackboard.getProjectInformation().getTimeout();
+		timeout.init();
 	}
 
 	/**
@@ -98,7 +94,7 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 		this.data.newGeneration();
 
 		// Determine the criteria which aren't CPU-intensive first.
-		if (this.timePassedTooHigh()) {
+		if (this.timePassedTooHigh(blackboard)) {
 			// We are now destined to return {@code true}.
 			this.data.setWillReturnTrue();
 		}
@@ -222,12 +218,14 @@ public class FinalJudge implements BlackboardStorer<FinalJudgeData> {
 	/**
 	 * Determines whether the amount of time passed is too high.
 	 *
-	 * @return {@code true} if and only if the time passed is greater than
-	 *         {@code MAX_TIME_PASSED}.
+	 * @param blackboard The {@link Blackboard}.
+	 *
+	 * @return {@code true} if and only if the timeout is reached.
 	 */
-	private boolean timePassedTooHigh() {
-		final long currentTime = System.currentTimeMillis();
-		return (currentTime - this.data.getStartTime()) > MAX_TIME_PASSED;
+	private boolean timePassedTooHigh(final Blackboard blackboard) {
+		final Timeout timeout = blackboard.getProjectInformation().getTimeout();
+
+		return timeout.isReached();
 	}
 
 	/**
