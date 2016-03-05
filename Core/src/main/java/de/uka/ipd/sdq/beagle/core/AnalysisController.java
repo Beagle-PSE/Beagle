@@ -295,7 +295,7 @@ public class AnalysisController {
 		/**
 		 * The main thread. (The working thread.)
 		 */
-		Thread mainTread;
+		private Thread mainTread;
 
 		/**
 		 * Constructs a new callback for {@link AnalysisController}.

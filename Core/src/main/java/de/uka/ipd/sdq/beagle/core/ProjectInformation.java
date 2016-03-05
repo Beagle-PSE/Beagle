@@ -184,7 +184,11 @@ public class ProjectInformation implements Serializable {
 
 		switch (analysisState) {
 			case RUNNING:
-				Validate.validState(false, "Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
+				Validate.validState(this.analysisState == AnalysisState.ENDING,
+					"Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
+
+				this.analysisState = AnalysisState.RUNNING;
+				AnalysisState.ENDING.notifyAll();
 				break;
 			case ABORTING:
 				Validate.validState(this.analysisState == AnalysisState.RUNNING,
