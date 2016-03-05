@@ -15,7 +15,6 @@ configure(javaSubprojects) {
 	 
 	checkstyle {
 		toolVersion = "6.15"
-		sourceSets = [ project.sourceSets.main, project.sourceSets.test ]
 	}
 	
 	jacocoTestReport {
