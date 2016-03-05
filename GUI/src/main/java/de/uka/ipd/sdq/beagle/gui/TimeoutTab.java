@@ -56,7 +56,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 * </ul>
 	 *
 	 */
-	public static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE = "TIMEOUT_TYPE";
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE = "de.uka.ipd.sdq.beagle.TIMEOUT_TYPE";
 
 	/**
 	 * This value in Beagle's launch configuration for the key
@@ -90,7 +90,8 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 * The key in the Beagle Launch Configuration determining the time set up for an
 	 * {@link ConstantTimeout} in seconds.
 	 */
-	public static final String BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE = "CONSTANT_TIMEOUT_VALUE";
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE =
+		"de.uka.ipd.sdq.beagle.CONSTANT_TIMEOUT_VALUE";
 
 	/**
 	 * The default value in Beagle's launch configuration for the key

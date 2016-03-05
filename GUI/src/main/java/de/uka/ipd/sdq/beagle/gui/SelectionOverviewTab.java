@@ -48,7 +48,7 @@ public class SelectionOverviewTab extends AbstractLaunchConfigurationTab {
 	 * </ul>
 	 *
 	 */
-	public static final String BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE = "SELECTION_TYPE";
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE = "de.uka.ipd.sdq.beagle.SELECTION_TYPE";
 
 	/**
 	 * This value in Beagle's launch configuration for the key
@@ -75,7 +75,8 @@ public class SelectionOverviewTab extends AbstractLaunchConfigurationTab {
 	 * The key in the Beagle Launch Configuration for the List of elements the user
 	 * selected.
 	 */
-	public static final String BEAGLE_LAUNCH_CONFIGURATION_CUSTOM_SELECTION = "THE_CUSTOM_SELECTION";
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_CUSTOM_SELECTION =
+		"de.uka.ipd.sdq.beagle.THE_CUSTOM_SELECTION";
 
 	/**
 	 * The default value in Beagle's launch configuration for the key

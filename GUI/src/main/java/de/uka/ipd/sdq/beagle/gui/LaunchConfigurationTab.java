@@ -6,13 +6,16 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
+import org.eclipse.debug.internal.ui.DebugPluginImages;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
+import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -27,13 +30,15 @@ import java.util.List;
  *
  * @author Roman Langrehr
  */
+@SuppressWarnings("restriction")
 public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 
 	/**
 	 * The key in the Beagle Launch Configuration determining the name of the
 	 * {@link IJavaProject} to analyse.
 	 */
-	public static final String BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION = "LAUNCHCONFIGURATION";
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION =
+		"de.uka.ipd.sdq.beagle.LAUNCHCONFIGURATION";
 
 	/**
 	 * The number of columns of the layout of container which contains the entire content
@@ -213,5 +218,11 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public String getName() {
 		return TITLE;
+	}
+
+	@SuppressWarnings("restriction")
+	@Override
+	public Image getImage() {
+		return DebugPluginImages.getImage(IDebugUIConstants.IMG_OBJS_LAUNCH_RUN);
 	}
 }
