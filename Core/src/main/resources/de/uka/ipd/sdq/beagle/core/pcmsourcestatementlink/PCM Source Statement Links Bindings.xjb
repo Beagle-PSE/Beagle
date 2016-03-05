@@ -13,14 +13,14 @@
 		<bindings node="xsd:complexType[@name='SourceCodePosition']">
 			<class>
 <javadoc>Defines a character position in a file. The character is identified by giving its index and the 
-fully qualified name of the source code file containing it.</javadoc>
+fully qualified name of the source code file containing it. </javadoc>
 			</class>
 			<property name="characterIndex">
-<javadoc>The index of the first character of the denoted statement. Counting starts at 0.</javadoc>
+<javadoc>The index of the first character of the denoted statement. Counting starts at 0. </javadoc>
 			</property>
 			<bindings node=".//xsd:attribute[@name='sourceCodeFile']">
 				<property>
-<javadoc>The fully qualified name of the java file that contains the indexed character.</javadoc>
+<javadoc>The fully qualified name of the java file that contains the indexed character. </javadoc>
 				</property>
 			</bindings>
 		</bindings>
@@ -30,43 +30,54 @@ fully qualified name of the source code file containing it.</javadoc>
 <javadoc>Stores the hash of a source code file. The hash can be use to validate the information conveyed
 through the source code links. It represents the status of the file when generating the link. If a source
 code file for the same qualified same is available but has a different hash, the source code link information
-can be considered out-of-date.</javadoc>
+can be considered out-of-date. </javadoc>
 			</class>
 			<property name="hash">
-<javadoc>The hash value of the denoted source code file when generating the source code links.</javadoc>
+<javadoc>The hash value of the denoted source code file when generating the source code links. </javadoc>
 			</property>
 			<bindings node=".//xsd:attribute[@name='sourceCodeFile']">
 				<property>
-<javadoc>The fully qualified name of the java file this object holds the hash of.</javadoc>
+<javadoc>The fully qualified name of the java file this object holds the hash of. </javadoc>
 				</property>
 			</bindings>
 			<bindings node=".//xsd:attribute[@name='algorithm']">
 				<property>
-<javadoc>The hash algorithm that was used to calculate the hash value. Defaults to md5.</javadoc>
+<javadoc>The hash algorithm that was used to calculate the hash value. Defaults to md5. </javadoc>
 				</property>
 			</bindings>
 		</bindings>
 		
 		<bindings node="xsd:complexType[@name='PcmSourceStatementLink']">
 			<class>
-<javadoc>Maps a PCM element to the first and last statement the element represents. This is the
-first/last statement that will be executed when executing the PCM element. The last statement is optional.
-If it’s omitted, the first statement is considered to also be the last statement.</javadoc>
+<javadoc><![CDATA[<p>Maps a PCM element to the first and last statement the element represents. The last statement is optional.
+If it’s omitted, the first statement is considered to also be the last statement. 
+
+<p>The statements that shall be referenced depends on the PCM element’s type:
+
+<ul>
+	<li>For <em>Internal Actions</em>, the first/last statement is the first/last statement that will be executed when
+	executing the action.
+	<li>For <em>Resource Demanding Behaviours</em>, the first/last statement is the first/last statement that will be
+	executed when executing the behaviour.
+	<li>For <em>External Call Actions</em> only the first statement needs to be set. It refers to the statement that 
+	makes the external call
+</ul>
+]]></javadoc>
 			</class>
 			<bindings node=".//xsd:element[@name='FirstStatement']">
 				<property>
-<javadoc>The first statement's first character's position.</javadoc>
+<javadoc>The first statement's first character's position. </javadoc>
 				</property>
 			</bindings>
 			<bindings node=".//xsd:element[@name='LastStatement']">
 				<property>
-<javadoc>The last statement's first character's position. If this property is ommited, the first statement
-is considered to also be the last statement.</javadoc>
+<javadoc>The last statement's first character's position. If this property is omitted, the first statement
+is considered to also be the last statement. </javadoc>
 				</property>
 			</bindings>
 			<bindings node=".//xsd:attribute[@name='pcmElementId']">
 				<property>
-<javadoc>The id of the PCM element being linked.</javadoc>
+<javadoc>The id of the PCM element being linked. </javadoc>
 				</property>
 			</bindings>
 		</bindings>
@@ -74,17 +85,17 @@ is considered to also be the last statement.</javadoc>
 		<bindings node="xsd:element[@name='PcmSourceStatementLinkRepository']">
 			<class>
 <javadoc>Contains all links from PCM elements to their positions in source code. Also contains hashes of
-the files that are referenced.</javadoc>
+the files that are referenced. </javadoc>
 			</class>
 			<bindings node=".//xsd:element[@name='PcmSourceStatementLink']">
 				<property name="links">
-<javadoc>All known links form PCM elements to their positions in source code.</javadoc>
+<javadoc>All known links from PCM elements to their positions in source code. </javadoc>
 				</property>
 			</bindings>
 			<bindings node=".//xsd:element[@name='SourceCodeFileHash']">
 				<property name="hashes">
 <javadoc>Hashes of all source code files referenced in links. They can be used to check the information's
-integrity</javadoc>
+integrity. </javadoc>
 				</property>
 			</bindings>
 		</bindings>
