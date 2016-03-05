@@ -41,7 +41,7 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 
 		final AgingAlgorithmAdaptiveTimeout adaptTimeout2 = new AgingAlgorithmAdaptiveTimeout();
 		adaptTimeout2.implementationInit();
-		given(System.currentTimeMillis()).willReturn(1000L);
+		given(System.currentTimeMillis()).willReturn(2L * (3600 * 1000));
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 	}
 
@@ -60,16 +60,16 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 	 */
 	@Test
 	public void init() {
-		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
-		adaptTimeout.implementationInit();
-
 		final AgingAlgorithmAdaptiveTimeout adaptTimeout1 = new AgingAlgorithmAdaptiveTimeout();
-		adaptTimeout1.init();
+		adaptTimeout1.implementationInit();
 		final ThrowingMethod method = () -> {
 			adaptTimeout1.implementationInit();
 		};
 		assertThat("adaptTimeout1 must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
+
+		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
+		adaptTimeout.implementationInit();
 	}
 
 }
