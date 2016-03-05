@@ -14,14 +14,14 @@ import java.util.Arrays;
 public class LinearRegressionAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
-	 * How much additional time is always tolerated. Stated in milliseconds.
-	 */
-	private static final long CONSTANT_ADDITIONAL_TIME_TOLEARANCE = 5 * 60 * 1000;
-
-	/**
 	 * The time tolerance cannot fall below this value.
 	 */
-	private static final long MINIMUM_TIME_TOLERANCE = 10 * 60;
+	private static final long MINIMUM_TIME_TOLERANCE = 15 * 60;
+
+	/**
+	 * How much additional time is always tolerated. Stated in milliseconds.
+	 */
+	private static final long CONSTANT_ADDITIONAL_TIME_TOLEARANCE = 10 * 60 * 1000;
 
 	/**
 	 * How much additional time is always tolerated. Relative to the calculated time
