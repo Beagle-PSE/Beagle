@@ -105,7 +105,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 	/**
 	 * The number of columns of the layout of container which contains the entire content
-	 * of this page.
+	 * of this tab.
 	 */
 	private static final int MAIN_LAYOUT_NR_COLUMS = 2;
 

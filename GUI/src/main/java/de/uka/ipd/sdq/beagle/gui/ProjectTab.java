@@ -17,13 +17,13 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 	 * The key in the Beagle Launch Configuration determining the name of the
 	 * {@link IJavaProject} to analyse.
 	 */
-	public static final String BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT_TYPE = "IJAVAPROJECT";
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT = "IJAVAPROJECT";
 
 	/**
 	 * The key in the Beagle Launch Configuration determining the path of the repository
 	 * file to analyse.
 	 */
-	public static final String BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_TYPE = "REPOSITORY_FILE";
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE = "REPOSITORY_FILE";
 
 	/**
 	 * The title of this tab.

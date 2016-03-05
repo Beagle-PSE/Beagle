@@ -16,9 +16,13 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
+import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * This class handles the launching of Beagle's {@linkplain ILaunchConfiguration
@@ -59,11 +63,13 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 	private BeagleConfiguration convertBeagleLaunchConfigurationToBeagleConfiguration(
 		final ILaunchConfiguration launchConfiguration) {
 		try {
-			final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(null,
-				new File(launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_TYPE,
-					"No repository file has been set up in the launch configuration")),
+			final IJavaProject javaProject =
 				JavaCore.create(ResourcesPlugin.getWorkspace().getRoot().getProject(launchConfiguration.getAttribute(
-					ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT_TYPE, "No project has been specified"))));
+					ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, "No project has been specified")));
+			final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(null,
+				new File(launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
+					"No repository file has been set up in the launch configuration")),
+				javaProject);
 
 			final String selectionType =
 				launchConfiguration.getAttribute(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE,
@@ -91,6 +97,12 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 				default:
 					break;
 			}
+
+			final List<String> launchConfigurations = launchConfiguration.getAttribute(
+				LaunchConfigurationTab.BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>());
+			beagleConfiguration
+				.setLaunchConfigurations(new HashSet<>(ILaunchConfigurationHelper.toBeagleLaunchConfigurations(
+					ILaunchConfigurationHelper.getByNames(launchConfigurations), javaProject)));
 
 			return beagleConfiguration;
 		} catch (final CoreException coreException) {

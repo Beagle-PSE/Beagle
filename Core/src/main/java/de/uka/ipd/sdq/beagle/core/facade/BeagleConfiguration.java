@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
@@ -9,6 +10,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Configures a whole execution of Beagle. Therefore contains all values needed to set up
@@ -53,6 +55,11 @@ public class BeagleConfiguration {
 	 * Whether this configuration is in the <em>finalised</em> state.
 	 */
 	private boolean finalised;
+
+	/**
+	 * The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the analysis.
+	 */
+	private Set<LaunchConfiguration> launchConfigurations;
 
 	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
@@ -146,6 +153,32 @@ public class BeagleConfiguration {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
 		this.timeout = timeout;
+	}
+
+	/**
+	 * Returns the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis.
+	 *
+	 * @return The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 *         analysis.
+	 */
+	public Set<LaunchConfiguration> getLaunchConfigurations() {
+		return this.launchConfigurations;
+	}
+
+	/**
+	 * Sets the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis. This operation is only allowed in the <em>set up</em> state.
+	 *
+	 * @param launchConfigurations The {@linkplain LaunchConfiguration
+	 *            LaunchConfigurations} to use for the analysis.
+	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
+	 *             state.
+	 */
+	public void setLaunchConfigurations(final Set<LaunchConfiguration> launchConfigurations) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
+		this.launchConfigurations = launchConfigurations;
 	}
 
 	/**

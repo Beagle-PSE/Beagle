@@ -77,9 +77,9 @@ public class BeagleLaunchConfigurationCreator {
 		try {
 			final ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, "Analyse with Beagle");
 
-			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT_TYPE,
+			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT,
 				this.javaProject.getProject().getName());
-			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_TYPE,
+			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
 				this.repositoryFile.getPath());
 			if (this.elements == null) {
 				workingCopy.setAttribute(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE,

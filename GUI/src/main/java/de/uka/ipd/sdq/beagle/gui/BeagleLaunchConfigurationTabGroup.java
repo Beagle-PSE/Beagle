@@ -19,6 +19,7 @@ public class BeagleLaunchConfigurationTabGroup extends AbstractLaunchConfigurati
 			// @formatter:off
 			new SelectionOverviewTab(),
 			new TimeoutTab(),
+			new LaunchConfigurationTab(),
 			new CommonTab()
 			// @formatter:on
 		};

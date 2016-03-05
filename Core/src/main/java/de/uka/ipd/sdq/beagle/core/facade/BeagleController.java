@@ -78,9 +78,7 @@ public class BeagleController {
 		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());
 		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();
 
-		final Set<LaunchConfiguration> launchConfigurations =
-			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
-				.getAllSuitableJUnitLaunchConfigurations();
+		final Set<LaunchConfiguration> launchConfigurations = beagleConfiguration.getLaunchConfigurations();
 		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 
