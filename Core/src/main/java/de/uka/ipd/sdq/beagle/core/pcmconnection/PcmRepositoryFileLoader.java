@@ -23,7 +23,7 @@ public class PcmRepositoryFileLoader {
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("PCM Repository loader");
 
 	/**
-	 * Load/Initialize the repository for a given File.
+	 * Load/Initialise the repository for a given File.
 	 *
 	 * @param repositoryFile The repositoryFile
 	 * @return the {@link RepositoryImpl}
@@ -33,7 +33,7 @@ public class PcmRepositoryFileLoader {
 			throw new NullPointerException();
 		}
 
-		if (!(repositoryFile.exists())) {
+		if (!repositoryFile.exists()) {
 			final FailureReport<RepositoryImpl> failure = new FailureReport<RepositoryImpl>()
 				.message("The repository file %s does not exist.", repositoryFile.getAbsolutePath())
 				.retryWith(() -> this.loadRepositoryFromFile(repositoryFile));

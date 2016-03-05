@@ -8,11 +8,11 @@ import static org.mockito.Mockito.mock;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.TestFileFactory;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.eclipse.jdt.core.IJavaProject;
 import org.junit.Before;
 import org.junit.Test;
-import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class BeagleConfigurationTest {
 	/**
 	 * A list of elements providing methods to get elements to use for tests.
 	 */
-	private List<Entity> elements;
+	private List<String> elements;
 
 	/**
 	 * Whether this configuration is in the <em>finalised</em> state.
@@ -48,11 +48,11 @@ public class BeagleConfigurationTest {
 	@Before
 	public void initialiseElements() {
 		this.elements = new ArrayList<>();
-		this.elements.add(mock(Entity.class));
+		this.elements.add("test");
 	}
 
 	/**
-	 * Test method for {link BeahgleConfiguration#Beagleconfiguration( List,
+	 * Test method for {link BeagleConfiguration#BeagleConfiguration( List,
 	 * java.io.File)}.
 	 *
 	 */
@@ -75,7 +75,7 @@ public class BeagleConfigurationTest {
 		final BeagleConfiguration beagleConfig =
 			new BeagleConfiguration(this.elements, files[0], mock(IJavaProject.class));
 		beagleConfig.setElements(this.elements);
-		final List<Entity> copyedElements = new ArrayList<>();
+		final List<String> copyedElements = new ArrayList<>();
 		copyedElements.addAll(this.elements);
 		this.elements.clear();
 		assertThat("The elements must be copyed.", beagleConfig.getElements(), is(copyedElements));
@@ -119,7 +119,7 @@ public class BeagleConfigurationTest {
 	 */
 	@Test
 	public void timeoutTest() {
-		final int testTimeout = 42;
+		final Timeout testTimeout = mock(Timeout.class);
 		final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = files[0];
 		final BeagleConfiguration beagleConfig = new BeagleConfiguration(this.elements, file, mock(IJavaProject.class));
