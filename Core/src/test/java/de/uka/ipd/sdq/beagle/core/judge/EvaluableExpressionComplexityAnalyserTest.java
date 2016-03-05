@@ -58,7 +58,6 @@ public class EvaluableExpressionComplexityAnalyserTest {
 
 		analyser.determineComplexity(complex);
 		final double complexValue2 = analyser.getHumanComprehensibilityComplexitySum();
-		System.out.println(complexValue + " : " + complexValue2);
 		assertThat(complexValue, is(complexValue2));
 	}
 

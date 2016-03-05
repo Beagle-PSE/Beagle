@@ -25,6 +25,10 @@ import org.apache.commons.lang3.Validate;
 /**
  * EvaluableExpressionComplexityAnalyser object for an {@link EvaluableExpression}.
  *
+ * <p>{@link #determineComplexity(EvaluableExpression)} must be called before
+ * {@link #getComputationalComplexitySum()} or
+ * {@link #getHumanComprehensibilityComplexitySum()} are called.
+ *
  *
  * @author Christoph Michelbach
  */
@@ -70,7 +74,7 @@ public class EvaluableExpressionComplexityAnalyser {
 	/**
 	 * The visitor this class uses.
 	 */
-	private Visitor visitor = null;
+	private Visitor visitor;
 
 	/**
 	 * Determines the computational and human-readability complexity of {@code expression}
