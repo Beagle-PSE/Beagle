@@ -19,6 +19,12 @@ class FinalJudgeData implements Serializable {
 	private static final long serialVersionUID = 9038094699907524618L;
 
 	/**
+	 * Whether {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will return
+	 * {@code true} for sure.
+	 */
+	private boolean willReturnTrue;
+
+	/**
 	 * The number of generations with significant improvement (see
 	 * {@code FinalJugde#SIGNIFICANT_IMPROVEMENT} passed.
 	 */
