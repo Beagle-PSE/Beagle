@@ -17,6 +17,10 @@ import org.junit.Test;
  */
 public class ExecutionTimeBasedTimeoutTest {
 
+	/**
+	 * Implementation of a {@link ExecutionTimeBasedTimeout}, which only implements the
+	 * methods to implement.
+	 */
 	private final ExecutionTimeBasedTimeoutDummy executionTimeBasedTimeout = new ExecutionTimeBasedTimeoutDummy();
 
 	/**
