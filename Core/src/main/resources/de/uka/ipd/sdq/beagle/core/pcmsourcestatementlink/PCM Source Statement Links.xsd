@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- This is a schema for XML files that link PCM elements to source code statements the PCM element represents. -->
 <xsd:schema xmlns="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink">
+	
 	<!-- Defines a position in a source code file -->
 	<xsd:complexType name="SourceCodePosition">
+		<!--  The index of the character -->
 		<xsd:simpleContent>
 			<xsd:extension base="xsd:int">
-				<!--  The index of the character -->
-				<xsd:attribute name="sourceCodeFile" type="xsd:string">
-					<!-- The fully qualified name of the java file that contains the indexed character -->
-				</xsd:attribute>
+				<!-- The fully qualified name of the java file that contains the indexed character -->
+				<xsd:attribute name="sourceCodeFile" type="xsd:string" />
 			</xsd:extension>
 		</xsd:simpleContent>
 	</xsd:complexType>
-	<!-- Store the hash of a source code file at the point of generation. Is used to validate the model’s information. -->
+	
+	<!-- Stores the hash of a source code file at the point of generation. Is used to validate the model’s information. -->
 	<xsd:complexType name="SourceCodeFileHash">
+		<!-- The hash value -->
 		<xsd:simpleContent>
 			<xsd:extension base="xsd:string">
-				<!-- The hash value -->
-				<xsd:attribute name="sourceCodeFile" type="xsd:string">
-					<!-- The fully qualified name of the java file that is hashed -->
-				</xsd:attribute>
-				<xsd:attribute name="algorithm" default="md5">
-					<!-- The hash algorithm that was used to generate the hash -->
-				</xsd:attribute>
+				<!-- The fully qualified name of the java file that is hashed -->
+				<xsd:attribute name="sourceCodeFile" type="xsd:string" />
+				<!-- The hash algorithm that was used to generate the hash -->
+				<xsd:attribute name="algorithm" default="md5" />
 			</xsd:extension>
 		</xsd:simpleContent>
 	</xsd:complexType>
-	 <!-- Links a PCM element to one or two source code positions. -->
+	
+	<!-- Links a PCM element to one or two source code positions. -->
 	<xsd:complexType name="PcmSourceStatementLink">
 		<xsd:sequence>
 			<!-- defines the position of the first character of the first statement representing the PCM element -->
@@ -37,14 +37,16 @@
 		</xsd:sequence>
 		<xsd:attribute name="pcmElementId" type="xsd:string" />
 	</xsd:complexType>
+
+	<!-- root element -->
 	<xsd:element name="PcmSourceStatementLinkRepository">
-		<!-- root element -->
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="PcmSourceStatementLink" type="PcmSourceStatementLink" minOccurs="1" maxOccurs="unbounded"></xsd:element>
-				<xsd:element name="SourceCodeFileHash" type="SourceCodeFileHash" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+				<xsd:element name="PcmSourceStatementLink" type="PcmSourceStatementLink" minOccurs="1" maxOccurs="unbounded" />
+				<xsd:element name="SourceCodeFileHash" type="SourceCodeFileHash" minOccurs="1" maxOccurs="unbounded" />
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+	
 </xsd:schema>
 	
