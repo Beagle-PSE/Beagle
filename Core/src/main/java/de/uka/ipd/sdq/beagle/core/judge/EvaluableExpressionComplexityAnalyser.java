@@ -270,7 +270,7 @@ public class EvaluableExpressionComplexityAnalyser extends RecursiveEvaluableExp
 	 * SubtractionExpression)
 	 */
 	@Override
-	protected void atSubstraction(final SubtractionExpression expression) {
+	protected void atSubtraction(final SubtractionExpression expression) {
 		// CHECKSTYLE:OFF
 		this.computationalComplexitySum += 1d;
 		this.humanComprehensibilityComplexitySum += 1.2d;
