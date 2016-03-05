@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -182,18 +182,22 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/LaunchConfigurationTab.html#createControl-org.eclipse.swt.widgets.Composite-">createControl</a></span>(org.eclipse.swt.widgets.Composite&nbsp;parent)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>org.eclipse.swt.graphics.Image</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/LaunchConfigurationTab.html#getImage--">getImage</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/LaunchConfigurationTab.html#getName--">getName</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/LaunchConfigurationTab.html#initializeFrom-org.eclipse.debug.core.ILaunchConfiguration-">initializeFrom</a></span>(org.eclipse.debug.core.ILaunchConfiguration&nbsp;configuration)</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/LaunchConfigurationTab.html#performApply-org.eclipse.debug.core.ILaunchConfigurationWorkingCopy-">performApply</a></span>(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy&nbsp;configuration)</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/LaunchConfigurationTab.html#setDefaults-org.eclipse.debug.core.ILaunchConfigurationWorkingCopy-">setDefaults</a></span>(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy&nbsp;configuration)</code>&nbsp;</td>
 </tr>
@@ -203,7 +207,7 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;org.eclipse.debug.ui.AbstractLaunchConfigurationTab</h3>
-<code>activated, canSave, createCheckButton, createPushButton, createRadioButton, createSeparator, createUpdateJob, createVerticalSpacer, deactivated, dispose, getControl, getErrorMessage, getHelpContextId, getId, getImage, getLaunchConfigurationDialog, getLaunchManager, getMessage, getShell, getUpdateJobDelay, getWarningMessage, isDirty, isValid, launched, scheduleUpdateJob, setAttribute, setControl, setDirty, setErrorMessage, setHelpContextId, setLaunchConfigurationDialog, setMessage, setWarningMessage, updateLaunchConfigurationDialog</code></li>
+<code>activated, canSave, createCheckButton, createPushButton, createRadioButton, createSeparator, createUpdateJob, createVerticalSpacer, deactivated, dispose, getControl, getErrorMessage, getHelpContextId, getId, getLaunchConfigurationDialog, getLaunchManager, getMessage, getShell, getUpdateJobDelay, getWarningMessage, isDirty, isValid, launched, scheduleUpdateJob, setAttribute, setControl, setDirty, setErrorMessage, setHelpContextId, setLaunchConfigurationDialog, setMessage, setWarningMessage, updateLaunchConfigurationDialog</code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -305,10 +309,25 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <a name="getName--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getName</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getName()</pre>
+</li>
+</ul>
+<a name="getImage--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getImage</h4>
+<pre>public&nbsp;org.eclipse.swt.graphics.Image&nbsp;getImage()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code>getImage</code>&nbsp;in interface&nbsp;<code>org.eclipse.debug.ui.ILaunchConfigurationTab</code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>getImage</code>&nbsp;in class&nbsp;<code>org.eclipse.debug.ui.AbstractLaunchConfigurationTab</code></dd>
+</dl>
 </li>
 </ul>
 </li>
