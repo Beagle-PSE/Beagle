@@ -46,6 +46,8 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 	@Override
 	public void reportOneStepProgress() {
 		Validate.isTrue(this.initialised);
+
+		this.startingTime = System.currentTimeMillis();
 	}
 
 	/**
