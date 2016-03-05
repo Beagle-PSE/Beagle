@@ -109,6 +109,9 @@ public class AnalysisController {
 		this.measurementController = new MeasurementController(measurementTools);
 		this.measurementResultAnalysers = new HashSet<>(measurementResultAnalysers);
 		this.proposedExpressionAnalysers = new HashSet<>(proposedExpressionAnalysers);
+
+		final Callback callback = new Callback(Thread.currentThread());
+		new Thread(callback).start();
 	}
 
 	/**
@@ -149,6 +152,15 @@ public class AnalysisController {
 			 * values and stores it on the blackboard.
 			 */
 			finalJudge.judge(this.blackboard);
+
+			while (projectInformation.getAnalysisState() != ProjectInformation.AnalysisState.RUNNING) {
+				try {
+					projectInformation.getAnalysisState().wait();
+				} catch (final InterruptedException exception) {
+					// Retry on interrupt. No handling is needed because the loop just
+					// tries again.
+				}
+			}
 		}
 
 	}
@@ -270,5 +282,34 @@ public class AnalysisController {
 		}
 
 		return false;
+	}
+
+	/**
+	 * The callback the {@link AnalysisController} uses to interrupt the working thread if
+	 * the user is pausing or aborting the analysis.
+	 *
+	 * @author Christoph Michelbach
+	 */
+	private class Callback implements Runnable {
+
+		/**
+		 * The main thread. (The working thread.)
+		 */
+		Thread mainTread;
+
+		/**
+		 * Constructs a new callback for {@link AnalysisController}.
+		 *
+		 * @param mainThread The main thread. (The working thread.)
+		 */
+		Callback(final Thread mainThread) {
+			this.mainTread = mainThread;
+		}
+
+		@Override
+		public void run() {
+			this.mainTread.interrupt();
+		}
+
 	}
 }

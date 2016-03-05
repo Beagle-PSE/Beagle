@@ -15,6 +15,7 @@ import java.util.Set;
  * immutable.
  *
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class ProjectInformation implements Serializable {
 
