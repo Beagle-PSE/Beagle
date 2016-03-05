@@ -29,7 +29,8 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 	public boolean isReached() {
 		Validate.isTrue(this.initialised);
 
-		return System.currentTimeMillis() - this.startingTime > this.timeout;
+		return this.startingTime + this.timeout - System.currentTimeMillis() < 0;
+
 	}
 
 	/**
@@ -58,7 +59,7 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 		long timeToSleep = this.startingTime + this.timeout - System.currentTimeMillis();
 
 		// Wait until the timeout is up.
-		while (!this.isReached()) {
+		while (!isReached()) {
 			assert timeToSleep >= 0;
 
 			try {

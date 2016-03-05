@@ -59,26 +59,6 @@ public class LinearRegressionAdaptiveTimeoutTest {
 			adaptTimeout.reportOneStepProgress();
 		}
 
-		final LinearRegressionAdaptiveTimeout adaptTimeout1 = new LinearRegressionAdaptiveTimeout();
-		adaptTimeout1.init();
-		adaptTimeout1.reportOneStepProgress();
-
-		final LinearRegressionAdaptiveTimeout adaptTimeout2 = new LinearRegressionAdaptiveTimeout();
-		adaptTimeout2.init();
-		for (int i = 0; i < 10; i++) {
-			adaptTimeout2.reportOneStepProgress();
-		}
-		given(System.currentTimeMillis()).willReturn(1000L);
-		adaptTimeout2.reportOneStepProgress();
-
-		final LinearRegressionAdaptiveTimeout adaptTimeout3 = new LinearRegressionAdaptiveTimeout();
-		adaptTimeout3.init();
-		for (int i = 0; i < 9; i++) {
-			adaptTimeout3.reportOneStepProgress();
-		}
-		given(System.currentTimeMillis()).willReturn(2000L);
-		adaptTimeout3.reportOneStepProgress();
-
 		final LinearRegressionAdaptiveTimeout adaptTimeout4 = new LinearRegressionAdaptiveTimeout();
 		adaptTimeout4.init();
 		for (int i = 0; i < 10; i++) {
@@ -88,6 +68,7 @@ public class LinearRegressionAdaptiveTimeoutTest {
 		adaptTimeout4.isReached();
 		adaptTimeout4.reportOneStepProgress();
 		adaptTimeout4.reportOneStepProgress();
+
 	}
 
 	/**
@@ -114,18 +95,8 @@ public class LinearRegressionAdaptiveTimeoutTest {
 		for (int i = 0; i < 10; i++) {
 			adaptTimeout2.reportOneStepProgress();
 		}
-		given(System.currentTimeMillis()).willReturn(1000L);
+		given(System.currentTimeMillis()).willReturn(1L + (10 * 60 * 1000));
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 
-		final LinearRegressionAdaptiveTimeout adaptTimeout3 = new LinearRegressionAdaptiveTimeout();
-		adaptTimeout3.init();
-		for (int i = 0; i < 10; i++) {
-			adaptTimeout3.reportOneStepProgress();
-		}
-		given(System.currentTimeMillis()).willReturn(2L * 1000);
-
-		adaptTimeout3.reportOneStepProgress();
-
-		assertThat(adaptTimeout3.isReached(), equalTo(true));
 	}
 }
