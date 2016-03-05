@@ -4,7 +4,6 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.lessThan;
-import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
@@ -13,6 +12,8 @@ import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
 import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
 import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
 import de.uka.ipd.sdq.beagle.core.measurement.BranchDecisionMeasurementResult;
 import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
@@ -111,6 +112,12 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		assertThat(function.gradeFor(rdia, expression2, blackboardView),
 			is(lessThan(function.gradeFor(rdia, expression, blackboardView))));
 
+		final EvaluableExpression simpler = ConstantExpression.forValue(3.2);
+		final EvaluableExpression complexer =
+			new AdditionExpression(ConstantExpression.forValue(2.2), ConstantExpression.forValue(1));
+		assertThat(function.gradeFor(rdia, simpler, blackboardView),
+			is(lessThan(function.gradeFor(rdia, complexer, blackboardView))));
+
 		results = new HashSet<>();
 		given(blackboardView.getMeasurementResultsFor(rdia)).willReturn(results);
 		given(expression.evaluate(any())).willReturn(2.0);
@@ -166,6 +173,12 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		given(blackboardView.getMeasurementResultsFor(branch)).willReturn(results);
 		assertThat(function.gradeFor(branch, expression2, blackboardView),
 			is(lessThan(function.gradeFor(branch, expression, blackboardView))));
+
+		final EvaluableExpression simpler = ConstantExpression.forValue(3.2);
+		final EvaluableExpression complexer =
+			new AdditionExpression(ConstantExpression.forValue(2.2), ConstantExpression.forValue(1));
+		assertThat(function.gradeFor(branch, simpler, blackboardView),
+			is(lessThan(function.gradeFor(branch, complexer, blackboardView))));
 
 		results = new HashSet<>();
 		given(blackboardView.getMeasurementResultsFor(branch)).willReturn(results);
@@ -223,6 +236,12 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		assertThat(function.gradeFor(loop, expression2, blackboardView),
 			is(lessThan(function.gradeFor(loop, expression, blackboardView))));
 
+		final EvaluableExpression simpler = ConstantExpression.forValue(3.2);
+		final EvaluableExpression complexer =
+			new AdditionExpression(ConstantExpression.forValue(2.2), ConstantExpression.forValue(1));
+		assertThat(function.gradeFor(loop, simpler, blackboardView),
+			is(lessThan(function.gradeFor(loop, complexer, blackboardView))));
+
 		results = new HashSet<>();
 		given(blackboardView.getMeasurementResultsFor(loop)).willReturn(results);
 		given(expression.evaluate(any())).willReturn(2.0);
@@ -230,14 +249,15 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		assertThat(function.gradeFor(loop, expression, blackboardView), is(Double.POSITIVE_INFINITY));
 	}
 
-	// @formatter:off
 	/**
 	 * Test method for
 	 * {@link AbstractionAndPrecisionFitnessFunction#gradeFor(ExternalCallParameter, EvaluableExpression,
-	 * EvaluableExpressionFitnessFunctionBlackboardView)}.
+	 * EvaluableExpressionFitnessFunctionBlackboardView)}
+	 * .
 	 *
-	 * <p>Asserts that {@link NullPointerException}s are thrown if one of the arguments is null, infinity is returned
-	 * if there are no results and an expression nearer to the result returns a smaller double than one farer away.
+	 * <p>Asserts that {@link NullPointerException}s asre thrown if one of the arguments is
+	 * null, infinity is returned if there are no results and an expression nearer to the
+	 * result returns a smaller double than one farer away.
 	 */
 	// @formatter:on
 	@Test
@@ -285,21 +305,16 @@ public class AbstractionAndPrecisionFitnessFunctionTest {
 		assertThat(function.gradeFor(parameter, expression2, blackboardView),
 			is(lessThan(function.gradeFor(parameter, expression, blackboardView))));
 
+		final EvaluableExpression simpler = ConstantExpression.forValue(3.2);
+		final EvaluableExpression complexer =
+			new AdditionExpression(ConstantExpression.forValue(2.2), ConstantExpression.forValue(1));
+		assertThat(function.gradeFor(parameter, simpler, blackboardView),
+			is(lessThan(function.gradeFor(parameter, complexer, blackboardView))));
+
 		results = new HashSet<>();
 		given(blackboardView.getMeasurementResultsFor(parameter)).willReturn(results);
 		given(expression.evaluate(any())).willReturn(2.0);
 		given(expression2.evaluate(any())).willReturn(10.32);
 		assertThat(function.gradeFor(parameter, expression, blackboardView), is(Double.POSITIVE_INFINITY));
 	}
-
-	/**
-	 * Asserts that more complex {@link EvaluableExpression}s are graded worse than simpler ones
-	 * with same result.
-	 *
-	 */
-	@Test
-	public void gradeMoreComplexWorse() {
-		fail("Not implemented yet.");
-	}
-
 }
