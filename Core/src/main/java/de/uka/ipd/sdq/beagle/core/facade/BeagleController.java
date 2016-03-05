@@ -139,7 +139,7 @@ public class BeagleController {
 	 *
 	 */
 	public void continueAnalysis() {
-
+		this.blackboard.getProjectInformation().setAnalysisState(AnalysisState.RUNNING);
 	}
 
 	/**
