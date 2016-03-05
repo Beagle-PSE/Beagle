@@ -59,7 +59,7 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 		long timeToSleep = this.startingTime + this.timeout - System.currentTimeMillis();
 
 		// Wait until the timeout is up.
-		while (!isReached()) {
+		while (!this.isReached()) {
 			assert timeToSleep >= 0;
 
 			try {
