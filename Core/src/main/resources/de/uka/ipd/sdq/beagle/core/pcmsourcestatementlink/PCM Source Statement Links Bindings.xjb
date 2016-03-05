@@ -1,8 +1,12 @@
 <bindings version="1.0" xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<bindings schemaLocation="Source Code Link.xsd" node="/xsd:schema">
+	<bindings schemaLocation="PCM Source Statement Links.xsd" node="/xsd:schema">
 		<schemaBindings>
 			<package>
-<javadoc><![CDATA[<body>Representation of links from PCM Elements to Source Code Positions of Statements.</body>]]></javadoc>
+<javadoc><![CDATA[<html>
+	<body>
+		Representation of links from PCM Elements to Source Code Positions of Statements.
+	</body>
+</html>]]></javadoc>
 			</package>
 		</schemaBindings>
 		

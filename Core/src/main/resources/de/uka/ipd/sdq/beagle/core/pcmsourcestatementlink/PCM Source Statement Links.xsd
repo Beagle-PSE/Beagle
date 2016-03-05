@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- This is a schema for XML files that link PCM elements to source code statements the PCM element represents. -->
-<xsd:schema xmlns="http://sdq.ipd.uka.de/beagle/core/sourcecodelink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sdq.ipd.uka.de/beagle/core/sourcecodelink">
+<xsd:schema xmlns="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink">
 	<!-- Defines a position in a source code file -->
 	<xsd:complexType name="SourceCodePosition">
 		<xsd:simpleContent>
