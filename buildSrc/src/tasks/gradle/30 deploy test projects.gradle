@@ -17,7 +17,6 @@ buildscript {
 apply plugin: 'de.undercouch.download'
 
 def tmp = file("$buildDir/tmp/test-resources")
-tmp.mkdirs()
 
 def cocomeDest = file("$projectDir/src/test/resources/CoCoME")
 def appsensorDest = file("$projectDir/src/test/resources/AppSensor")
@@ -38,6 +37,8 @@ task downloadCocome {
 	outputs.dir cocomeDest
 	
 	doLast {
+		tmp.mkdirs()
+		
 		download {
 			src ([
 				'http://www.cocome.org/downloads/implementation/cocome-impl.zip',
@@ -64,7 +65,9 @@ task downloadAppSensor {
 	outputs.dir appsensorDest
 	
 	doLast {
-		rootProject.download {
+		tmp.mkdirs()
+		
+		download {
 			src 'https://github.com/jtmelton/appsensor/archive/v2.2.0.zip'
 			onlyIfNewer true
 			quiet true
