@@ -30,7 +30,6 @@ public class ExecutionTimeBasedTimeoutTest {
 		};
 		assertThat("executionTimeBasedTimeout must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
-		this.executionTimeBasedTimeout.init();
 	}
 
 	/**
