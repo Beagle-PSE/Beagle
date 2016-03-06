@@ -15,13 +15,13 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
 /**
- * Tests {@link AgingAlgorithmAdaptiveTimeout} and contains all test cases needed to check
+ * Tests {@link AdaptiveTimeout} and contains all test cases needed to check
  * every method.
  *
  * @author Michael Vogt
  */
-@PrepareForTest(AgingAlgorithmAdaptiveTimeout.class)
-public class AgingAlgorithmAdaptiveTimeoutTest {
+@PrepareForTest(AdaptiveTimeout.class)
+public class AdaptiveTimeoutTest {
 
 	/**
 	 * Loads PowerMockito to mock the static final class {@link System}.
@@ -30,28 +30,28 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 	public final PowerMockRule loadPowerMockito = new PowerMockRule();
 
 	/**
-	 * Test method for {@link AgingAlgorithmAdaptiveTimeout#isReached()}.
+	 * Test method for {@link AdaptiveTimeout#isReached()}.
 	 */
 	@Test
 	public void isReached() {
-		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
+		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
 		mockStatic(System.class);
 		given(System.currentTimeMillis()).willReturn(0L);
 		adaptTimeout.init();
 		assertThat(adaptTimeout.isReached(), equalTo(false));
 
-		final AgingAlgorithmAdaptiveTimeout adaptTimeout2 = new AgingAlgorithmAdaptiveTimeout();
+		final AdaptiveTimeout adaptTimeout2 = new AdaptiveTimeout();
 		adaptTimeout2.init();
 		given(System.currentTimeMillis()).willReturn(2L * (3600 * 1000));
 		assertThat(adaptTimeout2.isReached(), equalTo(true));
 	}
 
 	/**
-	 * Test method for {@link AgingAlgorithmAdaptiveTimeout#reportOneStepProgress()}.
+	 * Test method for {@link AdaptiveTimeout#reportOneStepProgress()}.
 	 */
 	@Test
 	public void reportOneStepProgress() {
-		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
+		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
 		adaptTimeout.init();
 		adaptTimeout.reportOneStepProgress();
 	}
@@ -61,7 +61,7 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 	 */
 	@Test
 	public void init() {
-		final AgingAlgorithmAdaptiveTimeout adaptTimeout1 = new AgingAlgorithmAdaptiveTimeout();
+		final AdaptiveTimeout adaptTimeout1 = new AdaptiveTimeout();
 		adaptTimeout1.init();
 		final ThrowingMethod method = () -> {
 			adaptTimeout1.init();
@@ -69,17 +69,17 @@ public class AgingAlgorithmAdaptiveTimeoutTest {
 		assertThat("adaptTimeout1 must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
 
-		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
+		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
 		adaptTimeout.init();
 	}
 
 	/**
-	 * Test method for {@link AgingAlgorithmAdaptiveTimeout#notifyOnReachedTimeout()}.
+	 * Test method for {@link AdaptiveTimeout#notifyOnReachedTimeout()}.
 	 */
 	@Test
 	public void notifyOnReachedTimeout() {
 		final Runnable callback1 = mock(Runnable.class);
-		final AgingAlgorithmAdaptiveTimeout adaptTimeout = new AgingAlgorithmAdaptiveTimeout();
+		final AdaptiveTimeout adaptTimeout = new AdaptiveTimeout();
 		adaptTimeout.registerCallback(callback1);
 		adaptTimeout.init();
 
