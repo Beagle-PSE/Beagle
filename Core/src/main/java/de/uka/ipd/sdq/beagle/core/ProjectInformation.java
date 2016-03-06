@@ -30,11 +30,6 @@ public class ProjectInformation implements Serializable {
 	private final Timeout timeout;
 
 	/**
-	 * The current state of the analysis.
-	 */
-	private AnalysisState analysisState;
-
-	/**
 	 * The provider of the source files to be analysed.
 	 */
 	private final SourceCodeFileProvider fileProvider;
@@ -79,7 +74,6 @@ public class ProjectInformation implements Serializable {
 		this.charset = charset == null ? Charset.defaultCharset() : charset;
 		this.buildPath = buildPath;
 		this.launchConfigurations = new HashSet<>(launchConfigurations);
-		this.analysisState = AnalysisState.RUNNING;
 	}
 
 	/**
@@ -131,88 +125,4 @@ public class ProjectInformation implements Serializable {
 		return new HashSet<>(this.launchConfigurations);
 	}
 
-	/**
-	 * Returns the current state of the analysis.
-	 *
-	 * @return The current state of the analysis.
-	 */
-	public AnalysisState getAnalysisState() {
-		return this.analysisState;
-	}
-
-	/**
-	 * Sets the current state of the analysis to {@code analysisState}.
-	 *
-	 * @param analysisState The state the analysis will be in after this method has been
-	 *            called.
-	 */
-	public void setAnalysisState(final AnalysisState analysisState) {
-
-		/*
-		 * Ignore this method call if the new state is equal to the old state.
-		 */
-		if (this.analysisState.equals(analysisState)) {
-			return;
-		}
-
-		switch (analysisState) {
-			case RUNNING:
-				Validate.validState(this.analysisState == AnalysisState.ENDING,
-					"Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
-
-				this.analysisState = AnalysisState.RUNNING;
-				AnalysisState.ENDING.notifyAll();
-				break;
-			case ABORTING:
-				Validate.validState(this.analysisState == AnalysisState.RUNNING,
-					"Can't switch from %s to AnalysisState.ABORTING.", this.analysisState);
-
-				this.analysisState = AnalysisState.ABORTING;
-
-				break;
-			case ENDING:
-				Validate.validState(this.analysisState == AnalysisState.RUNNING,
-					"Can't switch from %s to AnalysisState.ENDING.", this.analysisState);
-
-				this.analysisState = AnalysisState.ENDING;
-
-				break;
-			case TERMINATED:
-				this.analysisState = AnalysisState.TERMINATED;
-
-				break;
-			default:
-				Validate.isTrue(false);
-				break;
-		}
-	}
-
-	/**
-	 * The current state of the analysis.
-	 *
-	 * @author Christoph Michelbach
-	 */
-	public enum AnalysisState {
-		/**
-		 * The analysis is currently running.
-		 */
-		RUNNING,
-
-		/**
-		 * Stopping the analysis without trying to preserve data accumulated in the
-		 * current phase.
-		 */
-		ABORTING,
-
-		/**
-		 * Stopping the analysis but trying to preserve data accumulated in the current
-		 * phase.
-		 */
-		ENDING,
-
-		/**
-		 * The analysis isn't running.
-		 */
-		TERMINATED
-	}
 }

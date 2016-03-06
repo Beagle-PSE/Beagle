@@ -83,6 +83,11 @@ public class AnalysisController {
 	private final Set<ProposedExpressionAnalyser> proposedExpressionAnalysers;
 
 	/**
+	 * The current state of the analysis.
+	 */
+	private AnalysisState analysisState;
+
+	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
 	 *
 	 * @param blackboard A blackboard having everything to be analysed written on it. Must
@@ -128,10 +133,10 @@ public class AnalysisController {
 
 		final FinalJudge finalJudge = new FinalJudge();
 		finalJudge.init(this.blackboard);
+		this.analysisState = AnalysisState.RUNNING;
 
 		final ProjectInformation projectInformation = this.blackboard.getProjectInformation();
-		while ((projectInformation.getAnalysisState() == ProjectInformation.AnalysisState.RUNNING)
-			&& !finalJudge.judge(this.blackboard)) {
+		while ((this.analysisState == AnalysisState.RUNNING) && !finalJudge.judge(this.blackboard)) {
 			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {
 				this.measurementController.measure(measurementControllerBlackboardView);
 
@@ -146,16 +151,16 @@ public class AnalysisController {
 			}
 		}
 
-		if (projectInformation.getAnalysisState() == ProjectInformation.AnalysisState.ENDING) {
+		if (this.analysisState == AnalysisState.ENDING) {
 			/*
 			 * Call the {@link FinalJudge#judge} a last time so it measures the fitness
 			 * values and stores it on the blackboard.
 			 */
 			finalJudge.judge(this.blackboard);
 
-			while (projectInformation.getAnalysisState() != ProjectInformation.AnalysisState.RUNNING) {
+			while (this.analysisState != AnalysisState.RUNNING) {
 				try {
-					projectInformation.getAnalysisState().wait();
+					this.analysisState.wait();
 				} catch (final InterruptedException exception) {
 					// Retry on interrupt. No handling is needed because the loop just
 					// tries again.
@@ -282,6 +287,91 @@ public class AnalysisController {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Returns the current state of the analysis.
+	 *
+	 * @return The current state of the analysis.
+	 */
+	public AnalysisState getAnalysisState() {
+		return this.analysisState;
+	}
+
+	/**
+	 * Sets the current state of the analysis to {@code analysisState}.
+	 *
+	 * @param analysisState The state the analysis will be in after this method has been
+	 *            called.
+	 */
+	public void setAnalysisState(final AnalysisState analysisState) {
+
+		/*
+		 * Ignore this method call if the new state is equal to the old state.
+		 */
+		if (this.analysisState.equals(analysisState)) {
+			return;
+		}
+
+		switch (analysisState) {
+			case RUNNING:
+				Validate.validState(this.analysisState == AnalysisState.ENDING,
+					"Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
+
+				this.analysisState = AnalysisState.RUNNING;
+				AnalysisState.ENDING.notifyAll();
+				break;
+			case ABORTING:
+				Validate.validState(this.analysisState == AnalysisState.RUNNING,
+					"Can't switch from %s to AnalysisState.ABORTING.", this.analysisState);
+
+				this.analysisState = AnalysisState.ABORTING;
+
+				break;
+			case ENDING:
+				Validate.validState(this.analysisState == AnalysisState.RUNNING,
+					"Can't switch from %s to AnalysisState.ENDING.", this.analysisState);
+
+				this.analysisState = AnalysisState.ENDING;
+
+				break;
+			case TERMINATED:
+				this.analysisState = AnalysisState.TERMINATED;
+
+				break;
+			default:
+				Validate.isTrue(false);
+				break;
+		}
+	}
+
+	/**
+	 * The current state of the analysis.
+	 *
+	 * @author Christoph Michelbach
+	 */
+	public enum AnalysisState {
+		/**
+		 * The analysis is currently running.
+		 */
+		RUNNING,
+
+		/**
+		 * Stopping the analysis without trying to preserve data accumulated in the
+		 * current phase.
+		 */
+		ABORTING,
+
+		/**
+		 * Stopping the analysis but trying to preserve data accumulated in the current
+		 * phase.
+		 */
+		ENDING,
+
+		/**
+		 * The analysis isn't running.
+		 */
+		TERMINATED
 	}
 
 	/**
