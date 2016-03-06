@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This is a schema for XML files that link PCM elements to source code statements the PCM element represents. -->
+<xsd:schema xmlns="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink">
+	
+	<!-- An index that must be greater than 0 -->
+	<xsd:simpleType name="CharacterIndex">
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- A Java type’s fully qualified name -->
+	<xsd:simpleType name="JavaFullyQualifiedName">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([\p{L}_$][\p{L}\p{N}_$]*\.)*[\p{L}_$][\p{L}\p{N}_$]*" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- Defines a position in a source code file -->
+	<xsd:complexType name="SourceCodePosition">
+		<!--  The index of the character -->
+		<xsd:simpleContent>
+			<xsd:extension base="CharacterIndex">
+				<!-- The fully qualified name of the java file that contains the indexed character -->
+				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" use="required" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+	<!-- Stores the hash of a source code file at the point of generation. Is used to validate the model’s information. -->
+	<xsd:complexType name="SourceCodeFileHash">
+		<!-- The hash value -->
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<!-- The fully qualified name of the java file that is hashed -->
+				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" use="required" />
+				<!-- The hash algorithm that was used to generate the hash -->
+				<xsd:attribute name="algorithm" type="xsd:string" default="md5" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	
+	<!-- Links a PCM element to one or two source code positions. -->
+	<xsd:complexType name="PcmSourceStatementLink">
+		<xsd:sequence>
+			<!-- defines the position of the first character of the first statement representing the PCM element -->
+			<xsd:element name="FirstStatement" type="SourceCodePosition" minOccurs="1" maxOccurs="1" />
+			<!-- defines the position of the first character of the last statement representing the PCM element. If this element is ommited,
+			the statement defined in firstStatement is assumed to be both the first and last statement. -->
+			<xsd:element name="LastStatement" type="SourceCodePosition" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+		<!-- Note: de.uka.ipd.sdq.identifier.Identifier states: Identifiers are not fixed to one realization. Therefore,
+		we put no restrictions on this attribute’s content. -->
+		<xsd:attribute name="pcmElementId" type="xsd:string" use="required" />
+	</xsd:complexType>
+	
+	<!-- The PCM repository file the model refers to -->
+	<xsd:complexType name="PcmRepositoryFile">
+		<!-- The hash of the repository file -->
+		<xsd:attribute name="hash" type="xsd:string" />
+		<!-- The hash algorithm that was used to generate the hash -->
+		<xsd:attribute name="hashAlgorithm" type="xsd:string" default="md5" />
+	</xsd:complexType>
+
+	<!-- root element -->
+	<xsd:element name="PcmSourceStatementLinkRepository">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="PcmRepositoryFile" type="PcmRepositoryFile" minOccurs="0" maxOccurs="1" />
+				<xsd:element name="PcmSourceStatementLink" type="PcmSourceStatementLink" minOccurs="1" maxOccurs="unbounded" />
+				<xsd:element name="SourceCodeFileHash" type="SourceCodeFileHash" minOccurs="1" maxOccurs="unbounded">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+		<xsd:unique name="OnlyOneHashPerFile">
+			<xsd:selector xpath="SourceCodeFileHash" />
+			<xsd:field xpath="@sourceCodeFile" />
+		</xsd:unique>
+		<xsd:unique name="OnlyOneLinkPerPcmElement">
+			<xsd:selector xpath="PcmSourceStatementLink" />
+			<xsd:field xpath="@pcmElementId" />
+		</xsd:unique>
+	</xsd:element>
+	
+</xsd:schema>
+	
