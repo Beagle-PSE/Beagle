@@ -25,7 +25,8 @@ dependencies {
 }
 
 def psslSchemaDefinitionFolder = "Core/src/main/resources/de/uka/ipd/sdq/beagle/core/pcmsourcestatementlink"
-def psslSourceFileFolder = file("$buildDir/jaxb-src")
+def psslSourceFileFolderName = 'build/jaxb-src'
+def psslSourceFileFolder = file(psslSourceFileFolderName)
 def psslCompilationDestination = file("$buildDir/classes/generated")
 def psslJarDestFolder = file("$buildDir/generated")
 def psslJarName = 'pcm-source-statement-links'
@@ -43,7 +44,7 @@ jaxb {
 	bindings = ['PCM Source Statement Links Bindings.xjb']
 	
 	xjc {     
-		destinationDir = psslSourceFileFolder
+		destinationDir = psslSourceFileFolderName
 		producesDir = psslSourceFileFolder
 		episodesDir = 'Core/build/tmp/jaxb-episodes'
 		header = false
