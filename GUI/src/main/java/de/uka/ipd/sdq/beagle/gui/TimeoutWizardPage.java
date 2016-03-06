@@ -1,6 +1,10 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
+import de.uka.ipd.sdq.beagle.core.timeout.AgeingAlgorithmAdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -58,6 +62,11 @@ public class TimeoutWizardPage extends WizardPage {
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
 
 	/**
+	 * Extensive inquiries yielded that a second comprises this many milliseconds.
+	 */
+	private static final int SECOND_MILLISECOND_RATIO = 1000;
+
+	/**
 	 * The {@link BeagleConfiguration} this {@link TimeoutWizardPage} uses.
 	 */
 	private final BeagleConfiguration beagleConfiguration;
@@ -81,12 +90,6 @@ public class TimeoutWizardPage extends WizardPage {
 	 * A sub-container.
 	 */
 	private Composite upperContainer;
-
-	/**
-	 * Applies the default setting for the timeout. [-2 → adaptive timeout] [-1 → no
-	 * timeout] [≥ 0 → timeout in seconds]
-	 */
-	private int timeout;
 
 	/**
 	 * The {@link SelectionListener} which will be called when the radio box indicating
@@ -126,7 +129,6 @@ public class TimeoutWizardPage extends WizardPage {
 		this.setDescription(DESCRIPTION);
 		this.setControl(this.textboxTimeoutSeconds);
 		this.beagleConfiguration = beagleConfiguration;
-		this.timeout = this.beagleConfiguration.getTimeout();
 	}
 
 	@Override
@@ -158,8 +160,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = BeagleConfiguration.ADAPTIVE_TIMEOUT;
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new AgeingAlgorithmAdaptiveTimeout());
 			}
 
 			@Override
@@ -178,10 +179,10 @@ public class TimeoutWizardPage extends WizardPage {
 					TimeoutWizardPage.this.setPageComplete(false);
 				} else {
 					TimeoutWizardPage.this.setPageComplete(true);
-					TimeoutWizardPage.this.timeout =
-						Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText());
-					TimeoutWizardPage.this.beagleConfiguration.setTimeout(BeagleConfiguration.ADAPTIVE_TIMEOUT);
-					TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+					final ConstantTimeout constantTimeout =
+						new ConstantTimeout(Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText())
+							* SECOND_MILLISECOND_RATIO);
+					TimeoutWizardPage.this.beagleConfiguration.setTimeout(constantTimeout);
 				}
 			}
 
@@ -209,8 +210,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.timeout = BeagleConfiguration.NO_TIMEOUT;
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(TimeoutWizardPage.this.timeout);
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new NoTimeout());
 			}
 
 			@Override
@@ -282,18 +282,14 @@ public class TimeoutWizardPage extends WizardPage {
 	 * {@link WizardPage} so the visibility of this constant can be changed in the future.
 	 */
 	private void adaptPageToDefaultValues() {
-		switch (this.beagleConfiguration.getTimeout()) {
-			case BeagleConfiguration.ADAPTIVE_TIMEOUT:
-				// Nothing needs to be done because {@link TimeoutWizardPage} is written
-				// so this is the default.
-				break;
-			case BeagleConfiguration.NO_TIMEOUT:
-				this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
-				break;
-			default:
-				// will be chosen when a set timeout is default
-				this.radioSetTimeoutSelected.widgetSelected(new SelectionEvent(null));
-				break;
+		// Nothing needs to be done for {@code LinearRegressionAdaptiveTimeout} because
+		// {@link
+		// TimeoutWizardPage} is written so this is the default.
+		if (this.beagleConfiguration.getTimeout() instanceof NoTimeout) {
+			this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
+		} else {
+			// will be chosen when a set timeout is default
+			this.radioSetTimeoutSelected.widgetSelected(new SelectionEvent(null));
 		}
 	}
 
@@ -302,7 +298,7 @@ public class TimeoutWizardPage extends WizardPage {
 	 *
 	 * @return the timeout chosen by the user.
 	 */
-	public int getTimeout() {
-		return this.timeout;
+	public Timeout getTimeout() {
+		return this.beagleConfiguration.getTimeout();
 	}
 }
