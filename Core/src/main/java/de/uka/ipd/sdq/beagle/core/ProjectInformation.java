@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 
@@ -15,6 +15,7 @@ import java.util.Set;
  * immutable.
  *
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class ProjectInformation implements Serializable {
 
@@ -24,10 +25,9 @@ public class ProjectInformation implements Serializable {
 	private static final long serialVersionUID = 2451089669559562551L;
 
 	/**
-	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
-	 * seconds]
+	 * The timeout to be used.
 	 */
-	private final int timeout;
+	private final Timeout timeout;
 
 	/**
 	 * The provider of the source files to be analysed.
@@ -53,20 +53,6 @@ public class ProjectInformation implements Serializable {
 	 * Creates a new Project Information.
 	 *
 	 * @param timeout The timeout to be used.
-	 *
-	 *            <table> <caption>timeout value description</caption>
-	 *
-	 *            <tr><td>{@link BeagleConfiguration#ADAPTIVE_TIMEOUT}</td><td>Beagle will
-	 *            use a timeout that adapts to the quality of the analysis’ findings in
-	 *            the past.</td>
-	 *
-	 *            <tr><td>{@link BeagleConfiguration#NO_TIMEOUT}</td><td>no timeout will
-	 *            be used</td>
-	 *
-	 *            <tr><td>{@code ≥ 0}</td><td>the given value will be used as a fixed
-	 *            timeout in seconds</td>
-	 *
-	 *            </table>
 	 * @param fileProvider The provider of the source files to be analysed.
 	 * @param buildPath The class path containing everything needed to compile the
 	 *            project.
@@ -76,7 +62,7 @@ public class ProjectInformation implements Serializable {
 	 *            software. Must not be {@code null}, must not contain {@code null}, must
 	 *            not be empty.
 	 */
-	public ProjectInformation(final int timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
+	public ProjectInformation(final Timeout timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
 		final Charset charset, final Set<LaunchConfiguration> launchConfigurations) {
 		Validate.notNull(fileProvider);
 		Validate.notNull(buildPath);
@@ -113,21 +99,9 @@ public class ProjectInformation implements Serializable {
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
 	 * keep trying to find results while no perfect results were found.
 	 *
-	 * <table> <caption>timeout value description</caption>
-	 *
-	 * <tr><td>{@link BeagleConfiguration#ADAPTIVE_TIMEOUT}</td><td>Beagle will use a
-	 * timeout that adapts to the quality of the analysis’ findings in the past.</td>
-	 *
-	 * <tr><td>{@link BeagleConfiguration#NO_TIMEOUT}</td><td>no timeout will be used</td>
-	 *
-	 * <tr><td>{@code ≥ 0}</td><td>the given value will be used as a fixed timeout in
-	 * seconds</td>
-	 *
-	 * </table>
-	 *
 	 * @return The timeout that will be used by Beagle.
 	 */
-	public int getTimeout() {
+	public Timeout getTimeout() {
 		return this.timeout;
 	}
 

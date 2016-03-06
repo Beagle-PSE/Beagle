@@ -9,6 +9,7 @@ import static org.mockito.Mockito.mock;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.LaunchConfigurationFactory;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.junit.Test;
 
@@ -30,23 +31,24 @@ public class ProjectInformationTest {
 	@Test
 	public void constructor() {
 		ThrowingMethod method = () -> {
-			new ProjectInformation(0, mock(SourceCodeFileProvider.class), null, Charset.defaultCharset(),
-				new LaunchConfigurationFactory().getAllAsSet());
+			new ProjectInformation(mock(Timeout.class), mock(SourceCodeFileProvider.class), null,
+				Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
 		};
 		assertThat("buildPath must not be null.", method, throwsException(NullPointerException.class));
 
 		method = () -> {
-			new ProjectInformation(0, null, "", Charset.defaultCharset(),
+			new ProjectInformation(mock(Timeout.class), null, "", Charset.defaultCharset(),
 				new LaunchConfigurationFactory().getAllAsSet());
 		};
 		assertThat("fileProvider must not be null.", method, throwsException(NullPointerException.class));
 
 		final Set<LaunchConfiguration> launchConfig = new HashSet<>();
 		method = () -> {
-			new ProjectInformation(0, mock(SourceCodeFileProvider.class), "", Charset.defaultCharset(), launchConfig);
+			new ProjectInformation(mock(Timeout.class), mock(SourceCodeFileProvider.class), "",
+				Charset.defaultCharset(), launchConfig);
 		};
 		assertThat("launchConiguration must not be empty.", method, throwsException(IllegalArgumentException.class));
-		new ProjectInformation(0, mock(SourceCodeFileProvider.class), "",
+		new ProjectInformation(mock(Timeout.class), mock(SourceCodeFileProvider.class), "",
 
 			Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
 	}
@@ -57,8 +59,9 @@ public class ProjectInformationTest {
 	@Test
 	public void getBuildPath() {
 		final String testBuildPath = "TestBuildPath";
-		final ProjectInformation projectInfo = new ProjectInformation(0, mock(SourceCodeFileProvider.class),
-			testBuildPath, Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
+		final ProjectInformation projectInfo =
+			new ProjectInformation(mock(Timeout.class), mock(SourceCodeFileProvider.class), testBuildPath,
+				Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
 		assertThat(projectInfo.getBuildPath(), containsString(testBuildPath));
 	}
 
@@ -68,8 +71,8 @@ public class ProjectInformationTest {
 	@Test
 	public void getCharset() {
 		final Charset testCharset = Charset.defaultCharset();
-		final ProjectInformation projectInfo = new ProjectInformation(0, mock(SourceCodeFileProvider.class), "",
-			testCharset, new LaunchConfigurationFactory().getAllAsSet());
+		final ProjectInformation projectInfo = new ProjectInformation(mock(Timeout.class),
+			mock(SourceCodeFileProvider.class), "", testCharset, new LaunchConfigurationFactory().getAllAsSet());
 		assertThat(projectInfo.getCharset(), is(testCharset));
 	}
 
@@ -78,7 +81,7 @@ public class ProjectInformationTest {
 	 */
 	@Test
 	public void getTimeout() {
-		final int testTimeout = 10;
+		final Timeout testTimeout = mock(Timeout.class);
 		final ProjectInformation projectInfo = new ProjectInformation(testTimeout, mock(SourceCodeFileProvider.class),
 			"", Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
 		assertThat(projectInfo.getTimeout(), is(testTimeout));
@@ -90,8 +93,8 @@ public class ProjectInformationTest {
 	@Test
 	public void getFileProvider() {
 		final SourceCodeFileProvider testFileProvider = mock(SourceCodeFileProvider.class);
-		final ProjectInformation projectInfo = new ProjectInformation(0, testFileProvider, "", Charset.defaultCharset(),
-			new LaunchConfigurationFactory().getAllAsSet());
+		final ProjectInformation projectInfo = new ProjectInformation(mock(Timeout.class), testFileProvider, "",
+			Charset.defaultCharset(), new LaunchConfigurationFactory().getAllAsSet());
 		assertThat(projectInfo.getFileProvider(), is(testFileProvider));
 	}
 
@@ -101,8 +104,8 @@ public class ProjectInformationTest {
 	@Test
 	public void getLaunchConfigurations() {
 		final Set<LaunchConfiguration> testLaunchConfig = new LaunchConfigurationFactory().getAllAsSet();
-		final ProjectInformation projectInfo = new ProjectInformation(0, mock(SourceCodeFileProvider.class), "",
-			Charset.defaultCharset(), testLaunchConfig);
+		final ProjectInformation projectInfo = new ProjectInformation(mock(Timeout.class),
+			mock(SourceCodeFileProvider.class), "", Charset.defaultCharset(), testLaunchConfig);
 		assertThat(projectInfo.getLaunchConfigurations(), is(testLaunchConfig));
 	}
 

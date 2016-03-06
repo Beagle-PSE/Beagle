@@ -1,7 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
-import de.uka.ipd.sdq.beagle.gui.GuiController;
+import de.uka.ipd.sdq.beagle.gui.BeagleLaunchConfigurationCreator;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -11,8 +10,6 @@ import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-
-import java.io.File;
 
 /*
  * This class is involved in creating a Graphical User Interface. Its funtionality cannot
@@ -51,18 +48,18 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		// This cast is safe because this context menu entry is only shown on IFiles.
 		final IFile clickedFile = (IFile) firstElement;
 
-		final File fileToAnalyse;
+		final String fileToAnalyse;
 		if (clickedFile.getFileExtension().equals(FILE_EXTENSION_REPOSITORY)) {
-			fileToAnalyse = clickedFile.getRawLocation().toFile();
+			// The "../" prefix is necessary, as the "full path" contains the project
+			// name.
+			fileToAnalyse = "../" + clickedFile.getFullPath().toOSString();
 		} else {
 			fileToAnalyse = null;
 		}
 
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration =
-			new BeagleConfiguration(null, fileToAnalyse, JavaCore.create(clickedFile.getProject()));
-		final GuiController guiController = new GuiController(beagleConfiguration);
-		guiController.open();
+		new BeagleLaunchConfigurationCreator(null, fileToAnalyse, JavaCore.create(clickedFile.getProject()))
+			.createLaunchConfiguration();
 		return null;
 	}
 
