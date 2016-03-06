@@ -85,7 +85,7 @@ public class AnalysisController {
 	/**
 	 * The current state of the analysis.
 	 */
-	private AnalysisState analysisState;
+	private volatile AnalysisState analysisState;
 
 	/**
 	 * Whether the analysis is currently waiting (paused).
@@ -151,7 +151,8 @@ public class AnalysisController {
 				this.clearSeffElementsToBeMeasuredFromBlackboard();
 			}
 
-			if (!this.chooseRandomMeasurementResultAnalyserToContribute()) {
+			if ((this.analysisState != AnalysisState.ABORTING)
+				&& !this.chooseRandomMeasurementResultAnalyserToContribute()) {
 				this.chooseRandomProposedExpressionAnalyserToContribute();
 			}
 		}
