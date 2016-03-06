@@ -7,6 +7,7 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
@@ -68,13 +69,22 @@ public class PcmRepositoryExtractor {
 	private final SourceCodeFileProvider sourceCodeFileProvider;
 
 	/**
+	 * The {@link PcmSourceStatementLinkRepository} for the project under analysis.
+	 */
+	private final PcmSourceStatementLinkRepository sourceStatementLinkRepository;
+
+	/**
 	 * Creates a new name parser for a specific project to analyse.
 	 *
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
+	 * @param sourceStatementLinkRepository The repository containing the linking of
+	 *            seffElements to SourceCode
 	 */
-	public PcmRepositoryExtractor(final SourceCodeFileProvider sourceCodeFileProvider) {
+	public PcmRepositoryExtractor(final SourceCodeFileProvider sourceCodeFileProvider,
+		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {
 		this.sourceCodeFileProvider = sourceCodeFileProvider;
+		this.sourceStatementLinkRepository = sourceStatementLinkRepository;
 	}
 
 	/**
@@ -95,7 +105,8 @@ public class PcmRepositoryExtractor {
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
 		this.externalCallParameterSet = new HashSet<ExternalCallParameter>();
 		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,
-			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider);
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider,
+			this.sourceStatementLinkRepository);
 
 		this.scanRepository(repository);
 
@@ -146,7 +157,8 @@ public class PcmRepositoryExtractor {
 		this.rdiaSet = new HashSet<ResourceDemandingInternalAction>();
 		this.externalCallParameterSet = new HashSet<ExternalCallParameter>();
 		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,
-			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider);
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider,
+			this.sourceStatementLinkRepository);
 
 		if (identifiers.contains(repository.getId())) {
 			this.scanRepository(repository);
