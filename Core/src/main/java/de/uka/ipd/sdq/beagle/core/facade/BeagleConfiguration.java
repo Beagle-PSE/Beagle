@@ -1,6 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
-import de.uka.ipd.sdq.beagle.core.timeout.AgingAlgorithmAdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.AgeingAlgorithmAdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
@@ -77,7 +77,7 @@ public class BeagleConfiguration {
 		}
 
 		this.repositoryFile = repositoryFile;
-		this.timeout = new AgingAlgorithmAdaptiveTimeout();
+		this.timeout = new AgeingAlgorithmAdaptiveTimeout();
 		this.javaProject = javaProject;
 	}
 
