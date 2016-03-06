@@ -19,6 +19,7 @@ task copyWebArtefacts() {
 		implementationPlanDest = "$WEB_DEST/$doc.implementation.dest.name"
 		implementationReportDest = "$WEB_DEST/$doc.implementationreport.dest.name"
 		implementationSlidesDest = "$WEB_DEST/$doc.implementationslides.dest.name"
+		qualityControlReportDest = "$WEB_DEST/$doc.qcreport.dest.name"
 		renderLogDest = "$WEB_DEST/log/lyx"
 	}
 	
@@ -26,8 +27,8 @@ task copyWebArtefacts() {
 	def checkstyleDirs = rootProject.javaSubprojects.collect { it.checkstyleHtml.dest }
 	def testReports = rootProject.javaSubprojects.collect { it.jacocoTestReport.reports.html.destination }
 	
-	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.srs.logdest, doc.design.dest, doc.design.logdest, checkstyleDirs, testReports, doc.implementation.dest, doc.implementation.logdest,  doc.implementationreport.dest, doc.implementationreport.logdest,  doc.implementationslides.dest,  doc.implementationslides.logdest
-	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest, implementationPlanDest, implementationReportDest, implementationSlidesDest, renderLogDest
+	inputs.files doc.javadoc.destinationDir, doc.srs.dest, doc.srs.logdest, doc.design.dest, doc.design.logdest, checkstyleDirs, testReports, doc.implementation.dest, doc.implementation.logdest,  doc.implementationreport.dest, doc.implementationreport.logdest,  doc.implementationslides.dest,  doc.implementationslides.logdest, doc.qcreport.dest, doc.qcreport.logdest
+	outputs.files javadocDest, srsDest, designDest, checkstyleDest, jacocoDest, implementationPlanDest, implementationReportDest, implementationSlidesDest, qualityControlReportDest, renderLogDest
 	
 	doLast {
 		rootProject.javaSubprojects.each { project ->
@@ -49,12 +50,12 @@ task copyWebArtefacts() {
 		}	
 		
 		copy {
-			from doc.srs.dest, doc.design.dest, doc.implementation.dest, doc.implementationreport.dest, doc.implementationslides.dest
+			from doc.srs.dest, doc.design.dest, doc.implementation.dest, doc.implementationreport.dest, doc.implementationslides.dest, doc.qcreport.dest
 			into WEB_DEST
 		}
 
 		copy {
-			from doc.srs.logdest, doc.design.logdest, doc.implementation.logdest, doc.implementationreport.logdest, doc.implementationslides.logdest
+			from doc.srs.logdest, doc.design.logdest, doc.implementation.logdest, doc.implementationreport.logdest, doc.implementationslides.logdest, doc.qcreport.dest
 			into renderLogDest
 		}
 	}

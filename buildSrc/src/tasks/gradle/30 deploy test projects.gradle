@@ -17,7 +17,9 @@ buildscript {
 apply plugin: 'de.undercouch.download'
 
 def tmp = file("$buildDir/tmp/test-resources")
-tmp.mkdirs()
+
+def cocomeDest = file("$projectDir/src/test/resources/CoCoME")
+def appsensorDest = file("$projectDir/src/test/resources/AppSensor")
 
 /**
  * Shifts the relative destination path of a FileCopyDetails object one level up (discards the 
@@ -30,13 +32,13 @@ def shiftUp =  { FileCopyDetails fcp ->
             
 
 task downloadCocome {
-	def destination = file("$projectDir/src/test/resources/CoCoME")
-	
 	group "Build Setup"
 	description "Deploys CoCoME to be used for testing Beagle"
-	outputs.dir destination
+	outputs.dir cocomeDest
 	
 	doLast {
+		tmp.mkdirs()
+		
 		download {
 			src ([
 				'http://www.cocome.org/downloads/implementation/cocome-impl.zip',
@@ -52,20 +54,20 @@ task downloadCocome {
 			from zipTree("$tmp/cocome-impl.zip"), zipTree("$tmp/cocome-systests.zip"), zipTree("$tmp/cocome-testdriver.zip")
 			eachFile shiftUp
 			includeEmptyDirs false
-			into destination
+			into cocomeDest
 		}
 	}
 }
 
 task downloadAppSensor {
-	def destination = file("$projectDir/src/test/resources/AppSensor")
-	
 	group "Build Setup"
 	description "Deploys AppSensor to be used for testing Beagle"
-	outputs.dir destination
+	outputs.dir appsensorDest
 	
 	doLast {
-		rootProject.download {
+		tmp.mkdirs()
+		
+		download {
 			src 'https://github.com/jtmelton/appsensor/archive/v2.2.0.zip'
 			onlyIfNewer true
 			quiet true
@@ -76,13 +78,23 @@ task downloadAppSensor {
 			from zipTree("$tmp/v2.2.0.zip")
 			eachFile shiftUp
 			includeEmptyDirs false
-			into destination
+			into appsensorDest
 		}
 	}
+}
+
+task cleanTestProjects {
+	description "Removes all test projects downloaded."
+	group "Build Setup"
+
+	doLast {
+		delete cocomeDest, appsensorDest
+	}	
 }
 
 configure(javaSubprojects) {
 	test.dependsOn rootProject.tasks.downloadCocome
 	test.dependsOn rootProject.tasks.downloadAppSensor
+	clean.dependsOn rootProject.tasks.cleanTestProjects
 }
 	
