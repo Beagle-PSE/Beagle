@@ -176,6 +176,7 @@ public class AnalysisController {
 			}
 		}
 
+		this.analysisState = AnalysisState.TERMINATED;
 	}
 
 	/**
