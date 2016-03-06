@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -136,7 +136,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration-java.util.List-java.io.File-org.eclipse.jdt.core.IJavaProject-">BeagleConfiguration</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;elements,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration-java.util.List-java.io.File-org.eclipse.jdt.core.IJavaProject-">BeagleConfiguration</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;elements,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;repositoryFile,
                    org.eclipse.jdt.core.IJavaProject&nbsp;javaProject)</code>
 <div class="block">Constructs a new <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> using <code>elements</code> as the default
@@ -166,7 +166,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;</code></td>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getElements--">getElements</a></span>()</code>
 <div class="block">Returns the elements to be measured or <code>null</code> to indicate that everything in
  the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getRepositoryFile--">repository file</a> should be analysed.</div>
@@ -179,36 +179,50 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfiguration</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getLaunchConfigurations--">getLaunchConfigurations</a></span>()</code>
+<div class="block">Returns the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfigurations</a> to use for the
+ analysis.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getRepositoryFile--">getRepositoryFile</a></span>()</code>
 <div class="block">Returns the repository file that contains all elements that shall be analysed.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getTimeout--">getTimeout</a></span>()</code>
 <div class="block">Returns the timeout to be used.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#isFinal--">isFinal</a></span>()</code>
 <div class="block">Queries whether this configuration is in the <em>finalised</em> state.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setElements-java.util.List-">setElements</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;elements)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setElements-java.util.List-">setElements</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;elements)</code>
 <div class="block">Sets the elements to be measured to <code>elements</code>.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setLaunchConfigurations-java.util.Set-">setLaunchConfigurations</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfiguration</a>&gt;&nbsp;launchConfigurations)</code>
+<div class="block">Sets the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfigurations</a> to use for the
+ analysis.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setRepositoryFile-java.io.File-">setRepositoryFile</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;repositoryFile)</code>
 <div class="block">Sets the repository file containing the elements Beagle shall analyse.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setTimeout-de.uka.ipd.sdq.beagle.core.timeout.Timeout-">setTimeout</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a>&nbsp;timeout)</code>
 <div class="block">Sets the timeout to be used to <code>timeout</code>.</div>
@@ -242,7 +256,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>BeagleConfiguration</h4>
-<pre>public&nbsp;BeagleConfiguration(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;elements,
+<pre>public&nbsp;BeagleConfiguration(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;elements,
                            <a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;repositoryFile,
                            org.eclipse.jdt.core.IJavaProject&nbsp;javaProject)</pre>
 <div class="block">Constructs a new <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> using <code>elements</code> as the default
@@ -284,7 +298,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getElements</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;getElements()</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getElements()</pre>
 <div class="block">Returns the elements to be measured or <code>null</code> to indicate that everything in
  the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getRepositoryFile--">repository file</a> should be analysed.</div>
 <dl>
@@ -300,7 +314,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <ul class="blockList">
 <li class="blockList">
 <h4>setElements</h4>
-<pre>public&nbsp;void&nbsp;setElements(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.palladiosimulator.pcm.core.entity.Entity&gt;&nbsp;elements)</pre>
+<pre>public&nbsp;void&nbsp;setElements(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;elements)</pre>
 <div class="block">Sets the elements to be measured to <code>elements</code>. <code>null</code> indicates that
  everything in the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getRepositoryFile--">repository file</a> should be
  analysed. This operation is only allowed in the <em>set up</em> state.</div>
@@ -345,6 +359,40 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>timeout</code> - The timeout to be used by Beagle.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - If this configuration is not in the <em>set up</em>
+             state.</dd>
+</dl>
+</li>
+</ul>
+<a name="getLaunchConfigurations--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getLaunchConfigurations</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfiguration</a>&gt;&nbsp;getLaunchConfigurations()</pre>
+<div class="block">Returns the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfigurations</a> to use for the
+ analysis.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfigurations</a> to use for the
+         analysis.</dd>
+</dl>
+</li>
+</ul>
+<a name="setLaunchConfigurations-java.util.Set-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLaunchConfigurations</h4>
+<pre>public&nbsp;void&nbsp;setLaunchConfigurations(<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfiguration</a>&gt;&nbsp;launchConfigurations)</pre>
+<div class="block">Sets the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfigurations</a> to use for the
+ analysis. This operation is only allowed in the <em>set up</em> state.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>launchConfigurations</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfigurations</a> to use for the analysis.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - If this configuration is not in the <em>set up</em>
              state.</dd>

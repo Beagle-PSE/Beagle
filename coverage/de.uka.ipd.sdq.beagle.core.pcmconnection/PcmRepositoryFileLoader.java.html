@@ -23,7 +23,7 @@ import java.io.File;
 <span class="fc" id="L23">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(&quot;PCM Repository loader&quot;);</span>
 
 	/**
-	 * Load/Initialize the repository for a given File.
+	 * Load/Initialise the repository for a given File.
 	 *
 	 * @param repositoryFile The repositoryFile
 	 * @return the {@link RepositoryImpl}
@@ -33,7 +33,7 @@ import java.io.File;
 <span class="fc" id="L33">			throw new NullPointerException();</span>
 		}
 
-<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		if (!(repositoryFile.exists())) {</span>
+<span class="pc bpc" id="L36" title="1 of 2 branches missed.">		if (!repositoryFile.exists()) {</span>
 <span class="nc" id="L37">			final FailureReport&lt;RepositoryImpl&gt; failure = new FailureReport&lt;RepositoryImpl&gt;()</span>
 <span class="nc" id="L38">				.message(&quot;The repository file %s does not exist.&quot;, repositoryFile.getAbsolutePath())</span>
 <span class="nc" id="L39">				.retryWith(() -&gt; this.loadRepositoryFromFile(repositoryFile));</span>
