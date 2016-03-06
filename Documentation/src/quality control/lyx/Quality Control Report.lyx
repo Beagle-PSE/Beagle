@@ -360,6 +360,16 @@ All optional tests not mentioned above are omitted because the features
 T200
 \end_layout
 
+\begin_layout Standard
+Every time something is added to Beagle, Travis sets up an Ubuntu system
+ with only the specified software installed.
+ The combination of code already in the upstream master and the changes
+ in question then has to pass all automated tests in order to be mergable.
+ Thus it is always guaranteed that Beagle as of its state in the upstream
+ master passes all automated tests on a system with only the specified software
+ installed.
+\end_layout
+
 \begin_layout Subsection
 T210
 \end_layout
