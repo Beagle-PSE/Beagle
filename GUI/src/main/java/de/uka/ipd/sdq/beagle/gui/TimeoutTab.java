@@ -2,6 +2,7 @@ package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
@@ -60,7 +61,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	/**
 	 * This value in Beagle's launch configuration for the key
 	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE} specifies that the
-	 * {@link Timeout} used should be a {@link AdaptiveTimeout}.
+	 * {@link Timeout} used should be an {@link AdaptiveTimeout}.
 	 */
 	public static final String BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT = "ADAPTIVE_TIMEOUT";
 
