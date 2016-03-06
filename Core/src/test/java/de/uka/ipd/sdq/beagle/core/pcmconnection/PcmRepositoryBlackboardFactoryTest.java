@@ -68,6 +68,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(NullPointerException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
@@ -76,6 +77,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(NullPointerException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
@@ -84,6 +86,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(NullPointerException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
@@ -92,6 +95,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
@@ -100,6 +104,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
@@ -108,6 +113,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
@@ -116,6 +122,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
@@ -124,6 +131,25 @@ public class PcmRepositoryBlackboardFactoryTest {
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
+
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new PcmRepositoryBlackboardFactoryAdder("\0",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
+			}
+		}, throwsException(IllegalArgumentException.class));
+
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new PcmRepositoryBlackboardFactoryAdder("/Path which does not exist on any normal system.",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
+			}
+		}, throwsException(IllegalArgumentException.class));
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
