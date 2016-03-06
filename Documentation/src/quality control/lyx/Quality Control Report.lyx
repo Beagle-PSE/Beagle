@@ -298,7 +298,62 @@ Integration Tests
 \end_layout
 
 \begin_layout Section
-Tests defined in SRS
+Tests Defined in SRS
+\end_layout
+
+\begin_layout Subsection
+Mandatory
+\end_layout
+
+\begin_layout Standard
+All mandatory tests defined in the SRS (/T10/ -- /T60/) are tested either
+ automatically using JUnit or manually.
+ Instructions of how to proceed in manual tests and what to expect for a
+ successful test can be found in 
+\family typewriter
+Manual Tests.md
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Optional
+\end_layout
+
+\begin_layout Standard
+/OT10/ and /OT20/ are tested automatically using JUnit tests.
+\end_layout
+
+\begin_layout Standard
+/OT50/ is partly tested with manual tests but a full test requires a bigger
+ project which as of yet we don't have available.
+\end_layout
+
+\begin_layout Standard
+/OT40/ has not been tested because of practical reasons.
+\end_layout
+
+\begin_layout Standard
+The optional feature for /OT70/ has been implemented and was tested manually.
+ Instructions for manual testing can be found in 
+\family typewriter
+Manual Tests.md
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+/OT60/ has been deemed impractical because no practical way of combining
+ old results with new results could be found.
+\end_layout
+
+\begin_layout Standard
+/OT100/ is inherently fulfilled in our approach.
+\end_layout
+
+\begin_layout Standard
+All optional tests not mentioned above are omitted because the features
+ they are testing are optional features which have not been implemented.
 \end_layout
 
 \begin_layout Subsection
@@ -328,6 +383,29 @@ Contains all Bugs found and/ or fixed in the Quality Control Phase.
 \begin_layout Standard
 Reports should contain at least Symptom, Reason and a description of the
  fix.
+\end_layout
+
+\begin_layout Chapter
+Additional Features
+\end_layout
+
+\begin_layout Section
+Adaptive Timeout
+\end_layout
+
+\begin_layout Standard
+Implementing an adaptive timeout is an optional feature listed in the SRS.
+ We consider an adaptive timeout a valuable extension of Beagle's original
+ features because it allows evaluation to a reasonable degree of accuracy
+ devoid of excessive CPU time consumption without the user being required
+ to be able to estimate the required time (confer constant timeout).
+\end_layout
+
+\begin_layout Standard
+An adaptive timeout based on linear regression was implemented first but
+ later having the adaptive timeout based on the ageing algorithm was consistentl
+y agreed upon to make better predictions and to be better fitted for practice.
+ Thus, Beagle now features an adaptive timeout based on the ageing algorithm.
 \end_layout
 
 \end_body
