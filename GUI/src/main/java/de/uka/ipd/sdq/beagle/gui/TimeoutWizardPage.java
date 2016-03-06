@@ -181,7 +181,7 @@ public class TimeoutWizardPage extends WizardPage {
 					TimeoutWizardPage.this.setPageComplete(true);
 					final ConstantTimeout constantTimeout =
 						new ConstantTimeout(Integer.parseInt(TimeoutWizardPage.this.textboxTimeoutSeconds.getText())
-							* SECOND_MILLISECOND_RATIO);
+							* SECOND_MILLISECOND_RATIO, true);
 					TimeoutWizardPage.this.beagleConfiguration.setTimeout(constantTimeout);
 				}
 			}
