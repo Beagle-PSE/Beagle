@@ -380,20 +380,20 @@ Manual Tests.md
 Optional
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 /OT10/ and /OT20/ are tested automatically using JUnit tests.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 /OT50/ is partly tested with manual tests but a full test requires a bigger
  project which as of yet we don't have available.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 /OT40/ has not been tested because of practical reasons.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 The optional feature for /OT70/ has been implemented and was tested manually.
  Instructions for manual testing can be found in 
 \family typewriter
@@ -402,16 +402,16 @@ Manual Tests.md
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 /OT60/ has been deemed impractical because no practical way of combining
  old results with new results could be found.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 /OT100/ is inherently fulfilled in our approach.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 All optional tests not mentioned above are omitted because the features
  they are testing are optional features which have not been implemented.
 \end_layout
