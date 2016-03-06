@@ -52,7 +52,7 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		if (clickedFile.getFileExtension().equals(FILE_EXTENSION_REPOSITORY)) {
 			// The "../" prefix is necessary, as the "full path" contains the project
 			// name.
-			fileToAnalyse = "../" + clickedFile.getFullPath().toOSString();
+			fileToAnalyse = ".." + clickedFile.getFullPath().toOSString();
 		} else {
 			fileToAnalyse = null;
 		}

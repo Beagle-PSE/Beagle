@@ -62,16 +62,24 @@ public class BeagleConfiguration {
 	private Set<LaunchConfiguration> launchConfigurations;
 
 	/**
+	 * The {@link File} to the source code link model.
+	 */
+	private File sourceCodeLinkFile;
+
+	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 *
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 * @param sourceCodeLinkFile The xml file to the source code links.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-	public BeagleConfiguration(final List<String> elements, final File repositoryFile, final IJavaProject javaProject) {
+	public BeagleConfiguration(final List<String> elements, final File repositoryFile, final File sourceCodeLinkFile,
+		final IJavaProject javaProject) {
 		Validate.notNull(repositoryFile);
+		Validate.notNull(sourceCodeLinkFile);
 		Validate.notNull(javaProject);
 
 		if (!repositoryFile.exists()) {
