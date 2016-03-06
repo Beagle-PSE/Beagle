@@ -49,7 +49,12 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 		final BeagleConfiguration beagleConfiguration =
 			this.convertBeagleLaunchConfigurationToBeagleConfiguration(configuration);
 		beagleConfiguration.finalise();
-		new BeagleController(beagleConfiguration).startAnalysis();
+
+		final ProgressDialogController progressDialogController =
+			new ProgressDialogController(new BeagleController(beagleConfiguration));
+		progressDialogController.startAnalysis();
+		progressDialogController.engageDialog();
+
 	}
 
 	/**
