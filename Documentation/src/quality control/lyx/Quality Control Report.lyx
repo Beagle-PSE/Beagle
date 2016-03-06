@@ -509,5 +509,37 @@ y agreed upon to make better predictions and to be better fitted for practice.
  Thus, Beagle now features an adaptive timeout based on the ageing algorithm.
 \end_layout
 
+\begin_layout Section
+Pausing and Continuing
+\end_layout
+
+\begin_layout Standard
+We decided to implement the optional pausing and continuing feature.
+ The user can pause / resume / abort the analysis via the buttons provided
+ in the dialog shown while Beagle is running.
+\end_layout
+
+\begin_layout Standard
+Pausing happens softly which means that the current 
+\family typewriter
+AnalysisController
+\family default
+ loop round (as defined in the Software Requirements Specification) is finished
+ and the 
+\family typewriter
+FinalJudge
+\family default
+ is called before the thread goes to sleep.
+ Contrary to this, aborting still lets the current measurement tool / 
+\family typewriter
+ProposedExpressionAnalyser
+\family default
+ finish to avoid data inconsistencies but does not call the 
+\family typewriter
+FinalJudge
+\family default
+.
+\end_layout
+
 \end_body
 \end_document
