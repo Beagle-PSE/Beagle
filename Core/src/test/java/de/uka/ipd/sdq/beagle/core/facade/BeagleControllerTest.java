@@ -25,7 +25,7 @@ public class BeagleControllerTest {
 	/**
 	 * A list of elements providing methods to get elements to use for tests.
 	 */
-	private List<Entity> elements;
+	private List<String> elements;
 
 	/**
 	 * Whether this configuration is in the <em>finalised</em> state.
@@ -37,8 +37,8 @@ public class BeagleControllerTest {
 	 */
 	@Before
 	public void initialiseElements() {
-		this.elements = new ArrayList<>();
-		this.elements.add(mock(Entity.class));
+		//this.elements = new ArrayList<String>();
+		//this.elements.add(mock(Entity.class));
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class BeagleControllerTest {
 		//final File[] files = TEST_FILE_FACTORY.getAll();
 		final File file = new File(BeagleControllerTest.class.getResource("/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository").getFile());
 		final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(
-			this.elements,file,
+			null,file,
 			mock(IJavaProject.class));
 		beagleConfiguration.finalise();
 		new BeagleController(beagleConfiguration);
