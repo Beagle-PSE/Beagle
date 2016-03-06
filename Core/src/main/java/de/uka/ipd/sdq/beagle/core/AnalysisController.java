@@ -158,11 +158,13 @@ public class AnalysisController {
 			finalJudge.judge(this.blackboard);
 
 			while (this.analysisState != AnalysisState.RUNNING) {
-				try {
-					this.analysisState.wait();
-				} catch (final InterruptedException exception) {
-					// Retry on interrupt. No handling is needed because the loop just
-					// tries again.
+				synchronized (this) {
+					try {
+						this.analysisState.wait();
+					} catch (final InterruptedException exception) {
+						// Retry on interrupt. No handling is needed because the loop just
+						// tries again.
+					}
 				}
 			}
 		}
@@ -321,7 +323,9 @@ public class AnalysisController {
 					"Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
 
 				this.analysisState = AnalysisState.RUNNING;
-				AnalysisState.ENDING.notifyAll();
+
+				// Wake the waiting thread up.
+				AnalysisController.this.notifyAll();
 				break;
 			case ABORTING:
 				Validate.validState(this.analysisState == AnalysisState.RUNNING,
