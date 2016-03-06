@@ -4,6 +4,7 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -44,19 +45,29 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	private final SourceCodeFileProvider sourceCodeFileProvider;
 
 	/**
+	 * The {@link PcmSourceStatementLinkRepository} for the project under analysis.
+	 */
+	private final PcmSourceStatementLinkRepository sourceStatementLinkRepository;
+
+	/**
 	 * Creates a factory that will search the provided PCM files for <em>PCM
 	 * elements</em>.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
+	 * @param sourceStatementLinkRepository The repository containing the linking of
+	 *            seffElements to SourceCode
 	 * @throws IllegalArgumentException If input parameter does not represent a valid
 	 *             repository file or if repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
 	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName,
-		final SourceCodeFileProvider sourceCodeFileProvider) {
+		final SourceCodeFileProvider sourceCodeFileProvider,
+		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {
 		this.sourceCodeFileProvider = sourceCodeFileProvider;
+		this.sourceStatementLinkRepository = sourceStatementLinkRepository;
+
 		final File test = new File(repositoryFileName);
 		if (!test.exists() || !test.isFile()) {
 			throw new IllegalArgumentException("No file found at: " + repositoryFileName);
@@ -79,10 +90,13 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 * @param pcmRepositoryFiles PCM repository file.
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
+	 * @param sourceStatementLinkRepository The repository containing the linking of
+	 *            seffElements to SourceCode
 	 */
 	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
-		final SourceCodeFileProvider sourceCodeFileProvider) {
-		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider);
+		final SourceCodeFileProvider sourceCodeFileProvider,
+		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {
+		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider, sourceStatementLinkRepository);
 	}
 
 	/**
@@ -95,7 +109,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForAllElements(final BlackboardCreator blackboardFactory) {
-		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);
+		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);
 		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);
 	}
 
@@ -137,7 +151,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 				throw new NullPointerException();
 			}
 		}
-		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);
+		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);
 		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);
 
 	}
