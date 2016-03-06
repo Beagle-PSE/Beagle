@@ -326,7 +326,7 @@ name "sub:T200"
 Every time something is added to Beagle, Travis sets up an Ubuntu system
  with only the specified software installed.
  The combination of code already in the upstream master and the changes
- in question then has to pass all automated tests in order to be mergable.
+ in question then has to pass all automated tests in order to be mergeable.
  Thus it is always guaranteed that Beagle as of its state in the upstream
  master passes all automated tests on a system with only the specified software
  installed.
@@ -441,6 +441,49 @@ Due to our policy to only merge branches into the upstream master if they
  code known to contain errors into our upstream master.
  As of this writing (2016-03-06) there have been no occurrences of subsequent
  detection of bugs in upstream master either.
+\end_layout
+
+\begin_layout Chapter
+Changes
+\end_layout
+
+\begin_layout Section
+GUI
+\end_layout
+
+\begin_layout Standard
+During the implementation phase a GUI consisting of a 
+\family typewriter
+jWizard
+\family default
+ and a 
+\family typewriter
+jDialog
+\family default
+ was created.
+ During the quality assurance phase we removed the 
+\family typewriter
+jWizard
+\family default
+ part of the GUI and replaced it by a launch configuration.
+ The 
+\family typewriter
+jDialog
+\family default
+ code remained the same but was moved from 
+\family typewriter
+GuiController.java
+\family default
+ to 
+\family typewriter
+ProgressDialogController.java
+\family default
+.
+ The launch configuration offers everything the 
+\family typewriter
+jWizard
+\family default
+ solution offered and also makes it possible to deselect elements to analyse.
 \end_layout
 
 \begin_layout Chapter
