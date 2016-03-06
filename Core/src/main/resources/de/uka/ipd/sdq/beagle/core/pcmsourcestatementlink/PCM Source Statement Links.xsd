@@ -22,7 +22,7 @@
 		<xsd:simpleContent>
 			<xsd:extension base="CharacterIndex">
 				<!-- The fully qualified name of the java file that contains the indexed character -->
-				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" />
+				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" use="required" />
 			</xsd:extension>
 		</xsd:simpleContent>
 	</xsd:complexType>
@@ -33,7 +33,7 @@
 		<xsd:simpleContent>
 			<xsd:extension base="xsd:string">
 				<!-- The fully qualified name of the java file that is hashed -->
-				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" />
+				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" use="required" />
 				<!-- The hash algorithm that was used to generate the hash -->
 				<xsd:attribute name="algorithm" type="xsd:string" default="md5" />
 			</xsd:extension>
@@ -51,7 +51,7 @@
 		</xsd:sequence>
 		<!-- Note: de.uka.ipd.sdq.identifier.Identifier states: Identifiers are not fixed to one realization. Therefore,
 		we put no restrictions on this attribute’s content. -->
-		<xsd:attribute name="pcmElementId" type="xsd:string" />
+		<xsd:attribute name="pcmElementId" type="xsd:string" use="required" />
 	</xsd:complexType>
 	
 	<!-- The PCM repository file the model refers to -->
@@ -66,7 +66,7 @@
 	<xsd:element name="PcmSourceStatementLinkRepository">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="PcmRepositoryFile" type="PcmRepositoryFile" minOccurs="1" maxOccurs="1" />
+				<xsd:element name="PcmRepositoryFile" type="PcmRepositoryFile" minOccurs="0" maxOccurs="1" />
 				<xsd:element name="PcmSourceStatementLink" type="PcmSourceStatementLink" minOccurs="1" maxOccurs="unbounded" />
 				<xsd:element name="SourceCodeFileHash" type="SourceCodeFileHash" minOccurs="1" maxOccurs="unbounded">
 				</xsd:element>
