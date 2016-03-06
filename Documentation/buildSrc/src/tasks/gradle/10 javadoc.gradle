@@ -43,7 +43,7 @@ task javadoc(type: Javadoc) {
 	group 'Documentation'
 	description 'Generates Javadoc API documentation for the main source code.'
 	
-	source inputFiles(javadocSubprojects)
+	source inputFiles(javadocSubprojects) + project(':Core').pcmSourceStatementLinksSourceCode
 	destinationDir = file("$buildDir/javadoc")
 	
 	classpath = classpath javadocSubprojects

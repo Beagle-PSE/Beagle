@@ -1,15 +1,6 @@
 <bindings version="1.0" xmlns="http://java.sun.com/xml/ns/jaxb" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<bindings schemaLocation="PCM Source Statement Links.xsd" node="/xsd:schema">
-		<schemaBindings>
-			<package>
-<javadoc><![CDATA[<html>
-	<body>
-		Representation of links from PCM Elements to Source Code Positions of Statements.
-	</body>
-</html>]]></javadoc>
-			</package>
-		</schemaBindings>
-		
+
 		<bindings node="xsd:complexType[@name='SourceCodePosition']">
 			<class>
 <javadoc>Defines a character position in a file. The character is identified by giving its index and the 
