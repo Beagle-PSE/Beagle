@@ -67,8 +67,9 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 				JavaCore.create(ResourcesPlugin.getWorkspace().getRoot().getProject(launchConfiguration.getAttribute(
 					ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, "No project has been specified")));
 			final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(null,
-				new File(launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
-					"No repository file has been set up in the launch configuration")),
+				new File(javaProject.getProject().getLocation().toOSString() + "/"
+					+ launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
+						"No repository file has been set up in the launch configuration")),
 				javaProject);
 
 			final String selectionType =

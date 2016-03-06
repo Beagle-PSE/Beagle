@@ -54,6 +54,12 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 	public static final String BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE = "de.uka.ipd.sdq.beagle.REPOSITORY_FILE";
 
 	/**
+	 * The default value for the key {@link #BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE}.
+	 */
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE =
+		"model/internal_architecture_model.repository";
+
+	/**
 	 * The title of this tab.
 	 */
 	private static final String TITLE = "Project";
@@ -64,19 +70,28 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 	private Text fProjText;
 
 	/**
+	 * The text box containing the repository file path.
+	 */
+	private Text repositoryText;
+
+	/**
 	 * The select Project Button.
 	 */
 	private Button fProjButton;
 
 	@Override
 	public void setDefaults(final ILaunchConfigurationWorkingCopy configuration) {
-		// There are no useful defaults here.
+		// There are no useful defaults for the project.
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
+			BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE);
 	}
 
 	@Override
 	public void initializeFrom(final ILaunchConfiguration configuration) {
 		try {
 			this.fProjText.setText(configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, ""));
+			this.repositoryText.setText(configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
+				BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE));
 		} catch (final CoreException coreException) {
 			FailureHandler.getHandler(this.getClass())
 				.handle(new FailureReport<>().cause(coreException).retryWith(() -> this.initializeFrom(configuration)));
@@ -88,6 +103,7 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		final IJavaProject selectedJavaProject = this.getJavaProject();
 		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT,
 			selectedJavaProject == null ? "" : this.getJavaProject().getProject().getName());
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, this.repositoryText.getText());
 	}
 
 	@Override
@@ -95,10 +111,31 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		return TITLE;
 	}
 
+	/**
+	 * Creates the widgets for the repository file selection.
+	 *
+	 * @param parent The parent for the widget.
+	 */
+	protected void createRepositoryFileEditor(final Composite parent) {
+		final Font font = parent.getFont();
+		final Group group = new Group(parent, SWT.NONE);
+		group.setText("Repository File");
+		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+		group.setLayoutData(gridData);
+		final GridLayout layout = new GridLayout();
+		layout.numColumns = 1;
+		group.setLayout(layout);
+		group.setFont(font);
+		this.repositoryText = new Text(group, SWT.SINGLE | SWT.BORDER);
+		gridData = new GridData(GridData.FILL_HORIZONTAL);
+		this.repositoryText.setLayoutData(gridData);
+		this.repositoryText.setFont(font);
+	}
+
 	/*
 	 * Disclaimer:
 	 *
-	 * The following code in this class has been copied from
+	 * Parts of the following code in this class has been copied from
 	 * org.eclipse.jdt.internal.debug.ui.launcher.AbstractJavaMainTab and
 	 * org.eclipse.jdt.debug.ui.launchConfigurations.AppletMainTab and slightly adapted.
 	 *
@@ -112,6 +149,7 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		final Composite projComp = SWTFactory.createComposite(parent, parent.getFont(), 1, 1, GridData.FILL_BOTH);
 		((GridLayout) projComp.getLayout()).verticalSpacing = 0;
 		this.createProjectEditor(projComp);
+		this.createRepositoryFileEditor(projComp);
 
 		this.createVerticalSpacer(projComp, 1);
 		this.setControl(projComp);

@@ -75,7 +75,7 @@ public class BeagleConfiguration {
 		Validate.notNull(javaProject);
 
 		if (!repositoryFile.exists()) {
-			throw new IllegalArgumentException("Repository file must exist.");
+			throw new IllegalArgumentException("Repository file must exist. Path was: " + repositoryFile.getPath());
 		}
 
 		if (elements != null) {
