@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AgingAlgorithmAdaptiveTimeout.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.timeout</a> &gt; <span class="el_source">AgingAlgorithmAdaptiveTimeout.java</span></div><h1>AgingAlgorithmAdaptiveTimeout.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.timeout;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AgeingAlgorithmAdaptiveTimeout.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.timeout</a> &gt; <span class="el_source">AgeingAlgorithmAdaptiveTimeout.java</span></div><h1>AgeingAlgorithmAdaptiveTimeout.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.timeout;
 
 /**
- * Implements an adaptive timeout based on the aging algorithm. This means that later
+ * Implements an adaptive timeout based on the ageing algorithm. This means that later
  * calls to {@link #isReached()} will return {@code false} if the previous calls took a
  * long time, too.
  *
  * @author Christoph Michelbach
  */
-<span class="pc bpc" id="L10" title="1 of 2 branches missed.">public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {</span>
+<span class="pc bpc" id="L10" title="1 of 2 branches missed.">public class AgeingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {</span>
 
 	/**
-	 * The α value of the aging algorithm. The higher this value, the bigger the influence
-	 * of the newly measured value. Must be ∈ (0,1).
+	 * The α value of the ageing algorithm. The higher this value, the bigger the
+	 * influence of the newly measured value. Must be ∈ (0,1).
 	 */
-	private static final double AGING_ALPHA = 0.5;
+	private static final double AGEING_ALPHA = 0.5;
 
 	/**
 	 * How much additional time is always tolerated. Stated in milliseconds.
@@ -27,9 +27,9 @@
 	private static final double MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE = 0.3;
 
 	/**
-	 * The start value for the aging algorithm.
+	 * The start value for the ageing algorithm.
 	 */
-	private static final long AGING_START_VALUE = 3600 * 1000;
+	private static final long AGEING_START_VALUE = 3600 * 1000;
 
 	/**
 	 * The previous maximally tolerable time in milliseconds or {@code -1} to indicate
@@ -41,7 +41,7 @@
 	 * The maximally tolerable time in milliseconds or {@code -1} to indicate that there
 	 * is none.
 	 */
-<span class="fc" id="L44">	private long maximallyTolerableTime = AGING_START_VALUE;</span>
+<span class="fc" id="L44">	private long maximallyTolerableTime = AGEING_START_VALUE;</span>
 
 	/**
 	 * When {@link #isReached()} has been called the last time. Stated in milliseconds.
@@ -60,7 +60,7 @@
 <span class="fc" id="L60">		this.timeOfPreviousCall = System.currentTimeMillis();</span>
 
 <span class="fc" id="L62">		final long preliminaryMaximallyTolerableTimeWithoutAdditionalTime =</span>
-			(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
+			(long) (this.previousMaximallyTolerableTime * (1 - AGEING_ALPHA) + tellingTime * AGEING_ALPHA);
 <span class="fc" id="L64">		this.maximallyTolerableTime = (long) (preliminaryMaximallyTolerableTimeWithoutAdditionalTime</span>
 			* (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE)) + CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
 
@@ -68,7 +68,7 @@
 
 	@Override
 	protected void implementationInit() {
-		assert AGING_ALPHA &gt; 0 &amp;&amp; AGING_ALPHA &lt; 1;
+		assert AGEING_ALPHA &gt; 0 &amp;&amp; AGEING_ALPHA &lt; 1;
 
 <span class="fc" id="L73">		this.timeOfPreviousCall = System.currentTimeMillis();</span>
 <span class="fc" id="L74">		new Thread(this::notifyOnReachedTimeout).start();</span>
