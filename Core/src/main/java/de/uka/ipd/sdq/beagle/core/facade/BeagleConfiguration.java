@@ -1,15 +1,16 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.IJavaProject;
-import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Configures a whole execution of Beagle. Therefore contains all values needed to set up
@@ -33,7 +34,7 @@ public class BeagleConfiguration {
 	 * All elements to measure or {@code null} to indicate that everything in
 	 * {@code repositoryFile} should be analysed.
 	 */
-	private List<Entity> elements;
+	private List<String> elements;
 
 	/**
 	 * The repository file.
@@ -56,6 +57,11 @@ public class BeagleConfiguration {
 	private boolean finalised;
 
 	/**
+	 * The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the analysis.
+	 */
+	private Set<LaunchConfiguration> launchConfigurations;
+
+	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 *
@@ -64,12 +70,12 @@ public class BeagleConfiguration {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile, final IJavaProject javaProject) {
+	public BeagleConfiguration(final List<String> elements, final File repositoryFile, final IJavaProject javaProject) {
 		Validate.notNull(repositoryFile);
 		Validate.notNull(javaProject);
 
 		if (!repositoryFile.exists()) {
-			throw new IllegalArgumentException("Repository file must exist.");
+			throw new IllegalArgumentException("Repository file must exist. Path was: " + repositoryFile.getPath());
 		}
 
 		if (elements != null) {
@@ -97,7 +103,7 @@ public class BeagleConfiguration {
 	 * @return The elements to be measured or {@code null} to indicate that everything in
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
 	 */
-	public List<Entity> getElements() {
+	public List<String> getElements() {
 		return this.elements;
 	}
 
@@ -114,7 +120,7 @@ public class BeagleConfiguration {
 	 *             state.
 	 * @see #getElements()
 	 */
-	public void setElements(final List<Entity> elements) {
+	public void setElements(final List<String> elements) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
 		if (elements == null) {
@@ -147,6 +153,32 @@ public class BeagleConfiguration {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
 		this.timeout = timeout;
+	}
+
+	/**
+	 * Returns the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis.
+	 *
+	 * @return The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 *         analysis.
+	 */
+	public Set<LaunchConfiguration> getLaunchConfigurations() {
+		return this.launchConfigurations;
+	}
+
+	/**
+	 * Sets the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis. This operation is only allowed in the <em>set up</em> state.
+	 *
+	 * @param launchConfigurations The {@linkplain LaunchConfiguration
+	 *            LaunchConfigurations} to use for the analysis.
+	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
+	 *             state.
+	 */
+	public void setLaunchConfigurations(final Set<LaunchConfiguration> launchConfigurations) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
+		this.launchConfigurations = launchConfigurations;
 	}
 
 	/**
