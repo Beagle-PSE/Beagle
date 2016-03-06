@@ -17,6 +17,7 @@ public class BeagleLaunchConfigurationTabGroup extends AbstractLaunchConfigurati
 	public void createTabs(final ILaunchConfigurationDialog dialog, final String mode) {
 		final ILaunchConfigurationTab[] tabs = new ILaunchConfigurationTab[] {
 			// @formatter:off
+			new ProjectTab(),
 			new SelectionOverviewTab(),
 			new TimeoutTab(),
 			new LaunchConfigurationTab(),

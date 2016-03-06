@@ -220,7 +220,6 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 		return TITLE;
 	}
 
-	@SuppressWarnings("restriction")
 	@Override
 	public Image getImage() {
 		return DebugPluginImages.getImage(IDebugUIConstants.IMG_OBJS_LAUNCH_RUN);

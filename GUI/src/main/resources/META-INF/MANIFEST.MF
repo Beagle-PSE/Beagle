@@ -16,7 +16,9 @@ Require-Bundle: org.eclipse.ui,
  de.uka.ipd.sdq.beagle.core,
  org.eclipse.emf.cdo,
  org.eclipse.debug.core,
- org.eclipse.debug.ui
+ org.eclipse.debug.ui,
+ org.eclipse.jdt.debug.ui,
+ org.eclipse.jdt.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.uka.ipd.sdq.beagle.gui
