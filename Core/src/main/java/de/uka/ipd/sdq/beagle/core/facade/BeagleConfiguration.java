@@ -85,6 +85,10 @@ public class BeagleConfiguration {
 		if (!repositoryFile.exists()) {
 			throw new IllegalArgumentException("Repository file must exist. Path was: " + repositoryFile.getPath());
 		}
+		if (!sourceCodeLinkFile.exists()) {
+			throw new IllegalArgumentException(
+				"Source code link file must exist. Path was: " + sourceCodeLinkFile.getPath());
+		}
 
 		if (elements != null) {
 			this.elements = new LinkedList<>(elements);

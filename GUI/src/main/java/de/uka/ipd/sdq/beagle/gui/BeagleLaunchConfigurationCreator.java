@@ -90,6 +90,9 @@ public class BeagleLaunchConfigurationCreator {
 			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT,
 				this.javaProject.getProject().getName());
 			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, this.repositoryFile);
+			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE,
+				this.repositoryFile.substring(0, this.repositoryFile.length() - ".repository".length())
+					+ "_source_statement_links.xml");
 			if (this.elements == null) {
 				workingCopy.setAttribute(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE,
 					SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE_VALUE_WHOLE_REPOSITORY);
