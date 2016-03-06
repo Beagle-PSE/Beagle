@@ -135,7 +135,6 @@ public class AnalysisController {
 		finalJudge.init(this.blackboard);
 		this.analysisState = AnalysisState.RUNNING;
 
-		final ProjectInformation projectInformation = this.blackboard.getProjectInformation();
 		while ((this.analysisState == AnalysisState.RUNNING) && !finalJudge.judge(this.blackboard)) {
 			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {
 				this.measurementController.measure(measurementControllerBlackboardView);
@@ -299,12 +298,15 @@ public class AnalysisController {
 	}
 
 	/**
-	 * Sets the current state of the analysis to {@code analysisState}.
+	 * Sets the current state of the analysis to {@code analysisState}. The analysis must
+	 * be started before this method is called. Otherwise an {@link IllegalStateException}
+	 * will be thrown.
 	 *
 	 * @param analysisState The state the analysis will be in after this method has been
 	 *            called.
 	 */
 	public void setAnalysisState(final AnalysisState analysisState) {
+		Validate.validState(this.analysisState != null);
 
 		/*
 		 * Ignore this method call if the new state is equal to the old state.
