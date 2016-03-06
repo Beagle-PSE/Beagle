@@ -342,6 +342,10 @@
 <dd>
 <div class="block">Creates a controller to analyse all elements written on <code>blackboard</code>.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/AnalysisController.AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">AnalysisController.AnalysisState</span></a> - Enum in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
+<dd>
+<div class="block">The current state of the analysis.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriterAnnotator.html#annotateAll-org.palladiosimulator.pcm.repository.impl.RepositoryImpl-">annotateAll(RepositoryImpl)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryWriterAnnotator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryWriterAnnotator</a></dt>
 <dd>
 <div class="block">This method annotates given <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> to corresponding PCM
@@ -1140,7 +1144,7 @@
 <dd>
 <div class="block">Gives all launch configurations for the project of this object.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html#getAnalysisState--">getAnalysisState()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">ProjectInformation</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/AnalysisController.html#getAnalysisState--">getAnalysisState()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core">AnalysisController</a></dt>
 <dd>
 <div class="block">Returns the current state of the analysis.</div>
 </dd>
@@ -2505,10 +2509,6 @@
 <dd>
 <div class="block">Creates a new Project Information.</div>
 </dd>
-<dt><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">ProjectInformation.AnalysisState</span></a> - Enum in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
-<dd>
-<div class="block">The current state of the analysis.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyserContributionsHandler.html#PROPOSED_EXPRESSION_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME">PROPOSED_EXPRESSION_ANALYSERS_EXTENSION_POINT_CLASS_PROPERTY_NAME</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/ProposedExpressionAnalyserContributionsHandler.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">ProposedExpressionAnalyserContributionsHandler</a></dt>
 <dd>
 <div class="block">The property name of the extension point for
@@ -2823,7 +2823,7 @@
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>SelectionOverviewWizardPage</code></a> being linked to the given
  <code>beagleConfiguration</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html#setAnalysisState-de.uka.ipd.sdq.beagle.core.ProjectInformation.AnalysisState-">setAnalysisState(ProjectInformation.AnalysisState)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">ProjectInformation</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/AnalysisController.html#setAnalysisState-de.uka.ipd.sdq.beagle.core.AnalysisController.AnalysisState-">setAnalysisState(AnalysisController.AnalysisState)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core">AnalysisController</a></dt>
 <dd>
 <div class="block">Sets the current state of the analysis to <code>analysisState</code>.</div>
 </dd>
@@ -3063,11 +3063,11 @@
 </a>
 <h2 class="title">V</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.AnalysisState.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">ProjectInformation.AnalysisState</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/AnalysisController.AnalysisState.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/AnalysisController.AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">AnalysisController.AnalysisState</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.AnalysisState.html#values--">values()</a></span> - Static method in enum de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">ProjectInformation.AnalysisState</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/AnalysisController.AnalysisState.html#values--">values()</a></span> - Static method in enum de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/AnalysisController.AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">AnalysisController.AnalysisState</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>
