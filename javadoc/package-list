@@ -8,6 +8,7 @@ de.uka.ipd.sdq.beagle.core.judge
 de.uka.ipd.sdq.beagle.core.measurement
 de.uka.ipd.sdq.beagle.core.measurement.order
 de.uka.ipd.sdq.beagle.core.pcmconnection
+de.uka.ipd.sdq.beagle.core.timeout
 de.uka.ipd.sdq.beagle.gui
 de.uka.ipd.sdq.beagle.gui.contextmenus
 de.uka.ipd.sdq.beagle.measurement.kieker

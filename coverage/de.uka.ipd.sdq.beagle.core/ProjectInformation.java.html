@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ProjectInformation.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">ProjectInformation.java</span></div><h1>ProjectInformation.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 
@@ -15,6 +15,7 @@ import java.util.Set;
  * immutable.
  *
  * @author Roman Langrehr
+ * @author Christoph Michelbach
  */
 public class ProjectInformation implements Serializable {
 
@@ -24,10 +25,9 @@ public class ProjectInformation implements Serializable {
 	private static final long serialVersionUID = 2451089669559562551L;
 
 	/**
-	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
-	 * seconds]
+	 * The timeout to be used.
 	 */
-	private final int timeout;
+	private final Timeout timeout;
 
 	/**
 	 * The provider of the source files to be analysed.
@@ -53,20 +53,6 @@ public class ProjectInformation implements Serializable {
 	 * Creates a new Project Information.
 	 *
 	 * @param timeout The timeout to be used.
-	 *
-	 *            &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
-	 *
-	 *            &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will
-	 *            use a timeout that adapts to the quality of the analysis’ findings in
-	 *            the past.&lt;/td&gt;
-	 *
-	 *            &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will
-	 *            be used&lt;/td&gt;
-	 *
-	 *            &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed
-	 *            timeout in seconds&lt;/td&gt;
-	 *
-	 *            &lt;/table&gt;
 	 * @param fileProvider The provider of the source files to be analysed.
 	 * @param buildPath The class path containing everything needed to compile the
 	 *            project.
@@ -76,19 +62,19 @@ public class ProjectInformation implements Serializable {
 	 *            software. Must not be {@code null}, must not contain {@code null}, must
 	 *            not be empty.
 	 */
-	public ProjectInformation(final int timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
-<span class="fc" id="L80">		final Charset charset, final Set&lt;LaunchConfiguration&gt; launchConfigurations) {</span>
-<span class="fc" id="L81">		Validate.notNull(fileProvider);</span>
-<span class="fc" id="L82">		Validate.notNull(buildPath);</span>
-<span class="fc" id="L83">		Validate.noNullElements(launchConfigurations);</span>
-<span class="fc bfc" id="L84" title="All 2 branches covered.">		Validate.isTrue(!launchConfigurations.isEmpty(), &quot;The launch configurations may not be empty&quot;);</span>
+	public ProjectInformation(final Timeout timeout, final SourceCodeFileProvider fileProvider, final String buildPath,
+<span class="fc" id="L66">		final Charset charset, final Set&lt;LaunchConfiguration&gt; launchConfigurations) {</span>
+<span class="fc" id="L67">		Validate.notNull(fileProvider);</span>
+<span class="fc" id="L68">		Validate.notNull(buildPath);</span>
+<span class="fc" id="L69">		Validate.noNullElements(launchConfigurations);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">		Validate.isTrue(!launchConfigurations.isEmpty(), &quot;The launch configurations may not be empty&quot;);</span>
 
-<span class="fc" id="L86">		this.timeout = timeout;</span>
-<span class="fc" id="L87">		this.fileProvider = fileProvider;</span>
-<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		this.charset = charset == null ? Charset.defaultCharset() : charset;</span>
-<span class="fc" id="L89">		this.buildPath = buildPath;</span>
-<span class="fc" id="L90">		this.launchConfigurations = new HashSet&lt;&gt;(launchConfigurations);</span>
-<span class="fc" id="L91">	}</span>
+<span class="fc" id="L72">		this.timeout = timeout;</span>
+<span class="fc" id="L73">		this.fileProvider = fileProvider;</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">		this.charset = charset == null ? Charset.defaultCharset() : charset;</span>
+<span class="fc" id="L75">		this.buildPath = buildPath;</span>
+<span class="fc" id="L76">		this.launchConfigurations = new HashSet&lt;&gt;(launchConfigurations);</span>
+<span class="fc" id="L77">	}</span>
 
 	/**
 	 * Queries the project’s build path.
@@ -97,7 +83,7 @@ public class ProjectInformation implements Serializable {
 	 *         never be {@code null}.
 	 */
 	public String getBuildPath() {
-<span class="fc" id="L100">		return this.buildPath;</span>
+<span class="fc" id="L86">		return this.buildPath;</span>
 	}
 
 	/**
@@ -106,29 +92,17 @@ public class ProjectInformation implements Serializable {
 	 * @return The charset used for all files in the project. Will never be {@code null}.
 	 */
 	public Charset getCharset() {
-<span class="fc" id="L109">		return this.charset;</span>
+<span class="fc" id="L95">		return this.charset;</span>
 	}
 
 	/**
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
 	 * keep trying to find results while no perfect results were found.
 	 *
-	 * &lt;table&gt; &lt;caption&gt;timeout value description&lt;/caption&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#ADAPTIVE_TIMEOUT}&lt;/td&gt;&lt;td&gt;Beagle will use a
-	 * timeout that adapts to the quality of the analysis’ findings in the past.&lt;/td&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@link BeagleConfiguration#NO_TIMEOUT}&lt;/td&gt;&lt;td&gt;no timeout will be used&lt;/td&gt;
-	 *
-	 * &lt;tr&gt;&lt;td&gt;{@code ≥ 0}&lt;/td&gt;&lt;td&gt;the given value will be used as a fixed timeout in
-	 * seconds&lt;/td&gt;
-	 *
-	 * &lt;/table&gt;
-	 *
 	 * @return The timeout that will be used by Beagle.
 	 */
-	public int getTimeout() {
-<span class="fc" id="L131">		return this.timeout;</span>
+	public Timeout getTimeout() {
+<span class="fc" id="L105">		return this.timeout;</span>
 	}
 
 	/**
@@ -138,7 +112,7 @@ public class ProjectInformation implements Serializable {
 	 * @return The provider of source files.
 	 */
 	public SourceCodeFileProvider getFileProvider() {
-<span class="fc" id="L141">		return this.fileProvider;</span>
+<span class="fc" id="L115">		return this.fileProvider;</span>
 	}
 
 	/**
@@ -148,7 +122,7 @@ public class ProjectInformation implements Serializable {
 	 *         contain {@code null}, nor be empty.
 	 */
 	public Set&lt;LaunchConfiguration&gt; getLaunchConfigurations() {
-<span class="fc" id="L151">		return new HashSet&lt;&gt;(this.launchConfigurations);</span>
+<span class="fc" id="L125">		return new HashSet&lt;&gt;(this.launchConfigurations);</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

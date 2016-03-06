@@ -109,10 +109,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/Activator.html#Activator--">Activator()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/Activator.html" title="class in de.uka.ipd.sdq.beagle.gui">Activator</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#ADAPTIVE_TIMEOUT">ADAPTIVE_TIMEOUT</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
-<dd>
-<div class="block">Numeric value for "adaptive timeout".</div>
-</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/AdditionExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">AdditionExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">Expression that sums up all its contained expressions.</div>
@@ -332,6 +328,12 @@
 <dd>
 <div class="block">Called when leaving an <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariable.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableVariable</code></a>.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout"><span class="typeNameLink">AgingAlgorithmAdaptiveTimeout</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/timeout/package-summary.html">de.uka.ipd.sdq.beagle.core.timeout</a></dt>
+<dd>
+<div class="block">Implements an adaptive timeout based on the aging algorithm.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html#AgingAlgorithmAdaptiveTimeout--">AgingAlgorithmAdaptiveTimeout()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">AgingAlgorithmAdaptiveTimeout</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">AnalysisController</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/package-summary.html">de.uka.ipd.sdq.beagle.core</a></dt>
 <dd>
 <div class="block">Conducts a complete analysis of elements on a blackboard.</div>
@@ -499,6 +501,10 @@
 </a>
 <h2 class="title">C</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#callbacks">callbacks</a></span> - Variable in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
+<dd>
+<div class="block">A set of callbacks which will be called once the timeout is reached.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyser.html#canContribute-de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView-">canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.analysis.<a href="de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyser.html" title="interface in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyser</a></dt>
 <dd>
 <div class="block">Determines whether this analyser can potentially contribute knowledge in the
@@ -588,6 +594,14 @@
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ConstantExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">ConstantExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
 <div class="block">An <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableExpression.html" title="interface in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><code>EvaluableExpression</code></a> having a constant value.</div>
+</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout"><span class="typeNameLink">ConstantTimeout</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/timeout/package-summary.html">de.uka.ipd.sdq.beagle.core.timeout</a></dt>
+<dd>
+<div class="block">Provides a constant timeout which cannot be changed.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#ConstantTimeout-int-">ConstantTimeout(int)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ConstantTimeout</a></dt>
+<dd>
+<div class="block">Constructs a new constant timeout.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html#contains-java.util.Collection-org.eclipse.emf.ecore.EObject-">contains(Collection&lt;? extends EObject&gt;, EObject)</a></span> - Static method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/EmfHelper.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">EmfHelper</a></dt>
 <dd>
@@ -693,6 +707,10 @@
 <dd>
 <div class="block">Classes handling the translation from and to PCM repository files.</div>
 </dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/timeout/package-summary.html">de.uka.ipd.sdq.beagle.core.timeout</a> - package de.uka.ipd.sdq.beagle.core.timeout</dt>
+<dd>
+<div class="block">Provides the <code>Timeout</code> interface and implementations of it.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a> - package de.uka.ipd.sdq.beagle.gui</dt>
 <dd>
 <div class="block">This is an Eclipse plugin adding Beagle's GUI.</div>
@@ -712,10 +730,6 @@
 <dt><a href="de/uka/ipd/sdq/beagle/measurement/kieker/remote/package-summary.html">de.uka.ipd.sdq.beagle.measurement.kieker.remote</a> - package de.uka.ipd.sdq.beagle.measurement.kieker.remote</dt>
 <dd>
 <div class="block">Types used by the instrumentation when executing the measured software.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#DEFAULT_TIMEOUT">DEFAULT_TIMEOUT</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
-<dd>
-<div class="block">The default setting for the <a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getTimeout--">timeout</a>.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html#details-java.lang.String-java.lang.Object...-">details(String, Object...)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.failurehandling.<a href="de/uka/ipd/sdq/beagle/core/failurehandling/FailureReport.html" title="class in de.uka.ipd.sdq.beagle.core.failurehandling">FailureReport</a></dt>
 <dd>
@@ -939,6 +953,13 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForInternalActions.html#execute-org.eclipse.core.commands.ExecutionEvent-">execute(ExecutionEvent)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForInternalActions.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForInternalActions</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html#execute-org.eclipse.core.commands.ExecutionEvent-">execute(ExecutionEvent)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.contextmenus.<a href="de/uka/ipd/sdq/beagle/gui/contextmenus/ContextMenuEntryHandlerForRepositories.html" title="class in de.uka.ipd.sdq.beagle.gui.contextmenus">ContextMenuEntryHandlerForRepositories</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout"><span class="typeNameLink">ExecutionTimeBasedTimeout</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/timeout/package-summary.html">de.uka.ipd.sdq.beagle.core.timeout</a></dt>
+<dd>
+<div class="block">Abstract class for timeouts deciding when to stop based on the executed program’s run
+ time.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#ExecutionTimeBasedTimeout--">ExecutionTimeBasedTimeout()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/ExponentationExpression.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions"><span class="typeNameLink">ExponentationExpression</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/package-summary.html">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a></dt>
 <dd>
@@ -1742,6 +1763,10 @@
 <dd>
 <div class="block">Returns the timeout to be used.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#getTimeout--">getTimeout()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ConstantTimeout</a></dt>
+<dd>
+<div class="block">Returns the timeout in milliseconds.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html#getTimeout--">getTimeout()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui">TimeoutWizardPage</a></dt>
 <dd>
 <div class="block">Returns the timeout chosen by the user.</div>
@@ -1916,14 +1941,34 @@
 <dd>
 <div class="block">Builds an expression which returns .</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html#implementationInit--">implementationInit()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">AgingAlgorithmAdaptiveTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#implementationInit--">implementationInit()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ConstantTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#implementationInit--">implementationInit()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
+<dd>
+<div class="block">For init methots of implemanting classes.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html#init-de.uka.ipd.sdq.beagle.core.Blackboard-">init(Blackboard)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge">FinalJudge</a></dt>
 <dd>
 <div class="block">Initialises the <a href="de/uka/ipd/sdq/beagle/core/judge/FinalJudge.html" title="class in de.uka.ipd.sdq.beagle.core.judge"><code>FinalJudge</code></a> object.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#init--">init()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html#init--">init()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">NoTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#init--">init()</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></dt>
+<dd>
+<div class="block">Initialises the timeout object.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/ResourceTypeMappings.html#initialise--">initialise()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/ResourceTypeMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">ResourceTypeMappings</a></dt>
 <dd>
 <div class="block">Creates a mapping for (<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU_NS"><code>ResourceDemandType.RESOURCE_TYPE_CPU_NS</code></a>,<code>CPU</code>)
  and (<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_HDD_NS"><code>ResourceDemandType.RESOURCE_TYPE_HDD_NS</code></a>, <code>HDD</code>).</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#initialised">initialised</a></span> - Variable in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
+<dd>
+<div class="block">Indicates whether this object has been initialised.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/measurement/kieker/remote/MeasurementCentral.html#INSTANCE">INSTANCE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.measurement.kieker.remote.<a href="de/uka/ipd/sdq/beagle/measurement/kieker/remote/MeasurementCentral.html" title="class in de.uka.ipd.sdq.beagle.measurement.kieker.remote">MeasurementCentral</a></dt>
 <dd>
@@ -1964,6 +2009,16 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#isNs--">isNs()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
 <div class="block">Whether this resource type is measured machine dependent or not.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html#isReached--">isReached()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">AgingAlgorithmAdaptiveTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#isReached--">isReached()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ConstantTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html#isReached--">isReached()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">NoTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#isReached--">isReached()</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></dt>
+<dd>
+<div class="block">Determines whether the timeout is reached.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html#isValueAssignedFor-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-">isValueAssignedFor(EvaluableVariable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a></dt>
 <dd>
@@ -2247,10 +2302,12 @@
 <div class="block">Builds an expression which returns the result of a logarithm of the antilogarithm
  to the base.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#NO_TIMEOUT">NO_TIMEOUT</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
+<dt><a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout"><span class="typeNameLink">NoTimeout</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/timeout/package-summary.html">de.uka.ipd.sdq.beagle.core.timeout</a></dt>
 <dd>
-<div class="block">Numeric value for "no timeout".</div>
+<div class="block">A timeout policy that never aborts execution.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html#NoTimeout--">NoTimeout()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">NoTimeout</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/NotRecursingAstVisitor.html" title="class in de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation"><span class="typeNameLink">NotRecursingAstVisitor</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/package-summary.html">de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation</a></dt>
 <dd>
 <div class="block">An <code>ASTVisitor</code> that does not recursively traverse the visited node’s subtree(s).</div>
@@ -2440,7 +2497,7 @@
 <dd>
 <div class="block">Holds information about the project under analysis.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html#ProjectInformation-int-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-java.lang.String-java.nio.charset.Charset-java.util.Set-">ProjectInformation(int, SourceCodeFileProvider, String, Charset, Set&lt;LaunchConfiguration&gt;)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">ProjectInformation</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html#ProjectInformation-de.uka.ipd.sdq.beagle.core.timeout.Timeout-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-java.lang.String-java.nio.charset.Charset-java.util.Set-">ProjectInformation(Timeout, SourceCodeFileProvider, String, Charset, Set&lt;LaunchConfiguration&gt;)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ProjectInformation.html" title="class in de.uka.ipd.sdq.beagle.core">ProjectInformation</a></dt>
 <dd>
 <div class="block">Creates a new Project Information.</div>
 </dd>
@@ -2601,10 +2658,28 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html#RecursiveEvaluableExpressionVisitor--">RecursiveEvaluableExpressionVisitor()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/RecursiveEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">RecursiveEvaluableExpressionVisitor</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#registerCallback-java.lang.Runnable-">registerCallback(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html#registerCallback-java.lang.Runnable-">registerCallback(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">NoTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#registerCallback-java.lang.Runnable-">registerCallback(Runnable)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></dt>
+<dd>
+<div class="block">Registers <code>callback</code> to be run once the timeout is reached.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html#replaceCurrentExpressionWith-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-">replaceCurrentExpressionWith(EvaluableExpression)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.util.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/util/ModifyingEvaluableExpressionVisitor.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions.util">ModifyingEvaluableExpressionVisitor</a></dt>
 <dd>
 <div class="block">Replaces the currently visited expression with <code>expression</code> in the expression
  tree.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html#reportOneStepProgress--">reportOneStepProgress()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/AgingAlgorithmAdaptiveTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">AgingAlgorithmAdaptiveTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html#reportOneStepProgress--">reportOneStepProgress()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ConstantTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ConstantTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html#reportOneStepProgress--">reportOneStepProgress()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">NoTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#reportOneStepProgress--">reportOneStepProgress()</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></dt>
+<dd>
+<div class="block">Reports one step of progress to the policy.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html#RESOURCE_TYPE_CPU">RESOURCE_TYPE_CPU</a></span> - Static variable in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/ResourceDemandType.html" title="class in de.uka.ipd.sdq.beagle.core">ResourceDemandType</a></dt>
 <dd>
@@ -2786,7 +2861,7 @@
 <dd>
 <div class="block">Sets the repository file containing the elements Beagle shall analyse.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setTimeout-int-">setTimeout(int)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setTimeout-de.uka.ipd.sdq.beagle.core.timeout.Timeout-">setTimeout(Timeout)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>
 <div class="block">Sets the timeout to be used to <code>timeout</code>.</div>
 </dd>
@@ -2819,6 +2894,10 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleController.html#startAnalysis--">startAnalysis()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleController</a></dt>
 <dd>
 <div class="block">Starts the analysis.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#startingTime">startingTime</a></span> - Variable in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
+<dd>
+<div class="block">The millisecond timestamp indicating when this Timeout object was initialised.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/measurement/kieker/remote/MeasurementCentral.html#startResourceDemand-int-">startResourceDemand(int)</a></span> - Static method in class de.uka.ipd.sdq.beagle.measurement.kieker.remote.<a href="de/uka/ipd/sdq/beagle/measurement/kieker/remote/MeasurementCentral.html" title="class in de.uka.ipd.sdq.beagle.measurement.kieker.remote">MeasurementCentral</a></dt>
 <dd>
@@ -2853,6 +2932,10 @@
 </a>
 <h2 class="title">T</h2>
 <dl>
+<dt><a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout"><span class="typeNameLink">Timeout</span></a> - Interface in <a href="de/uka/ipd/sdq/beagle/core/timeout/package-summary.html">de.uka.ipd.sdq.beagle.core.timeout</a></dt>
+<dd>
+<div class="block">Policy deciding when to stop the execution of a program.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/gui/TimeoutWizardPage.html" title="class in de.uka.ipd.sdq.beagle.gui"><span class="typeNameLink">TimeoutWizardPage</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/gui/package-summary.html">de.uka.ipd.sdq.beagle.gui</a></dt>
 <dd>
 <div class="block">A page of <a href="de/uka/ipd/sdq/beagle/gui/BeagleAnalysisWizard.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleAnalysisWizard</code></a> allowing the user to choose between an adaptive
@@ -2925,6 +3008,15 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/UndefinedExpressionException.html#UndefinedExpressionException-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariableAssignment-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-">UndefinedExpressionException(EvaluableVariableAssignment, EvaluableVariable)</a></span> - Constructor for exception de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/UndefinedExpressionException.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">UndefinedExpressionException</a></dt>
 <dd>
 <div class="block">Creates an exception for an encountered undefined variable.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html#unregisterCallback-java.lang.Runnable-">unregisterCallback(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/ExecutionTimeBasedTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">ExecutionTimeBasedTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html#unregisterCallback-java.lang.Runnable-">unregisterCallback(Runnable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/NoTimeout.html" title="class in de.uka.ipd.sdq.beagle.core.timeout">NoTimeout</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html#unregisterCallback-java.lang.Runnable-">unregisterCallback(Runnable)</a></span> - Method in interface de.uka.ipd.sdq.beagle.core.timeout.<a href="de/uka/ipd/sdq/beagle/core/timeout/Timeout.html" title="interface in de.uka.ipd.sdq.beagle.core.timeout">Timeout</a></dt>
+<dd>
+<div class="block">Removes <code>callback</code> from the set of callbacks to be run once the timeout is
+ reached.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/measurement/kieker/EclipseCompiler.html#useCharset-java.nio.charset.Charset-">useCharset(Charset)</a></span> - Method in class de.uka.ipd.sdq.beagle.measurement.kieker.<a href="de/uka/ipd/sdq/beagle/measurement/kieker/EclipseCompiler.html" title="class in de.uka.ipd.sdq.beagle.measurement.kieker">EclipseCompiler</a></dt>
 <dd>

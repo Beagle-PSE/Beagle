@@ -9,6 +9,7 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 
@@ -21,7 +22,7 @@ import java.util.Set;
  *
  * @author Christoph Michelbach
  */
-<span class="fc" id="L24">public class FinalJudge implements BlackboardStorer&lt;FinalJudgeData&gt; {</span>
+<span class="fc" id="L25">public class FinalJudge implements BlackboardStorer&lt;FinalJudgeData&gt; {</span>
 
 	/**
 	 * Fitness values bigger than this number will be set to this number and therefore
@@ -35,12 +36,6 @@ import java.util.Set;
 	 * is needed.
 	 */
 	private static final double PERFECT_FITNESS = 0.5E-10d;
-
-	/**
-	 * The maximum amount of time (stated in milliseconds) allowed to have passed since
-	 * the application started so evolution of evaluable expressions will be continued.
-	 */
-	private static final long MAX_TIME_PASSED = 3 * 24 * 3600 * 1000;
 
 	/**
 	 * If more generations than this have less than {@link #SIGNIFICANT_IMPROVEMENT}
@@ -72,14 +67,15 @@ import java.util.Set;
 	 *
 	 */
 	public void init(final Blackboard blackboard) {
-<span class="fc" id="L75">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L70">		Validate.notNull(blackboard);</span>
 
-<span class="fc" id="L77">		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());</span>
+<span class="fc" id="L72">		blackboard.writeFor(FinalJudge.class, new FinalJudgeData());</span>
 
-<span class="fc" id="L79">		this.loadData(blackboard);</span>
+<span class="fc" id="L74">		this.loadData(blackboard);</span>
 
-<span class="fc" id="L81">		this.data.setStartTime(System.currentTimeMillis());</span>
-<span class="fc" id="L82">	}</span>
+<span class="fc" id="L76">		final Timeout timeout = blackboard.getProjectInformation().getTimeout();</span>
+<span class="fc" id="L77">		timeout.init();</span>
+<span class="fc" id="L78">	}</span>
 
 	/**
 	 * Implements the break condition for evolution of evaluable expressions. Decides
@@ -93,22 +89,22 @@ import java.util.Set;
 	 *         stopped; {@code false} otherwise.
 	 */
 	public boolean judge(final Blackboard blackboard) {
-<span class="fc" id="L96">		Validate.notNull(blackboard);</span>
-<span class="fc" id="L97">		this.loadData(blackboard);</span>
-<span class="fc" id="L98">		this.data.newGeneration();</span>
+<span class="fc" id="L92">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L93">		this.loadData(blackboard);</span>
+<span class="fc" id="L94">		this.data.newGeneration();</span>
 
-<span class="fc" id="L100">		boolean willReturnTrue = false;</span>
+<span class="fc" id="L96">		boolean willReturnTrue = false;</span>
 
 		// Determine the criteria which aren't CPU-intensive first.
-<span class="fc bfc" id="L103" title="All 2 branches covered.">		if (this.timePassedTooHigh()) {</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">		if (this.timePassedTooHigh(blackboard)) {</span>
 			// We are now destined to return {@code true}.
-<span class="fc" id="L105">			willReturnTrue = true;</span>
+<span class="fc" id="L101">			willReturnTrue = true;</span>
 		}
 
 		// Take the measurements.
-<span class="fc" id="L109">		this.measureFitnessOfAllSeffElementsAndAddResultsToBlackboard(blackboard);</span>
+<span class="fc" id="L105">		this.measureFitnessOfAllSeffElementsAndAddResultsToBlackboard(blackboard);</span>
 
-<span class="fc bfc" id="L111" title="All 6 branches covered.">		return willReturnTrue || this.allElementsArePerfect() || !this.sufficientRelativeImprovement();</span>
+<span class="fc bfc" id="L107" title="All 6 branches covered.">		return willReturnTrue || this.allElementsArePerfect() || !this.sufficientRelativeImprovement();</span>
 	}
 
 	/**
@@ -119,14 +115,14 @@ import java.util.Set;
 	 *             {@link #init()}.
 	 */
 	private void loadData(final Blackboard blackboard) throws IllegalStateException {
-<span class="fc" id="L122">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L118">		Validate.notNull(blackboard);</span>
 
-<span class="fc" id="L124">		this.data = blackboard.readFor(FinalJudge.class);</span>
+<span class="fc" id="L120">		this.data = blackboard.readFor(FinalJudge.class);</span>
 
-<span class="fc bfc" id="L126" title="All 2 branches covered.">		if (this.data == null) {</span>
-<span class="fc" id="L127">			throw new IllegalStateException(&quot;loadData(Blackboard) cannot be called on FinalJudge before init().&quot;);</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">		if (this.data == null) {</span>
+<span class="fc" id="L123">			throw new IllegalStateException(&quot;loadData(Blackboard) cannot be called on FinalJudge before init().&quot;);</span>
 		}
-<span class="fc" id="L129">	}</span>
+<span class="fc" id="L125">	}</span>
 
 	/**
 	 * Measures the fitness of all seff branches, seff loops, rdias, and external call
@@ -136,18 +132,18 @@ import java.util.Set;
 	 * @param blackboard The {@link Blackboard} to use.
 	 */
 	private void measureFitnessOfAllSeffElementsAndAddResultsToBlackboard(final Blackboard blackboard) {
-<span class="fc" id="L139">		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();</span>
+<span class="fc" id="L135">		final EvaluableExpressionFitnessFunction fitnessFunction = blackboard.getFitnessFunction();</span>
 
-<span class="fc" id="L141">		final Set&lt;SeffBranch&gt; seffBranches = blackboard.getAllSeffBranches();</span>
-<span class="fc" id="L142">		final Set&lt;SeffLoop&gt; seffLoops = blackboard.getAllSeffLoops();</span>
-<span class="fc" id="L143">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = blackboard.getAllRdias();</span>
-<span class="fc" id="L144">		final Set&lt;ExternalCallParameter&gt; extCallParameters = blackboard.getAllExternalCallParameters();</span>
+<span class="fc" id="L137">		final Set&lt;SeffBranch&gt; seffBranches = blackboard.getAllSeffBranches();</span>
+<span class="fc" id="L138">		final Set&lt;SeffLoop&gt; seffLoops = blackboard.getAllSeffLoops();</span>
+<span class="fc" id="L139">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = blackboard.getAllRdias();</span>
+<span class="fc" id="L140">		final Set&lt;ExternalCallParameter&gt; extCallParameters = blackboard.getAllExternalCallParameters();</span>
 
-<span class="fc" id="L146">		this.measureFitnessAndAddResultsToBlackboard(seffBranches, blackboard, fitnessFunction::gradeFor);</span>
-<span class="fc" id="L147">		this.measureFitnessAndAddResultsToBlackboard(seffLoops, blackboard, fitnessFunction::gradeFor);</span>
-<span class="fc" id="L148">		this.measureFitnessAndAddResultsToBlackboard(rdias, blackboard, fitnessFunction::gradeFor);</span>
-<span class="fc" id="L149">		this.measureFitnessAndAddResultsToBlackboard(extCallParameters, blackboard, fitnessFunction::gradeFor);</span>
-<span class="fc" id="L150">	}</span>
+<span class="fc" id="L142">		this.measureFitnessAndAddResultsToBlackboard(seffBranches, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L143">		this.measureFitnessAndAddResultsToBlackboard(seffLoops, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L144">		this.measureFitnessAndAddResultsToBlackboard(rdias, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L145">		this.measureFitnessAndAddResultsToBlackboard(extCallParameters, blackboard, fitnessFunction::gradeFor);</span>
+<span class="fc" id="L146">	}</span>
 
 	/**
 	 * Measures the fitness of all {@linkplain MeasurableSeffElement measurable SEFF
@@ -173,32 +169,32 @@ import java.util.Set;
 		final Set&lt;SEFF_ELEMENT_TYPE&gt; measurableSeffElements, final Blackboard blackboard,
 		final TypedFitnessFunction&lt;SEFF_ELEMENT_TYPE&gt; fitnessFunction) {
 
-<span class="fc" id="L176">		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =</span>
+<span class="fc" id="L172">		final EvaluableExpressionFitnessFunctionBlackboardView fitnessFunctionView =</span>
 			new ProposedExpressionAnalyserBlackboardView(blackboard);
 
-<span class="fc bfc" id="L179" title="All 2 branches covered.">		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {</span>
-<span class="fc" id="L180">			double fittest = MAX_CONSIDERED_FITNESS_VALUE;</span>
-<span class="fc" id="L181">			EvaluableExpression bestExpression = null;</span>
+<span class="fc bfc" id="L175" title="All 2 branches covered.">		for (final SEFF_ELEMENT_TYPE seffElement : measurableSeffElements) {</span>
+<span class="fc" id="L176">			double fittest = MAX_CONSIDERED_FITNESS_VALUE;</span>
+<span class="fc" id="L177">			EvaluableExpression bestExpression = null;</span>
 			// Then let it attain a better fitness if possible.
-<span class="fc bfc" id="L183" title="All 2 branches covered.">			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {</span>
-<span class="fc" id="L184">				final double fitnessValue =</span>
-<span class="fc" id="L185">					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">			for (final EvaluableExpression proposedExpression : blackboard.getProposedExpressionFor(seffElement)) {</span>
+<span class="fc" id="L180">				final double fitnessValue =</span>
+<span class="fc" id="L181">					fitnessFunction.gradeFor(seffElement, proposedExpression, fitnessFunctionView);</span>
 				// This has to be smaller-than (not smaller) because {@code fittest}
 				// starts out as {@code MAX_CONSIDERED_FITNESS_VALUE}, not higher.
-<span class="fc bfc" id="L188" title="All 2 branches covered.">				if (fitnessValue &lt;= fittest) {</span>
-<span class="fc" id="L189">					fittest = fitnessValue;</span>
-<span class="fc" id="L190">					bestExpression = proposedExpression;</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">				if (fitnessValue &lt;= fittest) {</span>
+<span class="fc" id="L185">					fittest = fitnessValue;</span>
+<span class="fc" id="L186">					bestExpression = proposedExpression;</span>
 				}
 
-<span class="fc" id="L193">			}</span>
+<span class="fc" id="L189">			}</span>
 
-<span class="fc" id="L195">			this.data.addFittestValue(fittest);</span>
+<span class="fc" id="L191">			this.data.addFittestValue(fittest);</span>
 
 			// Add the best expression to the blackboard.
-<span class="fc" id="L198">			blackboard.setFinalExpressionFor(seffElement, bestExpression);</span>
-<span class="fc" id="L199">		}</span>
+<span class="fc" id="L194">			blackboard.setFinalExpressionFor(seffElement, bestExpression);</span>
+<span class="fc" id="L195">		}</span>
 
-<span class="fc" id="L201">		return true;</span>
+<span class="fc" id="L197">		return true;</span>
 	}
 
 	/**
@@ -210,18 +206,20 @@ import java.util.Set;
 	 *         proposed, such that its fitness is below or equal {@link #PERFECT_FITNESS}.
 	 */
 	private boolean allElementsArePerfect() {
-<span class="fc" id="L213">		return this.data.getFittestValues().allMatch(fitnessValue -&gt; fitnessValue &lt;= PERFECT_FITNESS);</span>
+<span class="fc" id="L209">		return this.data.getFittestValues().allMatch(fitnessValue -&gt; fitnessValue &lt;= PERFECT_FITNESS);</span>
 	}
 
 	/**
 	 * Determines whether the amount of time passed is too high.
 	 *
-	 * @return {@code true} if and only if the time passed is greater than
-	 *         {@code MAX_TIME_PASSED}.
+	 * @param blackboard The {@link Blackboard}.
+	 *
+	 * @return {@code true} if and only if the timeout is reached.
 	 */
-	private boolean timePassedTooHigh() {
-<span class="fc" id="L223">		final long currentTime = System.currentTimeMillis();</span>
-<span class="fc bfc" id="L224" title="All 2 branches covered.">		return (currentTime - this.data.getStartTime()) &gt; MAX_TIME_PASSED;</span>
+	private boolean timePassedTooHigh(final Blackboard blackboard) {
+<span class="fc" id="L220">		final Timeout timeout = blackboard.getProjectInformation().getTimeout();</span>
+
+<span class="fc" id="L222">		return timeout.isReached();</span>
 	}
 
 	/**
@@ -233,26 +231,26 @@ import java.util.Set;
 	 *         significant improvement; {@code false} otherwise.
 	 */
 	private boolean sufficientRelativeImprovement() {
-<span class="fc" id="L236">		final double fitnessBaselineValue = this.data.getFitnessBaselineValue();</span>
-<span class="fc" id="L237">		final double overallFitniss = this.data.getFittestValues().average().orElse(0);</span>
+<span class="fc" id="L234">		final double fitnessBaselineValue = this.data.getFitnessBaselineValue();</span>
+<span class="fc" id="L235">		final double overallFitniss = this.data.getFittestValues().average().orElse(0);</span>
 
 		// This never is a division by zero because if it was, we’d already exited the
 		// final judge before entering this method.
-<span class="fc" id="L241">		final double relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;</span>
+<span class="fc" id="L239">		final double relativeImprovement = 1 - overallFitniss / fitnessBaselineValue;</span>
 
-<span class="fc bfc" id="L243" title="All 2 branches covered.">		if (relativeImprovement &gt; SIGNIFICANT_IMPROVEMENT) {</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">		if (relativeImprovement &gt; SIGNIFICANT_IMPROVEMENT) {</span>
 			// There was significant improvement so note the new value and set the number
 			// of generations without significant improvement passed back to 0.
-<span class="fc" id="L246">			this.data.setFitnessBaselineValue(overallFitniss);</span>
-<span class="fc" id="L247">			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(0);</span>
-<span class="fc" id="L248">			return true;</span>
+<span class="fc" id="L244">			this.data.setFitnessBaselineValue(overallFitniss);</span>
+<span class="fc" id="L245">			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(0);</span>
+<span class="fc" id="L246">			return true;</span>
 		} else {
 			// Without significant improvement, first note this fact and then check
 			// whether this was the last try without success.
-<span class="fc" id="L252">			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(</span>
-<span class="fc" id="L253">				this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed() + 1);</span>
+<span class="fc" id="L250">			this.data.setNumberOfGenerationsWithoutSignificantImprovementPassed(</span>
+<span class="fc" id="L251">				this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed() + 1);</span>
 			// @formatter:off
-<span class="fc bfc" id="L255" title="All 2 branches covered.">			return this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed()</span>
+<span class="fc bfc" id="L253" title="All 2 branches covered.">			return this.data.getNumberOfGenerationsWithoutSignificantImprovementPassed()</span>
 				&lt;= MAX_NUMBER_OF_GENERATIONS_WITHOUT_SIGNIFICANT_IMPROVEMENT;
 			// @formatter:on
 		}
