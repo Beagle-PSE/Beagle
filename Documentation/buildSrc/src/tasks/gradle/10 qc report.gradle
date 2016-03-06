@@ -1,0 +1,16 @@
+/**
+ * Tasks to build the Quality Control Report
+ *
+ * @author Annika Berger
+ */
+ 
+task qcreport(type: LyXRenderTask) {
+	group 'Documentation'
+	description 'Renders the Quality Control Report.'
+	
+	from files("$projectDir/src/quality control")
+	document "lyx/Quality Control Report.lyx"
+	into buildDir
+}
+
+build.dependsOn qcreport
