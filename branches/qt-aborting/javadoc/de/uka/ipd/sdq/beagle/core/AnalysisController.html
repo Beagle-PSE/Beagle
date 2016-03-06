@@ -311,7 +311,9 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>setAnalysisState</h4>
 <pre>public&nbsp;void&nbsp;setAnalysisState(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">AnalysisController.AnalysisState</a>&nbsp;analysisState)</pre>
-<div class="block">Sets the current state of the analysis to <code>analysisState</code>.</div>
+<div class="block">Sets the current state of the analysis to <code>analysisState</code>. The analysis must
+ be started before this method is called. Otherwise an <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a>
+ will be thrown.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>analysisState</code> - The state the analysis will be in after this method has been
