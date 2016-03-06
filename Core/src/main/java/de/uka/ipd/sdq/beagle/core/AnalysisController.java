@@ -88,6 +88,11 @@ public class AnalysisController {
 	private AnalysisState analysisState;
 
 	/**
+	 * Whether the analysis is currently waiting (paused).
+	 */
+	private Boolean waiting;
+
+	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
 	 *
 	 * @param blackboard A blackboard having everything to be analysed written on it. Must
@@ -110,6 +115,7 @@ public class AnalysisController {
 		Validate.noNullElements(measurementResultAnalysers);
 		Validate.noNullElements(proposedExpressionAnalysers);
 
+		this.waiting = false;
 		this.blackboard = blackboard;
 		this.measurementController = new MeasurementController(measurementTools);
 		this.measurementResultAnalysers = new HashSet<>(measurementResultAnalysers);
@@ -158,9 +164,10 @@ public class AnalysisController {
 			finalJudge.judge(this.blackboard);
 
 			while (this.analysisState != AnalysisState.RUNNING) {
-				synchronized (this) {
+				synchronized (this.waiting) {
 					try {
-						this.analysisState.wait();
+						this.waiting = true;
+						this.wait();
 					} catch (final InterruptedException exception) {
 						// Retry on interrupt. No handling is needed because the loop just
 						// tries again.
@@ -325,7 +332,11 @@ public class AnalysisController {
 				this.analysisState = AnalysisState.RUNNING;
 
 				// Wake the waiting thread up.
-				AnalysisController.this.notifyAll();
+				synchronized (AnalysisController.this.waiting) {
+					if (AnalysisController.this.waiting) {
+						AnalysisController.this.waiting.notifyAll();
+					}
+				}
 				break;
 			case ABORTING:
 				Validate.validState(this.analysisState == AnalysisState.RUNNING,
