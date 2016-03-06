@@ -2,7 +2,6 @@ package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
-import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
