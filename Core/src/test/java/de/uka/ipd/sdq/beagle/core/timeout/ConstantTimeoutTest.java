@@ -36,7 +36,7 @@ public class ConstantTimeoutTest {
 	public void constructorConstantTimeout() {
 		final int negTimeout = -100;
 		final ThrowingMethod method = () -> {
-			final ConstantTimeout constTimeout1 = new ConstantTimeout(negTimeout);
+			final ConstantTimeout constTimeout1 = new ConstantTimeout(negTimeout, false);
 			constTimeout1.implementationInit();
 		};
 		assertThat("timeout must not be negative.", method, throwsException(IllegalArgumentException.class));
@@ -51,17 +51,17 @@ public class ConstantTimeoutTest {
 		final int longerThanTimeout = 200;
 		mockStatic(System.class);
 
-		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
+		final ConstantTimeout constTimeout = new ConstantTimeout(timeout, false);
 		constTimeout.init();
 		assertThat(constTimeout.isReached(), is(equalTo(false)));
 
-		final ConstantTimeout constTimeout1 = new ConstantTimeout(timeout);
+		final ConstantTimeout constTimeout1 = new ConstantTimeout(timeout, false);
 		given(System.currentTimeMillis()).willReturn(486487484886446L);
 		constTimeout1.init();
 		given(System.currentTimeMillis()).willReturn(486487484886446L + longerThanTimeout);
 		assertThat(constTimeout1.isReached(), is(equalTo(true)));
 
-		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
+		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout, false);
 		assertThat(constTimeout3.initialised, is(equalTo(false)));
 	}
 
@@ -71,11 +71,11 @@ public class ConstantTimeoutTest {
 	@Test
 	public void getTimeout() {
 		final int timeout = 100;
-		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
+		final ConstantTimeout constTimeout = new ConstantTimeout(timeout, false);
 		constTimeout.init();
 		assertThat(constTimeout.getTimeout(), is((long) timeout));
-		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
 
+		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout, false);
 		assertThat(constTimeout3.initialised, is(equalTo(false)));
 
 	}
@@ -86,9 +86,16 @@ public class ConstantTimeoutTest {
 	@Test
 	public void reportOneStepProgress() {
 		final int timeout = 100;
-		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
+		final ConstantTimeout constTimeout = new ConstantTimeout(timeout, true);
 		constTimeout.init();
 		constTimeout.reportOneStepProgress();
+		assertThat(constTimeout.isReached(), is(equalTo(false)));
+
+		final ConstantTimeout constTimeout1 = new ConstantTimeout(timeout, false);
+		constTimeout1.init();
+		constTimeout1.reportOneStepProgress();
+		assertThat(constTimeout1.isReached(), is(equalTo(false)));
+
 	}
 
 	/**
@@ -97,7 +104,7 @@ public class ConstantTimeoutTest {
 	@Test
 	public void init() {
 		final int valideTimeout = 100;
-		final ConstantTimeout constTimeout = new ConstantTimeout(valideTimeout);
+		final ConstantTimeout constTimeout = new ConstantTimeout(valideTimeout, false);
 		constTimeout.init();
 		final ThrowingMethod method = () -> {
 			constTimeout.init();
@@ -105,7 +112,7 @@ public class ConstantTimeoutTest {
 		assertThat("constTimeout must not be allowed to call init() more than one time.", method,
 			throwsException(IllegalStateException.class));
 
-		final ConstantTimeout constTimeout1 = new ConstantTimeout(valideTimeout);
+		final ConstantTimeout constTimeout1 = new ConstantTimeout(valideTimeout, false);
 		assertThat(constTimeout1.initialised, is(equalTo(false)));
 	}
 
@@ -116,7 +123,7 @@ public class ConstantTimeoutTest {
 	public void notifyOnReachedTimeout() {
 		final int valideTimeout = 100;
 		final Runnable callback1 = mock(Runnable.class);
-		final ConstantTimeout constTimeout = new ConstantTimeout(valideTimeout);
+		final ConstantTimeout constTimeout = new ConstantTimeout(valideTimeout, false);
 		constTimeout.registerCallback(callback1);
 		constTimeout.init();
 
