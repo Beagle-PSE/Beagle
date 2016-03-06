@@ -7,7 +7,7 @@ package de.uka.ipd.sdq.beagle.core.timeout;
  *
  * @author Christoph Michelbach
  */
-public class AgeingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
+public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
 	 * The α value of the ageing algorithm. The higher this value, the bigger the
