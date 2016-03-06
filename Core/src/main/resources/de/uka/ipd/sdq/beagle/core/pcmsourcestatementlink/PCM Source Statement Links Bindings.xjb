@@ -82,11 +82,31 @@ is considered to also be the last statement. </javadoc>
 			</bindings>
 		</bindings>
 		
+		<bindings node="xsd:complexType[@name='PcmRepositoryFile']">
+			<class>
+<javadoc>Stores information about the repository file a PCM Source Statement Links Model instance was
+created for. </javadoc>
+			</class>
+			<property name="hash">
+<javadoc>The hash value of the repository file when generating the source code links. </javadoc>
+			</property>
+			<bindings node=".//xsd:attribute[@name='hashAlgorithm']">
+				<property>
+<javadoc>The hash algorithm that was used to calculate the hash value. Defaults to md5. </javadoc>
+				</property>
+			</bindings>
+		</bindings>
+		
 		<bindings node="xsd:element[@name='PcmSourceStatementLinkRepository']">
 			<class>
 <javadoc>Contains all links from PCM elements to their positions in source code. Also contains hashes of
 the files that are referenced. </javadoc>
 			</class>
+			<bindings node=".//xsd:element[@name='PcmRepositoryFile']">
+				<property>
+<javadoc>Information about the PCM repository file this repository’s information refers to. </javadoc>
+				</property>
+			</bindings>
 			<bindings node=".//xsd:element[@name='PcmSourceStatementLink']">
 				<property name="links">
 <javadoc>All known links from PCM elements to their positions in source code. </javadoc>

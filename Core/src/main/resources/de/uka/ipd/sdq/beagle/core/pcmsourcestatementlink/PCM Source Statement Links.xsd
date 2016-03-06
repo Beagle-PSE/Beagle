@@ -35,7 +35,7 @@
 				<!-- The fully qualified name of the java file that is hashed -->
 				<xsd:attribute name="sourceCodeFile" type="JavaFullyQualifiedName" />
 				<!-- The hash algorithm that was used to generate the hash -->
-				<xsd:attribute name="algorithm" default="md5" />
+				<xsd:attribute name="algorithm" type="xsd:string" default="md5" />
 			</xsd:extension>
 		</xsd:simpleContent>
 	</xsd:complexType>
@@ -53,11 +53,20 @@
 		we put no restrictions on this attribute’s content. -->
 		<xsd:attribute name="pcmElementId" type="xsd:string" />
 	</xsd:complexType>
+	
+	<!-- The PCM repository file the model refers to -->
+	<xsd:complexType name="PcmRepositoryFile">
+		<!-- The hash of the repository file -->
+		<xsd:attribute name="hash" type="xsd:string" />
+		<!-- The hash algorithm that was used to generate the hash -->
+		<xsd:attribute name="hashAlgorithm" type="xsd:string" default="md5" />
+	</xsd:complexType>
 
 	<!-- root element -->
 	<xsd:element name="PcmSourceStatementLinkRepository">
 		<xsd:complexType>
 			<xsd:sequence>
+				<xsd:element name="PcmRepositoryFile" type="PcmRepositoryFile" minOccurs="1" maxOccurs="1" />
 				<xsd:element name="PcmSourceStatementLink" type="PcmSourceStatementLink" minOccurs="1" maxOccurs="unbounded" />
 				<xsd:element name="SourceCodeFileHash" type="SourceCodeFileHash" minOccurs="1" maxOccurs="unbounded">
 				</xsd:element>
