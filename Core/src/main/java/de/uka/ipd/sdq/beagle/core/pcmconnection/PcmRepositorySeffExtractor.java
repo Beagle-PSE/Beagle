@@ -10,6 +10,7 @@ import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +25,7 @@ import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 
 import java.io.FileNotFoundException;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -45,6 +47,12 @@ public class PcmRepositorySeffExtractor {
 	 * written on the {@link Blackboard}.
 	 */
 	private final Set<SeffLoop> seffLoopSet;
+
+	/**
+	 * Temporary storage for all extracted {@link SeffBranch SeffBranch} that should be
+	 * written on the {@link Blackboard}.
+	 */
+	private final Set<SeffBranch> seffBranchSet;
 
 	/**
 	 * Temporary storage for all extracted {@link SeffBranch SeffBranches} that should be
@@ -73,12 +81,17 @@ public class PcmRepositorySeffExtractor {
 	 * The {@link PcmNameParser} that is needed for parsing the EntityNames created by
 	 * SoMoX.
 	 */
-	private final PcmNameParser nameParser;
+	// private final PcmNameParser nameParser;
 
 	/**
 	 * The object in which all created SeffElements are mapped to their original ID.
 	 */
 	private final PcmBeagleMappings pcmMapper;
+
+	/**
+	 * The {@link PcmCodeSectionGenerator} that creates {@link CodeSection} for given ID.
+	 */
+	private final PcmCodeSectionGenerator codeSectionGenerator;
 
 	/**
 	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
@@ -93,17 +106,21 @@ public class PcmRepositorySeffExtractor {
 	 *            its IDs
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
+	 * @param sourceStateLinkRepository The {@link PcmSourceStatementLinkRepository} that
+	 *            contains a linking between the Pcm elements and SourceCode Sections
 	 */
 	public PcmRepositorySeffExtractor(final Set<SeffLoop> seffLoopSet, final Set<SeffBranch> seffBranchSet,
 		final Set<ResourceDemandingInternalAction> rdiaSet, final Set<ExternalCallParameter> externalCallParameterSet,
-		final PcmBeagleMappings pcmMapper, final SourceCodeFileProvider sourceCodeFileProvider) {
+		final PcmBeagleMappings pcmMapper, final SourceCodeFileProvider sourceCodeFileProvider,
+		final PcmSourceStatementLinkRepository sourceStateLinkRepository) {
 		this.seffLoopSet = seffLoopSet;
-		// this.seffBranchSet = seffBranchSet;
+		this.seffBranchSet = seffBranchSet;
 		this.rdiaSet = rdiaSet;
 		this.externalCallParameterSet = externalCallParameterSet;
 		this.pcmMapper = pcmMapper;
 
-		this.nameParser = new PcmNameParser(sourceCodeFileProvider);
+		// this.nameParser = new PcmNameParser(sourceCodeFileProvider);
+		this.codeSectionGenerator = new PcmCodeSectionGenerator(sourceStateLinkRepository, sourceCodeFileProvider);
 	}
 
 	/**
@@ -176,43 +193,44 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 */
 	private void addInternalActionToSet(final InternalActionImpl internalAction) {
+
 		try {
-			final CodeSection codeSection = this.nameParser.parse(internalAction.getEntityName());
-			if (codeSection != null) {
+			final CodeSection codeSection = this.codeSectionGenerator.getCodeSectionForID(internalAction.getId());
 
-				final ResourceDemandingInternalAction rdiaCpu =
-					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
-				this.rdiaSet.add(rdiaCpu);
-				this.pcmMapper.addPcmIdOf(rdiaCpu, internalAction.getId());
+			final ResourceDemandingInternalAction rdiaCpu =
+				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+			this.rdiaSet.add(rdiaCpu);
+			this.pcmMapper.addPcmIdOf(rdiaCpu, internalAction.getId());
 
-				final ResourceDemandingInternalAction rdiaCpuNs =
-					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, codeSection);
-				this.rdiaSet.add(rdiaCpuNs);
-				this.pcmMapper.addPcmIdOf(rdiaCpuNs, internalAction.getId());
+			final ResourceDemandingInternalAction rdiaCpuNs =
+				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU_NS, codeSection);
+			this.rdiaSet.add(rdiaCpuNs);
+			this.pcmMapper.addPcmIdOf(rdiaCpuNs, internalAction.getId());
 
-				final ResourceDemandingInternalAction rdiaHdd =
-					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD, codeSection);
-				this.rdiaSet.add(rdiaHdd);
-				this.pcmMapper.addPcmIdOf(rdiaHdd, internalAction.getId());
+			final ResourceDemandingInternalAction rdiaHdd =
+				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD, codeSection);
+			this.rdiaSet.add(rdiaHdd);
+			this.pcmMapper.addPcmIdOf(rdiaHdd, internalAction.getId());
 
-				final ResourceDemandingInternalAction rdiaHddNs =
-					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD_NS, codeSection);
-				this.rdiaSet.add(rdiaHddNs);
-				this.pcmMapper.addPcmIdOf(rdiaHddNs, internalAction.getId());
+			final ResourceDemandingInternalAction rdiaHddNs =
+				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_HDD_NS, codeSection);
+			this.rdiaSet.add(rdiaHddNs);
+			this.pcmMapper.addPcmIdOf(rdiaHddNs, internalAction.getId());
 
-				final ResourceDemandingInternalAction rdiaLan =
-					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK, codeSection);
-				this.rdiaSet.add(rdiaLan);
-				this.pcmMapper.addPcmIdOf(rdiaLan, internalAction.getId());
+			final ResourceDemandingInternalAction rdiaLan =
+				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK, codeSection);
+			this.rdiaSet.add(rdiaLan);
+			this.pcmMapper.addPcmIdOf(rdiaLan, internalAction.getId());
 
-				final ResourceDemandingInternalAction rdiaLanNs =
-					new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, codeSection);
-				this.rdiaSet.add(rdiaLanNs);
-				this.pcmMapper.addPcmIdOf(rdiaLanNs, internalAction.getId());
-			}
-		} catch (final FileNotFoundException fileNotFoundE) {
-			this.handleFailureFor(internalAction, fileNotFoundE);
+			final ResourceDemandingInternalAction rdiaLanNs =
+				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_NETWORK_NS, codeSection);
+			this.rdiaSet.add(rdiaLanNs);
+			this.pcmMapper.addPcmIdOf(rdiaLanNs, internalAction.getId());
+
+		} catch (final FileNotFoundException exception) {
+			this.handleFailureFor(internalAction, exception);
 		}
+
 	}
 
 	/**
@@ -223,16 +241,27 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 */
 	private void addExternalCallActionToSet(final ExternalCallActionImpl externalAction) {
+
 		try {
-			final CodeSection codeSection = this.nameParser.parse(externalAction.getEntityName());
-			if (codeSection != null) {
-				final ExternalCallParameter exCallParam = new ExternalCallParameter(codeSection, this.zero);
-				this.externalCallParameterSet.add(exCallParam);
-				this.pcmMapper.addPcmIdOf(exCallParam, externalAction.getId());
-			}
-		} catch (final FileNotFoundException fileNotFoundE) {
-			this.handleFailureFor(externalAction, fileNotFoundE);
+			final CodeSection codeSection = this.codeSectionGenerator.getCodeSectionForID(externalAction.getId());
+
+			final ExternalCallParameter exCallParam = new ExternalCallParameter(codeSection, this.zero);
+			this.externalCallParameterSet.add(exCallParam);
+			this.pcmMapper.addPcmIdOf(exCallParam, externalAction.getId());
+		} catch (final FileNotFoundException exception) {
+			this.handleFailureFor(externalAction, exception);
 		}
+
+		/*
+		 * try { final CodeSection codeSection =
+		 * this.nameParser.parse(externalAction.getEntityName()); if (codeSection != null)
+		 * { final ExternalCallParameter exCallParam = new
+		 * ExternalCallParameter(codeSection, this.zero);
+		 * this.externalCallParameterSet.add(exCallParam);
+		 * this.pcmMapper.addPcmIdOf(exCallParam, externalAction.getId()); } } catch
+		 * (final FileNotFoundException fileNotFoundE) {
+		 * this.handleFailureFor(externalAction, fileNotFoundE); }
+		 */
 
 	}
 
@@ -244,6 +273,23 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 */
 	private void addBranchActionToSet(final BranchActionImpl branchAction) {
+
+		try {
+			final EList<AbstractBranchTransition> branchTransitionList = branchAction.getBranches_Branch();
+			final Set<CodeSection> codeSectionSet = new HashSet<CodeSection>();
+
+			for (AbstractBranchTransition branchTransition : branchTransitionList) {
+				codeSectionSet.add(this.codeSectionGenerator
+					.getCodeSectionForID(branchTransition.getBranchBehaviour_BranchTransition().getId()));
+			}
+			final SeffBranch seffBranch = new SeffBranch(codeSectionSet);
+			this.seffBranchSet.add(seffBranch);
+			this.pcmMapper.addPcmIdOf(seffBranch, branchAction.getId());
+		} catch (final FileNotFoundException exception) {
+			this.handleFailureFor(branchAction, exception);
+
+		}
+
 		// try {
 		// final Set<CodeSection> codeSectionSet = new HashSet<CodeSection>();
 		// final CodeSection codeSection =
@@ -273,16 +319,27 @@ public class PcmRepositorySeffExtractor {
 	 * @param loopAction SEFF-Action to add.
 	 */
 	private void addLoopActionToSet(final LoopActionImpl loopAction) {
+
 		try {
-			final CodeSection codeSection = this.nameParser.parse(loopAction.getEntityName());
-			if (codeSection != null) {
-				final SeffLoop seffLoop = new SeffLoop(codeSection);
-				this.seffLoopSet.add(seffLoop);
-				this.pcmMapper.addPcmIdOf(seffLoop, loopAction.getId());
-			}
-		} catch (final FileNotFoundException fileNotFoundE) {
-			this.handleFailureFor(loopAction, fileNotFoundE);
+			final CodeSection codeSection =
+				this.codeSectionGenerator.getCodeSectionForID(loopAction.getBodyBehaviour_Loop().getId());
+			final SeffLoop seffLoop = new SeffLoop(codeSection);
+			this.seffLoopSet.add(seffLoop);
+			this.pcmMapper.addPcmIdOf(seffLoop, loopAction.getId());
+		} catch (final FileNotFoundException exception) {
+			this.handleFailureFor(loopAction, exception);
 		}
+
+		/*
+		 * try {
+		 * 
+		 * final CodeSection codeSection =
+		 * this.nameParser.parse(loopAction.getEntityName()); if (codeSection != null) {
+		 * final SeffLoop seffLoop = new SeffLoop(codeSection);
+		 * this.seffLoopSet.add(seffLoop); this.pcmMapper.addPcmIdOf(seffLoop,
+		 * loopAction.getId()); } } catch (final FileNotFoundException fileNotFoundE) {
+		 * this.handleFailureFor(loopAction, fileNotFoundE); }
+		 */
 	}
 
 	/**
@@ -324,6 +381,20 @@ public class PcmRepositorySeffExtractor {
 			new FailureReport<Void>().message("The File for ID %s with EntityName %s can not be found!",
 				internalAction.getId(), internalAction.getEntityName()).cause(exception).recoverable().retryWith(
 					() -> PcmRepositorySeffExtractor.this.addInternalActionToSet(internalAction));
+		FAILURE_HANDLER.handle(failure);
+	}
+
+	/**
+	 * Creating a Failure handling action for the specific SeffElement.
+	 *
+	 * @param branchAction The SeffElement.
+	 * @param exception The FileNotFoundException.
+	 */
+	private void handleFailureFor(final BranchActionImpl branchAction, final FileNotFoundException exception) {
+		final FailureReport<Void> failure =
+			new FailureReport<Void>().message("The File for ID %s with EntityName %s can not be found!",
+				branchAction.getId(), branchAction.getEntityName()).cause(exception).recoverable().retryWith(
+					() -> PcmRepositorySeffExtractor.this.addBranchActionToSet(branchAction));
 		FAILURE_HANDLER.handle(failure);
 	}
 
