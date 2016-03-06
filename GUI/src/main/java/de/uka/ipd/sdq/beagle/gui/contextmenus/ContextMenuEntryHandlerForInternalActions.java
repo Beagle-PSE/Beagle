@@ -1,7 +1,6 @@
 package de.uka.ipd.sdq.beagle.gui.contextmenus;
 
-import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
-import de.uka.ipd.sdq.beagle.gui.GuiController;
+import de.uka.ipd.sdq.beagle.gui.BeagleLaunchConfigurationCreator;
 
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalAction2EditPart;
 import de.uka.ipd.sdq.pcm.gmf.seff.edit.parts.InternalActionEditPart;
@@ -20,12 +19,11 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
-import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
 /*
- * This class is involved in creating a Graphical User Interface. Its funtionality cannot
+ * This class is involved in creating a Graphical User Interface. Its functionality cannot
  * reasonably be tested by automated unit tests.
  *
  * COVERAGE:OFF
@@ -52,7 +50,7 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		// something must have been selected for this handler to be called.
 		assert structuredSelection.size() > 0;
 
-		File repositoryFile = null;
+		String repositoryFile = null;
 		IJavaProject javaProject = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
@@ -72,8 +70,9 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 			repositoryFile = ResourcesPlugin.getWorkspace()
 				.getRoot()
 				.getFile(new Path(internalAction.eResource().getURI().toPlatformString(true)))
-				.getRawLocation()
-				.toFile();
+				.getProjectRelativePath()
+				.toFile()
+				.getPath();
 			javaProject = JavaCore.create(ResourcesPlugin.getWorkspace()
 				.getRoot()
 				.getFile(new Path(internalAction.eResource().getURI().toPlatformString(true)))
@@ -81,10 +80,7 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		}
 
 		// create a new GUI and open it
-		final BeagleConfiguration beagleConfiguration =
-			new BeagleConfiguration(internalActions, repositoryFile, javaProject);
-		final GuiController guiController = new GuiController(beagleConfiguration);
-		guiController.open();
+		new BeagleLaunchConfigurationCreator(internalActions, repositoryFile, javaProject).createLaunchConfiguration();
 		return null;
 	}
 }
