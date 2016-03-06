@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
-import de.uka.ipd.sdq.beagle.core.timeout.AgeingAlgorithmAdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
@@ -160,7 +160,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new AgeingAlgorithmAdaptiveTimeout());
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new AdaptiveTimeout());
 			}
 
 			@Override
