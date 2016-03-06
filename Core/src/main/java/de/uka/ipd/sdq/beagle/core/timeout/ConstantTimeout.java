@@ -29,7 +29,8 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 	public boolean isReached() {
 		Validate.isTrue(this.initialised);
 
-		return System.currentTimeMillis() - this.startingTime > this.timeout;
+		return this.startingTime + this.timeout - System.currentTimeMillis() < 0;
+
 	}
 
 	/**
@@ -46,8 +47,6 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 	@Override
 	public void reportOneStepProgress() {
 		Validate.isTrue(this.initialised);
-
-		this.startingTime = System.currentTimeMillis();
 	}
 
 	/**

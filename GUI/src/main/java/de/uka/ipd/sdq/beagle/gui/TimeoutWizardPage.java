@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
-import de.uka.ipd.sdq.beagle.core.timeout.LinearRegressionAdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.AgingAlgorithmAdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
@@ -160,7 +160,7 @@ public class TimeoutWizardPage extends WizardPage {
 
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
-				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new LinearRegressionAdaptiveTimeout());
+				TimeoutWizardPage.this.beagleConfiguration.setTimeout(new AgingAlgorithmAdaptiveTimeout());
 			}
 
 			@Override
@@ -282,7 +282,8 @@ public class TimeoutWizardPage extends WizardPage {
 	 * {@link WizardPage} so the visibility of this constant can be changed in the future.
 	 */
 	private void adaptPageToDefaultValues() {
-		// Nothing needs to be done for {@code LinearRegressionAdaptiveTimeout} because {@link
+		// Nothing needs to be done for {@code LinearRegressionAdaptiveTimeout} because
+		// {@link
 		// TimeoutWizardPage} is written so this is the default.
 		if (this.beagleConfiguration.getTimeout() instanceof NoTimeout) {
 			this.radioNoTimeoutSelected.widgetSelected(new SelectionEvent(null));
