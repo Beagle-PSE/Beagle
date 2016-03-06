@@ -1,5 +1,8 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
+import de.uka.ipd.sdq.beagle.core.timeout.AgingAlgorithmAdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
+
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.IJavaProject;
 import org.palladiosimulator.pcm.core.entity.Entity;
@@ -27,25 +30,6 @@ import java.util.List;
 public class BeagleConfiguration {
 
 	/**
-	 * Numeric value for "adaptive timeout".
-	 *
-	 * @see #getTimeout()
-	 */
-	public static final int ADAPTIVE_TIMEOUT = -2;
-
-	/**
-	 * Numeric value for "no timeout".
-	 *
-	 * @see #getTimeout()
-	 */
-	public static final int NO_TIMEOUT = -1;
-
-	/**
-	 * The default setting for the {@linkplain #getTimeout() timeout}.
-	 */
-	public static final int DEFAULT_TIMEOUT = ADAPTIVE_TIMEOUT;
-
-	/**
 	 * All elements to measure or {@code null} to indicate that everything in
 	 * {@code repositoryFile} should be analysed.
 	 */
@@ -57,10 +41,9 @@ public class BeagleConfiguration {
 	private File repositoryFile;
 
 	/**
-	 * The timeout to be used. [-2 → adaptive timeout] [-1 → no timeout] [≥ 0 → timeout in
-	 * seconds]
+	 * The timeout to be used.
 	 */
-	private int timeout;
+	private Timeout timeout;
 
 	/**
 	 * The {@link IJavaProject} to analyse.
@@ -94,7 +77,7 @@ public class BeagleConfiguration {
 		}
 
 		this.repositoryFile = repositoryFile;
-		this.timeout = DEFAULT_TIMEOUT;
+		this.timeout = new AgingAlgorithmAdaptiveTimeout();
 		this.javaProject = javaProject;
 	}
 
@@ -145,21 +128,9 @@ public class BeagleConfiguration {
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
 	 * keep trying to find results while no perfect results were found.
 	 *
-	 * <table> <caption>timeout value description</caption>
-	 *
-	 * <tr><td>{@link #ADAPTIVE_TIMEOUT}</td><td>Beagle will use a timeout that adapts to
-	 * the quality of the analysis’ findings in the past.</td>
-	 *
-	 * <tr><td>{@link #NO_TIMEOUT}</td><td>no timeout will be used</td>
-	 *
-	 * <tr><td>{@code ≥ 0}</td><td>the given value will be used as a fixed timeout in
-	 * seconds</td>
-	 *
-	 * </table>
-	 *
 	 * @return The timeout that will be used by Beagle.
 	 */
-	public int getTimeout() {
+	public Timeout getTimeout() {
 		return this.timeout;
 	}
 
@@ -168,23 +139,11 @@ public class BeagleConfiguration {
 	 * time Beagle shall keep trying to find results while no perfect results were found.
 	 * This operation is only allowed in the <em>set up</em> state.
 	 *
-	 * <table> <caption>timeout value description</caption>
-	 *
-	 * <tr><td>{@link #ADAPTIVE_TIMEOUT}</td><td>Beagle will use a timeout that adapts to
-	 * the quality of the analysis’ findings in the past.</td>
-	 *
-	 * <tr><td>{@link #NO_TIMEOUT}</td><td>no timeout will be used</td>
-	 *
-	 * <tr><td>{@code ≥ 0}</td><td>the given value will be used as a fixed timeout in
-	 * seconds</td>
-	 *
-	 * </table>
-	 *
 	 * @param timeout The timeout to be used by Beagle.
 	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
 	 *             state.
 	 */
-	public void setTimeout(final int timeout) {
+	public void setTimeout(final Timeout timeout) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
 		this.timeout = timeout;

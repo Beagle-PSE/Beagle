@@ -24,5 +24,7 @@ Export-Package: de.uka.ipd.sdq.beagle.core,
  de.uka.ipd.sdq.beagle.core.measurement,
  de.uka.ipd.sdq.beagle.core.measurement.order,
  de.uka.ipd.sdq.beagle.core.pcmconnection,
+ de.uka.ipd.sdq.beagle.core.timeout,
  de.uka.ipd.sdq.beagle.core.testutil,
  de.uka.ipd.sdq.beagle.core.testutil.factories
+
