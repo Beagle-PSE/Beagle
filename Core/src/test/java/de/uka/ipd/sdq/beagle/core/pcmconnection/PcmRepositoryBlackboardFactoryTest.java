@@ -154,7 +154,18 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 			@Override
 			public void throwException() throws Exception {
-				new PcmRepositoryBlackboardFactoryAdder("\0",
+				new PcmRepositoryBlackboardFactoryAdder(
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/XML File.xml",
+					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
+			}
+		}, throwsException(IllegalArgumentException.class));
+
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				new PcmRepositoryBlackboardFactoryAdder(
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Incredible Art.png",
 					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
 			}
 		}, throwsException(IllegalArgumentException.class));
