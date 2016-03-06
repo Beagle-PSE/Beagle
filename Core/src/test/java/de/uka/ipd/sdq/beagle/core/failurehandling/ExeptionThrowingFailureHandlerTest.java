@@ -18,7 +18,7 @@ import org.junit.Test;
 public class ExeptionThrowingFailureHandlerTest {
 
 	/**
-	 * Test method for {@link ExceptionThrowingFailureHandlerTest#getDetails()}.
+	 * Test method for the constructor.
 	 */
 	@Test
 	public void constructorExceptionThrowingFailureHandler() {
