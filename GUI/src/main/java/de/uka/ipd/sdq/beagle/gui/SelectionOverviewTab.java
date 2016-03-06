@@ -127,7 +127,6 @@ public class SelectionOverviewTab extends AbstractLaunchConfigurationTab {
 		this.mainContainer.setLayout(layout);
 		layout.numColumns = MAIN_LAYOUT_NR_COLUMS;
 
-		// required to avoid an error in the system
 		this.setControl(this.mainContainer);
 	}
 

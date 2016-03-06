@@ -181,6 +181,24 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 */
 	private String currentTimeoutTypeSelection;
 
+	/**
+	 * The Radio-{@link Button} for
+	 * {@value #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT}.
+	 */
+	private Button radioAdaptiveTimout;
+
+	/**
+	 * The Radio-{@link Button} for
+	 * {@value #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT}.
+	 */
+	private Button radioSetTimout;
+
+	/**
+	 * The Radio-{@link Button} for
+	 * {@value #BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT}.
+	 */
+	private Button radioNoTimeout;
+
 	@Override
 	public void createControl(final Composite parent) {
 		this.mainContainer = new Composite(parent, SWT.NONE);
@@ -195,16 +213,16 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 		final GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 
-		final Button radioAdaptiveTimout = new Button(this.upperContainer, SWT.RADIO);
-		radioAdaptiveTimout.setText("Use an adaptive timeout.");
+		this.radioAdaptiveTimout = new Button(this.upperContainer, SWT.RADIO);
+		this.radioAdaptiveTimout.setText("Use an adaptive timeout.");
 
-		final Button radioSetTimout = new Button(this.upperContainer, SWT.RADIO);
-		radioSetTimout.setText("Use a set timeout.");
+		this.radioSetTimout = new Button(this.upperContainer, SWT.RADIO);
+		this.radioSetTimout.setText("Use a set timeout.");
 
-		final Button radioNoTimeout = new Button(this.upperContainer, SWT.RADIO);
-		radioNoTimeout.setText("Don't use a timeout.");
+		this.radioNoTimeout = new Button(this.upperContainer, SWT.RADIO);
+		this.radioNoTimeout.setText("Don't use a timeout.");
 
-		radioAdaptiveTimout.setSelection(true);
+		this.radioNoTimeout.setSelection(true);
 
 		this.radioAdaptiveTimeoutSelected = new SelectionListener() {
 
@@ -263,13 +281,13 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 			}
 		};
 
-		radioAdaptiveTimout.addSelectionListener(this.radioAdaptiveTimeoutSelected);
+		this.radioAdaptiveTimout.addSelectionListener(this.radioAdaptiveTimeoutSelected);
 
-		radioAdaptiveTimout.addSelectionListener(this.radioSetTimeoutDeselected);
-		radioSetTimout.addSelectionListener(this.radioSetTimeoutSelected);
-		radioNoTimeout.addSelectionListener(this.radioSetTimeoutDeselected);
+		this.radioAdaptiveTimout.addSelectionListener(this.radioSetTimeoutDeselected);
+		this.radioSetTimout.addSelectionListener(this.radioSetTimeoutSelected);
+		this.radioNoTimeout.addSelectionListener(this.radioSetTimeoutDeselected);
 
-		radioNoTimeout.addSelectionListener(this.radioNoTimeoutSelected);
+		this.radioNoTimeout.addSelectionListener(this.radioNoTimeoutSelected);
 
 		this.lowerContainer = new Composite(this.mainContainer, SWT.NONE);
 		final GridLayout lowerLayout = new GridLayout();
@@ -304,8 +322,32 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 		this.textboxTimeoutSeconds.setLayoutData(gridData);
 
-		// required to avoid an error in the system
 		this.setControl(this.mainContainer);
+	}
+
+	/**
+	 * Updates the radio buttons according to {@link #currentTimeoutTypeSelection}.
+	 */
+	private void updateRadioButtons() {
+		switch (this.currentTimeoutTypeSelection) {
+			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT:
+				this.radioAdaptiveTimout.setSelection(true);
+				this.radioSetTimout.setSelection(false);
+				this.radioNoTimeout.setSelection(false);
+				break;
+			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT:
+				this.radioSetTimout.setSelection(true);
+				this.radioAdaptiveTimout.setSelection(false);
+				this.radioNoTimeout.setSelection(false);
+				break;
+			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT:
+				this.radioNoTimeout.setSelection(true);
+				this.radioAdaptiveTimout.setSelection(false);
+				this.radioSetTimout.setSelection(false);
+				break;
+			default:
+				break;
+		}
 	}
 
 	@Override
@@ -321,6 +363,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 		try {
 			this.currentTimeoutTypeSelection = configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE,
 				BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_DEFAULT_VALUE);
+			this.updateRadioButtons();
 			this.textboxTimeoutSeconds
 				.setText("" + configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
 					BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE));
