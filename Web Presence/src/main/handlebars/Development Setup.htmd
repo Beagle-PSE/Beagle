@@ -14,6 +14,7 @@ Required Eclipse plugins are:
  * SoMoX based on JaMoPP, as it can be checked out (SVN) from https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/ (Credentials: `anonymous:anonymous`).
      * import all SoMoX projects into your Eclipse workspace (consider using a Working Set to group them). *Don’t* check “search for nested projects” when importing, but only import the projects at the top level.
      * Close the projects `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
+  * The PCM Element Source Statement Links Extractor for SoMoX, as it can be checked out (SVN) from https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Addons/PCM%20Source%20Statement%20Links%20Extractor/ (Credentials: `anonymous:anonymous`). Import it into your Eclipse workspace.
   * [Checkstyle](http://eclipse-cs.sourceforge.net/#!/)
   * [UMLet](http://umlet.com/) (either as Eclipse plugin or as standalone)
   
@@ -32,6 +33,8 @@ Please import the *root* project through Buildship into Eclipse. Make sure to se
  {{> smallimg src="image/gradle-import/04.png" alt="Select the Beagle root project"}}
  {{> smallimg src="image/gradle-import/05.png" alt="Specify gradle 2.10"}}
  {{> smallimg src="image/gradle-import/06.png" alt="Check the settings and hit Finish"}}
+ 
+ Please execute gradle now to set up all required files. You can do so by double-clicking on the “Beagle” project in the “Gradle Tasks” view.
 
 ## Documentation
 
