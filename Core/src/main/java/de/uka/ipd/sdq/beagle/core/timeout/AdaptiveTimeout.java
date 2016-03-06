@@ -1,19 +1,19 @@
 package de.uka.ipd.sdq.beagle.core.timeout;
 
 /**
- * Implements an adaptive timeout based on the aging algorithm. This means that later
+ * Implements an adaptive timeout based on the ageing algorithm. This means that later
  * calls to {@link #isReached()} will return {@code false} if the previous calls took a
  * long time, too.
  *
  * @author Christoph Michelbach
  */
-public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
+public class AdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	/**
-	 * The α value of the aging algorithm. The higher this value, the bigger the influence
-	 * of the newly measured value. Must be ∈ (0,1).
+	 * The α value of the ageing algorithm. The higher this value, the bigger the
+	 * influence of the newly measured value. Must be ∈ (0,1).
 	 */
-	private static final double AGING_ALPHA = 0.5;
+	private static final double AGEING_ALPHA = 0.5;
 
 	/**
 	 * How much additional time is always tolerated. Stated in milliseconds.
@@ -27,9 +27,9 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	private static final double MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE = 0.3;
 
 	/**
-	 * The start value for the aging algorithm.
+	 * The start value for the ageing algorithm.
 	 */
-	private static final long AGING_START_VALUE = 3600 * 1000;
+	private static final long AGEING_START_VALUE = 3600 * 1000;
 
 	/**
 	 * The previous maximally tolerable time in milliseconds or {@code -1} to indicate
@@ -41,7 +41,7 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 	 * The maximally tolerable time in milliseconds or {@code -1} to indicate that there
 	 * is none.
 	 */
-	private long maximallyTolerableTime = AGING_START_VALUE;
+	private long maximallyTolerableTime = AGEING_START_VALUE;
 
 	/**
 	 * When {@link #isReached()} has been called the last time. Stated in milliseconds.
@@ -60,7 +60,7 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 		this.timeOfPreviousCall = System.currentTimeMillis();
 
 		final long preliminaryMaximallyTolerableTimeWithoutAdditionalTime =
-			(long) (this.previousMaximallyTolerableTime * (1 - AGING_ALPHA) + tellingTime * AGING_ALPHA);
+			(long) (this.previousMaximallyTolerableTime * (1 - AGEING_ALPHA) + tellingTime * AGEING_ALPHA);
 		this.maximallyTolerableTime = (long) (preliminaryMaximallyTolerableTimeWithoutAdditionalTime
 			* (1 + MULTIPLICATIVE_ADDITIONAL_TIME_TOLEARANCE)) + CONSTANT_ADDITIONAL_TIME_TOLEARANCE;
 
@@ -68,7 +68,7 @@ public class AgingAlgorithmAdaptiveTimeout extends ExecutionTimeBasedTimeout {
 
 	@Override
 	protected void implementationInit() {
-		assert AGING_ALPHA > 0 && AGING_ALPHA < 1;
+		assert AGEING_ALPHA > 0 && AGEING_ALPHA < 1;
 
 		this.timeOfPreviousCall = System.currentTimeMillis();
 		new Thread(this::notifyOnReachedTimeout).start();
