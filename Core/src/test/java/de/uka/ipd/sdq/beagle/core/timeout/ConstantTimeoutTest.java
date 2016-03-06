@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
@@ -36,7 +37,7 @@ public class ConstantTimeoutTest {
 		final int negTimeout = -100;
 		final ThrowingMethod method = () -> {
 			final ConstantTimeout constTimeout1 = new ConstantTimeout(negTimeout);
-			constTimeout1.init();
+			constTimeout1.implementationInit();
 		};
 		assertThat("timeout must not be negative.", method, throwsException(IllegalArgumentException.class));
 	}
@@ -91,7 +92,7 @@ public class ConstantTimeoutTest {
 	}
 
 	/**
-	 * Test that init() is called at first method and only once.
+	 * Test method for {@link ConstantTimeout#implementationInit()}.
 	 */
 	@Test
 	public void init() {
@@ -106,5 +107,18 @@ public class ConstantTimeoutTest {
 
 		final ConstantTimeout constTimeout1 = new ConstantTimeout(valideTimeout);
 		assertThat(constTimeout1.initialised, is(equalTo(false)));
+	}
+
+	/**
+	 * Test method for {@link ConstantTimeout#notifyOnReachedTimeout()}.
+	 */
+	@Test
+	public void notifyOnReachedTimeout() {
+		final int valideTimeout = 100;
+		final Runnable callback1 = mock(Runnable.class);
+		final ConstantTimeout constTimeout = new ConstantTimeout(valideTimeout);
+		constTimeout.registerCallback(callback1);
+		constTimeout.init();
+
 	}
 }
