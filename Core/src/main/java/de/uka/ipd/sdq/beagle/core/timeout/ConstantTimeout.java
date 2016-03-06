@@ -15,24 +15,14 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 	private final long timeout;
 
 	/**
-	 * If set to {@code true}, the timeout will be on a per-step basis. If set to
-	 * {@code false}, calls to {@link #reportOneStepProgress()} will be ignored.
-	 */
-	private boolean perStepTimeout;
-
-	/**
 	 * Constructs a new constant timeout.
 	 *
 	 * @param timeout The timeout in milliseconds. Must not be negative.
-	 * @param perStepTimeout If set to {@code true}, the timeout will be on a per-step
-	 *            basis. If set to {@code false}, calls to
-	 *            {@link #reportOneStepProgress()} will be ignored.
 	 */
-	public ConstantTimeout(final int timeout, final boolean perStepTimeout) {
+	public ConstantTimeout(final int timeout) {
 		Validate.isTrue(timeout >= 0);
 
 		this.timeout = timeout;
-		this.perStepTimeout = perStepTimeout;
 	}
 
 	@Override
@@ -58,9 +48,7 @@ public class ConstantTimeout extends ExecutionTimeBasedTimeout {
 	public void reportOneStepProgress() {
 		Validate.isTrue(this.initialised);
 
-		if (this.perStepTimeout) {
-			this.startingTime = System.currentTimeMillis();
-		}
+		this.startingTime = System.currentTimeMillis();
 	}
 
 	/**
