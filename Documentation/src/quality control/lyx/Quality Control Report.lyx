@@ -376,13 +376,27 @@ OT200
 Bugs
 \end_layout
 
-\begin_layout Standard
-Contains all Bugs found and/ or fixed in the Quality Control Phase.
+\begin_layout Section
+Implementation Phase
 \end_layout
 
 \begin_layout Standard
-Reports should contain at least Symptom, Reason and a description of the
- fix.
+There were no known bugs or other undesired behaviour at the end of the
+ implementation phase.
+ We were not able to find any such during the quality assurance phase either.
+ Therefore no bugs which originated in the implementation phase were fixed.
+\end_layout
+
+\begin_layout Section
+Quality Assurance Phase
+\end_layout
+
+\begin_layout Standard
+Due to our policy to only merge branches into the upstream master if they
+ are free of knows bugs and other undesired behaviour, we never introduced
+ code known to contain errors into our upstream master.
+ As of this writing (2016-03-06) there have been no occurrences of subsequent
+ detection of bugs in upstream master either.
 \end_layout
 
 \begin_layout Chapter
