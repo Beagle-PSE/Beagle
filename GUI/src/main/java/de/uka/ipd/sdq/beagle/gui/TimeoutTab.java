@@ -12,8 +12,6 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
@@ -222,8 +220,6 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 		this.radioNoTimeout = new Button(this.upperContainer, SWT.RADIO);
 		this.radioNoTimeout.setText("Don't use a timeout.");
 
-		this.radioNoTimeout.setSelection(true);
-
 		this.radioAdaptiveTimeoutSelected = new SelectionListener() {
 
 			@Override
@@ -307,22 +303,18 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 		final Label label2 = new Label(this.lowerContainer, SWT.NONE);
 		label2.setText("seconds");
 
-		this.textboxTimeoutSeconds.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyPressed(final KeyEvent keyEvent) {
-			}
-
-			@Override
-			public void keyReleased(final KeyEvent keyEvent) {
-				// remove everything not a number
-				if (keyEvent.character < '0' || keyEvent.character > '9') {
-					TimeoutTab.this.textboxTimeoutSeconds
-						.setText(TimeoutTab.this.textboxTimeoutSeconds.getText().replace("" + keyEvent.character, ""));
+		this.textboxTimeoutSeconds.addModifyListener(event -> TimeoutTab.this.updateLaunchConfigurationDialog());
+		this.textboxTimeoutSeconds.addListener(SWT.Verify, e -> {
+			final String string = e.text;
+			final char[] chars = new char[string.length()];
+			string.getChars(0, chars.length, chars, 0);
+			for (int i = 0; i < chars.length; i++) {
+				if (!('0' <= chars[i] && chars[i] <= '9')) {
+					e.doit = false;
+					return;
 				}
 			}
 		});
-
 		this.textboxTimeoutSeconds.setLayoutData(gridData);
 
 		this.setControl(this.mainContainer);
@@ -337,16 +329,19 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 				this.radioAdaptiveTimout.setSelection(true);
 				this.radioSetTimout.setSelection(false);
 				this.radioNoTimeout.setSelection(false);
+				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(false);
 				break;
 			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT:
 				this.radioSetTimout.setSelection(true);
 				this.radioAdaptiveTimout.setSelection(false);
 				this.radioNoTimeout.setSelection(false);
+				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(true);
 				break;
 			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT:
 				this.radioNoTimeout.setSelection(true);
 				this.radioAdaptiveTimout.setSelection(false);
 				this.radioSetTimout.setSelection(false);
+				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(false);
 				break;
 			default:
 				break;
@@ -380,8 +375,13 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public void performApply(final ILaunchConfigurationWorkingCopy configuration) {
 		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE, this.currentTimeoutTypeSelection);
-		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
-			Integer.parseInt(this.textboxTimeoutSeconds.getText()));
+		int timeout;
+		try {
+			timeout = Integer.parseInt(this.textboxTimeoutSeconds.getText());
+		} catch (final NumberFormatException numberFormatException) {
+			timeout = BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE;
+		}
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE, timeout);
 	}
 
 	@Override
@@ -390,7 +390,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	}
 
 	@Override
-	public boolean isValid(final ILaunchConfiguration launchConfig) {
+	public boolean canSave() {
 		this.setErrorMessage(null);
 		if (this.textboxTimeoutSeconds.getText().isEmpty() && this.currentTimeoutTypeSelection
 			.equals(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT)) {
