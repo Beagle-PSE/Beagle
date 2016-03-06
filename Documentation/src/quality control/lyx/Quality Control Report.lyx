@@ -330,5 +330,32 @@ Reports should contain at least Symptom, Reason and a description of the
  fix.
 \end_layout
 
+\begin_layout Chapter
+Additional Features
+\end_layout
+
+\begin_layout Section
+Adaptive Timeout
+\end_layout
+
+\begin_layout Standard
+Implementing an adaptive timeout was mistakenly added as a compulsory feature
+ at the end of the design phase.
+ This error was corrected in the first official meeting of the implementation
+ phase so it was an optional feature as intended and was not implemented
+ during the implementation phase.
+ However, we consider an adaptive timeout a valuable extension of Beagle's
+ original features because it allows evaluation to a reasonable degree of
+ accuracy devoid of excessive CPU time consumption without the user being
+ required to be able to estimate the required time (confer constant timeout).
+\end_layout
+
+\begin_layout Standard
+An adaptive timeout based on linear regression was implemented first but
+ later having the adaptive timeout based on the ageing algorithm was consistentl
+y agreed upon to make better predictions and to be better fitted for practice.
+ Thus, Beagle now features an adaptive timeout based on the ageing algorithm.
+\end_layout
+
 \end_body
 \end_document
