@@ -516,7 +516,7 @@ rcesanspro/SourceSansPro-Semibold.pfb></usr/share/texlive/texmf-dist/fonts/type
 fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (30 pages, 463573 bytes).
+Output written on "Design and Architecture.pdf" (30 pages, 463571 bytes).
 Transcript written on "Design and Architecture.log".
 
 
@@ -531,7 +531,7 @@ added glossary type 'acronym' (alg,acr,acn)
 xindy  -L english -C utf8 -I xindy -M "Design and Architecture" -t "Design and Architecture.alg" -o "Design and Architecture.acr" "Design and Architecture.acn"
 Opening logfile "Design and Architecture.alg" (done)
 Reading indexstyle...
-Loading module "/tmp/55347lXdrg"...
+Loading module "/tmp/oxCj6h1PfQ"...
 Loading module "lang/english/utf8-lang.xdy"...
 Loading module "lang/english/utf8.xdy"...
 Finished loading module "lang/english/utf8.xdy".
@@ -540,11 +540,11 @@ Loading module "Design and Architecture.xdy"...
 Loading module "tex.xdy"...
 Finished loading module "tex.xdy".
 Finished loading module "Design and Architecture.xdy".
-Finished loading module "/tmp/55347lXdrg".
+Finished loading module "/tmp/oxCj6h1PfQ".
 Finished reading indexstyle.
 Finalizing indexstyle... (done)
 
-Reading raw-index "/tmp/g93s4ODw9f"...
+Reading raw-index "/tmp/TVVrpwbnxh"...
 Finished reading raw-index.
 
 Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
@@ -555,7 +555,7 @@ Markup written into file "Design and Architecture.acr".
 xindy  -L english -C utf8 -I xindy -M "Design and Architecture" -t "Design and Architecture.glg" -o "Design and Architecture.gls" "Design and Architecture.glo"
 Opening logfile "Design and Architecture.glg" (done)
 Reading indexstyle...
-Loading module "/tmp/mupFP4_Sbo"...
+Loading module "/tmp/yFquYTtiEa"...
 Loading module "lang/english/utf8-lang.xdy"...
 Loading module "lang/english/utf8.xdy"...
 Finished loading module "lang/english/utf8.xdy".
@@ -564,11 +564,11 @@ Loading module "Design and Architecture.xdy"...
 Loading module "tex.xdy"...
 Finished loading module "tex.xdy".
 Finished loading module "Design and Architecture.xdy".
-Finished loading module "/tmp/mupFP4_Sbo".
+Finished loading module "/tmp/yFquYTtiEa".
 Finished reading indexstyle.
 Finalizing indexstyle... (done)
 
-Reading raw-index "/tmp/R4Tz8WUFPv"...
+Reading raw-index "/tmp/WeZk_oXmfJ"...
 Finished reading raw-index.
 
 Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
@@ -1053,7 +1053,7 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (34 pages, 474920 bytes).
+Output written on "Design and Architecture.pdf" (34 pages, 474915 bytes).
 Transcript written on "Design and Architecture.log".
 
 
@@ -1542,7 +1542,7 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 477523 bytes).
+Output written on "Design and Architecture.pdf" (35 pages, 477521 bytes).
 Transcript written on "Design and Architecture.log".
 
 
@@ -1986,7 +1986,7 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 478107 bytes).
+Output written on "Design and Architecture.pdf" (35 pages, 478110 bytes).
 Transcript written on "Design and Architecture.log".
 
 
@@ -2430,5 +2430,5 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 478107 bytes).
+Output written on "Design and Architecture.pdf" (35 pages, 478110 bytes).
 Transcript written on "Design and Architecture.log".
