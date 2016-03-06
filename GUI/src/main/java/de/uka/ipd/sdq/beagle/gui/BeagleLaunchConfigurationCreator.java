@@ -34,7 +34,7 @@ public class BeagleLaunchConfigurationCreator {
 	/**
 	 * The repository file.
 	 */
-	private File repositoryFile;
+	private String repositoryFile;
 
 	/**
 	 * The {@link IJavaProject} to analyse.
@@ -50,14 +50,11 @@ public class BeagleLaunchConfigurationCreator {
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-	public BeagleLaunchConfigurationCreator(final List<Entity> elements, final File repositoryFile,
+	public BeagleLaunchConfigurationCreator(final List<Entity> elements, final String repositoryFile,
 		final IJavaProject javaProject) {
 		Validate.notNull(repositoryFile);
 		Validate.notNull(javaProject);
-
-		if (!repositoryFile.exists()) {
-			throw new IllegalArgumentException("Repository file must exist.");
-		}
+		Validate.notNull(repositoryFile);
 
 		if (elements != null) {
 			this.elements = this.entitiesToIds(elements);
@@ -75,12 +72,14 @@ public class BeagleLaunchConfigurationCreator {
 		final ILaunchConfigurationType type = manager
 			.getLaunchConfigurationType(BeagleLaunchConfigurationDelegate.BEAGLE_LAUNCH_CONFIGURATION_IDENTIFIER);
 		try {
-			final ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, "Analyse with Beagle");
+			final String name = "Analyse in " + this.javaProject.getProject().getName() + " "
+				+ this.repositoryFile.substring(this.repositoryFile.lastIndexOf(File.separatorChar) + 1)
+				+ " with Beagle";
+			final ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, name);
 
 			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT,
 				this.javaProject.getProject().getName());
-			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
-				this.repositoryFile.getPath());
+			workingCopy.setAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, this.repositoryFile);
 			if (this.elements == null) {
 				workingCopy.setAttribute(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE,
 					SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE_VALUE_WHOLE_REPOSITORY);
@@ -90,6 +89,9 @@ public class BeagleLaunchConfigurationCreator {
 				workingCopy.setAttribute(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_CUSTOM_SELECTION,
 					this.elements);
 			}
+
+			new TimeoutTab().setDefaults(workingCopy);
+			new LaunchConfigurationTab().setDefaults(workingCopy);
 
 			workingCopy.doSave();
 			workingCopy.launch(ILaunchManager.RUN_MODE, null);

@@ -119,7 +119,7 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 	protected void createRepositoryFileEditor(final Composite parent) {
 		final Font font = parent.getFont();
 		final Group group = new Group(parent, SWT.NONE);
-		group.setText("Repository File");
+		group.setText("Repository File:");
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		group.setLayoutData(gridData);
 		final GridLayout layout = new GridLayout();

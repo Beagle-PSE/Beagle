@@ -19,7 +19,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.seff.InternalAction;
 
-import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -51,7 +50,7 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 		// something must have been selected for this handler to be called.
 		assert structuredSelection.size() > 0;
 
-		File repositoryFile = null;
+		String repositoryFile = null;
 		IJavaProject javaProject = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
@@ -71,8 +70,9 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 			repositoryFile = ResourcesPlugin.getWorkspace()
 				.getRoot()
 				.getFile(new Path(internalAction.eResource().getURI().toPlatformString(true)))
-				.getRawLocation()
-				.toFile();
+				.getProjectRelativePath()
+				.toFile()
+				.getPath();
 			javaProject = JavaCore.create(ResourcesPlugin.getWorkspace()
 				.getRoot()
 				.getFile(new Path(internalAction.eResource().getURI().toPlatformString(true)))

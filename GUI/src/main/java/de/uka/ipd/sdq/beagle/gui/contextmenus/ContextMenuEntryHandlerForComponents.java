@@ -18,7 +18,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.palladiosimulator.pcm.core.entity.Entity;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 
-import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 		final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 
 		final List<Entity> components = new LinkedList<Entity>();
-		File repositoryFile = null;
+		String repositoryFile = null;
 		IJavaProject javaProject = null;
 		for (final Object clickObject : structuredSelection.toList()) {
 
@@ -61,8 +60,9 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 			repositoryFile = ResourcesPlugin.getWorkspace()
 				.getRoot()
 				.getFile(new Path(basicComponent.eResource().getURI().toPlatformString(true)))
-				.getRawLocation()
-				.toFile();
+				.getProjectRelativePath()
+				.toFile()
+				.getPath();
 			javaProject = JavaCore.create(ResourcesPlugin.getWorkspace()
 				.getRoot()
 				.getFile(new Path(basicComponent.eResource().getURI().toPlatformString(true)))

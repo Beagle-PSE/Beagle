@@ -103,7 +103,7 @@ public final class ILaunchConfigurationHelper {
 		final List<ILaunchConfiguration> result = new ArrayList<>();
 		for (final ILaunchConfiguration launchConfiguration : launchConfigurations) {
 			try {
-				if (launchConfiguration.getType().equals(type)) {
+				if (launchConfiguration.getType().getIdentifier().equals(type)) {
 					result.add(launchConfiguration);
 				}
 			} catch (final CoreException coreException) {
