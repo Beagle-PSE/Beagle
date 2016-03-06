@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>RecursiveEvaluableExpressionVisitor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.evaluableexpressions.util</a> &gt; <span class="el_source">RecursiveEvaluableExpressionVisitor.java</span></div><h1>RecursiveEvaluableExpressionVisitor.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.evaluableexpressions.util;
+
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.SubtractionExpression;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.Iterator;
+
+/**
+ * Visitor of {@link EvaluableExpression EvaluableExpressions}, recursively visiting all
+ * their inner expressions.
+ *
+ * &lt;p&gt;This visitor will start at the expression passed to
+ * {@link #visitRecursively(EvaluableExpression)} and call the according {@code at} hook.
+ * Afterwards, it will recursively visit all inner expressions and then call the
+ * {@code after} hook. It thus realises a depth-first traversal of the tree formed by each
+ * expression. If {@link #stopTraversingInnerExpressions()} is called, the traversal will
+ * no longer visit inner expressions. Instead, it will go “up” the tree again, whilst
+ * calling the {@code after} hooks, until it reached the initial expression and then
+ * terminate. Given that no exception is thrown, the traversal of one expression tree that
+ * only contains pairwise different inner expressions has these properties:
+ *
+ * &lt;ul&gt;
+ *
+ * &lt;li&gt; for each type, the number of called {@code at} hooks will equal the number of
+ * called {@code after} hooks.
+ *
+ * &lt;li&gt; if for two expression {@code e1} and {@code e2}, {@code atExpression(e1)} was
+ * called before {@code atExpression(e2)} was, {@code afterExpression(e2)} will be called
+ * before {@code afterExpression(e1)} will be called.
+ *
+ * &lt;/ul&gt;
+ *
+ * &lt;p&gt;Please note that evaluable expressions may often contain an instance of one
+ * evaluable expression multiple times. For every new visit, traversing of inner
+ * expressions will be enabled.
+ *
+ * &lt;p&gt;This visitor is not thread safe. It may only be used to traverse one expression at a
+ * time, meaning that its results are undefined if
+ * {@link #visitRecursively(EvaluableExpression)} is called when
+ * {@link #getTraversalDepth()} does not return {@code -1}. There is however no limitation
+ * on how many expression trees can be visited by an instance of this class.
+ *
+ * @author Joshua Gleitze
+ * @see ExpressionTreeWalker
+ */
+<span class="fc" id="L61">public abstract class RecursiveEvaluableExpressionVisitor extends PartialExpressionTreeWalker {</span>
+
+	/**
+	 * The visitor actually doing the recursive visiting.
+	 */
+<span class="fc" id="L66">	private final RecursiveWalker recursiveWalker = new RecursiveWalker();</span>
+
+	/**
+	 * How deeply we have the traversed so far. Will be 0 at the root.
+	 */
+	private int depth;
+
+	/**
+	 * How many expressions we’ve seen so far. Will be 1 at the root.
+	 */
+	private int count;
+
+	/**
+	 * Starts visiting {@code expression} recursively.
+	 *
+	 * @param expression The expression that forms the root of the tree this visitor shall
+	 *            traverse. Must not be {@code null}.
+	 */
+	protected void visitRecursively(final EvaluableExpression expression) {
+<span class="fc" id="L85">		Validate.notNull(expression, &quot;Cannot visit null.&quot;);</span>
+
+<span class="fc" id="L87">		this.startTraversingInnerExpressions();</span>
+<span class="fc" id="L88">		this.depth = -1;</span>
+<span class="fc" id="L89">		this.count = 0;</span>
+<span class="fc" id="L90">		expression.receive(this.recursiveWalker);</span>
+<span class="fc" id="L91">	}</span>
+
+	/**
+	 * Private hook called when starting to visit an expression.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	private void atExpressionPrivate(final EvaluableExpression expression) {
+<span class="fc" id="L99">		this.depth++;</span>
+<span class="fc" id="L100">		this.count++;</span>
+<span class="fc" id="L101">		this.atExpression(expression);</span>
+<span class="fc" id="L102">	}</span>
+
+	/**
+	 * Called when leaving any {@link EvaluableExpression}. Will be called after its inner
+	 * expressions were visited and after the specific {@code after*} hook will was
+	 * called.
+	 *
+	 * @param expression The momentary visited expression.
+	 */
+	private void afterExpressionPrivate(final EvaluableExpression expression) {
+<span class="fc" id="L112">		this.depth--;</span>
+<span class="fc" id="L113">	}</span>
+
+	@Override
+	protected int getVisitedCount() {
+<span class="fc" id="L117">		return this.count;</span>
+	}
+
+	@Override
+	protected int getTraversalDepth() {
+<span class="fc" id="L122">		return this.depth;</span>
+	}
+
+	/**
+	 * The actual visitor passed to the expressions. Does the actual walking. Realised as
+	 * private nested class to hide the {@code visit} methods from clients.
+	 *
+	 * @author Joshua Gleitze
+	 */
+<span class="fc" id="L131">	private class RecursiveWalker implements EvaluableExpressionVisitor {</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.AdditionExpression)
+		 */
+		@Override
+		public final void visit(final AdditionExpression expression) {
+<span class="fc" id="L142">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L143">			RecursiveEvaluableExpressionVisitor.this.atAddition(expression);</span>
+
+<span class="fc" id="L145">			final Iterator&lt;EvaluableExpression&gt; innerExpressions = expression.getSummands().iterator();</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">			while (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">				&amp;&amp; innerExpressions.hasNext()) {</span>
+<span class="fc" id="L148">				innerExpressions.next().receive(this);</span>
+			}
+
+<span class="fc" id="L151">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L152">			RecursiveEvaluableExpressionVisitor.this.afterAddition(expression);</span>
+<span class="fc" id="L153">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L154">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de
+		 * .uka.ipd.sdq.beagle.core.evaluableexpressions.MultiplicationExpression)
+		 */
+		@Override
+		public final void visit(final MultiplicationExpression expression) {
+<span class="fc" id="L166">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L167">			RecursiveEvaluableExpressionVisitor.this.atMultiplication(expression);</span>
+
+<span class="fc" id="L169">			final Iterator&lt;EvaluableExpression&gt; innerExpressions = expression.getFactors().iterator();</span>
+<span class="pc bpc" id="L170" title="1 of 2 branches missed.">			while (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()</span>
+<span class="fc bfc" id="L171" title="All 2 branches covered.">				&amp;&amp; innerExpressions.hasNext()) {</span>
+<span class="fc" id="L172">				innerExpressions.next().receive(this);</span>
+			}
+
+<span class="fc" id="L175">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L176">			RecursiveEvaluableExpressionVisitor.this.afterMultiplication(expression);</span>
+<span class="fc" id="L177">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+
+<span class="fc" id="L179">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable)
+		 */
+		@Override
+		public final void visit(final EvaluableVariable variable) {
+<span class="fc" id="L190">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(variable);</span>
+<span class="fc" id="L191">			RecursiveEvaluableExpressionVisitor.this.atVariable(variable);</span>
+
+			// no inner expressions to visit
+
+<span class="fc" id="L195">			RecursiveEvaluableExpressionVisitor.this.afterExpression(variable);</span>
+<span class="fc" id="L196">			RecursiveEvaluableExpressionVisitor.this.afterVariable(variable);</span>
+<span class="fc" id="L197">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(variable);</span>
+<span class="fc" id="L198">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.ComparisonExpression)
+		 */
+		@Override
+		public final void visit(final ComparisonExpression expression) {
+<span class="fc" id="L209">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L210">			RecursiveEvaluableExpressionVisitor.this.atComparison(expression);</span>
+
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L213">				expression.getSmaller().receive(this);</span>
+			}
+<span class="pc bpc" id="L215" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L216">				expression.getGreater().receive(this);</span>
+			}
+
+<span class="fc" id="L219">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L220">			RecursiveEvaluableExpressionVisitor.this.afterComparison(expression);</span>
+<span class="fc" id="L221">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L222">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression)
+		 */
+		@Override
+		public final void visit(final ConstantExpression constant) {
+<span class="fc" id="L233">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(constant);</span>
+<span class="fc" id="L234">			RecursiveEvaluableExpressionVisitor.this.atConstant(constant);</span>
+
+			// no inner expressions to visit
+
+<span class="fc" id="L238">			RecursiveEvaluableExpressionVisitor.this.afterExpression(constant);</span>
+<span class="fc" id="L239">			RecursiveEvaluableExpressionVisitor.this.afterConstant(constant);</span>
+<span class="fc" id="L240">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(constant);</span>
+<span class="fc" id="L241">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.DivisionExpression)
+		 */
+		@Override
+		public final void visit(final DivisionExpression expression) {
+<span class="fc" id="L252">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L253">			RecursiveEvaluableExpressionVisitor.this.atDivision(expression);</span>
+
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L256">				expression.getDividend().receive(this);</span>
+			}
+<span class="pc bpc" id="L258" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L259">				expression.getDivisor().receive(this);</span>
+			}
+
+<span class="fc" id="L262">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L263">			RecursiveEvaluableExpressionVisitor.this.afterDivision(expression);</span>
+<span class="fc" id="L264">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L265">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentationExpression)
+		 */
+		@Override
+		public final void visit(final ExponentationExpression expression) {
+<span class="fc" id="L276">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L277">			RecursiveEvaluableExpressionVisitor.this.atExponentation(expression);</span>
+
+<span class="pc bpc" id="L279" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L280">				expression.getBase().receive(this);</span>
+			}
+<span class="pc bpc" id="L282" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L283">				expression.getExponent().receive(this);</span>
+			}
+
+<span class="fc" id="L286">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L287">			RecursiveEvaluableExpressionVisitor.this.afterExponentation(expression);</span>
+<span class="fc" id="L288">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L289">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de
+		 * .uka.ipd.sdq.beagle.core.evaluableexpressions.ExponentialFunctionExpression)
+		 */
+		@Override
+		public final void visit(final ExponentialFunctionExpression expression) {
+<span class="fc" id="L301">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L302">			RecursiveEvaluableExpressionVisitor.this.atExponentialFunction(expression);</span>
+
+<span class="pc bpc" id="L304" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L305">				expression.getExponent().receive(this);</span>
+			}
+
+<span class="fc" id="L308">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L309">			RecursiveEvaluableExpressionVisitor.this.afterExponentialFunction(expression);</span>
+<span class="fc" id="L310">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L311">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.IfThenElseExpression)
+		 */
+		@Override
+		public final void visit(final IfThenElseExpression expression) {
+<span class="fc" id="L322">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L323">			RecursiveEvaluableExpressionVisitor.this.atIfThenElse(expression);</span>
+
+<span class="pc bpc" id="L325" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L326">				expression.getIfStatement().receive(this);</span>
+			}
+<span class="pc bpc" id="L328" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L329">				expression.getThenStatement().receive(this);</span>
+			}
+<span class="pc bpc" id="L331" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L332">				expression.getElseStatement().receive(this);</span>
+			}
+
+<span class="fc" id="L335">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L336">			RecursiveEvaluableExpressionVisitor.this.afterIfThenElse(expression);</span>
+<span class="fc" id="L337">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L338">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.LogarithmExpression)
+		 */
+		@Override
+		public final void visit(final LogarithmExpression expression) {
+<span class="fc" id="L349">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L350">			RecursiveEvaluableExpressionVisitor.this.atLogarithm(expression);</span>
+
+<span class="fc bfc" id="L352" title="All 2 branches covered.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L353">				expression.getBase().receive(this);</span>
+			}
+<span class="fc bfc" id="L355" title="All 2 branches covered.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L356">				expression.getAntilogarithm().receive(this);</span>
+			}
+
+<span class="fc" id="L359">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L360">			RecursiveEvaluableExpressionVisitor.this.afterLogarithm(expression);</span>
+<span class="fc" id="L361">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L362">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de
+		 * .uka.ipd.sdq.beagle.core.evaluableexpressions.NaturalLogarithmExpression)
+		 */
+		@Override
+		public final void visit(final NaturalLogarithmExpression expression) {
+<span class="fc" id="L374">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L375">			RecursiveEvaluableExpressionVisitor.this.atNaturalLogarithm(expression);</span>
+
+<span class="pc bpc" id="L377" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L378">				expression.getAntilogarithm().receive(this);</span>
+			}
+
+<span class="fc" id="L381">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L382">			RecursiveEvaluableExpressionVisitor.this.afterNaturalLogarithm(expression);</span>
+<span class="fc" id="L383">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L384">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.SineExpression)
+		 */
+		@Override
+		public final void visit(final SineExpression expression) {
+<span class="fc" id="L395">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L396">			RecursiveEvaluableExpressionVisitor.this.atSine(expression);</span>
+
+<span class="pc bpc" id="L398" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L399">				expression.getArgument().receive(this);</span>
+			}
+
+<span class="fc" id="L402">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L403">			RecursiveEvaluableExpressionVisitor.this.afterSine(expression);</span>
+<span class="fc" id="L404">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L405">		}</span>
+
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see
+		 * de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpressionVisitor#
+		 * visit(de .uka.ipd.sdq.beagle.core.evaluableexpressions.SubstractionExpression)
+		 */
+		@Override
+		public final void visit(final SubtractionExpression expression) {
+<span class="fc" id="L416">			RecursiveEvaluableExpressionVisitor.this.atExpressionPrivate(expression);</span>
+<span class="fc" id="L417">			RecursiveEvaluableExpressionVisitor.this.atSubtraction(expression);</span>
+
+<span class="pc bpc" id="L419" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L420">				expression.getMinuend().receive(this);</span>
+			}
+<span class="pc bpc" id="L422" title="1 of 2 branches missed.">			if (RecursiveEvaluableExpressionVisitor.this.willTraverseInnerExpressions()) {</span>
+<span class="fc" id="L423">				expression.getSubtrahend().receive(this);</span>
+			}
+
+<span class="fc" id="L426">			RecursiveEvaluableExpressionVisitor.this.afterExpression(expression);</span>
+<span class="fc" id="L427">			RecursiveEvaluableExpressionVisitor.this.afterSubtraction(expression);</span>
+<span class="fc" id="L428">			RecursiveEvaluableExpressionVisitor.this.afterExpressionPrivate(expression);</span>
+<span class="fc" id="L429">		}</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
