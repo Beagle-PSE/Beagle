@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -151,6 +151,12 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
  file to analyse.</div>
 </td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE">BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE</a></span></code>
+<div class="block">The default value for the key <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE"><code>BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE</code></a>.</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -188,18 +194,42 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#createControl-org.eclipse.swt.widgets.Composite-">createControl</a></span>(org.eclipse.swt.widgets.Composite&nbsp;parent)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#createProjectEditor-org.eclipse.swt.widgets.Composite-">createProjectEditor</a></span>(org.eclipse.swt.widgets.Composite&nbsp;parent)</code>
+<div class="block">Creates the widgets for the project selection button.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#createRepositoryFileEditor-org.eclipse.swt.widgets.Composite-">createRepositoryFileEditor</a></span>(org.eclipse.swt.widgets.Composite&nbsp;parent)</code>
+<div class="block">Creates the widgets for the repository file selection.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>protected org.eclipse.jdt.core.IJavaProject</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#getJavaProject--">getJavaProject</a></span>()</code>
+<div class="block">Gives the currently selected <code>IJavaProject</code>.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#getName--">getName</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>protected org.eclipse.core.resources.IWorkspaceRoot</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#getWorkspaceRoot--">getWorkspaceRoot</a></span>()</code>
+<div class="block">Gives the Workspace root.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#initializeFrom-org.eclipse.debug.core.ILaunchConfiguration-">initializeFrom</a></span>(org.eclipse.debug.core.ILaunchConfiguration&nbsp;configuration)</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#performApply-org.eclipse.debug.core.ILaunchConfigurationWorkingCopy-">performApply</a></span>(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy&nbsp;configuration)</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#setDefaults-org.eclipse.debug.core.ILaunchConfigurationWorkingCopy-">setDefaults</a></span>(org.eclipse.debug.core.ILaunchConfigurationWorkingCopy&nbsp;configuration)</code>&nbsp;</td>
 </tr>
@@ -250,7 +280,7 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <a name="BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE</h4>
 <pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE</pre>
@@ -259,6 +289,20 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../constant-values.html#de.uka.ipd.sdq.beagle.gui.ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE</h4>
+<pre>public static final&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE</pre>
+<div class="block">The default value for the key <a href="../../../../../../de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE"><code>BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE</code></a>.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../constant-values.html#de.uka.ipd.sdq.beagle.gui.ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -287,15 +331,6 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="createControl-org.eclipse.swt.widgets.Composite-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>createControl</h4>
-<pre>public&nbsp;void&nbsp;createControl(org.eclipse.swt.widgets.Composite&nbsp;parent)</pre>
-</li>
-</ul>
 <a name="setDefaults-org.eclipse.debug.core.ILaunchConfigurationWorkingCopy-">
 <!--   -->
 </a>
@@ -326,10 +361,76 @@ extends org.eclipse.debug.ui.AbstractLaunchConfigurationTab</pre>
 <a name="getName--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getName</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getName()</pre>
+</li>
+</ul>
+<a name="createRepositoryFileEditor-org.eclipse.swt.widgets.Composite-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createRepositoryFileEditor</h4>
+<pre>protected&nbsp;void&nbsp;createRepositoryFileEditor(org.eclipse.swt.widgets.Composite&nbsp;parent)</pre>
+<div class="block">Creates the widgets for the repository file selection.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - The parent for the widget.</dd>
+</dl>
+</li>
+</ul>
+<a name="createControl-org.eclipse.swt.widgets.Composite-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createControl</h4>
+<pre>public&nbsp;void&nbsp;createControl(org.eclipse.swt.widgets.Composite&nbsp;parent)</pre>
+</li>
+</ul>
+<a name="createProjectEditor-org.eclipse.swt.widgets.Composite-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createProjectEditor</h4>
+<pre>protected&nbsp;void&nbsp;createProjectEditor(org.eclipse.swt.widgets.Composite&nbsp;parent)</pre>
+<div class="block">Creates the widgets for the project selection button.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>parent</code> - The parent for the widget.</dd>
+</dl>
+</li>
+</ul>
+<a name="getWorkspaceRoot--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getWorkspaceRoot</h4>
+<pre>protected&nbsp;org.eclipse.core.resources.IWorkspaceRoot&nbsp;getWorkspaceRoot()</pre>
+<div class="block">Gives the Workspace root.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the Workspace root</dd>
+</dl>
+</li>
+</ul>
+<a name="getJavaProject--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getJavaProject</h4>
+<pre>protected&nbsp;org.eclipse.jdt.core.IJavaProject&nbsp;getJavaProject()</pre>
+<div class="block">Gives the currently selected <code>IJavaProject</code>.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the currently selected <code>IJavaProject</code> or <code>null</code>, when no
+         project was selected.</dd>
+</dl>
 </li>
 </ul>
 </li>

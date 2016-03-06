@@ -346,6 +346,10 @@
 <div class="block">The key in the Beagle Launch Configuration determining the path of the repository
  file to analyse.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE">BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dd>
+<div class="block">The default value for the key <a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE"><code>ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE</code></a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewTab.html#BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE">BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewTab.html" title="class in de.uka.ipd.sdq.beagle.gui">SelectionOverviewTab</a></dt>
 <dd>
 <div class="block">The key in the Beagle Launch Configuration determining whether the user wants to
@@ -419,7 +423,7 @@
 <div class="block">Handles the creation of Beagle ILaunchConfigurations
  from data gathered by the context menus.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationCreator.html#BeagleLaunchConfigurationCreator-java.util.List-java.io.File-org.eclipse.jdt.core.IJavaProject-">BeagleLaunchConfigurationCreator(List&lt;Entity&gt;, File, IJavaProject)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationCreator.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleLaunchConfigurationCreator</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationCreator.html#BeagleLaunchConfigurationCreator-java.util.List-java.lang.String-org.eclipse.jdt.core.IJavaProject-">BeagleLaunchConfigurationCreator(List&lt;Entity&gt;, String, IJavaProject)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationCreator.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleLaunchConfigurationCreator</a></dt>
 <dd>
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationCreator.html" title="class in de.uka.ipd.sdq.beagle.gui"><code>BeagleLaunchConfigurationCreator</code></a> from data gathered by the
  context menus.</div>
@@ -636,6 +640,14 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationCreator.html#createLaunchConfiguration--">createLaunchConfiguration()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationCreator.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleLaunchConfigurationCreator</a></dt>
 <dd>
 <div class="block">Creates, saves and launches a new Beagle <code>ILaunchConfiguration</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#createProjectEditor-org.eclipse.swt.widgets.Composite-">createProjectEditor(Composite)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dd>
+<div class="block">Creates the widgets for the project selection button.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#createRepositoryFileEditor-org.eclipse.swt.widgets.Composite-">createRepositoryFileEditor(Composite)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dd>
+<div class="block">Creates the widgets for the repository file selection.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationTabGroup.html#createTabs-org.eclipse.debug.ui.ILaunchConfigurationDialog-java.lang.String-">createTabs(ILaunchConfigurationDialog, String)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationTabGroup.html" title="class in de.uka.ipd.sdq.beagle.gui">BeagleLaunchConfigurationTabGroup</a></dt>
 <dd>&nbsp;</dd>
@@ -1378,6 +1390,10 @@
 <dd>
 <div class="block">Gives the <code>IJavaProject</code> to analyse.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#getJavaProject--">getJavaProject()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dd>
+<div class="block">Gives the currently selected <code>IJavaProject</code>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getLaunchConfigurations--">getLaunchConfigurations()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>
 <div class="block">Returns the <a href="de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfigurations</a> to use for the
@@ -1776,6 +1792,10 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html#getValueFor-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableVariable-">getValueFor(EvaluableVariable)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.evaluableexpressions.<a href="de/uka/ipd/sdq/beagle/core/evaluableexpressions/EvaluableVariableAssignment.html" title="class in de.uka.ipd.sdq.beagle.core.evaluableexpressions">EvaluableVariableAssignment</a></dt>
 <dd>
 <div class="block">Gets the assigned value for the <code>EvaluableVariable variable</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#getWorkspaceRoot--">getWorkspaceRoot()</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dd>
+<div class="block">Gives the Workspace root.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html#gradeFor-de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction-de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression-de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunctionBlackboardView-">gradeFor(ResourceDemandingInternalAction, EvaluableExpression, EvaluableExpressionFitnessFunctionBlackboardView)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/AbstractionAndPrecisionFitnessFunction.html" title="class in de.uka.ipd.sdq.beagle.core.judge">AbstractionAndPrecisionFitnessFunction</a></dt>
 <dd>&nbsp;</dd>

@@ -75,7 +75,7 @@ public class BeagleConfiguration {
 <span class="fc" id="L75">		Validate.notNull(javaProject);</span>
 
 <span class="fc bfc" id="L77" title="All 2 branches covered.">		if (!repositoryFile.exists()) {</span>
-<span class="fc" id="L78">			throw new IllegalArgumentException(&quot;Repository file must exist.&quot;);</span>
+<span class="fc" id="L78">			throw new IllegalArgumentException(&quot;Repository file must exist. Path was: &quot; + repositoryFile.getPath());</span>
 		}
 
 <span class="fc bfc" id="L81" title="All 2 branches covered.">		if (elements != null) {</span>
