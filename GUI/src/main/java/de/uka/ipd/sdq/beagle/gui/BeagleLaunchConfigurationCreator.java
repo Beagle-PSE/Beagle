@@ -72,7 +72,17 @@ public class BeagleLaunchConfigurationCreator {
 		final ILaunchConfigurationType type = manager
 			.getLaunchConfigurationType(BeagleLaunchConfigurationDelegate.BEAGLE_LAUNCH_CONFIGURATION_IDENTIFIER);
 		try {
-			final String name = "Analyse in " + this.javaProject.getProject().getName() + " "
+			String content = "";
+			if (this.elements != null) {
+				for (final String element : this.elements) {
+					content += element + ", ";
+				}
+				// Remove last ", ".
+				content = content.substring(0, content.length() - 2);
+			} else {
+				content = "Whole Repository";
+			}
+			final String name = "Analyse " + content + " in " + this.javaProject.getProject().getName() + " "
 				+ this.repositoryFile.substring(this.repositoryFile.lastIndexOf(File.separatorChar) + 1)
 				+ " with Beagle";
 			final ILaunchConfigurationWorkingCopy workingCopy = type.newInstance(null, name);
