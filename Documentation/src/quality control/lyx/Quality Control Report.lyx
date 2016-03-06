@@ -293,8 +293,68 @@ Tests
 JUnit Tests
 \end_layout
 
+\begin_layout Standard
+As of this writing (2016-03-06) we use about 400 automated JUnit tests to
+ test Beagle on a per-method level.
+ Every merge into the upstream master requires these tests to pass.
+ For more details see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:T200"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Integration Tests
+\end_layout
+
+\begin_layout Subsection
+T200
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:T200"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Every time something is added to Beagle, Travis sets up an Ubuntu system
+ with only the specified software installed.
+ The combination of code already in the upstream master and the changes
+ in question then has to pass all automated tests in order to be mergable.
+ Thus it is always guaranteed that Beagle as of its state in the upstream
+ master passes all automated tests on a system with only the specified software
+ installed.
+\end_layout
+
+\begin_layout Subsection
+T210
+\end_layout
+
+\begin_layout Standard
+Beagle has been tested manually to work with Kieker.
+\end_layout
+
+\begin_layout Subsection
+T220
+\end_layout
+
+\begin_layout Standard
+Beagle does obey the PCM standards when writing data and is not required
+ for Palladio to access the PCM after it has been created.
+\end_layout
+
+\begin_layout Subsection
+OT200
+\end_layout
+
+\begin_layout Standard
+Beagle has been tested on Linux and Windows operating systems.
 \end_layout
 
 \begin_layout Section
@@ -356,33 +416,31 @@ All optional tests not mentioned above are omitted because the features
  they are testing are optional features which have not been implemented.
 \end_layout
 
-\begin_layout Subsection
-T200
-\end_layout
-
-\begin_layout Subsection
-T210
-\end_layout
-
-\begin_layout Subsection
-T220
-\end_layout
-
-\begin_layout Subsection
-OT200
-\end_layout
-
 \begin_layout Chapter
 Bugs
 \end_layout
 
-\begin_layout Standard
-Contains all Bugs found and/ or fixed in the Quality Control Phase.
+\begin_layout Section
+Implementation Phase
 \end_layout
 
 \begin_layout Standard
-Reports should contain at least Symptom, Reason and a description of the
- fix.
+There were no known bugs or other undesired behaviour at the end of the
+ implementation phase.
+ We were not able to find any such during the quality assurance phase either.
+ Therefore no bugs which originated in the implementation phase were fixed.
+\end_layout
+
+\begin_layout Section
+Quality Assurance Phase
+\end_layout
+
+\begin_layout Standard
+Due to our policy to only merge branches into the upstream master if they
+ are free of knows bugs and other undesired behaviour, we never introduced
+ code known to contain errors into our upstream master.
+ As of this writing (2016-03-06) there have been no occurrences of subsequent
+ detection of bugs in upstream master either.
 \end_layout
 
 \begin_layout Chapter
