@@ -135,6 +135,7 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 		tableViewerGridData.verticalAlignment = SWT.FILL;
 		tableViewerGridData.heightHint = LAUNCH_CONFIGURATION_TABLE_VIEW_HEIGHT;
 		tableViewerGridData.widthHint = LAUNCH_CONFIGURATION_TABLE_VIEW_WIDTH;
+		this.tableViewer.addCheckStateListener(event -> LaunchConfigurationTab.this.updateLaunchConfigurationDialog());
 		this.tableViewer.getTable().setLayoutData(tableViewerGridData);
 
 		this.updateTableViewer();

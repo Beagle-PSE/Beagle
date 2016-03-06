@@ -127,6 +127,7 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		group.setLayout(layout);
 		group.setFont(font);
 		this.repositoryText = new Text(group, SWT.SINGLE | SWT.BORDER);
+		this.repositoryText.addModifyListener(new WidgetListener());
 		gridData = new GridData(GridData.FILL_HORIZONTAL);
 		this.repositoryText.setLayoutData(gridData);
 		this.repositoryText.setFont(font);
