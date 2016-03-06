@@ -67,6 +67,10 @@ public class BeagleWebContext {
 		 * Path to the implementation slides PDF.
 		 */
 		String implementationSlides = relative project.copyWebArtefacts.implementationSlidesDest
+		/** 
+		 * Path to the qc report.
+		 */
+		String qcReport = relative project.copyWebArtefacts.qualityControlReportDest
 		/**
 		 * Path to the javadoc folder.
 		 */
