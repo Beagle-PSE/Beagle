@@ -1,7 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
-import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
