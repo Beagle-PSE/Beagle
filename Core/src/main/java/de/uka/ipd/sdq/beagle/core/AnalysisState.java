@@ -1,4 +1,4 @@
-package de.uka.ipd.sdq.beagle.core.analysis;
+package de.uka.ipd.sdq.beagle.core;
 
 /**
  * The current state of the analysis.
