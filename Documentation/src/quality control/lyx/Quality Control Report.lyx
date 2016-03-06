@@ -293,8 +293,68 @@ Tests
 JUnit Tests
 \end_layout
 
+\begin_layout Standard
+As of this writing (2016-03-06) we use about 400 automated JUnit tests to
+ test Beagle on a per-method level.
+ Every merge into the upstream master requires these tests to pass.
+ For more details see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:T200"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Integration Tests
+\end_layout
+
+\begin_layout Subsection
+T200
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:T200"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Every time something is added to Beagle, Travis sets up an Ubuntu system
+ with only the specified software installed.
+ The combination of code already in the upstream master and the changes
+ in question then has to pass all automated tests in order to be mergable.
+ Thus it is always guaranteed that Beagle as of its state in the upstream
+ master passes all automated tests on a system with only the specified software
+ installed.
+\end_layout
+
+\begin_layout Subsection
+T210
+\end_layout
+
+\begin_layout Standard
+Beagle has been tested manually to work with Kieker.
+\end_layout
+
+\begin_layout Subsection
+T220
+\end_layout
+
+\begin_layout Standard
+Beagle does obey the PCM standards when writing data and is not required
+ for Palladio to access the PCM after it has been created.
+\end_layout
+
+\begin_layout Subsection
+OT200
+\end_layout
+
+\begin_layout Standard
+Beagle has been tested on Linux and Windows operating systems.
 \end_layout
 
 \begin_layout Section
@@ -354,32 +414,6 @@ Manual Tests.md
 \begin_layout Standard
 All optional tests not mentioned above are omitted because the features
  they are testing are optional features which have not been implemented.
-\end_layout
-
-\begin_layout Subsection
-T200
-\end_layout
-
-\begin_layout Standard
-Every time something is added to Beagle, Travis sets up an Ubuntu system
- with only the specified software installed.
- The combination of code already in the upstream master and the changes
- in question then has to pass all automated tests in order to be mergable.
- Thus it is always guaranteed that Beagle as of its state in the upstream
- master passes all automated tests on a system with only the specified software
- installed.
-\end_layout
-
-\begin_layout Subsection
-T210
-\end_layout
-
-\begin_layout Subsection
-T220
-\end_layout
-
-\begin_layout Subsection
-OT200
 \end_layout
 
 \begin_layout Chapter
