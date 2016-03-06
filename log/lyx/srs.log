@@ -841,7 +841,7 @@ ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
 fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
 b>
-Output written on "Requirements Specification.pdf" (40 pages, 435214 bytes).
+Output written on "Requirements Specification.pdf" (40 pages, 435218 bytes).
 Transcript written on "Requirements Specification.log".
 
 
@@ -853,34 +853,10 @@ Transcript written on "Requirements Specification.log".
 makeglossaries version 2.12 (2014-01-20)
 added glossary type 'main' (glg,gls,glo)
 added glossary type 'acronym' (alg,acr,acn)
-xindy  -L english -C utf8 -I xindy -M "Requirements Specification" -t "Requirements Specification.glg" -o "Requirements Specification.gls" "Requirements Specification.glo"
-Opening logfile "Requirements Specification.glg" (done)
-Reading indexstyle...
-Loading module "/tmp/lTBlu1Fe4f"...
-Loading module "lang/english/utf8-lang.xdy"...
-Loading module "lang/english/utf8.xdy"...
-Finished loading module "lang/english/utf8.xdy".
-Finished loading module "lang/english/utf8-lang.xdy".
-Loading module "Requirements Specification.xdy"...
-Loading module "tex.xdy"...
-Finished loading module "tex.xdy".
-Finished loading module "Requirements Specification.xdy".
-Finished loading module "/tmp/lTBlu1Fe4f".
-Finished reading indexstyle.
-Finalizing indexstyle... (done)
-
-Reading raw-index "/tmp/gyC4J1lDBt"...
-Finished reading raw-index.
-
-Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
-Finished processing index.
-
-Writing markup... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
-Markup written into file "Requirements Specification.gls".
 xindy  -L english -C utf8 -I xindy -M "Requirements Specification" -t "Requirements Specification.alg" -o "Requirements Specification.acr" "Requirements Specification.acn"
 Opening logfile "Requirements Specification.alg" (done)
 Reading indexstyle...
-Loading module "/tmp/sa8HR_2LMV"...
+Loading module "/tmp/yNaiHk676A"...
 Loading module "lang/english/utf8-lang.xdy"...
 Loading module "lang/english/utf8.xdy"...
 Finished loading module "lang/english/utf8.xdy".
@@ -889,11 +865,11 @@ Loading module "Requirements Specification.xdy"...
 Loading module "tex.xdy"...
 Finished loading module "tex.xdy".
 Finished loading module "Requirements Specification.xdy".
-Finished loading module "/tmp/sa8HR_2LMV".
+Finished loading module "/tmp/yNaiHk676A".
 Finished reading indexstyle.
 Finalizing indexstyle... (done)
 
-Reading raw-index "/tmp/EdmsNy3X8t"...
+Reading raw-index "/tmp/uUcNq19m7_"...
 Finished reading raw-index.
 
 Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
@@ -901,6 +877,30 @@ Finished processing index.
 
 Writing markup... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
 Markup written into file "Requirements Specification.acr".
+xindy  -L english -C utf8 -I xindy -M "Requirements Specification" -t "Requirements Specification.glg" -o "Requirements Specification.gls" "Requirements Specification.glo"
+Opening logfile "Requirements Specification.glg" (done)
+Reading indexstyle...
+Loading module "/tmp/j43cF4Vi7h"...
+Loading module "lang/english/utf8-lang.xdy"...
+Loading module "lang/english/utf8.xdy"...
+Finished loading module "lang/english/utf8.xdy".
+Finished loading module "lang/english/utf8-lang.xdy".
+Loading module "Requirements Specification.xdy"...
+Loading module "tex.xdy"...
+Finished loading module "tex.xdy".
+Finished loading module "Requirements Specification.xdy".
+Finished loading module "/tmp/j43cF4Vi7h".
+Finished reading indexstyle.
+Finalizing indexstyle... (done)
+
+Reading raw-index "/tmp/qd4jf0IoCH"...
+Finished reading raw-index.
+
+Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+Finished processing index.
+
+Writing markup... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+Markup written into file "Requirements Specification.gls".
 
 
 
@@ -1381,7 +1381,7 @@ ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
 fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
 b>
-Output written on "Requirements Specification.pdf" (48 pages, 459279 bytes).
+Output written on "Requirements Specification.pdf" (48 pages, 459275 bytes).
 Transcript written on "Requirements Specification.log".
 
 
@@ -1864,7 +1864,7 @@ ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
 fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
 b>
-Output written on "Requirements Specification.pdf" (49 pages, 464113 bytes).
+Output written on "Requirements Specification.pdf" (49 pages, 464115 bytes).
 Transcript written on "Requirements Specification.log".
 
 
@@ -2268,7 +2268,7 @@ ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
 fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
 b>
-Output written on "Requirements Specification.pdf" (49 pages, 464989 bytes).
+Output written on "Requirements Specification.pdf" (49 pages, 464990 bytes).
 Transcript written on "Requirements Specification.log".
 
 
@@ -2672,5 +2672,5 @@ ype1/public/bera/fvmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
 fonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/zxlri.pf
 b>
-Output written on "Requirements Specification.pdf" (49 pages, 464989 bytes).
+Output written on "Requirements Specification.pdf" (49 pages, 464990 bytes).
 Transcript written on "Requirements Specification.log".
