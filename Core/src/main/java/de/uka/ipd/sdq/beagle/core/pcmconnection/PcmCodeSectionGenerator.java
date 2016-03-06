@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * This class manages the creation of the {@link CodeSection} for a given ID using the
  * {@link PcmSourceStatementLinkRepository}.
- * 
+ *
  * @author Ansgar Spiegler
  */
 public class PcmCodeSectionGenerator {
@@ -29,12 +29,12 @@ public class PcmCodeSectionGenerator {
 	/**
 	 * The {@link PcmSourceStatementLinkRepository} the searching of IDs is based on.
 	 */
-	private PcmSourceStatementLinkRepository sourceStateLinkRepository;
+	private final PcmSourceStatementLinkRepository sourceStateLinkRepository;
 
 	/**
 	 * The {@link SourceCodeFileProvider} for the project under analysis.
 	 */
-	private SourceCodeFileProvider sourceCodeFileProvider;
+	private final SourceCodeFileProvider sourceCodeFileProvider;
 
 	/**
 	 * Adapting the given SourceStateLinkRepository to the searching of IDs.
@@ -58,7 +58,7 @@ public class PcmCodeSectionGenerator {
 	 */
 	private void initialiseMap() {
 		this.mapIdToStatementLink = new HashMap<String, PcmSourceStatementLink>();
-		for (PcmSourceStatementLink statementLink : this.sourceStateLinkRepository.getLinks()) {
+		for (final PcmSourceStatementLink statementLink : this.sourceStateLinkRepository.getLinks()) {
 			final String statementLinkId = statementLink.getPcmElementId();
 			Validate.notNull(statementLinkId);
 
@@ -91,7 +91,8 @@ public class PcmCodeSectionGenerator {
 		final PcmSourceStatementLink statementLink = this.mapIdToStatementLink.get(identifier);
 
 		final SourceCodePosition scpFirst = statementLink.getFirstStatement();
-		final SourceCodePosition scpLast = statementLink.getLastStatement();
+		final SourceCodePosition scpLast =
+			statementLink.getLastStatement() != null ? statementLink.getLastStatement() : scpFirst;
 
 		final File startFile = this.sourceCodeFileProvider.getSourceFile(scpFirst.getSourceCodeFile());
 		final File endFile = this.sourceCodeFileProvider.getSourceFile(scpLast.getSourceCodeFile());
