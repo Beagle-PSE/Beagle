@@ -4,7 +4,7 @@ import de.uka.ipd.sdq.beagle.core.facade.BeagleConfiguration;
 import de.uka.ipd.sdq.beagle.core.facade.BeagleController;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
-import de.uka.ipd.sdq.beagle.core.timeout.AgingAlgorithmAdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 
@@ -90,7 +90,7 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 			switch (launchConfiguration.getAttribute(TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE,
 				TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_DEFAULT_VALUE)) {
 				case TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT:
-					beagleConfiguration.setTimeout(new AgingAlgorithmAdaptiveTimeout());
+					beagleConfiguration.setTimeout(new AdaptiveTimeout());
 					break;
 				case TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT:
 					beagleConfiguration.setTimeout(new ConstantTimeout(
