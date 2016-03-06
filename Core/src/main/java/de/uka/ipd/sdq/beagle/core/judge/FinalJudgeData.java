@@ -19,12 +19,6 @@ class FinalJudgeData implements Serializable {
 	private static final long serialVersionUID = 9038094699907524618L;
 
 	/**
-	 * The millisecond timestamp of the point in time when evolution of evaluable
-	 * expressions started or {@code -1} to indicate that this field isn't initialised.
-	 */
-	private long startTime = -1;
-
-	/**
 	 * The number of generations with significant improvement (see
 	 * {@code FinalJugde#SIGNIFICANT_IMPROVEMENT} passed.
 	 */
@@ -40,24 +34,6 @@ class FinalJudgeData implements Serializable {
 	 * {@code numberOfGenerationsWithoutSignificantImprovementPassed} to {@code 0}.
 	 */
 	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;
-
-	/**
-	 * Returns {@code startTime}.
-	 *
-	 * @return The {@code startTime}.
-	 */
-	public long getStartTime() {
-		return this.startTime;
-	}
-
-	/**
-	 * Sets {@code startTime}.
-	 *
-	 * @param startTime The {@code startTime} to set.
-	 */
-	public void setStartTime(final long startTime) {
-		this.startTime = startTime;
-	}
 
 	/**
 	 * Returns {@code numberOfGenerationsWithoutSignificantImprovementPassed}.

@@ -7,6 +7,7 @@
     <menuContribution locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
       <command
             commandId="de.uka.ipd.sdq.beagle.startBeagle"
+            icon="icon16.gif"
             id="de.uka.ipd.sdq.beagle.fileExplorerContextMenuEntry"
             label="Analyse with Beagle"
             style="push">
@@ -39,6 +40,7 @@
           locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
        <command
              commandId="de.uka.ipd.sdq.beagle.startBeagleComponent"
+             icon="icon16.gif"
              id="de.uka.ipd.sdq.beagle.repositoryDiagramContextMenuEntry"
              label="Analyse with Beagle"
              style="push">
@@ -56,6 +58,7 @@
           locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
        <command
              commandId="de.uka.ipd.sdq.beagle.startBeagleInternalAction"
+             icon="icon16.gif"
              id="de.uka.ipd.sdq.beagle.repositoryDiagramContextMenuEntry"
              label="Analyse with Beagle"
              style="push">
@@ -80,6 +83,7 @@
           locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
        <command
              commandId="de.uka.ipd.sdq.beagle.startBeagle"
+             icon="icon16.gif"
              id="de.uka.ipd.sdq.beagle.projectExplorerContextMenuEntry"
              label="Analyse with Beagle"
              style="push">
@@ -123,5 +127,26 @@
             name="Run Beagle for a single resource demand.">
       </command>
    </extension>
-
+	<extension point="org.eclipse.debug.core.launchConfigurationTypes">
+	    <launchConfigurationType
+	        name="Beagle"
+	        delegate="de.uka.ipd.sdq.beagle.gui.BeagleLaunchConfigurationDelegate"
+	        modes="run"               
+	        id="de.uka.ipd.sdq.beagle.launch">        
+	    </launchConfigurationType>
+	</extension>
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+	    <launchConfigurationTypeImage
+	        icon="icon16.gif"
+	        configTypeID="de.uka.ipd.sdq.beagle.launch"
+	        id="de.uka.ipd.sdq.beagle.launch.launchConfigurationTypeImage">
+	    </launchConfigurationTypeImage>
+	</extension>
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+	    <launchConfigurationTabGroup
+	        type="de.uka.ipd.sdq.beagle.launch"
+	        class="de.uka.ipd.sdq.beagle.gui.BeagleLaunchConfigurationTabGroup"
+	        id="de.uka.ipd.sdq.beagle.launch.launchConfigurationTabGroup">
+	    </launchConfigurationTabGroup>
+	</extension>
 </plugin>
