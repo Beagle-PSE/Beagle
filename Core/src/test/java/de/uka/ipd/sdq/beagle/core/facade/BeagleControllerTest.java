@@ -7,6 +7,11 @@ import org.junit.Test;
 
 import java.util.List;
 
+/**
+ * Ansgar didn't write Javadoc here.
+ *
+ * @author Ansgar Spiegler
+ */
 public class BeagleControllerTest {
 
 	/**
@@ -33,8 +38,12 @@ public class BeagleControllerTest {
 		// this.elements.add(mock(Entity.class));
 	}
 
+	/**
+	 * Some missing doc.
+	 *
+	 */
 	@Test
-	public void testBeagleController() {
+	public void beagleController() {
 		/*
 		 * //final File[] files = TEST_FILE_FACTORY.getAll(); final File file = new
 		 * File(BeagleControllerTest.class.getResource(
@@ -46,23 +55,39 @@ public class BeagleControllerTest {
 
 	}
 
+	/**
+	 * Some missing doc.
+	 *
+	 */
 	@Test
-	public void testStartAnalysis() {
+	public void startAnalysis() {
 		// fail("Not yet implemented");
 	}
 
+	/**
+	 * Some missing doc.
+	 *
+	 */
 	@Test
-	public void testPauseAnalysis() {
+	public void pauseAnalysis() {
 		// fail("Not yet implemented");
 	}
 
+	/**
+	 * Some missing doc.
+	 *
+	 */
 	@Test
-	public void testContinueAnalysis() {
+	public void continueAnalysis() {
 		// fail("Not yet implemented");
 	}
 
+	/**
+	 * Some missing doc.
+	 *
+	 */
 	@Test
-	public void testAbortAnalysis() {
+	public void abortAnalysis() {
 		// fail("Not yet implemented");
 	}
 
