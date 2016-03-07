@@ -11,6 +11,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import java.io.File;
+
 /*
  * This class is involved in creating a Graphical User Interface. Its funtionality cannot
  * reasonably be tested by automated unit tests.
@@ -48,11 +50,14 @@ public class ContextMenuEntryHandlerForRepositories extends AbstractHandler {
 		// This cast is safe because this context menu entry is only shown on IFiles.
 		final IFile clickedFile = (IFile) firstElement;
 
-		final String fileToAnalyse;
+		String fileToAnalyse;
 		if (clickedFile.getFileExtension().equals(FILE_EXTENSION_REPOSITORY)) {
 			// The "../" prefix is necessary, as the "full path" contains the project
 			// name.
-			fileToAnalyse = "../" + clickedFile.getFullPath().toOSString();
+			fileToAnalyse = clickedFile.getFullPath().toOSString();
+			// Remove "/"-Prefix.
+			fileToAnalyse = fileToAnalyse.substring(1);
+			fileToAnalyse = fileToAnalyse.substring(fileToAnalyse.indexOf(File.separatorChar));
 		} else {
 			fileToAnalyse = null;
 		}
