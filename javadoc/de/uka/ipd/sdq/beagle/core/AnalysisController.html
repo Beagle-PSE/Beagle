@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/core/AnalysisController.html" target="_top">Frames</a></li>
@@ -186,10 +186,22 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">AnalysisState</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html#getAnalysisState--">getAnalysisState</a></span>()</code>
+<div class="block">Returns the current state of the analysis.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html#performAnalysis--">performAnalysis</a></span>()</code>
 <div class="block">Runs the complete analysis, including measurements, result analysis and the final
  judging.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html#setAnalysisState-de.uka.ipd.sdq.beagle.core.AnalysisState-">setAnalysisState</a></span>(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">AnalysisState</a>&nbsp;analysisState)</code>
+<div class="block">Sets the current state of the analysis to <code>analysisState</code>.</div>
 </td>
 </tr>
 </table>
@@ -249,12 +261,43 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <a name="performAnalysis--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>performAnalysis</h4>
 <pre>public&nbsp;void&nbsp;performAnalysis()</pre>
 <div class="block">Runs the complete analysis, including measurements, result analysis and the final
  judging. See the class description for more details on the analysis process.</div>
+</li>
+</ul>
+<a name="getAnalysisState--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getAnalysisState</h4>
+<pre>public&nbsp;<a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">AnalysisState</a>&nbsp;getAnalysisState()</pre>
+<div class="block">Returns the current state of the analysis.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The current state of the analysis.</dd>
+</dl>
+</li>
+</ul>
+<a name="setAnalysisState-de.uka.ipd.sdq.beagle.core.AnalysisState-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setAnalysisState</h4>
+<pre>public&nbsp;void&nbsp;setAnalysisState(<a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core">AnalysisState</a>&nbsp;analysisState)</pre>
+<div class="block">Sets the current state of the analysis to <code>analysisState</code>. The analysis must
+ be started before this method is called. Otherwise an <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang"><code>IllegalStateException</code></a>
+ will be thrown.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>analysisState</code> - The state the analysis will be in after this method has been
+            called.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -285,7 +328,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisState.html" title="enum in de.uka.ipd.sdq.beagle.core"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?de/uka/ipd/sdq/beagle/core/AnalysisController.html" target="_top">Frames</a></li>

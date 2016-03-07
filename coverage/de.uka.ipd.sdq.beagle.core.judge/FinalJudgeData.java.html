@@ -19,6 +19,12 @@ import java.util.stream.DoubleStream;
 	private static final long serialVersionUID = 9038094699907524618L;
 
 	/**
+	 * Whether {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will return
+	 * {@code true} for sure.
+	 */
+	private boolean willReturnTrue;
+
+	/**
 	 * The number of generations with significant improvement (see
 	 * {@code FinalJugde#SIGNIFICANT_IMPROVEMENT} passed.
 	 */
@@ -33,7 +39,7 @@ import java.util.stream.DoubleStream;
 	 * The latest fitness value which came with good enough improvement to set
 	 * {@code numberOfGenerationsWithoutSignificantImprovementPassed} to {@code 0}.
 	 */
-<span class="fc" id="L36">	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;</span>
+<span class="fc" id="L42">	private double fitnessBaselineValue = Double.POSITIVE_INFINITY;</span>
 
 	/**
 	 * Returns {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
@@ -41,7 +47,7 @@ import java.util.stream.DoubleStream;
 	 * @return The {@code numberOfGenerationsWithoutSignificantImprovementPassed}.
 	 */
 	public int getNumberOfGenerationsWithoutSignificantImprovementPassed() {
-<span class="fc" id="L44">		return this.numberOfGenerationsWithoutSignificantImprovementPassed;</span>
+<span class="fc" id="L50">		return this.numberOfGenerationsWithoutSignificantImprovementPassed;</span>
 	}
 
 	/**
@@ -52,9 +58,9 @@ import java.util.stream.DoubleStream;
 	 */
 	public void setNumberOfGenerationsWithoutSignificantImprovementPassed(
 		final int numberOfGenerationsWithoutSignificantImprovementPassed) {
-<span class="fc" id="L55">		this.numberOfGenerationsWithoutSignificantImprovementPassed =</span>
+<span class="fc" id="L61">		this.numberOfGenerationsWithoutSignificantImprovementPassed =</span>
 			numberOfGenerationsWithoutSignificantImprovementPassed;
-<span class="fc" id="L57">	}</span>
+<span class="fc" id="L63">	}</span>
 
 	/**
 	 * Returns {@code fitnessBaselineValue}.
@@ -62,7 +68,7 @@ import java.util.stream.DoubleStream;
 	 * @return The {@code fitnessBaselineValue}.
 	 */
 	public double getFitnessBaselineValue() {
-<span class="fc" id="L65">		return this.fitnessBaselineValue;</span>
+<span class="fc" id="L71">		return this.fitnessBaselineValue;</span>
 	}
 
 	/**
@@ -70,8 +76,8 @@ import java.util.stream.DoubleStream;
 	 * generations and sets the fittest values to an empty set.
 	 */
 	public void newGeneration() {
-<span class="fc" id="L73">		this.fittestValues = new HashMultiSet&lt;&gt;();</span>
-<span class="fc" id="L74">	}</span>
+<span class="fc" id="L79">		this.fittestValues = new HashMultiSet&lt;&gt;();</span>
+<span class="fc" id="L80">	}</span>
 
 	/**
 	 * Sets {@code fitnessBaselineValue}.
@@ -79,8 +85,8 @@ import java.util.stream.DoubleStream;
 	 * @param fitnessBaselineValue The {@code fitnessBaselineValue} to set.
 	 */
 	public void setFitnessBaselineValue(final double fitnessBaselineValue) {
-<span class="fc" id="L82">		this.fitnessBaselineValue = fitnessBaselineValue;</span>
-<span class="fc" id="L83">	}</span>
+<span class="fc" id="L88">		this.fitnessBaselineValue = fitnessBaselineValue;</span>
+<span class="fc" id="L89">	}</span>
 
 	/**
 	 * Adds {@code value} to the collection of the fittest value.
@@ -88,8 +94,8 @@ import java.util.stream.DoubleStream;
 	 * @param value The fittest value of a seff element.
 	 */
 	public void addFittestValue(final double value) {
-<span class="fc" id="L91">		this.fittestValues.add(value);</span>
-<span class="fc" id="L92">	}</span>
+<span class="fc" id="L97">		this.fittestValues.add(value);</span>
+<span class="fc" id="L98">	}</span>
 
 	/**
 	 * Returns the fittest values of this generation.
@@ -99,7 +105,27 @@ import java.util.stream.DoubleStream;
 	 *         seff elements on the blackboard.
 	 */
 	public DoubleStream getFittestValues() {
-<span class="fc" id="L102">		return this.fittestValues.stream().mapToDouble(value -&gt; value);</span>
+<span class="fc" id="L108">		return this.fittestValues.stream().mapToDouble(value -&gt; value);</span>
 	}
+
+	/**
+	 * Returns whether {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)}
+	 * will return {@code true} for sure.
+	 *
+	 * @return {@code true} if
+	 *         {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will return
+	 *         {@code true} for sure; {@code false} otherwise.
+	 */
+	public boolean isWillReturnTrue() {
+<span class="fc" id="L120">		return this.willReturnTrue;</span>
+	}
+
+	/**
+	 * Sets that {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will
+	 * return {@code true} for sure.
+	 */
+	public void setWillReturnTrue() {
+<span class="fc" id="L128">		this.willReturnTrue = true;</span>
+<span class="fc" id="L129">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
