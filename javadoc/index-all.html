@@ -499,6 +499,16 @@
  <a href="de/uka/ipd/sdq/beagle/gui/SelectionOverviewTab.html#BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE"><code>SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE</code></a> specifies that the whole
  repository should be analysed.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE">BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dd>
+<div class="block">The key in the Beagle Launch Configuration determining the path of the source code
+ link file to analyse.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE_DEFAULT_VALUE">BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE_DEFAULT_VALUE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dd>
+<div class="block">The default value for the key
+ <a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE"><code>ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE</code></a>.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/TimeoutTab.html#BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE">BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE</a></span> - Static variable in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/TimeoutTab.html" title="class in de.uka.ipd.sdq.beagle.gui">TimeoutTab</a></dt>
 <dd>
 <div class="block">The key in the Beagle Launch Configuration determining the type of the timeout to
@@ -531,7 +541,7 @@
 <dd>
 <div class="block">Configures a whole execution of Beagle.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration-java.util.List-java.io.File-org.eclipse.jdt.core.IJavaProject-">BeagleConfiguration(List&lt;String&gt;, File, IJavaProject)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#BeagleConfiguration-java.util.List-java.io.File-java.io.File-org.eclipse.jdt.core.IJavaProject-">BeagleConfiguration(List&lt;String&gt;, File, File, IJavaProject)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>
 <div class="block">Constructs a new <a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleConfiguration</code></a> using <code>elements</code> as the default
  elements to be measured.</div>
@@ -778,7 +788,7 @@
 <dd>
 <div class="block">Creates the widgets for the project selection button.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#createRepositoryFileEditor-org.eclipse.swt.widgets.Composite-">createRepositoryFileEditor(Composite)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html#createRepositoryEditor-org.eclipse.swt.widgets.Composite-">createRepositoryEditor(Composite)</a></span> - Method in class de.uka.ipd.sdq.beagle.gui.<a href="de/uka/ipd/sdq/beagle/gui/ProjectTab.html" title="class in de.uka.ipd.sdq.beagle.gui">ProjectTab</a></dt>
 <dd>
 <div class="block">Creates the widgets for the repository file selection.</div>
 </dd>
@@ -1390,6 +1400,10 @@
 <dd>
 <div class="block">Queries the source code section this event occurred at.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmCodeSectionGenerator.html#getCodeSectionForID-java.lang.String-">getCodeSectionForID(String)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmCodeSectionGenerator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmCodeSectionGenerator</a></dt>
+<dd>
+<div class="block">Creates a <a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core"><code>CodeSection</code></a> for a given identifier.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionComplexityAnalyser.html#getComputationalComplexitySum--">getComputationalComplexitySum()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.judge.<a href="de/uka/ipd/sdq/beagle/core/judge/EvaluableExpressionComplexityAnalyser.html" title="class in de.uka.ipd.sdq.beagle.core.judge">EvaluableExpressionComplexityAnalyser</a></dt>
 <dd>
 <div class="block">Returns the computational complexity.</div>
@@ -1906,6 +1920,11 @@
 <dd>
 <div class="block">Queries the source code file containing the source code of the type denoted by
  <code>fullyQualifiedJavaPath</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#getSourceStatementLinkFile--">getSourceStatementLinkFile()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
+<dd>
+<div class="block">Returns the file containing the model linking PCM elements to their positions in
+ the source code.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/CodeSection.html#getStartFile--">getStartFile()</a></span> - Method in class de.uka.ipd.sdq.beagle.core.<a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a></dt>
 <dd>
@@ -2561,6 +2580,15 @@
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html#PcmBeagleMappings--">PcmBeagleMappings()</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmBeagleMappings.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmBeagleMappings</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmCodeSectionGenerator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmCodeSectionGenerator</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
+<dd>
+<div class="block">This class manages the creation of the <a href="de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core"><code>CodeSection</code></a> for a given ID using the
+ <code>PcmSourceStatementLinkRepository</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmCodeSectionGenerator.html#PcmCodeSectionGenerator-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmCodeSectionGenerator(PcmSourceStatementLinkRepository, SourceCodeFileProvider)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmCodeSectionGenerator.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmCodeSectionGenerator</a></dt>
+<dd>
+<div class="block">Adapting the given SourceStateLinkRepository to the searching of IDs.</div>
+</dd>
 <dt><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmNameParser.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection"><span class="typeNameLink">PcmNameParser</span></a> - Class in <a href="de/uka/ipd/sdq/beagle/core/pcmconnection/package-summary.html">de.uka.ipd.sdq.beagle.core.pcmconnection</a></dt>
 <dd>
 <div class="block">****************************EXTINCT****************************************************
@@ -2576,12 +2604,12 @@
 <div class="block">Creates <a href="de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> instances suitable to analyse elements from a PCM
  repository.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.lang.String-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositoryBlackboardFactoryAdder(String, SourceCodeFileProvider)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactoryAdder</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.lang.String-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">PcmRepositoryBlackboardFactoryAdder(String, SourceCodeFileProvider, PcmSourceStatementLinkRepository)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactoryAdder</a></dt>
 <dd>
 <div class="block">Creates a factory that will search the provided PCM files for <em>PCM
  elements</em>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.io.File-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositoryBlackboardFactoryAdder(File, SourceCodeFileProvider)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactoryAdder</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.io.File-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">PcmRepositoryBlackboardFactoryAdder(File, SourceCodeFileProvider, PcmSourceStatementLinkRepository)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryBlackboardFactoryAdder</a></dt>
 <dd>
 <div class="block">Creates a factory that will search the provided PCM file for <em>PCM elements</em>.</div>
 </dd>
@@ -2589,7 +2617,7 @@
 <dd>
 <div class="block">Extracting a given Pcm repository.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#PcmRepositoryExtractor-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositoryExtractor(SourceCodeFileProvider)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html#PcmRepositoryExtractor-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">PcmRepositoryExtractor(SourceCodeFileProvider, PcmSourceStatementLinkRepository)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositoryExtractor</a></dt>
 <dd>
 <div class="block">Creates a new name parser for a specific project to analyse.</div>
 </dd>
@@ -2603,7 +2631,7 @@
 <dd>
 <div class="block">Extractor class for SEFFElements.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositorySeffExtractor(Set&lt;SeffLoop&gt;, Set&lt;SeffBranch&gt;, Set&lt;ResourceDemandingInternalAction&gt;, Set&lt;ExternalCallParameter&gt;, PcmBeagleMappings, SourceCodeFileProvider)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositorySeffExtractor</a></dt>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html#PcmRepositorySeffExtractor-java.util.Set-java.util.Set-java.util.Set-java.util.Set-de.uka.ipd.sdq.beagle.core.pcmconnection.PcmBeagleMappings-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">PcmRepositorySeffExtractor(Set&lt;SeffLoop&gt;, Set&lt;SeffBranch&gt;, Set&lt;ResourceDemandingInternalAction&gt;, Set&lt;ExternalCallParameter&gt;, PcmBeagleMappings, SourceCodeFileProvider, PcmSourceStatementLinkRepository)</a></span> - Constructor for class de.uka.ipd.sdq.beagle.core.pcmconnection.<a href="de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositorySeffExtractor.html" title="class in de.uka.ipd.sdq.beagle.core.pcmconnection">PcmRepositorySeffExtractor</a></dt>
 <dd>
 <div class="block">Constructor needs access to the real sets (no copy!), manipulating them by adding
  all extracted SeffElements.</div>
@@ -3062,6 +3090,11 @@
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setRepositoryFile-java.io.File-">setRepositoryFile(File)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>
 <div class="block">Sets the repository file containing the elements Beagle shall analyse.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setSourceStatementLinkFile-java.io.File-">setSourceStatementLinkFile(File)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
+<dd>
+<div class="block">Sets the file containing the model linking PCM elements to their positions in the
+ source code.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html#setTimeout-de.uka.ipd.sdq.beagle.core.timeout.Timeout-">setTimeout(Timeout)</a></span> - Method in class de.uka.ipd.sdq.beagle.core.facade.<a href="de/uka/ipd/sdq/beagle/core/facade/BeagleConfiguration.html" title="class in de.uka.ipd.sdq.beagle.core.facade">BeagleConfiguration</a></dt>
 <dd>

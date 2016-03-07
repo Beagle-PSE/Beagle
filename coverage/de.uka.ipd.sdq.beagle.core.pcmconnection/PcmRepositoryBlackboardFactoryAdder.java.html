@@ -4,6 +4,7 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
 import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -44,34 +45,44 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	private final SourceCodeFileProvider sourceCodeFileProvider;
 
 	/**
+	 * The {@link PcmSourceStatementLinkRepository} for the project under analysis.
+	 */
+	private final PcmSourceStatementLinkRepository sourceStatementLinkRepository;
+
+	/**
 	 * Creates a factory that will search the provided PCM files for &lt;em&gt;PCM
 	 * elements&lt;/em&gt;.
 	 *
 	 * @param repositoryFileName PCM repository to load from.
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
+	 * @param sourceStatementLinkRepository The repository containing the linking of
+	 *            seffElements to SourceCode
 	 * @throws IllegalArgumentException If input parameter does not represent a valid
 	 *             repository file or if repositoryFileName can not be resolved to a valid
 	 *             file
 	 */
 	public PcmRepositoryBlackboardFactoryAdder(final String repositoryFileName,
-<span class="nc" id="L58">		final SourceCodeFileProvider sourceCodeFileProvider) {</span>
-<span class="nc" id="L59">		this.sourceCodeFileProvider = sourceCodeFileProvider;</span>
-<span class="nc" id="L60">		final File test = new File(repositoryFileName);</span>
-<span class="nc bnc" id="L61" title="All 4 branches missed.">		if (!test.exists() || !test.isFile()) {</span>
-<span class="nc" id="L62">			throw new IllegalArgumentException(&quot;No file found at: &quot; + repositoryFileName);</span>
+		final SourceCodeFileProvider sourceCodeFileProvider,
+<span class="nc" id="L67">		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {</span>
+<span class="nc" id="L68">		this.sourceCodeFileProvider = sourceCodeFileProvider;</span>
+<span class="nc" id="L69">		this.sourceStatementLinkRepository = sourceStatementLinkRepository;</span>
+
+<span class="nc" id="L71">		final File test = new File(repositoryFileName);</span>
+<span class="nc bnc" id="L72" title="All 4 branches missed.">		if (!test.exists() || !test.isFile()) {</span>
+<span class="nc" id="L73">			throw new IllegalArgumentException(&quot;No file found at: &quot; + repositoryFileName);</span>
 		}
 
-<span class="nc" id="L65">		RepositoryFactory.eINSTANCE.createRepository();</span>
+<span class="nc" id="L76">		RepositoryFactory.eINSTANCE.createRepository();</span>
 		// Not sure if this final declaration could lead to a problem.
-<span class="nc" id="L67">		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
+<span class="nc" id="L78">		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
 
-<span class="nc" id="L69">		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">		if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
-<span class="nc" id="L71">			throw new IllegalArgumentException();</span>
+<span class="nc" id="L80">		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
+<span class="nc" id="L82">			throw new IllegalArgumentException();</span>
 		}
-<span class="nc" id="L73">		this.repository = (RepositoryImpl) eObject;</span>
-<span class="nc" id="L74">	}</span>
+<span class="nc" id="L84">		this.repository = (RepositoryImpl) eObject;</span>
+<span class="nc" id="L85">	}</span>
 
 	/**
 	 * Creates a factory that will search the provided PCM file for &lt;em&gt;PCM elements&lt;/em&gt;.
@@ -79,11 +90,14 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	 * @param pcmRepositoryFiles PCM repository file.
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
+	 * @param sourceStatementLinkRepository The repository containing the linking of
+	 *            seffElements to SourceCode
 	 */
 	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
-		final SourceCodeFileProvider sourceCodeFileProvider) {
-<span class="nc" id="L85">		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider);</span>
-<span class="nc" id="L86">	}</span>
+		final SourceCodeFileProvider sourceCodeFileProvider,
+		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {
+<span class="nc" id="L99">		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider, sourceStatementLinkRepository);</span>
+<span class="nc" id="L100">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing all found
@@ -95,9 +109,9 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForAllElements(final BlackboardCreator blackboardFactory) {
-<span class="nc" id="L98">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);</span>
-<span class="nc" id="L99">		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);</span>
-<span class="nc" id="L100">	}</span>
+<span class="nc" id="L112">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);</span>
+<span class="nc" id="L113">		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);</span>
+<span class="nc" id="L114">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing &lt;em&gt;PCM
@@ -129,18 +143,18 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForIds(final Collection&lt;String&gt; identifiers, final BlackboardCreator blackboardFactory) {
-<span class="nc bnc" id="L132" title="All 2 branches missed.">		if (identifiers == null) {</span>
-<span class="nc" id="L133">			throw new NullPointerException();</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">		if (identifiers == null) {</span>
+<span class="nc" id="L147">			throw new NullPointerException();</span>
 		}
-<span class="nc bnc" id="L135" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">			if (identifier == null) {</span>
-<span class="nc" id="L137">				throw new NullPointerException();</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
+<span class="nc bnc" id="L150" title="All 2 branches missed.">			if (identifier == null) {</span>
+<span class="nc" id="L151">				throw new NullPointerException();</span>
 			}
-<span class="nc" id="L139">		}</span>
-<span class="nc" id="L140">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider);</span>
-<span class="nc" id="L141">		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);</span>
+<span class="nc" id="L153">		}</span>
+<span class="nc" id="L154">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);</span>
+<span class="nc" id="L155">		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);</span>
 
-<span class="nc" id="L143">	}</span>
+<span class="nc" id="L157">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing &lt;em&gt;PCM
@@ -172,20 +186,20 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForIds(final BlackboardCreator blackboardFactory, final String... identifiers) {
-<span class="nc bnc" id="L175" title="All 2 branches missed.">		if (identifiers == null) {</span>
-<span class="nc" id="L176">			throw new NullPointerException();</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">		if (identifiers == null) {</span>
+<span class="nc" id="L190">			throw new NullPointerException();</span>
 		}
-<span class="nc bnc" id="L178" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">			if (identifier == null) {</span>
-<span class="nc" id="L180">				throw new NullPointerException();</span>
+<span class="nc bnc" id="L192" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">			if (identifier == null) {</span>
+<span class="nc" id="L194">				throw new NullPointerException();</span>
 			}
 		}
-<span class="nc" id="L183">		final Collection&lt;String&gt; identifierCollection = new LinkedList&lt;String&gt;();</span>
-<span class="nc bnc" id="L184" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
-<span class="nc" id="L185">			identifierCollection.add(identifier);</span>
+<span class="nc" id="L197">		final Collection&lt;String&gt; identifierCollection = new LinkedList&lt;String&gt;();</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">		for (final String identifier : identifiers) {</span>
+<span class="nc" id="L199">			identifierCollection.add(identifier);</span>
 		}
-<span class="nc" id="L187">		this.getBlackboardForIds(identifierCollection, blackboardFactory);</span>
-<span class="nc" id="L188">	}</span>
+<span class="nc" id="L201">		this.getBlackboardForIds(identifierCollection, blackboardFactory);</span>
+<span class="nc" id="L202">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

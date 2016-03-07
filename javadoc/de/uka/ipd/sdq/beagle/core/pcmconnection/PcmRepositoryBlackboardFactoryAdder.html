@@ -138,14 +138,16 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.io.File-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositoryBlackboardFactoryAdder</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;pcmRepositoryFiles,
-                                   <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.io.File-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">PcmRepositoryBlackboardFactoryAdder</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;pcmRepositoryFiles,
+                                   <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider,
+                                   de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository&nbsp;sourceStatementLinkRepository)</code>
 <div class="block">Creates a factory that will search the provided PCM file for <em>PCM elements</em>.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.lang.String-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">PcmRepositoryBlackboardFactoryAdder</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryFileName,
-                                   <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/pcmconnection/PcmRepositoryBlackboardFactoryAdder.html#PcmRepositoryBlackboardFactoryAdder-java.lang.String-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">PcmRepositoryBlackboardFactoryAdder</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryFileName,
+                                   <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider,
+                                   de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository&nbsp;sourceStatementLinkRepository)</code>
 <div class="block">Creates a factory that will search the provided PCM files for <em>PCM
  elements</em>.</div>
 </td>
@@ -210,14 +212,15 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="PcmRepositoryBlackboardFactoryAdder-java.lang.String-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">
+<a name="PcmRepositoryBlackboardFactoryAdder-java.lang.String-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>PcmRepositoryBlackboardFactoryAdder</h4>
 <pre>public&nbsp;PcmRepositoryBlackboardFactoryAdder(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;repositoryFileName,
-                                           <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</pre>
+                                           <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider,
+                                           de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository&nbsp;sourceStatementLinkRepository)</pre>
 <div class="block">Creates a factory that will search the provided PCM files for <em>PCM
  elements</em>.</div>
 <dl>
@@ -225,6 +228,8 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 <dd><code>repositoryFileName</code> - PCM repository to load from.</dd>
 <dd><code>sourceCodeFileProvider</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade"><code>SourceCodeFileProvider</code></a> for the project
             under analysis.</dd>
+<dd><code>sourceStatementLinkRepository</code> - The repository containing the linking of
+            seffElements to SourceCode</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - If input parameter does not represent a valid
              repository file or if repositoryFileName can not be resolved to a valid
@@ -232,20 +237,23 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/BlackboardSt
 </dl>
 </li>
 </ul>
-<a name="PcmRepositoryBlackboardFactoryAdder-java.io.File-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-">
+<a name="PcmRepositoryBlackboardFactoryAdder-java.io.File-de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider-de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>PcmRepositoryBlackboardFactoryAdder</h4>
 <pre>public&nbsp;PcmRepositoryBlackboardFactoryAdder(<a href="https://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;pcmRepositoryFiles,
-                                           <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider)</pre>
+                                           <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade">SourceCodeFileProvider</a>&nbsp;sourceCodeFileProvider,
+                                           de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository&nbsp;sourceStatementLinkRepository)</pre>
 <div class="block">Creates a factory that will search the provided PCM file for <em>PCM elements</em>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>pcmRepositoryFiles</code> - PCM repository file.</dd>
 <dd><code>sourceCodeFileProvider</code> - The <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/SourceCodeFileProvider.html" title="interface in de.uka.ipd.sdq.beagle.core.facade"><code>SourceCodeFileProvider</code></a> for the project
             under analysis.</dd>
+<dd><code>sourceStatementLinkRepository</code> - The repository containing the linking of
+            seffElements to SourceCode</dd>
 </dl>
 </li>
 </ul>

@@ -62,30 +62,44 @@ public class BeagleConfiguration {
 	private Set&lt;LaunchConfiguration&gt; launchConfigurations;
 
 	/**
+	 * The {@link File} containing the source statement link model.
+	 */
+	private File sourceStatementLinkFile;
+
+	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 *
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 * @param sourceStatementLinkFile The xml file containing the PCM Element Source
+	 *            Statement Link Model.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-<span class="fc" id="L73">	public BeagleConfiguration(final List&lt;String&gt; elements, final File repositoryFile, final IJavaProject javaProject) {</span>
-<span class="fc" id="L74">		Validate.notNull(repositoryFile);</span>
-<span class="fc" id="L75">		Validate.notNull(javaProject);</span>
+	public BeagleConfiguration(final List&lt;String&gt; elements, final File repositoryFile,
+<span class="fc" id="L81">		final File sourceStatementLinkFile, final IJavaProject javaProject) {</span>
+<span class="fc" id="L82">		Validate.notNull(repositoryFile);</span>
+<span class="fc" id="L83">		Validate.notNull(sourceStatementLinkFile);</span>
+<span class="fc" id="L84">		Validate.notNull(javaProject);</span>
 
-<span class="fc bfc" id="L77" title="All 2 branches covered.">		if (!repositoryFile.exists()) {</span>
-<span class="fc" id="L78">			throw new IllegalArgumentException(&quot;Repository file must exist. Path was: &quot; + repositoryFile.getPath());</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">		if (!repositoryFile.exists()) {</span>
+<span class="fc" id="L87">			throw new IllegalArgumentException(&quot;Repository file must exist. Path was: &quot; + repositoryFile.getPath());</span>
+		}
+<span class="fc bfc" id="L89" title="All 2 branches covered.">		if (!sourceStatementLinkFile.exists()) {</span>
+<span class="fc" id="L90">			throw new IllegalArgumentException(</span>
+<span class="fc" id="L91">				&quot;Source code link file must exist. Path was: &quot; + sourceStatementLinkFile.getPath());</span>
 		}
 
-<span class="fc bfc" id="L81" title="All 2 branches covered.">		if (elements != null) {</span>
-<span class="fc" id="L82">			this.elements = new LinkedList&lt;&gt;(elements);</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">		if (elements != null) {</span>
+<span class="fc" id="L95">			this.elements = new LinkedList&lt;&gt;(elements);</span>
 		}
 
-<span class="fc" id="L85">		this.repositoryFile = repositoryFile;</span>
-<span class="fc" id="L86">		this.timeout = new AdaptiveTimeout();</span>
-<span class="fc" id="L87">		this.javaProject = javaProject;</span>
-<span class="fc" id="L88">	}</span>
+<span class="fc" id="L98">		this.repositoryFile = repositoryFile;</span>
+<span class="fc" id="L99">		this.timeout = new AdaptiveTimeout();</span>
+<span class="fc" id="L100">		this.javaProject = javaProject;</span>
+<span class="fc" id="L101">		this.sourceStatementLinkFile = sourceStatementLinkFile;</span>
+<span class="fc" id="L102">	}</span>
 
 	/**
 	 * Gives the {@link IJavaProject} to analyse.
@@ -93,7 +107,7 @@ public class BeagleConfiguration {
 	 * @return the {@link IJavaProject} to analyse.
 	 */
 	public IJavaProject getJavaProject() {
-<span class="fc" id="L96">		return this.javaProject;</span>
+<span class="fc" id="L110">		return this.javaProject;</span>
 	}
 
 	/**
@@ -104,7 +118,7 @@ public class BeagleConfiguration {
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
 	 */
 	public List&lt;String&gt; getElements() {
-<span class="fc" id="L107">		return this.elements;</span>
+<span class="fc" id="L121">		return this.elements;</span>
 	}
 
 	/**
@@ -121,14 +135,14 @@ public class BeagleConfiguration {
 	 * @see #getElements()
 	 */
 	public void setElements(final List&lt;String&gt; elements) {
-<span class="fc bfc" id="L124" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="pc bpc" id="L126" title="1 of 2 branches missed.">		if (elements == null) {</span>
-<span class="nc" id="L127">			this.elements = null;</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">		if (elements == null) {</span>
+<span class="nc" id="L141">			this.elements = null;</span>
 		} else {
-<span class="fc" id="L129">			this.elements = new LinkedList&lt;&gt;(elements);</span>
+<span class="fc" id="L143">			this.elements = new LinkedList&lt;&gt;(elements);</span>
 		}
-<span class="fc" id="L131">	}</span>
+<span class="fc" id="L145">	}</span>
 
 	/**
 	 * Returns the timeout to be used. The timeout describes the minimum time Beagle shall
@@ -137,7 +151,7 @@ public class BeagleConfiguration {
 	 * @return The timeout that will be used by Beagle.
 	 */
 	public Timeout getTimeout() {
-<span class="fc" id="L140">		return this.timeout;</span>
+<span class="fc" id="L154">		return this.timeout;</span>
 	}
 
 	/**
@@ -150,10 +164,10 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setTimeout(final Timeout timeout) {
-<span class="fc bfc" id="L153" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L155">		this.timeout = timeout;</span>
-<span class="fc" id="L156">	}</span>
+<span class="fc" id="L169">		this.timeout = timeout;</span>
+<span class="fc" id="L170">	}</span>
 
 	/**
 	 * Returns the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
@@ -163,7 +177,7 @@ public class BeagleConfiguration {
 	 *         analysis.
 	 */
 	public Set&lt;LaunchConfiguration&gt; getLaunchConfigurations() {
-<span class="nc" id="L166">		return this.launchConfigurations;</span>
+<span class="nc" id="L180">		return this.launchConfigurations;</span>
 	}
 
 	/**
@@ -176,10 +190,10 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setLaunchConfigurations(final Set&lt;LaunchConfiguration&gt; launchConfigurations) {
-<span class="nc bnc" id="L179" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="nc" id="L181">		this.launchConfigurations = launchConfigurations;</span>
-<span class="nc" id="L182">	}</span>
+<span class="nc" id="L195">		this.launchConfigurations = launchConfigurations;</span>
+<span class="nc" id="L196">	}</span>
 
 	/**
 	 * Returns the repository file that contains all elements that shall be analysed.
@@ -187,7 +201,7 @@ public class BeagleConfiguration {
 	 * @return The repository file Beagle will operate on.
 	 */
 	public File getRepositoryFile() {
-<span class="fc" id="L190">		return this.repositoryFile;</span>
+<span class="fc" id="L204">		return this.repositoryFile;</span>
 	}
 
 	/**
@@ -201,11 +215,35 @@ public class BeagleConfiguration {
 	 *             state.
 	 */
 	public void setRepositoryFile(final File repositoryFile) {
-<span class="fc bfc" id="L204" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
+<span class="fc bfc" id="L218" title="All 2 branches covered.">		Validate.validState(!this.finalised,</span>
 			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
-<span class="fc" id="L206">		Validate.notNull(repositoryFile);</span>
-<span class="fc" id="L207">		this.repositoryFile = repositoryFile;</span>
-<span class="fc" id="L208">	}</span>
+<span class="fc" id="L220">		Validate.notNull(repositoryFile);</span>
+<span class="fc" id="L221">		this.repositoryFile = repositoryFile;</span>
+<span class="fc" id="L222">	}</span>
+
+	/**
+	 * Sets the file containing the model linking PCM elements to their positions in the
+	 * source code.
+	 *
+	 * @param sourceStatementLinkFile The XML file containing the PCM Source Statement
+	 *            Links Model.
+	 */
+	public void setSourceStatementLinkFile(final File sourceStatementLinkFile) {
+<span class="nc bnc" id="L232" title="All 2 branches missed.">		Validate.validState(!this.finalised,</span>
+			&quot;setting values is only allowed if this configuration is not yet finalised&quot;);
+<span class="nc" id="L234">		Validate.notNull(sourceStatementLinkFile);</span>
+<span class="nc" id="L235">		this.sourceStatementLinkFile = sourceStatementLinkFile;</span>
+<span class="nc" id="L236">	}</span>
+
+	/**
+	 * Returns the file containing the model linking PCM elements to their positions in
+	 * the source code.
+	 *
+	 * @return The XML file containing the PCM Source Statement Links Model.
+	 */
+	public File getSourceStatementLinkFile() {
+<span class="nc" id="L245">		return this.sourceStatementLinkFile;</span>
+	}
 
 	/**
 	 * Queries whether this configuration is in the &lt;em&gt;finalised&lt;/em&gt; state.
@@ -214,7 +252,7 @@ public class BeagleConfiguration {
 	 *         {@code false} if it’s in the &lt;em&gt;set up&lt;/em&gt; state.
 	 */
 	public boolean isFinal() {
-<span class="fc" id="L217">		return this.finalised;</span>
+<span class="fc" id="L255">		return this.finalised;</span>
 	}
 
 	/**
@@ -223,8 +261,8 @@ public class BeagleConfiguration {
 	 * &lt;em&gt;finalised&lt;/em&gt; state has no effect.
 	 */
 	public void finalise() {
-<span class="fc" id="L226">		this.finalised = true;</span>
-<span class="fc" id="L227">	}</span>
+<span class="fc" id="L264">		this.finalised = true;</span>
+<span class="fc" id="L265">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

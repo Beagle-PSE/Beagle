@@ -7,6 +7,7 @@ import de.uka.ipd.sdq.beagle.core.SeffBranch;
 import de.uka.ipd.sdq.beagle.core.SeffLoop;
 import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import de.uka.ipd.sdq.identifier.Identifier;
 
@@ -68,14 +69,23 @@ public class PcmRepositoryExtractor {
 	private final SourceCodeFileProvider sourceCodeFileProvider;
 
 	/**
+	 * The {@link PcmSourceStatementLinkRepository} for the project under analysis.
+	 */
+	private final PcmSourceStatementLinkRepository sourceStatementLinkRepository;
+
+	/**
 	 * Creates a new name parser for a specific project to analyse.
 	 *
 	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
 	 *            under analysis.
+	 * @param sourceStatementLinkRepository The repository containing the linking of
+	 *            seffElements to SourceCode
 	 */
-<span class="nc" id="L76">	public PcmRepositoryExtractor(final SourceCodeFileProvider sourceCodeFileProvider) {</span>
-<span class="nc" id="L77">		this.sourceCodeFileProvider = sourceCodeFileProvider;</span>
-<span class="nc" id="L78">	}</span>
+	public PcmRepositoryExtractor(final SourceCodeFileProvider sourceCodeFileProvider,
+<span class="nc" id="L85">		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {</span>
+<span class="nc" id="L86">		this.sourceCodeFileProvider = sourceCodeFileProvider;</span>
+<span class="nc" id="L87">		this.sourceStatementLinkRepository = sourceStatementLinkRepository;</span>
+<span class="nc" id="L88">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing all found
@@ -89,22 +99,23 @@ public class PcmRepositoryExtractor {
 	 */
 	public void getBlackboardForAllElements(final RepositoryImpl repository,
 		final BlackboardCreator blackboardFactory) {
-<span class="nc" id="L92">		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();</span>
-<span class="nc" id="L93">		this.seffLoopSet = new HashSet&lt;SeffLoop&gt;();</span>
-<span class="nc" id="L94">		this.seffBranchSet = new HashSet&lt;SeffBranch&gt;();</span>
-<span class="nc" id="L95">		this.rdiaSet = new HashSet&lt;ResourceDemandingInternalAction&gt;();</span>
-<span class="nc" id="L96">		this.externalCallParameterSet = new HashSet&lt;ExternalCallParameter&gt;();</span>
-<span class="nc" id="L97">		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,</span>
-			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider);
+<span class="nc" id="L102">		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();</span>
+<span class="nc" id="L103">		this.seffLoopSet = new HashSet&lt;SeffLoop&gt;();</span>
+<span class="nc" id="L104">		this.seffBranchSet = new HashSet&lt;SeffBranch&gt;();</span>
+<span class="nc" id="L105">		this.rdiaSet = new HashSet&lt;ResourceDemandingInternalAction&gt;();</span>
+<span class="nc" id="L106">		this.externalCallParameterSet = new HashSet&lt;ExternalCallParameter&gt;();</span>
+<span class="nc" id="L107">		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,</span>
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider,
+			this.sourceStatementLinkRepository);
 
-<span class="nc" id="L100">		this.scanRepository(repository);</span>
+<span class="nc" id="L111">		this.scanRepository(repository);</span>
 
-<span class="nc" id="L102">		blackboardFactory.setRdias(this.rdiaSet);</span>
-<span class="nc" id="L103">		blackboardFactory.setBranches(this.seffBranchSet);</span>
-<span class="nc" id="L104">		blackboardFactory.setLoops(this.seffLoopSet);</span>
-<span class="nc" id="L105">		blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
-<span class="nc" id="L106">		blackboardFactory.setPcmMappings(pcmMappings);</span>
-<span class="nc" id="L107">	}</span>
+<span class="nc" id="L113">		blackboardFactory.setRdias(this.rdiaSet);</span>
+<span class="nc" id="L114">		blackboardFactory.setBranches(this.seffBranchSet);</span>
+<span class="nc" id="L115">		blackboardFactory.setLoops(this.seffLoopSet);</span>
+<span class="nc" id="L116">		blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
+<span class="nc" id="L117">		blackboardFactory.setPcmMappings(pcmMappings);</span>
+<span class="nc" id="L118">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing &lt;em&gt;PCM
@@ -138,61 +149,62 @@ public class PcmRepositoryExtractor {
 	 */
 	public void getBlackboardForIds(final RepositoryImpl repository, final Collection&lt;String&gt; identifiers,
 		final BlackboardCreator blackboardFactory) {
-<span class="nc" id="L141">		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();</span>
-<span class="nc" id="L142">		final Set&lt;EObject&gt; setOfIdentifiedObjects = new HashSet&lt;EObject&gt;();</span>
+<span class="nc" id="L152">		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();</span>
+<span class="nc" id="L153">		final Set&lt;EObject&gt; setOfIdentifiedObjects = new HashSet&lt;EObject&gt;();</span>
 
-<span class="nc" id="L144">		this.seffLoopSet = new HashSet&lt;SeffLoop&gt;();</span>
-<span class="nc" id="L145">		this.seffBranchSet = new HashSet&lt;SeffBranch&gt;();</span>
-<span class="nc" id="L146">		this.rdiaSet = new HashSet&lt;ResourceDemandingInternalAction&gt;();</span>
-<span class="nc" id="L147">		this.externalCallParameterSet = new HashSet&lt;ExternalCallParameter&gt;();</span>
-<span class="nc" id="L148">		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,</span>
-			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider);
+<span class="nc" id="L155">		this.seffLoopSet = new HashSet&lt;SeffLoop&gt;();</span>
+<span class="nc" id="L156">		this.seffBranchSet = new HashSet&lt;SeffBranch&gt;();</span>
+<span class="nc" id="L157">		this.rdiaSet = new HashSet&lt;ResourceDemandingInternalAction&gt;();</span>
+<span class="nc" id="L158">		this.externalCallParameterSet = new HashSet&lt;ExternalCallParameter&gt;();</span>
+<span class="nc" id="L159">		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,</span>
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider,
+			this.sourceStatementLinkRepository);
 
-<span class="nc bnc" id="L151" title="All 2 branches missed.">		if (identifiers.contains(repository.getId())) {</span>
-<span class="nc" id="L152">			this.scanRepository(repository);</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">		if (identifiers.contains(repository.getId())) {</span>
+<span class="nc" id="L164">			this.scanRepository(repository);</span>
 
-<span class="nc" id="L154">			blackboardFactory.setRdias(this.rdiaSet);</span>
-<span class="nc" id="L155">			blackboardFactory.setBranches(this.seffBranchSet);</span>
-<span class="nc" id="L156">			blackboardFactory.setLoops(this.seffLoopSet);</span>
-<span class="nc" id="L157">			blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
-<span class="nc" id="L158">			blackboardFactory.setPcmMappings(pcmMappings);</span>
+<span class="nc" id="L166">			blackboardFactory.setRdias(this.rdiaSet);</span>
+<span class="nc" id="L167">			blackboardFactory.setBranches(this.seffBranchSet);</span>
+<span class="nc" id="L168">			blackboardFactory.setLoops(this.seffLoopSet);</span>
+<span class="nc" id="L169">			blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
+<span class="nc" id="L170">			blackboardFactory.setPcmMappings(pcmMappings);</span>
 		}
 
 		// Look up for each Repository-object ID if its found in the
 		// identifiers-Collection
 		// If so, the Object is added to a Set named &quot;setOfIdentifiedObjects&quot;
-<span class="nc" id="L164">		final TreeIterator&lt;EObject&gt; contentIterator = repository.eAllContents();</span>
-<span class="nc bnc" id="L165" title="All 2 branches missed.">		while (contentIterator.hasNext()) {</span>
-<span class="nc" id="L166">			final EObject content = contentIterator.next();</span>
+<span class="nc" id="L176">		final TreeIterator&lt;EObject&gt; contentIterator = repository.eAllContents();</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">		while (contentIterator.hasNext()) {</span>
+<span class="nc" id="L178">			final EObject content = contentIterator.next();</span>
 
-<span class="nc" id="L168">			Identifier contentIdentifier = null;</span>
-<span class="nc bnc" id="L169" title="All 2 branches missed.">			if (content instanceof Identifier) {</span>
-<span class="nc" id="L170">				contentIdentifier = (Identifier) content;</span>
-<span class="nc bnc" id="L171" title="All 2 branches missed.">				if (identifiers.contains(contentIdentifier.getId())) {</span>
-<span class="nc" id="L172">					setOfIdentifiedObjects.add(content);</span>
+<span class="nc" id="L180">			Identifier contentIdentifier = null;</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">			if (content instanceof Identifier) {</span>
+<span class="nc" id="L182">				contentIdentifier = (Identifier) content;</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">				if (identifiers.contains(contentIdentifier.getId())) {</span>
+<span class="nc" id="L184">					setOfIdentifiedObjects.add(content);</span>
 				}
 			}
-<span class="nc" id="L175">		}</span>
+<span class="nc" id="L187">		}</span>
 
 		// Find for every &quot;useful&quot; object its content and extract it into the given Sets
-<span class="nc bnc" id="L178" title="All 2 branches missed.">		for (final EObject identifiedObject : setOfIdentifiedObjects) {</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">			if (identifiedObject.getClass() == BasicComponentImpl.class) {</span>
-<span class="nc" id="L180">				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) identifiedObject);</span>
-<span class="nc bnc" id="L181" title="All 2 branches missed.">			} else if (identifiedObject.getClass() == ResourceDemandingSEFFImpl.class) {</span>
-<span class="nc" id="L182">				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) identifiedObject);</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">		for (final EObject identifiedObject : setOfIdentifiedObjects) {</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">			if (identifiedObject.getClass() == BasicComponentImpl.class) {</span>
+<span class="nc" id="L192">				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) identifiedObject);</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">			} else if (identifiedObject.getClass() == ResourceDemandingSEFFImpl.class) {</span>
+<span class="nc" id="L194">				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) identifiedObject);</span>
 			} else {
-<span class="nc" id="L184">				this.pcmSeffExtractor.extractBehaviourAndAddToSet(identifiedObject);</span>
+<span class="nc" id="L196">				this.pcmSeffExtractor.extractBehaviourAndAddToSet(identifiedObject);</span>
 			}
-<span class="nc" id="L186">		}</span>
+<span class="nc" id="L198">		}</span>
 
 		// Add the sets to the blackboard and return
 
-<span class="nc" id="L190">		blackboardFactory.setRdias(this.rdiaSet);</span>
-<span class="nc" id="L191">		blackboardFactory.setBranches(this.seffBranchSet);</span>
-<span class="nc" id="L192">		blackboardFactory.setLoops(this.seffLoopSet);</span>
-<span class="nc" id="L193">		blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
-<span class="nc" id="L194">		blackboardFactory.setPcmMappings(pcmMappings);</span>
-<span class="nc" id="L195">	}</span>
+<span class="nc" id="L202">		blackboardFactory.setRdias(this.rdiaSet);</span>
+<span class="nc" id="L203">		blackboardFactory.setBranches(this.seffBranchSet);</span>
+<span class="nc" id="L204">		blackboardFactory.setLoops(this.seffLoopSet);</span>
+<span class="nc" id="L205">		blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
+<span class="nc" id="L206">		blackboardFactory.setPcmMappings(pcmMappings);</span>
+<span class="nc" id="L207">	}</span>
 
 	/**
 	 * This method takes the whole {@link PcmRepositoryBlackboardFactoryAdder#repository}
@@ -201,13 +213,13 @@ public class PcmRepositoryExtractor {
 	 * @param repositoryToScan The repository to read from.
 	 */
 	private void scanRepository(final RepositoryImpl repositoryToScan) {
-<span class="nc" id="L204">		final EList&lt;RepositoryComponent&gt; componentList = repositoryToScan.getComponents__Repository();</span>
-<span class="nc bnc" id="L205" title="All 2 branches missed.">		for (final RepositoryComponent component : componentList) {</span>
-<span class="nc bnc" id="L206" title="All 2 branches missed.">			if (component.getClass() == BasicComponentImpl.class) {</span>
-<span class="nc" id="L207">				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) component);</span>
+<span class="nc" id="L216">		final EList&lt;RepositoryComponent&gt; componentList = repositoryToScan.getComponents__Repository();</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">		for (final RepositoryComponent component : componentList) {</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">			if (component.getClass() == BasicComponentImpl.class) {</span>
+<span class="nc" id="L219">				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) component);</span>
 			}
-<span class="nc" id="L209">		}</span>
-<span class="nc" id="L210">	}</span>
+<span class="nc" id="L221">		}</span>
+<span class="nc" id="L222">	}</span>
 
 	/**
 	 * BasicComponent extracting method. Looking for all included SEFFs. Recursive calls
@@ -216,14 +228,14 @@ public class PcmRepositoryExtractor {
 	 * @param basicComponent Component of the Repository.
 	 */
 	private void extractBasicComponentAndAddContentsToSet(final BasicComponentImpl basicComponent) {
-<span class="nc" id="L219">		final EList&lt;ServiceEffectSpecification&gt; seffList =</span>
-<span class="nc" id="L220">			basicComponent.getServiceEffectSpecifications__BasicComponent();</span>
-<span class="nc bnc" id="L221" title="All 2 branches missed.">		for (final ServiceEffectSpecification seff : seffList) {</span>
-<span class="nc bnc" id="L222" title="All 2 branches missed.">			if (seff.getClass() == ResourceDemandingSEFFImpl.class) {</span>
-<span class="nc" id="L223">				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) seff);</span>
+<span class="nc" id="L231">		final EList&lt;ServiceEffectSpecification&gt; seffList =</span>
+<span class="nc" id="L232">			basicComponent.getServiceEffectSpecifications__BasicComponent();</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">		for (final ServiceEffectSpecification seff : seffList) {</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">			if (seff.getClass() == ResourceDemandingSEFFImpl.class) {</span>
+<span class="nc" id="L235">				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) seff);</span>
 			}
-<span class="nc" id="L225">		}</span>
-<span class="nc" id="L226">	}</span>
+<span class="nc" id="L237">		}</span>
+<span class="nc" id="L238">	}</span>
 
 	/**
 	 * ResourceDemandingSEFF extracting method. Looking for all including Contents.
@@ -232,11 +244,11 @@ public class PcmRepositoryExtractor {
 	 * @param rdSeff rdSeff of the Repository.
 	 */
 	private void extractResourceDemandingSEFFImplAndAddContentsToSet(final ResourceDemandingSEFFImpl rdSeff) {
-<span class="nc" id="L235">		final EList&lt;EObject&gt; rdSeffContentList = rdSeff.eContents();</span>
-<span class="nc bnc" id="L236" title="All 2 branches missed.">		for (final EObject rdSeffContent : rdSeffContentList) {</span>
-<span class="nc" id="L237">			this.pcmSeffExtractor.extractBehaviourAndAddToSet(rdSeffContent);</span>
-<span class="nc" id="L238">		}</span>
-<span class="nc" id="L239">	}</span>
+<span class="nc" id="L247">		final EList&lt;EObject&gt; rdSeffContentList = rdSeff.eContents();</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">		for (final EObject rdSeffContent : rdSeffContentList) {</span>
+<span class="nc" id="L249">			this.pcmSeffExtractor.extractBehaviourAndAddToSet(rdSeffContent);</span>
+<span class="nc" id="L250">		}</span>
+<span class="nc" id="L251">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
