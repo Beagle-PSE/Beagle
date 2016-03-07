@@ -48,17 +48,17 @@ public class ConstantTimeoutTest {
 	@Test
 	public void isReached() {
 		final int timeout = 100;
-		final int longerThanTimeout = 200;
+		final long longerThanTimeout = 200;
 		mockStatic(System.class);
 
+		given(System.currentTimeMillis()).willReturn(0L);
 		final ConstantTimeout constTimeout = new ConstantTimeout(timeout);
 		constTimeout.init();
 		assertThat(constTimeout.isReached(), is(equalTo(false)));
 
 		final ConstantTimeout constTimeout1 = new ConstantTimeout(timeout);
-		given(System.currentTimeMillis()).willReturn(486487484886446L);
 		constTimeout1.init();
-		given(System.currentTimeMillis()).willReturn(486487484886446L + longerThanTimeout);
+		given(System.currentTimeMillis()).willReturn(longerThanTimeout);
 		assertThat(constTimeout1.isReached(), is(equalTo(true)));
 
 		final ConstantTimeout constTimeout3 = new ConstantTimeout(timeout);
