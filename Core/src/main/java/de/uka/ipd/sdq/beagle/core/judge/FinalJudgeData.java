@@ -19,6 +19,12 @@ class FinalJudgeData implements Serializable {
 	private static final long serialVersionUID = 9038094699907524618L;
 
 	/**
+	 * Whether {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will return
+	 * {@code true} for sure.
+	 */
+	private boolean willReturnTrue;
+
+	/**
 	 * The number of generations with significant improvement (see
 	 * {@code FinalJugde#SIGNIFICANT_IMPROVEMENT} passed.
 	 */
@@ -100,5 +106,25 @@ class FinalJudgeData implements Serializable {
 	 */
 	public DoubleStream getFittestValues() {
 		return this.fittestValues.stream().mapToDouble(value -> value);
+	}
+
+	/**
+	 * Returns whether {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)}
+	 * will return {@code true} for sure.
+	 *
+	 * @return {@code true} if
+	 *         {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will return
+	 *         {@code true} for sure; {@code false} otherwise.
+	 */
+	public boolean isWillReturnTrue() {
+		return this.willReturnTrue;
+	}
+
+	/**
+	 * Sets that {@link FinalJudge#judge(de.uka.ipd.sdq.beagle.core.Blackboard)} will
+	 * return {@code true} for sure.
+	 */
+	public void setWillReturnTrue() {
+		this.willReturnTrue = true;
 	}
 }
