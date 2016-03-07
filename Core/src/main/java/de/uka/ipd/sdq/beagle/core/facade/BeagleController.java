@@ -12,6 +12,8 @@ import de.uka.ipd.sdq.beagle.core.judge.AbstractionAndPrecisionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementToolContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryWriter;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkReader;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.core.resources.IProject;
@@ -44,12 +46,12 @@ public class BeagleController {
 	/**
 	 * The final {@link BeagleConfiguration} for this analysis.
 	 */
-	private BeagleConfiguration beagleConfiguration;
+	private final BeagleConfiguration beagleConfiguration;
 
 	/**
 	 * The {@link Blackboard} for this analysis.
 	 */
-	private Blackboard blackboard;
+	private final Blackboard blackboard;
 
 	/**
 	 * Constructs a new {@code BeagleController} with the given
@@ -67,12 +69,17 @@ public class BeagleController {
 		final SourceCodeFileProvider sourceCodeFileProvider =
 			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());
 
+		final PcmSourceStatementLinkReader linkReader =
+			new PcmSourceStatementLinkReader(beagleConfiguration.getSourceStatementLinkFile());
+		linkReader.checkIntegrity(sourceCodeFileProvider, beagleConfiguration.getRepositoryFile());
+		final PcmSourceStatementLinkRepository linkRepository = linkReader.getPcmSourceLinkRepository();
+
 		if (beagleConfiguration.getElements() == null) {
-			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
-				.getBlackboardForAllElements(blackboardFactory);
+			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,
+				linkRepository).getBlackboardForAllElements(blackboardFactory);
 		} else {
-			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
-				.getBlackboardForIds(beagleConfiguration.getElements(), blackboardFactory);
+			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,
+				linkRepository).getBlackboardForIds(beagleConfiguration.getElements(), blackboardFactory);
 		}
 
 		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());

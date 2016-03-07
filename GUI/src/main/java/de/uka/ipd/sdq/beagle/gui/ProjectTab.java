@@ -30,6 +30,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
@@ -60,6 +61,20 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		"model/internal_architecture_model.repository";
 
 	/**
+	 * The key in the Beagle Launch Configuration determining the path of the source code
+	 * link file to analyse.
+	 */
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE =
+		"de.uka.ipd.sdq.beagle.SOURCE_CODE_FILE_LINK";
+
+	/**
+	 * The default value for the key
+	 * {@link #BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE}.
+	 */
+	public static final String BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE_DEFAULT_VALUE =
+		"model/internal_architecture_model_source_statement_links.xml";
+
+	/**
 	 * The title of this tab.
 	 */
 	private static final String TITLE = "Project";
@@ -75,6 +90,11 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 	private Text repositoryText;
 
 	/**
+	 * The text box containing the source code link file path.
+	 */
+	private Text sourcecodelinkText;
+
+	/**
 	 * The select Project Button.
 	 */
 	private Button fProjButton;
@@ -84,6 +104,8 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		// There are no useful defaults for the project.
 		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
 			BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE);
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE,
+			BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE_DEFAULT_VALUE);
 	}
 
 	@Override
@@ -92,6 +114,8 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 			this.fProjText.setText(configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, ""));
 			this.repositoryText.setText(configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
 				BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE_DEFAULT_VALUE));
+			this.sourcecodelinkText.setText(configuration.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE,
+				BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE_DEFAULT_VALUE));
 		} catch (final CoreException coreException) {
 			FailureHandler.getHandler(this.getClass())
 				.handle(new FailureReport<>().cause(coreException).retryWith(() -> this.initializeFrom(configuration)));
@@ -104,6 +128,7 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT,
 			selectedJavaProject == null ? "" : this.getJavaProject().getProject().getName());
 		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, this.repositoryText.getText());
+		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE, this.sourcecodelinkText.getText());
 	}
 
 	@Override
@@ -116,21 +141,40 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 	 *
 	 * @param parent The parent for the widget.
 	 */
-	protected void createRepositoryFileEditor(final Composite parent) {
+	protected void createRepositoryEditor(final Composite parent) {
 		final Font font = parent.getFont();
 		final Group group = new Group(parent, SWT.NONE);
-		group.setText("Repository File:");
-		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+		group.setText("Repository");
+		final GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		group.setLayoutData(gridData);
 		final GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
 		group.setLayout(layout);
 		group.setFont(font);
-		this.repositoryText = new Text(group, SWT.SINGLE | SWT.BORDER);
+
+		final Composite repositoryComposite = new Composite(group, SWT.NONE);
+		final GridData gridData2 = new GridData(GridData.FILL_HORIZONTAL);
+		repositoryComposite.setLayoutData(gridData2);
+		repositoryComposite.setLayout(new GridLayout(2, false));
+		final Label repositoryLabel = new Label(repositoryComposite, SWT.NONE);
+		repositoryLabel.setText("Repository file: ");
+		this.repositoryText = new Text(repositoryComposite, SWT.SINGLE | SWT.BORDER);
 		this.repositoryText.addModifyListener(new WidgetListener());
-		gridData = new GridData(GridData.FILL_HORIZONTAL);
-		this.repositoryText.setLayoutData(gridData);
+		final GridData gridData3 = new GridData(GridData.FILL_HORIZONTAL);
+		this.repositoryText.setLayoutData(gridData3);
 		this.repositoryText.setFont(font);
+
+		final Composite sourcodelinkComposite = new Composite(group, SWT.NONE);
+		final GridData gridData4 = new GridData(GridData.FILL_HORIZONTAL);
+		sourcodelinkComposite.setLayoutData(gridData4);
+		sourcodelinkComposite.setLayout(new GridLayout(2, false));
+		final Label sourcecodelinkLabel = new Label(sourcodelinkComposite, SWT.NONE);
+		sourcecodelinkLabel.setText("Source code link file: ");
+		this.sourcecodelinkText = new Text(sourcodelinkComposite, SWT.SINGLE | SWT.BORDER);
+		this.sourcecodelinkText.addModifyListener(new WidgetListener());
+		final GridData gridData5 = new GridData(GridData.FILL_HORIZONTAL);
+		this.sourcecodelinkText.setLayoutData(gridData5);
+		this.sourcecodelinkText.setFont(font);
 	}
 
 	/*
@@ -150,7 +194,7 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		final Composite projComp = SWTFactory.createComposite(parent, parent.getFont(), 1, 1, GridData.FILL_BOTH);
 		((GridLayout) projComp.getLayout()).verticalSpacing = 0;
 		this.createProjectEditor(projComp);
-		this.createRepositoryFileEditor(projComp);
+		this.createRepositoryEditor(projComp);
 
 		this.createVerticalSpacer(projComp, 1);
 		this.setControl(projComp);
