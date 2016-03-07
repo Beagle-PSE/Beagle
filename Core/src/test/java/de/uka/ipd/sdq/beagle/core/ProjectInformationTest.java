@@ -134,10 +134,12 @@ public class ProjectInformationTest {
 		analysisController.performAnalysis();
 
 		analysisController.setAnalysisState(analysisController.getAnalysisState());
-		analysisController.setAnalysisState(AnalysisState.ENDING);
-		analysisController.setAnalysisState(AnalysisState.RUNNING);
-		analysisController.setAnalysisState(AnalysisState.ABORTING);
-		analysisController.setAnalysisState(AnalysisState.TERMINATED);
+		/*
+		 * analysisController.setAnalysisState(AnalysisState.ENDING);
+		 * analysisController.setAnalysisState(AnalysisState.RUNNING);
+		 * analysisController.setAnalysisState(AnalysisState.ABORTING);
+		 * analysisController.setAnalysisState(AnalysisState.TERMINATED);
+		 */
 
 	}
 
