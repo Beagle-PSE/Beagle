@@ -75,6 +75,9 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 				new File(javaProject.getProject().getLocation().toOSString() + "/"
 					+ launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
 						"No repository file has been set up in the launch configuration")),
+				new File(javaProject.getProject().getLocation().toOSString() + "/"
+					+ launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE,
+						"No source code link file has been set up in the launch configuration")),
 				javaProject);
 
 			final String selectionType =

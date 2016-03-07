@@ -62,20 +62,33 @@ public class BeagleConfiguration {
 	private Set<LaunchConfiguration> launchConfigurations;
 
 	/**
+	 * The {@link File} containing the source statement link model.
+	 */
+	private File sourceStatementLinkFile;
+
+	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 *
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 * @param sourceStatementLinkFile The xml file containing the PCM Element Source
+	 *            Statement Link Model.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-	public BeagleConfiguration(final List<String> elements, final File repositoryFile, final IJavaProject javaProject) {
+	public BeagleConfiguration(final List<String> elements, final File repositoryFile,
+		final File sourceStatementLinkFile, final IJavaProject javaProject) {
 		Validate.notNull(repositoryFile);
+		Validate.notNull(sourceStatementLinkFile);
 		Validate.notNull(javaProject);
 
 		if (!repositoryFile.exists()) {
 			throw new IllegalArgumentException("Repository file must exist. Path was: " + repositoryFile.getPath());
+		}
+		if (!sourceStatementLinkFile.exists()) {
+			throw new IllegalArgumentException(
+				"Source code link file must exist. Path was: " + sourceStatementLinkFile.getPath());
 		}
 
 		if (elements != null) {
@@ -85,6 +98,7 @@ public class BeagleConfiguration {
 		this.repositoryFile = repositoryFile;
 		this.timeout = new AdaptiveTimeout();
 		this.javaProject = javaProject;
+		this.sourceStatementLinkFile = sourceStatementLinkFile;
 	}
 
 	/**
@@ -205,6 +219,30 @@ public class BeagleConfiguration {
 			"setting values is only allowed if this configuration is not yet finalised");
 		Validate.notNull(repositoryFile);
 		this.repositoryFile = repositoryFile;
+	}
+
+	/**
+	 * Sets the file containing the model linking PCM elements to their positions in the
+	 * source code.
+	 *
+	 * @param sourceStatementLinkFile The XML file containing the PCM Source Statement
+	 *            Links Model.
+	 */
+	public void setSourceStatementLinkFile(final File sourceStatementLinkFile) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
+		Validate.notNull(sourceStatementLinkFile);
+		this.sourceStatementLinkFile = sourceStatementLinkFile;
+	}
+
+	/**
+	 * Returns the file containing the model linking PCM elements to their positions in
+	 * the source code.
+	 *
+	 * @return The XML file containing the PCM Source Statement Links Model.
+	 */
+	public File getSourceStatementLinkFile() {
+		return this.sourceStatementLinkFile;
 	}
 
 	/**
