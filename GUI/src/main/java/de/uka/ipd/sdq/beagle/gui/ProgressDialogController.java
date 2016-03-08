@@ -52,7 +52,8 @@ public class ProgressDialogController {
 	private final BeagleController beagleController;
 
 	/**
-	 * Whether the analysis has finished.
+	 * Whether the analysis has finished. This will be set when {@link #beagleController}
+	 * returned.
 	 */
 	private volatile boolean analysisFinished;
 
@@ -103,9 +104,6 @@ public class ProgressDialogController {
 		};
 
 		boolean analysisRunning = false;
-		// equals a click on button "Continue" (continuing and starting the
-		// analysis
-		// always have the same behaviour regarding the dialog)
 		this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null, dialogMessageRunning,
 			MessageDialog.INFORMATION, buttonLabelsRunning, 0);
 
