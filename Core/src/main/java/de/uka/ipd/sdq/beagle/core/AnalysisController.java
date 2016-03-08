@@ -88,11 +88,6 @@ public class AnalysisController {
 	private volatile AnalysisState analysisState;
 
 	/**
-	 * Whether the analysis is currently waiting (paused).
-	 */
-	private Boolean waiting;
-
-	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
 	 *
 	 * @param blackboard A blackboard having everything to be analysed written on it. Must
@@ -115,7 +110,6 @@ public class AnalysisController {
 		Validate.noNullElements(measurementResultAnalysers);
 		Validate.noNullElements(proposedExpressionAnalysers);
 
-		this.waiting = false;
 		this.blackboard = blackboard;
 		this.measurementController = new MeasurementController(measurementTools);
 		this.measurementResultAnalysers = new HashSet<>(measurementResultAnalysers);
@@ -164,10 +158,9 @@ public class AnalysisController {
 			 */
 			finalJudge.judge(this.blackboard);
 
-			while (this.analysisState != AnalysisState.RUNNING) {
-				synchronized (this.waiting) {
+			synchronized (this) {
+				while (this.analysisState != AnalysisState.RUNNING) {
 					try {
-						this.waiting = true;
 						this.wait();
 					} catch (final InterruptedException exception) {
 						// Retry on interrupt. No handling is needed because the loop just
@@ -330,37 +323,24 @@ public class AnalysisController {
 			case RUNNING:
 				Validate.validState(this.analysisState == AnalysisState.ENDING,
 					"Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
-
-				this.analysisState = AnalysisState.RUNNING;
-
-				// Wake the waiting thread up.
-				synchronized (AnalysisController.this.waiting) {
-					if (AnalysisController.this.waiting) {
-						AnalysisController.this.waiting.notifyAll();
-					}
-				}
 				break;
 			case ABORTING:
 				Validate.validState(this.analysisState == AnalysisState.RUNNING,
 					"Can't switch from %s to AnalysisState.ABORTING.", this.analysisState);
-
-				this.analysisState = AnalysisState.ABORTING;
-
 				break;
 			case ENDING:
 				Validate.validState(this.analysisState == AnalysisState.RUNNING,
 					"Can't switch from %s to AnalysisState.ENDING.", this.analysisState);
-
-				this.analysisState = AnalysisState.ENDING;
-
-				break;
-			case TERMINATED:
-				this.analysisState = AnalysisState.TERMINATED;
-
 				break;
 			default:
-				Validate.isTrue(false);
+				assert false;
+
 				break;
+		}
+
+		synchronized (this) {
+			this.analysisState = analysisState;
+			this.notifyAll();
 		}
 	}
 
@@ -375,7 +355,7 @@ public class AnalysisController {
 		/**
 		 * The main thread. (The working thread.)
 		 */
-		private Thread mainTread;
+		private final Thread mainTread;
 
 		/**
 		 * Constructs a new callback for {@link AnalysisController}.
