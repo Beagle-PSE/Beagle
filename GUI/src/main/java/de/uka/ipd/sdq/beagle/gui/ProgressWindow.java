@@ -1,0 +1,234 @@
+package de.uka.ipd.sdq.beagle.gui;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.UIJob;
+
+/**
+ * Shows Beagle’s progress to the user. The window reflects the three main states the
+ * anlysis can be in: <em>running</em>, <em>paused</em> and <em>aborted</em>. These states
+ * can be set on it.
+ *
+ * @author Joshua Gleitze
+ * @author Christoph Michelbach
+ */
+public class ProgressWindow {
+
+	/**
+	 * Whether the progress window should be hidden.
+	 */
+	private volatile boolean hidden = true;
+
+	/**
+	 * The GUI controller to report the user’s requests to.
+	 */
+	private final GuiController guiController;
+
+	/**
+	 * The GUI component that will be shown to the user.
+	 */
+	private ProgressMessageWindow progressWindow;
+
+	/**
+	 * Creates a progress window that will report the user’s requests to the given
+	 * {@code guiController}.
+	 *
+	 * @param guiController The controller to report the user’s requests to.
+	 */
+	public ProgressWindow(final GuiController guiController) {
+		this.guiController = guiController;
+	}
+
+	/**
+	 * Shows the progress window in order to indicate that Beagle’s analysis is running.
+	 * Has now effect if the window is already shown.
+	 */
+	public void show() {
+		if (!this.hidden) {
+			return;
+		}
+
+		inUI(() -> {
+			if (this.progressWindow == null) {
+				final Shell ourShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+				this.progressWindow = new ProgressMessageWindow(ourShell);
+			}
+			this.progressWindow.open();
+			this.hidden = false;
+		});
+	}
+
+	/**
+	 * Hides the progress window. Has no effect if the window is already hidden.
+	 */
+	public void hide() {
+		if (this.hidden) {
+			return;
+		}
+
+		inUI(() -> {
+			this.progressWindow.close();
+			this.hidden = true;
+		});
+	}
+
+	/**
+	 * Updates the window to reflect that the analysis is running.
+	 */
+	public void setRunning() {
+		inUI(this.progressWindow::setRunning);
+	}
+
+	/**
+	 * Updates the window to reflect that the analysis is running.
+	 */
+	public void setAborting() {
+		inUI(this.progressWindow::setAborting);
+	}
+
+	/**
+	 * Updates the window to reflect that the analysis is paused.
+	 *
+	 */
+	public void setPaused() {
+		inUI(this.progressWindow::setPaused);
+	}
+
+	/**
+	 * Schedules the given code to be executed in the UI thread.
+	 *
+	 * @param toExecute The code to execute in the UI thread.
+	 */
+	private static void inUI(final Runnable toExecute) {
+		new UIJob(Display.getDefault(), "Beagle") {
+
+			@Override
+			public IStatus runInUIThread(final IProgressMonitor monitor) {
+				toExecute.run();
+				return Status.OK_STATUS;
+			}
+		}.schedule();
+	}
+
+	/**
+	 * The actual GUI component that will be shown to the user.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class ProgressMessageWindow extends MessageDialog {
+
+		/**
+		 * The button index that corresponds to the abort button.
+		 */
+		private static final int BUTTON_ABORT = 0;
+
+		/**
+		 * The button index that corresponds to the pause or continue button.
+		 */
+		private static final int BUTTON_PAUSE_OR_CONTINUE = 1;
+
+		/**
+		 * Whether the analysis is paused.
+		 */
+		private boolean paused;
+
+		/**
+		 * Creates a progress message window.
+		 *
+		 * @param shell The shell the window belongs to.
+		 */
+		private ProgressMessageWindow(final Shell shell) {
+			super(shell, "Beagle Analysis", null, "", MessageDialog.INFORMATION, new String[0], BUTTON_ABORT);
+			this.setBlockOnOpen(false);
+		}
+
+		@Override
+		protected Control createContents(final Composite parent) {
+			final Control contents = super.createContents(parent);
+			this.setRunning();
+			return contents;
+		}
+
+		/**
+		 * Updates the window.
+		 *
+		 * @param message The new message to show.
+		 * @param buttonLabels The new button labels to show.
+		 */
+		private void update(final String message, final String[] buttonLabels) {
+			if (this.messageLabel.isDisposed() || this.buttonBar.isDisposed()) {
+				// we’re already disposed.
+				return;
+			}
+			this.messageLabel.setText(message);
+			this.messageLabel.getParent().layout();
+
+			final Composite buttonBarParent = this.buttonBar.getParent();
+			this.setButtonLabels(buttonLabels);
+			this.buttonBar.dispose();
+			this.buttonBar = this.createButtonBar(buttonBarParent);
+			buttonBarParent.layout();
+		}
+
+		/**
+		 * Updates the window to reflect that the analysis is running.
+		 */
+		private void setRunning() {
+			this.paused = false;
+			this.update("Beagle is analysing the project.", new String[] {
+				"Abort", "Pause"
+			});
+		}
+
+		/**
+		 * Updates the window to reflect that the analysis is running.
+		 */
+		private void setAborting() {
+			this.update("Beagle’s analysis is being aborted.", new String[0]);
+		}
+
+		/**
+		 * Updates the window to reflect that the analysis is paused.
+		 *
+		 */
+		private void setPaused() {
+			this.paused = true;
+			this.update("Beagle’s analysis is paused. Select “Continue” to resume.", new String[] {
+				"Abort", "Continue"
+			});
+		}
+
+		@Override
+		protected void handleShellCloseEvent() {
+			// If the user closes the dialog, we interpret that as a request to abort.
+			new Thread(ProgressWindow.this.guiController::abortRequested).start();
+		}
+
+		@Override
+		protected void buttonPressed(final int buttonId) {
+			switch (buttonId) {
+				case BUTTON_ABORT:
+					new Thread(ProgressWindow.this.guiController::abortRequested).start();
+					break;
+
+				case BUTTON_PAUSE_OR_CONTINUE:
+					if (this.paused) {
+						new Thread(ProgressWindow.this.guiController::pauseRequested).start();
+					} else {
+						new Thread(ProgressWindow.this.guiController::continueRequested).start();
+					}
+					break;
+
+				default:
+					assert false;
+			}
+		}
+	}
+}

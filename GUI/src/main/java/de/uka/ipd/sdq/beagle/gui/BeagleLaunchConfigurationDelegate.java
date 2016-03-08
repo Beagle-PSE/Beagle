@@ -50,11 +50,19 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 			this.convertBeagleLaunchConfigurationToBeagleConfiguration(configuration);
 		beagleConfiguration.finalise();
 
-		final ProgressDialogController progressDialogController =
-			new ProgressDialogController(new BeagleController(beagleConfiguration));
-		progressDialogController.startAnalysis();
-		progressDialogController.engageDialog();
+		final BeagleController beagleController = new BeagleController(beagleConfiguration);
+		final GuiController guiController = new GuiController(beagleController);
 
+		final Thread executionThread = new Thread(() -> {
+			try {
+				beagleController.startAnalysis();
+			} finally {
+				guiController.analysisFinished();
+			}
+		});
+		executionThread.setUncaughtExceptionHandler(Thread.currentThread().getUncaughtExceptionHandler());
+		executionThread.start();
+		guiController.analysisStarted();
 	}
 
 	/**
