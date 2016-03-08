@@ -6,6 +6,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -37,7 +38,7 @@ public class ProgressDialogController {
 	/**
 	 * The {@link BeagleController} connected to this GUI.
 	 */
-	private BeagleController beagleController;
+	private final BeagleController beagleController;
 
 	/**
 	 * Constructs a new {@link ProgressDialogController} using {@code components} as the
@@ -89,25 +90,28 @@ public class ProgressDialogController {
 		// equals a click on button "Continue" (continuing and starting the
 		// analysis
 		// always have the same behaviour regarding the dialog)
-		int buttonClick = 1;
+		this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null, dialogMessageRunning,
+			MessageDialog.INFORMATION, buttonLabelsRunning, 0);
+		int buttonClick = this.messageDialog.open();
 
-		while (buttonClick != 0) {
+		while (buttonClick != 0 && buttonClick != SWT.DEFAULT) {
+
 			switch (buttonClick) {
 				case 1:
 					if (analysisRunning) {
 						// analysis is being paused by the user
 						analysisRunning = false;
-						ProgressDialogController.this.beagleController.pauseAnalysis();
+						this.beagleController.pauseAnalysis();
 
-						ProgressDialogController.this.messageDialog = new MessageDialog(shell, dialogTitlePaused, null,
-							dialogMessagePaused, MessageDialog.INFORMATION, buttonLabelsPaused, 0);
+						this.messageDialog = new MessageDialog(shell, dialogTitlePaused, null, dialogMessagePaused,
+							MessageDialog.INFORMATION, buttonLabelsPaused, 0);
 					} else {
 						// analysis is being continued by the user
 						analysisRunning = true;
-						ProgressDialogController.this.beagleController.continueAnalysis();
+						this.beagleController.continueAnalysis();
 
-						ProgressDialogController.this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null,
-							dialogMessageRunning, MessageDialog.INFORMATION, buttonLabelsRunning, 0);
+						this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null, dialogMessageRunning,
+							MessageDialog.INFORMATION, buttonLabelsRunning, 0);
 					}
 					break;
 				default:
@@ -119,7 +123,7 @@ public class ProgressDialogController {
 					break;
 			}
 
-			buttonClick = ProgressDialogController.this.messageDialog.open();
+			buttonClick = this.messageDialog.open();
 		}
 	}
 
