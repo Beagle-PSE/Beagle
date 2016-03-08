@@ -94,8 +94,7 @@ public class ProgressDialogController {
 			MessageDialog.INFORMATION, buttonLabelsRunning, 0);
 		int buttonClick = this.messageDialog.open();
 
-		while (buttonClick != 0 && buttonClick != SWT.DEFAULT) {
-
+		do {
 			switch (buttonClick) {
 				case 1:
 					if (analysisRunning) {
@@ -114,17 +113,18 @@ public class ProgressDialogController {
 							MessageDialog.INFORMATION, buttonLabelsRunning, 0);
 					}
 					break;
-				default:
-					// what is done when no button has been clicked but the dialog
-					// has
-					// been closed in any different way
 
-					// just open the dialog again, so do nothing here
+				case 0:
+				case SWT.DEFAULT:
+					this.beagleController.abortAnalysis();
 					break;
+
+				default:
+					assert false;
 			}
 
 			buttonClick = this.messageDialog.open();
-		}
+		} while (buttonClick != 0 && buttonClick != SWT.DEFAULT);
 	}
 
 	/**
