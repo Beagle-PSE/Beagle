@@ -119,10 +119,10 @@ public class BeagleController {
 		try {
 			return Charset.forName(javaProject.getProject().getDefaultCharset());
 		} catch (final CoreException coreException) {
-			final FailureReport<Object> failure = new FailureReport<>().cause(coreException)
+			final FailureReport<Charset> failure = new FailureReport<Charset>().cause(coreException)
 				.continueWith(Charset::defaultCharset)
 				.retryWith(() -> this.readCharset(javaProject));
-			return (Charset) FAILURE_HANDLER.handle(failure);
+			return FAILURE_HANDLER.handle(failure);
 		}
 	}
 
