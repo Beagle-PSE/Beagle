@@ -127,28 +127,21 @@ public class BeagleController {
 	}
 
 	/**
-	 * Pauses the analysis. If the analysis is already paused, calls to this method are
-	 * ignored.
-	 *
+	 * Pauses the analysis.
 	 */
 	public void pauseAnalysis() {
 		this.analysisController.setAnalysisState(AnalysisState.ENDING);
 	}
 
 	/**
-	 * Continues the analysis if it is paused. If it's running, calls to this method are
-	 * ignored.
-	 *
+	 * Continues the analysis if it is paused.
 	 */
 	public void continueAnalysis() {
 		this.analysisController.setAnalysisState(AnalysisState.RUNNING);
 	}
 
 	/**
-	 * Aborts the analysis. If it already is aborted, calls to this method are ignored.
-	 * Aborting the analysis is also possible if it wasn't started yet. In this case it
-	 * will never be possible to start it.
-	 *
+	 * Aborts the analysis.
 	 */
 	public void abortAnalysis() {
 		this.analysisController.setAnalysisState(AnalysisState.ABORTING);
