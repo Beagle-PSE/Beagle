@@ -14,6 +14,7 @@ import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import de.uka.ipd.sdq.identifier.Identifier;
 
 import org.apache.commons.collections4.IteratorUtils;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 import org.palladiosimulator.pcm.seff.BranchAction;
@@ -26,6 +27,8 @@ import org.palladiosimulator.pcm.seff.impl.InternalActionImpl;
 import org.palladiosimulator.pcm.seff.impl.LoopActionImpl;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Map;
 
@@ -205,10 +208,16 @@ public class PcmRepositoryWriterAnnotator {
 		final Map<String, EvaluableExpression> exParamIdsToEvaEx =
 			this.getMapFromIdToEvaExOfAllExternalCallParameterWithFinalExpressionsFromBlackboard();
 
-		final ListIterator<EObject> contentListIterator = IteratorUtils.toListIterator(repository.eAllContents());
-
-		while (contentListIterator.hasNext()) {
-			final EObject content = contentListIterator.next();
+		//final ListIterator<EObject> contentListIterator = IteratorUtils.toListIterator(repository.eAllContents());
+		final TreeIterator<EObject> treeIterator = repository.eAllContents();
+		final LinkedList<EObject> copyList = new LinkedList<EObject>();
+		while (treeIterator.hasNext()) {
+			copyList.add(treeIterator.next());
+		}
+		final Iterator<EObject> copyListIterator = copyList.iterator();
+		
+		while (copyListIterator.hasNext()) {
+			final EObject content = copyListIterator.next();
 
 			this.annotateForEObject(content, seffLoopIdsToEvaEx, seffBranchIdsToEvaEx, rdiaIdsToEvaEx,
 				rdiaIdsToResourceDemandType, exParamIdsToEvaEx);
