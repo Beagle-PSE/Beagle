@@ -105,7 +105,7 @@ public class ProgressDialogController {
 
 		boolean analysisRunning = false;
 		this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null, dialogMessageRunning,
-			MessageDialog.INFORMATION, buttonLabelsRunning, 0);
+			MessageDialog.INFORMATION, buttonLabelsRunning, BUTTON_PAUSE_OR_CONTINUE);
 
 		int buttonClick;
 		do {
@@ -119,14 +119,14 @@ public class ProgressDialogController {
 						this.beagleController.pauseAnalysis();
 
 						this.messageDialog = new MessageDialog(shell, dialogTitlePaused, null, dialogMessagePaused,
-							MessageDialog.INFORMATION, buttonLabelsPaused, 0);
+							MessageDialog.INFORMATION, buttonLabelsPaused, BUTTON_PAUSE_OR_CONTINUE);
 					} else {
 						// analysis is being continued by the user
 						analysisRunning = true;
 						this.beagleController.continueAnalysis();
 
 						this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null, dialogMessageRunning,
-							MessageDialog.INFORMATION, buttonLabelsRunning, 0);
+							MessageDialog.INFORMATION, buttonLabelsRunning, BUTTON_PAUSE_OR_CONTINUE);
 					}
 					break;
 
