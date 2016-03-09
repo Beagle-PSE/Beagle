@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MeasurementResultAnalyserAverage.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.analysis</a> &gt; <span class="el_source">MeasurementResultAnalyserAverage.java</span></div><h1>MeasurementResultAnalyserAverage.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.analysis;
+
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.BlackboardStorer;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.ConstantExpression;
+import de.uka.ipd.sdq.beagle.core.evaluableexpressions.EvaluableExpression;
+import de.uka.ipd.sdq.beagle.core.measurement.LoopRepetitionCountMeasurementResult;
+import de.uka.ipd.sdq.beagle.core.measurement.ResourceDemandMeasurementResult;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * This implementation of {@link MeasurementResultAnalyser} will contribute with static
+ * created ProposedExpressions. It will take all SeffElements and use respectively all
+ * their MeasurementResults on the {@link Blackboard} and calculate thereby an expression
+ * that fits best to the average expectancy value. Its implementation of
+ * {@link #canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)} checks if there
+ * are any MeasurementResults for a SeffElement, that have not been flown into the average
+ * proposed Expression so far.
+ *
+ *
+ * @author Ansgar Spiegler
+ */
+<span class="fc" id="L31">public class MeasurementResultAnalyserAverage</span>
+	implements MeasurementResultAnalyser, BlackboardStorer&lt;HashMap&lt;MeasurableSeffElement, Integer&gt;&gt; {
+
+	@Override
+	public boolean canContribute(final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard) {
+
+<span class="fc" id="L37">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+<span class="fc" id="L38">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		if (measurableSeffContributions == null) {</span>
+<span class="fc" id="L41">			return this.firstDemandCanContribute(blackboard);</span>
+		}
+
+<span class="fc bfc" id="L44" title="All 2 branches covered.">		if (measurableSeffContributions.isEmpty()) {</span>
+<span class="fc" id="L45">			return false;</span>
+		}
+
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
+
+<span class="fc" id="L50">			final Integer numberOfMeasurements =</span>
+<span class="fc" id="L51">				this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement);</span>
+
+<span class="fc bfc" id="L53" title="All 2 branches covered.">			if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="fc" id="L54">				return true;</span>
+			}
+<span class="fc" id="L56">		}</span>
+
+<span class="fc" id="L58">		return false;</span>
+	}
+
+	@Override
+	public void contribute(final MeasurementResultAnalyserBlackboardView blackboard) {
+
+<span class="fc" id="L64">		final HashMap&lt;MeasurableSeffElement, Integer&gt; writtenContent =</span>
+<span class="fc" id="L65">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		if (writtenContent == null) {</span>
+<span class="fc" id="L68">			final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions = this.initializeMap(blackboard);</span>
+<span class="fc" id="L69">			blackboard.writeFor(MeasurementResultAnalyserAverage.class, measurableSeffContributions);</span>
+		}
+
+<span class="fc" id="L72">		this.scanAllMeasurableSeffElements(blackboard);</span>
+
+<span class="fc" id="L74">	}</span>
+
+	/**
+	 * Called if this class has no written content on the Blackboard yet. Checking if
+	 * there are any MeasurementResults for any SeffElement.
+	 *
+	 * @param blackboard the blackboard to read from
+	 * @return {@code true} if the blackboard contains MeasurementResults, otherwise
+	 *         {@code false}
+	 */
+	private boolean firstDemandCanContribute(final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard) {
+
+<span class="fc" id="L86">		final Set&lt;MeasurableSeffElement&gt; allMeasurableSeffElementsOnBlackboard = new HashSet&lt;MeasurableSeffElement&gt;();</span>
+
+<span class="fc bfc" id="L88" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
+<span class="fc" id="L89">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L90">		}</span>
+
+<span class="fc bfc" id="L92" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
+<span class="fc" id="L93">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L94">		}</span>
+
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
+<span class="fc" id="L97">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L98">		}</span>
+
+<span class="fc bfc" id="L100" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
+<span class="fc" id="L101">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L102">		}</span>
+
+<span class="fc bfc" id="L104" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">			if (this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement) &gt; 0) {</span>
+<span class="fc" id="L106">				return true;</span>
+			}
+<span class="nc" id="L108">		}</span>
+
+<span class="fc" id="L110">		return false;</span>
+
+	}
+
+	/**
+	 * Scanning all {@link MeasurableSeffElement} for given MeasurementResults. If there
+	 * are more results than the number of results for a previous propose have been used,
+	 * a new ProposedExpression is added by
+	 * {@link #addMeasurementResultFor(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)}
+	 *
+	 * @param blackboard the {@link Blackboard} to read and write from
+	 */
+	private void scanAllMeasurableSeffElements(final MeasurementResultAnalyserBlackboardView blackboard) {
+
+<span class="fc" id="L124">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+<span class="fc" id="L125">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+
+<span class="fc bfc" id="L127" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : measurableSeffContributions.keySet()) {</span>
+
+			final Integer numberOfMeasurements;
+
+<span class="fc bfc" id="L131" title="All 2 branches covered.">			if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="fc" id="L132">				numberOfMeasurements =</span>
+<span class="fc" id="L133">					blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="pc bpc" id="L134" title="1 of 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="fc" id="L135">					this.addMeasurementResultFor(blackboard, (ResourceDemandingInternalAction) measurableSeffElement);</span>
+				}
+<span class="fc bfc" id="L137" title="All 2 branches covered.">			} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
+<span class="fc" id="L138">				numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
+<span class="pc bpc" id="L139" title="1 of 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="fc" id="L140">					this.addMeasurementResultFor(blackboard, (SeffBranch) measurableSeffElement);</span>
+				}
+<span class="fc bfc" id="L142" title="All 2 branches covered.">			} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
+<span class="fc" id="L143">				numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="fc" id="L145">					this.addMeasurementResultFor(blackboard, (SeffLoop) measurableSeffElement);</span>
+				}
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">			} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
+<span class="fc" id="L148">				numberOfMeasurements =</span>
+<span class="fc" id="L149">					blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
+<span class="pc bpc" id="L150" title="1 of 2 branches missed.">				if (measurableSeffContributions.get(measurableSeffElement) &lt; numberOfMeasurements) {</span>
+<span class="fc" id="L151">					this.addMeasurementResultFor(blackboard, (ExternalCallParameter) measurableSeffElement);</span>
+				}
+			}
+
+<span class="fc" id="L155">		}</span>
+
+<span class="fc" id="L157">	}</span>
+
+	/**
+	 * This method creates an averaging {@link EvaluableExpression} over all given
+	 * measurement results for this {@link MeasurableSeffElement} and adds it to the given
+	 * {@link Blackboard}. At the end, this test MUST Call
+	 * {@link #mapCurrentNumberOfMeasurementResultsToSeffElement(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)}
+	 * so that this class knows, that is has contributed. Mistakes may cause an endless
+	 * running behavior of Beagle!
+	 *
+	 * @param blackboard To read and write from
+	 * @param rdia MeasurableSeff for which this method should calculate the average
+	 *            {@link EvaluableExpression}
+	 */
+	private void addMeasurementResultFor(final MeasurementResultAnalyserBlackboardView blackboard,
+		final ResourceDemandingInternalAction rdia) {
+
+<span class="fc" id="L174">		final Set&lt;ResourceDemandMeasurementResult&gt; measurementResults = blackboard.getMeasurementResultsFor(rdia);</span>
+<span class="fc" id="L175">		int sumOverAllMeasurementResultValues = 0;</span>
+<span class="fc" id="L176">		final int numberOfAllMeasurementResults = measurementResults.size();</span>
+
+<span class="fc bfc" id="L178" title="All 2 branches covered.">		for (final ResourceDemandMeasurementResult rdmr : measurementResults) {</span>
+<span class="fc" id="L179">			sumOverAllMeasurementResultValues += rdmr.getValue();</span>
+<span class="fc" id="L180">		}</span>
+
+<span class="fc" id="L182">		final ConstantExpression expression =</span>
+<span class="fc" id="L183">			ConstantExpression.forValue((double) sumOverAllMeasurementResultValues / numberOfAllMeasurementResults);</span>
+<span class="fc" id="L184">		blackboard.addProposedExpressionFor(rdia, expression);</span>
+<span class="fc" id="L185">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, rdia);</span>
+<span class="fc" id="L186">	}</span>
+
+	/**
+	 * Note: Not yet implemented. This method creates an averaging
+	 * {@link EvaluableExpression} over all given measurement results for this
+	 * {@link MeasurableSeffElement} and adds it to the given {@link Blackboard}. At the
+	 * end, this test MUST Call
+	 * {@link #mapCurrentNumberOfMeasurementResultsToSeffElement(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)}
+	 * so that this class knows, that is has contributed. Mistakes may cause an endless
+	 * running behavior of Beagle!
+	 *
+	 * @param blackboard To read and write from
+	 * @param seffBranch MeasurableSeff for which this method should calculate the average
+	 *            {@link EvaluableExpression}
+	 */
+	private void addMeasurementResultFor(final MeasurementResultAnalyserBlackboardView blackboard,
+		final SeffBranch seffBranch) {
+
+		// final Set&lt;BranchDecisionMeasurementResult&gt; measurementResults =
+		// blackboard.getMeasurementResultsFor(seffBranch);
+		// final int numberOfBranchDecisions[] = new int[seffBranch.getBranches().size()];
+		// final int numberOfAllMeasurementResults = measurementResults.size();
+
+		// for (BranchDecisionMeasurementResult bdmr : measurementResults) {
+		// numberOfBranchDecisions[bdmr.getBranchIndex()]++;
+		// }
+
+		// HERE SHOULD THE EVALUABLEEXPRESSION FOR BRANCHES BE CREATED AND ADDED TO THE
+		// BLACKBOARD
+
+<span class="fc" id="L216">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, seffBranch);</span>
+<span class="fc" id="L217">	}</span>
+
+	/**
+	 * This method creates an averaging {@link EvaluableExpression} over all given
+	 * measurement results for this {@link MeasurableSeffElement} and adds it to the given
+	 * {@link Blackboard}. At the end, this test MUST Call
+	 * {@link #mapCurrentNumberOfMeasurementResultsToSeffElement(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)}
+	 * so that this class knows, that is has contributed. Mistakes may cause an endless
+	 * running behavior of Beagle!
+	 *
+	 * @param blackboard To read and write from
+	 * @param seffLoop MeasurableSeff for which this method should calculate the average
+	 *            {@link EvaluableExpression}
+	 */
+	private void addMeasurementResultFor(final MeasurementResultAnalyserBlackboardView blackboard,
+		final SeffLoop seffLoop) {
+
+<span class="fc" id="L234">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopCountResults =</span>
+<span class="fc" id="L235">			blackboard.getMeasurementResultsFor(seffLoop);</span>
+<span class="fc" id="L236">		int sumOverAllLoopCounts = 0;</span>
+<span class="fc" id="L237">		final int numberOfAllMeasurementResults = loopCountResults.size();</span>
+
+<span class="fc bfc" id="L239" title="All 2 branches covered.">		for (final LoopRepetitionCountMeasurementResult loopCountResult : loopCountResults) {</span>
+<span class="fc" id="L240">			sumOverAllLoopCounts += loopCountResult.getCount();</span>
+<span class="fc" id="L241">		}</span>
+
+<span class="fc" id="L243">		final ConstantExpression expression =</span>
+<span class="fc" id="L244">			ConstantExpression.forValue((double) sumOverAllLoopCounts / numberOfAllMeasurementResults);</span>
+<span class="fc" id="L245">		blackboard.addProposedExpressionFor(seffLoop, expression);</span>
+<span class="fc" id="L246">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, seffLoop);</span>
+<span class="fc" id="L247">	}</span>
+
+	/**
+	 * Note: Not yet implemented. This method creates an averaging This method creates an
+	 * averaging {@link EvaluableExpression} over all given measurement results for this
+	 * {@link MeasurableSeffElement} and adds it to the given {@link Blackboard}. At the
+	 * end, this test MUST Call
+	 * {@link #mapCurrentNumberOfMeasurementResultsToSeffElement(MeasurementResultAnalyserBlackboardView, MeasurableSeffElement)}
+	 * so that this class knows, that is has contributed. Mistakes may cause an endless
+	 * running behavior of Beagle!
+	 *
+	 * @param blackboard To read and write from
+	 * @param exParam MeasurableSeff for which this method should calculate the average
+	 *            {@link EvaluableExpression}
+	 */
+	private void addMeasurementResultFor(final MeasurementResultAnalyserBlackboardView blackboard,
+		final ExternalCallParameter exParam) {
+
+<span class="fc" id="L265">		this.mapCurrentNumberOfMeasurementResultsToSeffElement(blackboard, exParam);</span>
+<span class="fc" id="L266">	}</span>
+
+	/**
+	 * This method is very important to be called right after this Analyser-class has
+	 * contributed. It makes the annotation on its blackboard stored HashMap, that he
+	 * contributed for a {@link MeasurableSeffElement} with a specific number of
+	 * MeasurementResults that have flown into its ProposedExpression.
+	 *
+	 * @param blackboard To read and write from
+	 * @param measurableSeffElement MeasurableSeff for which a ProposedExpression has been
+	 *            added
+	 */
+	private void mapCurrentNumberOfMeasurementResultsToSeffElement(
+		final MeasurementResultAnalyserBlackboardView blackboard, final MeasurableSeffElement measurableSeffElement) {
+
+<span class="fc" id="L281">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+<span class="fc" id="L282">			blackboard.readFor(MeasurementResultAnalyserAverage.class);</span>
+<span class="fc" id="L283">		measurableSeffContributions.put(measurableSeffElement,</span>
+<span class="fc" id="L284">			new Integer(this.numberOfMeasurementResultsForSeffElement(blackboard, measurableSeffElement)));</span>
+<span class="fc" id="L285">	}</span>
+
+	/**
+	 * Returning the number of MeasurementResults for a given
+	 * {@link MeasurableSeffElement}.
+	 *
+	 * @param blackboard the blackboard to read from
+	 * @param measurableSeffElement Checking the MeasruementResults for this blackboard
+	 *            contained element
+	 * @return number of MeasurementResults
+	 */
+	private int numberOfMeasurementResultsForSeffElement(
+		final ReadOnlyMeasurementResultAnalyserBlackboardView blackboard,
+		final MeasurableSeffElement measurableSeffElement) {
+<span class="fc" id="L299">		int numberOfMeasurements = 0;</span>
+
+<span class="fc bfc" id="L301" title="All 2 branches covered.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="fc" id="L302">			numberOfMeasurements =</span>
+<span class="fc" id="L303">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="pc bpc" id="L304" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
+<span class="nc" id="L305">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
+<span class="pc bpc" id="L306" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
+<span class="fc" id="L307">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
+<span class="nc" id="L309">			numberOfMeasurements =</span>
+<span class="nc" id="L310">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
+		}
+
+<span class="fc" id="L313">		return numberOfMeasurements;</span>
+	}
+
+	/**
+	 * Returning the number of MeasurementResults for a given
+	 * {@link MeasurableSeffElement}.
+	 *
+	 * @param blackboard the blackboard to read from
+	 * @param measurableSeffElement Checking the MeasruementResults for this blackboard
+	 *            contained element
+	 * @return number of MeasurementResults
+	 */
+	private int numberOfMeasurementResultsForSeffElement(final MeasurementResultAnalyserBlackboardView blackboard,
+		final MeasurableSeffElement measurableSeffElement) {
+<span class="fc" id="L327">		int numberOfMeasurements = 0;</span>
+
+<span class="fc bfc" id="L329" title="All 2 branches covered.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="fc" id="L330">			numberOfMeasurements =</span>
+<span class="fc" id="L331">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="fc bfc" id="L332" title="All 2 branches covered.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
+<span class="fc" id="L333">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
+<span class="fc bfc" id="L334" title="All 2 branches covered.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
+<span class="fc" id="L335">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
+<span class="pc bpc" id="L336" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
+<span class="fc" id="L337">			numberOfMeasurements =</span>
+<span class="fc" id="L338">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
+		}
+
+<span class="fc" id="L341">		return numberOfMeasurements;</span>
+	}
+
+	/**
+	 * This will create a {@link HashMap}, mapping all {@link MeasurableSeffElement} to
+	 * the Integer value 0.
+	 *
+	 * @param blackboard The {@link Blackboard} to get the SeffElements from.
+	 * @return A Map of all blackboard contained SeffElements to Integer value 0.
+	 */
+	private HashMap&lt;MeasurableSeffElement, Integer&gt; initializeMap(
+		final MeasurementResultAnalyserBlackboardView blackboard) {
+<span class="fc" id="L353">		final HashMap&lt;MeasurableSeffElement, Integer&gt; measurableSeffContributions =</span>
+			new HashMap&lt;MeasurableSeffElement, Integer&gt;();
+<span class="fc" id="L355">		final Set&lt;MeasurableSeffElement&gt; allMeasurableSeffElementsOnBlackboard = new HashSet&lt;MeasurableSeffElement&gt;();</span>
+
+<span class="fc bfc" id="L357" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllRdias()) {</span>
+<span class="fc" id="L358">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L359">		}</span>
+
+<span class="fc bfc" id="L361" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffBranches()) {</span>
+<span class="fc" id="L362">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L363">		}</span>
+
+<span class="fc bfc" id="L365" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllSeffLoops()) {</span>
+<span class="fc" id="L366">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L367">		}</span>
+
+<span class="fc bfc" id="L369" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : blackboard.getAllExternalCallParameters()) {</span>
+<span class="fc" id="L370">			allMeasurableSeffElementsOnBlackboard.add(measurableSeffElement);</span>
+<span class="fc" id="L371">		}</span>
+
+<span class="fc bfc" id="L373" title="All 2 branches covered.">		for (final MeasurableSeffElement measurableSeffElement : allMeasurableSeffElementsOnBlackboard) {</span>
+<span class="fc" id="L374">			measurableSeffContributions.put(measurableSeffElement, new Integer(0));</span>
+<span class="fc" id="L375">		}</span>
+
+<span class="fc" id="L377">		return measurableSeffContributions;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
