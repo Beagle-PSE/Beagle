@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head> 
+        <meta charset="utf-8"> 
+        <title>Beagle—Developer’s Documentation</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="fonts/cm-sans/cmun-sans.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-serif/cmun-serif.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-typewriter/cmun-typewriter.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css" type="text/css"> 
+        <link rel="stylesheet" href="css/index.css" type="text/css"> 
+    </head> 
+    <body> 
+        <h1>Developer’s Documentation</h1> 
+        <h2>File Overview</h2> 
+        <p>Beagle consists of multiple subprojects. Each is built using <a href="http://gradle.org/">gradle</a> and follows <a href="https://docs.gradle.org/current/userguide/java_plugin.html">gradle’s conventional project structure</a> where applicable. The repository is structured as follows:</p> 
+        <table> 
+            <tbody> 
+                <tr> 
+                    <td align="right"><code>buildSrc</code> </td> 
+                    <td>Build logic that applies to all or multiple subprojects. Subprojects define further build logic in their own <code>buildSrc</code> folders if they need to.</td> 
+                </tr> 
+                <tr> 
+                    <td align="right"><code>Core</code> </td> 
+                    <td>Beagle Core project. It contains the management logic necessary to analyse software for its dynamic properties. It defines an API for Analysers and Measurement Tools that provide information for the analysis. It does not contain any analysers.</td> 
+                </tr> 
+                <tr> 
+                    <td align="right"><code>Documentation</code> </td> 
+                    <td>Documentation project. Besides the LyX source files for the <a href=".">main documentation PDF files</a>, it contains various <a href="https://help.github.com/articles/markdown-basics/">Markdown</a> files that cover various aspects.</td> 
+                </tr> 
+                <tr> 
+                    <td align="right"><code>Documentation/Meeting Minutes</code> </td> 
+                    <td>Minutes of team meetings.</td> 
+                </tr> 
+                <tr> 
+                    <td align="right"><code>GUI</code> </td> 
+                    <td>Beagle’s graphical user interface. It is intentionally separated to assure Beagle Core remains independent from its user interface(s).</td> 
+                </tr> 
+                <tr> 
+                    <td align="right"><code>Prototypes</code> </td> 
+                    <td>Development of new features and integrations of new third party software are often started as prototypes. These serve as a “proof of concept” and show how to use a certain technology. Subfolders of the <code>Prototypes</code> folder are independent Java projects.</td> 
+                </tr> 
+                <tr> 
+                    <td align="right"><code>Web Presence</code> </td> 
+                    <td>Build logic, template and content files that create this web presence.</td> 
+                </tr> 
+            </tbody> 
+        </table> 
+        <h2>Further Reading</h2> 
+        <a href="Development Setup.html" class="artefact"> <span class="fa fa-file-o file"></span> <h6 class="title">Development Tools Setup</h6> <span class="description">Beagle uses various tools for development. This is a detailed guide to set them up and get started.</span> </a> 
+        <a href="Writing Documentation.html" class="artefact"> <span class="fa fa-file-o file"></span> <h6 class="title">Writing Documentation</h6> <span class="description">Guides to write documentation documents for Beagle.</span> </a> 
+        <a href="Coding Conventions.html" class="artefact"> <span class="fa fa-file-o file"></span> <h6 class="title">Coding Conventions</h6> <span class="description">Defines best practices for Java Code.</span> </a> 
+        <a href="Pull Request Acceptance Checklist.html" class="artefact"> <span class="fa fa-file-o file"></span> <h6 class="title">Pull Request Acceptance Checklist</h6> <span class="description">Criteria applied when reviewing GitHub Pull Requests.</span> </a> 
+        <a href="Dependency Management.html" class="artefact"> <span class="fa fa-file-o file"></span> <h6 class="title">Dependency Management</h6> <span class="description">Explains how dependencies are handled for Beagle.</span> </a> 
+        <a href="Creating a Project.html" class="artefact"> <span class="fa fa-file-o file"></span> <h6 class="title">How to Create a Subproject</h6> <span class="description">Guide for developers wishing to create a new subproject for Beagle.</span> </a>  
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SeffLoop.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core</a> &gt; <span class="el_source">SeffLoop.java</span></div><h1>SeffLoop.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+/**
+ * Models loops (like Java’s for , while and do - while statement) which affect the calls
+ * a component makes to other components. Such loops are—contrary to loops that stay
+ * within an internal action—modelled in a component’s SEFF.
+ *
+ * @author Annika Berger
+ * @author Roman Langrehr
+ */
+public class SeffLoop implements MeasurableSeffElement {
+
+	/**
+	 * Serialisation version UID, see {@link java.io.Serializable}.
+	 */
+	private static final long serialVersionUID = 116182090562332981L;
+
+	/**
+	 * The code section representing the loop body.
+	 */
+	private final CodeSection loopBody;
+
+	/**
+	 * Creates a SeffBranch using a given code section for the loop's body.
+	 *
+	 * @param loopBody A valid code sections representing the body of this SeffBranch's
+	 *            loop. Must not be {@code null}.
+	 */
+<span class="fc" id="L33">	public SeffLoop(final CodeSection loopBody) {</span>
+<span class="fc" id="L34">		Validate.notNull(loopBody);</span>
+<span class="fc" id="L35">		this.loopBody = loopBody;</span>
+<span class="fc" id="L36">	}</span>
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L41">			return false;</span>
+		}
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L44">			return true;</span>
+		}
+<span class="fc bfc" id="L46" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L47">			return false;</span>
+		}
+<span class="fc" id="L49">		final SeffLoop other = (SeffLoop) object;</span>
+<span class="fc" id="L50">		return new EqualsBuilder().append(this.loopBody, other.loopBody).isEquals();</span>
+	}
+
+	/**
+	 * Gives a valid code sections representing the body of this SeffBranch's loop.
+	 *
+	 * @return the loopBody A valid code sections representing the body of this
+	 *         SeffBranch's loop. Is never {@code null}.
+	 */
+	public CodeSection getLoopBody() {
+<span class="fc" id="L60">		return this.loopBody;</span>
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+<span class="fc" id="L67">		return new HashCodeBuilder(19, 51).append(this.loopBody).toHashCode();</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L72">		return String.format(&quot;SeffLoop@%4.4s&lt;%s&gt;&quot;, Integer.toHexString(this.hashCode()), this.loopBody);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
