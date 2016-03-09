@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
 import de.uka.ipd.sdq.beagle.core.AnalysisController;
+import de.uka.ipd.sdq.beagle.core.AnalysisState;
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
@@ -12,17 +13,16 @@ import de.uka.ipd.sdq.beagle.core.judge.AbstractionAndPrecisionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementToolContributionsHandler;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryBlackboardFactoryAdder;
 import de.uka.ipd.sdq.beagle.core.pcmconnection.PcmRepositoryWriter;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkReader;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IJavaProject;
-import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -47,12 +47,12 @@ public class BeagleController {
 	/**
 	 * The final {@link BeagleConfiguration} for this analysis.
 	 */
-	private BeagleConfiguration beagleConfiguration;
+	private final BeagleConfiguration beagleConfiguration;
 
 	/**
 	 * The {@link Blackboard} for this analysis.
 	 */
-	private Blackboard blackboard;
+	private final Blackboard blackboard;
 
 	/**
 	 * Constructs a new {@code BeagleController} with the given
@@ -70,23 +70,26 @@ public class BeagleController {
 		final SourceCodeFileProvider sourceCodeFileProvider =
 			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());
 
+		final PcmSourceStatementLinkReader linkReader =
+			new PcmSourceStatementLinkReader(beagleConfiguration.getSourceStatementLinkFile());
+		linkReader.checkIntegrity(sourceCodeFileProvider, beagleConfiguration.getRepositoryFile());
+		final PcmSourceStatementLinkRepository linkRepository = linkReader.getPcmSourceLinkRepository();
+
 		if (beagleConfiguration.getElements() == null) {
-			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
-				.getBlackboardForAllElements(blackboardFactory);
+			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,
+				linkRepository).getBlackboardForAllElements(blackboardFactory);
 		} else {
-			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider)
-				.getBlackboardForIds(this.entitysToStrings(beagleConfiguration.getElements()), blackboardFactory);
+			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,
+				linkRepository).getBlackboardForIds(beagleConfiguration.getElements(), blackboardFactory);
 		}
 
 		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());
 		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();
 
-		final Set<LaunchConfiguration> launchConfigurations =
-			new LauchConfigurationProvider(beagleConfiguration.getJavaProject())
-				.getAllSuitableJUnitLaunchConfigurations();
+		final Set<LaunchConfiguration> launchConfigurations = beagleConfiguration.getLaunchConfigurations();
 		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
-		
+
 		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());
 		this.blackboard = blackboardFactory.createBlackboard();
 		this.analysisController = new AnalysisController(this.blackboard,
@@ -129,7 +132,7 @@ public class BeagleController {
 	 *
 	 */
 	public void pauseAnalysis() {
-
+		this.analysisController.setAnalysisState(AnalysisState.ENDING);
 	}
 
 	/**
@@ -138,7 +141,7 @@ public class BeagleController {
 	 *
 	 */
 	public void continueAnalysis() {
-
+		this.analysisController.setAnalysisState(AnalysisState.RUNNING);
 	}
 
 	/**
@@ -148,20 +151,6 @@ public class BeagleController {
 	 *
 	 */
 	public void abortAnalysis() {
-
-	}
-
-	/**
-	 * Converts {@linkplain Entity Entities} to {@linkplain String Strings}.
-	 *
-	 * @param entities The {@linkplain Entity Entities} to convert.
-	 * @return The ids of the {@code entities}.
-	 */
-	private List<String> entitysToStrings(final List<Entity> entities) {
-		final List<String> strings = new ArrayList<>();
-		for (final Entity entity : entities) {
-			strings.add(entity.getId());
-		}
-		return strings;
+		this.analysisController.setAnalysisState(AnalysisState.ABORTING);
 	}
 }

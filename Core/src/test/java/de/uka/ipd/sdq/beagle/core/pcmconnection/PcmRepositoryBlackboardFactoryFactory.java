@@ -1,6 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
+import static org.mockito.Mockito.mock;
+
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import java.io.File;
 import java.io.Serializable;
@@ -29,7 +32,7 @@ public class PcmRepositoryBlackboardFactoryFactory {
 	public PcmRepositoryBlackboardFactoryAdder getValidInstance() {
 		return new PcmRepositoryBlackboardFactoryAdder(
 			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository",
-			APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
+			APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER, mock(PcmSourceStatementLinkRepository.class));
 	}
 
 	/**
@@ -42,7 +45,7 @@ public class PcmRepositoryBlackboardFactoryFactory {
 	public PcmRepositoryBlackboardFactoryAdder getAppSensorProjectInstance() {
 		return new PcmRepositoryBlackboardFactoryAdder(
 			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/AppSensor.repository",
-			APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER);
+			APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER, mock(PcmSourceStatementLinkRepository.class));
 	}
 
 	/**
