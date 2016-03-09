@@ -76,7 +76,7 @@ sudo cp -r KITbeamer/tex/latex/KIT /usr/share/texmf/tex/latex/KITBeamer
       * run `sudo texhash`
     
     * On Windows (with MiKTeX):
-      * copy the contents of `KITbase/tex/latex/KIT` and `KITbeamer/tex/latex/KIT` to `[texmf]\tex\latex\misc\KIT` where `[texmf]` is your local texmf folder, as explained above. 
+      * copy the contents of `KITbase/tex/latex/KIT` and `KITbeamer/tex/latex/KIT` to `[texmf]\tex\latex\KIT` where `[texmf]` is your local texmf folder, as explained above. 
       * Launch "MiKTeX Settings" and hit "Refresh FNDB" 
   
   * Install the LyX layout files `Documentation/Dependencies/sqthesis.layout` and `Documentation/Dependencies/KIT-Beamer.layout`.
