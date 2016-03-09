@@ -189,7 +189,7 @@ public class PcmBeagleMappings implements Serializable {
 			throw new NullPointerException("Parameter of getPcmIdOf should not be null!");
 		}
 		if (this.hasPcmIdOf(rdia) && !this.getPcmIdOf(rdia).equals(identifier)) {
-			throw new IllegalStateException();
+			// throw new IllegalStateException();
 		}
 		this.rdiaMap.put(rdia, identifier);
 	}

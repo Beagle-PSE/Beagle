@@ -52,7 +52,6 @@ task downloadCocome {
 		
 		copy {
 			from zipTree("$tmp/cocome-impl.zip"), zipTree("$tmp/cocome-systests.zip"), zipTree("$tmp/cocome-testdriver.zip")
-			eachFile shiftUp
 			includeEmptyDirs false
 			into cocomeDest
 		}
