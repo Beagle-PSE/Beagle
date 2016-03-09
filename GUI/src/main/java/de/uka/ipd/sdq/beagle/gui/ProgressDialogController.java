@@ -30,6 +30,17 @@ import java.lang.Thread.UncaughtExceptionHandler;
 public class ProgressDialogController {
 
 	/**
+	 * The button index that corresponds to the abort putton in {@link #messageDialog}.
+	 */
+	private static final int BUTTON_ABORT = 0;
+
+	/**
+	 * The button index that corresponds to the pause or continue button in
+	 * {@link #messageDialog}.
+	 */
+	private static final int BUTTON_PAUSE_OR_CONTINUE = 1;
+
+	/**
 	 * Is used to display the actions "pause", "continue", and "abort" to the user. These
 	 * actions are regarding the analysis.
 	 */
@@ -39,6 +50,12 @@ public class ProgressDialogController {
 	 * The {@link BeagleController} connected to this GUI.
 	 */
 	private final BeagleController beagleController;
+
+	/**
+	 * Whether the analysis has finished. This will be set when {@link #beagleController}
+	 * returned.
+	 */
+	private volatile boolean analysisFinished;
 
 	/**
 	 * Constructs a new {@link ProgressDialogController} using {@code components} as the
@@ -87,44 +104,44 @@ public class ProgressDialogController {
 		};
 
 		boolean analysisRunning = false;
-		// equals a click on button "Continue" (continuing and starting the
-		// analysis
-		// always have the same behaviour regarding the dialog)
 		this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null, dialogMessageRunning,
-			MessageDialog.INFORMATION, buttonLabelsRunning, 0);
-		int buttonClick = this.messageDialog.open();
+			MessageDialog.INFORMATION, buttonLabelsRunning, BUTTON_PAUSE_OR_CONTINUE);
 
+		int buttonClick;
 		do {
+			buttonClick = this.messageDialog.open();
+
 			switch (buttonClick) {
-				case 1:
+				case BUTTON_PAUSE_OR_CONTINUE:
 					if (analysisRunning) {
 						// analysis is being paused by the user
 						analysisRunning = false;
 						this.beagleController.pauseAnalysis();
 
 						this.messageDialog = new MessageDialog(shell, dialogTitlePaused, null, dialogMessagePaused,
-							MessageDialog.INFORMATION, buttonLabelsPaused, 0);
+							MessageDialog.INFORMATION, buttonLabelsPaused, BUTTON_PAUSE_OR_CONTINUE);
 					} else {
 						// analysis is being continued by the user
 						analysisRunning = true;
 						this.beagleController.continueAnalysis();
 
 						this.messageDialog = new MessageDialog(shell, dialogTitleRunning, null, dialogMessageRunning,
-							MessageDialog.INFORMATION, buttonLabelsRunning, 0);
+							MessageDialog.INFORMATION, buttonLabelsRunning, BUTTON_PAUSE_OR_CONTINUE);
 					}
 					break;
 
-				case 0:
+				case BUTTON_ABORT:
 				case SWT.DEFAULT:
-					this.beagleController.abortAnalysis();
+					if (!this.analysisFinished) {
+						this.beagleController.abortAnalysis();
+					}
 					break;
 
 				default:
 					assert false;
 			}
 
-			buttonClick = this.messageDialog.open();
-		} while (buttonClick != 0 && buttonClick != SWT.DEFAULT);
+		} while (buttonClick != BUTTON_ABORT && buttonClick != SWT.DEFAULT);
 	}
 
 	/**
@@ -138,7 +155,7 @@ public class ProgressDialogController {
 		 * Calls {@link BeagleController} to start the analysis. This happens in a
 		 * different thread so the GUI remains responsive.
 		 */
-		new Thread(() -> ProgressDialogController.this.runAnalysis(uncaughtExceptionHandler)).start();
+		new Thread(() -> this.runAnalysis(uncaughtExceptionHandler)).start();
 	}
 
 	/**
@@ -149,19 +166,12 @@ public class ProgressDialogController {
 	 */
 	private void runAnalysis(final UncaughtExceptionHandler uncaughtExceptionHandler) {
 		try {
-			ProgressDialogController.this.beagleController.startAnalysis();
+			this.beagleController.startAnalysis();
 			// CHECKSTYLE:IGNORE IllegalCatch
 		} catch (final Exception exception) {
 			uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), exception);
-			new UIJob(Display.getDefault(), "Close Beagle Dialog") {
-
-				@Override
-				public IStatus runInUIThread(final IProgressMonitor monitor) {
-					ProgressDialogController.this.messageDialog.close();
-					return Status.OK_STATUS;
-				}
-			}.schedule();
 		}
+		this.analysisFinished = true;
 		// when {@code beagleController.startAnalysis()} returns, close the
 		// dialog
 		new UIJob(Display.getDefault(), "Close Beagle Dialog") {
