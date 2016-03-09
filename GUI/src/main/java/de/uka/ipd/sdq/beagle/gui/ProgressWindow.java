@@ -1,11 +1,11 @@
 package de.uka.ipd.sdq.beagle.gui;
 
+import org.apache.commons.lang3.Validate;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -13,8 +13,11 @@ import org.eclipse.ui.progress.UIJob;
 
 /**
  * Shows Beagle’s progress to the user. The window reflects the three main states the
- * anlysis can be in: <em>running</em>, <em>paused</em> and <em>aborted</em>. These states
- * can be set on it.
+ * analysis can be in: <em>preparing</em>, <em>running</em>, <em>paused</em> and
+ * <em>aborted</em>. These states can be set on it.
+ *
+ * <p>No methods may be called on this window befor it has been initialised through
+ * {@link #initialise()}.
  *
  * @author Joshua Gleitze
  * @author Christoph Michelbach
@@ -47,19 +50,36 @@ public class ProgressWindow {
 	}
 
 	/**
+	 * Initialises this window.
+	 */
+	public synchronized void initialise() {
+		if (this.progressWindow == null) {
+			final UIJob creationJob = inUI(() -> {
+				final Shell ourShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+				this.progressWindow = new ProgressMessageWindow(ourShell);
+			});
+			while (this.progressWindow == null) {
+				try {
+					creationJob.join();
+				} catch (final InterruptedException interrupted) {
+					// It’s crucial that the window has been created after this point. So
+					// we try again.
+				}
+			}
+		}
+	}
+
+	/**
 	 * Shows the progress window in order to indicate that Beagle’s analysis is running.
 	 * Has now effect if the window is already shown.
 	 */
 	public void show() {
+		Validate.validState(this.progressWindow != null, "The progress window has not yet been initialised!");
 		if (!this.hidden) {
 			return;
 		}
 
 		inUI(() -> {
-			if (this.progressWindow == null) {
-				final Shell ourShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-				this.progressWindow = new ProgressMessageWindow(ourShell);
-			}
 			this.progressWindow.open();
 			this.hidden = false;
 		});
@@ -69,6 +89,7 @@ public class ProgressWindow {
 	 * Hides the progress window. Has no effect if the window is already hidden.
 	 */
 	public void hide() {
+		Validate.validState(this.progressWindow != null, "The progress window has not yet been initialised!");
 		if (this.hidden) {
 			return;
 		}
@@ -80,9 +101,18 @@ public class ProgressWindow {
 	}
 
 	/**
+	 * Updates the window to reflect that the analysis is being prepared.
+	 */
+	public void setPreparing() {
+		Validate.validState(this.progressWindow != null, "The progress window has not yet been initialised!");
+		inUI(this.progressWindow::setPreparing);
+	}
+
+	/**
 	 * Updates the window to reflect that the analysis is running.
 	 */
 	public void setRunning() {
+		Validate.validState(this.progressWindow != null, "The progress window has not yet been initialised!");
 		inUI(this.progressWindow::setRunning);
 	}
 
@@ -90,6 +120,7 @@ public class ProgressWindow {
 	 * Updates the window to reflect that the analysis is running.
 	 */
 	public void setAborting() {
+		Validate.validState(this.progressWindow != null, "The progress window has not yet been initialised!");
 		inUI(this.progressWindow::setAborting);
 	}
 
@@ -98,6 +129,7 @@ public class ProgressWindow {
 	 *
 	 */
 	public void setPaused() {
+		Validate.validState(this.progressWindow != null, "The progress window has not yet been initialised!");
 		inUI(this.progressWindow::setPaused);
 	}
 
@@ -105,16 +137,19 @@ public class ProgressWindow {
 	 * Schedules the given code to be executed in the UI thread.
 	 *
 	 * @param toExecute The code to execute in the UI thread.
+	 * @return The job that was created to execute.
 	 */
-	private static void inUI(final Runnable toExecute) {
-		new UIJob(Display.getDefault(), "Beagle") {
+	private static UIJob inUI(final Runnable toExecute) {
+		final UIJob uiJob = new UIJob(Display.getDefault(), "Beagle") {
 
 			@Override
 			public IStatus runInUIThread(final IProgressMonitor monitor) {
 				toExecute.run();
 				return Status.OK_STATUS;
 			}
-		}.schedule();
+		};
+		uiJob.schedule();
+		return uiJob;
 	}
 
 	/**
@@ -149,13 +184,6 @@ public class ProgressWindow {
 			this.setBlockOnOpen(false);
 		}
 
-		@Override
-		protected Control createContents(final Composite parent) {
-			final Control contents = super.createContents(parent);
-			this.setRunning();
-			return contents;
-		}
-
 		/**
 		 * Updates the window.
 		 *
@@ -175,6 +203,13 @@ public class ProgressWindow {
 			this.buttonBar.dispose();
 			this.buttonBar = this.createButtonBar(buttonBarParent);
 			buttonBarParent.layout();
+		}
+
+		/**
+		 * Updates the window to reflect that the analysis is being prepared.
+		 */
+		private void setPreparing() {
+			this.update("Beagle is preparing the analysis.", new String[0]);
 		}
 
 		/**

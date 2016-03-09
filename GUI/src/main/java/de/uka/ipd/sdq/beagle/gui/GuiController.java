@@ -1,6 +1,9 @@
 package de.uka.ipd.sdq.beagle.gui;
 
 import de.uka.ipd.sdq.beagle.core.facade.BeagleController;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureResolver;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -60,14 +63,27 @@ public class GuiController {
 	}
 
 	/**
-	 * Reports that the analysis has started.
+	 * Reports that the analysis is being prepared.
 	 */
-	public synchronized void analysisStarted() {
+	public synchronized void preparingAnalysis() {
+		this.progressWindow.initialise();
+		FailureHandler.setProvider(FailureResponder::new);
 		this.progressWindow.show();
+		this.progressWindow.setPreparing();
 	}
 
 	/**
-	 * Reports that the analysis has ended.
+	 * Reports that the analysis has started. May only be called after
+	 * {@link #preparingAnalysis()} has been called.
+	 */
+	public synchronized void analysisStarted() {
+		this.progressWindow.show();
+		this.progressWindow.setRunning();
+	}
+
+	/**
+	 * Reports that the analysis has ended. May only be called after
+	 * {@link #analysisStarted()} has been called.
 	 */
 	public synchronized void analysisFinished() {
 		this.finished = true;
@@ -78,7 +94,8 @@ public class GuiController {
 	}
 
 	/**
-	 * Callback to report that the user requested to pause the analysis.
+	 * Callback to report that the user requested to pause the analysis. May only be
+	 * called after {@link #analysisStarted()} has been called.
 	 */
 	public synchronized void pauseRequested() {
 		this.beagleController.pauseAnalysis();
@@ -86,7 +103,8 @@ public class GuiController {
 	}
 
 	/**
-	 * Callback to report that the user requested to abort the analysis.
+	 * Callback to report that the user requested to abort the analysis. May only be
+	 * called after {@link #analysisStarted()} has been called.
 	 */
 	public void abortRequested() {
 		if (this.aborted || this.finished) {
@@ -108,7 +126,8 @@ public class GuiController {
 	}
 
 	/**
-	 * Callback to report that the user requested to resume the analysis.
+	 * Callback to report that the user requested to resume the analysis. May only be
+	 * called after {@link #analysisStarted()} has been called.
 	 */
 	public synchronized void continueRequested() {
 		this.progressWindow.setRunning();
@@ -129,4 +148,25 @@ public class GuiController {
 		return answer;
 	}
 
+	/**
+	 * Intermediate {@code FailureResolver}. Prepares the GUI and then calls
+	 * {@link GraphicalFailureHandler}.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private final class FailureResponder implements FailureResolver {
+
+		/**
+		 * The handler of failures that will be called for all reported failures.
+		 */
+		private final GraphicalFailureHandler gFailureHandler = new GraphicalFailureHandler();
+
+		@Override
+		public <RECOVER_TYPE> RECOVER_TYPE handle(final FailureReport<RECOVER_TYPE> report, final String reporterName) {
+			GuiController.this.progressWindow.hide();
+			final RECOVER_TYPE result = this.gFailureHandler.handle(report, reporterName);
+			GuiController.this.progressWindow.show();
+			return result;
+		}
+	}
 }
