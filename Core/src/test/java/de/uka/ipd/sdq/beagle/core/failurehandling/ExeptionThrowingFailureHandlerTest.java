@@ -4,7 +4,7 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
-import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
+import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureResolver.FailureException;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 
 import org.junit.Test;
@@ -22,39 +22,29 @@ public class ExeptionThrowingFailureHandlerTest {
 	 */
 	@Test
 	public void constructorExceptionThrowingFailureHandler() {
-		final String clientName = "clientBob";
-		final ThrowingMethod method = () -> {
-			new ExceptionThrowingFailureHandler(null);
-		};
-		assertThat("clientName must not be null.", method, throwsException(NullPointerException.class));
-
-		new ExceptionThrowingFailureHandler(clientName);
+		new ExceptionThrowingFailureResolver();
 	}
 
 	/**
-	 * Test method for {@link ExceptionThrowingFailureHandler#handle()}.
+	 * Test method for {@link ExceptionThrowingFailureResolver#handle()}.
 	 */
 	@Test
 	public void handle() {
-		final ExceptionThrowingFailureHandler exceptionHandler = new ExceptionThrowingFailureHandler("testClient");
-		ThrowingMethod method = () -> {
-			exceptionHandler.handle(null);
-		};
-		assertThat(method, throwsException(NullPointerException.class));
+		final ExceptionThrowingFailureResolver exceptionHandler = new ExceptionThrowingFailureResolver();
 
 		final FailureReport<String> report = new FailureReport<>();
-		method = () -> {
-			exceptionHandler.handle(report);
+		ThrowingMethod method = () -> {
+			exceptionHandler.handle(report, "clientName");
 		};
 		assertThat(method, throwsException(FailureException.class));
 
 		report.message("Test message");
 		method = () -> {
-			exceptionHandler.handle(report);
+			exceptionHandler.handle(report, "clientName");
 		};
 		assertThat(method, throwsException(FailureException.class));
 		try {
-			exceptionHandler.handle(report);
+			exceptionHandler.handle(report, "clientName");
 		} catch (final FailureException failEx) {
 			assertThat(failEx.getMessage(), containsString("Test message"));
 		}
@@ -62,12 +52,12 @@ public class ExeptionThrowingFailureHandlerTest {
 		report.cause(new IllegalArgumentException("Illegal argument."));
 		report.message("Test message");
 		method = () -> {
-			exceptionHandler.handle(report);
+			exceptionHandler.handle(report, "clientName");
 		};
 		assertThat(method, throwsException(FailureException.class));
 
 		try {
-			exceptionHandler.handle(report);
+			exceptionHandler.handle(report, "clientName");
 		} catch (final FailureException failEx) {
 			assertThat(failEx.getMessage(), containsString("Test message"));
 			assertThat(failEx.getMessage(), containsString("Illegal argument."));

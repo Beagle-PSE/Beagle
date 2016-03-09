@@ -6,7 +6,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
-import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
+import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureResolver.FailureException;
 
 import org.junit.Before;
 import org.junit.Rule;
