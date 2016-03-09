@@ -14,9 +14,9 @@ import java.util.function.Supplier;
  * functions that may optionally return a value to continue with after the failure.
  *
  * <p>The reaction to failures can be configured by setting a provider for
- * {@link FailureResolver FailureResolvers} through
- * {@linkplain #setProvider(FailureHandlerProvider)}. The resolvers provided by the
- * provider will be used when a failure is handled by this class.
+ * {@link FailureResolver FailureResolvers} through {@linkplain #setProvider(Supplier)}.
+ * The resolvers provided by the provider will be used when a failure is handled by this
+ * class.
  *
  * <p>Given that the class has a failure handler defined in the constant
  * {@code FAILURE_HANDLER}, these are some usage examples:
