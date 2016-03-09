@@ -293,41 +293,252 @@ Tests
 JUnit Tests
 \end_layout
 
+\begin_layout Standard
+As of this writing (2016-03-06) we use about 400 automated JUnit tests to
+ test Beagle on a per-method level.
+ Every merge into the upstream master requires these tests to pass.
+ For more details see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:T200"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Integration Tests
 \end_layout
 
-\begin_layout Section
-Tests defined in SRS
-\end_layout
-
 \begin_layout Subsection
 T200
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:T200"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Every time something is added to Beagle, Travis sets up an Ubuntu system
+ with only the specified software installed.
+ The combination of code already in the upstream master and the changes
+ in question then has to pass all automated tests in order to be mergeable.
+ Thus it is always guaranteed that Beagle as of its state in the upstream
+ master passes all automated tests on a system with only the specified software
+ installed.
 \end_layout
 
 \begin_layout Subsection
 T210
 \end_layout
 
+\begin_layout Standard
+Beagle has been tested manually to work with Kieker.
+\end_layout
+
 \begin_layout Subsection
 T220
+\end_layout
+
+\begin_layout Standard
+Beagle does obey the PCM standards when writing data and is not required
+ for Palladio to access the PCM after it has been created.
 \end_layout
 
 \begin_layout Subsection
 OT200
 \end_layout
 
+\begin_layout Standard
+Beagle has been tested on Linux and Windows operating systems.
+\end_layout
+
+\begin_layout Section
+Tests Defined in SRS
+\end_layout
+
+\begin_layout Subsection
+Mandatory
+\end_layout
+
+\begin_layout Standard
+All mandatory tests defined in the SRS (/T10/ -- /T60/) are tested either
+ automatically using JUnit or manually.
+ Instructions of how to proceed in manual tests and what to expect for a
+ successful test can be found in 
+\family typewriter
+Manual Tests.md
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Optional
+\end_layout
+
+\begin_layout Itemize
+/OT10/ and /OT20/ are tested automatically using JUnit tests.
+\end_layout
+
+\begin_layout Itemize
+/OT50/ is partly tested with manual tests but a full test requires a bigger
+ project which as of yet we don't have available.
+\end_layout
+
+\begin_layout Itemize
+/OT40/ has not been tested because of practical reasons.
+\end_layout
+
+\begin_layout Itemize
+The optional feature for /OT70/ has been implemented and was tested manually.
+ Instructions for manual testing can be found in 
+\family typewriter
+Manual Tests.md
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+/OT60/ has been deemed impractical because no practical way of combining
+ old results with new results could be found.
+\end_layout
+
+\begin_layout Itemize
+/OT100/ is inherently fulfilled in our approach.
+\end_layout
+
+\begin_layout Itemize
+All optional tests not mentioned above are omitted because the features
+ they are testing are optional features which have not been implemented.
+\end_layout
+
 \begin_layout Chapter
 Bugs
 \end_layout
 
-\begin_layout Standard
-Contains all Bugs found and/ or fixed in the Quality Control Phase.
+\begin_layout Section
+Implementation Phase
 \end_layout
 
 \begin_layout Standard
-Reports should contain at least Symptom, Reason and a description of the
- fix.
+There were no known bugs or other undesired behaviour at the end of the
+ implementation phase.
+ We were not able to find any such during the quality assurance phase either.
+ Therefore no bugs which originated in the implementation phase were fixed.
+\end_layout
+
+\begin_layout Section
+Quality Assurance Phase
+\end_layout
+
+\begin_layout Standard
+Due to our policy to only merge branches into the upstream master if they
+ are free of knows bugs and other undesired behaviour, we never introduced
+ code known to contain errors into our upstream master.
+ As of this writing (2016-03-06) there have been no occurrences of subsequent
+ detection of bugs in upstream master either.
+\end_layout
+
+\begin_layout Chapter
+Changes
+\end_layout
+
+\begin_layout Section
+GUI
+\end_layout
+
+\begin_layout Standard
+During the implementation phase a GUI consisting of a 
+\family typewriter
+jWizard
+\family default
+ and a 
+\family typewriter
+jDialog
+\family default
+ was created.
+ During the quality assurance phase we removed the 
+\family typewriter
+jWizard
+\family default
+ part of the GUI and replaced it by a launch configuration.
+ The 
+\family typewriter
+jDialog
+\family default
+ code remained the same but was moved from 
+\family typewriter
+GuiController.java
+\family default
+ to 
+\family typewriter
+ProgressDialogController.java
+\family default
+.
+ The launch configuration offers everything the 
+\family typewriter
+jWizard
+\family default
+ solution offered and also makes it possible to deselect elements to analyse.
+\end_layout
+
+\begin_layout Chapter
+Additional Features
+\end_layout
+
+\begin_layout Section
+Adaptive Timeout
+\end_layout
+
+\begin_layout Standard
+Implementing an adaptive timeout is an optional feature listed in the SRS.
+ We consider an adaptive timeout a valuable extension of Beagle's original
+ features because it allows evaluation to a reasonable degree of accuracy
+ devoid of excessive CPU time consumption without the user being required
+ to be able to estimate the required time (confer constant timeout).
+\end_layout
+
+\begin_layout Standard
+An adaptive timeout based on linear regression was implemented first but
+ later having the adaptive timeout based on the ageing algorithm was consistentl
+y agreed upon to make better predictions and to be better fitted for practice.
+ Thus, Beagle now features an adaptive timeout based on the ageing algorithm.
+\end_layout
+
+\begin_layout Section
+Pausing and Continuing
+\end_layout
+
+\begin_layout Standard
+We decided to implement the optional pausing and continuing feature.
+ The user can pause / resume / abort the analysis via the buttons provided
+ in the dialog shown while Beagle is running.
+\end_layout
+
+\begin_layout Standard
+Pausing happens softly which means that the current 
+\family typewriter
+AnalysisController
+\family default
+ loop round (as defined in the Software Requirements Specification) is finished
+ and the 
+\family typewriter
+FinalJudge
+\family default
+ is called before the thread goes to sleep.
+ Contrary to this, aborting still lets the current measurement tool / 
+\family typewriter
+ProposedExpressionAnalyser
+\family default
+ finish to avoid data inconsistencies but does not call the 
+\family typewriter
+FinalJudge
+\family default
+.
 \end_layout
 
 \end_body

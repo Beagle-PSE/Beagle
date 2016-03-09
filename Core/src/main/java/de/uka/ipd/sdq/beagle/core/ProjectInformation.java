@@ -124,4 +124,5 @@ public class ProjectInformation implements Serializable {
 	public Set<LaunchConfiguration> getLaunchConfigurations() {
 		return new HashSet<>(this.launchConfigurations);
 	}
+
 }

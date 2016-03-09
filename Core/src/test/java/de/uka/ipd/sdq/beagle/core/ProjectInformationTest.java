@@ -6,8 +6,12 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
 
+import de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyser;
+import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyser;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
+import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.LaunchConfigurationFactory;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
@@ -107,6 +111,36 @@ public class ProjectInformationTest {
 		final ProjectInformation projectInfo = new ProjectInformation(mock(Timeout.class),
 			mock(SourceCodeFileProvider.class), "", Charset.defaultCharset(), testLaunchConfig);
 		assertThat(projectInfo.getLaunchConfigurations(), is(testLaunchConfig));
+	}
+
+	/**
+	 * Testing some valid calls on analysisController.
+	 *
+	 */
+	@Test
+	public void setAnalysisState() {
+
+		final BlackboardFactory blackboardFactory = new BlackboardFactory();
+		final Set<MeasurementTool> measurementTools = new HashSet<MeasurementTool>();
+		measurementTools.add(mock(MeasurementTool.class));
+		final Set<MeasurementResultAnalyser> measurementResultAnalyser = new HashSet<MeasurementResultAnalyser>();
+		measurementResultAnalyser.add(mock(MeasurementResultAnalyser.class));
+		final Set<ProposedExpressionAnalyser> proposedExpressionAnalyser = new HashSet<ProposedExpressionAnalyser>();
+		proposedExpressionAnalyser.add(mock(ProposedExpressionAnalyser.class));
+
+		final AnalysisController analysisController = new AnalysisController(blackboardFactory.getEmpty(),
+			measurementTools, measurementResultAnalyser, proposedExpressionAnalyser);
+
+		analysisController.performAnalysis();
+
+		analysisController.setAnalysisState(analysisController.getAnalysisState());
+		/*
+		 * analysisController.setAnalysisState(AnalysisState.ENDING);
+		 * analysisController.setAnalysisState(AnalysisState.RUNNING);
+		 * analysisController.setAnalysisState(AnalysisState.ABORTING);
+		 * analysisController.setAnalysisState(AnalysisState.TERMINATED);
+		 */
+
 	}
 
 }

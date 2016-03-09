@@ -83,6 +83,16 @@ public class AnalysisController {
 	private final Set<ProposedExpressionAnalyser> proposedExpressionAnalysers;
 
 	/**
+	 * The current state of the analysis.
+	 */
+	private volatile AnalysisState analysisState;
+
+	/**
+	 * Whether the analysis is currently waiting (paused).
+	 */
+	private Boolean waiting;
+
+	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
 	 *
 	 * @param blackboard A blackboard having everything to be analysed written on it. Must
@@ -105,10 +115,14 @@ public class AnalysisController {
 		Validate.noNullElements(measurementResultAnalysers);
 		Validate.noNullElements(proposedExpressionAnalysers);
 
+		this.waiting = false;
 		this.blackboard = blackboard;
 		this.measurementController = new MeasurementController(measurementTools);
 		this.measurementResultAnalysers = new HashSet<>(measurementResultAnalysers);
 		this.proposedExpressionAnalysers = new HashSet<>(proposedExpressionAnalysers);
+
+		final Callback callback = new Callback(Thread.currentThread());
+		this.blackboard.getProjectInformation().getTimeout().registerCallback(callback);
 	}
 
 	/**
@@ -125,8 +139,9 @@ public class AnalysisController {
 
 		final FinalJudge finalJudge = new FinalJudge();
 		finalJudge.init(this.blackboard);
+		this.analysisState = AnalysisState.RUNNING;
 
-		while (!finalJudge.judge(this.blackboard)) {
+		while ((this.analysisState == AnalysisState.RUNNING) && !finalJudge.judge(this.blackboard)) {
 			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {
 				this.measurementController.measure(measurementControllerBlackboardView);
 
@@ -136,10 +151,33 @@ public class AnalysisController {
 				this.clearSeffElementsToBeMeasuredFromBlackboard();
 			}
 
-			if (!this.chooseRandomMeasurementResultAnalyserToContribute()) {
-				this.chooseRandomPropesedExpressionAnalyserToContribute();
+			if ((this.analysisState != AnalysisState.ABORTING)
+				&& !this.chooseRandomMeasurementResultAnalyserToContribute()) {
+				this.chooseRandomProposedExpressionAnalyserToContribute();
 			}
 		}
+
+		if (this.analysisState == AnalysisState.ENDING) {
+			/*
+			 * Call the {@link FinalJudge#judge} a last time so it measures the fitness
+			 * values and stores it on the blackboard.
+			 */
+			finalJudge.judge(this.blackboard);
+
+			while (this.analysisState != AnalysisState.RUNNING) {
+				synchronized (this.waiting) {
+					try {
+						this.waiting = true;
+						this.wait();
+					} catch (final InterruptedException exception) {
+						// Retry on interrupt. No handling is needed because the loop just
+						// tries again.
+					}
+				}
+			}
+		}
+
+		this.analysisState = AnalysisState.TERMINATED;
 	}
 
 	/**
@@ -222,7 +260,7 @@ public class AnalysisController {
 	 * @return {@code true} if the task was executed successfully; {@code false} if there
 	 *         was no {@link ProposedExpressionAnalyser} able to contribute.
 	 */
-	private boolean chooseRandomPropesedExpressionAnalyserToContribute() {
+	private boolean chooseRandomProposedExpressionAnalyserToContribute() {
 		final ReadOnlyProposedExpressionAnalyserBlackboardView readOnlyProposedExpressionAnalyserBlackboardView =
 			new ReadOnlyProposedExpressionAnalyserBlackboardView(this.blackboard);
 		final ProposedExpressionAnalyserBlackboardView proposedExpressionAnalyserBlackboardView =
@@ -259,5 +297,99 @@ public class AnalysisController {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Returns the current state of the analysis.
+	 *
+	 * @return The current state of the analysis.
+	 */
+	public AnalysisState getAnalysisState() {
+		return this.analysisState;
+	}
+
+	/**
+	 * Sets the current state of the analysis to {@code analysisState}. The analysis must
+	 * be started before this method is called. Otherwise an {@link IllegalStateException}
+	 * will be thrown.
+	 *
+	 * @param analysisState The state the analysis will be in after this method has been
+	 *            called.
+	 */
+	public void setAnalysisState(final AnalysisState analysisState) {
+		Validate.validState(this.analysisState != null);
+
+		/*
+		 * Ignore this method call if the new state is equal to the old state.
+		 */
+		if (this.analysisState.equals(analysisState)) {
+			return;
+		}
+
+		switch (analysisState) {
+			case RUNNING:
+				Validate.validState(this.analysisState == AnalysisState.ENDING,
+					"Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
+
+				this.analysisState = AnalysisState.RUNNING;
+
+				// Wake the waiting thread up.
+				synchronized (AnalysisController.this.waiting) {
+					if (AnalysisController.this.waiting) {
+						AnalysisController.this.waiting.notifyAll();
+					}
+				}
+				break;
+			case ABORTING:
+				Validate.validState(this.analysisState == AnalysisState.RUNNING,
+					"Can't switch from %s to AnalysisState.ABORTING.", this.analysisState);
+
+				this.analysisState = AnalysisState.ABORTING;
+
+				break;
+			case ENDING:
+				Validate.validState(this.analysisState == AnalysisState.RUNNING,
+					"Can't switch from %s to AnalysisState.ENDING.", this.analysisState);
+
+				this.analysisState = AnalysisState.ENDING;
+
+				break;
+			case TERMINATED:
+				this.analysisState = AnalysisState.TERMINATED;
+
+				break;
+			default:
+				Validate.isTrue(false);
+				break;
+		}
+	}
+
+	/**
+	 * The callback the {@link AnalysisController} uses to interrupt the working thread if
+	 * the user is pausing or aborting the analysis.
+	 *
+	 * @author Christoph Michelbach
+	 */
+	private class Callback implements Runnable {
+
+		/**
+		 * The main thread. (The working thread.)
+		 */
+		private Thread mainTread;
+
+		/**
+		 * Constructs a new callback for {@link AnalysisController}.
+		 *
+		 * @param mainThread The main thread. (The working thread.)
+		 */
+		Callback(final Thread mainThread) {
+			this.mainTread = mainThread;
+		}
+
+		@Override
+		public void run() {
+			this.mainTread.interrupt();
+		}
+
 	}
 }

@@ -1,15 +1,16 @@
 package de.uka.ipd.sdq.beagle.core.facade;
 
-import de.uka.ipd.sdq.beagle.core.timeout.AgingAlgorithmAdaptiveTimeout;
+import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
+import de.uka.ipd.sdq.beagle.core.timeout.AdaptiveTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.Timeout;
 
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.IJavaProject;
-import org.palladiosimulator.pcm.core.entity.Entity;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Configures a whole execution of Beagle. Therefore contains all values needed to set up
@@ -33,7 +34,7 @@ public class BeagleConfiguration {
 	 * All elements to measure or {@code null} to indicate that everything in
 	 * {@code repositoryFile} should be analysed.
 	 */
-	private List<Entity> elements;
+	private List<String> elements;
 
 	/**
 	 * The repository file.
@@ -56,20 +57,38 @@ public class BeagleConfiguration {
 	private boolean finalised;
 
 	/**
+	 * The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the analysis.
+	 */
+	private Set<LaunchConfiguration> launchConfigurations;
+
+	/**
+	 * The {@link File} containing the source statement link model.
+	 */
+	private File sourceStatementLinkFile;
+
+	/**
 	 * Constructs a new {@link BeagleConfiguration} using {@code elements} as the default
 	 * elements to be measured.
 	 *
 	 * @param elements The elements to be measured or {@code null} to indicate that
 	 *            everything in {@code repositoryFile} should be analysed.
 	 * @param repositoryFile The repository file to use. Must not be {@code null}.
+	 * @param sourceStatementLinkFile The xml file containing the PCM Element Source
+	 *            Statement Link Model.
 	 * @param javaProject the {@link IJavaProject} to analyse. Must not be {@code null}.
 	 */
-	public BeagleConfiguration(final List<Entity> elements, final File repositoryFile, final IJavaProject javaProject) {
+	public BeagleConfiguration(final List<String> elements, final File repositoryFile,
+		final File sourceStatementLinkFile, final IJavaProject javaProject) {
 		Validate.notNull(repositoryFile);
+		Validate.notNull(sourceStatementLinkFile);
 		Validate.notNull(javaProject);
 
 		if (!repositoryFile.exists()) {
-			throw new IllegalArgumentException("Repository file must exist.");
+			throw new IllegalArgumentException("Repository file must exist. Path was: " + repositoryFile.getPath());
+		}
+		if (!sourceStatementLinkFile.exists()) {
+			throw new IllegalArgumentException(
+				"Source code link file must exist. Path was: " + sourceStatementLinkFile.getPath());
 		}
 
 		if (elements != null) {
@@ -77,8 +96,9 @@ public class BeagleConfiguration {
 		}
 
 		this.repositoryFile = repositoryFile;
-		this.timeout = new AgingAlgorithmAdaptiveTimeout();
+		this.timeout = new AdaptiveTimeout();
 		this.javaProject = javaProject;
+		this.sourceStatementLinkFile = sourceStatementLinkFile;
 	}
 
 	/**
@@ -97,7 +117,7 @@ public class BeagleConfiguration {
 	 * @return The elements to be measured or {@code null} to indicate that everything in
 	 *         the {@linkplain #getRepositoryFile() repository file} should be analysed.
 	 */
-	public List<Entity> getElements() {
+	public List<String> getElements() {
 		return this.elements;
 	}
 
@@ -114,7 +134,7 @@ public class BeagleConfiguration {
 	 *             state.
 	 * @see #getElements()
 	 */
-	public void setElements(final List<Entity> elements) {
+	public void setElements(final List<String> elements) {
 		Validate.validState(!this.finalised,
 			"setting values is only allowed if this configuration is not yet finalised");
 		if (elements == null) {
@@ -150,6 +170,32 @@ public class BeagleConfiguration {
 	}
 
 	/**
+	 * Returns the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis.
+	 *
+	 * @return The {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 *         analysis.
+	 */
+	public Set<LaunchConfiguration> getLaunchConfigurations() {
+		return this.launchConfigurations;
+	}
+
+	/**
+	 * Sets the {@linkplain LaunchConfiguration LaunchConfigurations} to use for the
+	 * analysis. This operation is only allowed in the <em>set up</em> state.
+	 *
+	 * @param launchConfigurations The {@linkplain LaunchConfiguration
+	 *            LaunchConfigurations} to use for the analysis.
+	 * @throws IllegalStateException If this configuration is not in the <em>set up</em>
+	 *             state.
+	 */
+	public void setLaunchConfigurations(final Set<LaunchConfiguration> launchConfigurations) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
+		this.launchConfigurations = launchConfigurations;
+	}
+
+	/**
 	 * Returns the repository file that contains all elements that shall be analysed.
 	 *
 	 * @return The repository file Beagle will operate on.
@@ -173,6 +219,30 @@ public class BeagleConfiguration {
 			"setting values is only allowed if this configuration is not yet finalised");
 		Validate.notNull(repositoryFile);
 		this.repositoryFile = repositoryFile;
+	}
+
+	/**
+	 * Sets the file containing the model linking PCM elements to their positions in the
+	 * source code.
+	 *
+	 * @param sourceStatementLinkFile The XML file containing the PCM Source Statement
+	 *            Links Model.
+	 */
+	public void setSourceStatementLinkFile(final File sourceStatementLinkFile) {
+		Validate.validState(!this.finalised,
+			"setting values is only allowed if this configuration is not yet finalised");
+		Validate.notNull(sourceStatementLinkFile);
+		this.sourceStatementLinkFile = sourceStatementLinkFile;
+	}
+
+	/**
+	 * Returns the file containing the model linking PCM elements to their positions in
+	 * the source code.
+	 *
+	 * @return The XML file containing the PCM Source Statement Links Model.
+	 */
+	public File getSourceStatementLinkFile() {
+		return this.sourceStatementLinkFile;
 	}
 
 	/**
