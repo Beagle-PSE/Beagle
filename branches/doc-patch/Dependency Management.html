@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head> 
+        <meta charset="utf-8"> 
+        <title>Beagle—Dependency Management</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="fonts/cm-sans/cmun-sans.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-serif/cmun-serif.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/cm-typewriter/cmun-typewriter.css" type="text/css"> 
+        <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css" type="text/css"> 
+        <link rel="stylesheet" href="css/index.css" type="text/css"> 
+    </head> 
+    <body> 
+        <h1>Dependency Management</h1> 
+        <p>Every Java project can add a <code>dependencies.gradle</code> file in its top most folder. In it, it may declare its dependencies using [gradle’s syntax]. The special dependency configurations <code>production</code> and <code>tests</code> must be used. These dependencies will also automatically be imported through Buildship into Eclipse.</p> 
+        <h2>Eclipse Plugin Dependencies</h2> 
+        <p>An Eclipse Project’s dependencies on other Eclipse Plugins are declared in <code>src/main/resources/META-INF/MANIFEST.MF</code>. Eclipse offers a convenient visual editor for editing it.</p> 
+        <p><em>Heads up</em>: Due to a limitation in <code>wuff</code>, the gradle plugin that builds the Eclipse projects, dependencies in the <code>MANIFEST.MF</code> must not declare a version! As Eclipse usually adds a version requirement, it must be removed manually.</p> 
+        <h3>Update Sites</h3> 
+        <p>Dependencies defined in the <code>MANIFEST.MF</code> must come from an update site. If a declared dependency is not provided by any update site yet, add an appropriate update site to <code>Beagle/buildSrc/src/tasks/gradle/20 eclipse plugins.gradle</code>.</p> 
+        <h2>Build Dependencies</h2> 
+        <p>Build dependencies are the ones required by build code. Tasks can define them in the task file itself. Code in a project’s <code>buildSrc/src/main/groovy</code> folder may add a <code>dependencies.gradle</code> file and declare dependencies there.</p>  
+    </body>
+</html>
