@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.systemtest;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.FileLocator;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -57,9 +58,10 @@ public class PalladioFileShareSystemTest {
 
 	/**
 	 * Prepares the workspace for the system test.
+	 * @throws IOException If accessing the project files fails.
 	 */
 	@Test
-	public void m0setupWorkspace() {
+	public void m0setupWorkspace() throws IOException {
 
 		// import the projects
 		WORKSPACE.importProject(load(COMPRESS_MOCK_LOCATION));
@@ -67,6 +69,9 @@ public class PalladioFileShareSystemTest {
 
 		// create folders PalladioFileShare needs
 		new File(fileShareProjectFolder, "results").mkdir();
+		
+		// remove model folder (which is checked in)
+		FileUtils.deleteDirectory(new File(fileShareProjectFolder, "model"));
 
 		// import the test driver configuration
 		WORKSPACE.loadLaunchConfiguration(load(TEST_DRIVER_LAUNCH_CONFIGURATION));
