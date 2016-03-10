@@ -43,6 +43,12 @@ public class PcmRepositorySeffExtractor {
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Beagle FileNotFound Handler");
 
 	/**
+	 * If Somox' generates no more output with multiple identifiers relating to the same
+	 * seffElements, this can be set to true.
+	 */
+	private static final boolean SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS = false;
+	
+	/**
 	 * Temporary storage for all extracted {@link SeffLoop SeffLoops} that should be
 	 * written on the {@link Blackboard}.
 	 */
@@ -93,11 +99,6 @@ public class PcmRepositorySeffExtractor {
 	 */
 	private final PcmCodeSectionGenerator codeSectionGenerator;
 
-	/**
-	 * If Somox' generates no more output with multiple identifiers relating to the same
-	 * seffElements, this can be set to true.
-	 */
-	private final boolean somoxIdentifiersAreUnambiguous = false;
 
 	/**
 	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
@@ -381,7 +382,7 @@ public class PcmRepositorySeffExtractor {
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final ResourceDemandingInternalAction rdia,
 		final String identifier) {
-		if (this.somoxIdentifiersAreUnambiguous) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
 			return false;
 		}
 
@@ -402,7 +403,7 @@ public class PcmRepositorySeffExtractor {
 	 *         {@false}.
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final ExternalCallParameter exParam, final String identifier) {
-		if (this.somoxIdentifiersAreUnambiguous) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
 			return false;
 		}
 
@@ -424,7 +425,7 @@ public class PcmRepositorySeffExtractor {
 	 *         {@false}.
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final SeffBranch seffBranch, final String identifier) {
-		if (this.somoxIdentifiersAreUnambiguous) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
 			return false;
 		}
 
@@ -446,7 +447,7 @@ public class PcmRepositorySeffExtractor {
 	 *         {@false}.
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final SeffLoop seffLoop, final String identifier) {
-		if (this.somoxIdentifiersAreUnambiguous) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
 			return false;
 		}
 
