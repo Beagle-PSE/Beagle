@@ -1,0 +1,16 @@
+/**
+ * Configuration for the system tests.
+ *
+ * @author Joshua Gleitze
+ */
+
+// Don’t run the system tests through gradle! They only work within Eclipse.
+test {
+	exclude '**'
+}
+
+// Eclipse forces us to declare junit in MANIFEST.MF. However, this does not work with wuff
+// so we add junit once again.
+dependencies {
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+}

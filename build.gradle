@@ -17,7 +17,7 @@ ext.javaSubprojects = allprojects.findAll { project ->
  * Eclipse Plugin subprojects. Detected by having 'org.eclipse.pde.PluginNature' in their
  * .project file.
  */
-ext.eclipseSubprojects = subprojects.findAll { project ->
+ext.eclipseSubprojects = allprojects.findAll { project ->
 	file("$project.projectDir/.project").with { 
 		exists() && text.contains('org.eclipse.pde.PluginNature')
 	}
