@@ -376,9 +376,9 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 * @param rdia the seffElement to check
 	 * @param identifier the Identifier to check
-	 * @return {@true} if there are no collisions otherwise {@false}. May be shut down by
-	 *         the variable {@link #somoxIdentifiersWorkCorrectly} and returning always
-	 *         {@false}.
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final ResourceDemandingInternalAction rdia,
 		final String identifier) {
@@ -398,9 +398,9 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 * @param exParam the seffElement to check
 	 * @param identifier the Identifier to check
-	 * @return {@true} if there are no collisions otherwise {@false}. May be shut down by
-	 *         the variable {@link #somoxIdentifiersWorkCorrectly} and returning always
-	 *         {@false}.
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final ExternalCallParameter exParam, final String identifier) {
 		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
@@ -420,9 +420,9 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 * @param seffBranch the seffElement to check
 	 * @param identifier the Identifier to check
-	 * @return {@true} if there are no collisions otherwise {@false}. May be shut down by
-	 *         the variable {@link #somoxIdentifiersWorkCorrectly} and returning always
-	 *         {@false}.
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final SeffBranch seffBranch, final String identifier) {
 		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
@@ -442,9 +442,9 @@ public class PcmRepositorySeffExtractor {
 	 *
 	 * @param seffLoop the seffElement to check
 	 * @param identifier the Identifier to check
-	 * @return {@true} if there are no collisions otherwise {@false}. May be shut down by
-	 *         the variable {@link #somoxIdentifiersWorkCorrectly} and returning always
-	 *         {@false}.
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
 	 */
 	private boolean shouldBeIgnoredDueToSomoxCollision(final SeffLoop seffLoop, final String identifier) {
 		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
