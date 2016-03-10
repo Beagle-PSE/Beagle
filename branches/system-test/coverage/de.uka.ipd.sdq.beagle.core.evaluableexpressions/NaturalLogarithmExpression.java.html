@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>NaturalLogarithmExpression.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.evaluableexpressions</a> &gt; <span class="el_source">NaturalLogarithmExpression.java</span></div><h1>NaturalLogarithmExpression.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.evaluableexpressions;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
+/**
+ * Expression that executes the natural logarithmic function. The antilogarithm is a
+ * contained {@link EvaluableExpression} and the base is e (Euler’s number).
+ *
+ * @author Annika Berger
+ */
+public class NaturalLogarithmExpression implements EvaluableExpression {
+
+	/**
+	 * The antilogarithm of the expression.
+	 */
+	private final EvaluableExpression antilogarithm;
+
+	/**
+	 * Builds an expression which returns the result of a logarithm of the antilogarithm
+	 * to the base.
+	 *
+	 * @param antilogarithm The antilogarithm for this expression. Must not be
+	 *            {@code null}.
+	 */
+<span class="fc" id="L27">	public NaturalLogarithmExpression(final EvaluableExpression antilogarithm) {</span>
+<span class="fc" id="L28">		Validate.notNull(antilogarithm);</span>
+<span class="fc" id="L29">		this.antilogarithm = antilogarithm;</span>
+<span class="fc" id="L30">	}</span>
+
+	/**
+	 * Get the {@link EvaluableExpression} which is the antilogarithm, or parameter of the
+	 * {@code LogarithmExpression}.
+	 *
+	 * @return The antilogarithm expression.
+	 */
+	public EvaluableExpression getAntilogarithm() {
+<span class="fc" id="L39">		return this.antilogarithm;</span>
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#receive(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableExpressionVisitor)
+	 */
+	@Override
+	public void receive(final EvaluableExpressionVisitor visitor) {
+<span class="fc" id="L50">		Validate.notNull(visitor);</span>
+<span class="fc" id="L51">		visitor.visit(this);</span>
+<span class="fc" id="L52">	}</span>
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * de.uka.ipd.sdq.beagle.core.expressions.EvaluableExpression#evaluate(de.uka.sdq.
+	 * beagle. core.expressions.EvaluableVariableAssignment)
+	 */
+	@Override
+	public double evaluate(final EvaluableVariableAssignment variableAssignments) {
+<span class="fc" id="L63">		Validate.notNull(variableAssignments);</span>
+<span class="fc" id="L64">		return Math.log(this.antilogarithm.evaluate(variableAssignments));</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L69">		return String.format(&quot;(ln%s)&quot;, this.antilogarithm);</span>
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">		if (object == null) {</span>
+<span class="fc" id="L75">			return false;</span>
+		}
+<span class="fc bfc" id="L77" title="All 2 branches covered.">		if (object == this) {</span>
+<span class="fc" id="L78">			return true;</span>
+		}
+<span class="fc bfc" id="L80" title="All 2 branches covered.">		if (object.getClass() != this.getClass()) {</span>
+<span class="fc" id="L81">			return false;</span>
+		}
+<span class="fc" id="L83">		final NaturalLogarithmExpression other = (NaturalLogarithmExpression) object;</span>
+<span class="fc" id="L84">		return new EqualsBuilder().append(this.antilogarithm, other.antilogarithm).isEquals();</span>
+	}
+
+	@Override
+	public int hashCode() {
+		// you pick a hard-coded, randomly chosen, non-zero, odd number
+		// ideally different for each class
+<span class="fc" id="L91">		return new HashCodeBuilder(227, 229).append(this.antilogarithm).toHashCode();</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
