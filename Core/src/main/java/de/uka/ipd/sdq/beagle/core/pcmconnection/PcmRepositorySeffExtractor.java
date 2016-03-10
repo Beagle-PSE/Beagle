@@ -43,6 +43,12 @@ public class PcmRepositorySeffExtractor {
 	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Beagle FileNotFound Handler");
 
 	/**
+	 * If Somox' generates no more output with multiple identifiers relating to the same
+	 * seffElements, this can be set to true.
+	 */
+	private static final boolean SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS = false;
+	
+	/**
 	 * Temporary storage for all extracted {@link SeffLoop SeffLoops} that should be
 	 * written on the {@link Blackboard}.
 	 */
@@ -92,6 +98,7 @@ public class PcmRepositorySeffExtractor {
 	 * The {@link PcmCodeSectionGenerator} that creates {@link CodeSection} for given ID.
 	 */
 	private final PcmCodeSectionGenerator codeSectionGenerator;
+
 
 	/**
 	 * Constructor needs access to the real sets (no copy!), manipulating them by adding
@@ -196,9 +203,16 @@ public class PcmRepositorySeffExtractor {
 
 		try {
 			final CodeSection codeSection = this.codeSectionGenerator.getCodeSectionForID(internalAction.getId());
-
 			final ResourceDemandingInternalAction rdiaCpu =
 				new ResourceDemandingInternalAction(ResourceDemandType.RESOURCE_TYPE_CPU, codeSection);
+
+			if (this.shouldBeIgnoredDueToSomoxCollision(rdiaCpu, internalAction.getId())) {
+				return;
+				// The other rdiaTypes do not need to be analysed, because if one of them
+				// would be present in the mapping,
+				// rdiaCPU would be present, too.
+			}
+
 			this.rdiaSet.add(rdiaCpu);
 			this.pcmMapper.addPcmIdOf(rdiaCpu, internalAction.getId());
 
@@ -244,8 +258,12 @@ public class PcmRepositorySeffExtractor {
 
 		try {
 			final CodeSection codeSection = this.codeSectionGenerator.getCodeSectionForID(externalAction.getId());
-
 			final ExternalCallParameter exCallParam = new ExternalCallParameter(codeSection, this.zero);
+
+			if (this.shouldBeIgnoredDueToSomoxCollision(exCallParam, externalAction.getId())) {
+				return;
+			}
+
 			this.externalCallParameterSet.add(exCallParam);
 			this.pcmMapper.addPcmIdOf(exCallParam, externalAction.getId());
 		} catch (final FileNotFoundException exception) {
@@ -283,6 +301,11 @@ public class PcmRepositorySeffExtractor {
 					.getCodeSectionForID(branchTransition.getBranchBehaviour_BranchTransition().getId()));
 			}
 			final SeffBranch seffBranch = new SeffBranch(codeSectionSet);
+			
+			if (this.shouldBeIgnoredDueToSomoxCollision(seffBranch, branchAction.getId())) {
+				return;
+			}
+			
 			this.seffBranchSet.add(seffBranch);
 			this.pcmMapper.addPcmIdOf(seffBranch, branchAction.getId());
 		} catch (final FileNotFoundException exception) {
@@ -324,6 +347,11 @@ public class PcmRepositorySeffExtractor {
 			final CodeSection codeSection =
 				this.codeSectionGenerator.getCodeSectionForID(loopAction.getBodyBehaviour_Loop().getId());
 			final SeffLoop seffLoop = new SeffLoop(codeSection);
+			
+			if (this.shouldBeIgnoredDueToSomoxCollision(seffLoop, loopAction.getId())) {
+				return;
+			}
+			
 			this.seffLoopSet.add(seffLoop);
 			this.pcmMapper.addPcmIdOf(seffLoop, loopAction.getId());
 		} catch (final FileNotFoundException exception) {
@@ -340,6 +368,94 @@ public class PcmRepositorySeffExtractor {
 		 * loopAction.getId()); } } catch (final FileNotFoundException fileNotFoundE) {
 		 * this.handleFailureFor(loopAction, fileNotFoundE); }
 		 */
+	}
+
+	/**
+	 * Testing method to prevent Beagle to fail due to Somox producing ambiguous
+	 * identifiers.
+	 *
+	 * @param rdia the seffElement to check
+	 * @param identifier the Identifier to check
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
+	 */
+	private boolean shouldBeIgnoredDueToSomoxCollision(final ResourceDemandingInternalAction rdia,
+		final String identifier) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
+			return false;
+		}
+
+		if (this.pcmMapper.hasPcmIdOf(rdia) && !this.pcmMapper.getPcmIdOf(rdia).equals(identifier)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Testing method to prevent Beagle to fail due to Somox producing ambiguous
+	 * identifiers.
+	 *
+	 * @param exParam the seffElement to check
+	 * @param identifier the Identifier to check
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
+	 */
+	private boolean shouldBeIgnoredDueToSomoxCollision(final ExternalCallParameter exParam, final String identifier) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
+			return false;
+		}
+
+		if (this.pcmMapper.hasPcmIdOf(exParam) && !this.pcmMapper.getPcmIdOf(exParam).equals(identifier)) {
+			return true;
+		}
+
+		return false;
+	}
+	
+	/**
+	 * Testing method to prevent Beagle to fail due to Somox producing ambiguous
+	 * identifiers.
+	 *
+	 * @param seffBranch the seffElement to check
+	 * @param identifier the Identifier to check
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
+	 */
+	private boolean shouldBeIgnoredDueToSomoxCollision(final SeffBranch seffBranch, final String identifier) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
+			return false;
+		}
+
+		if (this.pcmMapper.hasPcmIdOf(seffBranch) && !this.pcmMapper.getPcmIdOf(seffBranch).equals(identifier)) {
+			return true;
+		}
+
+		return false;
+	}
+	
+	/**
+	 * Testing method to prevent Beagle to fail due to Somox producing ambiguous
+	 * identifiers.
+	 *
+	 * @param seffLoop the seffElement to check
+	 * @param identifier the Identifier to check
+	 * @return {@code true} if there are no collisions otherwise {@code false}. May be shut down by
+	 *         the variable {@link #SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS} and returning always
+	 *         {@code false}.
+	 */
+	private boolean shouldBeIgnoredDueToSomoxCollision(final SeffLoop seffLoop, final String identifier) {
+		if (SOMOX_IDENTIFIERS_ARE_UNAMBIGUOUS) {
+			return false;
+		}
+
+		if (this.pcmMapper.hasPcmIdOf(seffLoop) && !this.pcmMapper.getPcmIdOf(seffLoop).equals(identifier)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
