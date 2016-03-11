@@ -1,0 +1,22 @@
+/**
+ * Exports Core’s tests so helper classes defined in it can be used
+ * in other project’s tests.
+ *
+ * @author Joshua Gleitze
+ */
+ 
+task jarTest(type:Jar) {
+	dependsOn testClasses
+	description 'Creates a JAR containing the project’s tests'
+
+	from sourceSets.test.output
+	classifier = 'test'
+}
+
+configurations {
+	testArchives
+}
+
+artifacts {
+	testArchives jarTest
+}
