@@ -10,15 +10,26 @@ buildscript {
 	}
 	
 	dependencies {
-    	classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1.0'
+    	classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1+'
+    	classpath group: 'at.bxm.gradleplugins', name: 'gradle-svntools-plugin', version: 'latest.release'
 	}
 }
 
+import at.bxm.gradleplugins.svntools.tasks.SvnCheckout
+import at.bxm.gradleplugins.svntools.SvnToolsPlugin
+
 apply plugin: 'de.undercouch.download'
+apply plugin: SvnToolsPlugin
 
 def tmp = file("$buildDir/tmp/test-resources")
 
-def cocomeDest = file("$projectDir/src/test/resources/CoCoME")
+def appsensorSource = 'https://github.com/jtmelton/appsensor/archive/v2.2.0.zip'
+def appsensorZipName = 'v2.2.0.zip'
+def specJvmSource = 'https://svnserver.informatik.kit.edu/i43/svn/code/BySuite/ByCounter/trunk/SPECjvm2008_1.00/'
+def fileShareSource = 'https://svnserver.informatik.kit.edu/i43/svn/code/CaseStudies/FileShare/trunk/'
+
+def fileShareDest = file("$projectDir/src/test/resources/PalladioFileShare")
+def specJvmDest = file("$projectDir/src/test/resources/SPECjvm2008")
 def appsensorDest = file("$projectDir/src/test/resources/AppSensor")
 
 /**
@@ -29,35 +40,22 @@ def shiftUp =  { FileCopyDetails fcp ->
 	def pathsegments = fcp.relativeSourcePath.segments[1..-1] as String[]
 	fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
 }
-            
 
-task downloadCocome {
+task dowloadFileShare(type: SvnCheckout) {
 	group "Build Setup"
-	description "Deploys CoCoME to be used for testing Beagle"
-	outputs.dir cocomeDest
+	description "Deploys PalladioFileShare to be used for testing Beagle"
+	outputs.dir fileShareDest
 	
-	doLast {
-		tmp.mkdirs()
-		
-		download {
-			src ([
-				'http://www.cocome.org/downloads/implementation/cocome-impl.zip',
-				'http://www.cocome.org/downloads/implementation/cocome-systests.zip',
-				'http://www.cocome.org/downloads/implementation/cocome-testdriver.zip'
-			])
-			onlyIfNewer true
-			quiet true
-			dest tmp
-		}
-		
-		copy {
-			from zipTree("$tmp/cocome-impl.zip"), zipTree("$tmp/cocome-systests.zip"), zipTree("$tmp/cocome-testdriver.zip")
-			eachFile shiftUp
-			includeEmptyDirs false
-			into cocomeDest
-		}
+	svnUrl fileShareSource
+	workspaceDir fileShareDest
+	username = 'anonymous'
+	password = 'anonymous'
+	
+	doFirst {
+		delete fileShareDest
 	}
 }
+
 
 task downloadAppSensor {
 	group "Build Setup"
@@ -68,14 +66,14 @@ task downloadAppSensor {
 		tmp.mkdirs()
 		
 		download {
-			src 'https://github.com/jtmelton/appsensor/archive/v2.2.0.zip'
+			src appsensorSource
 			onlyIfNewer true
 			quiet true
 			dest tmp
 		}
 		
 		copy {
-			from zipTree("$tmp/v2.2.0.zip")
+			from zipTree("$tmp/$appsensorZipName")
 			eachFile shiftUp
 			includeEmptyDirs false
 			into appsensorDest
@@ -88,12 +86,12 @@ task cleanTestProjects {
 	group "Build Setup"
 
 	doLast {
-		delete cocomeDest, appsensorDest
+		delete fileShareDest, appsensorDest
 	}	
 }
 
 configure(javaSubprojects) {
-	test.dependsOn rootProject.tasks.downloadCocome
+	test.dependsOn rootProject.tasks.dowloadFileShare
 	test.dependsOn rootProject.tasks.downloadAppSensor
 	clean.dependsOn rootProject.tasks.cleanTestProjects
 }
