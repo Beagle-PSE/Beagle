@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 
 /**
  * Executes Beagle on the PalladioFileShare project.
@@ -58,6 +59,7 @@ public class PalladioFileShareSystemTest {
 
 	/**
 	 * Prepares the workspace for the system test.
+	 *
 	 * @throws IOException If accessing the project files fails.
 	 */
 	@Test
@@ -69,7 +71,7 @@ public class PalladioFileShareSystemTest {
 
 		// create folders PalladioFileShare needs
 		new File(fileShareProjectFolder, "results").mkdir();
-		
+
 		// remove model folder (which is checked in)
 		FileUtils.deleteDirectory(new File(fileShareProjectFolder, "model"));
 
@@ -104,12 +106,19 @@ public class PalladioFileShareSystemTest {
 		if (classpathUrl == null) {
 			throw new RuntimeException(path + " cannot be found!");
 		}
+
 		try {
+			// we already have a file URL, so we can directly return the file
+			if ("file".equals(classpathUrl.getProtocol())) {
+				return new File(classpathUrl.toURI());
+			}
+
+			// we have a bundle URL and need to resolve it into an file url
 			final URL fileUrl = FileLocator.toFileURL(classpathUrl);
 			// The URL to Path conversion has to be done like this, to make it work with
 			// Linux and Windows style paths.
 			final URI urii = new URI(fileUrl.getProtocol(), fileUrl.getPath(), null);
-			return new File(urii);
+			return Paths.get(urii).toAbsolutePath().toFile();
 		} catch (final URISyntaxException | IOException loadError) {
 			throw new RuntimeException(loadError);
 		}
