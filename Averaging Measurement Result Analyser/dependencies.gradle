@@ -12,4 +12,5 @@ dependencies {
 	
 	// Test dependency to Beagle Core, is mapped differently in Eclipse
 	testCompile project (path: ':Core', configuration: 'testArchives')
+	testRuntime project (path: ':Core', configuration: 'testRuntime')
 }
