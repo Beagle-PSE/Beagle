@@ -531,7 +531,7 @@ added glossary type 'acronym' (alg,acr,acn)
 xindy  -L english -C utf8 -I xindy -M "Design and Architecture" -t "Design and Architecture.glg" -o "Design and Architecture.gls" "Design and Architecture.glo"
 Opening logfile "Design and Architecture.glg" (done)
 Reading indexstyle...
-Loading module "/tmp/cLfz9w6asF"...
+Loading module "/tmp/klnKfOOD8W"...
 Loading module "lang/english/utf8-lang.xdy"...
 Loading module "lang/english/utf8.xdy"...
 Finished loading module "lang/english/utf8.xdy".
@@ -540,11 +540,11 @@ Loading module "Design and Architecture.xdy"...
 Loading module "tex.xdy"...
 Finished loading module "tex.xdy".
 Finished loading module "Design and Architecture.xdy".
-Finished loading module "/tmp/cLfz9w6asF".
+Finished loading module "/tmp/klnKfOOD8W".
 Finished reading indexstyle.
 Finalizing indexstyle... (done)
 
-Reading raw-index "/tmp/MLAuEGn_IW"...
+Reading raw-index "/tmp/De0Q7tdJlm"...
 Finished reading raw-index.
 
 Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
@@ -555,7 +555,7 @@ Markup written into file "Design and Architecture.gls".
 xindy  -L english -C utf8 -I xindy -M "Design and Architecture" -t "Design and Architecture.alg" -o "Design and Architecture.acr" "Design and Architecture.acn"
 Opening logfile "Design and Architecture.alg" (done)
 Reading indexstyle...
-Loading module "/tmp/nDtmN_taW9"...
+Loading module "/tmp/n5AT0EszkY"...
 Loading module "lang/english/utf8-lang.xdy"...
 Loading module "lang/english/utf8.xdy"...
 Finished loading module "lang/english/utf8.xdy".
@@ -564,11 +564,11 @@ Loading module "Design and Architecture.xdy"...
 Loading module "tex.xdy"...
 Finished loading module "tex.xdy".
 Finished loading module "Design and Architecture.xdy".
-Finished loading module "/tmp/nDtmN_taW9".
+Finished loading module "/tmp/n5AT0EszkY".
 Finished reading indexstyle.
 Finalizing indexstyle... (done)
 
-Reading raw-index "/tmp/A6wdVJMdFd"...
+Reading raw-index "/tmp/ifp6XBA6At"...
 Finished reading raw-index.
 
 Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
@@ -1053,7 +1053,7 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (34 pages, 474920 bytes).
+Output written on "Design and Architecture.pdf" (34 pages, 474921 bytes).
 Transcript written on "Design and Architecture.log".
 
 
@@ -1542,7 +1542,7 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 477523 bytes).
+Output written on "Design and Architecture.pdf" (35 pages, 477528 bytes).
 Transcript written on "Design and Architecture.log".
 
 
@@ -1986,7 +1986,7 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 478112 bytes).
+Output written on "Design and Architecture.pdf" (35 pages, 478121 bytes).
 Transcript written on "Design and Architecture.log".
 
 
@@ -2430,5 +2430,5 @@ nts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on "Design and Architecture.pdf" (35 pages, 478112 bytes).
+Output written on "Design and Architecture.pdf" (35 pages, 478121 bytes).
 Transcript written on "Design and Architecture.log".
