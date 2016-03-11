@@ -65,7 +65,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository = new PcmSourceStatementLinkReader(
 			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
-				+ "model/internal_architecture_model.repository")).getPcmSourceLinkRepository();
+				+ "model/internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 		assertThat(new ThrowingMethod() {
 
@@ -217,7 +217,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
 		new PcmRepositoryBlackboardFactoryAdder(
-			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository"),
+			new File(
+				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/internal_architecture_model_source_statement_links.xml"),
 			PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
 			pcmSourceStatementLinkRepository).getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
@@ -249,7 +250,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		assertThat(result.getAllRdias().size(), is(not(0)));
 		assertThat(result.getAllSeffBranches().size(), is(not(0)));
-		assertThat(result.getAllSeffLoops().size(), is(0));
+		assertThat(result.getAllSeffLoops().size(), is(not(0)));
 
 		// Use a corrupted repository here.
 
@@ -262,8 +263,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
 					new PcmSourceStatementLinkReader(
 						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
-							+ "internal_architecture_model Corrupted SeffBranch.repository"))
-								.getPcmSourceLinkRepository();
+							+ "internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 				new PcmRepositoryBlackboardFactoryAdder(
 					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
@@ -281,7 +281,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
 					new PcmSourceStatementLinkReader(
 						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
-							+ "internal_architecture_model Corrupted RDIA.repository")).getPcmSourceLinkRepository();
+							+ "internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 				new PcmRepositoryBlackboardFactoryAdder(
 					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
@@ -299,8 +299,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
 					new PcmSourceStatementLinkReader(
 						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
-							+ "internal_architecture_model Corrupted ExtCallParameter.repository"))
-								.getPcmSourceLinkRepository();
+							+ "internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 				new PcmRepositoryBlackboardFactoryAdder(
 					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
@@ -392,19 +391,19 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final BlackboardCreator blackboardCreator1 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator1,
-			"_6f1a4LnmEeWVlphM5rov7g");
+			"_Dr5WiOe1EeW5NafnxUciog");
 		blackboardCreator1.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator1.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator1.createBlackboard(), is(not(nullValue())));
 
 		final BlackboardCreator blackboardCreator2 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator2,
-			"_6f1a4LnmEeWVlphM5rov7g");
+			"_Dr5WiOe1EeW5NafnxUciog");
 		blackboardCreator2.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator2.setProjectInformation(mock(ProjectInformation.class));
 		final BlackboardCreator blackboardCreator3 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator3,
-			"_6f1a4LnmEeWVlphM5rov7g");
+			"_Dr5WiOe1EeW5NafnxUciog");
 		blackboardCreator3.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator3.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator2.createBlackboard(),
@@ -414,7 +413,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 		// Family.repositor}.
 		final BlackboardCreator blackboardCreator4 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator4,
-			"_EofuUYRwEeWnEbz-sg1tMg");
+			"_Dr2TM-e1EeW5NafnxUciog");
 		blackboardCreator4.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator4.setProjectInformation(mock(ProjectInformation.class));
 		final BlackboardCreator blackboardCreator5 = new BlackboardCreator();
@@ -427,7 +426,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final BlackboardCreator blackboardCreator6 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator6,
-			"_EofuUYRwEeWnEbz-sg1tMg");
+			"_Dr2TM-e1EeW5NafnxUciog");
 		blackboardCreator6.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator6.setProjectInformation(mock(ProjectInformation.class));
 		final BlackboardCreator blackboardCreator7 = new BlackboardCreator();
