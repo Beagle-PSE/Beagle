@@ -50,6 +50,10 @@ task dowloadFileShare(type: SvnCheckout) {
 	workspaceDir fileShareDest
 	username = 'anonymous'
 	password = 'anonymous'
+	
+	doFirst {
+		delete fileShareDest
+	}
 }
 
 
