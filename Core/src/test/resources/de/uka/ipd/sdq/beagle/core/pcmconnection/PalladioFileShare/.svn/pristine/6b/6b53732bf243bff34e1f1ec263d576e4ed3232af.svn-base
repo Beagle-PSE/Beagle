@@ -1,0 +1,10 @@
+package de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb;
+
+public class DbAccess {
+	
+	public void queryDatabase(String database) {
+		if(database.endsWith("abc")) {
+			CopyrightedMaterialDatabase.getSingleton().checkIsCopyrightedMaterial(null);
+		}
+	}
+}

@@ -1,0 +1,16 @@
+package de.uka.ipd.sdq.palladiofileshare.algorithms;
+
+public interface IHash {
+
+	/**
+	 * @param inputBytes
+	 * @return
+	 */
+	public abstract byte[] getMessageDigest(byte[] inputBytes);
+
+	/**TODO
+	 * @return the (final static) message digest type represented by this object
+	 */
+	public abstract String getMessageDigestType();
+
+}

@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sourcecodedecorator:SourceCodeDecoratorRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:functions="http://www.fzi.de/gast/functions" xmlns:sourcecodedecorator="http://q-impress.eu/sourcecodedecorator" xmlns:staticstructure="http://q-impress.eu/samm/staticstructure">
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4G0W0IKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_xCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KQFUIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_cid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KQFUIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_vCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KQFUIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_hSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPSIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_vid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPSIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_jSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPTIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_xid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPTIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_hyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPUoKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_oCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPUoKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_gSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_hid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_fid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_sid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_sid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_sid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_jCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_lyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_kyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_pSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_syd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_kSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_iCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_vSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_lid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_uid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_gyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_qid3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_rSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_hCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_tyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_vyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_oSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_qyd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_sCd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_qSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_xSd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <fileLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_ryd3Ed-qUd-zHYdFdw"/>
+  </fileLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4G0W0IKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_xCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0W0oKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUkdKCd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4G0W0IKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_xCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0W2IKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUkdKid3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KQFUIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_cid3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0W4YKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3Xeyd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <operation href="internal_architecture_model.samm_repository#_4G0W7YKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nVd0lCd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPSIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_fCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0W8IKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUkcbCd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <file href="PalladioFileShare.gast#_nT9_mCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0W94KjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtm7Cd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <file href="PalladioFileShare.gast#_nT9_mCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0W-oKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtm7id3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPTIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_dyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0W_YKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtm1Cd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPTIKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_dyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0XAIKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtm1id3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPUoKjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_rCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G0XA4KjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtmmCd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nSd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4G-ICIKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3Xsyd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH494KjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X3yd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH4-IKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X4Sd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH4-YKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X4yd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH4-oKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X5Sd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH4_4KjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X5yd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH5CIKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X6Sd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH5CYKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X6yd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH5CoKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X7Sd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH5C4KjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X7yd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH5DoKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X8Sd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH5E4KjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X8yd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_nyd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4HH5FIKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nU3X9Sd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4Ha0cIKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtnDid3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4Ha0c4KjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtnECd3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <methodLevelSourceCodeLink>
+    <componentType xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <file href="PalladioFileShare.gast#_nT9_wCd3Ed-qUd-zHYdFdw"/>
+    <operation href="internal_architecture_model.samm_repository#_4Ha0eIKjEd-JLc_SCYLXiw"/>
+    <function xsi:type="functions:Method" href="PalladioFileShare.gast#_nUtnEid3Ed-qUd-zHYdFdw"/>
+  </methodLevelSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W4IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwnyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W74KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwhyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwoSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XCIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwrSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XCIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwrSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XFIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw3Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W74KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwhyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XR4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwwCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwoSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XU4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwsid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XWIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwuid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XfoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwxCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XfoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwxCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-H0YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw2id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-H4oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwzyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-H6oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwxSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-H8YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwyyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-H8YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwyyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-IB4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-ID4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHweid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH40IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH49oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5JYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHweyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5PoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5a4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5mIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw6id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5mIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw6id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5JYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHweyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-ID4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHweid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HRCwIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw6Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HRCzoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwwid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HRC24KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwmSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HRC84KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw4id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5PoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5a4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH40IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH49oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-IB4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HazwoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwmid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0TIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwxid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0WoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwsSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0b4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw2Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0goKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw4Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0ioKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw8Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0pIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0woKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwtSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0z4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha02YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwzSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0z4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9u4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw1Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0z4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9u4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw1Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj90IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw2Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj91oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw3Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj954KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw4Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha02YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwzSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj954KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw4Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9u4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw1Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0z4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw6Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-AoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-C4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwsyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-D4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwySd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-F4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwzCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-C4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwsyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-KIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwuCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-KIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwuCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HtusYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-KIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwuCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htuw4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwwyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HtuzoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu2IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-KIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwuCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HtusYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu2IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HtuzoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu8IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw1id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W74KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwhyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwoSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W4IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwnyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W74KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwhyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwoSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-IB4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH49oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0b4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw2Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XFIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw3Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XR4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwwCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XU4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwsid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-H0YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw2id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HazwoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwmid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HRC24KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwmSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HazwoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwmid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HRC24KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwmSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH49oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5mIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw6id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5mIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw6id3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH5a4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0pIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0pIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9u4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw1Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9sYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9u4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw1Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj9_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw6Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj90IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw2Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj954KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw4Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj91oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw3Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-AoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HtuzoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Hj-KIKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwuCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HtusYKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwvCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu2IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HtuzoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu2IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Htu2IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw5yd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W4IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwnyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W74KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwhyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwoSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G-IB4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4HH49oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw7Sd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4Ha0b4KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHw2Cd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W4IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwnyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W74KjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwhyd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwqCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwoSd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwdCd3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwpid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <interfaceSourceCodeLink>
+    <interface href="internal_architecture_model.samm_repository#_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <gastClass href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </interfaceSourceCodeLink>
+  <componentImplementingClassesLink providedInterfaces="//@interfaceSourceCodeLink.0">
+    <component xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4G0W0IKjEd-JLc_SCYLXiw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwpyd3Ed-qUd-zHYdFdw"/>
+  </componentImplementingClassesLink>
+  <componentImplementingClassesLink providedInterfaces="//@interfaceSourceCodeLink.105" requiredInterfaces="//@interfaceSourceCodeLink.99 //@interfaceSourceCodeLink.100 //@interfaceSourceCodeLink.101 //@interfaceSourceCodeLink.102 //@interfaceSourceCodeLink.103 //@interfaceSourceCodeLink.104">
+    <component xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KQFUIKjEd-JLc_SCYLXiw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwnSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwrSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw3Cd3Ed-qUd-zHYdFdw"/>
+  </componentImplementingClassesLink>
+  <componentImplementingClassesLink providedInterfaces="//@interfaceSourceCodeLink.107" requiredInterfaces="//@interfaceSourceCodeLink.106">
+    <component xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPSIKjEd-JLc_SCYLXiw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwiCd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwiid3Ed-qUd-zHYdFdw"/>
+  </componentImplementingClassesLink>
+  <componentImplementingClassesLink providedInterfaces="//@interfaceSourceCodeLink.110" requiredInterfaces="//@interfaceSourceCodeLink.108 //@interfaceSourceCodeLink.109">
+    <component xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPTIKjEd-JLc_SCYLXiw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwjyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwwCd3Ed-qUd-zHYdFdw"/>
+  </componentImplementingClassesLink>
+  <componentImplementingClassesLink providedInterfaces="//@interfaceSourceCodeLink.113" requiredInterfaces="//@interfaceSourceCodeLink.111 //@interfaceSourceCodeLink.112">
+    <component xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPUoKjEd-JLc_SCYLXiw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwoCd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwsid3Ed-qUd-zHYdFdw"/>
+  </componentImplementingClassesLink>
+  <componentImplementingClassesLink providedInterfaces="//@interfaceSourceCodeLink.115 //@interfaceSourceCodeLink.116 //@interfaceSourceCodeLink.117" requiredInterfaces="//@interfaceSourceCodeLink.114">
+    <component xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwuid3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwxCd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw2id3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwzyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwxSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwyyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw1Cd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwtid3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwxyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw5id3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw1yd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwuSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwyCd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwryd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHweid3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw0Cd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw7Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHweyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwqyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw5Cd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw6id3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw6Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw4id3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwwid3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwmSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwmid3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwxid3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwsSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw2Cd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw4Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw8Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwvid3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwtSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwvSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwzSd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw0yd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw1Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw2Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw3Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw4Cd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw6Cd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw7Cd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwsyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwySd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwzCd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwuCd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwvCd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHwwyd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw5Sd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw5yd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw7yd3Ed-qUd-zHYdFdw"/>
+    <implementingClasses href="PalladioFileShare.gast#_nUHw1id3Ed-qUd-zHYdFdw"/>
+  </componentImplementingClassesLink>
+  <componentImplementingClassesLink subComponents="//@componentImplementingClassesLink.0 //@componentImplementingClassesLink.1 //@componentImplementingClassesLink.2 //@componentImplementingClassesLink.3 //@componentImplementingClassesLink.4" providedInterfaces="//@interfaceSourceCodeLink.150 //@interfaceSourceCodeLink.151 //@interfaceSourceCodeLink.152 //@interfaceSourceCodeLink.153 //@interfaceSourceCodeLink.154" requiredInterfaces="//@interfaceSourceCodeLink.155 //@interfaceSourceCodeLink.156 //@interfaceSourceCodeLink.157">
+    <component xsi:type="staticstructure:CompositeComponent" href="internal_architecture_model.samm_repository#_4a8MsIKjEd-JLc_SCYLXiw"/>
+  </componentImplementingClassesLink>
+  <componentImplementingClassesLink subComponents="//@componentImplementingClassesLink.5 //@componentImplementingClassesLink.6" providedInterfaces="//@interfaceSourceCodeLink.158 //@interfaceSourceCodeLink.159 //@interfaceSourceCodeLink.160 //@interfaceSourceCodeLink.161 //@interfaceSourceCodeLink.162 //@interfaceSourceCodeLink.163 //@interfaceSourceCodeLink.164 //@interfaceSourceCodeLink.165" requiredInterfaces="//@interfaceSourceCodeLink.166 //@interfaceSourceCodeLink.167 //@interfaceSourceCodeLink.168">
+    <component xsi:type="staticstructure:CompositeComponent" href="internal_architecture_model.samm_repository#_4ftX8IKjEd-JLc_SCYLXiw"/>
+  </componentImplementingClassesLink>
+</sourcecodedecorator:SourceCodeDecoratorRepository>

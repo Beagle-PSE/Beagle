@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="de.uka.ipd.sdq.beagle.launch">
+<intAttribute key="de.uka.ipd.sdq.beagle.CONSTANT_TIMEOUT_VALUE" value="60"/>
+<stringAttribute key="de.uka.ipd.sdq.beagle.IJAVAPROJECT" value="PalladioFileShare"/>
+<listAttribute key="de.uka.ipd.sdq.beagle.LAUNCHCONFIGURATION">
+<listEntry value="PalladioFileShare TestDriver"/>
+</listAttribute>
+<stringAttribute key="de.uka.ipd.sdq.beagle.REPOSITORY_FILE" value="/model/internal_architecture_model.repository"/>
+<stringAttribute key="de.uka.ipd.sdq.beagle.SELECTION_TYPE" value="WHOLE_REPOSITORY"/>
+<stringAttribute key="de.uka.ipd.sdq.beagle.SOURCE_CODE_FILE_LINK" value="/model/internal_architecture_model_source_statement_links.xml"/>
+<stringAttribute key="de.uka.ipd.sdq.beagle.TIMEOUT_TYPE" value="NO_TIMEOUT"/>
+</launchConfiguration>

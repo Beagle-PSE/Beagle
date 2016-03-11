@@ -1,12 +1,12 @@
 package de.uka.ipd.sdq.beagle.core.pcmconnection;
 
-import static org.mockito.Mockito.mock;
-
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkReader;
 import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
 import java.io.File;
 import java.io.Serializable;
+import java.net.URISyntaxException;
 
 /**
  * A factory which creates instances of {@link PcmRepositoryBlackboardFactoryAdder}.
@@ -18,67 +18,61 @@ import java.io.Serializable;
 public class PcmRepositoryBlackboardFactoryFactory {
 
 	/**
-	 * A {@link SourceCodeFileProvider} that resolves paths correctly for the AppSensor
-	 * test project.
+	 * A {@link SourceCodeFileProvider} that resolves paths correctly for the Palladio
+	 * file share project test project.
 	 */
-	public static final SourceCodeFileProvider APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER =
-		new AppSensorTestSourceCodeFileProvider();
-
-	/**
-	 * Returns a valid {@link PcmRepositoryBlackboardFactoryAdder} object.
-	 *
-	 * @return A valid {@link PcmRepositoryBlackboardFactoryAdder} object.
-	 */
-	public PcmRepositoryBlackboardFactoryAdder getValidInstance() {
-		return new PcmRepositoryBlackboardFactoryAdder(
-			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository",
-			APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER, mock(PcmSourceStatementLinkRepository.class));
-	}
+	public static final SourceCodeFileProvider PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER =
+		new PalladioFileShareProjectTestSourceCodeFileProvider();
 
 	/**
 	 * Returns a valid instance of {@link PcmRepositoryBlackboardFactoryAdder} initialised
-	 * with the AppSensor repository.
+	 * with the PalladioFileShare repository.
 	 *
 	 * @return A valid instance of {@link PcmRepositoryBlackboardFactoryAdder} initialised
-	 *         with the AppSensor repository.
+	 *         with the PalladioFileShare repository.
 	 */
-	public PcmRepositoryBlackboardFactoryAdder getAppSensorProjectInstance() {
+	public PcmRepositoryBlackboardFactoryAdder getPalladioFileShareProjectInstance() {
+
+		final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository = new PcmSourceStatementLinkReader(
+			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
+				+ "model/internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
+
 		return new PcmRepositoryBlackboardFactoryAdder(
-			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/AppSensor.repository",
-			APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER, mock(PcmSourceStatementLinkRepository.class));
+			"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
+				+ "model/internal_architecture_model.repository",
+			PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER, pcmSourceStatementLinkRepository);
 	}
 
 	/**
-	 * A {@link SourceCodeFileProvider} that resolves paths correctly for the AppSensor
-	 * test project.
+	 * A {@link SourceCodeFileProvider} that resolves paths correctly for the Palladio
+	 * file share test project.
 	 *
-	 * @author Roman Langrehr
+	 * @author Christoph Michelbach
 	 */
-	private static class AppSensorTestSourceCodeFileProvider implements SourceCodeFileProvider {
+	private static class PalladioFileShareProjectTestSourceCodeFileProvider implements SourceCodeFileProvider {
 
 		/**
 		 * See {@link Serializable}.
 		 */
-		private static final long serialVersionUID = -1066585975466213430L;
+		private static final long serialVersionUID = -1016535975436212430L;
 
 		/**
-		 * Paths to scan for the source files.
+		 * The base folder of Palladio file share.
 		 */
-		private static final String[] SOURCE_PATHS = {
-			"../src/test/resources/AppSensor/appsensor-core/src/main/java/",
-			"../src/test/resources/AppSensor/access-controllers/appsensor-access-control-reference/src/main/java/"
-		};
+		private static final File BASE_FOLDER;
+
+		static {
+			try {
+				BASE_FOLDER = new File(PalladioFileShareProjectTestSourceCodeFileProvider.class
+					.getResource("/PalladioFileShare/src").toURI());
+			} catch (final URISyntaxException uriSyntaxException) {
+				throw new RuntimeException(uriSyntaxException.getMessage());
+			}
+		}
 
 		@Override
 		public File getSourceFile(final String fullyQualifiedJavaPath) {
-			int index = 0;
-			File result;
-			do {
-				result = new File(
-					SOURCE_PATHS[index] + fullyQualifiedJavaPath.replaceAll("^core.", "").replace(".", "/") + ".java");
-				index++;
-			} while (!result.exists() && index != SOURCE_PATHS.length);
-			return result;
+			return new File(BASE_FOLDER, fullyQualifiedJavaPath.replace(".", "/") + ".java");
 		}
 
 	}

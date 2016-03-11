@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.somox.analyzer.simplemodelanalyzer.runconfig.LaunchSimpleModelAnalyzer">
+<intAttribute key="de.uka.ipd.sdq.workflowengine.debuglevel" value="2"/>
+<booleanAttribute key="org.somox.analyzer.ReverseEngineerInterfacesNotAssignedToComponent" value="false"/>
+<stringAttribute key="org.somox.analyzer.inputfile" value="PalladioFileShare\model\PalladioFileShare.gast"/>
+<stringAttribute key="org.somox.clusteringThresholdDecrement.Compose" value="15"/>
+<stringAttribute key="org.somox.clusteringThresholdDecrement.Merge" value="7"/>
+<stringAttribute key="org.somox.clusteringThresholdMax.Compose" value="80"/>
+<stringAttribute key="org.somox.clusteringThresholdMax.Merge" value="100"/>
+<stringAttribute key="org.somox.clusteringThresholdMin.Compose" value="15"/>
+<stringAttribute key="org.somox.clusteringThresholdMin.Merge" value="61"/>
+<stringAttribute key="org.somox.directoryMapping.weightDirectoryMapping" value="100"/>
+<stringAttribute key="org.somox.dms.weightDMS" value="7"/>
+<stringAttribute key="org.somox.interfaceViolation.weightInterfaceViolationIrrelevant" value="10"/>
+<stringAttribute key="org.somox.interfaceViolation.weightInterfaceViolationRelevant" value="25"/>
+<stringAttribute key="org.somox.metrics.nameResemblance.excludedPrefixes" value=""/>
+<stringAttribute key="org.somox.metrics.nameResemblance.excludedSuffixes" value=""/>
+<stringAttribute key="org.somox.metrics.wildcards" value="Â§java.io.InputStreamÂ§de.uka.ipd.sdq.BySuite.helper.predictionÂ§java.lang.BooleanÂ§java.sql.TimestampÂ§java.util.AbstractMapÂ§de.uka.ipd.sdq.BySuite.helper.mathparserÂ§java.util.BitSetÂ§java.lang.CharSequenceÂ§de.uka.ipd.sdq.benchmarkingÂ§java.lang.ThrowableÂ§java.lang.ClassÂ§java.util.zipÂ§java.io.BufferedInputStreamÂ§java.security.GeneralSecurityExceptionÂ§java.io.FileWriterÂ§java.io.SerializableÂ§java.lang.AbstractStringBuilderÂ§java.lang.ObjectÂ§de.uka.ipd.sdq.benchmarking.ExistingDatabaseBenchmarkerÂ§java.util.ListÂ§java.io.InputStreamReaderÂ§java.util.AbstractSetÂ§de.uka.ipd.sdq.benchmarking.JITSpeedupQuantifierÂ§java.lang.NumberÂ§java.util.AbstractCollectionÂ§java.lang.AppendableÂ§de.uka.ipd.sdq.BySuite.helper.learnedbytecode.LearnedBytecodeÂ§java.io.FilterInputStreamÂ§java.sqlÂ§java.lang.RunnableÂ§de.uka.ipd.sdq.BySuite.helper.mathparser.IfThenÂ§java.util.HashMapÂ§java.io.IOExceptionÂ§java.util.TreeSetÂ§java.mathÂ§java.lang.CharacterÂ§java.util.SetÂ§java.lang.SuppressWarningsÂ§java.io.ByteArrayOutputStreamÂ§java.util.ArrayListÂ§java.io.FileOutputStreamÂ§java.security.MessageDigestÂ§java.security.MessageDigestSpiÂ§java.lang.OverrideÂ§java.lang.ReadableÂ§java.lang.InterruptedExceptionÂ§java.lang.StringÂ§de.uka.ipd.sdq.BySuite.helper.benchmarkedbytecodeÂ§de.uka.ipd.sdq.BySuite.helper.learnedbytecode.CsvReadingÂ§java.util.zip.ChecksumÂ§de.uka.ipd.sdq.palladiofileshare.testdriver.TestDriverÂ§de.uka.ipd.sdq.BySuite.helper.prediction.JITSpeedupQuantifierÂ§java.lang.LongÂ§java.lang.SystemÂ§de.uka.ipd.sdq.benchmarking.HashBenchmarkerÂ§java.lang.ComparableÂ§java.math.BigIntegerÂ§java.io.FilterOutputStreamÂ§java.lang.DoubleÂ§java.util.VectorÂ§java.ioÂ§de.uka.ipd.sdq.palladiofileshare.testdriverÂ§de.uka.ipd.sdq.BySuite.helper.mathparser.IfThenElseÂ§java.langÂ§de.uka.ipd.sdq.BySuite.helper.benchmarkedbytecode.BenchmarkedBytecodeÂ§java.lang.IntegerÂ§de.uka.ipd.sdq.BySuite.helper.prediction.ComprehensivePredictionResultÂ§de.uka.ipd.sdq.BySuite.helper.learnedbytecode.LearnedDataErrorCalculationÂ§java.util.IteratorÂ§de.uka.ipd.sdq.palladiofileshare.testdriver.TestDataStructÂ§java.lang.IterableÂ§java.io.FileÂ§java.lang.NumberFormatExceptionÂ§java.util.ArraysÂ§java.lang.ByteÂ§java.util.RandomAccessÂ§java.util.AbstractListÂ§java.io.FileNotFoundExceptionÂ§java.io.ReaderÂ§java.lang.MathÂ§java.io.BufferedOutputStreamÂ§java.lang.IllegalArgumentExceptionÂ§java.util.NavigableSetÂ§de.uka.ipd.sdq.BySuite.helper.prediction.BytecodePerformancePredictorÂ§java.util.MapÂ§java.utilÂ§java.io.FileReaderÂ§java.lang.ThreadÂ§java.util.CollectionsÂ§java.lang.StringBuilderÂ§java.io.PrintStreamÂ§de.uka.ipd.sdq.benchmarking.CopyrightedDatabaseBenchmarkerÂ§de.uka.ipd.sdq.BySuiteÂ§java.util.RandomÂ§de.uka.ipd.sdq.BySuite.helperÂ§java.util.SortedSetÂ§java.util.CollectionÂ§java.io.FileInputStreamÂ§de.uka.ipd.sdq.benchmarking.StorageBenchmarkerÂ§java.lang.StringBufferÂ§java.io.CloseableÂ§java.io.WriterÂ§de.uka.ipd.sdq.BySuite.helper.learnedbytecodeÂ§java.util.DateÂ§java.io.OutputStreamWriterÂ§java.lang.CloneableÂ§java.securityÂ§java.util.HashSetÂ§java.lang.ExceptionÂ§java.lang.RuntimeExceptionÂ§java.util.zip.CRC32Â§java.io.FlushableÂ§java.security.NoSuchAlgorithmExceptionÂ§de.uka.ipd.sdq.BySuite.helper.PermutationGeneratorÂ§javaÂ§java.io.OutputStreamÂ§"/>
+<stringAttribute key="org.somox.metrics.wildcards.additional" value=""/>
+<stringAttribute key="org.somox.nameResemblance.weightHighCoupling" value="10"/>
+<stringAttribute key="org.somox.nameResemblance.weightHighNameResemblance" value="40"/>
+<stringAttribute key="org.somox.nameResemblance.weightHighestNameResemblance" value="90"/>
+<stringAttribute key="org.somox.nameResemblance.weightLowCoupling" value="0"/>
+<stringAttribute key="org.somox.nameResemblance.weightLowNameResemblance" value="5"/>
+<stringAttribute key="org.somox.nameResemblance.weightMidNameResemblance" value="15"/>
+<stringAttribute key="org.somox.packageMapping.weightPackageMapping" value="100"/>
+<stringAttribute key="org.somox.project" value="PalladioFileShare"/>
+<stringAttribute key="org.somox.subsystemComponent.weightHighSLAQ" value="25"/>
+<stringAttribute key="org.somox.subsystemComponent.weightLowSLAQ" value="0"/>
+</launchConfiguration>
