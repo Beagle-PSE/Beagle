@@ -409,8 +409,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(blackboardCreator2.createBlackboard(),
 			is(equalToRegardingSeffElements(blackboardCreator3.createBlackboard())));
 
-		// The first ID is from {@code AppSensor.repository}, the second one from {@code
-		// Family.repositor}.
 		final BlackboardCreator blackboardCreator4 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator4,
 			"_Dr2TM-e1EeW5NafnxUciog");
@@ -495,6 +493,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 		palladioFileShareBlackboardFactory.getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
-		final Blackboard appSensorBlackboard = blackboardCreator.createBlackboard();
+		blackboardCreator.createBlackboard();
 	}
 }
