@@ -1,0 +1,12 @@
+package de.uka.ipd.sdq.palladiofileshare.businesslogic.storage;
+
+/**
+ * Pseudo Access Control
+ *
+ */
+public class StorageAccess {
+
+	public static boolean isStorageAccessOk(String fileName) {
+		return true;
+	}
+}

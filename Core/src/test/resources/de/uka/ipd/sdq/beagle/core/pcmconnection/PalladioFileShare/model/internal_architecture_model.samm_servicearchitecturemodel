@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ASCII"?>
+<staticstructure:ServiceArchitectureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:staticstructure="http://q-impress.eu/samm/staticstructure" id="_4GXq4IKjEd-JLc_SCYLXiw" name="SoMoX Reverse Engineered System">
+  <provided id="_4l9xBYKjEd-JLc_SCYLXiw" name="ICodeProgress 13 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4G-IB4KjEd-JLc_SCYLXiw"/>
+  </provided>
+  <provided id="_4l9xCYKjEd-JLc_SCYLXiw" name="InWindow 14 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4HH49oKjEd-JLc_SCYLXiw"/>
+  </provided>
+  <provided id="_4l9xDYKjEd-JLc_SCYLXiw" name="Encoder$LenEncoder 15 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4Ha0b4KjEd-JLc_SCYLXiw"/>
+  </provided>
+  <provided id="_4l9xEYKjEd-JLc_SCYLXiw" name="SimpleLZW 16 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4G0W0YKjEd-JLc_SCYLXiw"/>
+  </provided>
+  <provided id="_4l9xFYKjEd-JLc_SCYLXiw" name="IBusinessFacade 17 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4G0W4IKjEd-JLc_SCYLXiw"/>
+  </provided>
+  <provided id="_4l9xGYKjEd-JLc_SCYLXiw" name="IStorage 18 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4G0W74KjEd-JLc_SCYLXiw"/>
+  </provided>
+  <provided id="_4l9xHYKjEd-JLc_SCYLXiw" name="IExistingFilesDatabase 19 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4G0W_IKjEd-JLc_SCYLXiw"/>
+  </provided>
+  <provided id="_4l9xIYKjEd-JLc_SCYLXiw" name="ICopyrightedMaterialDatabase 20 (prov)(sys)">
+    <interfaceType href="internal_architecture_model.samm_repository#_4G0XAoKjEd-JLc_SCYLXiw"/>
+  </provided>
+  <subcomponents id="_4l9xA4KjEd-JLc_SCYLXiw" name="CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>>">
+    <realizedBy xsi:type="staticstructure:CompositeComponent" href="internal_architecture_model.samm_repository#_4ftX8IKjEd-JLc_SCYLXiw"/>
+  </subcomponents>
+  <subcomponents id="_4l9xJoKjEd-JLc_SCYLXiw" name="SoMoX Dummy Component Instance">
+    <realizedBy xsi:type="staticstructure:PrimitiveComponent" href="internal_architecture_model.samm_repository#_4l9xJYKjEd-JLc_SCYLXiw"/>
+  </subcomponents>
+  <connector id="_4l9xCIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xBoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftX84KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xB4KjEd-JLc_SCYLXiw" port="_4l9xBYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xDIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xCoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftX94KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xC4KjEd-JLc_SCYLXiw" port="_4l9xCYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xEIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xDoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftX-4KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xD4KjEd-JLc_SCYLXiw" port="_4l9xDYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xFIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xEoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftX_4KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xE4KjEd-JLc_SCYLXiw" port="_4l9xEYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xGIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xFoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftYA4KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xF4KjEd-JLc_SCYLXiw" port="_4l9xFYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xHIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xGoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftYB4KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xG4KjEd-JLc_SCYLXiw" port="_4l9xGYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xIIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xHoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftYC4KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xH4KjEd-JLc_SCYLXiw" port="_4l9xHYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xJIKjEd-JLc_SCYLXiw">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xIoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftYD4KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4l9xI4KjEd-JLc_SCYLXiw" port="_4l9xIYKjEd-JLc_SCYLXiw"/>
+  </connector>
+  <connector id="_4l9xKYKjEd-JLc_SCYLXiw" documentation="Assembly Connector from CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to SoMoX Dummy Component Instance">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xKoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftYE4KjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xK4KjEd-JLc_SCYLXiw" subcomponent="_4l9xJoKjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4l9xKIKjEd-JLc_SCYLXiw"/>
+    </endpoints>
+  </connector>
+  <connector id="_4l9xLYKjEd-JLc_SCYLXiw" documentation="Assembly Connector from CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to SoMoX Dummy Component Instance">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xLoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftYGoKjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xL4KjEd-JLc_SCYLXiw" subcomponent="_4l9xJoKjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4l9xLIKjEd-JLc_SCYLXiw"/>
+    </endpoints>
+  </connector>
+  <connector id="_4l9xMYKjEd-JLc_SCYLXiw" documentation="Assembly Connector from CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to SoMoX Dummy Component Instance">
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xMoKjEd-JLc_SCYLXiw" subcomponent="_4l9xA4KjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4ftYHoKjEd-JLc_SCYLXiw"/>
+    </endpoints>
+    <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4l9xM4KjEd-JLc_SCYLXiw" subcomponent="_4l9xJoKjEd-JLc_SCYLXiw">
+      <port xsi:type="staticstructure:InterfacePort" href="internal_architecture_model.samm_repository#_4l9xMIKjEd-JLc_SCYLXiw"/>
+    </endpoints>
+  </connector>
+  <service id="_4l9xBIKjEd-JLc_SCYLXiw" name="CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>>" subcomponentInstance="_4l9xA4KjEd-JLc_SCYLXiw">
+    <container href="pathmap://SOMOX_MODELS/somox-default.samm_targetenvironment#_7wiiMHcAEd-o5LaIF71Pmg"/>
+  </service>
+  <service id="_4l9xJ4KjEd-JLc_SCYLXiw" name="SoMoX Dummy Component Allocation Service" subcomponentInstance="_4l9xJoKjEd-JLc_SCYLXiw">
+    <container href="pathmap://SOMOX_MODELS/somox-default.samm_targetenvironment#_7wiiMHcAEd-o5LaIF71Pmg"/>
+  </service>
+</staticstructure:ServiceArchitectureModel>

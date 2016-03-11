@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="ASCII"?>
+<staticstructure:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:behaviour="http://q-impress.eu/samm/behaviour" xmlns:datatypes="http://q-impress.eu/samm/datatype" xmlns:staticstructure="http://q-impress.eu/samm/staticstructure" id="_36wQwIKjEd-JLc_SCYLXiw">
+  <componenttype xsi:type="staticstructure:PrimitiveComponent" id="_4G0W0IKjEd-JLc_SCYLXiw" documentation=" &lt;PC No. 1 SimpleLZW>" name=" &lt;PC No. 0 SimpleLZW>">
+    <provided id="_4G0W3IKjEd-JLc_SCYLXiw" name="SimpleLZW 0 (prov)" interfaceType="_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4G0W3YKjEd-JLc_SCYLXiw" operation="_4G0W0oKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4G0W3oKjEd-JLc_SCYLXiw" operation="_4G0W2IKjEd-JLc_SCYLXiw"/>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:PrimitiveComponent" id="_4KQFUIKjEd-JLc_SCYLXiw" documentation=" &lt;PC No. 87 BusinessFacade BusinessCore BusinessRunner>" name=" &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner>">
+    <provided id="_4KZPRoKjEd-JLc_SCYLXiw" name="IBusinessFacade 55 (prov)" interfaceType="_4G0W4IKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPQIKjEd-JLc_SCYLXiw" name="&lt;unknownClassType> 44 (req)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPQYKjEd-JLc_SCYLXiw" name="IStorage 45 (req)" interfaceType="_4G0W74KjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPQoKjEd-JLc_SCYLXiw" name="IHash 46 (req)" interfaceType="_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPQ4KjEd-JLc_SCYLXiw" name="IExistingFilesDatabase 47 (req)" interfaceType="_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPRIKjEd-JLc_SCYLXiw" name="ICopyrightedMaterialDatabase 48 (req)" interfaceType="_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPRYKjEd-JLc_SCYLXiw" name="SimpleLZW 49 (req)" interfaceType="_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4KZPR4KjEd-JLc_SCYLXiw" operation="_4G0W4YKjEd-JLc_SCYLXiw"/>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:PrimitiveComponent" id="_4KZPSIKjEd-JLc_SCYLXiw" documentation=" &lt;PC No. 89 Storage Util>" name=" &lt;PC No. 88 Storage Util>">
+    <provided id="_4KZPSoKjEd-JLc_SCYLXiw" name="IStorage 56 (prov)" interfaceType="_4G0W74KjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPSYKjEd-JLc_SCYLXiw" name="&lt;unknownClassType> 50 (req)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4KZPS4KjEd-JLc_SCYLXiw" operation="_4G0W8IKjEd-JLc_SCYLXiw"/>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:PrimitiveComponent" id="_4KZPTIKjEd-JLc_SCYLXiw" documentation=" &lt;PC No. 91 ExistingFilesDatabase DbAccess>" name=" &lt;PC No. 90 ExistingFilesDatabase DbAccess>">
+    <provided id="_4KZPT4KjEd-JLc_SCYLXiw" name="IExistingFilesDatabase 57 (prov)" interfaceType="_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPTYKjEd-JLc_SCYLXiw" name="&lt;unknownClassType> 51 (req)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPToKjEd-JLc_SCYLXiw" name="Util 52 (req)" interfaceType="_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4KZPUIKjEd-JLc_SCYLXiw" operation="_4G0W_YKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4KZPUYKjEd-JLc_SCYLXiw" operation="_4G0XAIKjEd-JLc_SCYLXiw"/>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:PrimitiveComponent" id="_4KZPUoKjEd-JLc_SCYLXiw" documentation=" &lt;PC No. 93 CopyrightedMaterialDatabase DbAccess>" name=" &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>">
+    <provided id="_4KZPVYKjEd-JLc_SCYLXiw" name="ICopyrightedMaterialDatabase 58 (prov)" interfaceType="_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPU4KjEd-JLc_SCYLXiw" name="&lt;unknownClassType> 53 (req)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <required id="_4KZPVIKjEd-JLc_SCYLXiw" name="Util 54 (req)" interfaceType="_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4KZPVoKjEd-JLc_SCYLXiw" operation="_4G0XA4KjEd-JLc_SCYLXiw"/>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:PrimitiveComponent" id="_4KZPV4KjEd-JLc_SCYLXiw" documentation=" &lt;PC No. 95 PrimitiveOrderedHasher ByteArrayVector SimpleLZW CommandLine LzmaAlone CRC LzmaBench MyOutputStream CBenchRandomGenerator CProgressInfo CBitRandomGenerator CRandomGenerator CrcOutStream MyInputStream OutWindow BinTree InWindow BitTreeDecoder BitTreeEncoder Encoder Decoder LiteralDecoder LenDecoder Decoder Decoder2 Encoder LiteralEncoder Encoder2 LenEncoder Optimal LenPriceTableEncoder Base CompressionRunner InputBuffer HashTable Compress OutputBuffer Decompressor SuffixTable CodeTable Compressor DeStack Decompressor DeStack SuffixTable Compress CodeTable CompressionRunner InputBuffer OutputBuffer Compressor HashTable>" name=" &lt;PC No. 94 PrimitiveOrderedHasher ByteArrayVector SimpleLZW Co...>">
+    <provided id="_4K_sMoKjEd-JLc_SCYLXiw" name="ICodeProgress 59 (prov)" interfaceType="_4G-IB4KjEd-JLc_SCYLXiw"/>
+    <provided id="_4K_sNIKjEd-JLc_SCYLXiw" name="InWindow 60 (prov)" interfaceType="_4HH49oKjEd-JLc_SCYLXiw"/>
+    <provided id="_4LI2LIKjEd-JLc_SCYLXiw" name="Encoder$LenEncoder 61 (prov)" interfaceType="_4Ha0b4KjEd-JLc_SCYLXiw"/>
+    <required id="_4K_sMYKjEd-JLc_SCYLXiw" name="&lt;unknownClassType> 56 (req)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4K_sM4KjEd-JLc_SCYLXiw" operation="_4G-ICIKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2IIKjEd-JLc_SCYLXiw" operation="_4HH494KjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2IYKjEd-JLc_SCYLXiw" operation="_4HH4-IKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2IoKjEd-JLc_SCYLXiw" operation="_4HH4-YKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2I4KjEd-JLc_SCYLXiw" operation="_4HH4-oKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2JIKjEd-JLc_SCYLXiw" operation="_4HH4_4KjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2JYKjEd-JLc_SCYLXiw" operation="_4HH5CIKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2JoKjEd-JLc_SCYLXiw" operation="_4HH5CYKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2J4KjEd-JLc_SCYLXiw" operation="_4HH5CoKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2KIKjEd-JLc_SCYLXiw" operation="_4HH5C4KjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2KYKjEd-JLc_SCYLXiw" operation="_4HH5DoKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2KoKjEd-JLc_SCYLXiw" operation="_4HH5E4KjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2K4KjEd-JLc_SCYLXiw" operation="_4HH5FIKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2LYKjEd-JLc_SCYLXiw" operation="_4Ha0cIKjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2LoKjEd-JLc_SCYLXiw" operation="_4Ha0c4KjEd-JLc_SCYLXiw"/>
+    <OperationBehaviour xsi:type="behaviour:GastBehaviourStub" id="_4LI2L4KjEd-JLc_SCYLXiw" operation="_4Ha0eIKjEd-JLc_SCYLXiw"/>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:CompositeComponent" id="_4a8MsIKjEd-JLc_SCYLXiw" documentation="CC No. 2 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt; &lt;PC No. 0 SimpleLZW>  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner>  &lt;PC No. 88 Storage Util>  &lt;PC No. 90 ExistingFilesDatabase DbAccess>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>" name="CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+    <provided id="_4a8MwoKjEd-JLc_SCYLXiw" documentation="Ipalladiofileshare.algorithms.SimpleLZW" name="SimpleLZW 0 (prov)" interfaceType="_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <provided id="_4a8MxoKjEd-JLc_SCYLXiw" documentation="palladiofileshare.businesslogic.IBusinessFacade" name="IBusinessFacade 1 (prov)" interfaceType="_4G0W4IKjEd-JLc_SCYLXiw"/>
+    <provided id="_4a8MyoKjEd-JLc_SCYLXiw" documentation="businesslogic.storage.IStorage" name="IStorage 2 (prov)" interfaceType="_4G0W74KjEd-JLc_SCYLXiw"/>
+    <provided id="_4a8MzoKjEd-JLc_SCYLXiw" documentation="businesslogic.existingfilesdb.IExistingFilesDatabase" name="IExistingFilesDatabase 3 (prov)" interfaceType="_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <provided id="_4a8M0oKjEd-JLc_SCYLXiw" documentation="....copyrightedmaterialsdb.ICopyrightedMaterialDatabase" name="ICopyrightedMaterialDatabase 4 (prov)" interfaceType="_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <required id="_4a8M1oKjEd-JLc_SCYLXiw" documentation="&lt;unknownClassType>" name="&lt;unknownClassType> 0 (req)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <required id="_4a8M2oKjEd-JLc_SCYLXiw" documentation="palladiofileshare.algorithms.IHash" name="IHash 1 (req)" interfaceType="_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <required id="_4a8M5IKjEd-JLc_SCYLXiw" documentation="Ibusinesslogic.util.Util" name="Util 2 (req)" interfaceType="_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <subcomponents id="_4a8MsYKjEd-JLc_SCYLXiw" name=" &lt;PC No. 0 SimpleLZW>-instance" realizedBy="_4G0W0IKjEd-JLc_SCYLXiw"/>
+    <subcomponents id="_4a8MsoKjEd-JLc_SCYLXiw" name=" &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner>-instance" realizedBy="_4KQFUIKjEd-JLc_SCYLXiw"/>
+    <subcomponents id="_4a8Ms4KjEd-JLc_SCYLXiw" name=" &lt;PC No. 88 Storage Util>-instance" realizedBy="_4KZPSIKjEd-JLc_SCYLXiw"/>
+    <subcomponents id="_4a8MtIKjEd-JLc_SCYLXiw" name=" &lt;PC No. 90 ExistingFilesDatabase DbAccess>-instance" realizedBy="_4KZPTIKjEd-JLc_SCYLXiw"/>
+    <subcomponents id="_4a8MtYKjEd-JLc_SCYLXiw" name=" &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>-instance" realizedBy="_4KZPUoKjEd-JLc_SCYLXiw"/>
+    <connector id="_4a8MtoKjEd-JLc_SCYLXiw" documentation="Assembly Connector from  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner> to  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8Mt4KjEd-JLc_SCYLXiw" port="_4KZPRIKjEd-JLc_SCYLXiw" subcomponent="_4a8MsoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MuIKjEd-JLc_SCYLXiw" port="_4KZPVYKjEd-JLc_SCYLXiw" subcomponent="_4a8MtYKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8MuYKjEd-JLc_SCYLXiw" documentation="Assembly Connector from  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner> to  &lt;PC No. 0 SimpleLZW>">
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MuoKjEd-JLc_SCYLXiw" port="_4KZPRYKjEd-JLc_SCYLXiw" subcomponent="_4a8MsoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8Mu4KjEd-JLc_SCYLXiw" port="_4G0W3IKjEd-JLc_SCYLXiw" subcomponent="_4a8MsYKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8MvIKjEd-JLc_SCYLXiw" documentation="Assembly Connector from  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner> to  &lt;PC No. 90 ExistingFilesDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MvYKjEd-JLc_SCYLXiw" port="_4KZPQ4KjEd-JLc_SCYLXiw" subcomponent="_4a8MsoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MvoKjEd-JLc_SCYLXiw" port="_4KZPT4KjEd-JLc_SCYLXiw" subcomponent="_4a8MtIKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8Mv4KjEd-JLc_SCYLXiw" documentation="Assembly Connector from  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner> to  &lt;PC No. 88 Storage Util>">
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MwIKjEd-JLc_SCYLXiw" port="_4KZPQYKjEd-JLc_SCYLXiw" subcomponent="_4a8MsoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MwYKjEd-JLc_SCYLXiw" port="_4KZPSoKjEd-JLc_SCYLXiw" subcomponent="_4a8Ms4KjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8Mw4KjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 0 SimpleLZW>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8MxIKjEd-JLc_SCYLXiw" port="_4a8MwoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MxYKjEd-JLc_SCYLXiw" port="_4G0W3IKjEd-JLc_SCYLXiw" subcomponent="_4a8MsYKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8Mx4KjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8MyIKjEd-JLc_SCYLXiw" port="_4a8MxoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MyYKjEd-JLc_SCYLXiw" port="_4KZPRoKjEd-JLc_SCYLXiw" subcomponent="_4a8MsoKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8My4KjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 88 Storage Util>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8MzIKjEd-JLc_SCYLXiw" port="_4a8MyoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8MzYKjEd-JLc_SCYLXiw" port="_4KZPSoKjEd-JLc_SCYLXiw" subcomponent="_4a8Ms4KjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8Mz4KjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 90 ExistingFilesDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M0IKjEd-JLc_SCYLXiw" port="_4a8MzoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M0YKjEd-JLc_SCYLXiw" port="_4KZPT4KjEd-JLc_SCYLXiw" subcomponent="_4a8MtIKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M04KjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M1IKjEd-JLc_SCYLXiw" port="_4a8M0oKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M1YKjEd-JLc_SCYLXiw" port="_4KZPVYKjEd-JLc_SCYLXiw" subcomponent="_4a8MtYKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M14KjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M2IKjEd-JLc_SCYLXiw" port="_4a8M1oKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M2YKjEd-JLc_SCYLXiw" port="_4KZPQIKjEd-JLc_SCYLXiw" subcomponent="_4a8MsoKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M24KjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 86 BusinessFacade BusinessCore BusinessRunner>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M3IKjEd-JLc_SCYLXiw" port="_4a8M2oKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M3YKjEd-JLc_SCYLXiw" port="_4KZPQoKjEd-JLc_SCYLXiw" subcomponent="_4a8MsoKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M3oKjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 88 Storage Util>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M34KjEd-JLc_SCYLXiw" port="_4a8M1oKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M4IKjEd-JLc_SCYLXiw" port="_4KZPSYKjEd-JLc_SCYLXiw" subcomponent="_4a8Ms4KjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M4YKjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 90 ExistingFilesDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M4oKjEd-JLc_SCYLXiw" port="_4a8M1oKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M44KjEd-JLc_SCYLXiw" port="_4KZPTYKjEd-JLc_SCYLXiw" subcomponent="_4a8MtIKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M5YKjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 90 ExistingFilesDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M5oKjEd-JLc_SCYLXiw" port="_4a8M5IKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M54KjEd-JLc_SCYLXiw" port="_4KZPToKjEd-JLc_SCYLXiw" subcomponent="_4a8MtIKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M6IKjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M6YKjEd-JLc_SCYLXiw" port="_4a8M1oKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M6oKjEd-JLc_SCYLXiw" port="_4KZPU4KjEd-JLc_SCYLXiw" subcomponent="_4a8MtYKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4a8M64KjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>> to  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4a8M7IKjEd-JLc_SCYLXiw" port="_4a8M5IKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4a8M7YKjEd-JLc_SCYLXiw" port="_4KZPVIKjEd-JLc_SCYLXiw" subcomponent="_4a8MtYKjEd-JLc_SCYLXiw"/>
+    </connector>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:CompositeComponent" id="_4ftX8IKjEd-JLc_SCYLXiw" documentation="CC No. 4 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt; &lt;PC No. 94 PrimitiveOrderedHasher ByteArrayVector SimpleLZW Co...> CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>>" name="CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>>">
+    <provided id="_4ftX84KjEd-JLc_SCYLXiw" documentation="algorithms.SevenZip.ICodeProgress" name="ICodeProgress 5 (prov)" interfaceType="_4G-IB4KjEd-JLc_SCYLXiw"/>
+    <provided id="_4ftX94KjEd-JLc_SCYLXiw" documentation="ICompression.LZ.InWindow" name="InWindow 6 (prov)" interfaceType="_4HH49oKjEd-JLc_SCYLXiw"/>
+    <provided id="_4ftX-4KjEd-JLc_SCYLXiw" documentation="ICompression.LZMA.Encoder$LenEncoder" name="Encoder$LenEncoder 7 (prov)" interfaceType="_4Ha0b4KjEd-JLc_SCYLXiw"/>
+    <provided id="_4ftX_4KjEd-JLc_SCYLXiw" documentation="Ipalladiofileshare.algorithms.SimpleLZW" name="SimpleLZW 8 (prov)" interfaceType="_4G0W0YKjEd-JLc_SCYLXiw"/>
+    <provided id="_4ftYA4KjEd-JLc_SCYLXiw" documentation="palladiofileshare.businesslogic.IBusinessFacade" name="IBusinessFacade 9 (prov)" interfaceType="_4G0W4IKjEd-JLc_SCYLXiw"/>
+    <provided id="_4ftYB4KjEd-JLc_SCYLXiw" documentation="businesslogic.storage.IStorage" name="IStorage 10 (prov)" interfaceType="_4G0W74KjEd-JLc_SCYLXiw"/>
+    <provided id="_4ftYC4KjEd-JLc_SCYLXiw" documentation="businesslogic.existingfilesdb.IExistingFilesDatabase" name="IExistingFilesDatabase 11 (prov)" interfaceType="_4G0W_IKjEd-JLc_SCYLXiw"/>
+    <provided id="_4ftYD4KjEd-JLc_SCYLXiw" documentation="....copyrightedmaterialsdb.ICopyrightedMaterialDatabase" name="ICopyrightedMaterialDatabase 12 (prov)" interfaceType="_4G0XAoKjEd-JLc_SCYLXiw"/>
+    <required id="_4ftYE4KjEd-JLc_SCYLXiw" documentation="&lt;unknownClassType>" name="&lt;unknownClassType> 3 (req)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <required id="_4ftYGoKjEd-JLc_SCYLXiw" documentation="palladiofileshare.algorithms.IHash" name="IHash 4 (req)" interfaceType="_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <required id="_4ftYHoKjEd-JLc_SCYLXiw" documentation="Ibusinesslogic.util.Util" name="Util 5 (req)" interfaceType="_4G0XJoKjEd-JLc_SCYLXiw"/>
+    <subcomponents id="_4ftX8YKjEd-JLc_SCYLXiw" name=" &lt;PC No. 94 PrimitiveOrderedHasher ByteArrayVector SimpleLZW Co...>-instance" realizedBy="_4KZPV4KjEd-JLc_SCYLXiw"/>
+    <subcomponents id="_4ftX8oKjEd-JLc_SCYLXiw" name="CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>-instance" realizedBy="_4a8MsIKjEd-JLc_SCYLXiw"/>
+    <connector id="_4ftX9IKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to  &lt;PC No. 94 PrimitiveOrderedHasher ByteArrayVector SimpleLZW Co...>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftX9YKjEd-JLc_SCYLXiw" port="_4ftX84KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftX9oKjEd-JLc_SCYLXiw" port="_4K_sMoKjEd-JLc_SCYLXiw" subcomponent="_4ftX8YKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftX-IKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to  &lt;PC No. 94 PrimitiveOrderedHasher ByteArrayVector SimpleLZW Co...>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftX-YKjEd-JLc_SCYLXiw" port="_4ftX94KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftX-oKjEd-JLc_SCYLXiw" port="_4K_sNIKjEd-JLc_SCYLXiw" subcomponent="_4ftX8YKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftX_IKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to  &lt;PC No. 94 PrimitiveOrderedHasher ByteArrayVector SimpleLZW Co...>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftX_YKjEd-JLc_SCYLXiw" port="_4ftX-4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftX_oKjEd-JLc_SCYLXiw" port="_4LI2LIKjEd-JLc_SCYLXiw" subcomponent="_4ftX8YKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYAIKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYAYKjEd-JLc_SCYLXiw" port="_4ftX_4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYAoKjEd-JLc_SCYLXiw" port="_4a8MwoKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYBIKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYBYKjEd-JLc_SCYLXiw" port="_4ftYA4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYBoKjEd-JLc_SCYLXiw" port="_4a8MxoKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYCIKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYCYKjEd-JLc_SCYLXiw" port="_4ftYB4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYCoKjEd-JLc_SCYLXiw" port="_4a8MyoKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYDIKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYDYKjEd-JLc_SCYLXiw" port="_4ftYC4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYDoKjEd-JLc_SCYLXiw" port="_4a8MzoKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYEIKjEd-JLc_SCYLXiw" documentation="provided delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYEYKjEd-JLc_SCYLXiw" port="_4ftYD4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYEoKjEd-JLc_SCYLXiw" port="_4a8M0oKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYFIKjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to  &lt;PC No. 94 PrimitiveOrderedHasher ByteArrayVector SimpleLZW Co...>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYFYKjEd-JLc_SCYLXiw" port="_4ftYE4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYFoKjEd-JLc_SCYLXiw" port="_4K_sMYKjEd-JLc_SCYLXiw" subcomponent="_4ftX8YKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYF4KjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYGIKjEd-JLc_SCYLXiw" port="_4ftYE4KjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYGYKjEd-JLc_SCYLXiw" port="_4a8M1oKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYG4KjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYHIKjEd-JLc_SCYLXiw" port="_4ftYGoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYHYKjEd-JLc_SCYLXiw" port="_4a8M2oKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+    <connector id="_4ftYH4KjEd-JLc_SCYLXiw" documentation="required delegation connector CC No. 3 de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.S... &lt;...>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>> to CC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic &lt;...s>  &lt;PC No. 92 CopyrightedMaterialDatabase DbAccess>>">
+      <endpoints xsi:type="staticstructure:ComponentEndpoint" id="_4ftYIIKjEd-JLc_SCYLXiw" port="_4ftYHoKjEd-JLc_SCYLXiw"/>
+      <endpoints xsi:type="staticstructure:SubcomponentEndpoint" id="_4ftYIYKjEd-JLc_SCYLXiw" port="_4a8M5IKjEd-JLc_SCYLXiw" subcomponent="_4ftX8oKjEd-JLc_SCYLXiw"/>
+    </connector>
+  </componenttype>
+  <componenttype xsi:type="staticstructure:PrimitiveComponent" id="_4l9xJYKjEd-JLc_SCYLXiw" documentation="Captures calls to system-external services." name="SoMoX System-Level Dummy Component">
+    <provided id="_4l9xKIKjEd-JLc_SCYLXiw" documentation="SoMoX created provided port" name="&lt;unknownClassType> (prov dummy)" interfaceType="_4G0W7IKjEd-JLc_SCYLXiw"/>
+    <provided id="_4l9xLIKjEd-JLc_SCYLXiw" documentation="SoMoX created provided port" name="palladiofileshare.algorithms.IHash (prov dummy)" interfaceType="_4G0W9oKjEd-JLc_SCYLXiw"/>
+    <provided id="_4l9xMIKjEd-JLc_SCYLXiw" documentation="SoMoX created provided port" name="Ibusinesslogic.util.Util (prov dummy)" interfaceType="_4G0XJoKjEd-JLc_SCYLXiw"/>
+  </componenttype>
+  <interface id="_4G0W0YKjEd-JLc_SCYLXiw" documentation="SimpleLZW" name="Ipalladiofileshare.algorithms.SimpleLZW">
+    <signatures id="_4G0W0oKjEd-JLc_SCYLXiw" name="lzwcompress_inlined" input="_4G0W04KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0W2IKjEd-JLc_SCYLXiw" name="main" input="_4G0W2YKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0W4IKjEd-JLc_SCYLXiw" documentation="de.uka.ipd.sdq.palladiofileshare.businesslogic.IBusinessFacade" name="palladiofileshare.businesslogic.IBusinessFacade">
+    <signatures id="_4G0W4YKjEd-JLc_SCYLXiw" name="uploadFiles" input="_4G0W4oKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0W7IKjEd-JLc_SCYLXiw" documentation="&lt;unknownClassType>" name="&lt;unknownClassType>">
+    <signatures id="_4G0W7YKjEd-JLc_SCYLXiw" name="&lt;unknownMethod>"/>
+  </interface>
+  <interface id="_4G0W74KjEd-JLc_SCYLXiw" documentation="de.uka.ipd.sdq.palladiofileshare.businesslogic.storage.IStorage" name="businesslogic.storage.IStorage">
+    <signatures id="_4G0W8IKjEd-JLc_SCYLXiw" name="storeFile" input="_4G0W8YKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0W9oKjEd-JLc_SCYLXiw" documentation="de.uka.ipd.sdq.palladiofileshare.algorithms.IHash" name="palladiofileshare.algorithms.IHash">
+    <signatures id="_4G0W94KjEd-JLc_SCYLXiw" name="getMessageDigest" input="_4G0W-IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0W-oKjEd-JLc_SCYLXiw" name="getMessageDigestType"/>
+  </interface>
+  <interface id="_4G0W_IKjEd-JLc_SCYLXiw" documentation="de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.IExistingFilesDatabase" name="businesslogic.existingfilesdb.IExistingFilesDatabase">
+    <signatures id="_4G0W_YKjEd-JLc_SCYLXiw" name="addNewFileHash" input="_4G0W_oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XAIKjEd-JLc_SCYLXiw" name="existsInDatabase" input="_4G0W_oKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0XAoKjEd-JLc_SCYLXiw" documentation="de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb.ICopyrightedMaterialDatabase" name="....copyrightedmaterialsdb.ICopyrightedMaterialDatabase">
+    <signatures id="_4G0XA4KjEd-JLc_SCYLXiw" name="checkIsCopyrightedMaterial" input="_4G0XBIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0XCIKjEd-JLc_SCYLXiw" documentation="BusinessCore" name="Ipalladiofileshare.businesslogic.BusinessCore">
+    <signatures id="_4G0XCYKjEd-JLc_SCYLXiw" name="uploadFiles" input="_4G0XCoKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0XFIKjEd-JLc_SCYLXiw" documentation="BusinessRunner" name="Ipalladiofileshare.businesslogic.BusinessRunner">
+    <signatures id="_4G0XFYKjEd-JLc_SCYLXiw" name="run"/>
+    <signatures id="_4G0XFoKjEd-JLc_SCYLXiw" name="uploadFiles" input="_4G0XF4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0XJoKjEd-JLc_SCYLXiw" documentation="Util" name="Ibusinesslogic.util.Util">
+    <signatures id="_4G0XJ4KjEd-JLc_SCYLXiw" name="createIntegerHash" input="_4G0W_oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XKIKjEd-JLc_SCYLXiw" name="createString" input="_4G0W_oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XKYKjEd-JLc_SCYLXiw" name="createString_MK" input="_4G0W_oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XKoKjEd-JLc_SCYLXiw" name="initHashSetWithInteger" input="_4G0XK4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XLYKjEd-JLc_SCYLXiw" name="initialiseRandomByteArrays" input="_4G0XLoKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XM4KjEd-JLc_SCYLXiw" name="initialiseRandomPrimitiveByteArrays" input="_4G0XNIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0XR4KjEd-JLc_SCYLXiw" documentation="DbAccess" name="Ibusinesslogic.existingfilesdb.DbAccess">
+    <signatures id="_4G0XSIKjEd-JLc_SCYLXiw" name="queryDatabase" input="_4G0XSYKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0XU4KjEd-JLc_SCYLXiw" documentation="DbAccess" name="Ibusinesslogic.copyrightedmaterialsdb.DbAccess">
+    <signatures id="_4G0XVIKjEd-JLc_SCYLXiw" name="queryDatabase" input="_4G0XSYKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G0XWIKjEd-JLc_SCYLXiw" documentation="PrimitiveOrderedHasher" name="Ilegacy.algorithms.PrimitiveOrderedHasher">
+    <signatures id="_4G0XWYKjEd-JLc_SCYLXiw" name="main" input="_4G0W2YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XWoKjEd-JLc_SCYLXiw" name="compareBitSets" input="_4G0XW4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XcoKjEd-JLc_SCYLXiw" name="getHash" input="_4G0Xc4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XdYKjEd-JLc_SCYLXiw" name="testBitSetComparison"/>
+    <signatures id="_4G0XdoKjEd-JLc_SCYLXiw" name="testByteArrayComparison"/>
+  </interface>
+  <interface id="_4G0XfoKjEd-JLc_SCYLXiw" documentation="ByteArrayVector" name="Ilegacy.algorithms.ByteArrayVector">
+    <signatures id="_4G0Xf4KjEd-JLc_SCYLXiw" name="main" input="_4G0W2YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XgIKjEd-JLc_SCYLXiw" name="add" input="_4G0XgYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0Xg4KjEd-JLc_SCYLXiw" name="add" input="_4G0XhIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0Xh4KjEd-JLc_SCYLXiw" name="contains" input="_4G0XiIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XioKjEd-JLc_SCYLXiw" name="equals" input="_4G0XiIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0Xi4KjEd-JLc_SCYLXiw" name="firstIndexOf" input="_4G0XiIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G0XjIKjEd-JLc_SCYLXiw" name="indexOf" input="_4G0XiIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G-H0YKjEd-JLc_SCYLXiw" documentation="SimpleLZW" name="Ilegacy.algorithms.SimpleLZW">
+    <signatures id="_4G-H0oKjEd-JLc_SCYLXiw" name="convertByteArrayToString" input="_4G0Xc4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-H04KjEd-JLc_SCYLXiw" name="convertByteArrayToString" input="_4G-H1IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-H14KjEd-JLc_SCYLXiw" name="lzwcompress" input="_4G-H2IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-H24KjEd-JLc_SCYLXiw" name="main" input="_4G0W2YKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G-H4oKjEd-JLc_SCYLXiw" documentation="CommandLine" name="Ialgorithms.SevenZip.LzmaAlone$CommandLine">
+    <signatures id="_4G-H44KjEd-JLc_SCYLXiw" name="ParseSwitch" input="_4G-H5IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-H5oKjEd-JLc_SCYLXiw" name="Parse" input="_4G0W2YKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G-H6oKjEd-JLc_SCYLXiw" documentation="LzmaAlone" name="Ialgorithms.SevenZip.LzmaAlone">
+    <signatures id="_4G-H64KjEd-JLc_SCYLXiw" name="PrintHelp"/>
+    <signatures id="_4G-H7IKjEd-JLc_SCYLXiw" name="main" input="_4G0W2YKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G-H8YKjEd-JLc_SCYLXiw" documentation="CRC" name="Ialgorithms.SevenZip.CRC">
+    <signatures id="_4G-H8oKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4G-H84KjEd-JLc_SCYLXiw" name="Update" input="_4G-H9IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-H-IKjEd-JLc_SCYLXiw" name="Update" input="_4G-H-YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-H-4KjEd-JLc_SCYLXiw" name="UpdateByte" input="_4G-H_IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-H_oKjEd-JLc_SCYLXiw" name="GetDigest"/>
+  </interface>
+  <interface id="_4G-IB4KjEd-JLc_SCYLXiw" documentation="de.uka.ipd.sdq.palladiofileshare.legacy.algorithms.SevenZip.ICodeProgress" name="algorithms.SevenZip.ICodeProgress">
+    <signatures id="_4G-ICIKjEd-JLc_SCYLXiw" name="SetProgress" input="_4G-ICYKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4G-ID4KjEd-JLc_SCYLXiw" documentation="OutWindow" name="ICompression.LZ.OutWindow">
+    <signatures id="_4G-IEIKjEd-JLc_SCYLXiw" name="Create" input="_4G-IEYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-IE4KjEd-JLc_SCYLXiw" name="SetStream" input="_4G-IFIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-IIYKjEd-JLc_SCYLXiw" name="ReleaseStream"/>
+    <signatures id="_4G-IIoKjEd-JLc_SCYLXiw" name="Init" input="_4G-II4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-IJYKjEd-JLc_SCYLXiw" name="Flush"/>
+    <signatures id="_4G-IJoKjEd-JLc_SCYLXiw" name="CopyBlock" input="_4G-IJ4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-IKoKjEd-JLc_SCYLXiw" name="PutByte" input="_4G-IK4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4G-ILYKjEd-JLc_SCYLXiw" name="GetByte" input="_4G-ILoKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HH40IKjEd-JLc_SCYLXiw" documentation="BinTree" name="ICompression.LZ.BinTree">
+    <signatures id="_4HH40YKjEd-JLc_SCYLXiw" name="SetType" input="_4HH40oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH41IKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HH41YKjEd-JLc_SCYLXiw" name="MovePos"/>
+    <signatures id="_4HH41oKjEd-JLc_SCYLXiw" name="Create" input="_4HH414KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH43IKjEd-JLc_SCYLXiw" name="GetMatches" input="_4HH43YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH434KjEd-JLc_SCYLXiw" name="Skip" input="_4HH44IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH44oKjEd-JLc_SCYLXiw" name="NormalizeLinks" input="_4HH444KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH454KjEd-JLc_SCYLXiw" name="Normalize"/>
+    <signatures id="_4HH46IKjEd-JLc_SCYLXiw" name="SetCutValue" input="_4HH46YKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HH49oKjEd-JLc_SCYLXiw" documentation="InWindow" name="ICompression.LZ.InWindow">
+    <signatures id="_4HH494KjEd-JLc_SCYLXiw" name="MoveBlock"/>
+    <signatures id="_4HH4-IKjEd-JLc_SCYLXiw" name="ReadBlock"/>
+    <signatures id="_4HH4-YKjEd-JLc_SCYLXiw" name="Free"/>
+    <signatures id="_4HH4-oKjEd-JLc_SCYLXiw" name="Create" input="_4HH4-4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH4_4KjEd-JLc_SCYLXiw" name="SetStream" input="_4HH5AIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5CIKjEd-JLc_SCYLXiw" name="ReleaseStream"/>
+    <signatures id="_4HH5CYKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HH5CoKjEd-JLc_SCYLXiw" name="MovePos"/>
+    <signatures id="_4HH5C4KjEd-JLc_SCYLXiw" name="GetIndexByte" input="_4HH5DIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5DoKjEd-JLc_SCYLXiw" name="GetMatchLen" input="_4HH5D4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5E4KjEd-JLc_SCYLXiw" name="GetNumAvailableBytes"/>
+    <signatures id="_4HH5FIKjEd-JLc_SCYLXiw" name="ReduceOffsets" input="_4HH5FYKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HH5JYKjEd-JLc_SCYLXiw" documentation="BitTreeDecoder" name="ICompression.RangeCoder.BitTreeDecoder">
+    <signatures id="_4HH5JoKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HH5J4KjEd-JLc_SCYLXiw" name="Decode" input="_4HH5KIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5MYKjEd-JLc_SCYLXiw" name="ReverseDecode" input="_4HH5KIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5MoKjEd-JLc_SCYLXiw" name="ReverseDecode" input="_4HH5M4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HH5PoKjEd-JLc_SCYLXiw" documentation="BitTreeEncoder" name="ICompression.RangeCoder.BitTreeEncoder">
+    <signatures id="_4HH5P4KjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HH5QIKjEd-JLc_SCYLXiw" name="Encode" input="_4HH5QYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5S4KjEd-JLc_SCYLXiw" name="ReverseEncode" input="_4HH5TIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5T4KjEd-JLc_SCYLXiw" name="GetPrice" input="_4HH5UIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5UoKjEd-JLc_SCYLXiw" name="ReverseGetPrice" input="_4HH5U4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5VYKjEd-JLc_SCYLXiw" name="ReverseGetPrice" input="_4HH5VoKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5W4KjEd-JLc_SCYLXiw" name="ReverseEncode" input="_4HH5XIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HH5a4KjEd-JLc_SCYLXiw" documentation="Encoder" name="ICompression.RangeCoder.Encoder">
+    <signatures id="_4HH5bIKjEd-JLc_SCYLXiw" name="SetStream" input="_4G-IFIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5bYKjEd-JLc_SCYLXiw" name="ReleaseStream"/>
+    <signatures id="_4HH5boKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HH5b4KjEd-JLc_SCYLXiw" name="FlushData"/>
+    <signatures id="_4HH5cIKjEd-JLc_SCYLXiw" name="FlushStream"/>
+    <signatures id="_4HH5cYKjEd-JLc_SCYLXiw" name="ShiftLow"/>
+    <signatures id="_4HH5coKjEd-JLc_SCYLXiw" name="EncodeDirectBits" input="_4HH5c4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5doKjEd-JLc_SCYLXiw" name="GetProcessedSizeAdd"/>
+    <signatures id="_4HH5d4KjEd-JLc_SCYLXiw" name="InitBitModels" input="_4HH5eIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5eoKjEd-JLc_SCYLXiw" name="Encode" input="_4HH5e4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5f4KjEd-JLc_SCYLXiw" name="GetPrice" input="_4HH5gIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5g4KjEd-JLc_SCYLXiw" name="GetPrice0" input="_4HH5hIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5hoKjEd-JLc_SCYLXiw" name="GetPrice1" input="_4HH5h4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HH5mIKjEd-JLc_SCYLXiw" documentation="Decoder" name="ICompression.RangeCoder.Decoder">
+    <signatures id="_4HH5mYKjEd-JLc_SCYLXiw" name="SetStream" input="_4HH5AIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5moKjEd-JLc_SCYLXiw" name="ReleaseStream"/>
+    <signatures id="_4HH5m4KjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HH5nIKjEd-JLc_SCYLXiw" name="DecodeDirectBits" input="_4HH5nYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5n4KjEd-JLc_SCYLXiw" name="DecodeBit" input="_4HH5oIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HH5o4KjEd-JLc_SCYLXiw" name="InitBitModels" input="_4HH5eIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HRCwIKjEd-JLc_SCYLXiw" documentation="LiteralDecoder" name="ICompression.LZMA.Decoder$LiteralDecoder">
+    <signatures id="_4HRCwYKjEd-JLc_SCYLXiw" name="Create" input="_4HRCwoKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HRCxYKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HRCxoKjEd-JLc_SCYLXiw" name="GetDecoder" input="_4HRCx4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HRCzoKjEd-JLc_SCYLXiw" documentation="LenDecoder" name="ICompression.LZMA.Decoder$LenDecoder">
+    <signatures id="_4HRCz4KjEd-JLc_SCYLXiw" name="Create" input="_4HRC0IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HRC0oKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HRC04KjEd-JLc_SCYLXiw" name="Decode" input="_4HRC1IKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HRC24KjEd-JLc_SCYLXiw" documentation="Decoder" name="ICompression.LZMA.Decoder">
+    <signatures id="_4HRC3IKjEd-JLc_SCYLXiw" name="SetDictionarySize" input="_4HRC3YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HRC34KjEd-JLc_SCYLXiw" name="SetLcLpPb" input="_4HRC4IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HRC5IKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HRC5YKjEd-JLc_SCYLXiw" name="Code" input="_4HRC5oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HRC6oKjEd-JLc_SCYLXiw" name="SetDecoderProperties" input="_4HRC64KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HRC84KjEd-JLc_SCYLXiw" documentation="Decoder2" name="ICompression.LZMA.Decoder$LiteralDecoder$Decoder2">
+    <signatures id="_4HRC9IKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4HRC9YKjEd-JLc_SCYLXiw" name="DecodeNormal" input="_4HH5KIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HRC9oKjEd-JLc_SCYLXiw" name="DecodeWithMatchByte" input="_4HRC94KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HazwoKjEd-JLc_SCYLXiw" documentation="Encoder" name="ICompression.LZMA.Encoder">
+    <signatures id="_4Hazw4KjEd-JLc_SCYLXiw" name="GetPosSlot" input="_4HazxIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HazxoKjEd-JLc_SCYLXiw" name="GetPosSlot2" input="_4Hazx4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HazyYKjEd-JLc_SCYLXiw" name="BaseInit"/>
+    <signatures id="_4HazyoKjEd-JLc_SCYLXiw" name="Create"/>
+    <signatures id="_4Hazy4KjEd-JLc_SCYLXiw" name="SetWriteEndMarkerMode" input="_4HazzIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HazzoKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4Hazz4KjEd-JLc_SCYLXiw" name="ReadMatchDistances"/>
+    <signatures id="_4Haz0IKjEd-JLc_SCYLXiw" name="MovePos" input="_4Haz0YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz04KjEd-JLc_SCYLXiw" name="GetRepLen1Price" input="_4Haz1IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz14KjEd-JLc_SCYLXiw" name="GetPureRepPrice" input="_4Haz2IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz3IKjEd-JLc_SCYLXiw" name="GetRepPrice" input="_4Haz3YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz4oKjEd-JLc_SCYLXiw" name="GetPosLenPrice" input="_4Haz44KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz54KjEd-JLc_SCYLXiw" name="Backward" input="_4Haz6IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz6oKjEd-JLc_SCYLXiw" name="GetOptimum" input="_4Haz64KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz7YKjEd-JLc_SCYLXiw" name="ChangePair" input="_4Haz7oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz8YKjEd-JLc_SCYLXiw" name="WriteEndMarker" input="_4Haz8oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz9IKjEd-JLc_SCYLXiw" name="Flush" input="_4Haz9YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz94KjEd-JLc_SCYLXiw" name="CodeOneBlock" input="_4Haz-IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Haz_IKjEd-JLc_SCYLXiw" name="ReleaseMFStream"/>
+    <signatures id="_4Haz_YKjEd-JLc_SCYLXiw" name="SetOutStream" input="_4Haz_oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0AIKjEd-JLc_SCYLXiw" name="ReleaseOutStream"/>
+    <signatures id="_4Ha0AYKjEd-JLc_SCYLXiw" name="ReleaseStreams"/>
+    <signatures id="_4Ha0AoKjEd-JLc_SCYLXiw" name="SetStreams" input="_4Ha0A4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0CIKjEd-JLc_SCYLXiw" name="Code" input="_4Ha0CYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0E4KjEd-JLc_SCYLXiw" name="WriteCoderProperties" input="_4Haz_oKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0FIKjEd-JLc_SCYLXiw" name="FillDistancesPrices"/>
+    <signatures id="_4Ha0FYKjEd-JLc_SCYLXiw" name="FillAlignPrices"/>
+    <signatures id="_4Ha0FoKjEd-JLc_SCYLXiw" name="SetAlgorithm" input="_4Ha0F4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0GYKjEd-JLc_SCYLXiw" name="SetDictionarySize" input="_4Ha0GoKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0HIKjEd-JLc_SCYLXiw" name="SeNumFastBytes" input="_4Ha0HYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0H4KjEd-JLc_SCYLXiw" name="SetMatchFinder" input="_4Ha0IIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0IoKjEd-JLc_SCYLXiw" name="SetLcLpPb" input="_4Ha0I4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0J4KjEd-JLc_SCYLXiw" name="SetEndMarkerMode" input="_4Ha0KIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha0TIKjEd-JLc_SCYLXiw" documentation="LiteralEncoder" name="ICompression.LZMA.Encoder$LiteralEncoder">
+    <signatures id="_4Ha0TYKjEd-JLc_SCYLXiw" name="Create" input="_4Ha0ToKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0UYKjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4Ha0UoKjEd-JLc_SCYLXiw" name="GetSubCoder" input="_4Ha0U4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha0WoKjEd-JLc_SCYLXiw" documentation="Encoder2" name="ICompression.LZMA.Encoder$LiteralEncoder$Encoder2">
+    <signatures id="_4Ha0W4KjEd-JLc_SCYLXiw" name="Init"/>
+    <signatures id="_4Ha0XIKjEd-JLc_SCYLXiw" name="Encode" input="_4Ha0XYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0YIKjEd-JLc_SCYLXiw" name="EncodeMatched" input="_4Ha0YYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0ZYKjEd-JLc_SCYLXiw" name="GetPrice" input="_4Ha0ZoKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha0b4KjEd-JLc_SCYLXiw" documentation="LenEncoder" name="ICompression.LZMA.Encoder$LenEncoder">
+    <signatures id="_4Ha0cIKjEd-JLc_SCYLXiw" name="Init" input="_4Ha0cYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0c4KjEd-JLc_SCYLXiw" name="Encode" input="_4Ha0dIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0eIKjEd-JLc_SCYLXiw" name="SetPrices" input="_4Ha0eYKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha0goKjEd-JLc_SCYLXiw" documentation="Optimal" name="ICompression.LZMA.Encoder$Optimal">
+    <signatures id="_4Ha0g4KjEd-JLc_SCYLXiw" name="MakeAsChar"/>
+    <signatures id="_4Ha0hIKjEd-JLc_SCYLXiw" name="MakeAsShortRep"/>
+    <signatures id="_4Ha0hYKjEd-JLc_SCYLXiw" name="IsShortRep"/>
+  </interface>
+  <interface id="_4Ha0ioKjEd-JLc_SCYLXiw" documentation="LenPriceTableEncoder" name="ICompression.LZMA.Encoder$LenPriceTableEncoder">
+    <signatures id="_4Ha0i4KjEd-JLc_SCYLXiw" name="SetTableSize" input="_4Ha0jIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0joKjEd-JLc_SCYLXiw" name="GetPrice" input="_4Ha0j4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0koKjEd-JLc_SCYLXiw" name="UpdateTable" input="_4Ha0k4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0lYKjEd-JLc_SCYLXiw" name="UpdateTables" input="_4Ha0loKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0mIKjEd-JLc_SCYLXiw" name="Encode" input="_4Ha0mYKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha0pIKjEd-JLc_SCYLXiw" documentation="Base" name="ICompression.LZMA.Base">
+    <signatures id="_4Ha0pYKjEd-JLc_SCYLXiw" name="StateInit"/>
+    <signatures id="_4Ha0poKjEd-JLc_SCYLXiw" name="StateUpdateChar" input="_4Ha0p4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0qYKjEd-JLc_SCYLXiw" name="StateUpdateMatch" input="_4Ha0qoKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0rIKjEd-JLc_SCYLXiw" name="StateUpdateRep" input="_4Ha0rYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0r4KjEd-JLc_SCYLXiw" name="StateUpdateShortRep" input="_4Ha0sIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0soKjEd-JLc_SCYLXiw" name="StateIsCharState" input="_4Ha0s4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0tYKjEd-JLc_SCYLXiw" name="GetLenToPosState" input="_4Ha0toKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha0woKjEd-JLc_SCYLXiw" documentation="CompressionRunner" name="Ialgorithms.compress_refactored.CompressionRunner">
+    <signatures id="_4Ha0w4KjEd-JLc_SCYLXiw" name="prepareBuffers" input="_4Ha0xIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0xoKjEd-JLc_SCYLXiw" name="runCompress" input="_4Ha0x4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha0yYKjEd-JLc_SCYLXiw" name="compress" input="_4Ha0xIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha0z4KjEd-JLc_SCYLXiw" documentation="InputBuffer" name="Ialgorithms.compress_refactored.InputBuffer">
+    <signatures id="_4Ha00IKjEd-JLc_SCYLXiw" name="readByte"/>
+    <signatures id="_4Ha00YKjEd-JLc_SCYLXiw" name="readBytes" input="_4Ha00oKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Ha02YKjEd-JLc_SCYLXiw" documentation="HashTable" name="Ialgorithms.compress_refactored.HashTable">
+    <signatures id="_4Ha02oKjEd-JLc_SCYLXiw" name="clear"/>
+    <signatures id="_4Ha024KjEd-JLc_SCYLXiw" name="hsize"/>
+    <signatures id="_4Ha03IKjEd-JLc_SCYLXiw" name="of" input="_4Ha03YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Ha034KjEd-JLc_SCYLXiw" name="set" input="_4Ha04IKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj9sYKjEd-JLc_SCYLXiw" documentation="Compress" name="Ialgorithms.compress_refactored.Compress">
+    <signatures id="_4Hj9soKjEd-JLc_SCYLXiw" name="performAction" input="_4Hj9s4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj9u4KjEd-JLc_SCYLXiw" documentation="OutputBuffer" name="Ialgorithms.compress_refactored.OutputBuffer">
+    <signatures id="_4Hj9vIKjEd-JLc_SCYLXiw" name="getBuffer"/>
+    <signatures id="_4Hj9vYKjEd-JLc_SCYLXiw" name="getCRC"/>
+    <signatures id="_4Hj9voKjEd-JLc_SCYLXiw" name="getLength"/>
+    <signatures id="_4Hj9v4KjEd-JLc_SCYLXiw" name="writeByte" input="_4Hj9wIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Hj9woKjEd-JLc_SCYLXiw" name="writebytes" input="_4Hj9w4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj90IKjEd-JLc_SCYLXiw" documentation="Decompressor" name="Ialgorithms.compress_refactored.Decompressor">
+    <signatures id="_4Hj90YKjEd-JLc_SCYLXiw" name="decompress"/>
+  </interface>
+  <interface id="_4Hj91oKjEd-JLc_SCYLXiw" documentation="SuffixTable" name="Ialgorithms.compress_refactored.SuffixTable">
+    <signatures id="_4Hj914KjEd-JLc_SCYLXiw" name="init" input="_4Hj92IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Hj92oKjEd-JLc_SCYLXiw" name="of" input="_4Hj924KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Hj93YKjEd-JLc_SCYLXiw" name="set" input="_4Hj93oKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj954KjEd-JLc_SCYLXiw" documentation="CodeTable" name="Ialgorithms.compress_refactored.CodeTable">
+    <signatures id="_4Hj96IKjEd-JLc_SCYLXiw" name="clear" input="_4Hj96YKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Hj964KjEd-JLc_SCYLXiw" name="of" input="_4Hj97IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Hj97oKjEd-JLc_SCYLXiw" name="set" input="_4Hj974KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj9_IKjEd-JLc_SCYLXiw" documentation="Compressor" name="Ialgorithms.compress_refactored.Compressor">
+    <signatures id="_4Hj9_YKjEd-JLc_SCYLXiw" name="compress"/>
+  </interface>
+  <interface id="_4Hj-AoKjEd-JLc_SCYLXiw" documentation="DeStack" name="Ialgorithms.compress_refactored.DeStack">
+    <signatures id="_4Hj-A4KjEd-JLc_SCYLXiw" name="isEmpty"/>
+    <signatures id="_4Hj-BIKjEd-JLc_SCYLXiw" name="pop"/>
+    <signatures id="_4Hj-BYKjEd-JLc_SCYLXiw" name="push" input="_4Hj9wIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj-C4KjEd-JLc_SCYLXiw" documentation="Decompressor" name="Ialgorithms.compress.Decompressor">
+    <signatures id="_4Hj-DIKjEd-JLc_SCYLXiw" name="decompress"/>
+  </interface>
+  <interface id="_4Hj-D4KjEd-JLc_SCYLXiw" documentation="DeStack" name="Ialgorithms.compress.Decompressor$DeStack">
+    <signatures id="_4Hj-EIKjEd-JLc_SCYLXiw" name="isEmpty"/>
+    <signatures id="_4Hj-EYKjEd-JLc_SCYLXiw" name="pop"/>
+    <signatures id="_4Hj-EoKjEd-JLc_SCYLXiw" name="push" input="_4Hj9wIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj-F4KjEd-JLc_SCYLXiw" documentation="SuffixTable" name="Ialgorithms.compress.Decompressor$SuffixTable">
+    <signatures id="_4Hj-GIKjEd-JLc_SCYLXiw" name="init" input="_4Hj-GYKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Hj-G4KjEd-JLc_SCYLXiw" name="of" input="_4Hj-HIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Hj-HoKjEd-JLc_SCYLXiw" name="set" input="_4Hj-H4KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Hj-KIKjEd-JLc_SCYLXiw" documentation="Compress" name="Ialgorithms.compress.Compress">
+    <signatures id="_4Hj-KYKjEd-JLc_SCYLXiw" name="performAction" input="_4Hj-KoKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HtusYKjEd-JLc_SCYLXiw" documentation="CodeTable" name="Ialgorithms.compress.CodeTable">
+    <signatures id="_4HtusoKjEd-JLc_SCYLXiw" name="clear" input="_4Htus4KjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HtutYKjEd-JLc_SCYLXiw" name="of" input="_4HtutoKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HtuuIKjEd-JLc_SCYLXiw" name="set" input="_4HtuuYKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Htuw4KjEd-JLc_SCYLXiw" documentation="CompressionRunner" name="Ialgorithms.compress.CompressionRunner">
+    <signatures id="_4HtuxIKjEd-JLc_SCYLXiw" name="prepareBuffers" input="_4Ha0xIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HtuxYKjEd-JLc_SCYLXiw" name="runCompress" input="_4HtuxoKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4HtuyIKjEd-JLc_SCYLXiw" name="compress" input="_4Ha0xIKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4HtuzoKjEd-JLc_SCYLXiw" documentation="InputBuffer" name="Ialgorithms.compress.InputBuffer">
+    <signatures id="_4Htuz4KjEd-JLc_SCYLXiw" name="readByte"/>
+    <signatures id="_4Htu0IKjEd-JLc_SCYLXiw" name="readBytes" input="_4Htu0YKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Htu2IKjEd-JLc_SCYLXiw" documentation="OutputBuffer" name="Ialgorithms.compress.OutputBuffer">
+    <signatures id="_4Htu2YKjEd-JLc_SCYLXiw" name="getBuffer"/>
+    <signatures id="_4Htu2oKjEd-JLc_SCYLXiw" name="getCRC"/>
+    <signatures id="_4Htu24KjEd-JLc_SCYLXiw" name="getLength"/>
+    <signatures id="_4Htu3IKjEd-JLc_SCYLXiw" name="writeByte" input="_4Hj9wIKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Htu3YKjEd-JLc_SCYLXiw" name="writebytes" input="_4Htu3oKjEd-JLc_SCYLXiw"/>
+  </interface>
+  <interface id="_4Htu7IKjEd-JLc_SCYLXiw" documentation="Compressor" name="Ialgorithms.compress.Compressor">
+    <signatures id="_4Htu7YKjEd-JLc_SCYLXiw" name="compress"/>
+  </interface>
+  <interface id="_4Htu8IKjEd-JLc_SCYLXiw" documentation="HashTable" name="Ialgorithms.compress.Compressor$HashTable">
+    <signatures id="_4Htu8YKjEd-JLc_SCYLXiw" name="clear"/>
+    <signatures id="_4Htu8oKjEd-JLc_SCYLXiw" name="hsize"/>
+    <signatures id="_4Htu84KjEd-JLc_SCYLXiw" name="of" input="_4Htu9IKjEd-JLc_SCYLXiw"/>
+    <signatures id="_4Htu9oKjEd-JLc_SCYLXiw" name="set" input="_4Htu94KjEd-JLc_SCYLXiw"/>
+  </interface>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0W1YKjEd-JLc_SCYLXiw" name="byte"/>
+  <type xsi:type="datatypes:PrimitiveDataType" id="_4G0W14KjEd-JLc_SCYLXiw" name="INTEGER" type="int"/>
+  <type xsi:type="datatypes:PrimitiveDataType" id="_4G0W24KjEd-JLc_SCYLXiw" name="STRING"/>
+  <type xsi:type="datatypes:PrimitiveDataType" id="_4G0W54KjEd-JLc_SCYLXiw" name="BOOLEAN" type="boolean"/>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0XXYKjEd-JLc_SCYLXiw" name="BitSet">
+    <elements id="_4G0XXoKjEd-JLc_SCYLXiw" name="int" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0XX4KjEd-JLc_SCYLXiw" name="boolean" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0XYIKjEd-JLc_SCYLXiw" name="void" type="_4G0XYYKjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0XYoKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0Xa4KjEd-JLc_SCYLXiw" name="Cloneable" type="_4G0XbIKjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0XboKjEd-JLc_SCYLXiw" name="Serializable" type="_4G0Xb4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0XYYKjEd-JLc_SCYLXiw" name="void"/>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0XY4KjEd-JLc_SCYLXiw" name="Object">
+    <elements id="_4G0XZIKjEd-JLc_SCYLXiw" name="String" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0XZYKjEd-JLc_SCYLXiw" name="boolean" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0XZoKjEd-JLc_SCYLXiw" name="Class" type="_4G0XZ4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0XZ4KjEd-JLc_SCYLXiw" name="Class">
+    <elements id="_4G0XaIKjEd-JLc_SCYLXiw" name="String" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G0XaYKjEd-JLc_SCYLXiw" name="T" type="_4G0XaoKjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0XaoKjEd-JLc_SCYLXiw" name="T"/>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0XbIKjEd-JLc_SCYLXiw" name="Cloneable">
+    <elements id="_4G0XbYKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G0Xb4KjEd-JLc_SCYLXiw" name="Serializable">
+    <elements id="_4G0XcIKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G-IFoKjEd-JLc_SCYLXiw" name="OutputStream">
+    <elements id="_4G-IF4KjEd-JLc_SCYLXiw" name="void" type="_4G0XYYKjEd-JLc_SCYLXiw"/>
+    <elements id="_4G-IGIKjEd-JLc_SCYLXiw" name="int" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G-IGYKjEd-JLc_SCYLXiw" name="byte" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <elements id="_4G-IGoKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+    <elements id="_4G-IG4KjEd-JLc_SCYLXiw" name="Closeable" type="_4G-IHIKjEd-JLc_SCYLXiw"/>
+    <elements id="_4G-IHoKjEd-JLc_SCYLXiw" name="Flushable" type="_4G-IH4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G-IHIKjEd-JLc_SCYLXiw" name="Closeable">
+    <elements id="_4G-IHYKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4G-IH4KjEd-JLc_SCYLXiw" name="Flushable">
+    <elements id="_4G-IIIKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4HH5AoKjEd-JLc_SCYLXiw" name="InputStream">
+    <elements id="_4HH5A4KjEd-JLc_SCYLXiw" name="void" type="_4G0XYYKjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5BIKjEd-JLc_SCYLXiw" name="int" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5BYKjEd-JLc_SCYLXiw" name="byte" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5BoKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5B4KjEd-JLc_SCYLXiw" name="Closeable" type="_4G-IHIKjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4HH5KoKjEd-JLc_SCYLXiw" name="Decoder">
+    <elements id="_4HH5K4KjEd-JLc_SCYLXiw" name="InputStream" type="_4HH5AoKjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5LIKjEd-JLc_SCYLXiw" name="int" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5LYKjEd-JLc_SCYLXiw" name="void" type="_4G0XYYKjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5LoKjEd-JLc_SCYLXiw" name="short" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5MIKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4HH5L4KjEd-JLc_SCYLXiw" name="short"/>
+  <type xsi:type="datatypes:ComplexDataType" id="_4HH5Q4KjEd-JLc_SCYLXiw" name="Encoder">
+    <elements id="_4HH5RIKjEd-JLc_SCYLXiw" name="int" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5RYKjEd-JLc_SCYLXiw" name="long" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5RoKjEd-JLc_SCYLXiw" name="OutputStream" type="_4G-IFoKjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5R4KjEd-JLc_SCYLXiw" name="void" type="_4G0XYYKjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5SIKjEd-JLc_SCYLXiw" name="short" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+    <elements id="_4HH5SYKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <type xsi:type="datatypes:ComplexDataType" id="_4Ha0D4KjEd-JLc_SCYLXiw" name="ICodeProgress">
+    <elements id="_4Ha0EIKjEd-JLc_SCYLXiw" name="void" type="_4G0XYYKjEd-JLc_SCYLXiw"/>
+    <elements id="_4Ha0EYKjEd-JLc_SCYLXiw" name="long" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <elements id="_4Ha0EoKjEd-JLc_SCYLXiw" name="Object" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </type>
+  <messagetype id="_4G0W04KjEd-JLc_SCYLXiw" name="byte_int">
+    <parameters id="_4G0W1IKjEd-JLc_SCYLXiw" name="input" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0W1oKjEd-JLc_SCYLXiw" name="maxDictSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0W2YKjEd-JLc_SCYLXiw" name="String">
+    <parameters id="_4G0W2oKjEd-JLc_SCYLXiw" name="args" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0W4oKjEd-JLc_SCYLXiw" name="byte_String_int_boolean_boolean">
+    <parameters id="_4G0W44KjEd-JLc_SCYLXiw" name="inputFiles" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0W5IKjEd-JLc_SCYLXiw" name="inputFileIds" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0W5YKjEd-JLc_SCYLXiw" name="inputFileTypes" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0W5oKjEd-JLc_SCYLXiw" name="measure" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0W6IKjEd-JLc_SCYLXiw" name="monitor" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0W8YKjEd-JLc_SCYLXiw" name="byte_byte_boolean">
+    <parameters id="_4G0W8oKjEd-JLc_SCYLXiw" name="stream" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0W84KjEd-JLc_SCYLXiw" name="fileHash" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0W9IKjEd-JLc_SCYLXiw" name="measure" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0W-IKjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4G0W-YKjEd-JLc_SCYLXiw" name="inputBytes" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0W_oKjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4G0W_4KjEd-JLc_SCYLXiw" name="fileHash" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XBIKjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4G0XBYKjEd-JLc_SCYLXiw" name="hash" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XCoKjEd-JLc_SCYLXiw" name="byte_String_int_boolean_boolean">
+    <parameters id="_4G0XC4KjEd-JLc_SCYLXiw" name="uploadFiles" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XDIKjEd-JLc_SCYLXiw" name="uploadFileIds" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XDYKjEd-JLc_SCYLXiw" name="uploadFileTypes" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XDoKjEd-JLc_SCYLXiw" name="measure" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XD4KjEd-JLc_SCYLXiw" name="monitor" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XF4KjEd-JLc_SCYLXiw" name="byte_String_int_boolean_boolean">
+    <parameters id="_4G0XGIKjEd-JLc_SCYLXiw" name="uploadFiles" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XGYKjEd-JLc_SCYLXiw" name="uploadFileIds" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XGoKjEd-JLc_SCYLXiw" name="uploadFileTypes" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XG4KjEd-JLc_SCYLXiw" name="measure" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XHIKjEd-JLc_SCYLXiw" name="monitor" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XK4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4G0XLIKjEd-JLc_SCYLXiw" name="amountOfData" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XLoKjEd-JLc_SCYLXiw" name="int_boolean_int_int">
+    <parameters id="_4G0XL4KjEd-JLc_SCYLXiw" name="nrOfRandomDatasets" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XMIKjEd-JLc_SCYLXiw" name="constantRandomDatasetSize" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XMYKjEd-JLc_SCYLXiw" name="initialRandomDatasetSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XMoKjEd-JLc_SCYLXiw" name="maximumRandomDatasetSizeIfVariableSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XNIKjEd-JLc_SCYLXiw" name="int_boolean_int_int">
+    <parameters id="_4G0XNYKjEd-JLc_SCYLXiw" name="nrOfRandomDatasets" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XNoKjEd-JLc_SCYLXiw" name="constantRandomDatasetSize" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XN4KjEd-JLc_SCYLXiw" name="initialRandomDatasetSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XOIKjEd-JLc_SCYLXiw" name="maximumRandomDatasetSizeIfVariableSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XSYKjEd-JLc_SCYLXiw" name="String">
+    <parameters id="_4G0XSoKjEd-JLc_SCYLXiw" name="database" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XW4KjEd-JLc_SCYLXiw" name="BitSet_BitSet">
+    <parameters id="_4G0XXIKjEd-JLc_SCYLXiw" name="left" type="_4G0XXYKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XcYKjEd-JLc_SCYLXiw" name="right" type="_4G0XXYKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0Xc4KjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4G0XdIKjEd-JLc_SCYLXiw" name="input" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XgYKjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4G0XgoKjEd-JLc_SCYLXiw" name="addedElement" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XhIKjEd-JLc_SCYLXiw" name="byte_boolean">
+    <parameters id="_4G0XhYKjEd-JLc_SCYLXiw" name="addedElement" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G0XhoKjEd-JLc_SCYLXiw" name="verbose" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G0XiIKjEd-JLc_SCYLXiw" name="Object">
+    <parameters id="_4G0XiYKjEd-JLc_SCYLXiw" name="o" type="_4G0XY4KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-H1IKjEd-JLc_SCYLXiw" name="byte_String">
+    <parameters id="_4G-H1YKjEd-JLc_SCYLXiw" name="input" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G-H1oKjEd-JLc_SCYLXiw" name="separator" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-H2IKjEd-JLc_SCYLXiw" name="byte_boolean">
+    <parameters id="_4G-H2YKjEd-JLc_SCYLXiw" name="input" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G-H2oKjEd-JLc_SCYLXiw" name="verbose" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-H5IKjEd-JLc_SCYLXiw" name="String">
+    <parameters id="_4G-H5YKjEd-JLc_SCYLXiw" name="s" type="_4G0W24KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-H9IKjEd-JLc_SCYLXiw" name="byte_int_int">
+    <parameters id="_4G-H9YKjEd-JLc_SCYLXiw" name="data" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G-H9oKjEd-JLc_SCYLXiw" name="offset" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G-H94KjEd-JLc_SCYLXiw" name="size" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-H-YKjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4G-H-oKjEd-JLc_SCYLXiw" name="data" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-H_IKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4G-H_YKjEd-JLc_SCYLXiw" name="b" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-ICYKjEd-JLc_SCYLXiw" name="long_long">
+    <parameters id="_4G-ICoKjEd-JLc_SCYLXiw" name="inSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G-IC4KjEd-JLc_SCYLXiw" name="outSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-IEYKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4G-IEoKjEd-JLc_SCYLXiw" name="windowSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-IFIKjEd-JLc_SCYLXiw" name="OutputStream">
+    <parameters id="_4G-IFYKjEd-JLc_SCYLXiw" name="stream" type="_4G-IFoKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-II4KjEd-JLc_SCYLXiw" name="boolean">
+    <parameters id="_4G-IJIKjEd-JLc_SCYLXiw" name="solid" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-IJ4KjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4G-IKIKjEd-JLc_SCYLXiw" name="distance" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4G-IKYKjEd-JLc_SCYLXiw" name="len" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-IK4KjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4G-ILIKjEd-JLc_SCYLXiw" name="b" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4G-ILoKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4G-IL4KjEd-JLc_SCYLXiw" name="distance" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH40oKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH404KjEd-JLc_SCYLXiw" name="numHashBytes" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH414KjEd-JLc_SCYLXiw" name="int_int_int_int">
+    <parameters id="_4HH42IKjEd-JLc_SCYLXiw" name="historySize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH42YKjEd-JLc_SCYLXiw" name="keepAddBufferBefore" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH42oKjEd-JLc_SCYLXiw" name="matchMaxLen" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH424KjEd-JLc_SCYLXiw" name="keepAddBufferAfter" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH43YKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH43oKjEd-JLc_SCYLXiw" name="distances" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH44IKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH44YKjEd-JLc_SCYLXiw" name="num" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH444KjEd-JLc_SCYLXiw" name="int_int_int">
+    <parameters id="_4HH45IKjEd-JLc_SCYLXiw" name="items" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH45YKjEd-JLc_SCYLXiw" name="numItems" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH45oKjEd-JLc_SCYLXiw" name="subValue" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH46YKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH46oKjEd-JLc_SCYLXiw" name="cutValue" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH4-4KjEd-JLc_SCYLXiw" name="int_int_int">
+    <parameters id="_4HH4_IKjEd-JLc_SCYLXiw" name="keepSizeBefore" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH4_YKjEd-JLc_SCYLXiw" name="keepSizeAfter" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH4_oKjEd-JLc_SCYLXiw" name="keepSizeReserv" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5AIKjEd-JLc_SCYLXiw" name="InputStream">
+    <parameters id="_4HH5AYKjEd-JLc_SCYLXiw" name="stream" type="_4HH5AoKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5DIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH5DYKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5D4KjEd-JLc_SCYLXiw" name="int_int_int">
+    <parameters id="_4HH5EIKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5EYKjEd-JLc_SCYLXiw" name="distance" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5EoKjEd-JLc_SCYLXiw" name="limit" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5FYKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH5FoKjEd-JLc_SCYLXiw" name="subValue" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5KIKjEd-JLc_SCYLXiw" name="Decoder">
+    <parameters id="_4HH5KYKjEd-JLc_SCYLXiw" name="rangeDecoder" type="_4HH5KoKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5M4KjEd-JLc_SCYLXiw" name="short_int_Decoder_int">
+    <parameters id="_4HH5NIKjEd-JLc_SCYLXiw" name="Models" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5NYKjEd-JLc_SCYLXiw" name="startIndex" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5NoKjEd-JLc_SCYLXiw" name="rangeDecoder" type="_4HH5KoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5N4KjEd-JLc_SCYLXiw" name="NumBitLevels" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5QYKjEd-JLc_SCYLXiw" name="Encoder_int">
+    <parameters id="_4HH5QoKjEd-JLc_SCYLXiw" name="rangeEncoder" type="_4HH5Q4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5SoKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5TIKjEd-JLc_SCYLXiw" name="Encoder_int">
+    <parameters id="_4HH5TYKjEd-JLc_SCYLXiw" name="rangeEncoder" type="_4HH5Q4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5ToKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5UIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH5UYKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5U4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH5VIKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5VoKjEd-JLc_SCYLXiw" name="short_int_int_int">
+    <parameters id="_4HH5V4KjEd-JLc_SCYLXiw" name="Models" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5WIKjEd-JLc_SCYLXiw" name="startIndex" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5WYKjEd-JLc_SCYLXiw" name="NumBitLevels" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5WoKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5XIKjEd-JLc_SCYLXiw" name="short_int_Encoder_int_int">
+    <parameters id="_4HH5XYKjEd-JLc_SCYLXiw" name="Models" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5XoKjEd-JLc_SCYLXiw" name="startIndex" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5X4KjEd-JLc_SCYLXiw" name="rangeEncoder" type="_4HH5Q4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5YIKjEd-JLc_SCYLXiw" name="NumBitLevels" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5YYKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5c4KjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4HH5dIKjEd-JLc_SCYLXiw" name="v" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5dYKjEd-JLc_SCYLXiw" name="numTotalBits" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5eIKjEd-JLc_SCYLXiw" name="short">
+    <parameters id="_4HH5eYKjEd-JLc_SCYLXiw" name="probs" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5e4KjEd-JLc_SCYLXiw" name="short_int_int">
+    <parameters id="_4HH5fIKjEd-JLc_SCYLXiw" name="probs" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5fYKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5foKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5gIKjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4HH5gYKjEd-JLc_SCYLXiw" name="Prob" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5goKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5hIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH5hYKjEd-JLc_SCYLXiw" name="Prob" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5h4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH5iIKjEd-JLc_SCYLXiw" name="Prob" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5nYKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HH5noKjEd-JLc_SCYLXiw" name="numTotalBits" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HH5oIKjEd-JLc_SCYLXiw" name="short_int">
+    <parameters id="_4HH5oYKjEd-JLc_SCYLXiw" name="probs" type="_4HH5L4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HH5ooKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRCwoKjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4HRCw4KjEd-JLc_SCYLXiw" name="numPosBits" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRCxIKjEd-JLc_SCYLXiw" name="numPrevBits" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRCx4KjEd-JLc_SCYLXiw" name="int_byte">
+    <parameters id="_4HRCyIKjEd-JLc_SCYLXiw" name="pos" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRCyYKjEd-JLc_SCYLXiw" name="prevByte" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRC0IKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HRC0YKjEd-JLc_SCYLXiw" name="numPosStates" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRC1IKjEd-JLc_SCYLXiw" name="Decoder_int">
+    <parameters id="_4HRC1YKjEd-JLc_SCYLXiw" name="rangeDecoder" type="_4HH5KoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRC1oKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRC3YKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HRC3oKjEd-JLc_SCYLXiw" name="dictionarySize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRC4IKjEd-JLc_SCYLXiw" name="int_int_int">
+    <parameters id="_4HRC4YKjEd-JLc_SCYLXiw" name="lc" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRC4oKjEd-JLc_SCYLXiw" name="lp" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRC44KjEd-JLc_SCYLXiw" name="pb" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRC5oKjEd-JLc_SCYLXiw" name="InputStream_OutputStream_long">
+    <parameters id="_4HRC54KjEd-JLc_SCYLXiw" name="inStream" type="_4HH5AoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRC6IKjEd-JLc_SCYLXiw" name="outStream" type="_4G-IFoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRC6YKjEd-JLc_SCYLXiw" name="outSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRC64KjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4HRC7IKjEd-JLc_SCYLXiw" name="properties" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HRC94KjEd-JLc_SCYLXiw" name="Decoder_byte">
+    <parameters id="_4HRC-IKjEd-JLc_SCYLXiw" name="rangeDecoder" type="_4HH5KoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4HRC-YKjEd-JLc_SCYLXiw" name="matchByte" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HazxIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HazxYKjEd-JLc_SCYLXiw" name="pos" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hazx4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HazyIKjEd-JLc_SCYLXiw" name="pos" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HazzIKjEd-JLc_SCYLXiw" name="boolean">
+    <parameters id="_4HazzYKjEd-JLc_SCYLXiw" name="writeEndMarker" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz0YKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Haz0oKjEd-JLc_SCYLXiw" name="num" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz1IKjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4Haz1YKjEd-JLc_SCYLXiw" name="state" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz1oKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz2IKjEd-JLc_SCYLXiw" name="int_int_int">
+    <parameters id="_4Haz2YKjEd-JLc_SCYLXiw" name="repIndex" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz2oKjEd-JLc_SCYLXiw" name="state" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz24KjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz3YKjEd-JLc_SCYLXiw" name="int_int_int_int">
+    <parameters id="_4Haz3oKjEd-JLc_SCYLXiw" name="repIndex" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz34KjEd-JLc_SCYLXiw" name="len" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz4IKjEd-JLc_SCYLXiw" name="state" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz4YKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz44KjEd-JLc_SCYLXiw" name="int_int_int">
+    <parameters id="_4Haz5IKjEd-JLc_SCYLXiw" name="pos" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz5YKjEd-JLc_SCYLXiw" name="len" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz5oKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz6IKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Haz6YKjEd-JLc_SCYLXiw" name="cur" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz64KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Haz7IKjEd-JLc_SCYLXiw" name="position" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz7oKjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4Haz74KjEd-JLc_SCYLXiw" name="smallDist" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz8IKjEd-JLc_SCYLXiw" name="bigDist" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz8oKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Haz84KjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz9YKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Haz9oKjEd-JLc_SCYLXiw" name="nowPos" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz-IKjEd-JLc_SCYLXiw" name="long_long_boolean">
+    <parameters id="_4Haz-YKjEd-JLc_SCYLXiw" name="inSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz-oKjEd-JLc_SCYLXiw" name="outSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Haz-4KjEd-JLc_SCYLXiw" name="finished" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Haz_oKjEd-JLc_SCYLXiw" name="OutputStream">
+    <parameters id="_4Haz_4KjEd-JLc_SCYLXiw" name="outStream" type="_4G-IFoKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0A4KjEd-JLc_SCYLXiw" name="InputStream_OutputStream_long_long">
+    <parameters id="_4Ha0BIKjEd-JLc_SCYLXiw" name="inStream" type="_4HH5AoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0BYKjEd-JLc_SCYLXiw" name="outStream" type="_4G-IFoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0BoKjEd-JLc_SCYLXiw" name="inSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0B4KjEd-JLc_SCYLXiw" name="outSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0CYKjEd-JLc_SCYLXiw" name="InputStream_OutputStream_long_long_ICodeProgress">
+    <parameters id="_4Ha0CoKjEd-JLc_SCYLXiw" name="inStream" type="_4HH5AoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0C4KjEd-JLc_SCYLXiw" name="outStream" type="_4G-IFoKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0DIKjEd-JLc_SCYLXiw" name="inSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0DYKjEd-JLc_SCYLXiw" name="outSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0DoKjEd-JLc_SCYLXiw" name="progress" type="_4Ha0D4KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0F4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0GIKjEd-JLc_SCYLXiw" name="algorithm" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0GoKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0G4KjEd-JLc_SCYLXiw" name="dictionarySize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0HYKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0HoKjEd-JLc_SCYLXiw" name="numFastBytes" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0IIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0IYKjEd-JLc_SCYLXiw" name="matchFinderIndex" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0I4KjEd-JLc_SCYLXiw" name="int_int_int">
+    <parameters id="_4Ha0JIKjEd-JLc_SCYLXiw" name="lc" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0JYKjEd-JLc_SCYLXiw" name="lp" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0JoKjEd-JLc_SCYLXiw" name="pb" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0KIKjEd-JLc_SCYLXiw" name="boolean">
+    <parameters id="_4Ha0KYKjEd-JLc_SCYLXiw" name="endMarkerMode" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0ToKjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4Ha0T4KjEd-JLc_SCYLXiw" name="numPosBits" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0UIKjEd-JLc_SCYLXiw" name="numPrevBits" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0U4KjEd-JLc_SCYLXiw" name="int_byte">
+    <parameters id="_4Ha0VIKjEd-JLc_SCYLXiw" name="pos" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0VYKjEd-JLc_SCYLXiw" name="prevByte" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0XYKjEd-JLc_SCYLXiw" name="Encoder_byte">
+    <parameters id="_4Ha0XoKjEd-JLc_SCYLXiw" name="rangeEncoder" type="_4HH5Q4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0X4KjEd-JLc_SCYLXiw" name="symbol" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0YYKjEd-JLc_SCYLXiw" name="Encoder_byte_byte">
+    <parameters id="_4Ha0YoKjEd-JLc_SCYLXiw" name="rangeEncoder" type="_4HH5Q4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0Y4KjEd-JLc_SCYLXiw" name="matchByte" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0ZIKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0ZoKjEd-JLc_SCYLXiw" name="boolean_byte_byte">
+    <parameters id="_4Ha0Z4KjEd-JLc_SCYLXiw" name="matchMode" type="_4G0W54KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0aIKjEd-JLc_SCYLXiw" name="matchByte" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0aYKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0cYKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0coKjEd-JLc_SCYLXiw" name="numPosStates" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0dIKjEd-JLc_SCYLXiw" name="Encoder_int_int">
+    <parameters id="_4Ha0dYKjEd-JLc_SCYLXiw" name="rangeEncoder" type="_4HH5Q4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0doKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0d4KjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0eYKjEd-JLc_SCYLXiw" name="int_int_int_int">
+    <parameters id="_4Ha0eoKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0e4KjEd-JLc_SCYLXiw" name="numSymbols" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0fIKjEd-JLc_SCYLXiw" name="prices" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0fYKjEd-JLc_SCYLXiw" name="st" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0jIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0jYKjEd-JLc_SCYLXiw" name="tableSize" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0j4KjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4Ha0kIKjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0kYKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0k4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0lIKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0loKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0l4KjEd-JLc_SCYLXiw" name="numPosStates" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0mYKjEd-JLc_SCYLXiw" name="Encoder_int_int">
+    <parameters id="_4Ha0moKjEd-JLc_SCYLXiw" name="rangeEncoder" type="_4HH5Q4KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0m4KjEd-JLc_SCYLXiw" name="symbol" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha0nIKjEd-JLc_SCYLXiw" name="posState" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0p4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0qIKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0qoKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0q4KjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0rYKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0roKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0sIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0sYKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0s4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0tIKjEd-JLc_SCYLXiw" name="index" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0toKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0t4KjEd-JLc_SCYLXiw" name="len" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0xIKjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4Ha0xYKjEd-JLc_SCYLXiw" name="inputFile" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha0x4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha0yIKjEd-JLc_SCYLXiw" name="btid" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha00oKjEd-JLc_SCYLXiw" name="byte_int">
+    <parameters id="_4Ha004KjEd-JLc_SCYLXiw" name="buf" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha01IKjEd-JLc_SCYLXiw" name="n" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha03YKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Ha03oKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Ha04IKjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4Ha04YKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Ha04oKjEd-JLc_SCYLXiw" name="v" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj9s4KjEd-JLc_SCYLXiw" name="byte_int_int_byte">
+    <parameters id="_4Hj9tIKjEd-JLc_SCYLXiw" name="src" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj9tYKjEd-JLc_SCYLXiw" name="srcLength" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj9toKjEd-JLc_SCYLXiw" name="action" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj9t4KjEd-JLc_SCYLXiw" name="dst" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj9wIKjEd-JLc_SCYLXiw" name="byte">
+    <parameters id="_4Hj9wYKjEd-JLc_SCYLXiw" name="c" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj9w4KjEd-JLc_SCYLXiw" name="byte_int">
+    <parameters id="_4Hj9xIKjEd-JLc_SCYLXiw" name="buf" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj9xYKjEd-JLc_SCYLXiw" name="n" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj92IKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Hj92YKjEd-JLc_SCYLXiw" name="size" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj924KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Hj93IKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj93oKjEd-JLc_SCYLXiw" name="int_byte">
+    <parameters id="_4Hj934KjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj94IKjEd-JLc_SCYLXiw" name="v" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj96YKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Hj96oKjEd-JLc_SCYLXiw" name="size" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj97IKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Hj97YKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj974KjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4Hj98IKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj98YKjEd-JLc_SCYLXiw" name="v" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj-GYKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Hj-GoKjEd-JLc_SCYLXiw" name="size" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj-HIKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Hj-HYKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj-H4KjEd-JLc_SCYLXiw" name="int_byte">
+    <parameters id="_4Hj-IIKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj-IYKjEd-JLc_SCYLXiw" name="v" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Hj-KoKjEd-JLc_SCYLXiw" name="byte_int_int_byte">
+    <parameters id="_4Hj-K4KjEd-JLc_SCYLXiw" name="src" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj-LIKjEd-JLc_SCYLXiw" name="srcLength" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj-LYKjEd-JLc_SCYLXiw" name="action" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Hj-LoKjEd-JLc_SCYLXiw" name="dst" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Htus4KjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4HtutIKjEd-JLc_SCYLXiw" name="size" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HtutoKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Htut4KjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HtuuYKjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4HtuuoKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Htuu4KjEd-JLc_SCYLXiw" name="v" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4HtuxoKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Htux4KjEd-JLc_SCYLXiw" name="btid" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Htu0YKjEd-JLc_SCYLXiw" name="byte_int">
+    <parameters id="_4Htu0oKjEd-JLc_SCYLXiw" name="buf" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Htu04KjEd-JLc_SCYLXiw" name="n" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Htu3oKjEd-JLc_SCYLXiw" name="byte_int">
+    <parameters id="_4Htu34KjEd-JLc_SCYLXiw" name="buf" type="_4G0W1YKjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Htu4IKjEd-JLc_SCYLXiw" name="n" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Htu9IKjEd-JLc_SCYLXiw" name="int">
+    <parameters id="_4Htu9YKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+  <messagetype id="_4Htu94KjEd-JLc_SCYLXiw" name="int_int">
+    <parameters id="_4Htu-IKjEd-JLc_SCYLXiw" name="i" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+    <parameters id="_4Htu-YKjEd-JLc_SCYLXiw" name="v" type="_4G0W14KjEd-JLc_SCYLXiw"/>
+  </messagetype>
+</staticstructure:Repository>

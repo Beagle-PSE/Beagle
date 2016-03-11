@@ -1,0 +1,9 @@
+package de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb;
+
+public interface IExistingFilesDatabase {
+
+	public abstract boolean addNewFileHash(byte[] fileHash);
+
+	public abstract boolean existsInDatabase(byte[] fileHash);
+
+}

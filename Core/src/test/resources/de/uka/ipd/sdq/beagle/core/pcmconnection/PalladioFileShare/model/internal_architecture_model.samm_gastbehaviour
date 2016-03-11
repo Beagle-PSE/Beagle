@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ASCII"?>
+<qimpressgast:GASTBehaviourRepository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:qimpressgast="http://q-impress.eu/qimpressgast">
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNdzyd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4G0W3YKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNePyd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4G0W3oKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNmvid3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4KZPR4KjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNhvCd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4KZPS4KjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNolSd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4KZPUIKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNonCd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4KZPUYKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNkzyd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4KZPVoKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNnTCd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4K_sM4KjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoNyd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2IIKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoQCd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2IYKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoWSd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2IoKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoWyd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2I4KjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoZid3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2JIKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNqMid3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2JYKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNegid3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2JoKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNieCd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2J4KjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoeid3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2KIKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNofCd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2KYKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoiCd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2KoKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNoiid3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2K4KjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNlCid3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2LYKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNlESd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2LoKjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+  <gastbehaviour>
+    <blockstatement href="PalladioFileShare.gast#_nWNlICd3Ed-qUd-zHYdFdw"/>
+    <gastbehaviourstub href="internal_architecture_model.samm_repository#_4LI2L4KjEd-JLc_SCYLXiw"/>
+  </gastbehaviour>
+</qimpressgast:GASTBehaviourRepository>
