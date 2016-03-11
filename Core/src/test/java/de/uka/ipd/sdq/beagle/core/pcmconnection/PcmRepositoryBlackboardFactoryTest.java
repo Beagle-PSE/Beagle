@@ -172,7 +172,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder(
-					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/XML File.xml",
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/XML File Which Doesn't Exist.xml",
 					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
 					pcmSourceStatementLinkRepository);
 			}
