@@ -6,7 +6,7 @@
          id="de.uka.ipd.sdg.beagle.analysis.measurement.average"
          name="Averaging Measurement Result Analyser">
 		<MeasurementResultAnalyser
-			MeasurementResultAnalyserClass="de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserAverage">
+			MeasurementResultAnalyserClass="de.uka.ipd.sdq.beagle.analysis.averaging.MeasurementResultAnalyserAverage">
 		</MeasurementResultAnalyser>
    </extension>
    

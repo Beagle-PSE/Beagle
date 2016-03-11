@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Averaging Measurement Result Analyser
-Bundle-SymbolicName: de.uka.ipd.sdq.beagle.core.averagingmeasurementresultanalyser;singleton:=true
+Bundle-Name: Beagle Averaging Measurement Result Analyser
+Bundle-SymbolicName: de.uka.ipd.sdq.beagle.analysis.averaging;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: de.uka.ipd.sdq.beagle.core
