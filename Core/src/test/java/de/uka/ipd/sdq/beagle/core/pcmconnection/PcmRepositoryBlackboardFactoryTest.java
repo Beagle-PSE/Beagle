@@ -14,6 +14,7 @@ import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkReader;
 import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
@@ -61,13 +62,18 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void pcmRepositoryBlackboardFactory() throws FileNotFoundException {
+
+		final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository = new PcmSourceStatementLinkReader(
+			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
+				+ "model/internal_architecture_model.repository")).getPcmSourceLinkRepository();
+
 		assertThat(new ThrowingMethod() {
 
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder((String) null,
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(NullPointerException.class));
 
@@ -76,8 +82,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder((String) null,
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(NullPointerException.class));
 
@@ -86,8 +92,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder((File) null,
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(NullPointerException.class));
 
@@ -96,8 +102,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder("",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -106,8 +112,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder(".",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -116,8 +122,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder("..",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -126,8 +132,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder("/",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -136,8 +142,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder("/tmp",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -146,8 +152,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder("\0",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -156,8 +162,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder("/Path which does not exist on any normal system.",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -167,8 +173,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder(
 					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/XML File.xml",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -178,8 +184,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 			public void throwException() throws Exception {
 				new PcmRepositoryBlackboardFactoryAdder(
 					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Incredible Art.png",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository());
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
 
@@ -200,8 +206,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 				@Override
 				public void throwException() throws Exception {
 					new PcmRepositoryBlackboardFactoryAdder(impossibleRepositoryFile,
-						PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-						new PcmSourceStatementLinkRepository());
+						PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+						pcmSourceStatementLinkRepository);
 				}
 			}, throwsException(IllegalArgumentException.class));
 		}
@@ -212,12 +218,13 @@ public class PcmRepositoryBlackboardFactoryTest {
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
 		new PcmRepositoryBlackboardFactoryAdder(
 			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/Family.repository"),
-			PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-			new PcmSourceStatementLinkRepository()).getBlackboardForAllElements(blackboardCreator);
+			PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+			pcmSourceStatementLinkRepository).getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
 		final BlackboardCreator blackboardCreator2 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryFactory.getValidInstance().getBlackboardForAllElements(blackboardCreator2);
+		pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance()
+			.getBlackboardForAllElements(blackboardCreator2);
 		blackboardCreator2.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator2.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator.createBlackboard(),
@@ -232,7 +239,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForAllElements() {
 		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactoryAdder =
-			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
+			pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance();
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryAdder.getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
@@ -251,33 +258,55 @@ public class PcmRepositoryBlackboardFactoryTest {
 			@Override
 			public void throwException() throws Exception {
 				final BlackboardCreator blackboardCreator = new BlackboardCreator();
-				new PcmRepositoryBlackboardFactoryAdder(
-					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedSeffBranchAppSensor.repository",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository()).getBlackboardForAllElements(blackboardCreator);
-			}
-		}, throwsException(RuntimeException.class));
-		assertThat(new ThrowingMethod() {
 
-			@Override
-			public void throwException() throws Exception {
-				final BlackboardCreator blackboardCreator = new BlackboardCreator();
-				new PcmRepositoryBlackboardFactoryAdder(
-					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/CorruptedRdiaAppSensor.repository",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository()).getBlackboardForAllElements(blackboardCreator);
-			}
-		}, throwsException(RuntimeException.class));
-		assertThat(new ThrowingMethod() {
+				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
+					new PcmSourceStatementLinkReader(
+						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+							+ "internal_architecture_model Corrupted SeffBranch.repository"))
+								.getPcmSourceLinkRepository();
 
-			@Override
-			public void throwException() throws Exception {
-				final BlackboardCreator blackboardCreator = new BlackboardCreator();
 				new PcmRepositoryBlackboardFactoryAdder(
 					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
-						+ "CorruptedExternalCallParameterAppSensor.repository",
-					PcmRepositoryBlackboardFactoryFactory.APP_SENSOR_TEST_SOURCE_CODE_FILE_PROVIDER,
-					new PcmSourceStatementLinkRepository()).getBlackboardForAllElements(blackboardCreator);
+						+ "internal_architecture_model Corrupted SeffBranch.repository",
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository).getBlackboardForAllElements(blackboardCreator);
+			}
+		}, throwsException(RuntimeException.class));
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				final BlackboardCreator blackboardCreator = new BlackboardCreator();
+
+				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
+					new PcmSourceStatementLinkReader(
+						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+							+ "internal_architecture_model Corrupted RDIA.repository")).getPcmSourceLinkRepository();
+
+				new PcmRepositoryBlackboardFactoryAdder(
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+						+ "internal_architecture_model Corrupted RDIA.repository",
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository).getBlackboardForAllElements(blackboardCreator);
+			}
+		}, throwsException(RuntimeException.class));
+		assertThat(new ThrowingMethod() {
+
+			@Override
+			public void throwException() throws Exception {
+				final BlackboardCreator blackboardCreator = new BlackboardCreator();
+
+				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
+					new PcmSourceStatementLinkReader(
+						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+							+ "internal_architecture_model Corrupted ExtCallParameter.repository"))
+								.getPcmSourceLinkRepository();
+
+				new PcmRepositoryBlackboardFactoryAdder(
+					"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+						+ "internal_architecture_model Corrupted ExtCallParameter.repository",
+					PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
+					pcmSourceStatementLinkRepository).getBlackboardForAllElements(blackboardCreator);
 			}
 		}, throwsException(RuntimeException.class));
 	}
@@ -290,7 +319,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	@Test
 	public void getBlackboardForIdsCollectionOfString() {
 		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getValidInstance();
+			pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance();
 
 		final HashSet<String> collection = new HashSet<String>();
 		collection.add("");
@@ -334,10 +363,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 	 */
 	@Test
 	public void getBlackboardForIdsStringArray() {
-		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactoryAppSensor =
-			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
+		final PcmRepositoryBlackboardFactoryAdder pcmRepositoryBlackboardFactoryPalladioFileShare =
+			pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance();
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator, "");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator, "");
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator.createBlackboard(),
@@ -347,7 +376,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 			@Override
 			public void throwException() throws Exception {
-				pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(new BlackboardCreator(), (String[]) null);
+				pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(new BlackboardCreator(),
+					(String[]) null);
 			}
 		}, throwsException(NullPointerException.class));
 
@@ -355,22 +385,26 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 			@Override
 			public void throwException() throws Exception {
-				pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(new BlackboardCreator(), (String) null);
+				pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(new BlackboardCreator(),
+					(String) null);
 			}
 		}, throwsException(NullPointerException.class));
 
 		final BlackboardCreator blackboardCreator1 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator1, "_6f1a4LnmEeWVlphM5rov7g");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator1,
+			"_6f1a4LnmEeWVlphM5rov7g");
 		blackboardCreator1.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator1.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator1.createBlackboard(), is(not(nullValue())));
 
 		final BlackboardCreator blackboardCreator2 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator2, "_6f1a4LnmEeWVlphM5rov7g");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator2,
+			"_6f1a4LnmEeWVlphM5rov7g");
 		blackboardCreator2.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator2.setProjectInformation(mock(ProjectInformation.class));
 		final BlackboardCreator blackboardCreator3 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator3, "_6f1a4LnmEeWVlphM5rov7g");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator3,
+			"_6f1a4LnmEeWVlphM5rov7g");
 		blackboardCreator3.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator3.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator2.createBlackboard(),
@@ -379,51 +413,55 @@ public class PcmRepositoryBlackboardFactoryTest {
 		// The first ID is from {@code AppSensor.repository}, the second one from {@code
 		// Family.repositor}.
 		final BlackboardCreator blackboardCreator4 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator4, "_EofuUYRwEeWnEbz-sg1tMg");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator4,
+			"_EofuUYRwEeWnEbz-sg1tMg");
 		blackboardCreator4.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator4.setProjectInformation(mock(ProjectInformation.class));
 		final BlackboardCreator blackboardCreator5 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator5, "_FaSO4LnqEeWVlphM5rov7g");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator5,
+			"_FaSO4LnqEeWVlphM5rov7g");
 		blackboardCreator5.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator5.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator4.createBlackboard(),
 			is(not(equalToRegardingSeffElements(blackboardCreator5.createBlackboard()))));
 
 		final BlackboardCreator blackboardCreator6 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator6, "_EofuUYRwEeWnEbz-sg1tMg");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator6,
+			"_EofuUYRwEeWnEbz-sg1tMg");
 		blackboardCreator6.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator6.setProjectInformation(mock(ProjectInformation.class));
 		final BlackboardCreator blackboardCreator7 = new BlackboardCreator();
 		blackboardCreator7.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator7.setProjectInformation(mock(ProjectInformation.class));
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForAllElements(blackboardCreator7);
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForAllElements(blackboardCreator7);
 		assertThat(blackboardCreator6.createBlackboard(),
 			is(not(equalToRegardingSeffElements(blackboardCreator7.createBlackboard()))));
 
 		final BlackboardCreator blackboardCreator8 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator8, "_SomeIdWhichDosntExistA");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator8,
+			"_SomeIdWhichDosntExistA");
 		blackboardCreator8.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator8.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator8.createBlackboard(),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
 		final BlackboardCreator blackboardCreator9 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator9, "_TooShortId");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator9, "_TooShortId");
 		blackboardCreator9.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator9.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator9.createBlackboard(),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
 		final BlackboardCreator blackboardCreator10 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator10, "IllegalId");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator10, "IllegalId");
 		blackboardCreator10.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator10.setProjectInformation(mock(ProjectInformation.class));
 		assertThat(blackboardCreator10.createBlackboard(),
 			is(equalToRegardingSeffElements(new BlackboardFactory().getEmpty())));
 
 		final BlackboardCreator blackboardCreator11 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryAppSensor.getBlackboardForIds(blackboardCreator11, "_EnfoyoRwEeWnEbz-sg1tMg",
-			"_En2OE4RwEeWnEbz-sg1tMg");
+		pcmRepositoryBlackboardFactoryPalladioFileShare.getBlackboardForIds(blackboardCreator11,
+			"_EnfoyoRwEeWnEbz-sg1tMg", "_En2OE4RwEeWnEbz-sg1tMg");
 		blackboardCreator11.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator11.setProjectInformation(mock(ProjectInformation.class));
 		final Blackboard blackboardForIds = blackboardCreator11.createBlackboard();
@@ -434,8 +472,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 		assertThat(blackboardForIds.getAllExternalCallParameters().size(), is(0));
 
 		final BlackboardCreator blackboardCreator12 = new BlackboardCreator();
-		pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance().getBlackboardForIds(blackboardCreator12,
-			"_Enr2B4RwEeWnEbz-sg1tMg");
+		pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance()
+			.getBlackboardForIds(blackboardCreator12, "_Enr2B4RwEeWnEbz-sg1tMg");
 		blackboardCreator12.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator12.setProjectInformation(mock(ProjectInformation.class));
 		final Blackboard blackboardForIds2 = blackboardCreator12.createBlackboard();
@@ -447,15 +485,15 @@ public class PcmRepositoryBlackboardFactoryTest {
 	}
 
 	/**
-	 * Test method using the app sensor.
+	 * Test method using the Palladio file share project.
 	 *
 	 */
 	@Test
-	public void appSensorRepositoryTest() {
-		final PcmRepositoryBlackboardFactoryAdder appSensorBlackboardFactory =
-			pcmRepositoryBlackboardFactoryFactory.getAppSensorProjectInstance();
+	public void palladioFileShareProjectRepositoryTest() {
+		final PcmRepositoryBlackboardFactoryAdder palladioFileShareBlackboardFactory =
+			pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance();
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
-		appSensorBlackboardFactory.getBlackboardForAllElements(blackboardCreator);
+		palladioFileShareBlackboardFactory.getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
 		final Blackboard appSensorBlackboard = blackboardCreator.createBlackboard();
