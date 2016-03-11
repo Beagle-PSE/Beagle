@@ -9,12 +9,12 @@ Development is done in [Eclipse Mars for RCP and RAP Developers](http://www.ecli
 Required Eclipse plugins are:
 
  * Palladio (Update Site: https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/nightly/)
- * [JaMoPP](http://www.jamopp.org/index.php/JaMoPP)
+ * [JaMoPP](http://www.jamopp.org/index.php/JaMoPP), use the `trunk` update site http://update.jamopp.org/trunk
  * PCM for Vitruvius, as it can be checked out (SVN) from https://svnserver.informatik.kit.edu/i43/svn/code/Palladio/Core/branches/PCM_for_Vitruvius  (Credentials: `anonymous:anonymous`). Import it into your Eclipse workspace.
  * SoMoX based on JaMoPP, as it can be checked out (SVN) from https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Core/branches/SoMoXWithJaMoPP/ (Credentials: `anonymous:anonymous`).
      * import all SoMoX projects into your Eclipse workspace (consider using a Working Set to group them). *Don’t* check “search for nested projects” when importing, but only import the projects at the top level.
      * Close the projects `org.somox.metrics.dsl.tests` and `org.somox.metrics.tests`
-  * The PCM Element Source Statement Links Extractor for SoMoX, as it can be checked out (SVN) from https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Addons/PCM%20Source%20Statement%20Links%20Extractor/ (Credentials: `anonymous:anonymous`). Import it into your Eclipse workspace.
+  * The PCM Element Source Statement Links Extractor for SoMoX, as it can be checked out (SVN) from `https://svnserver.informatik.kit.edu/i43/svn/code/SoMoX/Addons/PCM Source Statement Links Extractor/` (Credentials: `anonymous:anonymous`). Import it into your Eclipse workspace.
   * [Checkstyle](http://eclipse-cs.sourceforge.net/#!/)
   * [UMLet](http://umlet.com/) (either as Eclipse plugin or as standalone)
   
