@@ -6,6 +6,7 @@ import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.palladiosimulator.pcm.repository.RepositoryFactory;
@@ -74,14 +75,19 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 		}
 
 		RepositoryFactory.eINSTANCE.createRepository();
-		// Not sure if this final declaration could lead to a problem.
-		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
+		try {
+			// Not sure if this final declaration could lead to a problem.
 
-		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);
-		if (!(eObject.getClass() == RepositoryImpl.class)) {
-			throw new IllegalArgumentException();
+			final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
+
+			final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);
+			if (!(eObject.getClass() == RepositoryImpl.class)) {
+				throw new IllegalArgumentException();
+			}
+			this.repository = (RepositoryImpl) eObject;
+		} catch (final WrappedException exception) {
+			throw new IllegalArgumentException(exception);
 		}
-		this.repository = (RepositoryImpl) eObject;
 	}
 
 	/**
