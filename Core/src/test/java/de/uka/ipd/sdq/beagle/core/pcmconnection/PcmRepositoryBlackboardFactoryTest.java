@@ -471,7 +471,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final BlackboardCreator blackboardCreator12 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance()
-			.getBlackboardForIds(blackboardCreator12, "_Enr2B4RwEeWnEbz-sg1tMg");
+			.getBlackboardForIds(blackboardCreator12, "_DjpZcue1EeW5NafnxUciog");
 		blackboardCreator12.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator12.setProjectInformation(mock(ProjectInformation.class));
 		final Blackboard blackboardForIds2 = blackboardCreator12.createBlackboard();
