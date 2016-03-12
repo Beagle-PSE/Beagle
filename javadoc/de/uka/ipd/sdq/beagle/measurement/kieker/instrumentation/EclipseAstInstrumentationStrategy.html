@@ -128,14 +128,14 @@ var activeTableTab = "activeTableTab";
 <td class="colFirst"><code>org.eclipse.jdt.core.dom.Statement</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html#instrumentEnd-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">instrumentEnd</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
              org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</code>
-<div class="block">Provides a node to be inserted after <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted after the given <code>codeSection</code>.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>org.eclipse.jdt.core.dom.Statement</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html#instrumentStart-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">instrumentStart</a></span>(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
                org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</code>
-<div class="block">Provides a node to be inserted before <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted before the given <code>codeSection</code>.</div>
 </td>
 </tr>
 </table>
@@ -161,7 +161,9 @@ var activeTableTab = "activeTableTab";
 <h4>instrumentStart</h4>
 <pre>org.eclipse.jdt.core.dom.Statement&nbsp;instrumentStart(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
                                                    org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</pre>
-<div class="block">Provides a node to be inserted before <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted before the given <code>codeSection</code>. The statement
+ returned is to be inserted before the first statement of the given
+ <code>codeSection</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>codeSection</code> - The section being instrumented.</dd>
@@ -182,7 +184,9 @@ var activeTableTab = "activeTableTab";
 <h4>instrumentEnd</h4>
 <pre>org.eclipse.jdt.core.dom.Statement&nbsp;instrumentEnd(<a href="../../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
                                                  org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</pre>
-<div class="block">Provides a node to be inserted after <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted after the given <code>codeSection</code>. The statement
+ returned is to be inserted after the last statement of the given
+ <code>codeSection</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>codeSection</code> - The section being instrumented.</dd>
