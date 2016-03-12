@@ -39,7 +39,7 @@ public class PcmSourceStatementLinkReaderTest {
 
 		final File notExistingFile = new File("/de/uka/ipd/sdq/beagle/core/pcmsourcestatementlink/NotExisting.xml");
 		assertThat("File must exist.", () -> new PcmSourceStatementLinkReader(notExistingFile),
-			throwsException(FileNotFoundException.class));
+			throwsException(IllegalArgumentException.class));
 	}
 
 	/**
