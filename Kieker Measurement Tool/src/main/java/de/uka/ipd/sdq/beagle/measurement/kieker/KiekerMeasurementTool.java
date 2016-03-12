@@ -31,7 +31,7 @@ public class KiekerMeasurementTool implements MeasurementTool {
 	 * The JVM property key to set Kieker’s output folder.
 	 */
 	private static final String KIEKER_OUTPUT_FOLDER_PROPERTY =
-		"kieker.monitoring.writer.filesystem.AsyncFsWriter.customStoragePath";
+		"kieker.monitoring.writer.filesystem.SyncFsWriter.customStoragePath";
 
 	/**
 	 * The handler of failures.
