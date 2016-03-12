@@ -8,19 +8,18 @@ import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.mockito.Mockito.mock;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 import de.uka.ipd.sdq.beagle.core.Blackboard;
 import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkReader;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.io.File;
@@ -35,7 +34,6 @@ import java.util.HashSet;
  * @author Christoph Michelbach
  * @author Roman Langrehr
  */
-@PrepareForTest(PcmRepositoryBlackboardFactoryAdder.class)
 public class PcmRepositoryBlackboardFactoryTest {
 
 	/**
@@ -188,13 +186,6 @@ public class PcmRepositoryBlackboardFactoryTest {
 					pcmSourceStatementLinkRepository);
 			}
 		}, throwsException(IllegalArgumentException.class));
-
-		mockStatic(EmfHelper.class);
-
-		// final EObject mocked = mock(EObject.class);
-		// given(EmfHelper.loadFromXMIFile(any(), any())).willReturn(mocked);
-		// assertThat(() -> pcmRepositoryBlackboardFactoryFactory.getValidInstance(),
-		// throwsException(IllegalArgumentException.class));
 
 		final File[] impossibleRepositoryFiles = {
 			new File(""), new File("."), new File(".."), new File("/"), new File("/tmp"), new File("\0")
