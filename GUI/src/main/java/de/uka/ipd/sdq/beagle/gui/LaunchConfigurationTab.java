@@ -225,4 +225,17 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	public Image getImage() {
 		return DebugPluginImages.getImage(IDebugUIConstants.IMG_OBJS_LAUNCH_RUN);
 	}
+
+	@Override
+	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		try {
+			if (launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>())
+				.size() == 0) {
+				return false;
+			}
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		return super.isValid(launchConfig);
+	}
 }
