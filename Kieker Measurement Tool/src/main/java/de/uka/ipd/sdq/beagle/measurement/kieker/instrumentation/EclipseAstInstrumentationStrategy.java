@@ -14,7 +14,9 @@ import org.eclipse.jdt.core.dom.Statement;
 public interface EclipseAstInstrumentationStrategy {
 
 	/**
-	 * Provides a node to be inserted before {@code codeSection}.
+	 * Provides a node to be inserted before the given {@code codeSection}. The statement
+	 * returned is to be inserted before the first statement of the given
+	 * {@code codeSection}.
 	 *
 	 * @param codeSection The section being instrumented.
 	 * @param nodeFactory The {@linkplain AST} instance that must be used to create the
@@ -26,7 +28,9 @@ public interface EclipseAstInstrumentationStrategy {
 	Statement instrumentStart(CodeSection codeSection, AST nodeFactory);
 
 	/**
-	 * Provides a node to be inserted after {@code codeSection}.
+	 * Provides a node to be inserted after the given {@code codeSection}. The statement
+	 * returned is to be inserted after the last statement of the given
+	 * {@code codeSection}.
 	 *
 	 * @param codeSection The section being instrumented.
 	 * @param nodeFactory The {@linkplain AST} instance that must be used to create the
