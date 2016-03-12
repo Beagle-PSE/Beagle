@@ -158,14 +158,14 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieke
 <td class="colFirst"><code>org.eclipse.jdt.core.dom.Statement</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/ResourceDemandInstrumentationStrategy.html#instrumentEnd-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">instrumentEnd</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
              org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</code>
-<div class="block">Provides a node to be inserted after <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted after the given <code>codeSection</code>.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>org.eclipse.jdt.core.dom.Statement</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/ResourceDemandInstrumentationStrategy.html#instrumentStart-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">instrumentStart</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
                org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</code>
-<div class="block">Provides a node to be inserted before <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted before the given <code>codeSection</code>.</div>
 </td>
 </tr>
 </table>
@@ -222,7 +222,9 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieke
 <pre>public&nbsp;org.eclipse.jdt.core.dom.Statement&nbsp;instrumentStart(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
                                                           org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html#instrumentStart-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">EclipseAstInstrumentationStrategy</a></code></span></div>
-<div class="block">Provides a node to be inserted before <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted before the given <code>codeSection</code>. The statement
+ returned is to be inserted before the first statement of the given
+ <code>codeSection</code>.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html#instrumentStart-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">instrumentStart</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html" title="interface in de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation">EclipseAstInstrumentationStrategy</a></code></dd>
@@ -246,7 +248,9 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieke
 <pre>public&nbsp;org.eclipse.jdt.core.dom.Statement&nbsp;instrumentEnd(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/CodeSection.html" title="class in de.uka.ipd.sdq.beagle.core">CodeSection</a>&nbsp;codeSection,
                                                         org.eclipse.jdt.core.dom.AST&nbsp;nodeFactory)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html#instrumentEnd-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">EclipseAstInstrumentationStrategy</a></code></span></div>
-<div class="block">Provides a node to be inserted after <code>codeSection</code>.</div>
+<div class="block">Provides a node to be inserted after the given <code>codeSection</code>. The statement
+ returned is to be inserted after the last statement of the given
+ <code>codeSection</code>.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html#instrumentEnd-de.uka.ipd.sdq.beagle.core.CodeSection-org.eclipse.jdt.core.dom.AST-">instrumentEnd</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/instrumentation/EclipseAstInstrumentationStrategy.html" title="interface in de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation">EclipseAstInstrumentationStrategy</a></code></dd>
