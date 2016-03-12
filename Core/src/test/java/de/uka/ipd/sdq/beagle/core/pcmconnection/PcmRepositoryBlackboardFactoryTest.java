@@ -463,9 +463,10 @@ public class PcmRepositoryBlackboardFactoryTest {
 		blackboardCreator11.setProjectInformation(mock(ProjectInformation.class));
 		final Blackboard blackboardForIds = blackboardCreator11.createBlackboard();
 
-		assertThat(blackboardForIds.getAllSeffBranches().size(), is(2));
+		// Branch transitions are counted. Not branches.
+		assertThat(blackboardForIds.getAllSeffBranches().size(), is(1));
 		assertThat(blackboardForIds.getAllSeffLoops().size(), is(1));
-		assertThat(blackboardForIds.getAllRdias().size(), is(5));
+		assertThat(blackboardForIds.getAllRdias().size(), is(5 * 6));
 		assertThat(blackboardForIds.getAllExternalCallParameters().size(), is(2));
 
 		final BlackboardCreator blackboardCreator12 = new BlackboardCreator();
