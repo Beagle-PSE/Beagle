@@ -14,7 +14,7 @@ This manual test check if the GUI works.
 
     1 By right click a PCM component a field to 'Analyse with Beagle' must be available.
     2 By right click on the internal_architecture_model.repository a field to 'Analyse with Beagle' must be available.
-    3 By click 'Analyse with Beagle' a window must appear with a progressbar which shows that Beagle is running.
+    3 By click 'Analyse with Beagle' a window must appear which shows that Beagle is running.
     4 When Beagle is running it must be possible to pause the analyse by click the 'pause' button in the running dialog.
     5 By click the 'pause' button a dialog must appear that the analysis is paused.
     6 In the pause dialog it must by possible to resume the analysis by click 'continue'. 
