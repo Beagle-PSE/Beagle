@@ -47,11 +47,11 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyser.html" title="interface in de.uka.ipd.sdq.beagle.core.analysis"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li>Prev&nbsp;Class</li>
+<li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserAverage.html" target="_top">Frames</a></li>
+<li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/analysis/averaging/MeasurementResultAnalyserAverage.html" target="_top">Frames</a></li>
 <li><a href="MeasurementResultAnalyserAverage.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_top">
@@ -90,7 +90,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">de.uka.ipd.sdq.beagle.core.analysis</div>
+<div class="subTitle">de.uka.ipd.sdq.beagle.analysis.averaging</div>
 <h2 title="Class MeasurementResultAnalyserAverage" class="title">Class MeasurementResultAnalyserAverage</h2>
 </div>
 <div class="contentContainer">
@@ -98,7 +98,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
-<li>de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserAverage</li>
+<li>de.uka.ipd.sdq.beagle.analysis.averaging.MeasurementResultAnalyserAverage</li>
 </ul>
 </li>
 </ul>
@@ -118,7 +118,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/Mea
  created ProposedExpressions. It will take all SeffElements and use respectively all
  their MeasurementResults on the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/Blackboard.html" title="class in de.uka.ipd.sdq.beagle.core"><code>Blackboard</code></a> and calculate thereby an expression
  that fits best to the average expectancy value. Its implementation of
- <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserAverage.html#canContribute-de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView-"><code>canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)</code></a> checks if there
+ <a href="../../../../../../../de/uka/ipd/sdq/beagle/analysis/averaging/MeasurementResultAnalyserAverage.html#canContribute-de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView-"><code>canContribute(ReadOnlyMeasurementResultAnalyserBlackboardView)</code></a> checks if there
  are any MeasurementResults for a SeffElement, that have not been flown into the average
  proposed Expression so far.</div>
 </li>
@@ -139,7 +139,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/Mea
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserAverage.html#MeasurementResultAnalyserAverage--">MeasurementResultAnalyserAverage</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/analysis/averaging/MeasurementResultAnalyserAverage.html#MeasurementResultAnalyserAverage--">MeasurementResultAnalyserAverage</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -158,14 +158,14 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/Mea
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserAverage.html#canContribute-de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView-">canContribute</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/ReadOnlyMeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">ReadOnlyMeasurementResultAnalyserBlackboardView</a>&nbsp;blackboard)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/analysis/averaging/MeasurementResultAnalyserAverage.html#canContribute-de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView-">canContribute</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/ReadOnlyMeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">ReadOnlyMeasurementResultAnalyserBlackboardView</a>&nbsp;blackboard)</code>
 <div class="block">Determines whether this analyser can potentially contribute knowledge in the
  moment.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserAverage.html#contribute-de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView-">contribute</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyserBlackboardView</a>&nbsp;blackboard)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/analysis/averaging/MeasurementResultAnalyserAverage.html#contribute-de.uka.ipd.sdq.beagle.core.analysis.MeasurementResultAnalyserBlackboardView-">contribute</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis">MeasurementResultAnalyserBlackboardView</a>&nbsp;blackboard)</code>
 <div class="block">Contributes this analyser’s knowledge to the passed blackboard.</div>
 </td>
 </tr>
@@ -303,11 +303,11 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/Mea
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyser.html" title="interface in de.uka.ipd.sdq.beagle.core.analysis"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserBlackboardView.html" title="class in de.uka.ipd.sdq.beagle.core.analysis"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li>Prev&nbsp;Class</li>
+<li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
-<li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/core/analysis/MeasurementResultAnalyserAverage.html" target="_top">Frames</a></li>
+<li><a href="../../../../../../../index.html?de/uka/ipd/sdq/beagle/analysis/averaging/MeasurementResultAnalyserAverage.html" target="_top">Frames</a></li>
 <li><a href="MeasurementResultAnalyserAverage.html" target="_top">No&nbsp;Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">
