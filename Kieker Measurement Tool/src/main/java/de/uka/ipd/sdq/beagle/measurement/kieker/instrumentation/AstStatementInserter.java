@@ -8,7 +8,6 @@ import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 
 /**
  * Inserts statements into an Eclipse AST. To do so, it finds a parent AST node into which
@@ -32,12 +31,11 @@ class AstStatementInserter {
 	private final ASTNode marker;
 
 	/**
-	 * An optional function capable of executing the insertion. Takes the statement to
-	 * insert and an offset defining how far off to insert (0 for directly before, 1 for
-	 * directly after). {@code null} indicates that we did not yet search the function. If
-	 * the optional is not present, there is no such function.
+	 * The strategy defining how to insert after the insertion point has been found.If the
+	 * optional is not present, there is no such strategy (usually because there is no
+	 * valid insertion point).
 	 */
-	private Optional<BiConsumer<Statement, Integer>> insertionStrategy;
+	private Optional<InsertionStrategy> insertionStrategy;
 
 	/**
 	 * Creates an inserter that will insert statements around the provided {@code marker}.
@@ -97,7 +95,7 @@ class AstStatementInserter {
 			"Insertion is only possible after the inserter has been set up.");
 		Validate.validState(this.insertionStrategy.isPresent(),
 			"Insertion is only possible if setting up the inserter succeeded.");
-		this.insertionStrategy.get().accept(statement, offset);
+		this.insertionStrategy.get().insert(statement, offset);
 	}
 
 	/**
@@ -117,11 +115,6 @@ class AstStatementInserter {
 		 * Indicates whether we managed to insert.
 		 */
 		private boolean success;
-
-		/**
-		 * The index of the marker if inserting into a list.
-		 */
-		private int markerIndex;
 
 		/**
 		 * Searches for the insertion point and populates
@@ -157,18 +150,72 @@ class AstStatementInserter {
 
 			@SuppressWarnings("unchecked")
 			final List<ASTNode> listToInsertIn = (List<ASTNode>) node.getStructuralProperty(propertyToInsertIn);
-			this.markerIndex = listToInsertIn.indexOf(this.childToSearch);
+			final int markerIndex = listToInsertIn.indexOf(this.childToSearch);
 
-			AstStatementInserter.this.insertionStrategy = Optional.of((statementToInsert, offset) -> {
-				listToInsertIn.add(this.markerIndex + offset, statementToInsert);
-				if (offset <= 0) {
-					this.markerIndex++;
-				}
-			});
+			AstStatementInserter.this.insertionStrategy =
+				Optional.of(new ListInsertionStrategy(listToInsertIn, markerIndex));
 
 			this.success = true;
 			return false;
 		}
 	}
 
+	/**
+	 * Defines how to insert into the AST. Once an insertion point has been found by
+	 * {@link InsertionPositionFinder}, the logic how to insert at this point is defined
+	 * through an instance of this interface.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private interface InsertionStrategy {
+
+		/**
+		 * Performs an insertion into the AST.
+		 *
+		 * @param statementToInsert The statement to insert.
+		 * @param insertionOffset How far from the marker statement
+		 *            {@code statementToInsert} is to be inserted. {@code 0} to insert
+		 *            directly before, {@code 1} to insert directly after the statement.
+		 */
+		void insert(final Statement statementToInsert, final int insertionOffset);
+
+	}
+
+	/**
+	 * Inserts a statement into a found list of AST nodes.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private static final class ListInsertionStrategy implements InsertionStrategy {
+
+		/**
+		 * The list to insert in.
+		 */
+		private final List<ASTNode> list;
+
+		/**
+		 * Marker of the statement to insert around.
+		 */
+		private int index;
+
+		/**
+		 * Creates a list inserter that inserts into the given {@code listToInsertIn}
+		 * around the given {@code markerIndex}.
+		 *
+		 * @param listToInsertIn The list to insert into.
+		 * @param markerIndex Index of the element around which will be inserted.
+		 */
+		private ListInsertionStrategy(final List<ASTNode> listToInsertIn, final int markerIndex) {
+			this.list = listToInsertIn;
+			this.index = markerIndex;
+		}
+
+		@Override
+		public void insert(final Statement statementToInsert, final int insertionOffset) {
+			this.list.add(this.index + insertionOffset, statementToInsert);
+			if (insertionOffset <= 0) {
+				this.index++;
+			}
+		}
+	}
 }
