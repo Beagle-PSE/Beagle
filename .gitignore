@@ -41,3 +41,6 @@ hs_err_pid*
 # Gradle
 .gradle/
 **/.settings/gradle.prefs
+
+# Added when downloading test projects
+/.subversion/
