@@ -1,6 +1,5 @@
 package de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink;
 
-import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
@@ -41,24 +40,6 @@ public class PcmSourceStatementLinkReader {
 	 */
 	public PcmSourceStatementLinkReader(final File linkRepositoryFile) {
 		this.inputFile = linkRepositoryFile;
-	}
-
-	/**
-	 * Checks the integrity of the input file. This means to check the hash sums in the
-	 * file against against those calculated for the source code files provided by the
-	 * given {@code sourceCodeFileProvider} and the one for the provided
-	 * {@code pcmRepositoryFile}.
-	 *
-	 * <p>If anything, either the integrity check or reading in the input file, fails, the
-	 * method will report to the {@linkplain FailureHandler failure API}.
-	 *
-	 * @param sourceCodeFileProvider The provider for source code files for which hash
-	 *            sums should be checked.
-	 * @param pcmRepositoryFile The PCM repository file to check the hash sum for.
-	 */
-	public void checkIntegrity(final SourceCodeFileProvider sourceCodeFileProvider, final File pcmRepositoryFile) {
-		this.readIn();
-
 	}
 
 	/**
