@@ -130,10 +130,10 @@ public class BeagleController {
 		Validate.validState(this.inited, "The Beagle Controller has not yet been initialised!");
 
 		if (!this.started) {
+			this.started = true;
 			this.analysisController.performAnalysis();
 			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());
 		}
-		this.started = true;
 	}
 
 	/**
