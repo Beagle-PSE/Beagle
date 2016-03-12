@@ -8,16 +8,16 @@ ext.prototypeSubprojects = subprojects.findAll { project ->
 	project.name.startsWith('Prototype')
 }
 /**
- * Java subprojects. Detected by having the 'src/main/java' folder.
+ * Java subprojects. Detected by having the 'src/main/java' or 'src/test/java' folder.
  */
-ext.javaSubprojects = subprojects.findAll { project ->
-	file("$project.projectDir/src/main/java").exists()
+ext.javaSubprojects = allprojects.findAll { project ->
+	file("$project.projectDir/src/main/java").exists() || file("$project.projectDir/src/test/java").exists()
 }
 /**
  * Eclipse Plugin subprojects. Detected by having 'org.eclipse.pde.PluginNature' in their
  * .project file.
  */
-ext.eclipseSubprojects = subprojects.findAll { project ->
+ext.eclipseSubprojects = allprojects.findAll { project ->
 	file("$project.projectDir/.project").with { 
 		exists() && text.contains('org.eclipse.pde.PluginNature')
 	}
@@ -29,24 +29,7 @@ allprojects {
 		mavenCentral()
 	}
 	
-	// All subprojects have a build and clean task
-	if (tasks.findByPath('build') == null) {
-		task build {
-			group 'Build'
-			description 'Assembles and tests this project.'
-		}
-	}
-	
-	if (tasks.findByPath('clean') == null) {
-		task clean {
-			group 'Build'
-			description 'Deletes the build directory.'
-			
-			doLast {
-				file(buildDir).deleteDir()
-			}
-		}
-	}
+	apply plugin: BasePlugin
 	
 	buildscript {
 		fileTree("$projectDir/buildSrc/src/tasks/gradle/buildscript-dependencies").include('*.gradle').each { file ->
