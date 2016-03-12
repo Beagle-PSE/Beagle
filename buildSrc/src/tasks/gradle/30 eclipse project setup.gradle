@@ -3,6 +3,9 @@
  *
  * @author Joshua Gleitze
  */
+ 
+// All dependencies will be packed into this jar
+def dependencyJarDest = file("$buildDir/dependencies.jar")
 
 configure(javaSubprojects) {
 	apply plugin: 'eclipse'
@@ -26,3 +29,19 @@ configure(javaSubprojects) {
 	}
 }
 
+task dependencyJar(type: Jar) {
+	def allDependencies = javaSubprojects.collect { project ->
+		(project.configurations.production + project.configurations.tests).files
+	}.flatten()
+	
+	description "Packs all dependencies into one jar"
+	inputs.files allDependencies
+	outputs.file dependencyJarDest
+		
+	destinationDir = dependencyJarDest.parentFile
+	archiveName = dependencyJarDest.name
+	
+	from allDependencies.collect { zipTree(it) }
+}
+
+build.dependsOn dependencyJar
