@@ -13,10 +13,6 @@ task jarTest(type:Jar) {
 	classifier = 'test'
 }
 
-configurations {
-	testArchives
-}
-
 artifacts {
-	testArchives jarTest
+	testExport jarTest
 }

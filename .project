@@ -6,17 +6,40 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>net.sf.eclipsecs.core.CheckstyleBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
 			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.pde.ManifestBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.pde.SchemaBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>net.sf.eclipsecs.core.CheckstyleNature</nature>
+		<nature>org.eclipse.pde.PluginNature</nature>
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1452877139258</id>
+			<id>1457617418100</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -25,7 +48,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1452877139264</id>
+			<id>1457617418105</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -34,7 +57,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1452877139273</id>
+			<id>1457617418105</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -43,7 +66,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1452877139282</id>
+			<id>1457617418106</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -52,7 +75,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1452877139291</id>
+			<id>1457617418107</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -61,7 +84,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1452877139300</id>
+			<id>1457617418107</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -70,7 +93,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1452877139309</id>
+			<id>1457617418108</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -79,7 +102,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383243179</id>
+			<id>1457617418109</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -88,7 +111,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383243440</id>
+			<id>1457617418109</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -97,7 +120,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383243620</id>
+			<id>1457617418110</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -106,7 +129,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383243819</id>
+			<id>1457617418111</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -115,7 +138,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383243962</id>
+			<id>1457617418111</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -124,7 +147,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383244073</id>
+			<id>1457617418112</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -133,7 +156,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383244195</id>
+			<id>1457617418113</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -142,7 +165,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383244312</id>
+			<id>1457617418118</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -151,7 +174,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453383244415</id>
+			<id>1457617418121</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -160,7 +183,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1453574526855</id>
+			<id>1457617418122</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -169,12 +192,39 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1455388552384</id>
+			<id>1457617418125</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
 				<id>org.eclipse.ui.ide.multiFilter</id>
 				<arguments>1.0-projectRelativePath-matches-false-false-Kieker Measurement Tool</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1457617418126</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-false-false-src/test/resources/AppSensor</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1457617418129</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-false-false-src/test/resources/PalladioFileShare</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1457617418132</id>
+			<name></name>
+			<type>26</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.multiFilter</id>
+				<arguments>1.0-projectRelativePath-matches-false-false-src/test/resources/CompressMockup</arguments>
 			</matcher>
 		</filter>
 		<filter>
