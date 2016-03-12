@@ -911,7 +911,7 @@ public class AnalysisControllerTest {
 	/**
 	 * Asserts that {@link AnalysisController#setAnalysisState(AnalysisState)} throws a
 	 * {@link NullPointerException} for input {@code null}.
-	 * 
+	 *
 	 * <p>Asserts that state is not changed.
 	 *
 	 */
@@ -929,7 +929,7 @@ public class AnalysisControllerTest {
 	/**
 	 * Asserts that {@link AnalysisController#setAnalysisState(AnalysisState)} throws a
 	 * {@link IllegalStateException} if called before the analysis has started.
-	 * 
+	 *
 	 * <p>Asserts that this does not change the state.
 	 */
 	@Test
@@ -1009,9 +1009,9 @@ public class AnalysisControllerTest {
 	 * Inizialises an {@link AnalysisController} with a endless running
 	 * {@link MeasurementTool}, used to test the
 	 * {@link AnalysisController#setAnalysisState(AnalysisState)}.
-	 * 
+	 *
 	 * @param sleepingMeasurementTool measurementTool which is running.
-	 * 
+	 *
 	 * @return the Analysis Controller (as specified above)
 	 */
 	private AnalysisController setUpController(final Sleeper sleepingMeasurementTool) {
@@ -1062,7 +1062,7 @@ public class AnalysisControllerTest {
 	/**
 	 * An {@link Answer} that goes to sleep until it’s waking up. Useful to assure that
 	 * tests happen <em>during</em> the analysis.
-	 * 
+	 *
 	 * @author Joshua Gleitze
 	 */
 	private class Sleeper implements Answer<Void> {

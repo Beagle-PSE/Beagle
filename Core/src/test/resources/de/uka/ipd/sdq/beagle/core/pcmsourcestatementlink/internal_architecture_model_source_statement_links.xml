@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:PcmSourceStatementLinkRepository xmlns:ns2="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink">
+    <PcmRepositoryFile hash="f1c9bb70dbe52e5f3093c5489d7405e0"/>
+    <PcmSourceStatementLink pcmElementId="_WppsAOicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorGCD">577</FirstStatement>
+        <LastStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorGCD">764</LastStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_Wp-cIOicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorSqrt">564</FirstStatement>
+        <LastStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorSqrt">692</LastStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqBfcOicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">366</FirstStatement>
+        <LastStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">493</LastStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqBfcuicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">366</FirstStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqCtkOicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">448</FirstStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqHmEOicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">493</FirstStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqHmE-icEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">537</FirstStatement>
+        <LastStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">769</LastStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqHmFeicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">537</FirstStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqHmFuicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">717</FirstStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqHmF-icEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">769</FirstStatement>
+    </PcmSourceStatementLink>
+    <PcmSourceStatementLink pcmElementId="_WqI0MOicEeWjjZ_kGVvm5w">
+        <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">324</FirstStatement>
+    </PcmSourceStatementLink>
+    <SourceCodeFileHash sourceCodeFile="org.splevo.examples.calculator.CalculatorGCD">b427115554731069e6ea899e1ede327e</SourceCodeFileHash>
+    <SourceCodeFileHash sourceCodeFile="org.splevo.examples.calculator.CalculatorSqrt">5f840a2610892210c9fe9bb2d2903bc8</SourceCodeFileHash>
+    <SourceCodeFileHash sourceCodeFile="org.splevo.examples.calculator.CalculatorTool">f6f2e947ee0a5262614efe21ac91e2be</SourceCodeFileHash>
+</ns2:PcmSourceStatementLinkRepository>

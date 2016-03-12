@@ -3,6 +3,8 @@ package de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
+import org.apache.commons.lang3.Validate;
+
 import java.io.File;
 
 import javax.xml.bind.JAXBContext;
@@ -39,6 +41,8 @@ public class PcmSourceStatementLinkReader {
 	 * @param linkRepositoryFile The file to read in.
 	 */
 	public PcmSourceStatementLinkReader(final File linkRepositoryFile) {
+		Validate.notNull(linkRepositoryFile);
+		Validate.isTrue(linkRepositoryFile.exists());
 		this.inputFile = linkRepositoryFile;
 	}
 
