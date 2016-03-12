@@ -18,6 +18,8 @@ import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.impl.BasicComponentImpl;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
+import org.palladiosimulator.pcm.seff.impl.ProbabilisticBranchTransitionImpl;
+import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingSEFFImpl;
 
 import java.util.Collection;
@@ -118,6 +120,8 @@ public class PcmRepositoryExtractor {
 	}
 
 	/**
+	 * CHECKSTYLE:OFF //Because of cyclomatic boundaries (12 than 10)
+	 * 
 	 * Builds a new blackboard and writes the Beagle objects representing <em>PCM
 	 * elements</em> related to {@code ids} to it. Only <em>PCM elements</em> that fulfil
 	 * the restrictions described in the class description will be written.
@@ -139,6 +143,7 @@ public class PcmRepositoryExtractor {
 	 * <li>Any other ID will be silently ignored.
 	 *
 	 * </ul>
+	 * 
 	 *
 	 * @param repository The repository to look up.
 	 * @param identifiers Identifiers of elements in the repository files that shall be
@@ -168,6 +173,7 @@ public class PcmRepositoryExtractor {
 			blackboardFactory.setLoops(this.seffLoopSet);
 			blackboardFactory.setExternalCalls(this.externalCallParameterSet);
 			blackboardFactory.setPcmMappings(pcmMappings);
+			
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -192,6 +198,16 @@ public class PcmRepositoryExtractor {
 				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) identifiedObject);
 			} else if (identifiedObject.getClass() == ResourceDemandingSEFFImpl.class) {
 				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) identifiedObject);
+			} else if (identifiedObject.getClass() == ProbabilisticBranchTransitionImpl.class) {
+				final EList<EObject> specificBranchContentList = identifiedObject.eContents();
+				for (final EObject specificBranchContent : specificBranchContentList) {
+					if (specificBranchContent.getClass() == ResourceDemandingBehaviourImpl.class) {
+						for (final EObject stepBehaviour : ((ResourceDemandingBehaviourImpl) specificBranchContent)
+							.eContents()) {
+							this.pcmSeffExtractor.extractBehaviourAndAddToSet(stepBehaviour);
+						}
+					}
+				}
 			} else {
 				this.pcmSeffExtractor.extractBehaviourAndAddToSet(identifiedObject);
 			}
@@ -205,6 +221,7 @@ public class PcmRepositoryExtractor {
 		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
 		blackboardFactory.setPcmMappings(pcmMappings);
 	}
+	
 
 	/**
 	 * This method takes the whole {@link PcmRepositoryBlackboardFactoryAdder#repository}
