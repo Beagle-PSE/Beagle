@@ -230,7 +230,7 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	public boolean isValid(final ILaunchConfiguration launchConfig) {
 		try {
 			if (launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>())
-				.size() == 0) {
+				.isEmpty()) {
 				return false;
 			}
 		} catch (final CoreException coreException) {
