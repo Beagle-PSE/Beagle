@@ -3,6 +3,7 @@ package de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation;
 import org.apache.commons.lang3.Validate;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Block;
+import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
 
@@ -186,7 +187,7 @@ class AstStatementInserter {
 	 *
 	 * @author Joshua Gleitze
 	 */
-	private static final class ListInsertionStrategy implements InsertionStrategy {
+	private final class ListInsertionStrategy implements InsertionStrategy {
 
 		/**
 		 * The list to insert in.
@@ -212,8 +213,13 @@ class AstStatementInserter {
 
 		@Override
 		public void insert(final Statement statementToInsert, final int insertionOffset) {
-			this.list.add(this.index + insertionOffset, statementToInsert);
-			if (insertionOffset <= 0) {
+			int saveInsertionOffset = insertionOffset;
+			// hot fix for return statements.
+			if (this.list.get(this.index) instanceof ReturnStatement) {
+				saveInsertionOffset = Math.min(saveInsertionOffset, 0);
+			}
+			this.list.add(this.index + saveInsertionOffset, statementToInsert);
+			if (saveInsertionOffset <= 0) {
 				this.index++;
 			}
 		}
