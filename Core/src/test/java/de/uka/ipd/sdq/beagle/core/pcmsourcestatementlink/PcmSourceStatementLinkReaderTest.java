@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
@@ -48,8 +49,9 @@ public class PcmSourceStatementLinkReaderTest {
 	@Test
 	public void getPcmSourceLinkRepository() {
 		final PcmSourceStatementLinkReader reader = new PcmSourceStatementLinkReader(this.linkRepositoryFile);
-		reader.getPcmSourceLinkRepository();
-
+		final PcmSourceStatementLinkRepository repository = reader.getPcmSourceLinkRepository();
+		assertThat(repository.getLinks().size(), is(11));
+		assertThat(repository.getHashes().size(), is(3));
 	}
 
 	/**
