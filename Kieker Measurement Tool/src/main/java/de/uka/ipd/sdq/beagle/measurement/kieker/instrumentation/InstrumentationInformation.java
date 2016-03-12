@@ -82,7 +82,7 @@ class InstrumentationInformation {
 	 *            after an AST node.
 	 */
 	void addAfterStatementFunction(final Function<AST, Statement> afterStatementProvider) {
-		this.beforeStatement.add(afterStatementProvider);
+		this.afterStatement.add(afterStatementProvider);
 	}
 
 	/**

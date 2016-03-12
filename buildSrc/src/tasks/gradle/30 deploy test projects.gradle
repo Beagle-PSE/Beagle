@@ -54,6 +54,10 @@ task dowloadFileShare(type: SvnCheckout) {
 	doFirst {
 		delete fileShareDest
 	}
+	
+	doLast {
+		delete "$projectDir/.subversion"
+	}
 }
 
 

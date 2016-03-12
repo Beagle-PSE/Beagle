@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="de.uka.ipd.sdq.beagle.measurementresultanalyser"
+         id="de.uka.ipd.sdg.beagle.analysis.measurement.average"
+         name="Averaging Measurement Result Analyser">
+		<MeasurementResultAnalyser
+			MeasurementResultAnalyserClass="de.uka.ipd.sdq.beagle.analysis.averaging.MeasurementResultAnalyserAverage">
+		</MeasurementResultAnalyser>
+   </extension>
+   
+ 
+</plugin>
