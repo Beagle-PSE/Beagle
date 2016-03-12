@@ -217,8 +217,8 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
 		new PcmRepositoryBlackboardFactoryAdder(
-			new File(
-				"src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/internal_architecture_model_source_statement_links.xml"),
+			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
+				+ "model/internal_architecture_model.repository"),
 			PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
 			pcmSourceStatementLinkRepository).getBlackboardForAllElements(blackboardCreator);
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
@@ -461,24 +461,35 @@ public class PcmRepositoryBlackboardFactoryTest {
 			"_DjpZdue1EeW5NafnxUciog", "_DjTbMue1EeW5NafnxUciog");
 		blackboardCreator11.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator11.setProjectInformation(mock(ProjectInformation.class));
-		final Blackboard blackboardForIds = blackboardCreator11.createBlackboard();
+		final Blackboard blackboardForIds11 = blackboardCreator11.createBlackboard();
 
 		// Branch transitions are counted. Not branches.
-		assertThat(blackboardForIds.getAllSeffBranches().size(), is(1));
-		assertThat(blackboardForIds.getAllSeffLoops().size(), is(1));
-		assertThat(blackboardForIds.getAllRdias().size(), is(5 * 6));
-		assertThat(blackboardForIds.getAllExternalCallParameters().size(), is(2));
+		assertThat(blackboardForIds11.getAllSeffBranches().size(), is(1));
+		assertThat(blackboardForIds11.getAllSeffLoops().size(), is(1));
+		assertThat(blackboardForIds11.getAllRdias().size(), is(5 * 6));
+		assertThat(blackboardForIds11.getAllExternalCallParameters().size(), is(2));
 
 		final BlackboardCreator blackboardCreator12 = new BlackboardCreator();
 		pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance()
 			.getBlackboardForIds(blackboardCreator12, "_DjpZcue1EeW5NafnxUciog");
 		blackboardCreator12.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator12.setProjectInformation(mock(ProjectInformation.class));
-		final Blackboard blackboardForIds2 = blackboardCreator12.createBlackboard();
-		assertThat(blackboardForIds2.getAllSeffBranches().size(), is(0));
-		assertThat(blackboardForIds2.getAllSeffLoops().size(), is(0));
-		assertThat(blackboardForIds2.getAllRdias().size(), is(1));
-		assertThat(blackboardForIds2.getAllExternalCallParameters().size(), is(0));
+		final Blackboard blackboardForIds12 = blackboardCreator12.createBlackboard();
+		assertThat(blackboardForIds12.getAllSeffBranches().size(), is(0));
+		assertThat(blackboardForIds12.getAllSeffLoops().size(), is(0));
+		assertThat(blackboardForIds12.getAllRdias().size(), is(1 * 6));
+		assertThat(blackboardForIds12.getAllExternalCallParameters().size(), is(0));
+
+		final BlackboardCreator blackboardCreator13 = new BlackboardCreator();
+		pcmRepositoryBlackboardFactoryFactory.getPalladioFileShareProjectInstance()
+			.getBlackboardForIds(blackboardCreator13, "_DjjS0Oe1EeW5NafnxUciog");
+		blackboardCreator13.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
+		blackboardCreator13.setProjectInformation(mock(ProjectInformation.class));
+		final Blackboard blackboardForIds13 = blackboardCreator13.createBlackboard();
+		assertThat(blackboardForIds13.getAllSeffBranches().size(), is(0));
+		assertThat(blackboardForIds13.getAllSeffLoops().size(), is(3));
+		assertThat(blackboardForIds13.getAllRdias().size(), is(11 * 6));
+		assertThat(blackboardForIds13.getAllExternalCallParameters().size(), is(3));
 
 	}
 
