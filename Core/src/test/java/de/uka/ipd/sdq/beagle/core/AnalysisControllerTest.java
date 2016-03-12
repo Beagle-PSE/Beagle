@@ -859,7 +859,7 @@ public class AnalysisControllerTest {
 
 		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
 	}
-	
+
 	/**
 	 * Tests {@link AnalysisController#setAnalysisState(AnalysisState)} for
 	 * {@link AnalysisState} {@code TERMINATED}.
@@ -888,6 +888,22 @@ public class AnalysisControllerTest {
 
 		analysisController.setAnalysisState(AnalysisState.ENDING);
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
+
+		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
+	}
+
+	/**
+	 * Asserts that the {@link AnalysisState} is {@code RUNNING} when the performance has
+	 * been started and there was no call to
+	 * {@link AnalysisController#setAnalysisState(AnalysisState)}.
+	 *
+	 */
+	@Test
+	public void analysisStateWhilePerforming() {
+		final Sleeper sleepingMeasurementTool = new Sleeper();
+		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
+
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.RUNNING));
 
 		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
 	}
@@ -940,17 +956,17 @@ public class AnalysisControllerTest {
 		assertThat(() -> analysisController.setAnalysisState(AnalysisState.RUNNING),
 			throwsException(IllegalStateException.class));
 		assertThat(analysisController.getAnalysisState(), is(initState));
-		
+
 		initState = analysisController.getAnalysisState();
 		assertThat(() -> analysisController.setAnalysisState(AnalysisState.TERMINATED),
 			throwsException(IllegalStateException.class));
 		assertThat(analysisController.getAnalysisState(), is(initState));
-		
+
 		initState = analysisController.getAnalysisState();
 		assertThat(() -> analysisController.setAnalysisState(AnalysisState.ENDING),
 			throwsException(IllegalStateException.class));
 		assertThat(analysisController.getAnalysisState(), is(initState));
-		
+
 		initState = analysisController.getAnalysisState();
 		assertThat(() -> analysisController.setAnalysisState(AnalysisState.ABORTING),
 			throwsException(IllegalStateException.class));
