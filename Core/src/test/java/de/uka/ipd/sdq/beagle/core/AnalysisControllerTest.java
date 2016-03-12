@@ -856,6 +856,9 @@ public class AnalysisControllerTest {
 
 		analysisController.setAnalysisState(AnalysisState.ABORTING);
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ABORTING));
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.RUNNING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ABORTING));
 
 		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
 	}
@@ -872,6 +875,9 @@ public class AnalysisControllerTest {
 
 		analysisController.setAnalysisState(AnalysisState.TERMINATED);
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.TERMINATED));
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.RUNNING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.TERMINATED));
 
 		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
 	}
@@ -887,6 +893,13 @@ public class AnalysisControllerTest {
 		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
 
 		analysisController.setAnalysisState(AnalysisState.ENDING);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
+		analysisController.setAnalysisState(AnalysisState.RUNNING);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.RUNNING));
+		analysisController.setAnalysisState(AnalysisState.ENDING);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.ABORTING),
+			throwsException(IllegalStateException.class));
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
 
 		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
