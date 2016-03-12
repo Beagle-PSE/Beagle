@@ -14,4 +14,13 @@ configure(javaSubprojects) {
 	                   'Implementation-Version': project.version
 	    }
 	}
+	
+	configurations {
+		/*
+		 * Projects can use this configurations to export their test code to other projects.
+		 */
+		testExport {
+			extendsFrom testRuntime
+		}
+	}
 }
