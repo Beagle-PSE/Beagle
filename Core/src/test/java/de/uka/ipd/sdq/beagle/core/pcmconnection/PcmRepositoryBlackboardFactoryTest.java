@@ -15,7 +15,6 @@ import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
 import de.uka.ipd.sdq.beagle.core.judge.EvaluableExpressionFitnessFunction;
 import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkReader;
-import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
 
@@ -26,6 +25,7 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -64,7 +64,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 	public void pcmRepositoryBlackboardFactory() throws FileNotFoundException {
 
 		final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository = new PcmSourceStatementLinkReader(
-			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
+			this.loadFile("/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
 				+ "model/internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 		assertThat(new ThrowingMethod() {
@@ -217,7 +217,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 		final BlackboardCreator blackboardCreator = new BlackboardCreator();
 		new PcmRepositoryBlackboardFactoryAdder(
-			new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
+			this.loadFile("/de/uka/ipd/sdq/beagle/core/pcmconnection/PalladioFileShare/"
 				+ "model/internal_architecture_model.repository"),
 			PcmRepositoryBlackboardFactoryFactory.PALLADIO_FILE_SHARE_PROJECT_TEST_SOURCE_CODE_FILE_PROVIDER,
 			pcmSourceStatementLinkRepository).getBlackboardForAllElements(blackboardCreator);
@@ -262,7 +262,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
 					new PcmSourceStatementLinkReader(
-						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+						PcmRepositoryBlackboardFactoryTest.this.loadFile("/de/uka/ipd/sdq/beagle/core/pcmconnection/"
 							+ "internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 				new PcmRepositoryBlackboardFactoryAdder(
@@ -280,7 +280,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
 					new PcmSourceStatementLinkReader(
-						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+						PcmRepositoryBlackboardFactoryTest.this.loadFile("/de/uka/ipd/sdq/beagle/core/pcmconnection/"
 							+ "internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 				new PcmRepositoryBlackboardFactoryAdder(
@@ -298,7 +298,7 @@ public class PcmRepositoryBlackboardFactoryTest {
 
 				final PcmSourceStatementLinkRepository pcmSourceStatementLinkRepository =
 					new PcmSourceStatementLinkReader(
-						new File("src/test/resources/de/uka/ipd/sdq/beagle/core/pcmconnection/"
+						PcmRepositoryBlackboardFactoryTest.this.loadFile("/de/uka/ipd/sdq/beagle/core/pcmconnection/"
 							+ "internal_architecture_model_source_statement_links.xml")).getPcmSourceLinkRepository();
 
 				new PcmRepositoryBlackboardFactoryAdder(
@@ -506,5 +506,20 @@ public class PcmRepositoryBlackboardFactoryTest {
 		blackboardCreator.setFitnessFunction(mock(EvaluableExpressionFitnessFunction.class));
 		blackboardCreator.setProjectInformation(mock(ProjectInformation.class));
 		blackboardCreator.createBlackboard();
+	}
+
+	/**
+	 * Loads a file with respect to where it's positioned in the class path.
+	 *
+	 * @param path The path of the file to load.
+	 *
+	 * @return The loaded file.
+	 */
+	private File loadFile(final String path) {
+		try {
+			return new File(PcmRepositoryBlackboardFactoryTest.class.getResource(path).toURI());
+		} catch (final URISyntaxException uriSyntaxException) {
+			throw new RuntimeException(uriSyntaxException.getMessage());
+		}
 	}
 }
