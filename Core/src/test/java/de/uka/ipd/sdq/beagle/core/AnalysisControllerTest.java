@@ -1014,10 +1014,6 @@ public class AnalysisControllerTest {
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.TERMINATED));
 	}
 
-	// Test terminated am Ende
-
-	// mock MeasAna mit Endlosschleife der Durchlaufen kann
-
 	/**
 	 * Inizialises an {@link AnalysisController} with a endless running
 	 * {@link MeasurementTool}, used to test the
