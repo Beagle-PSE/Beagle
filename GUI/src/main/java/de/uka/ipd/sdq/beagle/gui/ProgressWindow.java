@@ -81,6 +81,7 @@ public class ProgressWindow {
 
 		inUI(() -> {
 			this.progressWindow.open();
+			this.progressWindow.restore();
 			this.hidden = false;
 		});
 	}
@@ -175,6 +176,11 @@ public class ProgressWindow {
 		private boolean paused;
 
 		/**
+		 * The message to show on the window.
+		 */
+		private String message;
+
+		/**
 		 * Creates a progress message window.
 		 *
 		 * @param shell The shell the window belongs to.
@@ -187,19 +193,28 @@ public class ProgressWindow {
 		/**
 		 * Updates the window.
 		 *
-		 * @param message The new message to show.
+		 * @param newMessage The new message to show.
 		 * @param buttonLabels The new button labels to show.
 		 */
-		private void update(final String message, final String[] buttonLabels) {
-			if (this.messageLabel.isDisposed() || this.buttonBar.isDisposed()) {
-				// we’re already disposed.
+		private void update(final String newMessage, final String[] buttonLabels) {
+			this.message = newMessage;
+			this.setButtonLabels(buttonLabels);
+			this.restore();
+		}
+
+		/**
+		 * Restores the window’s state.
+		 */
+		private void restore() {
+			if (this.message == null || this.buttonBar == null || this.messageLabel.isDisposed()
+				|| this.buttonBar.isDisposed()) {
+				// we’re already disposed or not ready yet.
 				return;
 			}
-			this.messageLabel.setText(message);
+			this.messageLabel.setText(this.message);
 			this.messageLabel.getParent().layout();
 
 			final Composite buttonBarParent = this.buttonBar.getParent();
-			this.setButtonLabels(buttonLabels);
 			this.buttonBar.dispose();
 			this.buttonBar = this.createButtonBar(buttonBarParent);
 			buttonBarParent.layout();

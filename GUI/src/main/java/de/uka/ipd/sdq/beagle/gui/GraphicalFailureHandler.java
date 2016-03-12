@@ -83,7 +83,7 @@ public class GraphicalFailureHandler implements FailureResolver {
 		 * @param reporterName The reporter’s name.
 		 */
 		private FailurePrompter(final FailureReport<RECOVER_TYPE> failureReport, final String reporterName) {
-			super(Display.getDefault(), "Beagle failure");
+			super(Display.getDefault(), "Beagle found a failure");
 			this.failureReport = failureReport;
 			this.reporterName = reporterName;
 		}
