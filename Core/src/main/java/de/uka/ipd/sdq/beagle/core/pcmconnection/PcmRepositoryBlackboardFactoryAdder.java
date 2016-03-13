@@ -76,7 +76,6 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer<Pcm
 
 		RepositoryFactory.eINSTANCE.createRepository();
 		try {
-			// Not sure if this final declaration could lead to a problem.
 
 			final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
 
