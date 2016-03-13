@@ -17,7 +17,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
-import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
+import org.eclipse.debug.core.Launch;
+import org.eclipse.debug.core.model.ISourceLocator;
+import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.swt.widgets.Display;
@@ -33,13 +35,20 @@ import java.util.List;
  * ILaunchConfigurations}.
  *
  * @author Roman Langrehr
+ * @author Joshua Gleitze
  */
-public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDelegate {
+public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
 	/**
 	 * The unique id for Beagle's {@link ILaunchConfiguration}.
 	 */
 	public static final String BEAGLE_LAUNCH_CONFIGURATION_IDENTIFIER = "de.uka.ipd.sdq.beagle.launch";
+
+	/**
+	 * The launch object clients obtain through
+	 * {@link #getLaunch(ILaunchConfiguration, String)}.
+	 */
+	private BeagleLaunch beagleLaunch;
 
 	@Override
 	public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch,
@@ -49,6 +58,10 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 				+ " but supported is only " + BEAGLE_LAUNCH_CONFIGURATION_IDENTIFIER);
 		Validate.isTrue(mode.equals(ILaunchManager.RUN_MODE),
 			"Only run mode for the Beagle configuration is supported.");
+		Validate.isTrue(launch == this.beagleLaunch,
+			"Only launches obtained by this delegate may be used to launch Beagle!");
+		Validate.validState(this.beagleLaunch != null, "No launch has been obtained from this delegate yet!");
+
 		final BeagleConfiguration beagleConfiguration =
 			this.convertBeagleLaunchConfigurationToBeagleConfiguration(configuration);
 		beagleConfiguration.finalise();
@@ -65,11 +78,18 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 				beagleController.startAnalysis();
 			} finally {
 				guiController.analysisFinished();
+				this.beagleLaunch.fireTerminate();
 			}
 		});
 		executionThread.setUncaughtExceptionHandler(Thread.currentThread().getUncaughtExceptionHandler());
 		executionThread.start();
 		guiController.analysisStarted();
+	}
+
+	@Override
+	public ILaunch getLaunch(final ILaunchConfiguration configuration, final String mode) throws CoreException {
+		this.beagleLaunch = new BeagleLaunch(configuration, mode);
+		return this.beagleLaunch;
 	}
 
 	/**
@@ -148,6 +168,33 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
 		}
 		return null;
+	}
+
+	/**
+	 * The launch object passed to clients.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private class BeagleLaunch extends Launch {
+
+		/**
+		 * Delegates to
+		 * {@link Launch#Launch(ILaunchConfiguration, String, ISourceLocator)}.
+		 *
+		 * @param launchConfiguration See
+		 *            {@link Launch#Launch(ILaunchConfiguration, String, ISourceLocator)}.
+		 * @param mode See
+		 *            {@link Launch#Launch(ILaunchConfiguration, String, ISourceLocator)}.
+		 */
+		BeagleLaunch(final ILaunchConfiguration launchConfiguration, final String mode) {
+			super(launchConfiguration, mode, null);
+		}
+
+		@Override
+		protected void fireTerminate() {
+			super.fireTerminate();
+		}
+
 	}
 
 }

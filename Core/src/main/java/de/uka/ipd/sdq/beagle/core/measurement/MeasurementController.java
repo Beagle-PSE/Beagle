@@ -34,6 +34,11 @@ public class MeasurementController {
 	private final Set<MeasurementTool> measurementTools;
 
 	/**
+	 * The parameter characteriser to use for all measurements.
+	 */
+	private final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
+
+	/**
 	 * Constructs a new {@link MeasurementController}.
 	 *
 	 * @param measurementTools The {@link MeasurementTool}s to use. Must not be
@@ -92,7 +97,6 @@ public class MeasurementController {
 		final Set<CodeSection> resourceDemandSections = new HashSet<CodeSection>();
 		final Set<CodeSection> executionSections = new HashSet<CodeSection>();
 		final Set<CodeSection> parameterValueSections = new HashSet<CodeSection>();
-		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
 
 		// Fill {@code executionSections}.
 		for (final SeffBranch seffBranch : seffBranches) {
@@ -123,8 +127,9 @@ public class MeasurementController {
 
 		for (final MeasurementTool measurementTool : this.measurementTools) {
 			// Give every measurement tool a measurement order.
-			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,
-				resourceDemandSections, executionSections, blackboard.getProjectInformation(), parameterCharacteriser);
+			final MeasurementOrder measurementOrder =
+				new MeasurementOrder(parameterValueSections, resourceDemandSections, executionSections,
+					blackboard.getProjectInformation(), this.parameterCharacteriser);
 
 			// Get the measurement results.
 			final List<MeasurementEvent> measurementEvents = measurementTool.measure(measurementOrder);

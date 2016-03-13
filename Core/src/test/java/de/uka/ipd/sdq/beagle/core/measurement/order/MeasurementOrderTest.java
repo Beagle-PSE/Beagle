@@ -1,5 +1,6 @@
 package de.uka.ipd.sdq.beagle.core.measurement.order;
 
+import static de.uka.ipd.sdq.beagle.core.testutil.EqualsMatcher.hasDefaultEqualsProperties;
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
 import static de.uka.ipd.sdq.beagle.core.testutil.NullHandlingMatchers.notAcceptingNull;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -15,6 +16,7 @@ import de.uka.ipd.sdq.beagle.core.testutil.factories.ProjectInformationFactory;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -174,4 +176,50 @@ public class MeasurementOrderTest {
 		assertThat(measurementOrder.getParameterCharacteriser(), is(not(parameterCharacteriser)));
 	}
 
+	/**
+	 * Test method for {@link MeasurementOrder#equals(Object)} and
+	 * {@link MeasurementOrder#hashCode()}.
+	 */
+	@Test
+	public void equalsAndHashCode() {
+		final Set<CodeSection> parameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
+		final Set<CodeSection> resourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
+		final Set<CodeSection> executionSections = CODE_SECTION_FACTORY.getAllAsSet();
+		final ProjectInformation projectInformation = PROJECT_INFORMATION_FACTORY.getOne();
+		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();
+
+		final Set<CodeSection> equalParameterValueSection = CODE_SECTION_FACTORY.getAllAsSet();
+		final Set<CodeSection> equalResourceDemandSections = CODE_SECTION_FACTORY.getAllAsSet();
+		final Set<CodeSection> equalExecutionSections = CODE_SECTION_FACTORY.getAllAsSet();
+		final ProjectInformation equalProjectInformation = projectInformation;
+		final ParameterCharacteriser equalParameterCharacteriser = parameterCharacteriser;
+
+		final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSection, resourceDemandSections,
+			executionSections, projectInformation, parameterCharacteriser);
+		final MeasurementOrder equalMeasurementOrder = new MeasurementOrder(equalParameterValueSection,
+			equalResourceDemandSections, equalExecutionSections, equalProjectInformation, equalParameterCharacteriser);
+		final MeasurementOrder other1 = new MeasurementOrder(
+			new HashSet<>(Arrays.asList(CODE_SECTION_FACTORY.getOne())), equalResourceDemandSections,
+			equalExecutionSections, equalProjectInformation, equalParameterCharacteriser);
+		final MeasurementOrder other2 = new MeasurementOrder(equalParameterValueSection,
+			new HashSet<>(Arrays.asList(CODE_SECTION_FACTORY.getOne())), equalExecutionSections,
+			equalProjectInformation, equalParameterCharacteriser);
+		final MeasurementOrder other3 = new MeasurementOrder(equalParameterValueSection, equalResourceDemandSections,
+			new HashSet<>(Arrays.asList(CODE_SECTION_FACTORY.getOne())), equalProjectInformation,
+			equalParameterCharacteriser);
+		final MeasurementOrder other4 = new MeasurementOrder(equalParameterValueSection, equalResourceDemandSections,
+			equalExecutionSections, PROJECT_INFORMATION_FACTORY.getOne(), equalParameterCharacteriser);
+		final MeasurementOrder other5 = new MeasurementOrder(equalParameterValueSection, equalResourceDemandSections,
+			equalExecutionSections, equalProjectInformation, new ParameterCharacteriser());
+		assertThat(measurementOrder, hasDefaultEqualsProperties());
+
+		assertThat(measurementOrder, is(equalTo(equalMeasurementOrder)));
+		assertThat(measurementOrder.hashCode(), is(equalMeasurementOrder.hashCode()));
+
+		assertThat(measurementOrder, is(not(equalTo(other1))));
+		assertThat(measurementOrder, is(not(equalTo(other2))));
+		assertThat(measurementOrder, is(not(equalTo(other3))));
+		assertThat(measurementOrder, is(not(equalTo(other4))));
+		assertThat(measurementOrder, is(not(equalTo(other5))));
+	}
 }
