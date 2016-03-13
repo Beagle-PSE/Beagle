@@ -45,31 +45,31 @@ public class PcmCodeSectionGenerator {
 	 *            under analysis.
 	 */
 	public PcmCodeSectionGenerator(final PcmSourceStatementLinkRepository sourceStateLinkRepository,
-<span class="nc" id="L48">		final SourceCodeFileProvider sourceCodeFileProvider) {</span>
-<span class="nc" id="L49">		Validate.notNull(sourceStateLinkRepository);</span>
-<span class="nc" id="L50">		this.sourceStateLinkRepository = sourceStateLinkRepository;</span>
-<span class="nc" id="L51">		this.initialiseMap();</span>
-<span class="nc" id="L52">		this.sourceCodeFileProvider = sourceCodeFileProvider;</span>
-<span class="nc" id="L53">	}</span>
+<span class="fc" id="L48">		final SourceCodeFileProvider sourceCodeFileProvider) {</span>
+<span class="fc" id="L49">		Validate.notNull(sourceStateLinkRepository);</span>
+<span class="fc" id="L50">		this.sourceStateLinkRepository = sourceStateLinkRepository;</span>
+<span class="fc" id="L51">		this.initialiseMap();</span>
+<span class="fc" id="L52">		this.sourceCodeFileProvider = sourceCodeFileProvider;</span>
+<span class="fc" id="L53">	}</span>
 
 	/**
 	 * Creating a private map to simplify access to the IDs.
 	 *
 	 */
 	private void initialiseMap() {
-<span class="nc" id="L60">		this.mapIdToStatementLink = new HashMap&lt;String, PcmSourceStatementLink&gt;();</span>
-<span class="nc bnc" id="L61" title="All 2 branches missed.">		for (final PcmSourceStatementLink statementLink : this.sourceStateLinkRepository.getLinks()) {</span>
-<span class="nc" id="L62">			final String statementLinkId = statementLink.getPcmElementId();</span>
-<span class="nc" id="L63">			Validate.notNull(statementLinkId);</span>
+<span class="fc" id="L60">		this.mapIdToStatementLink = new HashMap&lt;String, PcmSourceStatementLink&gt;();</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">		for (final PcmSourceStatementLink statementLink : this.sourceStateLinkRepository.getLinks()) {</span>
+<span class="fc" id="L62">			final String statementLinkId = statementLink.getPcmElementId();</span>
+<span class="fc" id="L63">			Validate.notNull(statementLinkId);</span>
 
-<span class="nc bnc" id="L65" title="All 2 branches missed.">			if (this.mapIdToStatementLink.containsKey(statementLinkId)</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">			if (this.mapIdToStatementLink.containsKey(statementLinkId)</span>
 <span class="nc bnc" id="L66" title="All 2 branches missed.">				&amp;&amp; !this.mapIdToStatementLink.get(statementLinkId).equals(statementLink)) {</span>
 <span class="nc" id="L67">				throw new IllegalArgumentException(</span>
 					&quot;The given SourceStateLinkRepository contains more than one statementLink for different IDs!&quot;);
 			}
-<span class="nc" id="L70">			this.mapIdToStatementLink.put(statementLink.getPcmElementId(), statementLink);</span>
-<span class="nc" id="L71">		}</span>
-<span class="nc" id="L72">	}</span>
+<span class="fc" id="L70">			this.mapIdToStatementLink.put(statementLink.getPcmElementId(), statementLink);</span>
+<span class="fc" id="L71">		}</span>
+<span class="fc" id="L72">	}</span>
 
 	/**
 	 * Creates a {@link CodeSection} for a given identifier.
@@ -83,28 +83,28 @@ public class PcmCodeSectionGenerator {
 	 */
 	public CodeSection getCodeSectionForID(final String identifier) throws FileNotFoundException {
 
-<span class="nc" id="L86">		Validate.notNull(identifier);</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">		if (!this.mapIdToStatementLink.containsKey(identifier)) {</span>
+<span class="fc" id="L86">		Validate.notNull(identifier);</span>
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">		if (!this.mapIdToStatementLink.containsKey(identifier)) {</span>
 <span class="nc" id="L88">			throw new IllegalArgumentException(</span>
 				&quot;The given identifier &quot; + identifier + &quot; was not found in the given SourceStateLinkRepository&quot;);
 		}
-<span class="nc" id="L91">		final PcmSourceStatementLink statementLink = this.mapIdToStatementLink.get(identifier);</span>
+<span class="fc" id="L91">		final PcmSourceStatementLink statementLink = this.mapIdToStatementLink.get(identifier);</span>
 
-<span class="nc" id="L93">		final SourceCodePosition scpFirst = statementLink.getFirstStatement();</span>
-<span class="nc" id="L94">		final SourceCodePosition scpLast =</span>
-<span class="nc bnc" id="L95" title="All 2 branches missed.">			statementLink.getLastStatement() != null ? statementLink.getLastStatement() : scpFirst;</span>
+<span class="fc" id="L93">		final SourceCodePosition scpFirst = statementLink.getFirstStatement();</span>
+<span class="fc" id="L94">		final SourceCodePosition scpLast =</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">			statementLink.getLastStatement() != null ? statementLink.getLastStatement() : scpFirst;</span>
 
-<span class="nc" id="L97">		final File startFile = this.sourceCodeFileProvider.getSourceFile(scpFirst.getSourceCodeFile());</span>
-<span class="nc" id="L98">		final File endFile = this.sourceCodeFileProvider.getSourceFile(scpLast.getSourceCodeFile());</span>
+<span class="fc" id="L97">		final File startFile = this.sourceCodeFileProvider.getSourceFile(scpFirst.getSourceCodeFile());</span>
+<span class="fc" id="L98">		final File endFile = this.sourceCodeFileProvider.getSourceFile(scpLast.getSourceCodeFile());</span>
 
-<span class="nc bnc" id="L100" title="All 2 branches missed.">		if (startFile == null) {</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">		if (startFile == null) {</span>
 <span class="nc" id="L101">			throw new FileNotFoundException(&quot;No source file for class &quot; + scpFirst.getSourceCodeFile() + &quot; was found.&quot;);</span>
 		}
-<span class="nc bnc" id="L103" title="All 2 branches missed.">		if (endFile == null) {</span>
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">		if (endFile == null) {</span>
 <span class="nc" id="L104">			throw new FileNotFoundException(&quot;No source file for class &quot; + scpLast.getSourceCodeFile() + &quot; was found.&quot;);</span>
 		}
 
-<span class="nc" id="L107">		return new CodeSection(startFile, scpFirst.getCharacterIndex(), endFile, scpLast.getCharacterIndex());</span>
+<span class="fc" id="L107">		return new CodeSection(startFile, scpFirst.getCharacterIndex(), endFile, scpLast.getCharacterIndex());</span>
 
 	}
 
