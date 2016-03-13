@@ -22,6 +22,7 @@ import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardV
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
@@ -34,7 +35,9 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -851,7 +854,7 @@ public class AnalysisControllerTest {
 	 */
 	@Test
 	public void setAnalysisStateAbort() {
-		final Sleeper sleepingMeasurementTool = new Sleeper();
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
 		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
 
 		analysisController.setAnalysisState(AnalysisState.ABORTING);
@@ -870,7 +873,7 @@ public class AnalysisControllerTest {
 	 */
 	@Test
 	public void setAnalysisStateTerminated() {
-		final Sleeper sleepingMeasurementTool = new Sleeper();
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
 		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
 
 		analysisController.setAnalysisState(AnalysisState.TERMINATED);
@@ -889,7 +892,7 @@ public class AnalysisControllerTest {
 	 */
 	@Test
 	public void setAnalysisStateEnding() {
-		final Sleeper sleepingMeasurementTool = new Sleeper();
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
 		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
 
 		analysisController.setAnalysisState(AnalysisState.ENDING);
@@ -913,7 +916,7 @@ public class AnalysisControllerTest {
 	 */
 	@Test
 	public void analysisStateWhilePerforming() {
-		final Sleeper sleepingMeasurementTool = new Sleeper();
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
 		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
 
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.RUNNING));
@@ -930,7 +933,7 @@ public class AnalysisControllerTest {
 	 */
 	@Test
 	public void setAnalysisStateNull() {
-		final Sleeper sleepingMeasurementTool = new Sleeper();
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
 		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
 
 		assertThat(() -> analysisController.setAnalysisState(null), throwsException(NullPointerException.class));
@@ -1023,7 +1026,7 @@ public class AnalysisControllerTest {
 	 *
 	 * @return the Analysis Controller (as specified above)
 	 */
-	private AnalysisController setUpController(final Sleeper sleepingMeasurementTool) {
+	private AnalysisController setUpController(final SleepingMeasurementTool sleepingMeasurementTool) {
 		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
 		oneMeasurementTool.add(this.mockedMeasurementTool1);
 		final Set<MeasurementResultAnalyser> oneMeasurementResultAnalyser = new HashSet<>();
@@ -1031,7 +1034,6 @@ public class AnalysisControllerTest {
 		final Set<ProposedExpressionAnalyser> oneProposedExpressionAnalyser = new HashSet<>();
 		oneProposedExpressionAnalyser.add(this.mockedProposedExpressionAnalyser1);
 
-		// Test, where no one wants to contribute.
 		this.resetMocks();
 		final Blackboard blackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
 
@@ -1061,7 +1063,7 @@ public class AnalysisControllerTest {
 	 *
 	 * @param sleepingMeasurementTool which needs to be stopped.
 	 */
-	private void tearDownSetAnalysisTest(final Sleeper sleepingMeasurementTool) {
+	private void tearDownSetAnalysisTest(final SleepingMeasurementTool sleepingMeasurementTool) {
 		synchronized (sleepingMeasurementTool) {
 			sleepingMeasurementTool.sleep = false;
 			sleepingMeasurementTool.notifyAll();
@@ -1074,7 +1076,7 @@ public class AnalysisControllerTest {
 	 *
 	 * @author Joshua Gleitze
 	 */
-	private class Sleeper implements Answer<Void> {
+	private class SleepingMeasurementTool implements Answer<List<MeasurementEvent>> {
 
 		/**
 		 * Whether we should sleep.
@@ -1087,7 +1089,7 @@ public class AnalysisControllerTest {
 		private boolean called;
 
 		@Override
-		public Void answer(final InvocationOnMock invocation) throws Throwable {
+		public List<MeasurementEvent> answer(final InvocationOnMock invocation) throws Throwable {
 			synchronized (this) {
 				this.called = true;
 				this.notifyAll();
@@ -1101,7 +1103,7 @@ public class AnalysisControllerTest {
 					}
 				}
 			}
-			return null;
+			return new ArrayList<>();
 		}
 
 	}
