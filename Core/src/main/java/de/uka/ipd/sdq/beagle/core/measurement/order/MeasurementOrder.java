@@ -6,6 +6,8 @@ import de.uka.ipd.sdq.beagle.core.ProjectInformation;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 
 import org.apache.commons.lang3.Validate;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -130,6 +132,36 @@ public class MeasurementOrder {
 	 */
 	public ParameterCharacteriser getParameterCharacteriser() {
 		return this.parameterCharacteriser;
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		if (object == null) {
+			return false;
+		}
+		if (object == this) {
+			return true;
+		}
+		if (object.getClass() != this.getClass()) {
+			return false;
+		}
+		final MeasurementOrder other = (MeasurementOrder) object;
+		return new EqualsBuilder().append(this.parameterValueSection, other.parameterValueSection)
+			.append(this.resourceDemandSections, other.resourceDemandSections)
+			.append(this.executionSections, other.executionSections)
+			.append(this.projectInformation, other.projectInformation)
+			.append(this.parameterCharacteriser, other.parameterCharacteriser)
+			.isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder().append(this.parameterValueSection)
+			.append(this.resourceDemandSections)
+			.append(this.executionSections)
+			.append(this.projectInformation)
+			.append(this.projectInformation)
+			.toHashCode();
 	}
 
 }

@@ -10,9 +10,13 @@ public interface LaunchConfiguration {
 
 	/**
 	 * Executes the launch of the measured software. Resets all settings made through the
-	 * setter methods.
+	 * setter methods, regardless of whether the execution terminated normally.
+	 *
+	 * @throws InterruptedException If the current thread is interrupted while the launch
+	 *             is being executed, an {@link InterruptedException} might be thrown to
+	 *             indicate this.
 	 */
-	void execute();
+	void execute() throws InterruptedException;
 
 	/**
 	 * Adds the given {@code classPathEntry} to the start of the Java classpath used when
