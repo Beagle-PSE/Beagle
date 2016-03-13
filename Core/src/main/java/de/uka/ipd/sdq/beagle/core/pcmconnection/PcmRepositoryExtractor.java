@@ -17,7 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.impl.BasicComponentImpl;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
+import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingSEFFImpl;
 
 import java.util.Collection;
@@ -140,6 +142,7 @@ public class PcmRepositoryExtractor {
 	 *
 	 * </ul>
 	 *
+	 *
 	 * @param repository The repository to look up.
 	 * @param identifiers Identifiers of elements in the repository files that shall be
 	 *            written to the Blackboard.
@@ -168,6 +171,7 @@ public class PcmRepositoryExtractor {
 			blackboardFactory.setLoops(this.seffLoopSet);
 			blackboardFactory.setExternalCalls(this.externalCallParameterSet);
 			blackboardFactory.setPcmMappings(pcmMappings);
+
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -186,16 +190,7 @@ public class PcmRepositoryExtractor {
 			}
 		}
 
-		// Find for every "useful" object its content and extract it into the given Sets
-		for (final EObject identifiedObject : setOfIdentifiedObjects) {
-			if (identifiedObject.getClass() == BasicComponentImpl.class) {
-				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) identifiedObject);
-			} else if (identifiedObject.getClass() == ResourceDemandingSEFFImpl.class) {
-				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) identifiedObject);
-			} else {
-				this.pcmSeffExtractor.extractBehaviourAndAddToSet(identifiedObject);
-			}
-		}
+		this.extractMeaningfulElements(setOfIdentifiedObjects);
 
 		// Add the sets to the blackboard and return
 
@@ -204,6 +199,35 @@ public class PcmRepositoryExtractor {
 		blackboardFactory.setLoops(this.seffLoopSet);
 		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
 		blackboardFactory.setPcmMappings(pcmMappings);
+	}
+
+	/**
+	 * Finds all PCM elements that are meaningful to Beagle in the provided set of
+	 * {@code contentObjects}. Populates {@link #rdiaSet}, {@link #seffBranchSet},
+	 * {@link #seffLoopSet} and {@link #externalCallParameterSet}.
+	 *
+	 * @param contentObjects The objects to check for meanigfulness.
+	 */
+	private void extractMeaningfulElements(final Set<EObject> contentObjects) {
+		for (final EObject object : contentObjects) {
+			if (object.getClass() == BasicComponentImpl.class) {
+				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) object);
+			} else if (object.getClass() == ResourceDemandingSEFFImpl.class) {
+				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) object);
+			} else if (object instanceof AbstractBranchTransition) {
+				final EList<EObject> specificBranchContentList = object.eContents();
+				for (final EObject specificBranchContent : specificBranchContentList) {
+					if (specificBranchContent.getClass() == ResourceDemandingBehaviourImpl.class) {
+						for (final EObject stepBehaviour : ((ResourceDemandingBehaviourImpl) specificBranchContent)
+							.eContents()) {
+							this.pcmSeffExtractor.extractBehaviourAndAddToSet(stepBehaviour);
+						}
+					}
+				}
+			} else {
+				this.pcmSeffExtractor.extractBehaviourAndAddToSet(object);
+			}
+		}
 	}
 
 	/**

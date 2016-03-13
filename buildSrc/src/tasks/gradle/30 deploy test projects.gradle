@@ -10,7 +10,6 @@ buildscript {
 	}
 	
 	dependencies {
-    	classpath group: 'de.undercouch', name: 'gradle-download-task', version: '2.1+'
     	classpath group: 'at.bxm.gradleplugins', name: 'gradle-svntools-plugin', version: 'latest.release'
 	}
 }
@@ -18,28 +17,15 @@ buildscript {
 import at.bxm.gradleplugins.svntools.tasks.SvnCheckout
 import at.bxm.gradleplugins.svntools.SvnToolsPlugin
 
-apply plugin: 'de.undercouch.download'
 apply plugin: SvnToolsPlugin
 
 def tmp = file("$buildDir/tmp/test-resources")
 
-def appsensorSource = 'https://github.com/jtmelton/appsensor/archive/v2.2.0.zip'
-def appsensorZipName = 'v2.2.0.zip'
 def specJvmSource = 'https://svnserver.informatik.kit.edu/i43/svn/code/BySuite/ByCounter/trunk/SPECjvm2008_1.00/'
 def fileShareSource = 'https://svnserver.informatik.kit.edu/i43/svn/code/CaseStudies/FileShare/trunk/'
 
 def fileShareDest = file("$projectDir/src/test/resources/PalladioFileShare")
 def specJvmDest = file("$projectDir/src/test/resources/SPECjvm2008")
-def appsensorDest = file("$projectDir/src/test/resources/AppSensor")
-
-/**
- * Shifts the relative destination path of a FileCopyDetails object one level up (discards the 
- * top most path segments). Assumes that the path is not at the top most level.
- */
-def shiftUp =  { FileCopyDetails fcp ->
-	def pathsegments = fcp.relativeSourcePath.segments[1..-1] as String[]
-	fcp.relativePath = new RelativePath(!fcp.file.isDirectory(), pathsegments)
-}
 
 task dowloadFileShare(type: SvnCheckout) {
 	group "Build Setup"
@@ -61,42 +47,17 @@ task dowloadFileShare(type: SvnCheckout) {
 }
 
 
-task downloadAppSensor {
-	group "Build Setup"
-	description "Deploys AppSensor to be used for testing Beagle"
-	outputs.dir appsensorDest
-	
-	doLast {
-		tmp.mkdirs()
-		
-		download {
-			src appsensorSource
-			onlyIfNewer true
-			quiet true
-			dest tmp
-		}
-		
-		copy {
-			from zipTree("$tmp/$appsensorZipName")
-			eachFile shiftUp
-			includeEmptyDirs false
-			into appsensorDest
-		}
-	}
-}
-
 task cleanTestProjects {
 	description "Removes all test projects downloaded."
 	group "Build Setup"
 
 	doLast {
-		delete fileShareDest, appsensorDest
+		delete fileShareDest
 	}	
 }
 
 configure(javaSubprojects) {
 	test.dependsOn rootProject.tasks.dowloadFileShare
-	test.dependsOn rootProject.tasks.downloadAppSensor
 	clean.dependsOn rootProject.tasks.cleanTestProjects
 }
 	

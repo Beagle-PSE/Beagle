@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="ASCII"?>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.1" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.1" id="_DbI9sue1EeW5NafnxUciog">
+  <components__Repository xsi:type="repository:BasicComponent" id="_DdGskOe1EeW5NafnxUciog" entityName=" &lt;PC No. 0 de.uka.ipd.sdq.palladiofileshare.algorithms.SimpleLZW.java.SimpleLZW>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DddR4ee1EeW5NafnxUciog" entityName="SimpleLZW 0 (prov)" providedInterface__OperationProvidedRole="_DdXLQOe1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DddR4ue1EeW5NafnxUciog" describedService__SEFF="_DdXLQee1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DrQdUOe1EeW5NafnxUciog" successor_AbstractAction="_DrQdUue1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DrQdUue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.algorithms.SimpleLZW.java.SimpleLZW.lzwcompress_inlined() from 4146 to 4177" predecessor_AbstractAction="_DrQdUOe1EeW5NafnxUciog" successor_AbstractAction="_DrQdUee1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DrQdUee1EeW5NafnxUciog" predecessor_AbstractAction="_DrQdUue1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DddR4-e1EeW5NafnxUciog" describedService__SEFF="_DdbcsOe1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DrUuwOe1EeW5NafnxUciog" successor_AbstractAction="_DrUuwue1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DrUuwue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.algorithms.SimpleLZW.java.SimpleLZW.main() at 9209" predecessor_AbstractAction="_DrUuwOe1EeW5NafnxUciog" successor_AbstractAction="_DrUuwee1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DrUuwee1EeW5NafnxUciog" predecessor_AbstractAction="_DrUuwue1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Ddd48Oe1EeW5NafnxUciog" entityName=" &lt;PC No. 1 de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb.DbAccess.java.DbAccess>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DdhjUOe1EeW5NafnxUciog" entityName="DbAccess 1 (prov)" providedInterface__OperationProvidedRole="_Ddd48ee1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DdhjUee1EeW5NafnxUciog" describedService__SEFF="_Ddd48ue1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DrcqkOe1EeW5NafnxUciog" successor_AbstractAction="_DrkmYOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DrkmYOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb.DbAccess.java.DbAccess.queryDatabase() from 155 to 186" predecessor_AbstractAction="_DrcqkOe1EeW5NafnxUciog" successor_AbstractAction="_Drcqkee1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Drcqkee1EeW5NafnxUciog" predecessor_AbstractAction="_DrkmYOe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DdiKYOe1EeW5NafnxUciog" entityName=" &lt;PC No. 2 de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb.CopyrightedMaterialDatabase.java.CopyrightedMaterialDatabase>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjJqMue1EeW5NafnxUciog" entityName="ICopyrightedMaterialDatabase 2 (prov)" providedInterface__OperationProvidedRole="_DjJDIOe1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DdiKYee1EeW5NafnxUciog" entityName="DbAccess 0 (req)" requiredInterface__OperationRequiredRole="_Ddd48ee1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjEKpOe1EeW5NafnxUciog" entityName="Set 1 (req)" requiredInterface__OperationRequiredRole="_DdiKYue1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjJqM-e1EeW5NafnxUciog" describedService__SEFF="_DjJDIee1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DrkmYee1EeW5NafnxUciog" successor_AbstractAction="_DrlNcOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DrlNcOe1EeW5NafnxUciog" entityName="queryDatabase @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb.CopyrightedMaterialDatabase.java.CopyrightedMaterialDatabase.checkIsCopyrightedMaterial() at 1515" predecessor_AbstractAction="_DrkmYee1EeW5NafnxUciog" successor_AbstractAction="_DrlNcee1EeW5NafnxUciog" calledService_ExternalService="_Ddd48ue1EeW5NafnxUciog" role_ExternalService="_DdiKYee1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DrlNcee1EeW5NafnxUciog" entityName="queryDatabase @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb.CopyrightedMaterialDatabase.java.CopyrightedMaterialDatabase.checkIsCopyrightedMaterial() at 1592" predecessor_AbstractAction="_DrlNcOe1EeW5NafnxUciog" successor_AbstractAction="_DrlNcue1EeW5NafnxUciog" calledService_ExternalService="_Ddd48ue1EeW5NafnxUciog" role_ExternalService="_DdiKYee1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DrlNcue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.createIntegerHash() at 653" predecessor_AbstractAction="_DrlNcee1EeW5NafnxUciog" successor_AbstractAction="_DrlNc-e1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DrlNc-e1EeW5NafnxUciog" entityName="contains @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.copyrightedmaterialsdb.CopyrightedMaterialDatabase.java.CopyrightedMaterialDatabase.checkIsCopyrightedMaterial() from 1593 to 1659" predecessor_AbstractAction="_DrlNcue1EeW5NafnxUciog" successor_AbstractAction="_DrkmYue1EeW5NafnxUciog" calledService_ExternalService="_DjBuY-e1EeW5NafnxUciog" role_ExternalService="_DjEKpOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DrkmYue1EeW5NafnxUciog" predecessor_AbstractAction="_DrlNc-e1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DjNUkOe1EeW5NafnxUciog" entityName=" &lt;PC No. 3 de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjSNEee1EeW5NafnxUciog" entityName="BusinessCore 3 (prov)" providedInterface__OperationProvidedRole="_DjPw0-e1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjOisOe1EeW5NafnxUciog" entityName="ICopyrightedMaterialDatabase 3 (req)" requiredInterface__OperationRequiredRole="_DjJDIOe1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjPJwue1EeW5NafnxUciog" entityName="IExistingFilesDatabase 4 (req)" requiredInterface__OperationRequiredRole="_DjOisee1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjPJyOe1EeW5NafnxUciog" entityName="IHash 5 (req)" requiredInterface__OperationRequiredRole="_DjPJw-e1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjPw0ue1EeW5NafnxUciog" entityName="IStorage 6 (req)" requiredInterface__OperationRequiredRole="_DjPJyee1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjSNEue1EeW5NafnxUciog" describedService__SEFF="_DjPw1Oe1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DrmbkOe1EeW5NafnxUciog" successor_AbstractAction="_Drpe4Oe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_Drpe4Oe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles() at 4633" predecessor_AbstractAction="_DrmbkOe1EeW5NafnxUciog" successor_AbstractAction="_DrtJQOe1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:LoopAction" id="_DrtJQOe1EeW5NafnxUciog" entityName="SoMoX default loop count value" predecessor_AbstractAction="_Drpe4Oe1EeW5NafnxUciog" successor_AbstractAction="_Drmbkee1EeW5NafnxUciog">
+        <bodyBehaviour_Loop id="_DrtJQee1EeW5NafnxUciog">
+          <steps_Behaviour xsi:type="seff:StartAction" id="_DrtJQue1EeW5NafnxUciog" successor_AbstractAction="_DrtJQ-e1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_DrtJQ-e1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block from 4741 to 4776" predecessor_AbstractAction="_DrtJQue1EeW5NafnxUciog" successor_AbstractAction="_DrtJROe1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DrtJROe1EeW5NafnxUciog" entityName="getMessageDigest @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block at 5282" predecessor_AbstractAction="_DrtJQ-e1EeW5NafnxUciog" successor_AbstractAction="_Dr1FEOe1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr1FEOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.isCopyrightedMaterial() at 3534" predecessor_AbstractAction="_DrtJROe1EeW5NafnxUciog" successor_AbstractAction="_Dr1FEee1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr1FEee1EeW5NafnxUciog" entityName="checkIsCopyrightedMaterial @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.isCopyrightedMaterial() at 3599" predecessor_AbstractAction="_Dr1FEOe1EeW5NafnxUciog" successor_AbstractAction="_Dr1FEue1EeW5NafnxUciog" calledService_ExternalService="_DjJDIee1EeW5NafnxUciog" role_ExternalService="_DjOisOe1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr1FEue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.isCopyrightedMaterial() from 3600 to 3628" predecessor_AbstractAction="_Dr1FEee1EeW5NafnxUciog" successor_AbstractAction="_Dr1FE-e1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:BranchAction" id="_Dr1FE-e1EeW5NafnxUciog" entityName=" @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block from 5357 to 5507" predecessor_AbstractAction="_Dr1FEue1EeW5NafnxUciog" successor_AbstractAction="_Dr26Q-e1EeW5NafnxUciog">
+            <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr1FFOe1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+              <branchBehaviour_BranchTransition id="_Dr1FFee1EeW5NafnxUciog">
+                <steps_Behaviour xsi:type="seff:StartAction" id="_Dr1FFue1EeW5NafnxUciog" successor_AbstractAction="_Dr1FF-e1EeW5NafnxUciog"/>
+                <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr1FF-e1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block.Block at 5445" predecessor_AbstractAction="_Dr1FFue1EeW5NafnxUciog" successor_AbstractAction="_Dr1FGOe1EeW5NafnxUciog">
+                  <resourceDemand_Action>
+                    <specification_ParametericResourceDemand specification="0"/>
+                    <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                  </resourceDemand_Action>
+                </steps_Behaviour>
+                <steps_Behaviour xsi:type="seff:StopAction" id="_Dr1FGOe1EeW5NafnxUciog" predecessor_AbstractAction="_Dr1FF-e1EeW5NafnxUciog"/>
+              </branchBehaviour_BranchTransition>
+            </branches_Branch>
+            <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr1FGee1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+              <branchBehaviour_BranchTransition id="_Dr1FGue1EeW5NafnxUciog">
+                <steps_Behaviour xsi:type="seff:StartAction" id="_Dr1FG-e1EeW5NafnxUciog" successor_AbstractAction="_Dr1FHOe1EeW5NafnxUciog"/>
+                <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr1FHOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.isFileExistingInDB() at 3754" predecessor_AbstractAction="_Dr1FG-e1EeW5NafnxUciog" successor_AbstractAction="_Dr1FHee1EeW5NafnxUciog">
+                  <resourceDemand_Action>
+                    <specification_ParametericResourceDemand specification="0"/>
+                    <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                  </resourceDemand_Action>
+                </steps_Behaviour>
+                <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr1FHee1EeW5NafnxUciog" entityName="existsInDatabase @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.isFileExistingInDB() at 3806" predecessor_AbstractAction="_Dr1FHOe1EeW5NafnxUciog" successor_AbstractAction="_Dr1sIOe1EeW5NafnxUciog" calledService_ExternalService="_DjPJwOe1EeW5NafnxUciog" role_ExternalService="_DjPJwue1EeW5NafnxUciog"/>
+                <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr1sIOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.isFileExistingInDB() from 3807 to 3828" predecessor_AbstractAction="_Dr1FHee1EeW5NafnxUciog" successor_AbstractAction="_Dr1sIee1EeW5NafnxUciog">
+                  <resourceDemand_Action>
+                    <specification_ParametericResourceDemand specification="0"/>
+                    <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                  </resourceDemand_Action>
+                </steps_Behaviour>
+                <steps_Behaviour xsi:type="seff:BranchAction" id="_Dr1sIee1EeW5NafnxUciog" entityName=" @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block.Block from 5582 to 5683" predecessor_AbstractAction="_Dr1sIOe1EeW5NafnxUciog" successor_AbstractAction="_Dr26Que1EeW5NafnxUciog">
+                  <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr1sIue1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+                    <branchBehaviour_BranchTransition id="_Dr1sI-e1EeW5NafnxUciog">
+                      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr1sJOe1EeW5NafnxUciog" successor_AbstractAction="_Dr1sJee1EeW5NafnxUciog"/>
+                      <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr1sJee1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block.Block.Block from 5604 to 5622" predecessor_AbstractAction="_Dr1sJOe1EeW5NafnxUciog" successor_AbstractAction="_Dr1sJue1EeW5NafnxUciog">
+                        <resourceDemand_Action>
+                          <specification_ParametericResourceDemand specification="0"/>
+                          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                        </resourceDemand_Action>
+                      </steps_Behaviour>
+                      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr1sJue1EeW5NafnxUciog" predecessor_AbstractAction="_Dr1sJee1EeW5NafnxUciog"/>
+                    </branchBehaviour_BranchTransition>
+                  </branches_Branch>
+                  <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr1sJ-e1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+                    <branchBehaviour_BranchTransition id="_Dr1sKOe1EeW5NafnxUciog">
+                      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr1sKee1EeW5NafnxUciog" successor_AbstractAction="_Dr1sKue1EeW5NafnxUciog"/>
+                      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr1sKue1EeW5NafnxUciog" entityName="addNewFileHash @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.addHashToFileExistingDB() at 2599" predecessor_AbstractAction="_Dr1sKee1EeW5NafnxUciog" successor_AbstractAction="_Dr1sK-e1EeW5NafnxUciog" calledService_ExternalService="_DjOisue1EeW5NafnxUciog" role_ExternalService="_DjPJwue1EeW5NafnxUciog"/>
+                      <steps_Behaviour xsi:type="seff:BranchAction" id="_Dr1sK-e1EeW5NafnxUciog" entityName=" @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block.Block.Block from 5740 to 5926" predecessor_AbstractAction="_Dr1sKue1EeW5NafnxUciog" successor_AbstractAction="_Dr26Qee1EeW5NafnxUciog">
+                        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr1sLOe1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+                          <branchBehaviour_BranchTransition id="_Dr1sLee1EeW5NafnxUciog">
+                            <steps_Behaviour xsi:type="seff:StartAction" id="_Dr1sLue1EeW5NafnxUciog" successor_AbstractAction="_Dr2TMOe1EeW5NafnxUciog"/>
+                            <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr2TMOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block.Block.Block.Block at 5859" predecessor_AbstractAction="_Dr1sLue1EeW5NafnxUciog" successor_AbstractAction="_Dr2TMee1EeW5NafnxUciog">
+                              <resourceDemand_Action>
+                                <specification_ParametericResourceDemand specification="0"/>
+                                <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                              </resourceDemand_Action>
+                            </steps_Behaviour>
+                            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr2TMee1EeW5NafnxUciog" entityName="storeFile @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.storeLargeFile() at 4056" predecessor_AbstractAction="_Dr2TMOe1EeW5NafnxUciog" successor_AbstractAction="_Dr2TMue1EeW5NafnxUciog" calledService_ExternalService="_DjPJyue1EeW5NafnxUciog" role_ExternalService="_DjPw0ue1EeW5NafnxUciog"/>
+                            <steps_Behaviour xsi:type="seff:StopAction" id="_Dr2TMue1EeW5NafnxUciog" predecessor_AbstractAction="_Dr2TMee1EeW5NafnxUciog"/>
+                          </branchBehaviour_BranchTransition>
+                        </branches_Branch>
+                        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr2TM-e1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+                          <branchBehaviour_BranchTransition id="_Dr2TNOe1EeW5NafnxUciog">
+                            <steps_Behaviour xsi:type="seff:StartAction" id="_Dr2TNee1EeW5NafnxUciog" successor_AbstractAction="_Dr2TNue1EeW5NafnxUciog"/>
+                            <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr2TNue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.uploadFiles().Block.Block.Block.Block at 5994" predecessor_AbstractAction="_Dr2TNee1EeW5NafnxUciog" successor_AbstractAction="_Dr2TN-e1EeW5NafnxUciog">
+                              <resourceDemand_Action>
+                                <specification_ParametericResourceDemand specification="0"/>
+                                <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+                              </resourceDemand_Action>
+                            </steps_Behaviour>
+                            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr2TN-e1EeW5NafnxUciog" entityName="storeFile @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessCore.java.BusinessCore.storeSmallFile() at 4284" predecessor_AbstractAction="_Dr2TNue1EeW5NafnxUciog" successor_AbstractAction="_Dr26QOe1EeW5NafnxUciog" calledService_ExternalService="_DjPJyue1EeW5NafnxUciog" role_ExternalService="_DjPw0ue1EeW5NafnxUciog"/>
+                            <steps_Behaviour xsi:type="seff:StopAction" id="_Dr26QOe1EeW5NafnxUciog" predecessor_AbstractAction="_Dr2TN-e1EeW5NafnxUciog"/>
+                          </branchBehaviour_BranchTransition>
+                        </branches_Branch>
+                      </steps_Behaviour>
+                      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr26Qee1EeW5NafnxUciog" predecessor_AbstractAction="_Dr1sK-e1EeW5NafnxUciog"/>
+                    </branchBehaviour_BranchTransition>
+                  </branches_Branch>
+                </steps_Behaviour>
+                <steps_Behaviour xsi:type="seff:StopAction" id="_Dr26Que1EeW5NafnxUciog" predecessor_AbstractAction="_Dr1sIee1EeW5NafnxUciog"/>
+              </branchBehaviour_BranchTransition>
+            </branches_Branch>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:StopAction" id="_Dr26Q-e1EeW5NafnxUciog" predecessor_AbstractAction="_Dr1FE-e1EeW5NafnxUciog"/>
+        </bodyBehaviour_Loop>
+        <iterationCount_LoopAction specification="1"/>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Drmbkee1EeW5NafnxUciog" predecessor_AbstractAction="_DrtJQOe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DjSNE-e1EeW5NafnxUciog" entityName=" &lt;PC No. 4 de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjTbMee1EeW5NafnxUciog" entityName="IExistingFilesDatabase 4 (prov)" providedInterface__OperationProvidedRole="_DjOisee1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjS0IOe1EeW5NafnxUciog" entityName="Set 7 (req)" requiredInterface__OperationRequiredRole="_DdiKYue1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DnPgAOe1EeW5NafnxUciog" entityName="DbAccess 15 (req)" requiredInterface__OperationRequiredRole="_DjUCQOe1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjTbMue1EeW5NafnxUciog" describedService__SEFF="_DjOisue1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr4vcOe1EeW5NafnxUciog" successor_AbstractAction="_Dr5WgOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:BranchAction" id="_Dr5WgOe1EeW5NafnxUciog" entityName=" @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase.addNewFileHash() from 1277 to 1417" predecessor_AbstractAction="_Dr4vcOe1EeW5NafnxUciog" successor_AbstractAction="_Dr4vcee1EeW5NafnxUciog">
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr5Wgee1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+          <branchBehaviour_BranchTransition id="_Dr5Wgue1EeW5NafnxUciog">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_Dr5Wg-e1EeW5NafnxUciog" successor_AbstractAction="_Dr5WhOe1EeW5NafnxUciog"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr5WhOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.createIntegerHash() at 653" predecessor_AbstractAction="_Dr5Wg-e1EeW5NafnxUciog" successor_AbstractAction="_Dr5Whee1EeW5NafnxUciog">
+              <resourceDemand_Action>
+                <specification_ParametericResourceDemand specification="0"/>
+                <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+              </resourceDemand_Action>
+            </steps_Behaviour>
+            <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr5Whee1EeW5NafnxUciog" entityName="add @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase.addNewFileHash().Block at 1394" predecessor_AbstractAction="_Dr5WhOe1EeW5NafnxUciog" successor_AbstractAction="_Dr5Whue1EeW5NafnxUciog" calledService_ExternalService="_DjC8gOe1EeW5NafnxUciog" role_ExternalService="_DjS0IOe1EeW5NafnxUciog"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr5Whue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase.addNewFileHash().Block from 1395 to 1411" predecessor_AbstractAction="_Dr5Whee1EeW5NafnxUciog" successor_AbstractAction="_Dr5Wh-e1EeW5NafnxUciog">
+              <resourceDemand_Action>
+                <specification_ParametericResourceDemand specification="0"/>
+                <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+              </resourceDemand_Action>
+            </steps_Behaviour>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_Dr5Wh-e1EeW5NafnxUciog" predecessor_AbstractAction="_Dr5Whue1EeW5NafnxUciog"/>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+        <branches_Branch xsi:type="seff:ProbabilisticBranchTransition" id="_Dr5WiOe1EeW5NafnxUciog" entityName="SoMoX default branch probability" branchProbability="0.5">
+          <branchBehaviour_BranchTransition id="_Dr5Wiee1EeW5NafnxUciog">
+            <steps_Behaviour xsi:type="seff:StartAction" id="_Dr5Wiue1EeW5NafnxUciog" successor_AbstractAction="_Dr59kOe1EeW5NafnxUciog"/>
+            <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr59kOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase.addNewFileHash().Block from 1422 to 1439" predecessor_AbstractAction="_Dr5Wiue1EeW5NafnxUciog" successor_AbstractAction="_Dr59kee1EeW5NafnxUciog">
+              <resourceDemand_Action>
+                <specification_ParametericResourceDemand specification="0"/>
+                <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+              </resourceDemand_Action>
+            </steps_Behaviour>
+            <steps_Behaviour xsi:type="seff:StopAction" id="_Dr59kee1EeW5NafnxUciog" predecessor_AbstractAction="_Dr59kOe1EeW5NafnxUciog"/>
+          </branchBehaviour_BranchTransition>
+        </branches_Branch>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr4vcee1EeW5NafnxUciog" predecessor_AbstractAction="_Dr5WgOe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjTbM-e1EeW5NafnxUciog" describedService__SEFF="_DjPJwOe1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr59kue1EeW5NafnxUciog" successor_AbstractAction="_Dr6koOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr6koOe1EeW5NafnxUciog" entityName="queryDatabase @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase.existsInDatabase() at 1729" predecessor_AbstractAction="_Dr59kue1EeW5NafnxUciog" successor_AbstractAction="_Dr6koee1EeW5NafnxUciog" calledService_ExternalService="_DjUCQee1EeW5NafnxUciog" role_ExternalService="_DnPgAOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr6koee1EeW5NafnxUciog" entityName="queryDatabase @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase.existsInDatabase() at 1810" predecessor_AbstractAction="_Dr6koOe1EeW5NafnxUciog" successor_AbstractAction="_Dr6koue1EeW5NafnxUciog" calledService_ExternalService="_DjUCQee1EeW5NafnxUciog" role_ExternalService="_DnPgAOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr6koue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.createIntegerHash() at 653" predecessor_AbstractAction="_Dr6koee1EeW5NafnxUciog" successor_AbstractAction="_Dr6ko-e1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr6ko-e1EeW5NafnxUciog" entityName="contains @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.ExistingFilesDatabase.java.ExistingFilesDatabase.existsInDatabase() from 1811 to 1875" predecessor_AbstractAction="_Dr6koue1EeW5NafnxUciog" successor_AbstractAction="_Dr59k-e1EeW5NafnxUciog" calledService_ExternalService="_DjBuY-e1EeW5NafnxUciog" role_ExternalService="_DjS0IOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr59k-e1EeW5NafnxUciog" predecessor_AbstractAction="_Dr6ko-e1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DjTbNOe1EeW5NafnxUciog" entityName=" &lt;PC No. 5 de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.DbAccess.java.DbAccess>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjUCQue1EeW5NafnxUciog" entityName="DbAccess 5 (prov)" providedInterface__OperationProvidedRole="_DjUCQOe1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjUCQ-e1EeW5NafnxUciog" describedService__SEFF="_DjUCQee1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr6kpOe1EeW5NafnxUciog" successor_AbstractAction="_Dr7LsOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr7LsOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.existingfilesdb.DbAccess.java.DbAccess.queryDatabase() from 148 to 179" predecessor_AbstractAction="_Dr6kpOe1EeW5NafnxUciog" successor_AbstractAction="_Dr6kpee1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr6kpee1EeW5NafnxUciog" predecessor_AbstractAction="_Dr7LsOe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DjUCROe1EeW5NafnxUciog" entityName=" &lt;PC No. 6 de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessRunner.java.BusinessRunner>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjUpVOe1EeW5NafnxUciog" entityName="Runnable 6 (prov)" providedInterface__OperationProvidedRole="_DjUpUee1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjUpUOe1EeW5NafnxUciog" entityName="BusinessCore 9 (req)" requiredInterface__OperationRequiredRole="_DjPw0-e1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjVQYOe1EeW5NafnxUciog" describedService__SEFF="_DjUpUue1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr7Lsee1EeW5NafnxUciog" successor_AbstractAction="_Dr9A4Oe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_Dr9A4Oe1EeW5NafnxUciog" entityName="uploadFiles @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessRunner.java.BusinessRunner.uploadFiles() at 1875" predecessor_AbstractAction="_Dr7Lsee1EeW5NafnxUciog" successor_AbstractAction="_Dr7Lsue1EeW5NafnxUciog" calledService_ExternalService="_DjPw1Oe1EeW5NafnxUciog" role_ExternalService="_DjUpUOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr7Lsue1EeW5NafnxUciog" predecessor_AbstractAction="_Dr9A4Oe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DjVQYee1EeW5NafnxUciog" entityName=" &lt;PC No. 7 de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessFacade.java.BusinessFacade>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjdzQee1EeW5NafnxUciog" entityName="IBusinessFacade 7 (prov)" providedInterface__OperationProvidedRole="_DjVQYue1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjdzQue1EeW5NafnxUciog" describedService__SEFF="_DjV3cOe1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr9A4ee1EeW5NafnxUciog" successor_AbstractAction="_Dr9A4-e1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr9A4-e1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.BusinessFacade.java.BusinessFacade.uploadFiles() at 510" predecessor_AbstractAction="_Dr9A4ee1EeW5NafnxUciog" successor_AbstractAction="_Dr9A4ue1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr9A4ue1EeW5NafnxUciog" predecessor_AbstractAction="_Dr9A4-e1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DjfocOe1EeW5NafnxUciog" entityName=" &lt;PC No. 8 de.uka.ipd.sdq.palladiofileshare.businesslogic.storage.Storage.java.Storage>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjgPgee1EeW5NafnxUciog" entityName="IStorage 8 (prov)" providedInterface__OperationProvidedRole="_DjPJyee1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjgPgue1EeW5NafnxUciog" describedService__SEFF="_DjPJyue1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_Dr9n8Oe1EeW5NafnxUciog" successor_AbstractAction="_Dr9n8ue1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_Dr9n8ue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.storage.Storage.java.Storage.storeFile() at 794" predecessor_AbstractAction="_Dr9n8Oe1EeW5NafnxUciog" successor_AbstractAction="_Dr9n8ee1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Dr9n8ee1EeW5NafnxUciog" predecessor_AbstractAction="_Dr9n8ue1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_DjjS0Oe1EeW5NafnxUciog" entityName=" &lt;PC No. 9 de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util>">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_DjpZcOe1EeW5NafnxUciog" entityName="Util 9 (prov)" providedInterface__OperationProvidedRole="_DjlvEOe1EeW5NafnxUciog"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_DjlIAOe1EeW5NafnxUciog" entityName="Set 13 (req)" requiredInterface__OperationRequiredRole="_DdiKYue1EeW5NafnxUciog"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjpZcee1EeW5NafnxUciog" describedService__SEFF="_DjlvEee1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DsArQOe1EeW5NafnxUciog" successor_AbstractAction="_DsArQue1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DsArQue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.createIntegerHash() at 653" predecessor_AbstractAction="_DsArQOe1EeW5NafnxUciog" successor_AbstractAction="_DsArQee1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DsArQee1EeW5NafnxUciog" predecessor_AbstractAction="_DsArQue1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjpZcue1EeW5NafnxUciog" describedService__SEFF="_DjlvE-e1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DsArQ-e1EeW5NafnxUciog" successor_AbstractAction="_DsArRee1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DsArRee1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.createString() at 1040" predecessor_AbstractAction="_DsArQ-e1EeW5NafnxUciog" successor_AbstractAction="_DsArROe1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DsArROe1EeW5NafnxUciog" predecessor_AbstractAction="_DsArRee1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjpZc-e1EeW5NafnxUciog" describedService__SEFF="_DjoLUee1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DsBSUOe1EeW5NafnxUciog" successor_AbstractAction="_DsBSUue1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DsBSUue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.createString_MK() at 1427" predecessor_AbstractAction="_DsBSUOe1EeW5NafnxUciog" successor_AbstractAction="_DsBSUee1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DsBSUee1EeW5NafnxUciog" predecessor_AbstractAction="_DsBSUue1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjpZdOe1EeW5NafnxUciog" describedService__SEFF="_DjoLU-e1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DsBSU-e1EeW5NafnxUciog" successor_AbstractAction="_DsBSVee1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DsBSVee1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initHashSetWithInteger() at 1706" predecessor_AbstractAction="_DsBSU-e1EeW5NafnxUciog" successor_AbstractAction="_DsB5YOe1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:LoopAction" pallaio="_DsB5YOe1EeW5NafnxUciog" entityName="SoMoX default loop count value" predecessor_AbstractAction="_DsBSVee1EeW5NafnxUciog" successor_AbstractAction="_DsBSVOe1EeW5NafnxUciog">
+        <bodyBehaviour_Loop id="_DsB5Yee1EeW5NafnxUciog">
+          <steps_Behaviour xsi:type="seff:StartAction" id="_DsB5Yue1EeW5NafnxUciog" successor_AbstractAction="_DsB5Y-e1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_DsB5Y-e1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initHashSetWithInteger().Block at 2012" predecessor_AbstractAction="_DsB5Yue1EeW5NafnxUciog" successor_AbstractAction="_DsB5ZOe1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_DsB5ZOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initHashSetWithInteger().Block at 2093" predecessor_AbstractAction="_DsB5Y-e1EeW5NafnxUciog" successor_AbstractAction="_DsCgcOe1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_DsCgcOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initHashSetWithInteger().Block at 2205" predecessor_AbstractAction="_DsB5ZOe1EeW5NafnxUciog" successor_AbstractAction="_DsCgcee1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DsCgcee1EeW5NafnxUciog" entityName="add @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initHashSetWithInteger().Block at 2205" predecessor_AbstractAction="_DsCgcOe1EeW5NafnxUciog" successor_AbstractAction="_DsCgcue1EeW5NafnxUciog" calledService_ExternalService="_DjC8gOe1EeW5NafnxUciog" role_ExternalService="_DjlIAOe1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:StopAction" id="_DsCgcue1EeW5NafnxUciog" predecessor_AbstractAction="_DsCgcee1EeW5NafnxUciog"/>
+        </bodyBehaviour_Loop>
+        <iterationCount_LoopAction specification="1"/>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DsBSVOe1EeW5NafnxUciog" predecessor_AbstractAction="_DsB5YOe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjpZdee1EeW5NafnxUciog" describedService__SEFF="_DjoyYee1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DsCgc-e1EeW5NafnxUciog" successor_AbstractAction="_DsKcQOe1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DsKcQOe1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initialiseRandomByteArrays() at 2598" predecessor_AbstractAction="_DsCgc-e1EeW5NafnxUciog" successor_AbstractAction="_DsM4gOe1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:LoopAction" id="_DsM4gOe1EeW5NafnxUciog" entityName="SoMoX default loop count value" predecessor_AbstractAction="_DsKcQOe1EeW5NafnxUciog" successor_AbstractAction="_DsCgdOe1EeW5NafnxUciog">
+        <bodyBehaviour_Loop id="_DsM4gee1EeW5NafnxUciog">
+          <steps_Behaviour xsi:type="seff:StartAction" id="_DsM4gue1EeW5NafnxUciog" successor_AbstractAction="_DsM4g-e1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_DsM4g-e1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initialiseRandomByteArrays().Block from 2719 to 2753" predecessor_AbstractAction="_DsM4gue1EeW5NafnxUciog" successor_AbstractAction="_DsM4hOe1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DsM4hOe1EeW5NafnxUciog" entityName="add @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initialiseRandomByteArrays().Block at 3120" predecessor_AbstractAction="_DsM4g-e1EeW5NafnxUciog" successor_AbstractAction="_DsM4hee1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:StopAction" id="_DsM4hee1EeW5NafnxUciog" predecessor_AbstractAction="_DsM4hOe1EeW5NafnxUciog"/>
+        </bodyBehaviour_Loop>
+        <iterationCount_LoopAction specification="1"/>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DsCgdOe1EeW5NafnxUciog" predecessor_AbstractAction="_DsM4gOe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_DjpZdue1EeW5NafnxUciog" describedService__SEFF="_DjoyY-e1EeW5NafnxUciog">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_DsSYEOe1EeW5NafnxUciog" successor_AbstractAction="_DsSYEue1EeW5NafnxUciog"/>
+      <steps_Behaviour xsi:type="seff:InternalAction" id="_DsSYEue1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initialiseRandomPrimitiveByteArrays() at 3422" predecessor_AbstractAction="_DsSYEOe1EeW5NafnxUciog" successor_AbstractAction="_DsVbYOe1EeW5NafnxUciog">
+        <resourceDemand_Action>
+          <specification_ParametericResourceDemand specification="0"/>
+          <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+        </resourceDemand_Action>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:LoopAction" id="_DsVbYOe1EeW5NafnxUciog" entityName="SoMoX default loop count value" predecessor_AbstractAction="_DsSYEue1EeW5NafnxUciog" successor_AbstractAction="_DsSYEee1EeW5NafnxUciog">
+        <bodyBehaviour_Loop id="_DsVbYee1EeW5NafnxUciog">
+          <steps_Behaviour xsi:type="seff:StartAction" id="_DsWCcOe1EeW5NafnxUciog" successor_AbstractAction="_DsWCcee1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:InternalAction" id="_DsWCcee1EeW5NafnxUciog" entityName="IA  @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initialiseRandomPrimitiveByteArrays().Block from 3543 to 3577" predecessor_AbstractAction="_DsWCcOe1EeW5NafnxUciog" successor_AbstractAction="_DsWCcue1EeW5NafnxUciog">
+            <resourceDemand_Action>
+              <specification_ParametericResourceDemand specification="0"/>
+              <requiredResource_ParametricResourceDemand href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/Palladio.resourcetype#_oro4gG3fEdy4YaaT-RYrLQ"/>
+            </resourceDemand_Action>
+          </steps_Behaviour>
+          <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_DsWCcue1EeW5NafnxUciog" entityName="add @position: de.uka.ipd.sdq.palladiofileshare.businesslogic.util.Util.java.Util.initialiseRandomPrimitiveByteArrays().Block at 3979" predecessor_AbstractAction="_DsWCcee1EeW5NafnxUciog" successor_AbstractAction="_DsWCc-e1EeW5NafnxUciog"/>
+          <steps_Behaviour xsi:type="seff:StopAction" id="_DsWCc-e1EeW5NafnxUciog" predecessor_AbstractAction="_DsWCcue1EeW5NafnxUciog"/>
+        </bodyBehaviour_Loop>
+        <iterationCount_LoopAction specification="1"/>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_DsSYEee1EeW5NafnxUciog" predecessor_AbstractAction="_DsVbYOe1EeW5NafnxUciog"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DdXLQOe1EeW5NafnxUciog" entityName="ISimpleLZW.java.SimpleLZW">
+    <signatures__OperationInterface id="_DdXLQee1EeW5NafnxUciog" entityName="lzwcompress_inlined" returnType__OperationSignature="_DdZAcOe1EeW5NafnxUciog">
+      <parameters__OperationSignature dataType__Parameter="_DdXLQue1EeW5NafnxUciog" parameterName="input"/>
+      <parameters__OperationSignature parameterName="maxDictSize">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DdbcsOe1EeW5NafnxUciog" entityName="main">
+      <parameters__OperationSignature dataType__Parameter="_DddR4Oe1EeW5NafnxUciog" parameterName="args"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Ddd48ee1EeW5NafnxUciog" entityName="IDbAccess.java.DbAccess">
+    <signatures__OperationInterface id="_Ddd48ue1EeW5NafnxUciog" entityName="queryDatabase">
+      <parameters__OperationSignature dataType__Parameter="_DddR4Oe1EeW5NafnxUciog" parameterName="database"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_Ddixcee1EeW5NafnxUciog" entityName="Iterable.java.Iterable">
+    <signatures__OperationInterface id="_Ddixcue1EeW5NafnxUciog" entityName="iterator" returnType__OperationSignature="_Ddixc-e1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DeS_YOe1EeW5NafnxUciog" entityName="forEach">
+      <parameters__OperationSignature dataType__Parameter="_DeYe8Oe1EeW5NafnxUciog" parameterName="arg0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DfM-UOe1EeW5NafnxUciog" entityName="spliterator" returnType__OperationSignature="_DfQBoOe1EeW5NafnxUciog"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DdixcOe1EeW5NafnxUciog" entityName="Collection.java.Collection" parentInterfaces__Interface="_Ddixcee1EeW5NafnxUciog">
+    <signatures__OperationInterface id="_Df5h4Oe1EeW5NafnxUciog" entityName="size">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Df6I8Oe1EeW5NafnxUciog" entityName="isEmpty">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Df6I8ee1EeW5NafnxUciog" entityName="contains">
+      <parameters__OperationSignature dataType__Parameter="_Df6I8ue1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DgewsOe1EeW5NafnxUciog" entityName="iterator" returnType__OperationSignature="_Ddixc-e1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_Dgewsee1EeW5NafnxUciog" entityName="toArray" returnType__OperationSignature="_Dgewsue1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DgfXwOe1EeW5NafnxUciog" entityName="toArray_1" returnType__OperationSignature="_DgfXwue1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DgfXw-e1EeW5NafnxUciog" entityName="add">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DgfXxOe1EeW5NafnxUciog" entityName="remove">
+      <parameters__OperationSignature dataType__Parameter="_Dgewsue1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_Dgf-0Oe1EeW5NafnxUciog" entityName="containsAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DhT3IOe1EeW5NafnxUciog" entityName="addAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DhUeMOe1EeW5NafnxUciog" entityName="removeAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DhUeMee1EeW5NafnxUciog" entityName="removeIf">
+      <parameters__OperationSignature dataType__Parameter="_DhW6cOe1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DiI9kOe1EeW5NafnxUciog" entityName="retainAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DiI9kee1EeW5NafnxUciog" entityName="clear"/>
+    <signatures__OperationInterface id="_DiI9kue1EeW5NafnxUciog" entityName="equals">
+      <parameters__OperationSignature dataType__Parameter="_Dgewsue1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DiI9k-e1EeW5NafnxUciog" entityName="hashCode">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DiJkoOe1EeW5NafnxUciog" entityName="spliterator" returnType__OperationSignature="_DfQBoOe1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DiJkoee1EeW5NafnxUciog" entityName="stream" returnType__OperationSignature="_DiOdIOe1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DjBuYOe1EeW5NafnxUciog" entityName="parallelStream" returnType__OperationSignature="_DiOdIOe1EeW5NafnxUciog"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DdiKYue1EeW5NafnxUciog" entityName="Set.java.Set" parentInterfaces__Interface="_DdixcOe1EeW5NafnxUciog _Ddixcee1EeW5NafnxUciog">
+    <signatures__OperationInterface id="_DjBuYee1EeW5NafnxUciog" entityName="size">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjBuYue1EeW5NafnxUciog" entityName="isEmpty">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjBuY-e1EeW5NafnxUciog" entityName="contains">
+      <parameters__OperationSignature dataType__Parameter="_Dgewsue1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjCVcOe1EeW5NafnxUciog" entityName="iterator" returnType__OperationSignature="_Ddixc-e1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DjCVcee1EeW5NafnxUciog" entityName="toArray" returnType__OperationSignature="_Dgewsue1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DjCVcue1EeW5NafnxUciog" entityName="toArray_1" returnType__OperationSignature="_DjCVc-e1EeW5NafnxUciog"/>
+    <signatures__OperationInterface id="_DjC8gOe1EeW5NafnxUciog" entityName="add">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjC8gee1EeW5NafnxUciog" entityName="remove">
+      <parameters__OperationSignature dataType__Parameter="_Dgewsue1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjC8gue1EeW5NafnxUciog" entityName="containsAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjC8g-e1EeW5NafnxUciog" entityName="addAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjDjkOe1EeW5NafnxUciog" entityName="retainAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjDjkee1EeW5NafnxUciog" entityName="removeAll">
+      <parameters__OperationSignature dataType__Parameter="_Dgf-0ee1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjEKoOe1EeW5NafnxUciog" entityName="clear"/>
+    <signatures__OperationInterface id="_DjEKoee1EeW5NafnxUciog" entityName="equals">
+      <parameters__OperationSignature dataType__Parameter="_Dgewsue1EeW5NafnxUciog" parameterName="arg0"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjEKoue1EeW5NafnxUciog" entityName="hashCode">
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjEKo-e1EeW5NafnxUciog" entityName="spliterator" returnType__OperationSignature="_DfQBoOe1EeW5NafnxUciog"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjJDIOe1EeW5NafnxUciog" entityName="...edMaterialDatabase.java.ICopyrightedMaterialDatabase">
+    <signatures__OperationInterface id="_DjJDIee1EeW5NafnxUciog" entityName="checkIsCopyrightedMaterial">
+      <parameters__OperationSignature dataType__Parameter="_DjJqMOe1EeW5NafnxUciog" parameterName="hash"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjOisee1EeW5NafnxUciog" entityName="IExistingFilesDatabase.java.IExistingFilesDatabase">
+    <signatures__OperationInterface id="_DjOisue1EeW5NafnxUciog" entityName="addNewFileHash">
+      <parameters__OperationSignature dataType__Parameter="_DjOis-e1EeW5NafnxUciog" parameterName="fileHash"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjPJwOe1EeW5NafnxUciog" entityName="existsInDatabase">
+      <parameters__OperationSignature dataType__Parameter="_DjPJwee1EeW5NafnxUciog" parameterName="fileHash"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjPJw-e1EeW5NafnxUciog" entityName="IHash.java.IHash">
+    <signatures__OperationInterface id="_DjPJxOe1EeW5NafnxUciog" entityName="getMessageDigest" returnType__OperationSignature="_DjPJxue1EeW5NafnxUciog">
+      <parameters__OperationSignature dataType__Parameter="_DjPJxee1EeW5NafnxUciog" parameterName="inputBytes"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjPJx-e1EeW5NafnxUciog" entityName="getMessageDigestType" returnType__OperationSignature="_DddR4Oe1EeW5NafnxUciog"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjPJyee1EeW5NafnxUciog" entityName="IStorage.java.IStorage">
+    <signatures__OperationInterface id="_DjPJyue1EeW5NafnxUciog" entityName="storeFile">
+      <parameters__OperationSignature dataType__Parameter="_DjPw0Oe1EeW5NafnxUciog" parameterName="stream"/>
+      <parameters__OperationSignature dataType__Parameter="_DjPw0ee1EeW5NafnxUciog" parameterName="fileHash"/>
+      <parameters__OperationSignature parameterName="measure">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjPw0-e1EeW5NafnxUciog" entityName="IBusinessCore.java.BusinessCore">
+    <signatures__OperationInterface id="_DjPw1Oe1EeW5NafnxUciog" entityName="uploadFiles">
+      <parameters__OperationSignature dataType__Parameter="_DjPw1ue1EeW5NafnxUciog" parameterName="uploadFiles"/>
+      <parameters__OperationSignature dataType__Parameter="_DddR4Oe1EeW5NafnxUciog" parameterName="uploadFileIds"/>
+      <parameters__OperationSignature dataType__Parameter="_DjSNEOe1EeW5NafnxUciog" parameterName="uploadFileTypes"/>
+      <parameters__OperationSignature parameterName="measure">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="monitor">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjUCQOe1EeW5NafnxUciog" entityName="IDbAccess.java.DbAccess">
+    <signatures__OperationInterface id="_DjUCQee1EeW5NafnxUciog" entityName="queryDatabase">
+      <parameters__OperationSignature dataType__Parameter="_DddR4Oe1EeW5NafnxUciog" parameterName="database"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjUpUee1EeW5NafnxUciog" entityName="Runnable.java.Runnable">
+    <signatures__OperationInterface id="_DjUpUue1EeW5NafnxUciog" entityName="run"/>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjVQYue1EeW5NafnxUciog" entityName="IBusinessFacade.java.IBusinessFacade">
+    <signatures__OperationInterface id="_DjV3cOe1EeW5NafnxUciog" entityName="uploadFiles">
+      <parameters__OperationSignature dataType__Parameter="_DjV3cue1EeW5NafnxUciog" parameterName="inputFiles"/>
+      <parameters__OperationSignature dataType__Parameter="_DddR4Oe1EeW5NafnxUciog" parameterName="inputFileIds"/>
+      <parameters__OperationSignature dataType__Parameter="_DjV3c-e1EeW5NafnxUciog" parameterName="fileTypes"/>
+      <parameters__OperationSignature parameterName="measure">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="monitor">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_DjlvEOe1EeW5NafnxUciog" entityName="IUtil.java.Util">
+    <signatures__OperationInterface id="_DjlvEee1EeW5NafnxUciog" entityName="createIntegerHash">
+      <parameters__OperationSignature dataType__Parameter="_DjlvEue1EeW5NafnxUciog" parameterName="fileHash"/>
+      <returnType__OperationSignature xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjlvE-e1EeW5NafnxUciog" entityName="createString" returnType__OperationSignature="_DddR4Oe1EeW5NafnxUciog">
+      <parameters__OperationSignature dataType__Parameter="_DjoLUOe1EeW5NafnxUciog" parameterName="fileHash"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjoLUee1EeW5NafnxUciog" entityName="createString_MK" returnType__OperationSignature="_DddR4Oe1EeW5NafnxUciog">
+      <parameters__OperationSignature dataType__Parameter="_DjoLUue1EeW5NafnxUciog" parameterName="fileHash"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjoLU-e1EeW5NafnxUciog" entityName="initHashSetWithInteger" returnType__OperationSignature="_DjoyYOe1EeW5NafnxUciog">
+      <parameters__OperationSignature parameterName="amountOfData">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjoyYee1EeW5NafnxUciog" entityName="initialiseRandomByteArrays" returnType__OperationSignature="_DjoyYue1EeW5NafnxUciog">
+      <parameters__OperationSignature parameterName="nrOfRandomDatasets">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="constantRandomDatasetSize">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="initialRandomDatasetSize">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="maximumRandomDatasetSizeIfVariableSize">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_DjoyY-e1EeW5NafnxUciog" entityName="initialiseRandomPrimitiveByteArrays" returnType__OperationSignature="_DjoyYue1EeW5NafnxUciog">
+      <parameters__OperationSignature parameterName="nrOfRandomDatasets">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="constantRandomDatasetSize">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.2"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="initialRandomDatasetSize">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+      <parameters__OperationSignature parameterName="maximumRandomDatasetSizeIfVariableSize">
+        <dataType__Parameter xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+      </parameters__OperationSignature>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DdXLQue1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DdZAcOe1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DddR4Oe1EeW5NafnxUciog" entityName="STRINGList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.1"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Ddixc-e1EeW5NafnxUciog" entityName="Iterator"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_DeYe8Oe1EeW5NafnxUciog" entityName="Consumer"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_DfQBoOe1EeW5NafnxUciog" entityName="Spliterator"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Df6I8ue1EeW5NafnxUciog" entityName="Object"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_Dgewsue1EeW5NafnxUciog" entityName="ObjectList" innerType_CollectionDataType="_Df6I8ue1EeW5NafnxUciog"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_DgfXwee1EeW5NafnxUciog" entityName="Object"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DgfXwue1EeW5NafnxUciog" entityName="ObjectList" innerType_CollectionDataType="_DgfXwee1EeW5NafnxUciog"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_Dgf-0ee1EeW5NafnxUciog" entityName="Collection"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_DhW6cOe1EeW5NafnxUciog" entityName="Predicate"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_DiOdIOe1EeW5NafnxUciog" entityName="Stream"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjCVc-e1EeW5NafnxUciog" entityName="ObjectList" innerType_CollectionDataType="_DgfXwee1EeW5NafnxUciog"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjJqMOe1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjOis-e1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjPJwee1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjPJxee1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjPJxue1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjPw0Oe1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjPw0ee1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjPw1ee1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjPw1ue1EeW5NafnxUciog" entityName="BYTEListList" innerType_CollectionDataType="_DjPw1ee1EeW5NafnxUciog"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjSNEOe1EeW5NafnxUciog" entityName="INTList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjV3cee1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjV3cue1EeW5NafnxUciog" entityName="BYTEListList" innerType_CollectionDataType="_DjV3cee1EeW5NafnxUciog"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjV3c-e1EeW5NafnxUciog" entityName="INTList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.0"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjlvEue1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjoLUOe1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjoLUue1EeW5NafnxUciog" entityName="BYTEList">
+    <innerType_CollectionDataType xsi:type="repository:PrimitiveDataType" href="../../../plugin/org.palladiosimulator.pcm.resources/defaultModels/PrimitiveTypes.repository#//@dataTypes__Repository.5"/>
+  </dataTypes__Repository>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjoyYOe1EeW5NafnxUciog" entityName="Set" innerType_CollectionDataType="_DgfXwee1EeW5NafnxUciog"/>
+  <dataTypes__Repository xsi:type="repository:CollectionDataType" id="_DjoyYue1EeW5NafnxUciog" entityName="ArrayList" innerType_CollectionDataType="_DgfXwee1EeW5NafnxUciog"/>
+</repository:Repository>
