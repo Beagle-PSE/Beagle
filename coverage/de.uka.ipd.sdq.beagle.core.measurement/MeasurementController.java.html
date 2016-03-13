@@ -34,17 +34,22 @@ public class MeasurementController {
 	private final Set&lt;MeasurementTool&gt; measurementTools;
 
 	/**
+	 * The parameter characteriser to use for all measurements.
+	 */
+<span class="fc" id="L39">	private final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();</span>
+
+	/**
 	 * Constructs a new {@link MeasurementController}.
 	 *
 	 * @param measurementTools The {@link MeasurementTool}s to use. Must not be
 	 *            {@code null} and must not contain {@code null}.
 	 */
-<span class="fc" id="L42">	public MeasurementController(final Set&lt;MeasurementTool&gt; measurementTools) {</span>
-<span class="fc" id="L43">		Validate.notNull(measurementTools);</span>
-<span class="fc" id="L44">		Validate.noNullElements(measurementTools);</span>
+<span class="fc" id="L47">	public MeasurementController(final Set&lt;MeasurementTool&gt; measurementTools) {</span>
+<span class="fc" id="L48">		Validate.notNull(measurementTools);</span>
+<span class="fc" id="L49">		Validate.noNullElements(measurementTools);</span>
 
-<span class="fc" id="L46">		this.measurementTools = new HashSet&lt;&gt;(measurementTools);</span>
-<span class="fc" id="L47">	}</span>
+<span class="fc" id="L51">		this.measurementTools = new HashSet&lt;&gt;(measurementTools);</span>
+<span class="fc" id="L52">	}</span>
 
 	/**
 	 * Determines whether a {@link MeasurementTool} can contribute to the
@@ -56,15 +61,15 @@ public class MeasurementController {
 	 *         at least one new measurement result will be added.
 	 */
 	public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
-<span class="fc" id="L59">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L64">		Validate.notNull(blackboard);</span>
 
-<span class="fc" id="L61">		int elementsToBeMeasuredInTotal = 0;</span>
-<span class="fc" id="L62">		elementsToBeMeasuredInTotal += blackboard.getSeffBranchesToBeMeasured().size();</span>
-<span class="fc" id="L63">		elementsToBeMeasuredInTotal += blackboard.getSeffLoopsToBeMeasured().size();</span>
-<span class="fc" id="L64">		elementsToBeMeasuredInTotal += blackboard.getRdiasToBeMeasured().size();</span>
-<span class="fc" id="L65">		elementsToBeMeasuredInTotal += blackboard.getExternalCallParametersToBeMeasured().size();</span>
+<span class="fc" id="L66">		int elementsToBeMeasuredInTotal = 0;</span>
+<span class="fc" id="L67">		elementsToBeMeasuredInTotal += blackboard.getSeffBranchesToBeMeasured().size();</span>
+<span class="fc" id="L68">		elementsToBeMeasuredInTotal += blackboard.getSeffLoopsToBeMeasured().size();</span>
+<span class="fc" id="L69">		elementsToBeMeasuredInTotal += blackboard.getRdiasToBeMeasured().size();</span>
+<span class="fc" id="L70">		elementsToBeMeasuredInTotal += blackboard.getExternalCallParametersToBeMeasured().size();</span>
 
-<span class="fc bfc" id="L67" title="All 2 branches covered.">		return elementsToBeMeasuredInTotal != 0;</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		return elementsToBeMeasuredInTotal != 0;</span>
 	}
 
 	/**
@@ -80,66 +85,66 @@ public class MeasurementController {
 	 * @param blackboard The blackboard. Must not be {@code null}.
 	 */
 	public void measure(final MeasurementControllerBlackboardView blackboard) {
-<span class="fc" id="L83">		Validate.notNull(blackboard);</span>
+<span class="fc" id="L88">		Validate.notNull(blackboard);</span>
 
 		// Read from the blackboard.
-<span class="fc" id="L86">		final Set&lt;SeffBranch&gt; seffBranches = blackboard.getSeffBranchesToBeMeasured();</span>
-<span class="fc" id="L87">		final Set&lt;SeffLoop&gt; seffLoops = blackboard.getSeffLoopsToBeMeasured();</span>
-<span class="fc" id="L88">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = blackboard.getRdiasToBeMeasured();</span>
-<span class="fc" id="L89">		final Set&lt;ExternalCallParameter&gt; externalCallParameters = blackboard.getExternalCallParametersToBeMeasured();</span>
+<span class="fc" id="L91">		final Set&lt;SeffBranch&gt; seffBranches = blackboard.getSeffBranchesToBeMeasured();</span>
+<span class="fc" id="L92">		final Set&lt;SeffLoop&gt; seffLoops = blackboard.getSeffLoopsToBeMeasured();</span>
+<span class="fc" id="L93">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = blackboard.getRdiasToBeMeasured();</span>
+<span class="fc" id="L94">		final Set&lt;ExternalCallParameter&gt; externalCallParameters = blackboard.getExternalCallParametersToBeMeasured();</span>
 
 		// Initialise everything needed to create a measurement order.
-<span class="fc" id="L92">		final Set&lt;CodeSection&gt; resourceDemandSections = new HashSet&lt;CodeSection&gt;();</span>
-<span class="fc" id="L93">		final Set&lt;CodeSection&gt; executionSections = new HashSet&lt;CodeSection&gt;();</span>
-<span class="fc" id="L94">		final Set&lt;CodeSection&gt; parameterValueSections = new HashSet&lt;CodeSection&gt;();</span>
-<span class="fc" id="L95">		final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();</span>
+<span class="fc" id="L97">		final Set&lt;CodeSection&gt; resourceDemandSections = new HashSet&lt;CodeSection&gt;();</span>
+<span class="fc" id="L98">		final Set&lt;CodeSection&gt; executionSections = new HashSet&lt;CodeSection&gt;();</span>
+<span class="fc" id="L99">		final Set&lt;CodeSection&gt; parameterValueSections = new HashSet&lt;CodeSection&gt;();</span>
 
 		// Fill {@code executionSections}.
-<span class="fc bfc" id="L98" title="All 2 branches covered.">		for (final SeffBranch seffBranch : seffBranches) {</span>
-<span class="fc" id="L99">			final List&lt;CodeSection&gt; codeSections = seffBranch.getBranches();</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">		for (final SeffBranch seffBranch : seffBranches) {</span>
+<span class="fc" id="L103">			final List&lt;CodeSection&gt; codeSections = seffBranch.getBranches();</span>
 
-<span class="fc bfc" id="L101" title="All 2 branches covered.">			for (final CodeSection codeSection : codeSections) {</span>
-<span class="fc" id="L102">				executionSections.add(codeSection);</span>
-<span class="fc" id="L103">			}</span>
-<span class="fc" id="L104">		}</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">			for (final CodeSection codeSection : codeSections) {</span>
+<span class="fc" id="L106">				executionSections.add(codeSection);</span>
+<span class="fc" id="L107">			}</span>
+<span class="fc" id="L108">		}</span>
 
 		// Fill {@code executionSections}.
-<span class="fc bfc" id="L107" title="All 2 branches covered.">		for (final SeffLoop seffLoop : seffLoops) {</span>
-<span class="fc" id="L108">			final CodeSection codeSection = seffLoop.getLoopBody();</span>
-<span class="fc" id="L109">			executionSections.add(codeSection);</span>
-<span class="fc" id="L110">		}</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">		for (final SeffLoop seffLoop : seffLoops) {</span>
+<span class="fc" id="L112">			final CodeSection codeSection = seffLoop.getLoopBody();</span>
+<span class="fc" id="L113">			executionSections.add(codeSection);</span>
+<span class="fc" id="L114">		}</span>
 
 		// Fill {@code resourceDemandSections}.
-<span class="fc bfc" id="L113" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : rdias) {</span>
-<span class="fc" id="L114">			final CodeSection codeSection = rdia.getAction();</span>
-<span class="fc" id="L115">			resourceDemandSections.add(codeSection);</span>
-<span class="fc" id="L116">		}</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : rdias) {</span>
+<span class="fc" id="L118">			final CodeSection codeSection = rdia.getAction();</span>
+<span class="fc" id="L119">			resourceDemandSections.add(codeSection);</span>
+<span class="fc" id="L120">		}</span>
 
 		// Fill {@code parameterValueSection}.
-<span class="fc bfc" id="L119" title="All 2 branches covered.">		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {</span>
-<span class="fc" id="L120">			final CodeSection codeSection = externalCallParameter.getCallCodeSection();</span>
-<span class="fc" id="L121">			parameterValueSections.add(codeSection);</span>
-<span class="fc" id="L122">		}</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {</span>
+<span class="fc" id="L124">			final CodeSection codeSection = externalCallParameter.getCallCodeSection();</span>
+<span class="fc" id="L125">			parameterValueSections.add(codeSection);</span>
+<span class="fc" id="L126">		}</span>
 
-<span class="fc bfc" id="L124" title="All 2 branches covered.">		for (final MeasurementTool measurementTool : this.measurementTools) {</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">		for (final MeasurementTool measurementTool : this.measurementTools) {</span>
 			// Give every measurement tool a measurement order.
-<span class="fc" id="L126">			final MeasurementOrder measurementOrder = new MeasurementOrder(parameterValueSections,</span>
-<span class="fc" id="L127">				resourceDemandSections, executionSections, blackboard.getProjectInformation(), parameterCharacteriser);</span>
+<span class="fc" id="L130">			final MeasurementOrder measurementOrder =</span>
+				new MeasurementOrder(parameterValueSections, resourceDemandSections, executionSections,
+<span class="fc" id="L132">					blackboard.getProjectInformation(), this.parameterCharacteriser);</span>
 
 			// Get the measurement results.
-<span class="fc" id="L130">			final List&lt;MeasurementEvent&gt; measurementEvents = measurementTool.measure(measurementOrder);</span>
+<span class="fc" id="L135">			final List&lt;MeasurementEvent&gt; measurementEvents = measurementTool.measure(measurementOrder);</span>
 
 			// Construct a measurement event parser.
-<span class="fc" id="L133">			final MeasurementEventParser measurementEventParser = new MeasurementEventParser(measurementEvents);</span>
+<span class="fc" id="L138">			final MeasurementEventParser measurementEventParser = new MeasurementEventParser(measurementEvents);</span>
 
 			// Add the measurement results to the blackboard.
-<span class="fc" id="L136">			this.addMeasurementResultsOfSeffBranchesToBlackboard(seffBranches, blackboard, measurementEventParser);</span>
-<span class="fc" id="L137">			this.addMeasurementResultsOfSeffLoopsToBlackboard(seffLoops, blackboard, measurementEventParser);</span>
-<span class="fc" id="L138">			this.addMeasurementResultsOfRdiasToBlackboard(rdias, blackboard, measurementEventParser);</span>
-<span class="fc" id="L139">			this.addMeasurementResultsOfExternalCallParametersToBlackboard(externalCallParameters, blackboard,</span>
+<span class="fc" id="L141">			this.addMeasurementResultsOfSeffBranchesToBlackboard(seffBranches, blackboard, measurementEventParser);</span>
+<span class="fc" id="L142">			this.addMeasurementResultsOfSeffLoopsToBlackboard(seffLoops, blackboard, measurementEventParser);</span>
+<span class="fc" id="L143">			this.addMeasurementResultsOfRdiasToBlackboard(rdias, blackboard, measurementEventParser);</span>
+<span class="fc" id="L144">			this.addMeasurementResultsOfExternalCallParametersToBlackboard(externalCallParameters, blackboard,</span>
 				measurementEventParser);
-<span class="fc" id="L141">		}</span>
-<span class="fc" id="L142">	}</span>
+<span class="fc" id="L146">		}</span>
+<span class="fc" id="L147">	}</span>
 
 	/**
 	 * Adds all measurement results of {@code seffBranches} to the blackboard.
@@ -151,16 +156,16 @@ public class MeasurementController {
 	private void addMeasurementResultsOfSeffBranchesToBlackboard(final Set&lt;SeffBranch&gt; seffBranches,
 		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
 
-<span class="fc bfc" id="L154" title="All 2 branches covered.">		for (final SeffBranch seffBranch : seffBranches) {</span>
-<span class="fc" id="L155">			final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults =</span>
-<span class="fc" id="L156">				measurementEventParser.getMeasurementResultsFor(seffBranch);</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">		for (final SeffBranch seffBranch : seffBranches) {</span>
+<span class="fc" id="L160">			final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults =</span>
+<span class="fc" id="L161">				measurementEventParser.getMeasurementResultsFor(seffBranch);</span>
 
-<span class="fc bfc" id="L158" title="All 2 branches covered.">			for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {</span>
-<span class="fc" id="L159">				blackboard.addMeasurementResultFor(seffBranch, branchDecisionMeasurementResult);</span>
-<span class="fc" id="L160">			}</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">			for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {</span>
+<span class="fc" id="L164">				blackboard.addMeasurementResultFor(seffBranch, branchDecisionMeasurementResult);</span>
+<span class="fc" id="L165">			}</span>
 
-<span class="fc" id="L162">		}</span>
-<span class="fc" id="L163">	}</span>
+<span class="fc" id="L167">		}</span>
+<span class="fc" id="L168">	}</span>
 
 	/**
 	 * Adds all measurement results of {@code seffLoops} to the blackboard.
@@ -172,18 +177,18 @@ public class MeasurementController {
 	private void addMeasurementResultsOfSeffLoopsToBlackboard(final Set&lt;SeffLoop&gt; seffLoops,
 		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
 
-<span class="fc bfc" id="L175" title="All 2 branches covered.">		for (final SeffLoop seffLoop : seffLoops) {</span>
-<span class="fc" id="L176">			final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults =</span>
-<span class="fc" id="L177">				measurementEventParser.getMeasurementResultsFor(seffLoop);</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">		for (final SeffLoop seffLoop : seffLoops) {</span>
+<span class="fc" id="L181">			final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults =</span>
+<span class="fc" id="L182">				measurementEventParser.getMeasurementResultsFor(seffLoop);</span>
 			// @formatter:off
 			for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
-<span class="fc bfc" id="L180" title="All 2 branches covered.">				: loopRepetitionCountMeasurementResults) {</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">				: loopRepetitionCountMeasurementResults) {</span>
 				// @formatter:on
 
-<span class="fc" id="L183">				blackboard.addMeasurementResultFor(seffLoop, loopRepetitionCountMeasurementResult);</span>
-<span class="fc" id="L184">			}</span>
-<span class="fc" id="L185">		}</span>
-<span class="fc" id="L186">	}</span>
+<span class="fc" id="L188">				blackboard.addMeasurementResultFor(seffLoop, loopRepetitionCountMeasurementResult);</span>
+<span class="fc" id="L189">			}</span>
+<span class="fc" id="L190">		}</span>
+<span class="fc" id="L191">	}</span>
 
 	/**
 	 * Adds all measurement results of {@code rdias} to the blackboard.
@@ -194,15 +199,15 @@ public class MeasurementController {
 	 */
 	private void addMeasurementResultsOfRdiasToBlackboard(final Set&lt;ResourceDemandingInternalAction&gt; rdias,
 		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
-<span class="fc bfc" id="L197" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : rdias) {</span>
-<span class="fc" id="L198">			final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults =</span>
-<span class="fc" id="L199">				measurementEventParser.getMeasurementResultsFor(rdia);</span>
+<span class="fc bfc" id="L202" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : rdias) {</span>
+<span class="fc" id="L203">			final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults =</span>
+<span class="fc" id="L204">				measurementEventParser.getMeasurementResultsFor(rdia);</span>
 
-<span class="fc bfc" id="L201" title="All 2 branches covered.">			for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {</span>
-<span class="fc" id="L202">				blackboard.addMeasurementResultFor(rdia, resourceDemandMeasurementResult);</span>
-<span class="fc" id="L203">			}</span>
-<span class="fc" id="L204">		}</span>
-<span class="fc" id="L205">	}</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">			for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {</span>
+<span class="fc" id="L207">				blackboard.addMeasurementResultFor(rdia, resourceDemandMeasurementResult);</span>
+<span class="fc" id="L208">			}</span>
+<span class="fc" id="L209">		}</span>
+<span class="fc" id="L210">	}</span>
 
 	/**
 	 * Adds all measurement results of {@code externalCallParameters} to the blackboard.
@@ -214,14 +219,14 @@ public class MeasurementController {
 	private void addMeasurementResultsOfExternalCallParametersToBlackboard(
 		final Set&lt;ExternalCallParameter&gt; externalCallParameters, final MeasurementControllerBlackboardView blackboard,
 		final MeasurementEventParser measurementEventParser) {
-<span class="fc bfc" id="L217" title="All 2 branches covered.">		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {</span>
-<span class="fc" id="L218">			final Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResults =</span>
-<span class="fc" id="L219">				measurementEventParser.getMeasurementResultsFor(externalCallParameter);</span>
+<span class="fc bfc" id="L222" title="All 2 branches covered.">		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {</span>
+<span class="fc" id="L223">			final Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResults =</span>
+<span class="fc" id="L224">				measurementEventParser.getMeasurementResultsFor(externalCallParameter);</span>
 
-<span class="pc bpc" id="L221" title="1 of 2 branches missed.">			for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {</span>
-<span class="nc" id="L222">				blackboard.addMeasurementResultFor(externalCallParameter, parameterChangeMeasurementResult);</span>
-<span class="nc" id="L223">			}</span>
-<span class="fc" id="L224">		}</span>
-<span class="fc" id="L225">	}</span>
+<span class="pc bpc" id="L226" title="1 of 2 branches missed.">			for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {</span>
+<span class="nc" id="L227">				blackboard.addMeasurementResultFor(externalCallParameter, parameterChangeMeasurementResult);</span>
+<span class="nc" id="L228">			}</span>
+<span class="fc" id="L229">		}</span>
+<span class="fc" id="L230">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
