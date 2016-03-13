@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MeasurementController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.measurement</a> &gt; <span class="el_source">MeasurementController.java</span></div><h1>MeasurementController.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.measurement;
+
+import de.uka.ipd.sdq.beagle.core.AnalysisController;
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
+import de.uka.ipd.sdq.beagle.core.measurement.order.ParameterCharacteriser;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ * Controls which measurement tool is working.
+ *
+ * &lt;p&gt;There is always at most one measurement tool working.
+ *
+ * @author Roman Langrehr
+ * @author Christoph Michelbach
+ * @see AnalysisController
+ */
+public class MeasurementController {
+
+	/**
+	 * All {@link MeasurementTool}s this {@link MeasurementController} knows.
+	 */
+	private final Set&lt;MeasurementTool&gt; measurementTools;
+
+	/**
+	 * The parameter characteriser to use for all measurements.
+	 */
+<span class="fc" id="L39">	private final ParameterCharacteriser parameterCharacteriser = new ParameterCharacteriser();</span>
+
+	/**
+	 * Constructs a new {@link MeasurementController}.
+	 *
+	 * @param measurementTools The {@link MeasurementTool}s to use. Must not be
+	 *            {@code null} and must not contain {@code null}.
+	 */
+<span class="fc" id="L47">	public MeasurementController(final Set&lt;MeasurementTool&gt; measurementTools) {</span>
+<span class="fc" id="L48">		Validate.notNull(measurementTools);</span>
+<span class="fc" id="L49">		Validate.noNullElements(measurementTools);</span>
+
+<span class="fc" id="L51">		this.measurementTools = new HashSet&lt;&gt;(measurementTools);</span>
+<span class="fc" id="L52">	}</span>
+
+	/**
+	 * Determines whether a {@link MeasurementTool} can contribute to the
+	 * {@link Blackboard}.
+	 *
+	 * @param blackboard The blackboard. Must not be {@code null}.
+	 * @return Whether a {@link MeasurementTool} can measure something which is marked as
+	 *         'to be measured'. When {@code true} is returned, this is no guarantee that
+	 *         at least one new measurement result will be added.
+	 */
+	public boolean canMeasure(final ReadOnlyMeasurementControllerBlackboardView blackboard) {
+<span class="fc" id="L64">		Validate.notNull(blackboard);</span>
+
+<span class="fc" id="L66">		int elementsToBeMeasuredInTotal = 0;</span>
+<span class="fc" id="L67">		elementsToBeMeasuredInTotal += blackboard.getSeffBranchesToBeMeasured().size();</span>
+<span class="fc" id="L68">		elementsToBeMeasuredInTotal += blackboard.getSeffLoopsToBeMeasured().size();</span>
+<span class="fc" id="L69">		elementsToBeMeasuredInTotal += blackboard.getRdiasToBeMeasured().size();</span>
+<span class="fc" id="L70">		elementsToBeMeasuredInTotal += blackboard.getExternalCallParametersToBeMeasured().size();</span>
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		return elementsToBeMeasuredInTotal != 0;</span>
+	}
+
+	/**
+	 * Instructs all available {@link MeasurementTool MeasurementTools} to measure all
+	 * items marked as “to be measured”. {@link MeasurementTool MeasurementTools} may not
+	 * produce results for every item but will report results for all items they were able
+	 * to measure.
+	 *
+	 * &lt;p&gt;This method may only be called, when {@link #canMeasure} returned {@code true}
+	 * before and the {@link Blackboard} wasn't changed between this call. Otherwise the
+	 * behaviour of this method is undefined.
+	 *
+	 * @param blackboard The blackboard. Must not be {@code null}.
+	 */
+	public void measure(final MeasurementControllerBlackboardView blackboard) {
+<span class="fc" id="L88">		Validate.notNull(blackboard);</span>
+
+		// Read from the blackboard.
+<span class="fc" id="L91">		final Set&lt;SeffBranch&gt; seffBranches = blackboard.getSeffBranchesToBeMeasured();</span>
+<span class="fc" id="L92">		final Set&lt;SeffLoop&gt; seffLoops = blackboard.getSeffLoopsToBeMeasured();</span>
+<span class="fc" id="L93">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = blackboard.getRdiasToBeMeasured();</span>
+<span class="fc" id="L94">		final Set&lt;ExternalCallParameter&gt; externalCallParameters = blackboard.getExternalCallParametersToBeMeasured();</span>
+
+		// Initialise everything needed to create a measurement order.
+<span class="fc" id="L97">		final Set&lt;CodeSection&gt; resourceDemandSections = new HashSet&lt;CodeSection&gt;();</span>
+<span class="fc" id="L98">		final Set&lt;CodeSection&gt; executionSections = new HashSet&lt;CodeSection&gt;();</span>
+<span class="fc" id="L99">		final Set&lt;CodeSection&gt; parameterValueSections = new HashSet&lt;CodeSection&gt;();</span>
+
+		// Fill {@code executionSections}.
+<span class="fc bfc" id="L102" title="All 2 branches covered.">		for (final SeffBranch seffBranch : seffBranches) {</span>
+<span class="fc" id="L103">			final List&lt;CodeSection&gt; codeSections = seffBranch.getBranches();</span>
+
+<span class="fc bfc" id="L105" title="All 2 branches covered.">			for (final CodeSection codeSection : codeSections) {</span>
+<span class="fc" id="L106">				executionSections.add(codeSection);</span>
+<span class="fc" id="L107">			}</span>
+<span class="fc" id="L108">		}</span>
+
+		// Fill {@code executionSections}.
+<span class="fc bfc" id="L111" title="All 2 branches covered.">		for (final SeffLoop seffLoop : seffLoops) {</span>
+<span class="fc" id="L112">			final CodeSection codeSection = seffLoop.getLoopBody();</span>
+<span class="fc" id="L113">			executionSections.add(codeSection);</span>
+<span class="fc" id="L114">		}</span>
+
+		// Fill {@code resourceDemandSections}.
+<span class="fc bfc" id="L117" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : rdias) {</span>
+<span class="fc" id="L118">			final CodeSection codeSection = rdia.getAction();</span>
+<span class="fc" id="L119">			resourceDemandSections.add(codeSection);</span>
+<span class="fc" id="L120">		}</span>
+
+		// Fill {@code parameterValueSection}.
+<span class="fc bfc" id="L123" title="All 2 branches covered.">		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {</span>
+<span class="fc" id="L124">			final CodeSection codeSection = externalCallParameter.getCallCodeSection();</span>
+<span class="fc" id="L125">			parameterValueSections.add(codeSection);</span>
+<span class="fc" id="L126">		}</span>
+
+<span class="fc bfc" id="L128" title="All 2 branches covered.">		for (final MeasurementTool measurementTool : this.measurementTools) {</span>
+			// Give every measurement tool a measurement order.
+<span class="fc" id="L130">			final MeasurementOrder measurementOrder =</span>
+				new MeasurementOrder(parameterValueSections, resourceDemandSections, executionSections,
+<span class="fc" id="L132">					blackboard.getProjectInformation(), this.parameterCharacteriser);</span>
+
+			// Get the measurement results.
+<span class="fc" id="L135">			final List&lt;MeasurementEvent&gt; measurementEvents = measurementTool.measure(measurementOrder);</span>
+
+			// Construct a measurement event parser.
+<span class="fc" id="L138">			final MeasurementEventParser measurementEventParser = new MeasurementEventParser(measurementEvents);</span>
+
+			// Add the measurement results to the blackboard.
+<span class="fc" id="L141">			this.addMeasurementResultsOfSeffBranchesToBlackboard(seffBranches, blackboard, measurementEventParser);</span>
+<span class="fc" id="L142">			this.addMeasurementResultsOfSeffLoopsToBlackboard(seffLoops, blackboard, measurementEventParser);</span>
+<span class="fc" id="L143">			this.addMeasurementResultsOfRdiasToBlackboard(rdias, blackboard, measurementEventParser);</span>
+<span class="fc" id="L144">			this.addMeasurementResultsOfExternalCallParametersToBlackboard(externalCallParameters, blackboard,</span>
+				measurementEventParser);
+<span class="fc" id="L146">		}</span>
+<span class="fc" id="L147">	}</span>
+
+	/**
+	 * Adds all measurement results of {@code seffBranches} to the blackboard.
+	 *
+	 * @param seffBranches The seff branches.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfSeffBranchesToBlackboard(final Set&lt;SeffBranch&gt; seffBranches,
+		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
+
+<span class="fc bfc" id="L159" title="All 2 branches covered.">		for (final SeffBranch seffBranch : seffBranches) {</span>
+<span class="fc" id="L160">			final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults =</span>
+<span class="fc" id="L161">				measurementEventParser.getMeasurementResultsFor(seffBranch);</span>
+
+<span class="fc bfc" id="L163" title="All 2 branches covered.">			for (final BranchDecisionMeasurementResult branchDecisionMeasurementResult : branchDecisionMeasurementResults) {</span>
+<span class="fc" id="L164">				blackboard.addMeasurementResultFor(seffBranch, branchDecisionMeasurementResult);</span>
+<span class="fc" id="L165">			}</span>
+
+<span class="fc" id="L167">		}</span>
+<span class="fc" id="L168">	}</span>
+
+	/**
+	 * Adds all measurement results of {@code seffLoops} to the blackboard.
+	 *
+	 * @param seffLoops The seff loops.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfSeffLoopsToBlackboard(final Set&lt;SeffLoop&gt; seffLoops,
+		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
+
+<span class="fc bfc" id="L180" title="All 2 branches covered.">		for (final SeffLoop seffLoop : seffLoops) {</span>
+<span class="fc" id="L181">			final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults =</span>
+<span class="fc" id="L182">				measurementEventParser.getMeasurementResultsFor(seffLoop);</span>
+			// @formatter:off
+			for (final LoopRepetitionCountMeasurementResult loopRepetitionCountMeasurementResult
+<span class="fc bfc" id="L185" title="All 2 branches covered.">				: loopRepetitionCountMeasurementResults) {</span>
+				// @formatter:on
+
+<span class="fc" id="L188">				blackboard.addMeasurementResultFor(seffLoop, loopRepetitionCountMeasurementResult);</span>
+<span class="fc" id="L189">			}</span>
+<span class="fc" id="L190">		}</span>
+<span class="fc" id="L191">	}</span>
+
+	/**
+	 * Adds all measurement results of {@code rdias} to the blackboard.
+	 *
+	 * @param rdias The rdias.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfRdiasToBlackboard(final Set&lt;ResourceDemandingInternalAction&gt; rdias,
+		final MeasurementControllerBlackboardView blackboard, final MeasurementEventParser measurementEventParser) {
+<span class="fc bfc" id="L202" title="All 2 branches covered.">		for (final ResourceDemandingInternalAction rdia : rdias) {</span>
+<span class="fc" id="L203">			final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults =</span>
+<span class="fc" id="L204">				measurementEventParser.getMeasurementResultsFor(rdia);</span>
+
+<span class="fc bfc" id="L206" title="All 2 branches covered.">			for (final ResourceDemandMeasurementResult resourceDemandMeasurementResult : resourceDemandMeasurementResults) {</span>
+<span class="fc" id="L207">				blackboard.addMeasurementResultFor(rdia, resourceDemandMeasurementResult);</span>
+<span class="fc" id="L208">			}</span>
+<span class="fc" id="L209">		}</span>
+<span class="fc" id="L210">	}</span>
+
+	/**
+	 * Adds all measurement results of {@code externalCallParameters} to the blackboard.
+	 *
+	 * @param externalCallParameters The external call parameters.
+	 * @param blackboard The blackboard.
+	 * @param measurementEventParser A measurement result parser.
+	 */
+	private void addMeasurementResultsOfExternalCallParametersToBlackboard(
+		final Set&lt;ExternalCallParameter&gt; externalCallParameters, final MeasurementControllerBlackboardView blackboard,
+		final MeasurementEventParser measurementEventParser) {
+<span class="fc bfc" id="L222" title="All 2 branches covered.">		for (final ExternalCallParameter externalCallParameter : externalCallParameters) {</span>
+<span class="fc" id="L223">			final Set&lt;ParameterChangeMeasurementResult&gt; parameterChangeMeasurementResults =</span>
+<span class="fc" id="L224">				measurementEventParser.getMeasurementResultsFor(externalCallParameter);</span>
+
+<span class="pc bpc" id="L226" title="1 of 2 branches missed.">			for (final ParameterChangeMeasurementResult parameterChangeMeasurementResult : parameterChangeMeasurementResults) {</span>
+<span class="nc" id="L227">				blackboard.addMeasurementResultFor(externalCallParameter, parameterChangeMeasurementResult);</span>
+<span class="nc" id="L228">			}</span>
+<span class="fc" id="L229">		}</span>
+<span class="fc" id="L230">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

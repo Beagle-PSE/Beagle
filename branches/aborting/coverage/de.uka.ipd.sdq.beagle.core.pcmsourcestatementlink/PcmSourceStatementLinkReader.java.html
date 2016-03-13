@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PcmSourceStatementLinkReader.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink</a> &gt; <span class="el_source">PcmSourceStatementLinkReader.java</span></div><h1>PcmSourceStatementLinkReader.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink;
+
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
+import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+
+import org.apache.commons.lang3.Validate;
+
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
+/**
+ * Reads in instances of the PCM Source Statement Links Model given in a XML file.
+ * Performs integrity checks on the input.
+ *
+ * @author Joshua Gleitze
+ */
+public class PcmSourceStatementLinkReader {
+
+	/**
+	 * The handler of failures.
+	 */
+<span class="fc" id="L25">	private static final FailureHandler FAILURE_HANDLER =</span>
+<span class="fc" id="L26">		FailureHandler.getHandler(&quot;Source Statement Links Model Reader&quot;);</span>
+
+	/**
+	 * The file that will be read in.
+	 */
+	private final File inputFile;
+
+	/**
+	 * The repository as it was read in from the {@link inputFile}.
+	 */
+	private PcmSourceStatementLinkRepository linkRepository;
+
+	/**
+	 * Creates a reader to read the provided {@code linkRepositoryFile}.
+	 *
+	 * @param linkRepositoryFile The file to read in.
+	 */
+<span class="fc" id="L43">	public PcmSourceStatementLinkReader(final File linkRepositoryFile) {</span>
+<span class="fc" id="L44">		Validate.notNull(linkRepositoryFile);</span>
+<span class="fc" id="L45">		Validate.isTrue(linkRepositoryFile.exists());</span>
+<span class="fc" id="L46">		this.inputFile = linkRepositoryFile;</span>
+<span class="fc" id="L47">	}</span>
+
+	/**
+	 * Gets the source link repository that was read in from the input file. If reading in
+	 * the input file fails, the method will report to the {@linkplain FailureHandler
+	 * failure API}.
+	 *
+	 * @return The repository that was read in from the input file.
+	 */
+	public PcmSourceStatementLinkRepository getPcmSourceLinkRepository() {
+<span class="fc" id="L57">		this.readIn();</span>
+<span class="fc" id="L58">		return this.linkRepository;</span>
+	}
+
+	/**
+	 * Reads the {@link #inputFile} and populates {@link #linkRepository}. Reports a
+	 * failure to the failure handler if reading in fails.
+	 */
+	private void readIn() {
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		if (this.linkRepository != null) {</span>
+<span class="fc" id="L67">			return;</span>
+		}
+
+		final Object result;
+		try {
+<span class="fc" id="L72">			final JAXBContext context = JAXBContext.newInstance(&quot;de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink&quot;);</span>
+<span class="fc" id="L73">			final Unmarshaller unmarshaller = context.createUnmarshaller();</span>
+
+<span class="fc" id="L75">			result = unmarshaller.unmarshal(this.inputFile);</span>
+<span class="nc" id="L76">		} catch (final JAXBException unmarshalError) {</span>
+<span class="nc" id="L77">			final FailureReport&lt;Void&gt; failure = new FailureReport&lt;Void&gt;().cause(unmarshalError).retryWith(this::readIn);</span>
+<span class="nc" id="L78">			FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L79">			return;</span>
+<span class="fc" id="L80">		}</span>
+
+<span class="fc" id="L82">		this.linkRepository = (PcmSourceStatementLinkRepository) result;</span>
+<span class="fc" id="L83">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

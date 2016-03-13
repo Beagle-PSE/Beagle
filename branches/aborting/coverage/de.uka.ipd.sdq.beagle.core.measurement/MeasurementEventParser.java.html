@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MeasurementEventParser.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.measurement</a> &gt; <span class="el_source">MeasurementEventParser.java</span></div><h1>MeasurementEventParser.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.measurement;
+
+import de.uka.ipd.sdq.beagle.core.CodeSection;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.MeasurableSeffElement;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionEnteredEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.CodeSectionLeftEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEventVisitor;
+import de.uka.ipd.sdq.beagle.core.measurement.order.ResourceDemandCapturedEvent;
+
+import org.apache.commons.collections4.IteratorUtils;
+import org.apache.commons.lang3.Validate;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
+
+/**
+ * Parses {@linkplain MeasurementEvent MeasurementEvents} in order to generate
+ * {@linkplain ParameterisationDependentMeasurementResult
+ * ParameterisationDependentMeasurementResults} out of them. It is created for a sequence
+ * of events that occurred while measuring software (the “input events”). The parsed
+ * results can be obtained by querying with
+ *
+ * {@linkplain MeasurableSeffElement MeasurableSeffElements} which will return all
+ * measurement results found for that element.
+ *
+ * @author Joshua Gleitze
+ * @author Roman Langrehr
+ */
+public class MeasurementEventParser {
+
+	/**
+	 * All measurement events in chronological order.
+	 */
+	private final List&lt;MeasurementEvent&gt; measurementEvents;
+
+	/**
+	 * Maps for each code sections to all occurrences of measurement events for this code
+	 * section in {@link #measurementEvents}.
+	 */
+<span class="fc" id="L50">	private final Map&lt;CodeSection, Set&lt;Integer&gt;&gt; codeSectionMapping = new HashMap&lt;&gt;();</span>
+
+	/**
+	 * Creates a parser to parse {@code events}. The events must be provided in
+	 * chronological order, starting with the event that occurred first.
+	 *
+	 * @param events The events to be parsed. Must not be {@code null} and all contained
+	 *            events must not be {@code null}.
+	 */
+<span class="fc" id="L59">	public MeasurementEventParser(final MeasurementEvent... events) {</span>
+<span class="fc" id="L60">		Validate.noNullElements(events);</span>
+<span class="fc" id="L61">		this.measurementEvents = Arrays.asList(events);</span>
+<span class="fc" id="L62">		this.createCodeSectionMapping();</span>
+<span class="fc" id="L63">	}</span>
+
+	/**
+	 * Creates a parser to parse {@code events}. The events must be provided in
+	 * chronological order, starting with the event that occurred first.
+	 *
+	 * @param events The events to be parsed. Must not be {@code null} and all contained
+	 *            events must not be {@code null}.
+	 */
+<span class="fc" id="L72">	public MeasurementEventParser(final Iterable&lt;MeasurementEvent&gt; events) {</span>
+<span class="fc" id="L73">		Validate.noNullElements(events);</span>
+<span class="fc" id="L74">		this.measurementEvents = IteratorUtils.toList(events.iterator());</span>
+<span class="fc" id="L75">		this.createCodeSectionMapping();</span>
+<span class="fc" id="L76">	}</span>
+
+	/**
+	 * Generates a new {@link #codeSectionMapping} for the {@link #measurementEvents}.
+	 */
+	private void createCodeSectionMapping() {
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		for (int i = 0; i &lt; this.measurementEvents.size(); i++) {</span>
+<span class="fc" id="L83">			final CodeSection currentCodeSection = this.measurementEvents.get(i).getCodeSection();</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">			if (!this.codeSectionMapping.containsKey(currentCodeSection)) {</span>
+<span class="fc" id="L85">				this.codeSectionMapping.put(currentCodeSection, new HashSet&lt;&gt;());</span>
+			}
+<span class="fc" id="L87">			this.codeSectionMapping.get(currentCodeSection).add(i);</span>
+		}
+<span class="fc" id="L89">	}</span>
+
+	/**
+	 * Gets all results that could be parsed from the input events for {@code rdia}.
+	 *
+	 * @param resourceDemandingInternalAction A resource demanding internal action to get
+	 *            the measurement results of. Must not be {@code null} .
+	 * @return All measurement results parsed for {@code rdia}. Is never {@code null}.
+	 *         Contains never {@code null} elements.
+	 */
+	public Set&lt;ResourceDemandMeasurementResult&gt; getMeasurementResultsFor(
+		final ResourceDemandingInternalAction resourceDemandingInternalAction) {
+<span class="fc" id="L101">		Validate.notNull(resourceDemandingInternalAction);</span>
+<span class="fc" id="L102">		final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L103">		final ResourceDemandingInternalActionMeasurementEventVisitor resourceDemandingInternalActionMeasurementEventVisitor =</span>
+			new ResourceDemandingInternalActionMeasurementEventVisitor(resourceDemandingInternalAction,
+				resourceDemandMeasurementResults);
+<span class="fc" id="L106">		final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(resourceDemandingInternalAction.getAction());</span>
+<span class="fc bfc" id="L107" title="All 2 branches covered.">		if (indices != null) {</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">			for (final Integer index : indices) {</span>
+<span class="fc" id="L109">				final MeasurementEvent measurementEvent = this.measurementEvents.get(index);</span>
+<span class="fc" id="L110">				measurementEvent.receive(resourceDemandingInternalActionMeasurementEventVisitor);</span>
+<span class="fc" id="L111">			}</span>
+		}
+<span class="fc" id="L113">		return resourceDemandMeasurementResults;</span>
+
+	}
+
+	/**
+	 * Gets all results that could be parsed from the input events for {@code branch}.
+	 *
+	 * @param branch A SEFF Branch to get the measurement results of. Must not be
+	 *            {@code null} .
+	 * @return All measurement results parsed for {@code branch}. Is never {@code null}.
+	 *         Contains never {@code null} elements.
+	 */
+	public Set&lt;BranchDecisionMeasurementResult&gt; getMeasurementResultsFor(final SeffBranch branch) {
+<span class="fc" id="L126">		final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults = new HashSet&lt;&gt;();</span>
+
+		// Assemble all measurement events, that could fit for this branch according to
+		// their code section.
+<span class="fc" id="L130">		final Set&lt;MeasurementEvent&gt; codeSectionEventsForThisBranch = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">		for (final CodeSection possibilyPickedBranch : branch.getBranches()) {</span>
+<span class="fc" id="L132">			final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(possibilyPickedBranch);</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">			if (indices != null) {</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">				for (final Integer index : indices) {</span>
+<span class="fc" id="L135">					codeSectionEventsForThisBranch.add(this.measurementEvents.get(index));</span>
+<span class="fc" id="L136">				}</span>
+			}
+<span class="fc" id="L138">		}</span>
+
+<span class="fc" id="L140">		final SeffBranchMeasurementEventVisitor seffBranchMeasurementEventVisitor =</span>
+			new SeffBranchMeasurementEventVisitor(branch, branchDecisionMeasurementResults);
+<span class="fc bfc" id="L142" title="All 2 branches covered.">		for (final MeasurementEvent measurementEvent : codeSectionEventsForThisBranch) {</span>
+<span class="fc" id="L143">			measurementEvent.receive(seffBranchMeasurementEventVisitor);</span>
+<span class="fc" id="L144">		}</span>
+<span class="fc" id="L145">		return branchDecisionMeasurementResults;</span>
+	}
+
+	/**
+	 * Gets all results that could be parsed from the input events for {@code loop}.
+	 *
+	 * @param loop A SEFF Loop to get the measurement results of. Must not be {@code null}
+	 *            .
+	 * @return All measurement results parsed for {@code loop}. Is never {@code null}.
+	 *         Contains never {@code null} elements.
+	 */
+	public Set&lt;LoopRepetitionCountMeasurementResult&gt; getMeasurementResultsFor(final SeffLoop loop) {
+<span class="fc" id="L157">		final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults = new HashSet&lt;&gt;();</span>
+<span class="fc" id="L158">		final SeffLoopMeasurementEventVisitor seffLoopMeasurementEventVisitor =</span>
+			new SeffLoopMeasurementEventVisitor(loopRepetitionCountMeasurementResults);
+<span class="fc" id="L160">		final Set&lt;Integer&gt; indices = this.codeSectionMapping.get(loop.getLoopBody());</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">		if (indices != null) {</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">			for (final Integer index : indices) {</span>
+<span class="fc" id="L163">				this.measurementEvents.get(index).receive(seffLoopMeasurementEventVisitor);</span>
+<span class="fc" id="L164">			}</span>
+		}
+<span class="fc" id="L166">		seffLoopMeasurementEventVisitor.finalise();</span>
+<span class="fc" id="L167">		return loopRepetitionCountMeasurementResults;</span>
+	}
+
+	/**
+	 * Note: this method is out of our projects scope and not yet implemented. Gets all
+	 * results that could be parsed from the input events for
+	 * {@code externalCallParameter}.
+	 *
+	 * @param externalCallParameter An external parameter to get the measurement results
+	 *            of. Must not be {@code null}.
+	 * @return All measurement results parsed for {@code externalCallParameter}. Is never
+	 *         {@code null}. Contains never {@code null} elements.
+	 */
+	public Set&lt;ParameterChangeMeasurementResult&gt; getMeasurementResultsFor(
+		final ExternalCallParameter externalCallParameter) {
+<span class="fc" id="L182">		return new HashSet&lt;&gt;();</span>
+	}
+
+	/**
+	 * A {@link MeasurementEventVisitor} for a specific
+	 * {@link ResourceDemandingInternalAction}.
+	 *
+	 * &lt;p&gt;Only {@linkplain MeasurementEvent MeasurementEvents} with the correct
+	 * {@link CodeSection} may be visited with this visitor.
+	 *
+	 * @author Roman Langrehr
+	 */
+	private class ResourceDemandingInternalActionMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
+
+		/**
+		 * The {@link ResourceDemandingInternalAction} where we want to know the new
+		 * measurement results.
+		 */
+		private final ResourceDemandingInternalAction resourceDemandingInternalAction;
+
+		/**
+		 * The set, where the {@link ResourceDemandMeasurementResult} should be added.
+		 */
+		private final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults;
+
+		/**
+		 * Creates a visitor for a specific {@link ResourceDemandingInternalAction}.
+		 *
+		 * @param resourceDemandingInternalAction The
+		 *            {@link ResourceDemandingInternalAction} where we want to know the
+		 *            new measurement results.
+		 * @param resourceDemandMeasurementResults The set, where the
+		 *            {@link ResourceDemandMeasurementResult} should be added.
+		 */
+		ResourceDemandingInternalActionMeasurementEventVisitor(
+			final ResourceDemandingInternalAction resourceDemandingInternalAction,
+<span class="fc" id="L218">			final Set&lt;ResourceDemandMeasurementResult&gt; resourceDemandMeasurementResults) {</span>
+<span class="fc" id="L219">			this.resourceDemandingInternalAction = resourceDemandingInternalAction;</span>
+<span class="fc" id="L220">			this.resourceDemandMeasurementResults = resourceDemandMeasurementResults;</span>
+<span class="fc" id="L221">		}</span>
+
+		@Override
+		public void visit(final ResourceDemandCapturedEvent resourceDemandCapturedEvent) {
+			// Check if this measurement event is for the correct resource type.
+<span class="fc bfc" id="L226" title="All 2 branches covered.">			if (resourceDemandCapturedEvent.getType() == this.resourceDemandingInternalAction.getResourceType()) {</span>
+<span class="fc" id="L227">				this.resourceDemandMeasurementResults</span>
+<span class="fc" id="L228">					.add(new ResourceDemandMeasurementResult(resourceDemandCapturedEvent.getValue()));</span>
+			}
+<span class="fc" id="L230">		}</span>
+	}
+
+	/**
+	 * A {@link MeasurementEventVisitor} for a specific {@link SeffBranch}.
+	 *
+	 * @author Roman Langrehr
+	 */
+	private class SeffBranchMeasurementEventVisitor extends AbstractMeasurementEventVisitor {
+
+		/**
+		 * The {@link SeffBranch} where we want to know the new measurement results.
+		 */
+		private final SeffBranch branch;
+
+		/**
+		 * The set, where the {@linkplain ResourceDemandMeasurementResult
+		 * ResourceDemandMeasurementResults} should be added.
+		 */
+		private final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults;
+
+		/**
+		 * Creates a visitor for a specific {@link SeffBranch}.
+		 *
+		 * @param branch The {@link SeffBranch} where we want to know the new measurement
+		 *            results.
+		 * @param branchDecisionMeasurementResults The set, where the
+		 *            {@linkplain BranchDecisionMeasurementResult
+		 *            BranchDecisionMeasurementResults} should be added.
+		 */
+		SeffBranchMeasurementEventVisitor(final SeffBranch branch,
+<span class="fc" id="L261">			final Set&lt;BranchDecisionMeasurementResult&gt; branchDecisionMeasurementResults) {</span>
+<span class="fc" id="L262">			this.branch = branch;</span>
+<span class="fc" id="L263">			this.branchDecisionMeasurementResults = branchDecisionMeasurementResults;</span>
+<span class="fc" id="L264">		}</span>
+
+		@Override
+		public void visit(final CodeSectionEnteredEvent codeSectionExecutedEvent) {
+<span class="fc" id="L268">			final int branchIndex = this.branch.getBranches().indexOf(codeSectionExecutedEvent.getCodeSection());</span>
+<span class="fc" id="L269">			this.branchDecisionMeasurementResults.add(new BranchDecisionMeasurementResult(branchIndex));</span>
+<span class="fc" id="L270">		}</span>
+
+		// We don't care about CodeSectionLeftEvents, because we defined a SeffBranch to
+		// be executed, exactly when it was entered.
+	}
+
+	/**
+	 * A {@link MeasurementEventVisitor} for a specific {@link SeffLoop}.
+	 *
+	 * &lt;p&gt;You must call {@linkplain MeasurementEvent#receive(MeasurementEventVisitor)
+	 * receive} on the {@linkplain MeasurementEvent MeasurementEvents} in the correct
+	 * order!
+	 *
+	 * @author Roman Langrehr
+	 */
+<span class="pc bpc" id="L285" title="1 of 2 branches missed.">	private class SeffLoopMeasurementEventVisitor extends AbstractMeasurementEventVisitor {</span>
+
+		/**
+		 * The set, where the {@linkplain ResourceDemandMeasurementResult
+		 * ResourceDemandMeasurementResults} should be added.
+		 */
+		private final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults;
+
+		/**
+		 * The number of loops measured in the current sequence of measurement events for
+		 * one loop body. The stack contains all
+		 */
+		private final Stack&lt;LoopExecutionCounter&gt; currentLoopCounts;
+
+		/**
+		 * Creates a visitor for a specific {@link SeffLoop}.
+		 *
+		 * @param loopRepetitionCountMeasurementResults The set, where the
+		 *            {@linkplain BranchDecisionMeasurementResult
+		 *            BranchDecisionMeasurementResults} should be added.
+		 */
+		SeffLoopMeasurementEventVisitor(
+<span class="fc" id="L307">			final Set&lt;LoopRepetitionCountMeasurementResult&gt; loopRepetitionCountMeasurementResults) {</span>
+<span class="fc" id="L308">			this.loopRepetitionCountMeasurementResults = loopRepetitionCountMeasurementResults;</span>
+<span class="fc" id="L309">			this.currentLoopCounts = new Stack&lt;&gt;();</span>
+<span class="fc" id="L310">		}</span>
+
+		@Override
+		public void visit(final CodeSectionEnteredEvent codeSectionEnteredEvent) {
+<span class="fc bfc" id="L314" title="All 4 branches covered.">			if (this.currentLoopCounts.isEmpty() || this.currentLoopCounts.peek().isOpen) {</span>
+				// The current branch was not finished before a this, so we have a
+				// recursive call, or there is no current execution of this loop.
+<span class="fc" id="L317">				this.currentLoopCounts.push(new LoopExecutionCounter());</span>
+			}
+<span class="pc bpc" id="L319" title="2 of 4 branches missed.">			assert !this.currentLoopCounts.peek().isOpen;</span>
+<span class="fc bfc" id="L320" title="All 2 branches covered.">			if (!(this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex == -1</span>
+<span class="fc" id="L321">				|| this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex</span>
+<span class="fc bfc" id="L322" title="All 2 branches covered.">					+ 1 == MeasurementEventParser.this.measurementEvents.indexOf(codeSectionEnteredEvent))) {</span>
+				// We have not continuous loop body executions, so we create a new
+				// execution event.
+<span class="fc" id="L325">				this.loopFinished();</span>
+<span class="fc" id="L326">				this.currentLoopCounts.push(new LoopExecutionCounter());</span>
+			}
+<span class="fc" id="L328">			this.currentLoopCounts.peek().numberOfExecutions++;</span>
+<span class="fc" id="L329">			this.currentLoopCounts.peek().isOpen = true;</span>
+<span class="fc" id="L330">		}</span>
+
+		@Override
+		public void visit(final CodeSectionLeftEvent codeSectionLeftEvent) {
+<span class="fc bfc" id="L334" title="All 2 branches covered.">			if (!this.currentLoopCounts.isEmpty()) {</span>
+<span class="fc bfc" id="L335" title="All 2 branches covered.">				if (this.currentLoopCounts.peek().isOpen) {</span>
+					// The current execution is finished.
+<span class="fc" id="L337">					this.currentLoopCounts.peek().isOpen = false;</span>
+<span class="fc" id="L338">					this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =</span>
+<span class="fc" id="L339">						MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);</span>
+				} else {
+					// The current execution is already finished, so we need to close
+					// the one &quot;below&quot; that.
+
+					// The actual closing
+<span class="fc" id="L345">					this.loopFinished();</span>
+
+<span class="fc bfc" id="L347" title="All 2 branches covered.">					if (!this.currentLoopCounts.isEmpty()) {</span>
+						// The invariant for this stack
+<span class="pc bpc" id="L349" title="2 of 4 branches missed.">						assert this.currentLoopCounts.peek().isOpen;</span>
+						// allows us to just close the next layer.
+<span class="fc" id="L351">						this.currentLoopCounts.peek().isOpen = false;</span>
+<span class="fc" id="L352">						this.currentLoopCounts.peek().lastCodeSectionLeftEventIndex =</span>
+<span class="fc" id="L353">							MeasurementEventParser.this.measurementEvents.indexOf(codeSectionLeftEvent);</span>
+					}
+				}
+			}
+			// If the currentLoopCounts stack is empty, we have a CodeSectionLeftEvent
+			// event without an CodeSectionEnteredEvent and ignore this.
+<span class="fc" id="L359">		}</span>
+
+		/**
+		 * This method must be called after the last measurement event was visited,
+		 * because otherwise the resulting {@code loopRepetitionCountMeasurementResults}
+		 * may be incomplete.
+		 */
+		public void finalise() {
+			// Close all open executions. There {@link CodeSectionLeftEvent} is missing.
+<span class="fc bfc" id="L368" title="All 2 branches covered.">			while (!this.currentLoopCounts.isEmpty()) {</span>
+<span class="fc" id="L369">				this.loopFinished();</span>
+			}
+<span class="fc" id="L371">		}</span>
+
+		/**
+		 * Pops the top of {@link #currentLoopCounts} and adds the
+		 * {@link LoopRepetitionCountMeasurementResult} for this execution.
+		 */
+		private void loopFinished() {
+<span class="fc" id="L378">			this.loopRepetitionCountMeasurementResults</span>
+<span class="fc" id="L379">				.add(new LoopRepetitionCountMeasurementResult(this.currentLoopCounts.pop().numberOfExecutions));</span>
+<span class="fc" id="L380">		}</span>
+
+		/**
+		 * Container for the information needed to save the state of an loop execution.
+		 *
+		 * @author Roman Langrehr
+		 */
+		private class LoopExecutionCounter {
+
+			/**
+			 * How many times the loop was executed.
+			 */
+			private int numberOfExecutions;
+
+			/**
+			 * Whether the last execution of the loop body was not finished. (An
+			 * {@link CodeSectionEnteredEvent} was parsed, but not the corresponding
+			 * {@link CodeSectionLeftEvent}.
+			 */
+			private boolean isOpen;
+
+			/**
+			 * If {@link #isOpen} is {@code false}, this field is the index of the last
+			 * CodeSectionLeftEvent of an loop body for this branch or {@code -1}, if no
+			 * CodeSectionLeftEvent was parsed for this loop execution.
+			 */
+			private int lastCodeSectionLeftEventIndex;
+
+			/**
+			 * Creates a new, empty LoopExecutionCounter.
+			 */
+<span class="fc" id="L411">			LoopExecutionCounter() {</span>
+<span class="fc" id="L412">				this.numberOfExecutions = 0;</span>
+<span class="fc" id="L413">				this.isOpen = false;</span>
+<span class="fc" id="L414">				this.lastCodeSectionLeftEventIndex = -1;</span>
+<span class="fc" id="L415">			}</span>
+		}
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
