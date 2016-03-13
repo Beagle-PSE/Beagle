@@ -1,6 +1,7 @@
 package de.uka.ipd.sdq.beagle.core;
 
 import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsException;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.eq;
@@ -21,6 +22,7 @@ import de.uka.ipd.sdq.beagle.core.analysis.ProposedExpressionAnalyserBlackboardV
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyMeasurementResultAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.analysis.ReadOnlyProposedExpressionAnalyserBlackboardView;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
+import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.core.testutil.ThrowingMethod;
 import de.uka.ipd.sdq.beagle.core.testutil.factories.BlackboardFactory;
@@ -33,13 +35,16 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Tests for {@link AnalysisController}.
  *
  * @author Roman Langrehr
+ * @author Annika Berger
  */
 public class AnalysisControllerTest {
 
@@ -840,5 +845,266 @@ public class AnalysisControllerTest {
 		reset(this.mockedProposedExpressionAnalyser1);
 		reset(this.mockedProposedExpressionAnalyser2);
 		reset(this.mockedProposedExpressionAnalyser3);
+	}
+
+	/**
+	 * Tests {@link AnalysisController#setAnalysisState(AnalysisState)} for
+	 * {@link AnalysisState} {@code ABORTING}.
+	 *
+	 */
+	@Test
+	public void setAnalysisStateAbort() {
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
+		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
+
+		analysisController.setAnalysisState(AnalysisState.ABORTING);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ABORTING));
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.RUNNING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ABORTING));
+
+		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
+	}
+
+	/**
+	 * Tests {@link AnalysisController#setAnalysisState(AnalysisState)} for
+	 * {@link AnalysisState} {@code TERMINATED}.
+	 *
+	 */
+	@Test
+	public void setAnalysisStateTerminated() {
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
+		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
+
+		analysisController.setAnalysisState(AnalysisState.TERMINATED);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.TERMINATED));
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.RUNNING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.TERMINATED));
+
+		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
+	}
+
+	/**
+	 * Tests {@link AnalysisController#setAnalysisState(AnalysisState)} for
+	 * {@link AnalysisState} {@code ENDING}.
+	 *
+	 */
+	@Test
+	public void setAnalysisStateEnding() {
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
+		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
+
+		analysisController.setAnalysisState(AnalysisState.ENDING);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
+		analysisController.setAnalysisState(AnalysisState.RUNNING);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.RUNNING));
+		analysisController.setAnalysisState(AnalysisState.ENDING);
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.ABORTING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
+
+		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
+	}
+
+	/**
+	 * Asserts that the {@link AnalysisState} is {@code RUNNING} when the performance has
+	 * been started and there was no call to
+	 * {@link AnalysisController#setAnalysisState(AnalysisState)}.
+	 *
+	 */
+	@Test
+	public void analysisStateWhilePerforming() {
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
+		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
+
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.RUNNING));
+
+		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
+	}
+
+	/**
+	 * Asserts that {@link AnalysisController#setAnalysisState(AnalysisState)} throws a
+	 * {@link NullPointerException} for input {@code null}.
+	 *
+	 * <p>Asserts that state is not changed.
+	 *
+	 */
+	@Test
+	public void setAnalysisStateNull() {
+		final SleepingMeasurementTool sleepingMeasurementTool = new SleepingMeasurementTool();
+		final AnalysisController analysisController = this.setUpController(sleepingMeasurementTool);
+
+		assertThat(() -> analysisController.setAnalysisState(null), throwsException(NullPointerException.class));
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.RUNNING));
+
+		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
+	}
+
+	/**
+	 * Asserts that {@link AnalysisController#setAnalysisState(AnalysisState)} throws a
+	 * {@link IllegalStateException} if called before the analysis has started.
+	 *
+	 * <p>Asserts that this does not change the state.
+	 */
+	@Test
+	public void setAnalysisStateBeforeStartingMeasurement() {
+		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
+		oneMeasurementTool.add(this.mockedMeasurementTool1);
+		final Set<MeasurementResultAnalyser> oneMeasurementResultAnalyser = new HashSet<>();
+		oneMeasurementResultAnalyser.add(this.mockedMeasurementResultAnalyser1);
+		final Set<ProposedExpressionAnalyser> oneProposedExpressionAnalyser = new HashSet<>();
+		oneProposedExpressionAnalyser.add(this.mockedProposedExpressionAnalyser1);
+
+		// Test, where no one wants to contribute.
+		this.resetMocks();
+		final Blackboard blackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard))).thenReturn(false);
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard))).thenReturn(false);
+
+		final AnalysisController analysisController = new AnalysisController(blackboard, oneMeasurementTool,
+			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
+		AnalysisState initState = analysisController.getAnalysisState();
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.RUNNING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(initState));
+
+		initState = analysisController.getAnalysisState();
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.TERMINATED),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(initState));
+
+		initState = analysisController.getAnalysisState();
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.ENDING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(initState));
+
+		initState = analysisController.getAnalysisState();
+		assertThat(() -> analysisController.setAnalysisState(AnalysisState.ABORTING),
+			throwsException(IllegalStateException.class));
+		assertThat(analysisController.getAnalysisState(), is(initState));
+	}
+
+	/**
+	 * Asserts that the {@link AnalysisState} is {@code TERMINATED} when
+	 * {@link AnalysisController#performAnalysis()} is finished.
+	 */
+	@Test
+	public void analysisStateTerminatedAtEnd() {
+		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
+		oneMeasurementTool.add(this.mockedMeasurementTool1);
+		final Set<MeasurementResultAnalyser> oneMeasurementResultAnalyser = new HashSet<>();
+		oneMeasurementResultAnalyser.add(this.mockedMeasurementResultAnalyser1);
+		final Set<ProposedExpressionAnalyser> oneProposedExpressionAnalyser = new HashSet<>();
+		oneProposedExpressionAnalyser.add(this.mockedProposedExpressionAnalyser1);
+
+		// Test, where no one wants to contribute.
+		this.resetMocks();
+		final Blackboard blackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard))).thenReturn(false);
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard))).thenReturn(false);
+
+		final AnalysisController analysisController = new AnalysisController(blackboard, oneMeasurementTool,
+			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
+		analysisController.performAnalysis();
+		assertThat(analysisController.getAnalysisState(), is(AnalysisState.TERMINATED));
+	}
+
+	/**
+	 * Inizialises an {@link AnalysisController} with a endless running
+	 * {@link MeasurementTool}, used to test the
+	 * {@link AnalysisController#setAnalysisState(AnalysisState)}.
+	 *
+	 * @param sleepingMeasurementTool measurementTool which is running.
+	 *
+	 * @return the Analysis Controller (as specified above)
+	 */
+	private AnalysisController setUpController(final SleepingMeasurementTool sleepingMeasurementTool) {
+		final Set<MeasurementTool> oneMeasurementTool = new HashSet<>();
+		oneMeasurementTool.add(this.mockedMeasurementTool1);
+		final Set<MeasurementResultAnalyser> oneMeasurementResultAnalyser = new HashSet<>();
+		oneMeasurementResultAnalyser.add(this.mockedMeasurementResultAnalyser1);
+		final Set<ProposedExpressionAnalyser> oneProposedExpressionAnalyser = new HashSet<>();
+		oneProposedExpressionAnalyser.add(this.mockedProposedExpressionAnalyser1);
+
+		this.resetMocks();
+		final Blackboard blackboard = BLACKBOARD_FACTORY.getWithToBeMeasuredContent();
+
+		when(this.mockedMeasurementTool1.measure(anyObject())).then(sleepingMeasurementTool);
+		when(this.mockedMeasurementResultAnalyser1
+			.canContribute(new ReadOnlyMeasurementResultAnalyserBlackboardView(blackboard))).thenReturn(false);
+		when(this.mockedProposedExpressionAnalyser1
+			.canContribute(new ReadOnlyProposedExpressionAnalyserBlackboardView(blackboard))).thenReturn(false);
+
+		final AnalysisController analysisController = new AnalysisController(blackboard, oneMeasurementTool,
+			oneMeasurementResultAnalyser, oneProposedExpressionAnalyser);
+		new Thread(analysisController::performAnalysis).start();
+		synchronized (sleepingMeasurementTool) {
+			while (!sleepingMeasurementTool.called) {
+				try {
+					sleepingMeasurementTool.wait();
+				} catch (final InterruptedException interrupted) {
+					// try again
+				}
+			}
+		}
+		return analysisController;
+	}
+
+	/**
+	 * Stops the running {@link MeasurementTool} to stop the Analysis and the test.
+	 *
+	 * @param sleepingMeasurementTool which needs to be stopped.
+	 */
+	private void tearDownSetAnalysisTest(final SleepingMeasurementTool sleepingMeasurementTool) {
+		synchronized (sleepingMeasurementTool) {
+			sleepingMeasurementTool.sleep = false;
+			sleepingMeasurementTool.notifyAll();
+		}
+	}
+
+	/**
+	 * An {@link Answer} that goes to sleep until it’s waking up. Useful to assure that
+	 * tests happen <em>during</em> the analysis.
+	 *
+	 * @author Joshua Gleitze
+	 */
+	private class SleepingMeasurementTool implements Answer<List<MeasurementEvent>> {
+
+		/**
+		 * Whether we should sleep.
+		 */
+		private boolean sleep = true;
+
+		/**
+		 * Will be set to {@code true} once this answer was called.
+		 */
+		private boolean called;
+
+		@Override
+		public List<MeasurementEvent> answer(final InvocationOnMock invocation) throws Throwable {
+			synchronized (this) {
+				this.called = true;
+				this.notifyAll();
+			}
+			synchronized (this) {
+				while (this.sleep) {
+					try {
+						this.wait();
+					} catch (final InterruptedException interrupt) {
+						// Try again.
+					}
+				}
+			}
+			return new ArrayList<>();
+		}
+
 	}
 }
