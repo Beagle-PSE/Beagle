@@ -154,39 +154,42 @@ public class BeagleController {
 	}
 
 	/**
-	 * Pauses the analysis.
+	 * Pauses the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
 	 * @throws IllegalStateException If the analysis has not been started yet or this
 	 *             controller has not been initialised yet.
 	 */
 	public void pauseAnalysis() {
-<span class="nc" id="L163">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
-<span class="nc" id="L164">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
-<span class="nc" id="L165">		this.analysisController.setAnalysisState(AnalysisState.ENDING);</span>
-<span class="nc" id="L166">	}</span>
+<span class="nc" id="L164">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
+<span class="nc" id="L165">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
+<span class="nc" id="L166">		this.analysisController.setAnalysisState(AnalysisState.ENDING);</span>
+<span class="nc" id="L167">	}</span>
 
 	/**
-	 * Continues the analysis if it is paused.
+	 * Continues the analysis if it is paused. The call will be directed to the
+	 * {@link AnalysisController} started by this controller.
 	 *
 	 * @throws IllegalStateException If the analysis has not been started yet or this
 	 *             controller has not been initialised yet.
 	 */
 	public void continueAnalysis() {
-<span class="nc" id="L175">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
-<span class="nc" id="L176">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
-<span class="nc" id="L177">		this.analysisController.setAnalysisState(AnalysisState.RUNNING);</span>
-<span class="nc" id="L178">	}</span>
+<span class="nc" id="L177">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
+<span class="nc" id="L178">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
+<span class="nc" id="L179">		this.analysisController.setAnalysisState(AnalysisState.RUNNING);</span>
+<span class="nc" id="L180">	}</span>
 
 	/**
-	 * Aborts the analysis.
+	 * Aborts the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
 	 * @throws IllegalStateException If the analysis has not been started yet or this
 	 *             controller has not been initialised yet.
 	 */
 	public void abortAnalysis() {
-<span class="nc" id="L187">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
-<span class="nc" id="L188">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
-<span class="nc" id="L189">		this.analysisController.setAnalysisState(AnalysisState.ABORTING);</span>
-<span class="nc" id="L190">	}</span>
+<span class="nc" id="L190">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
+<span class="nc" id="L191">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
+<span class="nc" id="L192">		this.analysisController.setAnalysisState(AnalysisState.ABORTING);</span>
+<span class="nc" id="L193">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
