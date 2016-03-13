@@ -135,7 +135,7 @@ import java.util.Set;
 <span class="fc" id="L135">		finalJudge.init(this.blackboard);</span>
 <span class="fc" id="L136">		this.analysisState = AnalysisState.RUNNING;</span>
 
-<span class="pc bpc" id="L138" title="1 of 4 branches missed.">		while ((this.analysisState == AnalysisState.RUNNING) &amp;&amp; !finalJudge.judge(this.blackboard)) {</span>
+<span class="fc bfc" id="L138" title="All 4 branches covered.">		while ((this.analysisState == AnalysisState.RUNNING) &amp;&amp; !finalJudge.judge(this.blackboard)) {</span>
 <span class="fc bfc" id="L139" title="All 2 branches covered.">			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {</span>
 <span class="fc" id="L140">				this.measurementController.measure(measurementControllerBlackboardView);</span>
 
@@ -145,21 +145,21 @@ import java.util.Set;
 <span class="fc" id="L145">				this.clearSeffElementsToBeMeasuredFromBlackboard();</span>
 			}
 
-<span class="pc bpc" id="L148" title="1 of 2 branches missed.">			if ((this.analysisState != AnalysisState.ABORTING)</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">			if ((this.analysisState != AnalysisState.ABORTING)</span>
 <span class="fc bfc" id="L149" title="All 2 branches covered.">				&amp;&amp; !this.chooseRandomMeasurementResultAnalyserToContribute()) {</span>
 <span class="fc" id="L150">				this.chooseRandomProposedExpressionAnalyserToContribute();</span>
 			}
 		}
 
-<span class="pc bpc" id="L154" title="1 of 2 branches missed.">		if (this.analysisState == AnalysisState.ENDING) {</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">		if (this.analysisState == AnalysisState.ENDING) {</span>
 			/*
 			 * Call the {@link FinalJudge#judge} a last time so it measures the fitness
 			 * values and stores it on the blackboard.
 			 */
-<span class="nc" id="L159">			finalJudge.judge(this.blackboard);</span>
+<span class="fc" id="L159">			finalJudge.judge(this.blackboard);</span>
 
-<span class="nc" id="L161">			synchronized (this) {</span>
-<span class="nc bnc" id="L162" title="All 2 branches missed.">				while (this.analysisState != AnalysisState.RUNNING) {</span>
+<span class="fc" id="L161">			synchronized (this) {</span>
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">				while (this.analysisState != AnalysisState.RUNNING) {</span>
 					try {
 <span class="nc" id="L164">						this.wait();</span>
 <span class="nc" id="L165">					} catch (final InterruptedException exception) {</span>
@@ -279,13 +279,13 @@ import java.util.Set;
 			for (final ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute
 <span class="pc bpc" id="L280" title="1 of 2 branches missed.">				: proposedExpressionAnalysersAbleToContribute) {</span>
 				// @formatter:on
-<span class="fc bfc" id="L282" title="All 2 branches covered.">				if (count == chosenProposedExpressionAnalyser) {</span>
+<span class="pc bpc" id="L282" title="1 of 2 branches missed.">				if (count == chosenProposedExpressionAnalyser) {</span>
 <span class="fc" id="L283">					proposedExpressionAnalyserAbleToContribute.contribute(proposedExpressionAnalyserBlackboardView);</span>
 <span class="fc" id="L284">					return true;</span>
 				}
 
-<span class="fc" id="L287">				count++;</span>
-<span class="fc" id="L288">			}</span>
+<span class="nc" id="L287">				count++;</span>
+<span class="nc" id="L288">			}</span>
 
 		}
 
@@ -310,39 +310,41 @@ import java.util.Set;
 	 *            called.
 	 */
 	public void setAnalysisState(final AnalysisState analysisState) {
-<span class="pc bpc" id="L313" title="1 of 2 branches missed.">		Validate.validState(this.analysisState != null);</span>
+<span class="fc bfc" id="L313" title="All 2 branches covered.">		Validate.validState(this.analysisState != null);</span>
 
 		/*
 		 * Ignore this method call if the new state is equal to the old state.
 		 */
-<span class="pc bpc" id="L318" title="1 of 2 branches missed.">		if (this.analysisState.equals(analysisState)) {</span>
+<span class="fc bfc" id="L318" title="All 2 branches covered.">		if (this.analysisState.equals(analysisState)) {</span>
 <span class="fc" id="L319">			return;</span>
 		}
 
-<span class="nc bnc" id="L322" title="All 4 branches missed.">		switch (analysisState) {</span>
+<span class="pc bpc" id="L322" title="1 of 5 branches missed.">		switch (analysisState) {</span>
 			case RUNNING:
-<span class="nc bnc" id="L324" title="All 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.ENDING,</span>
+<span class="fc bfc" id="L324" title="All 2 branches covered.">				Validate.validState(this.analysisState == AnalysisState.ENDING,</span>
 					&quot;Can't switch from %s to AnalysisState.RUNNING.&quot;, this.analysisState);
-<span class="nc" id="L326">				break;</span>
+<span class="fc" id="L326">				break;</span>
 			case ABORTING:
-<span class="nc bnc" id="L328" title="All 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.RUNNING,</span>
+<span class="fc bfc" id="L328" title="All 2 branches covered.">				Validate.validState(this.analysisState == AnalysisState.RUNNING,</span>
 					&quot;Can't switch from %s to AnalysisState.ABORTING.&quot;, this.analysisState);
-<span class="nc" id="L330">				break;</span>
+<span class="fc" id="L330">				break;</span>
 			case ENDING:
-<span class="nc bnc" id="L332" title="All 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.RUNNING,</span>
+<span class="pc bpc" id="L332" title="1 of 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.RUNNING,</span>
 					&quot;Can't switch from %s to AnalysisState.ENDING.&quot;, this.analysisState);
-<span class="nc" id="L334">				break;</span>
+<span class="fc" id="L334">				break;</span>
+			case TERMINATED:
+				// no restrictions
+<span class="fc" id="L337">				break;</span>
 			default:
-<span class="nc bnc" id="L336" title="All 2 branches missed.">				assert false;</span>
-
+<span class="nc bnc" id="L339" title="All 2 branches missed.">				assert false;</span>
 				break;
 		}
 
-<span class="nc" id="L341">		synchronized (this) {</span>
-<span class="nc" id="L342">			this.analysisState = analysisState;</span>
-<span class="nc" id="L343">			this.notifyAll();</span>
-<span class="nc" id="L344">		}</span>
-<span class="nc" id="L345">	}</span>
+<span class="fc" id="L343">		synchronized (this) {</span>
+<span class="fc" id="L344">			this.analysisState = analysisState;</span>
+<span class="fc" id="L345">			this.notifyAll();</span>
+<span class="pc" id="L346">		}</span>
+<span class="fc" id="L347">	}</span>
 
 	/**
 	 * The callback the {@link AnalysisController} uses to interrupt the working thread if
@@ -362,14 +364,14 @@ import java.util.Set;
 		 *
 		 * @param mainThread The main thread. (The working thread.)
 		 */
-<span class="fc" id="L365">		Callback(final Thread mainThread) {</span>
-<span class="fc" id="L366">			this.mainTread = mainThread;</span>
-<span class="fc" id="L367">		}</span>
+<span class="fc" id="L367">		Callback(final Thread mainThread) {</span>
+<span class="fc" id="L368">			this.mainTread = mainThread;</span>
+<span class="fc" id="L369">		}</span>
 
 		@Override
 		public void run() {
-<span class="nc" id="L371">			this.mainTread.interrupt();</span>
-<span class="nc" id="L372">		}</span>
+<span class="nc" id="L373">			this.mainTread.interrupt();</span>
+<span class="nc" id="L374">		}</span>
 
 	}
 }
