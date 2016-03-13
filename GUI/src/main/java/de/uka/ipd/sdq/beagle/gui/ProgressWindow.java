@@ -5,6 +5,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -218,6 +219,13 @@ public class ProgressWindow {
 			this.buttonBar.dispose();
 			this.buttonBar = this.createButtonBar(buttonBarParent);
 			buttonBarParent.layout();
+
+			// if buttons were hidden or shown, we need to adjust the window’s size
+			final Point oldSize = this.getShell().getSize();
+			final Point newSize = this.getInitialSize();
+			if (!newSize.equals(oldSize)) {
+				this.getShell().setSize(newSize);
+			}
 		}
 
 		/**
@@ -241,7 +249,7 @@ public class ProgressWindow {
 		 * Updates the window to reflect that the analysis is running.
 		 */
 		private void setAborting() {
-			this.update("Beagle’s analysis is being aborted.", new String[0]);
+			this.update("Beagle is aborting the analysis.", new String[0]);
 		}
 
 		/**
