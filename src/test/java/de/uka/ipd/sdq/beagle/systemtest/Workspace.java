@@ -17,6 +17,7 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.ILaunchesListener2;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.console.IConsoleConstants;
@@ -104,6 +105,9 @@ public class Workspace {
 			}
 
 		}.schedule();
+
+		// Show error windows
+		ErrorDialog.AUTOMATED_MODE = false;
 	}
 
 	/**
