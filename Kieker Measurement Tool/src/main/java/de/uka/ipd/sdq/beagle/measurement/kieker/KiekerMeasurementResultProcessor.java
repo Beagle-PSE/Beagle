@@ -76,7 +76,7 @@ public class KiekerMeasurementResultProcessor {
 	 * @return The measurement events representing Kieker’s results.
 	 * @throws IOException If reading from Kieker’s result folder fails.
 	 */
-	public List<MeasurementEvent> process() throws IOException {
+	public List<MeasurementEvent> process() {
 		final List<MeasurementEvent> resultEvents = new LinkedList<>();
 
 		// in the moment, we’re only looking at resource demand results. If we can’t
