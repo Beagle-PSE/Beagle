@@ -25,10 +25,7 @@ import java.net.URISyntaxException;
  *
  * @author Annika Berger
  */
-// @formatter:off
-@PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
-	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
-// @formatter:on
+@PrepareForTest(PcmRepositoryFileLoader.class)
 public class PcmRepositoryFileLoaderTest {
 
 	/**
