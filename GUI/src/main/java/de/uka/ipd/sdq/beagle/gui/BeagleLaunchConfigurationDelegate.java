@@ -9,9 +9,12 @@ import de.uka.ipd.sdq.beagle.core.timeout.ConstantTimeout;
 import de.uka.ipd.sdq.beagle.core.timeout.NoTimeout;
 
 import org.apache.commons.lang3.Validate;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
@@ -20,8 +23,12 @@ import org.eclipse.debug.core.model.ISourceLocator;
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.UIJob;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -99,26 +106,27 @@ public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelega
 	private BeagleConfiguration convertBeagleLaunchConfigurationToBeagleConfiguration(
 		final ILaunchConfiguration launchConfiguration) {
 		try {
-			final IJavaProject javaProject =
-				JavaCore.create(ResourcesPlugin.getWorkspace().getRoot().getProject(launchConfiguration.getAttribute(
-					ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, "No project has been specified")));
-			final BeagleConfiguration beagleConfiguration = new BeagleConfiguration(null,
-				new File(javaProject.getProject().getLocation().toOSString() + "/"
-					+ launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE,
-						"No repository file has been set up in the launch configuration")),
-				new File(javaProject.getProject().getLocation().toOSString() + "/"
-					+ launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE,
-						"No source code link file has been set up in the launch configuration")),
-				javaProject);
+			final String projectName =
+				launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, "");
+			final String repositoryFileName =
+				launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, "");
+			final String sslFileName =
+				launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE, "");
+			final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+			final IJavaProject javaProject = JavaCore.create(project);
+			final BeagleConfiguration beagleConfiguration =
+				new BeagleConfiguration(null, project.getFile(repositoryFileName).getRawLocation().toFile(),
+					project.getFile(sslFileName).getRawLocation().toFile(), javaProject);
 
 			final String selectionType =
 				launchConfiguration.getAttribute(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE,
 					SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE_DEFAULT_VALUE);
 			if (selectionType
 				.equals(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_SELECTION_TYPE_VALUE_CUSTOM_REPOSITORY)) {
-				beagleConfiguration.setElements(
+				final List<String> customSelection =
 					launchConfiguration.getAttribute(SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_CUSTOM_SELECTION,
-						SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_CUSTOM_SELECTION_DEFAULT_VALUE));
+						SelectionOverviewTab.BEAGLE_LAUNCH_CONFIGURATION_CUSTOM_SELECTION_DEFAULT_VALUE);
+				beagleConfiguration.setElements(customSelection);
 			}
 
 			switch (launchConfiguration.getAttribute(TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE,
@@ -151,6 +159,33 @@ public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelega
 		return null;
 	}
 
+	@Override
+	public boolean preLaunchCheck(final ILaunchConfiguration configuration, final String mode,
+		final IProgressMonitor monitor) throws CoreException {
+		final LaunchChecker checker = new LaunchChecker(configuration);
+
+		checker.checkForTimeoutError();
+		checker.checkForLaunchConfigurationError();
+		checker.checkForProjectError();
+
+		if (checker.hasError()) {
+			new UIJob(Display.getDefault(), "Beagle cannot be started") {
+
+				@Override
+				public IStatus runInUIThread(final IProgressMonitor monitor) {
+					final Shell ourShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+					final String errorMessage = "Beagle cannot start the analysis, "
+						+ "because the launch configuration it was started with contains errors:\n\n"
+						+ checker.getErrorMessage();
+					MessageDialog.openError(ourShell, "Beagle cannot be started", errorMessage);
+					return Status.OK_STATUS;
+				}
+			}.schedule();
+			return false;
+		}
+		return true;
+	}
+
 	/**
 	 * The launch object passed to clients.
 	 *
@@ -175,7 +210,5 @@ public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelega
 		protected void fireTerminate() {
 			super.fireTerminate();
 		}
-
 	}
-
 }

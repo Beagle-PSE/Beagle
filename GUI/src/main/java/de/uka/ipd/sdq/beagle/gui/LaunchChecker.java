@@ -48,7 +48,7 @@ public class LaunchChecker {
 	 * on {@link ProjectTab}. The results can be obtained through {@link #hasError()} and
 	 * {@link #getErrorMessage()}.
 	 */
-	// CHECKSTYLE:IGNORE NPath
+	// CHECKSTYLE:IGNORE NPath|CyclomaticComplexity
 	public void checkForProjectError() {
 		final IProject project;
 		final String projectName;
@@ -62,7 +62,7 @@ public class LaunchChecker {
 			this.foundError("Malformed project configuration.");
 			return;
 		}
-		if (projectName == null) {
+		if (projectName == null || "".equals(projectName)) {
 			this.foundError("No project is configured");
 			return;
 		}
@@ -79,7 +79,7 @@ public class LaunchChecker {
 			this.foundError("Malformed repository file configuration.");
 			return;
 		}
-		if (repositoryFilePath == null) {
+		if (repositoryFilePath == null || "".equals(repositoryFilePath)) {
 			this.foundError("No repository file is configured.");
 		} else if (!project.getFile(repositoryFilePath).exists()) {
 			this.foundError("The configured repository file cannot be found.");
@@ -93,7 +93,7 @@ public class LaunchChecker {
 			this.foundError("Malformed source statement file configuration.");
 			return;
 		}
-		if (sslFilePath == null) {
+		if (sslFilePath == null || "".equals(sslFilePath)) {
 			this.foundError("No source statement link model file is configured.");
 		} else if (!project.getFile(sslFilePath).exists()) {
 			this.foundError("The configured source statement link model file cannot be found.");
@@ -154,13 +154,13 @@ public class LaunchChecker {
 			configurationNames = this.launchConfiguration.getAttribute(
 				LaunchConfigurationTab.BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, (List<String>) null);
 		} catch (final CoreException error) {
-			this.foundError("Malformed launch configurations configuration");
+			this.foundError("Malformed launch configurations configuration.");
 			return;
 		}
 
 		final List<ILaunchConfiguration> configurations = ILaunchConfigurationHelper.getByNames(configurationNames);
 		if (configurations.isEmpty()) {
-			this.foundError("No launch configurations are configured");
+			this.foundError("No launch configurations to executed the analysed softwar with are configured.");
 		}
 	}
 
