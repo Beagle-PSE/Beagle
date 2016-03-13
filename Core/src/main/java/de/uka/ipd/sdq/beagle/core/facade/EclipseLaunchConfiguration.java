@@ -90,12 +90,12 @@ public class EclipseLaunchConfiguration implements LaunchConfiguration {
 
 		// try again until we succeed or we’re told to stop by the failure handler
 		while (this.execute) {
-			// outer try, catches core exceptions. These might be thrown when terminating
-			// the launch, too.
+			// catches core exceptions. These might be thrown when terminating the
+			// launch, too.
 			try {
 				final ILaunch launch = this.workingCopy.launch(ILaunchManager.RUN_MODE, null);
 
-				// inner try, handles interrupts.
+				// handles interrupts.
 				try {
 					synchronized (this) {
 						while (!this.done) {
@@ -104,6 +104,7 @@ public class EclipseLaunchConfiguration implements LaunchConfiguration {
 					}
 				} catch (final InterruptedException interrupt) {
 					launch.terminate();
+					this.copy();
 					throw interrupt;
 				}
 
