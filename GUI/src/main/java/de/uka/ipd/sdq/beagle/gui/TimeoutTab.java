@@ -276,7 +276,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 
-				TimeoutTab.this.currentTimeoutTypeSelection = BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_DEFAULT_VALUE;
+				TimeoutTab.this.currentTimeoutTypeSelection = BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT;
 				TimeoutTab.this.updateLaunchConfigurationDialog();
 			}
 

@@ -109,7 +109,7 @@ public class LaunchChecker {
 		final String timeout;
 		try {
 			timeout = this.launchConfiguration.getAttribute(TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE,
-				(String) null);
+				TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_DEFAULT_VALUE);
 		} catch (final CoreException error) {
 			this.foundError("Malformed timeout configuration.");
 			return;
