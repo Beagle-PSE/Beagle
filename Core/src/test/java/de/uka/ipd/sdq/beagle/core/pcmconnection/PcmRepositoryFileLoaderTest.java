@@ -6,7 +6,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.whenNew;
 
-import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
+import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureResolver.FailureException;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -25,10 +25,7 @@ import java.net.URISyntaxException;
  *
  * @author Annika Berger
  */
-// @formatter:off
-@PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
-	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
-// @formatter:on
+@PrepareForTest(PcmRepositoryFileLoader.class)
 public class PcmRepositoryFileLoaderTest {
 
 	/**

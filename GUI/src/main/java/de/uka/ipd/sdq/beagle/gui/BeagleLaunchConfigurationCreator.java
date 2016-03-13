@@ -67,7 +67,7 @@ public class BeagleLaunchConfigurationCreator {
 	/**
 	 * Creates, saves and launches a new Beagle {@link ILaunchConfiguration}.
 	 */
-	public void createLaunchConfiguration() {
+	public void createAndLaunchConfiguration() {
 		final ILaunchManager manager = DebugPlugin.getDefault().getLaunchManager();
 		final ILaunchConfigurationType type = manager
 			.getLaunchConfigurationType(BeagleLaunchConfigurationDelegate.BEAGLE_LAUNCH_CONFIGURATION_IDENTIFIER);
@@ -110,7 +110,7 @@ public class BeagleLaunchConfigurationCreator {
 			workingCopy.launch(ILaunchManager.RUN_MODE, null);
 		} catch (final CoreException coreException) {
 			FailureHandler.getHandler(this.getClass())
-				.handle(new FailureReport<>().cause(coreException).retryWith(this::createLaunchConfiguration));
+				.handle(new FailureReport<>().cause(coreException).retryWith(this::createAndLaunchConfiguration));
 		}
 	}
 
