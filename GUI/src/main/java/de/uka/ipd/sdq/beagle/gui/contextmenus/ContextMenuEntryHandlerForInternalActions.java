@@ -79,8 +79,9 @@ public class ContextMenuEntryHandlerForInternalActions extends AbstractHandler {
 				.getProject());
 		}
 
-		// create a new GUI and open it
-		new BeagleLaunchConfigurationCreator(internalActions, repositoryFile, javaProject).createLaunchConfiguration();
+		final BeagleLaunchConfigurationCreator creator =
+			new BeagleLaunchConfigurationCreator(internalActions, repositoryFile, javaProject);
+		new Thread(creator::createAndLaunchConfiguration).start();
 		return null;
 	}
 }
