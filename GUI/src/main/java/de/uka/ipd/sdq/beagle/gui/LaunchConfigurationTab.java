@@ -231,6 +231,6 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 		final LaunchChecker checker = new LaunchChecker(launchConfig);
 		checker.checkForLaunchConfigurationError();
 		this.setErrorMessage(checker.getErrorMessage());
-		return checker.hasError();
+		return !checker.hasError();
 	}
 }

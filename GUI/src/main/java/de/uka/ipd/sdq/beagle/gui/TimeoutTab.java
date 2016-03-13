@@ -401,7 +401,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 		final LaunchChecker checker = new LaunchChecker(launchConfig);
 		checker.checkForTimeoutError();
 		this.setErrorMessage(checker.getErrorMessage());
-		return checker.hasError();
+		return !checker.hasError();
 	}
 
 	@Override

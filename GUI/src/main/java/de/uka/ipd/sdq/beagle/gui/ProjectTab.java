@@ -301,7 +301,7 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		final LaunchChecker checker = new LaunchChecker(launchConfig);
 		checker.checkForProjectError();
 		this.setErrorMessage(checker.getErrorMessage());
-		return checker.hasError();
+		return !checker.hasError();
 	}
 
 	/**
