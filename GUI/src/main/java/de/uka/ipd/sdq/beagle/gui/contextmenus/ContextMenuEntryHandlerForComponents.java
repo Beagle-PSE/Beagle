@@ -69,7 +69,9 @@ public class ContextMenuEntryHandlerForComponents extends AbstractHandler {
 				.getProject());
 		}
 		// create a new GUI and open it
-		new BeagleLaunchConfigurationCreator(components, repositoryFile, javaProject).createLaunchConfiguration();
+		final BeagleLaunchConfigurationCreator creator =
+			new BeagleLaunchConfigurationCreator(components, repositoryFile, javaProject);
+		new Thread(creator::createAndLaunchConfiguration).start();
 		return null;
 	}
 }
