@@ -153,7 +153,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEvent</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/KiekerMeasurementTool.html#measure-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder-">measure</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementOrder</a>&nbsp;measurementOrder)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/measurement/kieker/KiekerMeasurementTool.html#measure-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder-">measure</a></span>(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementOrder</a>&nbsp;newMeasurementOrder)</code>
 <div class="block">Executes a measurement.</div>
 </td>
 </tr>
@@ -202,7 +202,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <ul class="blockListLast">
 <li class="blockList">
 <h4>measure</h4>
-<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEvent</a>&gt;&nbsp;measure(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementOrder</a>&nbsp;measurementOrder)</pre>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEvent</a>&gt;&nbsp;measure(<a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementOrder.html" title="class in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementOrder</a>&nbsp;newMeasurementOrder)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html#measure-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder-">MeasurementTool</a></code></span></div>
 <div class="block">Executes a measurement. This method should return after the complete measurement
  finished.</div>
@@ -210,7 +210,7 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html#measure-de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder-">measure</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/MeasurementTool.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement">MeasurementTool</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>measurementOrder</code> - Container for the information, what to measure and the
+<dd><code>newMeasurementOrder</code> - Container for the information, what to measure and the
             launch Configurations.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>All <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/measurement/order/MeasurementEvent.html" title="interface in de.uka.ipd.sdq.beagle.core.measurement.order">MeasurementEvents</a> in the order they

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -98,7 +98,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
+<li>org.eclipse.debug.core.model.LaunchConfigurationDelegate</li>
+<li>
+<ul class="inheritance">
 <li>de.uka.ipd.sdq.beagle.gui.BeagleLaunchConfigurationDelegate</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -107,13 +112,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd>org.eclipse.debug.core.model.ILaunchConfigurationDelegate</dd>
+<dd>org.eclipse.debug.core.model.ILaunchConfigurationDelegate, org.eclipse.debug.core.model.ILaunchConfigurationDelegate2</dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">BeagleLaunchConfigurationDelegate</span>
-extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements org.eclipse.debug.core.model.ILaunchConfigurationDelegate</pre>
+extends org.eclipse.debug.core.model.LaunchConfigurationDelegate</pre>
 <div class="block">This class handles the launching of Beagle's ILaunchConfigurations.</div>
 </li>
 </ul>
@@ -140,6 +144,13 @@ implements org.eclipse.debug.core.model.ILaunchConfigurationDelegate</pre>
 </td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.org.eclipse.debug.core.model.LaunchConfigurationDelegate">
+<!--   -->
+</a>
+<h3>Fields inherited from class&nbsp;org.eclipse.debug.core.model.LaunchConfigurationDelegate</h3>
+<code>complileErrorProjectPromptStatus, complileErrorPromptStatus, promptStatus, saveScopedDirtyEditors, switchToDebugPromptStatus</code></li>
+</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -172,6 +183,11 @@ implements org.eclipse.debug.core.model.ILaunchConfigurationDelegate</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>org.eclipse.debug.core.ILaunch</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationDelegate.html#getLaunch-org.eclipse.debug.core.ILaunchConfiguration-java.lang.String-">getLaunch</a></span>(org.eclipse.debug.core.ILaunchConfiguration&nbsp;configuration,
+         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;mode)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../de/uka/ipd/sdq/beagle/gui/BeagleLaunchConfigurationDelegate.html#launch-org.eclipse.debug.core.ILaunchConfiguration-java.lang.String-org.eclipse.debug.core.ILaunch-org.eclipse.core.runtime.IProgressMonitor-">launch</a></span>(org.eclipse.debug.core.ILaunchConfiguration&nbsp;configuration,
       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;mode,
@@ -179,6 +195,13 @@ implements org.eclipse.debug.core.model.ILaunchConfigurationDelegate</pre>
       org.eclipse.core.runtime.IProgressMonitor&nbsp;monitor)</code>&nbsp;</td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.eclipse.debug.core.model.LaunchConfigurationDelegate">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.eclipse.debug.core.model.LaunchConfigurationDelegate</h3>
+<code>addReferencedProjects, buildForLaunch, buildProjects, computeBuildOrder, computeReferencedBuildOrder, existsProblems, finalLaunchCheck, getBreakpoints, getBuildOrder, getProjectsForProblemSearch, isLaunchProblem, preLaunchCheck, saveBeforeLaunch</code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
@@ -242,7 +265,7 @@ implements org.eclipse.debug.core.model.ILaunchConfigurationDelegate</pre>
 <a name="launch-org.eclipse.debug.core.ILaunchConfiguration-java.lang.String-org.eclipse.debug.core.ILaunch-org.eclipse.core.runtime.IProgressMonitor-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>launch</h4>
 <pre>public&nbsp;void&nbsp;launch(org.eclipse.debug.core.ILaunchConfiguration&nbsp;configuration,
@@ -251,8 +274,25 @@ implements org.eclipse.debug.core.model.ILaunchConfigurationDelegate</pre>
                    org.eclipse.core.runtime.IProgressMonitor&nbsp;monitor)
             throws org.eclipse.core.runtime.CoreException</pre>
 <dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>org.eclipse.core.runtime.CoreException</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getLaunch-org.eclipse.debug.core.ILaunchConfiguration-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getLaunch</h4>
+<pre>public&nbsp;org.eclipse.debug.core.ILaunch&nbsp;getLaunch(org.eclipse.debug.core.ILaunchConfiguration&nbsp;configuration,
+                                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;mode)
+                                         throws org.eclipse.core.runtime.CoreException</pre>
+<dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>launch</code>&nbsp;in interface&nbsp;<code>org.eclipse.debug.core.model.ILaunchConfigurationDelegate</code></dd>
+<dd><code>getLaunch</code>&nbsp;in interface&nbsp;<code>org.eclipse.debug.core.model.ILaunchConfigurationDelegate2</code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code>getLaunch</code>&nbsp;in class&nbsp;<code>org.eclipse.debug.core.model.LaunchConfigurationDelegate</code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>org.eclipse.core.runtime.CoreException</code></dd>
 </dl>
