@@ -1,11 +1,12 @@
 package de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation;
 
 import org.apache.commons.lang3.Validate;
+import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Block;
-import org.eclipse.jdt.core.dom.ReturnStatement;
 import org.eclipse.jdt.core.dom.Statement;
 import org.eclipse.jdt.core.dom.StructuralPropertyDescriptor;
+import org.eclipse.jdt.core.dom.TryStatement;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,16 +28,42 @@ import java.util.Optional;
 class AstStatementInserter {
 
 	/**
-	 * The node marking where to insert.
+	 * The node marking where to insert. We will insert around the statement containing
+	 * this node.
 	 */
 	private final ASTNode marker;
 
 	/**
-	 * The strategy defining how to insert after the insertion point has been found.If the
-	 * optional is not present, there is no such strategy (usually because there is no
-	 * valid insertion point).
+	 * The statement containing {@code marker}, around which we’re going to insert.
 	 */
-	private Optional<InsertionStrategy> insertionStrategy;
+	private Statement markedStatement;
+
+	/**
+	 * The list to insert statements in. Will be present iff an insertion point was found.
+	 */
+	private Optional<List<Statement>> insertionList;
+
+	/**
+	 * The list to insert statements in iff inserting after {@link #marker} and
+	 * {@link #differentAfterList} is {@code true}.
+	 */
+	private List<Statement> afterList;
+
+	/**
+	 * Index of the statement containing {@link #marker} in {@link #insertionList}.
+	 */
+	private int markerIndex;
+
+	/**
+	 * Whether statements that shall be inserted after {@link #marker} have to be inserted
+	 * into a different list.
+	 */
+	private boolean differentAfterList;
+
+	/**
+	 * Will be used to determine whether a statement could break the control flow.
+	 */
+	private final BreakingStatementDetector breakDetector = new BreakingStatementDetector();
 
 	/**
 	 * Creates an inserter that will insert statements around the provided {@code marker}.
@@ -56,7 +83,7 @@ class AstStatementInserter {
 	 */
 	boolean setUp() {
 		new InsertionPositionFinder().find();
-		return this.insertionStrategy.isPresent();
+		return this.insertionList.isPresent();
 	}
 
 	/**
@@ -67,36 +94,52 @@ class AstStatementInserter {
 	 */
 	void insertBefore(final Statement statement) {
 		Validate.notNull(statement);
-		// insert at the marker’s position.
-		this.insert(statement, 0);
+		Validate.validState(this.insertionList != null,
+			"Insertion is only possible after the inserter has been set up.");
+		Validate.validState(this.insertionList.isPresent(),
+			"Insertion is only possible if setting up the inserter succeeded.");
+
+		this.insertionList.get().add(this.markerIndex, statement);
+		this.markerIndex++;
 	}
 
 	/**
-	 * Inserts the provided {@code statement} after the provided the node this inserter
-	 * was created for. Tries to put the {@code statement} as close to the {@code marker}
-	 * as possible.
+	 * Inserts the provided {@code statement} after the the node this inserter was created
+	 * for. Tries to put the {@code statement} as close to the {@code marker} as possible.
 	 *
 	 * @param statement The statement to insert after the insertion node.
 	 */
 	void insertAfter(final Statement statement) {
 		Validate.notNull(statement);
-		// insert 1 after the marker’s position.
-		this.insert(statement, 1);
-	}
-
-	/**
-	 * Executes the insertion by first finding the insertion strategy and then executing
-	 * it.
-	 *
-	 * @param statement The statement to insert.
-	 * @param offset how far off to insert (0 for directly before, 1 for directly after).
-	 */
-	private void insert(final Statement statement, final int offset) {
-		Validate.validState(this.insertionStrategy != null,
+		Validate.validState(this.insertionList != null,
 			"Insertion is only possible after the inserter has been set up.");
-		Validate.validState(this.insertionStrategy.isPresent(),
+		Validate.validState(this.insertionList.isPresent(),
 			"Insertion is only possible if setting up the inserter succeeded.");
-		this.insertionStrategy.get().insert(statement, offset);
+
+		if (this.differentAfterList) {
+			this.afterList.add(0, statement);
+		} else if (this.breakDetector.containsControlFlowBreakingStatement(this.markedStatement)) {
+			// we are trying to insert after a control flow breaking statement. That’s
+			// dangerous, better surround with try…finally
+
+			final AST factory = this.markedStatement.getAST();
+			final TryStatement tryStatement = factory.newTryStatement();
+			tryStatement.setFinally(factory.newBlock());
+
+			@SuppressWarnings("unchecked")
+			final List<Statement> tryBodyStatements = tryStatement.getBody().statements();
+			@SuppressWarnings("unchecked")
+			final List<Statement> finallyStatements = tryStatement.getFinally().statements();
+			final Statement copy = (Statement) ASTNode.copySubtree(factory, this.markedStatement);
+			tryBodyStatements.add(copy);
+			finallyStatements.add(statement);
+			this.insertionList.get().set(this.markerIndex, tryStatement);
+			this.markedStatement = tryStatement;
+			this.differentAfterList = true;
+			this.afterList = finallyStatements;
+		} else {
+			this.insertionList.get().add(this.markerIndex, statement);
+		}
 	}
 
 	/**
@@ -137,7 +180,7 @@ class AstStatementInserter {
 				} else {
 					// we did not find a point to insert and have nowhere else to look. We
 					// failed.
-					AstStatementInserter.this.insertionStrategy = Optional.empty();
+					AstStatementInserter.this.insertionList = Optional.empty();
 				}
 			}
 		}
@@ -150,78 +193,16 @@ class AstStatementInserter {
 			assert propertyToInsertIn.isChildListProperty();
 
 			@SuppressWarnings("unchecked")
-			final List<ASTNode> listToInsertIn = (List<ASTNode>) node.getStructuralProperty(propertyToInsertIn);
-			final int markerIndex = listToInsertIn.indexOf(this.childToSearch);
+			final List<Statement> listToInsertIn = (List<Statement>) node.getStructuralProperty(propertyToInsertIn);
+			final int index = listToInsertIn.indexOf(this.childToSearch);
 
-			AstStatementInserter.this.insertionStrategy =
-				Optional.of(new ListInsertionStrategy(listToInsertIn, markerIndex));
+			// It’s a child of {@code node}, so it must be a Statement
+			AstStatementInserter.this.markedStatement = (Statement) this.childToSearch;
+			AstStatementInserter.this.insertionList = Optional.of(listToInsertIn);
+			AstStatementInserter.this.markerIndex = index;
 
 			this.success = true;
 			return false;
-		}
-	}
-
-	/**
-	 * Defines how to insert into the AST. Once an insertion point has been found by
-	 * {@link InsertionPositionFinder}, the logic how to insert at this point is defined
-	 * through an instance of this interface.
-	 *
-	 * @author Joshua Gleitze
-	 */
-	private interface InsertionStrategy {
-
-		/**
-		 * Performs an insertion into the AST.
-		 *
-		 * @param statementToInsert The statement to insert.
-		 * @param insertionOffset How far from the marker statement
-		 *            {@code statementToInsert} is to be inserted. {@code 0} to insert
-		 *            directly before, {@code 1} to insert directly after the statement.
-		 */
-		void insert(final Statement statementToInsert, final int insertionOffset);
-
-	}
-
-	/**
-	 * Inserts a statement into a found list of AST nodes.
-	 *
-	 * @author Joshua Gleitze
-	 */
-	private final class ListInsertionStrategy implements InsertionStrategy {
-
-		/**
-		 * The list to insert in.
-		 */
-		private final List<ASTNode> list;
-
-		/**
-		 * Marker of the statement to insert around.
-		 */
-		private int index;
-
-		/**
-		 * Creates a list inserter that inserts into the given {@code listToInsertIn}
-		 * around the given {@code markerIndex}.
-		 *
-		 * @param listToInsertIn The list to insert into.
-		 * @param markerIndex Index of the element around which will be inserted.
-		 */
-		private ListInsertionStrategy(final List<ASTNode> listToInsertIn, final int markerIndex) {
-			this.list = listToInsertIn;
-			this.index = markerIndex;
-		}
-
-		@Override
-		public void insert(final Statement statementToInsert, final int insertionOffset) {
-			int saveInsertionOffset = insertionOffset;
-			// hot fix for return statements.
-			if (this.list.get(this.index) instanceof ReturnStatement) {
-				saveInsertionOffset = Math.min(saveInsertionOffset, 0);
-			}
-			this.list.add(this.index + saveInsertionOffset, statementToInsert);
-			if (saveInsertionOffset <= 0) {
-				this.index++;
-			}
 		}
 	}
 }
