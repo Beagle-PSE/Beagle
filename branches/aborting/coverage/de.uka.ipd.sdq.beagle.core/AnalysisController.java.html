@@ -183,34 +183,32 @@ import java.util.Set;
 	 * Causes the analysis thread to sleep and wait for the analysis state to be set to
 	 * {@link AnalysisState#RUNNING} or {@link AnalysisState#ABORTING}.
 	 */
-	private void waitForPauseEnd() {
-<span class="fc" id="L187">		synchronized (this) {</span>
-<span class="pc bpc" id="L188" title="1 of 2 branches missed.">			while (this.analysisState == AnalysisState.ENDING) {</span>
-				try {
-<span class="nc" id="L190">					this.wait();</span>
-<span class="nc" id="L191">				} catch (final InterruptedException exception) {</span>
-					// Retry on interrupt. No handling is needed because the loop just
-					// tries again.
-<span class="nc" id="L194">				}</span>
-			}
-<span class="pc" id="L196">		}</span>
-<span class="fc" id="L197">	}</span>
+	private synchronized void waitForPauseEnd() {
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">		while (this.analysisState == AnalysisState.ENDING) {</span>
+			try {
+<span class="nc" id="L189">				this.wait();</span>
+<span class="nc" id="L190">			} catch (final InterruptedException exception) {</span>
+				// Retry on interrupt. No handling is needed because the loop just
+				// tries again.
+<span class="nc" id="L193">			}</span>
+		}
+<span class="fc" id="L195">	}</span>
 
 	/**
 	 * Adds all seff elements on the blackboard to the &quot;to be measured&quot; sets.
 	 *
 	 */
 	private void addAllSeffElementsAsToBeMeasured() {
-<span class="fc" id="L204">		final Set&lt;SeffBranch&gt; seffBranches = this.blackboard.getAllSeffBranches();</span>
-<span class="fc" id="L205">		final Set&lt;SeffLoop&gt; seffLoops = this.blackboard.getAllSeffLoops();</span>
-<span class="fc" id="L206">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = this.blackboard.getAllRdias();</span>
-<span class="fc" id="L207">		final Set&lt;ExternalCallParameter&gt; externalCallParameters = this.blackboard.getAllExternalCallParameters();</span>
+<span class="fc" id="L202">		final Set&lt;SeffBranch&gt; seffBranches = this.blackboard.getAllSeffBranches();</span>
+<span class="fc" id="L203">		final Set&lt;SeffLoop&gt; seffLoops = this.blackboard.getAllSeffLoops();</span>
+<span class="fc" id="L204">		final Set&lt;ResourceDemandingInternalAction&gt; rdias = this.blackboard.getAllRdias();</span>
+<span class="fc" id="L205">		final Set&lt;ExternalCallParameter&gt; externalCallParameters = this.blackboard.getAllExternalCallParameters();</span>
 
-<span class="fc" id="L209">		this.blackboard.addToBeMeasuredSeffBranches(seffBranches);</span>
-<span class="fc" id="L210">		this.blackboard.addToBeMeasuredSeffLoops(seffLoops);</span>
-<span class="fc" id="L211">		this.blackboard.addToBeMeasuredRdias(rdias);</span>
-<span class="fc" id="L212">		this.blackboard.addToBeMeasuredExternalCallParameters(externalCallParameters);</span>
-<span class="fc" id="L213">	}</span>
+<span class="fc" id="L207">		this.blackboard.addToBeMeasuredSeffBranches(seffBranches);</span>
+<span class="fc" id="L208">		this.blackboard.addToBeMeasuredSeffLoops(seffLoops);</span>
+<span class="fc" id="L209">		this.blackboard.addToBeMeasuredRdias(rdias);</span>
+<span class="fc" id="L210">		this.blackboard.addToBeMeasuredExternalCallParameters(externalCallParameters);</span>
+<span class="fc" id="L211">	}</span>
 
 	/**
 	 * Chooses a {@link MeasurementResultAnalyser} able to contribute at random and lets
@@ -220,42 +218,42 @@ import java.util.Set;
 	 *         was no {@link MeasurementResultAnalyser} able to contribute.
 	 */
 	private boolean chooseRandomMeasurementResultAnalyserToContribute() {
-<span class="fc" id="L223">		final ReadOnlyMeasurementResultAnalyserBlackboardView readOnlyMeasurementResultAnalyserBlackboardView =</span>
+<span class="fc" id="L221">		final ReadOnlyMeasurementResultAnalyserBlackboardView readOnlyMeasurementResultAnalyserBlackboardView =</span>
 			new ReadOnlyMeasurementResultAnalyserBlackboardView(this.blackboard);
-<span class="fc" id="L225">		final MeasurementResultAnalyserBlackboardView measurementResultAnalyserBlackboardView =</span>
+<span class="fc" id="L223">		final MeasurementResultAnalyserBlackboardView measurementResultAnalyserBlackboardView =</span>
 			new MeasurementResultAnalyserBlackboardView(this.blackboard);
 
-<span class="fc" id="L228">		final Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysersAbleToContribute =</span>
+<span class="fc" id="L226">		final Set&lt;MeasurementResultAnalyser&gt; measurementResultAnalysersAbleToContribute =</span>
 			new HashSet&lt;MeasurementResultAnalyser&gt;();
 
-<span class="fc bfc" id="L231" title="All 2 branches covered.">		for (final MeasurementResultAnalyser measurementResultAnalyser : this.measurementResultAnalysers) {</span>
-<span class="fc bfc" id="L232" title="All 2 branches covered.">			if (measurementResultAnalyser.canContribute(readOnlyMeasurementResultAnalyserBlackboardView)) {</span>
-<span class="fc" id="L233">				measurementResultAnalysersAbleToContribute.add(measurementResultAnalyser);</span>
+<span class="fc bfc" id="L229" title="All 2 branches covered.">		for (final MeasurementResultAnalyser measurementResultAnalyser : this.measurementResultAnalysers) {</span>
+<span class="fc bfc" id="L230" title="All 2 branches covered.">			if (measurementResultAnalyser.canContribute(readOnlyMeasurementResultAnalyserBlackboardView)) {</span>
+<span class="fc" id="L231">				measurementResultAnalysersAbleToContribute.add(measurementResultAnalyser);</span>
 			}
-<span class="fc" id="L235">		}</span>
+<span class="fc" id="L233">		}</span>
 
-<span class="fc bfc" id="L237" title="All 2 branches covered.">		if (measurementResultAnalysersAbleToContribute.size() != 0) {</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">		if (measurementResultAnalysersAbleToContribute.size() != 0) {</span>
 			// Choose a measurement result analyser at random.
-<span class="fc" id="L239">			final int minimum = 1;</span>
-<span class="fc" id="L240">			final int maximum = measurementResultAnalysersAbleToContribute.size();</span>
-<span class="fc" id="L241">			final int chosenResultAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;</span>
+<span class="fc" id="L237">			final int minimum = 1;</span>
+<span class="fc" id="L238">			final int maximum = measurementResultAnalysersAbleToContribute.size();</span>
+<span class="fc" id="L239">			final int chosenResultAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;</span>
 
-<span class="fc" id="L243">			int count = 1;</span>
+<span class="fc" id="L241">			int count = 1;</span>
 			// @formatter:off
 			for (final MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
-<span class="pc bpc" id="L246" title="1 of 2 branches missed.">				: measurementResultAnalysersAbleToContribute) {</span>
+<span class="pc bpc" id="L244" title="1 of 2 branches missed.">				: measurementResultAnalysersAbleToContribute) {</span>
 				// @formatter:on
-<span class="fc bfc" id="L248" title="All 2 branches covered.">				if (count == chosenResultAnalyser) {</span>
-<span class="fc" id="L249">					measurementResultAnalyserAbleToContribute.contribute(measurementResultAnalyserBlackboardView);</span>
-<span class="fc" id="L250">					return true;</span>
+<span class="fc bfc" id="L246" title="All 2 branches covered.">				if (count == chosenResultAnalyser) {</span>
+<span class="fc" id="L247">					measurementResultAnalyserAbleToContribute.contribute(measurementResultAnalyserBlackboardView);</span>
+<span class="fc" id="L248">					return true;</span>
 				}
 
-<span class="fc" id="L253">				count++;</span>
-<span class="fc" id="L254">			}</span>
+<span class="fc" id="L251">				count++;</span>
+<span class="fc" id="L252">			}</span>
 
 		}
 
-<span class="fc" id="L258">		return false;</span>
+<span class="fc" id="L256">		return false;</span>
 	}
 
 	/**
@@ -266,42 +264,42 @@ import java.util.Set;
 	 *         was no {@link ProposedExpressionAnalyser} able to contribute.
 	 */
 	private boolean chooseRandomProposedExpressionAnalyserToContribute() {
-<span class="fc" id="L269">		final ReadOnlyProposedExpressionAnalyserBlackboardView readOnlyProposedExpressionAnalyserBlackboardView =</span>
+<span class="fc" id="L267">		final ReadOnlyProposedExpressionAnalyserBlackboardView readOnlyProposedExpressionAnalyserBlackboardView =</span>
 			new ReadOnlyProposedExpressionAnalyserBlackboardView(this.blackboard);
-<span class="fc" id="L271">		final ProposedExpressionAnalyserBlackboardView proposedExpressionAnalyserBlackboardView =</span>
+<span class="fc" id="L269">		final ProposedExpressionAnalyserBlackboardView proposedExpressionAnalyserBlackboardView =</span>
 			new ProposedExpressionAnalyserBlackboardView(this.blackboard);
 
-<span class="fc" id="L274">		final Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysersAbleToContribute =</span>
+<span class="fc" id="L272">		final Set&lt;ProposedExpressionAnalyser&gt; proposedExpressionAnalysersAbleToContribute =</span>
 			new HashSet&lt;ProposedExpressionAnalyser&gt;();
 
-<span class="fc bfc" id="L277" title="All 2 branches covered.">		for (final ProposedExpressionAnalyser proposedExpressionAnalyser : this.proposedExpressionAnalysers) {</span>
-<span class="fc bfc" id="L278" title="All 2 branches covered.">			if (proposedExpressionAnalyser.canContribute(readOnlyProposedExpressionAnalyserBlackboardView)) {</span>
-<span class="fc" id="L279">				proposedExpressionAnalysersAbleToContribute.add(proposedExpressionAnalyser);</span>
+<span class="fc bfc" id="L275" title="All 2 branches covered.">		for (final ProposedExpressionAnalyser proposedExpressionAnalyser : this.proposedExpressionAnalysers) {</span>
+<span class="fc bfc" id="L276" title="All 2 branches covered.">			if (proposedExpressionAnalyser.canContribute(readOnlyProposedExpressionAnalyserBlackboardView)) {</span>
+<span class="fc" id="L277">				proposedExpressionAnalysersAbleToContribute.add(proposedExpressionAnalyser);</span>
 			}
-<span class="fc" id="L281">		}</span>
+<span class="fc" id="L279">		}</span>
 
-<span class="fc bfc" id="L283" title="All 2 branches covered.">		if (proposedExpressionAnalysersAbleToContribute.size() != 0) {</span>
+<span class="fc bfc" id="L281" title="All 2 branches covered.">		if (proposedExpressionAnalysersAbleToContribute.size() != 0) {</span>
 			// Choose a proposed expression analyser at random.
-<span class="fc" id="L285">			final int minimum = 1;</span>
-<span class="fc" id="L286">			final int maximum = proposedExpressionAnalysersAbleToContribute.size();</span>
-<span class="fc" id="L287">			final int chosenProposedExpressionAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;</span>
+<span class="fc" id="L283">			final int minimum = 1;</span>
+<span class="fc" id="L284">			final int maximum = proposedExpressionAnalysersAbleToContribute.size();</span>
+<span class="fc" id="L285">			final int chosenProposedExpressionAnalyser = new Random().nextInt(maximum - minimum + 1) + minimum;</span>
 
-<span class="fc" id="L289">			int count = 1;</span>
+<span class="fc" id="L287">			int count = 1;</span>
 			// @formatter:off
 			for (final ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute
-<span class="pc bpc" id="L292" title="1 of 2 branches missed.">				: proposedExpressionAnalysersAbleToContribute) {</span>
+<span class="pc bpc" id="L290" title="1 of 2 branches missed.">				: proposedExpressionAnalysersAbleToContribute) {</span>
 				// @formatter:on
-<span class="fc bfc" id="L294" title="All 2 branches covered.">				if (count == chosenProposedExpressionAnalyser) {</span>
-<span class="fc" id="L295">					proposedExpressionAnalyserAbleToContribute.contribute(proposedExpressionAnalyserBlackboardView);</span>
-<span class="fc" id="L296">					return true;</span>
+<span class="fc bfc" id="L292" title="All 2 branches covered.">				if (count == chosenProposedExpressionAnalyser) {</span>
+<span class="fc" id="L293">					proposedExpressionAnalyserAbleToContribute.contribute(proposedExpressionAnalyserBlackboardView);</span>
+<span class="fc" id="L294">					return true;</span>
 				}
 
-<span class="fc" id="L299">				count++;</span>
-<span class="fc" id="L300">			}</span>
+<span class="fc" id="L297">				count++;</span>
+<span class="fc" id="L298">			}</span>
 
 		}
 
-<span class="fc" id="L304">		return false;</span>
+<span class="fc" id="L302">		return false;</span>
 	}
 
 	/**
@@ -310,7 +308,7 @@ import java.util.Set;
 	 * @return The current state of the analysis.
 	 */
 	public AnalysisState getAnalysisState() {
-<span class="fc" id="L313">		return this.analysisState;</span>
+<span class="fc" id="L311">		return this.analysisState;</span>
 	}
 
 	/**
@@ -322,43 +320,43 @@ import java.util.Set;
 	 *            called.
 	 */
 	public void setAnalysisState(final AnalysisState analysisState) {
-<span class="pc bpc" id="L325" title="1 of 2 branches missed.">		Validate.validState(this.analysisState != null);</span>
+<span class="pc bpc" id="L323" title="1 of 2 branches missed.">		Validate.validState(this.analysisState != null);</span>
 
 		/*
 		 * Ignore this method call if the new state is equal to the old state.
 		 */
-<span class="pc bpc" id="L330" title="1 of 2 branches missed.">		if (this.analysisState.equals(analysisState)) {</span>
-<span class="fc" id="L331">			return;</span>
+<span class="pc bpc" id="L328" title="1 of 2 branches missed.">		if (this.analysisState.equals(analysisState)) {</span>
+<span class="fc" id="L329">			return;</span>
 		}
 
-<span class="nc bnc" id="L334" title="All 4 branches missed.">		switch (analysisState) {</span>
+<span class="nc bnc" id="L332" title="All 4 branches missed.">		switch (analysisState) {</span>
 			case RUNNING:
-<span class="nc bnc" id="L336" title="All 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.ENDING,</span>
+<span class="nc bnc" id="L334" title="All 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.ENDING,</span>
 					&quot;Can't switch from %s to AnalysisState.RUNNING.&quot;, this.analysisState);
-<span class="nc" id="L338">				break;</span>
+<span class="nc" id="L336">				break;</span>
 			case ABORTING:
-<span class="nc bnc" id="L340" title="All 2 branches missed.">				Validate.validState(this.analysisState != AnalysisState.TERMINATED,</span>
+<span class="nc bnc" id="L338" title="All 2 branches missed.">				Validate.validState(this.analysisState != AnalysisState.TERMINATED,</span>
 					&quot;Can't switch from %s to AnalysisState.ABORTING.&quot;, this.analysisState);
-<span class="nc" id="L342">				break;</span>
+<span class="nc" id="L340">				break;</span>
 			case ENDING:
-<span class="nc bnc" id="L344" title="All 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.RUNNING,</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">				Validate.validState(this.analysisState == AnalysisState.RUNNING,</span>
 					&quot;Can't switch from %s to AnalysisState.ENDING.&quot;, this.analysisState);
-<span class="nc" id="L346">				break;</span>
+<span class="nc" id="L344">				break;</span>
 			default:
-<span class="nc bnc" id="L348" title="All 2 branches missed.">				assert false;</span>
+<span class="nc bnc" id="L346" title="All 2 branches missed.">				assert false;</span>
 
 				break;
 		}
 
-<span class="nc bnc" id="L353" title="All 4 branches missed.">		if (analysisState == AnalysisState.ENDING || analysisState == AnalysisState.ABORTING) {</span>
-<span class="nc" id="L354">			this.analysisInterruptor.run();</span>
+<span class="nc bnc" id="L351" title="All 4 branches missed.">		if (analysisState == AnalysisState.ENDING || analysisState == AnalysisState.ABORTING) {</span>
+<span class="nc" id="L352">			this.analysisInterruptor.run();</span>
 		}
 
-<span class="nc" id="L357">		synchronized (this) {</span>
-<span class="nc" id="L358">			this.analysisState = analysisState;</span>
-<span class="nc" id="L359">			this.notifyAll();</span>
-<span class="nc" id="L360">		}</span>
-<span class="nc" id="L361">	}</span>
+<span class="nc" id="L355">		synchronized (this) {</span>
+<span class="nc" id="L356">			this.analysisState = analysisState;</span>
+<span class="nc" id="L357">			this.notifyAll();</span>
+<span class="nc" id="L358">		}</span>
+<span class="nc" id="L359">	}</span>
 
 	/**
 	 * The callback the {@link AnalysisController} uses to interrupt the working thread if
@@ -378,14 +376,14 @@ import java.util.Set;
 		 *
 		 * @param mainThread The main thread. (The working thread.)
 		 */
-<span class="fc" id="L381">		Interruptor(final Thread mainThread) {</span>
-<span class="fc" id="L382">			this.mainTread = mainThread;</span>
-<span class="fc" id="L383">		}</span>
+<span class="fc" id="L379">		Interruptor(final Thread mainThread) {</span>
+<span class="fc" id="L380">			this.mainTread = mainThread;</span>
+<span class="fc" id="L381">		}</span>
 
 		@Override
 		public void run() {
-<span class="nc" id="L387">			this.mainTread.interrupt();</span>
-<span class="nc" id="L388">		}</span>
+<span class="nc" id="L385">			this.mainTread.interrupt();</span>
+<span class="nc" id="L386">		}</span>
 
 	}
 }
