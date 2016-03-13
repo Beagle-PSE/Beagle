@@ -90,7 +90,6 @@ public class BeagleController {
 
 		final PcmSourceStatementLinkReader linkReader =
 			new PcmSourceStatementLinkReader(this.beagleConfiguration.getSourceStatementLinkFile());
-		linkReader.checkIntegrity(sourceCodeFileProvider, this.beagleConfiguration.getRepositoryFile());
 		final PcmSourceStatementLinkRepository linkRepository = linkReader.getPcmSourceLinkRepository();
 
 		if (this.beagleConfiguration.getElements() == null) {
