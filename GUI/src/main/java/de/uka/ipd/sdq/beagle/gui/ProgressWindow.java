@@ -269,7 +269,7 @@ public class ProgressWindow {
 					break;
 
 				case BUTTON_PAUSE_OR_CONTINUE:
-					if (this.paused) {
+					if (!this.paused) {
 						new Thread(ProgressWindow.this.guiController::pauseRequested).start();
 					} else {
 						new Thread(ProgressWindow.this.guiController::continueRequested).start();
