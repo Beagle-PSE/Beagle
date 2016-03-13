@@ -228,13 +228,18 @@ implements <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfig
 <ul class="blockList">
 <li class="blockList">
 <h4>execute</h4>
-<pre>public&nbsp;void&nbsp;execute()</pre>
+<pre>public&nbsp;void&nbsp;execute()
+             throws <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html#execute--">LaunchConfiguration</a></code></span></div>
 <div class="block">Executes the launch of the measured software. Resets all settings made through the
- setter methods.</div>
+ setter methods, regardless of whether the execution terminated normally.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html#execute--">execute</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/LaunchConfiguration.html" title="interface in de.uka.ipd.sdq.beagle.core">LaunchConfiguration</a></code></dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code> - If the current thread is interrupted while the launch
+             is being executed, an <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang"><code>InterruptedException</code></a> might be thrown to
+             indicate this.</dd>
 </dl>
 </li>
 </ul>
