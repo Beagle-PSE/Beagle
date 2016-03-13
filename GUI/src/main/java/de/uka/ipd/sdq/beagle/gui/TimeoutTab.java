@@ -119,6 +119,11 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
 
 	/**
+	 * The value used to indicate a bad constant timeout value.
+	 */
+	private static final int INVALID_TIMEOUT_SECONDS_VALUE = Integer.MIN_VALUE;
+
+	/**
 	 * A textbox for the timeout in seconds (if the timeout is set manually).
 	 */
 	private Text textboxTimeoutSeconds;
@@ -257,6 +262,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(false);
+				TimeoutTab.this.updateLaunchConfigurationDialog();
 			}
 
 			@Override
@@ -305,6 +311,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 		this.textboxTimeoutSeconds.addModifyListener(event -> TimeoutTab.this.updateLaunchConfigurationDialog());
 		this.textboxTimeoutSeconds.addListener(SWT.Verify, e -> {
+			TimeoutTab.this.updateLaunchConfigurationDialog();
 			final String string = e.text;
 			final char[] chars = new char[string.length()];
 			string.getChars(0, chars.length, chars, 0);
@@ -379,7 +386,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 		try {
 			timeout = Integer.parseInt(this.textboxTimeoutSeconds.getText());
 		} catch (final NumberFormatException numberFormatException) {
-			timeout = BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE;
+			timeout = INVALID_TIMEOUT_SECONDS_VALUE;
 		}
 		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE, timeout);
 	}
@@ -390,12 +397,58 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	}
 
 	@Override
-	public boolean canSave() {
+	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		final String timeout;
+		try {
+			timeout = launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE, (String) null);
+		} catch (final CoreException error) {
+			this.setErrorMessage("Malformed timeout configuration.");
+			return false;
+		}
+
+		switch (timeout) {
+			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT:
+				final int timeoutValue;
+				try {
+					timeoutValue = launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
+						INVALID_TIMEOUT_SECONDS_VALUE);
+				} catch (final CoreException error) {
+					this.setErrorMessage("Malformed timeout value configuration.");
+					return false;
+				}
+				if (timeoutValue == INVALID_TIMEOUT_SECONDS_VALUE) {
+					this.setErrorMessage("No timeout value configured.");
+					return false;
+				}
+				if (timeoutValue <= 0) {
+					this.setErrorMessage("Invalid timeout value configured. Must be greater than 0.");
+					return false;
+				}
+				break;
+
+			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT:
+			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT:
+				// valid values
+				break;
+
+			default:
+				this.setErrorMessage("Invalid timeout type configuration");
+				return false;
+		}
+
 		this.setErrorMessage(null);
+		return true;
+	}
+
+	@Override
+	public boolean canSave() {
 		if (this.textboxTimeoutSeconds.getText().isEmpty() && this.currentTimeoutTypeSelection
 			.equals(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT)) {
-			this.setErrorMessage("Please enter a value for the constant timeout");
+			this.setErrorMessage("No time is configured for the constant timeout");
+			return false;
 		}
+
+		this.setErrorMessage(null);
 		return true;
 	}
 }

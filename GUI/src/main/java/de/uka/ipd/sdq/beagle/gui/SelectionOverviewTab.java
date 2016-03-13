@@ -189,4 +189,5 @@ public class SelectionOverviewTab extends AbstractLaunchConfigurationTab {
 	public String getName() {
 		return TITLE;
 	}
+
 }

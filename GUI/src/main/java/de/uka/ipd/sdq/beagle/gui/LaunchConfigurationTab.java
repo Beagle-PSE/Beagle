@@ -228,16 +228,22 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		final List<String> configurationNames;
 		try {
-			final List<ILaunchConfiguration> launchConfigurationsToTest = ILaunchConfigurationHelper.getByNames(
-				launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>()));
-
-			if (launchConfigurationsToTest.isEmpty()) {
-				return false;
-			}
-		} catch (final CoreException coreException) {
-			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+			configurationNames =
+				launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, (List<String>) null);
+		} catch (final CoreException error) {
+			this.setErrorMessage("Malformed launch configurations configuration");
+			return false;
 		}
-		return super.isValid(launchConfig);
+
+		final List<ILaunchConfiguration> configurations = ILaunchConfigurationHelper.getByNames(configurationNames);
+		if (configurations.isEmpty()) {
+			this.setErrorMessage("No launch configurations are configured");
+			return false;
+		}
+
+		this.setErrorMessage(null);
+		return true;
 	}
 }

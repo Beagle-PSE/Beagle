@@ -12,8 +12,6 @@ import org.apache.commons.lang3.Validate;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
@@ -22,8 +20,6 @@ import org.eclipse.debug.core.model.ISourceLocator;
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.progress.UIJob;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -144,21 +140,6 @@ public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelega
 
 			final List<String> launchConfigurations = launchConfiguration.getAttribute(
 				LaunchConfigurationTab.BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>());
-			if (launchConfigurations.isEmpty()) {
-
-				// Fail in GUI Thread, that the user gets a message.
-				new UIJob(Display.getDefault(), "Run Beagle Launch Configuration") {
-
-					@Override
-					public IStatus runInUIThread(final IProgressMonitor monitor) {
-						FailureHandler.getHandler(this.getClass())
-							.handle(new FailureReport<>().details(
-								"No JUnit Launch configurations have been found. Please select the correct launch "
-									+ "configurations in the launch configuration tab."));
-						return Status.OK_STATUS;
-					}
-				}.schedule();
-			}
 			beagleConfiguration
 				.setLaunchConfigurations(new HashSet<>(ILaunchConfigurationHelper.toBeagleLaunchConfigurations(
 					ILaunchConfigurationHelper.getByNames(launchConfigurations), javaProject)));
