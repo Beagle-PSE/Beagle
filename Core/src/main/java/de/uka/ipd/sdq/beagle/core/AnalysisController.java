@@ -332,9 +332,11 @@ public class AnalysisController {
 				Validate.validState(this.analysisState == AnalysisState.RUNNING,
 					"Can't switch from %s to AnalysisState.ENDING.", this.analysisState);
 				break;
+			case TERMINATED:
+				// no restrictions
+				break;
 			default:
 				assert false;
-
 				break;
 		}
 
