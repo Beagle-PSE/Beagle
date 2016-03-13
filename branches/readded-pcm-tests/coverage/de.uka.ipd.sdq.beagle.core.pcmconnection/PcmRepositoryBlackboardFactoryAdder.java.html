@@ -85,7 +85,7 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 			}
 <span class="fc" id="L86">			this.repository = (RepositoryImpl) eObject;</span>
 <span class="fc" id="L87">		} catch (final WrappedException exception) {</span>
-<span class="fc" id="L88">			throw new IllegalArgumentException(&quot;Could not load repository file: &quot; + repositoryFileName, exception);</span>
+<span class="fc" id="L88">			throw new IllegalArgumentException(&quot;Could not load repository file: &quot; + exception.getMessage());</span>
 <span class="fc" id="L89">		}</span>
 <span class="fc" id="L90">	}</span>
 

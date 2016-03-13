@@ -233,13 +233,13 @@ import java.util.Set;
 			for (final MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
 <span class="pc bpc" id="L234" title="1 of 2 branches missed.">				: measurementResultAnalysersAbleToContribute) {</span>
 				// @formatter:on
-<span class="fc bfc" id="L236" title="All 2 branches covered.">				if (count == chosenResultAnalyser) {</span>
+<span class="pc bpc" id="L236" title="1 of 2 branches missed.">				if (count == chosenResultAnalyser) {</span>
 <span class="fc" id="L237">					measurementResultAnalyserAbleToContribute.contribute(measurementResultAnalyserBlackboardView);</span>
 <span class="fc" id="L238">					return true;</span>
 				}
 
-<span class="fc" id="L241">				count++;</span>
-<span class="fc" id="L242">			}</span>
+<span class="nc" id="L241">				count++;</span>
+<span class="nc" id="L242">			}</span>
 
 		}
 
@@ -279,13 +279,13 @@ import java.util.Set;
 			for (final ProposedExpressionAnalyser proposedExpressionAnalyserAbleToContribute
 <span class="pc bpc" id="L280" title="1 of 2 branches missed.">				: proposedExpressionAnalysersAbleToContribute) {</span>
 				// @formatter:on
-<span class="pc bpc" id="L282" title="1 of 2 branches missed.">				if (count == chosenProposedExpressionAnalyser) {</span>
+<span class="fc bfc" id="L282" title="All 2 branches covered.">				if (count == chosenProposedExpressionAnalyser) {</span>
 <span class="fc" id="L283">					proposedExpressionAnalyserAbleToContribute.contribute(proposedExpressionAnalyserBlackboardView);</span>
 <span class="fc" id="L284">					return true;</span>
 				}
 
-<span class="nc" id="L287">				count++;</span>
-<span class="nc" id="L288">			}</span>
+<span class="fc" id="L287">				count++;</span>
+<span class="fc" id="L288">			}</span>
 
 		}
 
