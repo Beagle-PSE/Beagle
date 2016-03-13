@@ -34,6 +34,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
+import java.io.File;
+
 /**
  * A tab of Beagle's launch configuration for setting up the project to analyse.
  *
@@ -296,6 +298,28 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		return JavaCore.create(this.getWorkspaceRoot());
 	}
 
+	@Override
+	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		try {
+			final IJavaProject javaProject =
+				JavaCore.create(ResourcesPlugin.getWorkspace().getRoot().getProject(launchConfig.getAttribute(
+					ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, "No project has been specified")));
+
+			if (!new File(javaProject.getProject().getLocation().toOSString() + "/" + launchConfig
+				.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, "Not existing file")).isFile()) {
+				return false;
+			}
+			if (!new File(javaProject.getProject().getLocation().toOSString() + "/" + launchConfig
+				.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE, "Not existing file"))
+					.isFile()) {
+				return false;
+			}
+		} catch (final CoreException coreException) {
+			FailureHandler.getHandler(this.getClass()).handle(new FailureReport<>().cause(coreException));
+		}
+		return super.isValid(launchConfig);
+	}
+
 	/**
 	 * Class for handling the clicks on widgets.
 	 *
@@ -323,5 +347,4 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 			}
 		}
 	}
-
 }

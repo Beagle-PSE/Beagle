@@ -229,8 +229,10 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	@Override
 	public boolean isValid(final ILaunchConfiguration launchConfig) {
 		try {
-			if (launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>())
-				.isEmpty()) {
+			final List<ILaunchConfiguration> launchConfigurationsToTest = ILaunchConfigurationHelper.getByNames(
+				launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>()));
+
+			if (launchConfigurationsToTest.isEmpty()) {
 				return false;
 			}
 		} catch (final CoreException coreException) {
