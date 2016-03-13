@@ -107,9 +107,9 @@ public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelega
 		final ILaunchConfiguration launchConfiguration) {
 		try {
 			final String projectName =
-				launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, "");
-			final String repositoryFileName =
 				launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, "");
+			final String repositoryFileName =
+				launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, "");
 			final String sslFileName =
 				launchConfiguration.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE, "");
 			final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
