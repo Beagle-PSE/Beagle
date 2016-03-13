@@ -41,5 +41,8 @@ public class FailureHandlerTest {
 		assertThat(method, throwsException(NullPointerException.class));
 
 		FailureHandler.setProvider(() -> null);
+
+		// Reset the provider after the test!
+		FailureHandler.setProvider(ExceptionThrowingFailureResolver::new);
 	}
 }
