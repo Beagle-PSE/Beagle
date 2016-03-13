@@ -88,6 +88,12 @@ public class AnalysisController {
 	private volatile AnalysisState analysisState;
 
 	/**
+	 * Interrupts the analysis if its state is set to {@link AnalysisState#ENDING} or
+	 * {@link AnalysisState#ABORTING}.
+	 */
+	private Runnable analysisInterruptor;
+
+	/**
 	 * Creates a controller to analyse all elements written on {@code blackboard}.
 	 *
 	 * @param blackboard A blackboard having everything to be analysed written on it. Must
@@ -114,9 +120,6 @@ public class AnalysisController {
 		this.measurementController = new MeasurementController(measurementTools);
 		this.measurementResultAnalysers = new HashSet<>(measurementResultAnalysers);
 		this.proposedExpressionAnalysers = new HashSet<>(proposedExpressionAnalysers);
-
-		final Callback callback = new Callback(Thread.currentThread());
-		this.blackboard.getProjectInformation().getTimeout().registerCallback(callback);
 	}
 
 	/**
@@ -124,6 +127,12 @@ public class AnalysisController {
 	 * judging. See the class description for more details on the analysis process.
 	 */
 	public void performAnalysis() {
+
+		this.analysisInterruptor = new Interruptor(Thread.currentThread());
+		this.blackboard.getProjectInformation()
+			.getTimeout()
+			.registerCallback(() -> this.setAnalysisState(AnalysisState.ABORTING));
+
 		final ReadOnlyMeasurementControllerBlackboardView readOnlyMeasurementControllerBlackboardView =
 			new ReadOnlyMeasurementControllerBlackboardView(this.blackboard);
 		final MeasurementControllerBlackboardView measurementControllerBlackboardView =
@@ -134,40 +143,26 @@ public class AnalysisController {
 		final FinalJudge finalJudge = new FinalJudge();
 		finalJudge.init(this.blackboard);
 		this.analysisState = AnalysisState.RUNNING;
+		boolean shouldContinue = true;
 
-		while ((this.analysisState == AnalysisState.RUNNING) && !finalJudge.judge(this.blackboard)) {
+		this.waitForPauseEnd();
+
+		while (this.analysisState != AnalysisState.ABORTING && shouldContinue) {
 			if (this.measurementController.canMeasure(readOnlyMeasurementControllerBlackboardView)) {
 				this.measurementController.measure(measurementControllerBlackboardView);
 
-				// After the measurements completed, clear the seff elements to be
-				// measured on the blackboard so they won't be measured again in the
-				// next iteration.
-				this.clearSeffElementsToBeMeasuredFromBlackboard();
-			}
-
-			if ((this.analysisState != AnalysisState.ABORTING)
-				&& !this.chooseRandomMeasurementResultAnalyserToContribute()) {
+				if (this.analysisState == AnalysisState.RUNNING) {
+					// After the measurements completed, clear the seff elements to be
+					// measured on the blackboard so they won't be measured again in the
+					// next iteration.
+					this.clearSeffElementsToBeMeasuredFromBlackboard();
+				}
+			} else if (!this.chooseRandomMeasurementResultAnalyserToContribute()) {
 				this.chooseRandomProposedExpressionAnalyserToContribute();
 			}
-		}
 
-		if (this.analysisState == AnalysisState.ENDING) {
-			/*
-			 * Call the {@link FinalJudge#judge} a last time so it measures the fitness
-			 * values and stores it on the blackboard.
-			 */
-			finalJudge.judge(this.blackboard);
-
-			synchronized (this) {
-				while (this.analysisState != AnalysisState.RUNNING) {
-					try {
-						this.wait();
-					} catch (final InterruptedException exception) {
-						// Retry on interrupt. No handling is needed because the loop just
-						// tries again.
-					}
-				}
-			}
+			shouldContinue = !finalJudge.judge(this.blackboard);
+			this.waitForPauseEnd();
 		}
 
 		this.analysisState = AnalysisState.TERMINATED;
@@ -182,6 +177,23 @@ public class AnalysisController {
 		this.blackboard.clearToBeMeasuredLoops();
 		this.blackboard.clearToBeMeasuredRdias();
 		this.blackboard.clearToBeMeasuredExternalCalls();
+	}
+
+	/**
+	 * Causes the analysis thread to sleep and wait for the analysis state to be set to
+	 * {@link AnalysisState#RUNNING} or {@link AnalysisState#ABORTING}.
+	 */
+	private void waitForPauseEnd() {
+		synchronized (this) {
+			while (this.analysisState == AnalysisState.ENDING) {
+				try {
+					this.wait();
+				} catch (final InterruptedException exception) {
+					// Retry on interrupt. No handling is needed because the loop just
+					// tries again.
+				}
+			}
+		}
 	}
 
 	/**
@@ -325,7 +337,7 @@ public class AnalysisController {
 					"Can't switch from %s to AnalysisState.RUNNING.", this.analysisState);
 				break;
 			case ABORTING:
-				Validate.validState(this.analysisState == AnalysisState.RUNNING,
+				Validate.validState(this.analysisState != AnalysisState.TERMINATED,
 					"Can't switch from %s to AnalysisState.ABORTING.", this.analysisState);
 				break;
 			case ENDING:
@@ -336,6 +348,10 @@ public class AnalysisController {
 				assert false;
 
 				break;
+		}
+
+		if (analysisState == AnalysisState.ENDING || analysisState == AnalysisState.ABORTING) {
+			this.analysisInterruptor.run();
 		}
 
 		synchronized (this) {
@@ -350,7 +366,7 @@ public class AnalysisController {
 	 *
 	 * @author Christoph Michelbach
 	 */
-	private class Callback implements Runnable {
+	private class Interruptor implements Runnable {
 
 		/**
 		 * The main thread. (The working thread.)
@@ -362,7 +378,7 @@ public class AnalysisController {
 		 *
 		 * @param mainThread The main thread. (The working thread.)
 		 */
-		Callback(final Thread mainThread) {
+		Interruptor(final Thread mainThread) {
 			this.mainTread = mainThread;
 		}
 
