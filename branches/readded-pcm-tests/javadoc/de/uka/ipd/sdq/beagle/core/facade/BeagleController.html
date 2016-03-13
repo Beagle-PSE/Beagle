@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -110,7 +110,8 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">BeagleController</span>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 <div class="block">Controls the execution of the Beagle Analysis. <code>BeagleController</code> can start,
- pause, continue, and abort an Analysis.</div>
+ pause, continue, and abort an Analysis. The controller has to be initialised through
+ <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html#initialise--"><code>initialise()</code></a> before it can be used.</div>
 </li>
 </ul>
 </div>
@@ -163,11 +164,17 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html#initialise--">initialise</a></span>()</code>
+<div class="block">Initialises this controller, making it ready to start the analysis.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html#pauseAnalysis--">pauseAnalysis</a></span>()</code>
 <div class="block">Pauses the analysis.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html#startAnalysis--">startAnalysis</a></span>()</code>
 <div class="block">Starts the analysis.</div>
@@ -220,6 +227,16 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="initialise--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initialise</h4>
+<pre>public&nbsp;void&nbsp;initialise()</pre>
+<div class="block">Initialises this controller, making it ready to start the analysis.</div>
+</li>
+</ul>
 <a name="startAnalysis--">
 <!--   -->
 </a>
@@ -229,6 +246,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <pre>public&nbsp;void&nbsp;startAnalysis()</pre>
 <div class="block">Starts the analysis. This method can only be used once per <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html" title="class in de.uka.ipd.sdq.beagle.core.facade"><code>BeagleController</code></a>
  . Further calls will be ignored.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - If <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/facade/BeagleController.html#initialise--"><code>initialise()</code></a> has not been called yet.</dd>
+</dl>
 </li>
 </ul>
 <a name="pauseAnalysis--">
@@ -238,8 +259,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>pauseAnalysis</h4>
 <pre>public&nbsp;void&nbsp;pauseAnalysis()</pre>
-<div class="block">Pauses the analysis. If the analysis is already paused, calls to this method are
- ignored.</div>
+<div class="block">Pauses the analysis. The call will be directed to the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><code>AnalysisController</code></a>
+ started by this controller.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - If the analysis has not been started yet or this
+             controller has not been initialised yet.</dd>
+</dl>
 </li>
 </ul>
 <a name="continueAnalysis--">
@@ -249,8 +275,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>continueAnalysis</h4>
 <pre>public&nbsp;void&nbsp;continueAnalysis()</pre>
-<div class="block">Continues the analysis if it is paused. If it's running, calls to this method are
- ignored.</div>
+<div class="block">Continues the analysis if it is paused. The call will be directed to the
+ <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><code>AnalysisController</code></a> started by this controller.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - If the analysis has not been started yet or this
+             controller has not been initialised yet.</dd>
+</dl>
 </li>
 </ul>
 <a name="abortAnalysis--">
@@ -260,9 +291,13 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>abortAnalysis</h4>
 <pre>public&nbsp;void&nbsp;abortAnalysis()</pre>
-<div class="block">Aborts the analysis. If it already is aborted, calls to this method are ignored.
- Aborting the analysis is also possible if it wasn't started yet. In this case it
- will never be possible to start it.</div>
+<div class="block">Aborts the analysis. The call will be directed to the <a href="../../../../../../../de/uka/ipd/sdq/beagle/core/AnalysisController.html" title="class in de.uka.ipd.sdq.beagle.core"><code>AnalysisController</code></a>
+ started by this controller.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html?is-external=true" title="class or interface in java.lang">IllegalStateException</a></code> - If the analysis has not been started yet or this
+             controller has not been initialised yet.</dd>
+</dl>
 </li>
 </ul>
 </li>
