@@ -183,15 +183,13 @@ public class AnalysisController {
 	 * Causes the analysis thread to sleep and wait for the analysis state to be set to
 	 * {@link AnalysisState#RUNNING} or {@link AnalysisState#ABORTING}.
 	 */
-	private void waitForPauseEnd() {
-		synchronized (this) {
-			while (this.analysisState == AnalysisState.ENDING) {
-				try {
-					this.wait();
-				} catch (final InterruptedException exception) {
-					// Retry on interrupt. No handling is needed because the loop just
-					// tries again.
-				}
+	private synchronized void waitForPauseEnd() {
+		while (this.analysisState == AnalysisState.ENDING) {
+			try {
+				this.wait();
+			} catch (final InterruptedException exception) {
+				// Retry on interrupt. No handling is needed because the loop just
+				// tries again.
 			}
 		}
 	}
