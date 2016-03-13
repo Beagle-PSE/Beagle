@@ -5,6 +5,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -128,9 +129,10 @@ public class LaunchChecker {
 				}
 
 				if (timeoutValue == TimeoutTab.INVALID_TIMEOUT_SECONDS_VALUE) {
-					this.foundError("No timeout value configured.");
+					this.foundError("A constant timeout, but no timeout value is configured.");
 				} else if (timeoutValue <= 0) {
-					this.foundError("Invalid timeout value configured. Must be greater than 0.");
+					this.foundError(
+						"A constant timeout, but an invalid timeout value configured. The value be greater than 0.");
 				}
 				return;
 
@@ -152,7 +154,7 @@ public class LaunchChecker {
 		final List<String> configurationNames;
 		try {
 			configurationNames = this.launchConfiguration.getAttribute(
-				LaunchConfigurationTab.BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, (List<String>) null);
+				LaunchConfigurationTab.BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, new ArrayList<>());
 		} catch (final CoreException error) {
 			this.foundError("Malformed launch configurations configuration.");
 			return;
@@ -160,7 +162,7 @@ public class LaunchChecker {
 
 		final List<ILaunchConfiguration> configurations = ILaunchConfigurationHelper.getByNames(configurationNames);
 		if (configurations.isEmpty()) {
-			this.foundError("No launch configurations to executed the analysed softwar with are configured.");
+			this.foundError("No launch configurations to execute the analysed software with are configured.");
 		}
 	}
 
