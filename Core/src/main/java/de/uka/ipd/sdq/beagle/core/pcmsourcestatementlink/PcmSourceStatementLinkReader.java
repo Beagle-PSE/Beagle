@@ -1,8 +1,9 @@
 package de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink;
 
-import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
+
+import org.apache.commons.lang3.Validate;
 
 import java.io.File;
 
@@ -40,25 +41,9 @@ public class PcmSourceStatementLinkReader {
 	 * @param linkRepositoryFile The file to read in.
 	 */
 	public PcmSourceStatementLinkReader(final File linkRepositoryFile) {
+		Validate.notNull(linkRepositoryFile);
+		Validate.isTrue(linkRepositoryFile.exists());
 		this.inputFile = linkRepositoryFile;
-	}
-
-	/**
-	 * Checks the integrity of the input file. This means to check the hash sums in the
-	 * file against against those calculated for the source code files provided by the
-	 * given {@code sourceCodeFileProvider} and the one for the provided
-	 * {@code pcmRepositoryFile}.
-	 *
-	 * <p>If anything, either the integrity check or reading in the input file, fails, the
-	 * method will report to the {@linkplain FailureHandler failure API}.
-	 *
-	 * @param sourceCodeFileProvider The provider for source code files for which hash
-	 *            sums should be checked.
-	 * @param pcmRepositoryFile The PCM repository file to check the hash sum for.
-	 */
-	public void checkIntegrity(final SourceCodeFileProvider sourceCodeFileProvider, final File pcmRepositoryFile) {
-		this.readIn();
-
 	}
 
 	/**
@@ -90,15 +75,6 @@ public class PcmSourceStatementLinkReader {
 			result = unmarshaller.unmarshal(this.inputFile);
 		} catch (final JAXBException unmarshalError) {
 			final FailureReport<Void> failure = new FailureReport<Void>().cause(unmarshalError).retryWith(this::readIn);
-			FAILURE_HANDLER.handle(failure);
-			return;
-		}
-
-		if (!(result instanceof PcmSourceStatementLinkRepository)) {
-			final FailureReport<Void> failure =
-				new FailureReport<Void>().message("The provided PCM Source Statement Link Model has a bad root type.")
-					.details("expected a PcmSourceStatementLinkRepository, but found a %s.", result.getClass())
-					.retryWith(this::readIn);
 			FAILURE_HANDLER.handle(failure);
 			return;
 		}

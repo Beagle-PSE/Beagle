@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:PcmSourceStatementLink pcmElementId="_WppsAOicEeWjjZ_kGVvm5w" xmlns:ns2="http://sdq.ipd.uka.de/beagle/core/pcmsourcestatementlink">
+    <FirstStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorGCD">577</FirstStatement>
+    <LastStatement sourceCodeFile="org.splevo.examples.calculator.CalculatorGCD">764</LastStatement>
+</ns2:PcmSourceStatementLink>
