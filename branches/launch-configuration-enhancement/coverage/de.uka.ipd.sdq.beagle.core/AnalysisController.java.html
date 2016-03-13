@@ -187,10 +187,10 @@ import java.util.Set;
 <span class="fc bfc" id="L187" title="All 2 branches covered.">		while (this.analysisState == AnalysisState.ENDING) {</span>
 			try {
 <span class="nc" id="L189">				this.wait();</span>
-<span class="fc" id="L190">			} catch (final InterruptedException exception) {</span>
+<span class="nc" id="L190">			} catch (final InterruptedException exception) {</span>
 				// Retry on interrupt. No handling is needed because the loop just
 				// tries again.
-<span class="pc" id="L193">			}</span>
+<span class="nc" id="L193">			}</span>
 		}
 <span class="fc" id="L195">	}</span>
 
@@ -243,13 +243,13 @@ import java.util.Set;
 			for (final MeasurementResultAnalyser measurementResultAnalyserAbleToContribute
 <span class="pc bpc" id="L244" title="1 of 2 branches missed.">				: measurementResultAnalysersAbleToContribute) {</span>
 				// @formatter:on
-<span class="pc bpc" id="L246" title="1 of 2 branches missed.">				if (count == chosenResultAnalyser) {</span>
+<span class="fc bfc" id="L246" title="All 2 branches covered.">				if (count == chosenResultAnalyser) {</span>
 <span class="fc" id="L247">					measurementResultAnalyserAbleToContribute.contribute(measurementResultAnalyserBlackboardView);</span>
 <span class="fc" id="L248">					return true;</span>
 				}
 
-<span class="nc" id="L251">				count++;</span>
-<span class="nc" id="L252">			}</span>
+<span class="fc" id="L251">				count++;</span>
+<span class="fc" id="L252">			}</span>
 
 		}
 
