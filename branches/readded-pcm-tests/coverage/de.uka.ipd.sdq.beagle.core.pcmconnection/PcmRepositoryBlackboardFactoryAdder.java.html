@@ -76,19 +76,18 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 
 <span class="fc" id="L77">		RepositoryFactory.eINSTANCE.createRepository();</span>
 		try {
-			// Not sure if this final declaration could lead to a problem.
 
-<span class="fc" id="L81">			final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
+<span class="fc" id="L80">			final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
 
-<span class="fc" id="L83">			final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);</span>
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">			if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
-<span class="nc" id="L85">				throw new IllegalArgumentException();</span>
+<span class="fc" id="L82">			final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFileName, ePackage);</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">			if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
+<span class="nc" id="L84">				throw new IllegalArgumentException();</span>
 			}
-<span class="fc" id="L87">			this.repository = (RepositoryImpl) eObject;</span>
-<span class="fc" id="L88">		} catch (final WrappedException exception) {</span>
-<span class="fc" id="L89">			throw new IllegalArgumentException(exception);</span>
-<span class="fc" id="L90">		}</span>
-<span class="fc" id="L91">	}</span>
+<span class="fc" id="L86">			this.repository = (RepositoryImpl) eObject;</span>
+<span class="fc" id="L87">		} catch (final WrappedException exception) {</span>
+<span class="fc" id="L88">			throw new IllegalArgumentException(&quot;Could not load repository file: &quot; + exception.getMessage());</span>
+<span class="fc" id="L89">		}</span>
+<span class="fc" id="L90">	}</span>
 
 	/**
 	 * Creates a factory that will search the provided PCM file for &lt;em&gt;PCM elements&lt;/em&gt;.
@@ -102,8 +101,8 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	public PcmRepositoryBlackboardFactoryAdder(final File pcmRepositoryFiles,
 		final SourceCodeFileProvider sourceCodeFileProvider,
 		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {
-<span class="fc" id="L105">		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider, sourceStatementLinkRepository);</span>
-<span class="fc" id="L106">	}</span>
+<span class="fc" id="L104">		this(pcmRepositoryFiles.getAbsolutePath(), sourceCodeFileProvider, sourceStatementLinkRepository);</span>
+<span class="fc" id="L105">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing all found
@@ -115,9 +114,9 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForAllElements(final BlackboardCreator blackboardFactory) {
-<span class="fc" id="L118">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);</span>
-<span class="fc" id="L119">		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);</span>
-<span class="fc" id="L120">	}</span>
+<span class="fc" id="L117">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);</span>
+<span class="fc" id="L118">		this.pcmExtractor.getBlackboardForAllElements(this.repository, blackboardFactory);</span>
+<span class="fc" id="L119">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing &lt;em&gt;PCM
@@ -149,18 +148,18 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForIds(final Collection&lt;String&gt; identifiers, final BlackboardCreator blackboardFactory) {
-<span class="fc bfc" id="L152" title="All 2 branches covered.">		if (identifiers == null) {</span>
-<span class="fc" id="L153">			throw new NullPointerException();</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">		if (identifiers == null) {</span>
+<span class="fc" id="L152">			throw new NullPointerException();</span>
 		}
-<span class="fc bfc" id="L155" title="All 2 branches covered.">		for (final String identifier : identifiers) {</span>
-<span class="fc bfc" id="L156" title="All 2 branches covered.">			if (identifier == null) {</span>
-<span class="fc" id="L157">				throw new NullPointerException();</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">		for (final String identifier : identifiers) {</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">			if (identifier == null) {</span>
+<span class="fc" id="L156">				throw new NullPointerException();</span>
 			}
-<span class="fc" id="L159">		}</span>
-<span class="fc" id="L160">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);</span>
-<span class="fc" id="L161">		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);</span>
+<span class="fc" id="L158">		}</span>
+<span class="fc" id="L159">		this.pcmExtractor = new PcmRepositoryExtractor(this.sourceCodeFileProvider, this.sourceStatementLinkRepository);</span>
+<span class="fc" id="L160">		this.pcmExtractor.getBlackboardForIds(this.repository, identifiers, blackboardFactory);</span>
 
-<span class="fc" id="L163">	}</span>
+<span class="fc" id="L162">	}</span>
 
 	/**
 	 * Builds a new blackboard and writes the Beagle objects representing &lt;em&gt;PCM
@@ -192,20 +191,20 @@ public class PcmRepositoryBlackboardFactoryAdder implements BlackboardStorer&lt;
 	 *            never be {@code null} afterwards.
 	 */
 	public void getBlackboardForIds(final BlackboardCreator blackboardFactory, final String... identifiers) {
-<span class="fc bfc" id="L195" title="All 2 branches covered.">		if (identifiers == null) {</span>
-<span class="fc" id="L196">			throw new NullPointerException();</span>
+<span class="fc bfc" id="L194" title="All 2 branches covered.">		if (identifiers == null) {</span>
+<span class="fc" id="L195">			throw new NullPointerException();</span>
 		}
-<span class="fc bfc" id="L198" title="All 2 branches covered.">		for (final String identifier : identifiers) {</span>
-<span class="fc bfc" id="L199" title="All 2 branches covered.">			if (identifier == null) {</span>
-<span class="fc" id="L200">				throw new NullPointerException();</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">		for (final String identifier : identifiers) {</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">			if (identifier == null) {</span>
+<span class="fc" id="L199">				throw new NullPointerException();</span>
 			}
 		}
-<span class="fc" id="L203">		final Collection&lt;String&gt; identifierCollection = new LinkedList&lt;String&gt;();</span>
-<span class="fc bfc" id="L204" title="All 2 branches covered.">		for (final String identifier : identifiers) {</span>
-<span class="fc" id="L205">			identifierCollection.add(identifier);</span>
+<span class="fc" id="L202">		final Collection&lt;String&gt; identifierCollection = new LinkedList&lt;String&gt;();</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">		for (final String identifier : identifiers) {</span>
+<span class="fc" id="L204">			identifierCollection.add(identifier);</span>
 		}
-<span class="fc" id="L207">		this.getBlackboardForIds(identifierCollection, blackboardFactory);</span>
-<span class="fc" id="L208">	}</span>
+<span class="fc" id="L206">		this.getBlackboardForIds(identifierCollection, blackboardFactory);</span>
+<span class="fc" id="L207">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
