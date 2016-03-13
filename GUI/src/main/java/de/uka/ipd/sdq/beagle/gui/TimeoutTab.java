@@ -98,6 +98,11 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	public static final int BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE = 60;
 
 	/**
+	 * The value used to indicate a bad constant timeout value.
+	 */
+	public static final int INVALID_TIMEOUT_SECONDS_VALUE = Integer.MIN_VALUE;
+
+	/**
 	 * The title of this tab.
 	 */
 	private static final String TITLE = "Timeout";
@@ -117,11 +122,6 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	 * The number of columns of the layout of the lower container.
 	 */
 	private static final int LOWER_LAYOUT_NR_COLUMS = 3;
-
-	/**
-	 * The value used to indicate a bad constant timeout value.
-	 */
-	private static final int INVALID_TIMEOUT_SECONDS_VALUE = Integer.MIN_VALUE;
 
 	/**
 	 * A textbox for the timeout in seconds (if the timeout is set manually).
@@ -398,46 +398,10 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public boolean isValid(final ILaunchConfiguration launchConfig) {
-		final String timeout;
-		try {
-			timeout = launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE, (String) null);
-		} catch (final CoreException error) {
-			this.setErrorMessage("Malformed timeout configuration.");
-			return false;
-		}
-
-		switch (timeout) {
-			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT:
-				final int timeoutValue;
-				try {
-					timeoutValue = launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
-						INVALID_TIMEOUT_SECONDS_VALUE);
-				} catch (final CoreException error) {
-					this.setErrorMessage("Malformed timeout value configuration.");
-					return false;
-				}
-				if (timeoutValue == INVALID_TIMEOUT_SECONDS_VALUE) {
-					this.setErrorMessage("No timeout value configured.");
-					return false;
-				}
-				if (timeoutValue <= 0) {
-					this.setErrorMessage("Invalid timeout value configured. Must be greater than 0.");
-					return false;
-				}
-				break;
-
-			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_ADAPTIVE_TIMEOUT:
-			case BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT:
-				// valid values
-				break;
-
-			default:
-				this.setErrorMessage("Invalid timeout type configuration");
-				return false;
-		}
-
-		this.setErrorMessage(null);
-		return true;
+		final LaunchChecker checker = new LaunchChecker(launchConfig);
+		checker.checkForTimeoutError();
+		this.setErrorMessage(checker.getErrorMessage());
+		return checker.hasError();
 	}
 
 	@Override

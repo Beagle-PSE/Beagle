@@ -3,7 +3,6 @@ package de.uka.ipd.sdq.beagle.gui;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
 import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -297,66 +296,12 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		return JavaCore.create(this.getWorkspaceRoot());
 	}
 
-	/*
-	 * This method has to perform checks. Thus, there are a lot of paths through it, but
-	 * that makes sense at this point.
-	 */
-	// CHECKSTYLE:IGNORE NPath
 	@Override
 	public boolean isValid(final ILaunchConfiguration launchConfig) {
-		final IProject project;
-		final String projectName;
-		final String repositoryFilePath;
-		final String sslFilePath;
-
-		try {
-			projectName = launchConfig.getAttribute(ProjectTab.BEAGLE_LAUNCH_CONFIGURATION_IJAVAPROJECT, (String) null);
-		} catch (final CoreException coreException) {
-			this.setErrorMessage("Malformed project configuration.");
-			return false;
-		}
-		if (projectName == null) {
-			this.setErrorMessage("No project is configured");
-			return false;
-		}
-		project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-		if (!project.exists()) {
-			this.setErrorMessage("The configured project does not exist.");
-			return false;
-		}
-
-		try {
-			repositoryFilePath = launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_REPOSITORY_FILE, (String) null);
-		} catch (final CoreException coreException) {
-			this.setErrorMessage("Malformed repository file configuration.");
-			return false;
-		}
-		if (repositoryFilePath == null) {
-			this.setErrorMessage("No repository file is configured.");
-			return false;
-		}
-		if (!project.getFile(repositoryFilePath).exists()) {
-			this.setErrorMessage("The configured repository file cannot be found.");
-			return false;
-		}
-
-		try {
-			sslFilePath = launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_SOURCECODELINK_FILE, (String) null);
-		} catch (final CoreException coreException) {
-			this.setErrorMessage("Malformed source statement file configuration.");
-			return false;
-		}
-		if (sslFilePath == null) {
-			this.setErrorMessage("No source statement link model file is configured.");
-			return false;
-		}
-		if (!project.getFile(sslFilePath).exists()) {
-			this.setErrorMessage("The configured source statement link model file cannot be found.");
-			return false;
-		}
-
-		this.setErrorMessage(null);
-		return true;
+		final LaunchChecker checker = new LaunchChecker(launchConfig);
+		checker.checkForProjectError();
+		this.setErrorMessage(checker.getErrorMessage());
+		return checker.hasError();
 	}
 
 	/**

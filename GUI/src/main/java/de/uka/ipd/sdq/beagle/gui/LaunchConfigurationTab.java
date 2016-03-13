@@ -228,22 +228,9 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 
 	@Override
 	public boolean isValid(final ILaunchConfiguration launchConfig) {
-		final List<String> configurationNames;
-		try {
-			configurationNames =
-				launchConfig.getAttribute(BEAGLE_LAUNCH_CONFIGURATION_LAUNCHCONFIGURATION, (List<String>) null);
-		} catch (final CoreException error) {
-			this.setErrorMessage("Malformed launch configurations configuration");
-			return false;
-		}
-
-		final List<ILaunchConfiguration> configurations = ILaunchConfigurationHelper.getByNames(configurationNames);
-		if (configurations.isEmpty()) {
-			this.setErrorMessage("No launch configurations are configured");
-			return false;
-		}
-
-		this.setErrorMessage(null);
-		return true;
+		final LaunchChecker checker = new LaunchChecker(launchConfig);
+		checker.checkForLaunchConfigurationError();
+		this.setErrorMessage(checker.getErrorMessage());
+		return checker.hasError();
 	}
 }
