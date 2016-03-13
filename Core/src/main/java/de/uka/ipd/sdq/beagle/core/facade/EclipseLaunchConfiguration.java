@@ -58,6 +58,12 @@ public class EclipseLaunchConfiguration implements LaunchConfiguration {
 	private boolean done;
 
 	/**
+	 * Indicates whether the execution should be tried (again). Used the retry if the
+	 * execution threw an exception.
+	 */
+	private boolean execute;
+
+	/**
 	 * Creates a Beagle launch configuration from an eclipse launch configuration.
 	 *
 	 * @param launchConfiguration The eclipse launch configuration which should be
@@ -78,23 +84,40 @@ public class EclipseLaunchConfiguration implements LaunchConfiguration {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws InterruptedException {
 		this.done = false;
-		try {
-			this.workingCopy.launch(ILaunchManager.RUN_MODE, null);
+		this.execute = true;
 
-			synchronized (this) {
-				while (!this.done) {
-					this.wait();
+		// try again until we succeed or we’re told to stop by the failure handler
+		while (this.execute) {
+			// outer try, catches core exceptions. These might be thrown when terminating
+			// the launch, too.
+			try {
+				final ILaunch launch = this.workingCopy.launch(ILaunchManager.RUN_MODE, null);
+
+				// inner try, handles interrupts.
+				try {
+					synchronized (this) {
+						while (!this.done) {
+							this.wait();
+						}
+					}
+				} catch (final InterruptedException interrupt) {
+					launch.terminate();
+					throw interrupt;
 				}
+
+				this.execute = false;
+			} catch (final CoreException runException) {
+				final FailureReport<Void> failure = new FailureReport<Void>().cause(runException)
+					.retryWith(() -> this.execute = true)
+					.continueWith(() -> this.execute = false);
+				FAILURE_HANDLER.handle(failure);
 			}
-		} catch (final InterruptedException | CoreException runException) {
-			final FailureReport<LaunchConfiguration> failure =
-				new FailureReport<LaunchConfiguration>().cause(runException).retryWith(this::execute).recoverable();
-			FAILURE_HANDLER.handle(failure);
-		} finally {
-			this.copy();
 		}
+
+		// reset the launch configuration
+		this.copy();
 	}
 
 	@Override
