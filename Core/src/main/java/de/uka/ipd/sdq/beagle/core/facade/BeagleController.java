@@ -154,7 +154,8 @@ public class BeagleController {
 	}
 
 	/**
-	 * Pauses the analysis.
+	 * Pauses the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
 	 * @throws IllegalStateException If the analysis has not been started yet or this
 	 *             controller has not been initialised yet.
@@ -166,7 +167,8 @@ public class BeagleController {
 	}
 
 	/**
-	 * Continues the analysis if it is paused.
+	 * Continues the analysis if it is paused. The call will be directed to the
+	 * {@link AnalysisController} started by this controller.
 	 *
 	 * @throws IllegalStateException If the analysis has not been started yet or this
 	 *             controller has not been initialised yet.
@@ -178,7 +180,8 @@ public class BeagleController {
 	}
 
 	/**
-	 * Aborts the analysis.
+	 * Aborts the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
 	 * @throws IllegalStateException If the analysis has not been started yet or this
 	 *             controller has not been initialised yet.
