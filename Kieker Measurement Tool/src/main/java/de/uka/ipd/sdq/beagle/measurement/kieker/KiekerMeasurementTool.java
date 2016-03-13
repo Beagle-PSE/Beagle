@@ -2,15 +2,12 @@ package de.uka.ipd.sdq.beagle.measurement.kieker;
 
 import de.uka.ipd.sdq.beagle.core.CodeSection;
 import de.uka.ipd.sdq.beagle.core.LaunchConfiguration;
-import de.uka.ipd.sdq.beagle.core.failurehandling.FailureHandler;
-import de.uka.ipd.sdq.beagle.core.failurehandling.FailureReport;
 import de.uka.ipd.sdq.beagle.core.measurement.MeasurementTool;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementEvent;
 import de.uka.ipd.sdq.beagle.core.measurement.order.MeasurementOrder;
 import de.uka.ipd.sdq.beagle.measurement.kieker.instrumentation.EclipseAstInstrumentor;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -25,70 +22,110 @@ public class KiekerMeasurementTool implements MeasurementTool {
 	/**
 	 * The JVM property key to set Kieker’s configuration file.
 	 */
-	private static final String KIEKER_CONFIGURATION_FILE_PROPERTY = "kieker.monitoring.configuration";
+	private static final String KIEKER_CONFIGURATION_FILE_ARG = "kieker.monitoring.configuration";
 
 	/**
 	 * The JVM property key to set Kieker’s output folder.
 	 */
-	private static final String KIEKER_OUTPUT_FOLDER_PROPERTY =
+	private static final String KIEKER_OUTPUT_FOLDER_ARG =
 		"kieker.monitoring.writer.filesystem.SyncFsWriter.customStoragePath";
 
 	/**
-	 * The handler of failures.
+	 * Manages all files needed for the measurement.
 	 */
-	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler("Kieker Measurement Tool");
+	private final MeasurementFileManager fileManager = new MeasurementFileManager();
+
+	/**
+	 * Identifies resource demand code sections.
+	 */
+	private final CodeSectionIdentifier resourceDemandIdentifer = new CodeSectionIdentifier();
+
+	/**
+	 * Contains the order that is to be measured.
+	 */
+	private MeasurementOrder measurementOrder;
+
+	/**
+	 * Whether we have successfully instrumented the source code for
+	 * {@link #measurementOrder} yet.
+	 */
+	private boolean instrumented;
+
+	/**
+	 * The set of launch configurations not yet executed.
+	 */
+	private Set<LaunchConfiguration> unlaunchedConfigurations;
 
 	@Override
-	public List<MeasurementEvent> measure(final MeasurementOrder measurementOrder) {
-		try {
-			return this.doMeasure(measurementOrder);
-		} catch (final IOException readWriteError) {
-			final FailureReport<List<MeasurementEvent>> failure =
-				new FailureReport<List<MeasurementEvent>>().cause(readWriteError)
-					.continueWith(() -> new ArrayList<>())
-					.retryWith(() -> this.measure(measurementOrder));
-			return FAILURE_HANDLER.handle(failure);
+	public List<MeasurementEvent> measure(final MeasurementOrder newMeasurementOrder) {
+		if (!this.instrumented || !newMeasurementOrder.equals(this.measurementOrder)) {
+			// we have not yet instrumented this order
+			this.measurementOrder = newMeasurementOrder;
+			this.instrumented = false;
+			this.unlaunchedConfigurations = newMeasurementOrder.getProjectInformation().getLaunchConfigurations();
+			this.fileManager.allocate();
+
+			this.instrument();
+
+			this.instrumented = true;
 		}
+
+		try {
+			this.executeMeasurements();
+		} catch (final InterruptedException interrupt) {
+			// If interrupted, we safe what we have and return.
+		}
+
+		final List<MeasurementEvent> resultEvents =
+			new KiekerMeasurementResultProcessor(this.fileManager.getKiekerResultsFolder())
+				.useResourceDemandIdentifier(this.resourceDemandIdentifer).process();
+		this.fileManager.moveKiekerResultsToDone();
+
+		return resultEvents;
 	}
 
 	/**
-	 * Delegation method from {@link #measure(MeasurementOrder)}. Performs the actual
-	 * work.
+	 * Instruments the source code, preparing everything to execute the measured software.
 	 *
-	 * @param measurementOrder The measurement instructions.
-	 * @return The captured measurement events.
-	 * @throws IOException If accessing or writing the files needed to measure fails.
 	 * @see #measure(MeasurementOrder)
 	 */
-	private List<MeasurementEvent> doMeasure(final MeasurementOrder measurementOrder) throws IOException {
-		final MeasurementFileManager fileManager = new MeasurementFileManager();
-		final CodeSectionIdentifier resourceDemandIdentifer = new CodeSectionIdentifier();
-		final Set<CodeSection> resourceDemandSections = measurementOrder.getResourceDemandSections();
+	private void instrument() {
+		final Set<CodeSection> resourceDemandSections = this.measurementOrder.getResourceDemandSections();
 
-		new EclipseAstInstrumentor(fileManager::getInstrumentationFileFor)
-			.useCharset(measurementOrder.getProjectInformation().getCharset())
-			.useStrategy(new ResourceDemandInstrumentationStrategy(resourceDemandIdentifer), resourceDemandSections)
+		new EclipseAstInstrumentor(this.fileManager::getInstrumentationFileFor)
+			.useCharset(this.measurementOrder.getProjectInformation().getCharset())
+			.useStrategy(new ResourceDemandInstrumentationStrategy(this.resourceDemandIdentifer),
+				resourceDemandSections)
 			.instrument();
 
-		fileManager.copyRemoteMeasurementByteCodeToInstrumentedByteCode();
+		this.fileManager.copyRemoteMeasurementByteCodeToInstrumentedByteCode();
 
-		new EclipseCompiler(fileManager.getInstrumentedSourceCodeFolder())
-			.useClassPath(measurementOrder.getProjectInformation().getBuildPath())
-			.useClassPath(fileManager.getCompiledByteCodeFolder().toString())
-			.useCharset(measurementOrder.getProjectInformation().getCharset())
-			.intoFolder(fileManager.getCompiledByteCodeFolder())
+		new EclipseCompiler(this.fileManager.getInstrumentedSourceCodeFolder())
+			.useClassPath(this.measurementOrder.getProjectInformation().getBuildPath())
+			.useClassPath(this.fileManager.getCompiledByteCodeFolder().toString())
+			.useCharset(this.measurementOrder.getProjectInformation().getCharset())
+			.intoFolder(this.fileManager.getCompiledByteCodeFolder())
 			.compile();
+	}
 
-		for (final LaunchConfiguration launch : measurementOrder.getProjectInformation().getLaunchConfigurations()) {
-			launch.prependClasspath(fileManager.getKiekerJar().toString())
-				.prependClasspath(fileManager.getCompiledByteCodeFolder().toString())
-				.appendJvmArgument(jvmArg(KIEKER_CONFIGURATION_FILE_PROPERTY, fileManager.getKiekerConfigurationFile()))
-				.appendJvmArgument(jvmArg(KIEKER_OUTPUT_FOLDER_PROPERTY, fileManager.getKiekerResultsFolder()))
+	/**
+	 * Runs the measured software, thus producing Kieker measurement results.
+	 *
+	 * @throws InterruptedException If the current thread is interrupted while executing
+	 *             the measured software.
+	 */
+	private void executeMeasurements() throws InterruptedException {
+		for (final Iterator<LaunchConfiguration> configurations =
+			this.unlaunchedConfigurations.iterator(); configurations.hasNext();) {
+			configurations.next()
+				.prependClasspath(this.fileManager.getKiekerJar().toString())
+				.prependClasspath(this.fileManager.getCompiledByteCodeFolder().toString())
+				.appendJvmArgument(jvmArg(KIEKER_CONFIGURATION_FILE_ARG, this.fileManager.getKiekerConfigurationFile()))
+				.appendJvmArgument(jvmArg(KIEKER_OUTPUT_FOLDER_ARG, this.fileManager.getKiekerResultsFolder()))
 				.execute();
+			configurations.remove();
 		}
-
-		return new KiekerMeasurementResultProcessor(fileManager.getKiekerResultsFolder())
-			.useResourceDemandIdentifier(resourceDemandIdentifer).process();
+		assert this.unlaunchedConfigurations.size() == 0;
 	}
 
 	/**

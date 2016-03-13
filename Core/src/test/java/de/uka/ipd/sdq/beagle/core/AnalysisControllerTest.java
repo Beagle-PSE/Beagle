@@ -901,9 +901,6 @@ public class AnalysisControllerTest {
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.RUNNING));
 		analysisController.setAnalysisState(AnalysisState.ENDING);
 		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
-		assertThat(() -> analysisController.setAnalysisState(AnalysisState.ABORTING),
-			throwsException(IllegalStateException.class));
-		assertThat(analysisController.getAnalysisState(), is(AnalysisState.ENDING));
 
 		this.tearDownSetAnalysisTest(sleepingMeasurementTool);
 	}
