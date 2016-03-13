@@ -27,7 +27,8 @@ import java.util.Set;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
- * pause, continue, and abort an Analysis.
+ * pause, continue, and abort an Analysis. The controller has to be initialised through
+ * {@link #initialise()} before it can be used.
  *
  * @author Christoph Michelbach
  * @author Roman Langrehr
@@ -37,12 +38,12 @@ public class BeagleController {
 	/**
 	 * The failure handler for this class.
 	 */
-<span class="nc" id="L40">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(BeagleConfiguration.class);</span>
+<span class="nc" id="L41">	private static final FailureHandler FAILURE_HANDLER = FailureHandler.getHandler(BeagleConfiguration.class);</span>
 
 	/**
 	 * The analysis controller used for this project.
 	 */
-	private final AnalysisController analysisController;
+	private AnalysisController analysisController;
 
 	/**
 	 * The final {@link BeagleConfiguration} for this analysis.
@@ -52,7 +53,17 @@ public class BeagleController {
 	/**
 	 * The {@link Blackboard} for this analysis.
 	 */
-	private final Blackboard blackboard;
+	private Blackboard blackboard;
+
+	/**
+	 * Will be set to {@code true} after {@link #initialise()} has been run.
+	 */
+	private boolean inited;
+
+	/**
+	 * Will be set to {@code true} after {@link #startAnalysis()} has been run.
+	 */
+	private boolean started;
 
 	/**
 	 * Constructs a new {@code BeagleController} with the given
@@ -62,52 +73,68 @@ public class BeagleController {
 	 *            has permanently. It cannot be changed.
 	 *            {@link BeagleConfiguration#finalise()} must have been called.
 	 */
-<span class="nc" id="L65">	public BeagleController(final BeagleConfiguration beagleConfiguration) {</span>
-<span class="nc" id="L66">		Validate.isTrue(beagleConfiguration.isFinal(),</span>
+<span class="nc" id="L76">	public BeagleController(final BeagleConfiguration beagleConfiguration) {</span>
+<span class="nc" id="L77">		Validate.isTrue(beagleConfiguration.isFinal(),</span>
 			&quot;The BeagleConfiguration must be final for the BeagleController&quot;);
-<span class="nc" id="L68">		this.beagleConfiguration = beagleConfiguration;</span>
-<span class="nc" id="L69">		final BlackboardCreator blackboardFactory = new BlackboardCreator();</span>
-<span class="nc" id="L70">		final SourceCodeFileProvider sourceCodeFileProvider =</span>
-<span class="nc" id="L71">			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());</span>
+<span class="nc" id="L79">		this.beagleConfiguration = beagleConfiguration;</span>
 
-<span class="nc" id="L73">		final PcmSourceStatementLinkReader linkReader =</span>
-<span class="nc" id="L74">			new PcmSourceStatementLinkReader(beagleConfiguration.getSourceStatementLinkFile());</span>
-<span class="nc" id="L75">		linkReader.checkIntegrity(sourceCodeFileProvider, beagleConfiguration.getRepositoryFile());</span>
-<span class="nc" id="L76">		final PcmSourceStatementLinkRepository linkRepository = linkReader.getPcmSourceLinkRepository();</span>
+<span class="nc" id="L81">	}</span>
 
-<span class="nc bnc" id="L78" title="All 2 branches missed.">		if (beagleConfiguration.getElements() == null) {</span>
-<span class="nc" id="L79">			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,</span>
-<span class="nc" id="L80">				linkRepository).getBlackboardForAllElements(blackboardFactory);</span>
+	/**
+	 * Initialises this controller, making it ready to start the analysis.
+	 */
+	public void initialise() {
+<span class="nc" id="L87">		final BlackboardCreator blackboardFactory = new BlackboardCreator();</span>
+<span class="nc" id="L88">		final SourceCodeFileProvider sourceCodeFileProvider =</span>
+<span class="nc" id="L89">			new JdtProjectSourceCodeFileProvider(this.beagleConfiguration.getJavaProject());</span>
+
+<span class="nc" id="L91">		final PcmSourceStatementLinkReader linkReader =</span>
+<span class="nc" id="L92">			new PcmSourceStatementLinkReader(this.beagleConfiguration.getSourceStatementLinkFile());</span>
+<span class="nc" id="L93">		linkReader.checkIntegrity(sourceCodeFileProvider, this.beagleConfiguration.getRepositoryFile());</span>
+<span class="nc" id="L94">		final PcmSourceStatementLinkRepository linkRepository = linkReader.getPcmSourceLinkRepository();</span>
+
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		if (this.beagleConfiguration.getElements() == null) {</span>
+<span class="nc" id="L97">			new PcmRepositoryBlackboardFactoryAdder(this.beagleConfiguration.getRepositoryFile(),</span>
+<span class="nc" id="L98">				sourceCodeFileProvider, linkRepository).getBlackboardForAllElements(blackboardFactory);</span>
 		} else {
-<span class="nc" id="L82">			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,</span>
-<span class="nc" id="L83">				linkRepository).getBlackboardForIds(beagleConfiguration.getElements(), blackboardFactory);</span>
+<span class="nc" id="L100">			new PcmRepositoryBlackboardFactoryAdder(this.beagleConfiguration.getRepositoryFile(),</span>
+<span class="nc" id="L101">				sourceCodeFileProvider, linkRepository).getBlackboardForIds(this.beagleConfiguration.getElements(),</span>
+					blackboardFactory);
 		}
 
-<span class="nc" id="L86">		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());</span>
-<span class="nc" id="L87">		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();</span>
+<span class="nc" id="L105">		final Charset charset = this.readCharset(this.beagleConfiguration.getJavaProject());</span>
+<span class="nc" id="L106">		final String buildPath =</span>
+<span class="nc" id="L107">			new JdtProjectClasspathExtractor(this.beagleConfiguration.getJavaProject()).getClasspath();</span>
 
-<span class="nc" id="L89">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = beagleConfiguration.getLaunchConfigurations();</span>
-<span class="nc" id="L90">		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),</span>
+<span class="nc" id="L109">		final Set&lt;LaunchConfiguration&gt; launchConfigurations = this.beagleConfiguration.getLaunchConfigurations();</span>
+<span class="nc" id="L110">		blackboardFactory.setProjectInformation(new ProjectInformation(this.beagleConfiguration.getTimeout(),</span>
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 
-<span class="nc" id="L93">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
-<span class="nc" id="L94">		this.blackboard = blackboardFactory.createBlackboard();</span>
-<span class="nc" id="L95">		this.analysisController = new AnalysisController(this.blackboard,</span>
-<span class="nc" id="L96">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
-<span class="nc" id="L97">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
+<span class="nc" id="L113">		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());</span>
+<span class="nc" id="L114">		this.blackboard = blackboardFactory.createBlackboard();</span>
+<span class="nc" id="L115">		this.analysisController = new AnalysisController(this.blackboard,</span>
+<span class="nc" id="L116">			new HashSet&lt;&gt;(new MeasurementToolContributionsHandler().getAvailableMeasurmentTools()),</span>
+<span class="nc" id="L117">			new HashSet&lt;&gt;(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),</span>
 			new HashSet&lt;&gt;(
-<span class="nc" id="L99">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
-<span class="nc" id="L100">	}</span>
+<span class="nc" id="L119">				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));</span>
+<span class="nc" id="L120">		this.inited = true;</span>
+<span class="nc" id="L121">	}</span>
 
 	/**
 	 * Starts the analysis. This method can only be used once per {@link BeagleController}
 	 * . Further calls will be ignored.
 	 *
+	 * @throws IllegalStateException If {@link #initialise()} has not been called yet.
 	 */
 	public void startAnalysis() {
-<span class="nc" id="L108">		this.analysisController.performAnalysis();</span>
-<span class="nc" id="L109">		new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
-<span class="nc" id="L110">	}</span>
+<span class="nc" id="L130">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
+
+<span class="nc bnc" id="L132" title="All 2 branches missed.">		if (!this.started) {</span>
+<span class="nc" id="L133">			this.started = true;</span>
+<span class="nc" id="L134">			this.analysisController.performAnalysis();</span>
+<span class="nc" id="L135">			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());</span>
+		}
+<span class="nc" id="L137">	}</span>
 
 	/**
 	 * Reads the default charset of an {@link IJavaProject}.
@@ -117,41 +144,52 @@ public class BeagleController {
 	 */
 	private Charset readCharset(final IJavaProject javaProject) {
 		try {
-<span class="nc" id="L120">			return Charset.forName(javaProject.getProject().getDefaultCharset());</span>
-<span class="nc" id="L121">		} catch (final CoreException coreException) {</span>
-<span class="nc" id="L122">			final FailureReport&lt;Object&gt; failure = new FailureReport&lt;&gt;().cause(coreException)</span>
-<span class="nc" id="L123">				.continueWith(Charset::defaultCharset)</span>
-<span class="nc" id="L124">				.retryWith(() -&gt; this.readCharset(javaProject));</span>
-<span class="nc" id="L125">			return (Charset) FAILURE_HANDLER.handle(failure);</span>
+<span class="nc" id="L147">			return Charset.forName(javaProject.getProject().getDefaultCharset());</span>
+<span class="nc" id="L148">		} catch (final CoreException coreException) {</span>
+<span class="nc" id="L149">			final FailureReport&lt;Charset&gt; failure = new FailureReport&lt;Charset&gt;().cause(coreException)</span>
+<span class="nc" id="L150">				.continueWith(Charset::defaultCharset)</span>
+<span class="nc" id="L151">				.retryWith(() -&gt; this.readCharset(javaProject));</span>
+<span class="nc" id="L152">			return FAILURE_HANDLER.handle(failure);</span>
 		}
 	}
 
 	/**
-	 * Pauses the analysis. If the analysis is already paused, calls to this method are
-	 * ignored.
+	 * Pauses the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
+	 * @throws IllegalStateException If the analysis has not been started yet or this
+	 *             controller has not been initialised yet.
 	 */
 	public void pauseAnalysis() {
-<span class="nc" id="L135">		this.analysisController.setAnalysisState(AnalysisState.ENDING);</span>
-<span class="nc" id="L136">	}</span>
+<span class="nc" id="L164">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
+<span class="nc" id="L165">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
+<span class="nc" id="L166">		this.analysisController.setAnalysisState(AnalysisState.ENDING);</span>
+<span class="nc" id="L167">	}</span>
 
 	/**
-	 * Continues the analysis if it is paused. If it's running, calls to this method are
-	 * ignored.
+	 * Continues the analysis if it is paused. The call will be directed to the
+	 * {@link AnalysisController} started by this controller.
 	 *
+	 * @throws IllegalStateException If the analysis has not been started yet or this
+	 *             controller has not been initialised yet.
 	 */
 	public void continueAnalysis() {
-<span class="nc" id="L144">		this.analysisController.setAnalysisState(AnalysisState.RUNNING);</span>
-<span class="nc" id="L145">	}</span>
+<span class="nc" id="L177">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
+<span class="nc" id="L178">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
+<span class="nc" id="L179">		this.analysisController.setAnalysisState(AnalysisState.RUNNING);</span>
+<span class="nc" id="L180">	}</span>
 
 	/**
-	 * Aborts the analysis. If it already is aborted, calls to this method are ignored.
-	 * Aborting the analysis is also possible if it wasn't started yet. In this case it
-	 * will never be possible to start it.
+	 * Aborts the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
+	 * @throws IllegalStateException If the analysis has not been started yet or this
+	 *             controller has not been initialised yet.
 	 */
 	public void abortAnalysis() {
-<span class="nc" id="L154">		this.analysisController.setAnalysisState(AnalysisState.ABORTING);</span>
-<span class="nc" id="L155">	}</span>
+<span class="nc" id="L190">		Validate.validState(this.inited, &quot;The Beagle Controller has not yet been initialised!&quot;);</span>
+<span class="nc" id="L191">		Validate.validState(this.started, &quot;The analysis has not yet been started!&quot;);</span>
+<span class="nc" id="L192">		this.analysisController.setAnalysisState(AnalysisState.ABORTING);</span>
+<span class="nc" id="L193">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
