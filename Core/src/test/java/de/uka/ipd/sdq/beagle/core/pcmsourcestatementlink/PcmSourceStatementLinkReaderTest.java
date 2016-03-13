@@ -4,6 +4,8 @@ import static de.uka.ipd.sdq.beagle.core.testutil.ExceptionThrownMatcher.throwsE
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import de.uka.ipd.sdq.beagle.core.failurehandling.ExceptionThrowingFailureHandler.FailureException;
+
 import org.junit.Test;
 
 import java.io.File;
@@ -52,6 +54,17 @@ public class PcmSourceStatementLinkReaderTest {
 		final PcmSourceStatementLinkRepository repository = reader.getPcmSourceLinkRepository();
 		assertThat(repository.getLinks().size(), is(11));
 		assertThat(repository.getHashes().size(), is(3));
+
+		final PcmSourceStatementLinkRepository repository2 = reader.getPcmSourceLinkRepository();
+		assertThat(repository2, is(repository));
+
+		final File noRepositoryFile = this.getFile("/de/uka/ipd/sdq/beagle/core/TestFile.java");
+		final PcmSourceStatementLinkReader reader2 = new PcmSourceStatementLinkReader(noRepositoryFile);
+		assertThat(() -> reader2.getPcmSourceLinkRepository(), throwsException(FailureException.class));
+
+		final File invalidRootFile = this.getFile("/de/uka/ipd/sdq/beagle/core/pcmsourcestatementlink/invalid_root.xml");
+		final PcmSourceStatementLinkReader reader3 = new PcmSourceStatementLinkReader(invalidRootFile);
+		assertThat(() -> reader3.getPcmSourceLinkRepository(), throwsException(FailureException.class));
 	}
 
 	/**

@@ -79,15 +79,6 @@ public class PcmSourceStatementLinkReader {
 			return;
 		}
 
-		if (!(result instanceof PcmSourceStatementLinkRepository)) {
-			final FailureReport<Void> failure =
-				new FailureReport<Void>().message("The provided PCM Source Statement Link Model has a bad root type.")
-					.details("expected a PcmSourceStatementLinkRepository, but found a %s.", result.getClass())
-					.retryWith(this::readIn);
-			FAILURE_HANDLER.handle(failure);
-			return;
-		}
-
 		this.linkRepository = (PcmSourceStatementLinkRepository) result;
 	}
 }
