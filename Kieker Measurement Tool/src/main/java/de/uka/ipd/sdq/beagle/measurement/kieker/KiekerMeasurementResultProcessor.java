@@ -17,7 +17,6 @@ import kieker.common.configuration.Configuration;
 import kieker.common.record.controlflow.OperationExecutionRecord;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -74,7 +73,6 @@ public class KiekerMeasurementResultProcessor {
 	 * Processes Kieker’s results and generates the matching measurement events.
 	 *
 	 * @return The measurement events representing Kieker’s results.
-	 * @throws IOException If reading from Kieker’s result folder fails.
 	 */
 	public List<MeasurementEvent> process() {
 		final List<MeasurementEvent> resultEvents = new LinkedList<>();
