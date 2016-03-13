@@ -41,7 +41,6 @@ public class PcmRepositoryFileLoader {
 		}
 
 		RepositoryFactory.eINSTANCE.createRepository();
-		// Not sure if this final declaration could lead to a problem.
 		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();
 
 		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);
