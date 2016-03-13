@@ -48,6 +48,11 @@ public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelega
 	public static final String BEAGLE_LAUNCH_CONFIGURATION_IDENTIFIER = "de.uka.ipd.sdq.beagle.launch";
 
 	/**
+	 * The number of milliseconds in a second.
+	 */
+	private static final int MILLISECONDS_IN_A_SECOND = 1000;
+
+	/**
 	 * The launch object clients obtain through
 	 * {@link #getLaunch(ILaunchConfiguration, String)}.
 	 */
@@ -135,9 +140,10 @@ public class BeagleLaunchConfigurationDelegate extends LaunchConfigurationDelega
 					beagleConfiguration.setTimeout(new AdaptiveTimeout());
 					break;
 				case TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT:
-					beagleConfiguration.setTimeout(new ConstantTimeout(
+					final int timeoutInSeconds =
 						launchConfiguration.getAttribute(TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE,
-							TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE)));
+							TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE);
+					beagleConfiguration.setTimeout(new ConstantTimeout(timeoutInSeconds * MILLISECONDS_IN_A_SECOND));
 					break;
 				case TimeoutTab.BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT:
 					beagleConfiguration.setTimeout(new NoTimeout());
