@@ -27,7 +27,8 @@ import java.util.Set;
 
 /**
  * Controls the execution of the Beagle Analysis. {@code BeagleController} can start,
- * pause, continue, and abort an Analysis.
+ * pause, continue, and abort an Analysis. The controller has to be initialised through
+ * {@link #initialise()} before it can be used.
  *
  * @author Christoph Michelbach
  * @author Roman Langrehr
@@ -42,7 +43,7 @@ public class BeagleController {
 	/**
 	 * The analysis controller used for this project.
 	 */
-	private final AnalysisController analysisController;
+	private AnalysisController analysisController;
 
 	/**
 	 * The final {@link BeagleConfiguration} for this analysis.
@@ -52,7 +53,17 @@ public class BeagleController {
 	/**
 	 * The {@link Blackboard} for this analysis.
 	 */
-	private final Blackboard blackboard;
+	private Blackboard blackboard;
+
+	/**
+	 * Will be set to {@code true} after {@link #initialise()} has been run.
+	 */
+	private boolean inited;
+
+	/**
+	 * Will be set to {@code true} after {@link #startAnalysis()} has been run.
+	 */
+	private boolean started;
 
 	/**
 	 * Constructs a new {@code BeagleController} with the given
@@ -66,28 +77,37 @@ public class BeagleController {
 		Validate.isTrue(beagleConfiguration.isFinal(),
 			"The BeagleConfiguration must be final for the BeagleController");
 		this.beagleConfiguration = beagleConfiguration;
+
+	}
+
+	/**
+	 * Initialises this controller, making it ready to start the analysis.
+	 */
+	public void initialise() {
 		final BlackboardCreator blackboardFactory = new BlackboardCreator();
 		final SourceCodeFileProvider sourceCodeFileProvider =
-			new JdtProjectSourceCodeFileProvider(beagleConfiguration.getJavaProject());
+			new JdtProjectSourceCodeFileProvider(this.beagleConfiguration.getJavaProject());
 
 		final PcmSourceStatementLinkReader linkReader =
-			new PcmSourceStatementLinkReader(beagleConfiguration.getSourceStatementLinkFile());
-		linkReader.checkIntegrity(sourceCodeFileProvider, beagleConfiguration.getRepositoryFile());
+			new PcmSourceStatementLinkReader(this.beagleConfiguration.getSourceStatementLinkFile());
+		linkReader.checkIntegrity(sourceCodeFileProvider, this.beagleConfiguration.getRepositoryFile());
 		final PcmSourceStatementLinkRepository linkRepository = linkReader.getPcmSourceLinkRepository();
 
-		if (beagleConfiguration.getElements() == null) {
-			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,
-				linkRepository).getBlackboardForAllElements(blackboardFactory);
+		if (this.beagleConfiguration.getElements() == null) {
+			new PcmRepositoryBlackboardFactoryAdder(this.beagleConfiguration.getRepositoryFile(),
+				sourceCodeFileProvider, linkRepository).getBlackboardForAllElements(blackboardFactory);
 		} else {
-			new PcmRepositoryBlackboardFactoryAdder(beagleConfiguration.getRepositoryFile(), sourceCodeFileProvider,
-				linkRepository).getBlackboardForIds(beagleConfiguration.getElements(), blackboardFactory);
+			new PcmRepositoryBlackboardFactoryAdder(this.beagleConfiguration.getRepositoryFile(),
+				sourceCodeFileProvider, linkRepository).getBlackboardForIds(this.beagleConfiguration.getElements(),
+					blackboardFactory);
 		}
 
-		final Charset charset = this.readCharset(beagleConfiguration.getJavaProject());
-		final String buildPath = new JdtProjectClasspathExtractor(beagleConfiguration.getJavaProject()).getClasspath();
+		final Charset charset = this.readCharset(this.beagleConfiguration.getJavaProject());
+		final String buildPath =
+			new JdtProjectClasspathExtractor(this.beagleConfiguration.getJavaProject()).getClasspath();
 
-		final Set<LaunchConfiguration> launchConfigurations = beagleConfiguration.getLaunchConfigurations();
-		blackboardFactory.setProjectInformation(new ProjectInformation(beagleConfiguration.getTimeout(),
+		final Set<LaunchConfiguration> launchConfigurations = this.beagleConfiguration.getLaunchConfigurations();
+		blackboardFactory.setProjectInformation(new ProjectInformation(this.beagleConfiguration.getTimeout(),
 			sourceCodeFileProvider, buildPath, charset, launchConfigurations));
 
 		blackboardFactory.setFitnessFunction(new AbstractionAndPrecisionFitnessFunction());
@@ -97,16 +117,23 @@ public class BeagleController {
 			new HashSet<>(new MeasurementResultAnalyserContributionsHandler().getAvailableMeasurmentResultAnalysers()),
 			new HashSet<>(
 				new ProposedExpressionAnalyserContributionsHandler().getAvailableProposedExpressionAnalysers()));
+		this.inited = true;
 	}
 
 	/**
 	 * Starts the analysis. This method can only be used once per {@link BeagleController}
 	 * . Further calls will be ignored.
 	 *
+	 * @throws IllegalStateException If {@link #initialise()} has not been called yet.
 	 */
 	public void startAnalysis() {
-		this.analysisController.performAnalysis();
-		new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());
+		Validate.validState(this.inited, "The Beagle Controller has not yet been initialised!");
+
+		if (!this.started) {
+			this.started = true;
+			this.analysisController.performAnalysis();
+			new PcmRepositoryWriter(this.blackboard).writeTo(this.beagleConfiguration.getRepositoryFile());
+		}
 	}
 
 	/**
@@ -119,38 +146,49 @@ public class BeagleController {
 		try {
 			return Charset.forName(javaProject.getProject().getDefaultCharset());
 		} catch (final CoreException coreException) {
-			final FailureReport<Object> failure = new FailureReport<>().cause(coreException)
+			final FailureReport<Charset> failure = new FailureReport<Charset>().cause(coreException)
 				.continueWith(Charset::defaultCharset)
 				.retryWith(() -> this.readCharset(javaProject));
-			return (Charset) FAILURE_HANDLER.handle(failure);
+			return FAILURE_HANDLER.handle(failure);
 		}
 	}
 
 	/**
-	 * Pauses the analysis. If the analysis is already paused, calls to this method are
-	 * ignored.
+	 * Pauses the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
+	 * @throws IllegalStateException If the analysis has not been started yet or this
+	 *             controller has not been initialised yet.
 	 */
 	public void pauseAnalysis() {
+		Validate.validState(this.inited, "The Beagle Controller has not yet been initialised!");
+		Validate.validState(this.started, "The analysis has not yet been started!");
 		this.analysisController.setAnalysisState(AnalysisState.ENDING);
 	}
 
 	/**
-	 * Continues the analysis if it is paused. If it's running, calls to this method are
-	 * ignored.
+	 * Continues the analysis if it is paused. The call will be directed to the
+	 * {@link AnalysisController} started by this controller.
 	 *
+	 * @throws IllegalStateException If the analysis has not been started yet or this
+	 *             controller has not been initialised yet.
 	 */
 	public void continueAnalysis() {
+		Validate.validState(this.inited, "The Beagle Controller has not yet been initialised!");
+		Validate.validState(this.started, "The analysis has not yet been started!");
 		this.analysisController.setAnalysisState(AnalysisState.RUNNING);
 	}
 
 	/**
-	 * Aborts the analysis. If it already is aborted, calls to this method are ignored.
-	 * Aborting the analysis is also possible if it wasn't started yet. In this case it
-	 * will never be possible to start it.
+	 * Aborts the analysis. The call will be directed to the {@link AnalysisController}
+	 * started by this controller.
 	 *
+	 * @throws IllegalStateException If the analysis has not been started yet or this
+	 *             controller has not been initialised yet.
 	 */
 	public void abortAnalysis() {
+		Validate.validState(this.inited, "The Beagle Controller has not yet been initialised!");
+		Validate.validState(this.started, "The analysis has not yet been started!");
 		this.analysisController.setAnalysisState(AnalysisState.ABORTING);
 	}
 }

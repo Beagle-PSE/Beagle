@@ -45,16 +45,27 @@ public class BeagleLaunchConfigurationDelegate implements ILaunchConfigurationDe
 				+ " but supported is only " + BEAGLE_LAUNCH_CONFIGURATION_IDENTIFIER);
 		Validate.isTrue(mode.equals(ILaunchManager.RUN_MODE),
 			"Only run mode for the Beagle configuration is supported.");
-
 		final BeagleConfiguration beagleConfiguration =
 			this.convertBeagleLaunchConfigurationToBeagleConfiguration(configuration);
 		beagleConfiguration.finalise();
 
-		final ProgressDialogController progressDialogController =
-			new ProgressDialogController(new BeagleController(beagleConfiguration));
-		progressDialogController.startAnalysis();
-		progressDialogController.engageDialog();
+		final BeagleController beagleController = new BeagleController(beagleConfiguration);
 
+		final GuiController guiController = new GuiController(beagleController);
+		guiController.preparingAnalysis();
+
+		beagleController.initialise();
+
+		final Thread executionThread = new Thread(() -> {
+			try {
+				beagleController.startAnalysis();
+			} finally {
+				guiController.analysisFinished();
+			}
+		});
+		executionThread.setUncaughtExceptionHandler(Thread.currentThread().getUncaughtExceptionHandler());
+		executionThread.start();
+		guiController.analysisStarted();
 	}
 
 	/**
