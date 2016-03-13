@@ -41,15 +41,14 @@ import java.io.File;
 		}
 
 <span class="fc" id="L43">		RepositoryFactory.eINSTANCE.createRepository();</span>
-		// Not sure if this final declaration could lead to a problem.
-<span class="fc" id="L45">		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
+<span class="fc" id="L44">		final EPackage ePackage = RepositoryFactory.eINSTANCE.getEPackage();</span>
 
-<span class="fc" id="L47">		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);</span>
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">		if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
-<span class="nc" id="L49">			throw new IllegalArgumentException(&quot;File is not a repository!&quot;);</span>
+<span class="fc" id="L46">		final EObject eObject = EmfHelper.loadFromXMIFile(repositoryFile.getAbsolutePath(), ePackage);</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">		if (!(eObject.getClass() == RepositoryImpl.class)) {</span>
+<span class="nc" id="L48">			throw new IllegalArgumentException(&quot;File is not a repository!&quot;);</span>
 		}
-<span class="fc" id="L51">		final RepositoryImpl repository = (RepositoryImpl) eObject;</span>
-<span class="fc" id="L52">		return repository;</span>
+<span class="fc" id="L50">		final RepositoryImpl repository = (RepositoryImpl) eObject;</span>
+<span class="fc" id="L51">		return repository;</span>
 	}
 
 }
