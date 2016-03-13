@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.palladiosimulator.pcm.repository.RepositoryComponent;
 import org.palladiosimulator.pcm.repository.impl.BasicComponentImpl;
 import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
 import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
-import org.palladiosimulator.pcm.seff.impl.ProbabilisticBranchTransitionImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
 import org.palladiosimulator.pcm.seff.impl.ResourceDemandingSEFFImpl;
 
@@ -173,7 +173,7 @@ public class PcmRepositoryExtractor {
 			blackboardFactory.setLoops(this.seffLoopSet);
 			blackboardFactory.setExternalCalls(this.externalCallParameterSet);
 			blackboardFactory.setPcmMappings(pcmMappings);
-			
+
 		}
 
 		// Look up for each Repository-object ID if its found in the
@@ -198,7 +198,7 @@ public class PcmRepositoryExtractor {
 				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) identifiedObject);
 			} else if (identifiedObject.getClass() == ResourceDemandingSEFFImpl.class) {
 				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) identifiedObject);
-			} else if (identifiedObject.getClass() == ProbabilisticBranchTransitionImpl.class) {
+			} else if (identifiedObject instanceof AbstractBranchTransition) {
 				final EList<EObject> specificBranchContentList = identifiedObject.eContents();
 				for (final EObject specificBranchContent : specificBranchContentList) {
 					if (specificBranchContent.getClass() == ResourceDemandingBehaviourImpl.class) {
@@ -221,7 +221,6 @@ public class PcmRepositoryExtractor {
 		blackboardFactory.setExternalCalls(this.externalCallParameterSet);
 		blackboardFactory.setPcmMappings(pcmMappings);
 	}
-	
 
 	/**
 	 * This method takes the whole {@link PcmRepositoryBlackboardFactoryAdder#repository}
