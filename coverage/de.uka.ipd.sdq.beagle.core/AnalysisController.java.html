@@ -187,10 +187,10 @@ import java.util.Set;
 <span class="fc bfc" id="L187" title="All 2 branches covered.">		while (this.analysisState == AnalysisState.ENDING) {</span>
 			try {
 <span class="nc" id="L189">				this.wait();</span>
-<span class="nc" id="L190">			} catch (final InterruptedException exception) {</span>
+<span class="fc" id="L190">			} catch (final InterruptedException exception) {</span>
 				// Retry on interrupt. No handling is needed because the loop just
 				// tries again.
-<span class="nc" id="L193">			}</span>
+<span class="pc" id="L193">			}</span>
 		}
 <span class="fc" id="L195">	}</span>
 
