@@ -601,7 +601,7 @@
   </module>
   <module name="SuppressionCommentFilter"/>
   <module name="SuppressWithNearbyCommentFilter">
-    <property name="commentFormat" value="CHECKSTYLE:IGNORE (\w+)"/>
+    <property name="commentFormat" value="CHECKSTYLE:IGNORE (.*)"/>
     <property name="checkFormat" value="$1"/>
     <property name="influenceFormat" value="1"/>
   </module>

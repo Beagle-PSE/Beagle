@@ -225,4 +225,12 @@ public class LaunchConfigurationTab extends AbstractLaunchConfigurationTab {
 	public Image getImage() {
 		return DebugPluginImages.getImage(IDebugUIConstants.IMG_OBJS_LAUNCH_RUN);
 	}
+
+	@Override
+	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		final LaunchChecker checker = new LaunchChecker(launchConfig);
+		checker.checkForLaunchConfigurationError();
+		this.setErrorMessage(checker.getErrorMessage());
+		return !checker.hasError();
+	}
 }

@@ -118,7 +118,8 @@ public final class ILaunchConfigurationHelper {
 	 * Gets {@linkplain ILaunchConfiguration ILaunchConfigurations} by their name.
 	 *
 	 * @param names The names of the {@linkplain ILaunchConfiguration
-	 *            ILaunchConfigurations}. Invalid names are silently ignored.
+	 *            ILaunchConfigurations}. Invalid names are silently ignored. Must not be
+	 *            {@code null}.
 	 * @return All {@linkplain ILaunchConfiguration ILaunchConfigurations} with a name
 	 *         that was in {@code names}.
 	 */

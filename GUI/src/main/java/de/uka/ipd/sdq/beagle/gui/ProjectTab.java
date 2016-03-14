@@ -296,6 +296,14 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 		return JavaCore.create(this.getWorkspaceRoot());
 	}
 
+	@Override
+	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		final LaunchChecker checker = new LaunchChecker(launchConfig);
+		checker.checkForProjectError();
+		this.setErrorMessage(checker.getErrorMessage());
+		return !checker.hasError();
+	}
+
 	/**
 	 * Class for handling the clicks on widgets.
 	 *
@@ -323,5 +331,4 @@ public class ProjectTab extends AbstractLaunchConfigurationTab {
 			}
 		}
 	}
-
 }

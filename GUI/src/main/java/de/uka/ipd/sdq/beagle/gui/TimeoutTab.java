@@ -98,6 +98,11 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	public static final int BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE = 60;
 
 	/**
+	 * The value used to indicate a bad constant timeout value.
+	 */
+	public static final int INVALID_TIMEOUT_SECONDS_VALUE = Integer.MIN_VALUE;
+
+	/**
 	 * The title of this tab.
 	 */
 	private static final String TITLE = "Timeout";
@@ -257,6 +262,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 				TimeoutTab.this.textboxTimeoutSeconds.setEnabled(false);
+				TimeoutTab.this.updateLaunchConfigurationDialog();
 			}
 
 			@Override
@@ -270,7 +276,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 			@Override
 			public void widgetSelected(final SelectionEvent selectionEvent) {
 
-				TimeoutTab.this.currentTimeoutTypeSelection = BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_DEFAULT_VALUE;
+				TimeoutTab.this.currentTimeoutTypeSelection = BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_NO_TIMEOUT;
 				TimeoutTab.this.updateLaunchConfigurationDialog();
 			}
 
@@ -305,6 +311,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 
 		this.textboxTimeoutSeconds.addModifyListener(event -> TimeoutTab.this.updateLaunchConfigurationDialog());
 		this.textboxTimeoutSeconds.addListener(SWT.Verify, e -> {
+			TimeoutTab.this.updateLaunchConfigurationDialog();
 			final String string = e.text;
 			final char[] chars = new char[string.length()];
 			string.getChars(0, chars.length, chars, 0);
@@ -379,7 +386,7 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 		try {
 			timeout = Integer.parseInt(this.textboxTimeoutSeconds.getText());
 		} catch (final NumberFormatException numberFormatException) {
-			timeout = BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE_DEFAULT_VALUE;
+			timeout = INVALID_TIMEOUT_SECONDS_VALUE;
 		}
 		configuration.setAttribute(BEAGLE_LAUNCH_CONFIGURATION_CONSTANT_TIMEOUT_VALUE, timeout);
 	}
@@ -390,12 +397,22 @@ public class TimeoutTab extends AbstractLaunchConfigurationTab {
 	}
 
 	@Override
+	public boolean isValid(final ILaunchConfiguration launchConfig) {
+		final LaunchChecker checker = new LaunchChecker(launchConfig);
+		checker.checkForTimeoutError();
+		this.setErrorMessage(checker.getErrorMessage());
+		return !checker.hasError();
+	}
+
+	@Override
 	public boolean canSave() {
-		this.setErrorMessage(null);
 		if (this.textboxTimeoutSeconds.getText().isEmpty() && this.currentTimeoutTypeSelection
 			.equals(BEAGLE_LAUNCH_CONFIGURATION_TIMEOUT_TYPE_VALUE_CONSTANT_TIMEOUT)) {
-			this.setErrorMessage("Please enter a value for the constant timeout");
+			this.setErrorMessage("No time is configured for the constant timeout");
+			return false;
 		}
+
+		this.setErrorMessage(null);
 		return true;
 	}
 }
