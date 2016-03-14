@@ -371,7 +371,7 @@ All mandatory tests defined in the SRS (/T10/ -- /T60/) are tested either
  Instructions of how to proceed in manual tests and what to expect for a
  successful test can be found in 
 \family typewriter
-Manual ManualTests.MD
+Manual Beagle/Documentation/ManualTests.MD
 \family default
 .
 \end_layout
