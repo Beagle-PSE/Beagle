@@ -112,6 +112,12 @@ Produkt
 Beagle ist...
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Schnittstellen Software 
+\end_layout
+
+\end_deeper
 \begin_layout Separator
 
 \end_layout
@@ -120,6 +126,12 @@ Beagle ist...
 Beagle kann...
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+RDIAs messen, anotiernen, im PCM eintragen
+\end_layout
+
+\end_deeper
 \begin_layout Separator
 
 \end_layout
@@ -128,6 +140,20 @@ Beagle kann...
 Erweiterbar für...
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+genetischen Ansatz der Fitnessfunktion von Krogmann
+\end_layout
+
+\begin_layout Itemize
+messen, anotiernen von SEFF Elementen (Loops, Branches, externalCalls)
+\end_layout
+
+\begin_layout Itemize
+HDD
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Separator
 
@@ -160,7 +186,7 @@ Commits: 4093
 \end_layout
 
 \begin_layout Itemize
-Codelines: 
+Codelines: 19915
 \end_layout
 
 \begin_layout Separator
@@ -190,30 +216,15 @@ Feedback
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 Wasserfall mit Rückkopplung?
 \end_layout
 
-\end_deeper
 \begin_layout Separator
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Feedback
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 Verbesserungen für ein nächstes Mal?
 \end_layout
 
