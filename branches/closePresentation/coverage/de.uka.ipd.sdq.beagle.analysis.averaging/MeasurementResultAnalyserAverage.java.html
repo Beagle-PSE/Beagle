@@ -306,11 +306,11 @@ import java.util.Set;
 <span class="nc" id="L306">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
 <span class="pc bpc" id="L307" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
 <span class="nc" id="L308">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
-<span class="fc bfc" id="L309" title="All 2 branches covered.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
+<span class="pc bpc" id="L309" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
 <span class="fc" id="L310">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffLoop) measurableSeffElement).size();</span>
-<span class="pc bpc" id="L311" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
-<span class="fc" id="L312">			numberOfMeasurements =</span>
-<span class="fc" id="L313">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
+<span class="nc bnc" id="L311" title="All 2 branches missed.">		} else if (measurableSeffElement.getClass() == ExternalCallParameter.class) {</span>
+<span class="nc" id="L312">			numberOfMeasurements =</span>
+<span class="nc" id="L313">				blackboard.getMeasurementResultsFor((ExternalCallParameter) measurableSeffElement).size();</span>
 		}
 
 <span class="fc" id="L316">		return numberOfMeasurements;</span>
