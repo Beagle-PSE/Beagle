@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PcmRepositoryExtractor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.pcmconnection</a> &gt; <span class="el_source">PcmRepositoryExtractor.java</span></div><h1>PcmRepositoryExtractor.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.pcmconnection;
+
+import de.uka.ipd.sdq.beagle.core.Blackboard;
+import de.uka.ipd.sdq.beagle.core.ExternalCallParameter;
+import de.uka.ipd.sdq.beagle.core.ResourceDemandingInternalAction;
+import de.uka.ipd.sdq.beagle.core.SeffBranch;
+import de.uka.ipd.sdq.beagle.core.SeffLoop;
+import de.uka.ipd.sdq.beagle.core.facade.BlackboardCreator;
+import de.uka.ipd.sdq.beagle.core.facade.SourceCodeFileProvider;
+import de.uka.ipd.sdq.beagle.core.pcmsourcestatementlink.PcmSourceStatementLinkRepository;
+
+import de.uka.ipd.sdq.identifier.Identifier;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.palladiosimulator.pcm.repository.RepositoryComponent;
+import org.palladiosimulator.pcm.repository.impl.BasicComponentImpl;
+import org.palladiosimulator.pcm.repository.impl.RepositoryImpl;
+import org.palladiosimulator.pcm.seff.AbstractBranchTransition;
+import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
+import org.palladiosimulator.pcm.seff.impl.ResourceDemandingBehaviourImpl;
+import org.palladiosimulator.pcm.seff.impl.ResourceDemandingSEFFImpl;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * Extracting a given Pcm repository. Offering 2 methods:
+ * {@link #getBlackboardForAllElements(RepositoryImpl, BlackboardCreator)} and
+ * {@link #getBlackboardForIds(RepositoryImpl, Collection, BlackboardCreator)}
+ *
+ * @author Ansgar Spiegler
+ * @author Roman Langrehr
+ */
+public class PcmRepositoryExtractor {
+
+	/**
+	 * Temporary storage for all extracted {@link SeffLoop SeffLoops} that should be
+	 * written on the {@link Blackboard}.
+	 */
+	private Set&lt;SeffLoop&gt; seffLoopSet;
+
+	/**
+	 * Temporary storage for all extracted {@link SeffBranch SeffBranches} that should be
+	 * written on the {@link Blackboard}.
+	 */
+	private Set&lt;SeffBranch&gt; seffBranchSet;
+
+	/**
+	 * Temporary storage for all extracted {@link ResourceDemandingInternalAction rdSeffs}
+	 * that should be written on the {@link Blackboard}.
+	 */
+	private Set&lt;ResourceDemandingInternalAction&gt; rdiaSet;
+
+	/**
+	 * Temporary storage for all extracted {@link ExternalCallParameter} that should be
+	 * written on the {@link Blackboard}.
+	 */
+	private Set&lt;ExternalCallParameter&gt; externalCallParameterSet;
+
+	/**
+	 * Helping class instance for extracting, creating and adding SEFF elements to Sets.
+	 */
+	private PcmRepositorySeffExtractor pcmSeffExtractor;
+
+	/**
+	 * The {@link SourceCodeFileProvider} for the project under analysis.
+	 */
+	private final SourceCodeFileProvider sourceCodeFileProvider;
+
+	/**
+	 * The {@link PcmSourceStatementLinkRepository} for the project under analysis.
+	 */
+	private final PcmSourceStatementLinkRepository sourceStatementLinkRepository;
+
+	/**
+	 * Creates a new name parser for a specific project to analyse.
+	 *
+	 * @param sourceCodeFileProvider The {@link SourceCodeFileProvider} for the project
+	 *            under analysis.
+	 * @param sourceStatementLinkRepository The repository containing the linking of
+	 *            seffElements to SourceCode
+	 */
+	public PcmRepositoryExtractor(final SourceCodeFileProvider sourceCodeFileProvider,
+<span class="fc" id="L87">		final PcmSourceStatementLinkRepository sourceStatementLinkRepository) {</span>
+<span class="fc" id="L88">		this.sourceCodeFileProvider = sourceCodeFileProvider;</span>
+<span class="fc" id="L89">		this.sourceStatementLinkRepository = sourceStatementLinkRepository;</span>
+<span class="fc" id="L90">	}</span>
+
+	/**
+	 * Builds a new blackboard and writes the Beagle objects representing all found
+	 * &lt;em&gt;PCM elements&lt;/em&gt; to it. Only &lt;em&gt;PCM elements&lt;/em&gt; that fulfil the
+	 * restrictions described in the class description will be written.
+	 *
+	 * @param repository The repository to look up.
+	 * @param blackboardFactory all translated &lt;em&gt;PCM elements&lt;/em&gt; will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
+	 */
+	public void getBlackboardForAllElements(final RepositoryImpl repository,
+		final BlackboardCreator blackboardFactory) {
+<span class="fc" id="L104">		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();</span>
+<span class="fc" id="L105">		this.seffLoopSet = new HashSet&lt;SeffLoop&gt;();</span>
+<span class="fc" id="L106">		this.seffBranchSet = new HashSet&lt;SeffBranch&gt;();</span>
+<span class="fc" id="L107">		this.rdiaSet = new HashSet&lt;ResourceDemandingInternalAction&gt;();</span>
+<span class="fc" id="L108">		this.externalCallParameterSet = new HashSet&lt;ExternalCallParameter&gt;();</span>
+<span class="fc" id="L109">		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,</span>
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider,
+			this.sourceStatementLinkRepository);
+
+<span class="fc" id="L113">		this.scanRepository(repository);</span>
+
+<span class="fc" id="L115">		blackboardFactory.setRdias(this.rdiaSet);</span>
+<span class="fc" id="L116">		blackboardFactory.setBranches(this.seffBranchSet);</span>
+<span class="fc" id="L117">		blackboardFactory.setLoops(this.seffLoopSet);</span>
+<span class="fc" id="L118">		blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
+<span class="fc" id="L119">		blackboardFactory.setPcmMappings(pcmMappings);</span>
+<span class="fc" id="L120">	}</span>
+
+	/**
+	 * Builds a new blackboard and writes the Beagle objects representing &lt;em&gt;PCM
+	 * elements&lt;/em&gt; related to {@code ids} to it. Only &lt;em&gt;PCM elements&lt;/em&gt; that fulfil
+	 * the restrictions described in the class description will be written.
+	 *
+	 * &lt;p&gt;For any provided ID {@code id}, &lt;em&gt;PCM elements&lt;/em&gt; will be selected to be
+	 * written on the blackboard as follows:
+	 *
+	 * &lt;ul&gt;
+	 *
+	 * &lt;li&gt;If {@code id} describes a component, all &lt;em&gt;PCM elements&lt;/em&gt; that are part of
+	 * the component’s service effect specification will be selected. Nested components
+	 * will be inspected recursively.
+	 *
+	 * &lt;li&gt;If {@code id} describes a repository, all contained components will be
+	 * inspected as if their ID had been provided.
+	 *
+	 * &lt;li&gt;If {@code id} describes a &lt;em&gt;PCM element&lt;/em&gt;, it will be selected.
+	 *
+	 * &lt;li&gt;Any other ID will be silently ignored.
+	 *
+	 * &lt;/ul&gt;
+	 *
+	 *
+	 * @param repository The repository to look up.
+	 * @param identifiers Identifiers of elements in the repository files that shall be
+	 *            written to the Blackboard.
+	 * @param blackboardFactory all translated &lt;em&gt;PCM elements&lt;/em&gt; will be written on
+	 *            it. The rdias, seffLoops, seffBranches and externalCallPAramerts will
+	 *            never be {@code null} afterwards.
+	 */
+	public void getBlackboardForIds(final RepositoryImpl repository, final Collection&lt;String&gt; identifiers,
+		final BlackboardCreator blackboardFactory) {
+<span class="fc" id="L155">		final PcmBeagleMappings pcmMappings = new PcmBeagleMappings();</span>
+<span class="fc" id="L156">		final Set&lt;EObject&gt; setOfIdentifiedObjects = new HashSet&lt;EObject&gt;();</span>
+
+<span class="fc" id="L158">		this.seffLoopSet = new HashSet&lt;SeffLoop&gt;();</span>
+<span class="fc" id="L159">		this.seffBranchSet = new HashSet&lt;SeffBranch&gt;();</span>
+<span class="fc" id="L160">		this.rdiaSet = new HashSet&lt;ResourceDemandingInternalAction&gt;();</span>
+<span class="fc" id="L161">		this.externalCallParameterSet = new HashSet&lt;ExternalCallParameter&gt;();</span>
+<span class="fc" id="L162">		this.pcmSeffExtractor = new PcmRepositorySeffExtractor(this.seffLoopSet, this.seffBranchSet, this.rdiaSet,</span>
+			this.externalCallParameterSet, pcmMappings, this.sourceCodeFileProvider,
+			this.sourceStatementLinkRepository);
+
+<span class="pc bpc" id="L166" title="1 of 2 branches missed.">		if (identifiers.contains(repository.getId())) {</span>
+<span class="nc" id="L167">			this.scanRepository(repository);</span>
+
+<span class="nc" id="L169">			blackboardFactory.setRdias(this.rdiaSet);</span>
+<span class="nc" id="L170">			blackboardFactory.setBranches(this.seffBranchSet);</span>
+<span class="nc" id="L171">			blackboardFactory.setLoops(this.seffLoopSet);</span>
+<span class="nc" id="L172">			blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
+<span class="nc" id="L173">			blackboardFactory.setPcmMappings(pcmMappings);</span>
+
+		}
+
+		// Look up for each Repository-object ID if its found in the
+		// identifiers-Collection
+		// If so, the Object is added to a Set named &quot;setOfIdentifiedObjects&quot;
+<span class="fc" id="L180">		final TreeIterator&lt;EObject&gt; contentIterator = repository.eAllContents();</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">		while (contentIterator.hasNext()) {</span>
+<span class="fc" id="L182">			final EObject content = contentIterator.next();</span>
+
+<span class="fc" id="L184">			Identifier contentIdentifier = null;</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">			if (content instanceof Identifier) {</span>
+<span class="fc" id="L186">				contentIdentifier = (Identifier) content;</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">				if (identifiers.contains(contentIdentifier.getId())) {</span>
+<span class="fc" id="L188">					setOfIdentifiedObjects.add(content);</span>
+				}
+			}
+<span class="fc" id="L191">		}</span>
+
+<span class="fc" id="L193">		this.extractMeaningfulElements(setOfIdentifiedObjects);</span>
+
+		// Add the sets to the blackboard and return
+
+<span class="fc" id="L197">		blackboardFactory.setRdias(this.rdiaSet);</span>
+<span class="fc" id="L198">		blackboardFactory.setBranches(this.seffBranchSet);</span>
+<span class="fc" id="L199">		blackboardFactory.setLoops(this.seffLoopSet);</span>
+<span class="fc" id="L200">		blackboardFactory.setExternalCalls(this.externalCallParameterSet);</span>
+<span class="fc" id="L201">		blackboardFactory.setPcmMappings(pcmMappings);</span>
+<span class="fc" id="L202">	}</span>
+
+	/**
+	 * Finds all PCM elements that are meaningful to Beagle in the provided set of
+	 * {@code contentObjects}. Populates {@link #rdiaSet}, {@link #seffBranchSet},
+	 * {@link #seffLoopSet} and {@link #externalCallParameterSet}.
+	 *
+	 * @param contentObjects The objects to check for meanigfulness.
+	 */
+	private void extractMeaningfulElements(final Set&lt;EObject&gt; contentObjects) {
+<span class="fc bfc" id="L212" title="All 2 branches covered.">		for (final EObject object : contentObjects) {</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">			if (object.getClass() == BasicComponentImpl.class) {</span>
+<span class="fc" id="L214">				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) object);</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">			} else if (object.getClass() == ResourceDemandingSEFFImpl.class) {</span>
+<span class="fc" id="L216">				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) object);</span>
+<span class="pc bpc" id="L217" title="1 of 2 branches missed.">			} else if (object instanceof AbstractBranchTransition) {</span>
+<span class="fc" id="L218">				final EList&lt;EObject&gt; specificBranchContentList = object.eContents();</span>
+<span class="fc bfc" id="L219" title="All 2 branches covered.">				for (final EObject specificBranchContent : specificBranchContentList) {</span>
+<span class="pc bpc" id="L220" title="1 of 2 branches missed.">					if (specificBranchContent.getClass() == ResourceDemandingBehaviourImpl.class) {</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">						for (final EObject stepBehaviour : ((ResourceDemandingBehaviourImpl) specificBranchContent)</span>
+<span class="fc" id="L222">							.eContents()) {</span>
+<span class="fc" id="L223">							this.pcmSeffExtractor.extractBehaviourAndAddToSet(stepBehaviour);</span>
+<span class="fc" id="L224">						}</span>
+					}
+<span class="fc" id="L226">				}</span>
+<span class="fc" id="L227">			} else {</span>
+<span class="nc" id="L228">				this.pcmSeffExtractor.extractBehaviourAndAddToSet(object);</span>
+			}
+<span class="fc" id="L230">		}</span>
+<span class="fc" id="L231">	}</span>
+
+	/**
+	 * This method takes the whole {@link PcmRepositoryBlackboardFactoryAdder#repository}
+	 * and extracts all needed content into the storing sets.
+	 *
+	 * @param repositoryToScan The repository to read from.
+	 */
+	private void scanRepository(final RepositoryImpl repositoryToScan) {
+<span class="fc" id="L240">		final EList&lt;RepositoryComponent&gt; componentList = repositoryToScan.getComponents__Repository();</span>
+<span class="fc bfc" id="L241" title="All 2 branches covered.">		for (final RepositoryComponent component : componentList) {</span>
+<span class="pc bpc" id="L242" title="1 of 2 branches missed.">			if (component.getClass() == BasicComponentImpl.class) {</span>
+<span class="fc" id="L243">				this.extractBasicComponentAndAddContentsToSet((BasicComponentImpl) component);</span>
+			}
+<span class="fc" id="L245">		}</span>
+<span class="fc" id="L246">	}</span>
+
+	/**
+	 * BasicComponent extracting method. Looking for all included SEFFs. Recursive calls
+	 * to methods that save all needed SEFF-elements into the sets.
+	 *
+	 * @param basicComponent Component of the Repository.
+	 */
+	private void extractBasicComponentAndAddContentsToSet(final BasicComponentImpl basicComponent) {
+<span class="fc" id="L255">		final EList&lt;ServiceEffectSpecification&gt; seffList =</span>
+<span class="fc" id="L256">			basicComponent.getServiceEffectSpecifications__BasicComponent();</span>
+<span class="fc bfc" id="L257" title="All 2 branches covered.">		for (final ServiceEffectSpecification seff : seffList) {</span>
+<span class="pc bpc" id="L258" title="1 of 2 branches missed.">			if (seff.getClass() == ResourceDemandingSEFFImpl.class) {</span>
+<span class="fc" id="L259">				this.extractResourceDemandingSEFFImplAndAddContentsToSet((ResourceDemandingSEFFImpl) seff);</span>
+			}
+<span class="fc" id="L261">		}</span>
+<span class="fc" id="L262">	}</span>
+
+	/**
+	 * ResourceDemandingSEFF extracting method. Looking for all including Contents.
+	 * Recursive calls to methods that save all needed SEFF-elements into the sets.
+	 *
+	 * @param rdSeff rdSeff of the Repository.
+	 */
+	private void extractResourceDemandingSEFFImplAndAddContentsToSet(final ResourceDemandingSEFFImpl rdSeff) {
+<span class="fc" id="L271">		final EList&lt;EObject&gt; rdSeffContentList = rdSeff.eContents();</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">		for (final EObject rdSeffContent : rdSeffContentList) {</span>
+<span class="fc" id="L273">			this.pcmSeffExtractor.extractBehaviourAndAddToSet(rdSeffContent);</span>
+<span class="fc" id="L274">		}</span>
+<span class="fc" id="L275">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>

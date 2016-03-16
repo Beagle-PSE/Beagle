@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FailureHandler.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Core</a> &gt; <a href="index.source.html" class="el_package">de.uka.ipd.sdq.beagle.core.failurehandling</a> &gt; <span class="el_source">FailureHandler.java</span></div><h1>FailureHandler.java</h1><pre class="source lang-java linenums">package de.uka.ipd.sdq.beagle.core.failurehandling;
+
+import org.apache.commons.lang3.Validate;
+
+import java.util.function.Supplier;
+
+/**
+ * Handler for any failures that may occur while running Beagle. Clients may obtain an
+ * instance of this class to report that an exceptional situation occurred.
+ *
+ * &lt;p&gt;Failures reported through this API may be &lt;em&gt;recoverable&lt;/em&gt;. This means that
+ * Beagle’s execution does not have to be stopped and that there is a way to continue
+ * without or to retry the failed action. Recoverable failures are handled by recover
+ * functions that may optionally return a value to continue with after the failure.
+ *
+ * &lt;p&gt;The reaction to failures can be configured by setting a provider for
+ * {@link FailureResolver FailureResolvers} through {@linkplain #setProvider(Supplier)}.
+ * The resolvers provided by the provider will be used when a failure is handled by this
+ * class.
+ *
+ * &lt;p&gt;Given that the class has a failure handler defined in the constant
+ * {@code FAILURE_HANDLER}, these are some usage examples:
+ *
+ * &lt;pre&gt;
+ * &lt;code&gt;
+ * public ReturnType myMethod(ParameterType1 param1, ParameterType2 param2) {
+ * 	// code
+ * 	try {
+ * 		// code that may fail
+ * 	} catch (MyExceptionType exception) {
+ * 		final FailureReport&amp;lt;ReturnTyp&amp;gt; failure = new FailureReport&amp;lt;&amp;gt;()
+ * 			.message(&quot;doing something with %s and %s failed&quot;, param1, param2)
+ * 			.cause(exception)
+ * 			.recoverable()
+ * 			.retryWith(() -&amp;lt; myMethod(param1, param2));
+ * 		return FAILURE_HANDLER.handle(failure);
+ * 	}
+ * 	// more code
+ * }
+ * &lt;/code&gt;
+ * &lt;/pre&gt;
+ *
+ * &lt;pre&gt;
+ * &lt;code&gt;
+ * public ReturnType myMethod(ParameterType1 param1, ParameterType2 param2) {
+ * 	// code
+ * 	if (failed) {
+ * 		final FailureReport&amp;lt;Void&amp;gt; failure = new FailureReport&amp;lt;&amp;gt;()
+ * 			.message(&quot;doing something with %s and %s failed&quot;, param1, param2)
+ * 			.details(&quot;We tried this and that, but doing so was not possible&quot;)
+ * 			.continueWith(this::otherMethod);
+ * 		FAILURE_HANDLER.handle(failure);
+ * 		return null;
+ * 	}
+ * 	// more code
+ * }
+ * &lt;/code&gt;
+ * &lt;/pre&gt;
+ *
+ * @author Joshua Gleitze
+ */
+public final class FailureHandler {
+
+	/**
+	 * The provider of handlers.
+	 */
+<span class="fc" id="L67">	private static Supplier&lt;FailureResolver&gt; provider = ExceptionThrowingFailureResolver::new;</span>
+
+	/**
+	 * Name of the client this handle was created for.
+	 */
+	private final String clientName;
+
+	/**
+	 * Creates a handler for the client identifed by {@code clientName}.
+	 *
+	 * @param clientName The name of the client creating this handler.
+	 */
+<span class="fc" id="L79">	private FailureHandler(final String clientName) {</span>
+<span class="fc" id="L80">		this.clientName = clientName;</span>
+<span class="fc" id="L81">	}</span>
+
+	/**
+	 * Creates a handler a client identified by {@code clientName} may report failures to.
+	 *
+	 * @param clientName A name identifying the client that may report failures to this
+	 *            handler. Must not be {@code null}.
+	 * @return A handler for failures of a client called {@code clientName}.
+	 */
+	public static FailureHandler getHandler(final String clientName) {
+<span class="fc" id="L91">		Validate.notNull(clientName);</span>
+<span class="fc" id="L92">		return new FailureHandler(clientName);</span>
+	}
+
+	/**
+	 * Creates a handler instances of {@code clientType} may report failures to.
+	 *
+	 * @param clientType Class of the clients that may report failures to this handler.
+	 *            Must not be {@code null}.
+	 * @return A handler for failures of clients assignable to {@code clientType}.
+	 */
+	public static FailureHandler getHandler(final Class&lt;?&gt; clientType) {
+<span class="fc" id="L103">		Validate.notNull(clientType);</span>
+<span class="fc" id="L104">		return new FailureHandler(clientType.getSimpleName());</span>
+	}
+
+	/**
+	 * Sets the provider of failure resolvers. The provider will be used to generate a
+	 * resolver when a failure is reported until another provider is set through this
+	 * method.
+	 *
+	 * @param provider A factory for resolvers. Must not be {@code null}.
+	 */
+	public static void setProvider(final Supplier&lt;FailureResolver&gt; provider) {
+<span class="fc" id="L115">		Validate.notNull(provider);</span>
+<span class="fc" id="L116">		FailureHandler.provider = provider;</span>
+<span class="fc" id="L117">	}</span>
+
+	/**
+	 * Reports a failure to this handler and makes it take action. This may include
+	 * calling the recover functions potentially provided through {@code report}. This
+	 * method will return the value generated by the recover functions. If the
+	 * {@code report} describes a non-recoverable failure, this method will not return.
+	 * This method might also not return if the handler thinks it’s not appropriate to
+	 * continue.
+	 *
+	 * &lt;p&gt;A call to this method will obtain a resolver from the provider set through
+	 * {@link #setProvider(Supplier)}. This resolver will be called to handle the failure.
+	 *
+	 * @param &lt;RECOVER_TYPE&gt; The recover value’s type.
+	 * @param report Information about the failure.
+	 * @return The value the reporter should use instead of the one that was expected to
+	 *         be generated by the failed action. Is created by the recover functions in
+	 *         {@code report}.
+	 */
+	public &lt;RECOVER_TYPE&gt; RECOVER_TYPE handle(final FailureReport&lt;RECOVER_TYPE&gt; report) {
+<span class="nc" id="L137">		return provider.get().handle(report, this.clientName);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
