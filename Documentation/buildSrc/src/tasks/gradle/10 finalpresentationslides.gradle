@@ -1,0 +1,16 @@
+/**
+ * Tasks to build the Final Presentation Slides
+ *
+ * @author Roman Langrehr
+ */
+ 
+task finalpresentationslides(type: LyXRenderTask) {
+	group 'Documentation'
+	description 'Renders the Final Presentation Slides.'
+	
+	from files("$projectDir/src/final presentation")
+	document "lyx/Final Presentation Slides.lyx"
+	into buildDir
+}
+
+build.dependsOn finalpresentationslides

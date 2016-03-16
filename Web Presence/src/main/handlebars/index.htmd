@@ -36,6 +36,10 @@ to import existing, component-based software into [Palladio](http://www.palladio
 	{{#> title}}Quality Control Report{{/title}}
 	{{#> description}}Documentation of Beagle’s quality control.{{/description}} 
 {{/artefact}}
+{{#> artefact link=paths.finalPresentationSlides type="pdf"}}
+	{{#> title}}Final Presentation Slides{{/title}}
+	{{#> description}}Final Presentation slides of our project.{{/description}} 
+{{/artefact}}
 ## Reports
 {{#> artefact link="coverage" type="html"}}
 	{{#> title}}Test Coverage{{/title}}
