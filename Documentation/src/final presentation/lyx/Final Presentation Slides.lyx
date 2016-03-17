@@ -128,7 +128,7 @@ Beagle kann...
 
 \begin_deeper
 \begin_layout Itemize
-RDIAs messen, annotieren, im PCM eintragen
+RDIAs messen & ins PCM eintragen
 \end_layout
 
 \end_deeper
@@ -146,17 +146,17 @@ genetischen Ansatz von Krogmann
 \end_layout
 
 \begin_layout Itemize
-messen, annotieren von weiteren SEFF Elementen 
+Messen, Annotieren von weiteren SEFF-Elementen 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-(Loops, Branches, externalCalls)
+(Loops, Branches, External Calls)
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-HDD demand messen
+HDD-Demand messen
 \end_layout
 
 \begin_layout Itemize
@@ -165,6 +165,61 @@ Regressions-Tools
 
 \end_deeper
 \end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Beagle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Features
+\end_layout
+
+\begin_layout Itemize
+Geringe Abhängigkeiten
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Itemize
+Einfach zu verwenden
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Itemize
+Stabiles Verhalten
+\end_layout
+
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Itemize
+Inhärent modular & erweiterbar
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Separator
 
 \end_layout
@@ -189,6 +244,18 @@ Insgesamt
 
 \begin_layout Itemize
 Commits: 2723
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+git rev-list master --count --no-merges
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Separator
@@ -196,7 +263,23 @@ Commits: 2723
 \end_layout
 
 \begin_layout Itemize
-Codelines: 19915
+Ausführbare Zeilen: 10
+\begin_inset space ~
+\end_inset
+
+303
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\family typewriter
+cloc --not-match-d="build|test|Prototype|Mockup|resource" .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Separator
