@@ -395,8 +395,8 @@ target "https://commons.wikimedia.org/wiki/File:Beagle_-_plan_1832.jpg"
 Tafel: 
 \begin_inset CommandInset href
 LatexCommand href
-name "http://images.google.de/url?sa=t&rct=j&q=&source=imgres&cd=1&cad=rja&uact=8&ved=0ahUKEwimr6nJ-8fLAhWjYpoKHQkYAq4Q5hMIBTAA&url=http%3A%2F%2Fwww.publicdomainpictures.net%2Fdownload-picture.php%3Fadresar%3D40000%26soubor%3Dschool-chalkboard.jpg%26id%3D37299&usg=AFQjCNFhzfvoiZmHEN_TgrYQXtXntDDMwQ&sig2=c-wUAwSTd3OXgozlyOFrAA"
-target "http://images.google.de/url?sa=t&rct=j&q=&source=imgres&cd=1&cad=rja&uact=8&ved=0ahUKEwimr6nJ-8fLAhWjYpoKHQkYAq4Q5hMIBTAA&url=http%3A%2F%2Fwww.publicdomainpictures.net%2Fdownload-picture.php%3Fadresar%3D40000%26soubor%3Dschool-chalkboard.jpg%26id%3D37299&usg=AFQjCNFhzfvoiZmHEN_TgrYQXtXntDDMwQ&sig2=c-wUAwSTd3OXgozlyOFrAA"
+name "http://www.publicdomainpictures.net/view-image.php?image=37300&"
+target "http://www.publicdomainpictures.net/view-image.php?image=37300&"
 
 \end_inset
 
