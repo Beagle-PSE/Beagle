@@ -301,9 +301,9 @@ import java.util.Set;
 		final MeasurableSeffElement measurableSeffElement) {
 <span class="fc" id="L302">		int numberOfMeasurements = 0;</span>
 
-<span class="pc bpc" id="L304" title="1 of 2 branches missed.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
-<span class="nc" id="L305">			numberOfMeasurements =</span>
-<span class="nc" id="L306">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
+<span class="fc bfc" id="L304" title="All 2 branches covered.">		if (measurableSeffElement.getClass() == ResourceDemandingInternalAction.class) {</span>
+<span class="fc" id="L305">			numberOfMeasurements =</span>
+<span class="fc" id="L306">				blackboard.getMeasurementResultsFor((ResourceDemandingInternalAction) measurableSeffElement).size();</span>
 <span class="pc bpc" id="L307" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffBranch.class) {</span>
 <span class="nc" id="L308">			numberOfMeasurements = blackboard.getMeasurementResultsFor((SeffBranch) measurableSeffElement).size();</span>
 <span class="pc bpc" id="L309" title="1 of 2 branches missed.">		} else if (measurableSeffElement.getClass() == SeffLoop.class) {</span>
