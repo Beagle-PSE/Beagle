@@ -45,8 +45,3 @@ to import existing, component-based software into [Palladio](http://www.palladio
 	{{#> title}}Test Coverage{{/title}}
 	{{#> description}}Beagle requires 100% test coverage for all production code.{{/description}} 
 {{/artefact}}
-{{#> artefact link=paths.checkstyle type="html"}}
-	{{#> title}}Checkstyle{{/title}}
-	{{#> description}}We use detailed Checkstyle rules to help keeping the code readable.{{/description}} 
-{{/artefact}}
-	
