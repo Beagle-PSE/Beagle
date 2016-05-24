@@ -25,7 +25,9 @@ import java.net.URISyntaxException;
  *
  * @author Annika Berger
  */
-@PrepareForTest(PcmRepositoryFileLoader.class)
+//@formatter:off
+@PrepareForTest({PcmRepositoryFileLoader.class, ResourceTypeMappings.class})
+//@formatter:on
 public class PcmRepositoryFileLoaderTest {
 
 	/**

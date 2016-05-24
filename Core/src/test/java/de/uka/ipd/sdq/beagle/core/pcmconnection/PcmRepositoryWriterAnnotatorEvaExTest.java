@@ -30,7 +30,7 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
  */
 //@formatter:off
 @PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
-	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
+	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class, ResourceTypeMappings.class})
 //@formatter:on
 public class PcmRepositoryWriterAnnotatorEvaExTest {
 
