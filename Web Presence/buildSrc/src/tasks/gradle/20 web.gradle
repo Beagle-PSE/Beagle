@@ -24,7 +24,7 @@ task downloadWebFonts(type: Download) {
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Typewriter.zip',
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Serif.zip',
     	'http://checkmyworking.com/cm-web-fonts/Computer%20Modern%20Sans.zip',
-    	'http://fontawesome.io/assets/font-awesome-4.5.0.zip'
+    	'http://fontawesome.io/assets/font-awesome-4.6.3.zip'
     ])
     dest "$rootProject.buildDir/tmp/fonts/"
 	onlyIfNewer true
@@ -48,7 +48,7 @@ task copyWebFonts(dependsOn: downloadWebFonts) {
 	def cmserifOutputDirname = 'cm-serif'
 	def cmtypeInputDirname = 'Typewriter'
 	def cmtypeOutputDirname = 'cm-typewriter'
-	def faInputDirname = 'font-awesome-4.5.0'
+	def faInputDirname = 'font-awesome-4.6.3'
 	def faOutputDirname = 'font-awesome'
 	
 	
