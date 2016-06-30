@@ -29,7 +29,7 @@ import java.net.URISyntaxException;
  */
 // @formatter:off
 @PrepareForTest({PcmRepositoryWriterAnnotator.class, PcmRepositoryFileLoader.class,
-	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class})
+	PcmRepositoryWriterAnnotatorEvaEx.class, PcmRepositoryWriter.class, ResourceTypeMappings.class})
 //@formatter:on
 public class PcmRepositoryWriterTest {
 
@@ -94,8 +94,7 @@ public class PcmRepositoryWriterTest {
 		assertThat("File must not be null", () -> writer.writeTo(null), throwsException(NullPointerException.class));
 
 		final File notExistingFile = new File("notExistingFile.txt");
-		assertThat("File must exist.", () -> writer.writeTo(notExistingFile),
-			throwsException(FailureException.class));
+		assertThat("File must exist.", () -> writer.writeTo(notExistingFile), throwsException(FailureException.class));
 
 		final File repositoryFile;
 		try {

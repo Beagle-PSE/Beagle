@@ -80,10 +80,6 @@ public class BeagleWebContext {
 		 */
 		String javadoc = relative project.copyWebArtefacts.javadocDest
 		/**
-		 * Path to the checkstyle report html file.
-		 */
-		String checkstyle = relative project.copyWebArtefacts.checkstyleDest
-		/**
 		 * Path to the test code coverage html file.
 		 */
 		String coverage = relative project.copyWebArtefacts.jacocoDest

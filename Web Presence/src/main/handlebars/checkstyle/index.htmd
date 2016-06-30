@@ -1,9 +1,0 @@
-{{setTitle "Checkstyle Reports"}}
-
-# Checkstyle Reports
-
-{{# each javaProjects}}
-	{{#> artefact link=(concat name ".html") type="html"}}
-		{{#> title}}{{name}} Project{{/title}}
-	{{/artefact}}
-{{/each}}

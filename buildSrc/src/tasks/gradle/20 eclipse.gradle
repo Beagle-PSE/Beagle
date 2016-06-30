@@ -14,6 +14,7 @@ buildscript {
 	}
 }
 import org.akhikhl.wuff.EclipseBundlePlugin
+import org.akhikhl.unpuzzle.PlatformConfig
 
 
 configure(eclipseSubprojects) {
@@ -21,7 +22,22 @@ configure(eclipseSubprojects) {
 	apply plugin: EclipseBundlePlugin
 	
 	project.wuff {
-		selectedEclipseVersion = '4.5'
+		eclipseVersion('4.5.2') {
+			def suffix_os = [ 'linux': 'linux-gtk', 'macosx': 'macosx-cocoa', 'windows': 'win32' ]
+			def suffix_arch = [ 'x86_32': '', 'x86_64': '-x86_64' ]
+			def fileExt_os = [ 'linux': 'tar.gz', 'macosx': 'tar.gz', 'windows': 'zip' ]
+		
+	    	eclipseMavenGroup = 'eclipse-mars'
+	    	eclipseMirror = 'http://mirror.netcologne.de'
+			eclipseArchiveMirror = 'http://archive.eclipse.org'
+	    	sources {
+				source "${eclipseMirror}/eclipse//technology/epp/downloads/release/mars/2/eclipse-jee-mars-2-${suffix_os[PlatformConfig.current_os]}${suffix_arch[PlatformConfig.current_arch]}.${fileExt_os[PlatformConfig.current_os]}"
+	      		source "${eclipseMirror}/eclipse//eclipse/downloads/drops4/R-4.5.2-201602121500/eclipse-SDK-4.5.2-${suffix_os[PlatformConfig.current_os]}${suffix_arch[PlatformConfig.current_arch]}.${fileExt_os[PlatformConfig.current_os]}", sourcesOnly: true
+	      		languagePackTemplate '${eclipseMirror}/eclipse//technology/babel/babel_language_packs/R0.13.0/mars/BabelLanguagePack-eclipse-${PlatformConfig.current_language}_4.5.0.v20151128060001.zip'
+	      	}
+  		}
+  		
+		selectedEclipseVersion = '4.5.2'
 	}
 
 	project.updatesites {
